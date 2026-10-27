@@ -9,25 +9,26 @@ Live: https://n00bin.github.io/gintaras/
 | File | What it is |
 |---|---|
 | `index.html` | The whole app: course content, exercises, review scheduler, progress, UI |
-| `cloud.js` | Sign-in, progress sync and leaderboard (Supabase). Does nothing until `config.js` is filled in |
-| `config.js` | Your Supabase URL and public key |
+| `cloud.js` | Sign-in, progress sync and leaderboard (Supabase) |
+| `config.js` | The Supabase project URL, publishable key, and the Google sign-in switch |
 | `audio/` | Lithuanian audio, one file per unit or conversation per voice (Ona, Leonas) |
 | `tools/` | The audio recorder (`make_audio.py`) and the script it uses to read the course |
-| `supabase/schema.sql` | The two database tables and their access rules |
+| `supabase/schema.sql` | The two `gintaras_` tables and their access rules |
 | `manifest.json`, `icon-*.png` | Lets phones install it to the home screen |
 
 Progress is saved in the browser. With an account it also syncs to the cloud, so it follows you across devices.
 
-## Turning on accounts and the leaderboard (about 10 minutes)
+## Accounts and the leaderboard
 
-1. Go to https://supabase.com and create a free project. Pick any name and a strong database password (you won't need it again).
-2. In the project, open **SQL Editor → New query**, paste the contents of `supabase/schema.sql`, and click **Run**.
-3. Open **Project Settings → API**. Copy the **Project URL** and the **anon public** key into `config.js`. Commit and push.
-4. **Authentication → URL Configuration**: set *Site URL* to `https://n00bin.github.io/gintaras/` and add the same to *Redirect URLs*.
-5. Email + password works immediately. To skip email confirmation (simpler for friends): **Authentication → Providers → Email**, turn off *Confirm email*.
-6. Google sign-in (optional): **Authentication → Providers → Google** and follow Supabase's link to create a Google OAuth client. Paste the client ID and secret. Supabase shows you the redirect URL to give Google.
+These are switched on. They run on the Supabase project in the **SAVAGE** organization ("n00bin's Project"), shared because the free plan allows only two projects. Everything Gintaras stores lives in two tables named `gintaras_profiles` (nickname and XP for the leaderboard) and `gintaras_progress` (each player's saved progress, readable only by them). `supabase/schema.sql` creates both.
 
-That's it. The Profile tab shows a sign-in card and the Board tab fills up as people play.
+Settings in Supabase:
+
+- **Authentication → URL Configuration:** Site URL is `https://n00bin.github.io/gintaras/`.
+- **Authentication → Sign In / Providers:** "Confirm email" is off. Supabase's built-in email sender only delivers to your own team, so with it on, friends could never finish signing up.
+- **Google sign-in** is off. To turn it on, enable Google under Auth Providers (Supabase links the Google setup steps), then set `GOOGLE: true` in `config.js`.
+
+`config.js` holds the project URL and the publishable key. That key is meant to be public; the table rules decide what anyone can do.
 
 ## How the course is laid out
 
