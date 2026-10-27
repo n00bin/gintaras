@@ -3448,7 +3448,10 @@ function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||
   const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':'Not now';b.onclick=closeWelcome;}
 window.openSignin=openSignin;
 $('#btn-welcome').onclick=()=>{setPace(S.pace);save();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
+  /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
+  if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
+  rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}
