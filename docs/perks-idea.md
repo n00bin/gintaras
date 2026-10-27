@@ -30,3 +30,9 @@ Sun Cup: monthly from the first Monday. Round 1 = Sun league players with 500+ X
 to the semifinal, then the final; final top 3 get +100/50/25 amber (paid by the app, S.cupPaid), winner's cup_wins +1 (🏆 on name).
 Table gintaras_cup. The weekly job is gintaras_league_settle(monday) (testable on any date) called by gintaras_league_rollover().
 Backups taken first: *_backup_20261027, *_backup_20261027b, *_backup_20261027c.
+
+Bar watcher (2026-10-27, supabase/bar-watcher.sql, run): each Monday, after settling with the bars shown all week, the job takes
+each player's week XP per minute of lesson time (state.ltime), uses the median of players with 30+ minutes when there are 3+,
+and moves gintaras_meta.bar_scale toward median/7: at most +/-10% a week, kept between 0.667 and 1.6. Bars = base x scale,
+rounded to 5. Every Monday writes a row to gintaras_bar_log. The app reads gintaras_bars() and says when bars changed.
+The Sun Cup entry follows the Sun bar. Backup *_backup_20261027d taken first.

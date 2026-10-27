@@ -167,8 +167,10 @@ const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble'
 const DIVS=['II','I'],TOP=19,SUN=18;
 const stepOf=n=>Math.max(0,Math.min(TOP,n||0));
 const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/2)];return Object.assign({},L,{div:DIVS[st%2],name:L.lt+' '+DIVS[st%2]});};
-/* XP in a week needed to move up, per league (all three divisions share it). Must match supabase/league-bars.sql. */
-const BARS=[150,175,200,250,275,300,350,400,450,500];
+/* XP in a week needed to move up, per league (both divisions share it). The database's bar watcher adjusts them each
+   Monday (supabase/bar-watcher.sql); these are the starting values, used until the current ones load. */
+let BARS=[150,175,200,250,275,300,350,400,450,500],barLog=null;
+async function loadBars(){const {data}=await sb.rpc('gintaras_bars');if(data&&Array.isArray(data.bars)&&data.bars.length===10){BARS=data.bars;barLog=data.log;}}
 const barFor=st=>BARS[Math.floor(stepOf(st)/2)];
 /* Position bonus for finishing in the top 3 of a group where at least 2 people earned XP. */
 const PLACE_AMBER={1:15,2:10,3:5};
@@ -258,7 +260,7 @@ function renderChallenges(){const box=$('#chal-box');if(!box)return;if(!user){bo
 /* Every month from its first Monday, for the Sun league: round 1 is everyone there who earns 500 XP that week,
    the top half go through to the semifinal, then the final. The weekly job settles each round; the app shows it
    and pays the final's top 3 (once, remembered in S.cupPaid). */
-const ROUNDS=['','Qualifier','Semifinal','Final'],CUP_PRIZE={1:100,2:50,3:25},CUP_ENTRY=500;
+const ROUNDS=['','Qualifier','Semifinal','Final'],CUP_PRIZE={1:100,2:50,3:25};
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 function cupStartOf(day){const d=new Date(day+'T00:00');d.setDate(1);d.setDate(1+(8-((d.getDay()+6)%7+1))%7);return ymd(d);}
 function cupNow(){const mon=monday(),start=cupStartOf(mon);return {start,rnd:Math.round((new Date(mon+'T00:00')-new Date(start+'T00:00'))/(7*86400000))+1};}
@@ -278,14 +280,14 @@ function renderCup(mine){const box=$('#cup-box');if(!box)return;const {rnd}=cupN
   const name=id=>esc((cupPeople[id]||{}).nickname||'?'),wxp=id=>{const p=cupPeople[id]||{};return p.week_start===wk?p.week_xp:0;};
   let h='<span class="eyebrow">☀️ Sun Cup · monthly</span>';
   const live=rnd>=2&&rnd<=3?cupRows.filter(r=>r.round===rnd):[];
-  if(rnd===1)h+='<h3>Qualifier this week</h3><p class="note">Everyone in the Sun league who earns <b>'+CUP_ENTRY+' XP</b> this week enters. The top half go through each week: qualifier, semifinal, final.</p>'+(inSun?'<p class="note"><b>You: '+((window.S&&window.S.weekStart===wk&&window.S.weekXp)||0)+' / '+CUP_ENTRY+' XP</b></p>':'');
+  if(rnd===1)h+='<h3>Qualifier this week</h3><p class="note">Everyone in the Sun league who earns <b>'+BARS[9]+' XP</b> this week enters. The top half go through each week: qualifier, semifinal, final.</p>'+(inSun?'<p class="note"><b>You: '+((window.S&&window.S.weekStart===wk&&window.S.weekXp)||0)+' / '+BARS[9]+' XP</b></p>':'');
   else if(live.length){const me=live.some(r=>r.player===(user&&user.id));
     h+='<h3>'+ROUNDS[rnd]+' this week</h3><p class="note">'+(rnd===3?'Top 3 win <b>100, 50 and 25 amber</b>, and the winner gets a 🏆 for good.':'The top half go through to the final.')+(me?' <b>You\'re in!</b>':'')+'</p>'+
       '<ol class="cup-list">'+live.map(r=>[r.player,wxp(r.player)]).sort((a,b)=>b[1]-a[1]).map(([id,x])=>'<li'+(user&&id===user.id?' class="me"':'')+'><span>'+name(id)+'</span><b>'+x+' XP</b></li>').join('')+'</ol>';}
   else{const fin=cupRows.filter(r=>r.round===3&&r.place).sort((a,b)=>a.place-b.place);
     if(fin.length)h+='<h3>🏆 '+name(fin[0].player)+' won this month\'s cup</h3>';
-    else if(rnd<=3)h+='<h3>No cup this month</h3><p class="note">Fewer than 2 Sun players reached '+CUP_ENTRY+' XP in the qualifier.</p>';
-    h+='<p class="note">Next Sun Cup starts <b>'+longDay(nextCup())+'</b>. '+(inSun?'Earn '+CUP_ENTRY+' XP that week to enter.':'Reach the Sun league to enter.')+'</p>';}
+    else if(rnd<=3)h+='<h3>No cup this month</h3><p class="note">Fewer than 2 Sun players reached '+BARS[9]+' XP in the qualifier.</p>';
+    h+='<p class="note">Next Sun Cup starts <b>'+longDay(nextCup())+'</b>. '+(inSun?'Earn '+BARS[9]+' XP that week to enter.':'Reach the Sun league to enter.')+'</p>';}
   box.className='cup-box';box.innerHTML=h;}
 
 /* ---------- leaderboard ---------- */
@@ -293,21 +295,24 @@ let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>League</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>League</h2><p class="note">You’re offline. Your league comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
+  await ensureRollover();await loadBars();
   const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/2);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
     (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+' · step '+(mine+1)+' of 20</small></div></div>'+
       '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
       '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+barFor(mine)+' XP</b> this week. ':'You are at the very top. ')+'Top 3 earn bonus amber: 15, 10 and 5. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
-    (user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
+    (boardMode==='league'?'<p class="note" id="bar-note" hidden></p>':'')+(user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
-  await ensureRollover();await loadChallenges();await loadCup();
+  await loadChallenges();await loadCup();
   const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league,cup_wins';
   const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
   renderChallenges();renderCup(mine);
+  const bn=$('#bar-note');if(bn&&barLog&&barLog.week===monday()&&barLog.players>=3&&Number(barLog.new_scale)!==Number(barLog.old_scale)){const pc=Math.round((barLog.new_scale/barLog.old_scale-1)*100);
+    bn.textContent='This week’s bars went '+(pc>0?'up ':'down ')+Math.abs(pc)+'% to match how fast everyone is earning XP (about '+Number(barLog.median_rate).toFixed(1)+' XP a minute in lessons).';bn.hidden=false;}
   ol.onclick=e=>{const li=e.target.closest('li[data-pid]');if(li)openChallenge(li.dataset.pid);};
   data.forEach(r=>{people[r.id]=Object.assign(people[r.id]||{},r);});
   if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
