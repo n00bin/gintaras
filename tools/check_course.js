@@ -25,7 +25,7 @@ const ci = {}; Object.keys(c.PRON).forEach(k => { ci[k.toLowerCase().replace(/[.
 Object.keys(c.PRON).forEach(k => { const ws = k.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/), ps = c.PRON[k].split(' '); if (ws.length > 1 && ws.length === ps.length) ws.forEach(w => { ci[w] = 1; }); });
 const covered = t => ci[t.toLowerCase().replace(/[.,!?]+$/, '')] || t.split(/(?<=[.!?])\s+/).every(sen => ci[sen.toLowerCase().replace(/[.,!?]+$/, '').trim()] || sen.split(/,\s*/).every(part => ci[part.toLowerCase().replace(/[.,!?]+$/, '').trim()] || part.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(Boolean).every(w => ci[w])));
 say('words without a "sounds like"', c.ITEMS.filter(i => !covered(i.lt)).map(i => i.lt));
-say('conversation replies without a "sounds like"', c.CONVS.flatMap(v => v.lines.filter(l => l.kind === 'm' && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
+say('conversation replies without a "sounds like"', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'm' && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
 const en = {}; c.ITEMS.forEach(i => { const k = i.en.toLowerCase().replace(/[.,!?]/g, ''); (en[k] = en[k] || []).push(i.lt); });
 say('items sharing the same English', Object.entries(en).filter(e => e[1].length > 1).map(e => e[0] + ' = ' + e[1].join(' / ')));
 const lt = {}; c.ITEMS.forEach(i => { (lt[i.lt] = lt[i.lt] || []).push(i.id); });
@@ -40,8 +40,8 @@ const known = new Set(['tomas', 'tomai', 'rūta', 'jonas']);
 const unknown = [];
 c.PATH.filter(p => typeof p === 'string').forEach(id => {
   if (c.CONV_BY[id]) {
-    c.CONV_BY[id].lines.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => { if (!known.has(w)) unknown.push(id + ': "' + w + '" in ' + l.lt); }));
-    c.CONV_BY[id].lines.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => known.add(w)));
+    c.CONV_BY[id].all.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => { if (!known.has(w)) unknown.push(id + ': "' + w + '" in ' + l.lt); }));
+    c.CONV_BY[id].all.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => known.add(w)));
   } else {
     const u = c.COURSE.find(x => x.id === id);
     u.lessons.forEach(l => l.items.forEach(i => tok(i.lt).concat(i.alt.flatMap(tok)).forEach(w => known.add(w))));

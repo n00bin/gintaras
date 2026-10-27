@@ -14,6 +14,6 @@ const groupOf = id => (id.match(/^([a-z]+\d+)/) || [])[1];
 const groups = {};
 const add = (id, text) => { const g = groupOf(id); (groups[g] = groups[g] || []).push({ id, text }); };
 out.ITEMS.forEach(i => add(i.id, i.lt));
-out.CONVS.forEach(c => c.lines.forEach(l => { if (l.id) add(l.id, l.lt); }));
+out.CONVS.forEach(c => c.all.forEach(l => { if (l.id && l.lt) add(l.id, l.lt); }));
 out.ME_BANK.forEach(i => add(i.id, i.lt));
 process.stdout.write(JSON.stringify({ groups, smap: out.SMAP }));
