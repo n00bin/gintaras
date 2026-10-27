@@ -50,10 +50,10 @@ function renderAuth(){const box=$('#auth');if(!box)return;
     $('#btn-out').onclick=async()=>{await sb.auth.signOut();user=null;profile=null;renderAuth();renderBoard();};
     $('#btn-nick').onclick=showNickname;return;}
   box.innerHTML='<h2>Account</h2><p class="note">Sign in to keep progress across devices and join the leaderboard. Everything you have done on this device comes with you.</p>'+
-    (cfg.GOOGLE?'<button class="btn" id="btn-google">Continue with Google</button><div class="or">or with email</div>':'')+
+    (cfg.GOOGLE?'<div id="gbtn" class="gbtn"><button class="btn" id="btn-google">Continue with Google</button></div><div class="or">or with email</div>':'')+
     '<input id="auth-email" type="email" autocomplete="email" placeholder="Email"><input id="auth-pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
     '<div class="row2"><button class="btn amber" id="btn-in">Sign in</button><button class="btn ghost" id="btn-up">Create account</button></div><p class="note" id="auth-msg"></p>';
-  if(cfg.GOOGLE)$('#btn-google').onclick=async()=>{msg('Opening Google…');const {error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(error)msg(error.message,true);};
+  if(cfg.GOOGLE){$('#btn-google').onclick=googleRedirect;googleButton();}
   $('#btn-in').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||!password)return msg('Enter your email and password',true);msg('Signing in…');
     const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)return msg(error.message,true);user=data.user;await afterAuth();};
   $('#btn-up').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||password.length<8)return msg('Enter an email and a password of 8 or more characters',true);msg('Creating account…');
@@ -64,6 +64,22 @@ function showNickname(){const box=$('#auth');box.innerHTML='<h2>Pick a nickname<
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
     const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=row;renderAuth();renderBoard();cloudSave();};}
+
+/* ---------- Google sign-in ----------
+   Google's own button runs on this page, so Google's screen names n00bin.github.io instead of the Supabase server.
+   Its ID token is handed to Supabase with a nonce. If Google's script can't load, the plain redirect button stays. */
+async function googleRedirect(){msg('Opening Google…');const {error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(error)msg(error.message,true);}
+let gsi=null;
+function loadGsi(){return gsi||(gsi=new Promise((ok,bad)=>{const sc=document.createElement('script');sc.src='https://accounts.google.com/gsi/client';sc.async=true;sc.onload=ok;sc.onerror=bad;document.head.appendChild(sc);}));}
+async function googleButton(){if(!cfg.GOOGLE_CLIENT_ID||!navigator.onLine)return;
+  try{await loadGsi();}catch(e){return;}
+  const box=$('#gbtn');if(!box||!window.google||!google.accounts)return;
+  const raw=crypto.getRandomValues(new Uint8Array(16)).reduce((s,b)=>s+b.toString(16).padStart(2,'0'),'');
+  const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  google.accounts.id.initialize({client_id:cfg.GOOGLE_CLIENT_ID,nonce:hash,context:'signin',ux_mode:'popup',
+    callback:async r=>{msg('Signing in…');const {data,error}=await sb.auth.signInWithIdToken({provider:'google',token:r.credential,nonce:raw});
+      if(error)return msg(error.message,true);user=data.user;await afterAuth();}});
+  box.innerHTML='';google.accounts.id.renderButton(box,{theme:'outline',size:'large',shape:'pill',text:'continue_with',width:Math.min(400,box.clientWidth||320)});}
 
 /* ---------- leaderboard ---------- */
 let boardMode='week';
