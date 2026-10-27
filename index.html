@@ -534,15 +534,25 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .hh{display:block}
 .hh.on{color:var(--amber-deep);font-weight:700}
 .amber-win{display:flex;align-items:center;gap:6px;justify-content:center}
-.amber-bal{display:flex;align-items:center;gap:8px}
-.shop-use{display:grid;gap:8px}
-.shop-row{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
-.shop-row.off{opacity:.6}
-.shop-row strong{display:block}
-.shop-row small{color:var(--muted)}
-.shop-row small b{color:var(--pine)}
-.tag{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}
-.tag.cost{background:color-mix(in srgb,var(--amber) 18%,var(--surface));color:var(--amber-deep)}
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end}
+.amber-bal{display:flex;align-items:center;gap:8px;margin-top:2px}
+.amber-bal b{font-family:var(--display);font-size:34px;line-height:1}
+.amber-bal span{color:var(--muted);font-weight:700}
+.shop-list{display:grid;border:2px solid var(--line);border-radius:14px;overflow:hidden}
+.shop-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:10px;text-align:left;padding:12px;border:0;border-top:1px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.shop-row:first-child{border-top:0}
+.shop-row:hover{background:var(--surface-2)}
+.shop-row .ic{font-size:22px;text-align:center}
+.shop-row strong{display:block;font-size:16px}
+.shop-row small{display:block;color:var(--muted);font-size:13px;line-height:1.3}
+.shop-row.done .ic,.shop-row.done strong{opacity:.75}
+.tag{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:800;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.tag.cost{background:var(--amber);color:#1b1b1b}
+.tag.cost.short{background:var(--surface-2);color:var(--muted)}
+.tag.st{background:var(--pine-soft);color:var(--pine)}
+.earn summary{cursor:pointer;font-weight:700;color:var(--pine)}
+.earn-list{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-top:8px;font-size:15px}
+.earn-list b{color:var(--amber-deep);text-align:right}
 .lb li.can-ch{cursor:pointer}
 .lb li .chbtn{font-size:12px;font-weight:800;color:var(--amber-deep)}
 .chal{display:grid;gap:8px;margin-top:6px}
@@ -2474,11 +2484,12 @@ setInterval(()=>{renderHappy();},60000);
 /* Streak repair: a streak that broke within the last 2 days can be bought back. */
 const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
 const canRepair=()=>!!S.brokenStreak&&daysSince(S.brokenStreak.on)<=2;
-const SHOP_USE=[['rest','Spare rest day','Covers one more missed day. You can keep 2.',10],
-  ['boost','Double XP for 15 minutes','Everything you earn counts twice. Once a day. Not on top of happy hour.',15],
-  ['repair','Streak repair','Brings back a streak that broke in the last 2 days.',30],
-  ['shield','League shield','You can\'t move down a league at the end of this week. Once a month.',25],
-  ['challenge','Friend challenge','Bet 10 to 50 amber on who earns more XP this week. Whoever wins takes both stakes.','10–50']];
+const SHOP_USE=[['rest','🌙','Spare rest day','Covers one extra missed day',10],
+  ['boost','⚡','Double XP','15 minutes, once a day',15],
+  ['repair','🔥','Streak repair','Brings back a streak lost in the last 2 days',30],
+  ['shield','🛡️','League shield','You can\'t move down this week · once a month',25],
+  ['challenge','⚔️','Friend challenge','Bet 10–50 on who earns more XP this week','10–50']];
+const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a league','+20']];
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;toast('Spare rest day added');}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
@@ -2489,12 +2500,22 @@ function buy(id){
   else if(id==='shield'){if(window.cloud&&window.cloud.buyShield)window.cloud.buyShield();else toast('Sign in to join a league first');return;}
   else if(id==='challenge'){showView('board');toast('Tap a player in your league to challenge them');return;}
   save();renderShop();renderTop();}
-function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="gem.svg" alt="" width="14" height="12">';
-  const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;const shielded=window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn();
-  const note={rest:'You have '+(S.freezes||0)+'.',boost:left?'On now: '+left+' min left.':'',repair:canRepair()?'Your '+S.brokenStreak.n+'-day streak can still be saved!':'Nothing to repair right now.',shield:shielded?'🛡️ On this week.':''};
-  box.innerHTML='<span class="eyebrow">Amber shop</span><h2 class="amber-bal"><img src="gem.svg" alt="" width="26" height="22"> '+amber()+' amber</h2>'+
-    '<p class="note">Earn amber by learning: +1 every lesson, +3 for a flawless one, +5 a conversation, +2 your daily goal, a treasure chest every 5th lesson, and bonuses for 7, 30 and 100-day streaks and for moving up a league.</p>'+
-    '<div class="shop-use">'+SHOP_USE.map(([id,name,desc,cost])=>'<button type="button" class="shop-row'+(id==='repair'&&!canRepair()?' off':'')+'" data-buy="'+id+'"><span><strong>'+esc(name)+'</strong><small>'+esc(desc)+(note[id]?' <b>'+esc(note[id])+'</b>':'')+'</small></span><span class="tag cost">'+gem+cost+'</span></button>').join('')+'</div>';
+/* Each row shows its price, or what state it's in when buying it makes no sense right now. */
+function shopState(id){const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;
+  if(id==='rest'&&(S.freezes||0)>=2)return 'You have 2';
+  if(id==='boost'&&left)return 'On · '+left+' min';
+  if(id==='boost'&&happyHour())return 'Happy hour';
+  if(id==='boost'&&S.boostDay===today())return 'Used today';
+  if(id==='repair'&&!canRepair())return 'Not needed';
+  if(id==='shield'&&window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn())return 'On this week';
+  return '';}
+function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="gem.svg" alt="" width="14" height="12">';const have=amber();
+  const extra={rest:(S.freezes||0)?' · you have '+S.freezes:'',repair:canRepair()?' · your '+S.brokenStreak.n+'-day streak':''};
+  box.innerHTML='<div class="shop-head"><div><span class="eyebrow">Amber shop</span><div class="amber-bal"><img src="gem.svg" alt="" width="30" height="26"><b class="num">'+have+'</b><span>amber</span></div></div></div>'+
+    '<div class="shop-list">'+SHOP_USE.map(([id,icon,name,desc,cost])=>{const st=shopState(id);const short=typeof cost==='number'&&have<cost;
+      return '<button type="button" class="shop-row'+(st?' done':'')+'" data-buy="'+id+'"><span class="ic" aria-hidden="true">'+icon+'</span><span class="tx"><strong>'+esc(name)+'</strong><small>'+esc(desc+(extra[id]||''))+'</small></span>'+
+        (st?'<span class="tag st">'+esc(st)+'</span>':'<span class="tag cost'+(short?' short':'')+'">'+gem+cost+'</span>')+'</button>';}).join('')+'</div>'+
+    '<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
   box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(b.dataset.buy));}
 window.earnAmber=earnAmber;window.spendAmber=spendAmber;window.amberBalance=amber;window.renderShop=renderShop;
 
