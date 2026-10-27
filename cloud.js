@@ -69,6 +69,7 @@ function showNickname(){const box=$('#auth');box.innerHTML='<h2>Pick a nickname<
 let boardMode='week';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>Leaderboard</h2><p class="note">Online accounts are not set up yet.</p>';return;}
+  if(!navigator.onLine){box.innerHTML='<h2>Leaderboard</h2><p class="note">You’re offline. The leaderboard comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
   box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   let q=sb.from('gintaras_profiles').select('id,nickname,xp,streak,week_xp,week_start,level_title').limit(50);
@@ -84,6 +85,7 @@ function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderA
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
   loadSession();}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
+window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;});
 document.addEventListener('click',e=>{if(e.target.closest('#tab-board'))renderBoard();});
 })();

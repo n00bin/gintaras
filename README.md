@@ -15,7 +15,7 @@ Live: https://n00bin.github.io/gintaras/
 | `tools/` | The audio recorder (`make_audio.py`) and the script it uses to read the course |
 | `supabase/schema.sql` | The two `gintaras_` tables and their access rules |
 | `manifest.json`, `icon-*.png` | The app's name, colours and icons for installing it |
-| `sw.js` | Service worker: makes it installable and lets it open without signal (audio is saved the first time it plays) |
+| `sw.js` | Service worker: makes it installable and lets it open without signal. Audio is saved the first time it plays, or all at once from **Profile → Use it offline** (about 13 MB: your voice for every unit plus both voices for the conversations) |
 
 Players can install it as an app from **Profile → Install as an app**, which has a one-tap button where the browser supports it and step-by-step instructions for iPhone, Android and computers. When you change `sw.js` itself, bump the cache names at the top so old copies are cleared.
 

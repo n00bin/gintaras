@@ -355,12 +355,15 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 #settings .chips{flex-wrap:nowrap}
 #settings .chip{padding:6px 11px;font-size:15px}
 #settings .note{margin:0}
+.net{background:var(--surface-2);color:var(--muted);border-radius:999px;padding:2px 10px;font-size:12px}
+#offline .note{margin:0}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <header class="top">
   <div class="brand"><span class="gem" aria-hidden="true"></span><h1>Gintaras</h1></div>
   <div class="stats">
+    <span class="net" id="net" hidden>Offline</span>
     <span title="Day streak"><svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c0-5 2-6 2-10z"/></svg><span class="num" id="streak">0</span></span>
     <span title="Total XP"><svg viewBox="0 0 24 24" fill="var(--pine)"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></svg><span class="num" id="xp">0</span> XP</span>
   </div>
@@ -443,6 +446,11 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. Your progress stays exactly where it is.</p>
       <div id="install-now"></div>
       <div class="howto" id="install-steps"></div>
+    </div>
+    <div class="card" id="offline">
+      <h2>Use it offline</h2>
+      <p class="note">The app already opens without signal. Download the recordings once and every lesson and conversation works with sound: on a plane, underground, or abroad without data.</p>
+      <div id="offline-box"></div>
     </div>
     <div class="card">
       <h2>Reading "sounds like"</h2>
@@ -1491,7 +1499,7 @@ function renderProfile(){$('#p-xp').textContent=S.xp;$('#p-streak').textContent=
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i></i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
-  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();}
+  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
 function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
@@ -1731,14 +1739,15 @@ function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolea
   const near=(a,b)=>{if(a===b)return true;if(a.length<4||b.length<4)return false;if(a.slice(0,4)===b.slice(0,4))return true;
     const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length]<=1;};
   return tw.length?tw.filter(w=>sw.some(x=>near(w,x))).length/tw.length:0;}
-function listen(ln,mic){const C=CV;const out=$('#srout');if(C.rec){try{C.rec.abort();}catch(e){}}
+function listen(ln,mic){const C=CV;const out=$('#srout');
+  if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud, play the recording to compare, then tap "I said it".';return;}if(C.rec){try{C.rec.abort();}catch(e){}}
   const rec=new SR();C.rec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
   mic.classList.add('on');out.textContent='Listening… say it now.';
   rec.onresult=e=>{const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;alts.forEach(a=>{const s=matchScore(a,ln.lt);if(s>score){score=s;best=a;}});
     if(score>=0.75){C.heard++;out.innerHTML='I heard "<b>'+esc(best)+'</b>". Spot on!';setFoot('good','');}
     else if(score>=0.4)out.innerHTML='I heard "<b>'+esc(best)+'</b>". Close! Play the recording once more and have another go.';
     else out.innerHTML='I heard "<b>'+esc(best)+'</b>". Not quite. Tap "Show me the Lithuanian", listen, then try again.';};
-  rec.onerror=ev=>{out.textContent=ev.error==='not-allowed'?'The microphone is blocked for this page. You can still say it out loud and tap "I said it".':'I couldn\'t hear that. Try again, or just say it and tap "I said it".';};
+  rec.onerror=ev=>{out.textContent=ev.error==='network'?'The microphone check needs internet. Say it out loud and tap "I said it".':ev.error==='not-allowed'?'The microphone is blocked for this page. You can still say it out loud and tap "I said it".':'I couldn\'t hear that. Try again, or just say it and tap "I said it".';};
   rec.onend=()=>mic.classList.remove('on');
   try{rec.start();}catch(e){mic.classList.remove('on');}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
@@ -1776,6 +1785,34 @@ function renderInstall(){const now=$('#install-now'),st=$('#install-steps');if(!
   st.innerHTML=order.map((k,i)=>'<details'+(i===0&&!installEvt?' open':'')+'><summary>'+(i===0?(installEvt?'Or step by step on this ':'Step by step on this ')+'device: ':'')+INSTALL_HOWTO[k].name+'</summary><ol>'+INSTALL_HOWTO[k].steps.map(s=>'<li>'+s+'</li>').join('')+'</ol></details>').join('');}
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 
+/* ===================== OFFLINE ===================== */
+/* Recordings live in the service worker's audio cache. "Download for offline" fills it with your voice for every
+   unit plus both voices for the conversations (the other person always speaks in their own voice). */
+const AUDIO_CACHE='gintaras-audio-v1';
+const canOffline='caches' in window&&'serviceWorker' in navigator&&/^https?:/.test(location.protocol);
+let dl=null;
+function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).forEach(g=>set.add('audio/'+me+'_'+g+'.mp3'));
+  CONVS.forEach(c=>c.cast.forEach(p=>set.add('audio/'+p.voice+'_'+c.id+'.mp3')));return [...set].map(f=>new URL(f,location.href).href);}
+async function offlineStatus(){const c=await caches.open(AUDIO_CACHE);const files=offlineFiles();let have=0;for(const f of files)if(await c.match(f))have++;return {have,total:files.length};}
+function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading recordings: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
+async function renderOffline(){const box=$('#offline-box');if(!box)return;
+  if(!canOffline){box.innerHTML='<p class="note">This browser can’t save the recordings. Lessons still work offline using your device’s own voice.</p>';return;}
+  if(dl)return drawDl();
+  const st=await offlineStatus();if(dl)return drawDl();
+  if(st.have>=st.total){box.innerHTML='<div class="win badge"><b>Ready offline.</b> All '+st.total+' recording files are saved on this device.</div><button type="button" class="linkbtn" id="btn-offline-clear">Remove the downloaded recordings</button>';
+    $('#btn-offline-clear').onclick=async()=>{await caches.delete(AUDIO_CACHE);toast('Recordings removed from this device');renderOffline();};return;}
+  const mb=Math.max(1,Math.round((st.total-st.have)*0.34));
+  box.innerHTML=(st.have?'<p class="note">'+st.have+' of '+st.total+' files are already saved from lessons you have played.</p>':'')+'<button type="button" class="btn amber" id="btn-offline">Download for offline (about '+mb+' MB)</button><p class="note">Best on Wi-Fi. If you switch voice later, download again for the new voice.</p>';
+  $('#btn-offline').onclick=downloadOffline;}
+async function downloadOffline(){if(dl||!canOffline)return;if(!navigator.onLine){toast('Connect to the internet first');return;}
+  try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch(e){}
+  const c=await caches.open(AUDIO_CACHE);const files=offlineFiles();dl={done:0,total:files.length,failed:0};drawDl();
+  for(const f of files){if(!(await c.match(f))){try{const r=await fetch(f);if(r.ok)await c.put(f,r.clone());else dl.failed++;}catch(e){dl.failed++;}}dl.done++;drawDl();}
+  const failed=dl.failed;dl=null;renderOffline();toast(failed?'Some files did not download. Try again on a better connection.':'Ready offline. Every lesson now works without signal.');}
+function netUI(){const off=!navigator.onLine;$('#net').hidden=!off;}
+window.addEventListener('offline',()=>{netUI();toast('You’re offline. Lessons still work.');});
+window.addEventListener('online',()=>{netUI();toast('Back online');});
+
 /* ===================== WIRING ===================== */
 $('#btn-quit').onclick=quit;
 $('#btn-review').onclick=()=>startReview(false);
@@ -1795,7 +1832,7 @@ document.addEventListener('keydown',e=>{if(CV&&!$('#sheet').hidden){if(/^[1-3]$/
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(!b.disabled)b.click();}});
 
 $('#btn-welcome').onclick=()=>{S.welcomed=true;save();$('#welcome').hidden=true;document.body.style.overflow='';renderAll();startNext(nextLesson());};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}
