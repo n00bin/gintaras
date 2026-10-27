@@ -72,7 +72,9 @@ Everything is in `index.html`:
 - `const PATH = [...]` sets the order of units and conversations and the part headings. `RESHAPE` regroups older lessons into units.
 - `const CONVS = [...]` holds the conversations. Use only words taught earlier on the path.
 - `const PRON = {...}` is the "sounds like" respelling. Hyphens split syllables, CAPS marks the stressed one. Key: ah, e/eh, ay, i, ee, oh, u, oo, ow, ai (the "eye" sound), and y is always the y in "yes".
-- `EMOJI` and `HOOK` add pictures and memory tricks by Lithuanian word.
+- `EMOJI` gives every word and phrase a picture; `HOOK` adds memory tricks. Pictures are Twemoji illustrations stored in `pics/` (same on every phone, offline), named by the emoji's code points. A value starting with `#` is a text tile instead (numbers past ten, days, months). After adding new pictures, download any missing files from `https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/`.
+
+Pictures: [Twemoji](https://github.com/jdecked/twemoji) by Twitter, Inc. and contributors, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (credited in the app under Settings → About).
 - `LESSON_TIPS`, `SPEAK_TIPS`, `PATTERNS` and `DRILLS` hold the tips, pattern cards and fill-the-gap drills.
 
 Before recording audio or pushing, run `node tools/check_course.js`. It checks that every lesson has a tip, every word a "sounds like", no two answers clash, and every word you must write in a conversation was taught earlier.
