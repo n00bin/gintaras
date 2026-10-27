@@ -364,9 +364,14 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 #settings .setting>span:first-child{white-space:nowrap}
 #settings .chips{flex-wrap:nowrap}
 #settings .chip{padding:6px 11px;font-size:15px}
-.pace-set{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
-#settings .pace-set .chips{justify-content:flex-start;flex-wrap:wrap}
-.pace-set .chip{white-space:nowrap}
+.pace-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pace-chip{display:grid;gap:1px;padding:8px 4px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer;text-align:center}
+.pace-chip b{font-size:16px}
+.pace-chip small{font-size:13px;color:var(--muted);font-weight:700}
+.pace-chip[aria-pressed="true"]{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 14%,var(--surface))}
+.goal .bar.time i{background:var(--pine)}
+.goal .timerow{font-size:15px;color:var(--muted);font-weight:700}
+.goal .timerow b{color:var(--fg)}
 #settings .note{margin:0}
 .net{background:var(--surface-2);color:var(--muted);border-radius:999px;padding:2px 10px;font-size:12px}
 #offline .note{margin:0}
@@ -598,9 +603,10 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="goal">
       <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
+      <div class="row timerow"><span>⏱ Time in lessons</span><span class="num"><b id="todaymin">0</b> / <span id="goalmin">10</span> min</span></div>
+      <div class="bar time"><i id="timebar" style="width:0%"></i></div>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
       <span class="note hh" id="hhnote"></span>
-      <span class="note hh" id="timenote"></span>
     </div>
     <button type="button" class="linkbtn jump" id="btn-jump">Jump to where I am on the path ↓</button>
     <button type="button" class="guidecard" data-guide><span class="emo" aria-hidden="true">🗣️</span><span><strong>Pronunciation guide</strong><small>How to read "sounds like", and the Lithuanian letters that trip people up.</small></span></button>
@@ -662,6 +668,11 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <p class="note">Everyone gets 2 free rest days a week. Miss a day and your streak simply waits for you. Doubling your daily goal earns a spare one (you can keep 2).</p>
     </div>
     <div class="card">
+      <h2>Daily pace</h2>
+      <div class="pace-grid" id="pace-grid"></div>
+      <p class="note" id="pace-note"></p>
+    </div>
+    <div class="card">
       <span class="eyebrow">⏱ Time in lessons</span>
       <div class="tiles time-tiles">
         <div class="tile"><strong class="num" id="p-time-today">0 min</strong><small>Today</small></div>
@@ -681,9 +692,6 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="pagehead"><button type="button" class="x back" id="btn-settings-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Settings</h2></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
-      <div class="pace-set"><span>Daily pace</span>
-        <span class="chips"><button class="chip" data-pace="m5">5 min</button><button class="chip" data-pace="m10">10 min</button><button class="chip" data-pace="m15">15 min</button><button class="chip" data-pace="m20">20 min</button><button class="chip" data-pace="m30">30 min</button><button class="chip" data-pace="m45">45 min</button><button class="chip" data-pace="m60">60 min</button></span>
-        <span class="note" id="pace-note"></span></div>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read Lithuanian spelling on its own.</p>
     </div>
@@ -758,7 +766,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <span class="eyebrow">How much time each day?</span>
       <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>One or two short lessons a day. Enough to keep words coming back.</span></button>
       <button type="button" class="pace-opt" data-pace="m10" aria-pressed="true"><strong>Regular · 10 min</strong><span>Three lessons a day. Most people land here.</span></button>
-      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Pick anything from 5 to 60 minutes in Settings.</span></button>
+      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Pick anything from 5 to 60 minutes on your Profile.</span></button>
     </div>
     <p class="note">Every word is spoken by a Lithuanian voice. Tap the speaker on any word to hear it.</p>
   </div>
@@ -2516,11 +2524,16 @@ setInterval(()=>{if(!(Q||CV)||$('#sheet').hidden||document.visibilityState!=='vi
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lastUse=Date.now();else{save();}});
 const timeOn=days=>days.reduce((n,d)=>n+((S.ltime||{})[d]||0),0);
 function mins(sec){const m=Math.floor(sec/60);return m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');}
+const goalMet=()=>{const P=PACES[S.pace]||PACES.m10;return S.todayXp>=S.goal&&timeOn([today()])>=P.mins*60;};
+/* Pays the daily-goal amber once a day, the first time both halves are reached. Returns true that one time. */
+function goalCheck(){if(S.goalDay===today()||!goalMet())return false;S.goalDay=today();earnAmber(2,'daily goal');return true;}
 function renderTime(){const T=S.ltime||{},t=today(),wk=weekOf(Date.now());
   const week=Object.keys(T).filter(d=>d>=wk&&d<=t),all=Object.keys(T);
   const set=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
   set('#p-time-today',mins(timeOn([t])));set('#p-time-week',mins(timeOn(week)));set('#p-time-all',mins(timeOn(all)));
   const P=PACES[S.pace]||PACES.m10,done=timeOn([t]),left=Math.ceil((P.mins*60-done)/60);
+  const tb=$('#timebar');if(tb)tb.style.width=Math.min(100,Math.round(done/(P.mins*60)*100))+'%';
+  set('#todaymin',Math.floor(done/60));set('#goalmin',P.mins);
   set('#timenote',left>0?'⏱ '+mins(done)+' of '+P.mins+' min in lessons today · '+left+' min to go':'⏱ '+mins(done)+' in lessons today · '+P.mins+' min reached ✓');}
 /* Streak repair: a streak that broke within the last 2 days can be bought back. */
 const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
@@ -2664,7 +2677,8 @@ function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#stre
   const p=Math.min(100,Math.round(S.todayXp/S.goal*100));$('#goalbar').style.width=p+'%';
   if(S.restNote){toast(S.restNote===1?'Rest day used. Your streak is safe.':S.restNote+' rest days used. Your streak is safe.');S.restNote=0;S.frozenNote=false;save();}
   if(S.welcomeBack){toast(amber()>=30?'Welcome back! Your '+S.welcomeBack+'-day streak can be repaired in the shop.':'Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
-  $('#goalnote').textContent=S.todayXp>=S.goal?'Goal reached. Nice work today.':S.todayXp>0?Math.max(0,S.goal-S.todayXp)+' XP to today\'s goal.':'One short lesson is all it takes today.';
+  {const P=PACES[S.pace]||PACES.m10,xl=Math.max(0,S.goal-S.todayXp),ml=Math.max(0,Math.ceil((P.mins*60-timeOn([today()]))/60));
+  $('#goalnote').textContent=goalMet()?'Learning day done. Nice work today!':!S.todayXp&&!timeOn([today()])?'Reach '+S.goal+' XP and '+P.mins+' minutes in lessons to finish today.':(xl?xl+' XP':'')+(xl&&ml?' and ':'')+(ml?ml+' min':'')+' to finish today.';};
   const d=dueItems().length;const b=$('#due-badge');b.hidden=d===0;b.textContent=d;}
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
   const prevName=prevStepName(c.id);
@@ -2714,8 +2728,10 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. Labai šaunu.';}
   $('#p-rests').textContent=restsLeft();renderShop();
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
-  document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
-  {const P=PACES[S.pace]||PACES.m10;const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day · daily goal '+P.goal+' XP.';}
+  {const P=PACES[S.pace]||PACES.m10;const g=$('#pace-grid');
+  if(g){g.innerHTML=Object.entries(PACES).map(([k,v])=>'<button type="button" class="pace-chip" data-pace="'+k+'" aria-pressed="'+(k===S.pace)+'"><b>'+v.mins+' min</b><small>'+v.goal+' XP</small></button>').join('');
+    g.querySelectorAll('[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' and '+PACES[S.pace].goal+' XP a day');});}
+  const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day. Your learning day is done once you reach both '+P.goal+' XP and '+P.mins+' minutes in lessons.';}
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
@@ -2724,8 +2740,8 @@ function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     const u=UNIT_BY[id],ui=COURSE.indexOf(u);for(let li=0;li<u.lessons.length;li++){const l=u.lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<1)return l;}}
   for(let ui=0;ui<COURSE.length;ui++)for(let li=0;li<COURSE[ui].lessons.length;li++){const l=COURSE[ui].lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<5)return l;}return null;}
 function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.m10;
-  const planDone=S.todayLessons>=P.lessons;
-  $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":"Today's plan · lesson "+Math.min(S.todayLessons+1,P.lessons)+' of '+P.lessons+' · '+P.label+' pace';
+  const planDone=goalMet();
+  $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":S.todayLessons>=P.lessons?"Today's plan · keep going · "+P.label+' pace':"Today's plan · lesson "+(S.todayLessons+1)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
   else if(l&&l.conv){const c=CONV_BY[l.conv];$('#bite-title').textContent='Conversation: '+c.title;
     $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Write each reply, then say it out loud.';
@@ -3001,13 +3017,13 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
   let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,crowns(Q.lesson.id)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
   let bonus=0;if(perfect){bonus=5;S.perfects=(S.perfects||0)+1;}
-  const goalBefore=S.todayXp;amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges();
+  amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
-  if(goalBefore<S.goal&&S.todayXp>=S.goal)earnAmber(2,'daily goal');
+  const dayDone=goalCheck();
   if(Q.mode==='lesson'&&S.lessonsDone%5===0)earnAmber(3+Math.floor(Math.random()*8),'treasure chest');
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
   if(perfect)lines.push('<div class="win"><b>Flawless</b> · no mistakes, +'+bonus+' XP bonus</div>');
-  if(goalBefore<S.goal&&S.todayXp>=S.goal)lines.push('<div class="win"><b>Daily goal reached</b></div>');
+  if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(S.newFreeze){lines.push('<div class="win"><b>Spare rest day earned</b> · you doubled your goal today.</div>');S.newFreeze=false;}
   const known=learned().length,gained=known-(Q.knownBefore||known);if(gained>0)lines.unshift('<div class="win"><b>+'+gained+' new word'+(gained===1?'':'s')+'</b> · you now know '+known+'</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
@@ -3149,10 +3165,11 @@ function hear(target,mic,out,onResult,english){
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
   st.done=st.text=today();if(allSaid)st.speak=today();
-  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;const goalBefore=S.todayXp;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges();
-  earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');if(goalBefore<S.goal&&S.todayXp>=S.goal)earnAmber(2,'daily goal');save();
+  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges();
+  earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
+  if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
@@ -3219,7 +3236,7 @@ const TOUR=[
  {sel:'#tab-practice',title:'Review',text:'Words come back here right before you would forget them. A short review each day is what makes them stick.'},
  {sel:'.guidecard',title:'Stuck on a sound?',text:'The pronunciation guide explains every "sounds like". It is also one tap away inside every lesson.'},
  {sel:'#tab-board',title:'Leagues',text:'Earn XP each week to climb from Sand to Sun. The top 3 move up every Monday. Sign in to join, and invite friends to race.'},
- {sel:'#btn-settings',title:'Settings',text:'Your daily pace, voice, offline download, installing the app and sharing all live here.'},
+ {sel:'#btn-settings',title:'Settings',text:'Voice, sound, offline download, installing the app and sharing all live here. Your daily pace is on your Profile.'},
 ];
 function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
   let i=0;const ov=document.createElement('div');ov.id='tour';ov.innerHTML='<div class="spot"></div><div class="bubble" role="dialog" aria-live="polite"><span class="eyebrow"></span><h3></h3><p></p><div class="row2"><button type="button" class="btn ghost" data-t="skip">Skip</button><button type="button" class="btn amber" data-t="next">Next</button></div></div>';
@@ -3404,7 +3421,6 @@ document.querySelector('#share .qr').addEventListener('toggle',async ev=>{if(!ev
 $('#btn-quit').onclick=quit;
 $('#btn-review').onclick=()=>startReview(false);
 $('#btn-weak').onclick=()=>startReview(true);
-document.querySelectorAll('.chip[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' a day');});
 document.querySelectorAll('.chip[data-voice]').forEach(b=>b.onclick=()=>{S.voice=b.dataset.voice;save();renderProfile();say(BYID['u1a-1:0']);});
 document.querySelectorAll('.pace-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pace-opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');setPace(b.dataset.pace);});
 $('#sw-sound').onclick=()=>{S.sound=!S.sound;save();renderProfile();if(S.sound)say(BYID['u1a-1:0']);};

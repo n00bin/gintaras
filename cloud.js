@@ -24,7 +24,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.badges=Object.assign({},a.badges||{},b.badges||{});
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
-  out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
+  out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
