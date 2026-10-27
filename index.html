@@ -3451,6 +3451,11 @@ $('#btn-welcome').onclick=()=>{setPace(S.pace);save();if(window.cloud&&cloud.ena
 function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
+  /* One-off back-pay: amber for learning done before amber existed, at today's rates, minus what was already earned.
+     (1 a lesson, 5 a conversation, 3 a flawless one, 2 a learning day, and an average 6 chest every 5th lesson.) */
+  if(!S.amberBack){const convs=Object.values(S.convs||{}).filter(c=>c.done).length;
+    const owed=(S.lessonsDone||0)+5*convs+3*(S.perfects||0)+2*(S.daysLearned||0)+6*Math.floor((S.lessonsDone||0)/5)-(S.amberEarned||0);
+    if(owed>0){S.amberEarned=(S.amberEarned||0)+owed;setTimeout(()=>toast('🎁 +'+owed+' amber for the learning you did before amber existed'),1500);}S.amberBack=1;}
   rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
