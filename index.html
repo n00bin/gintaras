@@ -364,6 +364,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 #settings .setting>span:first-child{white-space:nowrap}
 #settings .chips{flex-wrap:nowrap}
 #settings .chip{padding:6px 11px;font-size:15px}
+.pace-set{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+#settings .pace-set .chips{justify-content:flex-start;flex-wrap:wrap}
+.pace-set .chip{white-space:nowrap}
 #settings .note{margin:0}
 .net{background:var(--surface-2);color:var(--muted);border-radius:999px;padding:2px 10px;font-size:12px}
 #offline .note{margin:0}
@@ -678,8 +681,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="pagehead"><button type="button" class="x back" id="btn-settings-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Settings</h2></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
-      <div class="setting"><span>Daily pace</span>
-        <span class="chips"><button class="chip" data-pace="casual">3 min</button><button class="chip" data-pace="regular">10 min</button><button class="chip" data-pace="serious">20 min</button></span></div>
+      <div class="pace-set"><span>Daily pace</span>
+        <span class="chips"><button class="chip" data-pace="m5">5 min</button><button class="chip" data-pace="m10">10 min</button><button class="chip" data-pace="m15">15 min</button><button class="chip" data-pace="m20">20 min</button><button class="chip" data-pace="m30">30 min</button><button class="chip" data-pace="m45">45 min</button><button class="chip" data-pace="m60">60 min</button></span>
+        <span class="note" id="pace-note"></span></div>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read Lithuanian spelling on its own.</p>
     </div>
@@ -752,9 +756,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     </div>
     <div class="pace" id="pace-welcome">
       <span class="eyebrow">How much time each day?</span>
-      <button type="button" class="pace-opt" data-pace="casual" aria-pressed="false"><strong>Casual · 3 min</strong><span>One short lesson a day. Enough to keep words coming back.</span></button>
-      <button type="button" class="pace-opt" data-pace="regular" aria-pressed="true"><strong>Regular · 10 min</strong><span>Three lessons a day. Most people land here.</span></button>
-      <button type="button" class="pace-opt" data-pace="serious" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Change it any time in Settings.</span></button>
+      <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>One or two short lessons a day. Enough to keep words coming back.</span></button>
+      <button type="button" class="pace-opt" data-pace="m10" aria-pressed="true"><strong>Regular · 10 min</strong><span>Three lessons a day. Most people land here.</span></button>
+      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Pick anything from 5 to 60 minutes in Settings.</span></button>
     </div>
     <p class="note">Every word is spoken by a Lithuanian voice. Tap the speaker on any word to hear it.</p>
   </div>
@@ -2455,10 +2459,12 @@ const ME_BANK=meBank();const ME_BY={};ME_BANK.forEach(i=>ME_BY[i.id]=i);
 const KEY='gintaras.v2';
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
-const PACES={casual:{goal:15,lessons:1,label:'3 min'},regular:{goal:40,lessons:3,label:'10 min'},serious:{goal:80,lessons:6,label:'20 min'}};
-function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'regular',goal:40,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
+/* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is about 3 minutes, about 4 XP a minute). */
+const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*4,lessons:Math.max(1,Math.round(m/3.3)),label:m+' min'});
+const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
+function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:40,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
 let S=fresh();
-function setPace(p){if(!PACES[p])p='regular';S.pace=p;S.goal=PACES[p].goal;}
+function setPace(p){p=OLD_PACE[p]||p;if(!PACES[p])p='m10';S.pace=p;S.goal=PACES[p].goal;}
 function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.cloudDirty)window.cloudDirty();}
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
@@ -2514,7 +2520,8 @@ function renderTime(){const T=S.ltime||{},t=today(),wk=weekOf(Date.now());
   const week=Object.keys(T).filter(d=>d>=wk&&d<=t),all=Object.keys(T);
   const set=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
   set('#p-time-today',mins(timeOn([t])));set('#p-time-week',mins(timeOn(week)));set('#p-time-all',mins(timeOn(all)));
-  set('#timenote','⏱ '+mins(timeOn([t]))+' in lessons today');}
+  const P=PACES[S.pace]||PACES.m10,done=timeOn([t]),left=Math.ceil((P.mins*60-done)/60);
+  set('#timenote',left>0?'⏱ '+mins(done)+' of '+P.mins+' min in lessons today · '+left+' min to go':'⏱ '+mins(done)+' in lessons today · '+P.mins+' min reached ✓');}
 /* Streak repair: a streak that broke within the last 2 days can be bought back. */
 const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
 const canRepair=()=>!!S.brokenStreak&&daysSince(S.brokenStreak.on)<=2;
@@ -2708,6 +2715,7 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   $('#p-rests').textContent=restsLeft();renderShop();
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
+  {const P=PACES[S.pace]||PACES.m10;const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day · daily goal '+P.goal+' XP.';}
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
@@ -2715,7 +2723,7 @@ function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
     const u=UNIT_BY[id],ui=COURSE.indexOf(u);for(let li=0;li<u.lessons.length;li++){const l=u.lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<1)return l;}}
   for(let ui=0;ui<COURSE.length;ui++)for(let li=0;li<COURSE[ui].lessons.length;li++){const l=COURSE[ui].lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<5)return l;}return null;}
-function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.regular;
+function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.m10;
   const planDone=S.todayLessons>=P.lessons;
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":"Today's plan · lesson "+Math.min(S.todayLessons+1,P.lessons)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
@@ -3424,7 +3432,7 @@ function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||
   const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':'Not now';b.onclick=closeWelcome;}
 window.openSignin=openSignin;
 $('#btn-welcome').onclick=()=>{setPace(S.pace);save();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}
