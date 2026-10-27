@@ -10,7 +10,7 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const js = html.split('<script>')[1].split('/* ===================== STATE')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS});')(c);
+new Function('c', pre + js + ';Object.assign(c,{COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -30,6 +30,8 @@ const en = {}; c.ITEMS.forEach(i => { const k = i.en.toLowerCase().replace(/[.,!
 say('items sharing the same English', Object.entries(en).filter(e => e[1].length > 1).map(e => e[0] + ' = ' + e[1].join(' / ')));
 const lt = {}; c.ITEMS.forEach(i => { (lt[i.lt] = lt[i.lt] || []).push(i.id); });
 say('items sharing the same Lithuanian', Object.entries(lt).filter(e => e[1].length > 1).map(e => e[0]));
+say('phrase words without a meaning in "Built from"', [...new Set(c.ITEMS.filter(i => i.lt.trim().includes(' ')).flatMap(i => i.lt.split(' ').map(w => c.norm(w)).filter(k => k && !c.WORDS[k] && !c.GLUE[k])))]);
+say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt]).map(i => i.lt));
 say('drills pointing at a missing unit', c.DRILLS.filter(d => !units.has(d.u)).map(d => d.u + ': ' + d.frame));
 
 // Walk the path, collecting known word forms; every me-line word must already be known.
