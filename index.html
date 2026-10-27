@@ -358,6 +358,22 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .net{background:var(--surface-2);color:var(--muted);border-radius:999px;padding:2px 10px;font-size:12px}
 #offline .note{margin:0}
 .gbtn{display:flex;justify-content:center;min-height:44px}
+.gear{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:var(--muted)}
+.gear svg{width:22px;height:22px}
+.gear.on{background:var(--pine-soft);color:var(--pine)}
+.pagehead{display:flex;align-items:center;gap:8px;margin:0 0 6px}
+.pagehead h2{font-size:26px;font-weight:600}
+.pagehead .back{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.pagehead .back svg{width:22px;height:22px}
+.group{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:18px 4px 8px}
+.group[hidden]{display:none}
+.danger-zone{border-top:1px dashed var(--line);padding-top:12px;display:grid;gap:10px}
+.acct-who{display:flex;align-items:center;gap:12px}
+.acct-who .av{width:44px;height:44px;font-size:20px}
+.acct-who strong{font-family:var(--display);font-size:20px;display:block}
+.acct-who small{color:var(--muted)}
+#auth .stack{display:grid;gap:10px}
+.confirm .btn.danger{background:var(--bad);color:#fff}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -367,6 +383,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <span class="net" id="net" hidden>Offline</span>
     <span title="Day streak"><svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c0-5 2-6 2-10z"/></svg><span class="num" id="streak">0</span></span>
     <span title="Total XP"><svg viewBox="0 0 24 24" fill="var(--pine)"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></svg><span class="num" id="xp">0</span> XP</span>
+    <button type="button" class="gear" id="btn-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </div>
 </header>
 
@@ -431,17 +448,25 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <h2>Badges</h2>
       <div class="badges" id="badges"></div>
     </div>
+  </section>
+
+  <section class="view" id="view-settings" hidden>
+    <div class="pagehead"><button type="button" class="x back" id="btn-settings-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Settings</h2></div>
+    <span class="group">Learning</span>
     <div class="card" id="settings">
-      <h2>Settings</h2>
       <div class="setting"><span>Daily pace</span>
         <span class="chips"><button class="chip" data-pace="casual">3 min</button><button class="chip" data-pace="regular">10 min</button><button class="chip" data-pace="serious">20 min</button></span></div>
-      <div class="setting"><span>Voice</span>
-        <span class="chips"><button class="chip" data-voice="ona">Ona</button><button class="chip" data-voice="leonas">Leonas</button></span></div>
-      <div class="setting"><span>Sound</span><button class="switch" role="switch" aria-checked="true" id="sw-sound" aria-label="Sound"></button></div>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read Lithuanian spelling on its own.</p>
+    </div>
+    <span class="group">Sound</span>
+    <div class="card">
+      <div class="setting"><span>Sound</span><button class="switch" role="switch" aria-checked="true" id="sw-sound" aria-label="Sound"></button></div>
+      <div class="setting"><span>Voice</span>
+        <span class="chips"><button class="chip" data-voice="ona">Ona</button><button class="chip" data-voice="leonas">Leonas</button></span></div>
       <p class="note" id="tts-note"></p>
     </div>
+    <span class="group">App</span>
     <div class="card" id="install">
       <h2>Install as an app</h2>
       <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. Your progress stays exactly where it is.</p>
@@ -453,6 +478,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <p class="note">The app already opens without signal. Download the recordings once and every lesson and conversation works with sound: on a plane, underground, or abroad without data.</p>
       <div id="offline-box"></div>
     </div>
+    <span class="group" id="acct-group" hidden>Account</span>
+    <div class="card" id="acct" hidden></div>
+    <span class="group">Help</span>
     <div class="card">
       <h2>Reading "sounds like"</h2>
       <p class="note">Plain English spelling, split into syllables. The bolder syllable is the one you stress. Each spelling below always means the same sound.</p>
@@ -485,6 +513,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
         <div><b>r</b><span>rolled, as in Spanish: <i>rytas</i></span></div>
       </div>
     </div>
+    <span class="group">About</span>
     <div class="card">
       <h2>About this course</h2>
       <p class="note">Progress is saved on this device in your browser. Clearing site data or switching devices starts fresh. Audio is a Lithuanian neural voice (Ona or Leonas); the device's own voice is used only if a clip fails to load.</p>
@@ -1452,6 +1481,7 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function sample(a,n){return shuffle(a).slice(0,n);}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"']/g,'').replace(/\s+/g,' ').trim();}
 function strip(s){return norm(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ą/g,'a');}
+window.toastMsg=m=>toast(m);
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200);}
 const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M19 6a8 8 0 0 1 0 12"/></svg>';
 const CROWN='<svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></svg>';
@@ -1520,9 +1550,12 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
 function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();}
 
 /* ===================== TABS ===================== */
-const VIEWS=['learn','practice','board','profile'];
-function showView(v){if(!VIEWS.includes(v))v='learn';VIEWS.forEach(k=>{$('#view-'+k).hidden=k!==v;$('#tab-'+k).setAttribute('aria-selected',String(k===v));});window.scrollTo(0,0);}
-VIEWS.forEach(v=>$('#tab-'+v).onclick=()=>showView(v));
+const VIEWS=['learn','practice','board','profile','settings'];
+let lastView='learn';
+function showView(v){if(!VIEWS.includes(v))v='learn';if(v!=='settings')lastView=v;VIEWS.forEach(k=>{$('#view-'+k).hidden=k!==v;const t=$('#tab-'+k);if(t)t.setAttribute('aria-selected',String(k===v));});$('#btn-settings').classList.toggle('on',v==='settings');window.scrollTo(0,0);}
+VIEWS.forEach(v=>{const t=$('#tab-'+v);if(t)t.onclick=()=>showView(v);});
+$('#btn-settings').onclick=()=>showView($('#view-settings').hidden?'settings':lastView);
+$('#btn-settings-back').onclick=()=>showView(lastView);
 
 /* ===================== SESSION ===================== */
 let Q=null; // {queue, idx, correct, total, items, mode, lesson, answer, startedAt, firstTry:{}}
@@ -1834,7 +1867,7 @@ document.addEventListener('keydown',e=>{if(CV&&!$('#sheet').hidden){if(/^[1-3]$/
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(!b.disabled)b.click();}});
 
 $('#btn-welcome').onclick=()=>{S.welcomed=true;save();$('#welcome').hidden=true;document.body.style.overflow='';renderAll();startNext(nextLesson());};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}

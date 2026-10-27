@@ -43,27 +43,48 @@ async function afterAuth(){profile=null;
   renderAuth();renderBoard();}
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 
-function renderAuth(){const box=$('#auth');if(!box)return;
+/* Profile card: who you are when signed in; Google or email sign-in when not. Account actions live in Settings → Account. */
+function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile)return showNickname();
-  if(user){box.innerHTML='<h2>Account</h2><div class="setting"><span>Signed in as</span><strong>'+esc(profile?profile.nickname:user.email||'')+'</strong></div><p class="note" id="cloud-status">Progress syncs to your account on every lesson.</p><div class="setting"><span>Nickname</span><button class="chip" id="btn-nick">Change</button></div><button class="btn ghost" id="btn-out">Sign out</button>';
-    $('#btn-out').onclick=async()=>{await sb.auth.signOut();user=null;profile=null;renderAuth();renderBoard();};
-    $('#btn-nick').onclick=showNickname;return;}
-  box.innerHTML='<h2>Account</h2><p class="note">Sign in to keep progress across devices and join the leaderboard. Everything you have done on this device comes with you.</p>'+
-    (cfg.GOOGLE?'<div id="gbtn" class="gbtn"><button class="btn" id="btn-google">Continue with Google</button></div><div class="or">or with email</div>':'')+
-    '<input id="auth-email" type="email" autocomplete="email" placeholder="Email"><input id="auth-pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
-    '<div class="row2"><button class="btn amber" id="btn-in">Sign in</button><button class="btn ghost" id="btn-up">Create account</button></div><p class="note" id="auth-msg"></p>';
+  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+esc(user.email||'')+'</small></div></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';return;}
+  box.innerHTML='<h2>Save your progress</h2><p class="note">Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.</p>'+
+    '<div class="stack" id="auth-pick">'+(cfg.GOOGLE?'<div id="gbtn" class="gbtn"><button class="btn" id="btn-google">Continue with Google</button></div>':'')+
+    '<button type="button" class="btn ghost" id="btn-email">Continue with email</button></div>'+
+    '<div class="stack" id="auth-email-form" hidden><input id="auth-email" type="email" autocomplete="email" placeholder="Email"><input id="auth-pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
+    '<div class="row2"><button class="btn amber" id="btn-in">Sign in</button><button class="btn ghost" id="btn-up">Create account</button></div><button type="button" class="linkbtn" id="btn-email-back">Back</button></div><p class="note" id="auth-msg"></p>';
   if(cfg.GOOGLE){$('#btn-google').onclick=googleRedirect;googleButton();}
+  $('#btn-email').onclick=()=>{$('#auth-pick').hidden=true;$('#auth-email-form').hidden=false;msg('');$('#auth-email').focus();};
+  $('#btn-email-back').onclick=()=>{$('#auth-email-form').hidden=true;$('#auth-pick').hidden=false;msg('');};
   $('#btn-in').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||!password)return msg('Enter your email and password',true);msg('Signing in…');
     const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)return msg(error.message,true);user=data.user;await afterAuth();};
   $('#btn-up').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||password.length<8)return msg('Enter an email and a password of 8 or more characters',true);msg('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return msg(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else msg('Check your email for a confirmation link, then sign in.');};}
 
-function showNickname(){const box=$('#auth');box.innerHTML='<h2>Pick a nickname</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button><p class="note" id="auth-msg"></p>';
+function showNickname(){const box=$('#auth');const changing=!!profile;if(changing&&window.showView)window.showView('profile');
+  box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
+  if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
     const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=row;renderAuth();renderBoard();cloudSave();};}
+
+/* Settings → Account: nickname, sign out, and deleting the account for good. */
+function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;const show=!!(sb&&user);box.hidden=!show;head.hidden=!show;if(!show)return;
+  box.innerHTML='<div class="setting"><span>Signed in as</span><strong>'+esc(profile?profile.nickname:(user.email||''))+'</strong></div>'+
+    '<div class="setting"><span>Nickname</span><button type="button" class="chip" id="btn-nick">Change</button></div>'+
+    '<button type="button" class="btn ghost" id="btn-out">Sign out</button>'+
+    '<div class="danger-zone"><button type="button" class="btn danger" id="btn-del">Delete my account</button>'+
+    '<div class="confirm" id="del-confirm" hidden><span>This permanently deletes your account, your nickname and leaderboard spot, and the progress saved online. There is no undo. Progress on this device stays unless you also reset it below.</span>'+
+    '<button type="button" class="btn danger" id="btn-del-yes">Yes, delete my account</button><button type="button" class="btn ghost" id="btn-del-no">Keep my account</button><p class="note" id="del-msg"></p></div></div>';
+  $('#btn-nick').onclick=showNickname;
+  $('#btn-out').onclick=async()=>{await sb.auth.signOut();user=null;profile=null;renderAuth();renderBoard();toast('Signed out');};
+  $('#btn-del').onclick=()=>{$('#del-confirm').hidden=false;$('#btn-del').hidden=true;};
+  $('#btn-del-no').onclick=()=>{$('#del-confirm').hidden=true;$('#btn-del').hidden=false;};
+  $('#btn-del-yes').onclick=async()=>{const m=$('#del-msg');m.textContent='Deleting…';
+    const {error}=await sb.rpc('gintaras_delete_account');if(error){m.textContent='Could not delete: '+error.message;return;}
+    try{await sb.auth.signOut();}catch(e){}user=null;profile=null;renderAuth();renderBoard();toast('Your account has been deleted');};}
+function toast(t){if(window.toastMsg)window.toastMsg(t);}
 
 /* ---------- Google sign-in ----------
    Google's own button runs on this page, so Google's screen names n00bin.github.io instead of the Supabase server.
@@ -86,15 +107,21 @@ let boardMode='week';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>Leaderboard</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>Leaderboard</h2><p class="note">You’re offline. The leaderboard comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
-  box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>';
+  box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="board-cta"></div>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
-  let q=sb.from('gintaras_profiles').select('id,nickname,xp,streak,week_xp,week_start,level_title').limit(50);
-  q=boardMode==='week'?q.eq('week_start',monday()).order('week_xp',{ascending:false}):q.order('xp',{ascending:false});
-  const {data,error}=await q;const note=$('#board-note'),ol=$('#lb');
-  if(error){note.textContent='Could not load the board.';return;}
-  if(!data.length){note.textContent=boardMode==='week'?'Nobody has earned XP this week yet. Be first.':'No players yet.';return;}
-  note.textContent=user?'':'Sign in on the Profile tab to appear here.';
-  ol.innerHTML=data.map((r,i)=>'<li class="'+(user&&r.id===user.id?'me':'')+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+esc(r.level_title||'')+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+(boardMode==='week'?r.week_xp:r.xp)+' XP</span></li>').join('');}
+  const cta=$('#board-cta');
+  if(!user)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join the leaderboard</button>';
+  else if(!profile)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Pick a nickname to appear here</button>';
+  const join=$('#btn-join');if(join)join.onclick=()=>{if(window.showView)window.showView('profile');};
+  const load=m=>{const q=sb.from('gintaras_profiles').select('id,nickname,xp,streak,week_xp,week_start,level_title').limit(50);
+    return m==='week'?q.eq('week_start',monday()).gt('week_xp',0).order('week_xp',{ascending:false}):q.order('xp',{ascending:false});};
+  let mode=boardMode;let {data,error}=await load(mode);const note=$('#board-note'),ol=$('#lb');if(!note)return;
+  if(error){note.textContent='Could not load the leaderboard. Check your connection and try again.';return;}
+  let lead='';
+  if(!data.length&&mode==='week'){lead='Nobody has earned XP this week yet, so here is the all-time board.';mode='all';const r=await load('all');data=r.error?[]:r.data;}
+  if(!data.length){note.textContent='No players yet. Be the first!';return;}
+  note.textContent=lead;
+  ol.innerHTML=data.map((r,i)=>'<li class="'+(user&&r.id===user.id?'me':'')+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+esc(r.level_title||'')+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+(mode==='week'?r.week_xp:r.xp)+' XP</span></li>').join('');}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}

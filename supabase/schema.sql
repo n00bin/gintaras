@@ -32,3 +32,15 @@ create policy "gintaras_profiles_own_update" on public.gintaras_profiles for upd
 
 drop policy if exists "gintaras_progress_own_all" on public.gintaras_progress;
 create policy "gintaras_progress_own_all" on public.gintaras_progress for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- Lets a signed-in player delete their own account (and, through the cascades above, their nickname and saved progress).
+-- It can only ever delete the caller: auth.uid() is the signed-in user.
+create or replace function public.gintaras_delete_account() returns void
+language plpgsql security definer set search_path = '' as $$
+begin
+  if auth.uid() is null then raise exception 'not signed in'; end if;
+  delete from auth.users where id = auth.uid();
+end;
+$$;
+revoke all on function public.gintaras_delete_account() from public, anon;
+grant execute on function public.gintaras_delete_account() to authenticated;
