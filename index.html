@@ -203,7 +203,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* Bottom tabs */
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--surface);border-top:1px solid var(--line);
   padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.tabs div{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tabs div{max-width:640px;margin:0 auto;display:grid;grid-auto-flow:column;grid-auto-columns:1fr}
 .tabs button{padding:10px 4px 8px;display:grid;justify-items:center;gap:2px;font-size:12px;font-weight:800;color:var(--muted);border-top:3px solid transparent}
 .tabs button svg{width:24px;height:24px}
 .tabs button[aria-selected="true"]{color:var(--pine);border-top-color:var(--amber)}
@@ -277,6 +277,76 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .toast.show{opacity:1}
 .confirm{display:grid;gap:10px;background:var(--bad-soft);border-radius:12px;padding:12px}
 .confirm[hidden]{display:none}
+
+/* Course map: parts and conversation cards */
+.part{padding:10px 2px 12px;display:grid;gap:2px}
+.part h2{font-size:26px;font-weight:600}
+.part .note{margin:0}
+.convcard{margin-bottom:22px;border-radius:var(--radius);border:2px dashed var(--amber);background:color-mix(in srgb,var(--amber) 8%,var(--surface));padding:14px 16px;display:grid;gap:12px}
+.convcard.locked{border-color:var(--line);background:var(--surface-2);opacity:.75}
+.cv-head{display:flex;gap:10px;align-items:flex-start}
+.cv-head h2{font-size:21px;font-weight:600}
+.cv-head .sub{font-size:14px;color:var(--muted)}
+.cv-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cv-btns .btn{padding:12px 8px;font-size:15px}
+.av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;background:var(--pine)}
+.av[data-v="ona"]{background:#B4531F}
+.av+.av{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
+.btn.onpine{background:rgba(255,255,255,.16);color:#fff}
+
+/* Lesson extras */
+.emo{font-size:30px;line-height:1}
+.emo.big{font-size:56px;text-align:center}
+.hook{background:color-mix(in srgb,var(--amber) 14%,var(--surface));border-radius:12px;padding:10px 12px;font-size:15px}
+.hook b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-deep)}
+.tipcard{font-size:17px}
+.tipcard h3{font-size:22px;font-weight:600}
+.tipcard h3 small{font-size:15px;color:var(--muted);font-weight:600}
+.build.spell .chip{min-width:44px;text-align:center;font-family:var(--display);font-size:20px;padding:8px 10px}
+.linkbtn{font-weight:800;color:var(--muted);text-decoration:underline;text-underline-offset:3px;padding:4px;justify-self:center}
+.foot.idk{background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
+.foot.idk .fb{display:grid}
+.foot.idk .fb strong{color:var(--amber-deep)}
+.foot.idk .btn{background:var(--amber);color:#2A1A02}
+
+/* Conversation chat */
+.chat{display:grid;gap:14px}
+.scene{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+.scene>div{display:grid;gap:2px;min-width:0}
+.scene strong{font-family:var(--display);font-size:19px}
+.scene small{color:var(--muted);font-size:14px}
+.scene small.tiny{font-size:12px}
+.msgs{display:grid;gap:8px}
+.msg{display:flex;gap:8px;align-items:flex-end;max-width:88%}
+.msg.me{justify-self:end}
+.msg .bub{border-radius:18px;padding:10px 14px;display:grid;gap:2px;font-size:18px;min-width:0;overflow-wrap:anywhere}
+.msg.them .bub{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;cursor:pointer}
+.msg.me .bub{background:var(--pine);color:#fff;border-bottom-right-radius:6px}
+.msg .tr{font-size:14px;opacity:.75}
+.msg .who{font-size:12px;font-weight:800;color:var(--muted)}
+.msg .lt{font-weight:700}
+.msg.typing .bub{flex-direction:row;display:flex;gap:4px;padding:14px}
+.msg.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1s infinite}
+.msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+.spk.sm{width:34px;height:34px;border-radius:10px}
+.spk.sm svg{width:18px;height:18px}
+.divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;font-weight:800}
+.divider::before,.divider::after{content:"";flex:1;border-top:1px dashed var(--line)}
+.turn{display:grid;gap:10px;background:var(--surface);border:2px solid var(--amber);border-radius:var(--radius);padding:14px}
+.turn .hint{font-size:16px;color:var(--muted)}
+.turn .hint.big{font-family:var(--display);font-size:24px;font-weight:600;color:var(--fg)}
+.copts{display:grid;gap:8px}
+.copt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);text-align:left;font-size:18px;font-weight:700;box-shadow:var(--shadow)}
+.copt .k{width:26px;height:26px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--muted);flex:none}
+.copt.wrong{border-color:var(--bad);background:var(--bad-soft);opacity:.7}
+.copt.shake{animation:shake .3s}
+.say-lt{display:grid;gap:4px;background:var(--surface-2);border-radius:12px;padding:12px}
+.say-lt .lt{font-family:var(--display);font-size:26px;font-weight:700;color:var(--amber-deep)}
+.spk.mic{background:var(--amber);color:#2A1A02}
+.spk.mic.on{animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--amber) 60%,transparent)}50%{box-shadow:0 0 0 12px transparent}}
+.sheet.conv .speakrow .spk.big{width:72px;height:72px;border-radius:20px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -295,6 +365,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <h2 id="bite-title">Start with Greetings</h2>
       <p class="note" id="bite-note">Five new words. Tap to choose, listen, match. No typing yet.</p>
       <button class="btn amber" id="btn-bite">Start</button>
+      <button class="btn ghost onpine" id="btn-bite2" hidden>Say it out loud</button>
     </div>
     <div class="goal">
       <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
@@ -358,15 +429,19 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     </div>
     <div class="card">
       <h2>Reading "sounds like"</h2>
-      <p class="note">Plain English spelling, one syllable per word. The bolder syllable is stressed.</p>
+      <p class="note">Plain English spelling, split into syllables. The bolder syllable is the one you stress. Each spelling below always means the same sound.</p>
       <div class="sounds">
         <div><b>ah</b><span>as in f<i>a</i>ther</span></div>
+        <div><b>e, eh</b><span>as in b<i>e</i>t</span></div>
         <div><b>ay</b><span>as in d<i>ay</i></span></div>
+        <div><b>i</b><span>as in b<i>i</i>t</span></div>
         <div><b>ee</b><span>as in s<i>ee</i></span></div>
         <div><b>oh</b><span>as in g<i>o</i></span></div>
+        <div><b>u</b><span>as in p<i>u</i>t</span></div>
         <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
         <div><b>ow</b><span>as in c<i>ow</i></span></div>
-        <div><b>ye</b><span>as in <i>ye</i>s (tye = "tie")</span></div>
+        <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
+        <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu</span></div>
         <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
         <div><b>ts</b><span>as in ca<i>ts</i></span></div>
       </div>
@@ -408,11 +483,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   <div class="stage"><div class="hello">
     <span class="gem big" aria-hidden="true"></span>
     <h2>Labas! Let's learn Lithuanian.</h2>
-    <p>Never learned a language before? Good. This app assumes that.</p>
+    <p>Never learned a language before? Bad at it? Good. This app assumes both. You start with sounds, and by the end you can hold a real conversation.</p>
     <div class="how">
-      <div><b>1</b><span><strong>Five words at a time.</strong> Every word comes with a plain English "sounds like" and real Lithuanian audio. Tap, listen, match. You only type a word once you already know it.</span></div>
-      <div><b>2</b><span><strong>Words come back.</strong> The app reminds you of a word right before you would forget it, then waits longer each time. That is the whole trick to remembering.</span></div>
-      <div><b>3</b><span><strong>Keep the streak.</strong> One lesson a day keeps it alive. Progress lives on this device.</span></div>
+      <div><b>1</b><span><strong>One word at a time.</strong> Every word comes with a picture where it can, a plain English "sounds like", and a real Lithuanian voice. Tap, listen, match. You only type a word once you already know it.</span></div>
+      <div><b>2</b><span><strong>Stuck? Say so.</strong> Every question has an "I don't know" button. No guessing, no shame: you see the answer and the word comes back a moment later.</span></div>
+      <div><b>3</b><span><strong>Words come back.</strong> The app reminds you of a word right before you would forget it, then waits longer each time. That is the whole trick to remembering.</span></div>
+      <div><b>4</b><span><strong>Then you talk.</strong> Every few units there is a real conversation using only words you know. Text it like a chat, or say it out loud.</span></div>
     </div>
     <div class="pace" id="pace-welcome">
       <span class="eyebrow">How much time each day?</span>
@@ -434,6 +510,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   <div class="stage"><div id="stage"></div></div>
   <div class="foot" id="foot"><div>
     <div class="fb"><strong id="fb-title"></strong><span class="ans" id="fb-ans"></span></div>
+    <button type="button" class="linkbtn" id="btn-idk" hidden>I don't know, show me</button>
     <button class="btn" id="btn-check" disabled>Check</button>
   </div></div>
 </section>
@@ -588,7 +665,7 @@ const COURSE = [
  ]},
  {id:'u8c',title:'Sentences',items:[
   ['Aš kalbu lietuviškai','I speak Lithuanian'],
-  ['Ar tu kalbi angliškai?','Do you speak English?','"Ar" turns a sentence into a yes/no question.'],
+  ['Ar tu kalbi angliškai?','Do you speak English? (to a friend)','"Ar" turns a sentence into a yes/no question.'],
   ['Aš nesuprantu','I don\'t understand'],
   ['Aš suprantu','I understand'],
   ['Aš gyvenu Lietuvoje','I live in Lithuania'],
@@ -653,9 +730,9 @@ const COURSE = [
   ['Laimingų Naujųjų metų!','Happy New Year!'],
   ['Sveiki atvykę!','Welcome!'],
   ['Labai ačiū','Thank you very much'],
-  ['Ar galite pakartoti?','Can you repeat that?'],
+  ['Ar galite pakartoti?','Can you repeat that? (polite)'],
   ['Lėčiau, prašau','Slower, please'],
-  ['Padėkite!','Help!'],
+  ['Padėkite!','Please help!'],
   ['Kur tualetas?','Where is the toilet?'],
   ['Aš nekalbu lietuviškai','I don\'t speak Lithuanian'],
  ]},
@@ -664,7 +741,7 @@ const COURSE = [
  {id:'u13a',title:'Asking',items:[
   ['kas','who / what'],['kur','where'],['kada','when'],['kodėl','why'],['kaip','how'],['kuris','which'],
   ['Ar galite man padėti?','Can you help me?','Polite form, for strangers.'],
-  ['Ar kalbate angliškai?','Do you speak English?','Polite form. To a friend: "Ar kalbi angliškai?"'],
+  ['Ar kalbate angliškai?','Do you speak English? (polite)','Polite form. To a friend: "Ar kalbi angliškai?"'],
   ['Ką tai reiškia?','What does that mean?'],
   ['Kur aš esu?','Where am I?'],
  ]},
@@ -753,7 +830,7 @@ const COURSE = [
 ]},
 {id:'u18',title:'Pagalba',en:'Emergencies and health',tip:'The emergency number is <b>112</b> and operators speak English. Pharmacies (vaistinė) are everywhere and pharmacists can advise on minor things without a doctor.',lessons:[
  {id:'u18a',title:'Getting help',items:[
-  ['Gelbėkite!','Help!','For real emergencies. "Padėkite" is a calmer "please help".'],
+  ['Gelbėkite!','Help! (emergency)','For real emergencies. "Padėkite" is a calmer "please help".'],
   ['policija','police'],['gydytojas','doctor'],
   ['Man reikia gydytojo','I need a doctor'],
   ['Iškvieskite greitąją','Call an ambulance'],
@@ -774,14 +851,194 @@ const COURSE = [
  ]},
 ]},
 ];
-/* Split "Klausimai": the short question words stay early; the phrase lesson becomes its own later unit. */
-(()=>{const q=COURSE.find(u=>u.id==='u13');const gb=q.lessons.splice(1,1)[0];q.en='Question words';q.tip='Question words go first, just like English. Learn these six and you can ask about anything by pointing. Add <b>Ar</b> to the front of a sentence to turn it into a yes/no question.';
-  COURSE.push({id:'u19',title:'Susikalbėti',en:'Getting by',tip:'Short phrases that smooth every interaction. The <b>-ite</b> endings (atleiskite, parodykite) are the polite forms you use with strangers.',lessons:[gb]});})();
-/* Order for a beginner tourist: building blocks first, then the phrases built from them. */
-const ORDER=['u1','u2','u13','u9','u3','u7','u10','u19','u14','u15','u16','u17','u18','u11','u4','u5','u6','u8','u12'];
-COURSE.sort((a,b)=>ORDER.indexOf(a.id)-ORDER.indexOf(b.id));
+/* Units added for conversation. Lesson ids are permanent: item ids and audio clips hang off them. */
+COURSE.push(
+{id:'u0',title:'Garsai',en:'Sounds',tip:'Lithuanian is written exactly the way it sounds, and every letter is said. Most letters sound like English. These are the ones that trick people: <b>c</b> = "ts", <b>j</b> = "y", <b>š</b> = "sh", <b>ž</b> = the "s" in "measure", <b>č</b> = "ch". Good news: you already know every word in this unit.',lessons:[
+ {id:'u0a',title:'Letters that trick you',items:[
+  ['pica','pizza','c always sounds like "ts".'],
+  ['jogurtas','yogurt','j sounds like the English "y".'],
+  ['šokoladas','chocolate','š sounds like "sh".'],
+  ['žirafa','giraffe','ž sounds like the "s" in "measure".'],
+  ['čempionas','champion','č sounds like "ch".'],
+ ]},
+ {id:'u0b',title:'Long vowels and the rolled r',items:[
+  ['šampūnas','shampoo','A line on top makes a vowel long: ū is a long "oo".'],
+  ['kavinė','café','ė sounds like the "ay" in "day".'],
+  ['muziejus','museum','ie sounds like "yeh".'],
+  ['radijas','radio','r is rolled, like in Spanish.'],
+  ['telefonas','telephone','Every letter is said, even the "s" at the end.'],
+ ]},
+]},
+{id:'u21',title:'Pokalbis',en:'Small talk',tip:'Most conversations start the same way. Someone asks <b>Kaip sekasi?</b> (How are you?), you answer, and you bounce it back with <b>O tau?</b> (And you?). Nobody expects more than that from a beginner.',lessons:[
+ {id:'u21a',title:'How are you',items:[
+  ['Gerai, ačiū','Fine, thanks'],
+  ['O tau?','And you?','Bounces "Kaip sekasi?" back. Literally "and to you?"'],
+  ['Neblogai','Not bad'],
+  ['Taip sau','So-so'],
+  ['Man irgi gerai','I\'m fine too'],
+  ['Aš irgi','Me too'],
+  ['Ką veiki?','What are you up to?','Literally "what are you doing?"'],
+  ['Nieko ypatingo','Nothing special'],
+  ['Labai malonu','Very nice','Also a warm "nice to meet you".'],
+  ['Ir tau','You too','The reply to "Sėkmės!" (good luck) or any good wish.'],
+ ]},
+ {id:'u21b',title:'When you get stuck',items:[
+  ['Aš truputį kalbu lietuviškai','I speak a little Lithuanian'],
+  ['Kaip tai pasakyti lietuviškai?','How do you say that in Lithuanian?','Point at anything and ask.'],
+  ['Ką reiškia šis žodis?','What does this word mean?'],
+  ['Aš nelabai suprantu','I don\'t quite understand'],
+  ['Ar gali pakartoti?','Can you repeat that? (to a friend)'],
+  ['Palauk','Wait','To a friend. To a stranger: "Palaukite".'],
+  ['Teisingai','That\'s right'],
+  ['Aš mokausi','I\'m learning','Say it and people slow down for you.'],
+  ['Dar kartą','One more time'],
+  ['Supratau','Got it','Literally "I understood".'],
+ ]},
+]},
+{id:'u20',title:'Apie mane',en:'About me',tip:'<b>Iš</b> means "from", and the place after it changes its ending: Lietuva becomes <b>iš Lietuvos</b>, Amerika becomes <b>iš Amerikos</b>. Jobs change for women too: mokytojas is a male teacher, mokytoja a female one.',lessons:[
+ {id:'u20a',title:'Where I\'m from',items:[
+  ['Iš kur tu esi?','Where are you from?'],
+  ['Aš esu iš Lietuvos','I am from Lithuania'],
+  ['Aš esu iš Anglijos','I am from England'],
+  ['Aš esu iš Kanados','I am from Canada'],
+  ['Kur tu gyveni?','Where do you live?'],
+  ['Aš gyvenu Vilniuje','I live in Vilnius','"In" a city is an ending, not a word: Vilnius becomes Vilniuje.'],
+  ['O tu?','What about you?','Bounce any question back.'],
+  ['Aš gyvenu Londone','I live in London'],
+  ['Ar tu lietuvis?','Are you Lithuanian?','To a woman: "Ar tu lietuvė?"'],
+  ['Ne, aš amerikietis','No, I\'m American','A woman says "amerikietė".',['Ne, aš amerikietė']],
+ ]},
+ {id:'u20b',title:'Work and study',items:[
+  ['Kuo tu dirbi?','What do you do for work?','Literally "as what do you work?"'],
+  ['Aš esu mokytojas','I am a teacher','A woman says "mokytoja".',['Aš esu mokytoja']],
+  ['Aš esu studentas','I am a student','A woman says "studentė".',['Aš esu studentė']],
+  ['Aš dirbu biure','I work in an office'],
+  ['Aš dirbu iš namų','I work from home'],
+  ['Aš esu pensininkas','I am retired','A woman says "pensininkė".',['Aš esu pensininkė']],
+  ['Ar tau patinka tavo darbas?','Do you like your job?'],
+  ['Mano darbas įdomus','My job is interesting'],
+  ['Aš studijuoju','I study','At college or university.'],
+  ['darbas','work / job'],
+ ]},
+]},
+{id:'u22',title:'Laisvalaikis',en:'Free time',tip:'<b>Man patinka</b> (I like it) is built backwards: literally "to me it pleases". To say what you like <i>doing</i>, use <b>Aš mėgstu</b> plus a verb ending in -ti: Aš mėgstu skaityti, I like to read.',lessons:[
+ {id:'u22a',title:'What I like',items:[
+  ['Man nepatinka','I don\'t like it'],
+  ['Man labai patinka','I really like it'],
+  ['Ar tau patinka?','Do you like it?'],
+  ['Man patinka muzika','I like music'],
+  ['Man patinka Lietuva','I like Lithuania'],
+  ['muzika','music'],['futbolas','football (soccer)'],['filmai','films / movies'],['knygos','books'],['kelionės','trips / travel'],
+ ]},
+ {id:'u22b',title:'What I do',items:[
+  ['Ką tu mėgsti veikti?','What do you like to do?'],
+  ['Aš mėgstu skaityti','I like to read'],
+  ['Aš mėgstu keliauti','I like to travel'],
+  ['Aš mėgstu gaminti','I like to cook'],
+  ['Aš mėgstu sportuoti','I like to work out'],
+  ['Aš žaidžiu krepšinį','I play basketball'],
+  ['Aš klausausi muzikos','I listen to music'],
+  ['savaitgalis','weekend'],
+  ['laisvalaikis','free time'],
+  ['Ką veiki savaitgalį?','What are you doing at the weekend?'],
+ ]},
+]},
+{id:'u23',title:'Planai',en:'Making plans',tip:'For times, use the "at" form of the number: <b>septintą valandą</b> means "at seven o\'clock". <b>Gal</b> (maybe) is the friendliest way to suggest anything: Gal rytoj? Maybe tomorrow?',lessons:[
+ {id:'u23a',title:'Let\'s meet',items:[
+  ['Ar nori eiti kartu?','Do you want to go together?'],
+  ['Taip, noriu','Yes, I\'d like to'],
+  ['Gal rytoj?','Maybe tomorrow?'],
+  ['Šiandien negaliu','I can\'t today'],
+  ['Neturiu laiko','I don\'t have time'],
+  ['Kur susitiksime?','Where shall we meet?'],
+  ['Prie kavinės','By the café'],
+  ['Puiki idėja!','Great idea!'],
+  ['Sutarta!','Deal!','Literally "agreed".'],
+  ['Iki rytojaus!','See you tomorrow!'],
+ ]},
+ {id:'u23b',title:'What time?',items:[
+  ['Kelintą valandą?','At what time?'],
+  ['Septintą valandą','At seven o\'clock'],
+  ['Aštuntą valandą','At eight o\'clock'],
+  ['Dvyliktą valandą','At twelve o\'clock'],
+  ['ryte','in the morning'],['vakare','in the evening'],
+  ['po pietų','in the afternoon','Literally "after lunch".'],
+  ['vėlai','late'],['anksti','early'],
+  ['Aš vėluoju','I\'m running late'],
+ ]},
+]},
+{id:'u25',title:'Apie šeimą',en:'Talking about family',tip:'After <b>neturiu</b> (I don\'t have) and in questions with <b>Ar turi...?</b> the noun changes its ending, the same way it does after noriu. Don\'t try to master it. Say it slightly wrong and people still understand you.',lessons:[
+ {id:'u25a',title:'Your family',items:[
+  ['Ar turi brolių ar seserų?','Do you have brothers or sisters?'],
+  ['Aš turiu brolį','I have a brother'],
+  ['Ne, neturiu','No, I don\'t'],
+  ['Ar turi vaikų?','Do you have children?'],
+  ['Aš turiu du vaikus','I have two children'],
+  ['Aš turiu dukrą','I have a daughter'],
+  ['Koks jo vardas?','What is his name?'],
+  ['Koks jos vardas?','What is her name?'],
+  ['Mano mama gyvena Kaune','My mom lives in Kaunas'],
+  ['Jie labai mieli','They are very sweet'],
+ ]},
+]});
+
+/* The learning path: parts, units in teaching order, and a conversation every couple of units.
+   Units are rebuilt from existing lessons so ids (and saved progress) stay the same. */
+const PATH=[
+ {part:'First steps',sub:'How it sounds, saying hello, and talking about yourself'},
+ 'u0','u1','cv1','u21','u2','u13','u20','u8','cv2',
+ {part:'Food and drink',sub:'Order, eat, and pay like a local'},
+ 'u3','u15','cv3',
+ {part:'Out and about',sub:'Find your way and go shopping'},
+ 'u9','u19','cv4','u16','cv5',
+ {part:'Time and plans',sub:'Days, times, and meeting up'},
+ 'u7','u23','cv6',
+ {part:'People and feelings',sub:'Family, weather, moods, and what you like'},
+ 'u4','u25','u11','u22','cv7',
+ {part:'Travelling',sub:'Trains, hotels, and when something goes wrong'},
+ 'u10','u14','u17','cv8','u18','cv9',
+ {part:'More words',sub:'Colours, animals, verbs, and culture'},
+ 'u5','u6','u26','u12','cv10',
+];
+const RESHAPE={
+ u13:{en:'Question words',tip:'Question words go first, just like English. Learn these six and you can ask about anything by pointing. Add <b>Ar</b> to the front of a sentence to turn it into a yes/no question.',lessons:['u13a']},
+ u8:{title:'Kalbėti',en:'Talking',tip:'Verbs change their ending to show who is doing it: <b>aš kalbu</b> (I speak), <b>tu kalbi</b> (you speak). Because the ending already says who, people often drop aš and tu. Put <b>ne</b> on the front to say "not": nesuprantu, I don\'t understand.',lessons:['u8b','u8c']},
+ u19:{title:'Susikalbėti',en:'Getting by',tip:'Short phrases that smooth every interaction. The <b>-ite</b> endings (atleiskite, parodykite) are the polite forms you use with strangers.',lessons:['u12b','u13b']},
+ u26:{title:'Veiksmažodžiai',en:'Verb dictionary',tip:'Dictionary forms end in <b>-ti</b>. For "I", the ending becomes -u (einu, noriu); for "you", -i (eini, nori). You have been using these all along.',lessons:['u8a']},
+ u12:{lessons:['u12a']},
+};
+(()=>{const L={},U={};COURSE.forEach(u=>{U[u.id]=u;u.lessons.forEach(l=>L[l.id]=l);});
+  Object.keys(RESHAPE).forEach(id=>{const r=RESHAPE[id];U[id]=Object.assign({},U[id]||{},r,{id,lessons:r.lessons.map(x=>L[x])});});
+  COURSE.length=0;PATH.forEach(p=>{if(typeof p==='string'&&U[p])COURSE.push(U[p]);});})();
 /* Small glossary of glue words so phrase cards can show what they are built from. */
-const GLUE={'yra':'is','ar':'(makes a question)','į':'to','iš':'from','su':'with','be':'without','man':'to me','mane':'me','aš':'I','tu':'you','mano':'my','tavo':'your','tai':'this / that','ką':'what','prašau':'please','čia':'here','ne':'no','ir':'and','per':'too','labai':'very','esu':'am','galite':'can you','galiu':'can I','galima':'is it allowed','turiu':'I have','turite':'do you have','noriu':'I want','norėčiau':'I would like','reikia':'need','kainuoja':'costs','iki':'until / to','šis':'this','šitą':'this one','metų':'years','eurai':'euros','euras':'euro','eurų':'euros','vandens':'water','kavos':'coffee','mėsos':'meat','dujų':'gas','dujomis':'gas','kortele':'by card','nakčiai':'night','naktims':'nights','vienai':'one','dviem':'two','koks':'what kind of','šiandien':'today','rytoj':'tomorrow','namo':'home','stotis':'station','centrą':'the centre','kambarį':'room','gydytojo':'a doctor','pasą':'passport','skauda':'hurts','sekasi':'goes','vardas':'name','kalbi':'you speak','kalbate':'you speak (polite)','kalbu':'I speak','angliškai':'English','lietuviškai':'Lithuanian','valandų':'hours','oras':'weather','tualetas':'toilet','platforma':'platform','slaptažodis':'password','pusryčiai':'breakfast','įskaičiuoti':'included'};
+const GLUE={'yra':'is','ar':'(makes a question)','į':'to','iš':'from','su':'with','be':'without','man':'to me','mane':'me','aš':'I','tu':'you','mano':'my','tavo':'your','tai':'this / that','ką':'what','prašau':'please','čia':'here','ne':'no','ir':'and','per':'too','labai':'very','esu':'am','galite':'can you','galiu':'can I','galima':'is it allowed','turiu':'I have','turite':'do you have','noriu':'I want','norėčiau':'I would like','reikia':'need','kainuoja':'costs','iki':'until / to','šis':'this','šitą':'this one','metų':'years','eurai':'euros','euras':'euro','eurų':'euros','vandens':'water','kavos':'coffee','mėsos':'meat','dujų':'gas','dujomis':'gas','kortele':'by card','nakčiai':'night','naktims':'nights','vienai':'one','dviem':'two','koks':'what kind of','šiandien':'today','rytoj':'tomorrow','namo':'home','stotis':'station','centrą':'the centre','kambarį':'room','gydytojo':'a doctor','pasą':'passport','skauda':'hurts','sekasi':'goes','vardas':'name','kalbi':'you speak','kalbate':'you speak (polite)','kalbu':'I speak','angliškai':'English','lietuviškai':'Lithuanian','valandų':'hours','oras':'weather','tualetas':'toilet','platforma':'platform','slaptažodis':'password','pusryčiai':'breakfast','įskaičiuoti':'included',
+ 'tau':'to you','o':'and / what about','irgi':'too','nieko':'nothing','ypatingo':'special','truputį':'a little','pasakyti':'to say','reiškia':'means','žodis':'word','nelabai':'not really','gali':'can you','pakartoti':'repeat','dar':'more','kartą':'time','kur':'where','kuo':'as what','dirbi':'you work','dirbu':'I work','biure':'in an office','namų':'home','esi':'you are','gyveni':'you live','gyvenu':'I live','vilniuje':'in Vilnius','londone':'in London','lietuvos':'Lithuania','anglijos':'England','kanados':'Canada','amerikos':'America','amerikietis':'American','patinka':'pleases','nepatinka':'doesn\'t please','darbas':'work','įdomus':'interesting','mėgsti':'you like','mėgstu':'I like','veikti':'to do','veiki':'you do','skaityti':'to read','keliauti':'to travel','gaminti':'to cook','sportuoti':'to work out','žaidžiu':'I play','krepšinį':'basketball','klausausi':'I listen','muzikos':'music','savaitgalį':'at the weekend','nori':'you want','eiti':'to go','kartu':'together','gal':'maybe','negaliu':'I can\'t','neturiu':'I don\'t have','laiko':'time','susitiksime':'we will meet','prie':'by','kavinės':'the café','puiki':'great','idėja':'idea','rytojaus':'tomorrow','kelintą':'which (hour)','valandą':'at ... o\'clock','septintą':'seventh','aštuntą':'eighth','dvyliktą':'twelfth','po':'after','pietų':'lunch','turi':'you have','brolių':'brothers','seserų':'sisters','brolį':'brother','seserį':'sister','vaikų':'children','vaikus':'children','dukrą':'daughter','jo':'his','jos':'her','gyvena':'lives','kaune':'in Kaunas','mieli':'sweet','malonu':'nice','mokytojas':'teacher','studentas':'student','pensininkas':'retired person','mokausi':'I am learning','imu':'I take','obuolių':'apples','sriubą':'soup','dovana':'gift','skanu':'tasty','gražus':'beautiful','važiuoju':'I go (by vehicle)','kauną':'Kaunas','galvą':'head','neveikia':'doesn\'t work','dušas':'shower','vėluoju':'I\'m late','supratau':'I got it','puiku':'great','vilnius':'Vilnius','sveikatą':'health','cukraus':'sugar','pienu':'milk'};
+/* Pictures for concrete words: they make a word stick far better than a translation alone. */
+const EMOJI={'pica':'🍕','šokoladas':'🍫','žirafa':'🦒','čempionas':'🏆','šampūnas':'🧴','kavinė':'☕','muziejus':'🏛️','radijas':'📻','telefonas':'📱',
+ 'Labas':'👋','Sveiki':'👋','Labas rytas':'🌅','Laba diena':'☀️','Labas vakaras':'🌆','Labanakt':'🌙','Viso gero':'👋','Iki':'👋','Ačiū':'🙏','Prašau':'🤲','Taip':'👍','Ne':'👎','Atsiprašau':'🙇','Gerai':'👌','Sėkmės':'🍀','Jis':'👨','Ji':'👩',
+ 'vienas':'1️⃣','du':'2️⃣','trys':'3️⃣','keturi':'4️⃣','penki':'5️⃣','šeši':'6️⃣','septyni':'7️⃣','aštuoni':'8️⃣','devyni':'9️⃣','dešimt':'🔟','nulis':'0️⃣','šimtas':'💯','vienas euras':'💶','du eurai':'💶','dešimt eurų':'💶',
+ 'duona':'🍞','pienas':'🥛','vanduo':'💧','kava':'☕','arbata':'🍵','sūris':'🧀','mėsa':'🥩','sriuba':'🍲','kiaušinis':'🥚','sviestas':'🧈','obuolys':'🍎','bulvė':'🥔','žuvis':'🐟','vištiena':'🍗','druska':'🧂','alus':'🍺','vynas':'🍷','pyragas':'🍰','ledai':'🍦','restoranas':'🍽️','meniu':'📋','Skanu!':'😋','Į sveikatą!':'🥂','Sąskaitą, prašau':'🧾',
+ 'mama':'👩','tėtis':'👨','sesuo':'👧','brolis':'👦','sūnus':'👦','dukra':'👧','senelis':'👴','senelė':'👵','šeima':'👪','vaikas':'🧒','vyras':'👨','moteris':'👩','berniukas':'👦','mergaitė':'👧','žmogus':'🧑',
+ 'raudonas':'🔴','mėlynas':'🔵','žalias':'🟢','geltonas':'🟡','juodas':'⚫','baltas':'⚪','rudas':'🟤','oranžinis':'🟠','didelis':'🐘','mažas':'🐭','žalias obuolys':'🍏','balta duona':'🍞','didelis namas':'🏠',
+ 'šuo':'🐕','katė':'🐈','arklys':'🐎','karvė':'🐄','paukštis':'🐦','kiaulė':'🐖','višta':'🐔','avis':'🐑','pelė':'🐁','triušis':'🐇','vilkas':'🐺','lokys':'🐻','lapė':'🦊','varlė':'🐸','bitė':'🐝','drugelis':'🦋','Katė miega':'😴',
+ 'rytas':'🌅','diena':'☀️','vakaras':'🌆','naktis':'🌙','valanda':'⏰','Kiek valandų?':'⏰','pavasaris':'🌷','vasara':'🏖️','ruduo':'🍂','žiema':'❄️','savaitė':'📅','mėnuo':'📅','šiandien':'📅',
+ 'miestas':'🏙️','kaimas':'🏡','namas':'🏠','mokykla':'🏫','parduotuvė':'🏪','gatvė':'🛣️','stotis':'🚉','bažnyčia':'⛪','ligoninė':'🏥','bankas':'🏦','kairėn':'⬅️','dešinėn':'➡️','tiesiai':'⬆️','vaistinė':'💊','paštas':'📮',
+ 'bilietas':'🎫','lėktuvas':'✈️','traukinys':'🚆','autobusas':'🚌','oro uostas':'🛫','viešbutis':'🏨','pasas':'🛂','pinigai':'💶','lagaminas':'🧳','žemėlapis':'🗺️','Lietuva':'🇱🇹','jūra':'🌊','miškas':'🌲','ežeras':'🏞️','upė':'🏞️',
+ 'lietus':'🌧️','sniegas':'❄️','saulė':'☀️','vėjas':'💨','debesis':'☁️','Šilta':'🌤️','Šalta':'🥶','Lyja':'🌧️','Sninga':'🌨️','laimingas':'😊','liūdnas':'😢','pavargęs':'😴','ištroškęs':'🥤','Man karšta':'🥵','Man šalta':'🥶','Aš sergu':'🤒','Aš myliu tave':'❤️',
+ 'cepelinai':'🥟','krepšinis':'🏀','Su gimtadieniu!':'🎂','Linksmų Kalėdų!':'🎄','Laimingų Naujųjų metų!':'🎆','Kur tualetas?':'🚻','Padėkite!':'🆘','Gelbėkite!':'🆘',
+ 'taksi':'🚕','dviratis':'🚲','stotelė':'🚏','pusryčiai':'🍳','vakarienė':'🍽️','šaukštas':'🥄','šakutė':'🍴','peilis':'🔪','grynaisiais':'💵','Ar galima mokėti kortele?':'💳',
+ 'turgus':'🧺','prekybos centras':'🏬','kepykla':'🥐','dovana':'🎁','maišelis':'🛍️','kvitas':'🧾','raktas':'🔑','lova':'🛏️','kambarys':'🛏️','dušas':'🚿','policija':'👮','gydytojas':'🧑‍⚕️','vaistai':'💊',
+ 'muzika':'🎵','futbolas':'⚽','filmai':'🎬','knygos':'📚','kelionės':'✈️','Aš mėgstu skaityti':'📖','Aš mėgstu keliauti':'🧳','Aš mėgstu gaminti':'🍳','Aš mėgstu sportuoti':'🏋️','Aš žaidžiu krepšinį':'🏀','Aš klausausi muzikos':'🎧','savaitgalis':'🎉',
+ 'ryte':'🌅','vakare':'🌆','Septintą valandą':'🕖','Aštuntą valandą':'🕗','Dvyliktą valandą':'🕛','Aš vėluoju':'🏃','Aš esu studentas':'🎓','Aš esu mokytojas':'🧑‍🏫','Aš dirbu biure':'🏢','Aš dirbu iš namų':'🏠','Aš turiu du vaikus':'👧👦'};
+/* Memory hooks: a silly picture or a link to English. Only for words where the hook is genuinely true or useful. */
+const HOOK={'Ačiū':'Sounds like a sneeze: AH-choo. Someone says thank you, you hear a sneeze.','Taip':'Sounds like "type". Yes, type it in.','Ne':'Like the old English "nay". No.',
+ 'Sveiki':'It literally means "be healthy". You wish strangers good health.','Viso gero':'Literally "all the good". You wish them all the best.','Labanakt':'Laba + nakt. "Nakt" is the same root as "night" (German "Nacht").',
+ 'Prašau':'prah-SHOW: "Please, show me." It also means "here you go".','Atsiprašau':'Hidden inside is prašau (please). Sorry is a kind of "please forgive".',
+ 'duona':'Sounds like "dough-nah". Bread is made from dough.','alus':'Sounds like "ale". Beer is ale.','vynas':'Vynas, vine, wine. Same root.','kava':'Like "java", slang for coffee.',
+ 'du':'Like "duo". Two.','trys':'Trys, three. Same old root.','penki':'Like "penta" in pentagon. Five.','dešimt':'Like "decimal". Ten.',
+ 'šuo':'SHWOH. "Shoo!" to the dog.','sūnus':'soo-NUS. Son-us: your son.','dukra':'Dukra and "daughter" come from the same ancient word.','naktis':'Naktis, Nacht, night. One family.',
+ 'ledai':'From ledas, "ice". Ice cream is "the ices".','Skanu!':'skah-NU. So good you scan the plate for more.','vilkas':'Vilkas and "wolf" share an ancient root.',
+ 'Gerai':'geh-RAI. "Good, right?"','mama':'Easy one: mom.','Labas':'Like "lab": walk into the lab and say hi.'};
 
 /* Split every lesson into bite-size parts of 5 words, then flatten items with ids and back-references */
 const BITE=5;
@@ -796,67 +1053,284 @@ COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.fil
   const pick=phrases.slice(0,6).concat(words.slice(0,Math.max(0,6-phrases.length)));
   u.lessons.push({id:u.id+'-speak',title:'Speak it',items:pick,unit:u,speak:true});});
 
+/* ===================== CONVERSATIONS ===================== */
+/* Each one uses only what came before it on the path. Lines:
+   ['p', lithuanian, english, castIndex?]   the other person
+   ['m', lithuanian, english, hint, [[wrong lt, its english], ...]]   your reply
+   ['t', label]   a time-skip divider */
+const CONVS=[
+{id:'cv1',title:'Labas, Rūta!',cast:[{name:'Rūta',voice:'ona'}],scene:'You are Tomas, on your first day in Vilnius. The woman at the next café table says hello.',lines:[
+ ['p','Labas!','Hi!'],
+ ['m','Labas!','Hi!','Say hi back',[['Labanakt!','Good night!'],['Ačiū!','Thank you!']]],
+ ['p','Koks tavo vardas?','What is your name?'],
+ ['m','Mano vardas Tomas.','My name is Tomas.','Tell her your name',[['Aš esu iš Amerikos.','I am from America.'],['Taip.','Yes.']]],
+ ['p','Malonu susipažinti! Aš esu Rūta.','Nice to meet you! I am Rūta.'],
+ ['m','Malonu susipažinti!','Nice to meet you!','Say it is nice to meet her',[['Atsiprašau!','Sorry!'],['Sėkmės!','Good luck!']]],
+ ['p','Kaip sekasi?','How are you?'],
+ ['m','Puikiai!','Great!','Say you are doing great',[['Ne.','No.'],['Labas vakaras!','Good evening!']]],
+ ['p','Iš kur tu esi?','Where are you from?'],
+ ['m','Aš esu iš Amerikos.','I am from America.','Say you are from America',[['Mano vardas Tomas.','My name is Tomas.'],['Gerai.','OK.']]],
+ ['p','Labai gerai! Na, iki pasimatymo!','Very good! Well, see you later!'],
+ ['m','Viso gero!','Goodbye!','Say goodbye',[['Labas rytas!','Good morning!'],['Prašau.','Please.']]],
+]},
+{id:'cv2',title:'Meet Jonas',cast:[{name:'Jonas',voice:'leonas'}],scene:'Rūta brings you to a party and introduces her friend Jonas.',lines:[
+ ['p','Labas! Aš esu Jonas.','Hi! I am Jonas.'],
+ ['m','Labas! Mano vardas Tomas.','Hi! My name is Tomas.','Say hi and tell him your name',[['Labanakt! Aš nežinau.','Good night! I don\'t know.'],['Ačiū! Aš esu studentas.','Thanks! I am a student.']]],
+ ['p','Malonu. Kaip sekasi?','Nice to meet you. How are you?'],
+ ['m','Gerai, ačiū. O tau?','Fine, thanks. And you?','Say you are fine and ask him back',[['Aš esu iš Amerikos.','I am from America.'],['Iki pasimatymo!','See you later!']]],
+ ['p','Neblogai. Iš kur tu esi?','Not bad. Where are you from?'],
+ ['m','Aš esu iš Amerikos. O tu?','I am from America. What about you?','Say where you are from and ask him',[['Aš gyvenu Vilniuje.','I live in Vilnius.'],['Kur tu gyveni?','Where do you live?']]],
+ ['p','Aš esu iš Kauno, bet dabar gyvenu Vilniuje.','I am from Kaunas, but now I live in Vilnius.'],
+ ['m','Kuo tu dirbi?','What do you do for work?','Ask what he does for work',[['Kiek kainuoja?','How much does it cost?'],['Kaip sekasi?','How are you?']]],
+ ['p','Aš esu mokytojas. O tu?','I am a teacher. What about you?'],
+ ['m','Aš esu studentas.','I am a student.','Say you are a student',[['Aš esu iš Anglijos.','I am from England.'],['Aš irgi.','Me too.']]],
+ ['p','Ar tu kalbi lietuviškai?','Do you speak Lithuanian?'],
+ ['m','Aš truputį kalbu lietuviškai.','I speak a little Lithuanian.','Say you speak a little',[['Man dvidešimt metų.','I am twenty years old.'],['Aš gyvenu Vilniuje.','I live in Vilnius.']]],
+ ['p','Tu labai gerai kalbi!','You speak very well!'],
+ ['m','Ačiū! Aš mokausi.','Thanks! I\'m learning.','Thank him and say you are learning',[['Atsiprašau! Aš nesuprantu.','Sorry! I don\'t understand.'],['Ne, ačiū.','No, thanks.']]],
+ ['p','Sėkmės! Iki!','Good luck! Bye!'],
+ ['m','Ačiū! Iki!','Thanks! Bye!','Thank him and say bye',[['Laba diena!','Good day!'],['Taip sau.','So-so.']]],
+]},
+{id:'cv3',title:'At the café',cast:[{name:'Eglė',voice:'ona'}],scene:'You sit down at a café in the old town. The waitress, Eglė, comes over.',lines:[
+ ['p','Laba diena! Ką jums atnešti?','Good afternoon! What can I bring you?'],
+ ['m','Meniu, prašau.','The menu, please.','Ask for the menu',[['Sąskaitą, prašau.','The bill, please.'],['Į sveikatą!','Cheers!']]],
+ ['p','Prašau. Ko norėtumėte gerti?','Here you go. What would you like to drink?'],
+ ['m','Aš norėčiau kavos.','I would like coffee.','Say you would like coffee',[['Aš nevalgau mėsos.','I don\'t eat meat.'],['Aš esu alkanas.','I am hungry.']]],
+ ['p','Su pienu?','With milk?'],
+ ['m','Taip, su pienu. Be cukraus.','Yes, with milk. No sugar.','Say yes to milk, but no sugar',[['Vandens be dujų.','Still water.'],['Taip sau.','So-so.']]],
+ ['p','O valgyti?','And to eat?'],
+ ['m','Ką rekomenduojate?','What do you recommend?','Ask what she recommends',[['Kur tualetas?','Where is the toilet?'],['Kiek tau metų?','How old are you?']]],
+ ['p','Mūsų sriuba labai skani.','Our soup is very tasty.'],
+ ['m','Gerai, sriubą, prašau.','OK, the soup, please.','Order the soup',[['Aš noriu kavos.','I want coffee.'],['Nieko tokio.','No problem.']]],
+ ['t','A few minutes later'],
+ ['p','Skanaus!','Enjoy your meal!'],
+ ['m','Ačiū!','Thank you!','Thank her',[['Sveiki!','Hello!'],['Iki!','Bye!']]],
+ ['p','Ar viskas gerai?','Is everything OK?'],
+ ['m','Labai skanu!','Very tasty!','Say it is very tasty',[['Aš nesuprantu.','I don\'t understand.'],['Taip sau.','So-so.']]],
+ ['p','Džiaugiuosi! Dar ko nors?','Glad to hear it! Anything else?'],
+ ['m','Sąskaitą, prašau.','The bill, please.','Ask for the bill',[['Meniu, prašau.','The menu, please.'],['Staliuką dviem, prašau.','A table for two, please.']]],
+ ['p','Prašau. Kortele ar grynaisiais?','Here you go. Card or cash?'],
+ ['m','Kortele, prašau.','By card, please.','Say you will pay by card',[['Su pienu.','With milk.'],['Be cukraus.','Without sugar.']]],
+ ['p','Ačiū! Geros dienos!','Thank you! Have a good day!'],
+ ['m','Ačiū! Viso gero!','Thanks! Goodbye!','Thank her and say goodbye',[['Labas rytas!','Good morning!'],['Skanaus!','Enjoy your meal!']]],
+]},
+{id:'cv4',title:'Asking the way',cast:[{name:'Petras',voice:'leonas'}],scene:'You need the train station. You stop a man on the street.',lines:[
+ ['m','Atleiskite!','Excuse me!','Get his attention politely',[['Į sveikatą!','Cheers!'],['Labanakt!','Good night!']]],
+ ['p','Taip? Kuo galiu padėti?','Yes? How can I help?'],
+ ['m','Kur yra stotis?','Where is the station?','Ask where the station is',[['Kur tualetas?','Where is the toilet?'],['Kiek kainuoja?','How much does it cost?']]],
+ ['p','Eikite tiesiai, paskui kairėn.','Go straight, then left.'],
+ ['m','Lėčiau, prašau.','Slower, please.','Ask him to say it slower',[['Labai skanu.','Very tasty.'],['Aš esu studentas.','I am a student.']]],
+ ['p','Tiesiai... ir paskui kairėn.','Straight... and then left.'],
+ ['m','Ar toli?','Is it far?','Ask if it is far',[['Ar galima?','May I?'],['Kiek tau metų?','How old are you?']]],
+ ['p','Ne, arti. Penkios minutės.','No, it\'s near. Five minutes.'],
+ ['m','Parodykite žemėlapyje.','Show me on the map.','Ask him to show you on the map',[['Nieko tokio.','No problem.'],['Iki pasimatymo!','See you later!']]],
+ ['p','Žinoma. Mes esame čia, o stotis yra ten.','Of course. We are here, and the station is there.'],
+ ['m','Supratau! Labai ačiū!','Got it! Thank you very much!','Say you got it and thank him',[['Sąskaitą, prašau.','The bill, please.'],['Aš esu alkanas.','I am hungry.']]],
+ ['p','Nėra už ką! Geros kelionės!','You\'re welcome! Have a good trip!'],
+ ['m','Viso gero!','Goodbye!','Say goodbye',[['Labas!','Hi!'],['Skanaus!','Enjoy your meal!']]],
+]},
+{id:'cv5',title:'At the market',cast:[{name:'Aldona',voice:'ona'}],scene:'Saturday at the market (turgus). You want some apples.',lines:[
+ ['p','Laba diena! Ko norėtumėte?','Good day! What would you like?'],
+ ['m','Laba diena! Ar turite obuolių?','Good day! Do you have apples?','Greet her and ask if she has apples',[['Laba diena! Aš esu studentas.','Good day! I am a student.'],['Labanakt! Kur tualetas?','Good night! Where is the toilet?']]],
+ ['p','Taip, žinoma! Raudoni ar žali?','Yes, of course! Red or green?'],
+ ['m','Aš imu šitą.','I\'ll take this one.','Point and say you\'ll take this one',[['Tik žiūriu.','Just looking.'],['Per mažas.','Too small.']]],
+ ['p','Gerai. Kiek kilogramų?','OK. How many kilos?'],
+ ['m','Du, prašau.','Two, please.','Say two, please',[['Dešimt eurų.','Ten euros.'],['Trečias.','Third.']]],
+ ['p','Prašau. Dar ko nors?','Here you go. Anything else?'],
+ ['m','Kiek tai kainuoja?','How much is this?','Point at the cheese and ask how much it is',[['Kur tualetas?','Where is the toilet?'],['Kiek tau metų?','How old are you?']]],
+ ['p','Sūris? Penki eurai.','The cheese? Five euros.'],
+ ['m','Brangu!','That\'s expensive!','Say it is expensive',[['Pigu!','Cheap!'],['Skanu!','Tasty!']]],
+ ['p','Gerai, gerai. Keturi eurai.','OK, OK. Four euros.'],
+ ['m','Gerai, aš imu.','OK, I\'ll take it.','Agree and take it',[['Tik žiūriu.','Just looking.'],['Ne, ačiū.','No, thanks.']]],
+ ['p','Iš viso šeši eurai.','Six euros altogether.'],
+ ['m','Ar galima mokėti kortele?','Can I pay by card?','Ask if you can pay by card',[['Ar galiu pasimatuoti?','Can I try it on?'],['Ar turite?','Do you have?']]],
+ ['p','Ne, tik grynaisiais.','No, cash only.'],
+ ['m','Gerai. Prašau.','OK. Here you go.','Say OK and hand her the money',[['Maišelis.','Bag.'],['Labanakt.','Good night.']]],
+ ['p','Ačiū! Štai jūsų grąža.','Thank you! Here is your change.'],
+ ['m','Ačiū! Viso gero!','Thanks! Goodbye!','Thank her and say goodbye',[['Su gimtadieniu!','Happy birthday!'],['Į sveikatą!','Cheers!']]],
+]},
+{id:'cv6',title:'Making plans',cast:[{name:'Rūta',voice:'ona'}],scene:'Friday afternoon. Your friend Rūta sends you a message.',lines:[
+ ['p','Labas! Ką veiki savaitgalį?','Hi! What are you doing at the weekend?'],
+ ['m','Nieko ypatingo. O tu?','Nothing special. What about you?','Say nothing special and ask her',[['Aš esu mokytojas.','I am a teacher.'],['Septintą valandą.','At seven o\'clock.']]],
+ ['p','Šeštadienį einu į kiną. Ar nori eiti kartu?','On Saturday I\'m going to the cinema. Do you want to go together?'],
+ ['m','Taip, noriu!','Yes, I\'d like to!','Say yes',[['Aš vėluoju!','I\'m running late!'],['Dar kartą.','One more time.']]],
+ ['p','Puiku! Kelintą valandą?','Great! What time?'],
+ ['m','Gal septintą valandą?','Maybe at seven o\'clock?','Suggest seven o\'clock',[['Kiek valandų?','What time is it?'],['Kelintą valandą?','At what time?']]],
+ ['p','Septintą tinka! Kur susitiksime?','Seven works! Where shall we meet?'],
+ ['m','Prie kavinės.','By the café.','Suggest meeting by the café',[['Po pietų.','In the afternoon.'],['Rytoj.','Tomorrow.']]],
+ ['p','Puiki idėja! Iki šeštadienio!','Great idea! See you Saturday!'],
+ ['m','Sutarta! Iki!','Deal! Bye!','Agree and say bye',[['Aš nesuprantu.','I don\'t understand.'],['Labas rytas!','Good morning!']]],
+ ['t','Saturday, 6:55 pm'],
+ ['p','Aš jau čia. Kur tu?','I\'m already here. Where are you?'],
+ ['m','Atsiprašau, aš vėluoju!','Sorry, I\'m running late!','Say sorry, you are running late',[['Aš esu studentas.','I am a student.'],['Puiki idėja!','Great idea!']]],
+ ['p','Nieko tokio! Laukiu.','No problem! I\'ll wait.'],
+]},
+{id:'cv7',title:'Coffee with Rūta',cast:[{name:'Rūta',voice:'ona'}],scene:'Over coffee, Rūta shows you a photo on her phone.',lines:[
+ ['p','Žiūrėk, čia mano šeima.','Look, this is my family.'],
+ ['m','Ar turi brolių ar seserų?','Do you have brothers or sisters?','Ask if she has brothers or sisters',[['Koks šiandien oras?','What\'s the weather like today?'],['Kur susitiksime?','Where shall we meet?']]],
+ ['p','Taip, aš turiu brolį. Čia jis.','Yes, I have a brother. This is him.'],
+ ['m','Koks jo vardas?','What is his name?','Ask what his name is',[['Koks jos vardas?','What is her name?'],['Kiek kainuoja?','How much does it cost?']]],
+ ['p','Jo vardas Mantas. O tu? Ar turi brolių ar seserų?','His name is Mantas. What about you? Do you have brothers or sisters?'],
+ ['m','Aš turiu seserį.','I have a sister.','Say you have a sister',[['Aš turiu du vaikus.','I have two children.'],['Ne, neturiu.','No, I don\'t.']]],
+ ['p','Smagu! Ar tau patinka Lietuva?','Nice! Do you like Lithuania?'],
+ ['m','Taip, man labai patinka!','Yes, I really like it!','Say yes, you really like it',[['Man nepatinka.','I don\'t like it.'],['Aš sergu.','I am sick.']]],
+ ['p','Bet šiandien šalta, ar ne?','But it\'s cold today, isn\'t it?'],
+ ['m','Taip, man šalta.','Yes, I\'m cold.','Agree and say you are cold',[['Man karšta.','I\'m hot.'],['Lyja.','It\'s raining.']]],
+ ['p','Ką tu mėgsti veikti?','What do you like to do?'],
+ ['m','Aš mėgstu keliauti ir skaityti.','I like to travel and read.','Say you like to travel and read',[['Aš mėgstu gaminti.','I like to cook.'],['Aš klausausi muzikos.','I listen to music.']]],
+ ['p','Aš irgi! Gal savaitgalį einame į muziejų?','Me too! Shall we go to a museum at the weekend?'],
+ ['m','Puiki idėja!','Great idea!','Say it is a great idea',[['Neturiu laiko.','I don\'t have time.'],['Aš sergu.','I am sick.']]],
+ ['p','Sutarta!','Deal!'],
+]},
+{id:'cv8',title:'Checking in',cast:[{name:'Darius',voice:'leonas'}],scene:'You arrive at your hotel in Klaipėda. Darius is at reception.',lines:[
+ ['p','Laba diena! Sveiki atvykę.','Good afternoon! Welcome.'],
+ ['m','Laba diena! Aš turiu rezervaciją.','Good afternoon! I have a reservation.','Greet him and say you have a reservation',[['Bilietą į Kauną, prašau.','A ticket to Kaunas, please.'],['Aš išvykstu rytoj.','I\'m leaving tomorrow.']]],
+ ['p','Koks jūsų vardas?','What is your name?'],
+ ['m','Mano vardas Tomas.','My name is Tomas.','Tell him your name',[['Aš esu iš Amerikos.','I am from America.'],['Dviem naktims.','For two nights.']]],
+ ['p','Taip, Tomas. Dviem naktims?','Yes, Tomas. For two nights?'],
+ ['m','Taip, dviem naktims.','Yes, for two nights.','Say yes, two nights',[['Vienai nakčiai.','For one night.'],['Staliuką dviem, prašau.','A table for two, please.']]],
+ ['p','Jūsų pasas, prašau.','Your passport, please.'],
+ ['m','Prašau.','Here you go.','Hand it over',[['Atsiprašau.','Sorry.'],['Neveikia.','It doesn\'t work.']]],
+ ['p','Ačiū. Kambarys trečiame aukšte. Štai raktas.','Thank you. Your room is on the third floor. Here is the key.'],
+ ['m','Ar pusryčiai įskaičiuoti?','Is breakfast included?','Ask if breakfast is included',[['Kada išvyksta?','When does it leave?'],['Kur yra platforma?','Where is the platform?']]],
+ ['p','Taip, nuo septintos iki dešimtos valandos.','Yes, from seven to ten o\'clock.'],
+ ['m','Koks Wi-Fi slaptažodis?','What is the Wi-Fi password?','Ask for the Wi-Fi password',[['Kiek kainuoja iki oro uosto?','How much to the airport?'],['Kada atvyksta?','When does it arrive?']]],
+ ['p','Jis ant rakto kortelės.','It\'s on the key card.'],
+ ['m','Puiku, labai ačiū!','Great, thank you very much!','Say great and thank him',[['Triukšminga.','Noisy.'],['Lėčiau, prašau.','Slower, please.']]],
+ ['t','Later that evening'],
+ ['p','Labas vakaras! Kuo galiu padėti?','Good evening! How can I help?'],
+ ['m','Dušas neveikia.','The shower doesn\'t work.','Say the shower doesn\'t work',[['Lova.','Bed.'],['Aš išvykstu rytoj.','I\'m leaving tomorrow.']]],
+ ['p','Atsiprašau! Tuoj atsiųsiu meistrą.','Sorry! I\'ll send a repairman right away.'],
+ ['m','Ačiū!','Thank you!','Thank him',[['Gelbėkite!','Help! (emergency)'],['Sveiki!','Hello!']]],
+]},
+{id:'cv9',title:'At the pharmacy',cast:[{name:'Jurgita',voice:'ona'}],scene:'You wake up with a headache and walk into a pharmacy (vaistinė).',lines:[
+ ['p','Laba diena. Kuo galiu padėti?','Good afternoon. How can I help?'],
+ ['m','Laba diena. Aš sergu.','Good afternoon. I am sick.','Greet her and say you are sick',[['Laba diena. Aš pasiklydau.','Good afternoon. I\'m lost.'],['Laba diena. Mane apvogė.','Good afternoon. I was robbed.']]],
+ ['p','Kas jums skauda?','What hurts?'],
+ ['m','Man skauda galvą.','My head hurts.','Say your head hurts',[['Man šalta.','I\'m cold.'],['Aš pamečiau pasą.','I lost my passport.']]],
+ ['p','Ar turite temperatūros?','Do you have a fever?'],
+ ['m','Aš nežinau.','I don\'t know.','Say you don\'t know',[['Aš gerai.','I\'m fine.'],['Žinoma.','Of course.']]],
+ ['p','Štai vaistai. Viena tabletė, tris kartus per dieną.','Here is the medicine. One tablet, three times a day.'],
+ ['m','Ar galite pakartoti?','Can you repeat that?','Ask her to repeat that',[['Aš suprantu.','I understand.'],['Kur tualetas?','Where is the toilet?']]],
+ ['p','Viena tabletė. Tris kartus per dieną.','One tablet. Three times a day.'],
+ ['m','Supratau. Kiek kainuoja?','Got it. How much is it?','Say you got it and ask the price',[['Supratau. Ar toli?','Got it. Is it far?'],['Supratau. Ar galima?','Got it. May I?']]],
+ ['p','Aštuoni eurai.','Eight euros.'],
+ ['m','Ar galima mokėti kortele?','Can I pay by card?','Ask if you can pay by card',[['Ar turite?','Do you have?'],['Ar galite man padėti?','Can you help me?']]],
+ ['p','Žinoma. Pasveikite!','Of course. Get well soon!'],
+ ['m','Labai ačiū! Viso gero!','Thank you very much! Goodbye!','Thank her and say goodbye',[['Padėkite!','Please help!'],['Į sveikatą!','Cheers!']]],
+]},
+{id:'cv10',title:'Dinner with friends',cast:[{name:'Rūta',voice:'ona'},{name:'Jonas',voice:'leonas'}],scene:'Rūta invites you to dinner at her flat. Jonas is there too. Use everything you know.',lines:[
+ ['p','Labas vakaras! Užeik!','Good evening! Come in!'],
+ ['m','Labas vakaras! Čia tau dovana.','Good evening! This is a gift for you.','Greet her and give her a gift',[['Labanakt! Sąskaitą, prašau.','Good night! The bill, please.'],['Labas rytas! Aš pasiklydau.','Good morning! I\'m lost.']]],
+ ['p','Ačiū! Labai gražu!','Thank you! It\'s beautiful!'],
+ ['p','Sveikas, Tomai! Kaip sekasi?','Hi, Tomas! How are you?',1],
+ ['m','Puikiai, ačiū. O tau?','Great, thanks. And you?','Say you are great and ask him back',[['Aš esu iš Amerikos.','I am from America.'],['Aš alergiškas riešutams.','I\'m allergic to nuts.']]],
+ ['p','Gerai, bet šiandien esu labai pavargęs.','Good, but I\'m very tired today.',1],
+ ['m','Aš irgi!','Me too!','Say me too',[['Su gimtadieniu!','Happy birthday!'],['Neblogai.','Not bad.']]],
+ ['p','Ar esi alkanas? Turiu cepelinų!','Are you hungry? I have cepelinai!'],
+ ['m','Taip, aš esu alkanas!','Yes, I am hungry!','Say yes, you are hungry',[['Man karšta!','I\'m hot!'],['Aš vėluoju!','I\'m running late!']]],
+ ['p','Skanaus!','Enjoy your meal!'],
+ ['m','Ačiū! Labai skanu!','Thanks! Very tasty!','Thank her and say it is very tasty',[['Ačiū! Labai brangu!','Thanks! Very expensive!'],['Ačiū! Aš sergu!','Thanks! I\'m sick!']]],
+ ['p','Tomai, ar tau patinka Vilnius?','Tomas, do you like Vilnius?',1],
+ ['m','Taip, labai! Vilnius labai gražus.','Yes, a lot! Vilnius is very beautiful.','Say yes, Vilnius is very beautiful',[['Ne, neturiu.','No, I don\'t.'],['Taip, dviem naktims.','Yes, for two nights.']]],
+ ['p','O ką veiki rytoj?','And what are you doing tomorrow?',1],
+ ['m','Rytoj aš važiuoju į Kauną.','Tomorrow I\'m going to Kaunas.','Say tomorrow you are going to Kaunas',[['Šiandien negaliu.','I can\'t today.'],['Aš gyvenu Vilniuje.','I live in Vilnius.']]],
+ ['p','Puiku! Mano mama gyvena Kaune.','Great! My mom lives in Kaunas.',1],
+ ['p','Į sveikatą!','Cheers!'],
+ ['m','Į sveikatą!','Cheers!','Raise your glass',[['Sveiki atvykę!','Welcome!'],['Gelbėkite!','Help! (emergency)']]],
+ ['t','Later'],
+ ['m','Labai ačiū! Iki pasimatymo!','Thank you very much! See you later!','Thank them and say see you later',[['Labas! Iki pasimatymo!','Hi! See you later!'],['Atsiprašau! Aš nesuprantu!','Sorry! I don\'t understand!']]],
+ ['p','Ačiū, kad atėjai! Labanakt!','Thanks for coming! Good night!'],
+]},
+];
+const CONV_BY={};
+CONVS.forEach(c=>{CONV_BY[c.id]=c;c.lines=c.lines.map((l,i)=>{const id=c.id+':'+i;
+  if(l[0]==='t')return {kind:'t',text:l[1]};
+  const ln={kind:l[0],id,lt:l[1],en:l[2],conv:c};
+  if(l[0]==='p')ln.who=l[3]||0;else{ln.hint=l[3];ln.no=l[4]||[];}
+  BYID[id]=ln;return ln;});});
+
 /* "Built from": for a phrase, gloss each word from single-word items or the glue list. */
 const WORDS={};ITEMS.forEach(i=>{if(i.lt.split(' ').length===1)WORDS[norm(i.lt)]=WORDS[norm(i.lt)]||i.en.split(' / ')[0].split(' (')[0];});
 function builtFrom(item){const ws=item.lt.split(' ');if(ws.length<2)return '';
   const parts=ws.map(w=>{const k=norm(w);const g=WORDS[k]||GLUE[k];return '<span class="bf"><b>'+esc(w)+'</b>'+(g?' <i>'+esc(g)+'</i>':'')+'</span>';});
   return '<div class="built"><span class="eyebrow">Built from</span><div>'+parts.join('')+'</div></div>';}
 /* "Sounds like" shown to the learner: lowercase syllables separated by spaces, stressed syllable bolder. */
-function pronHtml(lt){const raw=PRON[lt]||autoPron(lt);
+function pronHtml(lt){const raw=pronFor(lt);
   return raw.split(' ').map(w=>'<span class="pw">'+w.split('-').map(s=>/[A-Z]/.test(s)?'<b>'+esc(s.toLowerCase())+'</b>':esc(s.toLowerCase())).join(' ')+'</span>').join(' ');}
-function pronText(lt){return (PRON[lt]||autoPron(lt)).toLowerCase().replace(/-/g,' ');}
+function pronText(lt){return pronFor(lt).toLowerCase().replace(/-/g,' ');}
+/* Whole phrase first, then sentence by sentence, then comma pieces, then word by word, so conversation lines reuse the hand-written respellings. */
+const PRON_CI={};
+function pronFor(lt){if(PRON[lt])return PRON[lt];
+  if(!PRON_CI._)Object.keys(PRON).forEach(k=>{PRON_CI[k.toLowerCase().replace(/[.,!?]+$/,'')]=PRON[k];PRON_CI._=1;});
+  const look=s=>PRON_CI[s.toLowerCase().replace(/[.,!?]+$/,'').trim()];
+  const whole=look(lt);if(whole)return whole;
+  const sentences=lt.split(/(?<=[.!?])\s+/);
+  return sentences.map(sen=>look(sen)||sen.split(/,\s*/).map(part=>look(part)||part.split(' ').map(w=>look(w)||autoPron(w.replace(/[.,!?]/g,''))).join(' ')).join(' ')).join(' ');}
 function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'],['ę','eh'],['į','ee'],['ų','oo'],['ū','oo'],['ė','eh'],['č','ch'],['š','sh'],['ž','zh'],['c','ts'],['j','y'],['y','ee'],['a','ah'],['e','e'],['i','i'],['o','o'],['u','u']];
   return lt.toLowerCase().split(' ').map(w=>{let s='';for(let i=0;i<w.length;i++){const two=w.slice(i,i+2);const hit=map.find(m=>m[0]===two)||map.find(m=>m[0]===w[i]);
     if(hit){s+=hit[1];i+=hit[0].length-1;}else s+=w[i];}return s;}).join(' ');}
 
 /* Hand-written "sounds like" respellings. Hyphens split syllables; CAPS = the stressed syllable.
-   Vowel key: ah = father, e = bet, ay = day, ee = see, i = bit, oh = go, u = put, oo = moon, ow = cow, eye/ye = eye. */
+   Vowel key: ah = father, e/eh = bet, ay = day, ee = see, i = bit, oh = go, u = put, oo = moon, ow = cow, ai = eye.
+   "y" is always the consonant in "yes" (yah, yeh, yoh, yu); never use "ye" for the eye sound. */
 const PRON={
 "Labas":"LAH-bahs","Sveiki":"SVAY-ki","Labas rytas":"LAH-bahs REE-tahs","Laba diena":"lah-BAH DYEH-nah","Labas vakaras":"LAH-bahs VAH-kah-rahs","Labanakt":"lah-bah-NAHKT","Viso gero":"VI-soh GEH-roh","Iki":"I-ki","Ačiū":"AH-choo","Prašau":"prah-SHOW",
-"Taip":"TIPE","Ne":"NEH","Atsiprašau":"aht-si-prah-SHOW","Gerai":"geh-RYE","Kaip sekasi?":"KIPE SEH-kah-si","Puikiai":"PWEE-kyay","Nieko tokio":"NYEH-koh TOH-kyoh","Malonu susipažinti":"mah-loh-NU su-si-pah-ZHIN-ti","Iki pasimatymo":"I-ki pah-si-MAH-tee-moh","Sėkmės":"sayk-MAYS",
+"Taip":"TAIP","Ne":"NEH","Atsiprašau":"aht-si-prah-SHOW","Gerai":"geh-RAI","Kaip sekasi?":"KAIP SEH-kah-si","Puikiai":"PWEE-kyai","Nieko tokio":"NYEH-koh TOH-kyoh","Malonu susipažinti":"mah-loh-NU su-si-pah-ZHIN-ti","Iki pasimatymo":"I-ki pah-si-MAH-tee-moh","Sėkmės":"sayk-MAYS",
 "Aš":"AHSH","Tu":"TOO","Jis":"YIS","Ji":"YI","Mes":"MES","Jūs":"YOOS","Jie":"YEH","Jos":"YOHS","Mano vardas Tomas":"MAH-noh VAHR-dahs TOH-mahs","Koks tavo vardas?":"KOHKS TAH-voh VAHR-dahs","Aš esu iš Amerikos":"AHSH eh-SU ish ah-MEH-ri-kohs",
 "vienas":"VYEH-nahs","du":"DOO","trys":"TREES","keturi":"keh-tu-RI","penki":"pen-KI","šeši":"sheh-SHI","septyni":"sep-TEE-ni","aštuoni":"ahsh-TWOH-ni","devyni":"deh-VEE-ni","dešimt":"DEH-shimt",
 "nulis":"NU-lis","vienuolika":"vyeh-NWOH-li-kah","dvylika":"DVEE-li-kah","trylika":"TREE-li-kah","keturiolika":"keh-tu-RYOH-li-kah","penkiolika":"pen-KYOH-li-kah","dvidešimt":"DVI-deh-shimt","trisdešimt":"TRIS-deh-shimt","šimtas":"SHIM-tahs","tūkstantis":"TOOKS-tahn-tis",
-"Kiek?":"KYEK","Kiek tau metų?":"KYEK TOW MEH-too","Man dvidešimt metų":"MAHN DVI-deh-shimt MEH-too","Kiek kainuoja?":"KYEK kye-NWOH-yah","vienas euras":"VYEH-nahs EH-oo-rahs","du eurai":"DOO EH-oo-rye","dešimt eurų":"DEH-shimt EH-oo-roo","pirmas":"PIR-mahs","antras":"AHN-trahs","trečias":"TREH-chahs",
-"duona":"DWOH-nah","pienas":"PYEH-nahs","vanduo":"vahn-DWOH","kava":"kah-VAH","arbata":"ahr-BAH-tah","sūris":"SOO-ris","mėsa":"may-SAH","sriuba":"sryu-BAH","kiaušinis":"kyow-SHI-nis","sviestas":"SVYES-tahs",
-"obuolys":"oh-bwoh-LEES","bulvė":"BUL-vay","žuvis":"zhu-VIS","vištiena":"vish-TYEH-nah","cukrus":"TSUK-rus","druska":"drus-KAH","alus":"ah-LUS","vynas":"VEE-nahs","pyragas":"pee-RAH-gahs","ledai":"leh-DYE",
-"Aš noriu kavos":"AHSH NOH-ryu kah-VOHS","Aš valgau duoną":"AHSH VAHL-gow DWOH-nah","Aš geriu vandenį":"AHSH geh-RYU VAHN-deh-nee","Skanu!":"skah-NU","Aš esu alkanas":"AHSH eh-SU AHL-kah-nahs","Sąskaitą, prašau":"SAHS-kye-tah prah-SHOW","Skanaus!":"skah-NOWS","Į sveikatą!":"ee svay-KAH-tah","meniu":"meh-NYU","restoranas":"res-toh-RAH-nahs",
-"mama":"mah-MAH","tėtis":"TAY-tis","sesuo":"seh-SWOH","brolis":"BROH-lis","sūnus":"soo-NUS","dukra":"duk-RAH","senelis":"seh-NEH-lis","senelė":"seh-NEH-lay","šeima":"shay-MAH","vaikas":"VYE-kahs",
-"vyras":"VEE-rahs","moteris":"MOH-teh-ris","žmona":"zhmoh-NAH","draugas":"DROW-gahs","draugė":"DROW-gay","berniukas":"ber-NYU-kahs","mergaitė":"mer-GYE-tay","žmogus":"zhmoh-GUS","Tai mano brolis":"TYE MAH-noh BROH-lis","Aš turiu seserį":"AHSH tu-RYU SEH-seh-ree",
+"Kiek?":"KYEHK","Kiek tau metų?":"KYEHK TOW MEH-too","Man dvidešimt metų":"MAHN DVI-deh-shimt MEH-too","Kiek kainuoja?":"KYEHK kai-NWOH-yah","vienas euras":"VYEH-nahs EH-oo-rahs","du eurai":"DOO EH-oo-rai","dešimt eurų":"DEH-shimt EH-oo-roo","pirmas":"PIR-mahs","antras":"AHN-trahs","trečias":"TREH-chahs",
+"duona":"DWOH-nah","pienas":"PYEH-nahs","vanduo":"vahn-DWOH","kava":"kah-VAH","arbata":"ahr-BAH-tah","sūris":"SOO-ris","mėsa":"may-SAH","sriuba":"sryu-BAH","kiaušinis":"kyow-SHI-nis","sviestas":"SVYEHS-tahs",
+"obuolys":"oh-bwoh-LEES","bulvė":"BUL-vay","žuvis":"zhu-VIS","vištiena":"vish-TYEH-nah","cukrus":"TSUK-rus","druska":"drus-KAH","alus":"ah-LUS","vynas":"VEE-nahs","pyragas":"pee-RAH-gahs","ledai":"leh-DAI",
+"Aš noriu kavos":"AHSH NOH-ryu kah-VOHS","Aš valgau duoną":"AHSH VAHL-gow DWOH-nah","Aš geriu vandenį":"AHSH geh-RYU VAHN-deh-nee","Skanu!":"skah-NU","Aš esu alkanas":"AHSH eh-SU AHL-kah-nahs","Sąskaitą, prašau":"SAHS-kai-tah prah-SHOW","Skanaus!":"skah-NOWS","Į sveikatą!":"ee svay-KAH-tah","meniu":"meh-NYU","restoranas":"res-toh-RAH-nahs",
+"mama":"mah-MAH","tėtis":"TAY-tis","sesuo":"seh-SWOH","brolis":"BROH-lis","sūnus":"soo-NUS","dukra":"duk-RAH","senelis":"seh-NEH-lis","senelė":"seh-NEH-lay","šeima":"shay-MAH","vaikas":"VAI-kahs",
+"vyras":"VEE-rahs","moteris":"MOH-teh-ris","žmona":"zhmoh-NAH","draugas":"DROW-gahs","draugė":"DROW-gay","berniukas":"ber-NYU-kahs","mergaitė":"mer-GAI-tay","žmogus":"zhmoh-GUS","Tai mano brolis":"TAI MAH-noh BROH-lis","Aš turiu seserį":"AHSH tu-RYU SEH-seh-ree",
 "raudonas":"row-DOH-nahs","mėlynas":"MAY-lee-nahs","žalias":"ZHAH-lyahs","geltonas":"gel-TOH-nahs","juodas":"YWOH-dahs","baltas":"BAHL-tahs","rudas":"RU-dahs","pilkas":"PIL-kahs","rožinis":"ROH-zhi-nis","oranžinis":"oh-RAHN-zhi-nis",
 "didelis":"DI-deh-lis","mažas":"MAH-zhahs","naujas":"NOW-yahs","senas":"SEH-nahs","gražus":"grah-ZHUS","geras":"GEH-rahs","blogas":"BLOH-gahs","žalias obuolys":"ZHAH-lyahs oh-bwoh-LEES","balta duona":"bahl-TAH DWOH-nah","didelis namas":"DI-deh-lis NAH-mahs",
 "šuo":"SHWOH","katė":"kah-TAY","arklys":"ahrk-LEES","karvė":"KAHR-vay","paukštis":"POWK-shtis","kiaulė":"KYOW-lay","višta":"vish-TAH","avis":"ah-VIS","pelė":"peh-LAY","triušis":"TRYU-shis",
 "vilkas":"VIL-kahs","lokys":"loh-KEES","lapė":"LAH-pay","gandras":"GAHN-drahs","briedis":"BRYEH-dis","varlė":"vahr-LAY","bitė":"BI-tay","drugelis":"dru-GEH-lis","Aš turiu šunį":"AHSH tu-RYU SHU-nee","Katė miega":"kah-TAY MYEH-gah",
-"pirmadienis":"pir-MAH-dyeh-nis","antradienis":"ahn-TRAH-dyeh-nis","trečiadienis":"treh-CHAH-dyeh-nis","ketvirtadienis":"ket-vir-TAH-dyeh-nis","penktadienis":"penk-TAH-dyeh-nis","šeštadienis":"shesh-TAH-dyeh-nis","sekmadienis":"sek-MAH-dyeh-nis","šiandien":"SHAN-dyen","rytoj":"ree-TOY","vakar":"VAH-kahr",
-"dabar":"dah-BAHR","rytas":"REE-tahs","diena":"DYEH-nah","vakaras":"VAH-kah-rahs","naktis":"nahk-TIS","savaitė":"sah-VYE-tay","mėnuo":"MAY-nwoh","metai":"MEH-tye","valanda":"vah-lahn-DAH","Kiek valandų?":"KYEK vah-lahn-DOO",
+"pirmadienis":"pir-MAH-dyeh-nis","antradienis":"ahn-TRAH-dyeh-nis","trečiadienis":"treh-CHAH-dyeh-nis","ketvirtadienis":"ket-vir-TAH-dyeh-nis","penktadienis":"penk-TAH-dyeh-nis","šeštadienis":"shesh-TAH-dyeh-nis","sekmadienis":"sek-MAH-dyeh-nis","šiandien":"SHAN-dyehn","rytoj":"ree-TOY","vakar":"VAH-kahr",
+"dabar":"dah-BAHR","rytas":"REE-tahs","diena":"DYEH-nah","vakaras":"VAH-kah-rahs","naktis":"nahk-TIS","savaitė":"sah-VAI-tay","mėnuo":"MAY-nwoh","metai":"MEH-tai","valanda":"vah-lahn-DAH","Kiek valandų?":"KYEHK vah-lahn-DOO",
 "pavasaris":"pah-VAH-sah-ris","vasara":"VAH-sah-rah","ruduo":"ru-DWOH","žiema":"zhyeh-MAH","sausis":"SOW-sis","vasaris":"vah-SAH-ris","kovas":"KOH-vahs","birželis":"bir-ZHEH-lis","liepa":"LYEH-pah","gruodis":"GRWOH-dis",
-"būti":"BOO-ti","eiti":"AY-ti","valgyti":"VAHL-gee-ti","gerti":"GER-ti","kalbėti":"kahl-BAY-ti","skaityti":"skye-TEE-ti","rašyti":"rah-SHEE-ti","norėti":"noh-RAY-ti","turėti":"tu-RAY-ti","žinoti":"zhi-NOH-ti",
-"Aš esu":"AHSH eh-SU","Tu esi":"TOO eh-SI","Jis yra":"YIS ee-RAH","Aš einu":"AHSH ay-NU","Aš kalbu":"AHSH kahl-BU","Aš skaitau":"AHSH skye-TOW","Aš noriu":"AHSH NOH-ryu","Aš turiu":"AHSH tu-RYU","Aš žinau":"AHSH zhi-NOW","Aš nežinau":"AHSH neh-zhi-NOW",
-"Aš kalbu lietuviškai":"AHSH kahl-BU lyeh-TU-vish-kye","Ar tu kalbi angliškai?":"AHR TOO kahl-BI AHN-glish-kye","Aš nesuprantu":"AHSH neh-su-prahn-TU","Aš suprantu":"AHSH su-prahn-TU","Aš gyvenu Lietuvoje":"AHSH gee-veh-NU lyeh-tu-VOH-yeh","Aš mokausi lietuvių kalbos":"AHSH moh-KOW-si LYEH-tu-vyoo kahl-BOHS","Aš dirbu":"AHSH DIR-bu","Aš miegu":"AHSH MYEH-gu","Mes einame namo":"MES AY-nah-meh nah-MOH","Jie valgo":"YEH VAHL-goh",
-"miestas":"MYES-tahs","kaimas":"KYE-mahs","namas":"NAH-mahs","mokykla":"moh-keek-LAH","parduotuvė":"pahr-dwoh-tu-VAY","gatvė":"GAHT-vay","stotis":"stoh-TIS","bažnyčia":"bahzh-NEE-chah","ligoninė":"li-GOH-ni-nay","bankas":"BAHN-kahs",
-"Kur yra stotis?":"KUR ee-RAH stoh-TIS","kairėn":"kye-RAYN","dešinėn":"deh-shi-NAYN","tiesiai":"TYEH-syay","čia":"CHAH","ten":"TEN","toli":"toh-LI","arti":"ahr-TI","vaistinė":"VYES-ti-nay","paštas":"PAHSH-tahs",
-"bilietas":"BI-lyeh-tahs","lėktuvas":"layk-TU-vahs","traukinys":"trow-ki-NEES","autobusas":"ow-toh-BU-sahs","oro uostas":"OH-roh WOHS-tahs","viešbutis":"VYESH-bu-tis","pasas":"PAH-sahs","pinigai":"pi-ni-GYE","lagaminas":"lah-gah-MI-nahs","žemėlapis":"zheh-MAY-lah-pis",
-"Lietuva":"lyeh-tu-VAH","Vilnius":"VIL-nyus","Kaunas":"KOW-nahs","Klaipėda":"KLYE-pay-dah","jūra":"YOO-rah","Baltijos jūra":"BAHL-ti-yohs YOO-rah","miškas":"MISH-kahs","ežeras":"EH-zheh-rahs","upė":"U-pay","lietuvis":"lyeh-TU-vis",
+"būti":"BOO-ti","eiti":"AY-ti","valgyti":"VAHL-gee-ti","gerti":"GER-ti","kalbėti":"kahl-BAY-ti","skaityti":"skai-TEE-ti","rašyti":"rah-SHEE-ti","norėti":"noh-RAY-ti","turėti":"tu-RAY-ti","žinoti":"zhi-NOH-ti",
+"Aš esu":"AHSH eh-SU","Tu esi":"TOO eh-SI","Jis yra":"YIS ee-RAH","Aš einu":"AHSH ay-NU","Aš kalbu":"AHSH kahl-BU","Aš skaitau":"AHSH skai-TOW","Aš noriu":"AHSH NOH-ryu","Aš turiu":"AHSH tu-RYU","Aš žinau":"AHSH zhi-NOW","Aš nežinau":"AHSH neh-zhi-NOW",
+"Aš kalbu lietuviškai":"AHSH kahl-BU lyeh-TU-vish-kai","Ar tu kalbi angliškai?":"AHR TOO kahl-BI AHN-glish-kai","Aš nesuprantu":"AHSH neh-su-prahn-TU","Aš suprantu":"AHSH su-prahn-TU","Aš gyvenu Lietuvoje":"AHSH gee-veh-NU lyeh-tu-VOH-yeh","Aš mokausi lietuvių kalbos":"AHSH moh-KOW-si LYEH-tu-vyoo kahl-BOHS","Aš dirbu":"AHSH DIR-bu","Aš miegu":"AHSH MYEH-gu","Mes einame namo":"MES AY-nah-meh nah-MOH","Jie valgo":"YEH VAHL-goh",
+"miestas":"MYEHS-tahs","kaimas":"KAI-mahs","namas":"NAH-mahs","mokykla":"moh-keek-LAH","parduotuvė":"pahr-dwoh-tu-VAY","gatvė":"GAHT-vay","stotis":"stoh-TIS","bažnyčia":"bahzh-NEE-chah","ligoninė":"li-GOH-ni-nay","bankas":"BAHN-kahs",
+"Kur yra stotis?":"KUR ee-RAH stoh-TIS","kairėn":"kai-RAYN","dešinėn":"deh-shi-NAYN","tiesiai":"TYEH-syai","čia":"CHAH","ten":"TEN","toli":"toh-LI","arti":"ahr-TI","vaistinė":"VAIS-ti-nay","paštas":"PAHSH-tahs",
+"bilietas":"BI-lyeh-tahs","lėktuvas":"layk-TU-vahs","traukinys":"trow-ki-NEES","autobusas":"ow-toh-BU-sahs","oro uostas":"OH-roh WOHS-tahs","viešbutis":"VYEHSH-bu-tis","pasas":"PAH-sahs","pinigai":"pi-ni-GAI","lagaminas":"lah-gah-MI-nahs","žemėlapis":"zheh-MAY-lah-pis",
+"Lietuva":"lyeh-tu-VAH","Vilnius":"VIL-nyus","Kaunas":"KOW-nahs","Klaipėda":"KLAI-pay-dah","jūra":"YOO-rah","Baltijos jūra":"BAHL-ti-yohs YOO-rah","miškas":"MISH-kahs","ežeras":"EH-zheh-rahs","upė":"U-pay","lietuvis":"lyeh-TU-vis",
 "oras":"OH-rahs","lietus":"lyeh-TUS","sniegas":"SNYEH-gahs","saulė":"SOW-lay","vėjas":"VAY-yahs","debesis":"deh-beh-SIS","Šilta":"SHIL-tah","Šalta":"SHAHL-tah","Lyja":"LEE-yah","Sninga":"SNIN-gah",
-"laimingas":"lye-MIN-gahs","liūdnas":"LYOOD-nahs","pavargęs":"pah-VAHR-ges","ištroškęs":"ish-TROHSH-kes","Man karšta":"MAHN KAHRSH-tah","Man šalta":"MAHN SHAHL-tah","Aš sergu":"AHSH ser-GU","Man patinka":"MAHN pah-TIN-kah","Aš myliu tave":"AHSH MEE-lyu tah-VEH","Koks šiandien oras?":"KOHKS SHAN-dyen OH-rahs",
-"gintaras":"GIN-tah-rahs","cepelinai":"tseh-peh-LI-nye","šaltibarščiai":"shahl-ti-BAHRSH-chay","rūta":"ROO-tah","Joninės":"YOH-ni-nays","krepšinis":"krep-SHI-nis","gira":"gi-RAH","Užgavėnės":"uzh-gah-VAY-nays","Gedimino pilis":"geh-di-MI-noh pi-LIS","Vasario 16-oji":"vah-SAH-ryoh sheh-shyoh-LIK-toh-yi",
-"Su gimtadieniu!":"SU gim-TAH-dyeh-nyu","Linksmų Kalėdų!":"links-MOO kah-LAY-doo","Laimingų Naujųjų metų!":"lye-MIN-goo now-YOO-yoo MEH-too","Sveiki atvykę!":"SVAY-ki aht-VEE-keh","Labai ačiū":"lah-BYE AH-choo","Ar galite pakartoti?":"AHR GAH-li-teh pah-kahr-TOH-ti","Lėčiau, prašau":"lay-CHOW prah-SHOW","Padėkite!":"pah-DAY-ki-teh","Kur tualetas?":"KUR tu-ah-LEH-tahs","Aš nekalbu lietuviškai":"AHSH neh-kahl-BU lyeh-TU-vish-kye",
-"kas":"KAHS","kur":"KUR","kada":"kah-DAH","kodėl":"koh-DAYL","kaip":"KIPE","kuris":"ku-RIS","Ar galite man padėti?":"AHR GAH-li-teh MAHN pah-DAY-ti","Ar kalbate angliškai?":"AHR KAHL-bah-teh AHN-glish-kye","Ką tai reiškia?":"KAH TYE RAYSH-kyah","Kur aš esu?":"KUR AHSH eh-SU",
-"Atleiskite":"aht-LAYS-ki-teh","Kaip nueiti į centrą?":"KIPE nu-AY-ti ee TSEN-trah","Ar toli?":"AHR toh-LI","Ar galima?":"AHR GAH-li-mah","Viskas gerai":"VIS-kahs geh-RYE","Minutėlę":"mi-nu-TAY-leh","Nesvarbu":"nes-VAHR-bu","Žinoma":"ZHI-noh-mah","Parodykite žemėlapyje":"pah-ROH-dee-ki-teh zheh-may-LAH-pee-yeh","Nieko":"NYEH-koh",
+"laimingas":"lai-MIN-gahs","liūdnas":"LYOOD-nahs","pavargęs":"pah-VAHR-ges","ištroškęs":"ish-TROHSH-kes","Man karšta":"MAHN KAHRSH-tah","Man šalta":"MAHN SHAHL-tah","Aš sergu":"AHSH ser-GU","Man patinka":"MAHN pah-TIN-kah","Aš myliu tave":"AHSH MEE-lyu tah-VEH","Koks šiandien oras?":"KOHKS SHAN-dyehn OH-rahs",
+"gintaras":"GIN-tah-rahs","cepelinai":"tseh-peh-LI-nai","šaltibarščiai":"shahl-ti-BAHRSH-chai","rūta":"ROO-tah","Joninės":"YOH-ni-nays","krepšinis":"krep-SHI-nis","gira":"gi-RAH","Užgavėnės":"uzh-gah-VAY-nays","Gedimino pilis":"geh-di-MI-noh pi-LIS","Vasario 16-oji":"vah-SAH-ryoh sheh-shyoh-LIK-toh-yi",
+"Su gimtadieniu!":"SU gim-TAH-dyeh-nyu","Linksmų Kalėdų!":"links-MOO kah-LAY-doo","Laimingų Naujųjų metų!":"lai-MIN-goo now-YOO-yoo MEH-too","Sveiki atvykę!":"SVAY-ki aht-VEE-keh","Labai ačiū":"lah-BAI AH-choo","Ar galite pakartoti?":"AHR GAH-li-teh pah-kahr-TOH-ti","Lėčiau, prašau":"lay-CHOW prah-SHOW","Padėkite!":"pah-DAY-ki-teh","Kur tualetas?":"KUR tu-ah-LEH-tahs","Aš nekalbu lietuviškai":"AHSH neh-kahl-BU lyeh-TU-vish-kai",
+"kas":"KAHS","kur":"KUR","kada":"kah-DAH","kodėl":"koh-DAYL","kaip":"KAIP","kuris":"ku-RIS","Ar galite man padėti?":"AHR GAH-li-teh MAHN pah-DAY-ti","Ar kalbate angliškai?":"AHR KAHL-bah-teh AHN-glish-kai","Ką tai reiškia?":"KAH TAI RAYSH-kyah","Kur aš esu?":"KUR AHSH eh-SU",
+"Atleiskite":"aht-LAYS-ki-teh","Kaip nueiti į centrą?":"KAIP nu-AY-ti ee TSEN-trah","Ar toli?":"AHR toh-LI","Ar galima?":"AHR GAH-li-mah","Viskas gerai":"VIS-kahs geh-RAI","Minutėlę":"mi-nu-TAY-leh","Nesvarbu":"nes-VAHR-bu","Žinoma":"ZHI-noh-mah","Parodykite žemėlapyje":"pah-ROH-dee-ki-teh zheh-may-LAH-pee-yeh","Nieko":"NYEH-koh",
 "Bilietą į Kauną, prašau":"BI-lyeh-tah ee KOW-nah prah-SHOW","Kada išvyksta?":"kah-DAH ish-VEEKS-tah","Kada atvyksta?":"kah-DAH aht-VEEKS-tah","Kur yra platforma?":"KUR ee-RAH plaht-FOHR-mah","Ar šis autobusas važiuoja į centrą?":"AHR SHIS ow-toh-BU-sahs vah-ZHWOH-yah ee TSEN-trah","autobusų stotis":"ow-toh-BU-soo stoh-TIS","geležinkelio stotis":"geh-leh-ZHIN-keh-lyoh stoh-TIS","stotelė":"stoh-teh-LAY","centras":"TSEN-trahs","tvarkaraštis":"TVAHR-kah-rahsh-tis",
-"taksi":"tahk-SI","Sustokite čia, prašau":"sus-TOH-ki-teh CHAH prah-SHOW","Nuvežkite mane į viešbutį":"nu-VEZH-ki-teh mah-NEH ee VYESH-bu-tee","Kiek kainuoja iki oro uosto?":"KYEK kye-NWOH-yah I-ki OH-roh WOHS-toh","pirmyn":"pir-MEEN","atgal":"aht-GAHL","išėjimas":"ish-ay-YI-mahs","įėjimas":"ee-ay-YI-mahs","nuoma":"NWOH-mah","dviratis":"DVI-rah-tis",
-"Staliuką dviem, prašau":"stah-LYU-kah DVYEM prah-SHOW","Meniu, prašau":"meh-NYU prah-SHOW","Aš norėčiau":"AHSH noh-RAY-chow","vandens be dujų":"vahn-DENS BEH DU-yoo","vandens su dujomis":"vahn-DENS SU DU-yoh-mis","Aš nevalgau mėsos":"AHSH neh-VAHL-gow may-SOHS","Ką rekomenduojate?":"KAH reh-koh-men-DWOH-yah-teh","pusryčiai":"PUS-ree-chay","pietūs":"PYEH-toos","vakarienė":"vah-kah-RYEH-nay",
-"Ar galima mokėti kortele?":"AHR GAH-li-mah moh-KAY-ti kohr-teh-LEH","grynaisiais":"gree-NYE-syays","arbatpinigiai":"ahr-baht-pi-ni-GYAY","Labai skanu":"lah-BYE skah-NU","Aš alergiškas riešutams":"AHSH ah-LER-gish-kahs ryeh-shu-TAHMS","be cukraus":"BEH TSUK-rows","su pienu":"SU PYEH-nu","šaukštas":"SHOWKSH-tahs","šakutė":"shah-ku-TAY","peilis":"PAY-lis",
+"taksi":"tahk-SI","Sustokite čia, prašau":"sus-TOH-ki-teh CHAH prah-SHOW","Nuvežkite mane į viešbutį":"nu-VEZH-ki-teh mah-NEH ee VYEHSH-bu-tee","Kiek kainuoja iki oro uosto?":"KYEHK kai-NWOH-yah I-ki OH-roh WOHS-toh","pirmyn":"pir-MEEN","atgal":"aht-GAHL","išėjimas":"ish-ay-YI-mahs","įėjimas":"ee-ay-YI-mahs","nuoma":"NWOH-mah","dviratis":"DVI-rah-tis",
+"Staliuką dviem, prašau":"stah-LYU-kah DVYEHM prah-SHOW","Meniu, prašau":"meh-NYU prah-SHOW","Aš norėčiau":"AHSH noh-RAY-chow","vandens be dujų":"vahn-DENS BEH DU-yoo","vandens su dujomis":"vahn-DENS SU DU-yoh-mis","Aš nevalgau mėsos":"AHSH neh-VAHL-gow may-SOHS","Ką rekomenduojate?":"KAH reh-koh-men-DWOH-yah-teh","pusryčiai":"PUS-ree-chai","pietūs":"PYEH-toos","vakarienė":"vah-kah-RYEH-nay",
+"Ar galima mokėti kortele?":"AHR GAH-li-mah moh-KAY-ti kohr-teh-LEH","grynaisiais":"gree-NAI-syais","arbatpinigiai":"ahr-baht-pi-ni-GYAI","Labai skanu":"lah-BAI skah-NU","Aš alergiškas riešutams":"AHSH ah-LER-gish-kahs ryeh-shu-TAHMS","be cukraus":"BEH TSUK-rows","su pienu":"SU PYEH-nu","šaukštas":"SHOWKSH-tahs","šakutė":"shah-ku-TAY","peilis":"PAY-lis",
 "Ar turite?":"AHR TU-ri-teh","Aš imu šitą":"AHSH i-MU SHI-tah","brangu":"brahn-GU","pigu":"pi-GU","per didelis":"PER DI-deh-lis","per mažas":"PER MAH-zhahs","Ar galiu pasimatuoti?":"AHR gah-LYU pah-si-mah-TWOH-ti","kvitas":"KVI-tahs","atidaryta":"ah-ti-dah-REE-tah","uždaryta":"uzh-dah-REE-tah",
-"turgus":"TUR-gus","prekybos centras":"preh-KEE-bohs TSEN-trahs","kepykla":"keh-peek-LAH","suvenyras":"su-veh-NEE-rahs","dovana":"doh-vah-NAH","maišelis":"mye-SHEH-lis","nuolaida":"NWOH-lye-dah","Tik žiūriu":"TIK ZHYOO-ryu","grąža":"GRAH-zhah","Kiek tai kainuoja?":"KYEK TYE kye-NWOH-yah",
-"Aš turiu rezervaciją":"AHSH tu-RYU reh-zer-VAH-tsee-yah","kambarys":"kahm-bah-REES","raktas":"RAHK-tahs","vienai nakčiai":"vyeh-NYE NAHK-chay","dviem naktims":"DVYEM nahk-TIMS","Koks Wi-Fi slaptažodis?":"KOHKS vye-fye slahp-tah-ZHOH-dis","Ar pusryčiai įskaičiuoti?":"AHR PUS-ree-chay ees-kye-CHWOH-ti","Kada reikia išsiregistruoti?":"kah-DAH RAY-kyah ish-si-reh-gis-TRWOH-ti","rankšluostis":"rahnk-SHLWOHS-tis","liftas":"LIF-tahs",
+"turgus":"TUR-gus","prekybos centras":"preh-KEE-bohs TSEN-trahs","kepykla":"keh-peek-LAH","suvenyras":"su-veh-NEE-rahs","dovana":"doh-vah-NAH","maišelis":"mai-SHEH-lis","nuolaida":"NWOH-lai-dah","Tik žiūriu":"TIK ZHYOO-ryu","grąža":"GRAH-zhah","Kiek tai kainuoja?":"KYEHK TAI kai-NWOH-yah",
+"Aš turiu rezervaciją":"AHSH tu-RYU reh-zer-VAH-tsee-yah","kambarys":"kahm-bah-REES","raktas":"RAHK-tahs","vienai nakčiai":"vyeh-NAI NAHK-chai","dviem naktims":"DVYEHM nahk-TIMS","Koks Wi-Fi slaptažodis?":"KOHKS vai-fai slahp-tah-ZHOH-dis","Ar pusryčiai įskaičiuoti?":"AHR PUS-ree-chai ees-kai-CHWOH-ti","Kada reikia išsiregistruoti?":"kah-DAH RAY-kyah ish-si-reh-gis-TRWOH-ti","rankšluostis":"rahnk-SHLWOHS-tis","liftas":"LIF-tahs",
 "dušas":"DU-shahs","lova":"LOH-vah","oro kondicionierius":"OH-roh kon-di-tsyoh-NYEH-ryus","karštas vanduo":"KAHRSH-tahs vahn-DWOH","Neveikia":"neh-VAY-kyah","Ar galite pakeisti kambarį?":"AHR GAH-li-teh pah-KAYS-ti KAHM-bah-ree","registratūra":"reh-gis-trah-TOO-rah","aukštas":"OWKSH-tahs","triukšminga":"tryuksh-MIN-gah","Aš išvykstu rytoj":"AHSH ish-VEEKS-tu ree-TOY",
-"Gelbėkite!":"GEL-bay-ki-teh","policija":"poh-LI-tsee-yah","gydytojas":"GEE-dee-toh-yahs","Man reikia gydytojo":"MAHN RAY-kyah GEE-dee-toh-yoh","Iškvieskite greitąją":"ish-KVYES-ki-teh gray-TAH-yah","Man skauda čia":"MAHN SKOW-dah CHAH","galva":"gahl-VAH","pilvas":"PIL-vahs","vaistai":"VYES-tye","Aš pasiklydau":"AHSH pah-si-klee-DOW",
-"Aš pamečiau pasą":"AHSH pah-MEH-chow PAH-sah","ambasada":"ahm-bah-SAH-dah","Mane apvogė":"mah-NEH ahp-VOH-gay","Palikite mane ramybėje":"pah-LI-ki-teh mah-NEH rah-MEE-bay-yeh","pavojinga":"pah-voh-YIN-gah","saugu":"sow-GU","šimtas dvylika":"SHIM-tahs DVEE-li-kah","draudimas":"drow-DI-mahs","Ar čia yra vaistinė?":"AHR CHAH ee-RAH VYES-ti-nay","Aš gerai":"AHSH geh-RYE"
+"Gelbėkite!":"GEL-bay-ki-teh","policija":"poh-LI-tsee-yah","gydytojas":"GEE-dee-toh-yahs","Man reikia gydytojo":"MAHN RAY-kyah GEE-dee-toh-yoh","Iškvieskite greitąją":"ish-KVYEHS-ki-teh gray-TAH-yah","Man skauda čia":"MAHN SKOW-dah CHAH","galva":"gahl-VAH","pilvas":"PIL-vahs","vaistai":"VAIS-tai","Aš pasiklydau":"AHSH pah-si-klee-DOW",
+"Aš pamečiau pasą":"AHSH pah-MEH-chow PAH-sah","ambasada":"ahm-bah-SAH-dah","Mane apvogė":"mah-NEH ahp-VOH-gay","Palikite mane ramybėje":"pah-LI-ki-teh mah-NEH rah-MEE-bay-yeh","pavojinga":"pah-voh-YIN-gah","saugu":"sow-GU","šimtas dvylika":"SHIM-tahs DVEE-li-kah","draudimas":"drow-DI-mahs","Ar čia yra vaistinė?":"AHR CHAH ee-RAH VAIS-ti-nay","Aš gerai":"AHSH geh-RAI",
+"pica":"PI-tsah","jogurtas":"YOH-gur-tahs","šokoladas":"shoh-koh-LAH-dahs","žirafa":"zhi-RAH-fah","čempionas":"chem-PYOH-nahs","šampūnas":"shahm-POO-nahs","kavinė":"kah-VI-nay","muziejus":"mu-ZYEH-yus","radijas":"RAH-di-yahs","telefonas":"teh-leh-FOH-nahs",
+"Gerai, ačiū":"geh-RAI AH-choo","O tau?":"OH TOW","Neblogai":"neh-bloh-GAI","Taip sau":"TAIP SOW","Man irgi gerai":"MAHN IR-gi geh-RAI","Aš irgi":"AHSH IR-gi","Ką veiki?":"KAH vay-KI","Nieko ypatingo":"NYEH-koh ee-pah-TIN-goh","Labai malonu":"lah-BAI mah-loh-NU","Ir tau":"IR TOW",
+"Aš truputį kalbu lietuviškai":"AHSH TRU-pu-tee kahl-BU lyeh-TU-vish-kai","Kaip tai pasakyti lietuviškai?":"KAIP TAI pah-sah-KEE-ti lyeh-TU-vish-kai","Ką reiškia šis žodis?":"KAH RAYSH-kyah SHIS ZHOH-dis","Aš nelabai suprantu":"AHSH neh-lah-BAI su-prahn-TU","Ar gali pakartoti?":"AHR gah-LI pah-kahr-TOH-ti","Palauk":"pah-LOWK","Teisingai":"tay-SIN-gai","Aš mokausi":"AHSH moh-KOW-si","Dar kartą":"DAHR KAHR-tah","Supratau":"su-prah-TOW",
+"Iš kur tu esi?":"ISH KUR TOO eh-SI","Aš esu iš Lietuvos":"AHSH eh-SU ish lyeh-tu-VOHS","Aš esu iš Anglijos":"AHSH eh-SU ish AHN-gli-yohs","Aš esu iš Kanados":"AHSH eh-SU ish kah-NAH-dohs","Kur tu gyveni?":"KUR TOO gee-veh-NI","Aš gyvenu Vilniuje":"AHSH gee-veh-NU VIL-nyu-yeh","O tu?":"OH TOO","Aš gyvenu Londone":"AHSH gee-veh-NU lon-DOH-neh","Ar tu lietuvis?":"AHR TOO lyeh-TU-vis","Ne, aš amerikietis":"NEH AHSH ah-meh-ri-KYEH-tis",
+"Kuo tu dirbi?":"KWOH TOO DIR-bi","Aš esu mokytojas":"AHSH eh-SU MOH-kee-toh-yahs","Aš esu studentas":"AHSH eh-SU stu-DEN-tahs","Aš dirbu biure":"AHSH DIR-bu byu-REH","Aš dirbu iš namų":"AHSH DIR-bu ish nah-MOO","Aš esu pensininkas":"AHSH eh-SU PEN-si-nin-kahs","Ar tau patinka tavo darbas?":"AHR TOW pah-TIN-kah TAH-voh DAHR-bahs","Mano darbas įdomus":"MAH-noh DAHR-bahs ee-doh-MUS","Aš studijuoju":"AHSH stu-di-YWOH-yu","darbas":"DAHR-bahs",
+"Man nepatinka":"MAHN neh-pah-TIN-kah","Man labai patinka":"MAHN lah-BAI pah-TIN-kah","Ar tau patinka?":"AHR TOW pah-TIN-kah","Man patinka muzika":"MAHN pah-TIN-kah MU-zi-kah","Man patinka Lietuva":"MAHN pah-TIN-kah lyeh-tu-VAH","muzika":"MU-zi-kah","futbolas":"FUT-boh-lahs","filmai":"FIL-mai","knygos":"KNEE-gohs","kelionės":"keh-LYOH-nays",
+"Ką tu mėgsti veikti?":"KAH TOO MAYGS-ti VAYK-ti","Aš mėgstu skaityti":"AHSH MAYGS-tu skai-TEE-ti","Aš mėgstu keliauti":"AHSH MAYGS-tu keh-LYOW-ti","Aš mėgstu gaminti":"AHSH MAYGS-tu gah-MIN-ti","Aš mėgstu sportuoti":"AHSH MAYGS-tu spor-TWOH-ti","Aš žaidžiu krepšinį":"AHSH zhai-DZHYU krep-SHI-nee","Aš klausausi muzikos":"AHSH klow-SOW-si MU-zi-kohs","savaitgalis":"sah-VAIT-gah-lis","laisvalaikis":"LAIS-vah-lai-kis","Ką veiki savaitgalį?":"KAH vay-KI sah-VAIT-gah-lee",
+"Ar nori eiti kartu?":"AHR NOH-ri AY-ti kahr-TU","Taip, noriu":"TAIP NOH-ryu","Gal rytoj?":"GAHL ree-TOY","Šiandien negaliu":"SHAN-dyehn neh-gah-LYU","Neturiu laiko":"neh-tu-RYU LAI-koh","Kur susitiksime?":"KUR su-si-TIK-si-meh","Prie kavinės":"PRYEH kah-VI-nays","Puiki idėja!":"pwi-KI i-DAY-yah","Sutarta!":"su-tahr-TAH","Iki rytojaus!":"I-ki ree-TOH-yows",
+"Kelintą valandą?":"KEH-lin-tah VAH-lahn-dah","Septintą valandą":"sep-TIN-tah VAH-lahn-dah","Aštuntą valandą":"ahsh-TUN-tah VAH-lahn-dah","Dvyliktą valandą":"DVEE-lik-tah VAH-lahn-dah","ryte":"ree-TEH","vakare":"vah-kah-REH","po pietų":"POH pyeh-TOO","vėlai":"vay-LAI","anksti":"ahnks-TI","Aš vėluoju":"AHSH vay-LWOH-yu",
+"Ar turi brolių ar seserų?":"AHR TU-ri BROH-lyoo AHR SEH-seh-roo","Aš turiu brolį":"AHSH tu-RYU BROH-lee","Ne, neturiu":"NEH neh-tu-RYU","Ar turi vaikų?":"AHR TU-ri vai-KOO","Aš turiu du vaikus":"AHSH tu-RYU DOO VAI-kus","Aš turiu dukrą":"AHSH tu-RYU DUK-rah","Koks jo vardas?":"KOHKS YOH VAHR-dahs","Koks jos vardas?":"KOHKS YOHS VAHR-dahs","Mano mama gyvena Kaune":"MAH-noh mah-MAH gee-VEH-nah KOW-neh","Jie labai mieli":"YEH lah-BAI myeh-LI",
+"sriubą":"SRYU-bah","kortele":"kohr-teh-LEH","Ar turite obuolių?":"AHR TU-ri-teh oh-BWOH-lyoo","Aš imu":"AHSH i-MU","Gal septintą valandą?":"GAHL sep-TIN-tah VAH-lahn-dah","Aš mėgstu keliauti ir skaityti":"AHSH MAYGS-tu keh-LYOW-ti IR skai-TEE-ti","Puiku":"pwi-KU","Dušas neveikia":"DU-shahs neh-VAY-kyah","Man skauda galvą":"MAHN SKOW-dah GAHL-vah","Čia tau dovana":"CHAH TOW doh-vah-NAH","labai":"lah-BAI","Vilnius labai gražus":"VIL-nyus lah-BAI grah-ZHUS","Rytoj aš važiuoju į Kauną":"ree-TOY AHSH vah-ZHYWOH-yu ee KOW-nah","Aš norėčiau kavos":"AHSH noh-RAY-chow kah-VOHS"
 };
 
 /* Audio sprite map: voice -> unit -> item id -> [start, duration] seconds */
-const SMAP={"ona":{"u1":{"u1a-1:0":[0.0,2.04],"u1a-1:1":[2.39,2.52],"u1a-1:2":[5.26,2.424],"u1a-1:3":[8.034,2.112],"u1a-1:4":[10.496,2.328],"u1a-2:0":[13.174,2.088],"u1a-2:1":[15.612,2.16],"u1a-2:2":[18.122,2.256],"u1a-2:3":[20.728,2.136],"u1a-2:4":[23.214,1.872],"u1b-1:0":[25.436,1.992],"u1b-1:1":[27.778,2.064],"u1b-1:2":[30.192,2.064],"u1b-1:3":[32.606,2.04],"u1b-1:4":[34.996,2.184],"u1b-2:0":[37.53,1.92],"u1b-2:1":[39.8,2.136],"u1b-2:2":[42.286,2.592],"u1b-2:3":[45.228,2.4],"u1b-2:4":[47.978,2.208],"u1c-1:0":[50.536,1.872],"u1c-1:1":[52.758,1.872],"u1c-1:2":[54.98,2.088],"u1c-1:3":[57.418,1.992],"u1c-1:4":[59.76,2.064],"u1c-2:0":[62.174,1.944],"u1c-2:1":[64.468,2.016],"u1c-2:2":[66.834,2.112],"u1c-2:3":[69.296,2.496],"u1c-2:4":[72.142,2.424],"u1c-3:0":[74.916,2.736]},"u2":{"u2a-1:0":[0.0,1.968],"u2a-1:1":[2.318,2.016],"u2a-1:2":[4.684,1.944],"u2a-1:3":[6.978,1.8],"u2a-1:4":[9.128,1.992],"u2a-2:0":[11.47,2.352],"u2a-2:1":[14.172,1.992],"u2a-2:2":[16.514,1.896],"u2a-2:3":[18.76,2.52],"u2a-2:4":[21.63,2.088],"u2b-1:0":[24.068,2.04],"u2b-1:1":[26.458,2.136],"u2b-1:2":[28.944,2.064],"u2b-1:3":[31.358,1.872],"u2b-1:4":[33.58,2.088],"u2b-2:0":[36.018,1.992],"u2b-2:1":[38.36,2.04],"u2b-2:2":[40.75,2.064],"u2b-2:3":[43.164,2.04],"u2b-2:4":[45.554,1.944],"u2c-1:0":[47.848,1.872],"u2c-1:1":[50.07,2.232],"u2c-1:2":[52.652,2.544],"u2c-1:3":[55.546,2.136],"u2c-1:4":[58.032,2.448],"u2c-2:0":[60.83,2.568],"u2c-2:1":[63.748,2.232],"u2c-2:2":[66.33,1.872],"u2c-2:3":[68.552,2.04],"u2c-2:4":[70.942,2.016]},"u3":{"u3a-1:0":[0.0,2.064],"u3a-1:1":[2.414,1.872],"u3a-1:2":[4.636,1.992],"u3a-1:3":[6.978,2.064],"u3a-1:4":[9.392,2.112],"u3a-2:0":[11.854,2.112],"u3a-2:1":[14.316,1.92],"u3a-2:2":[16.586,1.92],"u3a-2:3":[18.856,1.896],"u3a-2:4":[21.102,2.184],"u3b-1:0":[23.636,2.064],"u3b-1:1":[26.05,2.184],"u3b-1:2":[28.584,2.232],"u3b-1:3":[31.166,1.992],"u3b-1:4":[33.508,1.944],"u3b-2:0":[35.802,1.896],"u3b-2:1":[38.048,2.04],"u3b-2:2":[40.438,2.016],"u3b-2:3":[42.804,1.896],"u3b-2:4":[45.05,1.992],"u3c-1:0":[47.392,2.328],"u3c-1:1":[50.07,2.424],"u3c-1:2":[52.844,2.28],"u3c-1:3":[55.474,1.92],"u3c-1:4":[57.744,2.424],"u3c-2:0":[60.518,2.4],"u3c-2:1":[63.268,1.992],"u3c-2:2":[65.61,2.304],"u3c-2:3":[68.264,1.896],"u3c-2:4":[70.51,2.184]},"u4":{"u4a-1:0":[0.0,2.112],"u4a-1:1":[2.462,2.28],"u4a-1:2":[5.092,2.424],"u4a-1:3":[7.866,1.872],"u4a-1:4":[10.088,2.064],"u4a-2:0":[12.502,1.896],"u4a-2:1":[14.748,2.016],"u4a-2:2":[17.114,1.944],"u4a-2:3":[19.408,1.872],"u4a-2:4":[21.63,2.016],"u4b-1:0":[23.996,1.992],"u4b-1:1":[26.338,2.064],"u4b-1:2":[28.752,2.064],"u4b-1:3":[31.166,1.92],"u4b-1:4":[33.436,1.872],"u4b-2:0":[35.658,2.04],"u4b-2:1":[38.048,1.968],"u4b-2:2":[40.366,2.136],"u4b-2:3":[42.852,2.232],"u4b-2:4":[45.434,2.4]},"u5":{"u5a-1:0":[0.0,2.04],"u5a-1:1":[2.39,1.968],"u5a-1:2":[4.708,1.896],"u5a-1:3":[6.954,2.088],"u5a-1:4":[9.392,1.968],"u5a-2:0":[11.71,2.016],"u5a-2:1":[14.076,2.016],"u5a-2:2":[16.442,1.872],"u5a-2:3":[18.664,1.944],"u5a-2:4":[20.958,2.016],"u5b-1:0":[23.324,1.944],"u5b-1:1":[25.618,1.992],"u5b-1:2":[27.96,2.04],"u5b-1:3":[30.35,2.232],"u5b-1:4":[32.932,2.064],"u5b-2:0":[35.346,2.016],"u5b-2:1":[37.712,2.016],"u5b-2:2":[40.078,2.424],"u5b-2:3":[42.852,2.304],"u5b-2:4":[45.506,2.352]},"u6":{"u6a-1:0":[0.0,1.944],"u6a-1:1":[2.294,1.872],"u6a-1:2":[4.516,1.872],"u6a-1:3":[6.738,1.872],"u6a-1:4":[8.96,1.872],"u6a-2:0":[11.182,1.872],"u6a-2:1":[13.404,2.064],"u6a-2:2":[15.818,2.184],"u6a-2:3":[18.352,1.872],"u6a-2:4":[20.574,1.896],"u6b-1:0":[22.82,1.944],"u6b-1:1":[25.114,2.112],"u6b-1:2":[27.576,2.184],"u6b-1:3":[30.11,2.064],"u6b-1:4":[32.524,1.992],"u6b-2:0":[34.866,1.872],"u6b-2:1":[37.088,2.136],"u6b-2:2":[39.574,1.944],"u6b-2:3":[41.868,2.256],"u6b-2:4":[44.474,1.992]},"u7":{"u7a-1:0":[0.0,2.184],"u7a-1:1":[2.534,2.112],"u7a-1:2":[4.996,2.088],"u7a-1:3":[7.434,2.256],"u7a-1:4":[10.04,2.112],"u7a-2:0":[12.502,2.208],"u7a-2:1":[15.06,2.256],"u7a-2:2":[17.666,1.968],"u7a-2:3":[19.984,2.376],"u7a-2:4":[22.71,2.016],"u7b-1:0":[25.076,1.896],"u7b-1:1":[27.322,2.232],"u7b-1:2":[29.904,1.944],"u7b-1:3":[32.198,2.016],"u7b-1:4":[34.564,1.992],"u7b-2:0":[36.906,1.944],"u7b-2:1":[39.2,1.944],"u7b-2:2":[41.494,1.992],"u7b-2:3":[43.836,2.064],"u7b-2:4":[46.25,2.112],"u7c-1:0":[48.712,2.04],"u7c-1:1":[51.102,2.016],"u7c-1:2":[53.468,2.52],"u7c-1:3":[56.338,1.944],"u7c-1:4":[58.632,2.016],"u7c-2:0":[60.998,2.088],"u7c-2:1":[63.436,2.016],"u7c-2:2":[65.802,2.04],"u7c-2:3":[68.192,1.872],"u7c-2:4":[70.414,1.968]},"u8":{"u8a-1:0":[0.0,2.112],"u8a-1:1":[2.462,2.328],"u8a-1:2":[5.14,2.04],"u8a-1:3":[7.53,2.088],"u8a-1:4":[9.968,1.944],"u8a-2:0":[12.262,2.4],"u8a-2:1":[15.012,2.232],"u8a-2:2":[17.594,1.92],"u8a-2:3":[19.864,1.92],"u8a-2:4":[22.134,1.968],"u8b-1:0":[24.452,2.112],"u8b-1:1":[26.914,2.496],"u8b-1:2":[29.76,2.52],"u8b-1:3":[32.63,2.064],"u8b-1:4":[35.044,1.992],"u8b-2:0":[37.386,1.944],"u8b-2:1":[39.68,1.992],"u8b-2:2":[42.022,2.088],"u8b-2:3":[44.46,1.92],"u8b-2:4":[46.73,2.088],"u8c-1:0":[49.168,2.52],"u8c-1:1":[52.038,2.64],"u8c-1:2":[55.028,2.232],"u8c-1:3":[57.61,2.088],"u8c-1:4":[60.048,2.592],"u8c-2:0":[62.99,3.024],"u8c-2:1":[66.364,2.064],"u8c-2:2":[68.778,1.968],"u8c-2:3":[71.096,2.424],"u8c-2:4":[73.87,1.992]},"u9":{"u9a-1:0":[0.0,2.088],"u9a-1:1":[2.438,1.872],"u9a-1:2":[4.66,2.112],"u9a-1:3":[7.122,2.016],"u9a-1:4":[9.488,2.064],"u9a-2:0":[11.902,1.944],"u9a-2:1":[14.196,2.256],"u9a-2:2":[16.802,1.968],"u9a-2:3":[19.12,2.064],"u9a-2:4":[21.534,2.016],"u9b-1:0":[23.9,2.664],"u9b-1:1":[26.914,1.872],"u9b-1:2":[29.136,2.04],"u9b-1:3":[31.526,1.92],"u9b-1:4":[33.796,2.112],"u9b-2:0":[36.258,1.872],"u9b-2:1":[38.48,1.872],"u9b-2:2":[40.702,1.92],"u9b-2:3":[42.972,2.064],"u9b-2:4":[45.386,1.872]},"u10":{"u10a-1:0":[0.0,2.016],"u10a-1:1":[2.366,1.992],"u10a-1:2":[4.708,1.992],"u10a-1:3":[7.05,2.088],"u10a-1:4":[9.488,2.304],"u10a-2:0":[12.142,2.184],"u10a-2:1":[14.676,1.872],"u10a-2:2":[16.898,1.896],"u10a-2:3":[19.144,2.04],"u10a-2:4":[21.534,2.184],"u10b-1:0":[24.068,1.992],"u10b-1:1":[26.41,1.872],"u10b-1:2":[28.632,1.872],"u10b-1:3":[30.854,2.016],"u10b-1:4":[33.22,1.944],"u10b-2:0":[35.514,2.304],"u10b-2:1":[38.168,2.016],"u10b-2:2":[40.534,2.112],"u10b-2:3":[42.996,2.136],"u10b-2:4":[45.482,1.968]},"u11":{"u11a-1:0":[0.0,1.992],"u11a-1:1":[2.342,1.896],"u11a-1:2":[4.588,2.064],"u11a-1:3":[7.002,1.872],"u11a-1:4":[9.224,2.328],"u11a-2:0":[11.902,2.304],"u11a-2:1":[14.556,1.92],"u11a-2:2":[16.826,1.992],"u11a-2:3":[19.168,2.352],"u11a-2:4":[21.87,1.968],"u11b-1:0":[24.188,2.064],"u11b-1:1":[26.602,2.04],"u11b-1:2":[28.992,1.92],"u11b-1:3":[31.262,2.112],"u11b-1:4":[33.724,2.136],"u11b-2:0":[36.21,2.16],"u11b-2:1":[38.72,2.088],"u11b-2:2":[41.158,2.136],"u11b-2:3":[43.644,2.328],"u11b-2:4":[46.322,2.424]},"u12":{"u12a-1:0":[0.0,2.064],"u12a-1:1":[2.414,1.944],"u12a-1:2":[4.708,2.28],"u12a-1:3":[7.338,2.016],"u12a-1:4":[9.704,1.92],"u12a-2:0":[11.974,1.872],"u12a-2:1":[14.196,2.064],"u12a-2:2":[16.61,2.208],"u12a-2:3":[19.168,2.256],"u12a-2:4":[21.774,3.144],"u12b-1:0":[25.268,2.424],"u12b-1:1":[28.042,2.4],"u12b-1:2":[30.792,2.784],"u12b-1:3":[33.926,2.52],"u12b-1:4":[36.796,2.352],"u12b-2:0":[39.498,2.568],"u12b-2:1":[42.416,2.328],"u12b-2:2":[45.094,1.968],"u12b-2:3":[47.412,2.184],"u12b-2:4":[49.946,2.664]},"u13":{"u13a-1:0":[0.0,1.872],"u13a-1:1":[2.222,1.896],"u13a-1:2":[4.468,1.872],"u13a-1:3":[6.69,1.872],"u13a-1:4":[8.912,1.968],"u13a-2:0":[11.23,1.944],"u13a-2:1":[13.524,2.64],"u13a-2:2":[16.514,2.568],"u13a-2:3":[19.432,2.304],"u13a-2:4":[22.086,2.136],"u13b-1:0":[24.572,2.112],"u13b-1:1":[27.034,2.88],"u13b-1:2":[30.264,1.968],"u13b-1:3":[32.582,1.968],"u13b-1:4":[34.9,2.208],"u13b-2:0":[37.458,2.04],"u13b-2:1":[39.848,2.136],"u13b-2:2":[42.334,1.92],"u13b-2:3":[44.604,2.664],"u13b-2:4":[47.618,1.872]},"u14":{"u14a-1:0":[0.0,2.856],"u14a-1:1":[3.206,2.376],"u14a-1:2":[5.932,2.232],"u14a-1:3":[8.514,2.592],"u14a-1:4":[11.456,3.648],"u14a-2:0":[15.454,2.424],"u14a-2:1":[18.228,2.592],"u14a-2:2":[21.17,1.968],"u14a-2:3":[23.488,2.016],"u14a-2:4":[25.854,2.088],"u14b-1:0":[28.292,1.992],"u14b-1:1":[30.634,2.832],"u14b-1:2":[33.816,2.952],"u14b-1:3":[37.118,3.336],"u14b-1:4":[40.804,1.872],"u14b-2:0":[43.026,2.112],"u14b-2:1":[45.488,2.328],"u14b-2:2":[48.166,2.28],"u14b-2:3":[50.796,1.92],"u14b-2:4":[53.066,2.184]},"u15":{"u15a-1:0":[0.0,2.712],"u15a-1:1":[3.062,2.184],"u15a-1:2":[5.596,2.016],"u15a-1:3":[7.962,2.376],"u15a-1:4":[10.688,2.52],"u15a-2:0":[13.558,2.496],"u15a-2:1":[16.404,2.448],"u15a-2:2":[19.202,2.064],"u15a-2:3":[21.616,2.112],"u15a-2:4":[24.078,2.064],"u15b-1:0":[26.492,2.856],"u15b-1:1":[29.698,2.136],"u15b-1:2":[32.184,2.208],"u15b-1:3":[34.742,2.16],"u15b-1:4":[37.252,2.952],"u15b-2:0":[40.554,2.136],"u15b-2:1":[43.04,2.256],"u15b-2:2":[45.646,1.944],"u15b-2:3":[47.94,1.992],"u15b-2:4":[50.282,1.872]},"u16":{"u16a-1:0":[0.0,2.088],"u16a-1:1":[2.438,2.184],"u16a-1:2":[4.972,1.872],"u16a-1:3":[7.194,2.16],"u16a-1:4":[9.704,2.016],"u16a-2:0":[12.07,2.04],"u16a-2:1":[14.46,2.616],"u16a-2:2":[17.426,1.872],"u16a-2:3":[19.648,2.136],"u16a-2:4":[22.134,2.208],"u16b-1:0":[24.692,1.944],"u16b-1:1":[26.986,2.448],"u16b-1:2":[29.784,1.968],"u16b-1:3":[32.102,2.184],"u16b-1:4":[34.636,1.992],"u16b-2:0":[36.978,1.944],"u16b-2:1":[39.272,1.968],"u16b-2:2":[41.59,2.352],"u16b-2:3":[44.292,1.992],"u16b-2:4":[46.634,2.328]},"u17":{"u17a-1:0":[0.0,2.688],"u17a-1:1":[3.038,2.016],"u17a-1:2":[5.404,2.04],"u17a-1:3":[7.794,2.136],"u17a-1:4":[10.28,2.304],"u17a-2:0":[12.934,2.976],"u17a-2:1":[16.26,3.0],"u17a-2:2":[19.61,3.0],"u17a-2:3":[22.96,2.304],"u17a-2:4":[25.614,2.04],"u17b-1:0":[28.004,2.088],"u17b-1:1":[30.442,2.064],"u17b-1:2":[32.856,2.616],"u17b-1:3":[35.822,2.232],"u17b-1:4":[38.404,2.184],"u17b-2:0":[40.938,2.976],"u17b-2:1":[44.264,2.256],"u17b-2:2":[46.87,1.872],"u17b-2:3":[49.092,2.04],"u17b-2:4":[51.482,2.712]},"u18":{"u18a-1:0":[0.0,2.04],"u18a-1:1":[2.39,2.064],"u18a-1:2":[4.804,2.712],"u18a-1:3":[7.866,2.736],"u18a-1:4":[10.952,2.64],"u18a-2:0":[13.942,2.376],"u18a-2:1":[16.668,2.184],"u18a-2:2":[19.202,1.872],"u18a-2:3":[21.424,1.944],"u18a-2:4":[23.718,2.184],"u18b-1:0":[26.252,2.304],"u18b-1:1":[28.906,2.064],"u18b-1:2":[31.32,2.28],"u18b-1:3":[33.95,2.616],"u18b-1:4":[36.916,1.992],"u18b-2:0":[39.258,2.04],"u18b-2:1":[41.648,2.448],"u18b-2:2":[44.446,2.016],"u18b-2:3":[46.812,2.736],"u18b-2:4":[49.898,1.92]}},"leonas":{"u1":{"u1a-1:0":[0.0,1.92],"u1a-1:1":[2.27,2.064],"u1a-1:2":[4.684,2.232],"u1a-1:3":[7.266,2.064],"u1a-1:4":[9.68,2.184],"u1a-2:0":[12.214,2.088],"u1a-2:1":[14.652,2.28],"u1a-2:2":[17.282,1.872],"u1a-2:3":[19.504,2.064],"u1a-2:4":[21.918,1.872],"u1b-1:0":[24.14,1.896],"u1b-1:1":[26.386,1.968],"u1b-1:2":[28.704,2.088],"u1b-1:3":[31.142,1.872],"u1b-1:4":[33.364,2.112],"u1b-2:0":[35.826,1.872],"u1b-2:1":[38.048,2.112],"u1b-2:2":[40.51,2.592],"u1b-2:3":[43.452,2.232],"u1b-2:4":[46.034,1.92],"u1c-1:0":[48.304,1.872],"u1c-1:1":[50.526,1.872],"u1c-1:2":[52.748,1.968],"u1c-1:3":[55.066,1.896],"u1c-1:4":[57.312,1.776],"u1c-2:0":[59.438,1.872],"u1c-2:1":[61.66,2.208],"u1c-2:2":[64.218,1.968],"u1c-2:3":[66.536,2.424],"u1c-2:4":[69.31,2.376],"u1c-3:0":[72.036,2.64]},"u2":{"u2a-1:0":[0.0,2.04],"u2a-1:1":[2.39,1.872],"u2a-1:2":[4.612,1.872],"u2a-1:3":[6.834,1.992],"u2a-1:4":[9.176,1.92],"u2a-2:0":[11.446,1.896],"u2a-2:1":[13.692,1.968],"u2a-2:2":[16.01,2.064],"u2a-2:3":[18.424,2.304],"u2a-2:4":[21.078,2.016],"u2b-1:0":[23.444,2.064],"u2b-1:1":[25.858,1.992],"u2b-1:2":[28.2,1.968],"u2b-1:3":[30.518,1.872],"u2b-1:4":[32.74,2.088],"u2b-2:0":[35.178,2.04],"u2b-2:1":[37.568,2.064],"u2b-2:2":[39.982,2.112],"u2b-2:3":[42.444,2.04],"u2b-2:4":[44.834,2.04],"u2c-1:0":[47.224,1.872],"u2c-1:1":[49.446,2.088],"u2c-1:2":[51.884,2.352],"u2c-1:3":[54.586,2.16],"u2c-1:4":[57.096,2.232],"u2c-2:0":[59.678,2.28],"u2c-2:1":[62.308,2.208],"u2c-2:2":[64.866,1.872],"u2c-2:3":[67.088,2.016],"u2c-2:4":[69.454,1.968]},"u3":{"u3a-1:0":[0.0,1.944],"u3a-1:1":[2.294,1.896],"u3a-1:2":[4.54,1.944],"u3a-1:3":[6.834,1.872],"u3a-1:4":[9.056,2.088],"u3a-2:0":[11.494,2.232],"u3a-2:1":[14.076,2.04],"u3a-2:2":[16.466,2.088],"u3a-2:3":[18.904,2.016],"u3a-2:4":[21.27,2.04],"u3b-1:0":[23.66,1.968],"u3b-1:1":[25.978,2.064],"u3b-1:2":[28.392,2.088],"u3b-1:3":[30.83,2.136],"u3b-1:4":[33.316,1.992],"u3b-2:0":[35.658,1.968],"u3b-2:1":[37.976,1.872],"u3b-2:2":[40.198,2.136],"u3b-2:3":[42.684,1.968],"u3b-2:4":[45.002,1.896],"u3c-1:0":[47.248,2.208],"u3c-1:1":[49.806,2.4],"u3c-1:2":[52.556,2.52],"u3c-1:3":[55.426,1.944],"u3c-1:4":[57.72,2.472],"u3c-2:0":[60.542,2.328],"u3c-2:1":[63.22,1.944],"u3c-2:2":[65.514,2.136],"u3c-2:3":[68.0,1.872],"u3c-2:4":[70.222,2.136]},"u4":{"u4a-1:0":[0.0,1.896],"u4a-1:1":[2.246,1.992],"u4a-1:2":[4.588,1.968],"u4a-1:3":[6.906,1.944],"u4a-1:4":[9.2,2.064],"u4a-2:0":[11.614,1.92],"u4a-2:1":[13.884,1.872],"u4a-2:2":[16.106,1.92],"u4a-2:3":[18.376,1.896],"u4a-2:4":[20.622,2.04],"u4b-1:0":[23.012,2.064],"u4b-1:1":[25.426,1.872],"u4b-1:2":[27.648,1.872],"u4b-1:3":[29.87,1.896],"u4b-1:4":[32.116,1.872],"u4b-2:0":[34.338,1.968],"u4b-2:1":[36.656,1.992],"u4b-2:2":[38.998,1.944],"u4b-2:3":[41.292,2.232],"u4b-2:4":[43.874,2.52]},"u5":{"u5a-1:0":[0.0,2.064],"u5a-1:1":[2.414,1.92],"u5a-1:2":[4.684,1.968],"u5a-1:3":[7.002,2.04],"u5a-1:4":[9.392,1.872],"u5a-2:0":[11.614,1.896],"u5a-2:1":[13.86,1.992],"u5a-2:2":[16.202,1.872],"u5a-2:3":[18.424,2.088],"u5a-2:4":[20.862,2.208],"u5b-1:0":[23.42,2.04],"u5b-1:1":[25.81,1.896],"u5b-1:2":[28.056,2.04],"u5b-1:3":[30.446,2.112],"u5b-1:4":[32.908,2.064],"u5b-2:0":[35.322,1.92],"u5b-2:1":[37.592,1.872],"u5b-2:2":[39.814,2.256],"u5b-2:3":[42.42,2.328],"u5b-2:4":[45.098,2.208]},"u6":{"u6a-1:0":[0.0,1.872],"u6a-1:1":[2.222,1.896],"u6a-1:2":[4.468,1.944],"u6a-1:3":[6.762,1.944],"u6a-1:4":[9.056,1.896],"u6a-2:0":[11.302,1.944],"u6a-2:1":[13.596,2.184],"u6a-2:2":[16.13,1.896],"u6a-2:3":[18.376,1.944],"u6a-2:4":[20.67,2.04],"u6b-1:0":[23.06,1.944],"u6b-1:1":[25.354,2.016],"u6b-1:2":[27.72,1.872],"u6b-1:3":[29.942,2.04],"u6b-1:4":[32.332,1.944],"u6b-2:0":[34.626,2.04],"u6b-2:1":[37.016,2.04],"u6b-2:2":[39.406,2.016],"u6b-2:3":[41.772,2.28],"u6b-2:4":[44.402,1.992]},"u7":{"u7a-1:0":[0.0,1.992],"u7a-1:1":[2.342,2.088],"u7a-1:2":[4.78,2.136],"u7a-1:3":[7.266,2.184],"u7a-1:4":[9.8,2.016],"u7a-2:0":[12.166,2.136],"u7a-2:1":[14.652,2.064],"u7a-2:2":[17.066,1.944],"u7a-2:3":[19.36,2.04],"u7a-2:4":[21.75,1.944],"u7b-1:0":[24.044,1.92],"u7b-1:1":[26.314,2.088],"u7b-1:2":[28.752,1.968],"u7b-1:3":[31.07,1.92],"u7b-1:4":[33.34,2.016],"u7b-2:0":[35.706,1.968],"u7b-2:1":[38.024,1.872],"u7b-2:2":[40.246,1.896],"u7b-2:3":[42.492,2.112],"u7b-2:4":[44.954,2.016],"u7c-1:0":[47.32,1.968],"u7c-1:1":[49.638,2.16],"u7c-1:2":[52.148,1.92],"u7c-1:3":[54.418,2.112],"u7c-1:4":[56.88,2.064],"u7c-2:0":[59.294,2.04],"u7c-2:1":[61.684,1.944],"u7c-2:2":[63.978,2.04],"u7c-2:3":[66.368,1.968],"u7c-2:4":[68.686,2.088]},"u8":{"u8a-1:0":[0.0,2.016],"u8a-1:1":[2.366,2.136],"u8a-1:2":[4.852,2.04],"u8a-1:3":[7.242,1.992],"u8a-1:4":[9.584,2.016],"u8a-2:0":[11.95,2.112],"u8a-2:1":[14.412,2.112],"u8a-2:2":[16.874,2.064],"u8a-2:3":[19.288,1.944],"u8a-2:4":[21.582,2.136],"u8b-1:0":[24.068,2.208],"u8b-1:1":[26.626,2.232],"u8b-1:2":[29.208,2.208],"u8b-1:3":[31.766,2.112],"u8b-1:4":[34.228,2.04],"u8b-2:0":[36.618,1.92],"u8b-2:1":[38.888,2.04],"u8b-2:2":[41.278,2.208],"u8b-2:3":[43.836,1.896],"u8b-2:4":[46.082,1.992],"u8c-1:0":[48.424,2.448],"u8c-1:1":[51.222,2.592],"u8c-1:2":[54.164,2.184],"u8c-1:3":[56.698,2.064],"u8c-1:4":[59.112,2.496],"u8c-2:0":[61.958,2.856],"u8c-2:1":[65.164,2.232],"u8c-2:2":[67.746,1.896],"u8c-2:3":[69.992,2.448],"u8c-2:4":[72.79,2.04]},"u9":{"u9a-1:0":[0.0,1.944],"u9a-1:1":[2.294,1.872],"u9a-1:2":[4.516,1.944],"u9a-1:3":[6.81,2.04],"u9a-1:4":[9.2,1.944],"u9a-2:0":[11.494,1.872],"u9a-2:1":[13.716,2.088],"u9a-2:2":[16.154,2.088],"u9a-2:3":[18.592,2.088],"u9a-2:4":[21.03,1.944],"u9b-1:0":[23.324,2.4],"u9b-1:1":[26.074,1.872],"u9b-1:2":[28.296,1.992],"u9b-1:3":[30.638,1.896],"u9b-1:4":[32.884,2.064],"u9b-2:0":[35.298,1.872],"u9b-2:1":[37.52,1.968],"u9b-2:2":[39.838,2.136],"u9b-2:3":[42.324,2.088],"u9b-2:4":[44.762,1.92]},"u10":{"u10a-1:0":[0.0,1.992],"u10a-1:1":[2.342,1.968],"u10a-1:2":[4.66,2.088],"u10a-1:3":[7.098,2.184],"u10a-1:4":[9.632,2.184],"u10a-2:0":[12.166,2.136],"u10a-2:1":[14.652,1.944],"u10a-2:2":[16.946,1.872],"u10a-2:3":[19.168,2.04],"u10a-2:4":[21.558,2.088],"u10b-1:0":[23.996,1.872],"u10b-1:1":[26.218,2.112],"u10b-1:2":[28.68,1.872],"u10b-1:3":[30.902,1.968],"u10b-1:4":[33.22,2.088],"u10b-2:0":[35.658,2.448],"u10b-2:1":[38.456,2.016],"u10b-2:2":[40.822,2.136],"u10b-2:3":[43.308,1.872],"u10b-2:4":[45.53,1.944]},"u11":{"u11a-1:0":[0.0,1.872],"u11a-1:1":[2.222,1.992],"u11a-1:2":[4.564,1.992],"u11a-1:3":[6.906,1.872],"u11a-1:4":[9.128,2.328],"u11a-2:0":[11.806,2.016],"u11a-2:1":[14.172,1.944],"u11a-2:2":[16.466,1.92],"u11a-2:3":[18.736,2.184],"u11a-2:4":[21.27,2.04],"u11b-1:0":[23.66,2.04],"u11b-1:1":[26.05,1.944],"u11b-1:2":[28.344,1.872],"u11b-1:3":[30.566,2.088],"u11b-1:4":[33.004,2.064],"u11b-2:0":[35.418,1.992],"u11b-2:1":[37.76,2.016],"u11b-2:2":[40.126,2.088],"u11b-2:3":[42.564,2.328],"u11b-2:4":[45.242,2.424]},"u12":{"u12a-1:0":[0.0,2.088],"u12a-1:1":[2.438,1.944],"u12a-1:2":[4.732,2.256],"u12a-1:3":[7.338,2.04],"u12a-1:4":[9.728,1.992],"u12a-2:0":[12.07,2.016],"u12a-2:1":[14.436,2.088],"u12a-2:2":[16.874,2.136],"u12a-2:3":[19.36,2.28],"u12a-2:4":[21.99,3.096],"u12b-1:0":[25.436,2.304],"u12b-1:1":[28.09,2.232],"u12b-1:2":[30.672,2.76],"u12b-1:3":[33.782,2.352],"u12b-1:4":[36.484,2.208],"u12b-2:0":[39.042,2.52],"u12b-2:1":[41.912,2.328],"u12b-2:2":[44.59,1.968],"u12b-2:3":[46.908,2.16],"u12b-2:4":[49.418,2.544]},"u13":{"u13a-1:0":[0.0,1.872],"u13a-1:1":[2.222,1.872],"u13a-1:2":[4.444,1.848],"u13a-1:3":[6.642,1.872],"u13a-1:4":[8.864,1.872],"u13a-2:0":[11.086,1.992],"u13a-2:1":[13.428,2.52],"u13a-2:2":[16.298,2.568],"u13a-2:3":[19.216,2.256],"u13a-2:4":[21.822,2.256],"u13b-1:0":[24.428,2.04],"u13b-1:1":[26.818,2.568],"u13b-1:2":[29.736,1.896],"u13b-1:3":[31.982,1.872],"u13b-1:4":[34.204,2.184],"u13b-2:0":[36.738,2.016],"u13b-2:1":[39.104,2.064],"u13b-2:2":[41.518,1.896],"u13b-2:3":[43.764,2.64],"u13b-2:4":[46.754,1.872]},"u14":{"u14a-1:0":[0.0,2.64],"u14a-1:1":[2.99,2.136],"u14a-1:2":[5.476,2.136],"u14a-1:3":[7.962,2.544],"u14a-1:4":[10.856,3.24],"u14a-2:0":[14.446,2.568],"u14a-2:1":[17.364,2.496],"u14a-2:2":[20.21,2.04],"u14a-2:3":[22.6,1.992],"u14a-2:4":[24.942,2.232],"u14b-1:0":[27.524,1.968],"u14b-1:1":[29.842,2.712],"u14b-1:2":[32.904,2.88],"u14b-1:3":[36.134,3.0],"u14b-1:4":[39.484,1.896],"u14b-2:0":[41.73,2.016],"u14b-2:1":[44.096,2.016],"u14b-2:2":[46.462,2.112],"u14b-2:3":[48.924,2.016],"u14b-2:4":[51.29,1.968]},"u15":{"u15a-1:0":[0.0,2.592],"u15a-1:1":[2.942,2.136],"u15a-1:2":[5.428,2.04],"u15a-1:3":[7.818,2.4],"u15a-1:4":[10.568,2.544],"u15a-2:0":[13.462,2.448],"u15a-2:1":[16.26,2.328],"u15a-2:2":[18.938,1.92],"u15a-2:3":[21.208,1.944],"u15a-2:4":[23.502,2.088],"u15b-1:0":[25.94,2.736],"u15b-1:1":[29.026,2.04],"u15b-1:2":[31.416,2.184],"u15b-1:3":[33.95,2.112],"u15b-1:4":[36.412,2.952],"u15b-2:0":[39.714,2.16],"u15b-2:1":[42.224,2.112],"u15b-2:2":[44.686,2.04],"u15b-2:3":[47.076,2.04],"u15b-2:4":[49.466,1.872]},"u16":{"u16a-1:0":[0.0,2.016],"u16a-1:1":[2.366,2.16],"u16a-1:2":[4.876,1.968],"u16a-1:3":[7.194,2.136],"u16a-1:4":[9.68,2.088],"u16a-2:0":[12.118,1.944],"u16a-2:1":[14.412,2.328],"u16a-2:2":[17.09,1.872],"u16a-2:3":[19.312,2.184],"u16a-2:4":[21.846,2.136],"u16b-1:0":[24.332,1.944],"u16b-1:1":[26.626,2.352],"u16b-1:2":[29.328,2.16],"u16b-1:3":[31.838,2.064],"u16b-1:4":[34.252,1.968],"u16b-2:0":[36.57,1.896],"u16b-2:1":[38.816,2.04],"u16b-2:2":[41.206,2.136],"u16b-2:3":[43.692,2.064],"u16b-2:4":[46.106,2.328]},"u17":{"u17a-1:0":[0.0,2.448],"u17a-1:1":[2.798,1.992],"u17a-1:2":[5.14,1.872],"u17a-1:3":[7.362,2.16],"u17a-1:4":[9.872,2.232],"u17a-2:0":[12.454,2.88],"u17a-2:1":[15.684,2.784],"u17a-2:2":[18.818,2.808],"u17a-2:3":[21.976,2.088],"u17a-2:4":[24.414,1.896],"u17b-1:0":[26.66,2.088],"u17b-1:1":[29.098,1.944],"u17b-1:2":[31.392,2.64],"u17b-1:3":[34.382,2.256],"u17b-1:4":[36.988,2.136],"u17b-2:0":[39.474,2.88],"u17b-2:1":[42.704,2.112],"u17b-2:2":[45.166,1.896],"u17b-2:3":[47.412,2.064],"u17b-2:4":[49.826,2.544]},"u18":{"u18a-1:0":[0.0,2.136],"u18a-1:1":[2.486,2.016],"u18a-1:2":[4.852,2.184],"u18a-1:3":[7.386,2.376],"u18a-1:4":[10.112,2.424],"u18a-2:0":[12.886,2.496],"u18a-2:1":[15.732,2.04],"u18a-2:2":[18.122,1.872],"u18a-2:3":[20.344,2.04],"u18a-2:4":[22.734,2.136],"u18b-1:0":[25.22,2.28],"u18b-1:1":[27.85,2.136],"u18b-1:2":[30.336,2.184],"u18b-1:3":[32.87,2.616],"u18b-1:4":[35.836,1.968],"u18b-2:0":[38.154,1.92],"u18b-2:1":[40.424,2.424],"u18b-2:2":[43.198,1.896],"u18b-2:3":[45.444,2.448],"u18b-2:4":[48.242,2.016]}}};
+const SMAP={"ona":{"u1":{"u1a-1:0":[0,2.04],"u1a-1:1":[2.39,2.52],"u1a-1:2":[5.26,2.424],"u1a-1:3":[8.034,2.112],"u1a-1:4":[10.496,2.328],"u1a-2:0":[13.174,2.088],"u1a-2:1":[15.612,2.16],"u1a-2:2":[18.122,2.256],"u1a-2:3":[20.728,2.136],"u1a-2:4":[23.214,1.872],"u1b-1:0":[25.436,1.992],"u1b-1:1":[27.778,2.064],"u1b-1:2":[30.192,2.064],"u1b-1:3":[32.606,2.04],"u1b-1:4":[34.996,2.184],"u1b-2:0":[37.53,1.92],"u1b-2:1":[39.8,2.136],"u1b-2:2":[42.286,2.592],"u1b-2:3":[45.228,2.4],"u1b-2:4":[47.978,2.208],"u1c-1:0":[50.536,1.872],"u1c-1:1":[52.758,1.872],"u1c-1:2":[54.98,2.088],"u1c-1:3":[57.418,1.992],"u1c-1:4":[59.76,2.064],"u1c-2:0":[62.174,1.944],"u1c-2:1":[64.468,2.016],"u1c-2:2":[66.834,2.112],"u1c-2:3":[69.296,2.496],"u1c-2:4":[72.142,2.424],"u1c-3:0":[74.916,2.736]},"u2":{"u2a-1:0":[0,1.968],"u2a-1:1":[2.318,2.016],"u2a-1:2":[4.684,1.944],"u2a-1:3":[6.978,1.8],"u2a-1:4":[9.128,1.992],"u2a-2:0":[11.47,2.352],"u2a-2:1":[14.172,1.992],"u2a-2:2":[16.514,1.896],"u2a-2:3":[18.76,2.52],"u2a-2:4":[21.63,2.088],"u2b-1:0":[24.068,2.04],"u2b-1:1":[26.458,2.136],"u2b-1:2":[28.944,2.064],"u2b-1:3":[31.358,1.872],"u2b-1:4":[33.58,2.088],"u2b-2:0":[36.018,1.992],"u2b-2:1":[38.36,2.04],"u2b-2:2":[40.75,2.064],"u2b-2:3":[43.164,2.04],"u2b-2:4":[45.554,1.944],"u2c-1:0":[47.848,1.872],"u2c-1:1":[50.07,2.232],"u2c-1:2":[52.652,2.544],"u2c-1:3":[55.546,2.136],"u2c-1:4":[58.032,2.448],"u2c-2:0":[60.83,2.568],"u2c-2:1":[63.748,2.232],"u2c-2:2":[66.33,1.872],"u2c-2:3":[68.552,2.04],"u2c-2:4":[70.942,2.016]},"u3":{"u3a-1:0":[0,2.064],"u3a-1:1":[2.414,1.872],"u3a-1:2":[4.636,1.992],"u3a-1:3":[6.978,2.064],"u3a-1:4":[9.392,2.112],"u3a-2:0":[11.854,2.112],"u3a-2:1":[14.316,1.92],"u3a-2:2":[16.586,1.92],"u3a-2:3":[18.856,1.896],"u3a-2:4":[21.102,2.184],"u3b-1:0":[23.636,2.064],"u3b-1:1":[26.05,2.184],"u3b-1:2":[28.584,2.232],"u3b-1:3":[31.166,1.992],"u3b-1:4":[33.508,1.944],"u3b-2:0":[35.802,1.896],"u3b-2:1":[38.048,2.04],"u3b-2:2":[40.438,2.016],"u3b-2:3":[42.804,1.896],"u3b-2:4":[45.05,1.992],"u3c-1:0":[47.392,2.328],"u3c-1:1":[50.07,2.424],"u3c-1:2":[52.844,2.28],"u3c-1:3":[55.474,1.92],"u3c-1:4":[57.744,2.424],"u3c-2:0":[60.518,2.4],"u3c-2:1":[63.268,1.992],"u3c-2:2":[65.61,2.304],"u3c-2:3":[68.264,1.896],"u3c-2:4":[70.51,2.184]},"u4":{"u4a-1:0":[0,2.112],"u4a-1:1":[2.462,2.28],"u4a-1:2":[5.092,2.424],"u4a-1:3":[7.866,1.872],"u4a-1:4":[10.088,2.064],"u4a-2:0":[12.502,1.896],"u4a-2:1":[14.748,2.016],"u4a-2:2":[17.114,1.944],"u4a-2:3":[19.408,1.872],"u4a-2:4":[21.63,2.016],"u4b-1:0":[23.996,1.992],"u4b-1:1":[26.338,2.064],"u4b-1:2":[28.752,2.064],"u4b-1:3":[31.166,1.92],"u4b-1:4":[33.436,1.872],"u4b-2:0":[35.658,2.04],"u4b-2:1":[38.048,1.968],"u4b-2:2":[40.366,2.136],"u4b-2:3":[42.852,2.232],"u4b-2:4":[45.434,2.4]},"u5":{"u5a-1:0":[0,2.04],"u5a-1:1":[2.39,1.968],"u5a-1:2":[4.708,1.896],"u5a-1:3":[6.954,2.088],"u5a-1:4":[9.392,1.968],"u5a-2:0":[11.71,2.016],"u5a-2:1":[14.076,2.016],"u5a-2:2":[16.442,1.872],"u5a-2:3":[18.664,1.944],"u5a-2:4":[20.958,2.016],"u5b-1:0":[23.324,1.944],"u5b-1:1":[25.618,1.992],"u5b-1:2":[27.96,2.04],"u5b-1:3":[30.35,2.232],"u5b-1:4":[32.932,2.064],"u5b-2:0":[35.346,2.016],"u5b-2:1":[37.712,2.016],"u5b-2:2":[40.078,2.424],"u5b-2:3":[42.852,2.304],"u5b-2:4":[45.506,2.352]},"u6":{"u6a-1:0":[0,1.944],"u6a-1:1":[2.294,1.872],"u6a-1:2":[4.516,1.872],"u6a-1:3":[6.738,1.872],"u6a-1:4":[8.96,1.872],"u6a-2:0":[11.182,1.872],"u6a-2:1":[13.404,2.064],"u6a-2:2":[15.818,2.184],"u6a-2:3":[18.352,1.872],"u6a-2:4":[20.574,1.896],"u6b-1:0":[22.82,1.944],"u6b-1:1":[25.114,2.112],"u6b-1:2":[27.576,2.184],"u6b-1:3":[30.11,2.064],"u6b-1:4":[32.524,1.992],"u6b-2:0":[34.866,1.872],"u6b-2:1":[37.088,2.136],"u6b-2:2":[39.574,1.944],"u6b-2:3":[41.868,2.256],"u6b-2:4":[44.474,1.992]},"u7":{"u7a-1:0":[0,2.184],"u7a-1:1":[2.534,2.112],"u7a-1:2":[4.996,2.088],"u7a-1:3":[7.434,2.256],"u7a-1:4":[10.04,2.112],"u7a-2:0":[12.502,2.208],"u7a-2:1":[15.06,2.256],"u7a-2:2":[17.666,1.968],"u7a-2:3":[19.984,2.376],"u7a-2:4":[22.71,2.016],"u7b-1:0":[25.076,1.896],"u7b-1:1":[27.322,2.232],"u7b-1:2":[29.904,1.944],"u7b-1:3":[32.198,2.016],"u7b-1:4":[34.564,1.992],"u7b-2:0":[36.906,1.944],"u7b-2:1":[39.2,1.944],"u7b-2:2":[41.494,1.992],"u7b-2:3":[43.836,2.064],"u7b-2:4":[46.25,2.112],"u7c-1:0":[48.712,2.04],"u7c-1:1":[51.102,2.016],"u7c-1:2":[53.468,2.52],"u7c-1:3":[56.338,1.944],"u7c-1:4":[58.632,2.016],"u7c-2:0":[60.998,2.088],"u7c-2:1":[63.436,2.016],"u7c-2:2":[65.802,2.04],"u7c-2:3":[68.192,1.872],"u7c-2:4":[70.414,1.968]},"u8":{"u8a-1:0":[0,2.112],"u8a-1:1":[2.462,2.328],"u8a-1:2":[5.14,2.04],"u8a-1:3":[7.53,2.088],"u8a-1:4":[9.968,1.944],"u8a-2:0":[12.262,2.4],"u8a-2:1":[15.012,2.232],"u8a-2:2":[17.594,1.92],"u8a-2:3":[19.864,1.92],"u8a-2:4":[22.134,1.968],"u8b-1:0":[24.452,2.112],"u8b-1:1":[26.914,2.496],"u8b-1:2":[29.76,2.52],"u8b-1:3":[32.63,2.064],"u8b-1:4":[35.044,1.992],"u8b-2:0":[37.386,1.944],"u8b-2:1":[39.68,1.992],"u8b-2:2":[42.022,2.088],"u8b-2:3":[44.46,1.92],"u8b-2:4":[46.73,2.088],"u8c-1:0":[49.168,2.52],"u8c-1:1":[52.038,2.64],"u8c-1:2":[55.028,2.232],"u8c-1:3":[57.61,2.088],"u8c-1:4":[60.048,2.592],"u8c-2:0":[62.99,3.024],"u8c-2:1":[66.364,2.064],"u8c-2:2":[68.778,1.968],"u8c-2:3":[71.096,2.424],"u8c-2:4":[73.87,1.992]},"u9":{"u9a-1:0":[0,2.088],"u9a-1:1":[2.438,1.872],"u9a-1:2":[4.66,2.112],"u9a-1:3":[7.122,2.016],"u9a-1:4":[9.488,2.064],"u9a-2:0":[11.902,1.944],"u9a-2:1":[14.196,2.256],"u9a-2:2":[16.802,1.968],"u9a-2:3":[19.12,2.064],"u9a-2:4":[21.534,2.016],"u9b-1:0":[23.9,2.664],"u9b-1:1":[26.914,1.872],"u9b-1:2":[29.136,2.04],"u9b-1:3":[31.526,1.92],"u9b-1:4":[33.796,2.112],"u9b-2:0":[36.258,1.872],"u9b-2:1":[38.48,1.872],"u9b-2:2":[40.702,1.92],"u9b-2:3":[42.972,2.064],"u9b-2:4":[45.386,1.872]},"u10":{"u10a-1:0":[0,2.016],"u10a-1:1":[2.366,1.992],"u10a-1:2":[4.708,1.992],"u10a-1:3":[7.05,2.088],"u10a-1:4":[9.488,2.304],"u10a-2:0":[12.142,2.184],"u10a-2:1":[14.676,1.872],"u10a-2:2":[16.898,1.896],"u10a-2:3":[19.144,2.04],"u10a-2:4":[21.534,2.184],"u10b-1:0":[24.068,1.992],"u10b-1:1":[26.41,1.872],"u10b-1:2":[28.632,1.872],"u10b-1:3":[30.854,2.016],"u10b-1:4":[33.22,1.944],"u10b-2:0":[35.514,2.304],"u10b-2:1":[38.168,2.016],"u10b-2:2":[40.534,2.112],"u10b-2:3":[42.996,2.136],"u10b-2:4":[45.482,1.968]},"u11":{"u11a-1:0":[0,1.992],"u11a-1:1":[2.342,1.896],"u11a-1:2":[4.588,2.064],"u11a-1:3":[7.002,1.872],"u11a-1:4":[9.224,2.328],"u11a-2:0":[11.902,2.304],"u11a-2:1":[14.556,1.92],"u11a-2:2":[16.826,1.992],"u11a-2:3":[19.168,2.352],"u11a-2:4":[21.87,1.968],"u11b-1:0":[24.188,2.064],"u11b-1:1":[26.602,2.04],"u11b-1:2":[28.992,1.92],"u11b-1:3":[31.262,2.112],"u11b-1:4":[33.724,2.136],"u11b-2:0":[36.21,2.16],"u11b-2:1":[38.72,2.088],"u11b-2:2":[41.158,2.136],"u11b-2:3":[43.644,2.328],"u11b-2:4":[46.322,2.424]},"u12":{"u12a-1:0":[0,2.064],"u12a-1:1":[2.414,1.944],"u12a-1:2":[4.708,2.28],"u12a-1:3":[7.338,2.016],"u12a-1:4":[9.704,1.92],"u12a-2:0":[11.974,1.872],"u12a-2:1":[14.196,2.064],"u12a-2:2":[16.61,2.208],"u12a-2:3":[19.168,2.256],"u12a-2:4":[21.774,3.144],"u12b-1:0":[25.268,2.424],"u12b-1:1":[28.042,2.4],"u12b-1:2":[30.792,2.784],"u12b-1:3":[33.926,2.52],"u12b-1:4":[36.796,2.352],"u12b-2:0":[39.498,2.568],"u12b-2:1":[42.416,2.328],"u12b-2:2":[45.094,1.968],"u12b-2:3":[47.412,2.184],"u12b-2:4":[49.946,2.664]},"u13":{"u13a-1:0":[0,1.872],"u13a-1:1":[2.222,1.896],"u13a-1:2":[4.468,1.872],"u13a-1:3":[6.69,1.872],"u13a-1:4":[8.912,1.968],"u13a-2:0":[11.23,1.944],"u13a-2:1":[13.524,2.64],"u13a-2:2":[16.514,2.568],"u13a-2:3":[19.432,2.304],"u13a-2:4":[22.086,2.136],"u13b-1:0":[24.572,2.112],"u13b-1:1":[27.034,2.88],"u13b-1:2":[30.264,1.968],"u13b-1:3":[32.582,1.968],"u13b-1:4":[34.9,2.208],"u13b-2:0":[37.458,2.04],"u13b-2:1":[39.848,2.136],"u13b-2:2":[42.334,1.92],"u13b-2:3":[44.604,2.664],"u13b-2:4":[47.618,1.872]},"u14":{"u14a-1:0":[0,2.856],"u14a-1:1":[3.206,2.376],"u14a-1:2":[5.932,2.232],"u14a-1:3":[8.514,2.592],"u14a-1:4":[11.456,3.648],"u14a-2:0":[15.454,2.424],"u14a-2:1":[18.228,2.592],"u14a-2:2":[21.17,1.968],"u14a-2:3":[23.488,2.016],"u14a-2:4":[25.854,2.088],"u14b-1:0":[28.292,1.992],"u14b-1:1":[30.634,2.832],"u14b-1:2":[33.816,2.952],"u14b-1:3":[37.118,3.336],"u14b-1:4":[40.804,1.872],"u14b-2:0":[43.026,2.112],"u14b-2:1":[45.488,2.328],"u14b-2:2":[48.166,2.28],"u14b-2:3":[50.796,1.92],"u14b-2:4":[53.066,2.184]},"u15":{"u15a-1:0":[0,2.712],"u15a-1:1":[3.062,2.184],"u15a-1:2":[5.596,2.016],"u15a-1:3":[7.962,2.376],"u15a-1:4":[10.688,2.52],"u15a-2:0":[13.558,2.496],"u15a-2:1":[16.404,2.448],"u15a-2:2":[19.202,2.064],"u15a-2:3":[21.616,2.112],"u15a-2:4":[24.078,2.064],"u15b-1:0":[26.492,2.856],"u15b-1:1":[29.698,2.136],"u15b-1:2":[32.184,2.208],"u15b-1:3":[34.742,2.16],"u15b-1:4":[37.252,2.952],"u15b-2:0":[40.554,2.136],"u15b-2:1":[43.04,2.256],"u15b-2:2":[45.646,1.944],"u15b-2:3":[47.94,1.992],"u15b-2:4":[50.282,1.872]},"u16":{"u16a-1:0":[0,2.088],"u16a-1:1":[2.438,2.184],"u16a-1:2":[4.972,1.872],"u16a-1:3":[7.194,2.16],"u16a-1:4":[9.704,2.016],"u16a-2:0":[12.07,2.04],"u16a-2:1":[14.46,2.616],"u16a-2:2":[17.426,1.872],"u16a-2:3":[19.648,2.136],"u16a-2:4":[22.134,2.208],"u16b-1:0":[24.692,1.944],"u16b-1:1":[26.986,2.448],"u16b-1:2":[29.784,1.968],"u16b-1:3":[32.102,2.184],"u16b-1:4":[34.636,1.992],"u16b-2:0":[36.978,1.944],"u16b-2:1":[39.272,1.968],"u16b-2:2":[41.59,2.352],"u16b-2:3":[44.292,1.992],"u16b-2:4":[46.634,2.328]},"u17":{"u17a-1:0":[0,2.688],"u17a-1:1":[3.038,2.016],"u17a-1:2":[5.404,2.04],"u17a-1:3":[7.794,2.136],"u17a-1:4":[10.28,2.304],"u17a-2:0":[12.934,2.976],"u17a-2:1":[16.26,3],"u17a-2:2":[19.61,3],"u17a-2:3":[22.96,2.304],"u17a-2:4":[25.614,2.04],"u17b-1:0":[28.004,2.088],"u17b-1:1":[30.442,2.064],"u17b-1:2":[32.856,2.616],"u17b-1:3":[35.822,2.232],"u17b-1:4":[38.404,2.184],"u17b-2:0":[40.938,2.976],"u17b-2:1":[44.264,2.256],"u17b-2:2":[46.87,1.872],"u17b-2:3":[49.092,2.04],"u17b-2:4":[51.482,2.712]},"u18":{"u18a-1:0":[0,2.04],"u18a-1:1":[2.39,2.064],"u18a-1:2":[4.804,2.712],"u18a-1:3":[7.866,2.736],"u18a-1:4":[10.952,2.64],"u18a-2:0":[13.942,2.376],"u18a-2:1":[16.668,2.184],"u18a-2:2":[19.202,1.872],"u18a-2:3":[21.424,1.944],"u18a-2:4":[23.718,2.184],"u18b-1:0":[26.252,2.304],"u18b-1:1":[28.906,2.064],"u18b-1:2":[31.32,2.28],"u18b-1:3":[33.95,2.616],"u18b-1:4":[36.916,1.992],"u18b-2:0":[39.258,2.04],"u18b-2:1":[41.648,2.448],"u18b-2:2":[44.446,2.016],"u18b-2:3":[46.812,2.736],"u18b-2:4":[49.898,1.92]},"u0":{"u0a-1:0":[0.0,1.872],"u0a-1:1":[2.222,2.136],"u0a-1:2":[4.708,2.112],"u0a-1:3":[7.17,2.232],"u0a-1:4":[9.752,2.136],"u0b-1:0":[12.238,2.016],"u0b-1:1":[14.604,1.872],"u0b-1:2":[16.826,2.064],"u0b-1:3":[19.24,2.28],"u0b-1:4":[21.87,2.112]},"u21":{"u21a-1:0":[0.0,2.928],"u21a-1:1":[3.278,2.304],"u21a-1:2":[5.932,2.04],"u21a-1:3":[8.322,2.112],"u21a-1:4":[10.784,2.424],"u21a-2:0":[13.558,2.184],"u21a-2:1":[16.092,2.136],"u21a-2:2":[18.578,2.376],"u21a-2:3":[21.304,2.208],"u21a-2:4":[23.862,2.04],"u21b-1:0":[26.252,2.928],"u21b-1:1":[29.53,3.0],"u21b-1:2":[32.88,2.688],"u21b-1:3":[35.918,2.568],"u21b-1:4":[38.836,2.448],"u21b-2:0":[41.634,1.872],"u21b-2:1":[43.856,2.016],"u21b-2:2":[46.222,2.136],"u21b-2:3":[48.708,2.064],"u21b-2:4":[51.122,2.088]},"u20":{"u20a-1:0":[0.0,2.52],"u20a-1:1":[2.87,2.496],"u20a-1:2":[5.716,2.616],"u20a-1:3":[8.682,2.4],"u20a-1:4":[11.432,2.376],"u20a-2:0":[14.158,2.52],"u20a-2:1":[17.028,2.4],"u20a-2:2":[19.778,2.568],"u20a-2:3":[22.696,2.28],"u20a-2:4":[25.326,3.024],"u20b-1:0":[28.7,2.352],"u20b-1:1":[31.402,2.424],"u20b-1:2":[34.176,2.52],"u20b-1:3":[37.046,2.352],"u20b-1:4":[39.748,2.352],"u20b-2:0":[42.45,2.664],"u20b-2:1":[45.464,2.952],"u20b-2:2":[48.766,2.616],"u20b-2:3":[51.732,2.304],"u20b-2:4":[54.386,1.968]},"u23":{"u23a-1:0":[0.0,2.736],"u23a-1:1":[3.086,2.424],"u23a-1:2":[5.86,2.736],"u23a-1:3":[8.946,2.208],"u23a-1:4":[11.504,2.184],"u23a-2:0":[14.038,2.28],"u23a-2:1":[16.668,2.088],"u23a-2:2":[19.106,2.16],"u23a-2:3":[21.616,2.088],"u23a-2:4":[24.054,2.328],"u23b-1:0":[26.732,2.304],"u23b-1:1":[29.386,2.448],"u23b-1:2":[32.184,2.4],"u23b-1:3":[34.934,2.496],"u23b-1:4":[37.78,2.4],"u23b-2:0":[40.53,1.968],"u23b-2:1":[42.848,2.232],"u23b-2:2":[45.43,1.896],"u23b-2:3":[47.676,1.92],"u23b-2:4":[49.946,2.4]},"u25":{"u25a-1:0":[0.0,2.856],"u25a-1:1":[3.206,2.208],"u25a-1:2":[5.764,2.376],"u25a-1:3":[8.49,2.256],"u25a-1:4":[11.096,2.592],"u25a-2:0":[14.038,2.232],"u25a-2:1":[16.62,2.352],"u25a-2:2":[19.322,2.496],"u25a-2:3":[22.168,2.808],"u25a-2:4":[25.326,2.256]},"u22":{"u22a-1:0":[0.0,2.256],"u22a-1:1":[2.606,2.4],"u22a-1:2":[5.356,2.304],"u22a-1:3":[8.01,2.448],"u22a-1:4":[10.808,2.592],"u22a-2:0":[13.75,1.92],"u22a-2:1":[16.02,2.064],"u22a-2:2":[18.434,1.872],"u22a-2:3":[20.656,1.92],"u22a-2:4":[22.926,1.968],"u22b-1:0":[25.244,2.76],"u22b-1:1":[28.354,2.592],"u22b-1:2":[31.296,2.472],"u22b-1:3":[34.118,2.496],"u22b-1:4":[36.964,2.64],"u22b-2:0":[39.954,2.352],"u22b-2:1":[42.656,2.616],"u22b-2:2":[45.622,2.136],"u22b-2:3":[48.108,2.256],"u22b-2:4":[50.714,2.568]},"cv1":{"cv1:0":[0.0,2.064],"cv1:1":[2.414,2.064],"cv1:2":[4.828,2.424],"cv1:3":[7.602,2.496],"cv1:4":[10.448,4.68],"cv1:5":[15.478,2.592],"cv1:6":[18.42,2.184],"cv1:7":[20.954,1.92],"cv1:8":[23.224,2.52],"cv1:9":[26.094,2.736],"cv1:10":[29.18,4.848],"cv1:11":[34.378,2.04]},"cv2":{"cv2:0":[0.0,4.176],"cv2:1":[4.526,4.464],"cv2:2":[9.34,4.08],"cv2:3":[13.77,5.136],"cv2:4":[19.256,4.44],"cv2:5":[24.046,5.016],"cv2:6":[29.412,3.864],"cv2:7":[33.626,2.352],"cv2:8":[36.328,4.704],"cv2:9":[41.382,2.52],"cv2:10":[44.252,2.784],"cv2:11":[47.386,2.928],"cv2:12":[50.664,2.592],"cv2:13":[53.606,4.152],"cv2:14":[58.108,4.176],"cv2:15":[62.634,4.176]},"cv3":{"cv3:0":[0.0,4.536],"cv3:1":[4.886,2.184],"cv3:2":[7.42,4.344],"cv3:3":[12.114,2.448],"cv3:4":[14.912,2.136],"cv3:5":[17.398,4.608],"cv3:6":[22.356,2.208],"cv3:7":[24.914,2.448],"cv3:8":[27.712,2.664],"cv3:9":[30.726,2.976],"cv3:11":[34.052,1.992],"cv3:12":[36.394,2.112],"cv3:13":[38.856,2.28],"cv3:14":[41.486,2.088],"cv3:15":[43.924,4.32],"cv3:16":[48.594,2.4],"cv3:17":[51.344,4.704],"cv3:18":[56.398,2.376],"cv3:19":[59.124,4.272],"cv3:20":[63.746,4.056]},"cv4":{"cv4:0":[0.0,2.136],"cv4:1":[2.486,4.368],"cv4:2":[7.204,2.664],"cv4:3":[10.218,3.192],"cv4:4":[13.76,2.328],"cv4:5":[16.438,2.712],"cv4:6":[19.5,1.968],"cv4:7":[21.818,4.896],"cv4:8":[27.064,2.664],"cv4:9":[30.078,5.592],"cv4:10":[36.02,4.2],"cv4:11":[40.57,4.872],"cv4:12":[45.792,2.04]},"cv5":{"cv5:0":[0.0,4.344],"cv5:1":[4.694,4.416],"cv5:2":[9.46,4.704],"cv5:3":[14.514,2.184],"cv5:4":[17.048,4.08],"cv5:5":[21.478,2.184],"cv5:6":[24.012,3.984],"cv5:7":[28.346,2.328],"cv5:8":[31.024,4.248],"cv5:9":[35.622,1.872],"cv5:10":[37.844,4.944],"cv5:11":[43.138,2.64],"cv5:12":[46.128,2.712],"cv5:13":[49.19,2.856],"cv5:14":[52.396,2.832],"cv5:15":[55.578,3.768],"cv5:16":[59.696,4.416],"cv5:17":[64.462,4.056]},"cv6":{"cv6:0":[0.0,4.536],"cv6:1":[4.886,4.68],"cv6:2":[9.916,5.448],"cv6:3":[15.714,2.4],"cv6:4":[18.464,4.128],"cv6:5":[22.942,2.664],"cv6:6":[25.956,4.488],"cv6:7":[30.794,2.088],"cv6:8":[33.232,4.368],"cv6:9":[37.95,4.128],"cv6:11":[42.428,4.008],"cv6:12":[46.786,2.976],"cv6:13":[50.112,4.056]},"cv7":{"cv7:0":[0.0,2.856],"cv7:1":[3.206,2.856],"cv7:2":[6.412,5.28],"cv7:3":[12.042,2.352],"cv7:4":[14.744,7.656],"cv7:5":[22.75,2.4],"cv7:6":[25.5,4.56],"cv7:7":[30.41,3.0],"cv7:8":[33.76,3.096],"cv7:9":[37.206,2.544],"cv7:10":[40.1,2.76],"cv7:11":[43.21,3.288],"cv7:12":[46.848,5.424],"cv7:13":[52.622,2.16],"cv7:14":[55.132,2.088]},"cv8":{"cv8:0":[0.0,4.584],"cv8:1":[4.934,4.704],"cv8:2":[9.988,2.52],"cv8:3":[12.858,2.496],"cv8:4":[15.704,4.536],"cv8:5":[20.59,2.832],"cv8:6":[23.772,2.688],"cv8:7":[26.81,1.872],"cv8:8":[29.032,6.936],"cv8:9":[36.318,3.0],"cv8:10":[39.668,3.816],"cv8:11":[43.834,2.976],"cv8:12":[47.16,2.76],"cv8:13":[50.27,2.688],"cv8:15":[53.308,4.704],"cv8:16":[58.362,2.496],"cv8:17":[61.208,4.608],"cv8:18":[66.166,2.112]},"cv9":{"cv9:0":[0.0,4.464],"cv9:1":[4.814,4.08],"cv9:2":[9.244,2.304],"cv9:3":[11.898,2.376],"cv9:4":[14.624,2.856],"cv9:5":[17.83,2.088],"cv9:6":[20.268,5.448],"cv9:7":[26.066,2.568],"cv9:8":[28.984,4.584],"cv9:9":[33.918,4.128],"cv9:10":[38.396,2.28],"cv9:11":[41.026,2.856],"cv9:12":[44.232,4.056],"cv9:13":[48.638,4.224]},"cv10":{"cv10:0":[0.0,4.368],"cv10:1":[4.718,4.464],"cv10:2":[9.532,4.2],"cv10:3":[14.082,4.536],"cv10:4":[18.968,4.848],"cv10:5":[24.166,3.696],"cv10:6":[28.212,2.208],"cv10:7":[30.77,4.68],"cv10:8":[35.8,2.928],"cv10:9":[39.078,1.992],"cv10:10":[41.42,4.104],"cv10:11":[45.874,3.384],"cv10:12":[49.608,4.848],"cv10:13":[54.806,2.808],"cv10:14":[57.964,3.288],"cv10:15":[61.602,4.656],"cv10:16":[66.608,2.304],"cv10:17":[69.262,2.304],"cv10:19":[71.916,4.608],"cv10:20":[76.874,4.392]}},"leonas":{"u1":{"u1a-1:0":[0,1.92],"u1a-1:1":[2.27,2.064],"u1a-1:2":[4.684,2.232],"u1a-1:3":[7.266,2.064],"u1a-1:4":[9.68,2.184],"u1a-2:0":[12.214,2.088],"u1a-2:1":[14.652,2.28],"u1a-2:2":[17.282,1.872],"u1a-2:3":[19.504,2.064],"u1a-2:4":[21.918,1.872],"u1b-1:0":[24.14,1.896],"u1b-1:1":[26.386,1.968],"u1b-1:2":[28.704,2.088],"u1b-1:3":[31.142,1.872],"u1b-1:4":[33.364,2.112],"u1b-2:0":[35.826,1.872],"u1b-2:1":[38.048,2.112],"u1b-2:2":[40.51,2.592],"u1b-2:3":[43.452,2.232],"u1b-2:4":[46.034,1.92],"u1c-1:0":[48.304,1.872],"u1c-1:1":[50.526,1.872],"u1c-1:2":[52.748,1.968],"u1c-1:3":[55.066,1.896],"u1c-1:4":[57.312,1.776],"u1c-2:0":[59.438,1.872],"u1c-2:1":[61.66,2.208],"u1c-2:2":[64.218,1.968],"u1c-2:3":[66.536,2.424],"u1c-2:4":[69.31,2.376],"u1c-3:0":[72.036,2.64]},"u2":{"u2a-1:0":[0,2.04],"u2a-1:1":[2.39,1.872],"u2a-1:2":[4.612,1.872],"u2a-1:3":[6.834,1.992],"u2a-1:4":[9.176,1.92],"u2a-2:0":[11.446,1.896],"u2a-2:1":[13.692,1.968],"u2a-2:2":[16.01,2.064],"u2a-2:3":[18.424,2.304],"u2a-2:4":[21.078,2.016],"u2b-1:0":[23.444,2.064],"u2b-1:1":[25.858,1.992],"u2b-1:2":[28.2,1.968],"u2b-1:3":[30.518,1.872],"u2b-1:4":[32.74,2.088],"u2b-2:0":[35.178,2.04],"u2b-2:1":[37.568,2.064],"u2b-2:2":[39.982,2.112],"u2b-2:3":[42.444,2.04],"u2b-2:4":[44.834,2.04],"u2c-1:0":[47.224,1.872],"u2c-1:1":[49.446,2.088],"u2c-1:2":[51.884,2.352],"u2c-1:3":[54.586,2.16],"u2c-1:4":[57.096,2.232],"u2c-2:0":[59.678,2.28],"u2c-2:1":[62.308,2.208],"u2c-2:2":[64.866,1.872],"u2c-2:3":[67.088,2.016],"u2c-2:4":[69.454,1.968]},"u3":{"u3a-1:0":[0,1.944],"u3a-1:1":[2.294,1.896],"u3a-1:2":[4.54,1.944],"u3a-1:3":[6.834,1.872],"u3a-1:4":[9.056,2.088],"u3a-2:0":[11.494,2.232],"u3a-2:1":[14.076,2.04],"u3a-2:2":[16.466,2.088],"u3a-2:3":[18.904,2.016],"u3a-2:4":[21.27,2.04],"u3b-1:0":[23.66,1.968],"u3b-1:1":[25.978,2.064],"u3b-1:2":[28.392,2.088],"u3b-1:3":[30.83,2.136],"u3b-1:4":[33.316,1.992],"u3b-2:0":[35.658,1.968],"u3b-2:1":[37.976,1.872],"u3b-2:2":[40.198,2.136],"u3b-2:3":[42.684,1.968],"u3b-2:4":[45.002,1.896],"u3c-1:0":[47.248,2.208],"u3c-1:1":[49.806,2.4],"u3c-1:2":[52.556,2.52],"u3c-1:3":[55.426,1.944],"u3c-1:4":[57.72,2.472],"u3c-2:0":[60.542,2.328],"u3c-2:1":[63.22,1.944],"u3c-2:2":[65.514,2.136],"u3c-2:3":[68,1.872],"u3c-2:4":[70.222,2.136]},"u4":{"u4a-1:0":[0,1.896],"u4a-1:1":[2.246,1.992],"u4a-1:2":[4.588,1.968],"u4a-1:3":[6.906,1.944],"u4a-1:4":[9.2,2.064],"u4a-2:0":[11.614,1.92],"u4a-2:1":[13.884,1.872],"u4a-2:2":[16.106,1.92],"u4a-2:3":[18.376,1.896],"u4a-2:4":[20.622,2.04],"u4b-1:0":[23.012,2.064],"u4b-1:1":[25.426,1.872],"u4b-1:2":[27.648,1.872],"u4b-1:3":[29.87,1.896],"u4b-1:4":[32.116,1.872],"u4b-2:0":[34.338,1.968],"u4b-2:1":[36.656,1.992],"u4b-2:2":[38.998,1.944],"u4b-2:3":[41.292,2.232],"u4b-2:4":[43.874,2.52]},"u5":{"u5a-1:0":[0,2.064],"u5a-1:1":[2.414,1.92],"u5a-1:2":[4.684,1.968],"u5a-1:3":[7.002,2.04],"u5a-1:4":[9.392,1.872],"u5a-2:0":[11.614,1.896],"u5a-2:1":[13.86,1.992],"u5a-2:2":[16.202,1.872],"u5a-2:3":[18.424,2.088],"u5a-2:4":[20.862,2.208],"u5b-1:0":[23.42,2.04],"u5b-1:1":[25.81,1.896],"u5b-1:2":[28.056,2.04],"u5b-1:3":[30.446,2.112],"u5b-1:4":[32.908,2.064],"u5b-2:0":[35.322,1.92],"u5b-2:1":[37.592,1.872],"u5b-2:2":[39.814,2.256],"u5b-2:3":[42.42,2.328],"u5b-2:4":[45.098,2.208]},"u6":{"u6a-1:0":[0,1.872],"u6a-1:1":[2.222,1.896],"u6a-1:2":[4.468,1.944],"u6a-1:3":[6.762,1.944],"u6a-1:4":[9.056,1.896],"u6a-2:0":[11.302,1.944],"u6a-2:1":[13.596,2.184],"u6a-2:2":[16.13,1.896],"u6a-2:3":[18.376,1.944],"u6a-2:4":[20.67,2.04],"u6b-1:0":[23.06,1.944],"u6b-1:1":[25.354,2.016],"u6b-1:2":[27.72,1.872],"u6b-1:3":[29.942,2.04],"u6b-1:4":[32.332,1.944],"u6b-2:0":[34.626,2.04],"u6b-2:1":[37.016,2.04],"u6b-2:2":[39.406,2.016],"u6b-2:3":[41.772,2.28],"u6b-2:4":[44.402,1.992]},"u7":{"u7a-1:0":[0,1.992],"u7a-1:1":[2.342,2.088],"u7a-1:2":[4.78,2.136],"u7a-1:3":[7.266,2.184],"u7a-1:4":[9.8,2.016],"u7a-2:0":[12.166,2.136],"u7a-2:1":[14.652,2.064],"u7a-2:2":[17.066,1.944],"u7a-2:3":[19.36,2.04],"u7a-2:4":[21.75,1.944],"u7b-1:0":[24.044,1.92],"u7b-1:1":[26.314,2.088],"u7b-1:2":[28.752,1.968],"u7b-1:3":[31.07,1.92],"u7b-1:4":[33.34,2.016],"u7b-2:0":[35.706,1.968],"u7b-2:1":[38.024,1.872],"u7b-2:2":[40.246,1.896],"u7b-2:3":[42.492,2.112],"u7b-2:4":[44.954,2.016],"u7c-1:0":[47.32,1.968],"u7c-1:1":[49.638,2.16],"u7c-1:2":[52.148,1.92],"u7c-1:3":[54.418,2.112],"u7c-1:4":[56.88,2.064],"u7c-2:0":[59.294,2.04],"u7c-2:1":[61.684,1.944],"u7c-2:2":[63.978,2.04],"u7c-2:3":[66.368,1.968],"u7c-2:4":[68.686,2.088]},"u8":{"u8a-1:0":[0,2.016],"u8a-1:1":[2.366,2.136],"u8a-1:2":[4.852,2.04],"u8a-1:3":[7.242,1.992],"u8a-1:4":[9.584,2.016],"u8a-2:0":[11.95,2.112],"u8a-2:1":[14.412,2.112],"u8a-2:2":[16.874,2.064],"u8a-2:3":[19.288,1.944],"u8a-2:4":[21.582,2.136],"u8b-1:0":[24.068,2.208],"u8b-1:1":[26.626,2.232],"u8b-1:2":[29.208,2.208],"u8b-1:3":[31.766,2.112],"u8b-1:4":[34.228,2.04],"u8b-2:0":[36.618,1.92],"u8b-2:1":[38.888,2.04],"u8b-2:2":[41.278,2.208],"u8b-2:3":[43.836,1.896],"u8b-2:4":[46.082,1.992],"u8c-1:0":[48.424,2.448],"u8c-1:1":[51.222,2.592],"u8c-1:2":[54.164,2.184],"u8c-1:3":[56.698,2.064],"u8c-1:4":[59.112,2.496],"u8c-2:0":[61.958,2.856],"u8c-2:1":[65.164,2.232],"u8c-2:2":[67.746,1.896],"u8c-2:3":[69.992,2.448],"u8c-2:4":[72.79,2.04]},"u9":{"u9a-1:0":[0,1.944],"u9a-1:1":[2.294,1.872],"u9a-1:2":[4.516,1.944],"u9a-1:3":[6.81,2.04],"u9a-1:4":[9.2,1.944],"u9a-2:0":[11.494,1.872],"u9a-2:1":[13.716,2.088],"u9a-2:2":[16.154,2.088],"u9a-2:3":[18.592,2.088],"u9a-2:4":[21.03,1.944],"u9b-1:0":[23.324,2.4],"u9b-1:1":[26.074,1.872],"u9b-1:2":[28.296,1.992],"u9b-1:3":[30.638,1.896],"u9b-1:4":[32.884,2.064],"u9b-2:0":[35.298,1.872],"u9b-2:1":[37.52,1.968],"u9b-2:2":[39.838,2.136],"u9b-2:3":[42.324,2.088],"u9b-2:4":[44.762,1.92]},"u10":{"u10a-1:0":[0,1.992],"u10a-1:1":[2.342,1.968],"u10a-1:2":[4.66,2.088],"u10a-1:3":[7.098,2.184],"u10a-1:4":[9.632,2.184],"u10a-2:0":[12.166,2.136],"u10a-2:1":[14.652,1.944],"u10a-2:2":[16.946,1.872],"u10a-2:3":[19.168,2.04],"u10a-2:4":[21.558,2.088],"u10b-1:0":[23.996,1.872],"u10b-1:1":[26.218,2.112],"u10b-1:2":[28.68,1.872],"u10b-1:3":[30.902,1.968],"u10b-1:4":[33.22,2.088],"u10b-2:0":[35.658,2.448],"u10b-2:1":[38.456,2.016],"u10b-2:2":[40.822,2.136],"u10b-2:3":[43.308,1.872],"u10b-2:4":[45.53,1.944]},"u11":{"u11a-1:0":[0,1.872],"u11a-1:1":[2.222,1.992],"u11a-1:2":[4.564,1.992],"u11a-1:3":[6.906,1.872],"u11a-1:4":[9.128,2.328],"u11a-2:0":[11.806,2.016],"u11a-2:1":[14.172,1.944],"u11a-2:2":[16.466,1.92],"u11a-2:3":[18.736,2.184],"u11a-2:4":[21.27,2.04],"u11b-1:0":[23.66,2.04],"u11b-1:1":[26.05,1.944],"u11b-1:2":[28.344,1.872],"u11b-1:3":[30.566,2.088],"u11b-1:4":[33.004,2.064],"u11b-2:0":[35.418,1.992],"u11b-2:1":[37.76,2.016],"u11b-2:2":[40.126,2.088],"u11b-2:3":[42.564,2.328],"u11b-2:4":[45.242,2.424]},"u12":{"u12a-1:0":[0,2.088],"u12a-1:1":[2.438,1.944],"u12a-1:2":[4.732,2.256],"u12a-1:3":[7.338,2.04],"u12a-1:4":[9.728,1.992],"u12a-2:0":[12.07,2.016],"u12a-2:1":[14.436,2.088],"u12a-2:2":[16.874,2.136],"u12a-2:3":[19.36,2.28],"u12a-2:4":[21.99,3.096],"u12b-1:0":[25.436,2.304],"u12b-1:1":[28.09,2.232],"u12b-1:2":[30.672,2.76],"u12b-1:3":[33.782,2.352],"u12b-1:4":[36.484,2.208],"u12b-2:0":[39.042,2.52],"u12b-2:1":[41.912,2.328],"u12b-2:2":[44.59,1.968],"u12b-2:3":[46.908,2.16],"u12b-2:4":[49.418,2.544]},"u13":{"u13a-1:0":[0,1.872],"u13a-1:1":[2.222,1.872],"u13a-1:2":[4.444,1.848],"u13a-1:3":[6.642,1.872],"u13a-1:4":[8.864,1.872],"u13a-2:0":[11.086,1.992],"u13a-2:1":[13.428,2.52],"u13a-2:2":[16.298,2.568],"u13a-2:3":[19.216,2.256],"u13a-2:4":[21.822,2.256],"u13b-1:0":[24.428,2.04],"u13b-1:1":[26.818,2.568],"u13b-1:2":[29.736,1.896],"u13b-1:3":[31.982,1.872],"u13b-1:4":[34.204,2.184],"u13b-2:0":[36.738,2.016],"u13b-2:1":[39.104,2.064],"u13b-2:2":[41.518,1.896],"u13b-2:3":[43.764,2.64],"u13b-2:4":[46.754,1.872]},"u14":{"u14a-1:0":[0,2.64],"u14a-1:1":[2.99,2.136],"u14a-1:2":[5.476,2.136],"u14a-1:3":[7.962,2.544],"u14a-1:4":[10.856,3.24],"u14a-2:0":[14.446,2.568],"u14a-2:1":[17.364,2.496],"u14a-2:2":[20.21,2.04],"u14a-2:3":[22.6,1.992],"u14a-2:4":[24.942,2.232],"u14b-1:0":[27.524,1.968],"u14b-1:1":[29.842,2.712],"u14b-1:2":[32.904,2.88],"u14b-1:3":[36.134,3],"u14b-1:4":[39.484,1.896],"u14b-2:0":[41.73,2.016],"u14b-2:1":[44.096,2.016],"u14b-2:2":[46.462,2.112],"u14b-2:3":[48.924,2.016],"u14b-2:4":[51.29,1.968]},"u15":{"u15a-1:0":[0,2.592],"u15a-1:1":[2.942,2.136],"u15a-1:2":[5.428,2.04],"u15a-1:3":[7.818,2.4],"u15a-1:4":[10.568,2.544],"u15a-2:0":[13.462,2.448],"u15a-2:1":[16.26,2.328],"u15a-2:2":[18.938,1.92],"u15a-2:3":[21.208,1.944],"u15a-2:4":[23.502,2.088],"u15b-1:0":[25.94,2.736],"u15b-1:1":[29.026,2.04],"u15b-1:2":[31.416,2.184],"u15b-1:3":[33.95,2.112],"u15b-1:4":[36.412,2.952],"u15b-2:0":[39.714,2.16],"u15b-2:1":[42.224,2.112],"u15b-2:2":[44.686,2.04],"u15b-2:3":[47.076,2.04],"u15b-2:4":[49.466,1.872]},"u16":{"u16a-1:0":[0,2.016],"u16a-1:1":[2.366,2.16],"u16a-1:2":[4.876,1.968],"u16a-1:3":[7.194,2.136],"u16a-1:4":[9.68,2.088],"u16a-2:0":[12.118,1.944],"u16a-2:1":[14.412,2.328],"u16a-2:2":[17.09,1.872],"u16a-2:3":[19.312,2.184],"u16a-2:4":[21.846,2.136],"u16b-1:0":[24.332,1.944],"u16b-1:1":[26.626,2.352],"u16b-1:2":[29.328,2.16],"u16b-1:3":[31.838,2.064],"u16b-1:4":[34.252,1.968],"u16b-2:0":[36.57,1.896],"u16b-2:1":[38.816,2.04],"u16b-2:2":[41.206,2.136],"u16b-2:3":[43.692,2.064],"u16b-2:4":[46.106,2.328]},"u17":{"u17a-1:0":[0,2.448],"u17a-1:1":[2.798,1.992],"u17a-1:2":[5.14,1.872],"u17a-1:3":[7.362,2.16],"u17a-1:4":[9.872,2.232],"u17a-2:0":[12.454,2.88],"u17a-2:1":[15.684,2.784],"u17a-2:2":[18.818,2.808],"u17a-2:3":[21.976,2.088],"u17a-2:4":[24.414,1.896],"u17b-1:0":[26.66,2.088],"u17b-1:1":[29.098,1.944],"u17b-1:2":[31.392,2.64],"u17b-1:3":[34.382,2.256],"u17b-1:4":[36.988,2.136],"u17b-2:0":[39.474,2.88],"u17b-2:1":[42.704,2.112],"u17b-2:2":[45.166,1.896],"u17b-2:3":[47.412,2.064],"u17b-2:4":[49.826,2.544]},"u18":{"u18a-1:0":[0,2.136],"u18a-1:1":[2.486,2.016],"u18a-1:2":[4.852,2.184],"u18a-1:3":[7.386,2.376],"u18a-1:4":[10.112,2.424],"u18a-2:0":[12.886,2.496],"u18a-2:1":[15.732,2.04],"u18a-2:2":[18.122,1.872],"u18a-2:3":[20.344,2.04],"u18a-2:4":[22.734,2.136],"u18b-1:0":[25.22,2.28],"u18b-1:1":[27.85,2.136],"u18b-1:2":[30.336,2.184],"u18b-1:3":[32.87,2.616],"u18b-1:4":[35.836,1.968],"u18b-2:0":[38.154,1.92],"u18b-2:1":[40.424,2.424],"u18b-2:2":[43.198,1.896],"u18b-2:3":[45.444,2.448],"u18b-2:4":[48.242,2.016]},"u0":{"u0a-1:0":[0.0,2.064],"u0a-1:1":[2.414,1.992],"u0a-1:2":[4.756,2.016],"u0a-1:3":[7.122,2.112],"u0a-1:4":[9.584,2.112],"u0b-1:0":[12.046,2.04],"u0b-1:1":[14.436,1.872],"u0b-1:2":[16.658,1.968],"u0b-1:3":[18.976,1.992],"u0b-1:4":[21.318,2.064]},"u21":{"u21a-1:0":[0.0,2.448],"u21a-1:1":[2.798,1.872],"u21a-1:2":[5.02,1.992],"u21a-1:3":[7.362,1.944],"u21a-1:4":[9.656,2.232],"u21a-2:0":[12.238,2.232],"u21a-2:1":[14.82,2.016],"u21a-2:2":[17.186,2.256],"u21a-2:3":[19.792,2.088],"u21a-2:4":[22.23,1.872],"u21b-1:0":[24.452,2.88],"u21b-1:1":[27.682,2.88],"u21b-1:2":[30.912,2.688],"u21b-1:3":[33.95,2.496],"u21b-1:4":[36.796,2.376],"u21b-2:0":[39.522,1.872],"u21b-2:1":[41.744,2.016],"u21b-2:2":[44.11,2.232],"u21b-2:3":[46.692,1.992],"u21b-2:4":[49.034,1.944]},"u20":{"u20a-1:0":[0.0,2.376],"u20a-1:1":[2.726,2.472],"u20a-1:2":[5.548,2.568],"u20a-1:3":[8.466,2.544],"u20a-1:4":[11.36,2.208],"u20a-2:0":[13.918,2.472],"u20a-2:1":[16.74,1.872],"u20a-2:2":[18.962,2.712],"u20a-2:3":[22.024,2.256],"u20a-2:4":[24.63,2.832],"u20b-1:0":[27.812,2.088],"u20b-1:1":[30.25,2.424],"u20b-1:2":[33.024,2.568],"u20b-1:3":[35.942,2.448],"u20b-1:4":[38.74,2.328],"u20b-2:0":[41.418,2.472],"u20b-2:1":[44.24,2.832],"u20b-2:2":[47.422,2.544],"u20b-2:3":[50.316,2.112],"u20b-2:4":[52.778,1.896]},"u23":{"u23a-1:0":[0.0,2.544],"u23a-1:1":[2.894,2.472],"u23a-1:2":[5.716,2.184],"u23a-1:3":[8.25,2.208],"u23a-1:4":[10.808,2.184],"u23a-2:0":[13.342,2.28],"u23a-2:1":[15.972,2.088],"u23a-2:2":[18.41,2.088],"u23a-2:3":[20.848,2.088],"u23a-2:4":[23.286,2.352],"u23b-1:0":[25.988,2.28],"u23b-1:1":[28.618,2.352],"u23b-1:2":[31.32,2.4],"u23b-1:3":[34.07,2.304],"u23b-1:4":[36.724,2.184],"u23b-2:0":[39.258,1.944],"u23b-2:1":[41.552,1.896],"u23b-2:2":[43.798,2.016],"u23b-2:3":[46.164,1.92],"u23b-2:4":[48.434,1.968]},"u25":{"u25a-1:0":[0.0,2.928],"u25a-1:1":[3.278,2.328],"u25a-1:2":[5.956,2.352],"u25a-1:3":[8.658,2.232],"u25a-1:4":[11.24,2.592],"u25a-2:0":[14.182,2.28],"u25a-2:1":[16.812,2.232],"u25a-2:2":[19.394,2.328],"u25a-2:3":[22.072,2.736],"u25a-2:4":[25.158,2.256]},"u22":{"u22a-1:0":[0.0,2.16],"u22a-1:1":[2.51,2.352],"u22a-1:2":[5.212,2.184],"u22a-1:3":[7.746,2.568],"u22a-1:4":[10.664,2.424],"u22a-2:0":[13.438,1.968],"u22a-2:1":[15.756,1.896],"u22a-2:2":[18.002,1.872],"u22a-2:3":[20.224,1.992],"u22a-2:4":[22.566,1.896],"u22b-1:0":[24.812,2.424],"u22b-1:1":[27.586,2.472],"u22b-1:2":[30.408,2.4],"u22b-1:3":[33.158,2.448],"u22b-1:4":[35.956,2.592],"u22b-2:0":[38.898,2.4],"u22b-2:1":[41.648,2.616],"u22b-2:2":[44.614,2.088],"u22b-2:3":[47.052,2.208],"u22b-2:4":[49.61,2.496]},"cv1":{"cv1:0":[0.0,1.872],"cv1:1":[2.222,1.872],"cv1:2":[4.444,2.376],"cv1:3":[7.17,2.424],"cv1:4":[9.944,4.752],"cv1:5":[15.046,2.664],"cv1:6":[18.06,2.112],"cv1:7":[20.522,1.896],"cv1:8":[22.768,2.376],"cv1:9":[25.494,2.64],"cv1:10":[28.484,4.8],"cv1:11":[33.634,2.256]},"cv2":{"cv2:0":[0.0,4.152],"cv2:1":[4.502,4.176],"cv2:2":[9.028,3.768],"cv2:3":[13.146,4.008],"cv2:4":[17.504,4.272],"cv2:5":[22.126,4.296],"cv2:6":[26.772,3.936],"cv2:7":[31.058,2.088],"cv2:8":[33.496,4.08],"cv2:9":[37.926,2.568],"cv2:10":[40.844,2.64],"cv2:11":[43.834,2.88],"cv2:12":[47.064,2.52],"cv2:13":[49.934,4.2],"cv2:14":[54.484,3.792],"cv2:15":[58.626,3.936]},"cv3":{"cv3:0":[0.0,4.344],"cv3:1":[4.694,2.136],"cv3:2":[7.18,4.224],"cv3:3":[11.754,2.376],"cv3:4":[14.48,2.136],"cv3:5":[16.966,4.536],"cv3:6":[21.852,1.992],"cv3:7":[24.194,2.328],"cv3:8":[26.872,2.808],"cv3:9":[30.03,2.976],"cv3:11":[33.356,1.944],"cv3:12":[35.65,2.088],"cv3:13":[38.088,2.208],"cv3:14":[40.646,2.184],"cv3:15":[43.18,4.2],"cv3:16":[47.73,2.328],"cv3:17":[50.408,4.416],"cv3:18":[55.174,2.352],"cv3:19":[57.876,4.104],"cv3:20":[62.33,4.224]},"cv4":{"cv4:0":[0.0,2.064],"cv4:1":[2.414,3.984],"cv4:2":[6.748,2.4],"cv4:3":[9.498,3.144],"cv4:4":[12.992,2.328],"cv4:5":[15.67,2.712],"cv4:6":[18.732,1.896],"cv4:7":[20.978,4.944],"cv4:8":[26.272,2.64],"cv4:9":[29.262,5.4],"cv4:10":[35.012,4.104],"cv4:11":[39.466,4.8],"cv4:12":[44.616,2.256]},"cv5":{"cv5:0":[0.0,4.2],"cv5:1":[4.55,4.392],"cv5:2":[9.292,4.776],"cv5:3":[14.418,2.16],"cv5:4":[16.928,3.816],"cv5:5":[21.094,2.16],"cv5:6":[23.604,3.768],"cv5:7":[27.722,2.328],"cv5:8":[30.4,4.152],"cv5:9":[34.902,2.016],"cv5:10":[37.268,4.656],"cv5:11":[42.274,2.544],"cv5:12":[45.168,2.64],"cv5:13":[48.158,2.736],"cv5:14":[51.244,2.616],"cv5:15":[54.21,3.456],"cv5:16":[58.016,4.368],"cv5:17":[62.734,4.224]},"cv6":{"cv6:0":[0.0,4.248],"cv6:1":[4.598,3.912],"cv6:2":[8.86,5.232],"cv6:3":[14.442,2.448],"cv6:4":[17.24,4.32],"cv6:5":[21.91,2.568],"cv6:6":[24.828,4.584],"cv6:7":[29.762,2.088],"cv6:8":[32.2,4.248],"cv6:9":[36.798,3.936],"cv6:11":[41.084,4.008],"cv6:12":[45.442,2.808],"cv6:13":[48.6,4.056]},"cv7":{"cv7:0":[0.0,2.76],"cv7:1":[3.11,2.928],"cv7:2":[6.388,5.112],"cv7:3":[11.85,2.232],"cv7:4":[14.432,6.912],"cv7:5":[21.694,2.52],"cv7:6":[24.564,4.392],"cv7:7":[29.306,2.88],"cv7:8":[32.536,2.952],"cv7:9":[35.838,2.544],"cv7:10":[38.732,2.424],"cv7:11":[41.506,3.048],"cv7:12":[44.904,5.256],"cv7:13":[50.51,2.088],"cv7:14":[52.948,2.088]},"cv8":{"cv8:0":[0.0,4.344],"cv8:1":[4.694,4.464],"cv8:2":[9.508,2.4],"cv8:3":[12.258,2.424],"cv8:4":[15.032,4.512],"cv8:5":[19.894,2.712],"cv8:6":[22.956,2.568],"cv8:7":[25.874,1.872],"cv8:8":[28.096,6.72],"cv8:9":[35.166,2.784],"cv8:10":[38.3,3.96],"cv8:11":[42.61,2.88],"cv8:12":[45.84,2.64],"cv8:13":[48.83,2.856],"cv8:15":[52.036,4.344],"cv8:16":[56.73,2.544],"cv8:17":[59.624,4.44],"cv8:18":[64.414,2.088]},"cv9":{"cv9:0":[0.0,4.224],"cv9:1":[4.574,3.984],"cv9:2":[8.908,2.232],"cv9:3":[11.49,2.328],"cv9:4":[14.168,2.784],"cv9:5":[17.302,1.992],"cv9:6":[19.644,5.616],"cv9:7":[25.61,2.52],"cv9:8":[28.48,4.728],"cv9:9":[33.558,4.008],"cv9:10":[37.916,2.448],"cv9:11":[40.714,2.736],"cv9:12":[43.8,3.84],"cv9:13":[47.99,4.368]},"cv10":{"cv10:0":[0.0,4.488],"cv10:1":[4.838,4.392],"cv10:2":[9.58,4.104],"cv10:3":[14.034,4.56],"cv10:4":[18.944,3.912],"cv10:5":[23.206,3.336],"cv10:6":[26.892,2.16],"cv10:7":[29.402,4.632],"cv10:8":[34.384,2.928],"cv10:9":[37.662,1.944],"cv10:10":[39.956,4.152],"cv10:11":[44.458,3.168],"cv10:12":[47.976,4.608],"cv10:13":[52.934,2.544],"cv10:14":[55.828,2.856],"cv10:15":[59.034,4.776],"cv10:16":[64.16,2.136],"cv10:17":[66.646,2.136],"cv10:19":[69.132,4.44],"cv10:20":[73.922,4.488]}}};
 
 /* ===================== STATE ===================== */
 const KEY='gintaras.v2';
@@ -891,6 +1365,9 @@ const BADGES=[
  ['w250','250 words','Learn 250 words and phrases',()=>learned().length>=250],
  ['perfect','Flawless','A lesson with no mistakes',()=>(S.perfects||0)>=1],
  ['speak','Out loud','Finish a speaking lesson',()=>(S.speakDone||0)>=1],
+ ['chat','First chat','Finish a text conversation',()=>Object.values(S.convs||{}).some(c=>c.text)],
+ ['talk','Talker','Finish a spoken conversation',()=>Object.values(S.convs||{}).some(c=>c.speak)],
+ ['convall','Conversationalist','Finish all ten conversations',()=>CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to level 5',()=>Object.values(S.lessons).some(c=>c>=5)],
  ['xp1000','1000 XP','Earn 1000 XP in total',()=>S.xp>=1000],
@@ -901,16 +1378,26 @@ function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,b
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
 function dueItems(){const n=Date.now();return learned().filter(i=>rec(i.id).due<=n).sort((a,b)=>rec(a.id).due-rec(b.id).due);}
 function crowns(lid){return (S.lessons[lid]||0);}
-function unitUnlocked(ui){if(ui===0)return true;const prev=COURSE[ui-1];return prev.lessons.every(l=>crowns(l.id)>=1);}
+/* The path is one line of steps (units and conversations); each opens when the one before it is done.
+   A step you have already started stays open, so reordering the course never locks anyone out. */
+const STEPS=PATH.filter(p=>typeof p==='string'&&(CONV_BY[p]||COURSE.some(u=>u.id===p)));
+const UNIT_BY={};COURSE.forEach(u=>UNIT_BY[u.id]=u);
+function convState(id){S.convs=S.convs||{};return S.convs[id]||(S.convs[id]={});}
+function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.text||c.speak));}
+function stepDone(id){return CONV_BY[id]?convDone(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
+function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
+function stepUnlocked(id){const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
+function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
 function lessonUnlocked(ui,li){if(!unitUnlocked(ui))return false;if(li===0)return true;return crowns(COURSE[ui].lessons[li-1].id)>=1;}
 
 /* ===================== AUDIO ===================== */
 /* Primary: Lithuanian neural-voice clips shipped with the page, packed one file per unit per voice
    (audio/<voice>_<unit>.mp3) and played as slices using SMAP. Fallback: the device's own voice. */
 const players={};let active=null,stopTimer=null,playToken=0;
-function unitOf(id){return (id.match(/^(u\d+)/)||[])[1];}
+/* Audio group = the id's leading letters+number: "u1a-2:3" -> u1, "cv4:7" -> cv4. */
+function unitOf(id){return (id.match(/^([a-z]+\d+)/)||[])[1];}
 function getPlayer(voice,unit){const k=voice+'_'+unit;if(!players[k]){const a=new Audio('audio/'+k+'.mp3');a.preload='auto';players[k]=a;}return players[k];}
-function say(item,slow){if(!S.sound||!item)return;const voice=S.voice||'ona';const unit=unitOf(item.id);const seg=SMAP[voice]&&SMAP[voice][unit]&&SMAP[voice][unit][item.id];
+function say(item,slow,voiceOverride){if(!S.sound||!item)return;const voice=voiceOverride||S.voice||'ona';const unit=unitOf(item.id);const seg=SMAP[voice]&&SMAP[voice][unit]&&SMAP[voice][unit][item.id];
   if(!seg){speak(item.lt,slow);return;}
   const a=getPlayer(voice,unit);const my=++playToken;clearTimeout(stopTimer);
   if(active&&active!==a)active.pause();active=a;
@@ -922,7 +1409,7 @@ function say(item,slow){if(!S.sound||!item)return;const voice=S.voice||'ona';con
       const p=a.play();if(p&&p.catch)p.catch(()=>speak(item.lt,slow));}catch(e){speak(item.lt,slow);}};
   a.onerror=()=>speak(item.lt,slow);
   if(a.readyState>=1)go();else{a.addEventListener('loadedmetadata',go,{once:true});a.load();}}
-function preloadUnit(unit){try{getPlayer(S.voice||'ona',unit).load();}catch(e){}}
+function preloadUnit(unit,voice){try{getPlayer(voice||S.voice||'ona',unit).load();}catch(e){}}
 function canListen(){return true;}
 let ltVoice=null;
 function findVoice(){try{const v=speechSynthesis.getVoices();ltVoice=v.find(x=>/^lt/i.test(x.lang))||null;}catch(e){ltVoice=null;}updateTtsNote();}
@@ -948,10 +1435,18 @@ function renderTop(){rollDay();$('#streak').textContent=S.streak;$('#xp').textCo
   if(S.frozenNote){toast('A streak freeze saved your streak');S.frozenNote=false;save();}
   $('#goalnote').textContent=S.todayXp>=S.goal?'Goal reached. Double it for a streak freeze.':S.streak>0?'Keep the streak alive: '+Math.max(0,S.goal-S.todayXp)+' XP to go.':'Finish one lesson to start your streak.';
   const d=dueItems().length;const b=$('#due-badge');b.hidden=d===0;b.textContent=d;}
-function renderTree(){const t=$('#tree');t.innerHTML='';
-  COURSE.forEach((u,ui)=>{const unlocked=unitUnlocked(ui);const el=document.createElement('section');el.className='unit'+(unlocked?'':' locked');
+function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
+  const prevName=prevStepName(c.id);
+  el.innerHTML='<div class="cv-head">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">Conversation '+n+'</span><h2>'+esc(c.title)+'</h2><span class="sub">'+(open?esc(c.scene):'Finish '+esc(prevName)+' to unlock')+'</span></div></div>'+
+    '<div class="cv-btns"><button type="button" class="btn ghost" data-mode="text"'+(open?'':' disabled')+'>'+(st.text?'✓ ':'')+'Text it</button><button type="button" class="btn ghost" data-mode="speak"'+(open?'':' disabled')+'>'+(st.speak?'✓ ':'')+'Say it out loud</button></div>';
+  el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>startConv(c.id,b.dataset.mode));return el;}
+function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
+  PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
+    else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
+    else if(UNIT_BY[p])unitBand(UNIT_BY[p],COURSE.indexOf(UNIT_BY[p]),t);});}
+function unitBand(u,ui,t){{const unlocked=unitUnlocked(ui);const el=document.createElement('section');el.className='unit'+(unlocked?'':' locked');
     const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;
-    el.innerHTML='<div class="unit-head"><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+(unlocked?doneCount+' of '+u.lessons.length+' lessons done':'Finish Unit '+ui+' to unlock')+'</span></div>'+
+    el.innerHTML='<div class="unit-head"><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+(unlocked?doneCount+' of '+u.lessons.length+' lessons done':'Finish '+esc(prevStepName(u.id))+' to unlock')+'</span></div>'+
       '<button type="button" data-tip aria-expanded="false">Tip</button></div><div class="tip" hidden>'+u.tip+'</div><div class="lessons"></div>';
     const ls=el.querySelector('.lessons');
     u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row';b.disabled=!ok;
@@ -959,7 +1454,8 @@ function renderTree(){const t=$('#tree');t.innerHTML='';
       b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?c:li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+' words')+(c>=5?' · mastered':c>0?' · level '+c:'')+'</small></span><span class="crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
       b.onclick=()=>startLesson(l);ls.appendChild(b);});
     el.querySelector('[data-tip]').onclick=e=>{const tip=el.querySelector('.tip');tip.hidden=!tip.hidden;e.currentTarget.setAttribute('aria-expanded',String(!tip.hidden));};
-    t.appendChild(el);});}
+    t.appendChild(el);}}
+function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
 function renderPractice(){const L=learned();const d=dueItems();
@@ -979,14 +1475,20 @@ function renderProfile(){$('#p-xp').textContent=S.xp;$('#p-streak').textContent=
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();}
-function nextLesson(){for(let ui=0;ui<COURSE.length;ui++)for(let li=0;li<COURSE[ui].lessons.length;li++){const l=COURSE[ui].lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<1)return l;}
+/* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
+function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
+    if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
+    const u=UNIT_BY[id],ui=COURSE.indexOf(u);for(let li=0;li<u.lessons.length;li++){const l=u.lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<1)return l;}}
   for(let ui=0;ui<COURSE.length;ui++)for(let li=0;li<COURSE[ui].lessons.length;li++){const l=COURSE[ui].lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<5)return l;}return null;}
-function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const P=PACES[S.pace]||PACES.regular;
+function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.regular;
   const planDone=S.todayLessons>=P.lessons;
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":"Today's plan · lesson "+Math.min(S.todayLessons+1,P.lessons)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
-  else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.title+(l.speak?'':' · '+l.title);
-    $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
+  else if(l&&l.conv){const c=CONV_BY[l.conv];$('#bite-title').textContent='Conversation: '+c.title;
+    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Text it, or say it out loud.';
+    b.textContent='Text it';b.onclick=()=>startConv(c.id,'text');b2.hidden=false;b2.onclick=()=>startConv(c.id,'speak');}
+  else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
+    $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
 function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();}
 
@@ -997,45 +1499,67 @@ VIEWS.forEach(v=>$('#tab-'+v).onclick=()=>showView(v));
 
 /* ===================== SESSION ===================== */
 let Q=null; // {queue, idx, correct, total, items, mode, lesson, answer, startedAt, firstTry:{}}
+/* Wrong options come from words you have met first (this lesson, then learned ones), so you are choosing, not guessing among strangers. */
 function distractors(item,n,field){const pool=shuffle(ITEMS.filter(i=>i!==item&&norm(i[field])!==norm(item[field])));
-  const same=pool.filter(i=>i.unit===item.unit);const out=[];const used=new Set([norm(item[field])]);
-  for(const i of same.concat(pool)){const v=norm(i[field]);if(used.has(v))continue;used.add(v);out.push(i);if(out.length>=n)break;}return out;}
-/* Difficulty follows how well you know the word: new words are tap-to-choose only; typing starts at level 2. */
+  const rank=i=>i.lesson===item.lesson?0:rec(i.id).seen?1:i.unit===item.unit?2:3;
+  pool.sort((a,b)=>rank(a)-rank(b));const out=[];const used=new Set([norm(item[field])]);
+  for(const i of pool){const v=norm(i[field]);if(used.has(v))continue;used.add(v);out.push(i);if(out.length>=n)break;}return out;}
+/* Difficulty follows how well you know the word: new words are tap-to-choose only; letter tiles come next; typing starts at level 2. */
 const EASY=['mc_lt_en','mc_en_lt','listen'];
-const MID=['mc_lt_en','mc_en_lt','listen','build','mc_en_lt'];
+const MID=['mc_lt_en','mc_en_lt','listen','build','tiles'];
 const HARD=['mc_en_lt','type','listen','build','type','speak'];
 function typesFor(item){const l=rec(item.id).lvl;return l<=0?EASY:l<=1?MID:HARD;}
 function exFor(item,types,avoid){let t=types[Math.floor(Math.random()*types.length)];
   if(avoid&&types.length>1){let n=0;while(t===avoid&&n++<6)t=types[Math.floor(Math.random()*types.length)];}
   if(t==='listen'&&!canListen())t='mc_lt_en';
-  if(t==='build'&&item.lt.split(' ').length<2)t=rec(item.id).lvl>=2?'type':'mc_en_lt';
+  const single=item.lt.split(' ').length<2;
+  if(t==='build'&&single)t=rec(item.id).lvl>=2?'type':'tiles';
+  if(t==='tiles'&&!single)t='build';
+  if(t==='tiles'&&item.lt.replace(/[?!.,]/g,'').length>13)t='mc_en_lt';
   return {type:t,item};}
-function buildSession(items,mode,lesson){const all=[];const intro=[];
-  if(lesson&&lesson.speak){items.forEach(it=>all.push({type:'speak',item:it}));}
-  else{
-  if(mode==='lesson')items.forEach(it=>{if(!rec(it.id).seen)intro.push({type:'intro',item:it});});
-  shuffle(items).forEach(it=>{const a=exFor(it,typesFor(it));all.push(a);
-    if(mode==='lesson')all.push(exFor(it,typesFor(it),a.type));});
-  if(items.length>=4)all.push({type:'match',items:sample(items,Math.min(5,items.length))});}
-  Q={queue:intro.concat(shuffle(all)),idx:0,correct:0,total:all.length,items,mode,lesson,answer:null,startedAt:Date.now(),firstTry:{},wrongOnce:{}};
-  new Set(items.map(i=>unitOf(i.id))).forEach(preloadUnit);
-  $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
+/* A lesson teaches one new word, checks it straight away, then the next. The second round, a match game
+   and up to three words from earlier lessons are shuffled in after. */
+function buildSession(items,mode,lesson){const head=[];const rest=[];
+  if(lesson&&lesson.speak){items.forEach(it=>head.push({type:'speak',item:it}));}
+  else if(mode==='lesson'){
+    const u=lesson.unit;if(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)head.push({type:'tip',unit:u});
+    shuffle(items).forEach(it=>{if(!rec(it.id).seen)head.push({type:'intro',item:it});const a=exFor(it,typesFor(it));head.push(a);rest.push(exFor(it,typesFor(it),a.type));});
+    if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});
+    learned().filter(i=>!items.includes(i)).sort((a,b)=>rec(a.id).due-rec(b.id).due||rec(a.id).lvl-rec(b.id).lvl).slice(0,3)
+      .forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));}
+  else{shuffle(items).forEach(it=>rest.push(exFor(it,typesFor(it))));
+    if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});}
+  const queue=head.concat(shuffle(rest));
+  Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode,lesson,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0};
+  new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));
+  openSheet();renderStep();}
+const STEPLESS={intro:1,tip:1};
+function openSheet(){$('#sheet').hidden=false;document.body.style.overflow='hidden';}
 function startLesson(l){buildSession(l.items,'lesson',l);}
+function startNext(l){if(!l)return;if(l.conv)startConv(l.conv,'text');else startLesson(l);}
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
-function quit(){if(!Q)return;Q=null;$('#sheet').hidden=true;document.body.style.overflow='';renderAll();}
+function quit(){if(!Q&&!CV)return;if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();}
 
-function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
-function progressUI(){const done=Q.queue.slice(0,Q.idx).filter(e=>e.type!=='intro').length;const rem=Q.queue.slice(Q.idx).filter(e=>e.type!=='intro').length;const tot=done+rem;
-  $('#lbar').style.width=(tot?done/tot*100:0)+'%';$('#lcount').textContent=done+'/'+tot;}
+function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
+/* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */
+function progressUI(){const done=Q.queue.slice(0,Q.idx).filter(e=>!STEPLESS[e.type]).length;const rem=Q.queue.slice(Q.idx).filter(e=>!STEPLESS[e.type]).length;const tot=done+rem;
+  Q.barPct=Math.max(Q.barPct||0,tot?done/tot*100:0);$('#lbar').style.width=Q.barPct+'%';$('#lcount').textContent=done+'/'+tot;}
+const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1};
 
 function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTML='';Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
+  const idk=$('#btn-idk');idk.hidden=true;
   if(Q.idx>=Q.queue.length)return finish();
   const ex=Q.queue[Q.idx];const it=ex.item;
+  if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
+  const from=ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
+  const emo=x=>EMOJI[x.lt]?'<span class="emo" aria-hidden="true">'+EMOJI[x.lt]+'</span>':'';
   const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';
-  if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro"><div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. You will see this word twice in this lesson, then it comes back for review tomorrow.</p>';
+  if(ex.type==='tip'){const u=ex.unit;st.innerHTML='<span class="eyebrow">Before you start</span><div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div><p class="note">That is all the grammar you need for now. You can read it again any time with the Tip button on the unit.</p>';
+    btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
+  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro">'+(EMOJI[it.lt]?'<div class="emo big" aria-hidden="true">'+EMOJI[it.lt]+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
   else if(ex.type==='speak'){st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro"><div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+builtFrom(it)+'</div>'+
       '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div><div class="how"><div><b>1</b><span>Listen once or twice. Slow helps.</span></div><div><b>2</b><span>Say it out loud, copying the rhythm, not just the sounds.</span></div><div><b>3</b><span>Play it again and compare. Then rate yourself.</span></div></div>'+
@@ -1048,13 +1572,13 @@ function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTM
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
     const opts=shuffle([it].concat(distractors(it,3,field)));
     let head;if(ex.type==='listen')head='<div class="prompt small">Tap what you hear</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>';
-    else head='<div class="prompt small">'+(toEn?'What does this mean?':'Choose the Lithuanian')+'</div><div class="word">'+(toEn?spk(it):'')+'<span class="lt" style="'+(toEn?'':'color:var(--fg);font-size:28px')+'">'+esc(toEn?it.lt:it.en)+'</span></div>'+(toEn&&S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'');
+    else head='<div class="prompt small">'+(toEn?'What does this mean?':'Choose the Lithuanian')+'</div><div class="word">'+(toEn?spk(it):emo(it))+'<span class="lt" style="'+(toEn?'':'color:var(--fg);font-size:28px')+'">'+esc(toEn?it.lt:it.en)+'</span></div>'+(toEn&&S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'');
     const showP=S.pron&&(ex.type==='listen'||!toEn);
-    st.innerHTML=head+'<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'" aria-pressed="false"><span class="k">'+(i+1)+'</span><span class="ot"><span>'+esc(ex.type==='listen'?o.lt:o[field])+'</span>'+(showP?'<small class="pron">'+pronHtml(o.lt)+'</small>':'')+'</span></button>').join('')+'</div>';
+    st.innerHTML=from+head+'<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'" aria-pressed="false"><span class="k">'+(i+1)+'</span><span class="ot"><span>'+esc(ex.type==='listen'?o.lt:o[field])+'</span>'+(showP?'<small class="pron">'+pronHtml(o.lt)+'</small>':'')+'</span></button>').join('')+'</div>';
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];btn.disabled=false;});
     if(ex.type==='listen'||toEn)setTimeout(()=>say(it),200);}
   else if(ex.type==='type'){
-    st.innerHTML='<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
+    st.innerHTML=from+'<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
     const inp=st.querySelector('#ans');inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
     inp.onkeydown=e=>{if(e.key==='Enter'&&!btn.disabled)btn.click();};
     st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
@@ -1062,12 +1586,22 @@ function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTM
   else if(ex.type==='build'){
     const words=it.lt.split(' ');const extra=sample(ITEMS.filter(i=>i.unit===it.unit&&i!==it).flatMap(i=>i.lt.split(' ')).filter(w=>!words.includes(w)),Math.min(3,words.length+1));
     const bank=shuffle(words.concat(extra));let chosen=[];
-    st.innerHTML='<div class="prompt small">Build the sentence</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+esc(it.en)+'</span></div><div class="build"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
+    st.innerHTML=from+'<div class="prompt small">Build the sentence</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+esc(it.en)+'</span></div><div class="build"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
     const draw=()=>{$('#bans').innerHTML=chosen.map(i=>'<button type="button" class="chip in" data-c="'+i+'">'+esc(bank[i])+'</button>').join('');
       st.querySelectorAll('#bank .chip').forEach(c=>c.classList.toggle('ghost',chosen.includes(Number(c.dataset.i))));
       st.querySelectorAll('#bans .chip').forEach(c=>c.onclick=()=>{chosen=chosen.filter(x=>x!==Number(c.dataset.c));draw();});
       Q.answer=chosen.map(i=>bank[i]).join(' ');btn.disabled=chosen.length===0;};
     st.querySelectorAll('#bank .chip').forEach(c=>c.onclick=()=>{const i=Number(c.dataset.i);if(!chosen.includes(i)){chosen.push(i);draw();}});draw();}
+  else if(ex.type==='tiles'){
+    const word=it.lt.replace(/[?!.,]/g,'').toLowerCase();const letters=[...word];
+    const decoys=sample([...'aeiklmnorstuvėšžč'].filter(c=>!letters.includes(c)),2);
+    const bank=shuffle(letters.concat(decoys));let chosen=[];
+    st.innerHTML=from+'<div class="prompt small">Spell it with the letters</div><div class="word">'+spk(it)+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>':'')+'<div class="build spell"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
+    const draw=()=>{$('#bans').innerHTML=chosen.map(i=>'<button type="button" class="chip in" data-c="'+i+'">'+esc(bank[i])+'</button>').join('');
+      st.querySelectorAll('#bank .chip').forEach(c=>c.classList.toggle('ghost',chosen.includes(Number(c.dataset.i))));
+      st.querySelectorAll('#bans .chip').forEach(c=>c.onclick=()=>{chosen=chosen.filter(x=>x!==Number(c.dataset.c));draw();});
+      Q.answer=chosen.map(i=>bank[i]).join('');btn.disabled=chosen.length===0;};
+    st.querySelectorAll('#bank .chip').forEach(c=>c.onclick=()=>{const i=Number(c.dataset.i);if(!chosen.includes(i)){chosen.push(i);draw();}});draw();setTimeout(()=>say(it),200);}
   else if(ex.type==='match'){
     const L=shuffle(ex.items),R=shuffle(ex.items);let sel=null,done=0;
     st.innerHTML='<div class="prompt small">Match the pairs</div><div class="pairs">'+L.map((o,i)=>'<button type="button" class="opt" data-side="l" data-id="'+esc(o.id)+'" aria-pressed="false"><span class="ot"><span>'+esc(o.lt)+'</span>'+(S.pron?'<small class="pron">'+pronHtml(o.lt)+'</small>':'')+'</span></button><button type="button" class="opt" data-side="r" data-id="'+esc(R[i].id)+'" aria-pressed="false">'+esc(R[i].en)+'</button>').join('')+'</div>';
@@ -1077,24 +1611,35 @@ function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTM
       if(sel===b){sel=null;b.setAttribute('aria-pressed','false');return;}
       if(sel.dataset.side===b.dataset.side){sel.setAttribute('aria-pressed','false');sel=b;b.setAttribute('aria-pressed','true');return;}
       if(sel.dataset.id===b.dataset.id){[sel,b].forEach(x=>{x.classList.add('done');x.setAttribute('aria-pressed','false');});done++;sel=null;if(done===ex.items.length){Q.answer=true;btn.disabled=false;setFoot('good','All matched');btn.textContent='Continue';btn.onclick=()=>{ex.items.forEach(i=>grade(i,true,false));Q.correct++;Q.idx++;renderStep();};}}
-      else{[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});Q.wrongOnce[ex.items[0].id]=true;sel=null;}});}
+      else{[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});Q.wrongOnce[(sel.dataset.side==='l'?sel:b).dataset.id]=true;sel=null;}});}
   st.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>say(BYID[b.dataset.say],!!b.dataset.slow));}
 
+/* A word climbs at most one level per day, and only once it is due: two right answers a minute apart are not two reviews.
+   It then comes due at the start of the day its interval lands on, not at the exact hour. */
 function grade(item,ok,count){const r=rec(item.id);r.seen=true;
-  if(ok){r.ok++;if(count){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.due=Date.now()+INTERVALS[r.lvl]*DAY;}}
+  if(ok){r.ok++;if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+INTERVALS[r.lvl]);r.due=d.getTime();}}
   else{r.bad++;r.lvl=Math.max(0,r.lvl-2);r.due=Date.now();}}
 
 function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='';
-  if(ex.type==='type'||ex.type==='build'){const a=norm(Q.answer);const targets=[it.lt].concat(it.alt).map(norm);
+  if(ex.type==='type'||ex.type==='build'||ex.type==='tiles'){const a=norm(Q.answer);const targets=[it.lt].concat(it.alt).map(norm);
     if(targets.includes(a))ok=true;else if(targets.map(strip).includes(strip(Q.answer))){ok=true;almost='Watch the accents: <b>'+esc(it.lt)+'</b>';}}
   else ok=Q.answer===it;
+  reveal(ok,almost,false);}
+/* Shows the result. A miss (or "I don't know") never ends anything: the word comes back two cards later. */
+function reveal(ok,almost,idk){const ex=Q.queue[Q.idx];const it=ex.item;
   const first=!Q.wrongOnce[it.id];
   const pr=S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'';
+  const mean=ex.type==='mc_lt_en'||ex.type==='listen';
+  const answer='<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
+  $('#btn-idk').hidden=true;
   if(ok){grade(it,true,first);if(first)Q.correct++;setFoot('good',almost?'Nearly':['Correct!','Puiku!','Gerai!','Šaunu!'][Math.floor(Math.random()*4)],(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
-  else{grade(it,false,false);Q.wrongOnce[it.id]=true;setFoot('bad','Not quite','Correct answer: <b>'+esc(ex.type==='mc_lt_en'||ex.type==='listen'?it.en:it.lt)+'</b>'+(ex.type==='mc_lt_en'||ex.type==='listen'?' · '+esc(it.lt):' · '+esc(it.en))+pr);
-    Q.queue.push({type:ex.type,item:it,retry:true});say(it);}
-  document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;const o=b.dataset.i!=null?null:null;});
-  const stage=$('#stage');stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
+  else{grade(it,false,false);Q.wrongOnce[it.id]=true;
+    if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
+    else setFoot('bad','Not quite','Correct answer: '+answer);
+    Q.queue.splice(Math.min(Q.idx+3,Q.queue.length),0,{type:ex.type,item:it,retry:true});say(it);}
+  const stage=$('#stage');stage.querySelectorAll('.opt').forEach(b=>{b.disabled=true;});
+  stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
+  stage.querySelectorAll('.build .chip').forEach(b=>{b.disabled=true;});
   const inp=stage.querySelector('#ans');if(inp)inp.disabled=true;
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};}
 
@@ -1117,6 +1662,83 @@ function confetti(n){if(matchMedia('(prefers-reduced-motion: reduce)').matches)r
   const cols=['#E89A1E','#2F6B4A','#F7C56E','#5FB37F','#C93A3A'];const ps=[];for(let i=0;i<n;i++)ps.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,v:2+Math.random()*3,w:6+Math.random()*6,r:Math.random()*Math.PI,s:(Math.random()-.5)*.2,col:cols[i%cols.length]});
   let t=0;const step=()=>{x.clearRect(0,0,c.width,c.height);let alive=false;ps.forEach(p=>{p.y+=p.v;p.r+=p.s;p.x+=Math.sin(p.r)*1.2;if(p.y<c.height+20)alive=true;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.col;x.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);x.restore();});if(alive&&t++<240)requestAnimationFrame(step);else x.clearRect(0,0,c.width,c.height);};step();}
 
+/* ===================== CONVERSATION PLAYER ===================== */
+/* Text mode: they message you, you pick the right reply (a wrong pick just explains itself).
+   Speak mode: they talk, you see what to say in English, say it out loud; the mic checks it where the browser can listen. */
+let CV=null;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
+const MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+function clipLen(id,voice){const g=unitOf(id);const s=SMAP[voice]&&SMAP[voice][g]&&SMAP[voice][g][id];return s?s[1]:1.2;}
+function later(fn,ms){const C=CV;if(!C)return;const t=setTimeout(()=>{if(CV===C)fn();},ms);C.timers.push(t);}
+function stopConv(){if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
+function chatScroll(){const box=$('#stage').parentElement;box.scrollTop=box.scrollHeight;}
+function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';}
+function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;
+  CV={c,mode,i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
+  const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
+  $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">'+(mode==='text'?'Text conversation':'Spoken conversation')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Pick a reply above':'Listen first';btn.onclick=null;
+  convNext();}
+function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.c.lines.length*100)+'%';
+  if(C.i>=C.c.lines.length)return convFinish();
+  const ln=C.c.lines[C.i];const msgs=$('#msgs');
+  if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
+  if(ln.kind==='p'){const who=C.c.cast[ln.who];msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
+    return later(()=>{$('#typing').remove();
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+cvSpk(ln.id,who.voice)+'</div>');chatScroll();
+      say(ln,false,who.voice);C.i++;later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?800:400);}
+  convTurn(ln);}
+function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
+  const done=()=>{turn.innerHTML='';$('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div></div>');chatScroll();
+    if(C.rec){try{C.rec.abort();}catch(e){}}say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent=C.mode==='text'?'Pick a reply above':'Listen first';setFoot('');
+    later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
+  if(C.mode==='text'){const opts=shuffle([[ln.lt,ln.en,true]].concat(ln.no.map(n=>[n[0],n[1],false])));
+    turn.innerHTML='<div class="turn"><span class="eyebrow">Your reply</span><div class="hint">'+esc(ln.hint)+'</div><div class="copts">'+opts.map((o,i)=>'<button type="button" class="copt" data-i="'+i+'"><span class="k">'+(i+1)+'</span><span>'+esc(o[0])+'</span></button>').join('')+'</div><p class="note" id="cmsg" role="status"></p></div>';
+    turn.querySelectorAll('.copt').forEach(b=>b.onclick=()=>{const o=opts[Number(b.dataset.i)];
+      if(o[2])return done();
+      C.mistakes++;b.disabled=true;b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),320);
+      $('#cmsg').innerHTML='That one means "<b>'+esc(o[1])+'</b>". Try another.';});
+    chatScroll();return;}
+  const showLt=()=>{$('#peekbox').innerHTML='<div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div></div>';chatScroll();};
+  turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+    '<div id="peekbox"><button type="button" class="btn ghost" id="peek">Show me the Lithuanian</button></div>'+
+    '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Speak into the microphone">'+MIC+'</button>':'')+'</div>'+
+    '<p class="note" id="srout" role="status"></p></div>';
+  const easy=C.c.id==='cv1'||C.c.id==='cv2';$('#peek').onclick=showLt;if(easy)showLt();
+  $('#srout').textContent=(easy?'':'Try it from memory first. ')+(SR?'Tap the microphone and say it, or just say it and tap "I said it".':'Say it out loud, then play the recording to compare. Tap "I said it" when you are happy.');
+  btn.disabled=false;btn.textContent='I said it';btn.onclick=done;
+  const mic=$('#mic');if(mic)mic.onclick=()=>listen(ln,mic);chatScroll();}
+/* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
+function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolean);const sw=strip(said).split(' ').filter(Boolean);
+  const near=(a,b)=>{if(a===b)return true;if(a.length<4||b.length<4)return false;if(a.slice(0,4)===b.slice(0,4))return true;
+    const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length]<=1;};
+  return tw.length?tw.filter(w=>sw.some(x=>near(w,x))).length/tw.length:0;}
+function listen(ln,mic){const C=CV;const out=$('#srout');if(C.rec){try{C.rec.abort();}catch(e){}}
+  const rec=new SR();C.rec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
+  mic.classList.add('on');out.textContent='Listening… say it now.';
+  rec.onresult=e=>{const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;alts.forEach(a=>{const s=matchScore(a,ln.lt);if(s>score){score=s;best=a;}});
+    if(score>=0.75){C.heard++;out.innerHTML='I heard "<b>'+esc(best)+'</b>". Spot on!';setFoot('good','');}
+    else if(score>=0.4)out.innerHTML='I heard "<b>'+esc(best)+'</b>". Close! Play the recording once more and have another go.';
+    else out.innerHTML='I heard "<b>'+esc(best)+'</b>". Not quite. Tap "Show me the Lithuanian", listen, then try again.';};
+  rec.onerror=ev=>{out.textContent=ev.error==='not-allowed'?'The microphone is blocked for this page. You can still say it out loud and tap "I said it".':'I couldn\'t hear that. Try again, or just say it and tap "I said it".';};
+  rec.onend=()=>mic.classList.remove('on');
+  try{rec.start();}catch(e){mic.classList.remove('on');}}
+function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
+  const perfect=C.mode==='text'&&C.mistakes===0;const xp=(C.mode==='speak'?20:15)+(perfect?5:0);
+  st[C.mode]=today();const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
+  const lines=[];if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
+  got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  const other=C.mode==='text'?'speak':'text';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+(C.mode==='text'?C.mistakes:C.heard)+'</strong><small>'+(C.mode==='text'?'Wrong picks':'Mic matches')+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div></div>'+lines.join('')+
+    (st[other]?'':'<button type="button" class="btn ghost" id="btn-other">'+(other==='speak'?'Now say it out loud':'Now try it as a text chat')+'</button>')+'</div>';
+  const o=$('#btn-other');if(o)o.onclick=()=>{const id=C.c.id;stopConv();CV=null;startConv(id,other);};
+  confetti(perfect||got.length?160:90);$('#lbar').style.width='100%';
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;}
+$('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
+  const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
+
 /* ===================== WIRING ===================== */
 $('#btn-quit').onclick=quit;
 $('#btn-review').onclick=()=>startReview(false);
@@ -1129,11 +1751,13 @@ $('#sw-pron').onclick=()=>{S.pron=!(S.pron!==false);save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
 $('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voice,sound:S.sound,pron:S.pron};S=Object.assign(fresh(),keep,{welcomed:true});save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast('Progress erased');};
-document.addEventListener('keydown',e=>{if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];if(!ex)return;
+document.addEventListener('keydown',e=>{if(CV&&!$('#sheet').hidden){if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
+    if(e.key==='Enter'){const b=$('#btn-check');if(!b.disabled)b.click();}return;}
+  if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];if(!ex)return;
   if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(!b.disabled)b.click();}});
 
-$('#btn-welcome').onclick=()=>{S.welcomed=true;save();$('#welcome').hidden=true;document.body.style.overflow='';renderAll();const l=nextLesson();if(l)startLesson(l);};
+$('#btn-welcome').onclick=()=>{S.welcomed=true;save();$('#welcome').hidden=true;document.body.style.overflow='';renderAll();startNext(nextLesson());};
 function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace('regular');if(S.pron===undefined)S.pron=true;rollDay();save();renderAll();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}

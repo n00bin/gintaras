@@ -17,7 +17,8 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.lessonsDone=Math.max(a.lessonsDone||0,b.lessonsDone||0);out.perfects=Math.max(a.perfects||0,b.perfects||0);out.speakDone=Math.max(a.speakDone||0,b.speakDone||0);
   out.freezes=Math.max(a.freezes||0,b.freezes||0);out.lastDay=[a.lastDay||'',b.lastDay||''].sort().pop();
   out.lessons={};new Set(Object.keys(a.lessons||{}).concat(Object.keys(b.lessons||{}))).forEach(k=>out.lessons[k]=Math.max((a.lessons||{})[k]||0,(b.lessons||{})[k]||0));
-  out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};});
+  out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad),up:[x.up||'',y.up||''].sort().pop()};});
+  out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
   if((b.weekStart||'')>(a.weekStart||'')){out.weekStart=b.weekStart;out.weekXp=b.weekXp;}else if(b.weekStart===a.weekStart)out.weekXp=Math.max(a.weekXp||0,b.weekXp||0);
@@ -43,7 +44,7 @@ async function afterAuth(){profile=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 
 function renderAuth(){const box=$('#auth');if(!box)return;
-  if(!sb){box.innerHTML='<h2>Account</h2><p class="note">Online accounts are not set up yet. Progress is saved on this device only.</p>';return;}
+  if(!sb){box.hidden=true;return;}
   if(user){box.innerHTML='<h2>Account</h2><div class="setting"><span>Signed in as</span><strong>'+esc(profile?profile.nickname:user.email||'')+'</strong></div><p class="note" id="cloud-status">Progress syncs to your account on every lesson.</p><div class="setting"><span>Nickname</span><button class="chip" id="btn-nick">Change</button></div><button class="btn ghost" id="btn-out">Sign out</button>';
     $('#btn-out').onclick=async()=>{await sb.auth.signOut();user=null;profile=null;renderAuth();renderBoard();};
     $('#btn-nick').onclick=showNickname;return;}
@@ -79,7 +80,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=data.map((r,i)=>'<li class="'+(user&&r.id===user.id?'me':'')+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+esc(r.level_title||'')+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+(boardMode==='week'?r.week_xp:r.xp)+' XP</span></li>').join('');}
 
 /* ---------- boot ---------- */
-function boot(){if(!sb){renderAuth();renderBoard();return;}
+function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
   loadSession();}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
