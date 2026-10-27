@@ -331,7 +331,12 @@
 "u14b-2:1": "išėjimas",
 "u14b-2:2": "įėjimas",
 "u14b-2:3": "nuoma",
-"u14b-2:4": "dviratis"
+"u14b-2:4": "dviratis",
+"u14c-1:0": "Aš važiuoju į Kauną",
+"u14c-1:1": "Aš einu į parduotuvę",
+"u14c-1:2": "Kur tu važiuoji?",
+"u14c-1:3": "Aš einu namo",
+"u14c-1:4": "Važiuojam!"
 },
 "u15": {
 "u15a-1:0": "Staliuką dviem, prašau",
@@ -353,7 +358,12 @@
 "u15b-2:1": "su pienu",
 "u15b-2:2": "šaukštas",
 "u15b-2:3": "šakutė",
-"u15b-2:4": "peilis"
+"u15b-2:4": "peilis",
+"u15c-1:0": "Sriubą, prašau",
+"u15c-1:1": "Arbatą, prašau",
+"u15c-1:2": "Aš norėčiau sriubos",
+"u15c-1:3": "Puiku!",
+"u15c-1:4": "Ne, ačiū"
 },
 "u16": {
 "u16a-1:0": "Ar turite?",
@@ -375,7 +385,12 @@
 "u16b-2:1": "nuolaida",
 "u16b-2:2": "Tik žiūriu",
 "u16b-2:3": "grąža",
-"u16b-2:4": "Kiek tai kainuoja?"
+"u16b-2:4": "Kiek tai kainuoja?",
+"u16c-1:0": "Ar turite obuolių?",
+"u16c-1:1": "Ar turite sūrio?",
+"u16c-1:2": "Kiek kainuoja obuoliai?",
+"u16c-1:3": "Gerai, aš imu",
+"u16c-1:4": "Tik grynaisiais?"
 },
 "u17": {
 "u17a-1:0": "Aš turiu rezervaciją",
@@ -419,7 +434,12 @@
 "u18b-2:1": "šimtas dvylika",
 "u18b-2:2": "draudimas",
 "u18b-2:3": "Ar čia yra vaistinė?",
-"u18b-2:4": "Aš gerai"
+"u18b-2:4": "Aš gerai",
+"u18c-1:0": "Man skauda galvą",
+"u18c-1:1": "Man skauda pilvą",
+"u18c-1:2": "Man skauda gerklę",
+"u18c-1:3": "Turiu temperatūros",
+"u18c-1:4": "Man bloga"
 },
 "u2": {
 "u2a-1:0": "vienas",
