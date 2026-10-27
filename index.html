@@ -25,6 +25,7 @@
 <style>
 /* Layout: a single scrolling column of unit bands with a fixed bottom tab bar; lessons open as a full-screen sheet. */
 :root{
+  --band:#2F6B4A;     /* green behind white text */
   --bg:#F3F5F0;        /* pale birch, a touch of green */
   --surface:#FFFFFF;
   --surface-2:#E7ECE4;
@@ -47,12 +48,13 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
-    --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
+    --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;--band:#24553A;
     --ok:#5FC07F;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
     --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
+  --band:#24553A;
   --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
   --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
   --ok:#5FC07F;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
@@ -84,7 +86,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .view[hidden]{display:none}
 
 /* Today's bite + welcome + review timeline */
-.bite{background:var(--pine);color:#fff;border-radius:var(--radius);padding:18px 16px;display:grid;gap:8px;margin-bottom:14px}
+.bite{background:var(--band);color:#fff;border-radius:var(--radius);padding:18px 16px;display:grid;gap:8px;margin-bottom:14px}
 .bite .eyebrow{color:rgba(255,255,255,.75)}
 .bite h2{font-size:24px;font-weight:600;color:#fff}
 .bite .note{color:rgba(255,255,255,.85)}
@@ -144,7 +146,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 /* Unit bands */
 .unit{margin-bottom:22px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--surface)}
-.unit-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;background:var(--pine);color:#fff}
+.unit-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;background:var(--band);color:#fff}
 .unit-head .eyebrow{color:rgba(255,255,255,.75)}
 .unit-head h2{font-size:21px;font-weight:600;color:#fff}
 .unit-head .sub{font-size:14px;opacity:.9}
@@ -423,6 +425,19 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .frame{font-family:var(--display);font-size:26px;font-weight:600;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
 .gap{display:inline-block;min-width:3em;border-bottom:3px dashed var(--amber);color:var(--amber-deep);padding:0 6px}
 .gap.filled{border-bottom-style:solid}
+.unit.folded .unit-head,.unit.locked .unit-head{border-radius:0}
+.unit.folded{margin-bottom:12px}
+.unit.locked .unit-head{padding:10px 16px}
+.unit.locked .unit-head h2{font-size:18px}
+.unit-head[data-fold]{cursor:pointer}
+.head-btns{display:flex;align-items:center;gap:8px}
+.chev{font-size:18px;opacity:.85}
+.lesson-row.did .ring{background:conic-gradient(var(--ok) 100%,var(--surface-2) 0)}
+.lesson-row.did .ring b{color:var(--ok)}
+.bd i{width:34px;height:34px;display:grid;place-items:center;font-size:20px;font-style:normal;filter:grayscale(1);opacity:.6}
+.bd.on i{filter:none;opacity:1;background:none}
+.steps{flex-wrap:wrap;overflow:visible}
+.jump{display:block;margin:-6px auto 14px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -450,6 +465,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
     </div>
+    <button type="button" class="linkbtn jump" id="btn-jump">Jump to where I am on the path ↓</button>
     <button type="button" class="guidecard" data-guide><span class="emo" aria-hidden="true">🗣️</span><span><strong>Pronunciation guide</strong><small>How to read "sounds like", and the Lithuanian letters that trip people up.</small></span></button>
     <div id="tree"></div>
   </section>
@@ -567,7 +583,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div><b>1</b><span><strong>One word at a time.</strong> Every word comes with a picture where it can, a plain English "sounds like", and a real Lithuanian voice. Tap, listen, match. You only type a word once you already know it.</span></div>
       <div><b>2</b><span><strong>Stuck? Say so.</strong> Every question has an "I don't know" button. No guessing, no shame: you see the answer and the word comes back a moment later.</span></div>
       <div><b>3</b><span><strong>Words come back.</strong> The app reminds you of a word right before you would forget it, then waits longer each time. That is the whole trick to remembering.</span></div>
-      <div><b>4</b><span><strong>Then you talk.</strong> Every few units there is a real conversation using only words you know. Text it like a chat, or say it out loud.</span></div>
+      <div><b>4</b><span><strong>Then you talk.</strong> Every few units there is a real conversation using only words you know. You write each reply, then say it out loud.</span></div>
     </div>
     <div class="pace" id="pace-welcome">
       <span class="eyebrow">How much time each day?</span>
@@ -704,7 +720,7 @@ const COURSE = [
   ['pirmas','first'],['antras','second'],['trečias','third'],
  ]},
 ]},
-{id:'u3',title:'Maistas',en:'Food',tip:'After <b>noriu</b> (I want) the thing you want changes ending: kava becomes <b>kavos</b>, vanduo becomes <b>vandens</b>. This is the genitive case; you\'ll see it everywhere.',lessons:[
+{id:'u3',title:'Maistas',en:'Food',tip:'After <b>noriu</b> (I want) the thing you want changes ending: kava becomes <b>kavos</b>, vanduo becomes <b>vandens</b>. You will see this "some of" ending everywhere.',lessons:[
  {id:'u3a',title:'At the table',items:[
   ['duona','bread'],['pienas','milk'],['vanduo','water'],['kava','coffee'],['arbata','tea'],
   ['sūris','cheese'],['mėsa','meat'],['sriuba','soup'],['kiaušinis','egg'],['sviestas','butter'],
@@ -2151,6 +2167,7 @@ function addXp(n){rollDay();S.xp+=n;S.todayXp+=n;window.dispatchEvent(new Custom
 /* ===================== LEVELS AND BADGES ===================== */
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
 function levelFor(xp){let i=0;LEVELS.forEach((l,k)=>{if(xp>=l[0])i=k;});return {i,xp:LEVELS[i][0],title:LEVELS[i][1],en:LEVELS[i][2],next:LEVELS[i+1]||null};}
+const BADGE_ICONS={first:'🌱',streak3:'🔥',streak7:'📅',streak30:'🏅',w50:'📗',w100:'📘',w250:'📚',perfect:'💎',speak:'🗣️',chat:'💬',talk:'🎙️',convall:'🤝',unit:'🧱',master:'👑',xp1000:'⭐',tourist:'🧳'};
 const BADGES=[
  ['first','First steps','Finish your first lesson',()=>S.lessonsDone>=1],
  ['streak3','Three in a row','A 3-day streak',()=>(S.bestStreak||0)>=3],
@@ -2167,7 +2184,7 @@ const BADGES=[
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to level 5',()=>Object.values(S.lessons).some(c=>c>=5)],
  ['xp1000','1000 XP','Earn 1000 XP in total',()=>S.xp>=1000],
- ['tourist','Ready to travel','Clear the first twelve units',()=>COURSE.slice(0,12).every(u=>u.lessons.every(l=>crowns(l.id)>=1))],
+ ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
 ];
 function checkBadges(){S.badges=S.badges||{};const got=[];BADGES.forEach(b=>{if(!S.badges[b[0]]&&b[3]()){S.badges[b[0]]=today();got.push(b);}});if(got.length)save();return got;}
 function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,bad:0});}
@@ -2241,17 +2258,27 @@ function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
     else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
     else if(UNIT_BY[p])unitBand(UNIT_BY[p],COURSE.indexOf(UNIT_BY[p]),t);});}
-function unitBand(u,ui,t){{const unlocked=unitUnlocked(ui);const el=document.createElement('section');el.className='unit'+(unlocked?'':' locked');
-    const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;
-    el.innerHTML='<div class="unit-head"><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+(unlocked?doneCount+' of '+u.lessons.length+' lessons done':'Finish '+esc(prevStepName(u.id))+' to unlock')+'</span></div>'+
-      '<button type="button" data-tip aria-expanded="false">Tip</button></div><div class="tip" hidden>'+u.tip+'</div><div class="lessons"></div>';
-    const ls=el.querySelector('.lessons');
-    u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row';b.disabled=!ok;
-      const seen=l.items.filter(i=>rec(i.id).seen).length;const pct=Math.round(seen/l.items.length*100);
-      b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?c:li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+' words')+(c>=5?' · mastered':c>0?' · level '+c:'')+'</small></span><span class="crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
-      b.onclick=()=>startLesson(l);ls.appendChild(b);});
-    el.querySelector('[data-tip]').onclick=e=>{const tip=el.querySelector('.tip');tip.hidden=!tip.hidden;e.currentTarget.setAttribute('aria-expanded',String(!tip.hidden));};
-    t.appendChild(el);}}
+/* Only the unit you are working on is open. Finished units fold up (tap the header to open them again);
+   locked units show just their header, so the path stays short enough to scroll. */
+const OPEN_UNITS=new Set();
+function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.createElement('section');
+  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=doneCount===u.lessons.length;
+  const open=unlocked&&(!done||OPEN_UNITS.has(u.id));
+  el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
+  const sub=!unlocked?u.lessons.length+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+u.lessons.length+' lessons done':doneCount+' of '+u.lessons.length+' lessons done';
+  el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
+    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+u.tip+'</div>'+(open?'<div class="lessons"></div>':'');
+  const ls=el.querySelector('.lessons');
+  if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
+    const seen=l.items.filter(i=>rec(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
+    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>1?' · level '+c:c===1?' · done':'')+'</small></span><span class="crowns" aria-label="Level '+c+' of 5">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
+    b.onclick=()=>startLesson(l);ls.appendChild(b);});
+  const tipBtn=el.querySelector('[data-tip]');
+  if(tipBtn)tipBtn.onclick=e=>{e.stopPropagation();const tip=el.querySelector('.tip');tip.hidden=!tip.hidden;e.currentTarget.setAttribute('aria-expanded',String(!tip.hidden));};
+  const fold=el.querySelector('[data-fold]');
+  if(fold){const toggle=()=>{if(OPEN_UNITS.has(u.id))OPEN_UNITS.delete(u.id);else OPEN_UNITS.add(u.id);const y=window.scrollY;renderTree();window.scrollTo(0,y);};
+    fold.onclick=toggle;fold.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}};}
+  t.appendChild(el);}
 function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
@@ -2268,7 +2295,7 @@ function renderProfile(){$('#p-xp').textContent=S.xp;$('#p-streak').textContent=
   if(L.next){const p=Math.round((S.xp-L.xp)/(L.next[0]-L.xp)*100);$('#lvl-bar').style.width=p+'%';$('#lvl-note').textContent=(L.next[0]-S.xp)+' XP to '+L.next[1]+' ('+L.next[2]+')';}
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. Labai šaunu.';}
   $('#p-freezes').textContent=(S.freezes||0)+' of 2';
-  S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i></i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
+  S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
@@ -2649,6 +2676,8 @@ async function downloadOffline(){if(dl||!canOffline)return;if(!navigator.onLine)
 function netUI(){const off=!navigator.onLine;$('#net').hidden=!off;}
 window.addEventListener('offline',()=>{netUI();toast('You’re offline. Lessons still work.');});
 window.addEventListener('online',()=>{netUI();toast('Back online');});
+
+$('#btn-jump').onclick=()=>{const cur=document.querySelector('.unit:not(.locked):not(.done)')||document.querySelector('.convcard:not(.locked)');if(cur)cur.scrollIntoView({behavior:'smooth',block:'start'});};
 
 /* ===================== PRONUNCIATION GUIDE ===================== */
 /* Opens over whatever you are doing (even mid-lesson) and closing it puts you back exactly where you were. */
