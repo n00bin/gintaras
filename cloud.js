@@ -38,31 +38,52 @@ async function afterAuth(){profile=null;
   if(user){const {data}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();profile=data||null;
     const {data:p}=await sb.from('gintaras_progress').select('state').eq('user_id',user.id).maybeSingle();
     if(p&&p.state){window.S=mergeState(window.S,p.state);window.save();window.renderAll();}
-    booted=true;if(profile)cloudSave();}
+    if(!profile)profile=await autoProfile();
+    booted=true;cloudSave();}
   else booted=true;
-  renderAuth();renderBoard();}
+  renderAuth();renderBoard();
+  if(user&&afterSignIn){const f=afterSignIn;afterSignIn=null;f();}}
+/* Signing in is enough for the leaderboard: the nickname starts as your first name (or the start of your email)
+   and can be changed any time. If someone already has it, a couple of digits are added. */
+let profileMaking=null;
+function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=user.user_metadata||{};
+  const raw=(md.given_name||md.full_name||md.name||(user.email||'').split('@')[0]||'').trim().split(/\s+/)[0]||'';
+  let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner';base=base[0].toUpperCase()+base.slice(1);
+  const S=window.S;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
+  for(const n of names){const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
+    const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error)return row;if(!/duplicate|unique/i.test(error.message))return null;}
+  return null;})().finally(()=>{profileMaking=null;}));}
+let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 
-/* Profile card: who you are when signed in; Google or email sign-in when not. Account actions live in Settings → Account. */
+/* Profile card: who you are when signed in; the sign-in box when not. */
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();
   if(!sb){box.hidden=true;return;}
-  if(user&&!profile)return showNickname();
-  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+esc(user.email||'')+'</small></div></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';return;}
-  box.innerHTML='<h2>Save your progress</h2><p class="note">Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.</p>'+
-    '<div class="stack" id="auth-pick">'+(cfg.GOOGLE?'<div id="gbtn" class="gbtn"><button class="btn" id="btn-google">Continue with Google</button></div>':'')+
-    '<button type="button" class="btn ghost" id="btn-email">Continue with email</button></div>'+
-    '<div class="stack" id="auth-email-form" hidden><input id="auth-email" type="email" autocomplete="email" placeholder="Email"><input id="auth-pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
-    '<div class="row2"><button class="btn amber" id="btn-in">Sign in</button><button class="btn ghost" id="btn-up">Create account</button></div><button type="button" class="linkbtn" id="btn-email-back">Back</button></div><p class="note" id="auth-msg"></p>';
-  if(cfg.GOOGLE){$('#btn-google').onclick=googleRedirect;googleButton();}
-  $('#btn-email').onclick=()=>{$('#auth-pick').hidden=true;$('#auth-email-form').hidden=false;msg('');$('#auth-email').focus();};
-  $('#btn-email-back').onclick=()=>{$('#auth-email-form').hidden=true;$('#auth-pick').hidden=false;msg('');};
-  $('#btn-in').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||!password)return msg('Enter your email and password',true);msg('Signing in…');
-    const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)return msg(error.message,true);user=data.user;await afterAuth();};
-  $('#btn-up').onclick=async()=>{const email=$('#auth-email').value.trim(),password=$('#auth-pass').value;if(!email||password.length<8)return msg('Enter an email and a password of 8 or more characters',true);msg('Creating account…');
-    const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return msg(error.message,true);
-    if(data.session){user=data.user;await afterAuth();}else msg('Check your email for a confirmation link, then sign in.');};}
+  if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
+  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
+    $('#btn-nick-p').onclick=showNickname;return;}
+  authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
 
-function showNickname(){const box=$('#auth');const changing=!!profile;if(changing&&window.showView)window.showView('profile');
+/* The sign-in box: Google, or "Continue with email" which opens the email fields. Everything is looked up inside
+   the box, so it can appear in two places at once. onDone runs once the account is ready. */
+function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
+  box.innerHTML=(o.title?'<h2>'+esc(o.title)+'</h2>':'')+(o.lead?'<p class="note">'+esc(o.lead)+'</p>':'')+
+    '<div class="stack" data-a="pick">'+(cfg.GOOGLE?'<div class="gbtn" data-a="gbtn"><button class="btn" data-a="google">Continue with Google</button></div>':'')+
+    '<button type="button" class="btn ghost" data-a="email">Continue with email</button></div>'+
+    '<div class="stack" data-a="form" hidden><input data-a="mail" type="email" autocomplete="email" placeholder="Email"><input data-a="pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
+    '<div class="row2"><button class="btn amber" data-a="in">Sign in</button><button class="btn ghost" data-a="up">Create account</button></div><button type="button" class="linkbtn" data-a="back">Back</button></div><p class="note" data-a="msg" role="status"></p>';
+  const q=k=>box.querySelector('[data-a="'+k+'"]');const say=(t,bad)=>{const m=q('msg');m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';};
+  if(cfg.GOOGLE){q('google').onclick=googleRedirect;googleButton(q('gbtn'),say);}
+  q('email').onclick=()=>{q('pick').hidden=true;q('form').hidden=false;say('');q('mail').focus();};
+  q('back').onclick=()=>{q('form').hidden=true;q('pick').hidden=false;say('');};
+  q('in').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||!password)return say('Enter your email and password',true);say('Signing in…');
+    const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)return say(error.message,true);user=data.user;await afterAuth();};
+  q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
+    const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
+    if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
+window.cloud={enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget};
+
+function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
   if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
@@ -94,14 +115,14 @@ function toast(t){if(window.toastMsg)window.toastMsg(t);}
 async function googleRedirect(){msg('Opening Google…');const {error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(error)msg(error.message,true);}
 let gsi=null;
 function loadGsi(){return gsi||(gsi=new Promise((ok,bad)=>{const sc=document.createElement('script');sc.src='https://accounts.google.com/gsi/client';sc.async=true;sc.onload=ok;sc.onerror=bad;document.head.appendChild(sc);}));}
-async function googleButton(){if(!cfg.GOOGLE_CLIENT_ID||!navigator.onLine)return;
+async function googleButton(box,say){if(!cfg.GOOGLE_CLIENT_ID||!navigator.onLine||!box)return;say=say||msg;
   try{await loadGsi();}catch(e){return;}
-  const box=$('#gbtn');if(!box||!window.google||!google.accounts)return;
+  if(!window.google||!google.accounts||!box.isConnected)return;
   const raw=crypto.getRandomValues(new Uint8Array(16)).reduce((s,b)=>s+b.toString(16).padStart(2,'0'),'');
   const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw)))].map(b=>b.toString(16).padStart(2,'0')).join('');
   google.accounts.id.initialize({client_id:cfg.GOOGLE_CLIENT_ID,nonce:hash,context:'signin',ux_mode:'popup',
-    callback:async r=>{msg('Signing in…');const {data,error}=await sb.auth.signInWithIdToken({provider:'google',token:r.credential,nonce:raw});
-      if(error)return msg(error.message,true);user=data.user;await afterAuth();}});
+    callback:async r=>{say('Signing in…');const {data,error}=await sb.auth.signInWithIdToken({provider:'google',token:r.credential,nonce:raw});
+      if(error)return say(error.message,true);user=data.user;await afterAuth();}});
   box.innerHTML='';google.accounts.id.renderButton(box,{theme:'outline',size:'large',shape:'pill',text:'continue_with',width:Math.min(400,box.clientWidth||320)});}
 
 /* ---------- leaderboard ---------- */
@@ -113,7 +134,6 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join the leaderboard</button>';
-  else if(!profile)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Pick a nickname to appear here</button>';
   const join=$('#btn-join');if(join)join.onclick=()=>{if(window.showView)window.showView('profile');};
   const load=m=>{const q=sb.from('gintaras_profiles').select('id,nickname,xp,streak,week_xp,week_start,level_title').limit(50);
     return m==='week'?q.eq('week_start',monday()).gt('week_xp',0).order('week_xp',{ascending:false}):q.order('xp',{ascending:false});};
@@ -128,7 +148,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
-  loadSession();}
+  loadSession().then(()=>{const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;});
