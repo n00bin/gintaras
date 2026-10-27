@@ -382,6 +382,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 #welcome-auth{margin:0}
 .acct-who>div{flex:1;min-width:0}
 .acct-who small{display:block;overflow-wrap:anywhere}
+.sheet.guide{z-index:25}
+.sheet.guide .sheet-head h2{font-size:21px;font-weight:600}
+.sheet.guide .stage>div{display:grid;gap:0}
+.guide-link{justify-self:start;padding:0;font-size:14px}
+.guidecard{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:18px;box-shadow:var(--shadow)}
+.guidecard strong{display:block;font-family:var(--display);font-size:18px}
+.guidecard small{color:var(--muted);font-size:14px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -409,6 +416,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
     </div>
+    <button type="button" class="guidecard" data-guide><span class="emo" aria-hidden="true">🗣️</span><span><strong>Pronunciation guide</strong><small>How to read "sounds like", and the Lithuanian letters that trip people up.</small></span></button>
     <div id="tree"></div>
   </section>
 
@@ -488,39 +496,6 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     </div>
     <span class="group" id="acct-group" hidden>Account</span>
     <div class="card" id="acct" hidden></div>
-    <span class="group">Help</span>
-    <div class="card">
-      <h2>Reading "sounds like"</h2>
-      <p class="note">Plain English spelling, split into syllables. The bolder syllable is the one you stress. Each spelling below always means the same sound.</p>
-      <div class="sounds">
-        <div><b>ah</b><span>as in f<i>a</i>ther</span></div>
-        <div><b>e, eh</b><span>as in b<i>e</i>t</span></div>
-        <div><b>ay</b><span>as in d<i>ay</i></span></div>
-        <div><b>i</b><span>as in b<i>i</i>t</span></div>
-        <div><b>ee</b><span>as in s<i>ee</i></span></div>
-        <div><b>oh</b><span>as in g<i>o</i></span></div>
-        <div><b>u</b><span>as in p<i>u</i>t</span></div>
-        <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
-        <div><b>ow</b><span>as in c<i>ow</i></span></div>
-        <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
-        <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu</span></div>
-        <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
-        <div><b>ts</b><span>as in ca<i>ts</i></span></div>
-      </div>
-    </div>
-    <div class="card">
-      <h2>Lithuanian letters</h2>
-      <p class="note">Lithuanian is written the way it sounds. Learn these nine and you can read almost anything.</p>
-      <div class="sounds">
-        <div><b>ą ę į ų</b><span>long vowels (the hook used to mean a nasal sound; today it only marks length): <i>ačiū, žąsis</i></span></div>
-        <div><b>ė</b><span>a closed "e", like the vowel in "they" without the glide: <i>tėtis, mėsa</i></span></div>
-        <div><b>ū, y</b><span>long "oo" and long "ee": <i>sūris, vynas</i></span></div>
-        <div><b>č š ž</b><span>"ch", "sh", and the "s" in "measure": <i>čia, šuo, žalias</i></span></div>
-        <div><b>c</b><span>always "ts": <i>cukrus</i></span></div>
-        <div><b>j</b><span>like English "y": <i>jūra, ji</i></span></div>
-        <div><b>r</b><span>rolled, as in Spanish: <i>rytas</i></span></div>
-      </div>
-    </div>
     <span class="group">About</span>
     <div class="card">
       <h2>About this course</h2>
@@ -570,6 +545,44 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <p class="note">You can always sign in later from Profile.</p>
   </div></div>
   <div class="foot"><div><button class="btn amber" id="btn-welcome">Next</button></div></div>
+</section>
+
+<section class="sheet guide" id="guide" hidden aria-label="Pronunciation guide">
+  <div class="sheet-head"><button class="x" id="btn-guide-close" aria-label="Close the guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><h2>Pronunciation guide</h2></div>
+  <div class="stage"><div>
+    <div class="card">
+      <h2>Reading "sounds like"</h2>
+      <p class="note">Plain English spelling, split into syllables. The bolder syllable is the one you stress. Each spelling below always means the same sound.</p>
+      <div class="sounds">
+        <div><b>ah</b><span>as in f<i>a</i>ther</span></div>
+        <div><b>e, eh</b><span>as in b<i>e</i>t</span></div>
+        <div><b>ay</b><span>as in d<i>ay</i></span></div>
+        <div><b>i</b><span>as in b<i>i</i>t</span></div>
+        <div><b>ee</b><span>as in s<i>ee</i></span></div>
+        <div><b>oh</b><span>as in g<i>o</i></span></div>
+        <div><b>u</b><span>as in p<i>u</i>t</span></div>
+        <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
+        <div><b>ow</b><span>as in c<i>ow</i></span></div>
+        <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
+        <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu</span></div>
+        <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
+        <div><b>ts</b><span>as in ca<i>ts</i></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Lithuanian letters</h2>
+      <p class="note">Lithuanian is written the way it sounds. Learn these nine and you can read almost anything.</p>
+      <div class="sounds">
+        <div><b>ą ę į ų</b><span>long vowels (the hook used to mean a nasal sound; today it only marks length): <i>ačiū, žąsis</i></span></div>
+        <div><b>ė</b><span>a closed "e", like the vowel in "they" without the glide: <i>tėtis, mėsa</i></span></div>
+        <div><b>ū, y</b><span>long "oo" and long "ee": <i>sūris, vynas</i></span></div>
+        <div><b>č š ž</b><span>"ch", "sh", and the "s" in "measure": <i>čia, šuo, žalias</i></span></div>
+        <div><b>c</b><span>always "ts": <i>cukrus</i></span></div>
+        <div><b>j</b><span>like English "y": <i>jūra, ji</i></span></div>
+        <div><b>r</b><span>rolled, as in Spanish: <i>rytas</i></span></div>
+      </div>
+    </div>
+  </div></div>
 </section>
 
 <section class="sheet" id="sheet" hidden aria-label="Lesson">
@@ -1634,11 +1647,11 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
   const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';
   if(ex.type==='tip'){const u=ex.unit;st.innerHTML='<span class="eyebrow">Before you start</span><div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div><p class="note">That is all the grammar you need for now. You can read it again any time with the Tip button on the unit.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro">'+(EMOJI[it.lt]?'<div class="emo big" aria-hidden="true">'+EMOJI[it.lt]+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
+  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro">'+(EMOJI[it.lt]?'<div class="emo big" aria-hidden="true">'+EMOJI[it.lt]+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
   else if(ex.type==='speak'){
     const rateHtml='<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
-    st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro"><div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+builtFrom(it)+'</div>'+
+    st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro"><div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it)+'</div>'+
       '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
       '<p class="heard" id="srout" role="status">'+(SR?'Listen, then tap the <b>microphone</b> and say it. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
       (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml);
@@ -1664,7 +1677,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];btn.disabled=false;});
     if(ex.type==='listen'||toEn)setTimeout(()=>say(it),200);}
   else if(ex.type==='type'){
-    st.innerHTML=from+'<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
+    st.innerHTML=from+'<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
     const inp=st.querySelector('#ans');inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
     inp.onkeydown=e=>{if(e.key==='Enter'&&!btn.disabled)btn.click();};
     st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
@@ -1682,7 +1695,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     const word=it.lt.replace(/[?!.,]/g,'').toLowerCase();const letters=[...word];
     const decoys=sample([...'aeiklmnorstuvėšžč'].filter(c=>!letters.includes(c)),2);
     const bank=shuffle(letters.concat(decoys));let chosen=[];
-    st.innerHTML=from+'<div class="prompt small">Spell it with the letters</div><div class="word">'+spk(it)+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>':'')+'<div class="build spell"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
+    st.innerHTML=from+'<div class="prompt small">Spell it with the letters</div><div class="word">'+spk(it)+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>':'')+'<div class="build spell"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
     const draw=()=>{$('#bans').innerHTML=chosen.map(i=>'<button type="button" class="chip in" data-c="'+i+'">'+esc(bank[i])+'</button>').join('');
       st.querySelectorAll('#bank .chip').forEach(c=>c.classList.toggle('ghost',chosen.includes(Number(c.dataset.i))));
       st.querySelectorAll('#bans .chip').forEach(c=>c.onclick=()=>{chosen=chosen.filter(x=>x!==Number(c.dataset.c));draw();});
@@ -1786,7 +1799,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
       C.mistakes++;b.disabled=true;b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),320);
       $('#cmsg').innerHTML='That one means "<b>'+esc(o[1])+'</b>". Try another.';});
     chatScroll();return;}
-  const showLt=()=>{$('#peekbox').innerHTML='<div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div></div>';chatScroll();};
+  const showLt=()=>{$('#peekbox').innerHTML='<div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+'</div>';chatScroll();};
   turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
     '<div id="peekbox"><button type="button" class="btn ghost" id="peek">Show me the Lithuanian</button></div>'+
     '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Speak into the microphone">'+MIC+'</button>':'')+'</div>'+
@@ -1891,6 +1904,14 @@ function netUI(){const off=!navigator.onLine;$('#net').hidden=!off;}
 window.addEventListener('offline',()=>{netUI();toast('You’re offline. Lessons still work.');});
 window.addEventListener('online',()=>{netUI();toast('Back online');});
 
+/* ===================== PRONUNCIATION GUIDE ===================== */
+/* Opens over whatever you are doing (even mid-lesson) and closing it puts you back exactly where you were. */
+function openGuide(){const g=$('#guide');g.hidden=false;g.querySelector('.stage').scrollTop=0;document.body.style.overflow='hidden';}
+function closeGuide(){$('#guide').hidden=true;if($('#sheet').hidden&&$('#welcome').hidden)document.body.style.overflow='';}
+document.addEventListener('click',e=>{if(e.target.closest('[data-guide]')){e.preventDefault();openGuide();}});
+$('#btn-guide-close').onclick=closeGuide;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#guide').hidden)closeGuide();},true);
+
 /* ===================== WIRING ===================== */
 $('#btn-quit').onclick=quit;
 $('#btn-review').onclick=()=>startReview(false);
@@ -1903,7 +1924,7 @@ $('#sw-pron').onclick=()=>{S.pron=!(S.pron!==false);save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
 $('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voice,sound:S.sound,pron:S.pron};S=Object.assign(fresh(),keep,{welcomed:true});save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast('Progress erased');};
-document.addEventListener('keydown',e=>{if(CV&&!$('#sheet').hidden){if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
+document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$('#sheet').hidden){if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
     if(e.key==='Enter'){const b=$('#btn-check');if(!b.disabled)b.click();}return;}
   if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];if(!ex)return;
   if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
