@@ -70,7 +70,9 @@ function showNickname(){const box=$('#auth');const changing=!!profile;if(changin
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=row;renderAuth();renderBoard();cloudSave();};}
 
 /* Settings → Account: nickname, sign out, and deleting the account for good. */
-function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;const show=!!(sb&&user);box.hidden=!show;head.hidden=!show;if(!show)return;
+function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;box.hidden=!sb;head.hidden=!sb;if(!sb)return;
+  if(!user){box.innerHTML='<p class="note">You are not signed in. Sign in to keep your progress on every device, show your nickname on the leaderboard, and manage or delete your account here.</p><button type="button" class="btn amber" id="btn-acct-signin">Sign in</button>';
+    $('#btn-acct-signin').onclick=()=>{if(window.showView)window.showView('profile');};return;}
   box.innerHTML='<div class="setting"><span>Signed in as</span><strong>'+esc(profile?profile.nickname:(user.email||''))+'</strong></div>'+
     '<div class="setting"><span>Nickname</span><button type="button" class="chip" id="btn-nick">Change</button></div>'+
     '<button type="button" class="btn ghost" id="btn-out">Sign out</button>'+

@@ -374,6 +374,11 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .acct-who small{color:var(--muted)}
 #auth .stack{display:grid;gap:10px}
 .confirm .btn.danger{background:var(--bad);color:#fff}
+.heard{margin:0;text-align:center;font-size:16px;min-height:2.6em}
+.heard .ok{color:var(--ok);font-weight:800}
+.selfrate{background:var(--surface-2);border-radius:12px;padding:10px 14px}
+.selfrate summary{cursor:pointer;font-weight:800;color:var(--muted)}
+.selfrate .rate{margin-top:10px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -1600,7 +1605,7 @@ function startNext(l){if(!l)return;if(l.conv)startConv(l.conv,'text');else start
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
-function quit(){if(!Q&&!CV)return;if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();}
+function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();}
 
 function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
 /* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */
@@ -1608,7 +1613,7 @@ function progressUI(){const done=Q.queue.slice(0,Q.idx).filter(e=>!STEPLESS[e.ty
   Q.barPct=Math.max(Q.barPct||0,tot?done/tot*100:0);$('#lbar').style.width=Q.barPct+'%';$('#lcount').textContent=done+'/'+tot;}
 const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1};
 
-function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTML='';Q.answer=null;setFoot('');
+function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage');st.innerHTML='';Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
   const idk=$('#btn-idk');idk.hidden=true;
   if(Q.idx>=Q.queue.length)return finish();
@@ -1621,11 +1626,22 @@ function renderStep(){if(!Q)return;progressUI();const st=$('#stage');st.innerHTM
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro">'+(EMOJI[it.lt]?'<div class="emo big" aria-hidden="true">'+EMOJI[it.lt]+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
-  else if(ex.type==='speak'){st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro"><div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+builtFrom(it)+'</div>'+
-      '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div><div class="how"><div><b>1</b><span>Listen once or twice. Slow helps.</span></div><div><b>2</b><span>Say it out loud, copying the rhythm, not just the sounds.</span></div><div><b>3</b><span>Play it again and compare. Then rate yourself.</span></div></div>'+
-      '<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
-    btn.disabled=true;btn.textContent='Rate yourself above';
-    st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
+  else if(ex.type==='speak'){
+    const rateHtml='<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
+    st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro"><div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+builtFrom(it)+'</div>'+
+      '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
+      '<p class="heard" id="srout" role="status">'+(SR?'Listen, then tap the <b>microphone</b> and say it. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
+      (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml);
+    let passed=false;
+    btn.disabled=true;btn.textContent=SR?'Say it into the microphone':'Rate yourself above';
+    const pass=()=>{if(passed)return;passed=true;grade(it,true,true);Q.correct++;rec(it.id).seen=true;
+      setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{Q.idx++;renderStep();};};
+    let tries=0;const mic=st.querySelector('#mic');
+    if(mic)mic.onclick=()=>hear(it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
+      if(err){const d=st.querySelector('#selfrate');if(d)d.open=true;return;}
+      tries++;if(score>=0.75)return pass();
+      if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}});
+    st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
       if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.due=Date.now()+DAY;}else{grade(it,true,true);Q.correct++;}
       Q.idx++;renderStep();});setTimeout(()=>say(it),200);}
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
@@ -1751,7 +1767,7 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.c.line
   convTurn(ln);}
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
   const done=()=>{turn.innerHTML='';$('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div></div>');chatScroll();
-    if(C.rec){try{C.rec.abort();}catch(e){}}say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent=C.mode==='text'?'Pick a reply above':'Listen first';setFoot('');
+    stopHearing();say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent=C.mode==='text'?'Pick a reply above':'Listen first';setFoot('');
     later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
   if(C.mode==='text'){const opts=shuffle([[ln.lt,ln.en,true]].concat(ln.no.map(n=>[n[0],n[1],false])));
     turn.innerHTML='<div class="turn"><span class="eyebrow">Your reply</span><div class="hint">'+esc(ln.hint)+'</div><div class="copts">'+opts.map((o,i)=>'<button type="button" class="copt" data-i="'+i+'"><span class="k">'+(i+1)+'</span><span>'+esc(o[0])+'</span></button>').join('')+'</div><p class="note" id="cmsg" role="status"></p></div>';
@@ -1764,27 +1780,44 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
     '<div id="peekbox"><button type="button" class="btn ghost" id="peek">Show me the Lithuanian</button></div>'+
     '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Speak into the microphone">'+MIC+'</button>':'')+'</div>'+
-    '<p class="note" id="srout" role="status"></p></div>';
+    '<p class="heard" id="srout" role="status"></p></div>';
   const easy=C.c.id==='cv1'||C.c.id==='cv2';$('#peek').onclick=showLt;if(easy)showLt();
-  $('#srout').textContent=(easy?'':'Try it from memory first. ')+(SR?'Tap the microphone and say it, or just say it and tap "I said it".':'Say it out loud, then play the recording to compare. Tap "I said it" when you are happy.');
-  btn.disabled=false;btn.textContent='I said it';btn.onclick=done;
-  const mic=$('#mic');if(mic)mic.onclick=()=>listen(ln,mic);chatScroll();}
+  $('#srout').innerHTML=(easy?'':'Try it from memory first. ')+(SR?'Tap the <b>microphone</b> and say it. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".');
+  btn.disabled=false;btn.textContent=SR?'Skip the mic check':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>{btn.classList.remove('ghost');stopHearing();done();};
+  const mic=$('#mic');if(mic)mic.onclick=()=>hear(ln.lt,mic,$('#srout'),(score,heardText,err)=>{
+    if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');return;}
+    if(score>=0.75){C.heard++;setFoot('good','');later(()=>{btn.classList.remove('ghost');done();},900);}});
+  chatScroll();}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolean);const sw=strip(said).split(' ').filter(Boolean);
   const near=(a,b)=>{if(a===b)return true;if(a.length<4||b.length<4)return false;if(a.slice(0,4)===b.slice(0,4))return true;
     const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length]<=1;};
   return tw.length?tw.filter(w=>sw.some(x=>near(w,x))).length/tw.length:0;}
-function listen(ln,mic){const C=CV;const out=$('#srout');
-  if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud, play the recording to compare, then tap "I said it".';return;}if(C.rec){try{C.rec.abort();}catch(e){}}
-  const rec=new SR();C.rec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
-  mic.classList.add('on');out.textContent='Listening… say it now.';
-  rec.onresult=e=>{const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;alts.forEach(a=>{const s=matchScore(a,ln.lt);if(s>score){score=s;best=a;}});
-    if(score>=0.75){C.heard++;out.innerHTML='I heard "<b>'+esc(best)+'</b>". Spot on!';setFoot('good','');}
-    else if(score>=0.4)out.innerHTML='I heard "<b>'+esc(best)+'</b>". Close! Play the recording once more and have another go.';
-    else out.innerHTML='I heard "<b>'+esc(best)+'</b>". Not quite. Tap "Show me the Lithuanian", listen, then try again.';};
-  rec.onerror=ev=>{out.textContent=ev.error==='network'?'The microphone check needs internet. Say it out loud and tap "I said it".':ev.error==='not-allowed'?'The microphone is blocked for this page. You can still say it out loud and tap "I said it".':'I couldn\'t hear that. Try again, or just say it and tap "I said it".';};
-  rec.onend=()=>mic.classList.remove('on');
-  try{rec.start();}catch(e){mic.classList.remove('on');}}
+/* Listens once in Lithuanian and scores what the browser heard against the target line.
+   onResult(score, heardText) on a result, or onResult(0, '', errorCode) when it could not listen at all. */
+let activeRec=null;
+function stopHearing(){if(activeRec){try{activeRec.abort();}catch(e){}activeRec=null;}document.querySelectorAll('.spk.mic.on').forEach(m=>m.classList.remove('on'));}
+function hear(target,mic,out,onResult){
+  if(!SR){out.textContent='This browser can\'t listen. Say it out loud and compare with the recording.';return onResult(0,'','unsupported');}
+  if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud and compare with the recording.';return onResult(0,'','offline');}
+  stopHearing();const rec=new SR();activeRec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
+  mic.classList.add('on');out.innerHTML='<b>Listening…</b> say it now.';let got=false;
+  rec.onresult=e=>{got=true;const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;
+    alts.forEach(a=>{const sc=matchScore(a,target);if(sc>score){score=sc;best=a;}});
+    if(score>=0.75)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';
+    else if(score>=0.4)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Close! Play the recording once more and try again.';
+    else out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Not quite. Listen again (try the slow button), then have another go.';
+    onResult(score,best);};
+  rec.onerror=ev=>{got=true;const why={'not-allowed':'The microphone is blocked for this page. Allow it in your browser\'s site settings, or rate yourself instead.',
+      'service-not-allowed':'The microphone is blocked for this page. Allow it in your browser\'s site settings, or rate yourself instead.',
+      'language-not-supported':'Your device\'s speech recognition doesn\'t understand Lithuanian. Say it out loud and rate yourself instead.',
+      'network':'The microphone check needs internet. Say it out loud and rate yourself instead.',
+      'no-speech':'I didn\'t hear anything. Tap the microphone and speak a little louder.',
+      'audio-capture':'No microphone was found. Say it out loud and rate yourself instead.'}[ev.error];
+    if(ev.error==='aborted')return;out.textContent=why||'I couldn\'t hear that. Tap the microphone and try again.';
+    onResult(0,'',ev.error==='no-speech'?null:ev.error);};
+  rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
+  try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const perfect=C.mode==='text'&&C.mistakes===0;const xp=(C.mode==='speak'?20:15)+(perfect?5:0);
   st[C.mode]=today();const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
