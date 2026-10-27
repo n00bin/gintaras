@@ -81,7 +81,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget};
+window.cloud={enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -130,7 +130,7 @@ let boardMode='week';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>Leaderboard</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>Leaderboard</h2><p class="note">You’re offline. The leaderboard comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
-  box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="board-cta"></div>';
+  box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join the leaderboard</button>';

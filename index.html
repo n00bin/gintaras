@@ -4,7 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#2F6B4A">
-<meta name="description" content="Learn tourist Lithuanian in three-minute bites with real audio and plain-English pronunciation.">
+<meta name="description" content="Learn Lithuanian from zero to a real conversation, one word at a time. Free, with real Lithuanian voices.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gintaras: learn Lithuanian">
+<meta property="og:description" content="From zero to a real conversation, one word at a time. Free, with real Lithuanian voices and a friendly leaderboard.">
+<meta property="og:url" content="https://n00bin.github.io/gintaras/">
+<meta property="og:image" content="https://n00bin.github.io/gintaras/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -395,6 +403,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .copt.right{border-color:var(--ok);background:var(--ok-soft)}
 .say-lt .tr{color:var(--muted);font-size:15px}
 .convcard>.btn{width:100%}
+#cin.right{border-color:var(--ok);background:var(--ok-soft)}
+#cin.shake{animation:shake .3s}
+.turn .ok,.heard .ok{color:var(--ok);font-weight:800}
+#cbank{display:flex;flex-wrap:wrap;gap:8px}
+.qr summary{cursor:pointer;font-weight:800;color:var(--muted)}
+#qr{display:flex;justify-content:center;padding:12px;background:#fff;border-radius:12px;margin-top:10px}
+#board-invite{margin-top:12px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -499,6 +514,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <h2>Use it offline</h2>
       <p class="note">The app already opens without signal. Download the recordings once and every lesson and conversation works with sound: on a plane, underground, or abroad without data.</p>
       <div id="offline-box"></div>
+    </div>
+    <div class="card" id="share">
+      <h2>Share with friends</h2>
+      <p class="note">Learning is easier together. Send Gintaras to a friend and race each other on the leaderboard.</p>
+      <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
+      <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Gintaras link"></div><p class="note">Point a phone camera at it to open Gintaras.</p></details>
     </div>
     <span class="group" id="acct-group" hidden>Account</span>
     <div class="card" id="acct" hidden></div>
@@ -1712,7 +1733,7 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":"Today's plan · lesson "+Math.min(S.todayLessons+1,P.lessons)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
   else if(l&&l.conv){const c=CONV_BY[l.conv];$('#bite-title').textContent='Conversation: '+c.title;
-    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Pick each reply, then say it out loud.';
+    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Write each reply, then say it out loud.';
     b.textContent='Start conversation';b.onclick=()=>startConv(c.id);}
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
@@ -1949,14 +1970,32 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
       if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
       if(score>=0.75){setFoot('good','');later(()=>done(true),900);}});
     chatScroll();};
-  const opts=shuffle([[ln.lt,ln.en,true]].concat(ln.no.map(n=>[n[0],n[1],false])));
-  turn.innerHTML='<div class="turn"><span class="eyebrow">Step 1 · Pick your reply</span><div class="hint">'+esc(ln.hint)+'</div><div class="copts">'+opts.map((o,i)=>'<button type="button" class="copt" data-i="'+i+'"><span class="k">'+(i+1)+'</span><span>'+esc(o[0])+'</span></button>').join('')+'</div><p class="note" id="cmsg" role="status"></p></div>';
-  btn.disabled=true;btn.textContent='Pick a reply above';
-  turn.querySelectorAll('.copt').forEach(b=>b.onclick=()=>{const o=opts[Number(b.dataset.i)];
-    if(o[2]){b.classList.add('right');turn.querySelectorAll('.copt').forEach(x=>x.disabled=true);return later(sayIt,350);}
-    C.mistakes++;b.disabled=true;b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),320);
-    $('#cmsg').innerHTML='That one means "<b>'+esc(o[1])+'</b>". Try another.';});
-  chatScroll();}
+  /* Step 1: write the reply. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
+  let help=0,tries=0;
+  const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
+  const spare=[...new Set(ln.no.flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,3);
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Step 1 · Write your reply</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+    '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type it in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
+    '<div class="bank" id="cbank" hidden></div><div class="say-lt" id="cshow" hidden></div>'+
+    '<button type="button" class="linkbtn" id="chelp">Help me</button><p class="note" id="cmsg" role="status"></p></div>';
+  const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp');
+  const tiles=()=>{bank.hidden=false;bank.innerHTML=shuffle(words.concat(spare)).map(w=>'<button type="button" class="chip">'+esc(w)+'</button>').join('');
+    bank.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{inp.value=(inp.value.trim()+' '+c.textContent).trim();inp.oninput();inp.focus();});};
+  const reveal=()=>{const sh=$('#cshow');sh.hidden=false;sh.innerHTML='<span class="lt">'+esc(ln.lt)+'</span><div class="pron">'+pronHtml(ln.lt)+'</div>';};
+  helpBtn.onclick=()=>{help++;if(help===1){tiles();helpBtn.textContent='Still stuck? Show me the answer';cmsg.textContent='Tap the words in order. One or two of them don\'t belong.';}
+    else{reveal();C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now type it yourself. Copying it once helps it stick.';}};
+  inp.oninput=()=>{btn.disabled=!inp.value.trim();};
+  turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const p=inp.selectionStart??inp.value.length,q=inp.selectionEnd??p;inp.value=inp.value.slice(0,p)+k.dataset.k+inp.value.slice(q);inp.focus();inp.setSelectionRange(p+1,p+1);inp.oninput();});
+  const check=()=>{const a=norm(inp.value);if(!a)return;const t=norm(ln.lt);
+    if(a===t||strip(inp.value)===strip(ln.lt)){inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
+      cmsg.innerHTML=a===t?'<span class="ok">Correct!</span>':'Nearly: watch the accents, <b>'+esc(ln.lt)+'</b>';inp.classList.add('right');btn.disabled=true;return later(sayIt,a===t?600:1400);}
+    tries++;C.mistakes++;inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
+    const wrongMatch=ln.no.find(n=>norm(n[0])===a);
+    cmsg.innerHTML=wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':'Not quite. Check each word and try again.';
+    if(tries>=2&&help===0){help=1;tiles();helpBtn.textContent='Still stuck? Show me the answer';}};
+  inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();check();}};
+  btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
+  setTimeout(()=>inp.focus(),80);chatScroll();}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolean);const sw=strip(said).split(' ').filter(Boolean);
   const near=(a,b)=>{if(a===b)return true;if(a.length<4||b.length<4)return false;if(a.slice(0,4)===b.slice(0,4))return true;
@@ -1991,11 +2030,11 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
   st.done=st.text=today();if(allSaid)st.speak=today();
   const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
-  const lines=[];if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  const lines=[];if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Wrong picks</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
@@ -2057,6 +2096,21 @@ document.addEventListener('click',e=>{if(e.target.closest('[data-guide]')){e.pre
 $('#btn-guide-close').onclick=closeGuide;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#guide').hidden)closeGuide();},true);
 
+/* ===================== SHARING ===================== */
+/* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
+const SHARE_URL='https://n00bin.github.io/gintaras/';
+function shareText(){const n=window.cloud&&window.cloud.nickname&&window.cloud.nickname();
+  return 'I\'m learning Lithuanian with Gintaras: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
+async function copyLink(){try{await navigator.clipboard.writeText(shareText()+' '+SHARE_URL);toast('Link copied. Paste it in a message.');}
+  catch(e){prompt('Copy this link:',SHARE_URL);}}
+async function shareApp(){if(navigator.share){try{await navigator.share({title:'Gintaras: learn Lithuanian',text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
+document.addEventListener('click',e=>{if(e.target.closest('[data-share]'))shareApp();else if(e.target.closest('[data-copy]'))copyLink();});
+let qrLoading=null;
+document.querySelector('#share .qr').addEventListener('toggle',async ev=>{if(!ev.target.open)return;const box=$('#qr');if(box.childNodes.length)return;
+  try{qrLoading=qrLoading||new Promise((ok,bad)=>{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';sc.onload=ok;sc.onerror=bad;document.head.appendChild(sc);});
+    await qrLoading;new QRCode(box,{text:SHARE_URL,width:200,height:200,colorDark:'#1C2A22',colorLight:'#FFFFFF'});}
+  catch(err){box.textContent='The QR code needs internet. You can still share the link: '+SHARE_URL;}});
+
 /* ===================== WIRING ===================== */
 $('#btn-quit').onclick=quit;
 $('#btn-review').onclick=()=>startReview(false);
@@ -2069,7 +2123,7 @@ $('#sw-pron').onclick=()=>{S.pron=!(S.pron!==false);save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
 $('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voice,sound:S.sound,pron:S.pron};S=Object.assign(fresh(),keep,{welcomed:true});save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast('Progress erased');};
-document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$('#sheet').hidden){if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
+document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$('#sheet').hidden){if(document.activeElement&&document.activeElement.tagName==='INPUT')return;if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
     if(e.key==='Enter'){const b=$('#btn-check');if(!b.disabled)b.click();}return;}
   if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];if(!ex)return;
   if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
