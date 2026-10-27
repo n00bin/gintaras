@@ -35,14 +35,15 @@ async function cloudSave(){if(!sb||!user)return;const S=window.S;if(!S)return;
 /* ---------- auth ---------- */
 async function loadSession(){const {data}=await sb.auth.getSession();user=data.session?data.session.user:null;await afterAuth();}
 async function afterAuth(){profile=null;
-  if(user){const {data}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();profile=data||null;
+  if(user){await ensureRollover();const {data}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();profile=data||null;
     const {data:p}=await sb.from('gintaras_progress').select('state').eq('user_id',user.id).maybeSingle();
     if(p&&p.state){window.S=mergeState(window.S,p.state);window.save();window.renderAll();}
     if(!profile)profile=await autoProfile();
     booted=true;cloudSave();}
   else booted=true;
   renderAuth();renderBoard();
-  if(user&&afterSignIn){const f=afterSignIn;afterSignIn=null;f();}}
+  if(user&&afterSignIn){const f=afterSignIn;afterSignIn=null;f();}
+  leagueNotice();}
 /* Signing in is enough for the leaderboard: the nickname starts as your first name (or the start of your email)
    and can be changed any time. If someone already has it, a couple of digits are added. */
 let profileMaking=null;
@@ -51,7 +52,7 @@ function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=
   let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner';base=base[0].toUpperCase()+base.slice(1);
   const S=window.S;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
   for(const n of names){const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
-    const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error)return row;if(!/duplicate|unique/i.test(error.message))return null;}
+    const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error)return Object.assign(row,{league:0,league_moved:0});if(!/duplicate|unique/i.test(error.message))return null;}
   return null;})().finally(()=>{profileMaking=null;}));}
 let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
@@ -60,7 +61,7 @@ function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
-  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
+  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).lt)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
     $('#btn-nick-p').onclick=showNickname;return;}
   authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
 
@@ -125,25 +126,49 @@ async function googleButton(box,say){if(!cfg.GOOGLE_CLIENT_ID||!navigator.onLine
       if(error)return say(error.message,true);user=data.user;await afterAuth();}});
   box.innerHTML='';google.accounts.id.renderButton(box,{theme:'outline',size:'large',shape:'pill',text:'continue_with',width:Math.min(400,box.clientWidth||320)});}
 
+/* ---------- leagues ---------- */
+/* Seven weekly leagues. The database settles each week once (top 3 move up, no XP means moving down);
+   the app only shows where you stand. */
+const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble',icon:'🪨'},{lt:'Gintaras',en:'Amber',icon:'🟠'},{lt:'Sidabras',en:'Silver',icon:'🥈'},
+  {lt:'Auksas',en:'Gold',icon:'🥇'},{lt:'Krištolas',en:'Crystal',icon:'💎'},{lt:'Saulė',en:'Sun',icon:'☀️'}];
+const leagueOf=n=>LEAGUES[Math.max(0,Math.min(6,n||0))];
+let rolled=null;
+function ensureRollover(){return rolled||(rolled=sb.rpc('gintaras_league_rollover').then(()=>{},()=>{}));}
+function weekEndsIn(){const now=new Date();const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));d.setUTCDate(d.getUTCDate()+((8-d.getUTCDay())%7||7));
+  const days=Math.ceil((d-now)/86400000);return days<=1?'Ends tonight':'Ends in '+days+' days';}
+function leagueNotice(){if(!profile||!profile.league_moved)return;const S=window.S;if(!S||S.leagueNotice===monday())return;S.leagueNotice=monday();window.save();
+  const L=leagueOf(profile.league),up=profile.league_moved>0;const ov=document.createElement('div');ov.className='league-pop';
+  ov.innerHTML='<div class="card"><div class="lg-icon big">'+L.icon+'</div><h2>'+(up?'You moved up!':'New week, new start')+'</h2><p class="note">'+(up?'You finished in the top 3, so you are now in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league.':'You are in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league this week. A few lessons and you will climb right back.')+'</p><button type="button" class="btn amber">'+(up?'Let\'s go':'I\'m on it')+'</button></div>';
+  document.body.appendChild(ov);ov.querySelector('button').onclick=()=>ov.remove();if(up&&window.sfxWin)window.sfxWin();}
+
 /* ---------- leaderboard ---------- */
-let boardMode='week';
+let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
-  if(!sb){box.innerHTML='<h2>Leaderboard</h2><p class="note">Online accounts are not set up yet.</p>';return;}
-  if(!navigator.onLine){box.innerHTML='<h2>Leaderboard</h2><p class="note">You’re offline. The leaderboard comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
-  box.innerHTML='<div class="row"><h2>Leaderboard</h2><span class="chips"><button class="chip'+(boardMode==='week'?' in':'')+'" data-bm="week">This week</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></span></div><p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
+  if(!sb){box.innerHTML='<h2>League</h2><p class="note">Online accounts are not set up yet.</p>';return;}
+  if(!navigator.onLine){box.innerHTML='<h2>League</h2><p class="note">You’re offline. Your league comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
+  const mine=Math.max(0,Math.min(6,(profile&&profile.league)||0));const L=leagueOf(mine);
+  box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
+    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.lt)+' league</h2><small>'+esc(L.en)+' · league '+(mine+1)+' of 7</small></div></div>'+
+      '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===mine?'on':i<mine?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
+      '<p class="note">Earn XP this week. The <b>top 3 move up</b> a league on Monday; no XP all week means moving down.</p>':'<h2>All time</h2>')+
+    '<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
-  if(!user)cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join the leaderboard</button>';
-  const join=$('#btn-join');if(join)join.onclick=()=>{if(window.showView)window.showView('profile');};
-  const load=m=>{const q=sb.from('gintaras_profiles').select('id,nickname,xp,streak,week_xp,week_start,level_title').limit(50);
-    return m==='week'?q.eq('week_start',monday()).gt('week_xp',0).order('week_xp',{ascending:false}):q.order('xp',{ascending:false});};
-  let mode=boardMode;let {data,error}=await load(mode);const note=$('#board-note'),ol=$('#lb');if(!note)return;
-  if(error){note.textContent='Could not load the leaderboard. Check your connection and try again.';return;}
-  let lead='';
-  if(!data.length&&mode==='week'){lead='Nobody has earned XP this week yet, so here is the all-time board.';mode='all';const r=await load('all');data=r.error?[]:r.data;}
-  if(!data.length){note.textContent='No players yet. Be the first!';return;}
-  note.textContent=lead;
-  ol.innerHTML=data.map((r,i)=>'<li class="'+(user&&r.id===user.id?'me':'')+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+esc(r.level_title||'')+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+(mode==='week'?r.week_xp:r.xp)+' XP</span></li>').join('');}
+  if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
+  await ensureRollover();
+  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league';
+  const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
+  const note=$('#board-note'),ol=$('#lb');if(!note)return;
+  if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
+  if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
+    ol.innerHTML=data.map((r,i)=>row(r,i,r.xp,'')).join('');return;}
+  const wk=monday();const rows=data.map(r=>Object.assign(r,{wxp:r.week_start===wk?r.week_xp:0})).sort((a,b)=>b.wxp-a.wxp||a.nickname.localeCompare(b.nickname));
+  if(!rows.length){note.textContent='Nobody here yet. Sign in and you start in this league.';return;}
+  note.textContent='';const n=rows.length;
+  ol.innerHTML=rows.map((r,i)=>{const up=mine<6&&i<3&&r.wxp>0;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
+    return (i===3&&mine<6&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
+    (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
+function row(r,i,pts,zone){return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).lt)+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}

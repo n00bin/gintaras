@@ -33,6 +33,8 @@ Settings in Supabase:
 - The app uses Google's own sign-in button (`GOOGLE_CLIENT_ID` in `config.js`), so Google's screen says "continue to n00bin.github.io". If Google's script can't load, a plain redirect button is used instead, and that one names the Supabase server. To show "Gintaras" instead of the address, get the branding verified (Google Auth Platform → Verification Center). Adding a logo would require that review too.
 - `privacy.html` is the privacy policy Google links to.
 
+**Leagues:** seven weekly leagues (Smėlis/Sand → Akmenėlis/Pebble → Gintaras/Amber → Sidabras/Silver → Auksas/Gold → Krištolas/Crystal → Saulė/Sun). Each Monday the top 3 of a league move up; anyone with no XP that week moves down, and so do the bottom 3 once a league has 10 or more players. `supabase/leagues.sql` sets this up: the league columns (players cannot write them), and `gintaras_league_rollover()`, which settles each week exactly once the first time any app calls it after Monday.
+
 `config.js` holds the project URL and the publishable key. That key is meant to be public; the table rules decide what anyone can do.
 
 ## How the course is laid out

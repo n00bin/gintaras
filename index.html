@@ -445,6 +445,26 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 #tour .bubble{position:fixed;left:16px;right:16px;max-width:420px;margin:0 auto;background:var(--surface);color:var(--fg);border-radius:var(--radius);padding:16px;display:grid;gap:8px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
 #tour .bubble h3{font-family:var(--display);font-size:20px;font-weight:600}
 #tour .bubble p{margin:0}
+.seg{display:flex;gap:8px;margin-bottom:12px}
+.lg-head{display:flex;gap:12px;align-items:center}
+.lg-head h2{font-size:24px}
+.lg-head small{color:var(--muted)}
+.lg-icon{font-size:40px;line-height:1}
+.lg-icon.big{font-size:64px;text-align:center}
+.ladder{display:flex;justify-content:space-between;background:var(--surface-2);border-radius:999px;padding:6px 10px;font-size:20px}
+.ladder span{filter:grayscale(1);opacity:.45}
+.ladder .past{opacity:.75}
+.ladder .on{filter:none;opacity:1;transform:scale(1.35)}
+.lb li.up{background:color-mix(in srgb,var(--ok) 16%,var(--surface))}
+.lb li.down{background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+.lb li.up .rk{color:var(--ok)}
+.lb li.up .rk::after{content:'▲';font-size:11px;margin-left:2px}
+.lb li.down .rk::after{content:'▼';font-size:11px;margin-left:2px;color:var(--bad)}
+.lb .zone{background:none;padding:2px 12px;font-size:13px;font-weight:800;grid-template-columns:1fr}
+.lb .zone.up-line{color:var(--ok)}
+.lb .zone.down-line{color:var(--bad)}
+.league-pop{position:fixed;inset:0;z-index:60;background:rgba(10,18,14,.6);display:grid;place-items:center;padding:16px}
+.league-pop .card{max-width:380px;text-align:center;justify-items:center;margin:0}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -580,7 +600,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 <nav class="tabs" aria-label="Sections"><div>
   <button id="tab-learn" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>Learn</button>
   <button id="tab-practice" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg>Review<span class="badge" id="due-badge" hidden>0</span></button>
-  <button id="tab-board" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>Board</button>
+  <button id="tab-board" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>League</button>
   <button id="tab-profile" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile</button>
 </div></nav>
 
@@ -2252,6 +2272,7 @@ function updateTtsNote(){const n=document.getElementById('tts-note');if(!n)retur
 /* Tiny synthesised tones: a two-note chime for right, a soft low tone for wrong, a short fanfare for finishing.
    Quiet on purpose, so they never cover the Lithuanian voice. Off with the "Sound effects" switch or with Sound. */
 let actx=null;
+window.sfxWin=()=>sfx('win');
 function sfx(kind){if(kind==='bad'&&navigator.vibrate){try{navigator.vibrate(40);}catch(e){}}
   if(!S.sound||S.sfx===false)return;
   try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();
@@ -2730,7 +2751,7 @@ const TOUR=[
  {sel:'.bite',title:'Your next step',text:'Today\'s plan always shows what to do next: a lesson, a review or a conversation. Just tap the button.'},
  {sel:'#tab-practice',title:'Review',text:'Words come back here right before you would forget them. A short review each day is what makes them stick.'},
  {sel:'.guidecard',title:'Stuck on a sound?',text:'The pronunciation guide explains every "sounds like". It is also one tap away inside every lesson.'},
- {sel:'#tab-board',title:'Leaderboard',text:'Sign in to save your progress and race your friends. You can invite them from here.'},
+ {sel:'#tab-board',title:'Leagues',text:'Earn XP each week to climb from Sand to Sun. The top 3 move up every Monday. Sign in to join, and invite friends to race.'},
  {sel:'#btn-settings',title:'Settings',text:'Your daily pace, voice, offline download, installing the app and sharing all live here.'},
 ];
 function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
