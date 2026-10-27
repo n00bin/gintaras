@@ -486,6 +486,29 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .rep .meta{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
 .rep .btns{display:flex;gap:8px}
 .rep .btns .chip{font-size:14px;padding:6px 10px}
+.talk-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.talk-pick label{display:grid;gap:4px;font-weight:800;font-size:14px;color:var(--muted);min-width:0}
+.talk-pick select{width:100%;min-width:0}
+.talk-pick select,.talklang{font:inherit;font-size:16px;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+.talkscreen{position:fixed;inset:0;z-index:30;background:var(--bg);display:grid;grid-template-rows:1fr auto 1fr;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.talkscreen[hidden]{display:none}
+.half{display:grid;grid-template-rows:auto 1fr auto auto;gap:8px;padding:12px 16px;min-height:0}
+.half.top{transform:rotate(180deg);background:color-mix(in srgb,var(--amber) 8%,var(--bg))}
+.talkbar{display:flex;justify-content:space-between;align-items:center;padding:6px 16px;background:var(--band);color:#fff}
+.talkbar button{color:#fff;font-weight:800;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.14);font-size:16px}
+.talklog{overflow-y:auto;display:grid;align-content:end;gap:8px;min-height:0}
+.tmsg{display:grid;gap:2px;max-width:92%;padding:10px 14px;border-radius:16px}
+.tmsg.theirs{background:var(--surface);border:1px solid var(--line)}
+.tmsg.theirs b{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.25}
+.tmsg.theirs small{color:var(--muted)}
+.tmsg.mine{justify-self:end;background:var(--pine-soft);color:var(--fg);font-size:15px}
+.talkctl{display:grid;grid-template-columns:48px auto 1fr;align-items:center;gap:12px}
+.talkctl .spk.big{width:72px;height:72px;margin:0}
+.talktype{width:48px;height:48px;border-radius:14px;background:var(--surface-2);font-size:22px}
+.talkstatus{font-size:14px;color:var(--muted)}
+.talkform{display:grid;grid-template-columns:1fr auto;gap:8px}
+.talkform input{font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+.talkform .btn{width:auto;padding:10px 16px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -541,6 +564,19 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
   <section class="view" id="view-board" hidden>
     <div class="card" id="board"></div>
+  </section>
+
+  <section class="view" id="view-talk" hidden>
+    <div class="card talk-intro">
+      <span class="eyebrow">Face-to-face translator</span>
+      <h2>Talk with anyone</h2>
+      <p class="note">Put your phone on the table between you. Each person gets their own half of the screen, the far half upside down so it faces them. Tap the microphone, speak, and the other person sees and hears it in their language.</p>
+      <div class="talk-pick"><label>You speak<select id="talk-a"></select></label><label>They speak<select id="talk-b"></select></label></div>
+      <button type="button" class="btn amber" id="btn-talk">Start talking</button>
+      <p class="note" id="talk-engine"></p>
+    </div>
+    <div class="card"><h2>Good to know</h2>
+      <p class="note">Your phone listens in the language set for each side. If someone types, or says something in another language, Gintaras spots it and switches that side to the right language. It needs an internet connection, and what you say is sent to the translation service to be translated (see Privacy).</p></div>
   </section>
 
   <section class="view" id="view-profile" hidden>
@@ -625,6 +661,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   <button id="tab-learn" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>Learn</button>
   <button id="tab-practice" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg>Review<span class="badge" id="due-badge" hidden>0</span></button>
   <button id="tab-board" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>League</button>
+  <button id="tab-talk" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/></svg>Translate</button>
   <button id="tab-profile" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile</button>
 </div></nav>
 
@@ -693,6 +730,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       </div>
     </div>
   </div></div>
+</section>
+
+<section class="talkscreen" id="talkscreen" hidden aria-label="Translator">
+  <div class="half top" data-side="b"></div>
+  <div class="talkbar"><button type="button" id="talk-swap" aria-label="Swap languages">⇅</button><button type="button" id="talk-close" aria-label="Close the translator">✕ Close</button></div>
+  <div class="half bottom" data-side="a"></div>
 </section>
 
 <section class="sheet" id="sheet" hidden aria-label="Lesson">
@@ -2399,10 +2442,10 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
-function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();}
+function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
 
 /* ===================== TABS ===================== */
-const VIEWS=['learn','practice','board','profile','settings'];
+const VIEWS=['learn','practice','board','talk','profile','settings'];
 let lastView='learn';
 function showView(v){if(!VIEWS.includes(v))v='learn';if(v!=='settings')lastView=v;VIEWS.forEach(k=>{$('#view-'+k).hidden=k!==v;const t=$('#tab-'+k);if(t)t.setAttribute('aria-selected',String(k===v));});$('#btn-settings').classList.toggle('on',v==='settings');window.scrollTo(0,0);}
 VIEWS.forEach(v=>{const t=$('#tab-'+v);if(t)t.onclick=()=>showView(v);});
@@ -2829,6 +2872,64 @@ function openFlag(){const ctx=cardContext();const what=ctx.lt?'“'+ctx.lt+'”'
     S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:ctx}]).slice(-30);save();ov.remove();
     toast('Thanks! Your report has been sent.');if(window.cloud&&window.cloud.sendReports)window.cloud.sendReports();};}
 $('#btn-flag').onclick=openFlag;
+
+/* ===================== FACE-TO-FACE TRANSLATOR ===================== */
+/* Two halves, the top one upside down. Each side listens in its own language; text goes to the translation
+   service, which also reports the language it actually was, so a side switches itself if someone uses another
+   language. Google Cloud Translation when a key is set in config.js, otherwise the free MyMemory service. */
+const TALK_LANGS=[['lt-LT','Lietuvių','Lithuanian'],['en-US','English','English'],['ru-RU','Русский','Russian'],['pl-PL','Polski','Polish'],['lv-LV','Latviešu','Latvian'],
+  ['et-EE','Eesti','Estonian'],['de-DE','Deutsch','German'],['fr-FR','Français','French'],['es-ES','Español','Spanish'],['it-IT','Italiano','Italian'],['uk-UA','Українська','Ukrainian'],
+  ['sv-SE','Svenska','Swedish'],['no-NO','Norsk','Norwegian'],['fi-FI','Suomi','Finnish'],['nl-NL','Nederlands','Dutch'],['pt-PT','Português','Portuguese'],['tr-TR','Türkçe','Turkish'],
+  ['ar-SA','العربية','Arabic'],['hi-IN','हिन्दी','Hindi'],['zh-CN','中文','Chinese'],['ja-JP','日本語','Japanese'],['ko-KR','한국어','Korean']];
+const short=code=>code.split('-')[0];
+const langByShort=sh=>TALK_LANGS.find(l=>short(l[0])===sh);
+const TALK={a:S.talkA||'en-US',b:S.talkB||'lt-LT',log:[],busy:false};
+const googleKey=()=>((window.GINTARAS_CONFIG||{}).GOOGLE_TRANSLATE_KEY||'').trim();
+async function translateText(text,target,source){
+  const key=googleKey();
+  if(key){const r=await fetch('https://translation.googleapis.com/language/translate/v2?key='+encodeURIComponent(key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:text,target:short(target),format:'text'})});
+    const j=await r.json();if(!r.ok)throw new Error((j.error&&j.error.message)||'Translation failed');
+    const t=j.data.translations[0];const tmp=document.createElement('textarea');tmp.innerHTML=t.translatedText;return {text:tmp.value,detected:t.detectedSourceLanguage||short(source)};}
+  const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text.slice(0,450))+'&langpair='+short(source)+'|'+short(target));
+  const j=await r.json();if(!j.responseData)throw new Error('Translation failed');return {text:j.responseData.translatedText,detected:short(source)};}
+function langOptions(sel){return TALK_LANGS.map(([c,n,e])=>'<option value="'+c+'"'+(c===sel?' selected':'')+'>'+esc(n)+(n!==e?' · '+esc(e):'')+'</option>').join('');}
+function renderTalkIntro(){if(S.talkA)TALK.a=S.talkA;if(S.talkB)TALK.b=S.talkB;$('#talk-a').innerHTML=langOptions(TALK.a);$('#talk-b').innerHTML=langOptions(TALK.b);
+  $('#talk-engine').textContent=googleKey()?'Translations by Google.':'Translations by MyMemory (free, about 5,000 characters a day). Google translation can be switched on in the app settings by the owner.';}
+$('#talk-a').onchange=e=>{TALK.a=e.target.value;S.talkA=TALK.a;save();};
+$('#talk-b').onchange=e=>{TALK.b=e.target.value;S.talkB=TALK.b;save();};
+function halfHtml(side){const code=TALK[side];const L=TALK_LANGS.find(l=>l[0]===code)||[code,code,code];
+  return '<div class="talkhead"><select class="talklang" data-side="'+side+'" aria-label="Language for this side">'+langOptions(code)+'</select></div>'+
+    '<div class="talklog" data-log="'+side+'"></div>'+
+    '<div class="talkctl"><button type="button" class="talktype" data-type="'+side+'" aria-label="Type instead">⌨</button><button type="button" class="spk big mic" data-mic="'+side+'" aria-label="Speak '+esc(L[2])+'">'+MIC+'</button><span class="talkstatus" data-status="'+side+'">'+(SR?'Tap and speak '+esc(L[1]):'Tap ⌨ to type')+'</span></div>'+
+    '<form class="talkform" data-form="'+side+'" hidden><input type="text" maxlength="400" placeholder="Type in '+esc(L[1])+'" lang="'+short(code)+'"><button type="submit" class="btn amber">Send</button></form>';}
+function drawTalk(){['a','b'].forEach(side=>{const h=document.querySelector('.half[data-side="'+side+'"]');h.innerHTML=halfHtml(side);
+    h.querySelector('.talklang').onchange=e=>{TALK[side]=e.target.value;S['talk'+side.toUpperCase()]=TALK[side];save();drawTalk();};
+    h.querySelector('[data-mic]').onclick=()=>talkListen(side);
+    h.querySelector('[data-type]').onclick=()=>{const f=h.querySelector('[data-form]');f.hidden=!f.hidden;if(!f.hidden)f.querySelector('input').focus();};
+    h.querySelector('[data-form]').onsubmit=e=>{e.preventDefault();const inp=e.target.querySelector('input');const t=inp.value.trim();if(t){inp.value='';talkSay(side,t);}};});
+  drawLogs();}
+function drawLogs(){['a','b'].forEach(side=>{const box=document.querySelector('[data-log="'+side+'"]');if(!box)return;
+  box.innerHTML=TALK.log.slice(-12).map(m=>m.from===side?'<div class="tmsg mine"><span>'+esc(m.said)+'</span></div>':'<div class="tmsg theirs"><b>'+esc(m.trans)+'</b><small>'+esc(m.said)+'</small></div>').join('')||'<p class="note">Your words, and theirs translated for you, appear here.</p>';box.scrollTop=box.scrollHeight;});}
+function setStatus(side,t){const el=document.querySelector('[data-status="'+side+'"]');if(el)el.textContent=t;}
+function talkListen(side){if(!SR){setStatus(side,'This browser can\'t listen. Tap ⌨ to type.');return;}if(!navigator.onLine){setStatus(side,'The translator needs internet.');return;}
+  stopHearing();stopAllAudio();try{speechSynthesis.cancel();}catch(e){}
+  const rec=new SR();activeRec=rec;rec.lang=TALK[side];rec.interimResults=true;rec.maxAlternatives=1;const mic=document.querySelector('[data-mic="'+side+'"]');mic.classList.add('on');setStatus(side,'Listening…');let final='';
+  rec.onresult=e=>{let interim='';for(const r of e.results){if(r.isFinal)final=r[0].transcript;else interim+=r[0].transcript;}setStatus(side,interim||final||'Listening…');};
+  rec.onerror=ev=>{setStatus(side,ev.error==='no-speech'?'I didn\'t hear anything. Tap and try again.':ev.error==='not-allowed'?'The microphone is blocked. Tap ⌨ to type.':ev.error==='language-not-supported'?'Your phone can\'t listen in this language. Tap ⌨ to type.':'Couldn\'t hear that. Try again.');};
+  rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(final.trim())talkSay(side,final.trim());};
+  try{rec.start();}catch(e){mic.classList.remove('on');}}
+async function talkSay(side,said){const other=side==='a'?'b':'a';setStatus(side,'Translating…');
+  try{const r=await translateText(said,TALK[other],TALK[side]);
+    if(r.detected&&r.detected!==short(TALK[side])){const L=langByShort(r.detected);if(L){TALK[side]=L[0];S['talk'+side.toUpperCase()]=L[0];save();drawTalk();setStatus(side,'Detected '+L[2]+'. This side now uses '+L[1]+'.');}}
+    else setStatus(side,SR?'Tap and speak again':'Tap ⌨ to type');
+    TALK.log.push({from:side,said,trans:r.text});drawLogs();talkSpeak(r.text,TALK[other]);}
+  catch(err){setStatus(side,navigator.onLine?'Translation failed: '+err.message:'The translator needs internet.');}}
+function talkSpeak(text,code){if(!S.sound||!('speechSynthesis' in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=code;
+  const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.replace('_','-').toLowerCase().startsWith(short(code)));if(v)u.voice=v;else if(short(code)!=='en'){return;}speechSynthesis.speak(u);}catch(e){}}
+function openTalk(){stopAllAudio();$('#talkscreen').hidden=false;document.body.style.overflow='hidden';drawTalk();}
+function closeTalk(){stopHearing();try{speechSynthesis.cancel();}catch(e){}$('#talkscreen').hidden=true;document.body.style.overflow='';}
+$('#btn-talk').onclick=openTalk;$('#talk-close').onclick=closeTalk;
+$('#talk-swap').onclick=()=>{[TALK.a,TALK.b]=[TALK.b,TALK.a];S.talkA=TALK.a;S.talkB=TALK.b;save();drawTalk();};
 
 /* ===================== PRONUNCIATION GUIDE ===================== */
 /* Opens over whatever you are doing (even mid-lesson) and closing it puts you back exactly where you were. */
