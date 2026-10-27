@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
 <style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Gintaras</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,7 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
   padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand .gem{width:26px;height:26px;border-radius:9px 9px 12px 12px;background:radial-gradient(circle at 35% 30%,var(--amber-deep),var(--amber) 55%,#9A5A05);box-shadow:var(--shadow);transform:rotate(-8deg)}
+.brand .gem{width:30px;height:26px;background:url(gem.svg) center/contain no-repeat}
 .brand h1{font-size:22px;font-weight:700;letter-spacing:.01em}
 .stats{display:flex;gap:14px;font-weight:800;font-size:14px}
 .stats span{display:inline-flex;align-items:center;gap:5px}
@@ -92,7 +92,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .bite .note{color:rgba(255,255,255,.85)}
 .bite .btn{margin-top:4px}
 .hello{display:grid;gap:16px;padding-top:24px}
-.hello .gem.big{width:64px;height:64px;border-radius:20px 20px 28px 28px;background:radial-gradient(circle at 35% 30%,var(--amber-deep),var(--amber) 55%,#9A5A05);transform:rotate(-8deg);box-shadow:var(--shadow)}
+.hello .gem.big{width:76px;height:66px;background:url(gem.svg) center/contain no-repeat;filter:drop-shadow(0 4px 10px color-mix(in srgb,var(--amber) 45%,transparent))}
 .hello h2{font-size:30px;font-weight:600}
 .hello p{margin:0;font-size:17px}
 .how{display:grid;gap:12px}
@@ -438,6 +438,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .bd.on i{filter:none;opacity:1;background:none}
 .steps{flex-wrap:wrap;overflow:visible}
 .jump{display:block;margin:-6px auto 14px}
+@keyframes rise{from{transform:translateY(10px);opacity:.4}to{transform:none;opacity:1}}
+.foot.good>div,.foot.bad>div,.foot.idk>div{animation:rise .18s ease-out}
+#tour{position:fixed;inset:0;z-index:50}
+#tour .spot{position:fixed;border-radius:16px;box-shadow:0 0 0 9999px rgba(10,18,14,.62);transition:all .25s ease;pointer-events:none}
+#tour .bubble{position:fixed;left:16px;right:16px;max-width:420px;margin:0 auto;background:var(--surface);color:var(--fg);border-radius:var(--radius);padding:16px;display:grid;gap:8px;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+#tour .bubble h3{font-family:var(--display);font-size:20px;font-weight:600}
+#tour .bubble p{margin:0}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -528,6 +535,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <span class="group">Sound</span>
     <div class="card">
       <div class="setting"><span>Sound</span><button class="switch" role="switch" aria-checked="true" id="sw-sound" aria-label="Sound"></button></div>
+      <div class="setting"><span>Sound effects</span><button class="switch" role="switch" aria-checked="true" id="sw-sfx" aria-label="Sound effects"></button></div>
       <div class="setting"><span>Voice</span>
         <span class="chips"><button class="chip" data-voice="ona">Ona</button><button class="chip" data-voice="leonas">Leonas</button></span></div>
       <p class="note" id="tts-note"></p>
@@ -557,6 +565,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <h2>About this course</h2>
       <p class="note">Progress is saved on this device in your browser. Clearing site data or switching devices starts fresh. Audio is a Lithuanian neural voice (Ona or Leonas); the device's own voice is used only if a clip fails to load.</p>
       <p class="note"><a href="privacy.html" style="color:var(--pine);font-weight:800">Privacy: what is stored and how to delete it</a></p>
+      <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
       <button class="btn danger" id="btn-reset">Reset all progress</button>
       <div class="confirm" id="confirm-reset" hidden>
         <span>This erases your XP, streak and every lesson. There is no undo.</span>
@@ -2231,6 +2240,18 @@ function speak(text,slow){if(!S.sound||!('speechSynthesis' in window))return;try
 function updateTtsNote(){const n=document.getElementById('tts-note');if(!n)return;
   n.textContent='Every word has a recorded Lithuanian voice. Phones mute audio until you tap something, so if a word plays silently, tap the speaker once.';}
 
+/* ===================== SOUND EFFECTS ===================== */
+/* Tiny synthesised tones: a two-note chime for right, a soft low tone for wrong, a short fanfare for finishing.
+   Quiet on purpose, so they never cover the Lithuanian voice. Off with the "Sound effects" switch or with Sound. */
+let actx=null;
+function sfx(kind){if(kind==='bad'&&navigator.vibrate){try{navigator.vibrate(40);}catch(e){}}
+  if(!S.sound||S.sfx===false)return;
+  try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();
+    const now=actx.currentTime;const notes={good:[[660,0],[990,.09]],bad:[[247,0],[196,.11]],win:[[523,0],[659,.11],[784,.22],[1047,.33]]}[kind]||[];
+    notes.forEach(([f,t])=>{const o=actx.createOscillator(),g=actx.createGain();o.type=kind==='bad'?'triangle':'sine';o.frequency.value=f;
+      g.gain.setValueAtTime(0.0001,now+t);g.gain.exponentialRampToValueAtTime(kind==='bad'?0.08:0.1,now+t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,now+t+(kind==='win'?0.4:0.22));
+      o.connect(g).connect(actx.destination);o.start(now+t);o.stop(now+t+0.45);});}catch(e){}}
+
 /* ===================== HELPERS ===================== */
 const $=s=>document.querySelector(s);
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2298,7 +2319,7 @@ function renderProfile(){$('#p-xp').textContent=S.xp;$('#p-streak').textContent=
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
-  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
+  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
 function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
@@ -2368,7 +2389,7 @@ function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
-function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();}
+function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();maybeTour();}
 
 function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
 /* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */
@@ -2441,8 +2462,8 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];$('#gap').textContent=Q.answer;btn.disabled=false;});
     const done=(ok,idk)=>{const first=!Q.wrongOnce['drill:'+d.frame];$('#btn-idk').hidden=true;
       st.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');if(opts[i]===d.ans)b.classList.add('good');});$('#gap').textContent=d.ans;$('#gap').classList.add('filled');
-      if(ok){if(first)Q.correct++;setFoot('good','Correct!',esc(d.why));}
-      else{Q.wrongOnce['drill:'+d.frame]=true;setFoot(idk?'idk':'bad',idk?'Here it is':'Not quite','<b>'+esc(d.frame.replace('___',d.ans))+'</b><div class="note">'+esc(d.why)+'</div>');
+      if(ok){sfx('good');if(first)Q.correct++;setFoot('good','Correct!',esc(d.why));}
+      else{if(!idk)sfx('bad');Q.wrongOnce['drill:'+d.frame]=true;setFoot(idk?'idk':'bad',idk?'Here it is':'Not quite','<b>'+esc(d.frame.replace('___',d.ans))+'</b><div class="note">'+esc(d.why)+'</div>');
         Q.queue.splice(Math.min(Q.idx+3,Q.queue.length),0,{type:'frame',drill:d,retry:true});}
       btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};};
     btn.onclick=()=>done(Q.answer===d.ans,false);
@@ -2465,7 +2486,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
       if(!sel){sel=b;b.setAttribute('aria-pressed','true');return;}
       if(sel===b){sel=null;b.setAttribute('aria-pressed','false');return;}
       if(sel.dataset.side===b.dataset.side){sel.setAttribute('aria-pressed','false');sel=b;b.setAttribute('aria-pressed','true');return;}
-      if(sel.dataset.id===b.dataset.id){[sel,b].forEach(x=>{x.classList.add('done');x.setAttribute('aria-pressed','false');});done++;sel=null;if(done===ex.items.length){Q.answer=true;btn.disabled=false;setFoot('good','All matched');btn.textContent='Continue';btn.onclick=()=>{ex.items.forEach(i=>grade(i,true,false));Q.correct++;Q.idx++;renderStep();};}}
+      if(sel.dataset.id===b.dataset.id){[sel,b].forEach(x=>{x.classList.add('done');x.setAttribute('aria-pressed','false');});done++;sel=null;if(done===ex.items.length){sfx('good');Q.answer=true;btn.disabled=false;setFoot('good','All matched');btn.textContent='Continue';btn.onclick=()=>{ex.items.forEach(i=>grade(i,true,false));Q.correct++;Q.idx++;renderStep();};}}
       else{[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});Q.wrongOnce[(sel.dataset.side==='l'?sel:b).dataset.id]=true;sel=null;}});}
   st.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>say(BYID[b.dataset.say],!!b.dataset.slow));}
 
@@ -2487,8 +2508,8 @@ function reveal(ok,almost,idk){const ex=Q.queue[Q.idx];const it=ex.item;
   const mean=ex.type==='mc_lt_en'||ex.type==='listen';
   const answer='<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
-  if(ok){grade(it,true,first);if(first)Q.correct++;setFoot('good',almost?'Nearly':['Correct!','Puiku!','Gerai!','Šaunu!'][Math.floor(Math.random()*4)],(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
-  else{grade(it,false,false);Q.wrongOnce[it.id]=true;
+  if(ok){sfx('good');grade(it,true,first);if(first)Q.correct++;setFoot('good',almost?'Nearly':['Correct!','Puiku!','Gerai!','Šaunu!'][Math.floor(Math.random()*4)],(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  else{if(!idk)sfx('bad');grade(it,false,false);Q.wrongOnce[it.id]=true;
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
     else setFoot('bad','Not quite','Correct answer: '+answer);
     Q.queue.splice(Math.min(Q.idx+3,Q.queue.length),0,{type:ex.type,item:it,retry:true});say(it);}
@@ -2511,8 +2532,12 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   save();
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+(xp+bonus)+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+S.streak+'</strong><small>Streak</small></div></div>'+lines.join('')+'</div>';
-  confetti(perfect||after.i>before.i||got.length>0?160:70);
+  confetti(perfect||after.i>before.i||got.length>0?160:70);sfx('win');countUp();
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
+/* The XP on the finish screen counts up from zero. */
+function countUp(){const el=document.querySelector('.done .big');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const target=parseInt(el.textContent.replace(/\D/g,''),10)||0;const t0=performance.now();
+  const step=t=>{const k=Math.min(1,(t-t0)/650);el.textContent='+'+Math.round(target*(1-Math.pow(1-k,3)))+' XP';if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
 function confetti(n){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const c=$('#confetti');if(!c)return;const st=$('.stage');c.width=st.clientWidth;c.height=st.clientHeight;const x=c.getContext('2d');
   const cols=['#E89A1E','#2F6B4A','#F7C56E','#5FB37F','#C93A3A'];const ps=[];for(let i=0;i<n;i++)ps.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,v:2+Math.random()*3,w:6+Math.random()*6,r:Math.random()*Math.PI,s:(Math.random()-.5)*.2,col:cols[i%cols.length]});
   let t=0;const step=()=>{x.clearRect(0,0,c.width,c.height);let alive=false;ps.forEach(p=>{p.y+=p.v;p.r+=p.s;p.x+=Math.sin(p.r)*1.2;if(p.y<c.height+20)alive=true;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.col;x.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);x.restore();});if(alive&&t++<240)requestAnimationFrame(step);else x.clearRect(0,0,c.width,c.height);};step();}
@@ -2576,9 +2601,9 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   inp.oninput=()=>{btn.disabled=!inp.value.trim();};
   turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const p=inp.selectionStart??inp.value.length,q=inp.selectionEnd??p;inp.value=inp.value.slice(0,p)+k.dataset.k+inp.value.slice(q);inp.focus();inp.setSelectionRange(p+1,p+1);inp.oninput();});
   const check=()=>{const a=norm(inp.value);if(!a)return;const t=norm(ln.lt);
-    if(a===t||strip(inp.value)===strip(ln.lt)){inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
+    if(a===t||strip(inp.value)===strip(ln.lt)){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
       cmsg.innerHTML=a===t?'<span class="ok">Correct!</span>':'Nearly: watch the accents, <b>'+esc(ln.lt)+'</b>';inp.classList.add('right');btn.disabled=true;return later(sayIt,a===t?600:1400);}
-    tries++;C.mistakes++;inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
+    tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);
     cmsg.innerHTML=wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':'Not quite. Check each word and try again.';
     if(tries>=2&&help===0){help=1;tiles();helpBtn.textContent='Still stuck? Show me the answer';}};
@@ -2601,7 +2626,7 @@ function hear(target,mic,out,onResult){
   mic.classList.add('on');out.innerHTML='<b>Listening…</b> say it now.';let got=false;
   rec.onresult=e=>{got=true;const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;
     alts.forEach(a=>{const sc=matchScore(a,target);if(sc>score){score=sc;best=a;}});
-    if(score>=0.75)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';
+    if(score>=0.75){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';}
     else if(score>=0.4)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Close! Play the recording once more and try again.';
     else out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Not quite. Listen again (try the slow button), then have another go.';
     onResult(score,best);};
@@ -2624,7 +2649,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
-  confetti(perfect||allSaid||got.length?160:90);$('#lbar').style.width='100%';
+  confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
   const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
@@ -2679,6 +2704,30 @@ window.addEventListener('online',()=>{netUI();toast('Back online');});
 
 $('#btn-jump').onclick=()=>{const cur=document.querySelector('.unit:not(.locked):not(.done)')||document.querySelector('.convcard:not(.locked)');if(cur)cur.scrollIntoView({behavior:'smooth',block:'start'});};
 
+/* ===================== QUICK TOUR ===================== */
+/* Shown once, after the first lesson: a spotlight on the five things a beginner needs to find. */
+const TOUR=[
+ {sel:'.bite',title:'Your next step',text:'Today\'s plan always shows what to do next: a lesson, a review or a conversation. Just tap the button.'},
+ {sel:'#tab-practice',title:'Review',text:'Words come back here right before you would forget them. A short review each day is what makes them stick.'},
+ {sel:'.guidecard',title:'Stuck on a sound?',text:'The pronunciation guide explains every "sounds like". It is also one tap away inside every lesson.'},
+ {sel:'#tab-board',title:'Leaderboard',text:'Sign in to save your progress and race your friends. You can invite them from here.'},
+ {sel:'#btn-settings',title:'Settings',text:'Your daily pace, voice, offline download, installing the app and sharing all live here.'},
+];
+function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
+  let i=0;const ov=document.createElement('div');ov.id='tour';ov.innerHTML='<div class="spot"></div><div class="bubble" role="dialog" aria-live="polite"><span class="eyebrow"></span><h3></h3><p></p><div class="row2"><button type="button" class="btn ghost" data-t="skip">Skip</button><button type="button" class="btn amber" data-t="next">Next</button></div></div>';
+  document.body.appendChild(ov);const spot=ov.querySelector('.spot'),bub=ov.querySelector('.bubble');
+  const end=()=>{S.toured=true;save();ov.remove();window.removeEventListener('resize',place);};
+  const place=()=>{const st=steps[i];const el=document.querySelector(st.sel);const r=el.getBoundingClientRect();const pad=6;
+    Object.assign(spot.style,{left:(r.left-pad)+'px',top:(r.top-pad)+'px',width:(r.width+pad*2)+'px',height:(r.height+pad*2)+'px'});
+    bub.querySelector('.eyebrow').textContent='Quick tour · '+(i+1)+' of '+steps.length;bub.querySelector('h3').textContent=st.title;bub.querySelector('p').textContent=st.text;
+    bub.querySelector('[data-t="next"]').textContent=i===steps.length-1?'Got it':'Next';
+    const below=r.bottom+pad+12,bh=bub.offsetHeight;const top=below+bh<window.innerHeight-8?below:Math.max(8,r.top-pad-12-bh);bub.style.top=top+'px';};
+  const show=()=>{const el=document.querySelector(steps[i].sel);if(el.closest('main'))el.scrollIntoView({block:'center'});requestAnimationFrame(place);};
+  ov.querySelector('[data-t="next"]').onclick=()=>{i++;if(i>=steps.length)end();else show();};
+  ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);show();}
+function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour'))setTimeout(startTour,450);}
+$('#btn-tour').onclick=()=>startTour();
+
 /* ===================== PRONUNCIATION GUIDE ===================== */
 /* Opens over whatever you are doing (even mid-lesson) and closing it puts you back exactly where you were. */
 function openGuide(){const g=$('#guide');g.hidden=false;g.querySelector('.stage').scrollTop=0;document.body.style.overflow='hidden';}
@@ -2710,6 +2759,7 @@ document.querySelectorAll('.chip[data-pace]').forEach(b=>b.onclick=()=>{setPace(
 document.querySelectorAll('.chip[data-voice]').forEach(b=>b.onclick=()=>{S.voice=b.dataset.voice;save();renderProfile();say(BYID['u1a-1:0']);});
 document.querySelectorAll('.pace-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pace-opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');setPace(b.dataset.pace);});
 $('#sw-sound').onclick=()=>{S.sound=!S.sound;save();renderProfile();if(S.sound)say(BYID['u1a-1:0']);};
+$('#sw-sfx').onclick=()=>{S.sfx=S.sfx===false;save();renderProfile();if(S.sfx)sfx('good');};
 $('#sw-pron').onclick=()=>{S.pron=!(S.pron!==false);save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};

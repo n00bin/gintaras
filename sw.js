@@ -4,11 +4,11 @@
      ranges, so ranges are cut from the saved file.
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched. */
-const SHELL = 'gintaras-shell-v15';
+const SHELL = 'gintaras-shell-v16';
 const AUDIO = 'gintaras-audio-v1';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];
-const CORE = ['./', 'index.html', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'icon-192.png', 'icon-512.png'];
+const CORE = ['./', 'index.html', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
 const CDN_HOSTS = ['cdn.jsdelivr.net', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 const CDN_CORE = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js'];
 
