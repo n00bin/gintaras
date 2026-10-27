@@ -14,7 +14,10 @@ Live: https://n00bin.github.io/gintaras/
 | `audio/` | Lithuanian audio, one file per unit or conversation per voice (Ona, Leonas) |
 | `tools/` | The audio recorder (`make_audio.py`) and the script it uses to read the course |
 | `supabase/schema.sql` | The two `gintaras_` tables and their access rules |
-| `manifest.json`, `icon-*.png` | Lets phones install it to the home screen |
+| `manifest.json`, `icon-*.png` | The app's name, colours and icons for installing it |
+| `sw.js` | Service worker: makes it installable and lets it open without signal (audio is saved the first time it plays) |
+
+Players can install it as an app from **Profile → Install as an app**, which has a one-tap button where the browser supports it and step-by-step instructions for iPhone, Android and computers. When you change `sw.js` itself, bump the cache names at the top so old copies are cleared.
 
 Progress is saved in the browser. With an account it also syncs to the cloud, so it follows you across devices.
 

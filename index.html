@@ -347,6 +347,14 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .spk.mic.on{animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--amber) 60%,transparent)}50%{box-shadow:0 0 0 12px transparent}}
 .sheet.conv .speakrow .spk.big{width:72px;height:72px;border-radius:20px}
+.howto{display:grid;gap:8px}
+.howto details{background:var(--surface-2);border-radius:12px;padding:10px 14px}
+.howto summary{font-weight:800;cursor:pointer}
+.howto ol{margin:8px 0 2px;padding-left:22px;display:grid;gap:6px;font-size:15px}
+#settings .setting>span:first-child{white-space:nowrap}
+#settings .chips{flex-wrap:nowrap}
+#settings .chip{padding:6px 11px;font-size:15px}
+#settings .note{margin:0}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -418,6 +426,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="card">
       <h2>Badges</h2>
       <div class="badges" id="badges"></div>
+    </div>
+    <div class="card" id="settings">
+      <h2>Settings</h2>
       <div class="setting"><span>Daily pace</span>
         <span class="chips"><button class="chip" data-pace="casual">3 min</button><button class="chip" data-pace="regular">10 min</button><button class="chip" data-pace="serious">20 min</button></span></div>
       <div class="setting"><span>Voice</span>
@@ -426,6 +437,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read Lithuanian spelling on its own.</p>
       <p class="note" id="tts-note"></p>
+    </div>
+    <div class="card" id="install">
+      <h2>Install as an app</h2>
+      <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. Your progress stays exactly where it is.</p>
+      <div id="install-now"></div>
+      <div class="howto" id="install-steps"></div>
     </div>
     <div class="card">
       <h2>Reading "sounds like"</h2>
@@ -1474,7 +1491,7 @@ function renderProfile(){$('#p-xp').textContent=S.xp;$('#p-streak').textContent=
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i></i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
-  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();}
+  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
 function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
@@ -1738,6 +1755,26 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
   const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
+
+/* ===================== INSTALL AS AN APP ===================== */
+/* Chrome, Edge and Android hand us an install prompt we can trigger from a button; iPhone never does,
+   so everyone also gets plain steps, with their own device first. */
+let installEvt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;renderInstall();});
+window.addEventListener('appinstalled',()=>{installEvt=null;renderInstall();toast('Installed. Gintaras is on your home screen.');});
+function devicePlatform(){const ua=navigator.userAgent;if(/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))return 'ios';return /Android/.test(ua)?'android':'desktop';}
+function isInstalled(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}
+const INSTALL_HOWTO={
+ ios:{name:'iPhone or iPad',steps:['Open this page in <b>Safari</b>.','Tap the <b>Share</b> button: the square with an arrow pointing up, at the bottom of the screen (top right on an iPad).','Scroll down the list and tap <b>Add to Home Screen</b>.','Tap <b>Add</b>. Gintaras is now on your home screen.']},
+ android:{name:'Android phone or tablet',steps:['Open this page in <b>Chrome</b>.','Tap the <b>⋮</b> menu at the top right.','Tap <b>Add to Home screen</b> (on some phones it says <b>Install app</b>).','Tap <b>Install</b>. Gintaras is now on your home screen.']},
+ desktop:{name:'Computer',steps:['Open this page in <b>Chrome</b> or <b>Edge</b>.','Click the small <b>install icon</b> at the right end of the address bar (a screen with a down arrow).','No icon? In Chrome open the <b>⋮</b> menu → <b>Cast, save and share</b> → <b>Install page as app</b>. In Edge open the <b>…</b> menu → <b>Apps</b> → <b>Install this site as an app</b>.','Click <b>Install</b>. Gintaras opens in its own window with its own icon.']}};
+function renderInstall(){const now=$('#install-now'),st=$('#install-steps');if(!now)return;
+  if(isInstalled()){now.innerHTML='<div class="win badge"><b>You are using the app.</b> Nothing else to do.</div>';st.innerHTML='';return;}
+  now.innerHTML=installEvt?'<button type="button" class="btn amber" id="btn-install">Install Gintaras</button>':'';
+  if(installEvt)$('#btn-install').onclick=async()=>{const e=installEvt;e.prompt();await e.userChoice;installEvt=null;renderInstall();};
+  const mine=devicePlatform();const order=[mine].concat(['ios','android','desktop'].filter(k=>k!==mine));
+  st.innerHTML=order.map((k,i)=>'<details'+(i===0&&!installEvt?' open':'')+'><summary>'+(i===0?(installEvt?'Or step by step on this ':'Step by step on this ')+'device: ':'')+INSTALL_HOWTO[k].name+'</summary><ol>'+INSTALL_HOWTO[k].steps.map(s=>'<li>'+s+'</li>').join('')+'</ol></details>').join('');}
+if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 
 /* ===================== WIRING ===================== */
 $('#btn-quit').onclick=quit;
