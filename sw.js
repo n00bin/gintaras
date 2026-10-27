@@ -4,7 +4,7 @@
      ranges, so ranges are cut from the saved file.
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched. */
-const SHELL = 'gintaras-shell-v4';
+const SHELL = 'gintaras-shell-v5';
 const AUDIO = 'gintaras-audio-v1';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];
@@ -40,7 +40,8 @@ self.addEventListener('fetch', e => {
 async function networkFirst(req) {
   const cache = await caches.open(SHELL);
   try {
-    const res = await fetch(req);
+    // 'no-cache' asks the server whether the file changed, so an update shows up on the next open, not 10 minutes later.
+    const res = await fetch(req, { cache: 'no-cache' });
     if (res.ok) cache.put(req, res.clone());
     return res;
   } catch (err) {
