@@ -23,3 +23,10 @@ Leagues (2026-10-27): 7 leagues x 3 divisions (III, II, I) = 21 steps, stored as
 the same for everyone: Sand 150, Pebble 200, Amber 250, Silver 300, Gold 350, Crystal 425, Sun 500 (supabase/league-bars.sql;
 BARS in cloud.js must match). Daily goals are 7 XP per minute of pace (measured: a lesson is ~24 XP in 3-4 min). #1 in Sun gets a crown for the next week. Setup: supabase/divisions.sql
 (already run; backups gintaras_profiles_backup_20261027 / gintaras_progress_backup_20261027 taken first).
+
+Leagues v3 (2026-10-27, supabase/leagues10.sql, run): 10 leagues x 2 divisions (II, I) = steps 0-19. Sand, Pebble, Copper, Amber,
+Silver, Gold, Crystal, Moon, Star, Sun; bars 150/175/200/250/275/300/350/400/450/500 (BARS in cloud.js must match).
+Sun Cup: monthly from the first Monday. Round 1 = Sun league players with 500+ XP that week; top half (min 2) go through
+to the semifinal, then the final; final top 3 get +100/50/25 amber (paid by the app, S.cupPaid), winner's cup_wins +1 (🏆 on name).
+Table gintaras_cup. The weekly job is gintaras_league_settle(monday) (testable on any date) called by gintaras_league_rollover().
+Backups taken first: *_backup_20261027, *_backup_20261027b, *_backup_20261027c.

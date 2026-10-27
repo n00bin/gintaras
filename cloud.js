@@ -25,6 +25,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
   out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay','leagueNotice'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
+  out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
@@ -46,7 +47,7 @@ async function afterAuth(){profile=null;
     const {data:p}=await sb.from('gintaras_progress').select('state').eq('user_id',user.id).maybeSingle();
     if(p&&p.state){window.S=mergeState(window.S,p.state);window.save();window.renderAll();}
     if(!profile)profile=await autoProfile();
-    loadChallenges();
+    loadChallenges();loadCup();
     booted=true;cloudSave();}
   else booted=true;
   renderAuth();renderBoard();
@@ -158,17 +159,17 @@ async function renderReports(){const box=$('#reports'),head=$('#reports-group');
 window.addEventListener('online',()=>sendReports());
 
 /* ---------- leagues ---------- */
-/* Seven weekly leagues, each with three divisions (III, II, I): 21 steps, stored as profile.league 0-20.
+/* Ten weekly leagues, each with two divisions (II, I): 20 steps, stored as profile.league 0-19.
    The database settles each week once: the top 3 move up a division if they reached their league's XP bar
    (the same for everyone, rising with the league); no XP means moving down. The app only shows where you stand and pays the amber. */
-const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble',icon:'🪨'},{lt:'Gintaras',en:'Amber',icon:'🟠'},{lt:'Sidabras',en:'Silver',icon:'🥈'},
-  {lt:'Auksas',en:'Gold',icon:'🥇'},{lt:'Krištolas',en:'Crystal',icon:'💎'},{lt:'Saulė',en:'Sun',icon:'☀️'}];
-const DIVS=['III','II','I'],TOP=20,SUN=18;
+const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble',icon:'🪨'},{lt:'Varis',en:'Copper',icon:'🟤'},{lt:'Gintaras',en:'Amber',icon:'🟠'},{lt:'Sidabras',en:'Silver',icon:'🥈'},
+  {lt:'Auksas',en:'Gold',icon:'🥇'},{lt:'Krištolas',en:'Crystal',icon:'💎'},{lt:'Mėnulis',en:'Moon',icon:'🌙'},{lt:'Žvaigždė',en:'Star',icon:'⭐'},{lt:'Saulė',en:'Sun',icon:'☀️'}];
+const DIVS=['II','I'],TOP=19,SUN=18;
 const stepOf=n=>Math.max(0,Math.min(TOP,n||0));
-const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/3)];return Object.assign({},L,{div:DIVS[st%3],name:L.lt+' '+DIVS[st%3]});};
+const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/2)];return Object.assign({},L,{div:DIVS[st%2],name:L.lt+' '+DIVS[st%2]});};
 /* XP in a week needed to move up, per league (all three divisions share it). Must match supabase/league-bars.sql. */
-const BARS=[150,200,250,300,350,425,500];
-const barFor=st=>BARS[Math.floor(stepOf(st)/3)];
+const BARS=[150,175,200,250,275,300,350,400,450,500];
+const barFor=st=>BARS[Math.floor(stepOf(st)/2)];
 /* Position bonus for finishing in the top 3 of a group where at least 2 people earned XP. */
 const PLACE_AMBER={1:15,2:10,3:5};
 const crowned=r=>r.last_rank===1&&(r.last_league||0)>=SUN;
@@ -253,26 +254,60 @@ function renderChallenges(){const box=$('#chal-box');if(!box)return;if(!user){bo
   box.innerHTML='<h2>Friend challenges</h2><p class="note">Tap any player above to challenge them. Whoever earns more XP this week wins both stakes.</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');
   box.querySelectorAll('[data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));}
 
+/* ---------- Sun Cup ---------- */
+/* Every month from its first Monday, for the Sun league: round 1 is everyone there who earns 500 XP that week,
+   the top half go through to the semifinal, then the final. The weekly job settles each round; the app shows it
+   and pays the final's top 3 (once, remembered in S.cupPaid). */
+const ROUNDS=['','Qualifier','Semifinal','Final'],CUP_PRIZE={1:100,2:50,3:25},CUP_ENTRY=500;
+const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function cupStartOf(day){const d=new Date(day+'T00:00');d.setDate(1);d.setDate(1+(8-((d.getDay()+6)%7+1))%7);return ymd(d);}
+function cupNow(){const mon=monday(),start=cupStartOf(mon);return {start,rnd:Math.round((new Date(mon+'T00:00')-new Date(start+'T00:00'))/(7*86400000))+1};}
+function nextCup(){const {start,rnd}=cupNow();if(rnd===1)return start;const d=new Date(start+'T00:00');d.setDate(1);d.setMonth(d.getMonth()+1);return cupStartOf(ymd(d));}
+const longDay=day=>new Date(day+'T00:00').toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'});
+let cupRows=[],cupPeople={};
+async function loadCup(){if(!sb||!user)return;const {start}=cupNow();
+  const {data}=await sb.from('gintaras_cup').select('cup,round,player,xp,place').or('cup.eq.'+start+',and(player.eq.'+user.id+',round.eq.3)');
+  cupRows=(data||[]).filter(r=>r.cup===start);
+  const ids=[...new Set(cupRows.map(r=>r.player))];cupPeople={};
+  if(ids.length){const {data:ps}=await sb.from('gintaras_profiles').select('id,nickname,week_xp,week_start').in('id',ids);(ps||[]).forEach(p=>cupPeople[p.id]=p);}
+  const S=window.S;if(!S)return;S.cupPaid=S.cupPaid||{};
+  (data||[]).filter(r=>r.player===user.id&&r.round===3&&CUP_PRIZE[r.place]&&!S.cupPaid[r.cup]).forEach(r=>{S.cupPaid[r.cup]=r.place;
+    window.earnAmber(CUP_PRIZE[r.place],'Sun Cup');toast(r.place===1?'🏆 You won the Sun Cup! +100 amber':'☀️ Sun Cup: you finished '+['','1st','2nd','3rd'][r.place]+'. +'+CUP_PRIZE[r.place]+' amber');});
+  window.save();}
+function renderCup(mine){const box=$('#cup-box');if(!box)return;const {rnd}=cupNow(),wk=monday(),inSun=mine>=SUN;
+  const name=id=>esc((cupPeople[id]||{}).nickname||'?'),wxp=id=>{const p=cupPeople[id]||{};return p.week_start===wk?p.week_xp:0;};
+  let h='<span class="eyebrow">☀️ Sun Cup · monthly</span>';
+  const live=rnd>=2&&rnd<=3?cupRows.filter(r=>r.round===rnd):[];
+  if(rnd===1)h+='<h3>Qualifier this week</h3><p class="note">Everyone in the Sun league who earns <b>'+CUP_ENTRY+' XP</b> this week enters. The top half go through each week: qualifier, semifinal, final.</p>'+(inSun?'<p class="note"><b>You: '+((window.S&&window.S.weekStart===wk&&window.S.weekXp)||0)+' / '+CUP_ENTRY+' XP</b></p>':'');
+  else if(live.length){const me=live.some(r=>r.player===(user&&user.id));
+    h+='<h3>'+ROUNDS[rnd]+' this week</h3><p class="note">'+(rnd===3?'Top 3 win <b>100, 50 and 25 amber</b>, and the winner gets a 🏆 for good.':'The top half go through to the final.')+(me?' <b>You\'re in!</b>':'')+'</p>'+
+      '<ol class="cup-list">'+live.map(r=>[r.player,wxp(r.player)]).sort((a,b)=>b[1]-a[1]).map(([id,x])=>'<li'+(user&&id===user.id?' class="me"':'')+'><span>'+name(id)+'</span><b>'+x+' XP</b></li>').join('')+'</ol>';}
+  else{const fin=cupRows.filter(r=>r.round===3&&r.place).sort((a,b)=>a.place-b.place);
+    if(fin.length)h+='<h3>🏆 '+name(fin[0].player)+' won this month\'s cup</h3>';
+    else if(rnd<=3)h+='<h3>No cup this month</h3><p class="note">Fewer than 2 Sun players reached '+CUP_ENTRY+' XP in the qualifier.</p>';
+    h+='<p class="note">Next Sun Cup starts <b>'+longDay(nextCup())+'</b>. '+(inSun?'Earn '+CUP_ENTRY+' XP that week to enter.':'Reach the Sun league to enter.')+'</p>';}
+  box.className='cup-box';box.innerHTML=h;}
+
 /* ---------- leaderboard ---------- */
 let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>League</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>League</h2><p class="note">You’re offline. Your league comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
-  const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/3);
+  const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/2);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
-    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+' · step '+(mine+1)+' of 21</small></div></div>'+
+    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+' · step '+(mine+1)+' of 20</small></div></div>'+
       '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
       '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+barFor(mine)+' XP</b> this week. ':'You are at the very top. ')+'Top 3 earn bonus amber: 15, 10 and 5. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
-    (user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
+    (user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
-  await ensureRollover();await loadChallenges();
-  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league';
+  await ensureRollover();await loadChallenges();await loadCup();
+  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league,cup_wins';
   const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
-  renderChallenges();
+  renderChallenges();renderCup(mine);
   ol.onclick=e=>{const li=e.target.closest('li[data-pid]');if(li)openChallenge(li.dataset.pid);};
   data.forEach(r=>{people[r.id]=Object.assign(people[r.id]||{},r);});
   if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
@@ -283,7 +318,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=rows.map((r,i)=>{const up=mine<TOP&&i<3&&r.wxp>0&&r.wxp>=barFor(mine);const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
     return (i===3&&mine<TOP&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up (with enough XP)</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
+function row(r,i,pts,zone){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
