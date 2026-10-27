@@ -15,7 +15,9 @@ function msg(t,bad){const m=$('#auth-msg');if(!m)return;m.textContent=t||'';m.st
 function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({},a);
   out.xp=Math.max(a.xp||0,b.xp||0);out.streak=Math.max(a.streak||0,b.streak||0);out.bestStreak=Math.max(a.bestStreak||0,b.bestStreak||0);
   out.lessonsDone=Math.max(a.lessonsDone||0,b.lessonsDone||0);out.perfects=Math.max(a.perfects||0,b.perfects||0);out.speakDone=Math.max(a.speakDone||0,b.speakDone||0);
-  out.freezes=Math.max(a.freezes||0,b.freezes||0);out.lastDay=[a.lastDay||'',b.lastDay||''].sort().pop();
+  out.freezes=Math.max(a.freezes||0,b.freezes||0);out.daysLearned=Math.max(a.daysLearned||0,b.daysLearned||0);
+  if((b.restWeek||'')>(a.restWeek||'')){out.restWeek=b.restWeek;out.restsUsed=b.restsUsed;}else if(b.restWeek===a.restWeek)out.restsUsed=Math.max(a.restsUsed||0,b.restsUsed||0);
+  if(b.me&&(!a.me||(b.me.at||0)>(a.me.at||0)))out.me=b.me;out.lastDay=[a.lastDay||'',b.lastDay||''].sort().pop();
   out.lessons={};new Set(Object.keys(a.lessons||{}).concat(Object.keys(b.lessons||{}))).forEach(k=>out.lessons[k]=Math.max((a.lessons||{})[k]||0,(b.lessons||{})[k]||0));
   out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});});

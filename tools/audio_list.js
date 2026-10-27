@@ -8,11 +8,12 @@ const script = html.split('<script>')[1];
 const content = script.split('/* ===================== STATE')[0];
 const prelude = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}";
 const out = {};
-new Function('out', prelude + content + ';out.ITEMS=ITEMS;out.CONVS=CONVS;out.SMAP=SMAP;')(out);
+new Function('out', prelude + content + ';out.ITEMS=ITEMS;out.CONVS=CONVS;out.SMAP=SMAP;out.ME_BANK=ME_BANK;')(out);
 
 const groupOf = id => (id.match(/^([a-z]+\d+)/) || [])[1];
 const groups = {};
 const add = (id, text) => { const g = groupOf(id); (groups[g] = groups[g] || []).push({ id, text }); };
 out.ITEMS.forEach(i => add(i.id, i.lt));
 out.CONVS.forEach(c => c.lines.forEach(l => { if (l.id) add(l.id, l.lt); }));
+out.ME_BANK.forEach(i => add(i.id, i.lt));
 process.stdout.write(JSON.stringify({ groups, smap: out.SMAP }));

@@ -65,6 +65,9 @@ How a lesson works for a total beginner:
 - Each lesson also slips in up to three words from earlier lessons.
 - Every lesson opens with a tip for its own words. A unit's first lesson also shows the unit tip and a colour-coded pattern card (who | does | what | where | when).
 - Fill-the-gap drills on endings and word order are mixed into every lesson.
+- A wrong typed answer explains itself in one or two plain lines ("After iš the word takes its from-ending…", "that's the man's form…", "you left out ne…"). Leaving out aš / tu / mes / jūs counts as right, and a one-letter typo inside a longer word is forgiven; a wrong ending never is. The rules live under WHY WAS I WRONG in `index.html`.
+- **About me** (Review tab): the learner picks their name, country, city, job, family, likes and reason for learning, and gets their own introduction in Lithuanian plus a lesson to practise it. Every sentence comes from a fixed, checked bank (ABOUT ME: SENTENCE BANK, recorded as audio group `me1`); only the name is typed. To add an option, add it to the right `ME_` list and run `tools/make_audio.py`.
+- Kind streaks: everyone gets 2 free rest days a week, so a missed day never breaks a streak. Doubling the daily goal earns a spare one (up to 2). The profile celebrates words known and days learned, not just the streak.
 
 ## Editing the course
 
