@@ -24,7 +24,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.badges=Object.assign({},a.badges||{},b.badges||{});
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
-  out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
+  out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay','leagueNotice'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
@@ -36,7 +36,7 @@ window.cloudDirty=function(){if(!sb||!user||!booted)return;clearTimeout(saveTime
 async function cloudSave(){if(!sb||!user)return;const S=window.S;if(!S)return;
   const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}
   try{await sb.from('gintaras_progress').upsert({user_id:user.id,state:S,updated_at:new Date().toISOString()});
-    if(profile)await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);
+    if(profile)await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(240,Math.max(20,S.goal||40)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);
     setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
 
 /* ---------- auth ---------- */
@@ -69,7 +69,7 @@ function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderReports();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
-  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).lt)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
+  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).name)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
     $('#btn-nick-p').onclick=showNickname;return;}
   authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
 
@@ -158,19 +158,36 @@ async function renderReports(){const box=$('#reports'),head=$('#reports-group');
 window.addEventListener('online',()=>sendReports());
 
 /* ---------- leagues ---------- */
-/* Seven weekly leagues. The database settles each week once (top 3 move up, no XP means moving down);
-   the app only shows where you stand. */
+/* Seven weekly leagues, each with three divisions (III, II, I): 21 steps, stored as profile.league 0-20.
+   The database settles each week once: the top 3 move up a division if they earned at least 5 days of their
+   daily goal; no XP means moving down. The app only shows where you stand and pays the amber. */
 const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble',icon:'🪨'},{lt:'Gintaras',en:'Amber',icon:'🟠'},{lt:'Sidabras',en:'Silver',icon:'🥈'},
   {lt:'Auksas',en:'Gold',icon:'🥇'},{lt:'Krištolas',en:'Crystal',icon:'💎'},{lt:'Saulė',en:'Sun',icon:'☀️'}];
-const leagueOf=n=>LEAGUES[Math.max(0,Math.min(6,n||0))];
+const DIVS=['III','II','I'],TOP=20,SUN=18;
+const stepOf=n=>Math.max(0,Math.min(TOP,n||0));
+const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/3)];return Object.assign({},L,{div:DIVS[st%3],name:L.lt+' '+DIVS[st%3]});};
+const moveUpXp=()=>5*Math.min(240,Math.max(20,(window.S&&window.S.goal)||40));
+/* Position bonus for finishing in the top 3 of a group where at least 2 people earned XP. */
+const PLACE_AMBER={1:15,2:10,3:5};
+const crowned=r=>r.last_rank===1&&(r.last_league||0)>=SUN;
 let rolled=null;
 function ensureRollover(){return rolled||(rolled=sb.rpc('gintaras_league_rollover').then(()=>{},()=>{}));}
 function weekEndsIn(){const now=new Date();const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));d.setUTCDate(d.getUTCDate()+((8-d.getUTCDay())%7||7));
   const days=Math.ceil((d-now)/86400000);return days<=1?'Ends tonight':'Ends in '+days+' days';}
-function leagueNotice(){if(!profile||!profile.league_moved)return;const S=window.S;if(!S||S.leagueNotice===monday())return;S.leagueNotice=monday();window.save();
-  const L=leagueOf(profile.league),up=profile.league_moved>0;const ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card"><div class="lg-icon big">'+L.icon+'</div><h2>'+(up?'You moved up!':'New week, new start')+'</h2><p class="note">'+(up?'You finished in the top 3, so you are now in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league. <b>+20 amber</b> for moving up!':'You are in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league this week. A few lessons and you will climb right back.')+'</p><button type="button" class="btn amber">'+(up?'Let\'s go':'I\'m on it')+'</button></div>';
-  document.body.appendChild(ov);ov.querySelector('button').onclick=()=>ov.remove();if(up&&window.earnAmber)window.earnAmber(20,'league promotion');if(up&&window.sfxWin)window.sfxWin();}
+function leagueNotice(){if(!profile)return;const S=window.S;if(!S||S.leagueNotice===monday())return;
+  const place=PLACE_AMBER[profile.last_rank]||0,up=profile.league_moved>0,down=profile.league_moved<0,sun=(profile.last_league||0)>=SUN&&profile.league>=SUN;
+  if(!up&&!down&&!place&&!sun)return;S.leagueNotice=monday();
+  const L=leagueOf(profile.league),lines=[];let pay=0;
+  if(place){lines.push('You finished <b>'+['','1st','2nd','3rd'][profile.last_rank]+'</b> last week: <b>+'+place+' amber</b>.');pay+=place;}
+  if(up){lines.push('You moved up to <b>'+esc(L.name)+'</b> ('+esc(L.en)+'): <b>+20 amber</b>.');pay+=20;}
+  if(sun){lines.push('You held the Sun league for another week: <b>+10 amber</b>.');pay+=10;}
+  if(crowned(profile))lines.push('👑 You were <b>#1 in the Sun league</b>. The crown is yours this week.');
+  if(down)lines.push('You are in <b>'+esc(L.name)+'</b> ('+esc(L.en)+') this week. A few lessons and you will climb right back.');
+  const ov=document.createElement('div');ov.className='league-pop';
+  ov.innerHTML='<div class="card"><div class="lg-icon big">'+L.icon+'</div><h2>'+(up?'You moved up!':pay?'Last week paid off':'New week, new start')+'</h2><p class="note">'+lines.join('<br>')+'</p><button type="button" class="btn amber">'+(pay?'Let\'s go':'I\'m on it')+'</button></div>';
+  document.body.appendChild(ov);ov.querySelector('button').onclick=()=>ov.remove();
+  if(window.earnAmber){if(place)window.earnAmber(place,'league position');if(up)window.earnAmber(20,'league promotion');if(sun)window.earnAmber(10,'held the Sun league');}
+  window.save();if(pay&&window.sfxWin)window.sfxWin();}
 
 /* ---------- perks that involve other players ---------- */
 /* League shield: you can't move down at the end of this week (the weekly job reads shield_week). Once a month. */
@@ -239,17 +256,17 @@ let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>League</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>League</h2><p class="note">You’re offline. Your league comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
-  const mine=Math.max(0,Math.min(6,(profile&&profile.league)||0));const L=leagueOf(mine);
+  const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/3);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
-    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.lt)+' league</h2><small>'+esc(L.en)+' · league '+(mine+1)+' of 7</small></div></div>'+
-      '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===mine?'on':i<mine?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
-      '<p class="note">Earn XP this week. The <b>top 3 move up</b> a league on Monday; no XP all week means moving down.</p>':'<h2>All time</h2>')+
+    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+' · step '+(mine+1)+' of 21</small></div></div>'+
+      '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
+      '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+moveUpXp()+' XP</b> this week (5 days of your daily goal). ':'You are at the very top. ')+'Top 3 earn bonus amber: 15, 10 and 5. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
     (user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol><div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
   await ensureRollover();await loadChallenges();
-  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league';
+  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league';
   const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
@@ -261,10 +278,11 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   const wk=monday();const rows=data.map(r=>Object.assign(r,{wxp:r.week_start===wk?r.week_xp:0})).sort((a,b)=>b.wxp-a.wxp||a.nickname.localeCompare(b.nickname));
   if(!rows.length){note.textContent='Nobody here yet. Sign in and you start in this league.';return;}
   note.textContent='';const n=rows.length;
-  ol.innerHTML=rows.map((r,i)=>{const up=mine<6&&i<3&&r.wxp>0;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
-    return (i===3&&mine<6&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
+  const need=r=>5*Math.min(240,Math.max(20,r.daily_goal||40));
+  ol.innerHTML=rows.map((r,i)=>{const up=mine<TOP&&i<3&&r.wxp>0&&r.wxp>=need(r);const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
+    return (i===3&&mine<TOP&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up (with enough XP)</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).lt)+(r.streak?' · '+r.streak+' day streak':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
+function row(r,i,pts,zone){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}

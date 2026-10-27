@@ -2543,7 +2543,7 @@ const SHOP_USE=[['rest','🌙','Spare rest day','Covers one extra missed day',10
   ['repair','🔥','Streak repair','Brings back a streak lost in the last 2 days',30],
   ['shield','🛡️','League shield','You can\'t move down this week · once a month',25],
   ['challenge','⚔️','Friend challenge','Bet 10–50 on who earns more XP this week','10–50']];
-const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a league','+20']];
+const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a division','+20'],['Top 3 in your league','+15 / 10 / 5'],['Each week in the Sun league','+10']];
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;toast('Spare rest day added');}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
@@ -3235,7 +3235,7 @@ const TOUR=[
  {sel:'.bite',title:'Your next step',text:'Today\'s plan always shows what to do next: a lesson, a review or a conversation. Just tap the button.'},
  {sel:'#tab-practice',title:'Review',text:'Words come back here right before you would forget them. A short review each day is what makes them stick.'},
  {sel:'.guidecard',title:'Stuck on a sound?',text:'The pronunciation guide explains every "sounds like". It is also one tap away inside every lesson.'},
- {sel:'#tab-board',title:'Leagues',text:'Earn XP each week to climb from Sand to Sun. The top 3 move up every Monday. Sign in to join, and invite friends to race.'},
+ {sel:'#tab-board',title:'Leagues',text:'Earn XP each week to climb from Sand to Sun, three divisions per league. The top 3 move up every Monday. Sign in to join, and invite friends to race.'},
  {sel:'#btn-settings',title:'Settings',text:'Voice, sound, offline download, installing the app and sharing all live here. Your daily pace is on your Profile.'},
 ];
 function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
