@@ -532,6 +532,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .amber-pill{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:999px;font:inherit;color:inherit;cursor:pointer}
 .x2{margin-left:4px;font-size:12px;padding:1px 5px;border-radius:999px;background:var(--amber);color:#1b1b1b}
 .hh{display:block}
+.hhbanner{display:flex;align-items:center;gap:12px;background:var(--amber);color:#1b1b1b;border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
+.hhbanner .big{font-size:28px;line-height:1}
+.hhbanner strong{display:block;font-family:var(--display);font-size:18px}
+.hhbanner small{display:block;font-size:14px;font-weight:600}
+.hhbanner[hidden]{display:none}
+.time-tiles{margin-top:6px}
 .hh.on{color:var(--amber-deep);font-weight:700}
 .amber-win{display:flex;align-items:center;gap:6px;justify-content:center}
 .shop-head{display:flex;justify-content:space-between;align-items:flex-end}
@@ -578,6 +584,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 <main>
   <section class="view" id="view-learn">
+    <div class="hhbanner" id="hhbanner" role="status" hidden></div>
     <div class="bite">
       <span class="eyebrow" id="bite-eyebrow">Today's plan</span>
       <h2 id="bite-title">Start with Greetings</h2>
@@ -590,6 +597,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
       <span class="note hh" id="hhnote"></span>
+      <span class="note hh" id="timenote"></span>
     </div>
     <button type="button" class="linkbtn jump" id="btn-jump">Jump to where I am on the path ↓</button>
     <button type="button" class="guidecard" data-guide><span class="emo" aria-hidden="true">🗣️</span><span><strong>Pronunciation guide</strong><small>How to read "sounds like", and the Lithuanian letters that trip people up.</small></span></button>
@@ -649,6 +657,15 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       </div>
       <div class="setting"><span>Rest days left this week</span><span class="num" id="p-rests">2</span></div>
       <p class="note">Everyone gets 2 free rest days a week. Miss a day and your streak simply waits for you. Doubling your daily goal earns a spare one (you can keep 2).</p>
+    </div>
+    <div class="card">
+      <span class="eyebrow">⏱ Time on the app</span>
+      <div class="tiles time-tiles">
+        <div class="tile"><strong class="num" id="p-time-today">0 min</strong><small>Today</small></div>
+        <div class="tile"><strong class="num" id="p-time-week">0 min</strong><small>This week</small></div>
+        <div class="tile"><strong class="num" id="p-time-all">0 min</strong><small>All time</small></div>
+      </div>
+      <p class="note">Counts only while you're using Gintaras, not while it sits open in the background. Handy for a study log.</p>
     </div>
     <div class="card" id="shop"></div>
     <div class="card">
@@ -2479,8 +2496,25 @@ const xpDouble=()=>happyHour()?'Happy hour':boostOn()?'Double XP':'';
 const clock=h=>(h%12||12)+(h<12?' am':' pm');
 function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt(),now=new Date().getHours();
   el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Double XP until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
-  el.classList.toggle('on',now===h);const x2=$('#x2');if(x2)x2.hidden=!xpDouble();}
+  el.hidden=now===h;const x2=$('#x2');if(x2)x2.hidden=!xpDouble();
+  const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
+    bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Double XP</strong><small>Every lesson counts twice until '+clock(h+1)+' · '+left+' min left</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
+/* Time on the app, per day (S.time[day] = seconds). Only counts while the app is on screen and
+   someone touched it in the last 3 minutes, so a phone left open on the table doesn't add up. */
+let lastUse=Date.now(),timeTicks=0;
+['pointerdown','keydown','touchstart','scroll','wheel'].forEach(e=>window.addEventListener(e,()=>{lastUse=Date.now();},{passive:true,capture:true}));
+setInterval(()=>{if(document.visibilityState!=='visible'||Date.now()-lastUse>180000)return;
+  S.time=S.time||{};const t=today();S.time[t]=(S.time[t]||0)+15;
+  if(++timeTicks%4===0){save();renderTime();}},15000);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lastUse=Date.now();else{save();}});
+const timeOn=days=>days.reduce((n,d)=>n+((S.time||{})[d]||0),0);
+function mins(sec){const m=Math.floor(sec/60);return m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');}
+function renderTime(){const T=S.time||{},t=today(),wk=weekOf(Date.now());
+  const week=Object.keys(T).filter(d=>d>=wk&&d<=t),all=Object.keys(T);
+  const set=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
+  set('#p-time-today',mins(timeOn([t])));set('#p-time-week',mins(timeOn(week)));set('#p-time-all',mins(timeOn(all)));
+  set('#timenote','⏱ '+mins(timeOn([t]))+' on Gintaras today');}
 /* Streak repair: a streak that broke within the last 2 days can be bought back. */
 const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
 const canRepair=()=>!!S.brokenStreak&&daysSince(S.brokenStreak.on)<=2;
@@ -2619,7 +2653,7 @@ const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 const CROWN='<svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></svg>';
 
 /* ===================== RENDER: LEARN ===================== */
-function renderTop(){rollDay();renderAmber();renderHappy();$('#streak').textContent=S.streak;$('#xp').textContent=S.xp;$('#todayxp').textContent=S.todayXp;$('#goalxp').textContent=S.goal;
+function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#streak').textContent=S.streak;$('#xp').textContent=S.xp;$('#todayxp').textContent=S.todayXp;$('#goalxp').textContent=S.goal;
   const p=Math.min(100,Math.round(S.todayXp/S.goal*100));$('#goalbar').style.width=p+'%';
   if(S.restNote){toast(S.restNote===1?'Rest day used. Your streak is safe.':S.restNote+' rest days used. Your streak is safe.');S.restNote=0;S.frozenNote=false;save();}
   if(S.welcomeBack){toast(amber()>=30?'Welcome back! Your '+S.welcomeBack+'-day streak can be repaired in the shop.':'Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
