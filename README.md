@@ -68,7 +68,6 @@ How a lesson works for a total beginner:
 - A wrong typed answer explains itself in one or two plain lines ("After iš the word takes its from-ending…", "that's the man's form…", "you left out ne…"). Leaving out aš / tu / mes / jūs counts as right, and a one-letter typo inside a longer word is forgiven; a wrong ending never is. The rules live under WHY WAS I WRONG in `index.html`.
 - **About me** (Review tab): the learner picks their name, country, city, job, family, likes and reason for learning, and gets their own introduction in Lithuanian plus a lesson to practise it. Every sentence comes from a fixed, checked bank (ABOUT ME: SENTENCE BANK, recorded as audio group `me1`); only the name is typed. To add an option, add it to the right `ME_` list and run `tools/make_audio.py`.
 - Branching conversations: some replies are a choice (`['c', ...]` lines in CONVS). Every option is right; the other person reacts differently to each before the conversation joins up again. The conversation card counts how many choices you've tried.
-- Amber and the shop: amber is earned by learning and spent on spare rest days, 15 minutes of double XP, and an avatar colour, frame and title that show on the leaderboard (see `docs/perks-idea.md`; the look needs `supabase/perks.sql`).
 - Kind streaks: everyone gets 2 free rest days a week, so a missed day never breaks a streak. Doubling the daily goal earns a spare one (up to 2). The profile celebrates words known and days learned, not just the streak.
 
 ## Editing the course

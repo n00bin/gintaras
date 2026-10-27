@@ -22,9 +22,6 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
-  out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
-  out.owned=[...new Set((a.owned||[]).concat(b.owned||[]))];if((b.lookAt||0)>(a.lookAt||0)){out.look=b.look;out.lookAt=b.lookAt;}
-  out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);out.boostDay=[a.boostDay||'',b.boostDay||''].sort().pop();
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
   if((b.weekStart||'')>(a.weekStart||'')){out.weekStart=b.weekStart;out.weekXp=b.weekXp;}else if(b.weekStart===a.weekStart)out.weekXp=Math.max(a.weekXp||0,b.weekXp||0);
   out.welcomed=true;return out;}
@@ -34,7 +31,7 @@ window.cloudDirty=function(){if(!sb||!user||!booted)return;clearTimeout(saveTime
 async function cloudSave(){if(!sb||!user)return;const S=window.S;if(!S)return;
   const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}
   try{await sb.from('gintaras_progress').upsert({user_id:user.id,state:S,updated_at:new Date().toISOString()});
-    if(profile)await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,level_title:(window.levelFor?window.levelFor(S.xp).title:null),look:window.lookString?window.lookString():null,updated_at:new Date().toISOString()}).eq('id',user.id);
+    if(profile)await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);
     setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
 
 /* ---------- auth ---------- */
@@ -66,7 +63,7 @@ function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderReports();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
-  if(user){box.innerHTML='<div class="acct-who">'+(window.lookAvatar?window.lookAvatar(window.lookString(),profile.nickname):'<span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span>')+'<div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).lt)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
+  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).lt)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
     $('#btn-nick-p').onclick=showNickname;return;}
   authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
 
@@ -166,8 +163,8 @@ function weekEndsIn(){const now=new Date();const d=new Date(Date.UTC(now.getUTCF
   const days=Math.ceil((d-now)/86400000);return days<=1?'Ends tonight':'Ends in '+days+' days';}
 function leagueNotice(){if(!profile||!profile.league_moved)return;const S=window.S;if(!S||S.leagueNotice===monday())return;S.leagueNotice=monday();window.save();
   const L=leagueOf(profile.league),up=profile.league_moved>0;const ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card"><div class="lg-icon big">'+L.icon+'</div><h2>'+(up?'You moved up!':'New week, new start')+'</h2><p class="note">'+(up?'You finished in the top 3, so you are now in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league. <b>+20 amber</b> for moving up!':'You are in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league this week. A few lessons and you will climb right back.')+'</p><button type="button" class="btn amber">'+(up?'Let\'s go':'I\'m on it')+'</button></div>';
-  document.body.appendChild(ov);ov.querySelector('button').onclick=()=>ov.remove();if(up&&window.earnAmber)window.earnAmber(20,'league promotion');if(up&&window.sfxWin)window.sfxWin();}
+  ov.innerHTML='<div class="card"><div class="lg-icon big">'+L.icon+'</div><h2>'+(up?'You moved up!':'New week, new start')+'</h2><p class="note">'+(up?'You finished in the top 3, so you are now in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league.':'You are in the <b>'+esc(L.lt)+'</b> ('+esc(L.en)+') league this week. A few lessons and you will climb right back.')+'</p><button type="button" class="btn amber">'+(up?'Let\'s go':'I\'m on it')+'</button></div>';
+  document.body.appendChild(ov);ov.querySelector('button').onclick=()=>ov.remove();if(up&&window.sfxWin)window.sfxWin();}
 
 /* ---------- leaderboard ---------- */
 let boardMode='league';
@@ -184,7 +181,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
   await ensureRollover();
-  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,look';
+  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league';
   const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
@@ -196,7 +193,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=rows.map((r,i)=>{const up=mine<6&&i<3&&r.wxp>0;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
     return (i===3&&mine<6&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone){const t=window.lookTitle?window.lookTitle(r.look):'';return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span>'+(window.lookAvatar?window.lookAvatar(r.look,r.nickname):'<span></span>')+'<span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+(t?'<span class="ttl">'+esc(t)+'</span> · ':'')+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).lt)+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
+function row(r,i,pts,zone){return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+esc(r.nickname)+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).lt)+(r.streak?' · '+r.streak+' day streak':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
