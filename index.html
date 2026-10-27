@@ -659,13 +659,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <p class="note">Everyone gets 2 free rest days a week. Miss a day and your streak simply waits for you. Doubling your daily goal earns a spare one (you can keep 2).</p>
     </div>
     <div class="card">
-      <span class="eyebrow">⏱ Time on the app</span>
+      <span class="eyebrow">⏱ Time in lessons</span>
       <div class="tiles time-tiles">
         <div class="tile"><strong class="num" id="p-time-today">0 min</strong><small>Today</small></div>
         <div class="tile"><strong class="num" id="p-time-week">0 min</strong><small>This week</small></div>
         <div class="tile"><strong class="num" id="p-time-all">0 min</strong><small>All time</small></div>
       </div>
-      <p class="note">Counts only while you're using Gintaras, not while it sits open in the background. Handy for a study log.</p>
+      <p class="note">Counts only time spent in lessons, practice and conversations, not browsing the app or leaving a lesson open. Handy for a study log.</p>
     </div>
     <div class="card" id="shop"></div>
     <div class="card">
@@ -2500,21 +2500,21 @@ function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt()
   const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
     bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Double XP</strong><small>Every lesson counts twice until '+clock(h+1)+' · '+left+' min left</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
-/* Time on the app, per day (S.time[day] = seconds). Only counts while the app is on screen and
-   someone touched it in the last 3 minutes, so a phone left open on the table doesn't add up. */
+/* Time in lessons, per day (S.ltime[day] = seconds). Only counts while a lesson, practice or conversation
+   is open on screen and someone touched it in the last 3 minutes, so a lesson left open doesn't add up. */
 let lastUse=Date.now(),timeTicks=0;
 ['pointerdown','keydown','touchstart','scroll','wheel'].forEach(e=>window.addEventListener(e,()=>{lastUse=Date.now();},{passive:true,capture:true}));
-setInterval(()=>{if(document.visibilityState!=='visible'||Date.now()-lastUse>180000)return;
-  S.time=S.time||{};const t=today();S.time[t]=(S.time[t]||0)+15;
+setInterval(()=>{if(!(Q||CV)||$('#sheet').hidden||document.visibilityState!=='visible'||Date.now()-lastUse>180000)return;
+  S.ltime=S.ltime||{};const t=today();S.ltime[t]=(S.ltime[t]||0)+15;
   if(++timeTicks%4===0){save();renderTime();}},15000);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lastUse=Date.now();else{save();}});
-const timeOn=days=>days.reduce((n,d)=>n+((S.time||{})[d]||0),0);
+const timeOn=days=>days.reduce((n,d)=>n+((S.ltime||{})[d]||0),0);
 function mins(sec){const m=Math.floor(sec/60);return m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');}
-function renderTime(){const T=S.time||{},t=today(),wk=weekOf(Date.now());
+function renderTime(){const T=S.ltime||{},t=today(),wk=weekOf(Date.now());
   const week=Object.keys(T).filter(d=>d>=wk&&d<=t),all=Object.keys(T);
   const set=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
   set('#p-time-today',mins(timeOn([t])));set('#p-time-week',mins(timeOn(week)));set('#p-time-all',mins(timeOn(all)));
-  set('#timenote','⏱ '+mins(timeOn([t]))+' on Gintaras today');}
+  set('#timenote','⏱ '+mins(timeOn([t]))+' in lessons today');}
 /* Streak repair: a streak that broke within the last 2 days can be bought back. */
 const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
 const canRepair=()=>!!S.brokenStreak&&daysSince(S.brokenStreak.on)<=2;
