@@ -529,6 +529,29 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .choices{display:grid;gap:8px;margin:6px 0}
 .choices .opt small{color:var(--ok);font-weight:700}
 .convcard .sub.paths{display:block;margin-top:2px;font-weight:700;color:var(--pine)}
+.amber-pill{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:999px;font:inherit;color:inherit;cursor:pointer}
+.x2{margin-left:4px;font-size:12px;padding:1px 5px;border-radius:999px;background:var(--amber);color:#1b1b1b}
+.hh{display:block}
+.hh.on{color:var(--amber-deep);font-weight:700}
+.amber-win{display:flex;align-items:center;gap:6px;justify-content:center}
+.amber-bal{display:flex;align-items:center;gap:8px}
+.shop-use{display:grid;gap:8px}
+.shop-row{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.shop-row.off{opacity:.6}
+.shop-row strong{display:block}
+.shop-row small{color:var(--muted)}
+.shop-row small b{color:var(--pine)}
+.tag{display:inline-flex;align-items:center;gap:3px;font-size:13px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.tag.cost{background:color-mix(in srgb,var(--amber) 18%,var(--surface));color:var(--amber-deep)}
+.lb li.can-ch{cursor:pointer}
+.lb li .chbtn{font-size:12px;font-weight:800;color:var(--amber-deep)}
+.chal{display:grid;gap:8px;margin-top:6px}
+.chal-row{padding:10px 12px;border-radius:12px;background:var(--surface-2);display:grid;gap:6px}
+.chal-row .btns{display:flex;gap:8px;flex-wrap:wrap}
+.chal-row .btns .chip{font-size:14px;padding:6px 10px}
+.stakes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.stakes .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
+.shield-note{font-weight:700;color:var(--pine)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -537,7 +560,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   <div class="stats">
     <span class="net" id="net" hidden>Offline</span>
     <span title="Day streak"><svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c0-5 2-6 2-10z"/></svg><span class="num" id="streak">0</span></span>
-    <span title="Total XP"><svg viewBox="0 0 24 24" fill="var(--pine)"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></svg><span class="num" id="xp">0</span> XP</span>
+    <span title="Total XP"><svg viewBox="0 0 24 24" fill="var(--pine)"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.3l7.1-.7z"/></svg><span class="num" id="xp">0</span> XP<b class="x2" id="x2" hidden>2×</b></span>
+    <button type="button" class="amber-pill" id="amber-pill" title="Amber: spend it in the shop" aria-label="Amber shop"><img src="gem.svg" alt="" width="18" height="16"><span class="num" id="amber">0</span></button>
     <button type="button" class="gear" id="btn-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </div>
 </header>
@@ -555,6 +579,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
+      <span class="note hh" id="hhnote"></span>
     </div>
     <button type="button" class="linkbtn jump" id="btn-jump">Jump to where I am on the path ↓</button>
     <button type="button" class="guidecard" data-guide><span class="emo" aria-hidden="true">🗣️</span><span><strong>Pronunciation guide</strong><small>How to read "sounds like", and the Lithuanian letters that trip people up.</small></span></button>
@@ -615,6 +640,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="setting"><span>Rest days left this week</span><span class="num" id="p-rests">2</span></div>
       <p class="note">Everyone gets 2 free rest days a week. Miss a day and your streak simply waits for you. Doubling your daily goal earns a spare one (you can keep 2).</p>
     </div>
+    <div class="card" id="shop"></div>
     <div class="card">
       <h2>Badges</h2>
       <div class="badges" id="badges"></div>
@@ -2420,9 +2446,57 @@ function rollDay(){if(S.todayDate!==today()){S.todayDate=today();S.todayXp=0;S.t
   if(S.lastDay&&S.lastDay!==today()&&S.lastDay!==yesterday()){
     const missed=Math.round((new Date(today()+'T00:00')-new Date(S.lastDay+'T00:00'))/DAY)-1;
     if(S.streak>0&&missed<=restsLeft()){for(let i=0;i<missed;i++){if((S.restsUsed||0)<FREE_RESTS)S.restsUsed=(S.restsUsed||0)+1;else S.freezes--;}S.lastDay=yesterday();S.restNote=missed;}
-    else{if(S.streak>0)S.welcomeBack=true;S.streak=0;}}}
-function addXp(n){rollDay();S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(S.lastDay!==t){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;}
-  if(S.todayXp>=S.goal*2&&S.freezeDay!==t&&(S.freezes||0)<2){S.freezes=(S.freezes||0)+1;S.freezeDay=t;S.newFreeze=true;}save();}
+    else{if(S.streak>0){S.welcomeBack=S.streak;S.brokenStreak={n:S.streak,on:today()};}S.streak=0;}}}
+function addXp(n){rollDay();if(xpDouble())n*=2;S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(S.lastDay!==t){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;const sb={7:10,30:25,100:50}[S.streak];if(sb)earnAmber(sb,S.streak+'-day streak');}
+  if(S.todayXp>=S.goal*2&&S.freezeDay!==t&&(S.freezes||0)<2){S.freezes=(S.freezes||0)+1;S.freezeDay=t;S.newFreeze=true;}save();return n;}
+
+/* ===================== AMBER, HAPPY HOUR AND THE SHOP ===================== */
+/* Amber (gintarai) is earned only by learning and spent in the shop. Earned and spent are kept as two
+   running totals, so syncing two devices can never create or lose amber. */
+const amber=()=>Math.max(0,(S.amberEarned||0)-(S.amberSpent||0));
+let amberLog=null; // what was earned during the lesson that is finishing, for its finish screen
+function earnAmber(n,why){S.amberEarned=(S.amberEarned||0)+n;if(amberLog&&why)amberLog.push([n,why]);save();renderAmber();}
+function spendAmber(n){if(amber()<n){toast('You need '+(n-amber())+' more amber. Keep learning!');return false;}S.amberSpent=(S.amberSpent||0)+n;save();renderAmber();return true;}
+function renderAmber(){const el=$('#amber');if(el)el.textContent=amber();}
+function amberLines(){const log=amberLog||[];amberLog=null;const chest=log.find(x=>x[1]==='treasure chest');const rest=log.filter(x=>x!==chest),tot=rest.reduce((a,x)=>a+x[0],0);
+  return (chest?['<div class="win amber-win chest"><b>🎁 Treasure chest!</b> · +'+chest[0]+' amber</div>']:[]).concat(rest.length?['<div class="win amber-win"><img src="gem.svg" alt="" width="18" height="16"><b>+'+tot+' amber</b> · '+esc(rest.map(x=>x[1]).join(', '))+'</div>']:[]);}
+/* Happy hour: one hour a day, the same for everyone, somewhere between noon and 10 pm, when XP counts double.
+   It does not stack with bought double XP: the most you can get is twice. */
+function happyHourAt(day){let h=7;for(const ch of (day||today()))h=(h*31+ch.charCodeAt(0))%9973;return 12+h%10;}
+const happyHour=()=>new Date().getHours()===happyHourAt();
+const boostOn=()=>!!S.boostUntil&&Date.now()<S.boostUntil;
+const xpDouble=()=>happyHour()?'Happy hour':boostOn()?'Double XP':'';
+const clock=h=>(h%12||12)+(h<12?' am':' pm');
+function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt(),now=new Date().getHours();
+  el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Double XP until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
+  el.classList.toggle('on',now===h);const x2=$('#x2');if(x2)x2.hidden=!xpDouble();}
+setInterval(()=>{renderHappy();},60000);
+/* Streak repair: a streak that broke within the last 2 days can be bought back. */
+const daysSince=d=>Math.round((new Date(today()+'T00:00')-new Date(d+'T00:00'))/DAY);
+const canRepair=()=>!!S.brokenStreak&&daysSince(S.brokenStreak.on)<=2;
+const SHOP_USE=[['rest','Spare rest day','Covers one more missed day. You can keep 2.',10],
+  ['boost','Double XP for 15 minutes','Everything you earn counts twice. Once a day. Not on top of happy hour.',15],
+  ['repair','Streak repair','Brings back a streak that broke in the last 2 days.',30],
+  ['shield','League shield','You can\'t move down a league at the end of this week. Once a month.',25],
+  ['challenge','Friend challenge','Bet 10 to 50 amber on who earns more XP this week. Whoever wins takes both stakes.','10–50']];
+function buy(id){
+  if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;toast('Spare rest day added');}
+  else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
+    if(happyHour())return toast('It\'s happy hour: XP is already double. Save your amber!');if(!spendAmber(15))return;S.boostUntil=Date.now()+15*60000;S.boostDay=today();toast('Double XP for 15 minutes. Go!');}
+  else if(id==='repair'){if(!canRepair())return toast('Nothing to repair: your streak is fine');if(!spendAmber(30))return;const n=S.brokenStreak.n;
+    if(S.lastDay===today()||S.lastDay===yesterday())S.streak=n+S.streak;else{S.streak=n;S.lastDay=yesterday();}
+    if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;S.brokenStreak=null;toast('🔥 Your '+S.streak+'-day streak is back!');}
+  else if(id==='shield'){if(window.cloud&&window.cloud.buyShield)window.cloud.buyShield();else toast('Sign in to join a league first');return;}
+  else if(id==='challenge'){showView('board');toast('Tap a player in your league to challenge them');return;}
+  save();renderShop();renderTop();}
+function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="gem.svg" alt="" width="14" height="12">';
+  const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;const shielded=window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn();
+  const note={rest:'You have '+(S.freezes||0)+'.',boost:left?'On now: '+left+' min left.':'',repair:canRepair()?'Your '+S.brokenStreak.n+'-day streak can still be saved!':'Nothing to repair right now.',shield:shielded?'🛡️ On this week.':''};
+  box.innerHTML='<span class="eyebrow">Amber shop</span><h2 class="amber-bal"><img src="gem.svg" alt="" width="26" height="22"> '+amber()+' amber</h2>'+
+    '<p class="note">Earn amber by learning: +1 every lesson, +3 for a flawless one, +5 a conversation, +2 your daily goal, a treasure chest every 5th lesson, and bonuses for 7, 30 and 100-day streaks and for moving up a league.</p>'+
+    '<div class="shop-use">'+SHOP_USE.map(([id,name,desc,cost])=>'<button type="button" class="shop-row'+(id==='repair'&&!canRepair()?' off':'')+'" data-buy="'+id+'"><span><strong>'+esc(name)+'</strong><small>'+esc(desc)+(note[id]?' <b>'+esc(note[id])+'</b>':'')+'</small></span><span class="tag cost">'+gem+cost+'</span></button>').join('')+'</div>';
+  box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(b.dataset.buy));}
+window.earnAmber=earnAmber;window.spendAmber=spendAmber;window.amberBalance=amber;window.renderShop=renderShop;
 
 /* ===================== LEVELS AND BADGES ===================== */
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
@@ -2524,10 +2598,10 @@ const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 const CROWN='<svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></svg>';
 
 /* ===================== RENDER: LEARN ===================== */
-function renderTop(){rollDay();$('#streak').textContent=S.streak;$('#xp').textContent=S.xp;$('#todayxp').textContent=S.todayXp;$('#goalxp').textContent=S.goal;
+function renderTop(){rollDay();renderAmber();renderHappy();$('#streak').textContent=S.streak;$('#xp').textContent=S.xp;$('#todayxp').textContent=S.todayXp;$('#goalxp').textContent=S.goal;
   const p=Math.min(100,Math.round(S.todayXp/S.goal*100));$('#goalbar').style.width=p+'%';
   if(S.restNote){toast(S.restNote===1?'Rest day used. Your streak is safe.':S.restNote+' rest days used. Your streak is safe.');S.restNote=0;S.frozenNote=false;save();}
-  if(S.welcomeBack){toast('Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
+  if(S.welcomeBack){toast(amber()>=30?'Welcome back! Your '+S.welcomeBack+'-day streak can be repaired in the shop.':'Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
   $('#goalnote').textContent=S.todayXp>=S.goal?'Goal reached. Nice work today.':S.todayXp>0?Math.max(0,S.goal-S.todayXp)+' XP to today\'s goal.':'One short lesson is all it takes today.';
   const d=dueItems().length;const b=$('#due-badge');b.hidden=d===0;b.textContent=d;}
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
@@ -2576,7 +2650,7 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
   if(L.next){const p=Math.round((S.xp-L.xp)/(L.next[0]-L.xp)*100);$('#lvl-bar').style.width=p+'%';$('#lvl-note').textContent=(L.next[0]-S.xp)+' XP to '+L.next[1]+' ('+L.next[2]+')';}
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. Labai šaunu.';}
-  $('#p-rests').textContent=restsLeft();
+  $('#p-rests').textContent=restsLeft();renderShop();
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   document.querySelectorAll('.chip[data-pace]').forEach(b=>b.classList.toggle('in',b.dataset.pace===S.pace));
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
@@ -2864,8 +2938,11 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
   let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,crowns(Q.lesson.id)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
   let bonus=0;if(perfect){bonus=5;S.perfects=(S.perfects||0)+1;}
-  const goalBefore=S.todayXp;addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges();
-  const lines=[];
+  const goalBefore=S.todayXp;amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges();
+  earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
+  if(goalBefore<S.goal&&S.todayXp>=S.goal)earnAmber(2,'daily goal');
+  if(Q.mode==='lesson'&&S.lessonsDone%5===0)earnAmber(3+Math.floor(Math.random()*8),'treasure chest');
+  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
   if(perfect)lines.push('<div class="win"><b>Flawless</b> · no mistakes, +'+bonus+' XP bonus</div>');
   if(goalBefore<S.goal&&S.todayXp>=S.goal)lines.push('<div class="win"><b>Daily goal reached</b></div>');
   if(S.newFreeze){lines.push('<div class="win"><b>Spare rest day earned</b> · you doubled your goal today.</div>');S.newFreeze=false;}
@@ -2873,7 +2950,7 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   save();
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+(xp+bonus)+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||after.i>before.i||got.length>0?160:70);sfx('win');countUp();
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
 /* The XP on the finish screen counts up from zero. */
@@ -3009,13 +3086,14 @@ function hear(target,mic,out,onResult,english){
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
   st.done=st.text=today();if(allSaid)st.speak=today();
-  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
-  const lines=[];if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
+  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;const goalBefore=S.todayXp;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges();
+  earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');if(goalBefore<S.goal&&S.todayXp>=S.goal)earnAmber(2,'daily goal');save();
+  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
@@ -3178,6 +3256,8 @@ function openTalk(){stopAllAudio();$('#talkscreen').hidden=false;document.body.s
 function closeTalk(){stopHearing();try{speechSynthesis.cancel();}catch(e){}$('#talkscreen').hidden=true;document.body.style.overflow='';}
 $('#btn-talk').onclick=openTalk;$('#talk-close').onclick=closeTalk;
 $('#talk-swap').onclick=()=>{[TALK.a,TALK.b]=[TALK.b,TALK.a];S.talkA=TALK.a;S.talkB=TALK.b;save();drawTalk();};
+
+$('#amber-pill').onclick=()=>{showView('profile');setTimeout(()=>$('#shop').scrollIntoView({behavior:'smooth',block:'start'}),60);};
 
 /* ===================== ABOUT ME ===================== */
 /* The learner's own introduction, built from their answers (S.me) out of the fixed sentence bank above. */
