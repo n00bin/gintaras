@@ -539,6 +539,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="setting"><span>Voice</span>
         <span class="chips"><button class="chip" data-voice="ona">Ona</button><button class="chip" data-voice="leonas">Leonas</button></span></div>
       <p class="note" id="tts-note"></p>
+      <p class="note">The microphone check uses your browser's own speech recognition: Google's on Android and in Chrome, Apple's on iPhone. It listens in Lithuanian where your phone supports it; if it writes down an English word instead (like "pizza" for pica), that still counts.</p>
     </div>
     <span class="group">App</span>
     <div class="card" id="install">
@@ -2435,7 +2436,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     if(mic)mic.onclick=()=>hear(it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
       if(err){const d=st.querySelector('#selfrate');if(d)d.open=true;return;}
       tries++;if(score>=0.75)return pass();
-      if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}});
+      if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}},it.en);
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
       if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.due=Date.now()+DAY;}else{grade(it,true,true);Q.correct++;}
       Q.idx++;renderStep();});setTimeout(()=>say(it),200);}
@@ -2589,7 +2590,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
     const mic=$('#mic');if(mic)mic.onclick=()=>hear(ln.lt,mic,$('#srout'),(score,heardText,err)=>{
       if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
-      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}});
+      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}},ln.en);
     chatScroll();};
   /* Step 1: write the reply. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
   let help=0,tries=0;
@@ -2618,22 +2619,34 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
   setTimeout(()=>inp.focus(),80);chatScroll();}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
+/* Boils a word down to how it sounds, so spelling differences don't count against you:
+   "pizza" and "pica" both become "pica", "šokoladas" and "sokoladas" match, and so on. */
+function soundKey(w){return strip(w).replace(/[^a-z]/g,'')
+  .replace(/tz|zz|ts/g,'c').replace(/sch|sh/g,'s').replace(/zh/g,'z').replace(/ch/g,'c').replace(/ph/g,'f').replace(/th/g,'t')
+  .replace(/ck/g,'k').replace(/qu/g,'kv').replace(/w/g,'v').replace(/x/g,'ks').replace(/[yj]/g,'i').replace(/ee/g,'i').replace(/oo/g,'u')
+  .replace(/(.)\1+/g,'$1');}
+function editDistance(a,b){const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length];}
+/* Compares what the browser heard with the line, word by word, by sound. Short words must match; longer ones may be one sound off
+   (two for long words) because speech services spell unfamiliar words loosely, but the last sound must always match. */
 function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolean);const sw=strip(said).split(' ').filter(Boolean);
-  const near=(a,b)=>{if(a===b)return true;if(a.length<4||b.length<4)return false;if(a.slice(0,4)===b.slice(0,4))return true;
-    const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const t=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return m[b.length]<=1;};
+  const near=(a,b)=>{if(a===b)return true;const ka=soundKey(a),kb=soundKey(b);if(ka===kb)return true;const n=Math.max(ka.length,kb.length);if(n<4)return false;
+    if(ka.slice(-1)!==kb.slice(-1))return false; /* the ending carries the meaning (kalbu = I speak, kalbi = you speak) */
+    return editDistance(ka,kb)<=(n>=8?2:1);};
   return tw.length?tw.filter(w=>sw.some(x=>near(w,x))).length/tw.length:0;}
 /* Listens once in Lithuanian and scores what the browser heard against the target line.
    onResult(score, heardText) on a result, or onResult(0, '', errorCode) when it could not listen at all. */
 let activeRec=null;
 function stopHearing(){if(activeRec){try{activeRec.abort();}catch(e){}activeRec=null;}document.querySelectorAll('.spk.mic.on').forEach(m=>m.classList.remove('on'));}
-function hear(target,mic,out,onResult){
+function hear(target,mic,out,onResult,english){
   if(!SR){out.textContent='This browser can\'t listen. Say it out loud and compare with the recording.';return onResult(0,'','unsupported');}
   if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud and compare with the recording.';return onResult(0,'','offline');}
   stopHearing();stopAllAudio();const rec=new SR();activeRec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
   mic.classList.add('on');out.innerHTML='<b>Listening…</b> say it now.';let got=false;
   rec.onresult=e=>{got=true;const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;
     alts.forEach(a=>{const sc=matchScore(a,target);if(sc>score){score=sc;best=a;}});
-    if(score>=0.75){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';}
+    let twin=false;if(score<0.75&&english){const en=english.split(/\s*[\/(]/)[0];const hit=alts.find(a=>norm(a)===norm(en)||matchScore(a,en)>=0.99);if(hit){score=1;best=hit;twin=true;}}
+    if(twin){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”, the English word. Your phone may be listening in English, and it sounds the same, so <span class="ok">it counts!</span>';}
+    else if(score>=0.75){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';}
     else if(score>=0.4)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Close! Play the recording once more and try again.';
     else out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Not quite. Listen again (try the slow button), then have another go.';
     onResult(score,best);};
