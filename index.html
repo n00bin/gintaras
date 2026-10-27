@@ -389,6 +389,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .guidecard{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-bottom:18px;box-shadow:var(--shadow)}
 .guidecard strong{display:block;font-family:var(--display);font-size:18px}
 .guidecard small{color:var(--muted);font-size:14px}
+.lesson-tip{background:color-mix(in srgb,var(--amber) 10%,var(--surface));border-color:color-mix(in srgb,var(--amber) 45%,var(--line))}
+.lesson-tip b{color:var(--amber-deep)}
+.tipcard b{font-weight:800}
+.copt.right{border-color:var(--ok);background:var(--ok-soft)}
+.say-lt .tr{color:var(--muted);font-size:15px}
+.convcard>.btn{width:100%}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -1137,6 +1143,142 @@ COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.fil
   const pick=phrases.slice(0,6).concat(words.slice(0,Math.max(0,6-phrases.length)));
   u.lessons.push({id:u.id+'-speak',title:'Speak it',items:pick,unit:u,speak:true});});
 
+/* One tip per lesson, written for that lesson's words. <b> marks Lithuanian. */
+const LESSON_TIPS={
+'u0a-1':'Lithuanian never surprises you: every letter always makes the same sound. Learn the five tricky ones here (<b>c</b>, <b>j</b>, <b>š</b>, <b>ž</b>, <b>č</b>) and you can sound out nearly any word.',
+'u0b-1':'A vowel with a line or a hook (<b>ū</b>, <b>ą</b>, <b>ę</b>, <b>į</b>, <b>ų</b>) is simply held longer. Roll the <b>r</b> by tapping your tongue once behind your top teeth, like a quick "d".',
+'u1a-1':'<b>Labas</b> is for friends and people your age; <b>Sveiki</b> is the safe choice with strangers, older people and groups. Notice <b>laba diena</b>, not labas: diena (day) is a feminine word, so "good" changes to match.',
+'u1a-2':'<b>Ačiū</b> sounds just like a sneeze. <b>Prašau</b> does triple duty: please, you\'re welcome, and here you go. <b>Viso gero</b> is the full goodbye; <b>iki</b> is the quick "bye".',
+'u1b-1':'<b>Taip</b> rhymes with "type". <b>Gerai</b> is the most useful word in the language: OK, good, fine, all right. <b>Kaip sekasi?</b> literally asks "how is it going?"',
+'u1b-2':'Long phrases are easier in chunks: <b>nieko · tokio</b>, <b>iki · pasimatymo</b>. Say <b>sėkmės</b> to someone before an exam, a trip or a game.',
+'u1c-1':'<b>J</b> is always the "y" in "yes", so <b>ji</b> (she) sounds like "yi" and <b>jis</b> (he) like "yis". <b>Aš</b> (I) only gets a capital letter at the start of a sentence.',
+'u1c-2':'<b>Jūs</b> is both "you all" and the polite "you" for a stranger. <b>Jie</b> is a group of men or a mixed group; <b>jos</b> is only women. <b>Mano vardas</b> means "my name".',
+'u1c-3':'<b>Iš</b> means "from", and the country changes its ending after it: Amerika becomes <b>iš Amerikos</b>. You will see this -os ending on lots of places.',
+'u21a-1':'This is the whole small-talk script: <b>Kaip sekasi?</b> → <b>Gerai, ačiū. O tau?</b> Learn that one exchange and you can handle any greeting.',
+'u21a-2':'<b>Aš irgi</b> (me too) is the easiest way to keep a chat going. <b>Ką veiki?</b> is a casual "what are you up to?", and <b>nieko ypatingo</b> is the classic reply.',
+'u21b-1':'These are your rescue phrases. Locals often switch to English, so <b>aš truputį kalbu lietuviškai</b> (I speak a little Lithuanian) usually earns you patience instead.',
+'u21b-2':'Short and handy: <b>palauk</b> (wait), <b>dar kartą</b> (once more), <b>supratau</b> (got it). Supratau literally means "I understood", which is exactly how people use it.',
+'u2a-1':'<b>Du</b>, <b>trys</b> and <b>penki</b> look like "duo", "three" and "penta". Put the stress where the bold is: ke-tu-<b>RI</b>, pen-<b>KI</b>.',
+'u2a-2':'<b>Šeši</b> (six) has two "sh" sounds: sheh-SHI. <b>Septyni</b>, <b>aštuoni</b> and <b>devyni</b> all end in -i, so focus on how each one starts.',
+'u2b-1':'Eleven to nineteen all end in <b>-lika</b>: vienuo-lika, dvy-lika, try-lika. Learn the start and add -lika. <b>Nulis</b> (zero) is like "null".',
+'u2b-2':'Tens end in <b>-dešimt</b> (ten): dvi-dešimt is "two tens", tris-dešimt "three tens". <b>Šimtas</b> (hundred) shares an ancient root with "cent".',
+'u2c-1':'<b>Kiek?</b> means both "how many" and "how much". Ages use "to me": <b>man dvidešimt metų</b> is literally "to me twenty years".',
+'u2c-2':'The noun after a number changes: <b>vienas euras</b>, <b>du eurai</b>, <b>dešimt eurų</b>. Get it slightly wrong and people still understand. <b>Pirmas</b>, <b>antras</b>, <b>trečias</b> are first, second, third.',
+'u13a-1':'Five words unlock every question: <b>kas</b>, <b>kur</b>, <b>kada</b>, <b>kodėl</b>, <b>kaip</b>. Point at something and say <b>Kas tai?</b> (what is that?) and you have asked your first question.',
+'u13a-2':'<b>Ar</b> at the start turns a sentence into a yes/no question, like "do" or "is" in English. The <b>-ite</b> ending (galite, kalbate) is the polite form for strangers.',
+'u20a-1':'<b>Iš kur tu esi?</b> is literally "from where are you?" Answer with <b>Aš esu iš</b> and a country ending in -os: Lietuvos, Anglijos, Kanados.',
+'u20a-2':'Living "in" a city is just an ending, no extra word: Vilnius becomes <b>Vilniuje</b>, London becomes <b>Londone</b>. <b>O tu?</b> bounces any question back.',
+'u20b-1':'<b>Kuo tu dirbi?</b> literally asks "as what do you work?" Answer with <b>Aš esu</b> plus your job, or <b>Aš dirbu</b> plus where you work.',
+'u20b-2':'Jobs change for women: mokytojas → <b>mokytoja</b>, studentas → <b>studentė</b>, pensininkas → <b>pensininkė</b>. The app accepts both.',
+'u8b-1':'<b>Esu</b>, <b>esi</b>, <b>yra</b> are "am", "are", "is". Verbs end in <b>-u</b> for "I" (einu, kalbu), so you can often drop aš and still be understood.',
+'u8b-2':'Put <b>ne-</b> on the front of a verb to make it negative: žinau (I know) → <b>nežinau</b> (I don\'t know). It is glued on, with no space.',
+'u8c-1':'<b>Lietuviškai</b> and <b>angliškai</b> mean "in Lithuanian" and "in English". Add ne- to suprantu and you have the most useful sentence of all: <b>Aš nesuprantu</b>.',
+'u8c-2':'<b>Mes einame</b> (we go) and <b>jie valgo</b> (they eat) show two more endings: -ame for "we", the plain stem for "they". <b>Namo</b> means "homeward", so no "to" is needed.',
+'u3a-1':'Words ending in <b>-a</b> (duona, kava, arbata) are usually feminine; words ending in -as, -is or -us are masculine. <b>Vanduo</b> (water) is one of the few that fit neither.',
+'u3a-2':'Hold the long vowels: <b>mėsa</b> (meat), <b>sūris</b> (cheese). <b>Kiaušinis</b> (egg) is long, so split it: kyow-SHI-nis.',
+'u3b-1':'<b>Obuolys</b> (apple) and <b>bulvė</b> (potato) are everyday staples. <b>Vištiena</b> is chicken meat; the bird itself is višta.',
+'u3b-2':'<b>Alus</b> is like "ale" and <b>vynas</b> like "wine": same old roots. <b>Ledai</b> (ice cream) is always plural, literally "ices".',
+'u3c-1':'After <b>noriu</b> (I want) the thing changes ending: kava → <b>kavos</b>. After valgau and geriu it ends in -ą or -į: <b>duoną</b>, <b>vandenį</b>. For now, learn each phrase as one chunk.',
+'u3c-2':'<b>Skanaus!</b> is said before eating, like "bon appétit". <b>Į sveikatą!</b> ("to health") is for clinking glasses. <b>Sąskaitą, prašau</b> gets you the bill anywhere.',
+'u15a-1':'<b>Aš norėčiau</b> (I would like) is the polite way to order. Water comes <b>be dujų</b> (still, "without gas") or <b>su dujomis</b> (sparkling, "with gas").',
+'u15a-2':'<b>Pusryčiai</b>, <b>pietūs</b> and <b>vakarienė</b> are breakfast, lunch and dinner. <b>Aš nevalgau mėsos</b> is how vegetarians say "I don\'t eat meat".',
+'u15b-1':'Most places take a card (<b>kortele</b>), but markets want <b>grynaisiais</b> (cash). <b>Arbatpinigiai</b> means "tea money": around 10% is a normal tip.',
+'u15b-2':'<b>Be</b> means without and <b>su</b> means with: be cukraus, su pienu. <b>Šaukštas</b>, <b>šakutė</b> and <b>peilis</b> are spoon, fork and knife.',
+'u9a-1':'<b>Miestas</b> (city) and <b>kaimas</b> (village) are the two ends of the map. <b>Parduotuvė</b> (shop) is long, so take it slowly: par-dwoh-tu-VAY.',
+'u9a-2':'<b>Stotis</b> is any kind of station. Notice the <b>-inė</b> ending in <b>ligoninė</b> (hospital) and vaistinė (pharmacy): it often marks a place for something.',
+'u9b-1':'<b>Kur yra...?</b> (where is...?) works with any place. <b>Kairėn</b> and <b>dešinėn</b> are "to the left / right"; <b>tiesiai</b> is straight on.',
+'u9b-2':'Learn opposites in pairs: <b>čia</b>/<b>ten</b> (here/there), <b>arti</b>/<b>toli</b> (near/far). A <b>vaistinė</b> (pharmacy) has a green cross sign.',
+'u12b-1':'Holiday wishes all use a "wishing" ending: <b>Linksmų Kalėdų</b>, <b>Laimingų Naujųjų metų</b>. <b>Labai ačiū</b> is just labai (very) + ačiū.',
+'u12b-2':'<b>Lėčiau, prašau</b> (slower, please) and <b>Ar galite pakartoti?</b> (can you repeat that?) are the two phrases that keep a conversation going.',
+'u13b-1':'<b>Atleiskite</b> gets a stranger\'s attention; <b>atsiprašau</b> is more "sorry". <b>Ar galima?</b> (may I?) plus pointing works for almost anything.',
+'u13b-2':'<b>Minutėlę</b> (just a moment) and <b>žinoma</b> (of course) are everyday fillers. <b>Nieko</b> means "nothing", and it is also a casual reply to "thank you".',
+'u16a-1':'<b>Ar turite?</b> (do you have?) plus pointing is all you need in a shop. <b>Brangu</b> and <b>pigu</b> (expensive, cheap) are one-word reactions.',
+'u16a-2':'<b>Per</b> means "too": per didelis, per mažas. Check the door sign: <b>atidaryta</b> is open, <b>uždaryta</b> is closed.',
+'u16b-1':'A <b>turgus</b> is a market; Vilnius\'s Halės turgus is worth a visit. <b>Dovana</b> (gift) and <b>suvenyras</b> (souvenir) are what you will be hunting for.',
+'u16b-2':'<b>Tik žiūriu</b> (just looking) politely keeps shop staff at bay. <b>Grąža</b> is your change, and a <b>maišelis</b> is the bag they will offer you.',
+'u7a-1':'Weekdays are numbered: <b>pirma-dienis</b> is "first day", <b>antra-dienis</b> "second day", and so on. Learn the numbers and the days come free.',
+'u7a-2':'<b>Šeštadienis</b> is "sixth day" (Saturday); <b>sekmadienis</b> (Sunday) is the odd one out. <b>Vakar</b>, <b>šiandien</b>, <b>rytoj</b> are yesterday, today, tomorrow.',
+'u7b-1':'You already know two of these: <b>rytas</b> from labas rytas, and <b>vakaras</b> from labas vakaras. <b>Dabar</b> means now.',
+'u7b-2':'<b>Metai</b> (year) is always plural. <b>Kiek valandų?</b> literally asks "how many hours?" to mean "what time is it?"',
+'u7c-1':'The seasons: <b>pavasaris</b>, <b>vasara</b>, <b>ruduo</b>, <b>žiema</b>. Spring is literally "before summer": pa-vasaris.',
+'u7c-2':'Months are named after nature: <b>birželis</b> is birch month, <b>liepa</b> the linden tree, <b>gruodis</b> the month of frozen ground. <b>Kovas</b> is named after a bird, the rook.',
+'u23a-1':'<b>Gal</b> (maybe) softens any suggestion: <b>Gal rytoj?</b> To say no politely, use <b>šiandien negaliu</b> or <b>neturiu laiko</b>.',
+'u23a-2':'<b>Sutarta!</b> (deal!) closes a plan. <b>Prie</b> means "by" or "at": prie kavinės, by the café.',
+'u23b-1':'For "at" a time, use the -tą form plus <b>valandą</b>: <b>septintą valandą</b>, at seven o\'clock. <b>Ryte</b> means in the morning.',
+'u23b-2':'<b>Vakare</b> (in the evening) and <b>po pietų</b> (after lunch) narrow down the time. <b>Vėlai</b> and <b>anksti</b> are late and early.',
+'u4a-1':'<b>Mama</b> and <b>tėtis</b> are what everyone says, even adults. <b>Sūnus</b> (son) sounds a bit like "son"; <b>brolis</b> is brother.',
+'u4a-2':'<b>Dukra</b> and "daughter" come from the same ancient word. <b>Senelis</b> and <b>senelė</b> are grandpa and grandma: -is for him, -ė for her.',
+'u4b-1':'<b>Vyras</b> means both "man" and "husband"; <b>žmona</b> is wife. Friends change their ending too: <b>draugas</b> for a man, <b>draugė</b> for a woman.',
+'u4b-2':'<b>Tai mano...</b> (this is my...) introduces anyone. After <b>turiu</b> (I have) the noun changes: sesuo → <b>seserį</b>.',
+'u25a-1':'Questions with <b>Ar turi...?</b> use the "of" ending: brolių, seserų, vaikų. Answer <b>Ne, neturiu</b> (no, I don\'t) or <b>Aš turiu</b> plus who you have.',
+'u25a-2':'<b>Jo</b> is "his" and <b>jos</b> is "her": Koks jo vardas? Koks jos vardas? Living "in" Kaunas is <b>Kaune</b>.',
+'u11a-1':'<b>Oras</b> means both "weather" and "air". <b>Saulė</b> (sun) shares its root with "solar".',
+'u11a-2':'<b>Lyja</b> (it\'s raining) and <b>sninga</b> (it\'s snowing) need no "it": the verb says it all. <b>Šilta</b> and <b>šalta</b> (warm, cold) differ by one letter, so listen closely.',
+'u11b-1':'Feeling words change for women: laimingas → <b>laiminga</b>, pavargęs → <b>pavargusi</b>. <b>Man karšta</b> (I\'m hot) is literally "to me it\'s hot".',
+'u11b-2':'<b>Aš myliu tave</b> (I love you) is for people. For things you like, say <b>man patinka</b> ("to me it pleases").',
+'u22a-1':'<b>Man patinka</b> is built backwards: "to me it pleases". Put ne- in front for the opposite: <b>man nepatinka</b>.',
+'u22a-2':'Several of these are borrowed: <b>muzika</b>, <b>futbolas</b>, <b>filmai</b>. <b>Knygos</b> (books) and <b>kelionės</b> (trips) are plural, the way people talk about hobbies.',
+'u22b-1':'<b>Aš mėgstu</b> (I like doing) plus a verb ending in -ti: skaityti, keliauti, gaminti. That pattern works with any verb you learn.',
+'u22b-2':'<b>Klausytis</b> (to listen) takes the "of" form: klausausi <b>muzikos</b>. <b>Savaitgalis</b> is "week-end", built just like the English word.',
+'u10a-1':'<b>Oro uostas</b> is literally "air port". <b>Bilietas</b> (ticket) and <b>autobusas</b> (bus) look like their English cousins.',
+'u10a-2':'<b>Pinigai</b> (money) is always plural. <b>Pasas</b> (passport) and <b>žemėlapis</b> (map) are worth keeping close.',
+'u10b-1':'City names change in sentences: <b>į Kauną</b> (to Kaunas), <b>Vilniuje</b> (in Vilnius). <b>Jūra</b> is the sea; the coast is around Klaipėda.',
+'u10b-2':'Lithuania has thousands of lakes, so you will hear <b>ežeras</b> a lot. <b>Upė</b> is a river and <b>miškas</b> a forest.',
+'u14a-1':'<b>Į</b> plus a place means "to": į Kauną, į centrą. <b>Išvyksta</b> (leaves) and <b>atvyksta</b> (arrives) are "drives out" and "drives in".',
+'u14a-2':'<b>Stotelė</b> (bus stop) is a "little station", from stotis. <b>Tvarkaraštis</b> (timetable) is long, so break it up: TVAHR-kah-rahsh-tis.',
+'u14b-1':'Taxi phrases use the polite -kite form: <b>sustokite</b> (stop), <b>nuvežkite</b> (take me). Always ask <b>kiek kainuoja</b> before you set off.',
+'u14b-2':'Two signs to spot: <b>išėjimas</b> (exit) and <b>įėjimas</b> (entrance). <b>Dviratis</b> is literally a "two-wheeler", a bike.',
+'u17a-1':'<b>Vienai nakčiai</b> / <b>dviem naktims</b> = for one night / two nights. <b>Raktas</b> is the key and <b>kambarys</b> the room.',
+'u17a-2':'<b>Ar pusryčiai įskaičiuoti?</b> (is breakfast included?) is the most important hotel question. <b>Liftas</b> is the lift.',
+'u17b-1':'<b>Neveikia</b> (it doesn\'t work) plus pointing fixes most hotel problems. <b>Karštas vanduo</b> is hot water.',
+'u17b-2':'<b>Aukštas</b> means a floor of a building, and also "tall". <b>Triukšminga</b> (noisy) is a good reason to ask <b>Ar galite pakeisti kambarį?</b>',
+'u18a-1':'In an emergency, call <b>112</b>; operators speak English. <b>Gelbėkite!</b> is a real "help!", and <b>man reikia gydytojo</b> means "I need a doctor".',
+'u18a-2':'<b>Man skauda</b> plus a body part tells a doctor what hurts. If you don\'t know the word, point and say <b>man skauda čia</b>.',
+'u18b-1':'<b>Aš pamečiau pasą</b> (I lost my passport) and <b>mane apvogė</b> (I was robbed) are for the police. Your <b>ambasada</b> (embassy) helps after that.',
+'u18b-2':'<b>Saugu</b> (safe) and <b>pavojinga</b> (dangerous) are opposites. <b>Šimtas dvylika</b> is 112, the emergency number, said as words.',
+'u5a-1':'Colours change with feminine words: raudonas → <b>raudona</b>. <b>Mėlynas</b> (blue) has a long ė, so hold it.',
+'u5a-2':'<b>Rožinis</b> (pink) comes from rožė, a rose; <b>oranžinis</b> from orange. <b>Baltas</b> (white) may be where the name "Baltic" comes from.',
+'u5b-1':'Opposites stick better in pairs: <b>didelis</b>/<b>mažas</b> (big/small), <b>naujas</b>/<b>senas</b> (new/old). <b>Gražus</b> means beautiful.',
+'u5b-2':'Describing words go before the noun and match it: <b>žalias obuolys</b>, <b>balta duona</b>. Swap -as for -a with feminine nouns.',
+'u6a-1':'<b>Šuo</b> (dog) sounds like "shoo!". <b>Katė</b> is a cat and <b>karvė</b> a cow.',
+'u6a-2':'<b>Višta</b> is a hen, and it is hiding inside vištiena (chicken meat). <b>Pelė</b> (mouse) and <b>triušis</b> (rabbit) are small but common.',
+'u6b-1':'<b>Vilkas</b> (wolf) and <b>lokys</b> (bear) live in Lithuania\'s forests. <b>Gandras</b>, the stork, is the national bird.',
+'u6b-2':'After turiu, šuo becomes <b>šunį</b>: Aš turiu šunį. <b>Katė miega</b> (the cat is sleeping) is a full sentence: who + what they do.',
+'u8a-1':'Dictionary forms end in <b>-ti</b>. For "I", swap it for -u (kalbėti → <b>kalbu</b>); for "you", -i (<b>kalbi</b>). You have been using these all along.',
+'u8a-2':'<b>Turėti</b>, <b>norėti</b>, <b>žinoti</b> are the verbs behind turiu, noriu, žinau. Spot the pattern and every new verb gets easier.',
+'u12a-1':'<b>Gintaras</b> (amber), this app\'s name, washes up on the Baltic coast. <b>Cepelinai</b> are potato dumplings named after zeppelin airships.',
+'u12a-2':'<b>Krepšinis</b> (basketball) is Lithuania\'s unofficial religion. <b>Vasario 16-oji</b>, 16 February 1918, is Independence Day.',
+};
+/* Speaking advice for each unit's "Speak it" lesson. */
+const SPEAK_TIPS={
+'u0':'Say every letter, slowly. Lithuanian rewards care: if you pronounce each letter, you will be understood.',
+'u1':'Greetings are all about rhythm. Hit the bold syllable and keep the rest quick and light.',
+'u21':'Real small talk is quick. Say each phrase three times, a little faster each time.',
+'u2':'Count out loud on your fingers. Numbers are the easiest words to practise anywhere.',
+'u13':'Questions rise at the end, just like in English. Lift your voice on the last word.',
+'u20':'Make it true: swap in your own country, city or job as you say each line.',
+'u8':'The ending carries the meaning (kalb<b>u</b>, kalb<b>i</b>), so say the last syllable clearly.',
+'u3':'Food words are short. Hold the long vowels (ū, ė) a beat longer than feels natural.',
+'u15':'Imagine you are at a table: greet the waiter, order, then thank them.',
+'u9':'Point as you say the directions: left, right, straight on. Movement helps memory.',
+'u19':'Give the polite <b>-kite</b> endings their full weight: aht-LAYS-ki-teh.',
+'u16':'Say shop phrases with a smile. It really does change how they sound.',
+'u7':'Days are long words. Clap the syllables as you say them.',
+'u23':'Say each line as if you are leaving a voice message for a friend.',
+'u4':'Listen for the -is / -ė endings: senel<b>is</b>, senel<b>ė</b>. That small sound changes the person.',
+'u25':'Answer each question out loud about your own family.',
+'u11':'<b>Šilta</b> and <b>šalta</b> differ by one sound, so exaggerate the i and the a.',
+'u22':'Talk about what you really like. True sentences stick far better.',
+'u10':'Place names change in sentences: listen to how Kaunas becomes Kauną.',
+'u14':'Say the ticket phrase with a destination you would really like to visit.',
+'u17':'Hotel phrases are long, so practise them in chunks, then join them up.',
+'u18':'Practise these calmly now, so they come out easily if you ever need them.',
+'u5':'Name the colour of something you can see right now.',
+'u6':'Animal words are fun to say loudly. Go for it.',
+'u26':'Say the dictionary form, then the "I" form: kalbėti → kalbu.',
+'u12':'These are proper names, so copy the stress exactly and you will sound local.',
+};
+
 /* ===================== CONVERSATIONS ===================== */
 /* Each one uses only what came before it on the path. Lines:
    ['p', lithuanian, english, castIndex?]   the other person
@@ -1449,8 +1591,8 @@ const BADGES=[
  ['w250','250 words','Learn 250 words and phrases',()=>learned().length>=250],
  ['perfect','Flawless','A lesson with no mistakes',()=>(S.perfects||0)>=1],
  ['speak','Out loud','Finish a speaking lesson',()=>(S.speakDone||0)>=1],
- ['chat','First chat','Finish a text conversation',()=>Object.values(S.convs||{}).some(c=>c.text)],
- ['talk','Talker','Finish a spoken conversation',()=>Object.values(S.convs||{}).some(c=>c.speak)],
+ ['chat','First chat','Finish a conversation',()=>Object.values(S.convs||{}).some(c=>c.done||c.text)],
+ ['talk','Talker','Say every reply of a conversation out loud',()=>Object.values(S.convs||{}).some(c=>c.speak)],
  ['convall','Conversationalist','Finish all ten conversations',()=>CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to level 5',()=>Object.values(S.lessons).some(c=>c>=5)],
@@ -1467,7 +1609,7 @@ function crowns(lid){return (S.lessons[lid]||0);}
 const STEPS=PATH.filter(p=>typeof p==='string'&&(CONV_BY[p]||COURSE.some(u=>u.id===p)));
 const UNIT_BY={};COURSE.forEach(u=>UNIT_BY[u.id]=u);
 function convState(id){S.convs=S.convs||{};return S.convs[id]||(S.convs[id]={});}
-function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.text||c.speak));}
+function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.done||c.text||c.speak));}
 function stepDone(id){return CONV_BY[id]?convDone(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
 function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
@@ -1523,8 +1665,8 @@ function renderTop(){rollDay();$('#streak').textContent=S.streak;$('#xp').textCo
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
   const prevName=prevStepName(c.id);
   el.innerHTML='<div class="cv-head">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">Conversation '+n+'</span><h2>'+esc(c.title)+'</h2><span class="sub">'+(open?esc(c.scene):'Finish '+esc(prevName)+' to unlock')+'</span></div></div>'+
-    '<div class="cv-btns"><button type="button" class="btn ghost" data-mode="text"'+(open?'':' disabled')+'>'+(st.text?'✓ ':'')+'Text it</button><button type="button" class="btn ghost" data-mode="speak"'+(open?'':' disabled')+'>'+(st.speak?'✓ ':'')+'Say it out loud</button></div>';
-  el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>startConv(c.id,b.dataset.mode));return el;}
+    '<button type="button" class="btn '+(convDone(c.id)?'ghost':'amber')+'" data-conv'+(open?'':' disabled')+'>'+(convDone(c.id)?'✓ Play again':'Start conversation')+'</button>';
+  el.querySelector('[data-conv]').onclick=()=>startConv(c.id);return el;}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
     else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
@@ -1570,8 +1712,8 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":"Today's plan · lesson "+Math.min(S.todayLessons+1,P.lessons)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
   else if(l&&l.conv){const c=CONV_BY[l.conv];$('#bite-title').textContent='Conversation: '+c.title;
-    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Text it, or say it out loud.';
-    b.textContent='Text it';b.onclick=()=>startConv(c.id,'text');b2.hidden=false;b2.onclick=()=>startConv(c.id,'speak');}
+    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Pick each reply, then say it out loud.';
+    b.textContent='Start conversation';b.onclick=()=>startConv(c.id);}
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
@@ -1608,9 +1750,9 @@ function exFor(item,types,avoid){let t=types[Math.floor(Math.random()*types.leng
 /* A lesson teaches one new word, checks it straight away, then the next. The second round, a match game
    and up to three words from earlier lessons are shuffled in after. */
 function buildSession(items,mode,lesson){const head=[];const rest=[];
-  if(lesson&&lesson.speak){items.forEach(it=>head.push({type:'speak',item:it}));}
+  if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push({type:'speak',item:it}));}
   else if(mode==='lesson'){
-    const u=lesson.unit;if(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)head.push({type:'tip',unit:u});
+    const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
     shuffle(items).forEach(it=>{if(!rec(it.id).seen)head.push({type:'intro',item:it});const a=exFor(it,typesFor(it));head.push(a);rest.push(exFor(it,typesFor(it),a.type));});
     if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});
     learned().filter(i=>!items.includes(i)).sort((a,b)=>rec(a.id).due-rec(b.id).due||rec(a.id).lvl-rec(b.id).lvl).slice(0,3)
@@ -1624,7 +1766,7 @@ function buildSession(items,mode,lesson){const head=[];const rest=[];
 const STEPLESS={intro:1,tip:1};
 function openSheet(){$('#sheet').hidden=false;document.body.style.overflow='hidden';}
 function startLesson(l){buildSession(l.items,'lesson',l);}
-function startNext(l){if(!l)return;if(l.conv)startConv(l.conv,'text');else startLesson(l);}
+function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(l);}
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
@@ -1645,7 +1787,11 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
   const from=ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
   const emo=x=>EMOJI[x.lt]?'<span class="emo" aria-hidden="true">'+EMOJI[x.lt]+'</span>':'';
   const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';
-  if(ex.type==='tip'){const u=ex.unit;st.innerHTML='<span class="eyebrow">Before you start</span><div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div><p class="note">That is all the grammar you need for now. You can read it again any time with the Tip button on the unit.</p>';
+  if(ex.type==='tip'){const u=ex.unit,l=ex.lesson;const lt=l&&(l.speak?SPEAK_TIPS[u.id]:LESSON_TIPS[l.id]);
+    st.innerHTML='<span class="eyebrow">'+(l&&crowns(l.id)>0?'Quick reminder':'Before you start')+'</span>'+
+      (ex.showUnit?'<div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div>':'')+
+      (lt?'<div class="intro tipcard lesson-tip"><h3>💡 '+(l.speak?'Speaking tip':'Tip for this lesson')+'</h3><div>'+lt+'</div></div>':'')+
+      (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'');
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">New word</span><div class="intro">'+(EMOJI[it.lt]?'<div class="emo big" aria-hidden="true">'+EMOJI[it.lt]+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
@@ -1772,12 +1918,12 @@ function later(fn,ms){const C=CV;if(!C)return;const t=setTimeout(()=>{if(CV===C)
 function stopConv(){if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
 function chatScroll(){const box=$('#stage').parentElement;box.scrollTop=box.scrollHeight;}
 function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';}
-function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;
-  CV={c,mode,i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
+function startConv(id){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;
+  CV={c,i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">'+(mode==='text'?'Text conversation':'Spoken conversation')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
-  const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Pick a reply above':'Listen first';btn.onclick=null;
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">Conversation</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  const btn=$('#btn-check');btn.disabled=true;btn.textContent='Listen first';btn.onclick=null;
   convNext();}
 function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.c.lines.length*100)+'%';
   if(C.i>=C.c.lines.length)return convFinish();
@@ -1786,30 +1932,30 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.c.line
   if(ln.kind==='p'){const who=C.c.cast[ln.who];msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
       msgs.insertAdjacentHTML('beforeend','<div class="msg them"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+cvSpk(ln.id,who.voice)+'</div>');chatScroll();
-      say(ln,false,who.voice);C.i++;later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?800:400);}
+      say(ln,false,who.voice);C.i++;later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},700);}
   convTurn(ln);}
+/* Your turn has two steps: read the situation and pick the right reply, then say that reply out loud.
+   The microphone checks you where the browser can listen; a match carries the conversation on by itself. */
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
-  const done=()=>{turn.innerHTML='';$('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div></div>');chatScroll();
-    stopHearing();say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent=C.mode==='text'?'Pick a reply above':'Listen first';setFoot('');
+  const done=spoken=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
+    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div></div>');chatScroll();
+    say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
     later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
-  if(C.mode==='text'){const opts=shuffle([[ln.lt,ln.en,true]].concat(ln.no.map(n=>[n[0],n[1],false])));
-    turn.innerHTML='<div class="turn"><span class="eyebrow">Your reply</span><div class="hint">'+esc(ln.hint)+'</div><div class="copts">'+opts.map((o,i)=>'<button type="button" class="copt" data-i="'+i+'"><span class="k">'+(i+1)+'</span><span>'+esc(o[0])+'</span></button>').join('')+'</div><p class="note" id="cmsg" role="status"></p></div>';
-    turn.querySelectorAll('.copt').forEach(b=>b.onclick=()=>{const o=opts[Number(b.dataset.i)];
-      if(o[2])return done();
-      C.mistakes++;b.disabled=true;b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),320);
-      $('#cmsg').innerHTML='That one means "<b>'+esc(o[1])+'</b>". Try another.';});
-    chatScroll();return;}
-  const showLt=()=>{$('#peekbox').innerHTML='<div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+'</div>';chatScroll();};
-  turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
-    '<div id="peekbox"><button type="button" class="btn ghost" id="peek">Show me the Lithuanian</button></div>'+
-    '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Speak into the microphone">'+MIC+'</button>':'')+'</div>'+
-    '<p class="heard" id="srout" role="status"></p></div>';
-  const easy=C.c.id==='cv1'||C.c.id==='cv2';$('#peek').onclick=showLt;if(easy)showLt();
-  $('#srout').innerHTML=(easy?'':'Try it from memory first. ')+(SR?'Tap the <b>microphone</b> and say it. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".');
-  btn.disabled=false;btn.textContent=SR?'Skip the mic check':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>{btn.classList.remove('ghost');stopHearing();done();};
-  const mic=$('#mic');if(mic)mic.onclick=()=>hear(ln.lt,mic,$('#srout'),(score,heardText,err)=>{
-    if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');return;}
-    if(score>=0.75){C.heard++;setFoot('good','');later(()=>{btn.classList.remove('ghost');done();},900);}});
+  const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Step 2 · Now say it out loud</span><div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
+      '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
+      '<p class="heard" id="srout" role="status">'+(SR?'Tap the <b>microphone</b> and say it. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".')+'</p></div>';
+    btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
+    const mic=$('#mic');if(mic)mic.onclick=()=>hear(ln.lt,mic,$('#srout'),(score,heardText,err)=>{
+      if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
+      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}});
+    chatScroll();};
+  const opts=shuffle([[ln.lt,ln.en,true]].concat(ln.no.map(n=>[n[0],n[1],false])));
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Step 1 · Pick your reply</span><div class="hint">'+esc(ln.hint)+'</div><div class="copts">'+opts.map((o,i)=>'<button type="button" class="copt" data-i="'+i+'"><span class="k">'+(i+1)+'</span><span>'+esc(o[0])+'</span></button>').join('')+'</div><p class="note" id="cmsg" role="status"></p></div>';
+  btn.disabled=true;btn.textContent='Pick a reply above';
+  turn.querySelectorAll('.copt').forEach(b=>b.onclick=()=>{const o=opts[Number(b.dataset.i)];
+    if(o[2]){b.classList.add('right');turn.querySelectorAll('.copt').forEach(x=>x.disabled=true);return later(sayIt,350);}
+    C.mistakes++;b.disabled=true;b.classList.add('wrong','shake');setTimeout(()=>b.classList.remove('shake'),320);
+    $('#cmsg').innerHTML='That one means "<b>'+esc(o[1])+'</b>". Try another.';});
   chatScroll();}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolean);const sw=strip(said).split(' ').filter(Boolean);
@@ -1842,17 +1988,16 @@ function hear(target,mic,out,onResult){
   rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
-  const perfect=C.mode==='text'&&C.mistakes===0;const xp=(C.mode==='speak'?20:15)+(perfect?5:0);
-  st[C.mode]=today();const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
+  const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
+  st.done=st.text=today();if(allSaid)st.speak=today();
+  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;addXp(xp);const after=levelFor(S.xp);const got=checkBadges();save();
   const lines=[];if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
-  const other=C.mode==='text'?'speak':'text';
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+(C.mode==='text'?C.mistakes:C.heard)+'</strong><small>'+(C.mode==='text'?'Wrong picks':'Mic matches')+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div></div>'+lines.join('')+
-    (st[other]?'':'<button type="button" class="btn ghost" id="btn-other">'+(other==='speak'?'Now say it out loud':'Now try it as a text chat')+'</button>')+'</div>';
-  const o=$('#btn-other');if(o)o.onclick=()=>{const id=C.c.id;stopConv();CV=null;startConv(id,other);};
-  confetti(perfect||got.length?160:90);$('#lbar').style.width='100%';
-  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;}
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+xp+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Wrong picks</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
+  confetti(perfect||allSaid||got.length?160:90);$('#lbar').style.width='100%';
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
   const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
 
