@@ -30,7 +30,7 @@ Settings in Supabase:
 - **Authentication → URL Configuration:** Site URL is `https://n00bin.github.io/gintaras/`.
 - **Authentication → Sign In / Providers:** "Confirm email" is off. Supabase's built-in email sender only delivers to your own team, so with it on, friends could never finish signing up.
 - **Google sign-in** is on. The Google side lives in Google Cloud project **gintaras-512908** (Google Auth Platform: app "Gintaras", published to production, client "Gintaras web"). Its client ID and secret are pasted into Supabase under **Auth Providers → Google**. `GOOGLE: true` in `config.js` shows the button.
-- Google's sign-in screen says "continue to jwafxaaaadojafquvhrw.supabase.co" until the app's branding is verified (optional: Google Auth Platform → Verification Center). Adding a logo would require that review too.
+- The app uses Google's own sign-in button (`GOOGLE_CLIENT_ID` in `config.js`), so Google's screen says "continue to n00bin.github.io". If Google's script can't load, a plain redirect button is used instead, and that one names the Supabase server. To show "Gintaras" instead of the address, get the branding verified (Google Auth Platform → Verification Center). Adding a logo would require that review too.
 - `privacy.html` is the privacy policy Google links to.
 
 `config.js` holds the project URL and the publishable key. That key is meant to be public; the table rules decide what anyone can do.
