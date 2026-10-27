@@ -44,3 +44,8 @@ Each reply: Step 1 write it (typing, with help ladder), Step 2 say it (microphon
 ## Open item
 
 A native speaker should check the new Lithuanian, especially past and future tense forms.
+
+## Status
+
+- 2026-10-27: built. 11 parts, 41 units, 15 conversations, about 920 words and phrases. All checks in `tools/check_course.js` pass.
+- Still open: native-speaker review of the new Lithuanian (especially past and future tense) and of the stress marks.

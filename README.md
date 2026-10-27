@@ -37,7 +37,21 @@ Settings in Supabase:
 
 ## How the course is laid out
 
-Seven parts, 26 units and 10 conversations, in teaching order: sounds first, then hello and talking about yourself, then food, getting around, plans, people, travel, and extra words. Every couple of units there is a conversation that uses only words from before it. Each one can be done as a text chat (pick the right reply) or out loud (say your part; browsers that can listen check it with the microphone).
+About 920 words and phrases in 11 parts, built as a **sentence ladder**: each part adds one new way to build sentences, and every lesson only uses what came before it. The plan behind it is in `docs/expansion-plan.md`.
+
+1. First words: sounds, hello, set phrases
+2. Simple sentences: who + does, questions with *ar*, "not" with *ne-*
+3. Numbers and time: prices, days, times, your daily routine
+4. Food and drink: who + does + what (the "what" changes its ending)
+5. Getting around: to / in / from, shopping, clothes
+6. People and things: describing words, jobs, home, family, feelings
+7. Plans and the future: can / must / want + a verb, and "I will"
+8. Telling stories: past tense and joining words (and, but, because)
+9. Travelling and health: hotels, trains, the body, emergencies
+10. Real conversations: opinions, reactions, keeping a chat going
+11. Extras: animals and culture
+
+There are 15 conversations along the way. In each one you **write** every reply (with Lithuanian letter keys and a help ladder), then **say** it out loud; the microphone checks you where the browser can listen.
 
 How a lesson works for a total beginner:
 
@@ -45,7 +59,8 @@ How a lesson works for a total beginner:
 - Every question has an "I don't know" button. A missed word comes back two cards later.
 - A word moves up at most one step a day, so after a lesson it really does come back tomorrow, still as tap-to-choose. Letter tiles come before typing.
 - Each lesson also slips in up to three words from earlier lessons.
-- The first lesson of a unit opens with that unit's tip.
+- Every lesson opens with a tip for its own words. A unit's first lesson also shows the unit tip and a colour-coded pattern card (who | does | what | where | when).
+- Fill-the-gap drills on endings and word order are mixed into every lesson.
 
 ## Editing the course
 
@@ -56,6 +71,9 @@ Everything is in `index.html`:
 - `const CONVS = [...]` holds the conversations. Use only words taught earlier on the path.
 - `const PRON = {...}` is the "sounds like" respelling. Hyphens split syllables, CAPS marks the stressed one. Key: ah, e/eh, ay, i, ee, oh, u, oo, ow, ai (the "eye" sound), and y is always the y in "yes".
 - `EMOJI` and `HOOK` add pictures and memory tricks by Lithuanian word.
+- `LESSON_TIPS`, `SPEAK_TIPS`, `PATTERNS` and `DRILLS` hold the tips, pattern cards and fill-the-gap drills.
+
+Before recording audio or pushing, run `node tools/check_course.js`. It checks that every lesson has a tip, every word a "sounds like", no two answers clash, and every word you must write in a conversation was taught earlier.
 
 **Lesson ids never change.** Saved progress and audio clips are keyed to them, so add new lessons with new ids instead of renaming or reordering words inside an existing lesson.
 

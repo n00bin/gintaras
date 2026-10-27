@@ -20,7 +20,12 @@ const bases = {}; c.COURSE.forEach(u => u.lessons.filter(l => !l.speak).forEach(
 const parts = c.COURSE.flatMap(u => u.lessons.filter(l => !l.speak).map(l => l.id));
 say('lessons without a tip', parts.filter(id => !c.LESSON_TIPS[id]));
 say('units without a speaking tip', [...units].filter(id => !c.SPEAK_TIPS[id]));
-say('words without a "sounds like"', c.ITEMS.filter(i => !c.PRON[i.lt]).map(i => i.lt));
+// A phrase is covered if it has its own respelling, or every word in it has one (the app pieces them together).
+const ci = {}; Object.keys(c.PRON).forEach(k => { ci[k.toLowerCase().replace(/[.,!?]+$/, '')] = 1; });
+Object.keys(c.PRON).forEach(k => { const ws = k.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/), ps = c.PRON[k].split(' '); if (ws.length > 1 && ws.length === ps.length) ws.forEach(w => { ci[w] = 1; }); });
+const covered = t => ci[t.toLowerCase().replace(/[.,!?]+$/, '')] || t.split(/(?<=[.!?])\s+/).every(sen => ci[sen.toLowerCase().replace(/[.,!?]+$/, '').trim()] || sen.split(/,\s*/).every(part => ci[part.toLowerCase().replace(/[.,!?]+$/, '').trim()] || part.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(Boolean).every(w => ci[w])));
+say('words without a "sounds like"', c.ITEMS.filter(i => !covered(i.lt)).map(i => i.lt));
+say('conversation replies without a "sounds like"', c.CONVS.flatMap(v => v.lines.filter(l => l.kind === 'm' && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
 const en = {}; c.ITEMS.forEach(i => { const k = i.en.toLowerCase().replace(/[.,!?]/g, ''); (en[k] = en[k] || []).push(i.lt); });
 say('items sharing the same English', Object.entries(en).filter(e => e[1].length > 1).map(e => e[0] + ' = ' + e[1].join(' / ')));
 const lt = {}; c.ITEMS.forEach(i => { (lt[i.lt] = lt[i.lt] || []).push(i.id); });
