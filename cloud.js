@@ -58,7 +58,7 @@ let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 
 /* Profile card: who you are when signed in; the sign-in box when not. */
-function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();
+function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderReports();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
   if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).lt)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
@@ -82,7 +82,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname};
+window.cloud={enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -125,6 +125,29 @@ async function googleButton(box,say){if(!cfg.GOOGLE_CLIENT_ID||!navigator.onLine
     callback:async r=>{say('Signing in…');const {data,error}=await sb.auth.signInWithIdToken({provider:'google',token:r.credential,nonce:raw});
       if(error)return say(error.message,true);user=data.user;await afterAuth();}});
   box.innerHTML='';google.accounts.id.renderButton(box,{theme:'outline',size:'large',shape:'pill',text:'continue_with',width:Math.min(400,box.clientWidth||320)});}
+
+/* ---------- problem reports ---------- */
+/* Reports are queued in progress (S.reportQueue) and sent whenever we can, signed in or not.
+   Only the owner's account can read them (database policy); for them a Problem reports card appears in Settings. */
+const OWNER='n00binhard@gmail.com';
+let sending=false;
+async function sendReports(){const S=window.S;if(!sb||sending||!navigator.onLine||!S||!(S.reportQueue||[]).length)return;sending=true;
+  try{while(S.reportQueue.length){const r=S.reportQueue[0];const {error}=await sb.from('gintaras_reports').insert({reason:r.reason,note:r.note,context:r.context});
+      if(error)break;S.reportQueue.shift();window.save();}}finally{sending=false;}if(isOwner())renderReports();}
+const isOwner=()=>!!(user&&(user.email||'').toLowerCase()===OWNER);
+async function renderReports(){const box=$('#reports'),head=$('#reports-group');if(!box)return;const show=!!(sb&&isOwner());box.hidden=!show;head.hidden=!show;if(!show)return;
+  box.innerHTML='<p class="note">Loading reports…</p>';
+  const {data,error}=await sb.from('gintaras_reports').select('*').eq('status','open').order('created_at',{ascending:false}).limit(100);
+  if(error){box.innerHTML='<p class="note">Could not load reports: '+esc(error.message)+'</p>';return;}
+  if(!data.length){box.innerHTML='<h2>All clear</h2><p class="note">No open problem reports. Players can flag any card with the 🚩 at the top of a lesson.</p>';return;}
+  box.innerHTML='<h2>'+data.length+' open report'+(data.length===1?'':'s')+'</h2>'+data.map(r=>{const x=r.context||{};
+    return '<div class="rep" data-id="'+r.id+'"><span class="what">'+esc(r.reason)+' · '+esc(x.lt||x.drill||x.title||'(no card)')+(x.en?' <span class="note">('+esc(x.en)+')</span>':'')+'</span>'+
+      (r.note?'<span>“'+esc(r.note)+'”</span>':'')+
+      '<span class="meta">'+esc([x.kind,x.lesson||x.conv,x.type,x.item||x.line,x.answer?'answered: '+x.answer:'',x.typed?'typed: '+x.typed:'','voice: '+(x.voice||''),new Date(r.created_at).toLocaleString()].filter(Boolean).join(' · '))+'</span>'+
+      '<span class="btns"><button type="button" class="chip" data-st="fixed">✓ Fixed</button><button type="button" class="chip" data-st="ignored">Ignore</button></span></div>';}).join('');
+  box.querySelectorAll('[data-st]').forEach(b=>b.onclick=async()=>{const row=b.closest('.rep');const {error}=await sb.from('gintaras_reports').update({status:b.dataset.st}).eq('id',row.dataset.id);
+    if(error){toast('Could not update: '+error.message);return;}renderReports();});}
+window.addEventListener('online',()=>sendReports());
 
 /* ---------- leagues ---------- */
 /* Seven weekly leagues. The database settles each week once (top 3 move up, no XP means moving down);
@@ -173,7 +196,7 @@ function row(r,i,pts,zone){return '<li class="'+(user&&r.id===user.id?'me ':'')+
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
-  loadSession().then(()=>{const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
+  loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;});

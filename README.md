@@ -35,6 +35,8 @@ Settings in Supabase:
 
 **Leagues:** seven weekly leagues (Smėlis/Sand → Akmenėlis/Pebble → Gintaras/Amber → Sidabras/Silver → Auksas/Gold → Krištolas/Crystal → Saulė/Sun). Each Monday the top 3 of a league move up; anyone with no XP that week moves down, and so do the bottom 3 once a league has 10 or more players. `supabase/leagues.sql` sets this up: the league columns (players cannot write them), and `gintaras_league_rollover()`, which settles each week exactly once the first time any app calls it after Monday.
 
+**Problem reports:** every lesson and conversation card has a 🚩 button. Players pick what is wrong (translation, audio, "sounds like", picture, marked right answer wrong, other), add an optional note, and the app records which card it was. Reports queue on the device until they can be sent. `supabase/reports.sql` creates the table: anyone can send, only n00binhard@gmail.com can read them, and that account sees a **Problem reports** card in Settings with Fixed / Ignore buttons.
+
 `config.js` holds the project URL and the publishable key. That key is meant to be public; the table rules decide what anyone can do.
 
 ## How the course is laid out

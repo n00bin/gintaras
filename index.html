@@ -474,6 +474,18 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .pic.tile.big{width:96px;height:96px;font-size:30px}
 .pic.tile.sm{width:44px;height:40px;font-size:15px}
 .pic.tile.xs{width:34px;height:26px;font-size:11px;border-radius:8px}
+.flag-reasons{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.flag-reasons .chip{font-size:15px;padding:8px 12px}
+.flag-reasons .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
+#flag-note{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);resize:vertical}
+.flag-pop .card{text-align:left;justify-items:stretch}
+.flag-pop h2{text-align:center}
+.rep{border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:4px}
+.rep:first-of-type{border-top:0;padding-top:0}
+.rep .what{font-weight:800}
+.rep .meta{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.rep .btns{display:flex;gap:8px}
+.rep .btns .chip{font-size:14px;padding:6px 10px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -588,6 +600,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
       <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Gintaras link"></div><p class="note">Point a phone camera at it to open Gintaras.</p></details>
     </div>
+    <span class="group" id="reports-group" hidden>Problem reports</span>
+    <div class="card" id="reports" hidden></div>
     <span class="group" id="acct-group" hidden>Account</span>
     <div class="card" id="acct" hidden></div>
     <span class="group">About</span>
@@ -686,6 +700,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <button class="x" id="btn-quit" aria-label="Close lesson"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <div class="bar"><i id="lbar" style="width:0%"></i></div>
     <span class="num" id="lcount" style="font-weight:800;color:var(--muted)">0/0</span>
+    <button class="x" id="btn-flag" aria-label="Report a problem with this card" title="Report a problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></button>
   </div>
   <div class="stage"><div id="stage"></div></div>
   <div class="foot" id="foot"><div>
@@ -2788,6 +2803,32 @@ function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.fil
   ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);show();}
 function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour'))setTimeout(startTour,450);}
 $('#btn-tour').onclick=()=>startTour();
+
+/* ===================== REPORT A PROBLEM ===================== */
+/* The flag on every card. It records exactly which card it was, so a report can be acted on.
+   Reports wait on the device until they can be sent (offline, or before the account system loads). */
+const FLAG_REASONS=[['translation','The translation is wrong'],['audio','The audio is wrong or missing'],['sounds','The "sounds like" is wrong'],
+  ['picture','The picture doesn\'t fit'],['marked','It marked my right answer wrong'],['other','Something else']];
+function cardContext(){const base={voice:S.voice||'ona',device:navigator.userAgent.slice(0,140),when:new Date().toISOString()};
+  if(CV){const ln=CV.c.lines[Math.min(CV.i,CV.c.lines.length-1)]||{};const inp=document.querySelector('#cin');
+    return Object.assign(base,{kind:'conversation',conv:CV.c.id,title:CV.c.title,line:ln.id||null,lt:ln.lt||null,en:ln.en||null,typed:inp?inp.value.slice(0,120):null});}
+  if(Q){const ex=Q.queue[Math.min(Q.idx,Q.queue.length-1)]||{};const it=ex.item;
+    return Object.assign(base,{kind:'lesson',lesson:Q.lesson?Q.lesson.id:'review',type:ex.type||null,item:it?it.id:null,lt:it?it.lt:null,en:it?it.en:null,
+      drill:ex.drill?ex.drill.frame+' → '+ex.drill.ans:null,answer:typeof Q.answer==='string'?Q.answer.slice(0,120):Q.answer&&Q.answer.lt?Q.answer.lt:null});}
+  return Object.assign(base,{kind:'other'});}
+function openFlag(){const ctx=cardContext();const what=ctx.lt?'“'+ctx.lt+'”':ctx.drill||'this card';
+  const ov=document.createElement('div');ov.className='league-pop flag-pop';
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Report a problem"><h2>What\'s wrong?</h2><p class="note">About '+esc(what)+'. Thanks for helping make Gintaras better.</p>'+
+    '<div class="flag-reasons">'+FLAG_REASONS.map(([k,t])=>'<button type="button" class="chip" data-r="'+k+'">'+esc(t)+'</button>').join('')+'</div>'+
+    '<textarea id="flag-note" maxlength="500" rows="3" placeholder="Anything else? For example, what it should say (optional)"></textarea>'+
+    '<div class="row2"><button type="button" class="btn ghost" data-x>Cancel</button><button type="button" class="btn amber" data-send disabled>Send</button></div></div>';
+  document.body.appendChild(ov);let reason=null;
+  ov.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ov.querySelectorAll('[data-r]').forEach(x=>x.classList.remove('in'));b.classList.add('in');reason=b.dataset.r;ov.querySelector('[data-send]').disabled=false;});
+  ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  ov.querySelector('[data-send]').onclick=()=>{const note=ov.querySelector('#flag-note').value.trim().slice(0,500);
+    S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:ctx}]).slice(-30);save();ov.remove();
+    toast('Thanks! Your report has been sent.');if(window.cloud&&window.cloud.sendReports)window.cloud.sendReports();};}
+$('#btn-flag').onclick=openFlag;
 
 /* ===================== PRONUNCIATION GUIDE ===================== */
 /* Opens over whatever you are doing (even mid-lesson) and closing it puts you back exactly where you were. */
