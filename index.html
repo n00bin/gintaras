@@ -2467,10 +2467,10 @@ const ME_BANK=meBank();const ME_BY={};ME_BANK.forEach(i=>ME_BY[i.id]=i);
 const KEY='gintaras.v2';
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
-/* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is about 3 minutes, about 4 XP a minute). */
-const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*4,lessons:Math.max(1,Math.round(m/3.3)),label:m+' min'});
+/* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
+const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/3.3)),label:m+' min'});
 const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
-function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:40,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
+function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:70,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
 let S=fresh();
 function setPace(p){p=OLD_PACE[p]||p;if(!PACES[p])p='m10';S.pace=p;S.goal=PACES[p].goal;}
 function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}}
@@ -2524,7 +2524,7 @@ setInterval(()=>{if(!(Q||CV)||$('#sheet').hidden||document.visibilityState!=='vi
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lastUse=Date.now();else{save();}});
 const timeOn=days=>days.reduce((n,d)=>n+((S.ltime||{})[d]||0),0);
 function mins(sec){const m=Math.floor(sec/60);return m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');}
-const goalMet=()=>{const P=PACES[S.pace]||PACES.m10;return S.todayXp>=S.goal&&timeOn([today()])>=P.mins*60;};
+const goalMet=()=>{const P=PACES[S.pace]||PACES.m10;return S.goalDay===today()||(S.todayXp>=S.goal&&timeOn([today()])>=P.mins*60);};
 /* Pays the daily-goal amber once a day, the first time both halves are reached. Returns true that one time. */
 function goalCheck(){if(S.goalDay===today()||!goalMet())return false;S.goalDay=today();earnAmber(2,'daily goal');return true;}
 function renderTime(){const T=S.ltime||{},t=today(),wk=weekOf(Date.now());
@@ -3448,7 +3448,7 @@ function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||
   const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':'Not now';b.onclick=closeWelcome;}
 window.openSignin=openSignin;
 $('#btn-welcome').onclick=()=>{setPace(S.pace);save();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});if(!PACES[S.pace])setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
   /* One-off back-pay: amber for learning done before amber existed, at today's rates, minus what was already earned.

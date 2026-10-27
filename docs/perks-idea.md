@@ -19,6 +19,7 @@ Never stacks with bought double XP.
 Not chosen: avatar colours, frames, titles, hints, bonus content packs.
 Database setup: supabase/perks.sql (already run on the live project).
 
-Leagues (2026-10-27): 7 leagues x 3 divisions (III, II, I) = 21 steps, stored as league 0-20. Moving up needs top 3 AND
-5 days of your daily goal that week (daily_goal column). #1 in Sun gets a crown for the next week. Setup: supabase/divisions.sql
+Leagues (2026-10-27): 7 leagues x 3 divisions (III, II, I) = 21 steps, stored as league 0-20. Moving up needs top 3 AND the league's XP bar,
+the same for everyone: Sand 150, Pebble 200, Amber 250, Silver 300, Gold 350, Crystal 425, Sun 500 (supabase/league-bars.sql;
+BARS in cloud.js must match). Daily goals are 7 XP per minute of pace (measured: a lesson is ~24 XP in 3-4 min). #1 in Sun gets a crown for the next week. Setup: supabase/divisions.sql
 (already run; backups gintaras_profiles_backup_20261027 / gintaras_progress_backup_20261027 taken first).
