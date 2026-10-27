@@ -3,5 +3,5 @@
 window.GINTARAS_CONFIG = {
   SUPABASE_URL: "https://jwafxaaaadojafquvhrw.supabase.co",
   SUPABASE_ANON_KEY: "sb_publishable_6o-DhCADvScV1OfXqR5Seg_d2sdOrHB",
-  GOOGLE: false, // set to true once Google sign-in is switched on in Supabase
+  GOOGLE: true, // Google sign-in (Google Cloud project "gintaras-512908", client "Gintaras web")
 };
