@@ -47,10 +47,11 @@ async function afterAuth(){profile=null;
     const {data:p}=await sb.from('gintaras_progress').select('state').eq('user_id',user.id).maybeSingle();
     if(p&&p.state){window.S=mergeState(window.S,p.state);window.save();window.renderAll();}
     if(!profile)profile=await autoProfile();
-    loadChallenges();loadCup();
+    loadChallenges();loadCup();loadNotify();loadNotes();
     booted=true;cloudSave();}
   else booted=true;
-  renderAuth();renderBoard();
+  renderAuth();renderBoard();renderNotif();
+  {const f=new URLSearchParams(location.search).get('from');if(f){history.replaceState(null,'',location.pathname);openFrom(f);}}
   if(user&&afterSignIn){const f=afterSignIn;afterSignIn=null;f();}
   leagueNotice();}
 /* Signing in is enough for the leaderboard: the nickname starts as your first name (or the start of your email)
@@ -324,6 +325,54 @@ function renderCup(mine){const box=$('#cup-box');if(!box)return;const {rnd}=cupN
     h+='<p class="note">Next Sun Cup starts <b>'+longDay(nextCup())+'</b>. '+(inSun?'Earn '+BARS[9]+' XP that week to enter.':'Reach the Sun league to enter.')+'</p>';}
   box.className='cup-box';box.innerHTML=h;}
 
+
+/* ---------- notifications ---------- */
+/* Messages ("someone passed you", challenge updates, study time) are made by the database. The app shows unseen ones
+   when it opens or comes back, and phones that said yes also get them as notifications through the gintaras-push function. */
+const PUSH_KEY='BHPSbg1z-Hw3gcHkdlHy83dfiOm0A8ekOp2Pjx6WysNoACtP6TGg-bCgtnjXdWfNdaaV6qUaUjGLvanClTECMFA';
+const pushOk=()=>'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window;
+const b64u=s=>{const p='='.repeat((4-s.length%4)%4),r=atob((s+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from([...r].map(c=>c.charCodeAt(0)));};
+const NOTIF_KINDS=[['study','Study time reminder'],['rank','Someone passes me in the league'],['challenge','My challenge rival pulls ahead']];
+let pushSub=null;
+async function saveNotify(){const S=window.S;if(!sb||!user)return;const n=S.notify||{};
+  await sb.from('gintaras_notify').upsert({user_id:user.id,study_time:S.studyTime||null,tz:Intl.DateTimeFormat().resolvedOptions().timeZone,
+    rank:n.rank!==false,challenge:n.challenge!==false,study:n.study!==false,updated_at:new Date().toISOString()});}
+async function loadNotify(){const S=window.S;if(!sb||!user)return;
+  const {data}=await sb.from('gintaras_notify').select('*').eq('user_id',user.id).maybeSingle();
+  if(data){if(!S.studyTime&&data.study_time)S.studyTime=data.study_time;if(!S.notify)S.notify={rank:data.rank,challenge:data.challenge,study:data.study};window.save();}
+  if(pushOk()&&Notification.permission==='granted'){try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription();
+    if(pushSub){const j=pushSub.toJSON();await sb.rpc('gintaras_push_save',{ep:j.endpoint,key:j.keys.p256dh,au:j.keys.auth});}}catch(e){}}
+  await saveNotify();renderNotif();}
+async function pushOn(){if(!pushOk())return;
+  const perm=await Notification.requestPermission();if(perm!=='granted'){renderNotif();return;}
+  try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(PUSH_KEY)});
+    const j=pushSub.toJSON();const {error}=await sb.rpc('gintaras_push_save',{ep:j.endpoint,key:j.keys.p256dh,au:j.keys.auth});
+    toast(error?'Could not turn on notifications: '+error.message:'Notifications are on for this phone');}
+  catch(e){toast('Could not turn on notifications on this phone');}
+  await saveNotify();renderNotif();}
+async function pushOff(){if(pushSub){const ep=pushSub.endpoint;try{await pushSub.unsubscribe();}catch(e){}pushSub=null;await sb.rpc('gintaras_push_drop',{ep});}toast('Notifications are off for this phone');renderNotif();}
+function renderNotif(){const box=$('#notif'),S=window.S,t=$('#study-time');
+  if(t&&S){t.value=S.studyTime||'';t.onchange=()=>{S.studyTime=t.value||'';window.save();saveNotify();renderNotif();};}
+  if(!box||!S)return;if(!sb){box.hidden=true;return;}box.hidden=false;
+  if(!user){box.innerHTML='<h2>Notifications</h2><p class="note">Sign in to get a nudge at study time, and to hear when someone passes you in the league or your challenge rival pulls ahead.</p>';return;}
+  const n=S.notify||{},ios=window.devicePlatform&&window.devicePlatform()==='ios',home=window.isInstalled&&window.isInstalled();
+  let phone;
+  if(!pushOk())phone=ios&&!home?'<p class="note">On iPhone, phone notifications work once Gintaras is on your Home Screen: in Safari tap <b>Share</b>, then <b>Add to Home Screen</b>, and open it from there.</p>':'<p class="note">This browser can’t show phone notifications. You’ll still see them here in the app.</p>';
+  else if(Notification.permission==='denied')phone='<p class="note">Notifications are blocked for Gintaras. Turn them on in your phone’s settings for this app or site, then come back.</p>';
+  else if(Notification.permission==='granted'&&pushSub)phone='<p class="note">✅ Phone notifications are on.</p><button type="button" class="linkbtn" data-poff>Turn off on this phone</button>';
+  else phone='<button type="button" class="btn amber" data-pon>Turn on phone notifications</button>';
+  box.innerHTML='<h2>Notifications</h2>'+phone+'<div class="notif-sw">'+NOTIF_KINDS.map(([k,l])=>'<div class="setting"><span>'+l+'</span><button class="switch" role="switch" aria-checked="'+(n[k]!==false)+'" data-nk="'+k+'" aria-label="'+l+'"></button></div>').join('')+'</div>'+
+    '<p class="note">'+(S.studyTime?'Study reminders come at <b>'+new Date('2000-01-01T'+S.studyTime).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})+'</b>, unless your learning day is already done.':'Pick a study time above to get a reminder.')+' You’ll also see every message here in the app.</p>';
+  box.querySelectorAll('[data-nk]').forEach(b=>b.onclick=()=>{S.notify=Object.assign({rank:true,challenge:true,study:true},S.notify||{});S.notify[b.dataset.nk]=!S.notify[b.dataset.nk];window.save();saveNotify();renderNotif();});
+  const on=box.querySelector('[data-pon]');if(on)on.onclick=pushOn;const off=box.querySelector('[data-poff]');if(off)off.onclick=pushOff;}
+async function loadNotes(){if(!sb||!user||!navigator.onLine||document.visibilityState!=='visible')return;if(!$('#sheet').hidden)return;
+  const {data,error}=await sb.from('gintaras_notes').select('id,kind,title,body').eq('seen',false).order('created_at').limit(5);if(error||!data||!data.length)return;
+  await sb.from('gintaras_notes').update({seen:true}).in('id',data.map(n=>n.id));
+  data.forEach((n,i)=>setTimeout(()=>toast(n.body,4500),i*4800));
+  if(data.some(n=>n.kind!=='study')){loadChallenges();if(!$('#view-board').hidden)renderBoard();}}
+function openFrom(tag){if(!tag||!window.showView)return;if(tag==='study')window.showView('learn');else{window.showView('board');renderBoard();}}
+if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',e=>{const d=e.data||{};if(d.type==='gintaras-note')loadNotes();if(d.type==='gintaras-open')openFrom(d.tag);});
+setInterval(loadNotes,60000);
 /* ---------- leaderboard ---------- */
 let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
@@ -373,7 +422,7 @@ if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boo
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;chalAlerts();});
 /* Coming back to the app checks for new challenges and your rival's latest XP. */
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&sb&&user&&navigator.onLine)loadChallenges();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&sb&&user&&navigator.onLine){loadChallenges();loadNotes();}});
 document.addEventListener('click',e=>{if(e.target.closest('#chalstrip')&&window.showView){window.showView('board');renderBoard();}});
 document.addEventListener('click',e=>{if(e.target.closest('#tab-board'))renderBoard();});
 })();

@@ -372,6 +372,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .pace-chip{display:grid;gap:1px;padding:8px 4px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);font:inherit;cursor:pointer;text-align:center}
 .pace-chip b{font-size:16px}
 .pace-chip small{font-size:13px;color:var(--muted);font-weight:700}
+.study-when input{font:inherit;font-weight:700;padding:6px 10px;border-radius:10px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+.notif-sw{display:grid;gap:10px}
 .pace-chip[aria-pressed="true"]{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 14%,var(--surface))}
 .goal .bar.time i{background:var(--pine)}
 .goal .timerow{font-size:15px;color:var(--muted);font-weight:700}
@@ -688,7 +690,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <h2>Daily pace</h2>
       <div class="pace-grid" id="pace-grid"></div>
       <p class="note" id="pace-note"></p>
+      <label class="setting study-when"><span>When do you plan to study?</span><input type="time" id="study-time"></label>
     </div>
+    <div class="card" id="notif" hidden></div>
     <div class="card">
       <span class="eyebrow">⏱ Time in lessons</span>
       <div class="tiles time-tiles">
@@ -2686,8 +2690,8 @@ function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor
 function sample(a,n){return shuffle(a).slice(0,n);}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"']/g,'').replace(/\s+/g,' ').trim();}
 function strip(s){return norm(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ą/g,'a');}
-window.toastMsg=m=>toast(m);
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200);}
+window.toastMsg=(m,ms)=>toast(m,ms);
+function toast(m,ms){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),ms||2200);}
 const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M19 6a8 8 0 0 1 0 12"/></svg>';
 const CROWN='<svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></svg>';
 
