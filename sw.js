@@ -4,7 +4,7 @@
      ranges, so ranges are cut from the saved file.
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched. */
-const SHELL = 'gintaras-shell-v48';
+const SHELL = 'gintaras-shell-v49';
 const AUDIO = 'gintaras-audio-v1';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];

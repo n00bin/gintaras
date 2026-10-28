@@ -317,13 +317,18 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   data.forEach(r=>{people[r.id]=Object.assign(people[r.id]||{},r);});
   if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
     ol.innerHTML=data.map((r,i)=>row(r,i,r.xp,'')).join('');return;}
-  const wk=monday();const rows=data.map(r=>Object.assign(r,{wxp:r.week_start===wk?r.week_xp:0})).sort((a,b)=>b.wxp-a.wxp||a.nickname.localeCompare(b.nickname));
+  const wk=monday(),S=window.S,localXp=S&&S.weekStart===wk?S.weekXp||0:0;
+  const rows=data.map(r=>Object.assign(r,{wxp:Math.max(r.week_start===wk?r.week_xp:0,user&&r.id===user.id?localXp:0)})).sort((a,b)=>b.wxp-a.wxp||a.nickname.localeCompare(b.nickname));
   if(!rows.length){note.textContent='Nobody here yet. Sign in and you start in this league.';return;}
-  note.textContent='';const n=rows.length;
-  ol.innerHTML=rows.map((r,i)=>{const up=mine<TOP&&i<3&&r.wxp>0&&r.wxp>=barFor(mine);const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
-    return (i===3&&mine<TOP&&rows[0].wxp>0?'<li class="zone up-line">▲ Top 3 move up (with enough XP)</li>':'')+row(r,i,r.wxp,up?'up':down?'down':'');}).join('')+
+  note.textContent='';const n=rows.length,bar=barFor(mine);
+  /* The move-up line sits under the players who move up right now (top 3 with the bar), so it shifts as people earn. */
+  const ups=mine<TOP?rows.filter((r,i)=>i<3&&r.wxp>0&&r.wxp>=bar).length:0;
+  const line='<li class="zone up-line">'+(ups?'▲ Above this line: moving up on Monday':'▲ Nobody has '+bar+' XP yet. The top 3 who reach it move up')+'</li>';
+  const toGo=(r,i)=>{if(mine>=TOP||i<ups)return '';const need=Math.max(bar,i<3?0:rows[2].wxp+1)-r.wxp;return need>0?need+' XP to move up':'';};
+  ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
+    return (mine<TOP&&i===ups?line:'')+row(r,i,r.wxp,up?'up':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
+function row(r,i,pts,zone,hint){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
