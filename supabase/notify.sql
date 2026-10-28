@@ -93,13 +93,17 @@ $$;
 revoke all on function public.gintaras_note_add(uuid, text, text, text) from public, anon, authenticated;
 
 -- A new message goes to the phone through the gintaras-push Edge Function (only if that player has a phone saved).
+-- The publishable key below is the same public key the app itself ships in config.js.
 create or replace function public.gintaras_note_push() returns trigger
 language plpgsql security definer set search_path = '' as $$
 begin
   if exists (select 1 from public.gintaras_push_subs where user_id = new.user_id) then
     perform net.http_post(url := 'https://jwafxaaaadojafquvhrw.supabase.co/functions/v1/gintaras-push',
                           body := jsonb_build_object('note_id', new.id),
-                          headers := '{"Content-Type": "application/json"}'::jsonb);
+                          -- The app's public (publishable) key: the function keeps its sign-in check on.
+                          headers := jsonb_build_object('Content-Type', 'application/json',
+                                       'Authorization', 'Bearer sb_publishable_6o-DhCADvScV1OfXqR5Seg_d2sdOrHB',
+                                       'apikey', 'sb_publishable_6o-DhCADvScV1OfXqR5Seg_d2sdOrHB'));
   end if;
   return new;
 exception when others then
