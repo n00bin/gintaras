@@ -796,11 +796,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
         <div><b>ah</b><span>as in f<i>a</i>ther</span></div>
         <div><b>e, eh</b><span>as in b<i>e</i>t</span></div>
         <div><b>ay</b><span>as in d<i>ay</i></span></div>
-        <div><b>i</b><span>as in b<i>i</i>t</span></div>
-        <div><b>ee</b><span>as in s<i>ee</i></span></div>
+        <div><b>i</b><span>as in b<i>i</i>t, only before a consonant: <i>min, ish</i></span></div>
+        <div><b>ee</b><span>as in s<i>ee</i>. A Lithuanian i at the end of a syllable is a quick "ee": <i>su see pah</i></span></div>
         <div><b>oh</b><span>as in g<i>o</i></span></div>
         <div><b>u</b><span>as in p<i>u</i>t</span></div>
         <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
+        <div><b>uh</b><span>as in the <i>a</i> of sof<i>a</i>, said quickly. Only in the verb ending -ti: <i>zhin tuh</i></span></div>
         <div><b>ow</b><span>as in c<i>ow</i></span></div>
         <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
         <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu</span></div>
@@ -1636,7 +1637,7 @@ const LESSON_TIPS={
 'u1a-2':'<b>Ačiū</b> sounds just like a sneeze. <b>Prašau</b> does triple duty: please, you\'re welcome, and here you go. <b>Viso gero</b> is the full goodbye; <b>iki</b> is the quick "bye".',
 'u1b-1':'<b>Taip</b> rhymes with "type". <b>Gerai</b> is the most useful word in the language: OK, good, fine, all right. <b>Kaip sekasi?</b> literally asks "how is it going?"',
 'u1b-2':'Long phrases are easier in chunks: <b>nieko · tokio</b>, <b>iki · pasimatymo</b>. Say <b>sėkmės</b> to someone before an exam, a trip or a game.',
-'u1c-1':'<b>J</b> is always the "y" in "yes", so <b>ji</b> (she) sounds like "yi" and <b>jis</b> (he) like "yis". <b>Aš</b> (I) only gets a capital letter at the start of a sentence.',
+'u1c-1':'<b>J</b> is always the "y" in "yes", so <b>ji</b> (she) sounds like "yee" and <b>jis</b> (he) like "yis". <b>Aš</b> (I) only gets a capital letter at the start of a sentence.',
 'u1c-2':'<b>Jūs</b> is both "you all" and the polite "you" for a stranger. <b>Jie</b> is a group of men or a mixed group; <b>jos</b> is only women. <b>Mano vardas</b> means "my name".',
 'u1c-3':'<b>Iš</b> means "from", and the country changes its ending after it: Amerika becomes <b>iš Amerikos</b>. You will see this -os ending on lots of places.',
 'u21a-1':'This is the whole small-talk script: <b>Kaip sekasi?</b> → <b>Gerai, ačiū. O tau?</b> Learn that one exchange and you can handle any greeting.',
@@ -2354,7 +2355,7 @@ function pronFor(lt){if(PRON[lt])return PRON[lt];
   const whole=look(lt);if(whole)return whole;
   const sentences=lt.split(/(?<=[.!?])\s+/);
   return sentences.map(sen=>look(sen)||sen.split(/,\s*/).map(part=>look(part)||part.split(' ').map(w=>look(w)||autoPron(w.replace(/[.,!?]/g,''))).join(' ')).join(' ')).join(' ');}
-function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'],['ę','eh'],['į','ee'],['ų','oo'],['ū','oo'],['ė','eh'],['č','ch'],['š','sh'],['ž','zh'],['c','ts'],['j','y'],['y','ee'],['a','ah'],['e','e'],['i','i'],['o','o'],['u','u']];
+function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'],['ę','eh'],['į','ee'],['ų','oo'],['ū','oo'],['ė','ay'],['č','ch'],['š','sh'],['ž','zh'],['c','ts'],['j','y'],['y','ee'],['a','ah'],['e','e'],['i','i'],['o','o'],['u','u']];
   return lt.toLowerCase().split(' ').map(w=>{let s='';for(let i=0;i<w.length;i++){const two=w.slice(i,i+2);const hit=map.find(m=>m[0]===two)||map.find(m=>m[0]===w[i]);
     if(hit){s+=hit[1];i+=hit[0].length-1;}else s+=w[i];}return s;}).join(' ');}
 
