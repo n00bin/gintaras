@@ -552,6 +552,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .hhbanner strong{display:block;font-family:var(--display);font-size:18px}
 .hhbanner small{display:block;font-size:14px;font-weight:600}
 .hhbanner[hidden]{display:none}
+.chalstrip{display:grid;gap:4px;width:100%;text-align:left;background:color-mix(in srgb,var(--pine) 12%,var(--surface));border:2px solid color-mix(in srgb,var(--pine) 35%,transparent);color:var(--fg);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-size:15px;font-weight:600;cursor:pointer}
+.chalstrip[hidden]{display:none}
 .time-tiles{margin-top:6px}
 .hh.on{color:var(--amber-deep);font-weight:700}
 .amber-win{display:flex;align-items:center;gap:6px;justify-content:center}
@@ -606,6 +608,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 <main>
   <section class="view" id="view-learn">
     <div class="hhbanner" id="hhbanner" role="status" hidden></div>
+    <button type="button" class="chalstrip" id="chalstrip" hidden></button>
     <div class="bite">
       <span class="eyebrow" id="bite-eyebrow">Today's plan</span>
       <h2 id="bite-title">Start with Greetings</h2>
@@ -759,7 +762,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 <nav class="tabs" aria-label="Sections"><div>
   <button id="tab-learn" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>Learn</button>
   <button id="tab-practice" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M20 4v5h-5"/></svg>Review<span class="badge" id="due-badge" hidden>0</span></button>
-  <button id="tab-board" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>League</button>
+  <button id="tab-board" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>League<span class="badge" id="chal-badge" hidden></span></button>
   <button id="tab-talk" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/></svg>Translate</button>
   <button id="tab-profile" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profile</button>
 </div></nav>

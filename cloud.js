@@ -25,7 +25,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
   out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay','leagueNotice'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
-  out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});
+  out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});out.chalSeen=Object.assign({},a.chalSeen||{},b.chalSeen||{});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
@@ -214,7 +214,30 @@ async function loadChallenges(){if(!sb||!user){chals=[];return;}
   const {data,error}=await sb.from('gintaras_challenges').select('*').order('created_at',{ascending:false}).limit(40);if(error)return;chals=data||[];
   const ids=[...new Set(chals.flatMap(x=>[x.from_id,x.to_id]))];
   if(ids.length){const {data:ps}=await sb.from('gintaras_profiles').select('id,nickname,week_xp,week_start').in('id',ids);(ps||[]).forEach(p=>people[p.id]=p);}
-  payChallenges();}
+  payChallenges();chalAlerts();}
+/* Letting you know: a dot on the League tab while someone waits for your answer, a one-time pop-up per new challenge,
+   and a line on Learn for every challenge this week. */
+function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstrip');
+  if(!S||!user){if(badge)badge.hidden=true;if(strip)strip.hidden=true;return;}
+  const me=user.id,wk=monday(),incoming=chals.filter(x=>x.status==='pending'&&x.to_id===me&&x.week_start===wk);
+  const live=chals.filter(x=>x.status==='accepted'&&x.week_start===wk);
+  if(badge){badge.hidden=!incoming.length;badge.textContent=incoming.length;}
+  if(strip){const a=S.weekStart===wk?S.weekXp||0:0;
+    const lines=incoming.map(x=>'⚔️ <b>'+esc(nameOf(x.from_id))+'</b> challenged you for '+x.stake+' amber. Tap to answer.').concat(live.map(x=>{const nick=esc(nameOf(x.from_id===me?x.to_id:x.from_id)),d=a-weekXpOf(x.from_id===me?x.to_id:x.from_id);
+      return '⚔️ You vs <b>'+nick+'</b>: '+(d>0?'you’re ahead by '+d+' XP':d<0?'you’re behind by '+(-d)+' XP. Catch up!':'tied. Pull ahead!');}));
+    strip.innerHTML=lines.map(l=>'<div>'+l+'</div>').join('');strip.hidden=!lines.length;}
+  /* The pop-up waits until you're not in a lesson or the welcome screens. */
+  const busy=!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||document.querySelector('.league-pop');
+  const fresh=incoming.find(x=>!(S.chalSeen||{})[x.id]);if(!fresh||busy)return;
+  S.chalSeen=Object.assign(S.chalSeen||{},{[fresh.id]:1});window.save();
+  const nick=esc(nameOf(fresh.from_id)),have=window.amberBalance(),ov=document.createElement('div');ov.className='league-pop';
+  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge"><div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP by Sunday night. The winner takes both.</p>'+
+    (have<fresh.stake?'<p class="note">You need '+fresh.stake+' amber to accept and have '+have+'.</p>':'')+
+    '<div class="row2"><button type="button" class="btn ghost" data-later>Decide later</button><button type="button" class="btn amber" data-yes'+(have<fresh.stake?' disabled':'')+'>Accept ('+fresh.stake+' amber)</button></div><button type="button" class="linkbtn" data-no>No thanks</button></div>';
+  document.body.appendChild(ov);
+  ov.querySelector('[data-later]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();answerChallenge(fresh.id,'accepted');};
+  ov.querySelector('[data-no]').onclick=()=>{ov.remove();answerChallenge(fresh.id,'declined');};}
 function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger||{};const msgs=[];
   chals.forEach(x=>{const k=String(x.id);if(S.chalLedger[k]!=='staked')return;const other=nameOf(x.from_id===user.id?x.to_id:x.from_id);
     if(['declined','cancelled','expired'].includes(x.status)){window.earnAmber(x.stake);S.chalLedger[k]='done';msgs.push('Your challenge with '+other+' didn\'t go ahead: '+x.stake+' amber back');}
@@ -337,6 +360,9 @@ function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderA
   loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
-window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;});
+window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;chalAlerts();});
+/* Coming back to the app checks for new challenges and your rival's latest XP. */
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&sb&&user&&navigator.onLine)loadChallenges();});
+document.addEventListener('click',e=>{if(e.target.closest('#chalstrip')&&window.showView){window.showView('board');renderBoard();}});
 document.addEventListener('click',e=>{if(e.target.closest('#tab-board'))renderBoard();});
 })();
