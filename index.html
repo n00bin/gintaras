@@ -132,6 +132,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .bf{font-size:15px}.bf i{color:var(--muted);font-style:normal}
 .pron{font-size:15px;color:var(--muted);line-height:1.4}
 .pron b{font-weight:800;color:var(--fg)}
+.pron .like{display:block;font-size:15px;font-weight:600;color:var(--muted);margin-top:2px}
 .pron.big{font-size:22px;color:var(--fg)}
 .pron.big b{color:var(--amber-deep)}
 .pw{display:inline-block;margin-right:.9em;white-space:nowrap}
@@ -858,6 +859,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
         <div><b>ow</b><span>always as in c<i>ow</i>, never as in "show": <i>prah-SHOW</i> rhymes with "now"</span></div>
         <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
         <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu. (The Lithuanian letter y is a different thing: a long "ee".)</span></div>
+        <div><b>yeh</b><span>how we write the Lithuanian <i>ie</i> after a consonant: <i>pienas</i> is PYEH-nahs. On its own after j it is two quick sounds: <i>Jie</i> is yee-EH</span></div>
         <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
         <div><b>ts</b><span>as in ca<i>ts</i></span></div>
       </div>
@@ -1249,7 +1251,7 @@ COURSE.push(
  {id:'u0b',title:'Long vowels and the rolled r',items:[
   ['šampūnas','shampoo','A line on top makes a vowel long: ū is a long "oo".'],
   ['kavinė','café','ė sounds like the "ay" in "day".'],
-  ['muziejus','museum','ie sounds like "yeh".'],
+  ['muziejus','museum','ie after a consonant sounds like "yeh".'],
   ['radijas','radio','r is rolled, like in Spanish.'],
   ['telefonas','telephone','Every letter is said, even the "s" at the end.'],
  ]},
@@ -2413,6 +2415,10 @@ function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'
   return lt.toLowerCase().split(' ').map(w=>{let s='';for(let i=0;i<w.length;i++){const two=w.slice(i,i+2);const hit=map.find(m=>m[0]===two)||map.find(m=>m[0]===w[i]);
     if(hit){s+=hit[1];i+=hit[0].length-1;}else s+=w[i];}return s;}).join(' ');}
 
+/* For short words a respelling alone is hard to trust, so they also get a real English word that sounds close. */
+const PRON_LIKE={'Aš':'like "gosh" without the g','Tu':'like "two", but short and clipped','Jis':'rhymes with "this"','Ji':'like the "yi" in "yip", no p',
+ 'Mes':'like "mess"','Jūs':'like the word "use"','Jie':'"yee" sliding into "eh", in one quick beat','Jos':'rhymes with "dose"'};
+const likeHtml=lt=>PRON_LIKE[lt]?'<span class="like">'+esc(PRON_LIKE[lt])+'</span>':'';
 /* Hand-written "sounds like" respellings. Hyphens split syllables; CAPS = the stressed syllable.
    Vowel key: ah = father, e/eh = bet, ay = day, ee = see (also the quick Lithuanian i at a syllable end), i = bit (only before a consonant: MIN, ish), oh = go, u = put, oo = moon, ow = cow, ai = eye.
    "y" is always the consonant in "yes" (yah, yeh, yoh, yu); never use "ye" for the eye sound.
@@ -2420,7 +2426,7 @@ function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'
 const PRON={
 "Labas":"LAH-bahs","Sveiki":"svay-KEE","Labas rytas":"LAH-bahs REE-tahs","Laba diena":"lah-BAH dyeh-NAH","Labas vakaras":"LAH-bahs VAH-kah-rahs","Labanakt":"lah-bah-NAHKT","Viso gero":"VEE-soh GEH-roh","Iki":"ee-KEE","Ačiū":"AH-choo","Prašau":"prah-SHOW",
 "Taip":"TAIP","Ne":"NEH","Atsiprašau":"aht-see-prah-SHOW","Gerai":"geh-RAI","Kaip sekasi?":"KAIP SEH-kah-see","Puikiai":"pwee-KYAI","Nieko tokio":"NYEH-koh TOH-kyoh","Malonu susipažinti":"mah-loh-NU su-see-pah-ZHIN-tuh","Iki pasimatymo":"ee-KEE pah-see-MAH-tee-moh","Sėkmės":"sayk-MAYS",
-"Aš":"AHSH","Tu":"TU","Jis":"YIS","Ji":"YEE","Mes":"MES","Jūs":"YOOS","Jie":"YEH","Jos":"YOHS","Mano vardas Tomas":"MAH-noh VAHR-dahs TOH-mahs","Koks tavo vardas?":"KOHKS TAH-voh VAHR-dahs","Aš esu iš Amerikos":"AHSH eh-SU ish ah-MEH-ree-kohs",
+"Aš":"AHSH","Tu":"TU","Jis":"YIS","Ji":"YEE","Mes":"MES","Jūs":"YOOS","Jie":"yee-EH","Jos":"YOHS","Mano vardas Tomas":"MAH-noh VAHR-dahs TOH-mahs","Koks tavo vardas?":"KOHKS TAH-voh VAHR-dahs","Aš esu iš Amerikos":"AHSH eh-SU ish ah-MEH-ree-kohs",
 "vienas":"VYEH-nahs","du":"DU","trys":"TREES","keturi":"keh-tu-REE","penki":"pen-KEE","šeši":"sheh-SHEE","septyni":"sep-tee-NEE","aštuoni":"ahsh-twoh-NEE","devyni":"deh-vee-NEE","dešimt":"DEH-shimt",
 "nulis":"NU-lis","vienuolika":"vyeh-NWOH-lee-kah","dvylika":"DVEE-lee-kah","trylika":"TREE-lee-kah","keturiolika":"keh-tu-RYOH-lee-kah","penkiolika":"pen-KYOH-lee-kah","dvidešimt":"DVEE-deh-shimt","trisdešimt":"TRIS-deh-shimt","šimtas":"SHIM-tahs","tūkstantis":"TOOKS-tahn-tis",
 "Kiek?":"KYEHK","Kiek tau metų?":"KYEHK TOW MEH-too","Man dvidešimt metų":"MAHN DVEE-deh-shimt MEH-too","Kiek kainuoja?":"KYEHK kai-NWOH-yah","vienas euras":"VYEH-nahs EH-oo-rahs","du eurai":"DU EH-oo-rai","dešimt eurų":"DEH-shimt EH-oo-roo","pirmas":"PIR-mahs","antras":"AHN-trahs","trečias":"TREH-chahs",
@@ -2438,7 +2444,7 @@ const PRON={
 "pavasaris":"pah-VAH-sah-ris","vasara":"VAH-sah-rah","ruduo":"ru-DWOH","žiema":"zhyeh-MAH","sausis":"SOW-sis","vasaris":"vah-SAH-ris","kovas":"KOH-vahs","birželis":"bir-ZHEH-lis","liepa":"LYEH-pah","gruodis":"GRWOH-dis",
 "būti":"BOO-tuh","eiti":"AY-tuh","valgyti":"VAHL-gee-tuh","gerti":"GER-tuh","kalbėti":"kahl-BAY-tuh","skaityti":"skai-TEE-tuh","rašyti":"rah-SHEE-tuh","norėti":"noh-RAY-tuh","turėti":"tu-RAY-tuh","žinoti":"zhee-NOH-tuh",
 "Aš esu":"AHSH eh-SU","Tu esi":"TU eh-SEE","Jis yra":"YIS ee-RAH","Aš einu":"AHSH ay-NU","Aš kalbu":"AHSH kahl-BU","Aš skaitau":"AHSH skai-TOW","Aš noriu":"AHSH NOH-ryu","Aš turiu":"AHSH tu-RYU","Aš žinau":"AHSH zhee-NOW","Aš nežinau":"AHSH neh-zhee-NOW",
-"Aš kalbu lietuviškai":"AHSH kahl-BU lyeh-TU-vish-kai","Ar tu kalbi angliškai?":"AHR TU kahl-BEE AHN-glish-kai","Aš nesuprantu":"AHSH neh-su-prahn-TU","Aš suprantu":"AHSH su-prahn-TU","Aš gyvenu Lietuvoje":"AHSH gee-veh-NU lyeh-tu-voh-YEH","Aš mokausi lietuvių kalbos":"AHSH MOH-kow-see lyeh-TU-vyoo kahl-BOHS","Aš dirbu":"AHSH dir-BU","Aš miegu":"AHSH myeh-GU","Mes einame namo":"MES AY-nah-meh nah-MOH","Jie valgo":"YEH VAHL-goh",
+"Aš kalbu lietuviškai":"AHSH kahl-BU lyeh-TU-vish-kai","Ar tu kalbi angliškai?":"AHR TU kahl-BEE AHN-glish-kai","Aš nesuprantu":"AHSH neh-su-prahn-TU","Aš suprantu":"AHSH su-prahn-TU","Aš gyvenu Lietuvoje":"AHSH gee-veh-NU lyeh-tu-voh-YEH","Aš mokausi lietuvių kalbos":"AHSH MOH-kow-see lyeh-TU-vyoo kahl-BOHS","Aš dirbu":"AHSH dir-BU","Aš miegu":"AHSH myeh-GU","Mes einame namo":"MES AY-nah-meh nah-MOH","Jie valgo":"yee-EH VAHL-goh",
 "miestas":"MYEHS-tahs","kaimas":"KAI-mahs","namas":"NAH-mahs","mokykla":"moh-keek-LAH","parduotuvė":"pahr-dwoh-TU-vay","gatvė":"GAHT-vay","stotis":"stoh-TIS","bažnyčia":"bahzh-NEE-chah","ligoninė":"lee-GOH-nee-nay","bankas":"BAHN-kahs",
 "Kur yra stotis?":"KUR ee-RAH stoh-TIS","kairėn":"kai-RAYN","dešinėn":"deh-shee-NAYN","tiesiai":"tyeh-SYAI","čia":"CHAH","ten":"TEN","toli":"toh-LEE","arti":"ahr-TEE","vaistinė":"VAIS-tee-nay","paštas":"PAHSH-tahs",
 "bilietas":"BEE-lyeh-tahs","lėktuvas":"layk-TU-vahs","traukinys":"trow-kee-NEES","autobusas":"ow-toh-BU-sahs","oro uostas":"OH-roh WOHS-tahs","viešbutis":"VYEHSH-bu-tis","pasas":"PAH-sahs","pinigai":"pee-nee-GAI","lagaminas":"lah-gah-MEE-nahs","žemėlapis":"zheh-MAY-lah-pis",
@@ -2468,7 +2474,7 @@ const PRON={
 "Ką tu mėgsti veikti?":"KAH TU MAYGS-tuh VAYK-tuh","Aš mėgstu skaityti":"AHSH MAYGS-tu skai-TEE-tuh","Aš mėgstu keliauti":"AHSH MAYGS-tu keh-LYOW-tuh","Aš mėgstu gaminti":"AHSH MAYGS-tu gah-MIN-tuh","Aš mėgstu sportuoti":"AHSH MAYGS-tu spor-TWOH-tuh","Aš žaidžiu krepšinį":"AHSH zhai-JYU krep-SHEE-nee","Aš klausausi muzikos":"AHSH klow-SOW-see MU-zee-kohs","savaitgalis":"sah-VAIT-gah-lis","laisvalaikis":"lais-VAH-lai-kis","Ką veiki savaitgalį?":"KAH vay-KEE sah-VAIT-gah-lee",
 "Ar nori eiti kartu?":"AHR NOH-ree AY-tuh kahr-TU","Taip, noriu":"TAIP NOH-ryu","Gal rytoj?":"GAHL ree-TOY","Šiandien negaliu":"SHAN-dyehn neh-gah-LYU","Neturiu laiko":"neh-tu-RYU LAI-koh","Kur susitiksime?":"KUR su-see-TIK-see-meh","Prie kavinės":"PRYEH kah-VEE-nays","Puiki idėja!":"pwee-KEE ee-DAY-yah","Sutarta!":"SU-tahr-tah","Iki rytojaus!":"ee-KEE ree-TOH-yows",
 "Kelintą valandą?":"keh-LIN-tah VAH-lahn-dah","Septintą valandą":"sep-TIN-tah VAH-lahn-dah","Aštuntą valandą":"ahsh-TUN-tah VAH-lahn-dah","Dvyliktą valandą":"DVEE-lik-tah VAH-lahn-dah","ryte":"ree-TEH","vakare":"vah-kah-REH","po pietų":"POH pyeh-TOO","vėlai":"vay-LAI","anksti":"ahnks-TEE","Aš vėluoju":"AHSH vay-LWOH-yu",
-"Ar turi brolių ar seserų?":"AHR tu-REE BROH-lyoo AHR SEH-seh-roo","Aš turiu brolį":"AHSH tu-RYU BROH-lee","Ne, neturiu":"NEH neh-tu-RYU","Ar turi vaikų?":"AHR tu-REE vai-KOO","Aš turiu du vaikus":"AHSH tu-RYU DU vai-KUS","Aš turiu dukrą":"AHSH tu-RYU DUK-rah","Koks jo vardas?":"KOHKS YOH VAHR-dahs","Koks jos vardas?":"KOHKS YOHS VAHR-dahs","Mano mama gyvena Kaune":"MAH-noh mah-MAH gee-VEH-nah kow-NEH","Jie labai mieli":"YEH lah-BAI myeh-LEE",
+"Ar turi brolių ar seserų?":"AHR tu-REE BROH-lyoo AHR SEH-seh-roo","Aš turiu brolį":"AHSH tu-RYU BROH-lee","Ne, neturiu":"NEH neh-tu-RYU","Ar turi vaikų?":"AHR tu-REE vai-KOO","Aš turiu du vaikus":"AHSH tu-RYU DU vai-KUS","Aš turiu dukrą":"AHSH tu-RYU DUK-rah","Koks jo vardas?":"KOHKS YOH VAHR-dahs","Koks jos vardas?":"KOHKS YOHS VAHR-dahs","Mano mama gyvena Kaune":"MAH-noh mah-MAH gee-VEH-nah kow-NEH","Jie labai mieli":"yee-EH lah-BAI myeh-LEE",
 "sriubą":"SRYU-bah","kortele":"kohr-teh-LEH","Ar turite obuolių?":"AHR TU-ree-teh oh-bwoh-LYOO","Aš imu":"AHSH ee-MU","Gal septintą valandą?":"GAHL sep-TIN-tah VAH-lahn-dah","Aš mėgstu keliauti ir skaityti":"AHSH MAYGS-tu keh-LYOW-tuh IR skai-TEE-tuh","Puiku":"pwee-KU","Dušas neveikia":"DU-shahs neh-VAY-kyah","Man skauda galvą":"MAHN SKOW-dah GAHL-vah","Čia tau dovana":"CHAH TOW doh-vah-NAH","labai":"lah-BAI","Vilnius labai gražus":"VIL-nyus lah-BAI grah-ZHUS","Rytoj aš važiuoju į Kauną":"ree-TOY AHSH vah-ZHYWOH-yu ee KOW-nah",
 "Sriubą, prašau":"SRYU-bah prah-SHOW","Arbatą, prašau":"ahr-BAH-tah prah-SHOW","Aš norėčiau sriubos":"AHSH noh-RAY-chow sryu-BOHS","Puiku!":"pwee-KU","Ne, ačiū":"NEH AH-choo",
 "Ar turite obuolių?":"AHR TU-ree-teh oh-bwoh-LYOO","Ar turite sūrio?":"AHR TU-ree-teh SOO-ryoh","Kiek kainuoja obuoliai?":"KYEHK kai-NWOH-yah OH-bwoh-lyai","Gerai, aš imu":"geh-RAI AHSH ee-MU","Tik grynaisiais?":"TIK gree-nai-SYAIS",
@@ -3033,11 +3039,11 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
       'You can start with <b>Aš</b> (I) or leave it out: <b>Aš esu iš Anglijos</b> and <b>Esu iš Anglijos</b> are both right, because the ending of the doing word already says who.<br><br>'+
       'Watch how a place changes its ending: <b>Lietuva</b> becomes <b>iš Lietuvos</b> (from Lithuania) and <b>Lietuvoje</b> (in Lithuania).</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
     btn.disabled=false;btn.textContent='Let\'s go';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(it.me?'About you':'New word')+'</span><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
+  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(it.me?'About you':'New word')+'</span><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
   else if(ex.type==='speak'){
     const rateHtml='<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
-    st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it)+'</div>'+
+    st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it)+'</div>'+
       '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
       '<p class="heard" id="srout" role="status">'+(SR?'Listen, then tap the <b>microphone</b> and say it. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
       (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml);
@@ -3201,7 +3207,7 @@ function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=e
 /* Shows the result. A miss (or "I don't know") never ends anything: the word comes back two cards later. */
 function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.item;
   const first=!Q.wrongOnce[it.id];
-  const pr=S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'';
+  const pr=S.pron?'<div class="pron">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>':'';
   const mean=ex.type==='mc_lt_en'||ex.type==='listen';
   const answer=picHtml(it.lt,'xs')+'<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
