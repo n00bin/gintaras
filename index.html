@@ -2635,6 +2635,15 @@ function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt()
   const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
     bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Double XP</strong><small>Every lesson counts twice until '+clock(h+1)+' · '+left+' min left</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
+/* Preview: open the app with #pops at the end of the link to see every pop-up once. Changes nothing. */
+function previewPops(){if(location.hash!=='#pops')return;history.replaceState(null,'',location.pathname+location.search);
+  [{mood:'cheer',icon:'🎁',title:'Treasure chest!',sub:'+7 amber for your 5th lesson'},{mood:'cheer',icon:'⚡',title:'Double XP!',sub:'Every lesson counts twice for 15 minutes. Go!'},
+   {mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'},{mood:'cheer',icon:'🔥',title:'Streak repaired!',sub:'Your 12-day streak is back'},
+   {mood:'cheer',icon:'🛡️',title:'League shield on',sub:'You can\'t move down a league this week'},{mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for Davawn to accept'},
+   {mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before the week ends wins'},{mood:'rest',icon:'🌙',title:'Rest day used',sub:'Your streak is safe'},
+   {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(happyHourAt()+1)+'. Every lesson counts twice.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));}
+window.addEventListener('gintaras:ready',()=>setTimeout(previewPops,600));
+window.addEventListener('hashchange',previewPops);
 window.addEventListener('gintaras:idle',()=>setTimeout(renderHappy,1200));
 window.celebrate=celebrate;
 /* Time in lessons, per day (S.ltime[day] = seconds). Only counts while a lesson, practice or conversation
