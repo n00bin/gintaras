@@ -1070,7 +1070,7 @@ const COURSE = [
   ['krepšinis','basketball','The unofficial religion.'],
   ['gira','kvass','A fizzy drink made from bread.'],
   ['Užgavėnės','Shrovetide','A carnival to chase winter away, with masks and pancakes.'],
-  ['Gedimino pilis','Gediminas\' Tower','The castle tower above Vilnius.'],
+  ['Gedimino pilis','Gediminas\' Castle','The castle and its tower above Vilnius.'],
   ['Vasario 16-oji','February 16','Independence Day, 1918.',['Vasario šešioliktoji']],
  ]},
  {id:'u12b',title:'Useful phrases',items:[
@@ -3436,6 +3436,13 @@ function closeGuide(){$('#guide').hidden=true;if($('#sheet').hidden&&$('#welcome
 document.addEventListener('click',e=>{if(e.target.closest('[data-guide]')){e.preventDefault();openGuide();}});
 $('#btn-guide-close').onclick=closeGuide;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#guide').hidden)closeGuide();},true);
+/* Pop-ups: Escape closes the top one the way its "later" or "cancel" button would, and a new one gets the keyboard
+   focus (on its first button, which is always the safe choice) and is announced as a dialog. */
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const ps=document.querySelectorAll('.league-pop'),p=ps[ps.length-1];if(!p)return;
+  const b=p.querySelector('[data-later],[data-x],[data-no],.btn.ghost');if(b)b.click();else p.remove();});
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!n.classList||!n.classList.contains('league-pop'))return;
+  const c=n.querySelector('.card');if(c){if(!c.getAttribute('role'))c.setAttribute('role','dialog');c.setAttribute('aria-modal','true');}
+  const b=n.querySelector('button:not([disabled])');if(b)setTimeout(()=>b.focus(),50);}))).observe(document.body,{childList:true});
 
 /* ===================== SHARING ===================== */
 /* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
