@@ -5,7 +5,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v61';
+const SHELL = 'gintaras-shell-v62';
 const AUDIO = 'gintaras-audio-v1';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];

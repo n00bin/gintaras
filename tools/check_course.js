@@ -10,7 +10,7 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const js = html.split('<script>')[1].split('/* ===================== STATE')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
+new Function('c', pre + js + ';Object.assign(c,{ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -25,7 +25,8 @@ const ci = {}; Object.keys(c.PRON).forEach(k => { ci[k.toLowerCase().replace(/[.
 Object.keys(c.PRON).forEach(k => { const ws = k.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/), ps = c.PRON[k].split(' '); if (ws.length > 1 && ws.length === ps.length) ws.forEach(w => { ci[w] = 1; }); });
 const covered = t => ci[t.toLowerCase().replace(/[.,!?]+$/, '')] || t.split(/(?<=[.!?])\s+/).every(sen => ci[sen.toLowerCase().replace(/[.,!?]+$/, '').trim()] || sen.split(/,\s*/).every(part => ci[part.toLowerCase().replace(/[.,!?]+$/, '').trim()] || part.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(Boolean).every(w => ci[w])));
 say('words without a "sounds like"', c.ITEMS.filter(i => !covered(i.lt)).map(i => i.lt));
-say('conversation replies without a "sounds like"', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'm' && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
+say('conversation lines without a "sounds like"', c.CONVS.flatMap(v => v.all.filter(l => l.lt && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
+say('About-you sentences without a "sounds like"', c.ME_BANK.filter(i => !covered(i.lt)).map(i => i.lt));
 const en = {}; c.ITEMS.forEach(i => { const k = i.en.toLowerCase().replace(/[.,!?]/g, ''); (en[k] = en[k] || []).push(i.lt); });
 say('items sharing the same English', Object.entries(en).filter(e => e[1].length > 1).map(e => e[0] + ' = ' + e[1].join(' / ')));
 const lt = {}; c.ITEMS.forEach(i => { (lt[i.lt] = lt[i.lt] || []).push(i.id); });
