@@ -579,12 +579,15 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .earn summary{cursor:pointer;font-weight:700;color:var(--pine)}
 .earn-list{display:grid;grid-template-columns:1fr auto;gap:6px 12px;margin-top:8px;font-size:15px}
 .earn-list b{color:var(--amber-deep);text-align:right}
-.lb li.can-ch{cursor:pointer}
-.lb li .chbtn{font-size:12px;font-weight:800;color:var(--amber-deep)}
+.lb .pts{display:grid;justify-items:end;gap:6px}
+.lb .chbtn{min-height:40px;padding:0 12px;border-radius:999px;border:2px solid var(--amber);background:var(--surface);color:var(--amber-deep);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.lb .chbtn.off{border-color:var(--line);color:var(--muted)}
 .chal{display:grid;gap:8px;margin-top:6px}
 .chal-row{padding:10px 12px;border-radius:12px;background:var(--surface-2);display:grid;gap:6px}
 .chal-row .btns{display:flex;gap:8px;flex-wrap:wrap}
-.chal-row .btns .chip{font-size:14px;padding:6px 10px}
+.chal-row .btns{gap:10px}
+.chal-row .btns .chip{font-size:15px;min-height:44px;padding:8px 14px}
+.league-pop .linkbtn{min-height:44px;margin-top:8px}
 .stakes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .stakes .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .cup-box{margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--amber) 12%,var(--surface));border:2px solid color-mix(in srgb,var(--amber) 40%,var(--line));display:grid;gap:6px}
@@ -2580,7 +2583,8 @@ function buy(id){
     if(S.lastDay===today()||S.lastDay===yesterday())S.streak=n+S.streak;else{S.streak=n;S.lastDay=yesterday();}
     if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;S.brokenStreak=null;toast('🔥 Your '+S.streak+'-day streak is back!');}
   else if(id==='shield'){if(window.cloud&&window.cloud.buyShield)window.cloud.buyShield();else toast('Sign in to join a league first');return;}
-  else if(id==='challenge'){showView('board');toast('Tap a player in your league to challenge them');return;}
+  else if(id==='challenge'){const c=window.cloud;if(!c||!c.signedIn())return toast('Sign in to join a league first');showView('board');
+    toast(c.chalOpen()?'Tap ⚔️ Challenge next to a player in your league':'Challenges start at the beginning of each week ('+c.chalWhen()+' your time). Come back then!',6000);return;}
   save();renderShop();renderTop();}
 /* Each row shows its price, or what state it's in when buying it makes no sense right now. */
 function shopState(id){const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;
@@ -2831,7 +2835,7 @@ function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
-function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();maybeTour();}
+function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();maybeTour();window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
 /* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */

@@ -121,7 +121,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -270,7 +270,7 @@ function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstri
   const fresh=incoming.find(x=>!(S.chalSeen||{})[x.id]);if(!fresh||busy)return;
   S.chalSeen=Object.assign(S.chalSeen||{},{[fresh.id]:1});window.save();
   const nick=esc(nameOf(fresh.from_id)),have=window.amberBalance(),ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge"><div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP by Sunday night. The winner takes both.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge"><div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP before the week ends ('+weekWhen(7)+' your time). The winner takes both.</p>'+
     (have<fresh.stake?'<p class="note">You need '+fresh.stake+' amber to accept and have '+have+'.</p>':'')+
     '<div class="row2"><button type="button" class="btn ghost" data-later>Decide later</button><button type="button" class="btn amber" data-yes'+(have<fresh.stake?' disabled':'')+'>Accept ('+fresh.stake+' amber)</button></div><button type="button" class="linkbtn" data-no>No thanks</button></div>';
   document.body.appendChild(ov);
@@ -284,12 +284,13 @@ function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger
       if(x.winner===user.id){window.earnAmber(x.stake*2);msgs.push('🏆 You beat '+other+'! +'+x.stake*2+' amber');}
       else if(!x.winner){window.earnAmber(x.stake);msgs.push('A draw with '+other+': '+x.stake+' amber back');}
       else msgs.push(other+' won your challenge this time. Rematch?');}});
-  if(msgs.length){window.save();toast(msgs[0]);}}
+  if(msgs.length){window.save();toast(msgs.join(' · '),4000+2000*msgs.length);}}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
   if(!chalDay())return toast('Challenges start at the beginning of the week ('+weekWhen(7)+' to '+weekWhen(8)+' your time), so everyone starts even',6000);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');
   if(theirs<CH_MIN)return toast(nick+' needs '+CH_MIN+' amber before they can be challenged');
   if(chals.some(x=>x.week_start===monday()&&['pending','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+' this week');
+  if(cap<CH_MIN)return toast('The stake can’t be more than either of you has, and the smallest is '+CH_MIN+' amber');
   const ov=document.createElement('div');ov.className='league-pop';let stake=0;
   ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">Whoever earns more XP before the week ends ('+weekWhen(7)+' your time) wins both stakes. '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
     '<div class="stakes">'+[10,20,30,50].map(n=>'<button type="button" class="chip" data-st="'+n+'"'+(n>cap?' disabled':'')+'>'+n+' amber</button>').join('')+'</div><p class="note">You have '+have+' amber and '+esc(nick)+' has '+theirs+'. The stake can’t be more than either of you has.</p>'+
@@ -442,7 +443,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   renderChallenges();renderCup(mine);
   const bn=$('#bar-note');if(bn&&barLog&&barLog.week===monday()&&barLog.players>=3&&Number(barLog.new_scale)!==Number(barLog.old_scale)){const pc=Math.round((barLog.new_scale/barLog.old_scale-1)*100);
     bn.textContent='This week’s bars went '+(pc>0?'up ':'down ')+Math.abs(pc)+'% to match how fast everyone is earning XP (about '+Number(barLog.median_rate).toFixed(1)+' XP a minute in lessons).';bn.hidden=false;}
-  ol.onclick=e=>{const li=e.target.closest('li[data-pid]');if(li)openChallenge(li.dataset.pid);};
+  ol.onclick=e=>{const b=e.target.closest('[data-pid]');if(b)openChallenge(b.dataset.pid);};
   data.forEach(r=>{people[r.id]=Object.assign(people[r.id]||{},r);});await loadAmber(data.map(r=>r.id));
   if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
     ol.innerHTML=data.map((r,i)=>row(r,i,r.xp,'')).join('');return;}
@@ -458,7 +459,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
     return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===3&&ups<3?top3:'')+row(r,i,r.wxp,up?'up':mine<TOP&&i<3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone,hint){const ch=canChal(r.id);return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
+function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id&&chalDay(),ch=show&&canChal(r.id);return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
@@ -466,6 +467,7 @@ function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderA
   loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
+window.addEventListener('gintaras:idle',()=>setTimeout(()=>{if(user)chalAlerts();},800));
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;chalAlerts();});
 /* Coming back to the app checks for new challenges and your rival's latest XP. */
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&sb&&user&&navigator.onLine){loadChallenges();loadNotes();}});
