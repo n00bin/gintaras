@@ -27,6 +27,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
   out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
+  out.cando={};new Set(Object.keys(a.cando||{}).concat(Object.keys(b.cando||{}))).forEach(k=>out.cando[k]=[(a.cando||{})[k],(b.cando||{})[k]].filter(Boolean).sort()[0]);
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   /* Amber is counted per phone (amberE / amberS), so two phones that both earn or spend before syncing add up.
      A copy from before that (only totals) still counts: any amount it has beyond the per-phone sum goes under 'old'. */

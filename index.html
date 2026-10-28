@@ -531,6 +531,16 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .whybox{margin-top:8px;padding:8px 10px;border-radius:12px;background:color-mix(in srgb,var(--amber) 10%,var(--surface));display:grid;gap:2px}
 .whybox .eyebrow{margin:0}
 #cmsg .why{display:block}
+.can-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.can{display:flex;gap:12px;align-items:flex-start}
+.can>div{flex:1;min-width:0;display:grid;gap:4px}
+.can small{color:var(--muted);font-size:13px}
+.can-ico{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:var(--surface-2)}
+.can.got .can-ico{background:var(--ok);color:#fff;font-weight:800}
+.can-bar{height:6px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.can-bar i{display:block;height:100%;background:var(--pine)}
+.can-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.can-act{min-height:40px;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--pine);font:inherit;font-size:14px;font-weight:800;cursor:pointer}
 .me-lines{display:grid;gap:8px}
 .me-line{display:flex;gap:10px;align-items:center}
 .me-line .lt{font-weight:800;display:block}
@@ -649,6 +659,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <button class="btn amber" id="btn-review">Start review</button>
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
+    <div class="card" id="can-card"></div>
     <div class="card" id="me-card"></div>
     <div class="card">
       <h2>Word strength</h2>
@@ -2492,6 +2503,36 @@ function meBank(){const b=[['name','My name is…','Mano vardas'],['learn',"I'm 
   return b.map(([k,en,lt])=>({id:'me1:'+k,lt,en,alt:[],me:true}));}
 const ME_BANK=meBank();const ME_BY={};ME_BANK.forEach(i=>ME_BY[i.id]=i);
 
+/* Things I can do in real life (each line finishes "I can ..."). Each skill lists the lessons whose words it needs (lesson ids before the
+   bite-size split), and the conversation that rehearses it. It is earned once every one of those words is mastered. */
+const CANDO=[
+ ['greet','👋','greet people and say goodbye',['u1a','u1b'],'cv1'],
+ ['stuck','🆘','say I don\'t understand and ask for help',['u21b','u8c','u13a']],
+ ['intro','🙋','introduce myself and say where I\'m from',['u1c','u20a'],'cv2'],
+ ['howru','💬','ask how someone is, and answer',['u21a'],'cv7'],
+ ['nums','🔢','count, and understand prices',['u2a','u2b','u2c']],
+ ['time','🗓️','talk about days and times',['u7a','u7b','u23b']],
+ ['day','☀️','describe my day',['u28a','u28b','u28c'],'cv11'],
+ ['cafe','☕','order at a café',['u3a','u3c'],'cv3'],
+ ['eat','🍽️','eat out at a restaurant',['u15a','u15b','u15c'],'cv10'],
+ ['way','🧭','ask the way and follow directions',['u9a','u9b','u13b'],'cv4'],
+ ['ride','🚌','take a bus, train or taxi',['u14a','u14b','u14c']],
+ ['shop','🛒','shop at a market',['u16a','u16b','u16c'],'cv5'],
+ ['clothes','🧥','buy clothes that fit',['u29a','u29b'],'cv12'],
+ ['people','🧑','describe someone I know',['u30a','u30c']],
+ ['family','👨‍👩‍👧','talk about my family',['u4a','u25a']],
+ ['work','💼','talk about my work',['u20b','u31b']],
+ ['likes','🎵','say what I like doing',['u22a','u22b']],
+ ['plans','🤝','make plans with a friend',['u23a','u33a'],'cv6'],
+ ['future','🏖️','talk about my holiday plans',['u34a','u34b','u34c'],'cv13'],
+ ['past','📖','say what I did yesterday',['u36a','u36b','u37a'],'cv14'],
+ ['hotel','🏨','check in to a hotel',['u17a','u17b'],'cv8'],
+ ['ill','💊','explain that I feel unwell',['u40b','u18c'],'cv9'],
+ ['help','🚨','get help in an emergency',['u18a','u18b']],
+ ['opinion','🗣️','give my opinion',['u38a','u38b','u38c'],'cv15'],
+ ['chat','🔁','keep a conversation going',['u39a','u39b']],
+];
+
 /* ===================== STATE ===================== */
 const KEY='gintaras.v2';
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
@@ -2631,6 +2672,37 @@ const BADGES=[
  ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
 ];
 function checkBadges(){S.badges=S.badges||{};const got=[];BADGES.forEach(b=>{if(!S.badges[b[0]]&&b[3]()){S.badges[b[0]]=today();got.push(b);}});if(got.length)save();return got;}
+/* A word is mastered at level 4 ("Strong"): it was remembered at a review a week or more after the one before,
+   so at least about eleven days after it was first learned. Earned skills stay earned; a word that slips back
+   below that only asks for a refresh. Reads S.items directly so unseen words don't get empty records. */
+const CAN_LVL=4;
+const CAN_ITEMS={};CANDO.forEach(c=>CAN_ITEMS[c[0]]=ITEMS.filter(i=>c[3].includes(i.lesson.id.replace(/-\d+$/,''))));
+function wlvl(i){const r=S.items[i.id];return r&&r.seen?r.lvl:-1;}
+function canState(c){const its=CAN_ITEMS[c[0]];return {its,n:its.length,m:its.filter(i=>wlvl(i)>=CAN_LVL).length,seen:its.filter(i=>wlvl(i)>=0).length,got:(S.cando||{})[c[0]]};}
+function checkCando(){S.cando=S.cando||{};const got=[];CANDO.forEach(c=>{const s=canState(c);if(!s.got&&s.n&&s.m===s.n){S.cando[c[0]]=today();got.push(c);}});return got;}
+let canAll=false;
+const andList=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.length-1];
+const niceDay=d=>new Date(d+'T12:00:00').toLocaleDateString([],{day:'numeric',month:'short'});
+function renderCando(){const box=$('#can-card');if(!box)return;S.cando=S.cando||{};
+  const rows=CANDO.map(c=>Object.assign({c},canState(c)));const earned=rows.filter(r=>r.got).length;
+  /* Show what you've earned or started, plus the next one coming up; the rest wait behind "Show all". */
+  let next=false;const shown=rows.filter(r=>{if(canAll||r.got||r.seen)return true;if(!next){next=true;return true;}return false;});
+  const row=r=>{const c=r.c,slip=r.got?r.its.filter(i=>wlvl(i)<CAN_LVL):[];const conv=c[4]&&CONV_BY[c[4]];
+    const sub=r.got?(slip.length?slip.length+(slip.length===1?' word needs':' words need')+' a refresh':'Every word mastered'):
+      r.seen?r.m+' of '+r.n+' words mastered'+(r.seen>r.m?' · '+(r.seen-r.m)+' still growing':'')+(r.n>r.seen?' · '+(r.n-r.seen)+' not learned yet':''):
+      'Comes up in '+andList([...new Set(r.its.map(i=>i.unit.en))]);
+    const acts=(slip.length?'<button type="button" class="can-act" data-refresh="'+c[0]+'">Refresh</button>':'')+
+      (conv&&stepUnlocked(conv.id)?'<button type="button" class="can-act" data-try="'+conv.id+'">Try it: '+esc(conv.title)+'</button>':'');
+    return '<li class="can'+(r.got?' got':'')+'"><span class="can-ico" aria-hidden="true">'+(r.got?'✓':c[1])+'</span><div><strong>I can '+esc(c[2])+'</strong>'+
+      '<small>'+sub+(r.got?' · since '+niceDay(r.got):'')+'</small>'+(r.got?'':'<div class="can-bar" role="img" aria-label="'+r.m+' of '+r.n+' words mastered"><i style="width:'+(r.n?r.m/r.n*100:0)+'%"></i></div>')+
+      (acts?'<div class="can-acts">'+acts+'</div>':'')+'</div></li>';};
+  box.innerHTML='<span class="eyebrow">Real life</span><h2>Things I can do · <span class="num">'+earned+' of '+CANDO.length+'</span></h2>'+
+    '<p class="note">Each one is ticked once you\'ve <b>mastered</b> every word it needs, not just learned them. A word is mastered when you still remember it at a review a week or more after the last one (it shows as Strong below), so each skill takes at least a couple of weeks.</p>'+
+    '<ul class="can-list">'+shown.map(row).join('')+'</ul>'+
+    (shown.length<rows.length||canAll?'<button type="button" class="linkbtn" data-canall>'+(canAll?'Show less':'Show all '+CANDO.length)+'</button>':'');
+  box.querySelectorAll('[data-refresh]').forEach(b=>b.onclick=()=>{const c=CANDO.find(x=>x[0]===b.dataset.refresh);buildSession(canState(c).its.filter(i=>wlvl(i)<CAN_LVL&&wlvl(i)>=0),'review',null);});
+  box.querySelectorAll('[data-try]').forEach(b=>b.onclick=()=>startConv(b.dataset.try));
+  const all=box.querySelector('[data-canall]');if(all)all.onclick=()=>{canAll=!canAll;renderCando();};}
 function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,bad:0});}
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
 function dueItems(){const n=Date.now();return learned().filter(i=>rec(i.id).due<=n).sort((a,b)=>rec(a.id).due-rec(b.id).due);}
@@ -2755,7 +2827,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
-  renderMe();
+  renderMe();renderCando();
   $('#lvls').innerHTML=buckets.map((n,k)=>'<i style="width:'+(n/tot*100)+'%;background:'+cols[k]+'" title="'+n+'"></i>').join('');}
 function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days').textContent=S.daysLearned||0;$('#p-streak').textContent=S.streak;
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
@@ -3052,7 +3124,7 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
   let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,crowns(Q.lesson.id)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
   let bonus=0;if(perfect){bonus=5;S.perfects=(S.perfects||0)+1;}
-  amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges();
+  amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
   if(Q.mode==='lesson'&&S.lessonsDone%5===0)earnAmber(3+Math.floor(Math.random()*8),'treasure chest');
@@ -3063,6 +3135,7 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   const known=learned().length,gained=known-(Q.knownBefore||known);if(gained>0)lines.unshift('<div class="win"><b>+'+gained+' new word'+(gained===1?'':'s')+'</b> · you now know '+known+'</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   save();
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||after.i>before.i||got.length>0?160:70);sfx('win');countUp();
@@ -3200,13 +3273,14 @@ function hear(target,mic,out,onResult,english){
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
   st.done=st.text=today();if(allSaid)st.speak=today();
-  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges();
+  const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
