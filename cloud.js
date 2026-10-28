@@ -376,9 +376,11 @@ function renderNotif(){const box=$('#notif'),S=window.S,t=$('#study-time');
   box.querySelectorAll('[data-nk]').forEach(b=>b.onclick=()=>{S.notify=Object.assign({rank:true,challenge:true,study:true},S.notify||{});S.notify[b.dataset.nk]=!S.notify[b.dataset.nk];window.save();saveNotify();renderNotif();});
   const on=box.querySelector('[data-pon]');if(on)on.onclick=pushOn;const off=box.querySelector('[data-poff]');if(off)off.onclick=pushOff;}
 async function loadNotes(){if(!sb||!user||!navigator.onLine||document.visibilityState!=='visible')return;if(!$('#sheet').hidden)return;
-  const {data,error}=await sb.from('gintaras_notes').select('id,kind,title,body').eq('seen',false).order('created_at').limit(5);if(error||!data||!data.length)return;
+  const {data,error}=await sb.from('gintaras_notes').select('id,kind,title,body,created_at').eq('seen',false).order('created_at',{ascending:false}).limit(30);if(error||!data||!data.length)return;
   await sb.from('gintaras_notes').update({seen:true}).in('id',data.map(n=>n.id));
-  data.forEach((n,i)=>setTimeout(()=>toast(n.body,4500),i*4800));
+  /* After a while away, only the newest message of each kind is still news; a study reminder only counts on the day. */
+  const show=['rank','challenge','study'].map(k=>data.find(n=>n.kind===k)).filter(n=>n&&(n.kind!=='study'||Date.now()-new Date(n.created_at)<3*3600e3));
+  show.forEach((n,i)=>setTimeout(()=>toast(n.body,4500),i*4800));
   if(data.some(n=>n.kind!=='study')){loadChallenges();if(!$('#view-board').hidden)renderBoard();}}
 function openFrom(tag){if(!tag||!window.showView)return;if(tag==='study')window.showView('learn');else{window.showView('board');renderBoard();}}
 if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',e=>{const d=e.data||{};if(d.type==='gintaras-note')loadNotes();if(d.type==='gintaras-open')openFrom(d.tag);});
