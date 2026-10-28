@@ -27,6 +27,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
   out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
+  {const lk=(b.lookAt||0)>(a.lookAt||0)?b:a;if(lk.look){out.look=lk.look;out.lookAt=lk.lookAt;}}
   out.cando={};new Set(Object.keys(a.cando||{}).concat(Object.keys(b.cando||{}))).forEach(k=>out.cando[k]=[(a.cando||{})[k],(b.cando||{})[k]].filter(Boolean).sort()[0]);
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
   /* Amber is counted per phone (amberE / amberS), so two phones that both earn or spend before syncing add up.
@@ -65,6 +66,9 @@ async function cloudSave(){if(!sb||!user||!window.S)return;
 /* ---------- auth ---------- */
 async function loadSession(){const {data}=await sb.auth.getSession();user=data.session?data.session.user:null;await afterAuth();}
 let retryTimer=null;
+/* Your face goes on your league row. Sent on its own, so a server that doesn't allow it yet never blocks saving progress. */
+async function pushLook(){const S=window.S;if(!sb||!user||!profile||!S||!S.look||profile.look===S.look)return;
+  const {error}=await sb.from('gintaras_profiles').update({look:S.look}).eq('id',user.id);if(!error){profile.look=S.look;renderBoard();}}
 async function afterAuth(){profile=null;
   if(user){await ensureRollover();const {data,error:e1}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();
     const {data:p,error:e2}=e1?{}:await sb.from('gintaras_progress').select('state,updated_at').eq('user_id',user.id).maybeSingle();
@@ -75,7 +79,7 @@ async function afterAuth(){profile=null;
     if(p&&p.state)adopt(p.state,p.updated_at);
     if(!profile)profile=await autoProfile();
     loadChallenges();loadCup();loadNotify();loadNotes();
-    booted=true;cloudSave();}
+    booted=true;cloudSave();pushLook();}
   else booted=true;
   renderAuth();renderBoard();renderNotif();
   {const f=new URLSearchParams(location.search).get('from');if(f){history.replaceState(null,'',location.pathname);openFrom(f);}}
@@ -101,7 +105,7 @@ function signedOut(){user=null;profile=null;booted=false;cloudAt=null;clearTimeo
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderReports();
   if(!sb){box.hidden=true;return;}
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
-  if(user){box.innerHTML='<div class="acct-who"><span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span><div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).name)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
+  if(user){box.innerHTML='<div class="acct-who">'+(window.faceHtml?window.faceHtml(window.S.look||profile.look,user.id,44):'<span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span>')+'<div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).name)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
     $('#btn-nick-p').onclick=showNickname;return;}
   authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
 
@@ -122,7 +126,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -441,7 +445,8 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
   await loadChallenges();await loadCup();
   const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league,cup_wins';
-  const {data,error}=boardMode==='league'?await sb.from('gintaras_profiles').select(cols).eq('league',mine).limit(200):await sb.from('gintaras_profiles').select(cols).order('xp',{ascending:false}).limit(50);
+  const ask=c=>boardMode==='league'?sb.from('gintaras_profiles').select(c).eq('league',mine).limit(200):sb.from('gintaras_profiles').select(c).order('xp',{ascending:false}).limit(50);
+  let {data,error}=await ask(cols+',look');if(error)({data,error}=await ask(cols)); // faces are extra: the board still loads without them
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
   renderChallenges();renderCup(mine);
@@ -466,7 +471,8 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&rk[i]>n-3));
     return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===in3&&ups<in3?top3:'')+row(r,rk[i]-1,r.wxp,up?'up':mine<TOP&&rk[i]<=3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id&&chalDay(),ch=show&&canChal(r.id);return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
+function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id&&chalDay(),ch=show&&canChal(r.id),mine=user&&r.id===user.id;return '<li class="'+(mine?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span>'+
+  (window.faceHtml?window.faceHtml(mine&&window.S.look||r.look,r.id,36):'')+'<span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}

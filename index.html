@@ -208,7 +208,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 #board .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .lb{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-.lb li{display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.lb li{display:grid;grid-template-columns:24px 36px 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
 .lb li.me{background:var(--pine-soft);outline:2px solid var(--pine)}
 .lb .rk{font-family:var(--display);font-weight:700;font-size:18px;color:var(--muted)}
 .lb li:nth-child(1) .rk{color:var(--amber-deep)}
@@ -306,6 +306,27 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;background:var(--pine)}
 .av[data-v="ona"]{background:#B4531F}
 .av+.av{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
+.face{display:inline-block;flex:none;border-radius:50%;overflow:hidden;line-height:0}
+.face svg{width:100%;height:100%;display:block}
+.cv-head .face+.face,.scene .face+.face{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
+.mascot{display:block;color:var(--fg)}
+.mascot svg{width:100%;height:auto;display:block;overflow:visible}
+.hello .mascot.big{width:132px;margin-left:-8px}
+.tip-mascot{width:120px;justify-self:center;margin-top:8px}
+.done-mascot{width:112px;justify-self:center}
+.due-mascot{width:96px;justify-self:center}
+.face-top{display:flex;gap:14px;align-items:center}
+.face-top>div{min-width:0;display:grid;gap:4px}
+#face-card.editing .face-top{position:sticky;top:calc(56px + env(safe-area-inset-top,0px));z-index:2;background:var(--surface);padding:6px 0;margin-top:-6px}
+.face-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.face-gal button{padding:0;border:2px solid transparent;border-radius:50%;background:none;cursor:pointer;line-height:0;justify-self:center}
+.face-gal button:focus-visible,.face-gal button:hover{border-color:var(--amber)}
+.face-gal .face{width:min(52px,100%)!important;height:auto!important;aspect-ratio:1}
+.fsteps{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.fstep{display:grid;grid-template-columns:1fr 44px 72px 44px;align-items:center;gap:4px;background:var(--surface-2);border-radius:12px;padding:4px 4px 4px 10px;font-size:14px;font-weight:700}
+.fstep b{text-align:center;font-size:14px}
+.fstep button{height:40px;border:0;border-radius:10px;background:var(--surface);color:var(--pine);font:700 20px var(--body);cursor:pointer}
+
 .btn.onpine{background:rgba(255,255,255,.16);color:#fff}
 
 /* Lesson extras */
@@ -649,6 +670,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="card">
       <span class="eyebrow">Review</span>
       <h2 id="due-title">Nothing to review yet</h2>
+      <span data-mood="rest" data-cls="due-mascot"></span>
       <p class="note" id="due-note">Words you learn come back here right before you would forget them. Each time you get one right, it waits longer before asking again.</p>
       <div class="steps" aria-label="Review schedule"><span>today</span><span>1 day</span><span>3 days</span><span>1 week</span><span>2 weeks</span><span>1 month</span><span>2 months</span></div>
       <div class="tiles">
@@ -687,6 +709,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
   <section class="view" id="view-profile" hidden>
     <div class="card" id="auth"></div>
+    <div class="card" id="face-card"></div>
     <div class="card">
       <span class="eyebrow" id="lvl-eyebrow">Level 1</span>
       <h2 id="lvl-title">Turistas</h2>
@@ -767,6 +790,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <p class="note">Progress is saved on this device in your browser. Clearing site data or switching devices starts fresh. Audio is a Lithuanian neural voice (Ona or Leonas); the device's own voice is used only if a clip fails to load.</p>
       <p class="note"><a href="privacy.html" style="color:var(--pine);font-weight:800">Privacy: what is stored and how to delete it</a></p>
       <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
+      <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
       <p class="note">Pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
       <button class="btn danger" id="btn-reset">Reset all progress</button>
       <div class="confirm" id="confirm-reset" hidden>
@@ -788,7 +812,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 <section class="sheet" id="welcome" hidden aria-label="Welcome">
   <div class="stage"><div class="hello">
-    <span class="gem big" aria-hidden="true"></span>
+    <span data-mood="happy" data-cls="big"></span>
     <h2>Labas! Let's learn Lithuanian.</h2>
     <p>Never learned a language before? Bad at it? Good. This app assumes both. You start with sounds, and by the end you can hold a real conversation.</p>
     <div class="how">
@@ -877,6 +901,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 <div class="toast" id="toast" role="status"></div>
 
+<script src="avatars.js"></script>
 <script>
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */
@@ -2789,7 +2814,7 @@ function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#stre
   const d=dueItems().length;const b=$('#due-badge');b.hidden=d===0;b.textContent=d;}
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
   const prevName=prevStepName(c.id);
-  el.innerHTML='<div class="cv-head">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">Conversation '+n+'</span><h2>'+esc(c.title)+'</h2><span class="sub">'+(open?esc(c.scene):'Finish '+esc(prevName)+' to unlock')+'</span>'+(open&&convDone(c.id)&&c.choices?'<span class="sub paths">🔀 '+(st.paths||[]).length+' of '+c.choices+' choices tried</span>':'')+'</div></div>'+
+  el.innerHTML='<div class="cv-head">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation '+n+'</span><h2>'+esc(c.title)+'</h2><span class="sub">'+(open?esc(c.scene):'Finish '+esc(prevName)+' to unlock')+'</span>'+(open&&convDone(c.id)&&c.choices?'<span class="sub paths">🔀 '+(st.paths||[]).length+' of '+c.choices+' choices tried</span>':'')+'</div></div>'+
     '<button type="button" class="btn '+(convDone(c.id)?'ghost':'amber')+'" data-conv'+(open?'':' disabled')+'>'+(convDone(c.id)?'✓ Play again':'Start conversation')+'</button>';
   el.querySelector('[data-conv]').onclick=()=>startConv(c.id);return el;}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
@@ -2824,6 +2849,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#n-due').textContent=d.length;$('#n-learned').textContent=L.length;$('#n-strong').textContent=L.filter(i=>rec(i.id).lvl>=4).length;
   $('#due-title').textContent=L.length===0?'Nothing to review yet':d.length===0?'All caught up':d.length+(d.length===1?' word is due':' words are due');
   $('#due-note').textContent=L.length===0?'Finish a lesson first. Words you learn come back here at growing intervals so they stick.':d.length===0?'Come back tomorrow, or practice your weakest words now.':'Review them now so they move to a longer interval.';
+  {const m=document.querySelector('.due-mascot');if(m)m.hidden=!(L.length&&!d.length);}
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
@@ -2833,7 +2859,7 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
   if(L.next){const p=Math.round((S.xp-L.xp)/(L.next[0]-L.xp)*100);$('#lvl-bar').style.width=p+'%';$('#lvl-note').textContent=(L.next[0]-S.xp)+' XP to '+L.next[1]+' ('+L.next[2]+')';}
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. Labai šaunu.';}
-  $('#p-rests').textContent=restsLeft();renderShop();
+  $('#p-rests').textContent=restsLeft();renderShop();renderFace();
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
   {const P=PACES[S.pace]||PACES.m10;const g=$('#pace-grid');
   if(g){g.innerHTML=Object.entries(PACES).map(([k,v])=>'<button type="button" class="pace-chip" data-pace="'+k+'" aria-pressed="'+(k===S.pace)+'"><b>'+v.mins+' min</b><small>'+v.goal+' XP</small></button>').join('');
@@ -2857,6 +2883,76 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
 function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
+
+/* ===================== FACES AND THE MASCOT ===================== */
+/* People are drawn with the Notionists set (CC0, by Zoish) through DiceBear (MIT), bundled in avatars.js so they work
+   offline. A look is "hair.beard.glasses.body.brows.eyes.lips.nose.bg" as variant numbers: 0 means none for beard and
+   glasses, hair 64 is a hat, bg picks one of FACE_BG. Anything unreadable falls back to a face made from a seed. */
+const FACE_BG=['f7e3c0','dcebe0','f3dccf','e2e6f3','e7ece4','f1d9e4','d9ecef','efe7c8'];
+const FACE_KEYS=[['hair','Hair',64],['beard','Beard',12,1],['glasses','Glasses',11,1],['body','Clothes',25],['brows','Eyebrows',13],['eyes','Eyes',5],['lips','Mouth',30],['nose','Nose',20],['bg','Background',8]];
+const CAST_LOOK={'Rūta':'41.0.0.15.1.2.10.5.2','Jonas':'1.3.0.4.3.3.6.8.3','Eglė':'45.0.0.12.5.1.14.2.4','Petras':'42.8.0.16.7.4.2.11.5',
+  'Aldona':'61.0.11.24.4.5.20.6.6','Darius':'33.1.0.6.9.2.8.9.7','Jurgita':'23.0.3.20.6.1.18.4.8','Inga':'37.0.0.22.2.3.12.7.1'};
+const TOMAS_LOOK='6.0.0.9.2.1.4.3.1';
+function lookParse(s){if(typeof s!=='string')return null;const a=s.split('.').map(Number);
+  if(a.length!==FACE_KEYS.length||a.some((x,i)=>!Number.isInteger(x)||x<(FACE_KEYS[i][3]?0:1)||x>FACE_KEYS[i][2]))return null;return a;}
+/* Same seed, same face: players who haven't made one still get a steady face from their account id. */
+function seeded(seed){let h=1779033703^seed.length;for(let i=0;i<seed.length;i++){h=Math.imul(h^seed.charCodeAt(i),3432918353);h=h<<13|h>>>19;}
+  return ()=>{h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);h^=h>>>16;return (h>>>0)/4294967296;};}
+function lookRand(seed){const r=seed?seeded(String(seed)):Math.random,pick=n=>1+Math.floor(r()*n);
+  return [pick(63),r()<.18?pick(12):0,r()<.2?[3,8,11][Math.floor(r()*3)]:0,pick(25),pick(13),pick(5),pick(30),pick(20),pick(8)];}
+const FACE_RAW={};let faceN=0;
+function faceSvg(a,size){const k=a.join('.')+'@'+size,v=n=>'variant'+String(n).padStart(2,'0');
+  if(!FACE_RAW[k]){const o={size,hair:[a[0]===64?'hat':v(a[0])],beardProbability:a[1]?100:0,glassesProbability:a[2]?100:0,body:[v(a[3])],brows:[v(a[4])],eyes:[v(a[5])],
+      lips:[v(a[6])],nose:[v(a[7])],backgroundColor:[FACE_BG[a[8]-1]],radius:50,gestureProbability:0,bodyIconProbability:0};
+    if(a[1])o.beard=[v(a[1])];if(a[2])o.glasses=[v(a[2])];FACE_RAW[k]=Ava.svg(o,size);}
+  /* Each copy on the page gets its own ids, so a hidden copy never breaks a visible one's clipping. */
+  const n=++faceN;return FACE_RAW[k].replace(/id="([^"]+)"/g,'id="$1-'+n+'"').replace(/url\(#([^)]+)\)/g,'url(#$1-'+n+')');}
+function faceHtml(look,seed,size,name){const a=lookParse(look)||lookRand(seed||name||'gintaras');
+  if(!window.Ava)return '<span class="av" style="width:'+size+'px;height:'+size+'px" aria-hidden="true">'+esc(((name||'?')[0]||'?').toUpperCase())+'</span>';
+  return '<span class="face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'>'+faceSvg(a,size)+'</span>';}
+window.faceHtml=faceHtml;
+const castFace=(p,size)=>faceHtml(CAST_LOOK[p.name],p.name,size||36,p.name);
+const myFaceSeed=()=>(window.cloud&&window.cloud.uid&&window.cloud.uid())||'me';
+const myFace=size=>S.look?faceHtml(S.look,null,size):faceHtml(TOMAS_LOOK,null,size);
+
+/* Gintarėlis, the little amber: the app's gem with a face, in four moods. */
+function mascot(mood,cls){const ink='#4A2A05',P='<polygon points="21.5,18.5 42.5,18.5 51.2,28.1 12.8,28.1" fill="#F2A93B"/><polygon points="21.5,18.5 32,18.5 27.2,28.1 12.8,28.1" fill="#F7C56E"/><polygon points="32,18.5 42.5,18.5 51.2,28.1 36.8,28.1" fill="#E89A1E"/><polygon points="12.8,28.1 27.2,28.1 32,49" fill="#E89A1E"/><polygon points="27.2,28.1 36.8,28.1 32,49" fill="#F2A93B"/><polygon points="36.8,28.1 51.2,28.1 32,49" fill="#B86E07"/><polygon points="22.5,19.2 30,19.2 26,27.3 16,27.3" fill="#FFF0C8" opacity=".65"/>';
+  const cheeks='<ellipse cx="24.2" cy="34.2" rx="2" ry="1.2" fill="#E2603A" opacity=".45"/><ellipse cx="39.8" cy="34.2" rx="2" ry="1.2" fill="#E2603A" opacity=".45"/>';
+  const dots=(dx,dy)=>'<ellipse cx="'+(27.5+dx)+'" cy="'+(31+dy)+'" rx="1.5" ry="1.9" fill="'+ink+'"/><ellipse cx="'+(36.5+dx)+'" cy="'+(31+dy)+'" rx="1.5" ry="1.9" fill="'+ink+'"/><circle cx="'+(28+dx)+'" cy="'+(30.3+dy)+'" r=".5" fill="#fff"/><circle cx="'+(37+dx)+'" cy="'+(30.3+dy)+'" r=".5" fill="#fff"/>';
+  const arm=d=>'<path d="'+d+'" stroke="#B86E07" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  const line=d=>'<path d="'+d+'" stroke="'+ink+'" stroke-width="1.3" fill="none" stroke-linecap="round"/>';
+  const spark=(x,y,s)=>'<path d="M'+x+' '+(y-s)+'L'+(x+s*.3)+' '+(y-s*.3)+'L'+(x+s)+' '+y+'L'+(x+s*.3)+' '+(y+s*.3)+'L'+x+' '+(y+s)+'L'+(x-s*.3)+' '+(y+s*.3)+'L'+(x-s)+' '+y+'L'+(x-s*.3)+' '+(y-s*.3)+'Z" fill="#F2A93B"/>';
+  const M={happy:[arm('M13.5 29 Q9 31 8.5 35')+arm('M50.5 29 Q55 27 56 23'),dots(0,0)+cheeks+line('M29.4 35.2 Q32 38 34.6 35.2')],
+    think:[arm('M13.5 29 Q9 32 10 36')+arm('M50.5 29 Q53 33 47 36')+'<text x="50" y="18" font-family="Fredoka,sans-serif" font-weight="700" font-size="9" fill="#2F6B4A">?</text>',dots(1,-1)+cheeks+'<circle cx="33.5" cy="36.3" r="1.1" fill="'+ink+'"/>'],
+    cheer:[arm('M13.5 28.5 Q8 24 8 18')+arm('M50.5 28.5 Q56 24 56 18')+spark(9,13,2.6)+spark(56,12,2.2)+spark(59,30,1.6),line('M25.8 31.4 Q27.5 29.2 29.2 31.4M34.8 31.4 Q36.5 29.2 38.2 31.4')+cheeks+'<path d="M28.8 34.4 Q32 40.5 35.2 34.4Z" fill="'+ink+'"/><path d="M30.3 36.6 Q32 38.6 33.7 36.6" fill="#E2603A"/>'],
+    rest:[arm('M13.5 29 Q10 33 12 37')+arm('M50.5 29 Q54 33 52 37')+'<text x="49" y="17" font-family="Fredoka,sans-serif" font-weight="700" font-size="6" fill="#7A8A80">z</text><text x="53.5" y="11.5" font-family="Fredoka,sans-serif" font-weight="700" font-size="8" fill="#7A8A80">z</text>',line('M25.8 31.2 Q27.5 32.6 29.2 31.2M34.8 31.2 Q36.5 32.6 38.2 31.2')+cheeks+line('M30.6 36 Q32 37 33.4 36')]};
+  const m=M[mood]||M.happy;
+  return '<span class="mascot '+(cls||'')+'" aria-hidden="true"><svg viewBox="4 6 58 50" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="53" rx="9" ry="1.6" fill="currentColor" opacity=".14"/>'+m[0]+P+m[1]+'</svg></span>';}
+document.querySelectorAll('[data-mood]').forEach(e=>{e.outerHTML=mascot(e.dataset.mood,e.dataset.cls);});
+
+/* Your face: pick a ready-made one, or step through each feature. Saved on this phone, synced, and shown on the board. */
+let faceDraft=null,faceGal=[];
+function renderFace(){const box=$('#face-card');if(!box)return;box.classList.toggle('editing',!!faceDraft);
+  if(!window.Ava){box.hidden=true;return;}
+  if(!faceDraft){box.innerHTML='<div class="face-top">'+faceHtml(S.look,myFaceSeed(),88)+'<div><span class="eyebrow">Your face</span><h2>'+(S.look?'This is you':'Make your face')+'</h2>'+
+      '<p class="note">'+(S.look?'Shown next to your name on the league board, and on your side of every conversation.':'Pick a face for the league board and your side of every conversation. Until you do, you get one at random.')+'</p></div></div>'+
+      '<button type="button" class="btn ghost" id="btn-face">'+(S.look?'Change my face':'Make my face')+'</button>';
+    $('#btn-face').onclick=()=>{faceDraft=(lookParse(S.look)||lookRand(myFaceSeed())).slice();faceGal=[];renderFace();};return;}
+  if(!faceGal.length)faceGal=Array.from({length:12},()=>lookRand());
+  box.innerHTML='<div class="face-top">'+faceHtml(faceDraft.join('.'),null,104)+'<div><span class="eyebrow">Your face</span><h2>Make it yours</h2><p class="note">Tap a face below to start from it, then change anything.</p></div></div>'+
+    '<div class="face-gal">'+faceGal.map((a,i)=>'<button type="button" data-gi="'+i+'" aria-label="Use face '+(i+1)+'">'+faceHtml(a.join('.'),null,52)+'</button>').join('')+'</div>'+
+    '<button type="button" class="linkbtn" id="face-more">Show me 12 more</button>'+
+    '<div class="fsteps">'+FACE_KEYS.map((k,i)=>{const val=faceDraft[i];return '<div class="fstep"><span>'+k[1]+'</span><button type="button" data-fk="'+i+'" data-d="-1" aria-label="Previous '+k[1].toLowerCase()+'">‹</button>'+
+      '<b class="num">'+(k[3]&&!val?'None':k[0]==='hair'&&val===64?'Hat':val+' / '+k[2])+'</b><button type="button" data-fk="'+i+'" data-d="1" aria-label="Next '+k[1].toLowerCase()+'">›</button></div>';}).join('')+'</div>'+
+    '<div class="row2"><button type="button" class="btn amber" id="face-save">Save my face</button><button type="button" class="btn ghost" id="face-rand">Surprise me</button></div>'+
+    '<button type="button" class="linkbtn" id="face-cancel">Cancel</button>';
+  box.querySelectorAll('[data-gi]').forEach(b=>b.onclick=()=>{faceDraft=faceGal[b.dataset.gi].slice();renderFace();});
+  box.querySelectorAll('[data-fk]').forEach(b=>b.onclick=()=>{const i=+b.dataset.fk,k=FACE_KEYS[i],lo=k[3]?0:1,span=k[2]-lo+1;
+    faceDraft[i]=lo+((faceDraft[i]-lo+Number(b.dataset.d))%span+span)%span;renderFace();const again=box.querySelector('[data-fk="'+i+'"][data-d="'+b.dataset.d+'"]');if(again)again.focus();});
+  $('#face-more').onclick=()=>{faceGal=[];renderFace();};
+  $('#face-rand').onclick=()=>{faceDraft=lookRand();renderFace();};
+  $('#face-cancel').onclick=()=>{faceDraft=null;renderFace();};
+  $('#face-save').onclick=()=>{S.look=faceDraft.join('.');S.lookAt=Date.now();faceDraft=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
 
 /* ===================== TABS ===================== */
 const VIEWS=['learn','practice','board','talk','profile','settings'];
@@ -2931,7 +3027,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.innerHTML='<span class="eyebrow">'+(l&&crowns(l.id)>0?'Quick reminder':'Before you start')+'</span>'+
       (ex.showUnit?'<div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div>'+(PATTERNS[u.id]?patternHtml(PATTERNS[u.id]):''):'')+
       (lt?'<div class="intro tipcard lesson-tip"><h3>💡 '+(l.speak?'Speaking tip':'Tip for this lesson')+'</h3><div>'+lt+'</div></div>':'')+
-      (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'');
+      (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'')+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>Every sentence here is about <b>you</b>. '+
       'You can start with <b>Aš</b> (I) or leave it out: <b>Aš esu iš Anglijos</b> and <b>Esu iš Anglijos</b> are both right, because the ending of the doing word already says who.<br><br>'+
@@ -3137,7 +3233,7 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   save();
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||after.i>before.i||got.length>0?160:70);sfx('win');countUp();
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
 /* The XP on the finish screen counts up from zero. */
@@ -3163,7 +3259,7 @@ function startConv(id){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=nul
   CV={c,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>'<span class="av" data-v="'+p.voice+'">'+esc(p.name[0])+'</span>').join('')+'<div><span class="eyebrow">Conversation</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Listen first';btn.onclick=null;
   convNext();}
 function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.length*100)+'%';
@@ -3171,9 +3267,9 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.
   const ln=C.lines[C.i];const msgs=$('#msgs');
   if(ln.kind==='c')return convChoice(ln);
   if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
-  if(ln.kind==='p'){const who=C.c.cast[ln.who];msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
+  if(ln.kind==='p'){const who=C.c.cast[ln.who];msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
-      msgs.insertAdjacentHTML('beforeend','<div class="msg them"><span class="av" data-v="'+who.voice+'">'+esc(who.name[0])+'</span><div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+cvSpk(ln.id,who.voice)+'</div>');chatScroll();
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+cvSpk(ln.id,who.voice)+'</div>');chatScroll();
       say(ln,false,who.voice);C.i++;later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},700);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
@@ -3191,7 +3287,7 @@ function convChoice(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check
    The microphone checks you where the browser can listen; a match carries the conversation on by itself. */
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
   const done=spoken=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
-    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div></div>');chatScroll();
+    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
     later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
   const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Step 2 · Now say it out loud</span><div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
@@ -3282,7 +3378,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done"><div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
