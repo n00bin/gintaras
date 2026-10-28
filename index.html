@@ -37,6 +37,7 @@
   --pine:#2F6B4A;      /* forest green */
   --pine-soft:#DCEBE0;
   --ok:#2E8B57;
+--warn:#A98200;
   --ok-soft:#DCF2E3;
   --bad:#C93A3A;
   --bad-soft:#F8DEDE;
@@ -49,7 +50,8 @@
   :root:not([data-theme="light"]){
     --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
     --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;--band:#24553A;
-    --ok:#5FC07F;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
+    --ok:#5FC07F;
+--warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
     --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
   }
 }
@@ -57,7 +59,8 @@
   --band:#24553A;
   --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
   --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
-  --ok:#5FC07F;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
+  --ok:#5FC07F;
+--warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
   --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -470,8 +473,10 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .lb li.down .rk::after{content:'▼';font-size:11px;margin-left:2px;color:var(--bad)}
 .lb .zone{background:none;padding:2px 12px;font-size:13px;font-weight:800;grid-template-columns:1fr}
 .lb .zone.up-line{color:var(--ok);border-top:2px dashed color-mix(in srgb,var(--ok) 60%,transparent);margin-top:2px;padding-top:6px}
-.lb .togo{color:var(--ok);font-weight:700}
-.lb .zone.top3-line{color:var(--muted);border-top:2px dashed var(--line,color-mix(in srgb,var(--muted) 45%,transparent));margin-top:2px;padding-top:6px}
+.lb .togo{font-weight:700}
+.lb .zone.top3-line{color:var(--warn);border-top:2px dashed color-mix(in srgb,var(--warn) 70%,transparent);margin-top:2px;padding-top:6px}
+.lb li.near{background:color-mix(in srgb,var(--warn) 16%,var(--surface))}
+.lb li.near .rk,.lb li.near .togo{color:var(--warn)}
 .lb .zone.down-line{color:var(--bad)}
 .league-pop{position:fixed;inset:0;z-index:60;background:rgba(10,18,14,.6);display:grid;place-items:center;padding:16px}
 .league-pop .card{max-width:380px;text-align:center;justify-items:center;margin:0}

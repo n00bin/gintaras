@@ -327,7 +327,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   const top3='<li class="zone top3-line">Top 3 · '+bar+' XP to move up</li>';
   const toGo=(r,i)=>{if(mine>=TOP||i<ups)return '';const need=Math.max(bar,i<3?0:rows[2].wxp+1)-r.wxp;return need>0?need+' XP to move up':'';};
   ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
-    return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===3&&ups<3?top3:'')+row(r,i,r.wxp,up?'up':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
+    return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===3&&ups<3?top3:'')+row(r,i,r.wxp,up?'up':mine<TOP&&i<3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
 function row(r,i,pts,zone,hint){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
