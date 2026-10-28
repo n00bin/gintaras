@@ -5,7 +5,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v62';
+const SHELL = 'gintaras-shell-v63';
 const AUDIO = 'gintaras-audio-v1';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];
@@ -95,7 +95,8 @@ self.addEventListener('push', e => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; } catch (err) {}
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
-    const open = list.find(c => c.visibilityState === 'visible');
+    // Skip the phone notification only when the app is open in front of you (it shows the message itself).
+    const open = list.find(c => c.visibilityState === 'visible' && c.focused !== false);
     if (open) { open.postMessage({ type: 'gintaras-note' }); return; }
     return self.registration.showNotification(d.title || 'Gintaras', {
       body: d.body || '', icon: 'icon-192.png', badge: 'icon-192.png', tag: d.tag || 'gintaras', renotify: true, data: { tag: d.tag },

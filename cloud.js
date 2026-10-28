@@ -370,10 +370,13 @@ let pushSub=null;
 async function saveNotify(){const S=window.S;if(!sb||!user)return;const n=S.notify||{};
   await sb.from('gintaras_notify').upsert({user_id:user.id,study_time:S.studyTime||null,tz:Intl.DateTimeFormat().resolvedOptions().timeZone,
     rank:n.rank!==false,challenge:n.challenge!==false,study:n.study!==false,updated_at:new Date().toISOString()});}
+/* "Turn off on this phone" is remembered on the phone itself, so the app doesn't switch it back on at the next start. */
+const phoneOff=()=>{try{return localStorage.getItem('gintaras.pushoff')==='1';}catch(e){return false;}};
+const setPhoneOff=v=>{try{if(v)localStorage.setItem('gintaras.pushoff','1');else localStorage.removeItem('gintaras.pushoff');}catch(e){}};
 async function loadNotify(){const S=window.S;if(!sb||!user)return;
   const {data}=await sb.from('gintaras_notify').select('*').eq('user_id',user.id).maybeSingle();
   if(data){if(!S.studyTime&&data.study_time)S.studyTime=data.study_time;if(!S.notify)S.notify={rank:data.rank,challenge:data.challenge,study:data.study};window.save();}
-  if(pushOk()&&Notification.permission==='granted'){try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(PUSH_KEY)});
+  if(pushOk()&&Notification.permission==='granted'&&!phoneOff()){try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(PUSH_KEY)});
     if(pushSub){const j=pushSub.toJSON();await sb.rpc('gintaras_push_save',{ep:j.endpoint,key:j.keys.p256dh,au:j.keys.auth});}}catch(e){}}
   await saveNotify();renderNotif();setTimeout(askPush,2500);}
 /* Phones only switch notifications on after the player taps Allow, so we ask once, right after sign-in,
@@ -382,11 +385,11 @@ function askPush(){const S=window.S;if(!S||!user||!pushOk()||Notification.permis
   if(!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||document.querySelector('.league-pop'))return setTimeout(askPush,5000);
   S.pushAsked=1;window.save();
   const ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Turn on notifications"><div class="lg-icon big" aria-hidden="true">🔔</div><h2>Want a nudge?</h2><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league or your challenge rival pulls ahead. You can change this any time in Profile.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Turn on notifications"><div class="lg-icon big" aria-hidden="true">🔔</div><h2>Want a nudge?</h2><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league or your challenge rival pulls ahead. You can change this any time in Profile.</p><p class="note">After you tap <b>Turn on</b>, your phone asks for permission: tap <b>Allow</b>.</p>'+
     '<div class="row2"><button type="button" class="btn ghost" data-no>Not now</button><button type="button" class="btn amber" data-yes>Turn on</button></div></div>';
   document.body.appendChild(ov);ov.querySelector('[data-no]').onclick=()=>ov.remove();
   ov.querySelector('[data-yes]').onclick=()=>{ov.remove();pushOn();};}
-async function pushOn(){if(!pushOk())return;
+async function pushOn(){if(!pushOk())return;setPhoneOff(false);
   const perm=await Notification.requestPermission();if(perm!=='granted'){renderNotif();return;}
   try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(PUSH_KEY)});
     const j=pushSub.toJSON();const {error}=await sb.rpc('gintaras_push_save',{ep:j.endpoint,key:j.keys.p256dh,au:j.keys.auth});
@@ -395,7 +398,7 @@ async function pushOn(){if(!pushOk())return;
   await saveNotify();renderNotif();}
 /* Signing out: this phone stops getting the account's notifications (it stays subscribed, ready for whoever signs in next). */
 async function dropPhone(){try{const reg=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration(),sub=pushSub||(reg&&await reg.pushManager.getSubscription());if(sub)await sb.rpc('gintaras_push_drop',{ep:sub.endpoint});}catch(e){}}
-async function pushOff(){if(pushSub){const ep=pushSub.endpoint;try{await pushSub.unsubscribe();}catch(e){}pushSub=null;await sb.rpc('gintaras_push_drop',{ep});}toast('Notifications are off for this phone');renderNotif();}
+async function pushOff(){setPhoneOff(true);if(pushSub){const ep=pushSub.endpoint;try{await pushSub.unsubscribe();}catch(e){}pushSub=null;await sb.rpc('gintaras_push_drop',{ep});}toast('Notifications are off for this phone');renderNotif();}
 function renderNotif(){const box=$('#notif'),S=window.S,t=$('#study-time');
   if(t&&S){t.value=S.studyTime||'';t.onchange=()=>{S.studyTime=t.value||'';window.save();saveNotify();renderNotif();if(S.studyTime&&pushOk()&&Notification.permission==='default')pushOn();};}
   if(!box||!S)return;if(!sb){box.hidden=true;return;}box.hidden=false;
