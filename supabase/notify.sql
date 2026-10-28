@@ -17,7 +17,8 @@ create table if not exists public.gintaras_notify (
 );
 alter table public.gintaras_notify enable row level security;
 revoke all on public.gintaras_notify from anon, authenticated;
-grant select, insert, update (study_time, tz, rank, challenge, study, updated_at) on public.gintaras_notify to authenticated;
+grant select, insert, update (user_id, study_time, tz, rank, challenge, study, updated_at) on public.gintaras_notify to authenticated;
+-- (user_id is in the update list because saving is an upsert; the policy still only allows your own row.)
 drop policy if exists "gintaras_notify_own" on public.gintaras_notify;
 create policy "gintaras_notify_own" on public.gintaras_notify for all to authenticated
   using (user_id = auth.uid()) with check (user_id = auth.uid());
