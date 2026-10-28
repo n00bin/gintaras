@@ -321,12 +321,13 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   const rows=data.map(r=>Object.assign(r,{wxp:Math.max(r.week_start===wk?r.week_xp:0,user&&r.id===user.id?localXp:0)})).sort((a,b)=>b.wxp-a.wxp||a.nickname.localeCompare(b.nickname));
   if(!rows.length){note.textContent='Nobody here yet. Sign in and you start in this league.';return;}
   note.textContent='';const n=rows.length,bar=barFor(mine);
-  /* The move-up line sits under the players who move up right now (top 3 with the bar), so it shifts as people earn. */
+  /* Two lines: one under whoever moves up right now (top 3 with the bar), so it shifts as people earn, and one under the top 3. */
   const ups=mine<TOP?rows.filter((r,i)=>i<3&&r.wxp>0&&r.wxp>=bar).length:0;
-  const line='<li class="zone up-line">'+(ups?'▲ Above this line: moving up on Monday':'▲ Nobody has '+bar+' XP yet. The top 3 who reach it move up')+'</li>';
+  const line='<li class="zone up-line">'+(ups?'▲ Above this line: moving up on Monday':'▲ Nobody in the top 3 has '+bar+' XP yet')+'</li>';
+  const top3='<li class="zone top3-line">Top 3 · '+bar+' XP to move up</li>';
   const toGo=(r,i)=>{if(mine>=TOP||i<ups)return '';const need=Math.max(bar,i<3?0:rows[2].wxp+1)-r.wxp;return need>0?need+' XP to move up':'';};
   ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
-    return (mine<TOP&&i===ups?line:'')+row(r,i,r.wxp,up?'up':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
+    return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===3&&ups<3?top3:'')+row(r,i,r.wxp,up?'up':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
 function row(r,i,pts,zone,hint){const ch=user&&profile&&r.id!==user.id;return '<li class="'+(user&&r.id===user.id?'me ':'')+(ch?'can-ch ':'')+zone+'"'+(ch?' data-pid="'+r.id+'" title="Challenge '+esc(r.nickname)+'"':'')+'><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+(ch?' · <span class="chbtn">⚔️ Challenge</span>':'')+'</small></span><span class="pts num">'+pts+' XP</span></li>';}
 
