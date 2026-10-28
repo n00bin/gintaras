@@ -175,6 +175,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 /* Practice + profile */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:10px;margin-bottom:16px}
+.card[hidden]{display:none}
 .card h2{font-size:20px;font-weight:600}
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tile{background:var(--surface-2);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
@@ -697,6 +698,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       </div>
       <p class="note">Counts only time spent in lessons, practice and conversations, not browsing the app or leaving a lesson open. Handy for a study log.</p>
     </div>
+    <div class="card" id="chal-profile" hidden></div>
     <div class="card" id="shop"></div>
     <div class="card">
       <h2>Badges</h2>
