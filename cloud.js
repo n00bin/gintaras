@@ -428,10 +428,10 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   await ensureRollover();await loadBars();
   const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/2);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
-    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+' · step '+(mine+1)+' of 20</small></div></div>'+
+    (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+(L.div==='II'?' (the lower half)':' (the upper half)')+' · step '+(mine+1)+' of 20</small></div></div>'+
       '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
-      '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+barFor(mine)+' XP</b> this week. ':'You are at the very top. ')+'Top 3 earn bonus amber: 15, 10 and 5. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
-    (boardMode==='league'?'<p class="note" id="bar-note" hidden></p>':'')+(user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
+      '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+barFor(mine)+' XP</b> this week. ':'You are at the very top. ')+'The top 3 also earn bonus amber (15, 10 and 5) when at least 2 people played. Players level on XP share a place. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
+    (boardMode==='league'?'<p class="note" id="bar-note" hidden></p>':'')+(user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+(!user&&boardMode==='league'?'<p class="note">This is where everyone starts. Sign in to join it and see your own league.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
@@ -452,12 +452,15 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   if(!rows.length){note.textContent='Nobody here yet. Sign in and you start in this league.';return;}
   note.textContent='';const n=rows.length,bar=barFor(mine);
   /* Two lines: one under whoever moves up right now (top 3 with the bar), so it shifts as people earn, and one under the top 3. */
-  const ups=mine<TOP?rows.filter((r,i)=>i<3&&r.wxp>0&&r.wxp>=bar).length:0;
+  /* Places work like the weekly job's: players level on XP share a place, so a tie for 3rd means everyone tied is "top 3". */
+  const rk=rows.map(r=>1+rows.filter(q=>q.wxp>r.wxp).length),in3=rk.filter(k=>k<=3).length;
+  const ups=mine<TOP?rows.filter((r,i)=>rk[i]<=3&&r.wxp>0&&r.wxp>=bar).length:0;
   const line='<li class="zone up-line">'+(ups?'▲ Above this line: moving up on Monday':'▲ Nobody in the top 3 has '+bar+' XP yet')+'</li>';
-  const top3='<li class="zone top3-line">Top 3 · '+bar+' XP to move up</li>';
-  const toGo=(r,i)=>{if(mine>=TOP||i<ups)return '';const need=Math.max(bar,i<3?0:rows[2].wxp+1)-r.wxp;return need>0?need+' XP to move up':'';};
-  ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&i>=n-3));
-    return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===3&&ups<3?top3:'')+row(r,i,r.wxp,up?'up':mine<TOP&&i<3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
+  const top3='<li class="zone top3-line">Top 3 · needs at least '+bar+' XP this week to move up</li>';
+  const third=rows[Math.min(2,n-1)].wxp;
+  const toGo=(r,i)=>{if(mine>=TOP||i<ups)return '';const need=Math.max(bar,rk[i]<=3?0:third)-r.wxp;return need>0?need+' more XP to move up':'';};
+  ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&rk[i]>n-3));
+    return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===in3&&ups<in3?top3:'')+row(r,rk[i]-1,r.wxp,up?'up':mine<TOP&&rk[i]<=3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
 function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id&&chalDay(),ch=show&&canChal(r.id);return '<li class="'+(user&&r.id===user.id?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span><span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
 
