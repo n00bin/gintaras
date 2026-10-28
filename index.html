@@ -288,6 +288,18 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .done .big{font-family:var(--display);font-size:56px;font-weight:700;color:var(--amber-deep);line-height:1}
 .done h2{font-size:26px;font-weight:600}
 
+.pop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px;background:rgba(10,18,14,.5);cursor:pointer}
+.pop-card{display:grid;justify-items:center;gap:6px;text-align:center;background:var(--surface);border-radius:28px;padding:22px 28px 16px;width:min(340px,100%);box-shadow:0 18px 48px rgba(0,0,0,.28)}
+.pop-mascot{width:150px;margin-bottom:-6px}
+.pop-icon{font-size:56px;line-height:1}
+.pop-card strong{font-family:var(--display);font-size:30px;font-weight:700;line-height:1.1;color:var(--amber-deep)}
+.pop-card span:not(.pop-icon):not(.mascot){font-size:18px;font-weight:700}
+.pop-card small{font-size:12px;color:var(--muted);margin-top:4px}
+.pop.in .pop-card{animation:popin .42s cubic-bezier(.2,1.6,.4,1)}
+.pop.in{animation:fadein .2s}
+.pop.out{opacity:0;transition:opacity .2s}
+@keyframes popin{from{transform:scale(.4) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadein{from{opacity:0}}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:800;z-index:30;opacity:0;transition:opacity .25s;pointer-events:none;max-width:calc(100% - 32px)}
 .toast.show{opacity:1}
 .confirm{display:grid;gap:10px;background:var(--bad-soft);border-radius:12px;padding:12px}
@@ -901,6 +913,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   </div></div>
 </section>
 
+<div class="pop" id="pop" hidden></div>
 <div class="toast" id="toast" role="status"></div>
 
 <script src="avatars.js"></script>
@@ -2617,9 +2630,13 @@ const clock=h=>(h%12||12)+(h<12?' am':' pm');
 function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt(),now=new Date().getHours();
   el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Double XP until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
   el.hidden=now===h;const x2=$('#x2');if(x2)x2.hidden=!xpDouble();
+  if(now===h&&S.hhPop!==today()&&$('#sheet').hidden&&$('#welcome').hidden){S.hhPop=today();save();
+    celebrate({mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(h+1)+'. Every lesson counts twice.',ms:3600});}
   const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
     bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Double XP</strong><small>Every lesson counts twice until '+clock(h+1)+' · '+left+' min left</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
+window.addEventListener('gintaras:idle',()=>setTimeout(renderHappy,1200));
+window.celebrate=celebrate;
 /* Time in lessons, per day (S.ltime[day] = seconds). Only counts while a lesson, practice or conversation
    is open on screen and someone touched it in the last 3 minutes, so a lesson left open doesn't add up. */
 let lastUse=Date.now(),timeTicks=0;
@@ -2651,12 +2668,12 @@ const SHOP_USE=[['rest','🌙','Spare rest day','Covers one extra missed day',10
   ['challenge','⚔️','Friend challenge','Bet 10–50 on who earns more XP this week','10–50']];
 const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a division','+20'],['Top 3 in your league','+15 / 10 / 5'],['Each week in the Sun league','+10'],['Sun Cup final, top 3','+100 / 50 / 25']];
 function buy(id){
-  if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;toast('Spare rest day added');}
+  if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
-    if(happyHour())return toast('It\'s happy hour: XP is already double. Save your amber!');if(!spendAmber(15))return;S.boostUntil=Date.now()+15*60000;S.boostDay=today();toast('Double XP for 15 minutes. Go!');}
+    if(happyHour())return toast('It\'s happy hour: XP is already double. Save your amber!');if(!spendAmber(15))return;S.boostUntil=Date.now()+15*60000;S.boostDay=today();celebrate({mood:'cheer',icon:'⚡',title:'Double XP!',sub:'Every lesson counts twice for 15 minutes. Go!'});}
   else if(id==='repair'){if(!canRepair())return toast('Nothing to repair: your streak is fine');if(!spendAmber(30))return;const n=S.brokenStreak.n;
     if(S.lastDay===today()||S.lastDay===yesterday())S.streak=n+S.streak;else{S.streak=n;S.lastDay=yesterday();}
-    if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;S.brokenStreak=null;toast('🔥 Your '+S.streak+'-day streak is back!');}
+    if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;S.brokenStreak=null;celebrate({mood:'cheer',icon:'🔥',title:'Streak repaired!',sub:'Your '+S.streak+'-day streak is back'});}
   else if(id==='shield'){if(window.cloud&&window.cloud.buyShield)window.cloud.buyShield();else toast('Sign in to join a league first');return;}
   else if(id==='challenge'){const c=window.cloud;if(!c||!c.signedIn())return toast('Sign in to join a league first');showView('board');
     toast(c.chalOpen()?'Tap ⚔️ Challenge next to a player in your league':'Challenges start at the beginning of each week ('+c.chalWhen()+' your time). Come back then!',6000);return;}
@@ -2813,7 +2830,7 @@ const CROWN='<svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></
 /* ===================== RENDER: LEARN ===================== */
 function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#streak').textContent=S.streak;$('#xp').textContent=S.xp;$('#todayxp').textContent=S.todayXp;$('#goalxp').textContent=S.goal;
   const p=Math.min(100,Math.round(S.todayXp/S.goal*100));$('#goalbar').style.width=p+'%';
-  if(S.restNote){toast(S.restNote===1?'Rest day used. Your streak is safe.':S.restNote+' rest days used. Your streak is safe.');S.restNote=0;S.frozenNote=false;save();}
+  if(S.restNote){celebrate({mood:'rest',icon:'🌙',title:S.restNote===1?'Rest day used':S.restNote+' rest days used',sub:'Your '+S.streak+'-day streak is safe'});S.restNote=0;S.frozenNote=false;save();}
   if(S.welcomeBack){toast(amber()>=30?'Welcome back! Your '+S.welcomeBack+'-day streak can be repaired in the shop.':'Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
   {const P=PACES[S.pace]||PACES.m10,xl=Math.max(0,S.goal-S.todayXp),ml=Math.max(0,Math.ceil((P.mins*60-timeOn([today()]))/60));
   $('#goalnote').textContent=goalMet()?'Learning day done. Nice work today!':!S.todayXp&&!timeOn([today()])?'Reach '+S.goal+' XP and '+P.mins+' minutes in lessons to finish today.':(xl?xl+' XP':'')+(xl&&ml?' and ':'')+(ml?ml+' min':'')+' to finish today.';};
@@ -2935,6 +2952,19 @@ function mascot(mood,cls){const ink='#4A2A05',P='<polygon points="21.5,18.5 42.5
   const m=M[mood]||M.happy;
   return '<span class="mascot '+(cls||'')+'" aria-hidden="true"><svg viewBox="4 6 58 50" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="53" rx="9" ry="1.6" fill="currentColor" opacity=".14"/>'+m[0]+P+m[1]+'</svg></span>';}
 document.querySelectorAll('[data-mood]').forEach(e=>{e.outerHTML=mascot(e.dataset.mood,e.dataset.cls);});
+
+/* Big moments pop up over the screen for a few seconds: Gintarėlis, a large icon and one line. Tap to close sooner.
+   Several in a row wait their turn. */
+const popQ=[];let popOn=false;
+function celebrate(o){popQ.push(o);if(!popOn)nextPop();}
+function nextPop(){const o=popQ.shift(),el=$('#pop');if(!o||!el){popOn=false;return;}popOn=true;
+  el.innerHTML='<div class="pop-card" role="status" aria-live="assertive">'+mascot(o.mood||'cheer','pop-mascot')+(o.icon?'<span class="pop-icon" aria-hidden="true">'+o.icon+'</span>':'')+
+    '<strong>'+esc(o.title)+'</strong>'+(o.sub?'<span>'+esc(o.sub)+'</span>':'')+'<small>Tap to close</small></div>';
+  el.hidden=false;el.classList.remove('out');void el.offsetWidth;el.classList.add('in');sfx('win');
+  const close=()=>{if(el.hidden)return;clearTimeout(nextPop.t);el.onclick=null;el.classList.remove('in');el.classList.add('out');
+    setTimeout(()=>{el.hidden=true;el.classList.remove('out');nextPop();},220);};
+  el.onclick=close;nextPop.t=setTimeout(close,o.ms||2800);}
+
 
 /* Your face: pick a ready-made one, or step through each feature. Saved on this phone, synced, and shown on the board. */
 let faceDraft=null,faceGal=[];
@@ -3229,7 +3259,7 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
-  if(Q.mode==='lesson'&&S.lessonsDone%5===0)earnAmber(3+Math.floor(Math.random()*8),'treasure chest');
+  let chest=0;if(Q.mode==='lesson'&&S.lessonsDone%5===0){chest=3+Math.floor(Math.random()*8);earnAmber(chest,'treasure chest');}
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
   if(perfect)lines.push('<div class="win"><b>Flawless</b> · no mistakes, +'+bonus+' XP bonus</div>');
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
@@ -3240,7 +3270,8 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   save();
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words you know</small></div></div>'+lines.join('')+'</div>';
-  confetti(perfect||after.i>before.i||got.length>0?160:70);sfx('win');countUp();
+  confetti(perfect||after.i>before.i||got.length>0||chest?160:70);sfx('win');countUp();
+  if(chest)setTimeout(()=>celebrate({mood:'cheer',icon:'🎁',title:'Treasure chest!',sub:'+'+chest+' amber for your 5th lesson'}),700);
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
 /* The XP on the finish screen counts up from zero. */
 function countUp(){const el=document.querySelector('.done .big');if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;

@@ -241,7 +241,7 @@ async function buyShield(){const S=window.S;if(!user||!profile)return toast('Sig
   if(!window.spendAmber(25))return;
   const {error}=await sb.from('gintaras_profiles').update({shield_week:monday()}).eq('id',user.id);
   if(error){window.earnAmber(25);return toast('Could not shield your league: '+error.message);}
-  S.shieldWeek=monday();S.shieldMonth=monday().slice(0,7);window.save();toast('🛡️ Shield on: you can\'t move down a league this week');
+  S.shieldWeek=monday();S.shieldMonth=monday().slice(0,7);window.save();window.celebrate({mood:'cheer',icon:'🛡️',title:'League shield on',sub:'You can\'t move down a league this week'});
   if(window.renderShop)window.renderShop();renderBoard();}
 /* Friend challenges. Each side stakes amber when sending or accepting (recorded in S.chalLedger as "staked");
    once the weekly job settles it, each app pays its own player out exactly once and marks it "done". */
@@ -306,7 +306,7 @@ function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalanc
   ov.querySelector('[data-go]').onclick=async()=>{if(!window.spendAmber(stake))return;ov.remove();
     const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:monday()}).select().single();
     if(error){window.earnAmber(stake);return toast(/duplicate|unique/i.test(error.message)?'You already challenged '+nick+' this week':'Could not send: '+error.message);}
-    window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:'staked'});window.save();toast('Challenge sent to '+nick+'!');renderBoard();};}
+    window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:'staked'});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
 async function answerChallenge(id,status){const x=chals.find(y=>y.id===id);if(!x)return;
   if(status==='accepted'&&!window.spendAmber(x.stake))return;
   const {error}=await sb.from('gintaras_challenges').update({status}).eq('id',id);
@@ -314,7 +314,8 @@ async function answerChallenge(id,status){const x=chals.find(y=>y.id===id);if(!x
   const S=window.S;S.chalLedger=S.chalLedger||{};
   if(status==='accepted')S.chalLedger[id]='staked';
   if(status==='cancelled'&&S.chalLedger[id]==='staked'){window.earnAmber(x.stake);S.chalLedger[id]='done';}
-  window.save();toast(status==='accepted'?'Challenge on! Most XP by Sunday night wins.':status==='declined'?'Challenge declined':'Challenge cancelled, amber back');renderBoard();}
+  window.save();if(status==='accepted')window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins'});
+  else toast(status==='declined'?'Challenge declined':'Challenge cancelled, amber back');renderBoard();}
 function chalRows(){const me=user.id,wk=monday();
   return chals.map(x=>{const mine=x.from_id===me,other=mine?x.to_id:x.from_id,nick=esc(nameOf(other));
     if(x.status==='pending'&&!mine)return '<div class="chal-row"><span><b>'+nick+'</b> challenges you: <b>'+x.stake+' amber</b> on this week\'s XP.</span><span class="btns"><button type="button" class="chip" data-ans="accepted" data-id="'+x.id+'">Accept ('+x.stake+' amber)</button><button type="button" class="chip" data-ans="declined" data-id="'+x.id+'">No thanks</button></span></div>';
