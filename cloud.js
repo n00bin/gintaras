@@ -288,13 +288,7 @@ function chalRows(){const me=user.id,wk=monday();
 const CH_RULES='Challenges start on Mondays. Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP by Sunday night wins both stakes.';
 function renderChallenges(){const box=$('#chal-box');if(box){if(!user)box.innerHTML='';else{const rows=chalRows();
     box.innerHTML='<h2>Friend challenges</h2><p class="note">'+(chalDay()?'It’s Monday: tap a player above to challenge them. ':'')+CH_RULES+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
-  renderChalProfile();
-  document.querySelectorAll('#chal-box [data-ans],#chal-profile [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));}
-/* Profile: every challenge you're in, sent or received, live or just finished. */
-function renderChalProfile(){const box=$('#chal-profile');if(!box)return;if(!user){box.hidden=true;return;}box.hidden=false;const rows=chalRows();
-  box.innerHTML='<h2>Your challenges</h2>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'<p class="note">No challenges right now.</p>')+'<p class="note">'+CH_RULES+'</p>'+
-    '<button type="button" class="btn ghost" data-goleague>'+(chalDay()?'Challenge someone in the League':'Open the League')+'</button>';
-  box.querySelector('[data-goleague]').onclick=()=>{if(window.showView)window.showView('board');renderBoard();};}
+  document.querySelectorAll('#chal-box [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));}
 
 /* ---------- Sun Cup ---------- */
 /* Every month from its first Monday, for the Sun league: round 1 is everyone there who earns 500 XP that week,
