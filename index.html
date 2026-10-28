@@ -2515,12 +2515,17 @@ function addXp(n){rollDay();if(xpDouble())n*=2;S.xp+=n;S.todayXp+=n;window.dispa
   if(S.todayXp>=S.goal*2&&S.freezeDay!==t&&(S.freezes||0)<2){S.freezes=(S.freezes||0)+1;S.freezeDay=t;S.newFreeze=true;}save();return n;}
 
 /* ===================== AMBER, HAPPY HOUR AND THE SHOP ===================== */
-/* Amber (gintarai) is earned only by learning and spent in the shop. Earned and spent are kept as two
-   running totals, so syncing two devices can never create or lose amber. */
-const amber=()=>Math.max(0,(S.amberEarned||0)-(S.amberSpent||0));
+/* Amber (gintarai) is earned only by learning and spent in the shop. Earned and spent are counted per phone
+   (S.amberE / S.amberS, keyed by this phone's id), so two phones that both earn or spend before syncing add up
+   instead of one replacing the other. amberEarned / amberSpent stay as the totals (the server reads those). */
+const DEV=(()=>{try{let d=localStorage.getItem('gintaras.dev');if(!d){d=Math.random().toString(36).slice(2,10);localStorage.setItem('gintaras.dev',d);}return d;}catch(e){return 'x';}})();
+function amberSum(){if(!S.amberE)S.amberE={old:S.amberEarned||0};if(!S.amberS)S.amberS={old:S.amberSpent||0};
+  const t=o=>Object.values(o).reduce((x,y)=>x+(Number(y)||0),0);S.amberEarned=t(S.amberE);S.amberSpent=t(S.amberS);}
+function amberAdd(m,n){amberSum();S[m][DEV]=(S[m][DEV]||0)+n;amberSum();}
+const amber=()=>{amberSum();return Math.max(0,S.amberEarned-S.amberSpent);};
 let amberLog=null; // what was earned during the lesson that is finishing, for its finish screen
-function earnAmber(n,why){S.amberEarned=(S.amberEarned||0)+n;if(amberLog&&why)amberLog.push([n,why]);save();renderAmber();}
-function spendAmber(n){if(amber()<n){toast('You need '+(n-amber())+' more amber. Keep learning!');return false;}S.amberSpent=(S.amberSpent||0)+n;save();renderAmber();return true;}
+function earnAmber(n,why){amberAdd('amberE',n);if(amberLog&&why)amberLog.push([n,why]);save();renderAmber();}
+function spendAmber(n){if(amber()<n){toast('You need '+(n-amber())+' more amber. Keep learning!');return false;}amberAdd('amberS',n);save();renderAmber();return true;}
 function renderAmber(){const el=$('#amber');if(el)el.textContent=amber();}
 function amberLines(){const log=amberLog||[];amberLog=null;const chest=log.find(x=>x[1]==='treasure chest');const rest=log.filter(x=>x!==chest),tot=rest.reduce((a,x)=>a+x[0],0);
   return (chest?['<div class="win amber-win chest"><b>🎁 Treasure chest!</b> · +'+chest[0]+' amber</div>']:[]).concat(rest.length?['<div class="win amber-win"><img src="gem.svg" alt="" width="18" height="16"><b>+'+tot+' amber</b> · '+esc(rest.map(x=>x[1]).join(', '))+'</div>']:[]);}
@@ -3476,9 +3481,9 @@ function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.sav
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
   /* One-off back-pay: amber for learning done before amber existed, at today's rates, minus what was already earned.
      (1 a lesson, 5 a conversation, 3 a flawless one, 2 a learning day, and an average 6 chest every 5th lesson.) */
-  if(!S.amberBack){const convs=Object.values(S.convs||{}).filter(c=>c.done).length;
+  if(!S.amberBack){amberSum();const convs=Object.values(S.convs||{}).filter(c=>c.done).length;
     const owed=(S.lessonsDone||0)+5*convs+3*(S.perfects||0)+2*(S.daysLearned||0)+6*Math.floor((S.lessonsDone||0)/5)-(S.amberEarned||0);
-    if(owed>0){S.amberEarned=(S.amberEarned||0)+owed;setTimeout(()=>toast('🎁 +'+owed+' amber for the learning you did before amber existed'),1500);}S.amberBack=1;}
+    if(owed>0){amberAdd('amberE',owed);setTimeout(()=>toast('🎁 +'+owed+' amber for the learning you did before amber existed'),1500);}S.amberBack=1;}
   rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}

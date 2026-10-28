@@ -15,7 +15,9 @@ const weekWhen=(add)=>new Date(Date.parse(monday()+'T00:00:00Z')+(add||0)*864000
 function msg(t,bad){const m=$('#auth-msg');if(!m)return;m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';}
 
 /* ---------- merge local and cloud progress ---------- */
-function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({},a);
+/* Field by field: counts take the larger, sets are joined, dated fields take the newer. Anything else (settings)
+   comes from whichever copy is further along, so a new phone's blank defaults never replace your real ones. */
+function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.xp||0)?b:a,out=Object.assign({},base===a?b:a,base);
   out.xp=Math.max(a.xp||0,b.xp||0);out.streak=Math.max(a.streak||0,b.streak||0);out.bestStreak=Math.max(a.bestStreak||0,b.bestStreak||0);
   out.lessonsDone=Math.max(a.lessonsDone||0,b.lessonsDone||0);out.perfects=Math.max(a.perfects||0,b.perfects||0);out.speakDone=Math.max(a.speakDone||0,b.speakDone||0);
   out.freezes=Math.max(a.freezes||0,b.freezes||0);out.daysLearned=Math.max(a.daysLearned||0,b.daysLearned||0);
@@ -26,7 +28,14 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
   out.ltime={};new Set(Object.keys(a.ltime||{}).concat(Object.keys(b.ltime||{}))).forEach(k=>out.ltime[k]=Math.max((a.ltime||{})[k]||0,(b.ltime||{})[k]||0));
-  out.amberEarned=Math.max(a.amberEarned||0,b.amberEarned||0);out.amberSpent=Math.max(a.amberSpent||0,b.amberSpent||0);
+  /* Amber is counted per phone (amberE / amberS), so two phones that both earn or spend before syncing add up.
+     A copy from before that (only totals) still counts: any amount it has beyond the per-phone sum goes under 'old'. */
+  [['amberE','amberEarned'],['amberS','amberSpent']].forEach(([m,t])=>{const sum=o=>Object.values(o).reduce((x,y)=>x+(Number(y)||0),0);
+    const x=a[m],y=b[m];let o={};
+    if(x&&y)new Set(Object.keys(x).concat(Object.keys(y))).forEach(k=>o[k]=Math.max(x[k]||0,y[k]||0));
+    else if(x||y){o=Object.assign({},x||y);const legacy=x?b[t]||0:a[t]||0,d=legacy-sum(o);if(d>0)o.old=(o.old||0)+d;}
+    else o={old:Math.max(a[t]||0,b[t]||0)};
+    out[m]=o;out[t]=sum(o);});
   out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay','leagueNotice'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
   out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});out.chalSeen=Object.assign({},a.chalSeen||{},b.chalSeen||{});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
@@ -36,19 +45,33 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const out=Object.assign({
   out.welcomed=true;return out;}
 
 /* ---------- cloud save (debounced; called by the app's save()) ---------- */
-window.cloudDirty=function(){if(!sb||!user||!booted)return;clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,1500);};
-async function cloudSave(){if(!sb||!user)return;const S=window.S;if(!S)return;
-  const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}
-  try{await sb.from('gintaras_progress').upsert({user_id:user.id,state:S,updated_at:new Date().toISOString()});
-    if(profile)await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);
+let quiet=false,cloudAt=null; // cloudAt: when the cloud copy was last written, as this phone last saw it
+window.cloudDirty=function(){if(quiet||!sb||!user||!booted)return;clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,1500);};
+/* Before saving, check whether another phone or tab saved since this one last did. If so, fold its progress in
+   first (waiting until any open lesson is finished), so an older copy never writes over newer progress. */
+function adopt(state,at){quiet=true;window.S=mergeState(window.S,state);window.save();quiet=false;cloudAt=at;window.renderAll();}
+async function cloudSave(){if(!sb||!user||!window.S)return;
+  try{const {data:c,error:e1}=await sb.from('gintaras_progress').select('updated_at').eq('user_id',user.id).maybeSingle();if(e1)throw e1;
+    if(c&&Date.parse(c.updated_at)!==Date.parse(cloudAt)){
+      if(!$('#sheet').hidden){clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,15000);return;}
+      const {data:p,error:e2}=await sb.from('gintaras_progress').select('state,updated_at').eq('user_id',user.id).maybeSingle();if(e2)throw e2;
+      if(p&&p.state)adopt(p.state,p.updated_at);}
+    const S=window.S,wk=monday(),at=new Date().toISOString();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}
+    const {error:e3}=await sb.from('gintaras_progress').upsert({user_id:user.id,state:S,updated_at:at});if(e3)throw e3;cloudAt=at;
+    if(profile){const {error:e4}=await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);if(e4)throw e4;}
     setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
 
 /* ---------- auth ---------- */
 async function loadSession(){const {data}=await sb.auth.getSession();user=data.session?data.session.user:null;await afterAuth();}
+let retryTimer=null;
 async function afterAuth(){profile=null;
-  if(user){await ensureRollover();const {data}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();profile=data||null;
-    const {data:p}=await sb.from('gintaras_progress').select('state').eq('user_id',user.id).maybeSingle();
-    if(p&&p.state){window.S=mergeState(window.S,p.state);window.save();window.renderAll();}
+  if(user){await ensureRollover();const {data,error:e1}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();
+    const {data:p,error:e2}=e1?{}:await sb.from('gintaras_progress').select('state,updated_at').eq('user_id',user.id).maybeSingle();
+    /* If the account can't be read (a network blip), don't treat that as "nothing saved": nothing is sent until it can. */
+    if(e1||e2){booted=false;setStatus('Could not reach your account. Progress is kept on this device; trying again shortly.');
+      renderAuth();clearTimeout(retryTimer);retryTimer=setTimeout(()=>{if(user)afterAuth();},20000);return;}
+    profile=data||null;
+    if(p&&p.state)adopt(p.state,p.updated_at);
     if(!profile)profile=await autoProfile();
     loadChallenges();loadCup();loadNotify();loadNotes();
     booted=true;cloudSave();}
@@ -69,6 +92,9 @@ function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=
   return null;})().finally(()=>{profileMaking=null;}));}
 let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
+
+/* After signing out: forget the account's cloud copy and lists, so nothing from it is saved or shown on this phone. */
+function signedOut(){user=null;profile=null;booted=false;cloudAt=null;clearTimeout(saveTimer);clearTimeout(retryTimer);chals=[];chalAlerts&&chalAlerts();}
 
 /* Profile card: who you are when signed in; the sign-in box when not. */
 function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderReports();
@@ -102,7 +128,7 @@ function showNickname(){const box=$('#auth');const changing=!!profile;if(window.
   if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
     const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
-    const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=row;renderAuth();renderBoard();cloudSave();};}
+    const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=Object.assign({},profile||{},row);renderAuth();renderBoard();cloudSave();};}
 
 /* Settings → Account: nickname, sign out, and deleting the account for good. */
 function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;box.hidden=!sb;head.hidden=!sb;if(!sb)return;
@@ -115,12 +141,12 @@ function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;
     '<div class="confirm" id="del-confirm" hidden><span>This permanently deletes your account, your nickname and leaderboard spot, and the progress saved online. There is no undo. Progress on this device stays unless you also reset it below.</span>'+
     '<button type="button" class="btn danger" id="btn-del-yes">Yes, delete my account</button><button type="button" class="btn ghost" id="btn-del-no">Keep my account</button><p class="note" id="del-msg"></p></div></div>';
   $('#btn-nick').onclick=showNickname;
-  $('#btn-out').onclick=async()=>{await sb.auth.signOut();user=null;profile=null;renderAuth();renderBoard();toast('Signed out');};
+  $('#btn-out').onclick=async()=>{await dropPhone();await sb.auth.signOut();signedOut();renderAuth();renderBoard();toast('Signed out');};
   $('#btn-del').onclick=()=>{$('#del-confirm').hidden=false;$('#btn-del').hidden=true;};
   $('#btn-del-no').onclick=()=>{$('#del-confirm').hidden=true;$('#btn-del').hidden=false;};
   $('#btn-del-yes').onclick=async()=>{const m=$('#del-msg');m.textContent='Deleting…';
     const {error}=await sb.rpc('gintaras_delete_account');if(error){m.textContent='Could not delete: '+error.message;return;}
-    try{await sb.auth.signOut();}catch(e){}user=null;profile=null;renderAuth();renderBoard();toast('Your account has been deleted');};}
+    try{await sb.auth.signOut();}catch(e){}signedOut();renderAuth();renderBoard();toast('Your account has been deleted');};}
 function toast(t,ms){if(window.toastMsg)window.toastMsg(t,ms);}
 
 /* ---------- Google sign-in ----------
@@ -366,6 +392,8 @@ async function pushOn(){if(!pushOk())return;
     toast(error?'Could not turn on notifications: '+error.message:'Notifications are on for this phone');}
   catch(e){toast('Could not turn on notifications on this phone');}
   await saveNotify();renderNotif();}
+/* Signing out: this phone stops getting the account's notifications (it stays subscribed, ready for whoever signs in next). */
+async function dropPhone(){try{const reg=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration(),sub=pushSub||(reg&&await reg.pushManager.getSubscription());if(sub)await sb.rpc('gintaras_push_drop',{ep:sub.endpoint});}catch(e){}}
 async function pushOff(){if(pushSub){const ep=pushSub.endpoint;try{await pushSub.unsubscribe();}catch(e){}pushSub=null;await sb.rpc('gintaras_push_drop',{ep});}toast('Notifications are off for this phone');renderNotif();}
 function renderNotif(){const box=$('#notif'),S=window.S,t=$('#study-time');
   if(t&&S){t.value=S.studyTime||'';t.onchange=()=>{S.studyTime=t.value||'';window.save();saveNotify();renderNotif();if(S.studyTime&&pushOk()&&Notification.permission==='default')pushOn();};}
