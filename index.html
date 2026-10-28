@@ -520,6 +520,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .chal-pop .card{animation:popin .42s cubic-bezier(.2,1.6,.4,1);border-radius:28px;padding:20px 22px}
 .chal-pop .pop-mascot{width:130px;margin-bottom:-10px}
 .chal-pop h2{font-size:26px;color:var(--amber-deep)}
+.chal-pop .raise-q{font-weight:800;color:var(--fg);margin-top:4px}
+.chal-pop .stakes .chip{min-height:44px;padding:8px 14px;font-size:15px}
 .pic{display:inline-block;vertical-align:middle;object-fit:contain}
 .pic.big{width:96px;height:96px}
 .pic.sm{width:40px;height:40px}
@@ -2648,7 +2650,9 @@ function previewPops(){if(location.hash!=='#pops')return;history.replaceState(nu
    {mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with Davawn didn\'t go ahead: +20 amber'},{mood:'rest',icon:'🌙',title:'Rest day used',sub:'Your streak is safe'},
    {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(happyHourAt()+1)+'. Every lesson counts twice.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));
   /* last: a challenge arriving, which waits for an answer (the buttons only close it here) */
-  const wait=setInterval(()=>{if(popOn||popQ.length)return;clearInterval(wait);if(window.cloud&&window.cloud.chalPreview)window.cloud.chalPreview();},500);}
+  const wait=setInterval(()=>{if(popOn||popQ.length)return;clearInterval(wait);if(window.cloud&&window.cloud.chalPreview)window.cloud.chalPreview();
+    /* then the challenger's side of a raise, once that one is closed */
+    const w2=setInterval(()=>{if(document.querySelector('.league-pop')||popOn||popQ.length)return;clearInterval(w2);window.cloud.raisePreview();},500);},500);}
 window.addEventListener('gintaras:ready',()=>setTimeout(previewPops,600));
 window.addEventListener('hashchange',previewPops);
 window.addEventListener('gintaras:idle',()=>setTimeout(renderHappy,1200));

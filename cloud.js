@@ -40,7 +40,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
     out[m]=o;out[t]=sum(o);});
   out.boostUntil=Math.max(a.boostUntil||0,b.boostUntil||0);['boostDay','shieldWeek','shieldMonth','goalDay','leagueNotice'].forEach(k=>{const v=[a[k]||'',b[k]||''].sort().pop();if(v)out[k]=v;});
   out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});out.chalSeen=Object.assign({},a.chalSeen||{},b.chalSeen||{});
-  out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{if(out.chalLedger[k]!=='done')out.chalLedger[k]=v;});
+  out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{const o=out.chalLedger[k];if(o==='done')return;out.chalLedger[k]=typeof o==='number'&&typeof v==='number'?Math.max(o,v):v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
   if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
   if((b.weekStart||'')>(a.weekStart||'')){out.weekStart=b.weekStart;out.weekXp=b.weekXp;}else if(b.weekStart===a.weekStart)out.weekXp=Math.max(a.weekXp||0,b.weekXp||0);
@@ -126,7 +126,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -264,44 +264,76 @@ async function loadChallenges(){if(!sb||!user){chals=[];return;}
 function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstrip');
   if(!S||!user){if(badge)badge.hidden=true;if(strip)strip.hidden=true;return;}
   const me=user.id,wk=monday(),incoming=chals.filter(x=>x.status==='pending'&&x.to_id===me&&x.week_start===wk);
+  const raises=chals.filter(x=>x.status==='raised'&&x.from_id===me&&x.week_start===wk);
   const live=chals.filter(x=>x.status==='accepted'&&x.week_start===wk);
-  if(badge){badge.hidden=!incoming.length;badge.textContent=incoming.length;}renderChallenges();
+  if(badge){badge.hidden=!(incoming.length+raises.length);badge.textContent=incoming.length+raises.length;}renderChallenges();
   if(strip){const a=S.weekStart===wk?S.weekXp||0:0;
-    const lines=incoming.map(x=>'⚔️ <b>'+esc(nameOf(x.from_id))+'</b> challenged you for '+x.stake+' amber. Tap to answer.').concat(live.map(x=>{const nick=esc(nameOf(x.from_id===me?x.to_id:x.from_id)),d=a-weekXpOf(x.from_id===me?x.to_id:x.from_id);
+    const lines=incoming.map(x=>'⚔️ <b>'+esc(nameOf(x.from_id))+'</b> challenged you for '+x.stake+' amber. Tap to answer.')
+      .concat(raises.map(x=>'⚔️ <b>'+esc(nameOf(x.to_id))+'</b> raised your challenge to '+x.stake+' amber. Tap to answer.'))
+      .concat(live.map(x=>{const nick=esc(nameOf(x.from_id===me?x.to_id:x.from_id)),d=a-weekXpOf(x.from_id===me?x.to_id:x.from_id);
       return '⚔️ You vs <b>'+nick+'</b>: '+(d>0?'you’re ahead by '+d+' XP':d<0?'you’re behind by '+(-d)+' XP. Catch up!':'tied. Pull ahead!');}));
     strip.innerHTML=lines.map(l=>'<div>'+l+'</div>').join('');strip.hidden=!lines.length;}
   /* The pop-up waits until you're not in a lesson or the welcome screens. */
   const busy=!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||document.querySelector('.league-pop');
-  if(!busy){live.filter(x=>x.from_id===me&&!(S.chalSeen||{})[x.id+'a']).forEach(x=>{S.chalSeen=Object.assign(S.chalSeen||{},{[x.id+'a']:1});
-      chalPops.push({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:nameOf(x.to_id)+' accepted. Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});});
-    if(chalPops.length){window.save();chalPops.splice(0).forEach(o=>window.celebrate(o));}}
-  const fresh=incoming.find(x=>!(S.chalSeen||{})[x.id]);if(!fresh||busy)return;
-  S.chalSeen=Object.assign(S.chalSeen||{},{[fresh.id]:1});window.save();
-  chalDialog(fresh,false);}
-/* demo: the preview link shows the pop-up with buttons that only close it. */
-function chalDialog(fresh,demo){const nick=esc(demo?fresh.nick:nameOf(fresh.from_id)),have=demo?fresh.stake:window.amberBalance(),ov=document.createElement('div');ov.className='league-pop chal-pop';
+  if(busy)return;
+  const seen=S.chalSeen||{},mark=k=>{S.chalSeen=Object.assign(S.chalSeen||{},{[k]:1});};
+  /* "Challenge on!" for whoever didn't make the final yes: the sender, or the one who raised. */
+  live.filter(x=>!seen[x.id+'a']&&(x.from_id===me||seen[x.id+'r'])).forEach(x=>{mark(x.id+'a');
+    chalPops.push({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:nameOf(x.from_id===me?x.to_id:x.from_id)+' accepted. Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});});
+  if(chalPops.length){window.save();chalPops.splice(0).forEach(o=>window.celebrate(o));}
+  const fresh=incoming.find(x=>!seen[x.id]);
+  if(fresh){mark(fresh.id);window.save();chalDialog(fresh,false);return;}
+  const raised=raises.find(x=>!seen[x.id+'s']);
+  if(raised){mark(raised.id+'s');window.save();raiseDialog(raised,false);}}
+/* Amber this phone has put into a challenge. Older saves wrote "staked", meaning the stake at the time. */
+function stakedIn(x){const v=((window.S||{}).chalLedger||{})[x.id];return typeof v==='number'?v:v==='staked'?x.stake:0;}
+/* An incoming challenge: accept it, raise it (the challenger then has to agree), or say no.
+   demo: the preview link shows it with buttons that only close it. */
+async function chalDialog(fresh,demo){const nick=esc(demo?fresh.nick:nameOf(fresh.from_id)),have=demo?40:window.amberBalance();
+  if(!demo)await loadAmber([fresh.from_id]);
+  const theirs=demo?50:fresh.stake+(amberOf[fresh.from_id]||0),cap=Math.min(50,have,theirs),ups=[20,30,40,50].filter(n=>n>fresh.stake&&n<=cap);
+  const ov=document.createElement('div');ov.className='league-pop chal-pop';let to=fresh.stake;
   ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge">'+window.mascot('think','pop-mascot')+'<div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP before the week ends ('+weekWhen(7)+' your time). The winner takes both.</p>'+
     (have<fresh.stake?'<p class="note">You need '+fresh.stake+' amber to accept and have '+have+'.</p>':'')+
+    (ups.length&&have>=fresh.stake?'<p class="note raise-q">Feeling brave? Raise the stake:</p><div class="stakes">'+ups.map(n=>'<button type="button" class="chip" data-up="'+n+'">'+n+' amber</button>').join('')+'</div>':'')+
     '<div class="row2"><button type="button" class="btn ghost" data-later>Decide later</button><button type="button" class="btn amber" data-yes'+(have<fresh.stake?' disabled':'')+'>Accept ('+fresh.stake+' amber)</button></div><button type="button" class="linkbtn" data-no>No thanks</button></div>';
+  document.body.appendChild(ov);const yes=ov.querySelector('[data-yes]');
+  ov.querySelectorAll('[data-up]').forEach(b=>b.onclick=()=>{const n=Number(b.dataset.up);to=to===n?fresh.stake:n;
+    ov.querySelectorAll('[data-up]').forEach(c=>c.classList.toggle('in',Number(c.dataset.up)===to));
+    yes.textContent=to>fresh.stake?'Raise to '+to+' amber':'Accept ('+fresh.stake+' amber)';});
+  ov.querySelector('[data-later]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  yes.onclick=()=>{ov.remove();
+    if(demo)return window.celebrate(to>fresh.stake?{mood:'cheer',icon:'⚔️',title:'Raise sent!',sub:'Waiting for '+fresh.nick+' to accept '+to+' amber'}:{mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins'});
+    if(to>fresh.stake)answerChallenge(fresh.id,'raised',to);else answerChallenge(fresh.id,'accepted');};
+  ov.querySelector('[data-no]').onclick=()=>{ov.remove();if(!demo)answerChallenge(fresh.id,'declined');};}
+/* The challenger's side of a raise: put in the difference, or back out and both get their amber back. */
+function raiseDialog(x,demo){const nick=esc(demo?x.nick:nameOf(x.to_id)),put=demo?x.put:stakedIn(x),more=x.stake-put,have=demo?50:window.amberBalance();
+  const ov=document.createElement('div');ov.className='league-pop chal-pop';
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Challenge raised">'+window.mascot('think','pop-mascot')+'<div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' raised it to '+x.stake+'!</h2>'+
+    '<p class="note">You put in '+put+' amber. Accept to add '+more+' more, and the winner takes '+x.stake*2+'. Or back out, and you both get your amber back.</p>'+
+    (have<more?'<p class="note">You need '+more+' more amber and have '+have+'.</p>':'')+
+    '<div class="row2"><button type="button" class="btn ghost" data-no>Back out</button><button type="button" class="btn amber" data-yes'+(have<more?' disabled':'')+'>Accept (+'+more+' amber)</button></div><button type="button" class="linkbtn" data-later>Decide later</button></div>';
   document.body.appendChild(ov);
   ov.querySelector('[data-later]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
-  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();if(!demo)answerChallenge(fresh.id,'accepted');else window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins'});};
-  ov.querySelector('[data-no]').onclick=()=>{ov.remove();if(!demo)answerChallenge(fresh.id,'declined');};}
+  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();if(demo)window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});else answerChallenge(x.id,'accepted');};
+  ov.querySelector('[data-no]').onclick=()=>{ov.remove();if(!demo)answerChallenge(x.id,'cancelled');};}
 /* Challenge news (accepted, won, lost, amber back) pops up big, but waits until you're out of a lesson. */
 const chalPops=[];
 function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger||{};const msgs=[];
-  chals.forEach(x=>{const k=String(x.id);if(S.chalLedger[k]!=='staked')return;const other=nameOf(x.from_id===user.id?x.to_id:x.from_id);
-    if(['declined','cancelled','expired'].includes(x.status)){window.earnAmber(x.stake);S.chalLedger[k]='done';msgs.push({mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with '+other+' didn\'t go ahead: +'+x.stake+' amber'});}
+  chals.forEach(x=>{const k=String(x.id);
+    if(S.chalLedger[k]==='staked'&&x.status==='pending')S.chalLedger[k]=x.stake; // pin old saves' amount before any raise
+    const put=stakedIn(x);if(!put)return;const other=nameOf(x.from_id===user.id?x.to_id:x.from_id);
+    if(['declined','cancelled','expired'].includes(x.status)){window.earnAmber(put);S.chalLedger[k]='done';msgs.push({mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with '+other+' didn\'t go ahead: +'+put+' amber'});}
     else if(x.status==='settled'){S.chalLedger[k]='done';
       if(x.winner===user.id){window.earnAmber(x.stake*2);msgs.push({mood:'cheer',icon:'🏆',title:'You won!',sub:'You beat '+other+': +'+x.stake*2+' amber'});}
-      else if(!x.winner){window.earnAmber(x.stake);msgs.push({mood:'happy',icon:'🤝',title:'A draw!',sub:'You and '+other+' tied: '+x.stake+' amber back'});}
+      else if(!x.winner){window.earnAmber(put);msgs.push({mood:'happy',icon:'🤝',title:'A draw!',sub:'You and '+other+' tied: '+put+' amber back'});}
       else msgs.push({mood:'think',icon:'⚔️',title:other+' won this one',sub:'Rematch next week?'});}});
   if(msgs.length){window.save();chalPops.push(...msgs);}}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
   if(!chalDay())return toast('Challenges start at the beginning of the week ('+weekWhen(7)+' to '+weekWhen(8)+' your time), so everyone starts even',6000);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');
   if(theirs<CH_MIN)return toast(nick+' needs '+CH_MIN+' amber before they can be challenged');
-  if(chals.some(x=>x.week_start===monday()&&['pending','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+' this week');
+  if(chals.some(x=>x.week_start===monday()&&['pending','raised','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+' this week');
   if(cap<CH_MIN)return toast('The stake can’t be more than either of you has, and the smallest is '+CH_MIN+' amber');
   const ov=document.createElement('div');ov.className='league-pop';let stake=0;
   ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">Whoever earns more XP before the week ends ('+weekWhen(7)+' your time) wins both stakes. '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
@@ -313,19 +345,26 @@ function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalanc
   ov.querySelector('[data-go]').onclick=async()=>{if(!window.spendAmber(stake))return;ov.remove();
     const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:monday()}).select().single();
     if(error){window.earnAmber(stake);return toast(/duplicate|unique/i.test(error.message)?'You already challenged '+nick+' this week':'Could not send: '+error.message);}
-    window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:'staked'});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
-async function answerChallenge(id,status){const x=chals.find(y=>y.id===id);if(!x)return;
-  if(status==='accepted'&&!window.spendAmber(x.stake))return;
-  const {error}=await sb.from('gintaras_challenges').update({status}).eq('id',id);
-  if(error){if(status==='accepted')window.earnAmber(x.stake);return toast('Could not answer: '+error.message);}
-  const S=window.S;S.chalLedger=S.chalLedger||{};
-  if(status==='accepted')S.chalLedger[id]='staked';
-  if(status==='cancelled'&&S.chalLedger[id]==='staked'){window.earnAmber(x.stake);S.chalLedger[id]='done';}
-  window.save();if(status==='accepted')window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins'});
-  else toast(status==='declined'?'Challenge declined':'Challenge cancelled, amber back');renderBoard();}
+    window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:stake});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
+async function answerChallenge(id,status,raiseTo){const x=chals.find(y=>y.id===id);if(!x)return;
+  const S=window.S;S.chalLedger=S.chalLedger||{};const put=stakedIn(x),pay=status==='raised'?raiseTo:status==='accepted'?x.stake-put:0;
+  if(pay>0&&!window.spendAmber(pay))return;
+  const {error}=await sb.from('gintaras_challenges').update(status==='raised'?{status,stake:raiseTo}:{status}).eq('id',id);
+  if(error){if(pay>0)window.earnAmber(pay);return toast('Could not answer: '+error.message);}
+  const other=nameOf(x.from_id===user.id?x.to_id:x.from_id);
+  if(status==='raised'){S.chalLedger[id]=raiseTo;S.chalSeen=Object.assign(S.chalSeen||{},{[id+'r']:1});}
+  if(status==='accepted'){S.chalLedger[id]=x.stake;S.chalSeen=Object.assign(S.chalSeen||{},{[id+'a']:1});}
+  if(status==='cancelled'&&put){window.earnAmber(put);S.chalLedger[id]='done';}
+  window.save();
+  if(status==='accepted')window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});
+  else if(status==='raised')window.celebrate({mood:'cheer',icon:'⚔️',title:'Raise sent!',sub:'Waiting for '+other+' to accept '+raiseTo+' amber'});
+  else toast(status==='declined'?'Challenge declined':'Challenge cancelled, amber back');
+  await loadChallenges();renderBoard();}
 function chalRows(){const me=user.id,wk=monday();
   return chals.map(x=>{const mine=x.from_id===me,other=mine?x.to_id:x.from_id,nick=esc(nameOf(other));
-    if(x.status==='pending'&&!mine)return '<div class="chal-row"><span><b>'+nick+'</b> challenges you: <b>'+x.stake+' amber</b> on this week\'s XP.</span><span class="btns"><button type="button" class="chip" data-ans="accepted" data-id="'+x.id+'">Accept ('+x.stake+' amber)</button><button type="button" class="chip" data-ans="declined" data-id="'+x.id+'">No thanks</button></span></div>';
+    if(x.status==='pending'&&!mine)return '<div class="chal-row"><span><b>'+nick+'</b> challenges you: <b>'+x.stake+' amber</b> on this week\'s XP.</span><span class="btns"><button type="button" class="chip" data-open="'+x.id+'">Answer</button><button type="button" class="chip" data-ans="declined" data-id="'+x.id+'">No thanks</button></span></div>';
+    if(x.status==='raised'&&mine)return '<div class="chal-row"><span><b>'+nick+'</b> raised your challenge to <b>'+x.stake+' amber</b>.</span><span class="btns"><button type="button" class="chip" data-ans="accepted" data-id="'+x.id+'">Accept (+'+(x.stake-stakedIn(x))+' amber)</button><button type="button" class="chip" data-ans="cancelled" data-id="'+x.id+'">Back out</button></span></div>';
+    if(x.status==='raised')return '<div class="chal-row"><span>You raised it to <b>'+x.stake+' amber</b>. Waiting for <b>'+nick+'</b> to accept.</span></div>';
     if(x.status==='pending')return '<div class="chal-row"><span>Waiting for <b>'+nick+'</b> to accept ('+x.stake+' amber).</span><span class="btns"><button type="button" class="chip" data-ans="cancelled" data-id="'+x.id+'">Cancel</button></span></div>';
     if(x.status==='accepted'){const a=window.S.weekXp&&window.S.weekStart===wk?window.S.weekXp:0,b=weekXpOf(other);
       return '<div class="chal-row"><span>⚔️ <b>You vs '+nick+'</b> · '+x.stake+' amber each</span><span>You <b>'+a+' XP</b> · '+nick+' <b>'+b+' XP</b> this week'+(a>b?' · you\'re ahead!':a<b?' · catch up!':'')+'</span></div>';}
@@ -335,7 +374,8 @@ function chalRows(){const me=user.id,wk=monday();
 const CH_RULES=()=>'Challenges can only be started on the first day of the week ('+weekWhen(0)+' to '+weekWhen(1)+' your time). Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP before the week ends ('+weekWhen(7)+') wins both stakes.';
 function renderChallenges(){const box=$('#chal-box');if(box){if(!user)box.innerHTML='';else{const rows=chalRows();
     box.innerHTML='<h2>Friend challenges</h2><p class="note">'+(chalDay()?'Challenges are open today: tap a player above to challenge them. ':'')+CH_RULES()+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
-  document.querySelectorAll('#chal-box [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));}
+  document.querySelectorAll('#chal-box [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));
+  document.querySelectorAll('#chal-box [data-open]').forEach(b=>b.onclick=()=>{const x=chals.find(y=>y.id===Number(b.dataset.open));if(x)chalDialog(x,false);});}
 
 /* ---------- Sun Cup ---------- */
 /* Every month from its first Monday, for the Sun league: round 1 is everyone there who earns 500 XP that week,
