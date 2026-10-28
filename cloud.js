@@ -126,7 +126,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -272,24 +272,31 @@ function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstri
     strip.innerHTML=lines.map(l=>'<div>'+l+'</div>').join('');strip.hidden=!lines.length;}
   /* The pop-up waits until you're not in a lesson or the welcome screens. */
   const busy=!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||document.querySelector('.league-pop');
+  if(!busy){live.filter(x=>x.from_id===me&&!(S.chalSeen||{})[x.id+'a']).forEach(x=>{S.chalSeen=Object.assign(S.chalSeen||{},{[x.id+'a']:1});
+      chalPops.push({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:nameOf(x.to_id)+' accepted. Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});});
+    if(chalPops.length){window.save();chalPops.splice(0).forEach(o=>window.celebrate(o));}}
   const fresh=incoming.find(x=>!(S.chalSeen||{})[x.id]);if(!fresh||busy)return;
   S.chalSeen=Object.assign(S.chalSeen||{},{[fresh.id]:1});window.save();
-  const nick=esc(nameOf(fresh.from_id)),have=window.amberBalance(),ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge"><div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP before the week ends ('+weekWhen(7)+' your time). The winner takes both.</p>'+
+  chalDialog(fresh,false);}
+/* demo: the preview link shows the pop-up with buttons that only close it. */
+function chalDialog(fresh,demo){const nick=esc(demo?fresh.nick:nameOf(fresh.from_id)),have=demo?fresh.stake:window.amberBalance(),ov=document.createElement('div');ov.className='league-pop chal-pop';
+  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge">'+window.mascot('think','pop-mascot')+'<div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP before the week ends ('+weekWhen(7)+' your time). The winner takes both.</p>'+
     (have<fresh.stake?'<p class="note">You need '+fresh.stake+' amber to accept and have '+have+'.</p>':'')+
     '<div class="row2"><button type="button" class="btn ghost" data-later>Decide later</button><button type="button" class="btn amber" data-yes'+(have<fresh.stake?' disabled':'')+'>Accept ('+fresh.stake+' amber)</button></div><button type="button" class="linkbtn" data-no>No thanks</button></div>';
   document.body.appendChild(ov);
   ov.querySelector('[data-later]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
-  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();answerChallenge(fresh.id,'accepted');};
-  ov.querySelector('[data-no]').onclick=()=>{ov.remove();answerChallenge(fresh.id,'declined');};}
+  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();if(!demo)answerChallenge(fresh.id,'accepted');else window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins'});};
+  ov.querySelector('[data-no]').onclick=()=>{ov.remove();if(!demo)answerChallenge(fresh.id,'declined');};}
+/* Challenge news (accepted, won, lost, amber back) pops up big, but waits until you're out of a lesson. */
+const chalPops=[];
 function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger||{};const msgs=[];
   chals.forEach(x=>{const k=String(x.id);if(S.chalLedger[k]!=='staked')return;const other=nameOf(x.from_id===user.id?x.to_id:x.from_id);
-    if(['declined','cancelled','expired'].includes(x.status)){window.earnAmber(x.stake);S.chalLedger[k]='done';msgs.push('Your challenge with '+other+' didn\'t go ahead: '+x.stake+' amber back');}
+    if(['declined','cancelled','expired'].includes(x.status)){window.earnAmber(x.stake);S.chalLedger[k]='done';msgs.push({mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with '+other+' didn\'t go ahead: +'+x.stake+' amber'});}
     else if(x.status==='settled'){S.chalLedger[k]='done';
-      if(x.winner===user.id){window.earnAmber(x.stake*2);msgs.push('🏆 You beat '+other+'! +'+x.stake*2+' amber');}
-      else if(!x.winner){window.earnAmber(x.stake);msgs.push('A draw with '+other+': '+x.stake+' amber back');}
-      else msgs.push(other+' won your challenge this time. Rematch?');}});
-  if(msgs.length){window.save();toast(msgs.join(' · '),4000+2000*msgs.length);}}
+      if(x.winner===user.id){window.earnAmber(x.stake*2);msgs.push({mood:'cheer',icon:'🏆',title:'You won!',sub:'You beat '+other+': +'+x.stake*2+' amber'});}
+      else if(!x.winner){window.earnAmber(x.stake);msgs.push({mood:'happy',icon:'🤝',title:'A draw!',sub:'You and '+other+' tied: '+x.stake+' amber back'});}
+      else msgs.push({mood:'think',icon:'⚔️',title:other+' won this one',sub:'Rematch next week?'});}});
+  if(msgs.length){window.save();chalPops.push(...msgs);}}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
   if(!chalDay())return toast('Challenges start at the beginning of the week ('+weekWhen(7)+' to '+weekWhen(8)+' your time), so everyone starts even',6000);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');

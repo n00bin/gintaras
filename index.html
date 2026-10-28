@@ -517,6 +517,9 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .lb .zone.down-line{color:var(--bad)}
 .league-pop{position:fixed;inset:0;z-index:60;background:rgba(10,18,14,.6);display:grid;place-items:center;padding:16px}
 .league-pop .card{max-width:380px;text-align:center;justify-items:center;margin:0}
+.chal-pop .card{animation:popin .42s cubic-bezier(.2,1.6,.4,1);border-radius:28px;padding:20px 22px}
+.chal-pop .pop-mascot{width:130px;margin-bottom:-10px}
+.chal-pop h2{font-size:26px;color:var(--amber-deep)}
 .pic{display:inline-block;vertical-align:middle;object-fit:contain}
 .pic.big{width:96px;height:96px}
 .pic.sm{width:40px;height:40px}
@@ -2640,12 +2643,16 @@ function previewPops(){if(location.hash!=='#pops')return;history.replaceState(nu
   [{mood:'cheer',icon:'🎁',title:'Treasure chest!',sub:'+7 amber for your 5th lesson'},{mood:'cheer',icon:'⚡',title:'Double XP!',sub:'Every lesson counts twice for 15 minutes. Go!'},
    {mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'},{mood:'cheer',icon:'🔥',title:'Streak repaired!',sub:'Your 12-day streak is back'},
    {mood:'cheer',icon:'🛡️',title:'League shield on',sub:'You can\'t move down a league this week'},{mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for Davawn to accept'},
-   {mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before the week ends wins'},{mood:'rest',icon:'🌙',title:'Rest day used',sub:'Your streak is safe'},
-   {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(happyHourAt()+1)+'. Every lesson counts twice.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));}
+   {mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Davawn accepted. Most XP before the week ends wins 40 amber'},{mood:'cheer',icon:'🏆',title:'You won!',sub:'You beat Davawn: +40 amber'},
+   {mood:'happy',icon:'🤝',title:'A draw!',sub:'You and Davawn tied: 20 amber back'},{mood:'think',icon:'⚔️',title:'Davawn won this one',sub:'Rematch next week?'},
+   {mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with Davawn didn\'t go ahead: +20 amber'},{mood:'rest',icon:'🌙',title:'Rest day used',sub:'Your streak is safe'},
+   {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(happyHourAt()+1)+'. Every lesson counts twice.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));
+  /* last: a challenge arriving, which waits for an answer (the buttons only close it here) */
+  const wait=setInterval(()=>{if(popOn||popQ.length)return;clearInterval(wait);if(window.cloud&&window.cloud.chalPreview)window.cloud.chalPreview();},500);}
 window.addEventListener('gintaras:ready',()=>setTimeout(previewPops,600));
 window.addEventListener('hashchange',previewPops);
 window.addEventListener('gintaras:idle',()=>setTimeout(renderHappy,1200));
-window.celebrate=celebrate;
+window.celebrate=celebrate;window.mascot=mascot;
 /* Time in lessons, per day (S.ltime[day] = seconds). Only counts while a lesson, practice or conversation
    is open on screen and someone touched it in the last 3 minutes, so a lesson left open doesn't add up. */
 let lastUse=Date.now(),timeTicks=0;
