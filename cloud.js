@@ -8,7 +8,10 @@ let user=null,profile=null,saveTimer=null,booted=false;
 
 const $=s=>document.querySelector(s);
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function monday(){const d=new Date();const day=(d.getDay()+6)%7;d.setDate(d.getDate()-day);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+/* The league week runs Monday to Monday on UTC (London winter) time, the same clock the weekly job uses,
+   so everyone in every time zone is in the same week. weekWhen() says when that is on this phone's clock. */
+function monday(){const d=new Date();d.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);return d.toISOString().slice(0,10);}
+const weekWhen=(add)=>new Date(Date.parse(monday()+'T00:00:00Z')+(add||0)*86400000).toLocaleString([],{weekday:'long',hour:'numeric',minute:'2-digit'});
 function msg(t,bad){const m=$('#auth-msg');if(!m)return;m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';}
 
 /* ---------- merge local and cloud progress ---------- */
@@ -118,7 +121,7 @@ function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;
   $('#btn-del-yes').onclick=async()=>{const m=$('#del-msg');m.textContent='Deleting…';
     const {error}=await sb.rpc('gintaras_delete_account');if(error){m.textContent='Could not delete: '+error.message;return;}
     try{await sb.auth.signOut();}catch(e){}user=null;profile=null;renderAuth();renderBoard();toast('Your account has been deleted');};}
-function toast(t){if(window.toastMsg)window.toastMsg(t);}
+function toast(t,ms){if(window.toastMsg)window.toastMsg(t,ms);}
 
 /* ---------- Google sign-in ----------
    Google's own button runs on this page, so Google's screen names n00bin.github.io instead of the Supabase server.
@@ -180,7 +183,10 @@ let rolled=null;
 function ensureRollover(){return rolled||(rolled=sb.rpc('gintaras_league_rollover').then(()=>{},()=>{}));}
 function weekEndsIn(){const now=new Date();const d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate()));d.setUTCDate(d.getUTCDate()+((8-d.getUTCDay())%7||7));
   const days=Math.ceil((d-now)/86400000);return days<=1?'Ends tonight':'Ends in '+days+' days';}
-function leagueNotice(){if(!profile)return;const S=window.S;if(!S||S.leagueNotice===monday())return;
+/* Pays out last week's league result once. It waits until the weekly job has finished this week (its bar log line
+   is dated this Monday), so a phone whose week turned over first can't be paid last week's result twice. */
+async function leagueNotice(){if(!profile)return;const S=window.S;if(!S||S.leagueNotice===monday())return;
+  if(!barLog||barLog.week!==monday()){try{await loadBars();}catch(e){}if(!barLog||barLog.week!==monday()||S.leagueNotice===monday())return;}
   const place=PLACE_AMBER[profile.last_rank]||0,up=profile.league_moved>0,down=profile.league_moved<0,sun=(profile.last_league||0)>=SUN&&profile.league>=SUN;
   if(!up&&!down&&!place&&!sun)return;S.leagueNotice=monday();
   const L=leagueOf(profile.league),lines=[];let pay=0;
@@ -211,7 +217,7 @@ async function buyShield(){const S=window.S;if(!user||!profile)return toast('Sig
 let chals=[],people={},amberOf={};
 /* Challenge rules: they start on Mondays only, so nobody picks on someone they're already far ahead of;
    both players need the 10 amber minimum, and the stake can't be more than either of them has. */
-const CH_MIN=10,chalDay=()=>new Date().getDay()===1;
+const CH_MIN=10,chalDay=()=>new Date().getUTCDay()===1;
 async function loadAmber(ids){ids=ids.filter(Boolean);if(!sb||!user||!ids.length)return;
   const {data,error}=await sb.rpc('gintaras_amber',{ids});if(error)return;(data||[]).forEach(r=>amberOf[r.id]=r.amber);}
 const canChal=id=>user&&profile&&id!==user.id&&chalDay()&&window.amberBalance()>=CH_MIN&&(amberOf[id]||0)>=CH_MIN;
@@ -254,12 +260,12 @@ function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger
       else msgs.push(other+' won your challenge this time. Rematch?');}});
   if(msgs.length){window.save();toast(msgs[0]);}}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
-  if(!chalDay())return toast('Challenges start on Mondays, so everyone begins the week even');
+  if(!chalDay())return toast('Challenges start at the beginning of the week ('+weekWhen(7)+' to '+weekWhen(8)+' your time), so everyone starts even',6000);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');
   if(theirs<CH_MIN)return toast(nick+' needs '+CH_MIN+' amber before they can be challenged');
   if(chals.some(x=>x.week_start===monday()&&['pending','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+' this week');
   const ov=document.createElement('div');ov.className='league-pop';let stake=0;
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">Whoever earns more XP by Sunday night wins both stakes. '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">Whoever earns more XP before the week ends ('+weekWhen(7)+' your time) wins both stakes. '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
     '<div class="stakes">'+[10,20,30,50].map(n=>'<button type="button" class="chip" data-st="'+n+'"'+(n>cap?' disabled':'')+'>'+n+' amber</button>').join('')+'</div><p class="note">You have '+have+' amber and '+esc(nick)+' has '+theirs+'. The stake can’t be more than either of you has.</p>'+
     '<div class="row2"><button type="button" class="btn ghost" data-x>Cancel</button><button type="button" class="btn amber" data-go disabled>Send challenge</button></div></div>';
   document.body.appendChild(ov);
@@ -286,9 +292,9 @@ function chalRows(){const me=user.id,wk=monday();
     if(x.status==='settled'&&x.week_start>=new Date(Date.now()-14*86400000).toISOString().slice(0,10))
       return '<div class="chal-row"><span>'+(x.winner===me?'🏆 You beat <b>'+nick+'</b> (+'+x.stake*2+' amber)':!x.winner?'🤝 Draw with <b>'+nick+'</b>':'<b>'+nick+'</b> won last week\'s challenge')+'</span></div>';
     return '';}).filter(Boolean);}
-const CH_RULES='Challenges start on Mondays. Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP by Sunday night wins both stakes.';
+const CH_RULES=()=>'Challenges can only be started on the first day of the week ('+weekWhen(0)+' to '+weekWhen(1)+' your time). Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP before the week ends ('+weekWhen(7)+') wins both stakes.';
 function renderChallenges(){const box=$('#chal-box');if(box){if(!user)box.innerHTML='';else{const rows=chalRows();
-    box.innerHTML='<h2>Friend challenges</h2><p class="note">'+(chalDay()?'It’s Monday: tap a player above to challenge them. ':'')+CH_RULES+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
+    box.innerHTML='<h2>Friend challenges</h2><p class="note">'+(chalDay()?'Challenges are open today: tap a player above to challenge them. ':'')+CH_RULES()+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
   document.querySelectorAll('#chal-box [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));}
 
 /* ---------- Sun Cup ---------- */
