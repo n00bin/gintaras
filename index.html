@@ -400,7 +400,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .turn .bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .turn .bank[hidden]{display:none}
 .turn .bank .chip.used{opacity:.3}
-.turn .shape{font-family:var(--display);font-size:22px;letter-spacing:.08em;color:var(--amber-deep);margin-top:6px}
+.turn .fill{font-family:var(--display);font-size:26px;font-weight:600;display:flex;flex-wrap:wrap;gap:8px 14px;margin:14px 0 6px}
+.turn .fw{display:inline-flex;align-items:flex-end;gap:2px}
+.turn .lb{width:1.1em;height:1.45em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
+.turn .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
+.turn .lb.bad{border-color:var(--bad);background:var(--bad-soft);animation:shake .3s}
+.turn .lb.right{border-color:var(--ok);background:var(--ok-soft)}
 .turn .hint.big{font-family:var(--display);font-size:24px;font-weight:600;color:var(--fg)}
 .copts{display:grid;gap:8px}
 .copt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);text-align:left;font-size:18px;font-weight:700;box-shadow:var(--shadow)}
@@ -964,8 +969,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.29';
-const APP_VERSION=88;
+const APP_RELEASE='3.30';
+const APP_VERSION=89;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3548,20 +3553,19 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     chatScroll();};
   if(C.mode==='speak')return sayIt();
   /* Writing grows with you, reply by reply, from how well you know the words in it (their level in lessons):
-     words still new → tap them in order; getting there → type with the first letters shown; known → type it all.
-     Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
+     words still new → tap them in order; getting there → fill in missing letters, more of them as you learn;
+     known → type it all. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
   const stage=replyStage(ln.lt);
+  if(stage==='fill')return fillReply(ln,done);
   let help=0,tries=0;
   const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
   const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,stage==='tap'?2:3);
-  const shape=ln.lt.replace(/[^\s.,!?]+/g,w=>w[0]+'·'.repeat(w.length-1));
   turn.innerHTML='<div class="turn"><span class="eyebrow">'+(stage==='tap'?'Tap the words of your reply':'Write your reply')+'</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
-    (stage==='hint'?'<div class="shape" aria-label="First letters">'+esc(shape)+'</div>':'')+
     '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="'+(stage==='tap'?'Tap the words below':'Type it in Lithuanian')+'"'+(stage==='tap'?' readonly':'')+'>'+
     (stage==='tap'?'':'<div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>')+'</div>'+
     '<div class="bank" id="cbank" hidden></div>'+(stage==='tap'?'<button type="button" class="linkbtn" id="cundo" hidden>Undo last word</button>':'')+'<div class="say-lt" id="cshow" hidden></div>'+
     '<button type="button" class="linkbtn" id="chelp">'+(stage==='tap'?'Show me the answer':'Help me')+'</button><p class="note" id="cmsg" role="status">'+
-    (stage==='tap'?'These words are still new to you, so you build the reply. As you learn them, you\'ll start typing.':stage==='hint'?'You know these words a bit now: the first letters are shown.':'')+'</p></div>';
+    (stage==='tap'?'These words are still new to you, so you build the reply. As you learn them, you\'ll start typing.':'')+'</p></div>';
   const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp'),undo=$('#cundo');
   const picked=[];
   const tiles=()=>{bank.hidden=false;bank.innerHTML=shuffle(words.concat(spare)).map(w=>'<button type="button" class="chip">'+esc(w)+'</button>').join('');
@@ -3591,9 +3595,42 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
 /* How well you know a reply's words: each word's best level in lessons, and the reply goes by its weakest word.
    Words no lesson teaches (like your own name) don't count. */
 let WORD_ITEMS=null;
-function replyStage(lt){if(!WORD_ITEMS){WORD_ITEMS={};ITEMS.forEach(i=>norm(i.lt0||i.lt).split(' ').forEach(w=>(WORD_ITEMS[w]=WORD_ITEMS[w]||[]).push(i)));}
-  let low=9;norm(lt).split(' ').forEach(w=>{const its=WORD_ITEMS[w];if(its)low=Math.min(low,Math.max(...its.map(wlvl)));});
-  return low<=0?'tap':low===1?'hint':'type';}
+function wordLvl(w){if(!WORD_ITEMS){WORD_ITEMS={};ITEMS.forEach(i=>norm(i.lt0||i.lt).split(' ').forEach(x=>(WORD_ITEMS[x]=WORD_ITEMS[x]||[]).push(i)));}
+  const its=WORD_ITEMS[norm(w)];return its?Math.max(...its.map(wlvl)):null;}
+function replyStage(lt){const ls=lt.split(/\s+/).map(wordLvl).filter(l=>l!==null);if(!ls.length)return 'tap';
+  const lo=Math.min(...ls);return lo<=0?'tap':lo>=4?'type':'fill';}
+/* Fill in the missing letters. Each word loses letters by how well you know it: about a quarter at level 1,
+   nearly half at level 2, most at level 3, all of them from level 4. Which letters go missing changes every time. */
+function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const share=[0,.25,.45,.7];const want=[];let tries=0;
+  const html=ln.lt.split(/\s+/).map(tok=>{const lv=wordLvl(tok);const pos=[...tok].map((ch,i)=>/\p{L}/u.test(ch)?i:-1).filter(i=>i>=0);
+    const n=lv===null?0:lv>=4?pos.length:Math.max(1,Math.min(pos.length-1,Math.round(pos.length*share[Math.max(1,lv)])));
+    const gone=new Set(shuffle(pos.slice()).slice(0,n));
+    return '<span class="fw">'+[...tok].map((ch,i)=>gone.has(i)?(want.push(ch),'<input class="lb" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" aria-label="Missing letter">'):'<span>'+esc(ch)+'</span>').join('')+'</span>';}).join('');
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Fill in the missing letters</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+    '<div class="fill" id="cfill">'+html+'</div>'+
+    '<div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>'+
+    '<div class="say-lt" id="cshow" hidden></div><button type="button" class="linkbtn" id="chelp">Show me the answer</button>'+
+    '<p class="note" id="cmsg" role="status">The better you know a word, the more of its letters go missing.</p></div>';
+  const bs=[...turn.querySelectorAll('.lb')],cmsg=$('#cmsg'),helpBtn=$('#chelp');let last=bs[0];
+  const upd=()=>{btn.disabled=bs.some(b=>!b.value);};
+  /* Every box must hold the right letter; only a missing accent mark is let through, with a note. */
+  const check=()=>{if(bs.some(b=>!b.value))return;
+    const ok=bs.every((b,k)=>strip(b.value)===strip(want[k])),exact=ok&&bs.every((b,k)=>b.value.toLowerCase()===want[k].toLowerCase());
+    if(ok){sfx('good');bs.forEach(b=>{b.disabled=true;b.classList.add('right');});turn.querySelectorAll('.keys button').forEach(x=>x.disabled=true);helpBtn.hidden=true;
+      cmsg.innerHTML=exact?'<span class="ok">Correct!</span>':'<span class="ok">Right letters!</span> Watch the marks: <b>'+esc(ln.lt)+'</b>';btn.disabled=true;
+      bs.forEach((b,k)=>{b.value=want[k];});return later(()=>done(false,ln.lt),exact?600:2400);}
+    tries++;C.mistakes++;sfx('bad');let first=null;
+    bs.forEach((b,k)=>{if(strip(b.value)!==strip(want[k])){b.value='';b.classList.add('bad');first=first||b;}});
+    cmsg.textContent='Not quite. The red boxes need a different letter.'+(tries>=2?' Stuck? Tap "Show me the answer".':'');upd();if(first)first.focus();};
+  bs.forEach((b,k)=>{b.onfocus=()=>{last=b;};
+    b.oninput=()=>{b.value=b.value.slice(-1);b.classList.remove('bad');if(b.value&&bs[k+1])bs[k+1].focus();upd();};
+    b.onkeydown=e=>{if(e.key==='Backspace'&&!b.value&&bs[k-1]){e.preventDefault();bs[k-1].value='';bs[k-1].focus();upd();}
+      else if(e.key==='Enter'){e.preventDefault();check();}};});
+  turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.oninput();});
+  helpBtn.onclick=()=>{const sh=$('#cshow');sh.hidden=false;sh.innerHTML='<span class="lt">'+esc(ln.lt)+'</span><div class="pron">'+pronHtml(ln.lt)+'</div>';
+    C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now fill in the letters yourself. Copying it once helps it stick.';};
+  btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
+  setTimeout(()=>bs[0]&&bs[0].focus(),80);chatScroll();}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 /* Boils a word down to how it sounds, so spelling differences don't count against you:
    "pizza" and "pica" both become "pica", "šokoladas" and "sokoladas" match, and so on. */
