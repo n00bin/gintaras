@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.28.4** (2026-10-29) Update pop-up simply says thanks
 - **3.28.3** (2026-10-29) Friendlier wording on the update pop-up
 - **3.28.2** (2026-10-29) Version numbers now count every update since the first one
 - **3.28.1** (2026-10-29) Version 1.0: show a release number (1.0, 1.0.1, 1.1) instead of the build number `d5ceeb1`
