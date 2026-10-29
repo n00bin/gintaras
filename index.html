@@ -587,10 +587,11 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .me-pop{overflow:auto}
 .me-pop .card{text-align:left;justify-items:stretch;max-height:calc(100vh - 32px);overflow:auto;gap:12px}
 .me-pop h2{text-align:center}
-.me-pop label,.me-field{display:grid;gap:6px;font-weight:700}
+.me-pop label,.me-quick label,.me-field{display:grid;gap:6px;font-weight:700}
 .me-field>span{font-weight:700}
-.me-pop input,.me-pop select{width:100%;min-width:0;font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
-.me-pop .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
+.me-pop input,.me-pop select,.me-quick input,.me-quick select{width:100%;min-width:0;font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+.me-quick{display:grid;gap:12px;margin:0}
+.me-pop .chip.in,.me-quick .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .me-likes{display:flex;flex-wrap:wrap;gap:6px}
 .me-likes .chip{font-size:14px;padding:6px 10px;font-weight:600}
 .choices{display:grid;gap:8px;margin:6px 0}
@@ -700,7 +701,6 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
     <div class="card" id="can-card"></div>
-    <div class="card" id="me-card"></div>
     <div class="card">
       <h2>Word strength</h2>
       <div class="lvls" id="lvls"></div>
@@ -728,6 +728,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   <section class="view" id="view-profile" hidden>
     <div class="card" id="auth"></div>
     <div class="card" id="face-card"></div>
+    <div class="card" id="me-card"></div>
     <div class="card">
       <span class="eyebrow" id="lvl-eyebrow">Level 1</span>
       <h2 id="lvl-title">Turistas</h2>
@@ -846,6 +847,17 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Pick anything from 5 to 60 minutes on your Profile.</span></button>
     </div>
     <p class="note">Every word is spoken by a Lithuanian voice. Tap the speaker on any word to hear it.</p>
+  </div>
+  <div class="hello" id="welcome-me" hidden>
+    <span data-mood="happy" data-cls="big"></span>
+    <h2>Make it about you</h2>
+    <p>The first thing Lithuanians ask is your name and where you're from. Tell me now and the lessons use your answers, so you practise what you'll really say. Skip anything you like.</p>
+    <div class="card me-quick">
+      <label>Your first name<input id="wm-name" type="text" maxlength="20" autocomplete="given-name"></label>
+      <div class="me-field"><span>Some words change for men and women. Which fits you?</span><div class="row2"><button type="button" class="chip" data-wg="m">Man</button><button type="button" class="chip" data-wg="f">Woman</button></div></div>
+      <label>Where are you from?<select id="wm-from"></select></label>
+    </div>
+    <p class="note">Want the lessons even more about you? Add your work, family and hobbies any time on your <b>Profile</b>, under <b>About me</b>.</p>
   </div>
   <div class="hello" id="welcome-signin" hidden>
     <span class="gem big" aria-hidden="true"></span>
@@ -3680,6 +3692,8 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
     if(x.lt!==x.lt0&&!EMOJI[x.lt]&&EMOJI[x.lt0]){const flag={lt:'🇱🇹',gb:'🇬🇧',ca:'🇨🇦',us:'🇺🇸'};EMOJI[x.lt]=/iš Amerikos/.test(x.lt0)&&o.from?(flag[o.from]||'🌍'):EMOJI[x.lt0];}});
   CONVS.forEach(c=>{if(c.scene0===undefined)c.scene0=c.scene;c.scene=persEn(c.scene0,'them',o);
     c.all.forEach(l=>{if(l.kind==='c')l.opts.forEach(op=>op.line.others=l.opts.filter(y=>y!==op).map(y=>[y.line.lt,y.line.en]));});});}
+/* Letters, spaces, apostrophes and hyphens only; each word starts with a capital. */
+function cleanName(s){return s.replace(/[^\p{L}\s'-]/gu,'').trim().replace(/\s+/g,' ').split(' ').map(w=>w?w[0].toUpperCase()+w.slice(1):w).join(' ').slice(0,20);}
 function startMe(){const items=meItems();if(!items.length)return openMeForm();const queue=[{type:'metip'}];
   items.forEach(it=>{if(!rec(it.id).seen)queue.push({type:'intro',item:it});queue.push(exFor(it,rec(it.id).lvl>=1?['type','build']:['build']));});
   items.forEach(it=>queue.push({type:'speak',item:it}));
@@ -3710,7 +3724,7 @@ function openMeForm(){const m=S.me||{};const g=m.g||'';
     b.classList.toggle('in',likes.includes(k));});
   ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.querySelector('[data-save]').onclick=()=>{const v=id=>ov.querySelector('#'+id).value;
-    const name=v('me-name').replace(/[^\p{L}\s'-]/gu,'').trim().replace(/\s+/g,' ').split(' ').map(w=>w?w[0].toUpperCase()+w.slice(1):w).join(' ').slice(0,20);
+    const name=cleanName(v('me-name'));
     const needsG=[ME_BY['me1:job-'+v('me-job')+'-m'],ME_BY['me1:partner-'+v('me-partner')+'-m']].some(Boolean);
     if(needsG&&!gender){toast('Pick Man or Woman so the words fit you');return;}
     S.me={name,g:gender,from:v('me-from'),live:v('me-live'),job:v('me-job'),work:v('me-work'),partner:v('me-partner'),kids:v('me-kids'),sib:v('me-sib'),pet:v('me-pet'),likes,why:v('me-why'),at:Date.now()};
@@ -3764,19 +3778,28 @@ document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$(
   if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(!b.disabled)b.click();}});
 
-/* Welcome: step 1 is the app and your pace, step 2 is signing in (skippable). Players who started before
-   accounts existed see step 2 on its own, once. */
+/* Welcome: step 1 is the app and your pace, step 2 is about you (name, man or woman, country; all skippable),
+   step 3 is signing in (skippable). Players who started before accounts existed see step 3 on its own, once. */
 let signinMode=null;
 function closeWelcome(){$('#welcome').hidden=true;document.body.style.overflow='';const first=signinMode==='welcome';signinMode=null;
   if(first){S.welcomed=true;save();renderAll();startNext(nextLesson());}else renderAll();}
 function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||!navigator.onLine){if(mode==='welcome')closeWelcome();return;}
   signinMode=mode;S.signinAsked=today();save();
   $('#welcome').hidden=false;document.body.style.overflow='hidden';
-  document.querySelector('#welcome .hello').hidden=true;$('#welcome-signin').hidden=false;
+  document.querySelectorAll('#welcome .hello').forEach(h=>h.hidden=true);$('#welcome-signin').hidden=false;
   cloud.widget($('#welcome-auth'),{onDone:()=>{toast('Signed in. Your progress is saved.');closeWelcome();}});
   const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':'Not now';b.onclick=closeWelcome;}
 window.openSignin=openSignin;
-$('#btn-welcome').onclick=()=>{setPace(S.pace);save();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
+let wmG='';
+function welcomeMe(){document.querySelector('#welcome .hello').hidden=true;$('#welcome-me').hidden=false;$('#welcome .stage').scrollTop=0;
+  const m=S.me||{};wmG=m.g||'';$('#wm-name').value=m.name||'';
+  $('#wm-from').innerHTML='<option value="">Skip this one</option>'+ME_COUNTRIES.map(c=>'<option value="'+c[0]+'"'+(c[0]===m.from?' selected':'')+'>'+esc(c[1])+'</option>').join('');
+  const chips=document.querySelectorAll('[data-wg]');chips.forEach(b=>{b.classList.toggle('in',b.dataset.wg===wmG);b.setAttribute('aria-pressed',b.dataset.wg===wmG);
+    b.onclick=()=>{wmG=wmG===b.dataset.wg?'':b.dataset.wg;chips.forEach(x=>{x.classList.toggle('in',x.dataset.wg===wmG);x.setAttribute('aria-pressed',x.dataset.wg===wmG);});};});}
+function welcomeMeSave(){const name=cleanName($('#wm-name').value),from=$('#wm-from').value;
+  if(name||wmG||from){S.me=Object.assign({},S.me,{name,g:wmG,from,at:Date.now()});save();}}
+$('#btn-welcome').onclick=()=>{if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();return;}
+  welcomeMeSave();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
 function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
