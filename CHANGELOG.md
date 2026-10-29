@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.34.1** (2026-10-29) Say it: everyone speaks in their own voice again (the waiter is a man); you keep the voice that matches you
 - **3.34** (2026-10-29) Say it grows with you like Write it: listen and repeat while words are new, then gaps to fill out loud, then from memory; replies the microphone hears right count as review
 - **3.33.2** (2026-10-29) Say it: recordings line up with the words again (old saved audio is replaced), and you speak in your own voice (man or woman from About me) while the others use the other voice
 - **3.33.1** (2026-10-29) A conversation now has to be said out loud (Say it), not just written, before the next unit opens

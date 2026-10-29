@@ -982,8 +982,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.34';
-const APP_VERSION=96;
+const APP_RELEASE='3.34.1';
+const APP_VERSION=97;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2973,10 +2973,10 @@ function say(item,slow,voiceOverride){if(!S.sound||!item)return;const voice=voic
       const p=a.play();if(p&&p.catch)p.catch(()=>speak(item.lt,slow));}catch(e){speak(item.lt,slow);}};
   a.onerror=()=>speak(item.lt,slow);
   if(a.readyState>=1)go();else{a.addEventListener('loadedmetadata',go,{once:true});a.load();}}
-/* In conversations you speak in the voice that matches you (About me: man → Leonas, woman → Ona; Tomas by default),
-   and the people you talk to use the other one, so you always hear both a man's and a woman's voice. */
+/* In conversations you speak in the voice that matches you (About me: man → Leonas, woman → Ona; Tomas by default)
+   and everyone you talk to speaks in their own voice, so a waiter sounds like a waiter. */
 function myVoice(){return S.me&&S.me.g==='f'?'ona':'leonas';}
-function castVoice(){return myVoice()==='ona'?'leonas':'ona';}
+function castVoice(p){return p.voice;}
 function preloadUnit(unit,voice){try{getPlayer(voice||S.voice||'ona',unit).load();}catch(e){}}
 function canListen(){return true;}
 let ltVoice=null;
