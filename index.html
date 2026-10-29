@@ -273,7 +273,17 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .foot > div{max-width:560px;margin:0 auto;display:grid;gap:12px}
 .foot.good{background:var(--ok-soft);border-color:var(--ok-soft)}
 .foot.bad{background:var(--bad-soft);border-color:var(--bad-soft)}
-.fb{display:none;gap:4px}
+.fb{display:none;gap:4px 12px;grid-template-columns:64px 1fr;align-items:start}
+.fb>strong,.fb>.ans{grid-column:2}
+.fb-m{grid-row:1/span 2;grid-column:1;width:64px;align-self:center}
+.fb-m .mascot{width:64px;display:block;animation:fbhop .45s cubic-bezier(.2,1.6,.4,1)}
+.foot.bad .fb-m .mascot{animation:fbtilt .5s ease-out}
+@keyframes fbhop{0%{transform:translateY(14px) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+@keyframes fbtilt{0%{transform:rotate(0);opacity:0}40%{transform:rotate(-8deg);opacity:1}100%{transform:rotate(0)}}
+/* auto-continue: a bar drains along the bottom of the button */
+.btn.timing{position:relative;overflow:hidden}
+.btn.timing::after{content:"";position:absolute;left:0;bottom:0;height:5px;width:100%;background:rgba(255,255,255,.75);animation:tdrain var(--t) linear forwards}
+@keyframes tdrain{to{width:0}}
 .foot.good .fb,.foot.bad .fb{display:grid}
 .fb strong{font-family:var(--display);font-size:20px;font-weight:600}
 .foot.good .fb strong{color:var(--ok)}
@@ -776,6 +786,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
     <div class="card">
       <div class="setting"><span>Sound</span><button class="switch" role="switch" aria-checked="true" id="sw-sound" aria-label="Sound"></button></div>
       <div class="setting"><span>Sound effects</span><button class="switch" role="switch" aria-checked="true" id="sw-sfx" aria-label="Sound effects"></button></div>
+      <div class="setting"><span>Move on by itself after each answer</span><button class="switch" role="switch" aria-checked="true" id="sw-auto" aria-label="Move on by itself after each answer"></button></div>
       <div class="setting"><span>Voice</span>
         <span class="chips"><button class="chip" data-voice="ona">Ona</button><button class="chip" data-voice="leonas">Leonas</button></span></div>
       <p class="note" id="tts-note"></p>
@@ -924,7 +935,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
   </div>
   <div class="stage"><div id="stage"></div></div>
   <div class="foot" id="foot"><div>
-    <div class="fb"><strong id="fb-title"></strong><span class="ans" id="fb-ans"></span></div>
+    <div class="fb"><span class="fb-m" id="fb-m" aria-hidden="true"></span><strong id="fb-title"></strong><span class="ans" id="fb-ans"></span></div>
     <button type="button" class="linkbtn" id="btn-idk" hidden>I don't know, show me</button>
     <button class="btn" id="btn-check" disabled>Check</button>
   </div></div>
@@ -2964,7 +2975,7 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
     g.querySelectorAll('[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' and '+PACES[S.pace].goal+' XP a day');});}
   const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day. Your learning day is done once you reach both '+P.goal+' XP and '+P.mins+' minutes in lessons.';}
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
-  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));updateTtsNote();renderInstall();renderOffline();}
+  $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));$('#sw-auto').setAttribute('aria-checked',String(S.autoNext!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
 function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
     if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
@@ -3119,7 +3130,19 @@ function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
 function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();maybeTour();window.dispatchEvent(new Event('gintaras:idle'));}
 
-function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';}
+function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
+  if(!state)stopAutoNext();
+  /* Gintarėlis reacts: cheers when you're right, thinks it over with you when you're not */
+  const m=$('#fb-m');if(m)m.innerHTML=state&&title?mascot(state==='good'?(Math.random()<.6?'cheer':'happy'):state==='bad'?'think':'happy'):'';}
+/* After an answer the lesson moves on by itself (a bar drains on the button). Tap Continue to go sooner,
+   tap the feedback to stay and read it. Off in Settings. */
+let autoNextT=null;
+function stopAutoNext(){clearTimeout(autoNextT);autoNextT=null;const b=$('#btn-check');if(b)b.classList.remove('timing');}
+function autoNext(ms){stopAutoNext();if(S.autoNext===false||!Q)return;const btn=$('#btn-check'),myQ=Q,myIdx=Q.idx;
+  btn.style.setProperty('--t',ms+'ms');void btn.offsetWidth;btn.classList.add('timing');
+  autoNextT=setTimeout(()=>{btn.classList.remove('timing');autoNextT=null;
+    if(Q===myQ&&Q.idx===myIdx&&!btn.disabled&&!$('#sheet').hidden&&$('#guide').hidden&&!document.querySelector('.league-pop,#flag:not([hidden])'))btn.click();},ms);}
+document.addEventListener('click',e=>{if(autoNextT&&e.target.closest('#foot .fb,#stage,#btn-flag'))stopAutoNext();},true);
 /* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */
 function progressUI(){const done=Q.queue.slice(0,Q.idx).filter(e=>!STEPLESS[e.type]).length;const rem=Q.queue.slice(Q.idx).filter(e=>!STEPLESS[e.type]).length;const tot=done+rem;
   Q.barPct=Math.max(Q.barPct||0,tot?done/tot*100:0);$('#lbar').style.width=Q.barPct+'%';$('#lcount').textContent=done+'/'+tot;}
@@ -3155,7 +3178,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     let passed=false;
     btn.disabled=true;btn.textContent=SR?'Say it into the microphone':'Rate yourself above';
     const pass=()=>{if(passed)return;passed=true;grade(it,true,true);Q.correct++;rec(it.id).seen=true;
-      setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{Q.idx++;renderStep();};};
+      setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(1600);};
     let tries=0;const mic=st.querySelector('#mic');
     if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
       /* a phone that won't start the mic by itself just waits for a tap */
@@ -3329,7 +3352,9 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
   stage.querySelectorAll('.build .chip').forEach(b=>{b.disabled=true;});
   const inp=stage.querySelector('#ans');if(inp)inp.disabled=true;
-  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};}
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};
+  /* long enough to hear the word when right; time to read the answer (and the why) when not */
+  autoNext(ok?Math.max(1600,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+900):idk?5000:why?7000:4500);}
 
 function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.round(Q.correct/Q.total*100):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
@@ -3779,6 +3804,7 @@ document.querySelectorAll('.chip[data-voice]').forEach(b=>b.onclick=()=>{S.voice
 document.querySelectorAll('.pace-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pace-opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');setPace(b.dataset.pace);});
 $('#sw-sound').onclick=()=>{S.sound=!S.sound;save();renderProfile();if(S.sound)say(BYID['u1a-1:0']);};
 $('#sw-sfx').onclick=()=>{S.sfx=S.sfx===false;save();renderProfile();if(S.sfx)sfx('good');};
+$('#sw-auto').onclick=()=>{S.autoNext=S.autoNext===false;save();renderProfile();};
 $('#sw-pron').onclick=()=>{S.pron=!(S.pron!==false);save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
