@@ -397,6 +397,10 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .divider::before,.divider::after{content:"";flex:1;border-top:1px dashed var(--line)}
 .turn{display:grid;gap:10px;background:var(--surface);border:2px solid var(--amber);border-radius:var(--radius);padding:14px}
 .turn .hint{font-size:16px;color:var(--muted)}
+.turn .bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.turn .bank[hidden]{display:none}
+.turn .bank .chip.used{opacity:.3}
+.turn .shape{font-family:var(--display);font-size:22px;letter-spacing:.08em;color:var(--amber-deep);margin-top:6px}
 .turn .hint.big{font-family:var(--display);font-size:24px;font-weight:600;color:var(--fg)}
 .copts{display:grid;gap:8px}
 .copt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);text-align:left;font-size:18px;font-weight:700;box-shadow:var(--shadow)}
@@ -960,8 +964,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.28.5';
-const APP_VERSION=87;
+const APP_RELEASE='3.29';
+const APP_VERSION=88;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3543,34 +3547,53 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     if(mic)autoMic(mic,700);
     chatScroll();};
   if(C.mode==='speak')return sayIt();
-  /* Step 1: write the reply. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
+  /* Writing grows with you, reply by reply, from how well you know the words in it (their level in lessons):
+     words still new → tap them in order; getting there → type with the first letters shown; known → type it all.
+     Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
+  const stage=replyStage(ln.lt);
   let help=0,tries=0;
   const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
-  const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,3);
-  turn.innerHTML='<div class="turn"><span class="eyebrow">Write your reply</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
-    '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type it in Lithuanian"><div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
-    '<div class="bank" id="cbank" hidden></div><div class="say-lt" id="cshow" hidden></div>'+
-    '<button type="button" class="linkbtn" id="chelp">Help me</button><p class="note" id="cmsg" role="status"></p></div>';
-  const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp');
+  const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,stage==='tap'?2:3);
+  const shape=ln.lt.replace(/[^\s.,!?]+/g,w=>w[0]+'·'.repeat(w.length-1));
+  turn.innerHTML='<div class="turn"><span class="eyebrow">'+(stage==='tap'?'Tap the words of your reply':'Write your reply')+'</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+    (stage==='hint'?'<div class="shape" aria-label="First letters">'+esc(shape)+'</div>':'')+
+    '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="'+(stage==='tap'?'Tap the words below':'Type it in Lithuanian')+'"'+(stage==='tap'?' readonly':'')+'>'+
+    (stage==='tap'?'':'<div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>')+'</div>'+
+    '<div class="bank" id="cbank" hidden></div>'+(stage==='tap'?'<button type="button" class="linkbtn" id="cundo" hidden>Undo last word</button>':'')+'<div class="say-lt" id="cshow" hidden></div>'+
+    '<button type="button" class="linkbtn" id="chelp">'+(stage==='tap'?'Show me the answer':'Help me')+'</button><p class="note" id="cmsg" role="status">'+
+    (stage==='tap'?'These words are still new to you, so you build the reply. As you learn them, you\'ll start typing.':stage==='hint'?'You know these words a bit now: the first letters are shown.':'')+'</p></div>';
+  const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp'),undo=$('#cundo');
+  const picked=[];
   const tiles=()=>{bank.hidden=false;bank.innerHTML=shuffle(words.concat(spare)).map(w=>'<button type="button" class="chip">'+esc(w)+'</button>').join('');
-    bank.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{inp.value=(inp.value.trim()+' '+c.textContent).trim();inp.oninput();inp.focus();});};
+    bank.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{inp.value=(inp.value.trim()+' '+c.textContent).trim();
+      if(stage==='tap'){c.disabled=true;c.classList.add('used');picked.push(c);undo.hidden=false;}else inp.focus();inp.oninput();});};
+  if(undo)undo.onclick=()=>{const c=picked.pop();if(!c)return;c.disabled=false;c.classList.remove('used');inp.value=inp.value.trim().split(/\s+/).slice(0,-1).join(' ');undo.hidden=!picked.length;inp.oninput();};
+  const clearTap=()=>{picked.splice(0).forEach(c=>{c.disabled=false;c.classList.remove('used');});inp.value='';undo.hidden=true;inp.oninput();};
   const reveal=()=>{const sh=$('#cshow');sh.hidden=false;sh.innerHTML='<span class="lt">'+esc(ln.lt)+'</span><div class="pron">'+pronHtml(ln.lt)+'</div>';};
-  helpBtn.onclick=()=>{help++;if(help===1){tiles();helpBtn.textContent='Still stuck? Show me the answer';cmsg.textContent='Tap the words in order. One or two of them don\'t belong.';}
-    else{reveal();C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now type it yourself. Copying it once helps it stick.';}};
+  helpBtn.onclick=()=>{help++;if(help===1&&stage!=='tap'){tiles();helpBtn.textContent='Still stuck? Show me the answer';cmsg.textContent='Tap the words in order. One or two of them don\'t belong.';}
+    else{reveal();C.mistakes++;helpBtn.hidden=true;cmsg.textContent=stage==='tap'?'Now tap the words in that order.':'Now type it yourself. Copying it once helps it stick.';if(stage==='tap')clearTap();}};
   inp.oninput=()=>{btn.disabled=!inp.value.trim();};
   turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const p=inp.selectionStart??inp.value.length,q=inp.selectionEnd??p;inp.value=inp.value.slice(0,p)+k.dataset.k+inp.value.slice(q);inp.focus();inp.setSelectionRange(p+1,p+1);inp.oninput();});
   const check=()=>{const a=norm(inp.value);if(!a)return;const j=judgeTyped(inp.value,okList);const hit=okList.find(v=>judgeTyped(inp.value,[v]).ok)||ln.lt;
-    if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
+    if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;if(undo)undo.hidden=true;
       const other=norm(hit)!==norm(ln.lt);
       cmsg.innerHTML=other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">Correct!</span>':j.note;
       inp.classList.add('right');btn.disabled=true;return later(()=>done(false,hit),other?2600:j.exact?600:2200);}
     tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
-    cmsg.innerHTML=other?'That\'s the other choice ("<b>'+esc(other[1])+'</b>"). You picked "'+esc(ln.en)+'", so write that one.':wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':j.why?'Not quite. '+j.why:'Not quite. Check each word and try again.';
-    if(tries>=2&&help===0){help=1;tiles();helpBtn.textContent='Still stuck? Show me the answer';}};
+    cmsg.innerHTML=other?'That\'s the other choice ("<b>'+esc(other[1])+'</b>"). You picked "'+esc(ln.en)+'", so write that one.':wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':
+      stage==='tap'?'Not quite. Check the order, and leave out the words that don\'t belong.':j.why?'Not quite. '+j.why:'Not quite. Check each word and try again.';
+    if(stage==='tap')clearTap();
+    else if(tries>=2&&help===0){help=1;tiles();helpBtn.textContent='Still stuck? Show me the answer';}};
   inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();check();}};
   btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
-  setTimeout(()=>inp.focus(),80);chatScroll();}
+  if(stage==='tap')tiles();else setTimeout(()=>inp.focus(),80);chatScroll();}
+/* How well you know a reply's words: each word's best level in lessons, and the reply goes by its weakest word.
+   Words no lesson teaches (like your own name) don't count. */
+let WORD_ITEMS=null;
+function replyStage(lt){if(!WORD_ITEMS){WORD_ITEMS={};ITEMS.forEach(i=>norm(i.lt0||i.lt).split(' ').forEach(w=>(WORD_ITEMS[w]=WORD_ITEMS[w]||[]).push(i)));}
+  let low=9;norm(lt).split(' ').forEach(w=>{const its=WORD_ITEMS[w];if(its)low=Math.min(low,Math.max(...its.map(wlvl)));});
+  return low<=0?'tap':low===1?'hint':'type';}
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 /* Boils a word down to how it sounds, so spelling differences don't count against you:
    "pizza" and "pica" both become "pica", "šokoladas" and "sokoladas" match, and so on. */
