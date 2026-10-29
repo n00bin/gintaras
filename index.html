@@ -120,7 +120,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .win.badge{border-color:var(--pine);background:var(--pine-soft)}
 .stage{position:relative}
 #confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.done{position:relative;z-index:2}
+div.done:not(.unit){position:relative;z-index:2}
 .badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .bd{display:grid;justify-items:center;gap:4px;text-align:center;padding:10px 6px;border-radius:12px;background:var(--surface-2);opacity:.45}
 .bd.on{opacity:1;background:var(--pine-soft)}
@@ -254,10 +254,10 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
 .opt[disabled]{cursor:default}
 .typing input{width:100%;font:inherit;font-size:20px;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
-.keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.keys{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:8px}
 .keys-label{font-size:13px;color:var(--muted);margin-top:10px}
 .keys-label+.keys{margin-top:4px}
-.keys button{padding:8px 0;min-width:38px;flex:1;border-radius:10px;background:var(--surface-2);font-family:var(--display);font-size:18px;font-weight:600}
+.keys button{padding:8px 0;min-width:38px;flex:0 0 calc(20% - 5px);border-radius:10px;background:var(--surface-2);font-family:var(--display);font-size:18px;font-weight:600}
 .pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pairs .opt{justify-content:center;text-align:center;font-size:17px;padding:14px 8px;min-height:56px}
 .pairs .opt.done{opacity:.35;border-color:var(--ok)}
@@ -296,7 +296,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .foot.bad .btn{background:var(--bad)}
 
 /* End screen */
-.done{text-align:center;display:grid;gap:14px;padding-top:24px}
+div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .done .big{font-family:var(--display);font-size:56px;font-weight:700;color:var(--amber-deep);line-height:1}
 .done h2{font-size:26px;font-weight:600}
 
@@ -483,6 +483,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .tipcard b{font-weight:800}
 .copt.right{border-color:var(--ok);background:var(--ok-soft)}
 .say-lt .tr{color:var(--muted);font-size:15px}
+.say-lt .speakrow,.msg .speakrow{justify-content:flex-start}
 .convcard>.btn{width:100%}
 #cin.right{border-color:var(--ok);background:var(--ok-soft)}
 #cin.shake{animation:shake .3s}
@@ -509,6 +510,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .unit.locked .unit-head{padding:10px 16px}
 .unit.locked .unit-head h2{font-size:18px}
 .unit-head[data-fold]{cursor:pointer}
+[data-a="msg"]:empty{display:none}
 .head-btns{display:flex;align-items:center;gap:8px}
 .chev{font-size:18px;opacity:.85}
 .lesson-row.did .ring{background:conic-gradient(var(--ok) 100%,var(--surface-2) 0)}
@@ -982,8 +984,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.35.1';
-const APP_VERSION=99;
+const APP_RELEASE='3.35.2';
+const APP_VERSION=100;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3797,7 +3799,7 @@ function startQuick(any){seedReplies();const all=replyCards();
   $('#stage').innerHTML='<div class="chat"><div class="scene"><div><span class="eyebrow">Quick chat · '+ids.length+(ids.length===1?' reply':' replies')+'</span><strong>Answer them</strong><small>People from your conversations message you, one after another. Answer each one in Lithuanian.</small><small class="tiny">Tap their message to read the English any time. Asking for the English of your own reply means it doesn\'t move up this time.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Waiting for a message';btn.onclick=null;
   qcNext();}
-function qcNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.queue.length*100)+'%';
+function qcNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.queue.length*100)+'%';$('#lcount').textContent=Math.min(C.i,C.queue.length)+'/'+C.queue.length;
   if(C.i>=C.queue.length)return qcFinish();
   const k=C.queue[C.i],msgs=$('#msgs'),r=S.replies[k.id];C.c=k.c;C.card=k;
   C.stage=['pick','tap','fill','type'][Math.min(3,r.lvl)];C.promptL=C.stage==='type'&&k.they?3:1;
