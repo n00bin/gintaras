@@ -960,8 +960,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.28.4';
-const APP_VERSION=86;
+const APP_RELEASE='3.28.5';
+const APP_VERSION=87;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2961,7 +2961,7 @@ window.sfxWin=()=>sfx('win');
 function sfx(kind){if(kind==='bad'&&navigator.vibrate){try{navigator.vibrate(40);}catch(e){}}
   if(!S.sound||S.sfx===false)return;
   try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();
-    const now=actx.currentTime;const notes={good:[[660,0],[990,.09]],bad:[[247,0],[196,.11]],win:[[523,0],[659,.11],[784,.22],[1047,.33]]}[kind]||[];
+    const now=actx.currentTime;const notes={good:[[660,0],[990,.09]],pop:[[1180,0]],bad:[[247,0],[196,.11]],win:[[523,0],[659,.11],[784,.22],[1047,.33]]}[kind]||[];
     notes.forEach(([f,t])=>{const o=actx.createOscillator(),g=actx.createGain();o.type=kind==='bad'?'triangle':'sine';o.frequency.value=f;
       g.gain.setValueAtTime(0.0001,now+t);g.gain.exponentialRampToValueAtTime(kind==='bad'?0.08:0.1,now+t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,now+t+(kind==='win'?0.4:0.22));
       o.connect(g).connect(actx.destination);o.start(now+t);o.stop(now+t+0.45);});}catch(e){}}
@@ -3480,8 +3480,10 @@ function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
-  const btn=$('#btn-check');btn.disabled=true;btn.textContent='Listen first';btn.onclick=null;
+  const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
   convNext();}
+/* Write it is texting: no voices, just time to read each message. */
+function readTime(t){return Math.min(4000,1100+t.length*45);}
 function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.length*100)+'%';
   if(C.i>=C.lines.length)return convFinish();
   const ln=C.lines[C.i];const msgs=$('#msgs');
@@ -3489,8 +3491,9 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.
   if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
   if(ln.kind==='p'){const who=C.c.cast[ln.who];msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
-      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+cvSpk(ln.id,who.voice)+'</div>');chatScroll();
-      say(ln,false,who.voice);C.i++;later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},700);}
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div>');chatScroll();
+      C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,readTime(ln.lt));}
+      say(ln,false,who.voice);later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
    how the other person reacts to it, and then the conversation joins up again. */
@@ -3521,9 +3524,9 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   const done=(spoken,said)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
     const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
-    if(!own)say(ln,false,me);else if(alt)say(alt,false,me);
-    C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
-    later(convNext,S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
+    const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
+    C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
+    later(convNext,txt?700:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking version: you see what to say in English and answer from memory. "Show me the Lithuanian" reveals and plays it. */
   const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
       '<div class="say-lt" id="peekbox" hidden><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+

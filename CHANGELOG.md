@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.28.5** (2026-10-29) Write it conversations are silent texting: no voices, time to read each message
 - **3.28.4** (2026-10-29) Update pop-up simply says thanks
 - **3.28.3** (2026-10-29) Friendlier wording on the update pop-up
 - **3.28.2** (2026-10-29) Version numbers now count every update since the first one
