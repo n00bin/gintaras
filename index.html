@@ -958,10 +958,11 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 <script src="avatars.js"></script>
 <script>
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
-   APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js. */
-const APP_RELEASE='1.0';
-const APP_VERSION=83;
-const WHATS_NEW='Gintaras is now version 1.0. Each update gets its own number, shown here and in Settings.';
+   APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
+   Add each release to CHANGELOG.md. */
+const APP_RELEASE='3.28.2';
+const APP_VERSION=84;
+const WHATS_NEW='The version number now counts every update since Gintaras began: 3 big changes, 28 new features, and this small fix.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */

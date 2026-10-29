@@ -1,0 +1,93 @@
+# Gintaras version history
+
+How the numbers work: the **first** number goes up for a big change, the **middle** number for a new feature, the **last** number for a fix or polish.
+
+The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
+
+- **3.28.2** (2026-10-29) Version numbers now count every update since the first one
+- **3.28.1** (2026-10-29) Version 1.0: show a release number (1.0, 1.0.1, 1.1) instead of the build number `d5ceeb1`
+- **3.28** (2026-10-29) Splash screen with version, version in Settings, one-time 'Updated to version N' pop; check keeps APP_VERSION and sw.js in step; v82 `ea08038`
+- **3.27** (2026-10-29) Conversation replies accept same-meaning answers (greetings, goodbyes, thanks), typed or spoken `3cff022`
+- **3.26** (2026-10-29) Part 1 conversations: Labas, Ruta! rewritten to use most of Basics; new 'Dar kartą, prašau' after Small talk `cd1e504`
+- **3.25** (2026-10-29) Conversations split into two versions: Write it (typed) and Say it (spoken from memory, peek allowed) `53a60c6`
+- **3.24.1** (2026-10-29) Label the Lithuanian letter buttons `fb646c6`
+- **3.24** (2026-10-29) Every word in a lesson gets said out loud once; 'Can't speak right now' pauses speaking for an hour; slower auto-continue on right answers `b44375c`
+- **3.23** (2026-10-29) Gintarelis reacts in the answer feedback; lessons move on by themselves after each answer (setting to turn off) `f9955d5`
+- **3.22** (2026-10-29) Mic switches on by itself after the recording plays; replaying stops it; slow button is a turtle `c791f08`
+- **3.21.1** (2026-10-29) Existing players get the About-you step once, when nothing else is open `966131a`
+- **3.21** (2026-10-29) Welcome asks name, man/woman and country (skippable); About me moves to Profile `1c196c3`
+- **3.20.1** (2026-10-29) About me card mentions personal lessons `6ee9958`
+- **3.20** (2026-10-29) Personal lessons: your name, country, work and a woman's word forms in lessons and conversations `c5493ee`
+- **3.19** (2026-10-28) Raise a challenge: the person challenged can raise the stake `8f9ae46`
+- **3.18.2** (2026-10-28) Challenge pop-ups for both players `62d8a7d`
+- **3.18.1** (2026-10-28) Preview link: open the app with #pops to see every pop-up once (changes nothing) `3a3a781`
+- **3.18** (2026-10-28) Big pop-ups for treasure chests, perks and happy hour `a3cba19`
+- **3.17.1** (2026-10-28) Clearer sounds-like for the pronouns (reports 4 and 5) `28184a4`
+- **3.17** (2026-10-28) Faces and the Gintarėlis mascot `9ddd13b`
+- **3.16** (2026-10-28) Add 'Things I can do': real-life skills earned by mastered words `af7d12b`
+- **3.15.11** (2026-10-28) Pop-ups: Escape closes, focus moves in, announced as dialogs; Gediminas' Castle `df11983`
+- **3.15.10** (2026-10-28) Notifications: 'turn off on this phone' is remembered, clearer permission prompt, phone notification shown unless the app is in front; study reminders work past midnight (SQL) `2349637`
+- **3.15.9** (2026-10-28) Sounds-like for every word (176 added: About you and conversation lines); checker now covers all conversation lines and About-you; 'Taip, Tomai' re-recorded; guide wording (ow, y, letters) `3f2e625`
+- **3.15.8** (2026-10-28) League board: ties share a place like the weekly job, clearer move-up wording, division explained, signed-out note `4aad9a5`
+- **3.15.7** (2026-10-28) Challenge flow: real Challenge buttons on challenge day (greyed with a reason), bigger Accept/No thanks, every payout shown, pop-up retried after a lesson, shop explains when challenges open `815d8f6`
+- **3.15.6** (2026-10-28) Safe syncing: never overwrite on a failed read, fold in other phones' saves first, per-phone amber counts, settings from the further-along copy; nickname keeps league; sign-out stops notifications; weekly job can't be jammed `9e78f1b`
+- **3.15.5** (2026-10-28) League week runs on the server's clock (UTC Monday) everywhere; league payout waits for the weekly tally; challenge rules follow the same week `f5fe544`
+- **3.15.4** (2026-10-28) Notifications: after time away, show only the newest message of each kind `80a371e`
+- **3.15.3** (2026-10-28) Notifications: ask once after sign-in, ask when a study time is set, and re-register a phone that already allowed them `435c786`
+- **3.15.2** (2026-10-28) Notifications: allow saving settings as an upsert (user_id in the update grant) `d2bd612`
+- **3.15.1** (2026-10-28) Notifications: the database calls the push function with the public key, so its sign-in check stays on `85c412e`
+- **3.15** (2026-10-28) Notifications: study time, someone passed you, challenge rival ahead; in the app and on the phone `95f2c17`
+- **3.14.2** (2026-10-28) Challenges: Profile card removed; the League tab already lists them `8a97333`
+- **3.14.1** (2026-10-28) Challenges: Mondays only, 10 amber minimum, stake capped at what both players have; Your challenges card in Profile `01615d5`
+- **3.14** (2026-10-28) Challenges: pop-up for each new challenge, a count on the League tab, and a live You vs line on Learn `fc2f56c`
+- **3.13.8** (2026-10-28) League: green for moving up, yellow for top 3 still short of the XP bar `a153284`
+- **3.13.7** (2026-10-28) League: separate top-3 line kept, plus a moving line under who has the XP to move up `7a13b53`
+- **3.13.6** (2026-10-28) League: a move-up line sits under whoever moves up right now, and every row shows XP to go `11bfba7`
+- **3.13.5** (2026-10-28) Pronunciation guide page explains the quick ee and the -tuh ending; ji tip and fallback match `3d2c282`
+- **3.13.4** (2026-10-28) Sound guide audit: quick i written ee, 95 stress and sound fixes across 903 words and phrases `22047bf`
+- **3.13.3** (2026-10-28) Sound guide: Iki shown as ee-KEE (both vowels are ee-like, stress on the second) `1c2e15d`
+- **3.13.2** (2026-10-28) Sound guide: verb endings shown as -tuh, closer to how the voices say them `b3c7d54`
+- **3.13.1** (2026-10-28) Sound guide: verb endings shown as -tih so they read as a short, quick sound `74c8776`
+- **3.13** (2026-10-27) Bar watcher: league XP bars adjust each Monday to the real XP-per-minute rate, within safe limits `bdff0c7`
+- **3.12** (2026-10-27) Ten leagues with two divisions each, and the monthly Sun Cup tournament `ff2cd17`
+- **3.11.1** (2026-10-27) One XP bar per league for moving up (150 to 500), and daily goals at the measured 7 XP a minute `c94ab49`
+- **3.11** (2026-10-27) Leagues: three divisions each (21 steps), a minimum XP to move up, amber for top-3 finishes, Sun league weekly amber and crown `9a2c9c7`
+- **3.10.3** (2026-10-27) One-off amber back-pay for learning done before amber existed `5b222f4`
+- **3.10.2** (2026-10-27) One-off: credit today's lesson time from today's XP (4 XP = 1 min) after the lesson-only restart `236d8c0`
+- **3.10.1** (2026-10-27) Daily pace on Profile with XP per choice; the learning day is done only when both XP and lesson time are reached `329d143`
+- **3.10** (2026-10-27) Daily pace from 5 to 60 minutes, and a lesson-time countdown in Today's goal `c43026d`
+- **3.9.1** (2026-10-27) Count only time spent in lessons, practice and conversations `4d831d0`
+- **3.9** (2026-10-27) Happy hour banner on Learn, and track time on the app (today, this week, all time) `a37ae31`
+- **3.8.1** (2026-10-27) Tidy the amber shop: compact rows with icons, price or status on the right, earning list folded away `8ba5e86`
+- **3.8** (2026-10-27) Perks: amber, shop (rest day, double XP, streak repair, league shield, friend challenges) and daily happy hour `8d637c8`
+- **3.7** (2026-10-27) Branching conversations: a choice in every conversation, with different reactions `d57f3cb`
+- **3.6** (2026-10-27) Why-was-I-wrong explanations, About me lessons, kind streaks `b803e41`
+- **3.5** (2026-10-27) Face-to-face translator `27240f8`
+- **3.4.1** (2026-10-27) Fix: progress merge crashed when a word existed on only one side `a60814b`
+- **3.4** (2026-10-27) Flag any card: problem reports players can send, only the owner can read `841c820`
+- **3.3.1** (2026-10-27) Fill in every word's meaning in 'Built from' `409a933`
+- **3.3** (2026-10-27) A picture for every word and phrase `86ceb5d`
+- **3.2.1** (2026-10-27) Privacy page: delete your account in the app; leagues are public `86d6f79`
+- **3.2** (2026-10-27) Weekly leagues: seven amber-themed tiers from Sand to Sun `a6f18c9`
+- **3.1.4** (2026-10-27) Microphone check compares sounds, not spelling `acc2664`
+- **3.1.3** (2026-10-27) Fix: recordings could run on through a whole unit after using the mic `1565838`
+- **3.1.2** (2026-10-27) Polish: amber gem icon, sound effects, finish-screen feel, quick tour `2389f92`
+- **3.1.1** (2026-10-27) Polish: shorter path, readable dark mode, badge pictures, copy fixes `5f01d1e`
+- **3.1** (2026-10-27) Add 14 units and 5 conversations: beginner to basic conversation `8878519`
+- **3.0** (2026-10-27) Rebuild the path as a sentence ladder; pattern cards and fill-the-gap drills `a05fa7d`
+- **2.9** (2026-10-27) Conversations test writing and speaking; share with friends `48af740`
+- **2.8** (2026-10-27) A tip for every lesson; conversations are text and speech together `dc9acb5`
+- **2.7.1** (2026-10-27) Move the pronunciation guide out of Settings to where people read `759693a`
+- **2.7** (2026-10-27) Ask to sign in up front; signing in puts you on the leaderboard `3e5d6fb`
+- **2.6** (2026-10-27) Microphone checks your speaking; account section always visible `3ed13d9`
+- **2.5** (2026-10-27) Split Profile and Settings, email sign-in behind a button, delete account, clearer leaderboard `c827bcf`
+- **2.4.2** (2026-10-27) Service worker: always check for updated app files when online `c842b89`
+- **2.4.1** (2026-10-27) Use Google's own sign-in button so Google names n00bin.github.io `0d3160a`
+- **2.4** (2026-10-27) Turn on Google sign-in; add privacy page `7135478`
+- **2.3** (2026-10-27) Full offline mode `3e4c617`
+- **2.2** (2026-10-27) Settings card, install-as-app guide, offline support `e648d07`
+- **2.1** (2026-10-27) Turn on accounts, progress sync and the leaderboard `5d23b10`
+- **2.0** (2026-10-27) Beginner overhaul: sounds unit, conversations, gentler learning `6878a33`
+- **1.0.2** (2026-10-26) App files published directly (no more zip) `25b48b9`
+- **1.0.1** (2026-10-27) Updated app upload `d8e81bf`
+- **1.0** (2026-10-27) First version of Gintaras `bc11a8f`
