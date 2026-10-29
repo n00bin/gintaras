@@ -3096,7 +3096,9 @@ const EASY=['mc_lt_en','mc_en_lt','listen'];
 const MID=['mc_lt_en','mc_en_lt','listen','build','tiles'];
 const HARD=['mc_en_lt','type','listen','build','type','speak'];
 function typesFor(item){const l=rec(item.id).lvl;return l<=0?EASY:l<=1?MID:HARD;}
-function exFor(item,types,avoid){let t=types[Math.floor(Math.random()*types.length)];
+/* "Can't speak right now" pauses speaking for an hour. */
+function speakOff(){return (S.noSpeakUntil||0)>Date.now();}
+function exFor(item,types,avoid){if(speakOff())types=types.filter(t=>t!=='speak');let t=types[Math.floor(Math.random()*types.length)];
   if(avoid&&types.length>1){let n=0;while(t===avoid&&n++<6)t=types[Math.floor(Math.random()*types.length)];}
   if(t==='listen'&&!canListen())t='mc_lt_en';
   const single=item.lt.split(' ').length<2;
@@ -3110,7 +3112,9 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
   if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push({type:'speak',item:it}));}
   else if(mode==='lesson'){
     const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
-    shuffle(items).forEach(it=>{if(!rec(it.id).seen)head.push({type:'intro',item:it});const a=exFor(it,typesFor(it));head.push(a);rest.push(exFor(it,typesFor(it),a.type));});
+    shuffle(items).forEach(it=>{if(!rec(it.id).seen)head.push({type:'intro',item:it});const a=exFor(it,typesFor(it));head.push(a);rest.push(exFor(it,typesFor(it),a.type));
+      /* every word in the lesson is said out loud once, checked by the microphone */
+      if(!speakOff()&&a.type!=='speak')rest.push({type:'speak',item:it});});
     if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});
     sample(DRILLS.filter(d=>d.u===u.id),2).forEach(d=>rest.push({type:'frame',drill:d}));
     learned().filter(i=>!items.includes(i)).sort((a,b)=>rec(a.id).due-rec(b.id).due||rec(a.id).lvl-rec(b.id).lvl).slice(0,3)
@@ -3174,11 +3178,12 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it)+'</div>'+
       '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
       '<p class="heard" id="srout" role="status">'+(SR?'Listen, then say it when the <b>microphone</b> lights up. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
-      (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml);
+      (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml)+
+      (Q.lesson&&Q.lesson.speak||Q.mode==='me'?'':'<button type="button" class="linkbtn" id="nospeak">Can\'t speak right now? Skip speaking for an hour</button>');
     let passed=false;
     btn.disabled=true;btn.textContent=SR?'Say it into the microphone':'Rate yourself above';
     const pass=()=>{if(passed)return;passed=true;grade(it,true,true);Q.correct++;rec(it.id).seen=true;
-      setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(1600);};
+      setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(2800);};
     let tries=0;const mic=st.querySelector('#mic');
     if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
       /* a phone that won't start the mic by itself just waits for a tap */
@@ -3189,6 +3194,9 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
       if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.due=Date.now()+DAY;}else{grade(it,true,true);Q.correct++;}
       Q.idx++;renderStep();});setTimeout(()=>say(it),200);
+    const ns=st.querySelector('#nospeak');if(ns)ns.onclick=()=>{stopHearing();S.noSpeakUntil=Date.now()+3600000;save();
+      const n=Q.queue.length;Q.queue=Q.queue.filter((e,k)=>k<=Q.idx||e.type!=='speak');Q.total-=1+n-Q.queue.length;
+      toast('Speaking is off for an hour. It comes back by itself.');Q.idx++;renderStep();};
     if(mic)autoMic(mic,S.sound?200+clipLen(it.id,S.voice||'ona')*1000+350:600);}
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
@@ -3354,7 +3362,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const inp=stage.querySelector('#ans');if(inp)inp.disabled=true;
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};
   /* long enough to hear the word when right; time to read the answer (and the why) when not */
-  autoNext(ok?Math.max(1600,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+900):idk?5000:why?7000:4500);}
+  autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
 
 function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.round(Q.correct/Q.total*100):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
