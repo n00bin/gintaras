@@ -395,6 +395,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .spk.sm{width:34px;height:34px;border-radius:10px}
 .spk.sm svg{width:18px;height:18px}
 .divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;font-weight:800}
+.qc-ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0 4px}
+.qc-ladder span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-radius:12px;background:var(--surface-2);text-align:center}
+.qc-ladder b{font-size:20px;color:var(--amber-deep)}
+.qc-ladder small{font-size:11px;font-weight:700;color:var(--muted);line-height:1.15}
+.qc-ladder .zero b{color:var(--muted);opacity:.5}
+.msg .earnote{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.msg .earlt{display:block}
 .divider::before,.divider::after{content:"";flex:1;border-top:1px dashed var(--line)}
 .turn{display:grid;gap:10px;background:var(--surface);border:2px solid var(--amber);border-radius:var(--radius);padding:14px}
 .turn .hint{font-size:16px;color:var(--muted)}
@@ -730,6 +737,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <button class="btn amber" id="btn-review">Start review</button>
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
+    <div class="card" id="qc-card"></div>
     <div class="card" id="can-card"></div>
     <div class="card">
       <h2>Word strength</h2>
@@ -970,8 +978,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.31.1';
-const APP_VERSION=91;
+const APP_RELEASE='3.32';
+const APP_VERSION=92;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3039,7 +3047,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
-  renderMe();renderCando();
+  renderMe();renderCando();renderQuick();
   $('#lvls').innerHTML=buckets.map((n,k)=>'<i style="width:'+(n/tot*100)+'%;background:'+cols[k]+'" title="'+n+'"></i>').join('');}
 function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days').textContent=S.daysLearned||0;$('#p-streak').textContent=S.streak;
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
@@ -3486,7 +3494,7 @@ function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big
 /* Each conversation has two versions: written (mode 'text') and spoken (mode 'speak', open once the written one is done). */
 function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
   const st0=(S.convs||{})[id]||{};mode=mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
-  CV={c,mode,peeks:0,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
+  CV={c,mode,peeks:0,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined, and those messages show the English by themselves.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
@@ -3501,7 +3509,7 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.
   if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
   if(ln.kind==='p'){const who=C.c.cast[ln.who];C.lastWho=who.name;msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
-      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div>');chatScroll();
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div></div>');chatScroll();
       C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,readTime(ln.lt));}
       say(ln,false,who.voice);later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
   convTurn(ln);}
@@ -3530,13 +3538,13 @@ function replyVariants(lt){const segs=lt.match(/[^.!?,]+[.!?,]?\s*/g)||[lt];let 
 /* The audio for a reply said in other words: the course item with exactly those words, if there is one. */
 function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)||null;}
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
-  const okList=replyVariants(ln.lt);
-  const done=(spoken,said)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
+  const okList=replyVariants(ln.lt).concat(C.quick&&C.stage==='type'?(ln.others||[]).flatMap(o=>replyVariants(o[0])):[]);
+  const done=(spoken,said,res)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;C.played.push({ln,res});if(C.quick)qcGrade(res);
     const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
-    later(convNext,txt?700:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
+    later(C.quick?qcNext:convNext,txt?700:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking version: you see what to say in English and answer from memory. "Show me the Lithuanian" reveals and plays it. */
   const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span>'+promptHtml(ln)+
       '<div class="say-lt" id="peekbox" hidden><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
@@ -3557,17 +3565,18 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   /* Writing grows with you, reply by reply, from how well you know the words in it (their level in lessons):
      words still new → tap them in order; getting there → fill in missing letters, more of them as you learn;
      known → type it all. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
-  const stage=replyStage(ln.lt);
+  const stage=C.quick?C.stage:replyStage(ln.lt);
+  if(stage==='pick')return pickReply(ln,done);
   if(stage==='fill')return fillReply(ln,done);
   let help=0,tries=0,used=false;const slips=new Set();
   const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
   const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,stage==='tap'?2:3);
-  turn.innerHTML='<div class="turn"><span class="eyebrow">'+(stage==='tap'?'Tap the words of your reply':'Write your reply')+'</span>'+promptHtml(ln)+
+  turn.innerHTML='<div class="turn"><span class="eyebrow">'+(stage==='tap'?'Tap the words of your reply':'Write your reply')+'</span>'+promptHtml(ln,C.quick?C.promptL:null)+
     '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="'+(stage==='tap'?'Tap the words below':'Type it in Lithuanian')+'"'+(stage==='tap'?' readonly':'')+'>'+
     (stage==='tap'?'':'<div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>')+'</div>'+
     '<div class="bank" id="cbank" hidden></div>'+(stage==='tap'?'<button type="button" class="linkbtn" id="cundo" hidden>Undo last word</button>':'')+'<div class="say-lt" id="cshow" hidden></div>'+
     '<button type="button" class="linkbtn" id="chelp">'+(stage==='tap'?'Show me the answer':'Help me')+'</button><p class="note" id="cmsg" role="status">'+
-    (stage==='tap'?'These words are still new to you, so you build the reply. As you learn them, you\'ll start typing.':'')+'</p></div>';
+    (stage==='tap'?(C.quick?'Put the words in order. One or two of them don\'t belong.':'These words are still new to you, so you build the reply. As you learn them, you\'ll start typing.'):'')+'</p></div>';
   const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp'),undo=$('#cundo');
   const picked=[];wirePrompt(turn,()=>{used=true;});
   const tiles=()=>{bank.hidden=false;bank.innerHTML=shuffle(words.concat(spare)).map(w=>'<button type="button" class="chip">'+esc(w)+'</button>').join('');
@@ -3584,7 +3593,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;if(undo)undo.hidden=true;
       const other=norm(hit)!==norm(ln.lt);
       cmsg.innerHTML=other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">Correct!</span>':j.note;
-      inp.classList.add('right');btn.disabled=true;convCredit(hit,stage!=='tap'&&!used,slips);return later(()=>done(false,hit),other?2600:j.exact?600:2200);}
+      inp.classList.add('right');btn.disabled=true;convCredit(hit,stage!=='tap'&&!used,slips);const res=stage==='tap'&&!C.quick?null:!used&&!tries;return later(()=>done(false,hit,res),other?2600:j.exact?600:2200);}
     tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
     if(stage!=='tap'&&!wrongMatch&&!other){const got=a.split(' ');norm(ln.lt).split(' ').forEach((w,k)=>{if(!got.some(x=>strip(x)===strip(w)))slips.add(k);});}
@@ -3606,14 +3615,14 @@ function theirLine(ln){const names=new Set(['tomas','tomai','tomu','toma']);
   CV.c.cast.concat(S.me&&S.me.name?[{name:S.me.name}]:[]).forEach(p=>Object.values(nameForms(p.name)).forEach(n=>names.add(norm(n))));
   let unk=0;const lt=ln.lt.split(/(\s+)/).map(tok=>{const w=norm(tok);if(!w||names.has(w)||GLUE[w])return esc(tok);
     const lv=wordLvl(w);if(lv===null||lv<0){unk++;const m=tok.match(/^(.*?)([.,!?…]*)$/);return '<span class="nw">'+esc(m[1])+'</span>'+esc(m[2]);}return esc(tok);}).join('');
-  return '<span class="lt">'+lt+'</span><span class="tr"'+(unk?'':' hidden')+'>'+esc(ln.en)+'</span></div>';}
+  return '<span class="lt">'+lt+'</span><span class="tr"'+(unk?'':' hidden')+'>'+esc(ln.en)+'</span>';}
 function replyLevel(lt){const ls=lt.split(/\s+/).map(wordLvl).filter(l=>l!==null);return ls.length?Math.max(0,Math.min(...ls)):0;}
 function replyStage(lt){const lo=replyLevel(lt);return lo<=0?'tap':lo>=4?'type':'fill';}
 /* What you're told to reply fades as you learn its words, so in the end you read their message and answer it yourself:
    new → the reply in English; levels 1-2 → only the situation ("Say good morning back"), English on request;
    level 3 and up → nothing but "your turn", with a hint and then the English on request. Asking for the English
    means that reply doesn't count as review. */
-function promptHtml(ln){const L=replyLevel(ln.lt);
+function promptHtml(ln,L){if(L==null)L=replyLevel(ln.lt);
   if(L<=0)return '<div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>';
   const en='<button type="button" class="linkbtn" data-prompt="'+(L<=2?'en':'hint')+'">'+(L<=2?'Show the English':'Need a hint?')+'</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
   if(L<=2)return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;
@@ -3638,14 +3647,14 @@ function convCredit(text,credit,slips){const C=CV;
    nearly half at level 2, most at level 3, all of them from level 4. Which letters go missing changes every time. */
 function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const share=[0,.25,.45,.7];const want=[],wtok=[];let tries=0,used=false;const slips=new Set();
   const html=ln.lt.split(/\s+/).map((tok,ti)=>{const lv=wordLvl(tok);const pos=[...tok].map((ch,i)=>/\p{L}/u.test(ch)?i:-1).filter(i=>i>=0);
-    const n=lv===null?0:lv>=4?pos.length:Math.max(1,Math.min(pos.length-1,Math.round(pos.length*share[Math.max(1,lv)])));
+    const n=C.quick?(lv===null?0:Math.max(1,Math.min(pos.length-1,Math.round(pos.length*.5)))):lv===null?0:lv>=4?pos.length:Math.max(1,Math.min(pos.length-1,Math.round(pos.length*share[Math.max(1,lv)])));
     const gone=new Set(shuffle(pos.slice()).slice(0,n));
     return '<span class="fw">'+[...tok].map((ch,i)=>gone.has(i)?(want.push(ch),wtok.push(ti),'<input class="lb" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" aria-label="Missing letter">'):'<span>'+esc(ch)+'</span>').join('')+'</span>';}).join('');
-  turn.innerHTML='<div class="turn"><span class="eyebrow">Fill in the missing letters</span>'+promptHtml(ln)+
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Fill in the missing letters</span>'+promptHtml(ln,C.quick?C.promptL:null)+
     '<div class="fill" id="cfill">'+html+'</div>'+
     '<div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>'+
     '<div class="say-lt" id="cshow" hidden></div><button type="button" class="linkbtn" id="chelp">Show me the answer</button>'+
-    '<p class="note" id="cmsg" role="status">The better you know a word, the more of its letters go missing.</p></div>';
+    '<p class="note" id="cmsg" role="status">'+(C.quick?'Half the letters are gone. Next time this reply comes up, you type all of it.':'The better you know a word, the more of its letters go missing.')+'</p></div>';
   const bs=[...turn.querySelectorAll('.lb')],cmsg=$('#cmsg'),helpBtn=$('#chelp');let last=bs[0];wirePrompt(turn,()=>{used=true;});
   const upd=()=>{btn.disabled=bs.some(b=>!b.value);};
   /* Every box must hold the right letter; only a missing accent mark is let through, with a note. */
@@ -3653,7 +3662,7 @@ function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const
     const ok=bs.every((b,k)=>strip(b.value)===strip(want[k])),exact=ok&&bs.every((b,k)=>b.value.toLowerCase()===want[k].toLowerCase());
     if(ok){sfx('good');bs.forEach(b=>{b.disabled=true;b.classList.add('right');});turn.querySelectorAll('.keys button').forEach(x=>x.disabled=true);helpBtn.hidden=true;
       cmsg.innerHTML=exact?'<span class="ok">Correct!</span>':'<span class="ok">Right letters!</span> Watch the marks: <b>'+esc(ln.lt)+'</b>';btn.disabled=true;
-      bs.forEach((b,k)=>{b.value=want[k];});convCredit(ln.lt,!used,slips);return later(()=>done(false,ln.lt),exact?600:2400);}
+      bs.forEach((b,k)=>{b.value=want[k];});convCredit(ln.lt,!used,slips);return later(()=>done(false,ln.lt,!used&&!tries),exact?600:2400);}
     tries++;C.mistakes++;sfx('bad');let first=null;
     bs.forEach((b,k)=>{if(strip(b.value)!==strip(want[k])){b.value='';b.classList.add('bad');first=first||b;slips.add(wtok[k]);}});
     cmsg.textContent='Not quite. The red boxes need a different letter.'+(tries>=2?' Stuck? Tap "Show me the answer".':'');upd();if(first)first.focus();};
@@ -3666,6 +3675,106 @@ function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const
     C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now fill in the letters yourself. Copying it once helps it stick.';};
   btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
   setTimeout(()=>bs[0]&&bs[0].focus(),80);chatScroll();}
+/* Pick your reply: three replies in Lithuanian, one of them fits. Where every new reply card starts in Quick chat. */
+function pickReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');let tries=0,used=false;
+  const opts=shuffle([[ln.lt,ln.en,1]].concat(ln.no.slice(0,2)));
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Pick your reply</span>'+promptHtml(ln,C.promptL)+'<div class="choices">'+
+    opts.map((o,k)=>'<button type="button" class="opt" data-pick="'+k+'"><span class="ot"><span lang="lt">'+esc(o[0])+'</span></span></button>').join('')+
+    '</div><p class="note" id="cmsg" role="status">A new reply starts here. Get it right, and next time you build it from its words.</p></div>';
+  wirePrompt(turn,()=>{used=true;});
+  turn.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{const o=opts[Number(b.dataset.pick)];
+    if(o[2]){sfx('good');b.classList.add('good');turn.querySelectorAll('.opt').forEach(x=>x.disabled=true);$('#cmsg').innerHTML='<span class="ok">Right!</span> '+esc(ln.en);return later(()=>done(false,ln.lt,!used&&!tries),900);}
+    tries++;C.mistakes++;sfx('bad');b.classList.add('wrong');b.disabled=true;$('#cmsg').innerHTML='That means "<b>'+esc(o[1])+'</b>". Read the situation again.';});
+  btn.disabled=true;btn.textContent='Pick one';btn.classList.remove('ghost');chatScroll();}
+
+/* ===================== QUICK CHAT ===================== */
+/* Lessons teach words. Talking needs something else as well: hearing what someone says and coming up with your
+   answer, fast. So every reply in a conversation you've finished becomes a reply card, with its own level and
+   review days (S.replies, apart from your words). Quick chat mixes the due ones from all your conversations, so the
+   script's order can't help you. The card's level sets how you answer:
+   0 pick it from three → 1 build it from its words → 2 fill in half its letters → 3 type it with no help →
+   4 and up: type it, and their message is only heard, not shown (tap to read it, but then it doesn't move up). */
+let REPLY_CARDS=null;
+function replyCards(){if(REPLY_CARDS)return REPLY_CARDS;REPLY_CARDS={};
+  CONVS.forEach(c=>{const walk=(ls,opt)=>{let they=null,scene=null;
+      ls.forEach(l=>{if(l.kind==='t'){scene=l.text;they=null;}
+        else if(l.kind==='p'){they=l;scene=null;}
+        else if(l.kind==='m'){REPLY_CARDS[l.id]={id:l.id,c,they,scene,me:l,opt};they=scene=null;}
+        else if(l.kind==='c'){l.opts.forEach(o=>{REPLY_CARDS[o.line.id]={id:o.line.id,c,they,scene,me:o.line,opt:opt||o.line.id};walk(o.then,opt||o.line.id);});they=scene=null;}});};
+    walk(c.lines,null);});
+  return REPLY_CARDS;}
+/* A new card starts at "pick it", or at "build it" when you already know its words well. */
+function replyNew(ln,later){S.replies=S.replies||{};const d=new Date();d.setHours(0,0,0,0);if(later)d.setDate(d.getDate()+1);
+  S.replies[ln.id]={lvl:replyLevel(ln.lt)>=3?1:0,due:later?d.getTime():Date.now(),ok:0,bad:0};}
+/* Cards from conversations finished before Quick chat existed: the main line, and the choices you tried. */
+function seedReplies(){S.replies=S.replies||{};const all=replyCards();
+  Object.values(all).forEach(k=>{if(S.replies[k.id]||!convDone(k.c.id))return;if(k.opt&&!(convState(k.c.id).paths||[]).includes(k.opt))return;replyNew(k.me,false);});}
+function replyRec(id){return S.replies[id];}
+/* Like a word: up one level at most once a day and only when due; a miss steps it down one and brings it back soon. */
+function replyGrade(id,ok){const r=S.replies[id];if(!r)return false;
+  if(ok){r.ok++;if(r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+INTERVALS[r.lvl]);r.due=d.getTime();return true;}return false;}
+  r.bad++;r.lvl=Math.max(0,r.lvl-1);r.due=Date.now();return false;}
+function dueReplies(){if(!S.replies)return [];const now=Date.now(),all=replyCards();return Object.keys(S.replies).filter(id=>all[id]&&S.replies[id].due<=now);}
+const QC_STEPS=['Pick it','Build it','Fill it in','Type it','Hear it'];
+function renderQuick(){const box=$('#qc-card');if(!box)return;seedReplies();const all=replyCards();
+  const ids=Object.keys(S.replies).filter(id=>all[id]),due=dueReplies();const by=[0,0,0,0,0];ids.forEach(id=>by[Math.min(4,S.replies[id].lvl)]++);
+  box.innerHTML='<span class="eyebrow">Conversation skill</span><h2>'+(!ids.length?'Quick chat':due.length?'Quick chat · '+due.length+(due.length===1?' reply is':' replies are')+' due':'Quick chat · all caught up')+'</h2>'+
+    '<p class="note">'+(ids.length?'Lessons teach you words. This trains the other half of talking: someone says something, and you answer, fast. People from all your conversations ask you things in a random order, so the script can\'t help you.':'Finish a conversation, and every reply in it comes here. Then you practise answering people, without the script.')+'</p>'+
+    (ids.length?'<div class="qc-ladder" role="img" aria-label="Your replies by step">'+QC_STEPS.map((t,k)=>'<span'+(by[k]?'':' class="zero"')+'><b class="num">'+by[k]+'</b><small>'+t+'</small></span>').join('')+'</div>'+
+      '<p class="note tiny">Each reply climbs a step when you answer it right on its review day: pick it from three, build it from its words, fill in its letters, type it, and in the end only hear them and answer.</p>':'')+
+    '<button type="button" class="btn amber" id="btn-qc"'+(due.length?'':' disabled')+'>Start quick chat</button>'+
+    (ids.length>=3?'<button type="button" class="btn ghost" id="btn-qc-any">Chat anyway</button>':'');
+  $('#btn-qc').onclick=()=>startQuick(false);const any=$('#btn-qc-any');if(any)any.onclick=()=>startQuick(true);}
+/* Up to 8 due replies, mixed. "Chat anyway" takes your weakest replies; they only move up on their review day. */
+function startQuick(any){seedReplies();const all=replyCards();
+  let ids=any?Object.keys(S.replies).filter(id=>all[id]).sort((a,b)=>S.replies[a].lvl-S.replies[b].lvl||S.replies[a].due-S.replies[b].due):dueReplies().sort((a,b)=>S.replies[a].due-S.replies[b].due);
+  ids=ids.slice(0,8);if(!ids.length)return;Q=null;personalise();
+  const queue=shuffle(ids.map(id=>all[id]));
+  CV={quick:true,c:queue[0].c,mode:'text',peeks:0,queue,i:0,mistakes:0,turns:0,heard:0,lastWho:'',played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),
+    right:0,graded:0,up:new Set(),again:new Set(),startedAt:Date.now(),timers:[],rec:null};
+  const me=S.voice||'ona';new Set(queue.map(k=>k.c)).forEach(c=>c.cast.forEach(p=>preloadUnit(c.id,p.voice)));preloadUnit(queue[0].c.id,me);
+  $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
+  $('#stage').innerHTML='<div class="chat"><div class="scene"><div><span class="eyebrow">Quick chat · '+ids.length+(ids.length===1?' reply':' replies')+'</span><strong>Answer them</strong><small>People from your conversations message you, one after another. Answer each one in Lithuanian.</small><small class="tiny">Tap a message to see it in English. That\'s fine: only asking for the English of your own reply holds it back.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  const btn=$('#btn-check');btn.disabled=true;btn.textContent='Waiting for a message';btn.onclick=null;
+  qcNext();}
+function qcNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.queue.length*100)+'%';
+  if(C.i>=C.queue.length)return qcFinish();
+  const k=C.queue[C.i],msgs=$('#msgs'),r=S.replies[k.id];C.c=k.c;C.card=k;
+  C.stage=['pick','tap','fill','type'][Math.min(3,r.lvl)];C.promptL=C.stage==='type'&&k.they?3:1;
+  C.ear=r.lvl>=4&&S.sound&&!!k.they;C.peekedEar=false;
+  if(C.i)msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(k.c.title)+'</span></div>');
+  if(k.scene)msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(k.scene)+'</span></div>');
+  if(!k.they){C.lastWho=k.c.cast[0].name;chatScroll();return later(()=>convTurn(k.me),500);}
+  const who=k.c.cast[k.they.who||0];C.lastWho=who.name;
+  msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
+  later(()=>{$('#typing').remove();const name='<small class="who">'+esc(who.name)+'</small>';
+    msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+(C.ear?
+      '<div class="bub" role="button" tabindex="0" data-ear>'+name+'<span class="speakrow">'+cvSpk(k.they.id,who.voice)+cvSpk(k.they.id,who.voice,true)+'</span><small class="earnote">Listen and answer. Tap here to read it.</small><span class="earlt" hidden>'+theirLine(k.they)+'</span></div>':
+      '<div class="bub" role="button" tabindex="0" data-tr>'+name+theirLine(k.they)+'</div>')+'</div>');chatScroll();
+    if(C.ear){say(k.they,false,who.voice);return later(()=>convTurn(k.me),S.sound?clipLen(k.they.id,who.voice)*1000+300:600);}
+    sfx('pop');later(()=>convTurn(k.me),readTime(k.they.lt));},Math.min(1500,500+k.they.lt.length*20));}
+/* Only the first try at a card counts for it; a missed card comes round once more at the end. */
+function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
+  if(res===true&&C.peekedEar)res=null;C.graded++;if(res)C.right++;
+  if(res!=null&&replyGrade(k.id,res))C.up.add(k.id);
+  if(res===false){C.again.add(k.id);C.queue.push(k);}
+  save();}
+function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>0&&C.right>=C.graded;
+  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const total=addXp(5+C.right+(perfect?5:0));const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
+  earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
+  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
+  if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  if(C.up.size)lines.push('<div class="win"><b>'+C.up.size+' repl'+(C.up.size===1?'y':'ies')+' moved up a step</b> · '+[...C.up].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.up.size>3?'…':'')+'</div>');
+  if(C.again.size)lines.push('<div class="win"><b>'+C.again.size+' to practise again</b> · '+[...C.again].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.again.size>3?'…':'')+' will come back soon</div>');
+  if(C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · typing your replies counts as review too</div>');
+  if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
+  if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
+  got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>Quick chat done</h2><div class="tiles"><div class="tile"><strong class="num">'+C.right+'/'+C.graded+'</strong><small>Right first time</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div></div>'+lines.join('')+'</div>';
+  confetti(perfect||got.length?160:70);sfx('win');countUp();$('#lbar').style.width='100%';
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
+
 /* Compares what the browser heard with the line, word by word, ignoring accents and small slips. */
 /* Boils a word down to how it sounds, so spelling differences don't count against you:
    "pizza" and "pica" both become "pica", "šokoladas" and "sokoladas" match, and so on. */
@@ -3714,11 +3823,14 @@ function hear(target,mic,out,onResult,english){const targets=[].concat(target);
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const sp=C.mode==='speak';const allSaid=sp&&C.turns>0&&C.heard>=C.turns;const perfect=sp?allSaid&&C.peeks===0:C.mistakes===0;const xp=20+(perfect?5:0)+(allSaid?5:0);
   if(sp)st.speak=today();else st.done=st.text=today();
+  let cardsUp=0,cardsNew=0;if(!sp)C.played.forEach(p=>{if(!S.replies||!S.replies[p.ln.id]){replyNew(p.ln,true);cardsNew++;}else if(p.res!=null&&replyGrade(p.ln.id,p.res))cardsUp++;});
   const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · '+(sp?'every reply from memory, no peeking':'every reply written right first time')+', +5 XP</div>');
   if(!sp&&C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · they were due for review, and you wrote them right</div>');
   if(!sp&&C.slipped.size)lines.push('<div class="win"><b>'+C.slipped.size+' to practise again</b> · '+[...C.slipped].slice(0,4).map(id=>esc(BYID[id].lt)).join(', ')+(C.slipped.size>4?'…':'')+' will come back in your reviews soon</div>');
+  if(cardsNew)lines.push('<div class="win"><b>'+cardsNew+' new repl'+(cardsNew===1?'y':'ies')+' for Quick chat</b> · practise answering them in Practice, starting tomorrow</div>');
+  if(cardsUp)lines.push('<div class="win"><b>'+cardsUp+' repl'+(cardsUp===1?'y':'ies')+' got easier</b> · they move up a step in Quick chat</div>');
   if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken. Find it on the conversation\'s card.</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
@@ -3730,6 +3842,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){micPause($('#stage'));say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
+  const ear=e.target.closest('[data-ear]');if(ear){const t=ear.querySelector('.earlt');if(t.hidden){t.hidden=false;ear.querySelector('.earnote').hidden=true;CV.peekedEar=true;chatScroll();}return;}
   const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
 
 /* ===================== INSTALL AS AN APP ===================== */
