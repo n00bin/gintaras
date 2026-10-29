@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.33** (2026-10-29) Conversation stars: Written, On your own, Spoken; replays get harder as your replies climb, and the card shows replies due
 - **3.32** (2026-10-29) Quick chat: every reply from your conversations becomes a reply card with its own steps (pick, build, fill, type, hear), practised mixed in Practice
 - **3.31.1** (2026-10-29) Conversations: their messages show the English by themselves when they use words you haven't learned, with those words underlined
 - **3.31** (2026-10-29) Conversations: the English fades as you learn the words, and texting now counts as review for your words
