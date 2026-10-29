@@ -3491,11 +3491,25 @@ function convChoice(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check
   chatScroll();}
 /* Your turn has two steps: read the situation and pick the right reply, then say that reply out loud.
    The microphone checks you where the browser can listen; a match carries the conversation on by itself. */
+/* Replies that mean the same thing all count: answer "Labas rytas!" with "Labas!" and Rūta is just as happy.
+   Swaps work piece by piece, so "Laba diena! Ne, ačiū." also accepts "Labas! Ne, ačiū." (Not across times of day.) */
+const ALSO={'labas':['Sveiki'],'sveiki':['Labas'],'labas rytas':['Labas','Sveiki'],'laba diena':['Labas','Sveiki'],'labas vakaras':['Labas','Sveiki'],
+  'viso gero':['Iki','Iki pasimatymo'],'iki':['Viso gero','Iki pasimatymo'],'iki pasimatymo':['Viso gero','Iki'],'ačiū':['Labai ačiū'],'labai ačiū':['Ačiū']};
+function replyVariants(lt){const segs=lt.match(/[^.!?,]+[.!?,]?\s*/g)||[lt];let out=[''];
+  segs.forEach((seg,k)=>{const m=seg.match(/^(\s*)(.*?)([.!?,]?\s*)$/),core=m[2],key=norm(core);
+    const opts=[core].concat((ALSO[key]||[]).map(a=>k===0||/[.!?]\s*$/.test(segs[k-1])?a:a.toLowerCase()));
+    out=out.flatMap(o=>opts.map(x=>o+m[1]+x+m[3])).slice(0,32);});
+  return out.map(x=>x.trim());}
+/* The audio for a reply said in other words: the course item with exactly those words, if there is one. */
+function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)||null;}
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
-  const done=spoken=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
-    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
-    say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
-    later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
+  const okList=replyVariants(ln.lt);
+  const done=(spoken,said)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;
+    const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
+    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
+    if(!own)say(ln,false,me);else if(alt)say(alt,false,me);
+    C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
+    later(convNext,S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking version: you see what to say in English and answer from memory. "Show me the Lithuanian" reveals and plays it. */
   const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
       '<div class="say-lt" id="peekbox" hidden><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
@@ -3505,10 +3519,10 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     const peek=$('#peek');peek.onclick=()=>{C.peeks++;peek.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
       const m=$('#mic');if(m)autoMic(m,S.sound?clipLen(ln.id,me)*1000+350:500);chatScroll();};
     btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
-    const mic=$('#mic');if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(ln.ht||ln.lt,mic,$('#srout'),(score,heardText,err)=>{
+    const mic=$('#mic');if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(ln.ht?[ln.ht]:okList,mic,$('#srout'),(score,heardText,err,hit)=>{
       if(err&&auto&&/not-allowed/.test(err)){$('#srout').innerHTML='Tap the <b>microphone</b> and say it.';return;}
       if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
-      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}},ln.en);};
+      if(score>=0.75){setFoot('good','');later(()=>done(true,ln.ht?null:hit),900);}},ln.en);};
     if(mic)autoMic(mic,700);
     chatScroll();};
   if(C.mode==='speak')return sayIt();
@@ -3528,9 +3542,11 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     else{reveal();C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now type it yourself. Copying it once helps it stick.';}};
   inp.oninput=()=>{btn.disabled=!inp.value.trim();};
   turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const p=inp.selectionStart??inp.value.length,q=inp.selectionEnd??p;inp.value=inp.value.slice(0,p)+k.dataset.k+inp.value.slice(q);inp.focus();inp.setSelectionRange(p+1,p+1);inp.oninput();});
-  const check=()=>{const a=norm(inp.value);if(!a)return;const j=judgeTyped(inp.value,[ln.lt]);
+  const check=()=>{const a=norm(inp.value);if(!a)return;const j=judgeTyped(inp.value,okList);const hit=okList.find(v=>judgeTyped(inp.value,[v]).ok)||ln.lt;
     if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
-      cmsg.innerHTML=j.exact?'<span class="ok">Correct!</span>':j.note;inp.classList.add('right');btn.disabled=true;return later(()=>done(false),j.exact?600:2200);}
+      const other=norm(hit)!==norm(ln.lt);
+      cmsg.innerHTML=other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">Correct!</span>':j.note;
+      inp.classList.add('right');btn.disabled=true;return later(()=>done(false,hit),other?2600:j.exact?600:2200);}
     tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
     cmsg.innerHTML=other?'That\'s the other choice ("<b>'+esc(other[1])+'</b>"). You picked "'+esc(ln.en)+'", so write that one.':wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':j.why?'Not quite. '+j.why:'Not quite. Check each word and try again.';
@@ -3560,19 +3576,19 @@ let activeRec=null;
 let autoMicT=null;
 function autoMic(mic,ms){clearTimeout(autoMicT);autoMicT=setTimeout(()=>{if(document.contains(mic)&&!activeRec&&$('#guide').hidden&&!$('#sheet').hidden){mic.__auto=true;mic.click();}},ms);}
 function stopHearing(){clearTimeout(autoMicT);if(activeRec){activeRec.__stopped=true;try{activeRec.abort();}catch(e){}activeRec=null;}document.querySelectorAll('.spk.mic.on').forEach(m=>m.classList.remove('on'));}
-function hear(target,mic,out,onResult,english){
+function hear(target,mic,out,onResult,english){const targets=[].concat(target);
   if(!SR){out.textContent='This browser can\'t listen. Say it out loud and compare with the recording.';return onResult(0,'','unsupported');}
   if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud and compare with the recording.';return onResult(0,'','offline');}
   stopHearing();stopAllAudio();const rec=new SR();activeRec=rec;rec.lang='lt-LT';rec.interimResults=false;rec.maxAlternatives=5;
   mic.classList.add('on');out.innerHTML='<b>Listening…</b> say it now.';let got=false;
   rec.onresult=e=>{got=true;const alts=[...e.results[0]].map(a=>a.transcript);let best=alts[0]||'',score=0;
-    alts.forEach(a=>{const sc=matchScore(a,target);if(sc>score){score=sc;best=a;}});
+    let hit=targets[0];alts.forEach(a=>targets.forEach(t=>{const sc=matchScore(a,t);if(sc>score){score=sc;best=a;hit=t;}}));
     let twin=false;if(score<0.75&&english){const en=english.split(/\s*[\/(]/)[0];const hit=alts.find(a=>norm(a)===norm(en)||matchScore(a,en)>=0.99);if(hit){score=1;best=hit;twin=true;}}
     if(twin){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”, the English word. Your phone may be listening in English, and it sounds the same, so <span class="ok">it counts!</span>';}
     else if(score>=0.75){sfx('good');out.innerHTML='I heard “<b>'+esc(best)+'</b>”. <span class="ok">Spot on!</span>';}
     else if(score>=0.4)out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Close! Play the recording once more and try again.';
     else out.innerHTML='I heard “<b>'+esc(best)+'</b>”. Not quite. Listen again (try the slow button), then have another go.';
-    onResult(score,best);};
+    onResult(score,best,null,hit);};
   rec.onerror=ev=>{got=true;const why={'not-allowed':'The microphone is blocked for this page. Allow it in your browser\'s site settings, or rate yourself instead.',
       'service-not-allowed':'The microphone is blocked for this page. Allow it in your browser\'s site settings, or rate yourself instead.',
       'language-not-supported':'Your device\'s speech recognition doesn\'t understand Lithuanian. Say it out loud and rate yourself instead.',
