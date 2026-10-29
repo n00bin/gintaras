@@ -54,6 +54,7 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
 });
 say('conversation words not taught earlier', unknown);
 { const v = (js.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
+  say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(js) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }
 console.log(problems ? `\n${problems} problem(s)` : '\nAll checks passed.');
 process.exit(problems ? 1 : 0);

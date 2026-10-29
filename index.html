@@ -957,10 +957,12 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 <script src="avatars.js"></script>
 <script>
-/* The app's version: shown on the splash and in Settings. Raise it with every release, together with SHELL in sw.js. */
-const APP_VERSION=82;
-const WHATS_NEW='The app now shows its version, on this screen and in Settings.';
-if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_VERSION;}
+/* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
+   APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js. */
+const APP_RELEASE='1.0';
+const APP_VERSION=83;
+const WHATS_NEW='Gintaras is now version 1.0. Each update gets its own number, shown here and in Settings.';
+if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */
 const COURSE = [
@@ -3957,8 +3959,8 @@ function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.sav
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}
   {const sp=$('#splash'),bye=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),400);};sp.onclick=bye;setTimeout(bye,1000);}
-  $('#app-version').textContent='Gintaras version '+APP_VERSION;
-  if(S.welcomed&&(S.seenVersion||0)<APP_VERSION)setTimeout(()=>celebrate({mood:'cheer',icon:'✨',title:'Updated to version '+APP_VERSION,sub:WHATS_NEW,ms:4500}),1600);
+  $('#app-version').textContent='Gintaras version '+APP_RELEASE;
+  if(S.welcomed&&(S.seenVersion||0)<APP_VERSION)setTimeout(()=>celebrate({mood:'cheer',icon:'✨',title:'Updated to version '+APP_RELEASE,sub:WHATS_NEW,ms:4500}),1600);
   S.seenVersion=APP_VERSION;save();
   window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}
