@@ -3133,7 +3133,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
   const from=ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
   const emo=x=>picHtml(x.lt,'sm');
-  const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';
+  const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?TURTLE:SPK)+'</button>';
   if(ex.type==='tip'){const u=ex.unit,l=ex.lesson;const lt=l&&(l.speak?SPEAK_TIPS[u.id]:LESSON_TIPS[l.id]);
     st.innerHTML='<span class="eyebrow">'+(l&&crowns(l.id)>0?'Quick reminder':'Before you start')+'</span>'+
       (ex.showUnit?'<div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div>'+(PATTERNS[u.id]?patternHtml(PATTERNS[u.id]):''):'')+
@@ -3150,20 +3150,23 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     const rateHtml='<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
     st.innerHTML='<div class="prompt small">Say it out loud</div><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it)+'</div>'+
       '<div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
-      '<p class="heard" id="srout" role="status">'+(SR?'Listen, then tap the <b>microphone</b> and say it. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
+      '<p class="heard" id="srout" role="status">'+(SR?'Listen, then say it when the <b>microphone</b> lights up. Get it right and you move on.':'This browser can\'t listen, so say it out loud, compare with the recording, and rate yourself.')+'</p>'+
       (SR?'<details class="selfrate" id="selfrate"><summary>Can\'t use the microphone? Rate yourself instead</summary>'+rateHtml+'</details>':rateHtml);
     let passed=false;
     btn.disabled=true;btn.textContent=SR?'Say it into the microphone':'Rate yourself above';
     const pass=()=>{if(passed)return;passed=true;grade(it,true,true);Q.correct++;rec(it.id).seen=true;
       setFoot('good','Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{Q.idx++;renderStep();};};
     let tries=0;const mic=st.querySelector('#mic');
-    if(mic)mic.onclick=()=>hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
+    if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{
+      /* a phone that won't start the mic by itself just waits for a tap */
+      if(err&&auto&&/not-allowed/.test(err)){st.querySelector('#srout').innerHTML='Tap the <b>microphone</b> and say it.';return;}
       if(err){const d=st.querySelector('#selfrate');if(d)d.open=true;return;}
       tries++;if(score>=0.75)return pass();
-      if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}},it.en);
+      if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}},it.en);};
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
       if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.due=Date.now()+DAY;}else{grade(it,true,true);Q.correct++;}
-      Q.idx++;renderStep();});setTimeout(()=>say(it),200);}
+      Q.idx++;renderStep();});setTimeout(()=>say(it),200);
+    if(mic)autoMic(mic,S.sound?200+clipLen(it.id,S.voice||'ona')*1000+350:600);}
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
     const opts=shuffle([it].concat(distractors(it,3,field)));
@@ -3220,7 +3223,8 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
       if(sel.dataset.side===b.dataset.side){sel.setAttribute('aria-pressed','false');sel=b;b.setAttribute('aria-pressed','true');return;}
       if(sel.dataset.id===b.dataset.id){[sel,b].forEach(x=>{x.classList.add('done');x.setAttribute('aria-pressed','false');});done++;sel=null;if(done===ex.items.length){sfx('good');Q.answer=true;btn.disabled=false;setFoot('good','All matched');btn.textContent='Continue';btn.onclick=()=>{ex.items.forEach(i=>grade(i,true,false));Q.correct++;Q.idx++;renderStep();};}}
       else{[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});Q.wrongOnce[(sel.dataset.side==='l'?sel:b).dataset.id]=true;sel=null;}});}
-  st.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>say(BYID[b.dataset.say],!!b.dataset.slow));}
+  st.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>{micPause(st);say(BYID[b.dataset.say],!!b.dataset.slow);});}
+function micPause(root){const was=!!activeRec;stopHearing();const o=root.querySelector('#srout');if(was&&o)o.innerHTML='Stopped listening. Tap the <b>microphone</b> when you\'re ready.';}
 
 /* A word climbs at most one level per day, and only once it is due: two right answers a minute apart are not two reviews.
    It then comes due at the start of the day its interval lands on, not at the exact hour. */
@@ -3366,7 +3370,9 @@ function clipLen(id,voice){const it=BYID[id];if(it&&it.au)id=it.au;const g=unitO
 function later(fn,ms){const C=CV;if(!C)return;const t=setTimeout(()=>{if(CV===C)fn();},ms);C.timers.push(t);}
 function stopConv(){if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
 function chatScroll(){const box=$('#stage').parentElement;box.scrollTop=box.scrollHeight;}
-function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play')+'">'+(slow?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M4 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>':SPK)+'</button>';}
+/* Slow playback is a turtle: understood everywhere, no words needed. */
+const TURTLE='<svg viewBox="0 2 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 16.5h15.4"/><path d="M2.8 16.5a7 7 0 0 1 14 0"/><path d="M7 16.5l2.8-4.6 2.8 4.6"/><path d="M16.6 15.2l1.9-1.1"/><circle cx="20.4" cy="12.9" r="2.3"/><path d="M5.6 16.5v3M14 16.5v3"/></svg>';
+function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play')+'">'+(slow?TURTLE:SPK)+'</button>';}
 function startConv(id){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
   CV={c,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
@@ -3404,11 +3410,13 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
   const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Step 2 · Now say it out loud</span><div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
       '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
-      '<p class="heard" id="srout" role="status">'+(SR?'Tap the <b>microphone</b> and say it. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".')+'</p></div>';
+      '<p class="heard" id="srout" role="status">'+(SR?'Listen, then say it when the <b>microphone</b> lights up. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".')+'</p></div>';
     btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
-    const mic=$('#mic');if(mic)mic.onclick=()=>hear(ln.ht||ln.lt,mic,$('#srout'),(score,heardText,err)=>{
+    const mic=$('#mic');if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(ln.ht||ln.lt,mic,$('#srout'),(score,heardText,err)=>{
+      if(err&&auto&&/not-allowed/.test(err)){$('#srout').innerHTML='Tap the <b>microphone</b> and say it.';return;}
       if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
-      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}},ln.en);
+      if(score>=0.75){setFoot('good','');later(()=>done(true),900);}},ln.en);};
+    if(mic){say(ln,false,me);autoMic(mic,S.sound?clipLen(ln.id,me)*1000+350:500);}
     chatScroll();};
   /* Step 1: write the reply. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
   let help=0,tries=0;
@@ -3454,7 +3462,10 @@ function matchScore(said,target){const tw=strip(target).split(' ').filter(Boolea
 /* Listens once in Lithuanian and scores what the browser heard against the target line.
    onResult(score, heardText) on a result, or onResult(0, '', errorCode) when it could not listen at all. */
 let activeRec=null;
-function stopHearing(){if(activeRec){try{activeRec.abort();}catch(e){}activeRec=null;}document.querySelectorAll('.spk.mic.on').forEach(m=>m.classList.remove('on'));}
+/* After a recording plays, the microphone switches itself on (autoMic). Tapping play again stops it; tap the mic to start over. */
+let autoMicT=null;
+function autoMic(mic,ms){clearTimeout(autoMicT);autoMicT=setTimeout(()=>{if(document.contains(mic)&&!activeRec&&$('#guide').hidden&&!$('#sheet').hidden){mic.__auto=true;mic.click();}},ms);}
+function stopHearing(){clearTimeout(autoMicT);if(activeRec){activeRec.__stopped=true;try{activeRec.abort();}catch(e){}activeRec=null;}document.querySelectorAll('.spk.mic.on').forEach(m=>m.classList.remove('on'));}
 function hear(target,mic,out,onResult,english){
   if(!SR){out.textContent='This browser can\'t listen. Say it out loud and compare with the recording.';return onResult(0,'','unsupported');}
   if(!navigator.onLine){out.textContent='The microphone check needs internet. Say it out loud and compare with the recording.';return onResult(0,'','offline');}
@@ -3476,7 +3487,7 @@ function hear(target,mic,out,onResult,english){
       'audio-capture':'No microphone was found. Say it out loud and rate yourself instead.'}[ev.error];
     if(ev.error==='aborted')return;out.textContent=why||'I couldn\'t hear that. Tap the microphone and try again.';
     onResult(0,'',ev.error==='no-speech'?null:ev.error);};
-  rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
+  rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got&&!rec.__stopped)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
@@ -3493,7 +3504,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
-$('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
+$('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){micPause($('#stage'));say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
   const bub=e.target.closest('[data-tr]');if(bub){const tr=bub.querySelector('.tr');tr.hidden=!tr.hidden;}});
 
 /* ===================== INSTALL AS AN APP ===================== */
