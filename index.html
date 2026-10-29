@@ -662,7 +662,13 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .cup-list li.me{font-weight:800;outline:2px solid var(--amber)}
 .shield-note{font-weight:700;color:var(--pine)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+.splash{position:fixed;inset:0;z-index:90;display:grid;place-content:center;justify-items:center;gap:8px;background:var(--bg);transition:opacity .35s}
+.splash.out{opacity:0;pointer-events:none}
+.splash .gem.big{width:96px;height:84px;background:url(gem.svg) center/contain no-repeat;animation:popin .5s cubic-bezier(.2,1.6,.4,1)}
+.splash h1{font-family:var(--display);font-size:34px;font-weight:700;margin:6px 0 0;color:var(--amber-deep)}
+.splash small{color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.04em}
 </style>
+<div class="splash" id="splash" aria-hidden="true"><span class="gem big"></span><h1>Gintaras</h1><small id="splash-v"></small></div>
 
 <header class="top">
   <div class="brand"><span class="gem" aria-hidden="true"></span><h1>Gintaras</h1></div>
@@ -826,6 +832,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
       <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
       <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
       <p class="note">Pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
+      <p class="note" id="app-version"></p>
       <button class="btn danger" id="btn-reset">Reset all progress</button>
       <div class="confirm" id="confirm-reset" hidden>
         <span>This erases your XP, streak and every lesson. There is no undo.</span>
@@ -950,6 +957,10 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 <script src="avatars.js"></script>
 <script>
+/* The app's version: shown on the splash and in Settings. Raise it with every release, together with SHELL in sw.js. */
+const APP_VERSION=82;
+const WHATS_NEW='The app now shows its version, on this screen and in Settings.';
+if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_VERSION;}
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */
 const COURSE = [
@@ -3944,7 +3955,12 @@ function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.sav
     if(owed>0){amberAdd('amberE',owed);setTimeout(()=>toast('🎁 +'+owed+' amber for the learning you did before amber existed'),1500);}S.amberBack=1;}
   rollDay();save();renderAll();netUI();
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
-  if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
+  if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}
+  {const sp=$('#splash'),bye=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),400);};sp.onclick=bye;setTimeout(bye,1000);}
+  $('#app-version').textContent='Gintaras version '+APP_VERSION;
+  if(S.welcomed&&(S.seenVersion||0)<APP_VERSION)setTimeout(()=>celebrate({mood:'cheer',icon:'✨',title:'Updated to version '+APP_VERSION,sub:WHATS_NEW,ms:4500}),1600);
+  S.seenVersion=APP_VERSION;save();
+  window.gintarasReady=true;window.dispatchEvent(new Event('gintaras:ready'));}
 try{window.claude?.hot?.snapshot?.(()=>({S}));}catch(e){}
 window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.hot?.data??{});
 </script>
