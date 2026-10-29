@@ -5,8 +5,8 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v94';
-const AUDIO = 'gintaras-audio-v1';
+const SHELL = 'gintaras-shell-v95';
+const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];
 const CORE = ['./', 'index.html', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
@@ -70,6 +70,9 @@ async function audio(req) {
       if (!res.ok) return res;
       await cache.put(req.url, res.clone());
       full = res;
+      // a newer recording of the same file replaces the old one
+      const path = new URL(req.url).pathname;
+      for (const k of await cache.keys()) if (new URL(k.url).pathname === path && k.url !== req.url) cache.delete(k);
     } catch (err) {
       return fetch(req);
     }

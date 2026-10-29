@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.33.2** (2026-10-29) Say it: recordings line up with the words again (old saved audio is replaced), and you speak in your own voice (man or woman from About me) while the others use the other voice
 - **3.33.1** (2026-10-29) A conversation now has to be said out loud (Say it), not just written, before the next unit opens
 - **3.33** (2026-10-29) Conversation stars: Written, On your own, Spoken; replays get harder as your replies climb, and the card shows replies due
 - **3.32** (2026-10-29) Quick chat: every reply from your conversations becomes a reply card with its own steps (pick, build, fill, type, hear), practised mixed in Practice

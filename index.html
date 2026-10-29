@@ -981,8 +981,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.33.1';
-const APP_VERSION=94;
+const APP_RELEASE='3.33.2';
+const APP_VERSION=95;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2950,7 +2950,12 @@ function unitOf(id){return (id.match(/^([a-z]+\d+)/)||[])[1];}
 /* Each unit's words share one file, so a player must never run past the word it was asked for.
    Phones resume paused audio by themselves (for example after the microphone has been used); these guards
    stop any playback the app did not start, and stop at the end of the word even if the timer was lost. */
-function getPlayer(voice,unit){const k=voice+'_'+unit;if(!players[k]){const a=new Audio('audio/'+k+'.mp3');a.preload='auto';a.__on=false;a.__end=null;
+/* Each audio file's address carries a short fingerprint of its clip timings. When a unit or conversation is
+   re-recorded the timings change, so the address changes, and a phone never plays a saved old file with new timings
+   (that played the wrong words). */
+function audioVer(voice,unit){const t=JSON.stringify((SMAP[voice]||{})[unit]||'');let h=0;for(let i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))|0;return (h>>>0).toString(36);}
+function audioUrl(voice,unit){return 'audio/'+voice+'_'+unit+'.mp3?v='+audioVer(voice,unit);}
+function getPlayer(voice,unit){const k=voice+'_'+unit;if(!players[k]){const a=new Audio(audioUrl(voice,unit));a.preload='auto';a.__on=false;a.__end=null;
     a.addEventListener('play',()=>{if(!a.__on)a.pause();});
     a.addEventListener('timeupdate',()=>{if(a.__end!=null&&a.currentTime>=a.__end)a.__on=false;if(!a.__on)a.pause();});
     players[k]=a;}return players[k];}
@@ -2967,6 +2972,10 @@ function say(item,slow,voiceOverride){if(!S.sound||!item)return;const voice=voic
       const p=a.play();if(p&&p.catch)p.catch(()=>speak(item.lt,slow));}catch(e){speak(item.lt,slow);}};
   a.onerror=()=>speak(item.lt,slow);
   if(a.readyState>=1)go();else{a.addEventListener('loadedmetadata',go,{once:true});a.load();}}
+/* In conversations you speak in the voice that matches you (About me: man → Leonas, woman → Ona; Tomas by default),
+   and the people you talk to use the other one, so you always hear both a man's and a woman's voice. */
+function myVoice(){return S.me&&S.me.g==='f'?'ona':'leonas';}
+function castVoice(){return myVoice()==='ona'?'leonas':'ona';}
 function preloadUnit(unit,voice){try{getPlayer(voice||S.voice||'ona',unit).load();}catch(e){}}
 function canListen(){return true;}
 let ltVoice=null;
@@ -3511,7 +3520,7 @@ function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big
 function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
   const st0=(S.convs||{})[id]||{};mode=mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
   CV={c,mode,peeks:0,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
-  const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
+  const me=myVoice();preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,castVoice(p)));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined, and those messages show the English by themselves.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
@@ -3525,9 +3534,9 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.
   if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
   if(ln.kind==='p'){const who=C.c.cast[ln.who];C.lastWho=who.name;msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
-      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div></div>');chatScroll();
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,castVoice(who)))+'</div></div>');chatScroll();
       C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,readTime(ln.lt));}
-      say(ln,false,who.voice);later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
+      say(ln,false,castVoice(who));later(convNext,S.sound?clipLen(ln.id,castVoice(who))*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
    how the other person reacts to it, and then the conversation joins up again. */
@@ -3553,7 +3562,7 @@ function replyVariants(lt){const segs=lt.match(/[^.!?,]+[.!?,]?\s*/g)||[lt];let 
   return out.map(x=>x.trim());}
 /* The audio for a reply said in other words: the course item with exactly those words, if there is one. */
 function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)||null;}
-function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=S.voice||'ona';
+function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=myVoice();
   const okList=replyVariants(ln.lt).concat(C.quick&&C.stage==='type'?(ln.others||[]).flatMap(o=>replyVariants(o[0])):[]);
   const done=(spoken,said,res)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;C.played.push({ln,res});if(C.quick)qcGrade(res);
     const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
@@ -3751,7 +3760,7 @@ function startQuick(any){seedReplies();const all=replyCards();
   const queue=shuffle(ids.map(id=>all[id]));
   CV={quick:true,c:queue[0].c,mode:'text',peeks:0,queue,i:0,mistakes:0,turns:0,heard:0,lastWho:'',played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),
     right:0,graded:0,up:new Set(),again:new Set(),startedAt:Date.now(),timers:[],rec:null};
-  const me=S.voice||'ona';new Set(queue.map(k=>k.c)).forEach(c=>c.cast.forEach(p=>preloadUnit(c.id,p.voice)));preloadUnit(queue[0].c.id,me);
+  const me=myVoice();new Set(queue.map(k=>k.c)).forEach(c=>c.cast.forEach(p=>preloadUnit(c.id,castVoice(p))));preloadUnit(queue[0].c.id,me);
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene"><div><span class="eyebrow">Quick chat · '+ids.length+(ids.length===1?' reply':' replies')+'</span><strong>Answer them</strong><small>People from your conversations message you, one after another. Answer each one in Lithuanian.</small><small class="tiny">Tap a message to see it in English. That\'s fine: only asking for the English of your own reply holds it back.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Waiting for a message';btn.onclick=null;
@@ -3768,9 +3777,9 @@ function qcNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.queue.le
   msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
   later(()=>{$('#typing').remove();const name='<small class="who">'+esc(who.name)+'</small>';
     msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+(C.ear?
-      '<div class="bub" role="button" tabindex="0" data-ear>'+name+'<span class="speakrow">'+cvSpk(k.they.id,who.voice)+cvSpk(k.they.id,who.voice,true)+'</span><small class="earnote">Listen and answer. Tap here to read it.</small><span class="earlt" hidden>'+theirLine(k.they)+'</span></div>':
+      '<div class="bub" role="button" tabindex="0" data-ear>'+name+'<span class="speakrow">'+cvSpk(k.they.id,castVoice(who))+cvSpk(k.they.id,castVoice(who),true)+'</span><small class="earnote">Listen and answer. Tap here to read it.</small><span class="earlt" hidden>'+theirLine(k.they)+'</span></div>':
       '<div class="bub" role="button" tabindex="0" data-tr>'+name+theirLine(k.they)+'</div>')+'</div>');chatScroll();
-    if(C.ear){say(k.they,false,who.voice);return later(()=>convTurn(k.me),S.sound?clipLen(k.they.id,who.voice)*1000+300:600);}
+    if(C.ear){say(k.they,false,castVoice(who));return later(()=>convTurn(k.me),S.sound?clipLen(k.they.id,castVoice(who))*1000+300:600);}
     sfx('pop');later(()=>convTurn(k.me),readTime(k.they.lt));},Math.min(1500,500+k.they.lt.length*20));}
 /* Only the first try at a card counts for it; a missed card comes round once more at the end. */
 function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
@@ -3778,6 +3787,22 @@ function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
   if(res!=null&&replyGrade(k.id,res))C.up.add(k.id);
   if(res===false){C.again.add(k.id);C.queue.push(k);}
   save();}
+function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>0&&C.right>=C.graded;
+  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const total=addXp(5+C.right+(perfect?5:0));const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
+  earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
+  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
+  if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  if(C.up.size)lines.push('<div class="win"><b>'+C.up.size+' repl'+(C.up.size===1?'y':'ies')+' moved up a step</b> · '+[...C.up].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.up.size>3?'…':'')+'</div>');
+  if(C.again.size)lines.push('<div class="win"><b>'+C.again.size+' to practise again</b> · '+[...C.again].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.again.size>3?'…':'')+' will come back soon</div>');
+  if(C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · typing your replies counts as review too</div>');
+  if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
+  if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
+  got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>Quick chat done</h2><div class="tiles"><div class="tile"><strong class="num">'+C.right+'/'+C.graded+'</strong><small>Right first time</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div></div>'+lines.join('')+'</div>';
+  confetti(perfect||got.length?160:70);sfx('win');countUp();$('#lbar').style.width='100%';
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
+
 function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>0&&C.right>=C.graded;
   const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const total=addXp(5+C.right+(perfect?5:0));const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
@@ -3893,11 +3918,11 @@ if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.se
 /* ===================== OFFLINE ===================== */
 /* Recordings live in the service worker's audio cache. "Download for offline" fills it with your voice for every
    unit plus both voices for the conversations (the other person always speaks in their own voice). */
-const AUDIO_CACHE='gintaras-audio-v1';
+const AUDIO_CACHE='gintaras-audio-v2';
 const canOffline='caches' in window&&'serviceWorker' in navigator&&/^https?:/.test(location.protocol);
 let dl=null;
-function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).forEach(g=>set.add('audio/'+me+'_'+g+'.mp3'));
-  CONVS.forEach(c=>c.cast.forEach(p=>set.add('audio/'+p.voice+'_'+c.id+'.mp3')));Object.values(EMOJI).forEach(v=>{if(v[0]!=='#')set.add(picFile(v));});return [...set].map(f=>new URL(f,location.href).href);}
+function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).forEach(g=>set.add(audioUrl(me,g)));
+  CONVS.forEach(c=>['ona','leonas'].forEach(v=>set.add(audioUrl(v,c.id))));Object.values(EMOJI).forEach(v=>{if(v[0]!=='#')set.add(picFile(v));});return [...set].map(f=>new URL(f,location.href).href);}
 async function offlineStatus(){const c=await caches.open(AUDIO_CACHE);const files=offlineFiles();let have=0;for(const f of files)if(await c.match(f))have++;return {have,total:files.length};}
 function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading recordings and pictures: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
 async function renderOffline(){const box=$('#offline-box');if(!box)return;
@@ -3906,7 +3931,7 @@ async function renderOffline(){const box=$('#offline-box');if(!box)return;
   const st=await offlineStatus();if(dl)return drawDl();
   if(st.have>=st.total){box.innerHTML='<div class="win badge"><b>Ready offline.</b> All recordings and pictures are saved on this device.</div><button type="button" class="linkbtn" id="btn-offline-clear">Remove the downloaded recordings</button>';
     $('#btn-offline-clear').onclick=async()=>{await caches.delete(AUDIO_CACHE);toast('Recordings removed from this device');renderOffline();};return;}
-  const audioLeft=offlineFiles().filter(f=>f.endsWith('.mp3')).length;const mb=Math.max(1,Math.round(Math.min(st.total-st.have,audioLeft)*0.34+1.4));
+  const audioLeft=offlineFiles().filter(f=>f.includes('.mp3')).length;const mb=Math.max(1,Math.round(Math.min(st.total-st.have,audioLeft)*0.34+1.4));
   box.innerHTML=(st.have?'<p class="note">'+st.have+' of '+st.total+' files are already saved from lessons you have played.</p>':'')+'<button type="button" class="btn amber" id="btn-offline">Download for offline (about '+mb+' MB)</button><p class="note">Best on Wi-Fi. If you switch voice later, download again for the new voice.</p>';
   $('#btn-offline').onclick=downloadOffline;}
 async function downloadOffline(){if(dl||!canOffline)return;if(!navigator.onLine){toast('Connect to the internet first');return;}
