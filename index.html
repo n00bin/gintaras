@@ -255,6 +255,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .opt[disabled]{cursor:default}
 .typing input{width:100%;font:inherit;font-size:20px;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
 .keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.keys-label{font-size:13px;color:var(--muted);margin-top:10px}
+.keys-label+.keys{margin-top:4px}
 .keys button{padding:8px 0;min-width:38px;flex:1;border-radius:10px;background:var(--surface-2);font-family:var(--display);font-size:18px;font-weight:600}
 .pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pairs .opt{justify-content:center;text-align:center;font-size:17px;padding:14px 8px;min-height:56px}
@@ -3208,7 +3210,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];btn.disabled=false;});
     if(ex.type==='listen'||toEn)setTimeout(()=>say(it),200);}
   else if(ex.type==='type'){
-    st.innerHTML=from+'<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
+    st.innerHTML=from+'<div class="prompt small">Write this in Lithuanian</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type in Lithuanian"><div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
     const inp=st.querySelector('#ans');inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
     inp.onkeydown=e=>{if(e.key==='Enter'&&!btn.disabled)btn.click();};
     st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
@@ -3456,7 +3458,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
   const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,3);
   turn.innerHTML='<div class="turn"><span class="eyebrow">Step 1 · Write your reply</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
-    '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type it in Lithuanian"><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
+    '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type it in Lithuanian"><div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
     '<div class="bank" id="cbank" hidden></div><div class="say-lt" id="cshow" hidden></div>'+
     '<button type="button" class="linkbtn" id="chelp">Help me</button><p class="note" id="cmsg" role="status"></p></div>';
   const inp=$('#cin'),bank=$('#cbank'),cmsg=$('#cmsg'),helpBtn=$('#chelp');
