@@ -1,4 +1,230 @@
 {
+"_voices": {
+"cv1": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv10": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv11": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv12": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv13": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv14": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv15": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv16": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv2": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv3": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv4": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv5": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv6": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv7": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv8": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv9": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"me1": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"me2": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u0": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u1": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u10": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u11": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u12": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u13": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u14": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u15": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u16": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u17": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u18": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u2": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u20": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u21": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u22": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u23": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u25": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u27": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u28": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u29": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u3": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u30": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u31": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u32": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u33": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u34": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u35": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u36": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u37": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u38": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u39": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u4": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u40": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u5": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u6": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u7": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u8": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u9": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+}
+},
 "cv1": {
 "cv1:0": "Labas rytas!",
 "cv1:1": "Labas rytas!",

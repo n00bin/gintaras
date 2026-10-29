@@ -3,20 +3,28 @@
 Each audio file holds one group (a unit like u20, or a conversation like cv3): every clip back to back
 with a short gap, and SMAP stores where each clip starts and how long it is.
 
-Setup once:   python -m venv .venv  &&  .venv/Scripts/pip install edge-tts imageio-ffmpeg
-Run:          .venv/Scripts/python tools/make_audio.py
-Needs Node (to read the course out of index.html) and an internet connection (for the voices).
-"""
-import asyncio, json, os, re, subprocess, sys, tempfile, wave
+The voices are Google's natural Lithuanian voices (Chirp 3 HD). The two everyday voices keep their old names in the
+app ('ona' = the woman's voice, 'leonas' = the man's) so everyone's saved choice carries over; VOICES says which Google
+voice each one is. Changing a voice here re-records everything in it. Conversations are recorded by make_voices.py.
 
-import edge_tts
+Setup once:   python -m venv .venv  &&  .venv/Scripts/pip install imageio-ffmpeg
+Run:          .venv/Scripts/python tools/make_audio.py
+Needs Node (to read the course out of index.html), an internet connection, and the Google key in
+~/.claude/secrets/gintaras_tts_key.txt (restricted to Cloud Text-to-Speech). Cost: about $0.03 per 1,000 letters
+beyond Google's free monthly allowance; the whole course is about 30,000 letters.
+"""
+import base64, json, os, re, subprocess, sys, tempfile, time, urllib.error, urllib.request, wave
+from concurrent.futures import ThreadPoolExecutor
+
 import imageio_ffmpeg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX = os.path.join(ROOT, 'index.html')
 AUDIO = os.path.join(ROOT, 'audio')
 MANIFEST = os.path.join(AUDIO, 'manifest.json')
-VOICES = {'ona': 'lt-LT-OnaNeural', 'leonas': 'lt-LT-LeonasNeural'}
+VOICES = {'ona': 'Achernar', 'leonas': 'Iapetus'}
+GOOGLE = 'lt-LT-Chirp3-HD-'
+KEY_FILE = os.path.expanduser(os.path.join('~', '.claude', 'secrets', 'gintaras_tts_key.txt'))
 RATE = 24000
 GAP = 0.35
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
@@ -34,7 +42,7 @@ def stale_groups(groups, smap, manifest):
     for g, entries in groups.items():
         missing = any(e['id'] not in smap.get(v, {}).get(g, {}) for v in VOICES for e in entries)
         known = manifest.get(g)
-        changed = known is not None and any(known.get(e['id']) != e['text'] for e in entries)
+        changed = known is not None and (manifest.get('_voices', {}).get(g) != VOICES or any(known.get(e['id']) != e['text'] for e in entries))
         if missing or changed:
             out.append(g)
         elif known is None:
@@ -42,21 +50,37 @@ def stale_groups(groups, smap, manifest):
     return out
 
 
-async def tts_all(jobs):
-    sem = asyncio.Semaphore(6)
+def google_key():
+    if not os.path.exists(KEY_FILE):
+        sys.exit('No Google key file: ' + KEY_FILE)
+    return open(KEY_FILE, encoding='utf-8').read().strip()
 
-    async def one(text, voice, dest):
-        async with sem:
-            for attempt in range(4):
-                try:
-                    await edge_tts.Communicate(text, voice).save(dest)
-                    return
-                except Exception:
-                    if attempt == 3:
-                        raise
-                    await asyncio.sleep(2 * (attempt + 1))
 
-    await asyncio.gather(*(one(*j) for j in jobs))
+def synth(key, text, voice, dest):
+    """One clip from Google. voice is a Chirp 3 HD name like 'Kore'."""
+    body = {'input': {'text': text}, 'voice': {'languageCode': 'lt-LT', 'name': GOOGLE + voice[:1].upper() + voice[1:]},
+            'audioConfig': {'audioEncoding': 'MP3'}}
+    req = urllib.request.Request('https://texttospeech.googleapis.com/v1/text:synthesize?key=' + key,
+                                 data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})
+    for attempt in range(8):
+        try:
+            res = json.load(urllib.request.urlopen(req, timeout=60))
+            open(dest, 'wb').write(base64.b64decode(res['audioContent']))
+            return
+        except urllib.error.HTTPError as e:
+            if attempt == 7 or e.code < 500 and e.code != 429:
+                sys.exit(f'Google said {e.code}: ' + e.read().decode()[:300])
+            time.sleep(15 * (attempt + 1))  # 429: Google's per-minute limit; wait and try again
+        except OSError:
+            if attempt == 7:
+                raise
+            time.sleep(5)
+
+
+def tts_all(jobs):
+    key = google_key()
+    with ThreadPoolExecutor(3) as ex:
+        list(ex.map(lambda j: synth(key, *j), jobs))
 
 
 def pcm(path):
@@ -70,7 +94,7 @@ def build_group(g, entries, tmp):
     for v, voice in VOICES.items():
         for k, e in enumerate(entries):
             jobs.append((e['text'], voice, os.path.join(tmp, f'{v}_{g}_{k}.mp3')))
-    asyncio.run(tts_all(jobs))
+    tts_all(jobs)
     maps = {}
     gap = b'\x00\x00' * int(GAP * RATE)
     for v in VOICES:
@@ -114,6 +138,8 @@ def main():
             for v, seg in maps.items():
                 smap[v][g] = seg
             manifest[g] = {e['id']: e['text'] for e in groups[g]}
+            manifest.setdefault('_voices', {})[g] = VOICES
+            json.dump(manifest, open(MANIFEST, 'w', encoding='utf8'), ensure_ascii=False, indent=0, sort_keys=True)
             write_smap(smap)
     json.dump(manifest, open(MANIFEST, 'w', encoding='utf8'), ensure_ascii=False, indent=0, sort_keys=True)
     print('Done.')
