@@ -630,6 +630,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .convcard .sub.paths{display:block;margin-top:2px;font-weight:700;color:var(--pine)}
 .cv-stars{display:flex;align-items:center;gap:2px;margin-top:4px;font-size:20px;line-height:1;color:var(--line)}
 .cv-stars .on{color:var(--amber)}
+.say-lt .gap{display:inline-block;width:calc(var(--w) * .58em);height:.9em;border-bottom:3px solid var(--amber);margin:0 2px;vertical-align:baseline}
 .cv-stars small{font-size:12px;font-weight:800;color:var(--muted);margin-left:6px}
 .amber-pill{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:999px;font:inherit;color:inherit;cursor:pointer}
 .x2{margin-left:4px;font-size:12px;padding:1px 5px;border-radius:999px;background:var(--amber);color:#1b1b1b}
@@ -981,8 +982,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.33.2';
-const APP_VERSION=95;
+const APP_RELEASE='3.34';
+const APP_VERSION=96;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3027,14 +3028,14 @@ function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id
   el.querySelectorAll('[data-conv]').forEach(b=>b.onclick=()=>startConv(c.id,b.dataset.conv));return el;}
 /* Three stars per conversation, from how you replied, not from your word levels:
    ★ Written: you finished Write it. ★★ On your own: a Write it where every reply was typed or filled in by you,
-   right first time, with no hints and no English. ★★★ Spoken: a Say it where you said every reply out loud without
-   peeking. Replays get harder as the conversation's replies climb in Quick chat. */
+   right first time, with no hints and no English. ★★★ Spoken: a Say it where the microphone heard every reply said from memory
+   (not read off the screen), without peeking. Replays get harder as the conversation's replies climb in Quick chat. */
 const STARS=['Written','On your own','Spoken'];
 function convStars(id){const st=(S.convs||{})[id]||{};return [!!(st.done||st.text),!!st.s2,!!st.s3];}
 function starsHtml(c){const got=convStars(c.id),n=got.filter(Boolean).length;
   return '<span class="cv-stars" aria-label="'+n+' of 3 stars">'+got.map((g,k)=>'<span class="'+(g?'on':'')+'" title="'+STARS[k]+'">★</span>').join('')+'<small>'+(n?STARS[got.lastIndexOf(true)]:'No stars yet')+'</small></span>';}
 function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<small class="cv-note"><b>Next: Say it.</b> The next unit opens once you\'ve said this conversation out loud.</small>';const due=dueReplies().filter(id=>replyCards()[id].c===c).length;
-  const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints.':!got[2]?'<b>Next star · Spoken:</b> say every reply out loud, without peeking.':'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
+  const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints.':!got[2]?'<b>Next star · Spoken:</b> say every reply from memory, without peeking. Replies still shown in Lithuanian do not count yet.':'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
   return '<small class="cv-note">'+next+(due?'<br>🔁 '+due+(due===1?' reply is':' replies are')+' due. Replay this, or practise them in Quick chat.':'')+'</small>';}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
@@ -3564,27 +3565,43 @@ function replyVariants(lt){const segs=lt.match(/[^.!?,]+[.!?,]?\s*/g)||[lt];let 
 function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)||null;}
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=myVoice();
   const okList=replyVariants(ln.lt).concat(C.quick&&C.stage==='type'?(ln.others||[]).flatMap(o=>replyVariants(o[0])):[]);
-  const done=(spoken,said,res)=>{stopHearing();turn.innerHTML='';if(spoken)C.heard++;C.played.push({ln,res});if(C.quick)qcGrade(res);
+  let over=false;const done=(spoken,said,res)=>{if(over)return;over=true;stopHearing();turn.innerHTML='';if(spoken)C.heard++;C.played.push({ln,res});if(C.quick)qcGrade(res);
     const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
     later(C.quick?qcNext:convNext,txt?700:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
-  /* Speaking version: you see what to say in English and answer from memory. "Show me the Lithuanian" reveals and plays it. */
-  const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span>'+promptHtml(ln)+
-      '<div class="say-lt" id="peekbox" hidden><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
-      '<button type="button" class="linkbtn" id="peek">Show me the Lithuanian</button>'+
+  /* Speaking grows with you the same way writing does, reply by reply (convStage: your words, or the reply's Quick chat step):
+     still new → the Lithuanian is shown and played, you listen and say it after; getting there → some words are gaps,
+     more of them as you learn, and you say the whole line; known → only the English or the situation, from memory.
+     "Show me the Lithuanian" always shows and plays all of it. A reply the microphone hears right, with no peeking and
+     no English, counts as review for its words and its reply card, as in Write it. */
+  const sayIt=()=>{const stage=convStage(ln);let used=false;
+    const toks=ln.lt.split(/\s+/);let gone=new Set();
+    if(stage==='fill'){const share=[0,.25,.45,.7];const lv=toks.map(wordLvl);
+      toks.forEach((t,k)=>{if(lv[k]!==null&&Math.random()<(lv[k]>=4?.85:share[Math.max(1,lv[k])]))gone.add(k);});
+      if(!gone.size){const ks=toks.map((t,k)=>k).filter(k=>lv[k]!==null);if(ks.length)gone.add(ks.reduce((x,y)=>lv[y]>lv[x]?y:x));}
+      if(gone.size===toks.length&&toks.length>1)gone.delete(Math.floor(Math.random()*toks.length));}
+    const gapped=toks.map((t,k)=>gone.has(k)?'<span class="gap" style="--w:'+Math.max(2,t.replace(/[.,!?…]/g,'').length)+'" aria-label="missing word"></span>'+esc((t.match(/[.,!?…]+$/)||[''])[0]):esc(t)).join(' ');
+    const full='<span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>';
+    turn.innerHTML='<div class="turn speak"><span class="eyebrow">'+(stage==='tap'?'Your turn · listen, then say it':stage==='fill'?'Your turn · say it, gaps and all':'Your turn · say it from memory')+'</span>'+promptHtml(ln)+
+      (stage==='tap'?'<div class="say-lt" id="peekbox">'+full+'</div>':
+        (stage==='fill'?'<div class="say-lt gapped" id="gapbox"><span class="lt">'+gapped+'</span></div>':'')+
+        '<div class="say-lt" id="peekbox" hidden>'+full+'</div><button type="button" class="linkbtn" id="peek">Show me the Lithuanian</button>')+
       '<div class="speakrow">'+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
-      '<p class="heard" id="srout" role="status">'+(SR?'Say your reply in Lithuanian when the <b>microphone</b> lights up.':'This browser can\'t listen, so say it out loud, check it with "Show me the Lithuanian", then tap "I said it".')+'</p></div>';
-    wirePrompt(turn,()=>{});
-    const peek=$('#peek');peek.onclick=()=>{C.peeks++;peek.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
+      '<p class="heard" id="srout" role="status">'+(SR?(stage==='tap'?'Listen, then say it when the <b>microphone</b> lights up. As you learn these words, they start to disappear.':stage==='fill'?'Say the whole reply, filling the gaps from memory, when the <b>microphone</b> lights up.':'Say your reply in Lithuanian when the <b>microphone</b> lights up.'):'This browser can\'t listen, so say it out loud, check it with "Show me the Lithuanian", then tap "I said it".')+'</p></div>';
+    wirePrompt(turn,()=>{used=true;});
+    const peek=$('#peek');if(peek)peek.onclick=()=>{C.peeks++;used=true;peek.hidden=true;const g=$('#gapbox');if(g)g.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
       const m=$('#mic');if(m)autoMic(m,S.sound?clipLen(ln.id,me)*1000+350:500);chatScroll();};
-    btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
+    btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR,null,null);
     const mic=$('#mic');if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(ln.ht?[ln.ht]:okList,mic,$('#srout'),(score,heardText,err,hit)=>{
       if(err&&auto&&/not-allowed/.test(err)){$('#srout').innerHTML='Tap the <b>microphone</b> and say it.';return;}
-      if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
-      if(score>=0.75){setFoot('good','');later(()=>done(true,ln.ht?null:hit),900);}},ln.en);};
-    if(mic)autoMic(mic,700);
+      if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true,null,null);return;}
+      if(score>=0.75){setFoot('good','');const pb=$('#peekbox'),g=$('#gapbox');if(g)g.hidden=true;if(pb)pb.hidden=false;
+        const res=stage==='tap'?null:!used;convCredit(ln.ht?ln.lt:hit||ln.lt,res===true,new Set());later(()=>done(true,ln.ht?null:hit,res),900);}},ln.en);};
+    /* new words: hear it first, then the microphone opens */
+    if(stage==='tap'&&S.sound){say(ln,false,me);if(mic)autoMic(mic,clipLen(ln.id,me)*1000+450);}
+    else if(mic)autoMic(mic,700);
     chatScroll();};
   if(C.mode==='speak')return sayIt();
   /* Writing grows with you, reply by reply, from how well you know the words in it (their level in lessons):
@@ -3865,20 +3882,20 @@ function hear(target,mic,out,onResult,english){const targets=[].concat(target);
   rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got&&!rec.__stopped)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
-  const sp=C.mode==='speak';const allSaid=sp&&C.turns>0&&C.heard>=C.turns;const perfect=sp?allSaid&&C.peeks===0:C.mistakes===0;const xp=20+(perfect?5:0)+(allSaid?5:0);
+  const sp=C.mode==='speak';const allSaid=sp&&C.turns>0&&C.heard>=C.turns;const fromMemory=C.played.length&&C.played.every(p=>p.res===true);const perfect=sp?allSaid&&C.peeks===0&&fromMemory:C.mistakes===0;const xp=20+(perfect?5:0)+(allSaid?5:0);
   const had=convStars(C.c.id);
   if(sp)st.speak=today();else st.done=st.text=today();
   if(!sp&&C.played.length&&C.played.every(p=>p.res===true))st.s2=st.s2||today();
-  if(sp&&allSaid&&C.peeks===0)st.s3=st.s3||today();
+  if(sp&&allSaid&&C.peeks===0&&fromMemory)st.s3=st.s3||today();
   const newStars=convStars(C.c.id).map((g,k)=>g&&!had[k]?k:-1).filter(k=>k>=0);
-  let cardsUp=0,cardsNew=0;if(!sp)C.played.forEach(p=>{if(!S.replies||!S.replies[p.ln.id]){replyNew(p.ln,true);cardsNew++;}else if(p.res!=null&&replyGrade(p.ln.id,p.res))cardsUp++;});
+  let cardsUp=0,cardsNew=0;C.played.forEach(p=>{if(!S.replies||!S.replies[p.ln.id]){if(sp)return;replyNew(p.ln,true);cardsNew++;}else if(p.res!=null&&replyGrade(p.ln.id,p.res))cardsUp++;});
   const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · '+(sp?'every reply from memory, no peeking':'every reply written right first time')+', +5 XP</div>');
-  if(!sp&&C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · they were due for review, and you wrote them right</div>');
-  if(!sp&&C.slipped.size)lines.push('<div class="win"><b>'+C.slipped.size+' to practise again</b> · '+[...C.slipped].slice(0,4).map(id=>esc(BYID[id].lt)).join(', ')+(C.slipped.size>4?'…':'')+' will come back in your reviews soon</div>');
-  newStars.forEach(k=>lines.push('<div class="win badge"><b>'+'★'.repeat(k+1)+' New star: '+STARS[k]+'</b> · '+['you finished it in writing','every reply written by you, right first time','every reply said out loud, no peeking'][k]+'</div>'));
-  {const g=convStars(C.c.id);if(!g[1]&&!sp)lines.push('<div class="win"><b>For the next star</b> · write every reply yourself, right first time, with no hints or English</div>');else if(g[1]&&!g[2]&&sp&&!newStars.includes(2))lines.push('<div class="win"><b>For the last star</b> · say every reply out loud without tapping "Show me the Lithuanian"</div>');}
+  if(C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · they were due for review, and you '+(sp?'said':'wrote')+' them right</div>');
+  if(C.slipped.size)lines.push('<div class="win"><b>'+C.slipped.size+' to practise again</b> · '+[...C.slipped].slice(0,4).map(id=>esc(BYID[id].lt)).join(', ')+(C.slipped.size>4?'…':'')+' will come back in your reviews soon</div>');
+  newStars.forEach(k=>lines.push('<div class="win badge"><b>'+'★'.repeat(k+1)+' New star: '+STARS[k]+'</b> · '+['you finished it in writing','every reply written by you, right first time','every reply said from memory, no peeking'][k]+'</div>'));
+  {const g=convStars(C.c.id);if(!g[1]&&!sp)lines.push('<div class="win"><b>For the next star</b> · write every reply yourself, right first time, with no hints or English</div>');else if(g[1]&&!g[2]&&sp&&!newStars.includes(2))lines.push('<div class="win"><b>For the last star</b> · say every reply from memory, without tapping "Show me the Lithuanian"</div>');}
   if(cardsNew)lines.push('<div class="win"><b>'+cardsNew+' new repl'+(cardsNew===1?'y':'ies')+' for Quick chat</b> · practise answering them in Practice, starting tomorrow</div>');
   if(cardsUp)lines.push('<div class="win"><b>'+cardsUp+' repl'+(cardsUp===1?'y':'ies')+' got easier</b> · they move up a step in Quick chat</div>');
   if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken'+(convSpoken(C.c.id)?'':'. The next unit opens once you do')+'. Find it on the conversation\'s card.</div>');
