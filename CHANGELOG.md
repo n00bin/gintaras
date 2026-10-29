@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.35.1** (2026-10-29) Polish: skipping replies in Say it no longer opens the next unit ("I said it" after two misses), clearer star, Quick chat and Today's plan wording, no dead end in fill-in-letters, bigger buttons, sound guide tidy-up
 - **3.35** (2026-10-29) New natural voices everywhere (Google): every person in the conversations has their own voice, and lessons use a new woman's and man's voice
 - **3.34.1** (2026-10-29) Say it: everyone speaks in their own voice again (the waiter is a man); you keep the voice that matches you
 - **3.34** (2026-10-29) Say it grows with you like Write it: listen and repeat while words are new, then gaps to fill out loud, then from memory; replies the microphone hears right count as review

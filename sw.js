@@ -5,7 +5,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v98';
+const SHELL = 'gintaras-shell-v99';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const KEEP = [SHELL, AUDIO, CDN];
@@ -81,8 +81,11 @@ async function audio(req) {
   if (!range) return full;
   const buf = await full.arrayBuffer();
   const m = /bytes=(\d*)-(\d*)/.exec(range) || [];
-  const start = m[1] ? Number(m[1]) : 0;
-  const end = m[2] ? Math.min(Number(m[2]), buf.byteLength - 1) : buf.byteLength - 1;
+  const len = buf.byteLength;
+  // "bytes=-500" means the last 500 bytes
+  let start = m[1] ? Number(m[1]) : m[2] ? Math.max(0, len - Number(m[2])) : 0;
+  let end = m[1] && m[2] ? Math.min(Number(m[2]), len - 1) : len - 1;
+  if (start >= len || end < start) return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${len}` } });
   return new Response(buf.slice(start, end + 1), {
     status: 206,
     headers: {
