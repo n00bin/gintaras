@@ -371,6 +371,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 
 /* Conversation chat */
 .chat{display:grid;gap:14px}
+.cv-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cv-note{color:var(--muted);font-size:13px;text-align:center}
 .scene{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
 .scene>div{display:grid;gap:2px;min-width:0}
 .scene strong{font-family:var(--display);font-size:19px}
@@ -2800,7 +2802,7 @@ const BADGES=[
  ['perfect','Flawless','A lesson with no mistakes',()=>(S.perfects||0)>=1],
  ['speak','Out loud','Finish a speaking lesson',()=>(S.speakDone||0)>=1],
  ['chat','First chat','Finish a conversation',()=>Object.values(S.convs||{}).some(c=>c.done||c.text)],
- ['talk','Talker','Say every reply of a conversation out loud',()=>Object.values(S.convs||{}).some(c=>c.speak)],
+ ['talk','Talker','Finish a spoken conversation',()=>Object.values(S.convs||{}).some(c=>c.speak)],
  ['convall','Conversationalist','Finish all fifteen conversations',()=>CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to level 5',()=>Object.values(S.lessons).some(c=>c>=5)],
@@ -2926,8 +2928,10 @@ function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#stre
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
   const prevName=prevStepName(c.id);
   el.innerHTML='<div class="cv-head">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation '+n+'</span><h2>'+esc(c.title)+'</h2><span class="sub">'+(open?esc(c.scene):'Finish '+esc(prevName)+' to unlock')+'</span>'+(open&&convDone(c.id)&&c.choices?'<span class="sub paths">🔀 '+(st.paths||[]).length+' of '+c.choices+' choices tried</span>':'')+'</div></div>'+
-    '<button type="button" class="btn '+(convDone(c.id)?'ghost':'amber')+'" data-conv'+(open?'':' disabled')+'>'+(convDone(c.id)?'✓ Play again':'Start conversation')+'</button>';
-  el.querySelector('[data-conv]').onclick=()=>startConv(c.id);return el;}
+    '<div class="cv-modes"><button type="button" class="btn '+(convDone(c.id)?'ghost':'amber')+'" data-conv="text"'+(open?'':' disabled')+'>'+(convDone(c.id)?'✓ ':'')+'✍️ Write it</button>'+
+    '<button type="button" class="btn '+(st.speak?'ghost':convDone(c.id)?'amber':'ghost')+'" data-conv="speak"'+(open&&convDone(c.id)?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say it</button></div>'+
+    (open&&!convDone(c.id)?'<small class="cv-note">Write it first, then say the same conversation out loud.</small>':'');
+  el.querySelectorAll('[data-conv]').forEach(b=>b.onclick=()=>startConv(c.id,b.dataset.conv));return el;}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
     else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
@@ -3408,11 +3412,13 @@ function chatScroll(){const box=$('#stage').parentElement;box.scrollTop=box.scro
 /* Slow playback is a turtle: understood everywhere, no words needed. */
 const TURTLE='<svg viewBox="0 2 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 16.5h15.4"/><path d="M2.8 16.5a7 7 0 0 1 14 0"/><path d="M7 16.5l2.8-4.6 2.8 4.6"/><path d="M16.6 15.2l1.9-1.1"/><circle cx="20.4" cy="12.9" r="2.3"/><path d="M5.6 16.5v3M14 16.5v3"/></svg>';
 function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play')+'">'+(slow?TURTLE:SPK)+'</button>';}
-function startConv(id){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
-  CV={c,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
+/* Each conversation has two versions: written (mode 'text') and spoken (mode 'speak', open once the written one is done). */
+function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
+  const st0=(S.convs||{})[id]||{};mode=mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
+  CV={c,mode,peeks:0,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Listen first';btn.onclick=null;
   convNext();}
 function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.length*100)+'%';
@@ -3443,21 +3449,27 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     say(ln,false,me);C.turns++;C.i++;btn.disabled=true;btn.textContent='Listen first';btn.classList.remove('ghost');setFoot('');
     later(convNext,S.sound?clipLen(ln.id,me)*1000+250:600);};
-  const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Step 2 · Now say it out loud</span><div class="say-lt"><span class="lt">'+esc(ln.lt)+'</span><span class="tr">'+esc(ln.en)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
-      '<div class="speakrow">'+cvSpk(ln.id,me,false,true)+cvSpk(ln.id,me,true,true)+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
-      '<p class="heard" id="srout" role="status">'+(SR?'Listen, then say it when the <b>microphone</b> lights up. Get it right and the conversation carries on.':'This browser can\'t listen, so say it out loud, compare with the recording, then tap "I said it".')+'</p></div>';
+  /* Speaking version: you see what to say in English and answer from memory. "Show me the Lithuanian" reveals and plays it. */
+  const sayIt=()=>{turn.innerHTML='<div class="turn speak"><span class="eyebrow">Your turn · say it out loud</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+      '<div class="say-lt" id="peekbox" hidden><span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button></div>'+
+      '<button type="button" class="linkbtn" id="peek">Show me the Lithuanian</button>'+
+      '<div class="speakrow">'+(SR?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':'')+'</div>'+
+      '<p class="heard" id="srout" role="status">'+(SR?'Say your reply in Lithuanian when the <b>microphone</b> lights up.':'This browser can\'t listen, so say it out loud, check it with "Show me the Lithuanian", then tap "I said it".')+'</p></div>';
+    const peek=$('#peek');peek.onclick=()=>{C.peeks++;peek.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
+      const m=$('#mic');if(m)autoMic(m,S.sound?clipLen(ln.id,me)*1000+350:500);chatScroll();};
     btn.disabled=false;btn.textContent=SR?'Skip saying it':'I said it';btn.classList.toggle('ghost',!!SR);btn.onclick=()=>done(!SR);
     const mic=$('#mic');if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(ln.ht||ln.lt,mic,$('#srout'),(score,heardText,err)=>{
       if(err&&auto&&/not-allowed/.test(err)){$('#srout').innerHTML='Tap the <b>microphone</b> and say it.';return;}
       if(err&&err!=='no-speech'){btn.textContent='I said it';btn.classList.remove('ghost');btn.onclick=()=>done(true);return;}
       if(score>=0.75){setFoot('good','');later(()=>done(true),900);}},ln.en);};
-    if(mic){say(ln,false,me);autoMic(mic,S.sound?clipLen(ln.id,me)*1000+350:500);}
+    if(mic)autoMic(mic,700);
     chatScroll();};
+  if(C.mode==='speak')return sayIt();
   /* Step 1: write the reply. Help comes in steps: word tiles first, then the answer itself. Accents are forgiven with a note. */
   let help=0,tries=0;
   const words=ln.lt.replace(/[.,!?]/g,'').split(/\s+/);
   const spare=[...new Set(ln.no.concat(ln.others||[]).flatMap(n=>n[0].replace(/[.,!?]/g,'').split(/\s+/)).filter(w=>!words.includes(w)))].slice(0,3);
-  turn.innerHTML='<div class="turn"><span class="eyebrow">Step 1 · Write your reply</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
+  turn.innerHTML='<div class="turn"><span class="eyebrow">Write your reply</span><div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>'+
     '<div class="typing"><input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="lt" placeholder="Type it in Lithuanian"><div class="keys-label">Lithuanian letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+'ąčęėįšųūž'.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
     '<div class="bank" id="cbank" hidden></div><div class="say-lt" id="cshow" hidden></div>'+
     '<button type="button" class="linkbtn" id="chelp">Help me</button><p class="note" id="cmsg" role="status"></p></div>';
@@ -3471,7 +3483,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const p=inp.selectionStart??inp.value.length,q=inp.selectionEnd??p;inp.value=inp.value.slice(0,p)+k.dataset.k+inp.value.slice(q);inp.focus();inp.setSelectionRange(p+1,p+1);inp.oninput();});
   const check=()=>{const a=norm(inp.value);if(!a)return;const j=judgeTyped(inp.value,[ln.lt]);
     if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;
-      cmsg.innerHTML=j.exact?'<span class="ok">Correct!</span>':j.note;inp.classList.add('right');btn.disabled=true;return later(sayIt,j.exact?600:2200);}
+      cmsg.innerHTML=j.exact?'<span class="ok">Correct!</span>':j.note;inp.classList.add('right');btn.disabled=true;return later(()=>done(false),j.exact?600:2200);}
     tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
     cmsg.innerHTML=other?'That\'s the other choice ("<b>'+esc(other[1])+'</b>"). You picked "'+esc(ln.en)+'", so write that one.':wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':j.why?'Not quite. '+j.why:'Not quite. Check each word and try again.';
@@ -3525,18 +3537,19 @@ function hear(target,mic,out,onResult,english){
   rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got&&!rec.__stopped)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
-  const perfect=C.mistakes===0;const allSaid=C.turns>0&&C.heard>=C.turns;const xp=20+(perfect?5:0)+(allSaid?5:0);
-  st.done=st.text=today();if(allSaid)st.speak=today();
+  const sp=C.mode==='speak';const allSaid=sp&&C.turns>0&&C.heard>=C.turns;const perfect=sp?allSaid&&C.peeks===0:C.mistakes===0;const xp=20+(perfect?5:0)+(allSaid?5:0);
+  if(sp)st.speak=today();else st.done=st.text=today();
   const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
-  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply written right first time, +5 XP</div>');
+  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · '+(sp?'every reply from memory, no peeking':'every reply written right first time')+', +5 XP</div>');
+  if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken. Find it on the conversation\'s card.</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>You just had a conversation in Lithuanian</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div><div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div><div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(sp?'You just spoke a whole conversation in Lithuanian':'You just had a conversation in Lithuanian')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div>'+(sp?'<div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div><div class="tile"><strong class="num">'+C.peeks+'</strong><small>Peeks</small></div>':'<div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Writing slips</small></div>')+'</div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest('[data-cvsay]');if(b){micPause($('#stage'));say(BYID[b.dataset.cvsay],!!b.dataset.slow,b.dataset.v);return;}
