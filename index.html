@@ -981,8 +981,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.33';
-const APP_VERSION=93;
+const APP_RELEASE='3.33.1';
+const APP_VERSION=94;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2933,7 +2933,9 @@ const STEPS=PATH.filter(p=>typeof p==='string'&&(CONV_BY[p]||COURSE.some(u=>u.id
 const UNIT_BY={};COURSE.forEach(u=>UNIT_BY[u.id]=u);
 function convState(id){S.convs=S.convs||{};return S.convs[id]||(S.convs[id]={});}
 function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.done||c.text||c.speak));}
-function stepDone(id){return CONV_BY[id]?convDone(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
+/* A conversation step is done once it's been written AND said out loud. */
+function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
+function stepDone(id){return CONV_BY[id]?convDone(id)&&convSpoken(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
 function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
@@ -3022,7 +3024,7 @@ const STARS=['Written','On your own','Spoken'];
 function convStars(id){const st=(S.convs||{})[id]||{};return [!!(st.done||st.text),!!st.s2,!!st.s3];}
 function starsHtml(c){const got=convStars(c.id),n=got.filter(Boolean).length;
   return '<span class="cv-stars" aria-label="'+n+' of 3 stars">'+got.map((g,k)=>'<span class="'+(g?'on':'')+'" title="'+STARS[k]+'">★</span>').join('')+'<small>'+(n?STARS[got.lastIndexOf(true)]:'No stars yet')+'</small></span>';}
-function starNext(c){const got=convStars(c.id);const due=dueReplies().filter(id=>replyCards()[id].c===c).length;
+function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<small class="cv-note"><b>Next: Say it.</b> The next unit opens once you\'ve said this conversation out loud.</small>';const due=dueReplies().filter(id=>replyCards()[id].c===c).length;
   const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints.':!got[2]?'<b>Next star · Spoken:</b> say every reply out loud, without peeking.':'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
   return '<small class="cv-note">'+next+(due?'<br>🔁 '+due+(due===1?' reply is':' replies are')+' due. Replay this, or practise them in Quick chat.':'')+'</small>';}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
@@ -3050,7 +3052,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   if(fold){const toggle=()=>{if(OPEN_UNITS.has(u.id))OPEN_UNITS.delete(u.id);else OPEN_UNITS.add(u.id);const y=window.scrollY;renderTree();window.scrollTo(0,y);};
     fold.onclick=toggle;fold.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}};}
   t.appendChild(el);}
-function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
+function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?(convDone(p)?'saying "'+CONV_BY[p].title+'" out loud':'the conversation "'+CONV_BY[p].title+'"'):UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
 function renderPractice(){const L=learned();const d=dueItems();
@@ -3077,16 +3079,16 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));$('#sw-auto').setAttribute('aria-checked',String(S.autoNext!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
 function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
-    if(CONV_BY[id]){if(!convDone(id))return {conv:id};continue;}
+    if(CONV_BY[id]){if(!stepDone(id))return {conv:id};continue;}
     const u=UNIT_BY[id],ui=COURSE.indexOf(u);for(let li=0;li<u.lessons.length;li++){const l=u.lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<1)return l;}}
   for(let ui=0;ui<COURSE.length;ui++)for(let li=0;li<COURSE[ui].lessons.length;li++){const l=COURSE[ui].lessons[li];if(lessonUnlocked(ui,li)&&crowns(l.id)<5)return l;}return null;}
 function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.m10;
   const planDone=goalMet();
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":S.todayLessons>=P.lessons?"Today's plan · keep going · "+P.label+' pace':"Today's plan · lesson "+(S.todayLessons+1)+' of '+P.lessons+' · '+P.label+' pace';
   if(d>=4&&(S.todayLessons===0||d>=10)){$('#bite-title').textContent='Review '+d+' words';$('#bite-note').textContent='These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);}
-  else if(l&&l.conv){const c=CONV_BY[l.conv];$('#bite-title').textContent='Conversation: '+c.title;
-    $('#bite-note').textContent='Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Write each reply, then say it out loud.';
-    b.textContent='Start conversation';b.onclick=()=>startConv(c.id);}
+  else if(l&&l.conv){const c=CONV_BY[l.conv],w=convDone(c.id);$('#bite-title').textContent=(w?'Say it: ':'Conversation: ')+c.title;
+    $('#bite-note').textContent=w?'You wrote this one. Now say the same conversation out loud, and the next unit opens.':'Chat with '+c.cast.map(p=>p.name).join(' and ')+' using only words you already know. Write each reply, then say it out loud.';
+    b.textContent=w?'Say it':'Start conversation';b.onclick=()=>startConv(c.id,w?'speak':'text');}
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
@@ -3854,7 +3856,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   {const g=convStars(C.c.id);if(!g[1]&&!sp)lines.push('<div class="win"><b>For the next star</b> · write every reply yourself, right first time, with no hints or English</div>');else if(g[1]&&!g[2]&&sp&&!newStars.includes(2))lines.push('<div class="win"><b>For the last star</b> · say every reply out loud without tapping "Show me the Lithuanian"</div>');}
   if(cardsNew)lines.push('<div class="win"><b>'+cardsNew+' new repl'+(cardsNew===1?'y':'ies')+' for Quick chat</b> · practise answering them in Practice, starting tomorrow</div>');
   if(cardsUp)lines.push('<div class="win"><b>'+cardsUp+' repl'+(cardsUp===1?'y':'ies')+' got easier</b> · they move up a step in Quick chat</div>');
-  if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken. Find it on the conversation\'s card.</div>');
+  if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken'+(convSpoken(C.c.id)?'':'. The next unit opens once you do')+'. Find it on the conversation\'s card.</div>');
   if(allSaid)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +5 XP</div>');
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
