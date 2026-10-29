@@ -3657,8 +3657,8 @@ function meItems(){const m=S.me;if(!m)return [];const g=m.g==='f'?'f':'m';const 
   if(out.length){add('learn');if(m.why)add('why-'+m.why);add('nice');}
   out.forEach(i=>BYID[i.id]=i);return out;}
 function renderMe(){personalise();const box=$('#me-card');if(!box)return;const items=meItems();
-  if(!items.length)box.innerHTML='<span class="eyebrow">About me</span><h2>Talk about yourself</h2><p class="note">The first thing anyone asks is who you are. Answer a few quick questions and Gintaras builds a lesson about your own life: your name, where you\'re from, your work and your family.</p><button type="button" class="btn amber" id="btn-me-set">Tell me about you</button>';
-  else box.innerHTML='<span class="eyebrow">About me</span><h2>Your introduction</h2><p class="note">This is you, in Lithuanian. Practice it until you can say it without looking.</p><div class="me-lines">'+
+  if(!items.length)box.innerHTML='<span class="eyebrow">About me</span><h2>Talk about yourself</h2><p class="note">The first thing anyone asks is who you are. Answer a few quick questions and Gintaras builds a lesson about your own life: your name, where you\'re from, your work and your family. The lessons and conversations use your answers too, so people greet you by name.</p><button type="button" class="btn amber" id="btn-me-set">Tell me about you</button>';
+  else box.innerHTML='<span class="eyebrow">About me</span><h2>Your introduction</h2><p class="note">This is you, in Lithuanian. Practice it until you can say it without looking. The lessons and conversations use your name and country too.</p><div class="me-lines">'+
     items.map(it=>'<div class="me-line"><button type="button" class="spk" data-mesay="'+esc(it.id)+'" aria-label="Play">'+SPK+'</button><div><span class="lt">'+esc(it.lt)+'</span><small>'+esc(it.en)+'</small></div></div>').join('')+
     '</div><button type="button" class="btn amber" id="btn-me-go">Practice it</button><button type="button" class="btn ghost" id="btn-me-set">Change my answers</button>';
   box.querySelectorAll('[data-mesay]').forEach(b=>b.onclick=()=>say(BYID[b.dataset.mesay]));
