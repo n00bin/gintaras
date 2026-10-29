@@ -384,6 +384,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .msg .bub{border-radius:18px;padding:10px 14px;display:grid;gap:2px;font-size:18px;min-width:0;overflow-wrap:anywhere}
 .msg.them .bub{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;cursor:pointer}
 .msg.me .bub{background:var(--pine);color:#fff;border-bottom-right-radius:6px}
+.msg .nw{text-decoration:underline dotted var(--amber);text-underline-offset:4px;text-decoration-thickness:2px}
 .msg .tr{font-size:14px;opacity:.75}
 .msg .who{font-size:12px;font-weight:800;color:var(--muted)}
 .msg .lt{font-weight:700}
@@ -969,8 +970,8 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.31';
-const APP_VERSION=90;
+const APP_RELEASE='3.31.1';
+const APP_VERSION=91;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3488,7 +3489,7 @@ function startConv(id,mode){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;
   CV={c,mode,peeks:0,lines:c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=S.voice||'ona';preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,p.voice));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it':'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined, and those messages show the English by themselves.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
   convNext();}
 /* Write it is texting: no voices, just time to read each message. */
@@ -3500,7 +3501,7 @@ function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.
   if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;chatScroll();return later(convNext,500);}
   if(ln.kind==='p'){const who=C.c.cast[ln.who];C.lastWho=who.name;msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
-      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+'<span class="lt">'+esc(ln.lt)+'</span><span class="tr" hidden>'+esc(ln.en)+'</span></div>'+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div>');chatScroll();
+      msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,who.voice))+'</div>');chatScroll();
       C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,readTime(ln.lt));}
       say(ln,false,who.voice);later(convNext,S.sound?clipLen(ln.id,who.voice)*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
   convTurn(ln);}
@@ -3599,6 +3600,13 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
 let WORD_ITEMS=null;
 function wordLvl(w){if(!WORD_ITEMS){WORD_ITEMS={};ITEMS.forEach(i=>norm(i.lt0||i.lt).split(' ').forEach(x=>(WORD_ITEMS[x]=WORD_ITEMS[x]||[]).push(i)));}
   const its=WORD_ITEMS[norm(w)];return its?Math.max(...its.map(wlvl)):null;}
+/* Their message: words you haven't learned yet get a dotted underline, and then the English shows by itself.
+   Messages made only of words you know keep the English hidden until you tap. Names don't count. */
+function theirLine(ln){const names=new Set(['tomas','tomai','tomu','toma']);
+  CV.c.cast.concat(S.me&&S.me.name?[{name:S.me.name}]:[]).forEach(p=>Object.values(nameForms(p.name)).forEach(n=>names.add(norm(n))));
+  let unk=0;const lt=ln.lt.split(/(\s+)/).map(tok=>{const w=norm(tok);if(!w||names.has(w)||GLUE[w])return esc(tok);
+    const lv=wordLvl(w);if(lv===null||lv<0){unk++;const m=tok.match(/^(.*?)([.,!?…]*)$/);return '<span class="nw">'+esc(m[1])+'</span>'+esc(m[2]);}return esc(tok);}).join('');
+  return '<span class="lt">'+lt+'</span><span class="tr"'+(unk?'':' hidden')+'>'+esc(ln.en)+'</span></div>';}
 function replyLevel(lt){const ls=lt.split(/\s+/).map(wordLvl).filter(l=>l!==null);return ls.length?Math.max(0,Math.min(...ls)):0;}
 function replyStage(lt){const lo=replyLevel(lt);return lo<=0?'tap':lo>=4?'type':'fill';}
 /* What you're told to reply fades as you learn its words, so in the end you read their message and answer it yourself:

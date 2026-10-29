@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.31.1** (2026-10-29) Conversations: their messages show the English by themselves when they use words you haven't learned, with those words underlined
 - **3.31** (2026-10-29) Conversations: the English fades as you learn the words, and texting now counts as review for your words
 - **3.30** (2026-10-29) Texting: between tapping words and typing, fill in missing letters; more go missing as you learn each word
 - **3.29** (2026-10-29) Texting grows with you: tap the words while they're new, then type with first letters shown, then type it all
