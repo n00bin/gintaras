@@ -3798,7 +3798,18 @@ function welcomeMe(){document.querySelector('#welcome .hello').hidden=true;$('#w
     b.onclick=()=>{wmG=wmG===b.dataset.wg?'':b.dataset.wg;chips.forEach(x=>{x.classList.toggle('in',x.dataset.wg===wmG);x.setAttribute('aria-pressed',x.dataset.wg===wmG);});};});}
 function welcomeMeSave(){const name=cleanName($('#wm-name').value),from=$('#wm-from').value;
   if(name||wmG||from){S.me=Object.assign({},S.me,{name,g:wmG,from,at:Date.now()});save();}}
-$('#btn-welcome').onclick=()=>{if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();return;}
+/* People who joined before this step existed get it once, on its own, when nothing else is on screen. */
+let meOnly=false;
+function maybeAskMe(){if(!S.welcomed||S.me||S.meAsked||!$('#sheet').hidden||!$('#welcome').hidden||!$('#pop').hidden||document.querySelector('.league-pop,#tour'))return;
+  S.meAsked=1;save();meOnly=true;$('#welcome').hidden=false;document.body.style.overflow='hidden';
+  document.querySelectorAll('#welcome .hello').forEach(h=>h.hidden=true);welcomeMe();
+  const b=$('#btn-welcome');b.className='btn amber';b.textContent='Done';}
+function closeMeOnly(){meOnly=false;$('#welcome').hidden=true;$('#welcome-me').hidden=true;document.querySelector('#welcome .hello').hidden=false;
+  document.body.style.overflow='';$('#btn-welcome').textContent='Next';renderAll();if(S.me)toast('Saved. The lessons now use your answers.');}
+window.addEventListener('gintaras:ready',()=>setTimeout(maybeAskMe,3500));
+window.addEventListener('gintaras:idle',()=>setTimeout(maybeAskMe,600));
+$('#btn-welcome').onclick=()=>{if(meOnly){welcomeMeSave();closeMeOnly();return;}
+  if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();return;}
   welcomeMeSave();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
 function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
