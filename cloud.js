@@ -28,7 +28,9 @@ function msg(t,bad){const m=$('#auth-msg');if(!m)return;m.textContent=t||'';m.st
 /* ---------- merge local and cloud progress ---------- */
 /* Field by field: counts take the larger, sets are joined, dated fields take the newer. Anything else (settings)
    comes from whichever copy is further along, so a new phone's blank defaults never replace your real ones. */
-function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.xp||0)?b:a,out=Object.assign({},base===a?b:a,base);
+function mergeState(a,b){if(window.upEpoch){a=window.upEpoch(a);b=window.upEpoch(b);}if(!a)return b;if(!b)return a;
+  /* An account reset on the server (a "wipe" mark) wins outright: nothing from an older copy is merged back in. */
+  if((a.wipe||'')!==(b.wipe||'')){const w=(a.wipe||'')>(b.wipe||'')?a:b;return Object.assign(window.freshState?window.freshState():{},w);}const base=(b.xp||0)>(a.xp||0)?b:a,out=Object.assign({},base===a?b:a,base);
   out.xp=Math.max(a.xp||0,b.xp||0);out.streak=Math.max(a.streak||0,b.streak||0);out.bestStreak=Math.max(a.bestStreak||0,b.bestStreak||0);
   out.lessonsDone=Math.max(a.lessonsDone||0,b.lessonsDone||0);out.perfects=Math.max(a.perfects||0,b.perfects||0);out.speakDone=Math.max(a.speakDone||0,b.speakDone||0);
   out.freezes=Math.max(a.freezes||0,b.freezes||0);out.daysLearned=Math.max(a.daysLearned||0,b.daysLearned||0);

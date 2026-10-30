@@ -994,8 +994,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.63';
-const APP_VERSION=135;
+const APP_RELEASE='3.64';
+const APP_VERSION=136;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1033,10 +1033,21 @@ const DAY=86400000;
 /* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
 const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/3.3)),label:m+' min'});
 const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
-function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:70,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
+/* Fresh start (2026-10-30): after the course and the scheduler were rebuilt, everyone starts again from lesson 1, so they
+   all get the new lessons and FSRS learns from real answers from day one. XP, streak, amber, league, badges, About me and
+   settings stay; the learning history goes. It runs once on every saved copy, on this device or from the account, so old
+   progress on another phone can't come back. */
+const EPOCH=2,HISTORY=['items','lessons','lessonsDone','convs','replies','repliesSeeded','checks','placedTo','placeDone','speakDone','perfects','perfectToday','drillDay','reviewDay','gateDay','gateLater','qcAnyDay'];
+function upEpoch(st){if(!st||(st.epoch||0)>=EPOCH)return st;const o=Object.assign({},st);HISTORY.forEach(k=>delete o[k]);
+  return Object.assign(o,{items:{},lessons:{},lessonsDone:0,epoch:EPOCH});}
+window.upEpoch=upEpoch;
+function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:70,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0,epoch:EPOCH};}
+window.freshState=fresh;
 let S=fresh();
 function setPace(p){p=OLD_PACE[p]||p;if(!PACES[p])p='m10';S.pace=p;S.goal=PACES[p].goal;}
-function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}tidy();
+function load(){try{const r=localStorage.getItem(KEY);if(r){const st=JSON.parse(r),up=upEpoch(st);
+    /* a fresh start also forgets this device's answer log and any half-finished lesson */
+    if(up!==st)['gintaras.log.'+LANG_CODE,'gintaras.resume.'+LANG_CODE].forEach(k=>localStorage.removeItem(k));S=Object.assign(S,up);}}catch(e){}tidy();
   /* the first time, the shared settings start from this save (stamped 1, so any real change elsewhere wins) */
   if(sharedRead())sharedApply();else sharedStore(1);}
 function tidy(){if(S.items)Object.keys(S.items).forEach(k=>{const v=S.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete S.items[k];});delete S.time;
@@ -2877,7 +2888,7 @@ window.addEventListener('gintaras:idle',()=>setTimeout(maybeAskMe,600));
 $('#btn-welcome').onclick=()=>{if(meOnly){welcomeMeSave();closeMeOnly();return;}
   if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();return;}
   welcomeMeSave();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
-function start(snap){load();if(snap&&snap.S)S=Object.assign(S,snap.S);window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
+function start(snap){load();if(snap&&snap.S)S=Object.assign(S,upEpoch(snap.S));window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
   /* One-off back-pay: amber for learning done before amber existed, at today's rates, minus what was already earned.
