@@ -21,7 +21,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','
 /* The league week runs Monday to Monday on UTC (London winter) time, the same clock the weekly job uses,
    so everyone in every time zone is in the same week. weekWhen() says when that is on this phone's clock. */
 function monday(){const d=new Date();d.setUTCDate(d.getUTCDate()-(d.getUTCDay()+6)%7);return d.toISOString().slice(0,10);}
-const weekWhen=(add)=>new Date(Date.parse(monday()+'T00:00:00Z')+(add||0)*86400000).toLocaleString([],{weekday:'long',hour:'numeric',minute:'2-digit'});
+const weekAt=(ws,add)=>new Date(Date.parse(ws+'T00:00:00Z')+(add||0)*86400000).toLocaleString([],{weekday:'long',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+const weekWhen=add=>weekAt(monday(),add);
 function msg(t,bad){const m=$('#auth-msg');if(!m)return;m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';}
 
 /* ---------- merge local and cloud progress ---------- */
@@ -129,8 +130,9 @@ async function afterAuth(){profile=null;
    and can be changed any time. If someone already has it, a couple of digits are added. */
 let profileMaking=null;
 function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=user.user_metadata||{};
-  const raw=(md.given_name||md.full_name||md.name||(user.email||'').split('@')[0]||'').trim().split(/\s+/)[0]||'';
-  let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner';base=base[0].toUpperCase()+base.slice(1);
+  const me=(window.S&&window.S.me&&window.S.me.name)||'';
+  const raw=(me||md.given_name||md.full_name||md.name||'').trim().split(/\s+/)[0]||'';
+  let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner'+Math.floor(100+Math.random()*900);base=base[0].toUpperCase()+base.slice(1);
   const S=window.S;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
   for(const n of names){const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error)return Object.assign(row,{league:0,league_moved:0});if(!/duplicate|unique/i.test(error.message))return null;}
@@ -191,7 +193,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile&&chalDay()),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -211,7 +213,15 @@ function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;
     '<div class="confirm" id="del-confirm" hidden><span>This permanently deletes your account, your nickname and leaderboard spot, and the progress saved online. There is no undo. Progress on this device stays unless you also reset it below.</span>'+
     '<button type="button" class="btn danger" id="btn-del-yes">Yes, delete my account</button><button type="button" class="btn ghost" id="btn-del-no">Keep my account</button><p class="note" id="del-msg"></p></div></div>';
   $('#btn-nick').onclick=showNickname;
-  $('#btn-out').onclick=async()=>{await dropPhone();await sb.auth.signOut();signedOut();renderAuth();renderBoard();toast('Signed out');};
+  /* On a shared phone the next person shouldn't inherit your progress (or carry it into their account), so you choose. */
+  $('#btn-out').onclick=()=>{const ov=document.createElement('div');ov.className='league-pop';
+    ov.innerHTML='<div class="card" role="dialog" aria-label="Sign out"><h2>Sign out</h2><p class="note">Your progress is safe in your account either way. Is this your own device?</p>'+
+      '<button type="button" class="btn amber" data-o="keep">Sign out, keep my progress here</button><button type="button" class="btn ghost" data-o="wipe">Sign out and remove it from this device</button><button type="button" class="linkbtn" data-o="x">Cancel</button></div>';
+    document.body.appendChild(ov);ov.onclick=e=>{if(e.target===ov)ov.remove();};
+    ov.querySelectorAll('[data-o]').forEach(b=>b.onclick=async()=>{const o=b.dataset.o;ov.remove();if(o==='x')return;
+      await dropPhone();await sb.auth.signOut();signedOut();
+      if(o==='wipe'){window.__wiped=true;try{Object.keys(localStorage).filter(k=>/^gintaras\./.test(k)&&k!=='gintaras.lang').forEach(k=>localStorage.removeItem(k));}catch(e){}location.reload();return;}
+      renderAuth();renderBoard();toast('Signed out');});};
   $('#btn-del').onclick=()=>{$('#del-confirm').hidden=false;$('#btn-del').hidden=true;};
   $('#btn-del-no').onclick=()=>{$('#del-confirm').hidden=true;$('#btn-del').hidden=false;};
   $('#btn-del-yes').onclick=async()=>{const m=$('#del-msg');m.textContent='Deleting…';
@@ -315,9 +325,13 @@ let chals=[],people={},amberOf={};
 /* Challenge rules: they start on Mondays only, so nobody picks on someone they're already far ahead of;
    both players need the 10 amber minimum, and the stake can't be more than either of them has. */
 const CH_MIN=10,chalDay=()=>new Date().getUTCDay()===1;
+/* A challenge can be sent any day. Sent on the first day of the week it runs that week; any other day it runs the next
+   week, so you both start from zero (supabase/challenge-anyday.sql). */
+const chalWeek=()=>chalDay()?monday():new Date(Date.parse(monday()+'T00:00:00Z')+7*86400000).toISOString().slice(0,10);
+const chalEnd=x=>weekAt(x.week_start,7),chalSoon=x=>x.week_start>monday();
 async function loadAmber(ids){ids=ids.filter(Boolean);if(!sb||!user||!ids.length)return;
   const {data,error}=await sb.rpc('gintaras_amber',{ids,l:LC});if(error)return;(data||[]).forEach(r=>amberOf[r.id]=r.amber);}
-const canChal=id=>user&&profile&&id!==user.id&&chalDay()&&window.amberBalance()>=CH_MIN&&(amberOf[id]||0)>=CH_MIN;
+const canChal=id=>user&&profile&&id!==user.id&&window.amberBalance()>=CH_MIN&&(amberOf[id]||0)>=CH_MIN;
 const nameOf=id=>(people[id]&&people[id].nickname)||'your friend';
 const weekXpOf=id=>{const p=people[id];return p&&p.week_start===monday()?p.week_xp:0;};
 async function loadChallenges(){if(!sb||!user){chals=[];return;}
@@ -329,8 +343,8 @@ async function loadChallenges(){if(!sb||!user){chals=[];return;}
    and a line on Learn for every challenge this week. */
 function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstrip');
   if(!S||!user){if(badge)badge.hidden=true;if(strip)strip.hidden=true;return;}
-  const me=user.id,wk=monday(),incoming=chals.filter(x=>x.status==='pending'&&x.to_id===me&&x.week_start===wk);
-  const raises=chals.filter(x=>x.status==='raised'&&x.from_id===me&&x.week_start===wk);
+  const me=user.id,wk=monday(),incoming=chals.filter(x=>x.status==='pending'&&x.to_id===me&&x.week_start>=wk);
+  const raises=chals.filter(x=>x.status==='raised'&&x.from_id===me&&x.week_start>=wk);
   const live=chals.filter(x=>x.status==='accepted'&&x.week_start===wk);
   if(badge){badge.hidden=!(incoming.length+raises.length);badge.textContent=incoming.length+raises.length;}renderChallenges();
   if(strip){const a=S.weekStart===wk?S.weekXp||0:0;
@@ -345,7 +359,7 @@ function chalAlerts(){const S=window.S,badge=$('#chal-badge'),strip=$('#chalstri
   const seen=S.chalSeen||{},mark=k=>{S.chalSeen=Object.assign(S.chalSeen||{},{[k]:1});};
   /* "Challenge on!" for whoever didn't make the final yes: the sender, or the one who raised. */
   live.filter(x=>!seen[x.id+'a']&&(x.from_id===me||seen[x.id+'r'])).forEach(x=>{mark(x.id+'a');
-    chalPops.push({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:nameOf(x.from_id===me?x.to_id:x.from_id)+' accepted. Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});});
+    chalPops.push({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:nameOf(x.from_id===me?x.to_id:x.from_id)+' accepted. Most XP '+(chalSoon(x)?'next week (to '+chalEnd(x)+')':'before '+chalEnd(x))+' wins '+x.stake*2+' amber'});});
   if(chalPops.length){window.save();chalPops.splice(0).forEach(o=>window.celebrate(o));}
   const fresh=incoming.find(x=>!seen[x.id]);
   if(fresh){mark(fresh.id);window.save();chalDialog(fresh,false);return;}
@@ -359,7 +373,7 @@ async function chalDialog(fresh,demo){const nick=esc(demo?fresh.nick:nameOf(fres
   if(!demo)await loadAmber([fresh.from_id]);
   const theirs=demo?50:fresh.stake+(amberOf[fresh.from_id]||0),cap=Math.min(50,have,theirs),ups=[20,30,40,50].filter(n=>n>fresh.stake&&n<=cap);
   const ov=document.createElement('div');ov.className='league-pop chal-pop';let to=fresh.stake;
-  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge">'+window.mascot('think','pop-mascot')+'<div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP before the week ends ('+weekWhen(7)+' your time). The winner takes both.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="New challenge">'+window.mascot('think','pop-mascot')+'<div class="lg-icon big" aria-hidden="true">⚔️</div><h2>'+nick+' challenged you!</h2><p class="note">'+fresh.stake+' amber each on who earns more XP '+(!demo&&chalSoon(fresh)?'next week ('+weekAt(fresh.week_start,0)+' to '+chalEnd(fresh)+' your time)':'before the week ends ('+weekWhen(7)+' your time)')+'. The winner takes both.</p>'+
     (have<fresh.stake?'<p class="note">You need '+fresh.stake+' amber to accept and have '+have+'.</p>':'')+
     (ups.length&&have>=fresh.stake?'<p class="note raise-q">Feeling brave? Raise the stake:</p><div class="stakes">'+ups.map(n=>'<button type="button" class="chip" data-up="'+n+'">'+n+' amber</button>').join('')+'</div>':'')+
     '<div class="row2"><button type="button" class="btn ghost" data-later>Decide later</button><button type="button" class="btn amber" data-yes'+(have<fresh.stake?' disabled':'')+'>Accept ('+fresh.stake+' amber)</button></div><button type="button" class="linkbtn" data-no>No thanks</button></div>';
@@ -396,20 +410,19 @@ function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger
       else msgs.push({mood:'think',icon:'⚔️',title:other+' won this one',sub:'Rematch next week?'});}});
   if(msgs.length){window.save();chalPops.push(...msgs);}}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
-  if(!chalDay())return toast('Challenges start at the beginning of the week ('+weekWhen(7)+' to '+weekWhen(8)+' your time), so everyone starts even',6000);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');
   if(theirs<CH_MIN)return toast(nick+' needs '+CH_MIN+' amber before they can be challenged');
-  if(chals.some(x=>x.week_start===monday()&&['pending','raised','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+' this week');
+  const ws=chalWeek();if(chals.some(x=>x.week_start===ws&&['pending','raised','accepted'].includes(x.status)&&[x.from_id,x.to_id].includes(pid)))return toast('You already have a challenge with '+nick+(ws===monday()?' this week':' next week'));
   if(cap<CH_MIN)return toast('The stake can’t be more than either of you has, and the smallest is '+CH_MIN+' amber');
   const ov=document.createElement('div');ov.className='league-pop';let stake=0;
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">Whoever earns more XP before the week ends ('+weekWhen(7)+' your time) wins both stakes. '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Friend challenge"><h2>Challenge '+esc(nick)+'</h2><p class="note">'+(ws===monday()?'Whoever earns more XP before the week ends ('+weekAt(ws,7)+' your time) wins both stakes.':'It runs next week, '+weekAt(ws,0)+' to '+weekAt(ws,7)+' your time, so you both start from zero. Whoever earns more XP that week wins both stakes.')+' '+esc(nick)+' has to accept first, and you get your amber back if they don\'t.</p>'+
     '<div class="stakes">'+[10,20,30,50].map(n=>'<button type="button" class="chip" data-st="'+n+'"'+(n>cap?' disabled':'')+'>'+n+' amber</button>').join('')+'</div><p class="note">You have '+have+' amber and '+esc(nick)+' has '+theirs+'. The stake can’t be more than either of you has.</p>'+
     '<div class="row2"><button type="button" class="btn ghost" data-x>Cancel</button><button type="button" class="btn amber" data-go disabled>Send challenge</button></div></div>';
   document.body.appendChild(ov);
   ov.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{stake=Number(b.dataset.st);ov.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('in',x===b));ov.querySelector('[data-go]').disabled=false;});
   ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.querySelector('[data-go]').onclick=async()=>{if(!window.spendAmber(stake))return;ov.remove();
-    const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:monday(),lang:LC}).select().single();
+    const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:ws,lang:LC}).select().single();
     if(error){window.earnAmber(stake);return toast(/duplicate|unique/i.test(error.message)?'You already challenged '+nick+' this week':'Could not send: '+error.message);}
     window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:stake});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
 async function answerChallenge(id,status,raiseTo){const x=chals.find(y=>y.id===id);if(!x)return;
@@ -422,24 +435,25 @@ async function answerChallenge(id,status,raiseTo){const x=chals.find(y=>y.id===i
   if(status==='accepted'){S.chalLedger[id]=x.stake;S.chalSeen=Object.assign(S.chalSeen||{},{[id+'a']:1});}
   if(status==='cancelled'&&put){window.earnAmber(put);S.chalLedger[id]='done';}
   window.save();
-  if(status==='accepted')window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP before '+weekWhen(7)+' wins '+x.stake*2+' amber'});
+  if(status==='accepted')window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Most XP '+(chalSoon(x)?'next week (to '+chalEnd(x)+')':'before '+chalEnd(x))+' wins '+x.stake*2+' amber'});
   else if(status==='raised')window.celebrate({mood:'cheer',icon:'⚔️',title:'Raise sent!',sub:'Waiting for '+other+' to accept '+raiseTo+' amber'});
   else toast(status==='declined'?'Challenge declined':'Challenge cancelled, amber back');
   await loadChallenges();renderBoard();}
 function chalRows(){const me=user.id,wk=monday();
   return chals.map(x=>{const mine=x.from_id===me,other=mine?x.to_id:x.from_id,nick=esc(nameOf(other));
-    if(x.status==='pending'&&!mine)return '<div class="chal-row"><span><b>'+nick+'</b> challenges you: <b>'+x.stake+' amber</b> on this week\'s XP.</span><span class="btns"><button type="button" class="chip" data-open="'+x.id+'">Answer</button><button type="button" class="chip" data-ans="declined" data-id="'+x.id+'">No thanks</button></span></div>';
+    if(x.status==='pending'&&!mine)return '<div class="chal-row"><span><b>'+nick+'</b> challenges you: <b>'+x.stake+' amber</b> on '+(chalSoon(x)?'next':'this')+' week\'s XP.</span><span class="btns"><button type="button" class="chip" data-open="'+x.id+'">Answer</button><button type="button" class="chip" data-ans="declined" data-id="'+x.id+'">No thanks</button></span></div>';
     if(x.status==='raised'&&mine)return '<div class="chal-row"><span><b>'+nick+'</b> raised your challenge to <b>'+x.stake+' amber</b>.</span><span class="btns"><button type="button" class="chip" data-ans="accepted" data-id="'+x.id+'">Accept (+'+(x.stake-stakedIn(x))+' amber)</button><button type="button" class="chip" data-ans="cancelled" data-id="'+x.id+'">Back out</button></span></div>';
     if(x.status==='raised')return '<div class="chal-row"><span>You raised it to <b>'+x.stake+' amber</b>. Waiting for <b>'+nick+'</b> to accept.</span></div>';
     if(x.status==='pending')return '<div class="chal-row"><span>Waiting for <b>'+nick+'</b> to accept ('+x.stake+' amber).</span><span class="btns"><button type="button" class="chip" data-ans="cancelled" data-id="'+x.id+'">Cancel</button></span></div>';
+    if(x.status==='accepted'&&chalSoon(x))return '<div class="chal-row"><span>⚔️ <b>You vs '+nick+'</b> · '+x.stake+' amber each, starting '+weekAt(x.week_start,0)+'</span></div>';
     if(x.status==='accepted'){const a=window.S.weekXp&&window.S.weekStart===wk?window.S.weekXp:0,b=weekXpOf(other);
       return '<div class="chal-row"><span>⚔️ <b>You vs '+nick+'</b> · '+x.stake+' amber each</span><span>You <b>'+a+' XP</b> · '+nick+' <b>'+b+' XP</b> this week'+(a>b?' · you\'re ahead!':a<b?' · catch up!':'')+'</span></div>';}
     if(x.status==='settled'&&x.week_start>=new Date(Date.now()-14*86400000).toISOString().slice(0,10))
       return '<div class="chal-row"><span>'+(x.winner===me?'🏆 You beat <b>'+nick+'</b> (+'+x.stake*2+' amber)':!x.winner?'🤝 Draw with <b>'+nick+'</b>':'<b>'+nick+'</b> won last week\'s challenge')+'</span></div>';
     return '';}).filter(Boolean);}
-const CH_RULES=()=>'Challenges can only be started on the first day of the week ('+weekWhen(0)+' to '+weekWhen(1)+' your time). Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP before the week ends ('+weekWhen(7)+') wins both stakes.';
+const CH_RULES=()=>'Send a challenge any day. Sent on the first day of the week ('+weekWhen(0)+' to '+weekWhen(1)+' your time) it runs that week; any other day it runs the next week, so you both start from zero. Both players need at least '+CH_MIN+' amber, and the stake can’t be more than either of you has. Whoever earns more XP before the week ends ('+weekWhen(7)+') wins both stakes.';
 function renderChallenges(){const box=$('#chal-box');if(box){if(!user)box.innerHTML='';else{const rows=chalRows();
-    box.innerHTML='<h2>Friend challenges</h2><p class="note">'+(chalDay()?'Challenges are open today: tap a player above to challenge them. ':'')+CH_RULES()+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
+    box.innerHTML='<h2>Friend challenges</h2><p class="note">Tap a player in your league to challenge them. '+CH_RULES()+'</p>'+(rows.length?'<div class="chal">'+rows.join('')+'</div>':'');}}
   document.querySelectorAll('#chal-box [data-ans]').forEach(b=>b.onclick=()=>answerChallenge(Number(b.dataset.id),b.dataset.ans));
   document.querySelectorAll('#chal-box [data-open]').forEach(b=>b.onclick=()=>{const x=chals.find(y=>y.id===Number(b.dataset.open));if(x)chalDialog(x,false);});}
 
@@ -584,7 +598,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   ol.innerHTML=rows.map((r,i)=>{const up=i<ups;const down=mine>0&&(r.wxp===0||(n>=10&&rk[i]>n-3));
     return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===in3&&ups<in3?top3:'')+row(r,rk[i]-1,r.wxp,up?'up':mine<TOP&&rk[i]<=3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
-function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id&&chalDay(),ch=show&&canChal(r.id),mine=user&&r.id===user.id;return '<li class="'+(mine?'me ':'')+zone+'"><span class="rk num">'+(i+1)+'</span>'+
+function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id,ch=show&&canChal(r.id),mine=user&&r.id===user.id;return '<li class="'+(mine?'me ':'')+zone+(show?' tappable':'')+'"'+(show?' data-pid="'+r.id+'"':'')+'><span class="rk num">'+(i+1)+'</span>'+
   (window.faceHtml?window.faceHtml(mine&&window.S.look||r.look,r.id,36):'')+'<span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
 
 /* ---------- boot ---------- */
