@@ -25,6 +25,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
   if(b.me&&(!a.me||(b.me.at||0)>(a.me.at||0)))out.me=b.me;out.lastDay=[a.lastDay||'',b.lastDay||''].sort().pop();
   out.lessons={};new Set(Object.keys(a.lessons||{}).concat(Object.keys(b.lessons||{}))).forEach(k=>out.lessons[k]=Math.max((a.lessons||{})[k]||0,(b.lessons||{})[k]||0));
   out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;}});
+  Object.keys(out.items).forEach(k=>{const v=out.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete out.items[k];});delete out.time;
   out.replies={};new Set(Object.keys(a.replies||{}).concat(Object.keys(b.replies||{}))).forEach(k=>{const x=(a.replies||{})[k],y=(b.replies||{})[k];if(!x)out.replies[k]=y;else if(!y)out.replies[k]=x;else{out.replies[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),ok:Math.max(x.ok||0,y.ok||0),bad:Math.max(x.bad||0,y.bad||0)};const up=[x.up||'',y.up||''].sort().pop();if(up)out.replies[k].up=up;}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak','s2','s3'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
@@ -43,7 +44,10 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
   out.cupPaid=Object.assign({},a.cupPaid||{},b.cupPaid||{});out.chalSeen=Object.assign({},a.chalSeen||{},b.chalSeen||{});
   out.chalLedger=Object.assign({},a.chalLedger||{});Object.entries(b.chalLedger||{}).forEach(([k,v])=>{const o=out.chalLedger[k];if(o==='done')return;out.chalLedger[k]=typeof o==='number'&&typeof v==='number'?Math.max(o,v):v;});
   out.brokenStreak=a.brokenStreak!==undefined?a.brokenStreak:(b.brokenStreak||null);
-  if((b.todayDate||'')>(a.todayDate||'')){out.todayDate=b.todayDate;out.todayXp=b.todayXp;out.todayLessons=b.todayLessons;}
+  const d=new Date(),here=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const day=[a,b].filter(x=>x.todayDate&&x.todayDate<=here).sort((x,y)=>x.todayDate<y.todayDate?1:-1)[0];
+  if(day){out.todayDate=day.todayDate;out.todayXp=day.todayXp;out.todayLessons=day.todayLessons;
+    if(a.todayDate===b.todayDate){out.todayXp=Math.max(a.todayXp||0,b.todayXp||0);out.todayLessons=Math.max(a.todayLessons||0,b.todayLessons||0);}}
   if((b.weekStart||'')>(a.weekStart||'')){out.weekStart=b.weekStart;out.weekXp=b.weekXp;}else if(b.weekStart===a.weekStart)out.weekXp=Math.max(a.weekXp||0,b.weekXp||0);
   out.welcomed=true;return out;}
 

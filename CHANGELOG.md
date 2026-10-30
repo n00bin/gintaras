@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.37.2** (2026-10-29) Account check fixes: conversations on the path use your name straight away (not Tomas); words you haven't met no longer leave empty records in your saved progress (old ones are tidied); a device in a later time zone can no longer wipe today's XP on another; the old unused time log is removed
 - **3.37.1** (2026-10-29) Crowns now measure memory, not replays: 1 = lesson finished, 2 to 5 = every word in it remembered at reviews on later days (word level 2 to 5). Lesson rows say how many words still need strengthening; finish screens show crowns gained and what the next one needs
 - **3.37** (2026-10-29) Part 3 conversations: Kiek kainuoja? at Birutė's kiosk (after Numbers), Kada susitinkame? with Jonas (after Time), and My morning grown into My day (after My day); new voice for Birutė
 - **3.36** (2026-10-29) Part 2 conversations: Kalbų vakaras (after Verbs), Kur tu? (after Everyday verbs), Atsiprašau! (after Questions), and Meet Jonas rewritten to use more of About me; new voices for Laura and Antanas

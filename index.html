@@ -984,8 +984,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.37.1';
-const APP_VERSION=103;
+const APP_RELEASE='3.37.2';
+const APP_VERSION=104;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2897,7 +2897,8 @@ const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:70,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
 let S=fresh();
 function setPace(p){p=OLD_PACE[p]||p;if(!PACES[p])p='m10';S.pace=p;S.goal=PACES[p].goal;}
-function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}}
+function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}tidy();}
+function tidy(){if(S.items)Object.keys(S.items).forEach(k=>{const v=S.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete S.items[k];});delete S.time;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.cloudDirty)window.cloudDirty();}
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function yesterday(){const d=new Date(Date.now()-DAY);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
@@ -3077,6 +3078,9 @@ function renderCando(){const box=$('#can-card');if(!box)return;S.cando=S.cando||
   box.querySelectorAll('[data-try]').forEach(b=>b.onclick=()=>startConv(b.dataset.try));
   const all=box.querySelector('[data-canall]');if(all)all.onclick=()=>{canAll=!canAll;renderCando();};}
 function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,bad:0});}
+/* Read-only: for words you may never have met, so just looking doesn't add an empty record to your saved progress. */
+const NO_REC={lvl:0,due:0,seen:false,ok:0,bad:0};
+function peek(id){return S.items[id]||NO_REC;}
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
 function dueItems(){const n=Date.now();return learned().filter(i=>rec(i.id).due<=n).sort((a,b)=>rec(a.id).due-rec(b.id).due);}
 /* Crowns show how well a lesson's words have stuck, not how many times it was played. 1 = finished. 2 to 5 = every
@@ -3215,7 +3219,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
     (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+u.tip+'</div>'+(open?'<div class="lessons"></div>':'');
   const ls=el.querySelector('.lessons');
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
-    const seen=l.items.filter(i=>rec(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
+    const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
     b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
     b.onclick=()=>startLesson(l);ls.appendChild(b);});
   const tipBtn=el.querySelector('[data-tip]');
@@ -3264,7 +3268,7 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
-function renderAll(){renderTop();renderBite();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
+function renderAll(){personalise();renderTop();renderBite();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
 
 /* ===================== FACES AND THE MASCOT ===================== */
 /* People are drawn with the Notionists set (CC0, by Zoish) through DiceBear (MIT), bundled in avatars.js so they work
@@ -3361,7 +3365,7 @@ $('#btn-settings-back').onclick=()=>showView(lastView);
 let Q=null; // {queue, idx, correct, total, items, mode, lesson, answer, startedAt, firstTry:{}}
 /* Wrong options come from words you have met first (this lesson, then learned ones), so you are choosing, not guessing among strangers. */
 function distractors(item,n,field){const pool=shuffle(ITEMS.filter(i=>i!==item&&norm(i[field])!==norm(item[field])));
-  const rank=i=>i.lesson===item.lesson?0:rec(i.id).seen?1:i.unit===item.unit?2:3;
+  const rank=i=>i.lesson===item.lesson?0:peek(i.id).seen?1:i.unit===item.unit?2:3;
   pool.sort((a,b)=>rank(a)-rank(b));const out=[];const used=new Set([norm(item[field])]);
   for(const i of pool){const v=norm(i[field]);if(used.has(v))continue;used.add(v);out.push(i);if(out.length>=n)break;}return out;}
 /* Difficulty follows how well you know the word: new words are tap-to-choose only; letter tiles come next; typing starts at level 2. */
