@@ -45,6 +45,29 @@
 "cv3:8o1-0": "Tada cepelinai su varške. Jie be mėsos.",
 "cv3:9": "Ar turite alergijų?"
 },
+"autonoe_cv24": {
+"cv24:0": "Laba diena! Kuo galiu padėti?",
+"cv24:11": "Puiku! Koks jūsų vardas?",
+"cv24:13": "Viskas gerai. Prašau, jūsų lagaminas.",
+"cv24:2": "Gerai, pažiūrėsime. Koks jūsų lagaminas?",
+"cv24:4": "Naujas ar senas?",
+"cv24:5o0-0": "Gerai. Ar šitas?",
+"cv24:5o1-0": "Gerai. Ar šitas?",
+"cv24:7": "O šitas? Didelis.",
+"cv24:9": "Atsiprašau! O šitas? Didelis, juodas ir labai sunkus!"
+},
+"callirrhoe_cv26": {
+"cv26:0": "Atsiprašau, ar čia laisva?",
+"cv26:10o0-0": "Įdomu! Ar tau patinka?",
+"cv26:10o1-0": "Sėkmės! Ligoninėje visada reikia žmonių.",
+"cv26:12": "Šiandien baigiau po dvylikos valandų!",
+"cv26:14": "Mano stotis! Malonu buvo pasikalbėti.",
+"cv26:2": "Ačiū. Oi, aš labai pavargusi.",
+"cv26:4": "Aš dirbu visą dieną... ir visą naktį.",
+"cv26:6": "Aš dirbu ligoninėje. Aš esu slaugytoja.",
+"cv26:8": "Taip, bet mano darbas sunkus.",
+"cv26:9": "O tu? Kuo tu dirbi?"
+},
 "charon_cv1": {
 "cv1:13": "Laba diena! Kavos?",
 "cv1:15": "Gal arbatos?"
@@ -281,6 +304,57 @@
 "cv23:7": "Kur yra platforma?",
 "cv23:9": "Ačiū! O kada atvyksta?"
 },
+"despina_cv24": {
+"cv24:1": "Laba diena! Kur mano lagaminas?",
+"cv24:10": "Taip! Tai mano lagaminas!",
+"cv24:12": "Mano vardas Tomas.",
+"cv24:14": "Labai ačiū! Viso gero!",
+"cv24:3": "Didelis ir juodas.",
+"cv24:5o0": "Naujas.",
+"cv24:5o1": "Senas.",
+"cv24:6": "Ne, šis lagaminas mažas.",
+"cv24:8": "Ne, jis mėlynas. Mano lagaminas juodas."
+},
+"despina_cv25": {
+"cv25:1": "Kas tai?",
+"cv25:10o0": "Taip, aš turiu brolį.",
+"cv25:10o0-1": "Jis linksmas.",
+"cv25:10o1": "Taip, aš turiu seserį.",
+"cv25:10o1-1": "Ji labai protinga.",
+"cv25:10o2": "Ne, neturiu.",
+"cv25:12o0": "Taip, aš turiu du vaikus.",
+"cv25:12o1": "Taip, aš turiu dukrą.",
+"cv25:12o2": "Ne, neturiu.",
+"cv25:14": "Jie labai mieli.",
+"cv25:16": "Taip, prašau.",
+"cv25:3": "Koks jis?",
+"cv25:5": "O kas tai?",
+"cv25:7": "Koks jos vardas?"
+},
+"despina_cv26": {
+"cv26:1": "Taip, prašau.",
+"cv26:10o0": "Aš esu studentas.",
+"cv26:10o0-1": "Taip, mano darbas įdomus.",
+"cv26:10o1": "Aš ieškau darbo.",
+"cv26:11": "Kada baigi darbą?",
+"cv26:15": "Man irgi! Sėkmės!",
+"cv26:3": "Kodėl?",
+"cv26:5": "Kur tu dirbi?",
+"cv26:7": "Ar tau patinka tavo darbas?"
+},
+"despina_cv27": {
+"cv27:1": "Lyja. Ir šalta!",
+"cv27:10": "Taip. Uždaryk langą, prašau.",
+"cv27:12": "Įjunk šviesą!",
+"cv27:14o0": "Taip, aš pavargęs.",
+"cv27:14o1": "Ne, aš laimingas!",
+"cv27:16": "Ačiū už vaišes!",
+"cv27:18": "Ačiū! Iki!",
+"cv27:3": "Ačiū! Tavo butas labai gražus.",
+"cv27:5": "Kur yra vonia?",
+"cv27:8o0": "Taip, prašau. Man šalta.",
+"cv27:8o1": "Ne, ačiū. Aš noriu kavos."
+},
 "despina_cv3": {
 "cv3:1": "Laba diena! Staliuką dviem, prašau.",
 "cv3:10o0": "Taip. Aš alergiškas riešutams.",
@@ -387,6 +461,8 @@
 "me2:cv23:23o0~sc": "Taip. Aš esu iš Škotijos.",
 "me2:cv23:23o0~se": "Taip. Aš esu iš Švedijos.",
 "me2:cv23:23o0~ua": "Taip. Aš esu iš Ukrainos.",
+"me2:cv27:14o0~f": "Taip, aš pavargusi.",
+"me2:cv27:14o1~f": "Ne, aš laiminga!",
 "me2:cv2:1~n": "Labas! Mano vardas.",
 "me2:cv2:3~au": "Aš esu iš Australijos. O tu?",
 "me2:cv2:3~br": "Aš esu iš Brazilijos. O tu?",
@@ -580,8 +656,24 @@
 "cv17:6": "Truputį. Bet šiandien kalbame lietuviškai!",
 "cv17:8": "Ar tu gyveni Lietuvoje?"
 },
+"laomedeia_cv27": {
+"cv27:0": "Labas! Užeik, užeik! Koks šiandien oras?",
+"cv27:11": "O, atsiprašau! Ir tamsu.",
+"cv27:13": "Gerai. Kaip tu jautiesi? Tu atrodai pavargęs.",
+"cv27:14o0-0": "Tada arbata padės!",
+"cv27:14o1-0": "Puiku! Aš irgi.",
+"cv27:17": "Nėra už ką! Ateik dar!",
+"cv27:2": "Jauskis kaip namie. Sėskis!",
+"cv27:4": "Ačiū! Bet jis mažas. Čia svetainė, ten virtuvė, o ten miegamasis.",
+"cv27:6": "Ten, prie durų.",
+"cv27:7": "Ar nori arbatos?",
+"cv27:8o0-0": "Štai arbata. Karšta!",
+"cv27:8o1-0": "Gerai, štai kava.",
+"cv27:9": "Kambaryje šalta, ar ne?"
+},
 "laomedeia_me2": {
-"me2:cv17:0~n": "Labas! Aš esu Laura. Tu esi?"
+"me2:cv17:0~n": "Labas! Aš esu Laura. Tu esi?",
+"me2:cv27:13~f": "Gerai. Kaip tu jautiesi? Tu atrodai pavargusi."
 },
 "leda_cv12": {
 "cv12:0": "Laba diena! Ar galiu padėti?",
@@ -812,6 +904,57 @@
 "cv23:7": "Kur yra platforma?",
 "cv23:9": "Ačiū! O kada atvyksta?"
 },
+"orus_cv24": {
+"cv24:1": "Laba diena! Kur mano lagaminas?",
+"cv24:10": "Taip! Tai mano lagaminas!",
+"cv24:12": "Mano vardas Tomas.",
+"cv24:14": "Labai ačiū! Viso gero!",
+"cv24:3": "Didelis ir juodas.",
+"cv24:5o0": "Naujas.",
+"cv24:5o1": "Senas.",
+"cv24:6": "Ne, šis lagaminas mažas.",
+"cv24:8": "Ne, jis mėlynas. Mano lagaminas juodas."
+},
+"orus_cv25": {
+"cv25:1": "Kas tai?",
+"cv25:10o0": "Taip, aš turiu brolį.",
+"cv25:10o0-1": "Jis linksmas.",
+"cv25:10o1": "Taip, aš turiu seserį.",
+"cv25:10o1-1": "Ji labai protinga.",
+"cv25:10o2": "Ne, neturiu.",
+"cv25:12o0": "Taip, aš turiu du vaikus.",
+"cv25:12o1": "Taip, aš turiu dukrą.",
+"cv25:12o2": "Ne, neturiu.",
+"cv25:14": "Jie labai mieli.",
+"cv25:16": "Taip, prašau.",
+"cv25:3": "Koks jis?",
+"cv25:5": "O kas tai?",
+"cv25:7": "Koks jos vardas?"
+},
+"orus_cv26": {
+"cv26:1": "Taip, prašau.",
+"cv26:10o0": "Aš esu studentas.",
+"cv26:10o0-1": "Taip, mano darbas įdomus.",
+"cv26:10o1": "Aš ieškau darbo.",
+"cv26:11": "Kada baigi darbą?",
+"cv26:15": "Man irgi! Sėkmės!",
+"cv26:3": "Kodėl?",
+"cv26:5": "Kur tu dirbi?",
+"cv26:7": "Ar tau patinka tavo darbas?"
+},
+"orus_cv27": {
+"cv27:1": "Lyja. Ir šalta!",
+"cv27:10": "Taip. Uždaryk langą, prašau.",
+"cv27:12": "Įjunk šviesą!",
+"cv27:14o0": "Taip, aš pavargęs.",
+"cv27:14o1": "Ne, aš laimingas!",
+"cv27:16": "Ačiū už vaišes!",
+"cv27:18": "Ačiū! Iki!",
+"cv27:3": "Ačiū! Tavo butas labai gražus.",
+"cv27:5": "Kur yra vonia?",
+"cv27:8o0": "Taip, prašau. Man šalta.",
+"cv27:8o1": "Ne, ačiū. Aš noriu kavos."
+},
 "orus_cv3": {
 "cv3:1": "Laba diena! Staliuką dviem, prašau.",
 "cv3:10o0": "Taip. Aš alergiškas riešutams.",
@@ -918,6 +1061,8 @@
 "me2:cv23:23o0~sc": "Taip. Aš esu iš Škotijos.",
 "me2:cv23:23o0~se": "Taip. Aš esu iš Švedijos.",
 "me2:cv23:23o0~ua": "Taip. Aš esu iš Ukrainos.",
+"me2:cv27:14o0~f": "Taip, aš pavargusi.",
+"me2:cv27:14o1~f": "Ne, aš laiminga!",
 "me2:cv2:1~n": "Labas! Mano vardas.",
 "me2:cv2:3~au": "Aš esu iš Australijos. O tu?",
 "me2:cv2:3~br": "Aš esu iš Brazilijos. O tu?",
@@ -995,6 +1140,23 @@
 "cv21:7o0-0": "Šeštadienį? Puiku!",
 "cv21:7o1-0": "Sekmadienį? Puiku!",
 "cv21:8": "Kokiu laiku? Dvyliktą?"
+},
+"puck_cv25": {
+"cv25:0": "Žiūrėk, čia mano šeima.",
+"cv25:10o0-0": "Koks jis?",
+"cv25:10o1-0": "Kokia ji?",
+"cv25:10o2-0": "Aišku.",
+"cv25:11": "Ar turi vaikų?",
+"cv25:12o0-0": "Puiku! Vaikai yra laimė.",
+"cv25:12o1-0": "Puiku! Dukra yra laimė.",
+"cv25:12o2-0": "Gal kada nors!",
+"cv25:13": "O čia mano mama ir tėtis.",
+"cv25:15": "Ačiū! Gal dar kavos?",
+"cv25:2": "Tai mano brolis, Mantas.",
+"cv25:4": "Jis labai linksmas ir protingas. Ir aukštas!",
+"cv25:6": "Tai mano sesuo.",
+"cv25:8": "Gintarė. Ji gyvena Kaune su vyru ir dukra.",
+"cv25:9": "O tu? Ar turi brolių ar seserų?"
 },
 "puck_cv3": {
 "cv3:19": "Paliekame arbatpinigių?",
