@@ -628,6 +628,12 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .me-field>span{font-weight:700}
 .lang-select{font:inherit;font-size:16px;font-weight:600;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);min-width:0;width:12.5em;max-width:58vw;flex:0 0 auto}
 .bd{position:relative}.bd-n{position:absolute;top:6px;right:8px;background:var(--amber);color:#3a2300;font-weight:800;font-size:12px;border-radius:10px;padding:1px 7px}
+.fall{position:fixed;inset:0;z-index:8000;background:var(--bg);display:flex;flex-direction:column}
+.fall-top{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;font-weight:800}
+.fall-sky{position:relative;flex:1;overflow:hidden;border-bottom:3px dashed var(--line)}
+.fall-w{position:absolute;left:50%;transform:translateX(-50%);background:var(--surface);border:2px solid var(--amber);border-radius:14px;padding:8px 14px;font-weight:800;white-space:nowrap;box-shadow:0 2px 0 var(--line)}
+.fall-w.hit{background:var(--ok);color:#fff;border-color:var(--ok)}.fall-w.miss{background:var(--bad);color:#fff;border-color:var(--bad)}
+.fall-bot{padding:10px 16px 16px}.fall-msg{min-height:22px;font-size:14px;color:var(--muted)}
 .gate{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}.gate .card{max-width:420px;width:100%;text-align:center}.gate .mascot{width:84px;height:84px;margin:0 auto}.gate .btn{width:100%;margin-top:8px}
 .lang-switching{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;text-align:center;font-weight:700;font-size:18px}.lang-switching .mascot{width:96px;height:96px;margin:0 auto 8px}
 .lang-welcome{display:block;margin:18px 0 6px}.lang-welcome .lang-select{display:block;width:100%;max-width:none;margin-top:8px;padding:12px 14px}
@@ -753,6 +759,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn amber" id="btn-review">Start review</button>
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
+    <div class="card" id="game-card"></div>
     <div class="card" id="cv-list"></div>
     <div class="card" id="qc-card"></div>
     <div class="card" id="can-card"></div>
@@ -969,8 +976,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.51';
-const APP_VERSION=123;
+const APP_RELEASE='3.52';
+const APP_VERSION=124;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1374,6 +1381,43 @@ function renderConvList(){const box=$('#cv-list');if(!box)return;let n=0;
           '<button type="button" class="btn '+(st.speak||!done?'ghost':'amber')+'" data-cvl="speak" data-id="'+c.id+'"'+(done?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say</button></div></div>';}).join('')
       :'<p class="note">Your first conversation opens after the Basics unit. Once you reach one, it stays here so you can replay it any time.</p>');
   box.querySelectorAll('[data-cvl]').forEach(b=>b.onclick=()=>startConv(b.dataset.id,b.dataset.cvl));}
+/* ===================== FALLING WORDS ===================== */
+/* A game that is a review in disguise: meanings fall, you type the word before it lands. Only words you already know
+   (level 2+), due ones first; every answer is graded like a review, so playing clears what's due. Missing never ends it. */
+function gameWords(){return learned().filter(i=>rec(i.id).lvl>=2&&i.lt.length<=24&&i.lt.split(' ').length<=3);}
+function renderGameCard(){const box=$('#game-card');if(!box)return;const w=gameWords(),due=w.filter(i=>rec(i.id).due<=Date.now()).length;
+  box.innerHTML='<span class="eyebrow">Game</span><h2>🌧️ Falling words</h2><p class="note">'+(w.length>=5?'Meanings fall from the sky: type the '+LANG.en+' before they land. It uses words you already know'+(due?', '+due+' of them due now, so it counts as your review.':', so it keeps them sharp.'):'Learn a few more words first: the game uses words you have already reviewed at least once ('+w.length+' of 5).')+'</p>'+
+    '<button type="button" class="btn amber" id="btn-fall"'+(w.length>=5?'':' disabled')+'>Play</button>';
+  const b=$('#btn-fall');if(b)b.onclick=startFall;}
+function startFall(){const pool=gameWords();if(pool.length<5)return;
+  const due=shuffle(pool.filter(i=>rec(i.id).due<=Date.now())),rest=shuffle(pool.filter(i=>rec(i.id).due>Date.now()));
+  const words=due.concat(rest).slice(0,15);Q={queue:[],idx:0,correct:0,total:words.length,items:words,mode:'game',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},ups:0};
+  const ov=document.createElement('div');ov.className='fall';
+  ov.innerHTML='<div class="fall-top"><button type="button" class="x" id="fall-x" aria-label="Stop">✕</button><span>🌧️ <b id="fall-hit">0</b> caught · <b id="fall-left">'+words.length+'</b> to go</span></div><div class="fall-sky" id="fall-sky"></div>'+
+    '<div class="fall-bot"><div class="fall-msg" id="fall-msg" role="status">Type the '+esc(LANG.en)+' for the falling meaning, then Enter.</div>'+typeBox('Type in '+LANG.en)+'</div>';
+  document.body.appendChild(ov);const sky=ov.querySelector('#fall-sky');const fake={disabled:false,click(){submit();}};wireTyping(ov,fake);const inp=ov.querySelector('#ans');
+  let live=[],next=0,done=0,hits=0,raf=0,last=performance.now(),spawnAt=0;
+  const msg=h=>{ov.querySelector('#fall-msg').innerHTML=h;};
+  const spawn=now=>{if(next>=words.length)return;const it=words[next++];const el=document.createElement('div');el.className='fall-w';el.textContent=it.en;sky.appendChild(el);
+    const speed=Math.max(4.5,9-next*0.3);live.push({it,el,y:-40,v:(sky.clientHeight+40)/speed});};
+  const end=()=>{cancelAnimationFrame(raf);ov.remove();rollDay();const ups=Q.ups||0;const total=addXp(ups?5+ups:3);save();renderAll();
+    celebrate({mood:'cheer',icon:'🌧️',title:hits+' of '+words.length+' caught',sub:'+'+total+' XP'+(ups?' · '+ups+' word'+(ups===1?'':'s')+' moved up':''),ms:3500});Q=null;};
+  const settle=(w,ok)=>{live=live.filter(x=>x!==w);done++;w.el.classList.add(ok?'hit':'miss');if(!ok)w.el.textContent=w.it.lt;setTimeout(()=>w.el.remove(),ok?250:1400);
+    ov.querySelector('#fall-left').textContent=words.length-done;if(done>=words.length)setTimeout(end,900);};
+  function submit(){const a=inp.value.trim();if(!a)return;let best=null,j=null;
+    for(const w of live){const r=judgeTyped(a,[w.it.lt].concat(w.it.alt||[]),w.it.en);if(r.ok&&(!best||w.y>best.y)){best=w;j=r;}}
+    if(best){hits++;ov.querySelector('#fall-hit').textContent=hits;grade(best.it,true,!Q.wrongOnce[best.it.id],j.title==='Nearly');Q.correct++;sfx('good');
+      msg(j.title==='Nearly'?'Nearly: <b>'+esc(best.it.lt)+'</b>':'✓ <b>'+esc(best.it.lt)+'</b>');settle(best,true);}
+    else{sfx('bad');msg('Not one of the falling words. Try again.');}
+    inp.value='';Q.answer='';}
+  inp.oninput=()=>{const a=inp.value.trim();if(a&&live.some(w=>[w.it.lt].concat(w.it.alt||[]).map(norm).includes(norm(a))))submit();};
+  const loop=now=>{const dt=Math.min(0.05,(now-last)/1000);last=now;
+    if(now>=spawnAt&&next<words.length&&live.length<2){spawn(now);spawnAt=now+Math.max(1800,3500-next*120);}
+    for(const w of live.slice()){w.y+=w.v*dt;w.el.style.top=w.y+'px';
+      if(w.y>sky.clientHeight-30){Q.wrongOnce[w.it.id]=true;grade(w.it,false,false);msg('It landed: <b>'+esc(w.it.lt)+'</b> · '+esc(w.it.en)+'. It comes back soon.');sfx('bad');settle(w,false);}}
+    raf=requestAnimationFrame(loop);};
+  ov.querySelector('#fall-x').onclick=()=>{cancelAnimationFrame(raf);ov.remove();save();renderAll();Q=null;};
+  raf=requestAnimationFrame(loop);setTimeout(()=>inp.focus(),80);}
 function renderPractice(){const L=learned();const d=dueItems();
   $('#n-due').textContent=d.length;$('#n-learned').textContent=L.length;$('#n-strong').textContent=L.filter(i=>rec(i.id).lvl>=4).length;
   $('#due-title').textContent=L.length===0?'Nothing to review yet':d.length===0?'All caught up':d.length+(d.length===1?' word is due':' words are due');
@@ -1382,7 +1426,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
-  renderMe();renderCando();renderQuick();renderConvList();
+  renderMe();renderCando();renderQuick();renderConvList();renderGameCard();
   $('#lvls').innerHTML=buckets.map((n,k)=>'<i style="width:'+(n/tot*100)+'%;background:'+cols[k]+'" title="'+n+'"></i>').join('');}
 function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days').textContent=S.daysLearned||0;$('#p-streak').textContent=S.streak;
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
@@ -1749,7 +1793,7 @@ function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const
   if(ok){r.ok++;if(sloppy&&count){fsReview(r,2);return;}
     if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
-      const iv=fsReview(r,g),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}}
+      if(Q)Q.ups=(Q.ups||0)+1;const iv=fsReview(r,g),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}}
   else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
 /* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
 function fuzz(d){if(d<3)return d;const s=Math.max(1,Math.round(d*0.1));return d+Math.floor(Math.random()*(2*s+1))-s;}
@@ -1835,8 +1879,11 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
 
 function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.round(Q.correct/Q.total*100):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
-  let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
-  let bonus=0;if(perfect){bonus=5;S.perfects=(S.perfects||0)+1;}
+  /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
+     already know earns a little, so the league can't be climbed by repeating an easy lesson. */
+  const ups=Q.ups||0,replay=Q.mode==='lesson'&&(S.lessons[Q.lesson.id]||0)>=1;
+  let xp;if(Q.mode==='lesson'){xp=replay?3+ups:10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=ups?5+ups:3;
+  let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=5;S.perfects=(S.perfects||0)+1;}
   amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
