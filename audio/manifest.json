@@ -276,6 +276,10 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u42": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u5": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -2238,6 +2242,38 @@
 "u40b-2:2": "Man reikia vaistų",
 "u40b-2:3": "Ar turite vaistų nuo galvos skausmo?",
 "u40b-2:4": "Aš jaučiuosi geriau"
+},
+"u42": {
+"u42a-1:0": "Apie ką?",
+"u42a-1:1": "Jei nori",
+"u42a-1:2": "Mūsų namai",
+"u42a-1:3": "Jūsų pasas",
+"u42a-1:4": "Dėl to",
+"u42a-2:0": "Štai!",
+"u42a-2:1": "Daug",
+"u42a-2:2": "Visi",
+"u42a-2:3": "Niekas",
+"u42a-2:4": "Vėl",
+"u42b-1:0": "Aš jį matau",
+"u42b-1:1": "Aš ją myliu",
+"u42b-1:2": "Duok jam",
+"u42b-1:3": "Paskambink jai",
+"u42b-1:4": "Ačiū jums",
+"u42b-2:0": "Padėk mums",
+"u42b-2:1": "Laukiu tavęs",
+"u42b-2:2": "Ar tu mane girdi?",
+"u42b-2:3": "Tiesiog",
+"u42b-2:4": "Galbūt",
+"u42c-1:0": "Tiesa?",
+"u42c-1:1": "Tuoj",
+"u42c-1:2": "Klausyk",
+"u42c-1:3": "Pažiūrėk!",
+"u42c-1:4": "Turbūt",
+"u42c-2:0": "Bent",
+"u42c-2:1": "Beveik",
+"u42c-2:2": "Visai gerai",
+"u42c-2:3": "Aš nenoriu",
+"u42c-2:4": "Aš maniau"
 },
 "u5": {
 "u5a-1:0": "raudonas",
