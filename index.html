@@ -627,6 +627,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .me-pop label,.me-quick label,.me-field{display:grid;gap:6px;font-weight:700}
 .me-field>span{font-weight:700}
 .lang-select{font:inherit;font-size:16px;font-weight:600;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);min-width:0;width:12.5em;max-width:58vw;flex:0 0 auto}
+.bd{position:relative}.bd-n{position:absolute;top:6px;right:8px;background:var(--amber);color:#3a2300;font-weight:800;font-size:12px;border-radius:10px;padding:1px 7px}
 .gate{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}.gate .card{max-width:420px;width:100%;text-align:center}.gate .mascot{width:84px;height:84px;margin:0 auto}.gate .btn{width:100%;margin-top:8px}
 .lang-switching{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;text-align:center;font-weight:700;font-size:18px}.lang-switching .mascot{width:96px;height:96px;margin:0 auto 8px}
 .lang-welcome{display:block;margin:18px 0 6px}.lang-welcome .lang-select{display:block;width:100%;max-width:none;margin-top:8px;padding:12px 14px}
@@ -723,6 +724,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn amber" id="btn-bite">Start</button>
       <button class="btn ghost onpine" id="btn-bite2" hidden>Say it out loud</button>
     </div>
+    <div class="card catchup" id="catchup" hidden></div>
     <div class="goal">
       <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
@@ -751,8 +753,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn amber" id="btn-review">Start review</button>
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
-    <div class="card" id="qc-card"></div>
     <div class="card" id="cv-list"></div>
+    <div class="card" id="qc-card"></div>
     <div class="card" id="can-card"></div>
     <div class="card">
       <h2>Word strength</h2>
@@ -796,13 +798,6 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note">Everyone gets 2 free rest days a week. Miss a day and your streak simply waits for you. Doubling your daily goal earns a spare one (you can keep 2).</p>
     </div>
     <div class="card">
-      <h2>Daily pace</h2>
-      <div class="pace-grid" id="pace-grid"></div>
-      <p class="note" id="pace-note"></p>
-      <label class="setting study-when"><span>When do you plan to study?</span><input type="time" id="study-time"></label>
-    </div>
-    <div class="card" id="notif" hidden></div>
-    <div class="card">
       <span class="eyebrow">⏱ Time in lessons</span>
       <div class="tiles time-tiles">
         <div class="tile"><strong class="num" id="p-time-today">0 min</strong><small>Today</small></div>
@@ -811,15 +806,28 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       </div>
       <p class="note">Counts only time spent in lessons, practice and conversations, not browsing the app or leaving a lesson open. Handy for a study log.</p>
     </div>
-    <div class="card" id="shop"></div>
+    <div class="card" id="my-perks" hidden></div>
     <div class="card">
       <h2>Badges</h2>
       <div class="badges" id="badges"></div>
     </div>
   </section>
 
+  <section class="view" id="view-store" hidden>
+    <div class="pagehead"><button type="button" class="x back" id="btn-store-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Amber shop</h2></div>
+    <div class="card" id="shop"></div>
+  </section>
+
   <section class="view" id="view-settings" hidden>
     <div class="pagehead"><button type="button" class="x back" id="btn-settings-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Settings</h2></div>
+    <span class="group">Daily routine</span>
+    <div class="card">
+      <h2>Daily pace</h2>
+      <div class="pace-grid" id="pace-grid"></div>
+      <p class="note" id="pace-note"></p>
+      <label class="setting study-when"><span>When do you plan to study?</span><input type="time" id="study-time"></label>
+    </div>
+    <div class="card" id="notif" hidden></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
       <div class="setting"><span>Language</span><select class="lang-select" id="lang-select" aria-label="Language to learn"></select></div>
@@ -961,8 +969,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.49';
-const APP_VERSION=121;
+const APP_RELEASE='3.50';
+const APP_VERSION=122;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1129,6 +1137,14 @@ function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="g
         (st?'<span class="tag st">'+esc(st)+'</span>':'<span class="tag cost'+(short?' short':'')+'">'+gem+cost+'</span>')+'</button>';}).join('')+'</div>'+
     '<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
   box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(b.dataset.buy));}
+/* Profile shows only the perks you own or have running; buying happens in the Amber shop. */
+function renderMyPerks(){const box=$('#my-perks');if(!box)return;const have=[];
+  if(S.freezes)have.push(['🌙','Spare rest days',S.freezes+' ready']);
+  if((S.boostUntil||0)>Date.now())have.push(['⚡','Double XP','on for '+Math.ceil((S.boostUntil-Date.now())/60000)+' min']);
+  if(window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn())have.push(['🛡️','League shield','on this week']);
+  box.hidden=!have.length;
+  box.innerHTML='<span class="eyebrow">Your perks</span>'+have.map(([i,n,s])=>'<div class="setting"><span>'+i+' '+esc(n)+'</span><b>'+esc(s)+'</b></div>').join('')+'<button type="button" class="linkbtn" id="to-shop">Open the Amber shop</button>';
+  const b=$('#to-shop');if(b)b.onclick=()=>{renderShop();showView('store');};}
 window.earnAmber=earnAmber;window.spendAmber=spendAmber;window.amberBalance=amber;window.renderShop=renderShop;
 
 /* ===================== LEVELS AND BADGES ===================== */
@@ -1152,6 +1168,12 @@ const BADGES=[
  ['xp1000','1000 XP','Earn 1000 XP in total',()=>S.xp>=1000],
  ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.includes('cv12')&&STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
 ];
+/* Badges for things that keep adding up show how many times over you've earned them: 200 words = 100 words ×2. */
+const BADGE_TIMES={w50:()=>Math.floor(learned().length/50),w100:()=>Math.floor(learned().length/100),w250:()=>Math.floor(learned().length/250),
+  xp1000:()=>Math.floor(S.xp/1000),perfect:()=>S.perfects||0,speak:()=>S.speakDone||0,
+  chat:()=>Object.values(S.convs||{}).filter(c=>c.done||c.text).length,talk:()=>Object.values(S.convs||{}).filter(c=>c.speak).length,
+  unit:()=>COURSE.filter(u=>u.lessons.every(l=>crowns(l.id)>=1)).length,master:()=>Object.keys(S.lessons).filter(id=>crowns(id)>=5).length,
+  streak7:()=>Math.floor((S.bestStreak||0)/7),streak30:()=>Math.floor((S.bestStreak||0)/30)};
 function checkBadges(){S.badges=S.badges||{};const got=[];BADGES.forEach(b=>{if(!S.badges[b[0]]&&b[3]()){S.badges[b[0]]=today();got.push(b);}});if(got.length)save();return got;}
 /* A word is mastered at level 4 ("Strong"): it was remembered at a review a week or more after the one before,
    so at least about eleven days after it was first learned. Earned skills stay earned; a word that slips back
@@ -1366,8 +1388,9 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days')
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
   if(L.next){const p=Math.round((S.xp-L.xp)/(L.next[0]-L.xp)*100);$('#lvl-bar').style.width=p+'%';$('#lvl-note').textContent=(L.next[0]-S.xp)+' XP to '+L.next[1]+' ('+L.next[2]+')';}
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. '+LANG.top;}
-  $('#p-rests').textContent=restsLeft();renderShop();renderFace();
-  S.badges=S.badges||{};$('#badges').innerHTML=BADGES.map(b=>'<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i><strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>').join('');
+  $('#p-rests').textContent=restsLeft();renderShop();renderMyPerks();renderFace();
+  S.badges=S.badges||{};$('#badges').innerHTML=BADGES.slice().sort((a,b)=>!!S.badges[b[0]]-!!S.badges[a[0]]).map(b=>{const n=S.badges[b[0]]&&BADGE_TIMES[b[0]]?BADGE_TIMES[b[0]]():1;
+    return '<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i>'+(n>1?'<span class="bd-n" aria-label="earned '+n+' times">×'+n+'</span>':'')+'<strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>';}).join('');
   {const P=PACES[S.pace]||PACES.m10;const g=$('#pace-grid');
   if(g){g.innerHTML=Object.entries(PACES).map(([k,v])=>'<button type="button" class="pace-chip" data-pace="'+k+'" aria-pressed="'+(k===S.pace)+'"><b>'+v.mins+' min</b><small>'+v.goal+' XP</small></button>').join('');
     g.querySelectorAll('[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' and '+PACES[S.pace].goal+' XP a day');});}
@@ -1389,7 +1412,14 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
     $('#bite-note').textContent=l.speak?'Six phrases from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new words, one at a time. Tap to choose, listen, match. No typing yet.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}}
-function renderAll(){personalise();renderTop();renderBite();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
+/* Lessons and conversations added behind where you already are (the course keeps growing): listed so nobody misses them. */
+function renderCatchUp(){const box=$('#catchup');if(!box)return;let far=-1;STEPS.forEach((id,i)=>{if(stepStarted(id))far=i;});
+  const missed=STEPS.slice(0,Math.max(0,far)).filter(id=>!stepStarted(id)&&stepUnlocked(id));box.hidden=!missed.length;if(!missed.length)return;
+  const name=id=>CONV_BY[id]?'💬 '+CONV_BY[id].title:'📘 '+UNIT_BY[id].en;
+  box.innerHTML='<span class="eyebrow">New since you passed</span><h2>'+missed.length+(missed.length===1?' new step':' new steps')+' behind you</h2><p class="note">These were added to the course after you went past them. They use words you already know.</p>'+
+    missed.slice(0,4).map(id=>'<button type="button" class="btn ghost" data-catch="'+id+'">'+esc(name(id))+'</button>').join('')+(missed.length>4?'<p class="note">…and '+(missed.length-4)+' more on the path.</p>':'');
+  box.querySelectorAll('[data-catch]').forEach(b=>b.onclick=()=>{const id=b.dataset.catch;if(CONV_BY[id])startConv(id);else{const l=UNIT_BY[id].lessons.find(x=>crowns(x.id)<1)||UNIT_BY[id].lessons[0];startLesson(l);}});}
+function renderAll(){personalise();renderTop();renderBite();renderCatchUp();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
 
 /* ===================== FACES AND THE MASCOT ===================== */
 /* People are drawn with the Notionists set (CC0, by Zoish) through DiceBear (MIT), bundled in avatars.js so they work
@@ -1473,12 +1503,13 @@ function renderFace(){const box=$('#face-card');if(!box)return;box.classList.tog
   $('#face-save').onclick=()=>{S.look=faceDraft.join('.');S.lookAt=Date.now();faceDraft=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
 
 /* ===================== TABS ===================== */
-const VIEWS=['learn','practice','board','talk','profile','settings'];
+const VIEWS=['learn','practice','board','talk','profile','settings','store'];
 let lastView='learn';
-function showView(v){if(!VIEWS.includes(v))v='learn';if(v!=='settings')lastView=v;VIEWS.forEach(k=>{$('#view-'+k).hidden=k!==v;const t=$('#tab-'+k);if(t)t.setAttribute('aria-selected',String(k===v));});$('#btn-settings').classList.toggle('on',v==='settings');window.scrollTo(0,0);}
+function showView(v){if(!VIEWS.includes(v))v='learn';if(v!=='settings'&&v!=='store')lastView=v;VIEWS.forEach(k=>{$('#view-'+k).hidden=k!==v;const t=$('#tab-'+k);if(t)t.setAttribute('aria-selected',String(k===v));});$('#btn-settings').classList.toggle('on',v==='settings');window.scrollTo(0,0);}
 VIEWS.forEach(v=>{const t=$('#tab-'+v);if(t)t.onclick=()=>showView(v);});
 $('#btn-settings').onclick=()=>showView($('#view-settings').hidden?'settings':lastView);
 $('#btn-settings-back').onclick=()=>showView(lastView);
+$('#btn-store-back').onclick=()=>showView(lastView);
 
 /* ===================== SESSION ===================== */
 let Q=null; // {queue, idx, correct, total, items, mode, lesson, answer, startedAt, firstTry:{}}
@@ -1528,11 +1559,15 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
       if(!speakOff()&&a.type!=='speak')rest.push({type:'speak',item:it});});
     if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});
     sample(DRILLS.filter(d=>d.u===u.id),2).forEach(d=>rest.push({type:'frame',drill:d}));
-    learned().filter(i=>!items.includes(i)).sort((a,b)=>rec(a.id).due-rec(b.id).due||rec(a.id).lvl-rec(b.id).lvl).slice(0,3)
-      .forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));}
+    /* warm-up: two words from earlier lessons first, then one more mixed in later */
+    const old=learned().filter(i=>!items.includes(i)).sort((a,b)=>rec(a.id).due-rec(b.id).due||rec(a.id).lvl-rec(b.id).lvl).slice(0,3);
+    head.splice(1,0,...old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})));
+    old.slice(2).forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));}
   else{shuffle(items).forEach(it=>rest.push(exFor(it,typesFor(it))));
     if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});}
   const queue=head.concat(shuffle(rest));
+  /* end on a win: an easy one about a word from this session */
+  if(mode==='lesson'&&!(lesson&&lesson.speak)&&items.length)queue.push({type:'mc_lt_en',item:sample(items,1)[0],win:true});
   Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode,lesson,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap()};
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));
   openSheet();renderStep();}
@@ -1685,7 +1720,13 @@ function micPause(root){const was=!!activeRec;stopHearing();const o=root.querySe
    lowers its ease by 0.2, a sloppy answer (typo, missing mark) by 0.15, and rating a spoken word Easy raises it by 0.15.
    The level (lvl) still counts how many spaced reviews it has passed, which is what crowns and word strength show. */
 const EASE0=2.5;
-function grade(item,ok,count,sloppy){const r=rec(item.id);r.seen=true;const e=r.ease||EASE0;
+/* Every answer is logged (word, time, grade 1 wrong / 2 right but sloppy / 3 right, days overdue, level) so a smarter scheduler
+   can later be fitted to how this learner forgets. Kept on this device per language, newest 20,000 answers. */
+const LOGKEY='gintaras.log.'+LANG_CODE;let RLOG=null,rlogT=null;
+function logReview(id,g,r){try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}
+  RLOG.push([id,Math.floor(Date.now()/1000),g,r.due?Math.round((Date.now()-r.due)/DAY):null,r.lvl]);if(RLOG.length>20000)RLOG.splice(0,RLOG.length-20000);
+  clearTimeout(rlogT);rlogT=setTimeout(()=>{try{localStorage.setItem(LOGKEY,JSON.stringify(RLOG));}catch(e){}},1500);}
+function grade(item,ok,count,sloppy){const r=rec(item.id);r.seen=true;const e=r.ease||EASE0;if(count||!ok)logReview(item.id,!ok?1:sloppy?2:3,r);
   if(ok){r.ok++;if(sloppy&&count){if(r.easeDay!==today()){r.ease=Math.max(1.3,e-0.15);r.easeDay=today();}return;}
     if(count&&r.up!==today()&&r.due<=Date.now()){const prev=r.ivl||INTERVALS[r.lvl]||0;r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       const iv=r.lvl<=1?1:Math.min(180,Math.max(prev+1,Math.round(prev*e)));r.ivl=iv;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(iv));r.due=d.getTime();}}
@@ -1787,6 +1828,8 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   const known=learned().length,gained=known-(Q.knownBefore||known);if(gained>0)lines.unshift('<div class="win"><b>+'+gained+' new word'+(gained===1?'':'s')+'</b> · you now know '+known+'</div>');
   if(Q.crownsBefore){const was=Q.crownsBefore,up=Object.entries(crownSnap()).filter(([id,c])=>c>1&&c>(was[id]||0));
     up.slice(0,3).forEach(([id,c])=>lines.push('<div class="win"><b>'+(c>=5?'Lesson mastered':'Crown '+c+' of 5')+'</b> · '+esc(LESSON_BY[id].unit.en+', '+LESSON_BY[id].title)+': '+(LESSON_BY[id].speak?'every word said out loud, on '+c+' different days':'every word remembered again on a later day')+'</div>'));}
+  if(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak){const base=Q.lesson.id.replace(/-(\d+|speak)$/,'');CANDO.filter(c=>c[3].includes(base)).slice(0,1).forEach(c=>{const s=canState(c);
+    lines.push('<div class="win"><b>'+c[1]+' I can '+esc(c[2])+'</b> · '+(s.got?'done!':s.seen+' of '+s.n+' words met, '+s.m+' mastered')+'</div>');});}
   if(Q.mode==='lesson'){const c=crowns(Q.lesson.id),g=crownGap(Q.lesson),sp=Q.lesson.speak;
     if(c<5&&g)lines.push('<div class="win"><b>Next crown</b> · when '+(g===Q.lesson.items.length?'all '+g+(sp?' phrases are':' words are'):g===1?(sp?'1 more phrase is':'1 more word is'):g+(sp?' more phrases are':' more words are'))+(sp?' said out loud again on another day':' remembered at a review on a later day')+'</div>');}
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
@@ -2365,7 +2408,7 @@ function closeTalk(){stopHearing();try{speechSynthesis.cancel();}catch(e){}$('#t
 $('#btn-talk').onclick=openTalk;$('#talk-close').onclick=closeTalk;
 $('#talk-swap').onclick=()=>{[TALK.a,TALK.b]=[TALK.b,TALK.a];S.talkA=TALK.a;S.talkB=TALK.b;save();drawTalk();};
 
-$('#amber-pill').onclick=()=>{showView('profile');setTimeout(()=>$('#shop').scrollIntoView({behavior:'smooth',block:'start'}),60);};
+$('#amber-pill').onclick=()=>{renderShop();showView('store');};
 
 /* ===================== ABOUT ME ===================== */
 /* The learner's own introduction, built from their answers (S.me) out of the fixed sentence bank above. */
