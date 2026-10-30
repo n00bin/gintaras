@@ -989,8 +989,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.38';
-const APP_VERSION=106;
+const APP_RELEASE='3.39';
+const APP_VERSION=107;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1006,7 +1006,20 @@ document.write('<script src="lang/'+LANG_CODE+'.js"><\/script>');
 /* If the language file didn't load (no signal and not saved yet), say so instead of showing a blank screen. */
 if(typeof LANG==='undefined'||typeof COURSE==='undefined'){document.body.insertAdjacentHTML('beforeend','<div style="position:fixed;inset:0;z-index:99999;background:#f4efe6;color:#222;display:grid;place-items:center;padding:24px;text-align:center;font:17px system-ui"><div><p>The course didn\'t load. Check your connection and try again.</p><p><button onclick="location.reload()" style="font:inherit;padding:10px 18px">Try again</button></p></div></div>');throw new Error('language file did not load');}
 /* ===================== STATE ===================== */
-const KEY='gintaras.v2';
+const KEY=LANG_CODE==='lt'?'gintaras.v2':'gintaras.v2.'+LANG_CODE;
+/* Settings that belong to you rather than to one language: About me, your face, sound and display choices, study
+   reminders, what you've already seen. They live in gintaras.shared with the time they last changed, are copied into
+   whichever language is open, and sync on their own (gintaras_shared), so the newest change wins on every device. */
+const SHARED_KEY='gintaras.shared';
+const SHARED=['me','look','lookAt','sound','sfx','pron','autoNext','studyTime','notify','pushAsked','toured','welcomed','meAsked','seenVersion','signinAsked','noSpeakUntil'];
+function sharedRead(){try{const o=JSON.parse(localStorage.getItem(SHARED_KEY));return o&&o.v?o:null;}catch(e){return null;}}
+function sharedPick(){const o={};SHARED.forEach(k=>{if(S[k]!==undefined)o[k]=S[k];});return o;}
+function sharedApply(){const sh=sharedRead();if(sh)SHARED.forEach(k=>{if(k in sh.v)S[k]=sh.v[k];});}
+/* Saves the shared settings, stamping the time only when one of them really changed. */
+function sharedStore(at){const v=sharedPick(),old=sharedRead();if(!at&&old&&JSON.stringify(old.v)===JSON.stringify(v))return;
+  try{localStorage.setItem(SHARED_KEY,JSON.stringify({at:at||Date.now(),v}));}catch(e){}}
+/* A newer copy from the account replaces this device's shared settings. */
+function sharedSet(v,at){try{localStorage.setItem(SHARED_KEY,JSON.stringify({at,v}));}catch(e){}sharedApply();save();}
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
 /* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
@@ -1015,9 +1028,11 @@ const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 function fresh(){return {xp:0,streak:0,lastDay:'',todayXp:0,todayDate:'',todayLessons:0,pace:'m10',goal:70,voice:'ona',sound:true,pron:true,lessons:{},items:{},lessonsDone:0};}
 let S=fresh();
 function setPace(p){p=OLD_PACE[p]||p;if(!PACES[p])p='m10';S.pace=p;S.goal=PACES[p].goal;}
-function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}tidy();}
+function load(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}tidy();
+  /* the first time, the shared settings start from this save (stamped 1, so any real change elsewhere wins) */
+  if(sharedRead())sharedApply();else sharedStore(1);}
 function tidy(){if(S.items)Object.keys(S.items).forEach(k=>{const v=S.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete S.items[k];});delete S.time;}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.cloudDirty)window.cloudDirty();}
+function save(){sharedStore();try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.cloudDirty)window.cloudDirty();}
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function yesterday(){const d=new Date(Date.now()-DAY);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function dayStr(off){const d=new Date(Date.now()-off*DAY);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
@@ -1156,11 +1171,11 @@ const BADGES=[
  ['speak','Out loud','Finish a speaking lesson',()=>(S.speakDone||0)>=1],
  ['chat','First chat','Finish a conversation',()=>Object.values(S.convs||{}).some(c=>c.done||c.text)],
  ['talk','Talker','Finish a spoken conversation',()=>Object.values(S.convs||{}).some(c=>c.speak)],
- ['convall','Conversationalist','Finish all fifteen conversations',()=>CONVS.every(c=>convDone(c.id))],
+ ['convall','Conversationalist','Finish all fifteen conversations',()=>CONVS.length>0&&CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to 5 crowns',()=>Object.keys(S.lessons).some(id=>crowns(id)>=5)],
  ['xp1000','1000 XP','Earn 1000 XP in total',()=>S.xp>=1000],
- ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
+ ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.includes('cv12')&&STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
 ];
 function checkBadges(){S.badges=S.badges||{};const got=[];BADGES.forEach(b=>{if(!S.badges[b[0]]&&b[3]()){S.badges[b[0]]=today();got.push(b);}});if(got.length)save();return got;}
 /* A word is mastered at level 4 ("Strong"): it was remembered at a review a week or more after the one before,
@@ -2289,7 +2304,7 @@ function openFlag(){const ctx=cardContext();const what=ctx.lt?'“'+ctx.lt+'”'
   ov.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ov.querySelectorAll('[data-r]').forEach(x=>x.classList.remove('in'));b.classList.add('in');reason=b.dataset.r;ov.querySelector('[data-send]').disabled=false;});
   ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.querySelector('[data-send]').onclick=()=>{const note=ov.querySelector('#flag-note').value.trim().slice(0,500);
-    S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:ctx}]).slice(-30);save();ov.remove();
+    S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:Object.assign({lang:LANG_CODE},ctx)}]).slice(-30);save();ov.remove();
     toast('Thanks! Your report has been sent.');if(window.cloud&&window.cloud.sendReports)window.cloud.sendReports();};}
 $('#btn-flag').onclick=openFlag;
 
@@ -2464,7 +2479,7 @@ $('#btn-weak').onclick=()=>startReview(true);
 /* Choosing the language to learn. Each language keeps its own progress; the page reloads into the one picked.
    A language that isn't ready shows as Coming soon and can't be picked yet. */
 function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!l.ready)return;try{localStorage.setItem('gintaras.lang',code);}catch(e){}
-  if(code!==LANG_CODE){save();location.reload();}}
+  if(code!==LANG_CODE){save();Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}).then(()=>location.reload());}}
 function renderLangPick(){
   const c=$('#lang-chips');if(c){c.innerHTML=LANGS.map(l=>'<button type="button" class="chip'+(l.code===LANG_CODE?' in':'')+'" data-lang="'+l.code+'"'+(l.ready?'':' disabled')+'>'+esc(l.en)+(l.ready?'':' (soon)')+'</button>').join('');
     c.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>pickLang(b.dataset.lang));}

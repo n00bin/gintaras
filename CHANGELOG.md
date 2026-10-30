@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.39** (2026-10-30) Languages, step 2: each language keeps its own progress, XP, streak, league, challenges and cup, while your name, look, sound and other settings follow you between languages; the server now keeps a separate record per language (Lithuanian progress unchanged)
 - **3.38** (2026-10-30) Languages, step 1: the Lithuanian course moved into its own language file (lang/lt.js) so more languages can be added; choose what to learn on the welcome screen and in Settings (Spanish shows as Coming soon); a course file that can't load shows a retry screen instead of a blank page
 - **3.37.3** (2026-10-30) Travelling: when another device is a day ahead (a later time zone), this one no longer rewinds your last study day or adds an extra streak day
 - **3.37.2** (2026-10-29) Account check fixes: conversations on the path use your name straight away (not Tomas); words you haven't met no longer leave empty records in your saved progress (old ones are tidied); a device in a later time zone can no longer wipe today's XP on another; the old unused time log is removed

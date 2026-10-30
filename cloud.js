@@ -5,6 +5,16 @@ const cfg=window.GINTARAS_CONFIG||{};
 const configured=cfg.SUPABASE_URL&&!/YOUR-PROJECT/.test(cfg.SUPABASE_URL)&&cfg.SUPABASE_ANON_KEY&&!/YOUR-ANON/.test(cfg.SUPABASE_ANON_KEY)&&window.supabase;
 const sb=configured?window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY):null;
 let user=null,profile=null,saveTimer=null,booted=false;
+/* The language being learned. Each has its own saved progress, league row (gintaras_players), leagues, challenges and
+   cup. Lithuanian keeps its original homes (gintaras_progress, the profile's xp columns), which the database mirrors. */
+const LC=(typeof LANG_CODE!=='undefined'&&LANG_CODE)||'lt',LT=LC==='lt';
+const progRead=c=>LT?sb.from('gintaras_progress').select(c).eq('user_id',user.id).maybeSingle():sb.from('gintaras_lang_progress').select(c).eq('user_id',user.id).eq('lang',LC).maybeSingle();
+const progWrite=(state,at)=>LT?sb.from('gintaras_progress').upsert({user_id:user.id,state,updated_at:at}):sb.from('gintaras_lang_progress').upsert({user_id:user.id,lang:LC,state,updated_at:at});
+/* Your league row in this language: xp and week go here for every language but Lithuanian (see cloudSave). */
+const playerRow=S=>({user_id:user.id,lang:LC,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()});
+/* Board and challenge rows: a league row with the nickname and face from the profile, shaped like a profile row. */
+const PL_COLS='user_id,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league,cup_wins,gintaras_profiles(nickname,look)';
+const asPerson=r=>Object.assign({},r,{id:r.user_id,nickname:(r.gintaras_profiles||{}).nickname||'?',look:(r.gintaras_profiles||{}).look||null});
 
 const $=s=>document.querySelector(s);
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -58,15 +68,25 @@ window.cloudDirty=function(){if(quiet||!sb||!user||!booted)return;clearTimeout(s
    first (waiting until any open lesson is finished), so an older copy never writes over newer progress. */
 function adopt(state,at){quiet=true;window.S=mergeState(window.S,state);window.save();quiet=false;cloudAt=at;window.renderAll();}
 async function cloudSave(){if(!sb||!user||!window.S)return;
-  try{const {data:c,error:e1}=await sb.from('gintaras_progress').select('updated_at').eq('user_id',user.id).maybeSingle();if(e1)throw e1;
+  try{const {data:c,error:e1}=await progRead('updated_at');if(e1)throw e1;
     if(c&&Date.parse(c.updated_at)!==Date.parse(cloudAt)){
       if(!$('#sheet').hidden){clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,15000);return;}
-      const {data:p,error:e2}=await sb.from('gintaras_progress').select('state,updated_at').eq('user_id',user.id).maybeSingle();if(e2)throw e2;
+      const {data:p,error:e2}=await progRead('state,updated_at');if(e2)throw e2;
       if(p&&p.state)adopt(p.state,p.updated_at);}
     const S=window.S,wk=monday(),at=new Date().toISOString();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}
-    const {error:e3}=await sb.from('gintaras_progress').upsert({user_id:user.id,state:S,updated_at:at});if(e3)throw e3;cloudAt=at;
-    if(profile){const {error:e4}=await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);if(e4)throw e4;}
-    setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
+    const {error:e3}=await progWrite(S,at);if(e3)throw e3;cloudAt=at;
+    if(profile&&!LT){const {error:e4}=await sb.from('gintaras_players').upsert(playerRow(S));if(e4)throw e4;}
+    if(profile&&LT){const {error:e4}=await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);if(e4)throw e4;}
+    syncShared();setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
+/* Before switching language: send a save that is still waiting. */
+window.cloudFlush=async function(){if(saveTimer&&sb&&user&&booted){clearTimeout(saveTimer);saveTimer=null;await cloudSave();}};
+/* Shared settings (see SHARED in index.html): whichever copy changed last wins. */
+let sharedUp=0;
+async function syncShared(){if(!sb||!user||!window.sharedRead)return;try{
+  const {data,error}=await sb.from('gintaras_shared').select('state,updated_at').eq('user_id',user.id).maybeSingle();if(error)return;
+  const loc=window.sharedRead(),la=loc?loc.at:0,ra=data?Date.parse(data.updated_at):0;
+  if(data&&ra>la){quiet=true;window.sharedSet(data.state,ra);quiet=false;window.renderAll();}
+  else if(loc&&la>ra&&la!==sharedUp){const {error:e2}=await sb.from('gintaras_shared').upsert({user_id:user.id,state:loc.v,updated_at:new Date(la).toISOString()});if(!e2)sharedUp=la;}}catch(e){}}
 
 /* ---------- auth ---------- */
 async function loadSession(){const {data}=await sb.auth.getSession();user=data.session?data.session.user:null;await afterAuth();}
@@ -76,12 +96,15 @@ async function pushLook(){const S=window.S;if(!sb||!user||!profile||!S||!S.look|
   const {error}=await sb.from('gintaras_profiles').update({look:S.look}).eq('id',user.id);if(!error){profile.look=S.look;renderBoard();}}
 async function afterAuth(){profile=null;
   if(user){await ensureRollover();const {data,error:e1}=await sb.from('gintaras_profiles').select('*').eq('id',user.id).maybeSingle();
-    const {data:p,error:e2}=e1?{}:await sb.from('gintaras_progress').select('state,updated_at').eq('user_id',user.id).maybeSingle();
+    const {data:p,error:e2}=e1?{}:await progRead('state,updated_at');
+    const {data:pl}=e1||e2?{}:await sb.from('gintaras_players').select('league,league_moved,last_rank,last_league,cup_wins,shield_week').eq('user_id',user.id).eq('lang',LC).maybeSingle();
     /* If the account can't be read (a network blip), don't treat that as "nothing saved": nothing is sent until it can. */
     if(e1||e2){booted=false;setStatus('Could not reach your account. Progress is kept on this device; trying again shortly.');
       renderAuth();clearTimeout(retryTimer);retryTimer=setTimeout(()=>{if(user)afterAuth();},20000);return;}
-    profile=data||null;
+    profile=data?Object.assign({},data,LT?{}:{league:0,league_moved:0,last_rank:null,last_league:null,cup_wins:0},pl||{}):null;
     if(p&&p.state)adopt(p.state,p.updated_at);
+    if(window.sharedApply){window.sharedApply();window.save();}
+    await syncShared();
     if(!profile)profile=await autoProfile();
     loadChallenges();loadCup();loadNotify();loadNotes();
     booted=true;cloudSave();pushLook();}
@@ -97,7 +120,7 @@ function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=
   const raw=(md.given_name||md.full_name||md.name||(user.email||'').split('@')[0]||'').trim().split(/\s+/)[0]||'';
   let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner';base=base[0].toUpperCase()+base.slice(1);
   const S=window.S;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
-  for(const n of names){const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
+  for(const n of names){const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error)return Object.assign(row,{league:0,league_moved:0});if(!/duplicate|unique/i.test(error.message))return null;}
   return null;})().finally(()=>{profileMaking=null;}));}
 let afterSignIn=null;
@@ -137,7 +160,7 @@ function showNickname(){const box=$('#auth');const changing=!!profile;if(window.
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
   if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
-    const row={id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()};
+    const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
     const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=Object.assign({},profile||{},row);renderAuth();renderBoard();cloudSave();};}
 
 /* Settings → Account: nickname, sign out, and deleting the account for good. */
@@ -202,15 +225,16 @@ window.addEventListener('online',()=>sendReports());
 /* Ten weekly leagues, each with two divisions (II, I): 20 steps, stored as profile.league 0-19.
    The database settles each week once: the top 3 move up a division if they reached their league's XP bar
    (the same for everyone, rising with the league); no XP means moving down. The app only shows where you stand and pays the amber. */
-const LEAGUES=[{lt:'Smėlis',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',en:'Pebble',icon:'🪨'},{lt:'Varis',en:'Copper',icon:'🟤'},{lt:'Gintaras',en:'Amber',icon:'🟠'},{lt:'Sidabras',en:'Silver',icon:'🥈'},
-  {lt:'Auksas',en:'Gold',icon:'🥇'},{lt:'Krištolas',en:'Crystal',icon:'💎'},{lt:'Mėnulis',en:'Moon',icon:'🌙'},{lt:'Žvaigždė',en:'Star',icon:'⭐'},{lt:'Saulė',en:'Sun',icon:'☀️'}];
+const LEAGUES=[{lt:'Smėlis',es:'Arena',en:'Sand',icon:'🟫'},{lt:'Akmenėlis',es:'Piedra',en:'Pebble',icon:'🪨'},{lt:'Varis',es:'Cobre',en:'Copper',icon:'🟤'},{lt:'Gintaras',es:'Ámbar',en:'Amber',icon:'🟠'},{lt:'Sidabras',es:'Plata',en:'Silver',icon:'🥈'},
+  {lt:'Auksas',es:'Oro',en:'Gold',icon:'🥇'},{lt:'Krištolas',es:'Cristal',en:'Crystal',icon:'💎'},{lt:'Mėnulis',es:'Luna',en:'Moon',icon:'🌙'},{lt:'Žvaigždė',es:'Estrella',en:'Star',icon:'⭐'},{lt:'Saulė',es:'Sol',en:'Sun',icon:'☀️'}];
+LEAGUES.forEach(L=>L.own=L[LC]||L.en);
 const DIVS=['II','I'],TOP=19,SUN=18;
 const stepOf=n=>Math.max(0,Math.min(TOP,n||0));
-const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/2)];return Object.assign({},L,{div:DIVS[st%2],name:L.lt+' '+DIVS[st%2]});};
+const leagueOf=n=>{const st=stepOf(n),L=LEAGUES[Math.floor(st/2)];return Object.assign({},L,{div:DIVS[st%2],name:L.own+' '+DIVS[st%2]});};
 /* XP in a week needed to move up, per league (both divisions share it). The database's bar watcher adjusts them each
    Monday (supabase/bar-watcher.sql); these are the starting values, used until the current ones load. */
 let BARS=[150,175,200,250,275,300,350,400,450,500],barLog=null;
-async function loadBars(){const {data}=await sb.rpc('gintaras_bars');if(data&&Array.isArray(data.bars)&&data.bars.length===10){BARS=data.bars;barLog=data.log;}}
+async function loadBars(){const {data}=await sb.rpc('gintaras_bars',{l:LC});if(data&&Array.isArray(data.bars)&&data.bars.length===10){BARS=data.bars;barLog=data.log;}}
 const barFor=st=>BARS[Math.floor(stepOf(st)/2)];
 /* Position bonus for finishing in the top 3 of a group where at least 2 people earned XP. */
 const PLACE_AMBER={1:15,2:10,3:5};
@@ -244,7 +268,7 @@ async function buyShield(){const S=window.S;if(!user||!profile)return toast('Sig
   if(shieldOn())return toast('Your league is already shielded this week');
   if(S.shieldMonth===monday().slice(0,7))return toast('One shield a month. Next month!');
   if(!window.spendAmber(25))return;
-  const {error}=await sb.from('gintaras_profiles').update({shield_week:monday()}).eq('id',user.id);
+  const {error}=LT?await sb.from('gintaras_profiles').update({shield_week:monday()}).eq('id',user.id):await sb.from('gintaras_players').update({shield_week:monday()}).eq('user_id',user.id).eq('lang',LC);
   if(error){window.earnAmber(25);return toast('Could not shield your league: '+error.message);}
   S.shieldWeek=monday();S.shieldMonth=monday().slice(0,7);window.save();window.celebrate({mood:'cheer',icon:'🛡️',title:'League shield on',sub:'You can\'t move down a league this week'});
   if(window.renderShop)window.renderShop();renderBoard();}
@@ -255,14 +279,14 @@ let chals=[],people={},amberOf={};
    both players need the 10 amber minimum, and the stake can't be more than either of them has. */
 const CH_MIN=10,chalDay=()=>new Date().getUTCDay()===1;
 async function loadAmber(ids){ids=ids.filter(Boolean);if(!sb||!user||!ids.length)return;
-  const {data,error}=await sb.rpc('gintaras_amber',{ids});if(error)return;(data||[]).forEach(r=>amberOf[r.id]=r.amber);}
+  const {data,error}=await sb.rpc('gintaras_amber',{ids,l:LC});if(error)return;(data||[]).forEach(r=>amberOf[r.id]=r.amber);}
 const canChal=id=>user&&profile&&id!==user.id&&chalDay()&&window.amberBalance()>=CH_MIN&&(amberOf[id]||0)>=CH_MIN;
 const nameOf=id=>(people[id]&&people[id].nickname)||'your friend';
 const weekXpOf=id=>{const p=people[id];return p&&p.week_start===monday()?p.week_xp:0;};
 async function loadChallenges(){if(!sb||!user){chals=[];return;}
-  const {data,error}=await sb.from('gintaras_challenges').select('*').order('created_at',{ascending:false}).limit(40);if(error)return;chals=data||[];
+  const {data,error}=await sb.from('gintaras_challenges').select('*').eq('lang',LC).order('created_at',{ascending:false}).limit(40);if(error)return;chals=data||[];
   const ids=[...new Set(chals.flatMap(x=>[x.from_id,x.to_id]))];
-  if(ids.length){const {data:ps}=await sb.from('gintaras_profiles').select('id,nickname,week_xp,week_start').in('id',ids);(ps||[]).forEach(p=>people[p.id]=p);}
+  if(ids.length){const {data:ps}=await sb.from('gintaras_players').select(PL_COLS).eq('lang',LC).in('user_id',ids);(ps||[]).map(asPerson).forEach(p=>people[p.id]=p);}
   payChallenges();chalAlerts();}
 /* Letting you know: a dot on the League tab while someone waits for your answer, a one-time pop-up per new challenge,
    and a line on Learn for every challenge this week. */
@@ -348,7 +372,7 @@ function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalanc
   ov.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{stake=Number(b.dataset.st);ov.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('in',x===b));ov.querySelector('[data-go]').disabled=false;});
   ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
   ov.querySelector('[data-go]').onclick=async()=>{if(!window.spendAmber(stake))return;ov.remove();
-    const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:monday()}).select().single();
+    const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:monday(),lang:LC}).select().single();
     if(error){window.earnAmber(stake);return toast(/duplicate|unique/i.test(error.message)?'You already challenged '+nick+' this week':'Could not send: '+error.message);}
     window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:stake});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
 async function answerChallenge(id,status,raiseTo){const x=chals.find(y=>y.id===id);if(!x)return;
@@ -394,10 +418,10 @@ function nextCup(){const {start,rnd}=cupNow();if(rnd===1)return start;const d=ne
 const longDay=day=>new Date(day+'T00:00').toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'});
 let cupRows=[],cupPeople={};
 async function loadCup(){if(!sb||!user)return;const {start}=cupNow();
-  const {data}=await sb.from('gintaras_cup').select('cup,round,player,xp,place').or('cup.eq.'+start+',and(player.eq.'+user.id+',round.eq.3)');
+  const {data}=await sb.from('gintaras_cup').select('cup,round,player,xp,place').eq('lang',LC).or('cup.eq.'+start+',and(player.eq.'+user.id+',round.eq.3)');
   cupRows=(data||[]).filter(r=>r.cup===start);
   const ids=[...new Set(cupRows.map(r=>r.player))];cupPeople={};
-  if(ids.length){const {data:ps}=await sb.from('gintaras_profiles').select('id,nickname,week_xp,week_start').in('id',ids);(ps||[]).forEach(p=>cupPeople[p.id]=p);}
+  if(ids.length){const {data:ps}=await sb.from('gintaras_players').select(PL_COLS).eq('lang',LC).in('user_id',ids);(ps||[]).map(asPerson).forEach(p=>cupPeople[p.id]=p);}
   const S=window.S;if(!S)return;S.cupPaid=S.cupPaid||{};
   (data||[]).filter(r=>r.player===user.id&&r.round===3&&CUP_PRIZE[r.place]&&!S.cupPaid[r.cup]).forEach(r=>{S.cupPaid[r.cup]=r.place;
     window.earnAmber(CUP_PRIZE[r.place],'Sun Cup');toast(r.place===1?'🏆 You won the Sun Cup! +100 amber':'☀️ Sun Cup: you finished '+['','1st','2nd','3rd'][r.place]+'. +'+CUP_PRIZE[r.place]+' amber');});
@@ -427,7 +451,7 @@ const NOTIF_KINDS=[['study','Study time reminder'],['rank','Someone passes me in
 let pushSub=null;
 async function saveNotify(){const S=window.S;if(!sb||!user)return;const n=S.notify||{};
   await sb.from('gintaras_notify').upsert({user_id:user.id,study_time:S.studyTime||null,tz:Intl.DateTimeFormat().resolvedOptions().timeZone,
-    rank:n.rank!==false,challenge:n.challenge!==false,study:n.study!==false,updated_at:new Date().toISOString()});}
+    rank:n.rank!==false,challenge:n.challenge!==false,study:n.study!==false,last_lang:LC,updated_at:new Date().toISOString()});}
 /* "Turn off on this phone" is remembered on the phone itself, so the app doesn't switch it back on at the next start. */
 const phoneOff=()=>{try{return localStorage.getItem('gintaras.pushoff')==='1';}catch(e){return false;}};
 const setPhoneOff=v=>{try{if(v)localStorage.setItem('gintaras.pushoff','1');else localStorage.removeItem('gintaras.pushoff');}catch(e){}};
@@ -490,16 +514,15 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/2);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
     (boardMode==='league'?'<div class="lg-head"><span class="lg-icon">'+L.icon+'</span><div><span class="eyebrow">This week · '+weekEndsIn()+'</span><h2>'+esc(L.name)+' league</h2><small>'+esc(L.en)+' · division '+L.div+(L.div==='II'?' (the lower half)':' (the upper half)')+' · step '+(mine+1)+' of 20</small></div></div>'+
-      '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.lt)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
+      '<div class="ladder" aria-label="All leagues">'+LEAGUES.map((x,i)=>'<span class="'+(i===li?'on':i<li?'past':'')+'" title="'+esc(x.own)+' ('+esc(x.en)+')">'+x.icon+'</span>').join('')+'</div>'+
       '<p class="note">'+(mine<TOP?'The <b>top 3 move up</b> a division on Monday if they earned at least <b>'+barFor(mine)+' XP</b> this week. ':'You are at the very top. ')+'The top 3 also earn bonus amber (15, 10 and 5) when at least 2 people played. Players level on XP share a place. No XP all week means moving down.'+(mine>=SUN?' Holding the Sun league pays 10 amber a week, and #1 wears the 👑.':'')+'</p>':'<h2>All time</h2>')+
     (boardMode==='league'?'<p class="note" id="bar-note" hidden></p>':'')+(user&&boardMode==='league'&&shieldOn()?'<p class="note shield-note">🛡️ Your league is shielded this week: you can\'t move down.</p>':'')+(!user&&boardMode==='league'?'<p class="note">This is where everyone starts. Sign in to join it and see your own league.</p>':'')+'<p class="note" id="board-note">Loading…</p><ol class="lb" id="lb"></ol>'+(boardMode==='league'?'<div id="cup-box"></div>':'')+'<div id="chal-box"></div><div id="board-cta"></div><button type="button" class="btn ghost" id="board-invite" data-share>Invite friends to race you</button>';
   box.querySelectorAll('[data-bm]').forEach(b=>b.onclick=()=>{boardMode=b.dataset.bm;renderBoard();});
   const cta=$('#board-cta');
   if(!user){cta.innerHTML='<button type="button" class="btn amber" id="btn-join">Sign in to join a league</button>';$('#btn-join').onclick=()=>{if(window.showView)window.showView('profile');};}
   await loadChallenges();await loadCup();
-  const cols='id,nickname,xp,streak,week_xp,week_start,level_title,league,daily_goal,last_rank,last_league,cup_wins';
-  const ask=c=>boardMode==='league'?sb.from('gintaras_profiles').select(c).eq('league',mine).limit(200):sb.from('gintaras_profiles').select(c).order('xp',{ascending:false}).limit(50);
-  let {data,error}=await ask(cols+',look');if(error)({data,error}=await ask(cols)); // faces are extra: the board still loads without them
+  const ask=()=>boardMode==='league'?sb.from('gintaras_players').select(PL_COLS).eq('lang',LC).eq('league',mine).limit(200):sb.from('gintaras_players').select(PL_COLS).eq('lang',LC).order('xp',{ascending:false}).limit(50);
+  let {data,error}=await ask();if(data)data=data.map(asPerson);
   const note=$('#board-note'),ol=$('#lb');if(!note)return;
   if(error){note.textContent='Could not load the league. Check your connection and try again.';return;}
   renderChallenges();renderCup(mine);
