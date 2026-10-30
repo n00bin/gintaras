@@ -8,18 +8,42 @@
 "cv4:6": "Ne, arti. Penkios minutės.",
 "cv4:8": "Žinoma. Mes esame čia, o stotis yra ten."
 },
+"alnilam_cv22": {
+"cv22:13": "Tomai, ar tu valgai mėsą?",
+"cv22:14o0-0": "Puiku! Štai vištiena ir bulvės.",
+"cv22:14o1-0": "Gerai! Štai žuvis ir bulvės.",
+"cv22:19": "Na, kaip? Skanu?",
+"cv22:21": "Ačiū! Dar sriubos?",
+"cv22:22o0-0": "Prašau!",
+"cv22:22o1-0": "Gerai, gerai. Tada pyrago vėliau!",
+"cv22:26": "Iki pasimatymo, Tomai! Sėkmės!",
+"cv22:4": "Malonu! Ar esi alkanas?",
+"cv22:8": "O gal alaus? Lietuviškas alus labai geras!",
+"cv22:9o0-0": "Prašau. Į sveikatą!",
+"cv22:9o1-0": "Nieko tokio. Į sveikatą!"
+},
+"alnilam_me2": {
+"me2:cv22:13~n": "Ar tu valgai mėsą?",
+"me2:cv22:26~n": "Iki pasimatymo! Sėkmės!",
+"me2:cv22:4~f": "Malonu! Ar esi alkana?"
+},
 "aoede_cv3": {
-"cv3:0": "Laba diena! Ką jums atnešti?",
-"cv3:11": "Ar viskas gerai?",
-"cv3:13": "Džiaugiuosi! Dar ko nors?",
-"cv3:15": "Prašau. Kortele ar grynaisiais?",
-"cv3:17": "Ačiū! Geros dienos!",
-"cv3:2": "Prašau. Ko norėtumėte gerti?",
-"cv3:3o0-0": "Su pienu?",
-"cv3:3o1-0": "Su cukrumi?",
-"cv3:4": "O valgyti?",
-"cv3:6": "Mūsų sriuba labai skani.",
-"cv3:9": "Skanaus!"
+"cv3:0": "Laba diena! Kiek jūsų?",
+"cv3:10o0-0": "Gerai, be riešutų.",
+"cv3:10o1-0": "Puiku.",
+"cv3:12": "Ar viskas buvo gerai?",
+"cv3:14": "Džiaugiuosi! Dar ko nors?",
+"cv3:16": "Prašau. Trisdešimt eurų.",
+"cv3:18": "Žinoma!",
+"cv3:2": "Prašau, čia. Štai meniu. Ko norėtumėte gerti?",
+"cv3:21": "Labai ačiū! Geros dienos!",
+"cv3:3o0-0": "Gerai, vandens be dujų.",
+"cv3:3o1-0": "Gerai, vandens su dujomis.",
+"cv3:5": "Gerai. O valgyti?",
+"cv3:7": "Šiandien cepelinai su mėsa. Labai skanūs!",
+"cv3:8o0-0": "Gerai, sriuba.",
+"cv3:8o1-0": "Tada cepelinai su varške. Jie be mėsos.",
+"cv3:9": "Ar turite alergijų?"
 },
 "charon_cv1": {
 "cv1:13": "Laba diena! Kavos?",
@@ -220,19 +244,40 @@
 "cv21:7o1": "Sekmadienis?",
 "cv21:9": "Taip, gerai. Kur?"
 },
+"despina_cv22": {
+"cv22:1": "Laba diena! Ačiū.",
+"cv22:12": "Ačiū! Skanaus!",
+"cv22:14o0": "Taip, aš valgau mėsą.",
+"cv22:14o1": "Ne. Aš valgau žuvį.",
+"cv22:16": "Taip! Paduok druską, prašau.",
+"cv22:20": "Viskas labai skanu!",
+"cv22:22o0": "Taip, dar truputį.",
+"cv22:22o1": "Ne, ačiū. Aš sotus.",
+"cv22:25": "Ačiū už viską!",
+"cv22:27": "Ačiū! Viso gero!",
+"cv22:3": "Laba diena! Malonu susipažinti.",
+"cv22:5": "Taip, aš esu alkanas!",
+"cv22:7o0": "Ne, ačiū. Aš noriu arbatos.",
+"cv22:7o1": "Taip, prašau. Aš noriu kavos.",
+"cv22:9o0": "Taip, prašau!",
+"cv22:9o0-1": "Į sveikatą!",
+"cv22:9o1": "Ne, ačiū.",
+"cv22:9o1-1": "Į sveikatą!"
+},
 "despina_cv3": {
-"cv3:1": "Meniu, prašau.",
-"cv3:10": "Ačiū!",
-"cv3:12": "Labai skanu!",
-"cv3:14": "Sąskaitą, prašau.",
-"cv3:16": "Kortele, prašau.",
-"cv3:18": "Ačiū! Viso gero!",
-"cv3:3o0": "Aš norėčiau kavos.",
-"cv3:3o0-1": "Taip, su pienu. Be cukraus.",
-"cv3:3o1": "Arbatą, prašau.",
-"cv3:3o1-1": "Ne, ačiū. Be cukraus.",
-"cv3:5": "Ką rekomenduojate?",
-"cv3:7": "Gerai, sriubą, prašau."
+"cv3:1": "Laba diena! Staliuką dviem, prašau.",
+"cv3:10o0": "Taip. Aš alergiškas riešutams.",
+"cv3:10o1": "Ne, viskas gerai.",
+"cv3:13": "Labai skanu, ačiū!",
+"cv3:15": "Ne, ačiū. Sąskaitą, prašau.",
+"cv3:17": "Ar galima mokėti kortele?",
+"cv3:20": "Taip, gerai. Trys eurai.",
+"cv3:22": "Ačiū! Viso gero!",
+"cv3:3o0": "Aš norėčiau vandens be dujų.",
+"cv3:3o1": "Aš norėčiau vandens su dujomis.",
+"cv3:6": "Ką rekomenduojate?",
+"cv3:8o0": "Aš norėčiau sriubos.",
+"cv3:8o1": "Aš nevalgau mėsos."
 },
 "despina_cv4": {
 "cv4:0": "Atleiskite!",
@@ -304,6 +349,8 @@
 "despina_me2": {
 "me2:cv10:8o0~f": "Taip, aš esu alkana!",
 "me2:cv17:1~n": "Taip, aš esu.",
+"me2:cv22:22o1~f": "Ne, ačiū. Aš soti.",
+"me2:cv22:5~f": "Taip, aš esu alkana!",
 "me2:cv2:1~n": "Labas! Mano vardas.",
 "me2:cv2:3~au": "Aš esu iš Australijos. O tu?",
 "me2:cv2:3~br": "Aš esu iš Brazilijos. O tu?",
@@ -323,7 +370,8 @@
 "me2:cv2:3~pl": "Aš esu iš Lenkijos. O tu?",
 "me2:cv2:3~sc": "Aš esu iš Škotijos. O tu?",
 "me2:cv2:3~se": "Aš esu iš Švedijos. O tu?",
-"me2:cv2:3~ua": "Aš esu iš Ukrainos. O tu?"
+"me2:cv2:3~ua": "Aš esu iš Ukrainos. O tu?",
+"me2:cv3:10o0~f": "Taip. Aš alergiška riešutams."
 },
 "gacrux_cv5": {
 "cv5:0": "Laba diena! Ko norėtumėte?",
@@ -417,6 +465,17 @@
 "cv18:7o0-0": "Puiku! Mes stovime prie durų.",
 "cv18:7o1-0": "Eik tiesiai, paskui kairėn."
 },
+"kore_cv22": {
+"cv22:0": "Laba diena, Tomai! Užeik, prašau.",
+"cv22:11": "Štai sriuba, duona ir sūris. Skanaus!",
+"cv22:15": "Ar viskas gerai?",
+"cv22:17": "Prašau, štai druska.",
+"cv22:2": "Čia mano tėtis, Vytautas.",
+"cv22:24": "Jau vėlu! Ačiū, kad atvažiavai.",
+"cv22:6": "Puiku! Sėskis. Ar nori kavos?",
+"cv22:7o0-0": "Gerai, štai arbata.",
+"cv22:7o1-0": "Prašau, štai kava."
+},
 "kore_cv6": {
 "cv6:0": "Labas! Ką veiki savaitgalį?",
 "cv6:10": "Aš jau čia. Kur tu?",
@@ -446,7 +505,8 @@
 "me2:cv15:1~n": "Tikrai? Kaip tu manai?",
 "me2:cv15:2o0-2~n": "Aš sutinku!",
 "me2:cv16:0~n": "Labas! Kaip sekasi?",
-"me2:cv1:22~n": "Ačiū! Viso gero!"
+"me2:cv1:22~n": "Ačiū! Viso gero!",
+"me2:cv22:0~n": "Laba diena! Užeik, prašau."
 },
 "laomedeia_cv17": {
 "cv17:0": "Labas! Aš esu Laura. Tu esi Tomas?",
@@ -659,19 +719,40 @@
 "cv21:7o1": "Sekmadienis?",
 "cv21:9": "Taip, gerai. Kur?"
 },
+"orus_cv22": {
+"cv22:1": "Laba diena! Ačiū.",
+"cv22:12": "Ačiū! Skanaus!",
+"cv22:14o0": "Taip, aš valgau mėsą.",
+"cv22:14o1": "Ne. Aš valgau žuvį.",
+"cv22:16": "Taip! Paduok druską, prašau.",
+"cv22:20": "Viskas labai skanu!",
+"cv22:22o0": "Taip, dar truputį.",
+"cv22:22o1": "Ne, ačiū. Aš sotus.",
+"cv22:25": "Ačiū už viską!",
+"cv22:27": "Ačiū! Viso gero!",
+"cv22:3": "Laba diena! Malonu susipažinti.",
+"cv22:5": "Taip, aš esu alkanas!",
+"cv22:7o0": "Ne, ačiū. Aš noriu arbatos.",
+"cv22:7o1": "Taip, prašau. Aš noriu kavos.",
+"cv22:9o0": "Taip, prašau!",
+"cv22:9o0-1": "Į sveikatą!",
+"cv22:9o1": "Ne, ačiū.",
+"cv22:9o1-1": "Į sveikatą!"
+},
 "orus_cv3": {
-"cv3:1": "Meniu, prašau.",
-"cv3:10": "Ačiū!",
-"cv3:12": "Labai skanu!",
-"cv3:14": "Sąskaitą, prašau.",
-"cv3:16": "Kortele, prašau.",
-"cv3:18": "Ačiū! Viso gero!",
-"cv3:3o0": "Aš norėčiau kavos.",
-"cv3:3o0-1": "Taip, su pienu. Be cukraus.",
-"cv3:3o1": "Arbatą, prašau.",
-"cv3:3o1-1": "Ne, ačiū. Be cukraus.",
-"cv3:5": "Ką rekomenduojate?",
-"cv3:7": "Gerai, sriubą, prašau."
+"cv3:1": "Laba diena! Staliuką dviem, prašau.",
+"cv3:10o0": "Taip. Aš alergiškas riešutams.",
+"cv3:10o1": "Ne, viskas gerai.",
+"cv3:13": "Labai skanu, ačiū!",
+"cv3:15": "Ne, ačiū. Sąskaitą, prašau.",
+"cv3:17": "Ar galima mokėti kortele?",
+"cv3:20": "Taip, gerai. Trys eurai.",
+"cv3:22": "Ačiū! Viso gero!",
+"cv3:3o0": "Aš norėčiau vandens be dujų.",
+"cv3:3o1": "Aš norėčiau vandens su dujomis.",
+"cv3:6": "Ką rekomenduojate?",
+"cv3:8o0": "Aš norėčiau sriubos.",
+"cv3:8o1": "Aš nevalgau mėsos."
 },
 "orus_cv4": {
 "cv4:0": "Atleiskite!",
@@ -743,6 +824,8 @@
 "orus_me2": {
 "me2:cv10:8o0~f": "Taip, aš esu alkana!",
 "me2:cv17:1~n": "Taip, aš esu.",
+"me2:cv22:22o1~f": "Ne, ačiū. Aš soti.",
+"me2:cv22:5~f": "Taip, aš esu alkana!",
 "me2:cv2:1~n": "Labas! Mano vardas.",
 "me2:cv2:3~au": "Aš esu iš Australijos. O tu?",
 "me2:cv2:3~br": "Aš esu iš Brazilijos. O tu?",
@@ -762,7 +845,8 @@
 "me2:cv2:3~pl": "Aš esu iš Lenkijos. O tu?",
 "me2:cv2:3~sc": "Aš esu iš Škotijos. O tu?",
 "me2:cv2:3~se": "Aš esu iš Švedijos. O tu?",
-"me2:cv2:3~ua": "Aš esu iš Ukrainos. O tu?"
+"me2:cv2:3~ua": "Aš esu iš Ukrainos. O tu?",
+"me2:cv3:10o0~f": "Taip. Aš alergiška riešutams."
 },
 "puck_cv10": {
 "cv10:10": "Tomai, ar tau patinka Vilnius?",
@@ -819,6 +903,10 @@
 "cv21:7o0-0": "Šeštadienį? Puiku!",
 "cv21:7o1-0": "Sekmadienį? Puiku!",
 "cv21:8": "Kokiu laiku? Dvyliktą?"
+},
+"puck_cv3": {
+"cv3:19": "Paliekame arbatpinigių?",
+"cv3:4": "O aš norėčiau kavos su pienu."
 },
 "puck_me2": {
 "me2:cv10:10~n": "Ar tau patinka Vilnius?",

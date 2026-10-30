@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.41** (2026-10-30) Part 4, Food and drink: a new lesson At the table (more soup?, I'm full, pass the salt, thanks for everything), a new conversation Sekmadienio pietūs (Sunday lunch at Rūta's parents', with her dad Vytautas in his own voice), and the café conversation rebuilt as Restorane, lunch with Jonas (table for two, water, allergies, paying by card, the tip)
 - **3.40.4** (2026-10-30) Languages listed with their own name again: Lithuanian · Lietuvių, Spanish (Mexico) · Español
 - **3.40.3** (2026-10-30) Languages are listed in English, with the country where there is more than one kind: Lithuanian, Spanish (Mexico)
 - **3.40.2** (2026-10-30) Switching language shows a "Switching to…" screen straight away and no longer waits more than a second and a half for the online save (it finishes the next time that language opens)
