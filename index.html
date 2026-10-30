@@ -984,8 +984,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.37.2';
-const APP_VERSION=104;
+const APP_RELEASE='3.37.3';
+const APP_VERSION=105;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -2909,11 +2909,11 @@ const FREE_RESTS=2;
 function weekOf(t){const d=new Date(t);d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function restsLeft(){const w=weekOf(Date.now());if(S.restWeek!==w){S.restWeek=w;S.restsUsed=0;}return Math.max(0,FREE_RESTS-(S.restsUsed||0))+(S.freezes||0);}
 function rollDay(){if(S.todayDate!==today()){S.todayDate=today();S.todayXp=0;S.todayLessons=0;S.perfectToday=0;}
-  if(S.lastDay&&S.lastDay!==today()&&S.lastDay!==yesterday()){
+  if(S.lastDay&&S.lastDay<today()&&S.lastDay!==yesterday()){
     const missed=Math.round((new Date(today()+'T00:00')-new Date(S.lastDay+'T00:00'))/DAY)-1;
     if(S.streak>0&&missed<=restsLeft()){for(let i=0;i<missed;i++){if((S.restsUsed||0)<FREE_RESTS)S.restsUsed=(S.restsUsed||0)+1;else S.freezes--;}S.lastDay=yesterday();S.restNote=missed;}
     else{if(S.streak>0){S.welcomeBack=S.streak;S.brokenStreak={n:S.streak,on:today()};}S.streak=0;}}}
-function addXp(n){rollDay();if(xpDouble())n*=2;S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(S.lastDay!==t){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;const sb={7:10,30:25,100:50}[S.streak];if(sb)earnAmber(sb,S.streak+'-day streak');}
+function addXp(n){rollDay();if(xpDouble())n*=2;S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(!(S.lastDay>=t)){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;const sb={7:10,30:25,100:50}[S.streak];if(sb)earnAmber(sb,S.streak+'-day streak');}
   if(S.todayXp>=S.goal*2&&S.freezeDay!==t&&(S.freezes||0)<2){S.freezes=(S.freezes||0)+1;S.freezeDay=t;S.newFreeze=true;}save();return n;}
 
 /* ===================== AMBER, HAPPY HOUR AND THE SHOP ===================== */
