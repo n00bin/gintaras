@@ -38,7 +38,7 @@ function mergeState(a,b){if(!a)return b;if(!b)return a;const base=(b.xp||0)>(a.x
   if(a.placedTo||b.placedTo)out.placedTo=Math.max(a.placedTo||0,b.placedTo||0);
   if(a.checks||b.checks)out.checks=Object.assign({},a.checks||{},b.checks||{});
   Object.keys(out.items).forEach(k=>{const v=out.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete out.items[k];});delete out.time;
-  out.replies={};new Set(Object.keys(a.replies||{}).concat(Object.keys(b.replies||{}))).forEach(k=>{const x=(a.replies||{})[k],y=(b.replies||{})[k];if(!x)out.replies[k]=y;else if(!y)out.replies[k]=x;else{out.replies[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),ok:Math.max(x.ok||0,y.ok||0),bad:Math.max(x.bad||0,y.bad||0)};const up=[x.up||'',y.up||''].sort().pop();if(up)out.replies[k].up=up;}});
+  out.replies={};new Set(Object.keys(a.replies||{}).concat(Object.keys(b.replies||{}))).forEach(k=>{const x=(a.replies||{})[k],y=(b.replies||{})[k];if(!x)out.replies[k]=y;else if(!y)out.replies[k]=x;else{out.replies[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),ok:Math.max(x.ok||0,y.ok||0),bad:Math.max(x.bad||0,y.bad||0)};const up=[x.up||'',y.up||''].sort().pop();if(up)out.replies[k].up=up;if(x.fs||y.fs)out.replies[k].fs=!x.fs?y.fs:!y.fs?x.fs:(x.fs.t>=y.fs.t?x.fs:y.fs);if(x.ivl||y.ivl)out.replies[k].ivl=Math.max(x.ivl||0,y.ivl||0);}});
   out.convs={};new Set(Object.keys(a.convs||{}).concat(Object.keys(b.convs||{}))).forEach(k=>{const x=(a.convs||{})[k]||{},y=(b.convs||{})[k]||{};out.convs[k]={};['done','text','speak','s2','s3'].forEach(m=>{const v=[x[m]||'',y[m]||''].sort().pop();if(v)out.convs[k][m]=v;});const ps=[...new Set((x.paths||[]).concat(y.paths||[]))];if(ps.length)out.convs[k].paths=ps;});
   out.badges=Object.assign({},a.badges||{},b.badges||{});
   {const lk=(b.lookAt||0)>(a.lookAt||0)?b:a;if(lk.look){out.look=lk.look;out.lookAt=lk.lookAt;}}
@@ -79,7 +79,17 @@ async function cloudSave(){if(!sb||!user||!window.S)return;
     const {error:e3}=await progWrite(S,at);if(e3)throw e3;cloudAt=at;
     if(profile&&!LT){const {error:e4}=await sb.from('gintaras_players').upsert(playerRow(S));if(e4)throw e4;}
     if(profile&&LT){const {error:e4}=await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);if(e4)throw e4;}
-    syncShared();setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
+    syncShared();uploadLog();setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
+/* The review log (every answer, see logReview in index.html) goes to gintaras_review_log, up to 5 batches of 500 per save.
+   What was sent is remembered per account and language; duplicates are ignored by the table. If the table isn't there yet, it just waits. */
+let logUp=false;
+async function uploadLog(){if(logUp||!sb||!user||!window.reviewLogSince)return;logUp=true;
+  try{const K='gintaras.logsent.'+LC+'.'+user.id;let since=+localStorage.getItem(K)||0;
+    for(let n=0;n<5;n++){const rows=window.reviewLogSince(since).slice(0,500);if(!rows.length)break;
+      const {error}=await sb.from('gintaras_review_log').upsert(rows.map(e=>({lang:LC,item:String(e[0]).slice(0,80),at:new Date(e[1]*1000).toISOString(),grade:e[2],
+        overdue:e[3]==null?null:Math.max(-3650,Math.min(3650,e[3])),lvl:e[4]==null?null:Math.min(20,e[4])})),{onConflict:'user_id,lang,item,at',ignoreDuplicates:true});
+      if(error)break;since=rows[rows.length-1][1];localStorage.setItem(K,String(since));}}catch(e){}
+  logUp=false;}
 /* Before switching language: send a save that is still waiting. */
 window.cloudFlush=async function(){if(saveTimer&&sb&&user&&booted){clearTimeout(saveTimer);saveTimer=null;await cloudSave();}};
 /* Shared settings (see SHARED in index.html): whichever copy changed last wins. */

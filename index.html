@@ -980,8 +980,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.57';
-const APP_VERSION=129;
+const APP_RELEASE='3.58';
+const APP_VERSION=130;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1819,7 +1819,7 @@ const fsD0=g=>Math.min(10,Math.max(1,FW[4]-(g-3)*FW[5]));
 function fsInit(r){if(r.fs)return r.fs;const e=r.ease||EASE0;
   return r.fs={s:Math.max(1,r.ivl||INTERVALS[r.lvl]||1),d:Math.min(10,Math.max(1,5+(EASE0-e)*4)),t:r.due?r.due-DAY*Math.max(1,r.ivl||INTERVALS[r.lvl]||1):Date.now()};}
 /* One scheduled review: updates stability and difficulty (at most once a day per word) and returns the gap in days. */
-function fsReview(r,g){const now=Date.now();const fresh=!r.fs&&!(r.lvl>0);let f;
+function fsReview(r,g,isNew){const now=Date.now();const fresh=!r.fs&&(isNew||!(r.lvl>0));let f;
   if(fresh){f=r.fs={s:FW[g-1],d:fsD0(g),t:now,day:today()};return fsIvl(f.s);}
   f=fsInit(r);if(f.day===today())return fsIvl(f.s);
   const el=Math.max(0,(now-f.t)/DAY),R=fsR(el,f.s);
@@ -1833,11 +1833,13 @@ const LOGKEY='gintaras.log.'+LANG_CODE;let RLOG=null,rlogT=null;
 function logReview(id,g,r){try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}
   RLOG.push([id,Math.floor(Date.now()/1000),g,r.due?Math.round((Date.now()-r.due)/DAY):null,r.lvl]);if(RLOG.length>20000)RLOG.splice(0,RLOG.length-20000);
   clearTimeout(rlogT);rlogT=setTimeout(()=>{try{localStorage.setItem(LOGKEY,JSON.stringify(RLOG));}catch(e){}},1500);}
+/* cloud.js sends the log to the account (gintaras_review_log) a batch at a time, from the last answer it sent. */
+window.reviewLogSince=ts=>{try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}return RLOG.filter(e=>e[1]>ts);};
 function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);
   if(ok){r.ok++;if(sloppy&&count){fsReview(r,2);return;}
-    if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
+    if(count&&r.up!==today()&&r.due<=Date.now()){const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
-      if(Q)Q.ups=(Q.ups||0)+1;const iv=fsReview(r,g),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}}
+      if(Q)Q.ups=(Q.ups||0)+1;const iv=fsReview(r,g,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}}
   else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
 /* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
 function fuzz(d){if(d<3)return d;const s=Math.max(1,Math.round(d*0.1));return d+Math.floor(Math.random()*(2*s+1))-s;}
@@ -2220,8 +2222,10 @@ function seedReplies(){S.replies=S.replies||{};if(S.repliesSeeded)return;S.repli
 function replyRec(id){return S.replies[id];}
 /* Like a word: up one level at most once a day and only when due; a miss steps it down one and brings it back soon. */
 function replyGrade(id,ok){const r=S.replies[id];if(!r)return false;
-  if(ok){r.ok++;if(r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+INTERVALS[r.lvl]);r.due=d.getTime();return true;}return false;}
-  r.bad++;r.lvl=Math.max(0,r.lvl-1);r.due=Date.now();return false;}
+  /* scheduled by FSRS like words (r.fs); the level still sets the card's step (pick, build, fill, type, hear) */
+  if(ok){r.ok++;if(r.up!==today()&&r.due<=Date.now()){logReview(id,3,r);const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const iv=fsReview(r,3,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;
+    const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();return true;}return false;}
+  logReview(id,1,r);r.bad++;if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-1);r.ivl=INTERVALS[r.lvl];r.due=Date.now();return false;}
 function dueReplies(){if(!S.replies)return [];const now=Date.now(),all=replyCards();return Object.keys(S.replies).filter(id=>all[id]&&S.replies[id].due<=now);}
 const QC_STEPS=['Pick it','Build it','Fill it in','Type it','Hear it'];
 function qcNextDue(ids){const t=Math.min(...ids.map(id=>S.replies[id].due)),d=new Date(t),n=new Date();n.setHours(0,0,0,0);
