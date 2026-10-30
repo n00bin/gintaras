@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.40.4** (2026-10-30) Languages listed with their own name again: Lithuanian · Lietuvių, Spanish (Mexico) · Español
 - **3.40.3** (2026-10-30) Languages are listed in English, with the country where there is more than one kind: Lithuanian, Spanish (Mexico)
 - **3.40.2** (2026-10-30) Switching language shows a "Switching to…" screen straight away and no longer waits more than a second and a half for the online save (it finishes the next time that language opens)
 - **3.40.1** (2026-10-30) Spanish is back to Coming soon until it has been checked (open the app once with ?preview=1 to try it on one device, ?preview=0 to stop). The language choice is now a dropdown, on the welcome screen and in Settings

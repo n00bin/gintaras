@@ -957,16 +957,16 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.40.3';
-const APP_VERSION=111;
+const APP_RELEASE='3.40.4';
+const APP_VERSION=112;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
 /* ===================== LANGUAGES ===================== */
-/* Each language you can learn has its own file in lang/; label is how it's listed (with the country where there is more than one kind), and exactly one is loaded, before the app code below.
+/* Each language you can learn has its own file in lang/; it's listed as label · own name (label has the country where there is more than one kind), and exactly one is loaded, before the app code below.
    Your choice is kept in gintaras.lang; a language that isn't ready yet shows as Coming soon. */
-const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',label:'Spanish (Mexico)',own:'Español de México',flag:'🇲🇽',ready:false}];
+const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',label:'Spanish (Mexico)',own:'Español',flag:'🇲🇽',ready:false}];
 /* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
 const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
 const langUsable=l=>l.ready||LANG_PREVIEW;
@@ -2422,7 +2422,7 @@ function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(
   document.body.insertAdjacentHTML('beforeend','<div class="lang-switching" role="status"><div>'+mascot('think')+'<p>Switching to '+esc(l.en)+'…</p></div></div>');
   Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>location.reload());}
 function renderLangPick(){
-  const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.label)+(l.ready?'':LANG_PREVIEW?' · preview':' · coming soon')+'</option>').join('');
+  const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.label+' · '+l.own)+(l.ready?'':LANG_PREVIEW?' · preview':' · coming soon')+'</option>').join('');
   ['#lang-select','#lang-select-w'].forEach(id=>{const s=$(id);if(s){s.innerHTML=opts;s.onchange=()=>pickLang(s.value);}});
   const n=$('#lang-note');if(n)n.textContent=LANGS.filter(l=>!l.ready).map(l=>l.label+' is coming soon. ').join('')+'Each language keeps its own progress, streak and leagues. Your account, face and About me stay the same.';}
 renderLangPick();
