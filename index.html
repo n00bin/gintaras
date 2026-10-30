@@ -627,6 +627,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .me-pop label,.me-quick label,.me-field{display:grid;gap:6px;font-weight:700}
 .me-field>span{font-weight:700}
 .lang-select{font:inherit;font-size:16px;font-weight:600;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);min-width:0;width:12.5em;max-width:58vw;flex:0 0 auto}
+.gate{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}.gate .card{max-width:420px;width:100%;text-align:center}.gate .mascot{width:84px;height:84px;margin:0 auto}.gate .btn{width:100%;margin-top:8px}
 .lang-switching{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;text-align:center;font-weight:700;font-size:18px}.lang-switching .mascot{width:96px;height:96px;margin:0 auto 8px}
 .lang-welcome{display:block;margin:18px 0 6px}.lang-welcome .lang-select{display:block;width:100%;max-width:none;margin-top:8px;padding:12px 14px}
 .me-pop input,.me-pop select,.me-quick input,.me-quick select{width:100%;min-width:0;font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
@@ -960,8 +961,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.47';
-const APP_VERSION=119;
+const APP_RELEASE='3.48';
+const APP_VERSION=120;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1518,6 +1519,7 @@ function clozePick(item){const ws=item.lt.split(' ');if(ws.length<2)return null;
 /* A lesson teaches one new word, checks it straight away, then the next. The second round, a match game
    and up to three words from earlier lessons are shuffled in after. */
 function buildSession(items,mode,lesson){personalise();const head=[];const rest=[];
+  if(!(lesson&&lesson.speak))items.filter(it=>isLeech(it)&&rec(it.id).seen).forEach(it=>head.push({type:'intro',item:it,leech:true}));
   if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push({type:'speak',item:it}));}
   else if(mode==='lesson'){
     const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
@@ -1536,7 +1538,12 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
   openSheet();renderStep();}
 const STEPLESS={intro:1,tip:1,metip:1};
 function openSheet(){$('#sheet').hidden=false;document.body.style.overflow='hidden';}
-function startLesson(l){buildSession(l.items,'lesson',l);}
+/* New words become future reviews, so with a big pile waiting (30 or more) a new lesson asks you to review first. Once a day you can say "Learn anyway". */
+function startLesson(l){const d=dueItems().length;
+  if(!l.speak&&crowns(l.id)<1&&d>=30&&S.gateDay!==today()){const ov=document.createElement('div');ov.className='gate';
+    ov.innerHTML='<div class="card" role="dialog" aria-modal="true">'+mascot('think')+'<h2>'+d+' words are waiting</h2><p class="note">Every new word comes back for review later, so the pile only grows. Review first, then learn: you will keep far more of both.</p><button type="button" class="btn amber" data-g="review">Review first</button><button type="button" class="btn ghost" data-g="learn">Learn anyway</button></div>';
+    document.body.appendChild(ov);ov.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.g==='review')startReview(false);else{S.gateDay=today();save();buildSession(l.items,'lesson',l);}});return;}
+  buildSession(l.items,'lesson',l);}
 function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(l);}
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
@@ -1578,7 +1585,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>'+ME_TIP+'</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
     btn.disabled=false;btn.textContent='Let\'s go';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(it.me?'About you':'New word')+'</span><div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
+  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(ex.leech?'Tricky word · a fresh look':it.me?'About you':'New word')+'</span>'+(ex.leech?'<p class="note">This one keeps slipping away, so here it is again, slowly, with its memory trick and what it is built from. Say it out loud twice.</p>':'')+'<div class="intro">'+(EMOJI[it.lt]?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the wavy button plays it slowly. Say it out loud once. A quick question about it comes next, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
   else if(ex.type==='speak'){
     const rateHtml='<div class="rate"><button type="button" class="btn ghost" data-rate="hard">Hard</button><button type="button" class="btn" data-rate="good">Good</button><button type="button" class="btn amber" data-rate="easy">Easy</button></div>';
@@ -1674,8 +1681,12 @@ function micPause(root){const was=!!activeRec;stopHearing();const o=root.querySe
 /* A word climbs at most one level per day, and only once it is due: two right answers a minute apart are not two reviews.
    It then comes due at the start of the day its interval lands on, not at the exact hour. */
 function grade(item,ok,count){const r=rec(item.id);r.seen=true;
-  if(ok){r.ok++;if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+INTERVALS[r.lvl]);r.due=d.getTime();}}
-  else{r.bad++;r.lvl=Math.max(0,r.lvl-2);r.due=Date.now();}}
+  if(ok){r.ok++;if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(INTERVALS[r.lvl]));r.due=d.getTime();}}
+  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}r.lvl=Math.max(0,r.lvl-2);r.due=Date.now();}}
+/* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
+function fuzz(d){if(d<3)return d;const s=Math.max(1,Math.round(d*0.1));return d+Math.floor(Math.random()*(2*s+1))-s;}
+/* A word forgotten again and again after you knew it (4 times or more) needs teaching again, not another round of the same question. */
+function isLeech(it){const r=S.items[it.id];return !!r&&(r.lapse||0)>=4&&r.lvl<4;}
 
 /* ===================== WHY WAS I WRONG ===================== */
 /* Lines a typed answer up with the right one, word by word, and says in plain words what slipped.
@@ -1725,11 +1736,13 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
   if(w&&w.typo)return {ok:true,title:'Nearly',note:'Small typo, we\'ll count it: <b>'+esc(targets[0])+'</b>'+w.html};
   return {ok:false,why:w?w.html:''};}
 
+/* A typo or a missing mark still counts as right, but the word only moves up a level when it is exact. */
+const SLOPPY='<div class="why">Counted as right, but the word only moves up when you write it exactly.</div>';
 function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';
   /* the gap is judged as the whole phrase with your word in it, so the Why note can use the words around it */
-  if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');const j=judgeTyped(full,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note;title=j.title||'Correct!';}}
+  if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');const j=judgeTyped(full,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}
   else if(ex.type==='type'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'){const j=judgeTyped(Q.answer,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';
-    if(ok&&!j.exact){almost=j.note;title=j.title||'Correct!';}}
+    if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}
   else ok=Q.answer===it;
   reveal(ok,almost,false,why,title);}
 /* Shows the result. A miss (or "I don't know") never ends anything: the word comes back two cards later. */
@@ -1739,7 +1752,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const mean=ex.type==='mc_lt_en'||ex.type==='listen';
   const answer=picHtml(it.lt,'xs')+'<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
-  if(ok){sfx('good');grade(it,true,first);if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  if(ok){sfx('good');grade(it,true,first&&title!=='Nearly');if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');grade(it,false,false);Q.wrongOnce[it.id]=true;
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
     else setFoot('bad','Not quite','Correct answer: '+answer+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
