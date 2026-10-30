@@ -3,7 +3,8 @@
    Lithuanian grammar. index.html loads exactly one language file before the app code (see LANGUAGES there). */
 const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT',letters:'ąčęėįšųūž',audio:'audio/',
   hello:'Labas!',praise:['Puiku!','Gerai!','Šaunu!'],top:'Labai šaunu.',decoys:'aeiklmnorstuvėšžč',
-  dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.'};
+  dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.',
+  be:['esu','esi','esame','esate'],dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */

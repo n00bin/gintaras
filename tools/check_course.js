@@ -4,6 +4,7 @@
 // - every lesson has a tip, every unit a speaking tip, every word a "sounds like"
 // - no two items share the same English (answers would be ambiguous)
 // - every word you must write or say in a conversation was taught earlier on the path
+// - every conversation reply can be said (words, English and a prompt), every choice has two or more options
 const fs = require('fs');
 const path = require('path');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
@@ -41,6 +42,9 @@ say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt]).map(i => i.lt
   say('real-life skills pointing at a missing lesson', c.CANDO.flatMap(x => x[3].filter(l => !base.has(l)).map(l => x[0] + ': ' + l)));
   say('real-life skills pointing at a missing conversation', c.CANDO.filter(x => x[4] && !c.CONV_BY[x[4]]).map(x => x[0] + ': ' + x[4]));
   say('real-life skills sharing an id', ids.filter((x, i) => ids.indexOf(x) !== i)); }
+// Say it can always be finished: every reply you give (choices included) has its words, its English and a prompt to answer.
+say('conversation replies that can’t be said', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'm' && (!l.id || !l.lt || !l.en || !l.hint)).map(l => v.id + ': ' + (l.lt || l.id))));
+say('conversation choices with fewer than two options', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'c' && !(l.opts && l.opts.length >= 2 && l.opts.every(o => o.line && o.line.lt))).map(() => v.id)));
 say('drills pointing at a missing unit', c.DRILLS.filter(d => !units.has(d.u)).map(d => d.u + ': ' + d.frame));
 
 // Walk the path, collecting known word forms; every me-line word must already be known.
