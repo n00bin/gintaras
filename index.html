@@ -184,6 +184,8 @@ div.done:not(.unit){position:relative;z-index:2}
 .tile{background:var(--surface-2);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
 .tile strong{font-family:var(--display);font-size:22px;font-weight:700}
 .tile small{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.cv-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.cv-row-t{min-width:0}.cv-row-t strong{display:block}
+.cv-row-b{display:flex;gap:6px;flex:0 0 auto}.cv-row-b .btn{padding:8px 10px;font-size:14px;border-radius:12px;white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:14px;font-weight:800;font-size:16px;
   background:var(--pine);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.18);width:100%;transition:transform .08s}
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
@@ -749,6 +751,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn ghost" id="btn-weak">Practice weakest words</button>
     </div>
     <div class="card" id="qc-card"></div>
+    <div class="card" id="cv-list"></div>
     <div class="card" id="can-card"></div>
     <div class="card">
       <h2>Word strength</h2>
@@ -957,8 +960,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.44';
-const APP_VERSION=116;
+const APP_RELEASE='3.45';
+const APP_VERSION=117;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1336,6 +1339,18 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
 function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?(convDone(p)?'saying "'+CONV_BY[p].title+'" out loud':'the conversation "'+CONV_BY[p].title+'"'):UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
+/* Every conversation you have reached, in path order, with its stars and its Write it / Say it buttons, so you can
+   replay any of them from Review instead of scrolling the path. */
+function renderConvList(){const box=$('#cv-list');if(!box)return;let n=0;
+  const rows=STEPS.filter(id=>CONV_BY[id]).map(id=>({c:CONV_BY[id],n:++n})).filter(r=>stepUnlocked(r.c.id));
+  box.innerHTML='<span class="eyebrow">Conversations</span><h2>Your conversations · <span class="num">'+rows.filter(r=>convDone(r.c.id)).length+' of '+n+'</span></h2>'+
+    (rows.length?'<p class="note">Replay any conversation you have reached. Write it first, then Say it; each one has three stars to earn.</p>'+
+      rows.map(({c,n})=>{const st=(S.convs||{})[c.id]||{},done=convDone(c.id);
+        return '<div class="cv-row"><div class="cv-row-t"><strong>'+n+'. '+esc(c.title)+'</strong>'+starsHtml(c)+'</div><div class="cv-row-b">'+
+          '<button type="button" class="btn '+(done?'ghost':'amber')+'" data-cvl="text" data-id="'+c.id+'">'+(done?'✓ ':'')+'✍️ Write</button>'+
+          '<button type="button" class="btn '+(st.speak||!done?'ghost':'amber')+'" data-cvl="speak" data-id="'+c.id+'"'+(done?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say</button></div></div>';}).join('')
+      :'<p class="note">Your first conversation opens after the Basics unit. Once you reach one, it stays here so you can replay it any time.</p>');
+  box.querySelectorAll('[data-cvl]').forEach(b=>b.onclick=()=>startConv(b.dataset.id,b.dataset.cvl));}
 function renderPractice(){const L=learned();const d=dueItems();
   $('#n-due').textContent=d.length;$('#n-learned').textContent=L.length;$('#n-strong').textContent=L.filter(i=>rec(i.id).lvl>=4).length;
   $('#due-title').textContent=L.length===0?'Nothing to review yet':d.length===0?'All caught up':d.length+(d.length===1?' word is due':' words are due');
@@ -1344,7 +1359,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
-  renderMe();renderCando();renderQuick();
+  renderMe();renderCando();renderQuick();renderConvList();
   $('#lvls').innerHTML=buckets.map((n,k)=>'<i style="width:'+(n/tot*100)+'%;background:'+cols[k]+'" title="'+n+'"></i>').join('');}
 function renderProfile(){$('#p-words').textContent=learned().length;$('#p-days').textContent=S.daysLearned||0;$('#p-streak').textContent=S.streak;
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;

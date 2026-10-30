@@ -84,7 +84,15 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv29": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv3": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv30": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -810,6 +818,23 @@
 "cv28:8o1-0": "Suprantu! Aš irgi.",
 "cv28:9": "Ačiū už pagalbą! Ar tau reikia pinigų taksi?"
 },
+"cv29": {
+"cv29:0": "Labas! Šiandien važiuojame prie ežero?",
+"cv29:1": "Aš neinu, nes lyja.",
+"cv29:10": "Puiku! Antrą valandą prie stoties.",
+"cv29:11": "Sutarta! Iki!",
+"cv29:2": "Lyja tik ryte. Po pietų bus saulė!",
+"cv29:3": "Gerai, bet aš dar nevalgiau.",
+"cv29:4": "Nieko tokio! Aš turiu sumuštinių. Arbatos ar kavos?",
+"cv29:5o0": "Kavos, prašau.",
+"cv29:5o0-0": "Gerai, aš paimsiu termosą.",
+"cv29:5o1": "Arbatos ir pyrago!",
+"cv29:5o1-0": "Pyrago? Gerai, gerai!",
+"cv29:6": "Bet ežere vanduo šaltas...",
+"cv29:7": "Nors šalta, aš einu!",
+"cv29:8": "Šaunu! Mano sesuo taip pat važiuos. Gerai?",
+"cv29:9": "Aš manau, kad tai gerai!"
+},
 "cv3": {
 "cv3:0": "Laba diena! Kiek jūsų?",
 "cv3:1": "Laba diena! Staliuką dviem, prašau.",
@@ -842,6 +867,27 @@
 "cv3:8o1": "Aš nevalgau mėsos.",
 "cv3:8o1-0": "Tada cepelinai su varške. Jie be mėsos.",
 "cv3:9": "Ar turite alergijų?"
+},
+"cv30": {
+"cv30:0": "Pagaliau! Aš laukiu jau valandą!",
+"cv30:1": "Atsiprašau, aš pavėlavau!",
+"cv30:10": "Gerai! Atsiprašau!",
+"cv30:2": "Kas atsitiko?",
+"cv30:3o0": "Aš pamiršau.",
+"cv30:3o0-0": "Pamiršai? Mane?!",
+"cv30:3o0-1": "Ne, ne! Aš nežinojau, kur yra kavinė.",
+"cv30:3o1": "Aš nežinojau, kur yra kavinė.",
+"cv30:3o1-0": "Bet aš parašiau adresą!",
+"cv30:3o1-1": "Aš nemačiau.",
+"cv30:4": "Gerai, nieko tokio. O ką veikei ryte?",
+"cv30:5": "Aš miegojau!",
+"cv30:6": "Aha! Todėl ir pavėlavai!",
+"cv30:7": "Ar valgei?",
+"cv30:8o0": "Taip, aš jau valgiau.",
+"cv30:8o0-0": "Gerai. Tada tik kavos.",
+"cv30:8o1": "Ne, aš dar nevalgiau.",
+"cv30:8o1-0": "Aš irgi! Užsisakome pusryčius.",
+"cv30:9": "Ir kitą kartą – nevėluok!"
 },
 "cv4": {
 "cv4:0": "Atleiskite!",
