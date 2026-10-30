@@ -960,8 +960,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.45';
-const APP_VERSION=117;
+const APP_RELEASE='3.46';
+const APP_VERSION=118;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1488,11 +1488,18 @@ function distractors(item,n,field){const pool=shuffle(ITEMS.filter(i=>i!==item&&
   for(const i of pool){const v=norm(i[field]);if(used.has(v))continue;used.add(v);out.push(i);if(out.length>=n)break;}return out;}
 /* Difficulty follows how well you know the word: new words are tap-to-choose only; letter tiles come next; typing starts at level 2. */
 const EASY=['mc_lt_en','mc_en_lt','listen'];
-const MID=['mc_lt_en','mc_en_lt','listen','build','tiles'];
-const HARD=['mc_en_lt','type','listen','build','type','speak'];
+const MID=['mc_lt_en','mc_en_lt','listen','build','tiles','cloze'];
+/* Known words are recalled, never just recognised: typed, gap-filled, written down from the audio, built or said. */
+const HARD=['type','cloze','dictate','build','speak','type'];
 function typesFor(item){const l=rec(item.id).lvl;return l<=0?EASY:l<=1?MID:HARD;}
 /* "Can't speak right now" pauses speaking for an hour. */
 function speakOff(){return (S.noSpeakUntil||0)>Date.now();}
+/* The typing box shared by the typed exercises, with the letters a keyboard may not have. */
+function typeBox(ph){return '<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" placeholder="'+esc(ph)+'"><div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';}
+function wireTyping(st,btn){const inp=st.querySelector('#ans');inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
+  inp.onkeydown=e=>{if(e.key==='Enter'&&!btn.disabled)btn.click();};
+  st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
+  setTimeout(()=>inp.focus(),50);}
 function exFor(item,types,avoid){if(speakOff())types=types.filter(t=>t!=='speak');let t=types[Math.floor(Math.random()*types.length)];
   if(avoid&&types.length>1){let n=0;while(t===avoid&&n++<6)t=types[Math.floor(Math.random()*types.length)];}
   if(t==='listen'&&!canListen())t='mc_lt_en';
@@ -1500,7 +1507,14 @@ function exFor(item,types,avoid){if(speakOff())types=types.filter(t=>t!=='speak'
   if(t==='build'&&single)t=rec(item.id).lvl>=2?'type':'tiles';
   if(t==='tiles'&&!single)t='build';
   if(t==='tiles'&&item.lt.replace(/[?!.,]/g,'').length>13)t='mc_en_lt';
+  if(t==='dictate'&&!S.sound)t='type';
+  if(t==='cloze'){const c=clozePick(item);if(c)return Object.assign({type:'cloze',item},c);t=rec(item.id).lvl>=2?'type':'tiles';}
   return {type:t,item};}
+/* Fill the gap: one word of a phrase is hidden and you type it, with the rest of the phrase and its meaning as clues.
+   Prefers longer words (they carry the endings), never a one-letter word. Single words have no gap to make. */
+function clozePick(item){const ws=item.lt.split(' ');if(ws.length<2)return null;
+  const core=w=>w.replace(/[.,!?¿¡…–]/g,'');const ok=ws.map((w,i)=>i).filter(i=>core(ws[i]).length>=2);if(!ok.length)return null;
+  const long=ok.filter(i=>core(ws[i]).length>=4);const k=sample(long.length?long:ok,1)[0];return {k,word:core(ws[k])};}
 /* A lesson teaches one new word, checks it straight away, then the next. The second round, a match game
    and up to three words from earlier lessons are shuffled in after. */
 function buildSession(items,mode,lesson){personalise();const head=[];const rest=[];
@@ -1600,6 +1614,13 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
     st.innerHTML=from+head+'<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'" aria-pressed="false"><span class="k">'+(i+1)+'</span><span class="ot"><span>'+esc(ex.type==='listen'?o.lt:o[field])+'</span>'+(showP?'<small class="pron">'+pronHtml(o.lt)+'</small>':'')+'</span></button>').join('')+'</div>';
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];btn.disabled=false;});
     if(ex.type==='listen'||toEn)setTimeout(()=>say(it),200);}
+  else if(ex.type==='dictate'){
+    st.innerHTML=from+'<div class="prompt small">Write down what you hear</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>'+typeBox('Type what you hear');
+    wireTyping(st,btn);setTimeout(()=>say(it),250);}
+  else if(ex.type==='cloze'){const ws=it.lt.split(' ');
+    const shown=ws.map((w,i)=>i===ex.k?esc(w.replace(ex.word,'')).replace('','<span class="gap" aria-label="missing word">'+'_'.repeat(Math.max(3,ex.word.length))+'</span>'):esc(w)).join(' ');
+    st.innerHTML=from+'<div class="prompt small">Fill the gap</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+shown+'</span></div><div class="en">'+esc(it.en)+'</div>'+typeBox('The missing word');
+    wireTyping(st,btn);}
   else if(ex.type==='type'){
     st.innerHTML=from+'<div class="prompt small">Write this in '+LANG.en+'</div><div class="word"><span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+(S.pron?'<div class="pron">sounds like '+pronHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>':'')+'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" placeholder="Type in '+LANG.en+'"><div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
     const inp=st.querySelector('#ans');inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
@@ -1705,7 +1726,9 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
   return {ok:false,why:w?w.html:''};}
 
 function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';
-  if(ex.type==='type'||ex.type==='build'||ex.type==='tiles'){const j=judgeTyped(Q.answer,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';
+  /* the gap is judged as the whole phrase with your word in it, so the Why note can use the words around it */
+  if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');const j=judgeTyped(full,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note;title=j.title||'Correct!';}}
+  else if(ex.type==='type'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'){const j=judgeTyped(Q.answer,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';
     if(ok&&!j.exact){almost=j.note;title=j.title||'Correct!';}}
   else ok=Q.answer===it;
   reveal(ok,almost,false,why,title);}
