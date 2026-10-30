@@ -831,6 +831,12 @@ const HOOK={'Ačiū':'Sounds like a sneeze: AH-choo. Someone says thank you, you
 const BITE=5;
 COURSE.forEach(u=>{const out=[];u.lessons.forEach(l=>{const parts=Math.ceil(l.items.length/BITE);
   for(let p=0;p<parts;p++){out.push({id:l.id+'-'+(p+1),title:l.title+(parts>1?' · part '+(p+1):''),items:l.items.slice(p*BITE,(p+1)*BITE)});}});u.lessons=out;});
+/* Edition 2, step 3: look-alike sets are spread out. A bite-size part can move to another unit, keeping its id (and everyone's
+   progress): five of the colours go to Clothes, and the first family words to About me, where you introduce your family. */
+const MOVE_BITES={'u5a-2':['u29','More colours'],'u4a-1':['u20','My family']};
+const RENAME_BITES={'u5a-1':'Colours','u4a-2':'More family'};
+(()=>{const moved={};COURSE.forEach(u=>{u.lessons=u.lessons.filter(l=>{const m=MOVE_BITES[l.id];if(!m||!COURSE.some(x=>x.id===m[0]))return true;
+  l.title=m[1];(moved[m[0]]=moved[m[0]]||[]).push(l);return false;});});COURSE.forEach(u=>{if(moved[u.id])u.lessons=u.lessons.concat(moved[u.id]);u.lessons.forEach(l=>{if(RENAME_BITES[l.id])l.title=RENAME_BITES[l.id];});});})();
 const ITEMS=[]; const BYID={};
 COURSE.forEach(u=>u.lessons.forEach(l=>{l.unit=u;l.items=l.items.map((raw,i)=>{
   const it={id:l.id+':'+i,lt:raw[0],en:raw[1],note:raw[2]||'',alt:raw[3]||[],lesson:l,unit:u};
