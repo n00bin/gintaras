@@ -733,6 +733,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn ghost onpine" id="btn-bite2" hidden>Say it out loud</button>
     </div>
     <div class="card catchup" id="catchup" hidden></div>
+    <div class="card" id="place-card" hidden></div>
     <div class="goal">
       <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
       <div class="bar"><i id="goalbar" style="width:0%"></i></div>
@@ -979,8 +980,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.54';
-const APP_VERSION=126;
+const APP_RELEASE='3.55';
+const APP_VERSION=127;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1244,7 +1245,9 @@ function convState(id){S.convs=S.convs||{};return S.convs[id]||(S.convs[id]={});
 function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.done||c.text||c.speak));}
 /* A conversation step is done once it's been written AND said out loud. */
 function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
-function stepDone(id){return CONV_BY[id]?convDone(id)&&convSpoken(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
+/* Steps before where the placement check put you count as done (S.placedTo = index in STEPS). */
+const placed=id=>(S.placedTo||0)>STEPS.indexOf(id);
+function stepDone(id){if(placed(id))return true;return CONV_BY[id]?convDone(id)&&convSpoken(id):UNIT_BY[id].lessons.every(l=>crowns(l.id)>=1);}
 function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
@@ -1467,7 +1470,31 @@ function renderCatchUp(){const box=$('#catchup');if(!box)return;let far=-1;STEPS
   box.innerHTML='<span class="eyebrow">New since you passed</span><h2>'+missed.length+(missed.length===1?' new step':' new steps')+' behind you</h2><p class="note">These were added to the course after you went past them. They use words you already know.</p>'+
     missed.slice(0,4).map(id=>'<button type="button" class="btn ghost" data-catch="'+id+'">'+esc(name(id))+'</button>').join('')+(missed.length>4?'<p class="note">…and '+(missed.length-4)+' more on the path.</p>':'');
   box.querySelectorAll('[data-catch]').forEach(b=>b.onclick=()=>{const id=b.dataset.catch;if(CONV_BY[id])startConv(id);else{const l=UNIT_BY[id].lessons.find(x=>crowns(x.id)<1)||UNIT_BY[id].lessons[0];startLesson(l);}});}
-function renderAll(){personalise();renderTop();renderBite();renderCatchUp();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
+/* ===================== PLACEMENT CHECK ===================== */
+/* Only for someone brand new: "I already know some". Unit by unit along the path, 4 words to type from the English
+   ("I don't know" is fine). 3 of 4 passes the unit: its lessons count as done, the words you got right start at level 2
+   and the rest at level 1, all due for review soon so nothing is taken on trust for long. The first unit missed is where you start. */
+const isFresh=()=>!S.lessonsDone&&!learned().length&&!(S.placedTo>0)&&!S.placeDone;
+function renderPlaceCard(){const box=$('#place-card');if(!box)return;box.hidden=!isFresh();if(box.hidden)return;
+  box.innerHTML='<span class="eyebrow">Already know some '+esc(LANG.en)+'?</span><h2>Skip what you know</h2><p class="note">A quick check, unit by unit: type the '+esc(LANG.en)+' for a few words. Get 3 of 4 and that unit is done. Tap “I don’t know” whenever you don’t; it stops where you need to start.</p><button type="button" class="btn ghost" id="btn-place">Take the check</button>';
+  $('#btn-place').onclick=startPlace;}
+function startPlace(){const units=STEPS.filter(id=>UNIT_BY[id]).slice(1,16);
+  Q={queue:[],idx:0,correct:0,total:0,items:[],mode:'place',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,place:{units,i:-1,right:0,got:{},passed:[]}};
+  placeNext();$('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
+/* After each unit's 4 words: passed, go on to the next unit; otherwise stop. Returns true when more questions were added. */
+function placeNext(){const P=Q.place;
+  if(P.i>=0){if(P.right>=3)P.passed.push(P.units[P.i]);else return false;}
+  P.i++;P.right=0;if(P.i>=P.units.length)return false;
+  const its=sample(bossItems(UNIT_BY[P.units[P.i]]).filter(i=>i.lt.split(' ').length<=4),4);
+  its.forEach(it=>Q.queue.push({type:'type',item:it}));Q.items=Q.items.concat(its);Q.total=Q.queue.length;return true;}
+function placeFinish(){const P=Q.place;const now=new Date();now.setHours(0,0,0,0);
+  P.passed.concat(P.passed.length?STEPS.filter(id=>UNIT_BY[id]).slice(0,1):[]).forEach(uid=>UNIT_BY[uid].lessons.forEach(l=>{S.lessons[l.id]=Math.max(1,S.lessons[l.id]||0);
+    l.items.forEach(it=>{const r=rec(it.id);if(r.lvl>0)return;r.seen=true;r.lvl=P.got[it.id]?2:1;r.up=today();r.due=now.getTime()+DAY*(P.got[it.id]?2:1);});}));
+  const stop=P.units[P.passed.length];S.placeDone=today();if(P.passed.length)S.placedTo=stop?STEPS.indexOf(stop):STEPS.length;save();
+  $('#stage').innerHTML='<div class="done">'+mascot(P.passed.length?'cheer':'think','done-mascot')+'<h2>'+(P.passed.length?'You start at '+esc(stop?UNIT_BY[stop].en:'the end')+'!':'You start at the beginning')+'</h2><p class="note">'+
+    (P.passed.length?P.passed.length+' unit'+(P.passed.length===1?'':'s')+' skipped. Those words come up in your reviews over the next few days, so anything you were unsure of comes back.':'No problem: the course starts from zero, and goes at your pace.')+'</p></div>';
+  $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
+function renderAll(){personalise();renderTop();renderBite();renderCatchUp();renderPlaceCard();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
 
 /* ===================== FACES AND THE MASCOT ===================== */
 /* People are drawn with the Notionists set (CC0, by Zoish) through DiceBear (MIT), bundled in avatars.js so they work
@@ -1666,7 +1693,8 @@ const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1};
 function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const st=$('#stage');st.innerHTML='';Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
   const idk=$('#btn-idk');idk.hidden=true;
-  if(Q.idx>=Q.queue.length)return finish();
+  if(Q.idx>=Q.queue.length&&Q.mode==='place'&&placeNext())return renderStep();
+  if(Q.idx>=Q.queue.length)return Q.mode==='place'?placeFinish():finish();
   const ex=Q.queue[Q.idx];const it=ex.item;
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
   const from=ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
@@ -1881,11 +1909,12 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const answer=picHtml(it.lt,'xs')+'<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
   if(Q.mode==='check'){if(ok&&first)Q.boss.hp=Math.max(0,Q.boss.hp-1);else if(!ok&&!Q.missed.includes(it))Q.missed.push(it);setTimeout(bossDraw,50);}
-  if(ok){sfx('good');grade(it,true,first,title==='Nearly');if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
-  else{if(!idk)sfx('bad');grade(it,false,false);Q.wrongOnce[it.id]=true;
+  if(Q.mode==='place'){if(ok&&first)Q.place.right++;Q.place.got[it.id]=ok&&first;}
+  if(ok){sfx('good');if(Q.mode!=='place')grade(it,true,first,title==='Nearly');if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  else{if(!idk)sfx('bad');if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
     else setFoot('bad','Not quite','Correct answer: '+answer+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
-    if(Q.mode!=='check')Q.queue.splice(Math.min(Q.idx+3,Q.queue.length),0,{type:ex.type,item:it,retry:true});say(it);}
+    if(Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+3,Q.queue.length),0,{type:ex.type,item:it,retry:true});say(it);}
   const stage=$('#stage');stage.querySelectorAll('.opt').forEach(b=>{b.disabled=true;});
   stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
   stage.querySelectorAll('.build .chip').forEach(b=>{b.disabled=true;});
