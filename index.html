@@ -994,8 +994,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.62';
-const APP_VERSION=134;
+const APP_RELEASE='3.63';
+const APP_VERSION=135;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2116,7 +2116,9 @@ const MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 function clipLen(id,voice){const it=BYID[id];if(it&&it.au)id=it.au;const g=unitOf(id);const s=SMAP[voice]&&SMAP[voice][g]&&SMAP[voice][g][id];return s?s[1]:VOICE_BASE[voice]?clipLen(id,VOICE_BASE[voice]):1.2;}
 function later(fn,ms){const C=CV;if(!C)return;const t=setTimeout(()=>{if(CV===C)fn();},ms);C.timers.push(t);}
 function stopConv(){if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
-function chatScroll(){const box=$('#stage').parentElement;box.scrollTop=box.scrollHeight;}
+/* Follows the chat to the newest message, but a tall reply card is shown from its top, so you see what to do first. */
+function chatScroll(){const box=$('#stage').parentElement,t=$('#turn');box.scrollTop=box.scrollHeight;
+  const card=t&&t.firstElementChild;if(card){const r=card.getBoundingClientRect(),b=box.getBoundingClientRect();if(r.top<b.top+8)box.scrollTop-=b.top+8-r.top;}}
 /* Slow playback is a turtle: understood everywhere, no words needed. */
 const TURTLE='<svg viewBox="0 2 24 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 16.5h15.4"/><path d="M2.8 16.5a7 7 0 0 1 14 0"/><path d="M7 16.5l2.8-4.6 2.8 4.6"/><path d="M16.6 15.2l1.9-1.1"/><circle cx="20.4" cy="12.9" r="2.3"/><path d="M5.6 16.5v3M14 16.5v3"/></svg>';
 function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play this line slowly':'Play this line')+'">'+(slow?TURTLE:SPK)+'</button>';}
@@ -2653,7 +2655,7 @@ async function translateText(text,target,source){
   const j=await r.json();if(!j.responseData)throw new Error('Translation failed');return {text:j.responseData.translatedText,detected:short(source)};}
 function langOptions(sel){return TALK_LANGS.map(([c,n,e])=>'<option value="'+c+'"'+(c===sel?' selected':'')+'>'+esc(n)+(n!==e?' · '+esc(e):'')+'</option>').join('');}
 function renderTalkIntro(){if(S.talkA)TALK.a=S.talkA;if(S.talkB)TALK.b=S.talkB;$('#talk-a').innerHTML=langOptions(TALK.a);$('#talk-b').innerHTML=langOptions(TALK.b);
-  $('#talk-engine').textContent=googleKey()?'Translations by Google.':'Translations by MyMemory (free, about 5,000 characters a day). Google translation can be switched on in the app settings by the owner.';}
+  $('#talk-engine').textContent=googleKey()?'Translations by Google.':'Translations by MyMemory, a free service with a daily limit. If it ever stops translating, try again tomorrow.';}
 $('#talk-a').onchange=e=>{TALK.a=e.target.value;S.talkA=TALK.a;save();};
 $('#talk-b').onchange=e=>{TALK.b=e.target.value;S.talkB=TALK.b;save();};
 function halfHtml(side){const code=TALK[side];const L=TALK_LANGS.find(l=>l[0]===code)||[code,code,code];
