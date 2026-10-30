@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.37** (2026-10-29) Part 3 conversations: Kiek kainuoja? at Birutė's kiosk (after Numbers), Kada susitinkame? with Jonas (after Time), and My morning grown into My day (after My day); new voice for Birutė
 - **3.36** (2026-10-29) Part 2 conversations: Kalbų vakaras (after Verbs), Kur tu? (after Everyday verbs), Atsiprašau! (after Questions), and Meet Jonas rewritten to use more of About me; new voices for Laura and Antanas
 - **3.35.2** (2026-10-29) Look polish: finished units lose their empty top strip, matched pairs look right, even Lithuanian letter keys, play buttons line up, Quick chat shows how far you are
 - **3.35.1** (2026-10-29) Polish: skipping replies in Say it no longer opens the next unit ("I said it" after two misses), clearer star, Quick chat and Today's plan wording, no dead end in fill-in-letters, bigger buttons, sound guide tidy-up

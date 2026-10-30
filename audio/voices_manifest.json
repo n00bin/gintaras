@@ -69,11 +69,16 @@
 },
 "despina_cv11": {
 "cv11:1": "Aš keliuosi septintą valandą.",
-"cv11:11": "Iki!",
-"cv11:3": "Aš geriu kavą.",
+"cv11:11": "Aš miegu aštuonias valandas.",
+"cv11:13": "Ne, aš niekada nevėluoju!",
+"cv11:15": "Iki!",
+"cv11:3": "Aš prausiuosi ir geriu kavą.",
 "cv11:5o0": "Ne, aš einu į darbą.",
+"cv11:5o0-1": "Aš važiuoju autobusu.",
+"cv11:5o0-3": "Aš dirbu iki penkių.",
 "cv11:5o1": "Taip, aš dirbu iš namų.",
-"cv11:7": "Aš gaminu vakarienę.",
+"cv11:5o1-1": "Ne. Kartais aš dirbu iš namų.",
+"cv11:7": "Aš grįžtu namo ir gaminu vakarienę.",
 "cv11:9": "Kartais."
 },
 "despina_cv12": {
@@ -191,6 +196,29 @@
 "cv2:5": "Aš gyvenu Vilniuje. O tu?",
 "cv2:7": "Kuo tu dirbi?",
 "cv2:9": "Ar tau patinka tavo darbas?"
+},
+"despina_cv20": {
+"cv20:1": "Laba diena! Kiek kainuoja šokoladas?",
+"cv20:13": "Labas! Kiek tau metų?",
+"cv20:16o0": "Man dvidešimt metų.",
+"cv20:16o1": "Man trisdešimt metų.",
+"cv20:18": "Ačiū! Viso gero!",
+"cv20:3": "O jogurtas?",
+"cv20:5": "Trys, prašau.",
+"cv20:7": "Atsiprašau, kiek?",
+"cv20:9": "Prašau, dešimt eurų."
+},
+"despina_cv21": {
+"cv21:1": "Taip, dabar aš dirbu.",
+"cv21:11": "Gerai! Iki pasimatymo!",
+"cv21:14": "Atsiprašau! Kiek valandų?",
+"cv21:16": "Atsiprašau! Šiandien aš moku.",
+"cv21:18": "Taip, einame!",
+"cv21:3": "Rytoj aš irgi dirbu.",
+"cv21:5": "Šiandien aš mokausi lietuvių kalbos.",
+"cv21:7o0": "Šeštadienis?",
+"cv21:7o1": "Sekmadienis?",
+"cv21:9": "Taip, gerai. Kur?"
 },
 "despina_cv3": {
 "cv3:1": "Meniu, prašau.",
@@ -333,11 +361,14 @@
 },
 "kore_cv11": {
 "cv11:0": "Labas! Kada tu keliesi?",
-"cv11:10": "Aš kasdien! Na, iki rytojaus!",
+"cv11:10": "Aš kasdien! O kiek tu miegi?",
+"cv11:12": "Aštuonias! O aš tik šešias. Ar tu kartais vėluoji?",
+"cv11:14": "Šaunu! O aš dažnai vėluoju... Na, iki rytojaus!",
 "cv11:2": "Anksti! O ką darai ryte?",
 "cv11:4": "Aš irgi! Ar tu dirbi iš namų?",
-"cv11:5o0-0": "Aš irgi.",
-"cv11:5o1-0": "Smagu! Aš irgi norėčiau.",
+"cv11:5o0-0": "Kaip tu važiuoji?",
+"cv11:5o0-2": "O kada tu grįžti?",
+"cv11:5o1-0": "Smagu! Ar visada?",
 "cv11:6": "O vakare?",
 "cv11:8": "Puiku. Ar dažnai žiūri filmus?"
 },
@@ -477,11 +508,16 @@
 },
 "orus_cv11": {
 "cv11:1": "Aš keliuosi septintą valandą.",
-"cv11:11": "Iki!",
-"cv11:3": "Aš geriu kavą.",
+"cv11:11": "Aš miegu aštuonias valandas.",
+"cv11:13": "Ne, aš niekada nevėluoju!",
+"cv11:15": "Iki!",
+"cv11:3": "Aš prausiuosi ir geriu kavą.",
 "cv11:5o0": "Ne, aš einu į darbą.",
+"cv11:5o0-1": "Aš važiuoju autobusu.",
+"cv11:5o0-3": "Aš dirbu iki penkių.",
 "cv11:5o1": "Taip, aš dirbu iš namų.",
-"cv11:7": "Aš gaminu vakarienę.",
+"cv11:5o1-1": "Ne. Kartais aš dirbu iš namų.",
+"cv11:7": "Aš grįžtu namo ir gaminu vakarienę.",
 "cv11:9": "Kartais."
 },
 "orus_cv12": {
@@ -599,6 +635,29 @@
 "cv2:5": "Aš gyvenu Vilniuje. O tu?",
 "cv2:7": "Kuo tu dirbi?",
 "cv2:9": "Ar tau patinka tavo darbas?"
+},
+"orus_cv20": {
+"cv20:1": "Laba diena! Kiek kainuoja šokoladas?",
+"cv20:13": "Labas! Kiek tau metų?",
+"cv20:16o0": "Man dvidešimt metų.",
+"cv20:16o1": "Man trisdešimt metų.",
+"cv20:18": "Ačiū! Viso gero!",
+"cv20:3": "O jogurtas?",
+"cv20:5": "Trys, prašau.",
+"cv20:7": "Atsiprašau, kiek?",
+"cv20:9": "Prašau, dešimt eurų."
+},
+"orus_cv21": {
+"cv21:1": "Taip, dabar aš dirbu.",
+"cv21:11": "Gerai! Iki pasimatymo!",
+"cv21:14": "Atsiprašau! Kiek valandų?",
+"cv21:16": "Atsiprašau! Šiandien aš moku.",
+"cv21:18": "Taip, einame!",
+"cv21:3": "Rytoj aš irgi dirbu.",
+"cv21:5": "Šiandien aš mokausi lietuvių kalbos.",
+"cv21:7o0": "Šeštadienis?",
+"cv21:7o1": "Sekmadienis?",
+"cv21:9": "Taip, gerai. Kur?"
 },
 "orus_cv3": {
 "cv3:1": "Meniu, prašau.",
@@ -748,6 +807,19 @@
 "cv2:6": "Aš irgi gyvenu Vilniuje, senamiestyje.",
 "cv2:8": "Aš esu mokytojas."
 },
+"puck_cv21": {
+"cv21:0": "Labas! Ar tu dabar dirbi?",
+"cv21:10": "Prie Katedros. Ten yra kavinė.",
+"cv21:13": "Labas! Tu vėluoji!",
+"cv21:15": "Jau pusė pirmos!",
+"cv21:17": "Gerai, sutinku! Einame į muziejų?",
+"cv21:2": "Aš greitai. Ar eini rytoj į muziejų?",
+"cv21:4": "Gaila. O šiandien vakare?",
+"cv21:6": "Šaunu! Tai kada tu gali? Šią savaitę?",
+"cv21:7o0-0": "Šeštadienį? Puiku!",
+"cv21:7o1-0": "Sekmadienį? Puiku!",
+"cv21:8": "Kokiu laiku? Dvyliktą?"
+},
 "puck_me2": {
 "me2:cv10:10~n": "Ar tau patinka Vilnius?",
 "me2:cv10:3~n": "Sveikas! Kaip sekasi?",
@@ -779,5 +851,19 @@
 "cv9:5o1-0": "Tada gerkite daug vandens.",
 "cv9:6": "Štai vaistai. Viena tabletė, tris kartus per dieną.",
 "cv9:8": "Viena tabletė. Tris kartus per dieną."
+},
+"vindemiatrix_cv20": {
+"cv20:0": "Laba diena! Ko jums reikia?",
+"cv20:10": "Ačiū. Štai penki eurai grąžos.",
+"cv20:12": "Čia mano anūkas, Lukas.",
+"cv20:14": "Jis rodo penkis pirštus. Penkeri!",
+"cv20:15": "O dabar Lukas klausia: kiek tau metų?",
+"cv20:16o0-0": "Dvidešimt! Lukas sako: daug!",
+"cv20:16o1-0": "Trisdešimt! Lukas sako: labai daug!",
+"cv20:17": "Ačiū, kad perkate čia! Ateikite dar!",
+"cv20:2": "Šokoladas? Du eurai.",
+"cv20:4": "Jogurtas – vienas euras. Kiek jogurtų?",
+"cv20:6": "Trys jogurtai ir šokoladas. Penki eurai.",
+"cv20:8": "Penki. Penki eurai."
 }
 }
