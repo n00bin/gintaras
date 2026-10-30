@@ -705,9 +705,9 @@ const PATH=[
  {part:'First words',sub:'How Lithuanian sounds, hello, and set phrases to get by'},
  'u0','u1','cv1','u21','cv16',
  {part:'Simple sentences',sub:'Who does what: I am, I speak, questions and "not"'},
- 'u8','cv17','u27','cv18','u13','cv19','u20','cv2',
+ 'u8','cv17','u27','cv18','u41','u13','cv19','u20','cv2',
  {part:'Numbers and time',sub:'Counting, prices, days, times and your daily routine'},
- 'u2','cv20','u7','cv21','u28','cv11',
+ 'u2','cv20','u7','cv21','u28','cv11','u33','cv28',
  {part:'Food and drink',sub:'Who + does + what, and how the "what" changes'},
  'u3','cv22','u15','cv3',
  {part:'Getting around',sub:'To, in and from: places change their endings'},
@@ -715,7 +715,7 @@ const PATH=[
  {part:'People and things',sub:'Describing words, my and your, and "to me it pleases"'},
  'u5','u30','cv24','u4','u25','cv25','u31','cv26','u11','u32','cv27',
  {part:'Plans and the future',sub:'Can, must and want + a verb, and "I will"'},
- 'u26','u33','cv28','u22','cv7','u23','cv6','u24','u34','cv13',
+ 'u26','u22','cv7','u23','cv6','u24','u34','cv13',
  {part:'Telling stories',sub:'"I was", "I went", and joining sentences with and, but, because'},
  'u35','cv29','u36','cv30','u37','cv14',
  {part:'Travelling and health',sub:'Hotels, trains, the body, and when something goes wrong'},
@@ -726,6 +726,9 @@ const PATH=[
  'u6','u12',
 ];
 const RESHAPE={
+ /* Glue words early (edition 2, step 1): the little words that join sentences, moved up from Part 8. Lesson ids are unchanged, so nobody's progress moves. */
+ u41:{title:'Maži žodžiai',en:'Little words',tip:'Little words do the most work. <b>Ir</b> (and), <b>bet</b> (but), <b>nes</b> (because) and <b>todėl</b> (so) join two ideas; <b>jau</b> (already), <b>dar</b> (still, yet) and <b>tik</b> (only) change what a sentence means. <b>Kai</b> (when), <b>jeigu</b> (if), <b>kad</b> (that) and <b>nors</b> (though) start a second idea. From here on, the conversations use them.',lessons:['u35a','u35c']},
+ u35:{lessons:['u35b']},
  u13:{en:'Question words',tip:'Question words go first, just like English. Learn these six and you can ask about anything by pointing. Add <b>Ar</b> to the front of a sentence to turn it into a yes/no question.',lessons:['u13a']},
  u8:{title:'Kalbėti',en:'Talking',tip:'Verbs change their ending to show who is doing it: <b>aš kalbu</b> (I speak), <b>tu kalbi</b> (you speak). Because the ending already says who, people often drop aš and tu. Put <b>ne</b> on the front to say "not": nesuprantu, I don\'t understand.',lessons:['u8b','u8c']},
  u19:{title:'Susikalbėti',en:'Getting by',tip:'Short phrases that smooth every interaction. The <b>-ite</b> endings (atleiskite, parodykite) are the polite forms you use with strangers.',lessons:['u12b','u13b']},
@@ -991,6 +994,7 @@ const LESSON_TIPS={
 const SPEAK_TIPS={
 'u0':'Say every letter, slowly. Lithuanian rewards care: if you pronounce each letter, you will be understood.',
 'u1':'Greetings are all about rhythm. Hit the bold syllable and keep the rest quick and light.',
+'u41':'Say each little word inside a phrase you know: Labas, ir ačiū. Gerai, bet truputį.',
 'u21':'Real small talk is quick. Say each phrase three times, a little faster each time.',
 'u2':'Count out loud on your fingers. Numbers are the easiest words to practise anywhere.',
 'u13':'Questions rise at the end, just like in English. Lift your voice on the last word.',
