@@ -124,7 +124,7 @@ async function afterAuth(){profile=null;
   renderAuth();renderBoard();renderNotif();
   {const f=new URLSearchParams(location.search).get('from');if(f){history.replaceState(null,'',location.pathname);openFrom(f);}}
   if(user&&afterSignIn){const f=afterSignIn;afterSignIn=null;f();}
-  leagueNotice();}
+  leagueNotice();signInGate();}
 /* Signing in is enough for the leaderboard: the nickname starts as your first name (or the start of your email)
    and can be changed any time. If someone already has it, a couple of digits are added. */
 let profileMaking=null;
@@ -137,6 +137,20 @@ function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=
   return null;})().finally(()=>{profileMaking=null;}));}
 let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
+
+/* Sign in to carry on: the first lesson is free, then an account is required (it keeps progress safe on every device and
+   brings the league, sync and reminders). The lesson already done is kept and goes into the account. Offline, you can keep
+   going and sign in when you are back online. */
+let gateEl=null;
+function signInGate(){if(!sb||!booted||user||!window.S||!((window.S.lessonsDone||0)>=1)){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
+  if(gateEl&&document.body.contains(gateEl))return;
+  gateEl=document.createElement('div');gateEl.className='gate signin-gate';
+  gateEl.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Save your progress"><div data-a="mascot"></div><div data-a="box"></div><div data-a="off" hidden><p class="note">You are offline. Keep going for now, and sign in when you are back online.</p><button type="button" class="btn ghost" data-a="later">Keep going offline</button></div></div>';
+  document.body.appendChild(gateEl);if(window.mascot)gateEl.querySelector('[data-a="mascot"]').innerHTML=window.mascot('cheer');
+  authWidget(gateEl.querySelector('[data-a="box"]'),{title:'Save your progress and keep going',lead:'Nice work on your first lesson! Sign in to keep going: your progress is saved to your account, works on every device, and you join the league. Everything you have done so far comes with you.',onDone:()=>{if(gateEl){gateEl.remove();gateEl=null;}}});
+  const off=gateEl.querySelector('[data-a="off"]');off.hidden=navigator.onLine;gateEl.querySelector('[data-a="later"]').onclick=()=>{gateEl.remove();gateEl=null;};}
+window.signInGate=()=>signInGate();
+window.addEventListener('online',()=>{if(gateEl){const o=gateEl.querySelector('[data-a="off"]');if(o)o.hidden=true;}else signInGate();});
 
 /* After signing out: forget the account's cloud copy and lists, so nothing from it is saved or shown on this phone. */
 function signedOut(){user=null;profile=null;booted=false;cloudAt=null;clearTimeout(saveTimer);clearTimeout(retryTimer);chals=[];chalAlerts&&chalAlerts();}
@@ -155,12 +169,19 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   box.innerHTML=(o.title?'<h2>'+esc(o.title)+'</h2>':'')+(o.lead?'<p class="note">'+esc(o.lead)+'</p>':'')+
     '<div class="stack" data-a="pick">'+(cfg.GOOGLE?'<div class="gbtn" data-a="gbtn"><button class="btn" data-a="google">Continue with Google</button></div>':'')+
     '<button type="button" class="btn ghost" data-a="email">Continue with email</button></div>'+
-    '<div class="stack" data-a="form" hidden><input data-a="mail" type="email" autocomplete="email" placeholder="Email"><input data-a="pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
-    '<div class="row2"><button class="btn amber" data-a="in">Sign in</button><button class="btn ghost" data-a="up">Create account</button></div><button type="button" class="linkbtn" data-a="back">Back</button></div><p class="note" data-a="msg" role="status"></p>';
+    '<div class="stack" data-a="form" hidden><input data-a="mail" type="email" autocomplete="email" placeholder="Email">'+
+    '<button type="button" class="btn amber" data-a="link">Email me a sign-in link</button><p class="note">No password needed: tap the link in the email and you are in. Or use a password:</p>'+
+    '<input data-a="pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
+    '<div class="row2"><button class="btn ghost" data-a="in">Sign in</button><button class="btn ghost" data-a="up">Create account</button></div><button type="button" class="linkbtn" data-a="back">Back</button></div><p class="note" data-a="msg" role="status"></p>';
   const q=k=>box.querySelector('[data-a="'+k+'"]');const say=(t,bad)=>{const m=q('msg');m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';};
   if(cfg.GOOGLE){q('google').onclick=googleRedirect;googleButton(q('gbtn'),say);}
   q('email').onclick=()=>{q('pick').hidden=true;q('form').hidden=false;say('');q('mail').focus();};
   q('back').onclick=()=>{q('form').hidden=true;q('pick').hidden=false;say('');};
+  /* A one-time sign-in link by email (no password). If the email can't be sent, say so plainly and point at Google. */
+  q('link').onclick=async()=>{const email=q('mail').value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return say('Enter your email address first',true);say('Sending…');
+    const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname,shouldCreateUser:true}});
+    if(error)return say('That email could not be sent right now ('+error.message+').'+(cfg.GOOGLE?' Continue with Google instead, or try again later.':' Try again later.'),true);
+    say('Check '+email+' for a sign-in link. You can close this tab; the link opens the app signed in.');};
   q('in').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||!password)return say('Enter your email and password',true);say('Signing in…');
     const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)return say(error.message,true);user=data.user;await afterAuth();};
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');

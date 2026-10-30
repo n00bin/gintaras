@@ -209,7 +209,7 @@ div.done:not(.unit){position:relative;z-index:2}
 .note{font-size:14px;color:var(--muted)}
 
 .or{text-align:center;color:var(--muted);font-size:13px}
-#auth input,#nick{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+#auth input,.signin-gate input,#nick{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 #board .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .lb{list-style:none;margin:0;padding:0;display:grid;gap:6px}
@@ -980,8 +980,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.58';
-const APP_VERSION=130;
+const APP_RELEASE='3.59';
+const APP_VERSION=131;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1670,7 +1670,7 @@ function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(
 function startReview(weak){const L=learned();let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}buildSession(pick,'review',null);}
-function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();maybeTour();window.dispatchEvent(new Event('gintaras:idle'));}
+function quit(){if(!Q&&!CV)return;stopHearing();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(window.signInGate)window.signInGate();maybeTour();window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
