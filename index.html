@@ -624,6 +624,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .me-pop h2{text-align:center}
 .me-pop label,.me-quick label,.me-field{display:grid;gap:6px;font-weight:700}
 .me-field>span{font-weight:700}
+.lang-select{font:inherit;font-size:16px;font-weight:600;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);min-width:0;width:12.5em;max-width:58vw;flex:0 0 auto}
+.lang-welcome{display:block;margin:18px 0 6px}.lang-welcome .lang-select{display:block;width:100%;max-width:none;margin-top:8px;padding:12px 14px}
 .me-pop input,.me-pop select,.me-quick input,.me-quick select{width:100%;min-width:0;font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
 .me-quick{display:grid;gap:12px;margin:0}
 .me-pop .chip.in,.me-quick .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
@@ -815,7 +817,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="pagehead"><button type="button" class="x back" id="btn-settings-back" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><h2>Settings</h2></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
-      <div class="setting"><span>Language</span><span class="chips" id="lang-chips"></span></div>
+      <div class="setting"><span>Language</span><select class="lang-select" id="lang-select" aria-label="Language to learn"></select></div>
       <p class="note" id="lang-note"></p>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read <span class="lang-en">Lithuanian</span> spelling on its own.</p>
@@ -884,7 +886,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <span data-mood="happy" data-cls="big"></span>
     <h2><span class="lang-hi">Labas!</span> Let's learn <span class="lang-en">Lithuanian</span>.</h2>
     <p>Never learned a language before? Bad at it? Good. This app assumes both. You start with sounds, and by the end you can hold a real conversation.</p>
-    <div class="pace" id="lang-welcome"><span class="eyebrow">What do you want to learn?</span></div>
+    <label class="lang-welcome" id="lang-welcome"><span class="eyebrow">What do you want to learn?</span><select class="lang-select" id="lang-select-w"></select></label>
     <div class="how">
       <div><b>1</b><span><strong>One word at a time.</strong> Every word comes with a picture where it can, a plain English "sounds like", and a real <span class="lang-en">Lithuanian</span> voice. Tap, listen, match. You only type a word once you already know it.</span></div>
       <div><b>2</b><span><strong>Stuck? Say so.</strong> Every question has an "I don't know" button. No guessing, no shame: you see the answer and the word comes back a moment later.</span></div>
@@ -954,17 +956,20 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.40';
-const APP_VERSION=108;
-const WHATS_NEW='New: learn Mexican Spanish! Switch any time in Settings, Language. Your Lithuanian stays just as it is.';
+const APP_RELEASE='3.40.1';
+const APP_VERSION=109;
+const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
 /* ===================== LANGUAGES ===================== */
 /* Each language you can learn has its own file in lang/, and exactly one is loaded, before the app code below.
    Your choice is kept in gintaras.lang; a language that isn't ready yet shows as Coming soon. */
-const LANGS=[{code:'lt',en:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',own:'Español de México',flag:'🇲🇽',ready:true}];
-const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');}catch(e){}return (LANGS.find(l=>l.code===c&&l.ready)||LANGS[0]).code;})();
+const LANGS=[{code:'lt',en:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',own:'Español de México',flag:'🇲🇽',ready:false}];
+/* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
+const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
+const langUsable=l=>l.ready||LANG_PREVIEW;
+const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
 document.write('<script src="lang/'+LANG_CODE+'.js"><\/script>');
 </script>
 <script>
@@ -2409,14 +2414,12 @@ $('#btn-review').onclick=()=>startReview(false);
 $('#btn-weak').onclick=()=>startReview(true);
 /* Choosing the language to learn. Each language keeps its own progress; the page reloads into the one picked.
    A language that isn't ready shows as Coming soon and can't be picked yet. */
-function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!l.ready)return;try{localStorage.setItem('gintaras.lang',code);}catch(e){}
+function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(l))return;try{localStorage.setItem('gintaras.lang',code);}catch(e){}
   if(code!==LANG_CODE){save();Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}).then(()=>location.reload());}}
 function renderLangPick(){
-  const c=$('#lang-chips');if(c){c.innerHTML=LANGS.map(l=>'<button type="button" class="chip'+(l.code===LANG_CODE?' in':'')+'" data-lang="'+l.code+'"'+(l.ready?'':' disabled')+'>'+esc(l.en)+(l.ready?'':' (soon)')+'</button>').join('');
-    c.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>pickLang(b.dataset.lang));}
-  const n=$('#lang-note');if(n)n.textContent=LANGS.filter(l=>!l.ready).map(l=>l.en+' ('+l.own+') is coming soon. ').join('')+'Each language keeps its own progress, streak and leagues. Your account, face and About me stay the same.';
-  const w=$('#lang-welcome');if(w&&!w.querySelector('[data-lang]')){w.insertAdjacentHTML('beforeend',LANGS.map(l=>'<button type="button" class="pace-opt" data-lang="'+l.code+'" aria-pressed="'+(l.code===LANG_CODE)+'"'+(l.ready?'':' disabled')+'><strong>'+esc(l.en)+'</strong><span>'+esc(l.own)+(l.ready?'':' · <b class="soon">Coming soon</b>')+'</span></button>').join(''));
-    w.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{w.querySelectorAll('[data-lang]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));pickLang(b.dataset.lang);});}}
+  const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.en+' · '+l.own)+(l.ready?'':LANG_PREVIEW?' (preview)':' (coming soon)')+'</option>').join('');
+  ['#lang-select','#lang-select-w'].forEach(id=>{const s=$(id);if(s){s.innerHTML=opts;s.onchange=()=>pickLang(s.value);}});
+  const n=$('#lang-note');if(n)n.textContent=LANGS.filter(l=>!l.ready).map(l=>l.en+' ('+l.own+') is coming soon. ').join('')+'Each language keeps its own progress, streak and leagues. Your account, face and About me stay the same.';}
 renderLangPick();
 /* The page's own words follow the language: its name, its hello, and its pronunciation guide (from the language file). */
 document.querySelectorAll('.lang-en').forEach(e=>e.textContent=LANG.en);document.querySelectorAll('.lang-hi').forEach(e=>e.textContent=LANG.hello);
