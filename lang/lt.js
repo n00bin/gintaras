@@ -744,7 +744,7 @@ COURSE.push({id:'u42',title:'Dažni žodžiai',en:'Everyday words',tip:'These ar
    Units are rebuilt from existing lessons so ids (and saved progress) stay the same. */
 const PATH=[
  {part:'First words',sub:'How Lithuanian sounds, hello, and set phrases to get by'},
- 'u0','u1','cv1','u21','cv16',
+ 'u1','cv1','u0','u21','cv16',
  {part:'Simple sentences',sub:'Who does what: I am, I speak, questions and "not"'},
  'u8','cv17','u27','cv18','u41','u42','u13','cv19','u20','cv2',
  {part:'Numbers and time',sub:'Counting, prices, days, times and your daily routine'},
@@ -842,6 +842,13 @@ const ITEMS=[]; const BYID={};
 COURSE.forEach(u=>u.lessons.forEach(l=>{l.unit=u;l.items=l.items.map((raw,i)=>{
   const it={id:l.id+':'+i,lt:raw[0],en:raw[1],note:raw[2]||'',alt:raw[3]||[],lesson:l,unit:u};
   ITEMS.push(it);BYID[it.id]=it;return it;});}));
+/* Edition 2, step 4: the very first lesson is what you need on day one: hello, thank you, please, and a whole little
+   exchange (Labas! Kaip sekasi? Gerai, ačiū.). The words keep their ids, so their recordings and everyone's progress stay. */
+(()=>{const u=COURSE.find(x=>x.id==='u1');const its=['u1a-1:0','u1a-2:3','u1a-2:4','u1b-1:4','u1b-1:3'].map(id=>BYID[id]);if(!u||its.some(i=>!i))return;
+  const l={id:'u1a-0',title:'First words',items:its,unit:u,moved:true};its.forEach(i=>{i.lesson.items=i.lesson.items.filter(x=>x!==i);i.lesson=l;});u.lessons.unshift(l);})();
+/* The Sounds unit (loanwords like pica and žirafa) teaches the letters, then retires: its words don't come back in warm-ups,
+   reviews or games, and it has no unit check. */
+(COURSE.find(u=>u.id==='u0')||{}).retire=true;
 /* One speaking lesson per unit: the unit's phrases (multi-word first), shadowed out loud. */
 COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.filter(i=>i.lt.split(' ').length>1);const words=all.filter(i=>i.lt.split(' ').length===1);
   const pick=phrases.slice(0,6).concat(words.slice(0,Math.max(0,6-phrases.length)));
@@ -851,9 +858,10 @@ COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.fil
 const LESSON_TIPS={
 'u0a-1':'Lithuanian never surprises you: every letter always makes the same sound. Learn the five tricky ones here (<b>c</b>, <b>j</b>, <b>š</b>, <b>ž</b>, <b>č</b>) and you can sound out nearly any word.',
 'u0b-1':'A vowel with a line or a hook (<b>ū</b>, <b>ą</b>, <b>ę</b>, <b>į</b>, <b>ų</b>) is simply held longer. Roll the <b>r</b> by tapping your tongue once behind your top teeth, like a quick "d".',
+'u1a-0':'Your first conversation is already here. <b>Labas! Kaip sekasi?</b> means "Hi! How are you?" and the answer is <b>Gerai, ačiū</b>: "Good, thanks." <b>Prašau</b> is please, and also "you\'re welcome".',
 'u1a-1':'<b>Labas</b> is for friends and people your age; <b>Sveiki</b> is the safe choice with strangers, older people and groups. Notice <b>laba diena</b>, not labas: diena (day) is a feminine word, so "good" changes to match.',
-'u1a-2':'<b>Ačiū</b> sounds just like a sneeze. <b>Prašau</b> does triple duty: please, you\'re welcome, and here you go. <b>Viso gero</b> is the full goodbye; <b>iki</b> is the quick "bye".',
-'u1b-1':'<b>Taip</b> rhymes with "type". <b>Gerai</b> is the most useful word in the language: OK, good, fine, all right. <b>Kaip sekasi?</b> literally asks "how is it going?"',
+'u1a-2':'<b>Labanakt</b> is good night, said when someone goes to bed. <b>Viso gero</b> is the full goodbye; <b>iki</b> is the quick "bye" (word for word it means "until").',
+'u1b-1':'<b>Taip</b> rhymes with "type", and <b>ne</b> is no. <b>Atsiprašau</b> is sorry and excuse me in one: use it to squeeze past someone or to call a waiter.',
 'u1b-2':'Long phrases are easier in chunks: <b>nieko · tokio</b>, <b>iki · pasimatymo</b>. Say <b>sėkmės</b> to someone before an exam, a trip or a game.',
 'u1c-1':'<b>J</b> is always the "y" in "yes", so <b>ji</b> (she) sounds like "yee" and <b>jis</b> (he) like "yis". <b>Aš</b> (I) only gets a capital letter at the start of a sentence.',
 'u1c-2':'<b>Jūs</b> is both "you all" and the polite "you" for a stranger. <b>Jie</b> is a group of men or a mixed group; <b>jos</b> is only women. <b>Mano vardas</b> means "my name".',
@@ -1125,6 +1133,12 @@ const PATTERNS={
 const DRILLS=[
  {u:'u1',en:'Good day!',frame:'___ diena!',ans:'Laba',opts:['Labas','Labą'],why:'Diena is a "her" word, so labas becomes laba.'},
  {u:'u1',en:'Good evening!',frame:'___ vakaras!',ans:'Labas',opts:['Laba','Labą'],why:'Vakaras ends in -as, a "him" word, so labas stays.'},
+ /* "I", "you" and "he" in real sentences, for the Who I am lessons */
+ {u:'u1',en:'I am from America.',l:['u1c-1','u1c-3'],frame:'___ esu iš Amerikos.',ans:'Aš',opts:['Tu','Jis'],why:'Esu goes with aš: aš esu, I am.'},
+ {u:'u1',en:'He is from America.',l:['u1c-1','u1c-3'],frame:'___ yra iš Amerikos.',ans:'Jis',opts:['Aš','Tu'],why:'Yra (is) goes with jis and ji. With aš it would be esu.'},
+ {u:'u1',en:'Are you from America?',l:['u1c-1','u1c-3'],frame:'Ar ___ esi iš Amerikos?',ans:'tu',opts:['aš','jis'],why:'Esi goes with tu: tu esi, you are. Ar at the front makes it a question.'},
+ {u:'u1',en:'My name is Tomas.',l:['u1c-2'],frame:'___ vardas Tomas.',ans:'Mano',opts:['Tavo','Aš'],why:'Mano means "my"; aš is "I".'},
+ {u:'u1',en:'What is your name?',l:['u1c-2'],frame:'Koks ___ vardas?',ans:'tavo',opts:['mano','tu'],why:'Tavo means "your" (to a friend); tu is "you".'},
  {u:'u21',en:'Fine, thanks. And you?',frame:'Gerai, ačiū. O ___?',ans:'tau',opts:['tu','mano'],why:'After "how are you", bounce it back with O tau?'},
  {u:'u8',en:'I speak English.',frame:'Aš ___ angliškai.',ans:'kalbu',opts:['kalbi','kalba'],why:'-u is the ending for "I".'},
  {u:'u8',en:'Do you speak English?',frame:'Ar tu ___ angliškai?',ans:'kalbi',opts:['kalbu','kalba'],why:'-i is the ending for "you".'},

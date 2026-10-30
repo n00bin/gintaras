@@ -142,13 +142,17 @@ function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
    brings the league, sync and reminders). The lesson already done is kept and goes into the account. Offline, you can keep
    going and sign in when you are back online. */
 let gateEl=null;
-function signInGate(){if(!sb||!booted||user||!window.S||!((window.S.lessonsDone||0)>=1)){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
+/* It comes once you've had a real taste: the first conversation written, or ten lessons. "Not now" keeps you going on this
+   device (nothing is lost) until the next lesson you finish. */
+function gateDue(){const S=window.S;if(!S)return false;const conv=Object.values(S.convs||{}).some(c=>c&&(c.done||c.text));
+  return (conv||(S.lessonsDone||0)>=10)&&(S.lessonsDone||0)>(S.gateLater==null?-1:S.gateLater);}
+function signInGate(){if(!sb||!booted||user||!gateDue()){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
   if(gateEl&&document.body.contains(gateEl))return;
   gateEl=document.createElement('div');gateEl.className='gate signin-gate';
-  gateEl.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Save your progress"><div data-a="mascot"></div><div data-a="box"></div><div data-a="off" hidden><p class="note">You are offline. Keep going for now, and sign in when you are back online.</p><button type="button" class="btn ghost" data-a="later">Keep going offline</button></div></div>';
+  gateEl.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Save your progress"><div data-a="mascot"></div><div data-a="box"></div><div data-a="off" hidden><p class="note">You are offline. Keep going for now, and sign in when you are back online.</p></div><button type="button" class="btn ghost" data-a="later">Not now</button><p class="note">Your progress stays on this device until you sign in.</p></div>';
   document.body.appendChild(gateEl);if(window.mascot)gateEl.querySelector('[data-a="mascot"]').innerHTML=window.mascot('cheer');
-  authWidget(gateEl.querySelector('[data-a="box"]'),{title:'Save your progress and keep going',lead:'Nice work on your first lesson! Sign in to keep going: your progress is saved to your account, works on every device, and you join the league. Everything you have done so far comes with you.',onDone:()=>{if(gateEl){gateEl.remove();gateEl=null;}}});
-  const off=gateEl.querySelector('[data-a="off"]');off.hidden=navigator.onLine;gateEl.querySelector('[data-a="later"]').onclick=()=>{gateEl.remove();gateEl=null;};}
+  authWidget(gateEl.querySelector('[data-a="box"]'),{title:'Save your progress and keep going',lead:'Nice work! Sign in to save your progress to your account: it works on every device, and you join the league. Everything you have done so far comes with you.',onDone:()=>{if(gateEl){gateEl.remove();gateEl=null;}}});
+  const off=gateEl.querySelector('[data-a="off"]');off.hidden=navigator.onLine;gateEl.querySelector('[data-a="later"]').onclick=()=>{window.S.gateLater=window.S.lessonsDone||0;if(window.save)window.save();gateEl.remove();gateEl=null;};}
 window.signInGate=()=>signInGate();
 window.addEventListener('online',()=>{if(gateEl){const o=gateEl.querySelector('[data-a="off"]');if(o)o.hidden=true;}else signInGate();});
 
