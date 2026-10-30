@@ -355,6 +355,18 @@
 "cv27:8o0": "Taip, prašau. Man šalta.",
 "cv27:8o1": "Ne, ačiū. Aš noriu kavos."
 },
+"despina_cv28": {
+"cv28:10": "Nereikia, ačiū.",
+"cv28:12": "Man reikia eiti. Iki!",
+"cv28:1o0": "Taip, aš galiu padėti.",
+"cv28:1o1": "Aš negaliu. Aš turiu dirbti.",
+"cv28:1o1-1": "Taip, aš galiu padėti.",
+"cv28:3o0": "Taip, aš moku vairuoti.",
+"cv28:3o1": "Ne, aš nemoku vairuoti.",
+"cv28:5": "Nieko tokio. Aš galiu padėti.",
+"cv28:8o0": "Taip, aš noriu valgyti!",
+"cv28:8o1": "Ne, ačiū. Aš noriu miegoti."
+},
 "despina_cv3": {
 "cv3:1": "Laba diena! Staliuką dviem, prašau.",
 "cv3:10o0": "Taip. Aš alergiškas riešutams.",
@@ -403,16 +415,15 @@
 "cv6:8": "Sutarta! Iki!"
 },
 "despina_cv7": {
-"cv7:1": "Ar turi brolių ar seserų?",
-"cv7:10o0": "Aš mėgstu keliauti ir skaityti.",
-"cv7:10o1": "Aš mėgstu gaminti.",
-"cv7:11": "Puiki idėja!",
-"cv7:3": "Koks jo vardas?",
-"cv7:5o0": "Aš turiu seserį.",
-"cv7:5o1": "Aš turiu brolį.",
-"cv7:5o2": "Ne, neturiu.",
-"cv7:6": "Taip, man labai patinka!",
-"cv7:8": "Taip, man šalta."
+"cv7:1": "Nieko ypatingo. O tu?",
+"cv7:11": "Ačiū! Iki!",
+"cv7:3o0": "Taip, man labai patinka!",
+"cv7:3o1": "Ne, man nepatinka.",
+"cv7:5o0": "Aš mėgstu skaityti.",
+"cv7:5o1": "Aš mėgstu keliauti.",
+"cv7:5o2": "Aš mėgstu gaminti.",
+"cv7:7": "Taip, aš klausausi muzikos.",
+"cv7:9": "Man patinka muzika!"
 },
 "despina_cv8": {
 "cv8:1": "Laba diena! Aš turiu rezervaciją.",
@@ -620,17 +631,17 @@
 "cv6:7": "Puiki idėja! Iki šeštadienio!"
 },
 "kore_cv7": {
-"cv7:0": "Žiūrėk, čia mano šeima.",
-"cv7:10o0-0": "Aš irgi! Gal savaitgalį einame į muziejų?",
-"cv7:10o1-0": "Šaunu! Gal savaitgalį gaminame kartu?",
-"cv7:12": "Sutarta!",
-"cv7:2": "Taip, aš turiu brolį. Čia jis.",
-"cv7:4": "Jo vardas Mantas. O tu? Ar turi brolių ar seserų?",
-"cv7:5o0-0": "Smagu! Ar tau patinka Lietuva?",
-"cv7:5o1-0": "Kaip aš! Ar tau patinka Lietuva?",
-"cv7:5o2-0": "Gaila! Ar tau patinka Lietuva?",
-"cv7:7": "Bet šiandien šalta, ar ne?",
-"cv7:9": "Ką tu mėgsti veikti?"
+"cv7:0": "Pagaliau penktadienis! Ką veiki?",
+"cv7:10": "Gerai, man reikia eiti. Gero savaitgalio!",
+"cv7:2": "Aš? Savaitgalį žaidžiu krepšinį su draugais. Ar tau patinka krepšinis?",
+"cv7:3o0-0": "Puiku! Lietuvoje krepšinis yra antra religija.",
+"cv7:3o1-0": "Kaip gaila! Lietuvoje krepšinis yra antra religija.",
+"cv7:4": "O ką tu mėgsti veikti?",
+"cv7:5o0-0": "Aš irgi! Man patinka knygos.",
+"cv7:5o1-0": "Puiku! Lietuvoje daug gražių vietų.",
+"cv7:5o2-0": "Tada tu gamini vakarienę!",
+"cv7:6": "O muzika? Ar tau patinka muzika?",
+"cv7:8": "Šeštadienį parke koncertas. Bus smagu!"
 },
 "kore_me2": {
 "me2:cv10:7~f": "Ar esi alkana? Turiu cepelinų!",
@@ -955,6 +966,18 @@
 "cv27:8o0": "Taip, prašau. Man šalta.",
 "cv27:8o1": "Ne, ačiū. Aš noriu kavos."
 },
+"orus_cv28": {
+"cv28:10": "Nereikia, ačiū.",
+"cv28:12": "Man reikia eiti. Iki!",
+"cv28:1o0": "Taip, aš galiu padėti.",
+"cv28:1o1": "Aš negaliu. Aš turiu dirbti.",
+"cv28:1o1-1": "Taip, aš galiu padėti.",
+"cv28:3o0": "Taip, aš moku vairuoti.",
+"cv28:3o1": "Ne, aš nemoku vairuoti.",
+"cv28:5": "Nieko tokio. Aš galiu padėti.",
+"cv28:8o0": "Taip, aš noriu valgyti!",
+"cv28:8o1": "Ne, ačiū. Aš noriu miegoti."
+},
 "orus_cv3": {
 "cv3:1": "Laba diena! Staliuką dviem, prašau.",
 "cv3:10o0": "Taip. Aš alergiškas riešutams.",
@@ -1003,16 +1026,15 @@
 "cv6:8": "Sutarta! Iki!"
 },
 "orus_cv7": {
-"cv7:1": "Ar turi brolių ar seserų?",
-"cv7:10o0": "Aš mėgstu keliauti ir skaityti.",
-"cv7:10o1": "Aš mėgstu gaminti.",
-"cv7:11": "Puiki idėja!",
-"cv7:3": "Koks jo vardas?",
-"cv7:5o0": "Aš turiu seserį.",
-"cv7:5o1": "Aš turiu brolį.",
-"cv7:5o2": "Ne, neturiu.",
-"cv7:6": "Taip, man labai patinka!",
-"cv7:8": "Taip, man šalta."
+"cv7:1": "Nieko ypatingo. O tu?",
+"cv7:11": "Ačiū! Iki!",
+"cv7:3o0": "Taip, man labai patinka!",
+"cv7:3o1": "Ne, man nepatinka.",
+"cv7:5o0": "Aš mėgstu skaityti.",
+"cv7:5o1": "Aš mėgstu keliauti.",
+"cv7:5o2": "Aš mėgstu gaminti.",
+"cv7:7": "Taip, aš klausausi muzikos.",
+"cv7:9": "Man patinka muzika!"
 },
 "orus_cv8": {
 "cv8:1": "Laba diena! Aš turiu rezervaciją.",
@@ -1158,6 +1180,21 @@
 "cv25:8": "Gintarė. Ji gyvena Kaune su vyru ir dukra.",
 "cv25:9": "O tu? Ar turi brolių ar seserų?"
 },
+"puck_cv28": {
+"cv28:0": "Labas! Ar gali man padėti šeštadienį?",
+"cv28:11": "Tu geras draugas!",
+"cv28:1o0-0": "Ačiū! Aš keliuosi į naują butą.",
+"cv28:1o1-0": "O sekmadienį?",
+"cv28:1o1-2": "Puiku! Tada sekmadienį.",
+"cv28:2": "Ar moki vairuoti? Aš turiu mašiną, bet esu pavargęs.",
+"cv28:3o0-0": "Super! Tada tu vairuosi.",
+"cv28:3o1-0": "Nieko tokio. Aš vairuosiu.",
+"cv28:4": "Mano sofa labai sunki...",
+"cv28:7": "Uf! Pagaliau. Ar nori valgyti?",
+"cv28:8o0-0": "Aš irgi! Užsakysiu picą.",
+"cv28:8o1-0": "Suprantu! Aš irgi.",
+"cv28:9": "Ačiū už pagalbą! Ar tau reikia pinigų taksi?"
+},
 "puck_cv3": {
 "cv3:19": "Paliekame arbatpinigių?",
 "cv3:4": "O aš norėčiau kavos su pienu."
@@ -1167,7 +1204,8 @@
 "me2:cv10:3~n": "Sveikas! Kaip sekasi?",
 "me2:cv10:3~nf": "Sveika! Kaip sekasi?",
 "me2:cv15:2o1-0~n": "Ačiū!",
-"me2:cv18:9~n": "Labas! Pagaliau!"
+"me2:cv18:9~n": "Labas! Pagaliau!",
+"me2:cv28:11~f": "Tu gera draugė!"
 },
 "schedar_cv19": {
 "cv19:11": "Senamiestis: sena miesto dalis. Ar kalbate angliškai?",
