@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.42** (2026-10-30) Part 5, Getting around: a new conversation Į Kauną after the Transport unit (a bus ticket at the Vilnius bus station with Irena, then a taxi in Kaunas with Mindaugas, each in their own voice)
 - **3.41** (2026-10-30) Part 4, Food and drink: a new lesson At the table (more soup?, I'm full, pass the salt, thanks for everything), a new conversation Sekmadienio pietūs (Sunday lunch at Rūta's parents', with her dad Vytautas in his own voice), and the café conversation rebuilt as Restorane, lunch with Jonas (table for two, water, allergies, paying by card, the tip)
 - **3.40.4** (2026-10-30) Languages listed with their own name again: Lithuanian · Lietuvių, Spanish (Mexico) · Español
 - **3.40.3** (2026-10-30) Languages are listed in English, with the country where there is more than one kind: Lithuanian, Spanish (Mexico)
