@@ -1,6 +1,6 @@
 """Record the conversations with a different Google voice for every person in them, and update the audio map.
 
-Everyone in a conversation has their own voice (CAST_GV in index.html), and your own lines are recorded in both a
+Everyone in a conversation has their own voice (CAST_GV in the language file, lang/lt.js), and your own lines are recorded in both a
 man's and a woman's voice (ME_GV). Each voice gets one file per conversation, audio/<voice>_<conversation>.mp3,
 holding only the lines that voice says (plus audio/<voice>_me2.mp3 for their lines that use your name or country).
 Lessons use the two everyday voices made by make_audio.py.

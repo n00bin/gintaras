@@ -1,5 +1,5 @@
 // Checks the course for structural mistakes before audio is recorded or anything is pushed.
-// Usage: node tools/check_course.js
+// Usage: node tools/check_course.js [language code, default lt]
 // - every original lesson is used exactly once, every PATH entry exists
 // - every lesson has a tip, every unit a speaking tip, every word a "sounds like"
 // - no two items share the same English (answers would be ambiguous)
@@ -7,7 +7,10 @@
 const fs = require('fs');
 const path = require('path');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const js = html.split('<script>')[1].split('/* ===================== STATE')[0];
+const lang = process.argv[2] || 'lt';
+// the course lives in lang/<code>.js; the app version stays in index.html
+const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'utf8');
+const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
 new Function('c', pre + js + ';Object.assign(c,{CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
@@ -53,8 +56,8 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   }
 });
 say('conversation words not taught earlier', unknown);
-{ const v = (js.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
-  say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(js) ? [] : ['APP_RELEASE missing or malformed']);
+{ const v = (head.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
+  say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }
 console.log(problems ? `\n${problems} problem(s)` : '\nAll checks passed.');
 process.exit(problems ? 1 : 0);

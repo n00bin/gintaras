@@ -1,4 +1,4 @@
-"""Record any Lithuanian that has no audio yet, in both voices, and update the audio map in index.html.
+"""Record any Lithuanian that has no audio yet, in both voices, and update the audio map in lang/lt.js.
 
 Each audio file holds one group (a unit like u20, or a conversation like cv3): every clip back to back
 with a short gap, and SMAP stores where each clip starts and how long it is.
@@ -9,7 +9,7 @@ voice each one is. Changing a voice here re-records everything in it. Conversati
 
 Setup once:   python -m venv .venv  &&  .venv/Scripts/pip install imageio-ffmpeg
 Run:          .venv/Scripts/python tools/make_audio.py
-Needs Node (to read the course out of index.html), an internet connection, and the Google key in
+Needs Node (to read the course out of lang/lt.js), an internet connection, and the Google key in
 ~/.claude/secrets/gintaras_tts_key.txt (restricted to Cloud Text-to-Speech). Cost: about $0.03 per 1,000 letters
 beyond Google's free monthly allowance; the whole course is about 30,000 letters.
 """
@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 import imageio_ffmpeg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INDEX = os.path.join(ROOT, 'index.html')
+INDEX = os.path.join(ROOT, 'lang', 'lt.js')  # the language file holding the course and its audio map (SMAP)
 AUDIO = os.path.join(ROOT, 'audio')
 MANIFEST = os.path.join(AUDIO, 'manifest.json')
 VOICES = {'ona': 'Achernar', 'leonas': 'Iapetus'}
