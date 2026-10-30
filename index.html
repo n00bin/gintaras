@@ -961,8 +961,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.48';
-const APP_VERSION=120;
+const APP_RELEASE='3.49';
+const APP_VERSION=121;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1606,7 +1606,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
       tries++;if(score>=0.75)return pass();
       if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}},it.en);};
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
-      if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.due=Date.now()+DAY;spoke(it,false);}else{grade(it,true,true);spoke(it,true);Q.correct++;}
+      if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.ivl=INTERVALS[r.lvl];r.ease=Math.max(1.3,(r.ease||EASE0)-0.15);r.due=Date.now()+DAY;spoke(it,false);}else{grade(it,true,true);if(v==='easy'&&r.easeDay!==today()){r.ease=Math.min(3.5,(r.ease||EASE0)+0.15);r.easeDay=today();}spoke(it,true);Q.correct++;}
       Q.idx++;renderStep();});setTimeout(()=>say(it),200);
     const ns=st.querySelector('#nospeak');if(ns)ns.onclick=()=>{stopHearing();S.noSpeakUntil=Date.now()+3600000;save();
       const n=Q.queue.length;Q.queue=Q.queue.filter((e,k)=>k<=Q.idx||e.type!=='speak');Q.total-=1+n-Q.queue.length;
@@ -1680,9 +1680,16 @@ function micPause(root){const was=!!activeRec;stopHearing();const o=root.querySe
 
 /* A word climbs at most one level per day, and only once it is due: two right answers a minute apart are not two reviews.
    It then comes due at the start of the day its interval lands on, not at the exact hour. */
-function grade(item,ok,count){const r=rec(item.id);r.seen=true;
-  if(ok){r.ok++;if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(INTERVALS[r.lvl]));r.due=d.getTime();}}
-  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}r.lvl=Math.max(0,r.lvl-2);r.due=Date.now();}}
+/* Each word has its own ease (2.5 to start, never below 1.3). After the first day, every review that goes up multiplies the gap
+   by it: about 1, 3, 8, 20, 50 days for an easy word, closer together for one you keep forgetting. Forgetting a word you knew
+   lowers its ease by 0.2, a sloppy answer (typo, missing mark) by 0.15, and rating a spoken word Easy raises it by 0.15.
+   The level (lvl) still counts how many spaced reviews it has passed, which is what crowns and word strength show. */
+const EASE0=2.5;
+function grade(item,ok,count,sloppy){const r=rec(item.id);r.seen=true;const e=r.ease||EASE0;
+  if(ok){r.ok++;if(sloppy&&count){if(r.easeDay!==today()){r.ease=Math.max(1.3,e-0.15);r.easeDay=today();}return;}
+    if(count&&r.up!==today()&&r.due<=Date.now()){const prev=r.ivl||INTERVALS[r.lvl]||0;r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
+      const iv=r.lvl<=1?1:Math.min(180,Math.max(prev+1,Math.round(prev*e)));r.ivl=iv;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(iv));r.due=d.getTime();}}
+  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();r.ease=Math.max(1.3,e-0.2);}r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
 /* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
 function fuzz(d){if(d<3)return d;const s=Math.max(1,Math.round(d*0.1));return d+Math.floor(Math.random()*(2*s+1))-s;}
 /* A word forgotten again and again after you knew it (4 times or more) needs teaching again, not another round of the same question. */
@@ -1752,7 +1759,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const mean=ex.type==='mc_lt_en'||ex.type==='listen';
   const answer=picHtml(it.lt,'xs')+'<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
-  if(ok){sfx('good');grade(it,true,first&&title!=='Nearly');if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  if(ok){sfx('good');grade(it,true,first,title==='Nearly');if(first)Q.correct++;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');grade(it,false,false);Q.wrongOnce[it.id]=true;
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
     else setFoot('bad','Not quite','Correct answer: '+answer+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
