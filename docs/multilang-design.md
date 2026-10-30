@@ -41,6 +41,12 @@ App code never says "Lithuanian" itself; it says `LANG.name`.
 - `check_course.js`, `audio_list.js`, `make_audio.py` and `make_voices.py` take the language and read its pack.
 - The service worker caches both packs.
 
+## Status
+
+- Phase 1 shipped in 3.38 (course in lang/lt.js, language picker).
+- Phase 2 shipped in 3.39 (supabase/languages.sql run 2026-10-30; checks: 9/9 players, 0 mismatches, backups kept).
+- Phase 3 (Spanish Part 1) not started.
+
 ## Phases
 
 1. **Split, plus the picker.** Lithuanian pack extracted, `LANG` object, pack loader, per-language saves with shared settings, tools and service worker updated. The language picker and switcher appear now, with Spanish shown as **Coming soon** (visible, not selectable) until its course exists (owner's call, 2026-10-30). Ship and confirm Lithuanian behaves exactly as before.
