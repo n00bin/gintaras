@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.40.3** (2026-10-30) Languages are listed in English, with the country where there is more than one kind: Lithuanian, Spanish (Mexico)
 - **3.40.2** (2026-10-30) Switching language shows a "Switching to…" screen straight away and no longer waits more than a second and a half for the online save (it finishes the next time that language opens)
 - **3.40.1** (2026-10-30) Spanish is back to Coming soon until it has been checked (open the app once with ?preview=1 to try it on one device, ?preview=0 to stop). The language choice is now a dropdown, on the welcome screen and in Settings
 - **3.40** (2026-10-30) Languages, step 3: Mexican Spanish opens. Part 1 (sounds, hello and basics, small talk, two conversations with Mariana in Mexico City) with Google's Latin American voices, About me in Spanish, Spanish answer help (accents, ñ, him and her endings), its own pronunciation guide and its own league. The app's wording, letter keys, translator and help now follow the language you are learning
