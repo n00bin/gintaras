@@ -5,7 +5,7 @@ const path = require('path');
 const file = process.argv[2] || path.join(__dirname, '..', 'lang', 'lt.js');
 const html = fs.readFileSync(file, 'utf8');
 const content = html;
-const prelude = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}";
+const prelude = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const out = {};
 new Function('out', prelude + content + ';out.ITEMS=ITEMS;out.CONVS=CONVS;out.SMAP=SMAP;out.ME_BANK=ME_BANK;out.PERS=persClips();out.CAST_GV=CAST_GV;out.ME_GV=ME_GV;')(out);
 

@@ -1,7 +1,9 @@
 /* Gintaras language file: Lithuanian. Everything that belongs to this one language lives here: the course,
    conversations, sounds-like guide, audio map, About-me phrases, tips, level titles, and the helpers that know
    Lithuanian grammar. index.html loads exactly one language file before the app code (see LANGUAGES there). */
-const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',letters:'ąčęėįšųūž'};
+const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT',letters:'ąčęėįšųūž',audio:'audio/',
+  hello:'Labas!',praise:['Puiku!','Gerai!','Šaunu!'],top:'Labai šaunu.',decoys:'aeiklmnorstuvėšžč',
+  dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.'};
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */
@@ -1136,6 +1138,8 @@ function patternHtml(p){return '<div class="intro tipcard pattern"><h3>🧩 '+es
 const CAST_GV={'Rūta':'kore','Eglė':'aoede','Aldona':'gacrux','Jurgita':'sulafat','Inga':'leda','Darius':'charon','Jonas':'puck','Petras':'algenib','Laura':'laomedeia','Antanas':'schedar','Birutė':'vindemiatrix'};
 const ME_GV={m:'orus',f:'despina'};
 const VOICE_BASE={kore:'ona',aoede:'ona',gacrux:'ona',sulafat:'ona',leda:'ona',despina:'ona',charon:'leonas',puck:'leonas',algenib:'leonas',orus:'leonas',laomedeia:'ona',schedar:'leonas',vindemiatrix:'ona'};
+const CAST_LOOK={'Rūta':'41.0.0.15.1.2.10.5.2','Jonas':'1.3.0.4.3.3.6.8.3','Eglė':'45.0.0.12.5.1.14.2.4','Petras':'42.8.0.16.7.4.2.11.5',
+  'Aldona':'61.0.11.24.4.5.20.6.6','Darius':'33.1.0.6.9.2.8.9.7','Jurgita':'23.0.3.20.6.1.18.4.8','Inga':'37.0.0.22.2.3.12.7.1'};
 const CONVS=[
 {id:'cv1',title:'Labas, Rūta!',cast:[{name:'Rūta',voice:'ona'},{name:'Darius',voice:'leonas'}],scene:'You are Tomas, on your first morning in Vilnius. The café is busy, and the only free seat is next to a woman with a coffee.',lines:[
  ['p','Labas rytas!','Good morning!'],
@@ -1699,6 +1703,9 @@ function nameForms(n){const f=(stem,v,i)=>({nom:n,voc:stem+v,ins:stem+i});
   if(/ė$/.test(n))return f(n.slice(0,-1),'e','e');
   return {nom:n,voc:n,ins:n};}
 const HAS_NAME=/\bTom(as|ai|u)\b/;
+/* What the app needs to put you into the course (see personalise() in index.html). */
+const PERS={nameLine:n=>'Mano vardas '+n,fromRe:/iš Amerikos/,femDefault:'Toma',baseNames:['tomas','tomai','tomu','toma'],studentLine:'Aš esu studentas.',
+  jobLine:(j,g)=>'Aš esu '+(g==='f'?j[3]:j[2])+'.'};
 /* o: {name, g:'m'|'f', from:country code, au:true for the recording (which leaves the name out)} */
 function persText(t,role,o){
   if(o.name&&o.au)t=t.replace(/,\s*Tomai(?=[.!?])/g,'').replace(/^Tomai,\s*(.)/,(_,c)=>c.toUpperCase()).replace(/\s+su Tomu(?=[.!?])/g,'').replace(/\s+Tomas(?=[.!?]|$)/g,'');
@@ -1871,6 +1878,10 @@ function meBank(){const b=[['name','My name is…','Mano vardas'],['learn',"I'm 
   ME_LIKES.forEach(l=>{b.push(['like-'+l[0],'I like '+l[1],'Aš mėgstu '+l[2]]);gloss(l[2],l[1]);});
   return b.map(([k,en,lt])=>({id:'me1:'+k,lt,en,alt:[],me:true}));}
 const ME_BANK=meBank();const ME_BY={};ME_BANK.forEach(i=>ME_BY[i.id]=i);
+/* Before the About me lessons: what's special about talking about yourself in Lithuanian. */
+const ME_TIP='Every sentence here is about <b>you</b>. '+
+      'You can start with <b>Aš</b> (I) or leave it out: <b>Aš esu iš Anglijos</b> and <b>Esu iš Anglijos</b> are both right, because the ending of the doing word already says who.<br><br>'+
+      'Watch how a place changes its ending: <b>Lietuva</b> becomes <b>iš Lietuvos</b> (from Lithuania) and <b>Lietuvoje</b> (in Lithuania).';
 
 /* Things I can do in real life (each line finishes "I can ..."). Each skill lists the lessons whose words it needs (lesson ids before the
    bite-size split), and the conversation that rehearses it. It is earned once every one of those words is mastered. */
@@ -1901,3 +1912,74 @@ const CANDO=[
  ['opinion','🗣️','give my opinion',['u38a','u38b','u38c'],'cv15'],
  ['chat','🔁','keep a conversation going',['u39a','u39b']],
 ];
+
+/* ===================== ANSWER FEEDBACK ===================== */
+/* Replies that mean the same thing all count: answer "Labas rytas!" with "Labas!" and Rūta is just as happy.
+   Swaps work piece by piece, so "Laba diena! Ne, ačiū." also accepts "Labas! Ne, ačiū." (Not across times of day.) */
+const ALSO={'labas':['Sveiki'],'sveiki':['Labas'],'labas rytas':['Labas','Sveiki'],'laba diena':['Labas','Sveiki'],'labas vakaras':['Labas','Sveiki'],
+  'viso gero':['Iki','Iki pasimatymo'],'iki':['Viso gero','Iki pasimatymo'],'iki pasimatymo':['Viso gero','Iki'],'ačiū':['Labai ačiū'],'labai ačiū':['Ačiū']};
+/* Why a typed word was wrong. Most beginner mistakes in Lithuanian are word endings, so endings get the most help. */
+const MARK_SOUND={'č':'"ch" as in church','š':'"sh" as in shop','ž':'the "s" in measure','ė':'a long "ay"','ū':'a long "oo"','ą':'a long "ah"','ę':'a long "eh"','į':'a long "ee"','ų':'a long "oo"'};
+const WHO_WORDS=['aš','tu','mes','jūs'];
+function marksNote(g,t){const a=[...g],b=[...t];for(let i=0;i<b.length;i++)if(a[i]!==b[i]){const c=b[i],end=i===b.length-1;
+    if(end&&'ąęį'.includes(c))return 'The <b>'+c+'</b> at the end matters: it marks the thing being acted on (what you drink, want, see or buy).';
+    if(end&&c==='ų')return 'The <b>ų</b> at the end matters: it is the "of" form, used after numbers and "no".';
+    if(MARK_SOUND[c])return '<b>'+c+'</b> sounds like '+MARK_SOUND[c]+', so it is a different letter from plain <b>'+esc(strip(c))+'</b>.';
+    if(MARK_SOUND[a[i]])return 'Here it is a plain <b>'+esc(c)+'</b>, not <b>'+a[i]+'</b> ('+MARK_SOUND[a[i]]+').';
+    return '';}return '';}
+function endingWhy(g,t,prev){const sg=strip(g),st=strip(t);const end=t.slice(Math.min(sameStart(sg,st),t.length-1));
+  const head='<b>'+esc(g)+'</b> → <b>'+esc(t)+'</b>. ';
+  if(st.startsWith('ne')&&!sg.startsWith('ne'))return head+'<b>ne</b> glued to the front makes it "not".';
+  if(sg.startsWith('ne')&&!st.startsWith('ne'))return head+'This one isn\'t "not", so it has no <b>ne</b> in front.';
+  const mf=(m,f)=>(m.endsWith('as')&&(f===m.slice(0,-1)||f===m.slice(0,-2)+'e'))||((m.endsWith('is')||m.endsWith('ys'))&&f===m.slice(0,-2)+'e')||(m.endsWith('ius')&&f===m.slice(0,-3)+'e');
+  if(mf(sg,st))return head+'<b>'+esc(g)+'</b> is the form a man uses; here it’s the woman’s form, <b>'+esc(t)+'</b>.';
+  if(mf(st,sg))return head+'<b>'+esc(g)+'</b> is the form a woman uses; here it’s the man’s form, <b>'+esc(t)+'</b>.';
+  const mg=glossOf(g),mt=glossOf(t);
+  if(mg&&mt&&mg!==mt)return head+'<b>'+esc(g)+'</b> means "'+esc(mg)+'", but here you need "'+esc(mt)+'".';
+  const p=norm(prev||'');
+  const who={'aš':['I','u'],'tu':['you','i'],'mes':['we','me'],'jūs':['you (polite)','te']}[p];
+  if(who&&st.endsWith(who[1]))return head+'After <b>'+p+'</b> ('+who[0]+') the doing word ends in <b>-'+who[1]+'</b>.';
+  if(['noriu','norėčiau','nori','norite','prašau'].includes(p)&&/(os|o|ių|ų|ės|ies)$/.test(t))return head+'After <b>'+p+'</b>, food and drink take the "some" ending: <b>noriu kavos</b> means "I want some coffee".';
+  if(p==='su')return head+'After <b>su</b> (with), the word takes its "with" ending.';
+  if(p==='į')return head+'After <b>į</b> (to, into), the word takes its "to" ending: -ą, -ę, -į or -ų.';
+  if(['iš','be','nuo','iki','prie'].includes(p))return head+'After <b>'+p+'</b>, the word takes its "of / from" ending, like <b>iš Lietuvos</b> (from Lithuania).';
+  if(p==='nėra'||(p.startsWith('ne')&&p.length>3&&/(os|o|ių|ų|ės|ies)$/.test(t)))return head+'After a "not" word, the thing takes its "of" ending: <b>Turiu kavą</b> (I have coffee) but <b>Neturiu kavos</b> (I have no coffee).';
+  if(/(oje|yje|uje|ėje)$/.test(t))return head+'This ending means "in / at" a place, like <b>Lietuvoje</b> (in Lithuania).';
+  if(/[ąęį]$/.test(t))return head+'The ending <b>-'+t.slice(-1)+'</b> marks the thing being acted on: what you drink, want, see or buy.';
+  return head+'Same word, different ending. Lithuanian changes the end of a word to show its job in the sentence; here it ends in <b>-'+esc(end)+'</b>.';}
+
+/* ===================== PRONUNCIATION GUIDE ===================== */
+const GUIDE_HTML=`<div class="card">
+      <h2>Reading "sounds like"</h2>
+      <p class="note">Plain English spelling, split into syllables. The bolder syllable is the one you stress. Each spelling below always means the same sound.</p>
+      <div class="sounds">
+        <div><b>ah</b><span>as in f<i>a</i>ther</span></div>
+        <div><b>e, eh</b><span>as in b<i>e</i>t</span></div>
+        <div><b>ay</b><span>as in d<i>ay</i></span></div>
+        <div><b>i</b><span>as in b<i>i</i>t, only before a consonant: <i>min, ish</i></span></div>
+        <div><b>ee</b><span>as in s<i>ee</i>. A Lithuanian i at the end of a syllable is a quick "ee": <i>su see pah</i></span></div>
+        <div><b>oh</b><span>as in g<i>o</i></span></div>
+        <div><b>u</b><span>as in p<i>u</i>t</span></div>
+        <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
+        <div><b>uh</b><span>as in the <i>a</i> of sof<i>a</i>, said quickly. Only in the verb ending -ti: <i>zhin tuh</i></span></div>
+        <div><b>ow</b><span>always as in c<i>ow</i>, never as in "show": <i>prah-SHOW</i> rhymes with "now"</span></div>
+        <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
+        <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu. (The Lithuanian letter y is a different thing: a long "ee".)</span></div>
+        <div><b>yeh</b><span>how we write the Lithuanian <i>ie</i> after a consonant: <i>pienas</i> is PYEH-nahs. On its own after j it is two quick sounds: <i>Jie</i> is yee-EH</span></div>
+        <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
+        <div><b>ts</b><span>as in ca<i>ts</i></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Lithuanian letters</h2>
+      <p class="note">Lithuanian is written the way it sounds. Learn the letters below and you can read almost anything.</p>
+      <div class="sounds">
+        <div><b>ą ę į ų</b><span>long vowels (the hook used to mean a nasal sound; today it only marks length): <i>ačiū, žąsis</i></span></div>
+        <div><b>ė</b><span>a closed "e", like the vowel in "they" without the glide: <i>tėtis, mėsa</i></span></div>
+        <div><b>ū, y</b><span>long "oo" and long "ee": <i>sūris, vynas</i></span></div>
+        <div><b>č š ž</b><span>"ch", "sh", and the "s" in "measure": <i>čia, šuo, žalias</i></span></div>
+        <div><b>c</b><span>always "ts": <i>cukrus</i></span></div>
+        <div><b>j</b><span>like English "y": <i>jūra, ji</i></span></div>
+        <div><b>r</b><span>rolled, as in Spanish: <i>rytas</i></span></div>
+      </div>
+    </div>`;

@@ -8,7 +8,7 @@ app ('ona' = the woman's voice, 'leonas' = the man's) so everyone's saved choice
 voice each one is. Changing a voice here re-records everything in it. Conversations are recorded by make_voices.py.
 
 Setup once:   python -m venv .venv  &&  .venv/Scripts/pip install imageio-ffmpeg
-Run:          .venv/Scripts/python tools/make_audio.py
+Run:          .venv/Scripts/python tools/make_audio.py [language code, default lt]
 Needs Node (to read the course out of lang/lt.js), an internet connection, and the Google key in
 ~/.claude/secrets/gintaras_tts_key.txt (restricted to Cloud Text-to-Speech). Cost: about $0.03 per 1,000 letters
 beyond Google's free monthly allowance; the whole course is about 30,000 letters.
@@ -19,11 +19,15 @@ from concurrent.futures import ThreadPoolExecutor
 import imageio_ffmpeg
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INDEX = os.path.join(ROOT, 'lang', 'lt.js')  # the language file holding the course and its audio map (SMAP)
-AUDIO = os.path.join(ROOT, 'audio')
+# Each language: the Google voice language, and the folder its audio lives in (Lithuanian keeps the original audio/).
+LANGS = {'lt': ('lt-LT', 'audio'), 'es': ('es-US', os.path.join('audio', 'es'))}
+LANG = next((a for a in sys.argv[1:] if a in LANGS), 'lt')
+INDEX = os.path.join(ROOT, 'lang', LANG + '.js')  # the language file holding the course and its audio map (SMAP)
+AUDIO = os.path.join(ROOT, LANGS[LANG][1])
+os.makedirs(AUDIO, exist_ok=True)
 MANIFEST = os.path.join(AUDIO, 'manifest.json')
 VOICES = {'ona': 'Achernar', 'leonas': 'Iapetus'}
-GOOGLE = 'lt-LT-Chirp3-HD-'
+GOOGLE = LANGS[LANG][0] + '-Chirp3-HD-'
 KEY_FILE = os.path.expanduser(os.path.join('~', '.claude', 'secrets', 'gintaras_tts_key.txt'))
 RATE = 24000
 GAP = 0.35
@@ -58,7 +62,7 @@ def google_key():
 
 def synth(key, text, voice, dest):
     """One clip from Google. voice is a Chirp 3 HD name like 'Kore'."""
-    body = {'input': {'text': text}, 'voice': {'languageCode': 'lt-LT', 'name': GOOGLE + voice[:1].upper() + voice[1:]},
+    body = {'input': {'text': text}, 'voice': {'languageCode': LANGS[LANG][0], 'name': GOOGLE + voice[:1].upper() + voice[1:]},
             'audioConfig': {'audioEncoding': 'MP3'}}
     req = urllib.request.Request('https://texttospeech.googleapis.com/v1/text:synthesize?key=' + key,
                                  data=json.dumps(body).encode(), headers={'Content-Type': 'application/json'})

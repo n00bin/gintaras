@@ -6,7 +6,7 @@ holding only the lines that voice says (plus audio/<voice>_me2.mp3 for their lin
 Lessons use the two everyday voices made by make_audio.py.
 
 Needs the Google key in ~/.claude/secrets/gintaras_tts_key.txt (restricted to Cloud Text-to-Speech).
-Run:  .venv/Scripts/python tools/make_voices.py        (only records what changed; costs about $0.03 per 1,000 letters
+Run:  .venv/Scripts/python tools/make_voices.py [language code, default lt]   (only records what changed; costs about $0.03 per 1,000 letters
       beyond Google's free allowance, so a full re-record of every conversation is well under a dollar)
 """
 import json, os, sys, tempfile, wave

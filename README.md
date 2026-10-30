@@ -1,6 +1,6 @@
-# Gintaras — Learn Lithuanian
+# Gintaras — Learn Lithuanian (and Mexican Spanish)
 
-A bite-size Lithuanian course for complete beginners, from first sounds to a real conversation. One HTML file, real Lithuanian audio, plain-English pronunciation, spaced review, streaks, levels, badges, and an optional online leaderboard.
+A bite-size language course for complete beginners, Lithuanian first and now Mexican Spanish, from first sounds to a real conversation. One HTML file, real Lithuanian audio, plain-English pronunciation, spaced review, streaks, levels, badges, and an optional online leaderboard.
 
 Live: https://n00bin.github.io/gintaras/
 
@@ -8,11 +8,12 @@ Live: https://n00bin.github.io/gintaras/
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole app: course content, exercises, review scheduler, progress, UI |
+| `index.html` | The whole app: exercises, review scheduler, progress, UI. It loads exactly one language file before its code |
+| `lang/lt.js`, `lang/es.js` | One file per language: its course, conversations, sounds-like, audio map, About-me sentences, tips, and the grammar help for wrong answers |
 | `cloud.js` | Sign-in, progress sync and leaderboard (Supabase) |
 | `config.js` | The Supabase project URL, publishable key, and the Google sign-in switch |
-| `audio/` | Lithuanian audio, one file per unit or conversation per voice (Ona, Leonas) |
-| `tools/` | The audio recorder (`make_audio.py`) and the script it uses to read the course |
+| `audio/`, `audio/es/` | Lithuanian audio in `audio/`, Spanish in `audio/es/`: one file per unit or conversation per voice (`ona` = the woman's lesson voice, `leonas` = the man's, plus one voice per conversation character) |
+| `tools/` | The course checker (`check_course.js`), the audio recorders (`make_audio.py`, `make_voices.py`) and the script they use to read a language file |
 | `supabase/schema.sql` | The two `gintaras_` tables and their access rules |
 | `manifest.json`, `icon-*.png` | The app's name, colours and icons for installing it |
 | `sw.js` | Service worker: makes it installable and lets it open without signal. Audio is saved the first time it plays, or all at once from **Profile → Use it offline** (about 13 MB: your voice for every unit plus both voices for the conversations) |
@@ -73,39 +74,45 @@ How a lesson works for a total beginner:
 
 ## Editing the course
 
-Everything is in `index.html`:
+Each language lives in its own file in `lang/` (`lt.js` Lithuanian, `es.js` Spanish). The app code in `index.html` never names a language; it reads `LANG` (name, speech code, letters, audio folder, praise words) and the rest from the loaded file. Both files have the same shape:
 
-- `const COURSE = [...]` and `COURSE.push(...)` hold the units, lessons and words. Each word is `['Lithuanian', 'English', 'optional note', ['accepted alternatives']]`.
-- `const PATH = [...]` sets the order of units and conversations and the part headings. `RESHAPE` regroups older lessons into units.
-- `const CONVS = [...]` holds the conversations. Use only words taught earlier on the path.
-- `const PRON = {...}` is the "sounds like" respelling. Hyphens split syllables, CAPS marks the stressed one. Key: ah, e/eh, ay, i, ee, oh, u, oo, ow, ai (the "eye" sound), and y is always the y in "yes".
+- `COURSE` holds the units, lessons and words. Each word is `['word', 'English', 'optional note', ['accepted alternatives']]`.
+- `PATH` sets the order of units and conversations and the part headings. `RESHAPE` (Lithuanian) regroups older lessons into units.
+- `CONVS` holds the conversations, with `CAST_GV` (each person's Google voice) and `CAST_LOOK` (their face). Use only words taught earlier on the path.
+- `PRON` is the "sounds like" respelling. Hyphens split syllables, CAPS marks the stressed one. Lithuanian is written by hand; Spanish is worked out from the spelling by `autoPron` (Spanish spelling and stress are regular), with `PRON` only for exceptions.
 - `EMOJI` gives every word and phrase a picture; `HOOK` adds memory tricks. Pictures are Twemoji illustrations stored in `pics/` (same on every phone, offline), named by the emoji's code points. A value starting with `#` is a text tile instead (numbers past ten, days, months). After adding new pictures, download any missing files from `https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/`.
+- `LESSON_TIPS`, `SPEAK_TIPS`, `PATTERNS` and `DRILLS` hold the tips, pattern cards and fill-the-gap drills.
+- `ME_*`, `meBank` and `PERS` hold the About-me sentences and how your name, country and gender go into the course. `ALSO`, `marksNote` and `endingWhy` explain wrong answers; `GUIDE_HTML` is the pronunciation guide.
 
 Pictures: [Twemoji](https://github.com/jdecked/twemoji) by Twitter, Inc. and contributors, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (credited in the app under Settings → About).
-- `LESSON_TIPS`, `SPEAK_TIPS`, `PATTERNS` and `DRILLS` hold the tips, pattern cards and fill-the-gap drills.
 
-Before recording audio or pushing, run `node tools/check_course.js`. It checks that every lesson has a tip, every word a "sounds like", no two answers clash, and every word you must write in a conversation was taught earlier.
+Before recording audio or pushing, run `node tools/check_course.js` (Lithuanian) and `node tools/check_course.js es` (Spanish). It checks that every lesson has a tip, every word a "sounds like" and a picture, no two answers clash, and every word you must write in a conversation was taught earlier.
 
-**Lesson ids never change.** Saved progress and audio clips are keyed to them, so add new lessons with new ids instead of renaming or reordering words inside an existing lesson.
+**Lesson ids never change.** Saved progress and audio clips are keyed to them, so add new lessons with new ids instead of renaming or reordering words inside an existing lesson. Each language keeps its own progress, so Spanish can reuse ids like `u1` or `cv1`.
+
+### Adding a language
+
+Copy `lang/es.js` to `lang/<code>.js` and replace its content, add the language to `LANGS` in `index.html` (with `ready:false` it shows as Coming soon), add its Google voice language and audio folder to `LANGS` in `tools/make_audio.py`, record its audio, and add a row for it in `gintaras_meta` (see `supabase/languages_es.sql`) so it gets its own league.
 
 ### Recording audio for new words
 
-Audio is made with Microsoft's neural voices through `edge-tts` (Ona and Leonas). One-time setup:
+Audio is Google's natural voices (Chirp 3 HD). One-time setup:
 
 ```
 python -m venv .venv
-.venv/Scripts/pip install edge-tts imageio-ffmpeg
+.venv/Scripts/pip install imageio-ffmpeg
 ```
 
-Then, after adding or changing any Lithuanian text:
+The Google key (restricted to Cloud Text-to-Speech) goes in `~/.claude/secrets/gintaras_tts_key.txt`. Then, after adding or changing any text:
 
 ```
-.venv/Scripts/python tools/make_audio.py
+.venv/Scripts/python tools/make_audio.py es      (lessons and About me, both lesson voices)
+.venv/Scripts/python tools/make_voices.py es     (each conversation person in their own voice)
 ```
 
-It records only what is new or changed (both voices), packs each unit or conversation into one file under `audio/`, and updates `SMAP` in `index.html`. It needs Node and an internet connection.
+Leave out `es` for Lithuanian. They record only what is new or changed, pack each unit or conversation into one file, and update `SMAP` in the language file. They need Node and an internet connection.
 
-The pronunciation respellings and stress marks were written by hand and have not been checked by a native speaker yet.
+The Lithuanian respellings were written by hand and have not been checked by a native speaker yet. The Spanish course is waiting for a check by native Mexican speakers.
 
 ## Local preview
 

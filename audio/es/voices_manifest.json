@@ -1,0 +1,102 @@
+{
+"charon_cv1": {
+"cv1:13": "¡Buenos días! ¿Un café?",
+"cv1:15": "¿Un chocolate caliente?"
+},
+"despina_cv1": {
+"cv1:1": "¡Buenos días!",
+"cv1:11": "Soy de Estados Unidos.",
+"cv1:14": "¡Buenos días! No, gracias.",
+"cv1:16": "Sí, por favor.",
+"cv1:19": "¡No pasa nada!",
+"cv1:21": "Está bien. ¡Hasta luego!",
+"cv1:23": "¡Adiós!",
+"cv1:3": "¡Gracias!",
+"cv1:5": "Me llamo Tomás.",
+"cv1:7": "¡Mucho gusto!",
+"cv1:9o0": "¡Muy bien!",
+"cv1:9o1": "Muy bien, gracias. ¿Cómo estás?"
+},
+"despina_cv16": {
+"cv16:11": "¿Qué significa esta palabra?",
+"cv16:13": "¡Ya entendí! Sí, está bien.",
+"cv16:15": "¿Cómo se dice en español?",
+"cv16:17": "Otra vez, por favor.",
+"cv16:19": "¡Gracias! Ya entendí.",
+"cv16:1o0": "Todo bien. ¿Y tú?",
+"cv16:1o1": "Bien, gracias. ¿Y tú?",
+"cv16:1o2": "Más o menos. ¿Y tú?",
+"cv16:21": "¡Gracias! Estoy aprendiendo.",
+"cv16:23": "¡Yo también!",
+"cv16:25": "¡Igualmente! ¡Nos vemos!",
+"cv16:3": "Nada especial. Estoy aprendiendo.",
+"cv16:5": "Hablo un poco de español.",
+"cv16:7": "¿Mande? No entiendo.",
+"cv16:9": "Más despacio, por favor."
+},
+"kore_cv1": {
+"cv1:0": "¡Buenos días!",
+"cv1:10": "¿De dónde eres?",
+"cv1:18": "¡Perdón! Mi teléfono...",
+"cv1:2": "Siéntate, por favor.",
+"cv1:20": "Ay, me tengo que ir. Voy al museo.",
+"cv1:22": "¡Gracias! ¡Adiós, Tomás!",
+"cv1:4": "Soy Mariana. ¿Cómo te llamas?",
+"cv1:6": "¡Mucho gusto, Tomás!",
+"cv1:8": "¿Cómo estás?",
+"cv1:9o0-0": "¡Qué bueno!",
+"cv1:9o1-0": "¡Muy bien también!"
+},
+"kore_cv16": {
+"cv16:0": "¡Hola, Tomás! ¿Qué onda?",
+"cv16:10": "¿Vamos... a caminar?",
+"cv16:12": "Caminar... ¡así!",
+"cv16:16": "Árbol.",
+"cv16:18": "Ár-bol. Árbol.",
+"cv16:1o0-0": "¡Todo bien también!",
+"cv16:1o1-0": "¡Muy bien!",
+"cv16:1o2-0": "Bien. ¡Mañana va a estar mejor!",
+"cv16:2": "¿Qué haces?",
+"cv16:20": "¡Muy bien! Aprendes rápido.",
+"cv16:22": "Hoy estoy muy contenta.",
+"cv16:24": "Bueno, ya me voy. ¡Que tengas un buen día!",
+"cv16:4": "¡Qué padre! ¿Hablas español?",
+"cv16:6": "¡Hoy hace un día padrísimo! ¿Vamos a caminar por el parque y luego nos tomamos un café?",
+"cv16:8": "¡No pasa nada!"
+},
+"kore_me2": {
+"me2:cv16:0~n": "¡Hola! ¿Qué onda?",
+"me2:cv1:22~n": "¡Gracias! ¡Adiós!"
+},
+"orus_cv1": {
+"cv1:1": "¡Buenos días!",
+"cv1:11": "Soy de Estados Unidos.",
+"cv1:14": "¡Buenos días! No, gracias.",
+"cv1:16": "Sí, por favor.",
+"cv1:19": "¡No pasa nada!",
+"cv1:21": "Está bien. ¡Hasta luego!",
+"cv1:23": "¡Adiós!",
+"cv1:3": "¡Gracias!",
+"cv1:5": "Me llamo Tomás.",
+"cv1:7": "¡Mucho gusto!",
+"cv1:9o0": "¡Muy bien!",
+"cv1:9o1": "Muy bien, gracias. ¿Cómo estás?"
+},
+"orus_cv16": {
+"cv16:11": "¿Qué significa esta palabra?",
+"cv16:13": "¡Ya entendí! Sí, está bien.",
+"cv16:15": "¿Cómo se dice en español?",
+"cv16:17": "Otra vez, por favor.",
+"cv16:19": "¡Gracias! Ya entendí.",
+"cv16:1o0": "Todo bien. ¿Y tú?",
+"cv16:1o1": "Bien, gracias. ¿Y tú?",
+"cv16:1o2": "Más o menos. ¿Y tú?",
+"cv16:21": "¡Gracias! Estoy aprendiendo.",
+"cv16:23": "¡Yo también!",
+"cv16:25": "¡Igualmente! ¡Nos vemos!",
+"cv16:3": "Nada especial. Estoy aprendiendo.",
+"cv16:5": "Hablo un poco de español.",
+"cv16:7": "¿Mande? No entiendo.",
+"cv16:9": "Más despacio, por favor."
+}
+}

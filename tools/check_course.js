@@ -11,9 +11,9 @@ const lang = process.argv[2] || 'lt';
 // the course lives in lang/<code>.js; the app version stays in index.html
 const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'utf8');
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
-const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"']/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
+const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
+new Function('c', pre + js + ';Object.assign(c,{LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -26,7 +26,8 @@ say('units without a speaking tip', [...units].filter(id => !c.SPEAK_TIPS[id]));
 // A phrase is covered if it has its own respelling, or every word in it has one (the app pieces them together).
 const ci = {}; Object.keys(c.PRON).forEach(k => { ci[k.toLowerCase().replace(/[.,!?]+$/, '')] = 1; });
 Object.keys(c.PRON).forEach(k => { const ws = k.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/), ps = c.PRON[k].split(' '); if (ws.length > 1 && ws.length === ps.length) ws.forEach(w => { ci[w] = 1; }); });
-const covered = t => ci[t.toLowerCase().replace(/[.,!?]+$/, '')] || t.split(/(?<=[.!?])\s+/).every(sen => ci[sen.toLowerCase().replace(/[.,!?]+$/, '').trim()] || sen.split(/,\s*/).every(part => ci[part.toLowerCase().replace(/[.,!?]+$/, '').trim()] || part.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(Boolean).every(w => ci[w])));
+// Spanish spelling is regular, so its "sounds like" is worked out from the spelling: every word just needs a stressed syllable.
+const covered = t => c.LANG.code !== 'lt' ? /[A-Z]/.test(c.pronFor(t)) && !/undefined/.test(c.pronFor(t)) : ci[t.toLowerCase().replace(/[.,!?]+$/, '')] || t.split(/(?<=[.!?])\s+/).every(sen => ci[sen.toLowerCase().replace(/[.,!?]+$/, '').trim()] || sen.split(/,\s*/).every(part => ci[part.toLowerCase().replace(/[.,!?]+$/, '').trim()] || part.toLowerCase().replace(/[.,!?]/g, '').split(/\s+/).filter(Boolean).every(w => ci[w])));
 say('words without a "sounds like"', c.ITEMS.filter(i => !covered(i.lt)).map(i => i.lt));
 say('conversation lines without a "sounds like"', c.CONVS.flatMap(v => v.all.filter(l => l.lt && !covered(l.lt)).map(l => v.id + ': ' + l.lt)));
 say('About-you sentences without a "sounds like"', c.ME_BANK.filter(i => !covered(i.lt)).map(i => i.lt));
@@ -43,8 +44,8 @@ say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt]).map(i => i.lt
 say('drills pointing at a missing unit', c.DRILLS.filter(d => !units.has(d.u)).map(d => d.u + ': ' + d.frame));
 
 // Walk the path, collecting known word forms; every me-line word must already be known.
-const tok = s => s.toLowerCase().replace(/[.,!?;:"'()]/g, ' ').split(/\s+/).filter(w => w && !/\d/.test(w));
-const known = new Set(['tomas', 'tomai', 'rūta', 'jonas']);
+const tok = s => s.toLowerCase().replace(/[.,!?;:"'()¿¡]/g, ' ').split(/\s+/).filter(w => w && !/\d/.test(w));
+const known = new Set(['tomas', 'tomai', 'rūta', 'jonas', 'tomás'].concat(Object.keys(c.CAST_GV).map(n => n.toLowerCase())));
 const unknown = [];
 c.PATH.filter(p => typeof p === 'string').forEach(id => {
   if (c.CONV_BY[id]) {
