@@ -625,6 +625,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .me-pop label,.me-quick label,.me-field{display:grid;gap:6px;font-weight:700}
 .me-field>span{font-weight:700}
 .lang-select{font:inherit;font-size:16px;font-weight:600;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);min-width:0;width:12.5em;max-width:58vw;flex:0 0 auto}
+.lang-switching{position:fixed;inset:0;z-index:9999;background:var(--bg);display:grid;place-items:center;text-align:center;font-weight:700;font-size:18px}.lang-switching .mascot{width:96px;height:96px;margin:0 auto 8px}
 .lang-welcome{display:block;margin:18px 0 6px}.lang-welcome .lang-select{display:block;width:100%;max-width:none;margin-top:8px;padding:12px 14px}
 .me-pop input,.me-pop select,.me-quick input,.me-quick select{width:100%;min-width:0;font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
 .me-quick{display:grid;gap:12px;margin:0}
@@ -956,8 +957,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.40.1';
-const APP_VERSION=109;
+const APP_RELEASE='3.40.2';
+const APP_VERSION=110;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2415,7 +2416,11 @@ $('#btn-weak').onclick=()=>startReview(true);
 /* Choosing the language to learn. Each language keeps its own progress; the page reloads into the one picked.
    A language that isn't ready shows as Coming soon and can't be picked yet. */
 function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(l))return;try{localStorage.setItem('gintaras.lang',code);}catch(e){}
-  if(code!==LANG_CODE){save();Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}).then(()=>location.reload());}}
+  if(code===LANG_CODE)return;save();
+  /* Show it's happening straight away. The waiting online save gets a second and a half; anything it doesn't finish
+     is still on this device and goes up the next time this language opens. */
+  document.body.insertAdjacentHTML('beforeend','<div class="lang-switching" role="status"><div>'+mascot('think')+'<p>Switching to '+esc(l.en)+'…</p></div></div>');
+  Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>location.reload());}
 function renderLangPick(){
   const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.en+' · '+l.own)+(l.ready?'':LANG_PREVIEW?' (preview)':' (coming soon)')+'</option>').join('');
   ['#lang-select','#lang-select-w'].forEach(id=>{const s=$(id);if(s){s.innerHTML=opts;s.onchange=()=>pickLang(s.value);}});
