@@ -969,8 +969,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.50';
-const APP_VERSION=122;
+const APP_RELEASE='3.51';
+const APP_VERSION=123;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1641,7 +1641,7 @@ function renderStep(){if(!Q)return;stopHearing();progressUI();const st=$('#stage
       tries++;if(score>=0.75)return pass();
       if(tries>=3){const d=st.querySelector('#selfrate');if(d)d.open=true;}},it.en);};
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;stopHearing();const r=rec(it.id);r.seen=true;const v=b.dataset.rate;
-      if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.ivl=INTERVALS[r.lvl];r.ease=Math.max(1.3,(r.ease||EASE0)-0.15);r.due=Date.now()+DAY;spoke(it,false);}else{grade(it,true,true);if(v==='easy'&&r.easeDay!==today()){r.ease=Math.min(3.5,(r.ease||EASE0)+0.15);r.easeDay=today();}spoke(it,true);Q.correct++;}
+      if(v==='hard'){r.lvl=Math.max(0,r.lvl-1);r.ivl=INTERVALS[r.lvl];if(r.fs||r.lvl>0)fsReview(r,2);r.due=Date.now()+DAY;spoke(it,false);}else{grade(it,true,true,false,v==='easy');spoke(it,true);Q.correct++;}
       Q.idx++;renderStep();});setTimeout(()=>say(it),200);
     const ns=st.querySelector('#nospeak');if(ns)ns.onclick=()=>{stopHearing();S.noSpeakUntil=Date.now()+3600000;save();
       const n=Q.queue.length;Q.queue=Q.queue.filter((e,k)=>k<=Q.idx||e.type!=='speak');Q.total-=1+n-Q.queue.length;
@@ -1715,22 +1715,42 @@ function micPause(root){const was=!!activeRec;stopHearing();const o=root.querySe
 
 /* A word climbs at most one level per day, and only once it is due: two right answers a minute apart are not two reviews.
    It then comes due at the start of the day its interval lands on, not at the exact hour. */
-/* Each word has its own ease (2.5 to start, never below 1.3). After the first day, every review that goes up multiplies the gap
-   by it: about 1, 3, 8, 20, 50 days for an easy word, closer together for one you keep forgetting. Forgetting a word you knew
-   lowers its ease by 0.2, a sloppy answer (typo, missing mark) by 0.15, and rating a spoken word Easy raises it by 0.15.
-   The level (lvl) still counts how many spaced reviews it has passed, which is what crowns and word strength show. */
-const EASE0=2.5;
+/* ===================== FSRS SCHEDULER ===================== */
+/* FSRS-4.5 (Free Spaced Repetition Scheduler, open-spaced-repetition). Every word keeps two numbers in r.fs:
+   s = stability, how many days until the chance of remembering it falls to 90%; d = difficulty, 1 (easy) to 10 (hard),
+   plus the time of its last scheduled review. Each review updates them from the grade (1 wrong, 2 right but sloppy or Hard,
+   3 right, 4 rated Easy) and from how likely you were to remember at that moment, and the next review is set for the day
+   the chance falls to the target (90%). These are the published default weights; once there are enough answers in the review
+   log they can be fitted to this learner. The level (lvl) still counts passed spaced reviews: crowns and word strength use it. */
+const FW=[0.4872,1.4003,3.7145,13.8206,5.1618,1.2298,0.8975,0.031,1.6474,0.1367,1.0461,2.1072,0.0793,0.3246,1.587,0.2272,2.8755];
+const F_DECAY=-0.5,F_FACTOR=19/81,F_RETAIN=0.9,EASE0=2.5;
+const fsR=(t,s)=>Math.pow(1+F_FACTOR*t/s,F_DECAY);
+const fsIvl=s=>Math.max(1,Math.min(3650,Math.round(s/F_FACTOR*(Math.pow(F_RETAIN,1/F_DECAY)-1))));
+const fsD0=g=>Math.min(10,Math.max(1,FW[4]-(g-3)*FW[5]));
+/* Words learned before FSRS start from what we knew: their current gap as stability, their ease as difficulty. */
+function fsInit(r){if(r.fs)return r.fs;const e=r.ease||EASE0;
+  return r.fs={s:Math.max(1,r.ivl||INTERVALS[r.lvl]||1),d:Math.min(10,Math.max(1,5+(EASE0-e)*4)),t:r.due?r.due-DAY*Math.max(1,r.ivl||INTERVALS[r.lvl]||1):Date.now()};}
+/* One scheduled review: updates stability and difficulty (at most once a day per word) and returns the gap in days. */
+function fsReview(r,g){const now=Date.now();const fresh=!r.fs&&!(r.lvl>0);let f;
+  if(fresh){f=r.fs={s:FW[g-1],d:fsD0(g),t:now,day:today()};return fsIvl(f.s);}
+  f=fsInit(r);if(f.day===today())return fsIvl(f.s);
+  const el=Math.max(0,(now-f.t)/DAY),R=fsR(el,f.s);
+  const d=Math.min(10,Math.max(1,FW[7]*fsD0(3)+(1-FW[7])*(f.d-FW[6]*(g-3))));
+  const s=g===1?Math.min(f.s,FW[11]*Math.pow(f.d,-FW[12])*(Math.pow(f.s+1,FW[13])-1)*Math.exp(FW[14]*(1-R)))
+    :f.s*(1+Math.exp(FW[8])*(11-f.d)*Math.pow(f.s,-FW[9])*(Math.exp(FW[10]*(1-R))-1)*(g===2?FW[15]:1)*(g===4?FW[16]:1));
+  f.s=Math.max(0.1,s);f.d=d;f.t=now;f.day=today();return fsIvl(f.s);}
 /* Every answer is logged (word, time, grade 1 wrong / 2 right but sloppy / 3 right, days overdue, level) so a smarter scheduler
    can later be fitted to how this learner forgets. Kept on this device per language, newest 20,000 answers. */
 const LOGKEY='gintaras.log.'+LANG_CODE;let RLOG=null,rlogT=null;
 function logReview(id,g,r){try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}
   RLOG.push([id,Math.floor(Date.now()/1000),g,r.due?Math.round((Date.now()-r.due)/DAY):null,r.lvl]);if(RLOG.length>20000)RLOG.splice(0,RLOG.length-20000);
   clearTimeout(rlogT);rlogT=setTimeout(()=>{try{localStorage.setItem(LOGKEY,JSON.stringify(RLOG));}catch(e){}},1500);}
-function grade(item,ok,count,sloppy){const r=rec(item.id);r.seen=true;const e=r.ease||EASE0;if(count||!ok)logReview(item.id,!ok?1:sloppy?2:3,r);
-  if(ok){r.ok++;if(sloppy&&count){if(r.easeDay!==today()){r.ease=Math.max(1.3,e-0.15);r.easeDay=today();}return;}
-    if(count&&r.up!==today()&&r.due<=Date.now()){const prev=r.ivl||INTERVALS[r.lvl]||0;r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
-      const iv=r.lvl<=1?1:Math.min(180,Math.max(prev+1,Math.round(prev*e)));r.ivl=iv;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(iv));r.due=d.getTime();}}
-  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();r.ease=Math.max(1.3,e-0.2);}r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
+function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);
+  if(ok){r.ok++;if(sloppy&&count){fsReview(r,2);return;}
+    if(count&&r.up!==today()&&r.due<=Date.now()){r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
+      /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
+      const iv=fsReview(r,g),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}}
+  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
 /* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
 function fuzz(d){if(d<3)return d;const s=Math.max(1,Math.round(d*0.1));return d+Math.floor(Math.random()*(2*s+1))-s;}
 /* A word forgotten again and again after you knew it (4 times or more) needs teaching again, not another round of the same question. */
