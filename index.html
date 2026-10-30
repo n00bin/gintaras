@@ -984,8 +984,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.37';
-const APP_VERSION=102;
+const APP_RELEASE='3.37.1';
+const APP_VERSION=103;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 /* ===================== COURSE CONTENT ===================== */
@@ -3040,7 +3040,7 @@ const BADGES=[
  ['talk','Talker','Finish a spoken conversation',()=>Object.values(S.convs||{}).some(c=>c.speak)],
  ['convall','Conversationalist','Finish all fifteen conversations',()=>CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>u.lessons.every(l=>crowns(l.id)>=1))],
- ['master','Mastered','Bring one lesson to level 5',()=>Object.values(S.lessons).some(c=>c>=5)],
+ ['master','Mastered','Bring one lesson to 5 crowns',()=>Object.keys(S.lessons).some(id=>crowns(id)>=5)],
  ['xp1000','1000 XP','Earn 1000 XP in total',()=>S.xp>=1000],
  ['tourist','Ready to travel','Finish Part 5, Getting around',()=>STEPS.slice(0,STEPS.indexOf('cv12')+1).every(stepDone)],
 ];
@@ -3079,7 +3079,16 @@ function renderCando(){const box=$('#can-card');if(!box)return;S.cando=S.cando||
 function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,bad:0});}
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
 function dueItems(){const n=Date.now();return learned().filter(i=>rec(i.id).due<=n).sort((a,b)=>rec(a.id).due-rec(b.id).due);}
-function crowns(lid){return (S.lessons[lid]||0);}
+/* Crowns show how well a lesson's words have stuck, not how many times it was played. 1 = finished. 2 to 5 = every
+   word in it has reached that word level, and a word only goes up at a review on a later day (about 1, 3, 7 and 14
+   days apart), so a crown can't be farmed by replaying. A missed word drops a level, and the crown with it.
+   S.lessons[id] still counts finishes; only "finished at all" matters here. */
+const LESSON_BY={};COURSE.forEach(u=>u.lessons.forEach(l=>LESSON_BY[l.id]=l));
+function crowns(lid){if(!((S.lessons||{})[lid]>0))return 0;const l=LESSON_BY[lid];if(!l||!l.items.length)return 1;
+  return Math.max(1,Math.min(5,Math.min(...l.items.map(wlvl))));}
+/* Words in a lesson still below its next crown. */
+function crownGap(l){const c=crowns(l.id);return c>=5?0:l.items.filter(i=>wlvl(i)<Math.max(2,c+1)).length;}
+function crownSnap(){const o={};Object.keys(S.lessons||{}).forEach(id=>{if(LESSON_BY[id])o[id]=crowns(id);});return o;}
 /* The path is one line of steps (units and conversations); each opens when the one before it is done.
    A step you have already started stays open, so reordering the course never locks anyone out. */
 const STEPS=PATH.filter(p=>typeof p==='string'&&(CONV_BY[p]||COURSE.some(u=>u.id===p)));
@@ -3207,7 +3216,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   const ls=el.querySelector('.lessons');
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
     const seen=l.items.filter(i=>rec(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
-    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>1?' · level '+c:c===1?' · done':'')+'</small></span><span class="crowns" aria-label="Level '+c+' of 5">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
+    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
     b.onclick=()=>startLesson(l);ls.appendChild(b);});
   const tipBtn=el.querySelector('[data-tip]');
   if(tipBtn)tipBtn.onclick=e=>{e.stopPropagation();const tip=el.querySelector('.tip');tip.hidden=!tip.hidden;e.currentTarget.setAttribute('aria-expanded',String(!tip.hidden));};
@@ -3386,7 +3395,7 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
   else{shuffle(items).forEach(it=>rest.push(exFor(it,typesFor(it))));
     if(items.length>=4)rest.push({type:'match',items:sample(items,Math.min(5,items.length))});}
   const queue=head.concat(shuffle(rest));
-  Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode,lesson,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length};
+  Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode,lesson,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap()};
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));
   openSheet();renderStep();}
 const STEPLESS={intro:1,tip:1,metip:1};
@@ -3630,7 +3639,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
 
 function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.round(Q.correct/Q.total*100):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total;
-  let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,crowns(Q.lesson.id)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
+  let xp;if(Q.mode==='lesson'){xp=10+Q.correct;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak)S.speakDone=(S.speakDone||0)+1;}else xp=5+Q.correct;
   let bonus=0;if(perfect){bonus=5;S.perfects=(S.perfects||0)+1;}
   amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
@@ -3641,6 +3650,10 @@ function finish(){const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc
   if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
   if(S.newFreeze){lines.push('<div class="win"><b>Spare rest day earned</b> · you doubled your goal today.</div>');S.newFreeze=false;}
   const known=learned().length,gained=known-(Q.knownBefore||known);if(gained>0)lines.unshift('<div class="win"><b>+'+gained+' new word'+(gained===1?'':'s')+'</b> · you now know '+known+'</div>');
+  if(Q.crownsBefore){const was=Q.crownsBefore,up=Object.entries(crownSnap()).filter(([id,c])=>c>1&&c>(was[id]||0));
+    up.slice(0,3).forEach(([id,c])=>lines.push('<div class="win"><b>'+(c>=5?'Lesson mastered':'Crown '+c+' of 5')+'</b> · '+esc(LESSON_BY[id].title)+': every word remembered on a later day</div>'));}
+  if(Q.mode==='lesson'&&!Q.lesson.speak){const c=crowns(Q.lesson.id),g=crownGap(Q.lesson);
+    if(c<5&&g)lines.push('<div class="win"><b>Next crown</b> · when '+(g===Q.lesson.items.length?'all '+g+' words are':g===1?'1 more word is':g+' more words are')+' remembered at a review on a later day</div>');}
   if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
@@ -4262,7 +4275,7 @@ function cleanName(s){return s.replace(/[^\p{L}\s'-]/gu,'').trim().replace(/\s+/
 function startMe(){const items=meItems();if(!items.length)return openMeForm();const queue=[{type:'metip'}];
   items.forEach(it=>{if(!rec(it.id).seen)queue.push({type:'intro',item:it});queue.push(exFor(it,rec(it.id).lvl>=1?['type','build']:['build']));});
   items.forEach(it=>queue.push({type:'speak',item:it}));
-  Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode:'me',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length};
+  Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode:'me',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap()};
   preloadUnit('me1');openSheet();renderStep();}
 function openMeForm(){const m=S.me||{};const g=m.g||'';
   const opt=(list,val,label)=>'<option value="">Skip this one</option>'+list.map(o=>'<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+esc(label(o))+'</option>').join('');
