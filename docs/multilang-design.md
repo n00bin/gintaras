@@ -45,7 +45,7 @@ App code never says "Lithuanian" itself; it says `LANG.name`.
 
 - Phase 1 shipped in 3.38 (course in lang/lt.js, language picker).
 - Phase 2 shipped in 3.39 (supabase/languages.sql run 2026-10-30; checks: 9/9 players, 0 mismatches, backups kept).
-- Phase 3 (Spanish Part 1) not started.
+- Phase 3 shipped in 3.40 (Spanish Part 1 in lang/es.js, Spanish league row via supabase/languages_es.sql). Waiting for the family's check of the Spanish.
 
 ## Phases
 
