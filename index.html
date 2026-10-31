@@ -1013,8 +1013,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.73';
-const APP_VERSION=145;
+const APP_RELEASE='3.74';
+const APP_VERSION=146;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2251,10 +2251,12 @@ function finish(){dropPlace();if(Q.mode==='review')S.reviewDay=today();const sec
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
      already know earns a little, so the league can't be climbed by repeating an easy lesson. */
   const ups=Q.ups||0,replay=Q.mode==='lesson'&&(S.lessons[Q.lesson.id]||0)>=1;
-  /* typed or said answers (recall) count double, tapped ones once, self-ratings half */
-  const rc=Q.recall||0,pts=Math.max(0,Q.correct+rc-Math.ceil((Q.selfRated||0)/2));
-  let xp;if(Q.mode==='check')xp=5+3*Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=5+Math.max(0,2*Q.correct-Math.ceil((Q.selfRated||0)/2))+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:5+pts;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=2+ups+2*rc;
-  let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=5;S.perfects=(S.perfects||0)+1;}
+  /* XP follows the work, not the number of lessons: 1 for each right answer you picked, tapped or rated yourself on, 2 for each
+     one you typed or said, a small +2 for finishing, and a word moving up a level +1. A flawless run adds a quarter on top.
+     (The flat 5 for finishing and 5 for flawless made a 23-second lesson worth more than a 3-minute one.) */
+  const rc=Q.recall||0,work=Q.correct+rc;
+  let xp;if(Q.mode==='check')xp=2+work+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:2+work+ups;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=1+ups+rc; /* extra practice (nothing due): what you typed or said, and words moving up */
+  let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=Math.max(1,Math.round(xp/4));S.perfects=(S.perfects||0)+1;}
   amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
@@ -2644,10 +2646,10 @@ function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
 function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>0&&C.right>=C.graded;
   /* "Chat anyway" is extra practice: full XP and amber once a day, a little XP after that */
   const extra=C.any&&S.qcAnyDay===today();if(C.any)S.qcAnyDay=today();
-  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const total=addXp(extra?2:5+C.right+(perfect?5:0));const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
+  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const qx=2+2*C.right,qb=perfect?Math.max(1,Math.round(qx/4)):0;const total=addXp(extra?2:qx+qb);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   if(!extra){earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');}const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
-  if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time, +5 XP</div>');
+  if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time'+(qb&&!extra?', +'+qb+' XP':'')+'</div>');
   if(C.up.size)lines.push('<div class="win"><b>'+C.up.size+' repl'+(C.up.size===1?'y':'ies')+' moved up a step</b> · '+[...C.up].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.up.size>3?'…':'')+'</div>');
   if(C.again.size)lines.push('<div class="win"><b>'+C.again.size+' to practise again</b> · '+[...C.again].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.again.size>3?'…':'')+' will come back soon</div>');
   if(C.any&&!C.up.size)lines.push('<div class="win"><b>Extra practice</b> · replies only move up on their review day'+(extra?'. Extra chats after the first today give a little XP':'')+'</div>');
