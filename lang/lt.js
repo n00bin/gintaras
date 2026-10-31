@@ -8,6 +8,9 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   caronNote:'Tip: type a letter twice for its marked version, ss → š.',
   /* i and y: y is a long "ee" (the same sound as į), so mixing them up is a spelling slip, like a missing mark */
   fold:s=>s.replace(/y/g,'i'),
+  /* the rule behind pairs learners mix up, added to "Different word" */
+  pairRule:(g,t)=>({'ji|jis':' <b>Jis</b> (he) ends in <b>-s</b>, like most "he" words; <b>ji</b> is "she".','jie|jos':' <b>Jie</b> is "they" for men or a mixed group; <b>jos</b> is "they" for women only.',
+    'mano|tavo':' <b>Mano</b> is "my", <b>tavo</b> is "your".','aš|tu':' <b>Aš</b> is "I", <b>tu</b> is "you".','jis|jie':' <b>Jis</b> is one man, <b>jie</b> is several.','ji|jos':' <b>Ji</b> is one woman, <b>jos</b> is several.'})[[norm(g),norm(t)].sort().join('|')]||'',
   foldNote:'<b>y</b> is a long "ee", the same sound as <b>į</b>, so it is written differently from a short <b>i</b>.',
   politeNote:'That\'s the polite "you": <b>jūsų, jums, jus</b> for strangers, older people or more than one person. <b>Tavo, tau, tave</b> are for a friend.',
   /* the polite version of a "your / to you" phrase, or null (only when no verb has to change with it) */
