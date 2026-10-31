@@ -517,10 +517,10 @@ async function loadNotify(){const S=window.S;if(!sb||!user)return;
 /* Phones only switch notifications on after the player taps Allow, so we ask once, right after sign-in,
    instead of leaving the button for them to find. "Not now" keeps the button in Profile. */
 function askPush(){const S=window.S;if(!S||!user||!pushOk()||Notification.permission!=='default'||S.pushAsked)return;
-  if(!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||document.querySelector('.league-pop'))return setTimeout(askPush,5000);
+  if(!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||(window.popBusy?window.popBusy():document.querySelector('.league-pop')))return setTimeout(askPush,5000);
   S.pushAsked=1;window.save();
   const ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Turn on notifications"><div class="lg-icon big" aria-hidden="true">🔔</div><h2>Want a nudge?</h2><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league or your challenge rival pulls ahead. You can change this any time in Profile.</p><p class="note">After you tap <b>Turn on</b>, your phone asks for permission: tap <b>Allow</b>.</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Turn on notifications"><div class="lg-icon big" aria-hidden="true">🔔</div><h2>Want a nudge?</h2><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league or your challenge rival pulls ahead. You can change this any time in Profile.</p><p class="note">After you tap <b>Turn on</b>, your '+(matchMedia('(pointer:coarse)').matches?'phone':'browser')+' asks for permission: tap <b>Allow</b>.</p>'+
     '<div class="row2"><button type="button" class="btn ghost" data-no>Not now</button><button type="button" class="btn amber" data-yes>Turn on</button></div></div>';
   document.body.appendChild(ov);ov.querySelector('[data-no]').onclick=()=>ov.remove();
   ov.querySelector('[data-yes]').onclick=()=>{ov.remove();pushOn();};}
@@ -601,7 +601,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
     return (mine<TOP&&i===ups?line:'')+(mine<TOP&&i===in3&&ups<in3?top3:'')+row(r,rk[i]-1,r.wxp,up?'up':mine<TOP&&rk[i]<=3&&n>1?'near':down?'down':'',toGo(r,i));}).join('')+(mine<TOP&&ups===n?line:'')+
     (mine>0&&rows.some(r=>r.wxp===0)?'<li class="zone down-line">▼ No XP this week means moving down</li>':'');}
 function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id,ch=show&&canChal(r.id),mine=user&&r.id===user.id;return '<li class="'+(mine?'me ':'')+zone+(show?' tappable':'')+'"'+(show?' data-pid="'+r.id+'"':'')+'><span class="rk num">'+(i+1)+'</span>'+
-  (window.faceHtml?window.faceHtml(mine&&window.S.look||r.look,r.id,36):'')+'<span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">⚔️ Challenge</button>':'')+'</span></li>';}
+  (window.faceHtml?window.faceHtml(mine&&window.S.look||r.look,r.id,36):'')+'<span class="nm"><strong>'+(crowned(r)?'👑 ':'')+esc(r.nickname)+(r.cup_wins?' <span title="Sun Cup wins">🏆'+(r.cup_wins>1?'×'+r.cup_wins:'')+'</span>':'')+'</strong><small>'+leagueOf(r.league).icon+' '+esc(leagueOf(r.league).name)+(r.streak?' · '+r.streak+' day streak':'')+(hint?' · <span class="togo">'+hint+'</span>':'')+'</small></span><span class="pts num">'+pts+' XP'+(show?'<button type="button" class="chbtn'+(ch?'':' off')+'" data-pid="'+r.id+'" aria-label="Challenge '+esc(r.nickname)+'">'+(ch?'⚔️ Challenge':window.amberBalance()<CH_MIN?'⚔️ You need '+CH_MIN+' amber':'⚔️ Needs '+CH_MIN+' amber')+'</button>':'')+'</span></li>';}
 
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}

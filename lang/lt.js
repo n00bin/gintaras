@@ -35,7 +35,7 @@ const COURSE = [
   ['Sėkmės','Good luck'],
  ]},
  {id:'u1c',title:'Who I am',items:[
-  ['Aš','I'],
+  ['Aš','I (myself)'],
   ['Tu','You','Informal, one person.'],
   ['Jis','He'],
   ['Ji','She'],
@@ -843,7 +843,7 @@ COURSE.forEach(u=>{const out=[];u.lessons.forEach(l=>{const parts=Math.ceil(l.it
 /* Edition 2, step 3: look-alike sets are spread out. A bite-size part can move to another unit, keeping its id (and everyone's
    progress): five of the colours go to Clothes, and the first family words to About me, where you introduce your family. */
 const MOVE_BITES={'u5a-2':['u29','More colours'],'u4a-1':['u20','My family']};
-const RENAME_BITES={'u5a-1':'Colours','u4a-2':'More family'};
+const RENAME_BITES={'u5a-1':'Colours','u4a-2':'More family','u1a-2':'Goodbyes','u1b-1':'Yes, no, sorry','u1b-2':'Great, see you, good luck'};
 (()=>{const moved={};COURSE.forEach(u=>{u.lessons=u.lessons.filter(l=>{const m=MOVE_BITES[l.id];if(!m||!COURSE.some(x=>x.id===m[0]))return true;
   l.title=m[1];(moved[m[0]]=moved[m[0]]||[]).push(l);return false;});});COURSE.forEach(u=>{if(moved[u.id])u.lessons=u.lessons.concat(moved[u.id]);u.lessons.forEach(l=>{if(RENAME_BITES[l.id])l.title=RENAME_BITES[l.id];});});})();
 const ITEMS=[]; const BYID={};
@@ -1143,7 +1143,7 @@ const DRILLS=[
  {u:'u1',en:'Good evening!',frame:'___ vakaras!',ans:'Labas',opts:['Laba','Labą'],why:'Vakaras ends in -as, a "him" word, so labas stays.'},
  /* "I", "you" and "he" in real sentences, for the Who I am lessons */
  {u:'u1',en:'I am from America.',l:['u1c-1','u1c-3'],frame:'___ esu iš Amerikos.',ans:'Aš',opts:['Tu','Jis'],why:'Esu goes with aš: aš esu, I am.'},
- {u:'u1',en:'He is from America.',l:['u1c-1','u1c-3'],frame:'___ yra iš Amerikos.',ans:'Jis',opts:['Aš','Tu'],why:'Yra (is) goes with jis and ji. With aš it would be esu.'},
+ {u:'u1',en:'He is from Lithuania.',l:['u1c-1','u1c-3'],frame:'___ yra iš Lietuvos.',ans:'Jis',opts:['Aš','Tu'],why:'Yra (is) goes with jis and ji. With aš it would be esu.'},
  {u:'u1',en:'Are you from America?',l:['u1c-1','u1c-3'],frame:'Ar ___ esi iš Amerikos?',ans:'tu',opts:['aš','jis'],why:'Esi goes with tu: tu esi, you are. Ar at the front makes it a question.'},
  {u:'u1',en:'My name is Tomas.',l:['u1c-2'],frame:'___ vardas Tomas.',ans:'Mano',opts:['Tavo','Aš'],why:'Mano means "my"; aš is "I".'},
  {u:'u1',en:'What is your name?',l:['u1c-2'],frame:'Koks ___ vardas?',ans:'tavo',opts:['mano','tu'],why:'Tavo means "your" (to a friend); tu is "you".'},
@@ -1219,7 +1219,7 @@ const DRILLS=[
  {u:'u6',en:'I have a dog.',frame:'Aš turiu ___.',ans:'šunį',opts:['šuo','šuns'],why:'After turiu, šuo becomes šunį.'},
 ];
 const ROLE_CLASS=r=>/^(who)/.test(r)?'r1':/(does|am|is|live|want|like|have|goes|would|please|-u|-i)/.test(r)?'r2':/(what|thing|some of|doing|dictionary|feeling)/.test(r)?'r3':/(where|to me)/.test(r)?'r4':/(when|time|maybe)/.test(r)?'r5':'r6';
-function patternHtml(p){return '<div class="intro tipcard pattern"><h3>🧩 '+esc(p.name)+'</h3>'+p.rows.map((row,i)=>'<div class="prow">'+row.map(([w,r])=>'<span class="slot '+ROLE_CLASS(r)+'"><b>'+esc(w)+'</b>'+(i===0?'<small>'+esc(r)+'</small>':'')+'</span>').join('')+'</div>').join('')+(p.note?'<p class="note">'+esc(p.note)+'</p>':'')+'</div>';}
+function patternHtml(p){return '<div class="intro tipcard pattern"><h3>🧩 '+esc(p.name)+'</h3>'+p.rows.map((row,i)=>'<div class="prow">'+row.map(([w,r])=>'<span class="slot '+ROLE_CLASS(r)+'"><b>'+esc(w)+'</b>'+(i===0?'<small>'+esc(r)+'</small>':'')+'</span>').join('')+'</div>').join('')+(p.note?'<p class="note">'+p.note+'</p>':'')+'</div>';}
 
 /* ===================== CONVERSATIONS ===================== */
 /* Each one uses only what came before it on the path. Lines:
@@ -1238,7 +1238,7 @@ const CAST_LOOK={'Rūta':'41.0.0.15.1.2.10.5.2','Jonas':'1.3.0.4.3.3.6.8.3','Egl
   'Aldona':'61.0.11.24.4.5.20.6.6','Darius':'33.1.0.6.9.2.8.9.7','Jurgita':'23.0.3.20.6.1.18.4.8','Inga':'37.0.0.22.2.3.12.7.1',
   'Vytautas':'50.5.3.10.4.3.6.12.6','Irena':'23.0.2.18.5.2.16.3.4','Mindaugas':'1.6.0.7.8.4.9.14.3','Rasa':'45.0.4.19.3.2.12.6.7','Agnė':'41.0.0.21.2.5.18.2.3','Danutė':'61.0.6.23.4.4.20.5.2','Daiva':'45.0.3.24.2.2.10.3.4','Andrius':'1.0.0.25.7.3.4.9.6','Paulius':'33.2.0.8.5.1.6.11.8'};
 const CONVS=[
-{id:'cv1',title:'Labas, Rūta!',cast:[{name:'Rūta',voice:'ona'},{name:'Darius',voice:'leonas'}],scene:'You are Tomas, on your first morning in Vilnius. The café is busy, and the only free seat is next to a woman with a coffee.',lines:[
+{id:'cv1',title:'Labas, Rūta!',cast:[{name:'Rūta',voice:'ona'},{name:'Darius',voice:'leonas'}],scene:'You are Tomas, on your first day in Vilnius. It\'s late morning, the café is busy, and the only free seat is next to a woman with a coffee.',lines:[
  ['p','Labas rytas!','Good morning!'],
  ['m','Labas rytas!','Good morning!','Say good morning back',[['Labanakt!','Good night!'],['Viso gero!','Goodbye!']]],
  ['p','Prašau, sėskitės.','Please, have a seat.'],
@@ -2153,8 +2153,10 @@ function persClips(){const out={};const froms=ME_COUNTRIES.map(c=>c[0]);
 
 /* "Built from": for a phrase, gloss each word from single-word items or the glue list. */
 const WORDS={};ITEMS.forEach(i=>{if(i.lt.split(' ').length===1)WORDS[norm(i.lt)]=WORDS[norm(i.lt)]||i.en.split(' / ')[0].split(' (')[0];});
+/* Inside a phrase some words mean something else than on their own: labas rytas is "good morning", iki pasimatymo "until we meet". */
+const BF_SAY={'labas':'good','laba':'good','labą':'good','iki':'until'};
 function builtFrom(item){const ws=item.lt.split(' ');if(ws.length<2)return '';
-  const parts=ws.map(w=>{const k=norm(w);const g=WORDS[k]||GLUE[k];return '<span class="bf"><b>'+esc(w)+'</b>'+(g?' <i>'+esc(g)+'</i>':'')+'</span>';});
+  const parts=ws.map((w,i)=>{const k=norm(w);const g=BF_SAY[k]&&!(i===ws.length-1||/[,.!?]$/.test(w))?BF_SAY[k]:WORDS[k]||GLUE[k];return '<span class="bf"><b>'+esc(w)+'</b>'+(g?' <i>'+esc(g)+'</i>':'')+'</span>';});
   return '<div class="built"><span class="eyebrow">Built from</span><div>'+parts.join('')+'</div></div>';}
 /* "Sounds like" shown to the learner: lowercase syllables separated by spaces, stressed syllable bolder. */
 function pronHtml(lt){const raw=pronFor(lt);
@@ -2175,7 +2177,7 @@ function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'
     if(hit){s+=hit[1];i+=hit[0].length-1;}else s+=w[i];}return s;}).join(' ');}
 
 /* For short words a respelling alone is hard to trust, so they also get a real English word that sounds close. */
-const PRON_LIKE={'Aš':'like "gosh" without the g','Tu':'like "two", but short and clipped','Jis':'rhymes with "this"','Ji':'like the "yi" in "yip", no p',
+const PRON_LIKE={'Aš':'like "gosh" without the g','Tu':'like "two", but short and clipped','Jis':'rhymes with "this"','Ji':'like "yee", said quickly','Prašau':'the end rhymes with "now", never with "show"',
  'Mes':'like "mess"','Jūs':'like the word "use"','Jie':'"yee" sliding into "eh", in one quick beat','Jos':'rhymes with "dose"'};
 const likeHtml=lt=>PRON_LIKE[lt]?'<span class="like">'+esc(PRON_LIKE[lt])+'</span>':'';
 /* Hand-written "sounds like" respellings. Hyphens split syllables; CAPS = the stressed syllable.
@@ -2394,11 +2396,14 @@ function marksNote(g,t){const a=[...g],b=[...t];for(let i=0;i<b.length;i++)if(a[
     if(MARK_SOUND[c])return '<b>'+c+'</b> sounds like '+MARK_SOUND[c]+', so it is a different letter from plain <b>'+esc(strip(c))+'</b>.';
     if(MARK_SOUND[a[i]])return 'Here it is a plain <b>'+esc(c)+'</b>, not <b>'+a[i]+'</b> ('+MARK_SOUND[a[i]]+').';
     return '';}return '';}
-function endingWhy(g,t,prev){const sg=strip(g),st=strip(t);const end=t.slice(Math.min(sameStart(sg,st),t.length-1));
+function endingWhy(g,t,prev,next){const sg=strip(g),st=strip(t);const end=t.slice(Math.min(sameStart(sg,st),t.length-1));
   const head='<b>'+esc(g)+'</b> → <b>'+esc(t)+'</b>. ';
   if(st.startsWith('ne')&&!sg.startsWith('ne'))return head+'<b>ne</b> glued to the front makes it "not".';
   if(sg.startsWith('ne')&&!st.startsWith('ne'))return head+'This one isn\'t "not", so it has no <b>ne</b> in front.';
   const mf=(m,f)=>(m.endsWith('as')&&(f===m.slice(0,-1)||f===m.slice(0,-2)+'e'))||((m.endsWith('is')||m.endsWith('ys'))&&f===m.slice(0,-2)+'e')||(m.endsWith('ius')&&f===m.slice(0,-3)+'e');
+  const nx=next?strip(next):'',ng=nx.length>2&&glossOf(next)?(/(as|is|ys|us)$/.test(nx)?'he':/(a|e)$/.test(nx)?'her':''):'';
+  if(mf(sg,st)&&ng==='her')return head+'<b>'+esc(next)+'</b> is a "her" word, so <b>'+esc(g)+'</b> becomes <b>'+esc(t)+'</b>.';
+  if(mf(st,sg)&&ng==='he')return head+'<b>'+esc(next)+'</b> is a "he" word, so it stays <b>'+esc(t)+'</b>.';
   if(mf(sg,st))return head+'<b>'+esc(g)+'</b> is the form a man uses; here it’s the woman’s form, <b>'+esc(t)+'</b>.';
   if(mf(st,sg))return head+'<b>'+esc(g)+'</b> is the form a woman uses; here it’s the man’s form, <b>'+esc(t)+'</b>.';
   const mg=glossOf(g),mt=glossOf(t);
@@ -2428,11 +2433,11 @@ const GUIDE_HTML=`<div class="card">
         <div><b>oh</b><span>as in g<i>o</i></span></div>
         <div><b>u</b><span>as in p<i>u</i>t</span></div>
         <div><b>oo</b><span>as in m<i>oo</i>n</span></div>
-        <div><b>uh</b><span>as in the <i>a</i> of sof<i>a</i>, said quickly. Only in the verb ending -ti: <i>zhin tuh</i></span></div>
+        <div><b>ih</b><span>a short, light "i", as in b<i>i</i>t. The verb ending -ti: <i>zhin tih</i></span></div>
         <div><b>ow</b><span>always as in c<i>ow</i>, never as in "show": <i>prah-SHOW</i> rhymes with "now"</span></div>
         <div><b>ai</b><span>as in <i>ai</i>sle, the "eye" sound (TAIP sounds like "type")</span></div>
         <div><b>y</b><span>always as in <i>y</i>es: yah, yeh, yoh, yu. (The Lithuanian letter y is a different thing: a long "ee".)</span></div>
-        <div><b>yeh</b><span>how we write the Lithuanian <i>ie</i> after a consonant: <i>pienas</i> is PYEH-nahs. On its own after j it is two quick sounds: <i>Jie</i> is yee-EH</span></div>
+        <div><b>yeh</b><span>how we write the Lithuanian <i>ie</i> after a consonant: <i>pienas</i> is PYEH-nahs. After j it is just yeh: <i>Jie</i> is YEH</span></div>
         <div><b>zh</b><span>as in mea<i>s</i>ure</span></div>
         <div><b>ts</b><span>as in ca<i>ts</i></span></div>
       </div>
