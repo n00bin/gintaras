@@ -1,7 +1,11 @@
 /* Gintaras language file: Lithuanian. Everything that belongs to this one language lives here: the course,
    conversations, sounds-like guide, audio map, About-me phrases, tips, level titles, and the helpers that know
    Lithuanian grammar. index.html loads exactly one language file before the app code (see LANGUAGES there). */
-const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT',letters:'ąčęėįšųūž',audio:'audio/',
+const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT',letters:'ąčęėįšųūž',
+  /* type a letter twice for its marked version; once more goes back to the plain pair */
+  dbl:{ss:'š',zz:'ž',cc:'č',ee:'ė','ėe':'ę','ęe':'ee',uu:'ū','ūu':'ų','ųu':'uu',aa:'ą','ąa':'aa',ii:'į','įi':'ii','šs':'ss','žz':'zz','čc':'cc'},
+  dblTip:'or type the letter twice (ss → š, ee → ė)',
+  caronNote:'Tip: type a letter twice for its marked version, ss → š.',audio:'audio/',
   hello:'Labas!',praise:['Puiku!','Gerai!','Šaunu!'],top:'Labai šaunu.',decoys:'aeiklmnorstuvėšžč',
   dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.',
   be:['esu','esi','esame','esate'],dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
