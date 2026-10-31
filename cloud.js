@@ -608,7 +608,7 @@ function row(r,i,pts,zone,hint){const show=user&&profile&&r.id!==user.id,ch=show
 /* ---------- boot ---------- */
 function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderAuth();return;}
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
-  loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
+  loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&(S.lessonsDone||0)>=1&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
 window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
 window.addEventListener('gintaras:idle',()=>setTimeout(()=>{if(user)chalAlerts();},800));

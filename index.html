@@ -1013,8 +1013,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.72';
-const APP_VERSION=144;
+const APP_RELEASE='3.73';
+const APP_VERSION=145;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1884,7 +1884,7 @@ function startReview(weak){let L=practised();
   {const td=today(),rest=L.filter(i=>{const r=rec(i.id);return !(r.okD===td&&r.okN>=2&&r.badD!==td);});if(weak&&rest.length>=5)L=rest;}let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(Q)Q.dueN=dueN;}
-function quit(){if(!Q&&!CV)return;stopHearing();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(window.signInGate)window.signInGate();maybeTour();window.dispatchEvent(new Event('gintaras:idle'));}
+function quit(){if(!Q&&!CV)return;stopHearing();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
@@ -3111,17 +3111,21 @@ document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$(
   /* Enter goes to the big button (unless it already has the focus, which presses it by itself) */
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(document.activeElement===b)return;e.preventDefault();if(!b.disabled)b.click();}});
 
-/* Welcome: step 1 is the app and your pace, step 2 is about you (name, man or woman, country; all skippable),
-   step 3 is signing in (skippable). Players who started before accounts existed see step 3 on its own, once. */
+/* Welcome: step 1 is the app and your pace, step 2 is about you (name, man or woman, country; all skippable), then
+   straight into the first lesson. Signing in (skippable) is offered once that lesson is done, so you see what Gintaras is
+   before anyone asks for an account. Players who started before accounts existed see it on its own, once. */
 let signinMode=null;
 function closeWelcome(){$('#welcome').hidden=true;document.body.style.overflow='';const first=signinMode==='welcome';signinMode=null;
-  if(first){S.welcomed=true;save();renderAll();startNext(nextLesson());}else renderAll();}
+  if(first){S.welcomed=true;save();renderAll();startNext(nextLesson());}else{renderAll();maybeTour();}}
 function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||!navigator.onLine){if(mode==='welcome')closeWelcome();return;}
   signinMode=mode;S.signinAsked=today();save();
   $('#welcome').hidden=false;document.body.style.overflow='hidden';
   document.querySelectorAll('#welcome .hello').forEach(h=>h.hidden=true);$('#welcome-signin').hidden=false;
+  const h=$('#welcome-signin h2'),p=$('#welcome-signin h2+p');h.__t=h.__t||h.textContent;p.__t=p.__t||p.textContent;
+  h.textContent=mode==='first'?'First lesson done! Save it?':h.__t;
+  p.textContent=mode==='first'?'Sign in and what you just learned is saved to your account, along with everything after it: your lessons, streak and XP, on any phone or computer. You also join the league.':p.__t;
   cloud.widget($('#welcome-auth'),{onDone:()=>{toast('Signed in. Your progress is saved.');closeWelcome();}});
-  const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':'Not now';b.onclick=closeWelcome;}
+  const b=$('#btn-welcome');b.className='btn ghost';b.textContent=mode==='welcome'?'Not now, just start learning':mode==='first'?'Not now, keep learning':'Not now';b.onclick=closeWelcome;}
 window.openSignin=openSignin;
 let wmG='';
 function welcomeMe(){document.querySelector('#welcome .hello').hidden=true;$('#welcome-me').hidden=false;$('#welcome .stage').scrollTop=0;
@@ -3142,8 +3146,8 @@ function closeMeOnly(){meOnly=false;$('#welcome').hidden=true;$('#welcome-me').h
 window.addEventListener('gintaras:ready',()=>setTimeout(maybeAskMe,3500));
 window.addEventListener('gintaras:idle',()=>setTimeout(maybeAskMe,600));
 $('#btn-welcome').onclick=()=>{if(meOnly){welcomeMeSave();closeMeOnly();return;}
-  if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();return;}
-  welcomeMeSave();if(window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('welcome');else{signinMode='welcome';closeWelcome();}};
+  if($('#welcome-me').hidden){setPace(S.pace);save();welcomeMe();$('#btn-welcome').textContent='Start my first lesson';return;}
+  welcomeMeSave();signinMode='welcome';closeWelcome();};
 function start(snap){load();if(snap&&snap.S)S=Object.assign(S,upEpoch(snap.S));window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
