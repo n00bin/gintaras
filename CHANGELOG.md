@@ -4,6 +4,14 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.69** (2026-10-31) - A word always gets its New word card before it's tested, even if you first met it in a conversation or a warm-up.
+- Fill-the-gap drills only use words you've met.
+- In conversations, their message shows its English while it has words you haven't learned.
+- Wrong options are words you've met, of the same kind (other "I am from…" sentences, other greetings), and never a word of the answer itself.
+- Picking wrong now says what you picked: "You picked Labas vakaras, which means Good evening".
+- Warm-ups skip words you already got right twice today and bring back the ones you missed.
+- Tricky words workout: each word is shown, then asked one card later, the way you missed it (typed again, or picked again with your old pick among the options), and the fresh look says what you wrote last time.
+- Sounds like: Taip and Kaip are written TYPE and KYPE; Puikiai, Prašau and the -iai ending are clearer; the guide has new cards for letter pairs (ai, ei, au, ie, uo, ui), soft letters and moving stress.
 - **3.68** (2026-10-31) - The Why note no longer calls a spelling slip a wrong ending (sekesi, labanak, pasimatimo), and names a different word when you wrote one (ji is she, jis is he; tavo is your, mano is my).
 - They (men) and they (women), he and she: the other one no longer counts as "that works too".
 - Letter tiles: typing a plain letter uses the marked tile when that's the only one left (e → ė), and two letters only merge when there's no plain tile for the second.

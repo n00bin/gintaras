@@ -1008,8 +1008,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.68';
-const APP_VERSION=140;
+const APP_RELEASE='3.69';
+const APP_VERSION=141;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1164,7 +1164,14 @@ const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],[
 /* Tricky words workout (free, on Practice): your most-missed words, each with a fresh look and its memory trick first. */
 function trickyPick(){return practised().filter(i=>rec(i.id).bad>0).sort((a,b)=>(rec(b.id).lapse||0)-(rec(a.id).lapse||0)||rec(b.id).bad-rec(a.id).bad).slice(0,8);}
 function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('Nothing tricky yet: you need a few missed words first');
-  buildSession(pick,'review',null);Q.tricky=true;Q.queue=pick.map(it=>({type:'intro',item:it,leech:true})).concat(Q.queue.filter(e=>e.type!=='intro'));Q.idx=0;renderStep();}
+  buildSession(pick,'review',null);Q.tricky=true;
+  /* typed wrong: typed again (endings and spelling are retested); picked wrong: picked again, with last time's pick among the options */
+  const test=it=>{const r=rec(it.id),m=r.missT||'type';if(/^mc_|^listen$/.test(m))return {type:m==='listen'&&!canListen()?'mc_lt_en':m,item:it,force:r.missPick?[r.missPick]:undefined};
+    return {type:m==='dictate'&&canListen()?'dictate':'type',item:it};};
+  const q=[];pick.forEach((it,i)=>{q.push({type:'intro',item:it,leech:true});if(i)q.push(test(pick[i-1]));});
+  const rest=Q.queue.filter(e=>e.type!=='intro'),last=pick[pick.length-1],gap=rest.findIndex(e=>e.item!==last&&!(e.items||[]).includes(last));
+  q.push(gap>=0?rest.splice(gap,1)[0]:null,test(last));
+  Q.queue=q.filter(Boolean).concat(rest);Q.total=Q.queue.filter(e=>!STEPLESS[e.type]).length;Q.idx=0;renderStep();}
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
@@ -1669,15 +1676,19 @@ const enKey=s=>norm(String(s).replace(/\([^)]*\)/g,'')).replace(/[^\p{L}\p{N} ]/
 function clash(a,b){if(enKey(a.en)===enKey(b.en))return true;const x=norm(a.lt),y=norm(b.lt);
   return (ALSO[x]||[]).some(v=>norm(v)===y)||(ALSO[y]||[]).some(v=>norm(v)===x);}
 /* By ear, the wrong options are the words that sound most like the right one, so the answer can't be guessed from how it looks. */
-/* Pairs learners mix up: each is the other's first wrong option. */
+/* Pairs learners mix up: each is the other's first wrong option, once both have been met. */
 const CONFUSE={'Jis':['Ji'],'Ji':['Jis'],'Jie':['Jos'],'Jos':['Jie'],'Tu':['Jūs'],'Jūs':['Tu'],'Mano':['Tavo'],'Tavo':['Mano']};
 /* Look-alike letters for spelling tiles. */
 const LOOKALIKE={s:['š'],'š':['s'],z:['ž'],'ž':['z'],c:['č'],'č':['c'],e:['ė','ę'],'ė':['e'],'ę':['e'],a:['ą'],'ą':['a'],i:['į','y'],'į':['i'],y:['i'],u:['ū','ų'],'ū':['u'],'ų':['u']};
-function distractors(item,n,field,ear){const pool=shuffle(ITEMS.filter(i=>i!==item&&norm(i[field])!==norm(item[field])&&!clash(i,item)));
+function distractors(item,n,field,ear){const part=new Set(norm(item.lt).split(' '));
+  /* a single word of the answer itself ("kaip" for "Kaip sekasi?") is no wrong option */
+  const pool=shuffle(ITEMS.filter(i=>i!==item&&norm(i[field])!==norm(item[field])&&!clash(i,item)&&!(norm(i.lt).split(' ').length===1&&part.has(norm(i.lt)))));
   const wc=i=>i.lt.split(' ').length,twin=CONFUSE[item.lt]||[];
-  const rank=i=>twin.includes(i.lt)?-1:(i.lesson===item.lesson?0:peek(i.id).seen?1:i.unit===item.unit?2:3)+(wc(i)!==wc(item)?2.5:0);
+  const met=i=>peek(i.id).seen,sw=new Set(strip(item.lt).split(' ')),shared=i=>strip(i.lt).split(' ').filter(w=>w.length>1&&sw.has(w)).length;
+  const e1=s=>norm(s).split(' ')[0],sameEn=i=>e1(i.en)===e1(item.en);
+  const rank=i=>(twin.includes(i.lt)&&met(i)?-4:0)+(met(i)?0:6)+(i.lesson===item.lesson?0:i.unit===item.unit?1:2)+Math.min(3,Math.abs(wc(i)-wc(item))*1.5)-Math.min(3,1.5*shared(i))-(sameEn(i)?1:0);
   const sk=strip(item.lt),near=i=>{const s=strip(i.lt);return lev(s,sk)/Math.max(s.length,sk.length);};
-  pool.sort((a,b)=>ear?(rank(a)>2)-(rank(b)>2)||near(a)-near(b):rank(a)-rank(b));const out=[];const used=new Set([norm(item[field])]);
+  pool.sort((a,b)=>ear?(!met(a))-(!met(b))||near(a)-near(b):rank(a)-rank(b));const out=[];const used=new Set([norm(item[field])]);
   for(const i of pool){const v=norm(i[field]);if(used.has(v)||out.some(o=>clash(o,i)))continue;used.add(v);out.push(i);if(out.length>=n)break;}return out;}
 /* A match game never holds two pairs that could swap. */
 function matchSet(items,n){const out=[];shuffle(items).forEach(i=>{if(out.length<n&&!out.some(o=>clash(o,i)||norm(o.lt)===norm(i.lt)))out.push(i);});return out;}
@@ -1743,7 +1754,7 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     const mine=S.me?meItems().filter(m=>peek(m.id).seen).map(m=>norm(m.lt)):[];
     /* a new word's first check waits a card or two after you meet it, so it is remembered, not just copied */
     let wait=null;
-    shuffle(items).forEach(it=>{const meet=!rec(it.id).seen&&!mine.includes(norm(it.lt));if(meet)head.push({type:'intro',item:it});const a=exFor(it,meet?EASY.filter(t=>t!=='listen'):typesFor(it));
+    shuffle(items).forEach(it=>{const r0=rec(it.id),meet=(!r0.seen||!r0.intro&&!(S.lessons[lesson.id]>=1)&&(r0.lvl||0)<2)&&!mine.includes(norm(it.lt));if(meet)head.push({type:'intro',item:it});const a=exFor(it,meet?EASY.filter(t=>t!=='listen'):typesFor(it));
       if(wait)head.push(wait);wait=a;
       let b=exFor(it,meet?SECOND:typesFor(it),a.type);if(meet&&!PROD[b.type])b={type:'type',item:it};rest.push(b);
       /* every word in the lesson is said out loud once, checked by the microphone */
@@ -1753,7 +1764,8 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     drillsFor(lesson,2).forEach(d=>rest.push({type:'frame',drill:d}));
     /* warm-up: two words from earlier lessons first, then one more mixed in later */
     const wl=S.warmLast||[],now=Date.now(),miss=i=>{const r=rec(i.id);return (r.bad||0)/((r.ok||0)+(r.bad||0)+1);};
-    const old=shuffle(practised().filter(i=>!items.includes(i))).sort((a,b)=>wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl).slice(0,3);
+    const td=today(),done2=i=>{const r=rec(i.id);return r.okD===td&&r.okN>=2&&r.badD!==td;},missT=i=>rec(i.id).badD===td;
+    const old=shuffle(practised().filter(i=>!items.includes(i)&&!done2(i))).sort((a,b)=>missT(b)-missT(a)||wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl).slice(0,3);
     S.warmLast=old.map(i=>i.id);
     /* the warm-ups sit between a new word and its first check */
     old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})).forEach((w,n)=>{
@@ -1789,7 +1801,9 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
    (so "___ diena" stays with the greetings), and none you've already done today. */
 function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(' ')).filter(w=>!['iš','ir','ar','į','su','yra','o'].includes(w)));
   const day=S.drillDay&&S.drillDay.d===today()?S.drillDay.f:[];
-  const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?d.l.includes(l.id):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))),n);
+  /* every word of the finished sentence has been met already, or is taught in this lesson: a drill never teaches a word by testing it */
+  const all=new Set(l.items.flatMap(i=>norm(i.lt).split(' '))),met=d=>norm(d.frame.replace('___',d.ans)).split(' ').every(w=>all.has(w)||(wordLvl(w)??-1)>=0);
+  const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?d.l.includes(l.id):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
   if(pick.length){S.drillDay={d:today(),f:day.concat(pick.map(d=>d.frame))};}return pick;}
 const STEPLESS={intro:1,tip:1,metip:1,mesay:1};
 /* A grammar table: a few rows of Lithuanian and English, and one line on the rule. */
@@ -1891,8 +1905,9 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
     btn.disabled=false;btn.textContent='I\'m ready';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>'+ME_TIP.replace(/Anglijos/g,((ME_COUNTRIES.find(c=>c[0]===(S.me||{}).from)||[])[2])||'Anglijos')+'</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
     btn.disabled=false;btn.textContent='Let\'s go';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(ex.leech?'Tricky word · a fresh look':it.me?'About you':'New word')+'</span>'+(ex.leech?'<p class="note">This one keeps slipping away, so here it is again, slowly, with its memory trick and what it is built from. Say it out loud twice.</p>':'')+'<div class="intro">'+(hasPic(it.lt)?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the turtle plays it slowly. Say it out loud once. A quick question about it comes in a moment, and it comes back for review tomorrow.</p>';
-    btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
+  else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(ex.leech?'Tricky word · a fresh look':it.me?'About you':'New word')+'</span>'+(ex.leech?'<p class="note">This one keeps slipping away, so here it is again, slowly, with its memory trick and what it is built from. Say it out loud twice.'+
+      (rec(it.id).missG?' Last time you wrote <b>'+esc(rec(it.id).missG)+'</b>.':rec(it.id).missPick&&BYID[rec(it.id).missPick]?' Last time you picked <b>'+esc(BYID[rec(it.id).missPick].lt)+'</b> ('+esc(BYID[rec(it.id).missPick].en)+').':'')+'</p>':'')+'<div class="intro">'+(hasPic(it.lt)?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the turtle plays it slowly. Say it out loud once. A quick question about it comes in a moment, and it comes back for review tomorrow.</p>';
+    btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{const r=rec(it.id);r.seen=true;r.intro=1;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
   else if(ex.type==='speak'){
     /* Two kinds of speaking card. A word you are meeting (and every Speak it lesson) is shown and played: listen, then say it.
        From a word's first review on you see only the English and say it from memory; "Show me the answer" reveals it.
@@ -1937,7 +1952,9 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
     if(mic)autoMic(mic,recall?700:S.sound?200+clipLen(it.id,S.voice||'ona')*1000+350:600);}
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
-    const ear=ex.type==='listen';let opts=shuffle([it].concat(distractors(it,3,field,ear)));
+    const ear=ex.type==='listen';let ds=distractors(it,3,field,ear);
+    if(ex.force){const f=ex.force.map(id=>BYID[id]).filter(x=>x&&x!==it&&norm(x[field])!==norm(it[field]));ds=f.concat(ds.filter(d=>!f.includes(d))).slice(0,3);}
+    let opts=shuffle([it].concat(ds));
     {const key=o=>o.map(x=>x.id).join('|'),last=(Q.optsSeen=Q.optsSeen||{})[it.id];let n=0;while(n++<8&&key(opts)===last)opts=shuffle(opts);Q.optsSeen[it.id]=key(opts);}
     let head;if(ear)head='<div class="prompt small">Listen. What does it mean?</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>';
     else head='<div class="prompt small">'+(toEn?'What does this mean?':'Choose the '+LANG.en)+'</div><div class="word">'+(toEn?spk(it):emo(it))+'<span class="lt" style="'+(toEn?'':'color:var(--fg);font-size:28px')+'">'+esc(toEn?it.lt:it.en)+'</span></div>'+(toEn&&S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'');
@@ -2040,7 +2057,7 @@ function logReview(id,g,r){try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOG
   clearTimeout(rlogT);rlogT=setTimeout(()=>{try{localStorage.setItem(LOGKEY,JSON.stringify(RLOG));}catch(e){}},1500);}
 /* cloud.js sends the log to the account (gintaras_review_log) a batch at a time, from the last answer it sent. */
 window.reviewLogSince=ts=>{try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}return RLOG.filter(e=>e[1]>ts);};
-function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
+function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const td=today();if(ok){if(r.okD!==td){r.okD=td;r.okN=0;}r.okN++;}else r.badD=td;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
   if(ok){r.ok++;if(sloppy&&count)fsReview(r,2);
     else if(count&&r.up!==today()&&r.due<=Date.now()){const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
@@ -2166,8 +2183,10 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
     if(!ok)r.st=Math.max(0,s-1);else if(first&&title!=='Nearly'&&ladderAt(ex.type)>=s)r.st=Math.min(3,s+1);}
   if(ok){sfx('good');if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
+    const pk=Q.answer&&Q.answer.lt&&Q.answer!==it?Q.answer:null;
+    if(!idk&&Q.mode!=='place'){const r=rec(it.id);r.missT=ex.type;r.missG=typeof Q.answer==='string'?Q.answer.slice(0,60):undefined;r.missPick=pk?pk.id:undefined;}
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
-    else setFoot('bad','Not quite','Correct answer: '+answer+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
+    else setFoot('bad','Not quite','Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
     /* it comes back a few cards later, asked another way where it can be, so the answer you just saw isn't simply tapped again */
     const back=ex.type==='listen'||ex.type==='mc_lt_en'?'mc_en_lt':ex.type==='mc_en_lt'?'mc_lt_en':ex.type;
     if(Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,back===ex.type?Object.assign({},ex,{retry:true}):{type:back,item:it,retry:true});say(it);}
@@ -2539,7 +2558,7 @@ function qcNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.queue.le
   later(()=>{$('#typing').remove();const name='<small class="who">'+esc(who.name)+'</small>';
     msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+(C.ear?
       '<div class="bub" role="button" tabindex="0" data-ear>'+name+'<span class="speakrow">'+cvSpk(k.they.id,castVoice(who))+cvSpk(k.they.id,castVoice(who),true)+'</span><small class="earnote">Listen and answer. Tap here to read it (then this reply doesn\'t move up).</small><span class="earlt" hidden>'+theirLine(k.they,true)+'</span></div>':
-      '<div class="bub" role="button" tabindex="0" data-tr>'+name+theirLine(k.they,true)+'</div>')+'</div>');chatScroll();
+      '<div class="bub" role="button" tabindex="0" data-tr>'+name+theirLine(k.they)+'</div>')+'</div>');chatScroll();
     if(C.ear){say(k.they,false,castVoice(who));return later(()=>convTurn(k.me),S.sound?clipLen(k.they.id,castVoice(who))*1000+300:600);}
     sfx('pop');later(()=>convTurn(k.me),readTime(k.they.lt));},Math.min(1500,500+k.they.lt.length*20));}
 /* Only the first try at a card counts for it; a missed card comes round once more at the end. */
