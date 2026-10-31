@@ -1141,6 +1141,23 @@ const PATTERNS={
  u39:{name:'React, then ask',rows:[[['Rimtai?','react'],['Papasakok daugiau','ask']],[['Kaip smagu!','react'],['O kaip tu?','ask']]],note:'React, then ask a question back. That is the whole secret of small talk.'},
  u26:{name:'One verb, many endings',rows:[[['kalbėti','dictionary (-ti)']],[['aš','who'],['kalbu','-u']],[['tu','who'],['kalbi','-i']]],note:'Every verb you learn works this way: drop the -ti part and add the ending for who.'},
 };
+/* Small grammar tables. Each one is shown once, above the first gap-fill that uses it (a drill whose answer, or for
+   "frame" words its sentence, holds one of its words), and every unit lists the ones so far under "Grammar so far". */
+const GRAMMAR=[
+ {id:'be',u:'u1',name:'"To be": am, are, is',frame:['esu','esi','yra'],rows:[['aš esu','I am'],['tu esi','you are (to a friend)'],['jis, ji yra','he, she is']],note:'Each "who" has its own form. Yra also means "there is".'},
+ {id:'mine',u:'u1',name:'My and your',ans:['mano','tavo'],rows:[['mano','my'],['tavo','your (to a friend)'],['jūsų','your (polite)']],note:'These never change: mano vardas, mano draugė.'},
+ {id:'money',u:'u2',name:'How many euros',ans:['eurai','eurų'],rows:[['vienas euras','1 euro'],['du … devyni eurai','2 to 9 euros'],['dešimt eurų','10 to 20 euros']],note:'The number decides the ending of the word after it.'},
+ {id:'what',u:'u3',name:'The thing you eat or drink',ans:['duoną','vandenį','žuvį'],rows:[['duona','bread'],['aš valgau duoną','I eat bread'],['aš geriu vandenį','I drink water']],note:'The "what" of a sentence ends in -ą, -į or -ę.'},
+ {id:'some',u:'u3',name:'Some of it',ans:['kavos','arbatos','cukraus'],rows:[['kava','coffee'],['noriu kavos','I want (some) coffee'],['be cukraus','without sugar']],note:'"Some of", "want" and "without" all take the -os / -aus ending.'},
+ {id:'adj',u:'u5',name:'Describing words match',ans:['žalias','balta','aukšta','įdomi','laiminga'],rows:[['žalias obuolys','a green apple (a "him" word)'],['žalia arbata','green tea (a "her" word)'],['aukštas brolis · aukšta sesuo','a tall brother · a tall sister']],note:'-as for a "him" word, -a for a "her" word.'},
+ {id:'verb',u:'u8',name:'Who does it: the ending',ans:['kalbu','kalbi','kalba','nesuprantu'],rows:[['aš kalbu','I speak'],['tu kalbi','you speak'],['jis, ji kalba','he, she speaks']],note:'-u for I, -i for you. Ne- in front means "not".'},
+ {id:'ask',u:'u13',name:'Asking a question',ans:['ar','kur'],rows:[['Ar tu kalbi angliškai?','Do you speak English? (yes or no)'],['Kur yra stotis?','Where is the station?'],['Kas tai?','What is this?']],note:'Ar at the start makes a yes/no question. Question words go first too.'},
+ {id:'place',u:'u20',name:'From, and in',ans:['lietuvos','vilniuje','kaune'],rows:[['Lietuva','Lithuania'],['iš Lietuvos','from Lithuania'],['Lietuvoje, Vilniuje','in Lithuania, in Vilnius']],note:'"From" is iš plus a new ending. "In" is only an ending.'},
+ {id:'future',u:'u34',name:'I will',ans:['dirbsiu','bus'],rows:[['aš dirbsiu','I will work'],['tu dirbsi','you will work'],['bus','it will be']],note:'Add -s- before the ending: dirbu → dirbsiu.'},
+ {id:'past',u:'u36',name:'I did',ans:['buvau','buvai','valgėme'],rows:[['aš buvau','I was'],['tu buvai','you were'],['jis, ji buvo','he, she was'],['mes buvome','we were']],note:'-au for I, -ai for you, -o for he and she, -ome for we.'},
+];
+function grammarFor(d){const a=norm(d.ans),f=norm(d.frame.replace('___',' ')).split(' ');
+  return GRAMMAR.find(g=>(g.ans||[]).includes(a))||GRAMMAR.find(g=>(g.frame||[]).some(w=>f.includes(w))&&f.length<=6);}
 /* Fill-the-gap drills: test endings and word order once a unit has taught them. */
 const DRILLS=[
  {u:'u1',en:'Good day!',frame:'___ diena!',ans:'Laba',opts:['Labas','Labą'],why:'Diena is a "her" word, so labas becomes laba.'},
@@ -2118,11 +2135,16 @@ const PERS_ME=[['studentas','studentė'],['mokytojas','mokytoja'],['pensininkas'
 const PERS_THEM=[['Sveikas','Sveika'],['esi alkanas','esi alkana'],['atrodai pavargęs','atrodai pavargusi'],['geras draugas','gera draugė']];
 const wordRe=w=>new RegExp('(?<!\\p{L})'+w+'(?!\\p{L})','gu');
 /* Lithuanian changes a name's ending when you talk to someone (Tomas → Tomai) and after "su" (su Tomu). Other names stay as they are. */
-function nameForms(n){const f=(stem,v,i)=>({nom:n,voc:stem+v,ins:stem+i});
+function nameForms(n,g){const f=(stem,v,i)=>({nom:n,voc:stem+v,ins:stem+i});
   if(n.length>3&&/[^aeiouyąęėįųū]as$/i.test(n))return f(n.slice(0,-2),'ai','u');
   if(/ius$/i.test(n))return f(n.slice(0,-2),'au','umi');
+  if(/[^aeiou]is$/i.test(n))return f(n.slice(0,-2),'i','iu');
   if(/ė$/.test(n))return f(n.slice(0,-1),'e','e');
+  /* a man's name from another language that ends in a consonant: Mark → Markai, su Marku (not after s, x or z: James stays) */
+  if(g==='m'&&n.length>1&&/[bcdfghjklmnprtvw]$/i.test(n))return f(n,'ai','u');
   return {nom:n,voc:n,ins:n};}
+/* The first time someone calls you by the changed name, a line explains it. */
+const VOC_TIP=(nom,voc)=>'💡 <b>'+voc+'</b>, not '+nom+': '+LANG.en+' changes the end of a name when you talk to someone.';
 const HAS_NAME=/\bTom(as|ai|u)\b/;
 /* What the app needs to put you into the course (see personalise() in index.html). */
 const PERS={nameLine:n=>'Mano vardas '+n,fromRe:/iš Amerikos/,femDefault:'Toma',baseNames:['tomas','tomai','tomu','toma'],studentLine:'Aš esu studentas.',
@@ -2130,7 +2152,7 @@ const PERS={nameLine:n=>'Mano vardas '+n,fromRe:/iš Amerikos/,femDefault:'Toma'
 /* o: {name, g:'m'|'f', from:country code, au:true for the recording (which leaves the name out)} */
 function persText(t,role,o){
   if(o.name&&o.au)t=t.replace(/,\s*Tomai(?=[.!?])/g,'').replace(/^Tomai,\s*(.)/,(_,c)=>c.toUpperCase()).replace(/\s+su Tomu(?=[.!?])/g,'').replace(/\s+Tomas(?=[.!?]|$)/g,'');
-  else if(o.name){const n=nameForms(o.name);t=t.replace(/\bTomas\b/g,n.nom).replace(/\bTomai\b/g,n.voc).replace(/\bTomu\b/g,n.ins);}
+  else if(o.name){const n=nameForms(o.name,o.g);t=t.replace(/\bTomas\b/g,n.nom).replace(/\bTomai\b/g,n.voc).replace(/\bTomu\b/g,n.ins);}
   if(o.g==='f'&&(role!=='me'||/(?<!\p{L})(aš|esu)(?!\p{L})/iu.test(t)))(role==='me'?PERS_ME:PERS_THEM).forEach(([a,b])=>{t=t.replace(wordRe(a),b);});
   if(o.from&&role==='me'){const c=ME_COUNTRIES.find(x=>x[0]===o.from);if(c)t=t.replace(/iš Amerikos/g,'iš '+c[2]);}
   return t;}
