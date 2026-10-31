@@ -427,7 +427,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .turn .bank .chip.used{opacity:.3}
 .turn .fill{font-family:var(--display);font-size:26px;font-weight:600;display:flex;flex-wrap:wrap;gap:8px 14px;margin:14px 0 6px}
 .turn .fw{display:inline-flex;align-items:flex-end;gap:2px}
-.turn .lb{width:1.1em;height:1.45em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
+.turn .lb{width:1.3em;height:1.55em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
 .turn .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
 .turn .lb.bad{border-color:var(--bad);background:var(--bad-soft);animation:shake .3s}
 .turn .lb.right{border-color:var(--ok);background:var(--ok-soft)}
@@ -715,7 +715,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .chal-row .btns .chip{font-size:15px;min-height:44px;padding:8px 14px}
 .league-pop .linkbtn{min-height:44px;margin-top:8px}
 .stakes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.stakes .chip:disabled{opacity:.4;cursor:not-allowed;border-style:dashed}
+.stakes .chip:disabled{opacity:.4;cursor:not-allowed;border-style:dashed;text-decoration:line-through}
+.keyhint{color:var(--muted);font-weight:400;font-size:12px}
 .stakes .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .cup-box{margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--amber) 12%,var(--surface));border:2px solid color-mix(in srgb,var(--amber) 40%,var(--line));display:grid;gap:6px}
 .cup-box h3{margin:0;font-family:var(--display);font-size:18px}
@@ -1010,8 +1011,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.70';
-const APP_VERSION=142;
+const APP_RELEASE='3.71';
+const APP_VERSION=143;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1350,6 +1351,8 @@ function myVoice(){const g=ME_GV[S.me&&S.me.g==='f'?'f':'m'];return SMAP[g]?g:VO
 function castVoice(p){const g=CAST_GV[p.name];return g&&SMAP[g]?g:p.voice;}
 /* A word has a picture when the language pack gives it one (abstract words and shared pictures don't). */
 const hasPic=lt=>typeof picFor==='function'?!!picFor(lt):!!EMOJI[lt];
+/* fetch a session's pictures up front, so no card shows an empty picture box while one loads */
+function prePics(its){its.forEach(i=>{const v=picFor(i.lt);if(v&&v[0]!=='#'){const im=new Image();im.src=picFile(v);}});}
 /* Pictures for a session are fetched before they are needed, so none pops in late. */
 function preloadPics(items){items.forEach(i=>{if(!i)return;const v=typeof picFor==='function'?picFor(i.lt):EMOJI[i.lt];if(v&&v[0]!=='#'){const im=new Image();im.src=picFile(v);}});}
 function preloadUnit(unit,voice){voice=voice||S.voice||'ona';if(!(SMAP[voice]&&SMAP[voice][unit])){if(VOICE_BASE[voice])preloadUnit(unit,VOICE_BASE[voice]);return;}try{getPlayer(voice,unit).load();}catch(e){}}
@@ -1480,11 +1483,13 @@ function startFall(){const pool=gameWords();if(pool.length<5)return;
     sfx('win');ov.querySelector('#fall-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#fall-done').focus();};
   const settle=(w,ok)=>{live=live.filter(x=>x!==w);done++;(ok?caught:missed).push(w.it);w.el.classList.add(ok?'hit':'miss');if(!ok)w.el.textContent=w.it.lt;setTimeout(()=>w.el.remove(),ok?250:1400);
     ov.querySelector('#fall-left').textContent=words.length-done;if(done>=words.length)setTimeout(end,900);};
+  let lastHit=0;
   function submit(){const a=inp.value.trim();if(!a)return;let best=null,j=null;
     for(const w of live){const A=answersFor(w.it);let r=judgeTyped(a,A.own.concat(A.other),w.it.en);
       if(!r.ok&&strip(a)===strip(w.it.lt))r={ok:true,title:'Nearly'}; /* no time for š and ė here */if(r.ok&&(!best||w.y>best.y)){best=w;j=r;}}
-    if(best){hits++;ov.querySelector('#fall-hit').textContent=hits;grade(best.it,true,!Q.wrongOnce[best.it.id],j.title==='Nearly');Q.correct++;sfx('good');
+    if(best){hits++;lastHit=Date.now();ov.querySelector('#fall-hit').textContent=hits;grade(best.it,true,!Q.wrongOnce[best.it.id],j.title==='Nearly');Q.correct++;sfx('good');
       msg(j.title==='Nearly'?'Nearly: <b>'+markDiff(a,best.it.lt)+'</b>':'✓ <b>'+esc(best.it.lt)+'</b>');settle(best,true);}
+    else if(Date.now()-lastHit<2500){}
     else{sfx('bad');msg('Not one of the falling words. Try again.');}
     inp.value='';Q.answer='';}
   inp.oninput=()=>{const a=inp.value.trim();if(a&&live.some(w=>[w.it.lt].concat(w.it.alt||[]).map(norm).includes(norm(a))))submit();};
@@ -1750,7 +1755,9 @@ function clozePick(item){const ws=item.lt.split(' ');if(ws.length<2)return null;
    and up to three words from earlier lessons are shuffled in after. */
 function buildSession(items,mode,lesson){personalise();const head=[];const rest=[];let lastWait=null;
   if(!(lesson&&lesson.speak))items.filter(it=>isLeech(it)&&rec(it.id).seen).forEach(it=>head.push({type:'intro',item:it,leech:true}));
-  if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push({type:'speak',item:it}));}
+  /* speaking paused: a Speak it lesson is typed instead (it doesn't count as spoken) */
+  if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push(speakOff()?{type:'type',item:it}:{type:'speak',item:it}));
+    if(speakOff()&&typeof toast==='function')toast('Speaking is paused, so you\'ll type this one. Say it later to count it as spoken.');}
   else if(mode==='lesson'){
     const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
     const mine=S.me?meItems().filter(m=>peek(m.id).seen).map(m=>norm(m.lt)):[];
@@ -1799,6 +1806,7 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
   /* end on a win: an easy one about a word from this session */
   if(mode==='lesson'&&!(lesson&&lesson.speak)&&items.length){const last=queue.filter(e=>!STEPLESS[e.type]).slice(-2).map(e=>e.item),pool=items.filter(i=>!last.includes(i));
     queue.push({type:'mc_lt_en',item:sample(pool.length?pool:items,1)[0],win:true});}
+  prePics(queue.map(e=>e.item).filter(Boolean));
   Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode,lesson,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap()};
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));preloadPics(items);
   openSheet();renderStep();}
@@ -1889,7 +1897,7 @@ function wireNoListen(st){const b=st.querySelector('#nolisten');if(!b)return;b.o
   toast('Listening is off for an hour. It comes back by itself.');renderStep();};}
 const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1,cloze:1,dictate:1};
 
-function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const st=$('#stage');st.innerHTML='';st.scrollTop=0;if(st.parentElement)st.parentElement.scrollTop=0;Q.answer=null;setFoot('');
+function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();progressUI();const st=$('#stage');st.innerHTML='';st.scrollTop=0;if(st.parentElement)st.parentElement.scrollTop=0;Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
   const idk=$('#btn-idk');idk.hidden=true;
   if(Q.idx>=Q.queue.length&&Q.mode==='place'&&placeNext())return renderStep();
@@ -1932,13 +1940,13 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
       (hide?'<button type="button" class="btn ghost showans" id="showans">'+(useMic?'Show me the answer':'I\'ve said it. Show me')+'</button>':'')+
       '<p class="heard" id="srout" role="status">'+(useMic?(recall?'Say it when the <b>microphone</b> lights up. Stuck? Tap "Show me the answer".':'Listen, then say it when the <b>microphone</b> lights up. Get it right and you move on.'):
         (recall?'Say it out loud from memory':'Listen, then say it out loud')+(CAN_REC?'. Tap the red button to record yourself and compare':'')+'. Then tap "Show me" and check yourself.')+'</p>'+
-      '<div class="rate" id="rate"'+(hide?' hidden':'')+'><p class="rate-q">Did you get it right?</p><button type="button" class="btn ghost" data-rate="again">No</button><button type="button" class="btn ghost" data-rate="hard">Almost</button><button type="button" class="btn" data-rate="good">Yes</button></div>'+
+      '<div class="rate" id="rate"'+(hide?' hidden':'')+'><p class="rate-q">Did you get it right? <small class="keyhint">(keys 1, 2, 3)</small></p><button type="button" class="btn ghost" data-rate="again">No</button><button type="button" class="btn ghost" data-rate="hard">Almost</button><button type="button" class="btn" data-rate="good">Yes</button></div>'+
       '<div class="speaklinks">'+(SR&&!speakOff()?(useMic?'<button type="button" class="linkbtn" id="selfmode">Microphone not working? Rate myself from now on</button>':'<button type="button" class="linkbtn" id="micmode">Use the microphone again</button>'):'')+
       (Q.lesson&&Q.lesson.speak||Q.mode==='me'?'':'<button type="button" class="linkbtn" id="nospeak">Can\'t speak right now? Skip speaking for an hour</button>')+'</div>';
     btn.disabled=true;btn.textContent=useMic?'Say it into the microphone':'Say it, then tap Show me';
     const showAns=()=>{const a=st.querySelector('#sayans');if(!a||!a.hidden)return;a.hidden=false;st.querySelectorAll('.speakrow [data-say]').forEach(b=>b.hidden=false);
       const s=st.querySelector('#showans');if(s)s.hidden=true;const r=st.querySelector('#rate');r.hidden=false;if(!passed)btn.textContent='Did you get it right?';say(it);setTimeout(()=>r.scrollIntoView({block:'nearest',behavior:'smooth'}),60);};
-    const pass=()=>{if(passed)return;passed=true;grade(it,true,true,peeked);spoke(it,true);Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;
+    const pass=()=>{if(passed)return;passed=true;grade(it,true,true,peeked);spoke(it,true);if(!ex.retry)Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;
       setFoot('good',peeked?'Said it':'Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en)+(peeked?'<div class="why">It moves up when you say it without looking.</div>':''));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(2800);};
     const mic=st.querySelector('#mic');
     if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{if(passed)return;
@@ -1951,7 +1959,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
     wireRec(st,st.querySelector('#srout'));
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;passed=true;stopHearing();const v=b.dataset.rate;rec(it.id).seen=true;
       if(v==='again'){grade(it,false,false);spoke(it,false);Q.wrongOnce[it.id]=true;if(Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,{type:'speak',item:it,retry:true});}
-      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');Q.correct++;Q.selfRated=(Q.selfRated||0)+1;
+      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');if(!ex.retry&&v!=='hard')Q.correct++;Q.selfRated=(Q.selfRated||0)+1;
         /* "Almost" comes back once more a few cards later, played first: listen again, then say it */
         if(v==='hard'&&!ex.retry&&Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,{type:'speak',item:it,retry:true});}
       Q.idx++;renderStep();});
@@ -2109,10 +2117,13 @@ function answersFor(it){const own=[it.lt].concat(it.alt||[]),k=norm(it.lt),ek=en
   const syn=(ALSO[k]||[]).filter(v=>(ALSO[norm(v)]||[]).some(x=>norm(x)===k));
   const par=s=>((String(s).match(/\(([^)]*)\)/)||[])[1]||'').toLowerCase(),pa=par(it.en);
   const same=ITEMS.filter(i=>{if(i===it||enKey(i.en)!==ek)return false;const pi=par(i.en);return pi===pa||!(pi&&pa)&&!/\b(m[ae]n|wom[ae]n|male|female|he|she|boys?|girls?|mixed)\b/.test(pi+' '+pa);}).map(i=>i.lt);
-  return {own,other:[...new Set(syn.concat(same))].filter(v=>!own.some(o=>norm(o)===norm(v)))};}
+  /* "your" can be polite: Koks jūsų vardas? is as right as Koks tavo vardas?, unless the card says which one it wants */
+  const pol=LANG.polite&&!pa?LANG.polite(it.lt):null;
+  return {own,other:[...new Set(syn.concat(same,pol?[pol]:[]))].filter(v=>!own.some(o=>norm(o)===norm(v)))};}
 /* Says why the other word works, and how it differs (formal or informal, and so on), from the course's own notes. */
 function alsoNote(o,it){const oi=ITEMS.find(i=>norm(i.lt)===norm(o));
-  return '<b>'+esc(o)+'</b>'+(oi?' · '+esc(oi.en):'')+(oi&&oi.note?'<div class="why">'+esc(oi.note)+'</div>':'')+
+  const pol=!oi&&LANG.polite&&norm(LANG.polite(it.lt)||'')===norm(o);
+  return '<b>'+esc(o)+'</b>'+(oi?' · '+esc(oi.en):'')+(oi&&oi.note?'<div class="why">'+esc(oi.note)+'</div>':'')+(pol?'<div class="why">'+LANG.politeNote+'</div>':'')+
     '<div class="why">This card\'s word is <b>'+esc(it.lt)+'</b> · '+esc(it.en)+(it.note?'. '+esc(it.note):'')+'</div>';}
 /* Lithuanian usually leaves out "I / you / we": the verb ending already says who. */
 const dropWho=s=>norm(s).split(' ').filter(w=>!WHO_WORDS.includes(w)).join(' ');
@@ -2130,7 +2141,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
       if(swapped&&!neg)best={k,kind:'spell'};
       else if(neg||endSlip(sg,st,same))best={k,kind:'ending'};
       else if(other)best={k,kind:'word'};
-      else if(st.length>=4&&lev(sg,st)<=2)best={k,kind:'spell'};});
+      else if((st.length>=4||G.length===1&&T.length===1&&st.length>=2)&&lev(sg,st)<=(st.length>=4?2:1))best={k,kind:'spell'};});
     if(best){used.add(best.k);match[i]={g:G[best.k],kind:best.kind};}});
   const issues=[];
   T.forEach((t,i)=>{const m=match[i];if(!m||m.kind==='ok')return;
@@ -2146,7 +2157,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   /* a typo is forgiven only when it can't be a real mistake: not another real word, and not i / y / j mixed up (they are different sounds) */
   const typo=!!one&&strip(one.t).length>=5&&lev(strip(one.g),strip(one.t))===1&&sameStart(strip(one.g),strip(one.t))<strip(one.t).length-2&&!knownWord(one.g)&&!ijySwap(strip(one.g),strip(one.t));
   const rank={ending:0,word:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
-  return {html:issues.filter(x=>x.html).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
+  return {html:issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
 /* Any mark left off (š, ė, ū...) counts as "Nearly": right, but the word doesn't move up, and the letter is shown.
    Carons (š, ž, č) are letters of their own, so they get a word of explanation. */
 const caronKeep=s=>norm(s).normalize('NFD').replace(/[\u0300-\u030B\u030D-\u036F]/g,'');
@@ -2159,6 +2170,8 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
   const k=tn.map(strip).indexOf(strip(given));
   if(k>=0){const w=whyWrong(given,targets[k]),car=caronKeep(given)!==caronKeep(targets[k]);
     return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+markDiff(given,targets[k])+'</b>'+(w?w.html:'')+(car&&LANG.caronNote?'<div class="why">'+LANG.caronNote+'</div>':'')};}
+  if(LANG.fold){const f=s=>LANG.fold(strip(s)),k2=targets.map(f).indexOf(f(given));
+    if(k2>=0)return {ok:true,title:'Nearly',note:'Correct, but note the spelling: <b>'+esc(targets[k2])+'</b><div class="why">'+LANG.foldNote+'</div>'};}
   const d=dropWho(given);if(d.includes(' ')&&tn.map(dropWho).includes(d))
     return {ok:true,note:'<b>'+esc(targets[0])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropWho+'</div>'};
   /* "Aš iš Amerikos": everyday speech often leaves out "am / are" too */
@@ -2208,18 +2221,18 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   stage.querySelectorAll('.opt[data-ok]').forEach(b=>b.classList.add('good'));
   stage.querySelectorAll('.build .chip').forEach(b=>{b.disabled=true;});
   const inp=stage.querySelector('#ans');if(inp)inp.disabled=true;
-  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};
-  /* long enough to hear the word when right; time to read the answer (and the why) when not */
-  autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
+  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};Q.shownAt=Date.now();
+  /* long enough to hear the word when right; a miss, a "Nearly" or another right answer waits for you, so you can read why */
+  if(ok&&title!=='Nearly'&&title!=='That works too!')autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
 
-function finish(){dropPlace();if(Q.mode==='review')S.reviewDay=today();const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.round(Q.correct/Q.total*100):100;
+function finish(){dropPlace();if(Q.mode==='review')S.reviewDay=today();const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.min(100,Math.round(Q.correct/Q.total*100)):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total&&!Q.nearly&&!Q.selfRated;
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
      already know earns a little, so the league can't be climbed by repeating an easy lesson. */
   const ups=Q.ups||0,replay=Q.mode==='lesson'&&(S.lessons[Q.lesson.id]||0)>=1;
   /* typed or said answers (recall) count double, tapped ones once, self-ratings half */
   const rc=Q.recall||0,pts=Math.max(0,Q.correct+rc-Math.ceil((Q.selfRated||0)/2));
-  let xp;if(Q.mode==='check')xp=5+3*Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=5+Math.max(0,2*Q.correct-Math.ceil((Q.selfRated||0)/2))+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:5+pts;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=2+ups+2*rc;
+  let xp;if(Q.mode==='check')xp=5+3*Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=5+Math.max(0,2*Q.correct-Math.ceil((Q.selfRated||0)/2))+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:5+pts;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=2+ups+2*rc;
   let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=5;S.perfects=(S.perfects||0)+1;}
   amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
@@ -2287,7 +2300,7 @@ function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))re
   convNext();}
 /* Write it is texting: no voices, just time to read each message. */
 function readTime(t){return Math.min(4000,1100+t.length*45);}
-function convNext(){const C=CV;if(!C)return;$('#lbar').style.width=(C.i/C.lines.length*100)+'%';
+function convNext(){const C=CV;if(!C)return;C.bar=Math.max(C.bar||0,C.i/C.lines.length*100);$('#lbar').style.width=C.bar+'%';
   if(C.i>=C.lines.length)return convFinish();
   const ln=C.lines[C.i];const msgs=$('#msgs');
   if(ln.kind==='c')return convChoice(ln);
@@ -2496,11 +2509,16 @@ function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const
     tries++;C.mistakes++;sfx('bad');let first=null;
     bs.forEach((b,k)=>{if(strip(b.value)!==strip(want[k])){b.value='';b.classList.add('bad');first=first||b;slips.add(wtok[k]);}});
     cmsg.textContent='Not quite. The red boxes need a different letter.'+(tries>=2?' Stuck? Tap "Show me the answer".':'');upd();if(first)first.focus();};
-  bs.forEach((b,k)=>{b.onfocus=()=>{last=b;};
-    b.oninput=()=>{b.value=b.value.slice(-1);b.classList.remove('bad');if(b.value&&bs[k+1])bs[k+1].focus();upd();};
+  /* typing a letter twice gives its marked version across two boxes too (s, s → š), and tapping a box selects its letter */
+  bs.forEach((b,k)=>{b.onfocus=()=>{last=b;try{b.select();}catch(e){}};
+    b.oninput=()=>{const v=b.value.slice(-1),p=bs[k-1],to=p&&v&&LANG.dbl?LANG.dbl[(p.value+v).toLowerCase()]:null;
+      if(to&&to.length===1&&p.__t&&Date.now()-p.__t<1500){p.value=to;p.__t=0;b.value='';b.focus();upd();return;}
+      b.value=v;b.__t=v?Date.now():0;b.classList.remove('bad');if(b.value&&bs[k+1])bs[k+1].focus();upd();};
     b.onkeydown=e=>{if(e.key==='Backspace'&&!b.value&&bs[k-1]){e.preventDefault();bs[k-1].value='';bs[k-1].focus();upd();}
       else if(e.key==='Enter'){e.preventDefault();check();}};});
-  turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.oninput();});
+  turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.__t=0;b.oninput();b.__t=0;});
+  /* a tap near a word goes to its first empty box */
+  $('#cfill').onclick=e=>{if(e.target.tagName==='INPUT')return;const fw=e.target.closest('.fw');if(!fw)return;const ins=[...fw.querySelectorAll('.lb:not(:disabled)')];const t=ins.find(x=>!x.value)||ins[0];if(t)t.focus();};
   helpBtn.onclick=()=>{used=true;const sh=$('#cshow');sh.hidden=false;sh.innerHTML='<span class="lt">'+esc(ln.lt)+'</span><div class="pron">'+pronHtml(ln.lt)+'</div>';
     C.mistakes++;helpBtn.hidden=true;cmsg.textContent='Now fill in the letters yourself. Copying it once helps it stick.';};
   btn.disabled=true;btn.textContent='Check';btn.classList.remove('ghost');btn.onclick=check;
@@ -2802,7 +2820,9 @@ function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.fil
   ov.querySelector('[data-t="next"]').onclick=()=>{i++;if(i>=steps.length)end();else show();};
   ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);window.addEventListener('scroll',place,{passive:true});show();}
 /* Something is already asking for attention: a sign-in, a dialog, the tour or a celebration. */
-window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden;
+/* pop-ups (the tour, "Want a nudge?") never open just as you tap something: they wait until you've paused */
+let lastAct=0;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>{lastAct=Date.now();},true));
+window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden||Date.now()-lastAct<1500;
 function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour'))setTimeout(()=>{if(window.popBusy())return setTimeout(maybeTour,4000);if(!S.toured&&$('#sheet').hidden)startTour();},450);}
 $('#btn-tour').onclick=()=>startTour();
 
@@ -2934,11 +2954,11 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
 function cleanName(s){return s.replace(/[^\p{L}\s'-]/gu,'').trim().replace(/\s+/g,' ').split(' ').map(w=>w?w[0].toUpperCase()+w.slice(1):w).join(' ').slice(0,20);}
 function startMe(){const items=meItems();if(!items.length)return openMeForm();const queue=[{type:'metip'}];
   items.forEach(it=>{if(!rec(it.id).seen)queue.push({type:'intro',item:it});queue.push(exFor(it,rec(it.id).lvl>=1?['type','build']:['build']));});
-  items.forEach(it=>queue.push({type:'speak',item:it}));
+  items.forEach(it=>queue.push(speakOff()?{type:'type',item:it}:{type:'speak',item:it}));
   /* the last round: only the English, you say it from memory, then check */
   if(!speakOff()){queue.push({type:'mesay'});shuffle(items.slice()).forEach(it=>queue.push({type:'speak',item:it,blind:true}));}
   Q={queue,idx:0,correct:0,total:queue.filter(e=>!STEPLESS[e.type]).length,items,mode:'me',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap()};
-  preloadUnit('me1');openSheet();renderStep();}
+  preloadUnit('me1');prePics(items);openSheet();renderStep();}
 function openMeForm(){const m=S.me||{};const g=m.g||'';
   const opt=(list,val,label)=>'<option value="">Skip this one</option>'+list.map(o=>'<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+esc(label(o))+'</option>').join('');
   const cap=t=>t[0].toUpperCase()+t.slice(1);
@@ -3035,11 +3055,19 @@ $('#sw-mic').onclick=()=>{S.selfRate=!S.selfRate;save();renderProfile();};
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
 $('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voice,sound:S.sound,pron:S.pron};S=Object.assign(fresh(),keep,{welcomed:true});save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast('Progress erased');};
+if('scrollRestoration' in history)history.scrollRestoration='manual'; /* a reload opens Learn at the top */
 let tileKeys={};
+/* Enter can't skip a card that has only just appeared: a quick double Enter used to jump past a New word or Tip card unseen */
+document.addEventListener('keydown',e=>{if(e.key!=='Enter'||!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx],wait=ex&&STEPLESS[ex.type]?1200:600;
+  if(e.repeat||Date.now()-(Q.shownAt||0)<wait){e.preventDefault();e.stopImmediatePropagation();}},true);
 document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$('#sheet').hidden){if(document.activeElement&&document.activeElement.tagName==='INPUT')return;if(/^[1-3]$/.test(e.key)){const b=document.querySelector('.copt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
     if(e.key==='Enter'){const b=$('#btn-check');if(!b.disabled)b.click();}return;}
-  if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];if(!ex)return;
-  if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();}
+  if(!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx];
+  /* the finish screen: Enter is Continue */
+  if(!ex){const b=$('#btn-check');if(e.key==='Enter'&&document.activeElement!==b&&!b.disabled){e.preventDefault();b.click();}return;}
+  if(/^[1-4]$/.test(e.key)&&document.activeElement.tagName!=='INPUT'){const b=document.querySelector('.opt[data-i="'+(Number(e.key)-1)+'"]');if(b&&!b.disabled)b.click();
+    /* rating yourself: 1 No, 2 Almost, 3 Yes */
+    else{const r=document.querySelectorAll('#rate:not([hidden]) [data-rate]')[Number(e.key)-1];if(r)r.click();}}
   /* letter tiles take the keyboard too: type a letter to place it, Backspace to take the last one back */
   if(ex.type==='tiles'&&document.activeElement.tagName!=='INPUT'&&!e.ctrlKey&&!e.metaKey){
     if(e.key==='Backspace'){const c=[...document.querySelectorAll('#bans .chip')].pop();if(c){e.preventDefault();c.click();}return;}

@@ -517,6 +517,8 @@ async function loadNotify(){const S=window.S;if(!sb||!user)return;
 /* Phones only switch notifications on after the player taps Allow, so we ask once, right after sign-in,
    instead of leaving the button for them to find. "Not now" keeps the button in Profile. */
 function askPush(){const S=window.S;if(!S||!user||!pushOk()||Notification.permission!=='default'||S.pushAsked)return;
+  /* not before the second lesson: a new learner first sees what the app is */
+  if((S.lessonsDone||0)<2){window.addEventListener('gintaras:idle',()=>setTimeout(askPush,2500),{once:true});return;}
   if(!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||(window.popBusy?window.popBusy():document.querySelector('.league-pop')))return setTimeout(askPush,5000);
   S.pushAsked=1;window.save();
   const ov=document.createElement('div');ov.className='league-pop';

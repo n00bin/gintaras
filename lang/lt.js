@@ -6,6 +6,13 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   dbl:{ss:'š',zz:'ž',cc:'č',ee:'ė','ėe':'ę','ęe':'ee',uu:'ū','ūu':'ų','ųu':'uu',aa:'ą','ąa':'aa',ii:'į','įi':'ii','šs':'ss','žz':'zz','čc':'cc'},
   dblTip:'or type the letter twice (ss → š, ee → ė)',
   caronNote:'Tip: type a letter twice for its marked version, ss → š.',
+  /* i and y: y is a long "ee" (the same sound as į), so mixing them up is a spelling slip, like a missing mark */
+  fold:s=>s.replace(/y/g,'i'),
+  foldNote:'<b>y</b> is a long "ee", the same sound as <b>į</b>, so it is written differently from a short <b>i</b>.',
+  politeNote:'That\'s the polite "you": <b>jūsų, jums, jus</b> for strangers, older people or more than one person. <b>Tavo, tau, tave</b> are for a friend.',
+  /* the polite version of a "your / to you" phrase, or null (only when no verb has to change with it) */
+  polite:lt=>{const m={tavo:'jūsų',tau:'jums',tave:'jus'},w=lt.split(' ');if(!w.some(x=>m[norm(x)])||w.some(x=>norm(x)==='tu'))return null;
+    return w.map(x=>{const k=norm(x),to=m[k];if(!to)return x;return (x[0]!==x[0].toLowerCase()?to[0].toUpperCase()+to.slice(1):to)+x.slice(k.length);}).join(' ');},
   /* word endings, written without marks, so a slip at the end of a word can be told from a spelling slip */
   endings:['a','ai','ais','am','ame','ams','as','asi','ate','au','e','ei','eis','em','eme','ems','es','ese','esi','ete','i','ia','iai','iais','iam','iame','iams','ias','iasi','iate','iau','ie','iem','iems','ies','iesi','ime','imi','is','isi','ite','iu','ius','iuose','iuosi','iui','ims','o','oje','ojo','om','ome','oms','os','ose','osi','ote','siu','sime','site','ti','tis','u','ui','uje','um','ums','uose','uosi','us','y','yje','ys','yse'],audio:'audio/',
   hello:'Labas!',praise:['Puiku!','Gerai!','Šaunu!'],top:'Labai šaunu.',decoys:'aeiklmnorstuvėšžč',
@@ -2419,6 +2426,7 @@ const ALSO={'labas':['Sveiki'],'sveiki':['Labas'],'labas rytas':['Labas','Sveiki
 const MARK_SOUND={'č':'"ch" as in church','š':'"sh" as in shop','ž':'the "s" in measure','ė':'a long "ay"','ū':'a long "oo"','ą':'a long "ah"','ę':'a long "eh"','į':'a long "ee"','ų':'a long "oo"'};
 const WHO_WORDS=['aš','tu','mes','jūs'];
 function marksNote(g,t){const a=[...g],b=[...t];for(let i=0;i<b.length;i++)if(a[i]!==b[i]){const c=b[i],end=i===b.length-1;
+    if(end&&['labą','rytą','dieną','vakarą','naktį'].includes(t.toLowerCase()))return 'Said as a wish ("I wish you a good morning"), a greeting ends in <b>-ą</b> on both words: <b>labą rytą</b>, <b>labą dieną</b>.';
     if(end&&'ąęį'.includes(c))return 'The <b>'+c+'</b> at the end matters: it marks the thing being acted on (what you drink, want, see or buy).';
     if(end&&c==='ų')return 'The <b>ų</b> at the end matters: it is the "of" form, used after numbers and "no".';
     if(MARK_SOUND[c])return '<b>'+c+'</b> sounds like '+MARK_SOUND[c]+', so it is a different letter from plain <b>'+esc(strip(c))+'</b>.';
