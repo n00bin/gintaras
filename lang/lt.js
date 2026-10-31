@@ -5,7 +5,9 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   /* type a letter twice for its marked version; once more goes back to the plain pair */
   dbl:{ss:'š',zz:'ž',cc:'č',ee:'ė','ėe':'ę','ęe':'ee',uu:'ū','ūu':'ų','ųu':'uu',aa:'ą','ąa':'aa',ii:'į','įi':'ii','šs':'ss','žz':'zz','čc':'cc'},
   dblTip:'or type the letter twice (ss → š, ee → ė)',
-  caronNote:'Tip: type a letter twice for its marked version, ss → š.',audio:'audio/',
+  caronNote:'Tip: type a letter twice for its marked version, ss → š.',
+  /* word endings, written without marks, so a slip at the end of a word can be told from a spelling slip */
+  endings:['a','ai','ais','am','ame','ams','as','asi','ate','au','e','ei','eis','em','eme','ems','es','ese','esi','ete','i','ia','iai','iais','iam','iame','iams','ias','iasi','iate','iau','ie','iem','iems','ies','iesi','ime','imi','is','isi','ite','iu','ius','iuose','iuosi','iui','ims','o','oje','ojo','om','ome','oms','os','ose','osi','ote','siu','sime','site','ti','tis','u','ui','uje','um','ums','uose','uosi','us','y','yje','ys','yse'],audio:'audio/',
   hello:'Labas!',praise:['Puiku!','Gerai!','Šaunu!'],top:'Labai šaunu.',decoys:'aeiklmnorstuvėšžč',
   dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.',
   be:['esu','esi','esame','esate'],dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
@@ -2428,10 +2430,11 @@ function endingWhy(g,t,prev,next){const sg=strip(g),st=strip(t);const end=t.slic
   if(sg.startsWith('ne')&&!st.startsWith('ne'))return head+'This one isn\'t "not", so it has no <b>ne</b> in front.';
   const mf=(m,f)=>(m.endsWith('as')&&(f===m.slice(0,-1)||f===m.slice(0,-2)+'e'))||((m.endsWith('is')||m.endsWith('ys'))&&f===m.slice(0,-2)+'e')||(m.endsWith('ius')&&f===m.slice(0,-3)+'e');
   const nx=next?strip(next):'',ng=nx.length>2&&glossOf(next)?(/(as|is|ys|us)$/.test(nx)?'he':/(a|e)$/.test(nx)?'her':''):'';
-  if(mf(sg,st)&&ng==='her')return head+'<b>'+esc(next)+'</b> is a "her" word, so <b>'+esc(g)+'</b> becomes <b>'+esc(t)+'</b>.';
-  if(mf(st,sg)&&ng==='he')return head+'<b>'+esc(next)+'</b> is a "he" word, so it stays <b>'+esc(t)+'</b>.';
-  if(mf(sg,st))return head+'<b>'+esc(g)+'</b> is the form a man uses; here it’s the woman’s form, <b>'+esc(t)+'</b>.';
-  if(mf(st,sg))return head+'<b>'+esc(g)+'</b> is the form a woman uses; here it’s the man’s form, <b>'+esc(t)+'</b>.';
+  const real=knownWord(g);
+  if(real&&mf(sg,st)&&ng==='her')return head+'<b>'+esc(next)+'</b> is a "her" word, so <b>'+esc(g)+'</b> becomes <b>'+esc(t)+'</b>.';
+  if(real&&mf(st,sg)&&ng==='he')return head+'<b>'+esc(next)+'</b> is a "he" word, so it stays <b>'+esc(t)+'</b>.';
+  if(real&&mf(sg,st))return head+'<b>'+esc(g)+'</b> is the form a man uses; here it’s the woman’s form, <b>'+esc(t)+'</b>.';
+  if(real&&mf(st,sg))return head+'<b>'+esc(g)+'</b> is the form a woman uses; here it’s the man’s form, <b>'+esc(t)+'</b>.';
   const mg=glossOf(g),mt=glossOf(t);
   if(mg&&mt&&mg!==mt)return head+'<b>'+esc(g)+'</b> means "'+esc(mg)+'", but here you need "'+esc(mt)+'".';
   const p=norm(prev||'');
@@ -2472,7 +2475,7 @@ const GUIDE_HTML=`<div class="card">
       <h2>Lithuanian letters</h2>
       <p class="note">Lithuanian is written the way it sounds. Learn the letters below and you can read almost anything.</p>
       <div class="sounds">
-        <div><b>ą ę į ų</b><span>long vowels (the hook used to mean a nasal sound; today it only marks length): <i>ačiū, žąsis</i></span></div>
+        <div><b>ą ę į ų</b><span>long vowels (the hook used to mean a nasal sound; today it only marks length): <i>žąsis, pinigų</i></span></div>
         <div><b>ė</b><span>a closed "e", like the vowel in "they" without the glide: <i>tėtis, mėsa</i></span></div>
         <div><b>ū, y</b><span>long "oo" and long "ee": <i>sūris, vynas</i></span></div>
         <div><b>č š ž</b><span>"ch", "sh", and the "s" in "measure": <i>čia, šuo, žalias</i></span></div>

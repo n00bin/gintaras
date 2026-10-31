@@ -37,6 +37,7 @@
   --pine:#2F6B4A;      /* forest green */
   --pine-soft:#DCEBE0;
   --ok:#2E8B57;
+  --strong:#2F6FB3;
 --warn:#A98200;
   --ok-soft:#DCF2E3;
   --bad:#C93A3A;
@@ -50,7 +51,7 @@
   :root:not([data-theme="light"]){
     --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
     --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;--band:#24553A;
-    --ok:#5FC07F;
+    --ok:#5FC07F;--strong:#7AAEEA;
 --warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
     --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
   }
@@ -59,7 +60,7 @@
   --band:#24553A;
   --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
   --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
-  --ok:#5FC07F;
+  --ok:#5FC07F;--strong:#7AAEEA;
 --warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
   --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
 }
@@ -566,6 +567,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .lb .zone.down-line{color:var(--bad)}
 .league-pop{position:fixed;inset:0;z-index:60;background:rgba(10,18,14,.6);display:grid;place-items:center;padding:16px}
 .league-pop .card{max-width:380px;text-align:center;justify-items:center;margin:0}
+@media (min-width:720px){.league-pop .card{max-width:480px;width:100%}.gram-pop .card,.flag-pop .card{max-width:620px}}
 .chal-pop .card{animation:popin .42s cubic-bezier(.2,1.6,.4,1);border-radius:28px;padding:20px 22px}
 .chal-pop .pop-mascot{width:130px;margin-bottom:-10px}
 .chal-pop h2{font-size:26px;color:var(--amber-deep)}
@@ -711,6 +713,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .chal-row .btns .chip{font-size:15px;min-height:44px;padding:8px 14px}
 .league-pop .linkbtn{min-height:44px;margin-top:8px}
 .stakes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.stakes .chip:disabled{opacity:.4;cursor:not-allowed;border-style:dashed}
 .stakes .chip.in{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .cup-box{margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--amber) 12%,var(--surface));border:2px solid color-mix(in srgb,var(--amber) 40%,var(--line));display:grid;gap:6px}
 .cup-box h3{margin:0;font-family:var(--display);font-size:18px}
@@ -790,7 +793,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="card">
       <h2>Word strength</h2>
       <div class="lvls" id="lvls"></div>
-      <div class="legend"><span><i style="background:var(--bad)"></i>New</span><span><i style="background:var(--amber)"></i>Learning</span><span><i style="background:var(--pine)"></i>Known</span><span><i style="background:var(--ok)"></i>Strong</span></div>
+      <div class="legend"><span><i style="background:var(--bad)"></i>New</span><span><i style="background:var(--amber)"></i>Learning</span><span><i style="background:var(--pine)"></i>Known</span><span><i style="background:var(--strong)"></i>Strong</span></div>
     </div>
   </section>
 
@@ -1005,8 +1008,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.67';
-const APP_VERSION=139;
+const APP_RELEASE='3.68';
+const APP_VERSION=140;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1161,7 +1164,7 @@ const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],[
 /* Tricky words workout (free, on Practice): your most-missed words, each with a fresh look and its memory trick first. */
 function trickyPick(){return practised().filter(i=>rec(i.id).bad>0).sort((a,b)=>(rec(b.id).lapse||0)-(rec(a.id).lapse||0)||rec(b.id).bad-rec(a.id).bad).slice(0,8);}
 function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('Nothing tricky yet: you need a few missed words first');
-  buildSession(pick,'review',null);Q.queue=pick.map(it=>({type:'intro',item:it,leech:true})).concat(Q.queue.filter(e=>e.type!=='intro'));Q.idx=0;renderStep();}
+  buildSession(pick,'review',null);Q.tricky=true;Q.queue=pick.map(it=>({type:'intro',item:it,leech:true})).concat(Q.queue.filter(e=>e.type!=='intro'));Q.idx=0;renderStep();}
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
@@ -1493,7 +1496,7 @@ function renderPractice(){const L=learned();const d=dueItems();
   {const m=document.querySelector('.due-mascot');if(m)m.hidden=!(L.length&&!d.length);}
   $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;$('#btn-tricky').hidden=trickyPick().length<3;
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
-  const cols=['var(--bad)','var(--amber)','var(--pine)','var(--ok)'];const tot=Math.max(1,L.length);
+  const cols=['var(--bad)','var(--amber)','var(--pine)','var(--strong)'];const tot=Math.max(1,L.length);
   renderMe();renderCando();renderQuick();renderConvList();renderGameCard();
   $('#lvls').innerHTML=buckets.map((n,k)=>'<i style="width:'+(n/tot*100)+'%;background:'+cols[k]+'" title="'+n+'"></i>').join('');}
 function renderProfile(){$('#p-words').textContent=learned().length;$('#p-recall').textContent=recalled().length;$('#p-days').textContent=S.daysLearned||0;$('#p-streak').textContent=S.streak;
@@ -1619,7 +1622,8 @@ function nextPop(){const o=popQ.shift(),el=$('#pop');if(!o||!el){popOn=false;ret
   el.hidden=false;el.classList.remove('out');void el.offsetWidth;el.classList.add('in');sfx('win');
   const close=()=>{if(el.hidden)return;clearTimeout(nextPop.t);el.onclick=null;el.classList.remove('in');el.classList.add('out');
     setTimeout(()=>{el.hidden=true;el.classList.remove('out');nextPop();},220);};
-  el.onclick=close;nextPop.t=setTimeout(close,o.ms||2800);}
+  el.onclick=e=>{close();const b=$('#btn-check');if(!b||b.disabled||$('#sheet').hidden)return;const r=b.getBoundingClientRect();
+    if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)b.click();};nextPop.t=setTimeout(close,o.ms||2800);}
 
 
 /* Your face: pick a ready-made one, or step through each feature. Saved on this phone, synced, and shown on the board. */
@@ -1807,14 +1811,14 @@ function openSheet(){const sh=$('#sheet');sh.hidden=false;document.body.style.ov
 const RESKEY='gintaras.resume.'+LANG_CODE;
 function keepPlace(){if(!Q||(Q.mode!=='lesson'&&Q.mode!=='review'))return;const id=x=>x&&x.id;
   try{localStorage.setItem(RESKEY,JSON.stringify({at:Date.now(),mode:Q.mode,lesson:id(Q.lesson),idx:Q.idx,correct:Q.correct,total:Q.total,items:Q.items.map(id),wrongOnce:Q.wrongOnce,
-    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,dueN:Q.dueN||0,startedAt:Q.startedAt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
+    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,dueN:Q.dueN||0,tricky:Q.tricky,startedAt:Q.startedAt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
     queue:Q.queue.map(e=>Object.assign({},e,{item:id(e.item),items:e.items&&e.items.map(id),unit:id(e.unit),lesson:id(e.lesson),drill:e.drill?DRILLS.indexOf(e.drill):undefined}))}));}catch(e){}}
 function dropPlace(){try{localStorage.removeItem(RESKEY);}catch(e){}}
 function savedPlace(){try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(!p||Date.now()-p.at>12*3600e3||p.idx>=p.queue.length)return null;
     if(p.lesson&&!LESSON_BY[p.lesson]||p.queue.some(e=>e.item&&!BYID[e.item]))return null;p.left=p.queue.slice(p.idx).filter(e=>!STEPLESS[e.type]).length;return p.left?p:null;}catch(e){return null;}}
 function resumePlace(){const p=savedPlace();if(!p)return renderBite();personalise();
   const queue=p.queue.map(e=>Object.assign({},e,{item:e.item?BYID[e.item]:undefined,items:e.items?e.items.map(i=>BYID[i]).filter(Boolean):undefined,unit:e.unit?UNIT_BY[e.unit]:undefined,lesson:e.lesson?LESSON_BY[e.lesson]:undefined,drill:e.drill!=null&&e.drill>=0?DRILLS[e.drill]:undefined}));
-  Q={queue,idx:p.idx,correct:p.correct,total:p.total,items:p.items.map(i=>BYID[i]).filter(Boolean),mode:p.mode,lesson:p.lesson?LESSON_BY[p.lesson]:null,answer:null,startedAt:p.startedAt,
+  Q={queue,idx:p.idx,correct:p.correct,total:p.total,items:p.items.map(i=>BYID[i]).filter(Boolean),mode:p.mode,lesson:p.lesson?LESSON_BY[p.lesson]:null,answer:null,startedAt:Date.now()-Math.max(0,(p.at||Date.now())-(p.startedAt||p.at||Date.now())),tricky:p.tricky,
     wrongOnce:p.wrongOnce||{},barPct:0,knownBefore:p.knownBefore,crownsBefore:p.crownsBefore,ups:p.ups,nearly:p.nearly,selfRated:p.selfRated,dueN:p.dueN||0};
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));openSheet();renderStep();}
 /* New words become future reviews, so with a big pile waiting (30 or more) a new lesson asks you to review first. Once a day you can say "Learn anyway". */
@@ -1829,7 +1833,7 @@ function startBoss(u){const all=bossItems(u);if(all.length<5)return;
   Q={queue,idx:0,correct:0,total:queue.length,items:pick,mode:'check',unit:u,lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,knownBefore:learned().length,crownsBefore:crownSnap(),boss:{hp:Math.ceil(queue.length*0.8),max:Math.ceil(queue.length*0.8)},missed:[]};
   $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
 function bossDraw(){const b=$('#bossbar');if(!b)return;if(!Q||Q.mode!=='check'){b.hidden=true;return;}b.hidden=false;
-  $('#bosshp').style.width=(Q.boss.hp/Q.boss.max*100)+'%';$('#bossn').textContent=Q.boss.hp+' HP';}
+  $('#bosshp').style.width=(Q.boss.hp/Q.boss.max*100)+'%';$('#bossn').textContent=Q.boss.hp?Q.boss.hp+(Q.boss.hp===1?' hit':' hits')+' to win':'Beaten ✓';}
 function startLesson(l){const d=dueItems().length;
   if(!l.speak&&crowns(l.id)<1&&d>=30&&S.gateDay!==today()){const ov=document.createElement('div');ov.className='gate';
     ov.innerHTML='<div class="card" role="dialog" aria-modal="true">'+mascot('think')+'<h2>'+d+' words are waiting</h2><p class="note">Every new word comes back for review later, so the pile only grows. Review first, then learn: you will keep far more of both.</p><button type="button" class="btn amber" data-g="review">Review first</button><button type="button" class="btn ghost" data-g="learn">Learn anyway</button></div>';
@@ -1873,8 +1877,8 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
   if(Q.idx>=Q.queue.length)return Q.mode==='place'?placeFinish():finish();
   keepPlace();const ex=Q.queue[Q.idx];const it=ex.item;
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
-  const lad=ex.item&&Q.mode==='review'&&rec(it.id).lvl>=1&&ladderAt(ex.type)>=0;
-  const from=ex.owed?'<span class="eyebrow">🎧 Listening you skipped earlier</span>':lad?'<span class="eyebrow">Step '+(ladderStep(it)+1)+' of 4 · '+LADDER_NAME[ladderStep(it)]+'</span>':ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
+  const ls=ex.type==='speak'?-1:ladderAt(ex.type),lad=ex.item&&Q.mode==='review'&&rec(it.id).lvl>=1&&ls>=0;
+  const from=ex.owed?'<span class="eyebrow">🎧 Listening you skipped earlier</span>':lad?'<span class="eyebrow">Step '+(ls+1)+' of 4 · '+LADDER_NAME[ls]+'</span>':ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
   const emo=x=>picHtml(x.lt,'sm');
   const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?TURTLE:SPK)+'</button>';
   if(ex.type==='tip'){const u=ex.unit,l=ex.lesson;const lt=l&&(l.speak?SPEAK_TIPS[u.id]:LESSON_TIPS[l.id]);
@@ -1885,7 +1889,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();progressUI();const s
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='mesay'){st.innerHTML='<span class="eyebrow">About me · last round</span><div class="intro tipcard lesson-tip"><h3>🙈 Say it without looking</h3><div>Now you see only the English. Say each line in '+LANG.en+' from memory, then tap "Show me" to check.</div></div>'+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='I\'m ready';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>'+ME_TIP+'</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
+  else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>'+ME_TIP.replace(/Anglijos/g,((ME_COUNTRIES.find(c=>c[0]===(S.me||{}).from)||[])[2])||'Anglijos')+'</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
     btn.disabled=false;btn.textContent='Let\'s go';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='intro'){st.innerHTML='<span class="eyebrow">'+(ex.leech?'Tricky word · a fresh look':it.me?'About you':'New word')+'</span>'+(ex.leech?'<p class="note">This one keeps slipping away, so here it is again, slowly, with its memory trick and what it is built from. Say it out loud twice.</p>':'')+'<div class="intro">'+(hasPic(it.lt)?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+'<div class="word">'+spk(it)+spk(it,'',true)+'<span class="lt">'+esc(it.lt)+'</span></div><div class="en">'+esc(it.en)+'</div><div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div>'+'<button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+(it.note?'<div class="meta">'+esc(it.note)+'</div>':'')+(HOOK[it.lt]?'<div class="hook"><b>Memory trick</b> '+esc(HOOK[it.lt])+'</div>':'')+builtFrom(it)+'</div><p class="note">Tap the speaker to hear it; the turtle plays it slowly. Say it out loud once. A quick question about it comes in a moment, and it comes back for review tomorrow.</p>';
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{rec(it.id).seen=true;Q.idx++;renderStep();};setTimeout(()=>say(it),200);}
@@ -2059,13 +2063,22 @@ function lev(a,b){const d=[];for(let j=0;j<=b.length;j++)d[j]=j;
   for(let i=1;i<=a.length;i++){let p=d[0];d[0]=i;for(let j=1;j<=b.length;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=t;}}return d[b.length];}
 function sameStart(a,b){let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;return i;}
 const glossOf=w=>WORDS[norm(w)]||GLUE[norm(w)]||'';
+/* The fullest English for a word: a course card's own ("They (women)") before the word list's ("They"). Small = lower case. */
+function fullGloss(w,small){const it=ITEMS.find(i=>norm(i.lt).replace(/[?!.,]/g,'')===norm(w)),s=it?it.en.replace(/[?!.]$/,''):glossOf(w);
+  return small&&s&&!/^I/.test(s)?s[0].toLowerCase()+s.slice(1):s;}
 function knownWord(w){wordLvl('');const n=norm(w);return !!(WORD_ITEMS[n]||WORDS[n]||GLUE[n]);}
+/* Only the end of the word changed, into another ending (labas → laba, noriu → nori). One letter wrong further in
+   (sekesi for sekasi), a consonant swapped (sekazi) or a letter that is no ending (labanak for labanakt) is spelling. */
+function endSlip(sg,st,same){if(same<3||same<Math.min(sg.length,st.length)-3)return false;
+  if(sg.length===st.length&&lev(sg,st)===1){const v=/[aeiouy]/;return same>=st.length-2&&v.test(sg[same])&&v.test(st[same]);}
+  const e=LANG.endings;return !e||[sg.slice(same),st.slice(same)].every(x=>e.some(y=>y.endsWith(x)));}
 function ijySwap(a,b){if(a.length!==b.length)return false;for(let i=0;i<a.length;i++)if(a[i]!==b[i])return /^[ijy]{2}$/.test(a[i]+b[i]);return false;}
 /* Every right way to say it counts: the card's own answer and its listed alternatives, words that mean exactly the same
    (Labas or Sveiki for "Hello", Iki or Viso gero for "Bye"), and any other course word with the same English. */
 function answersFor(it){const own=[it.lt].concat(it.alt||[]),k=norm(it.lt),ek=enKey(it.en);
   const syn=(ALSO[k]||[]).filter(v=>(ALSO[norm(v)]||[]).some(x=>norm(x)===k));
-  const same=ITEMS.filter(i=>i!==it&&enKey(i.en)===ek).map(i=>i.lt);
+  const par=s=>((String(s).match(/\(([^)]*)\)/)||[])[1]||'').toLowerCase(),pa=par(it.en);
+  const same=ITEMS.filter(i=>{if(i===it||enKey(i.en)!==ek)return false;const pi=par(i.en);return pi===pa||!(pi&&pa)&&!/\b(m[ae]n|wom[ae]n|male|female|he|she|boys?|girls?|mixed)\b/.test(pi+' '+pa);}).map(i=>i.lt);
   return {own,other:[...new Set(syn.concat(same))].filter(v=>!own.some(o=>norm(o)===norm(v)))};}
 /* Says why the other word works, and how it differs (formal or informal, and so on), from the course's own notes. */
 function alsoNote(o,it){const oi=ITEMS.find(i=>norm(i.lt)===norm(o));
@@ -2083,13 +2096,16 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
     G.forEach((g,k)=>{if(used.has(k)||best)return;const sg=strip(g);const same=sameStart(sg,st);
       const neg=sg.startsWith('ne')!==st.startsWith('ne')&&sameStart(sg.replace(/^ne/,''),st.replace(/^ne/,''))>=3;
       const swapped=sg.length===st.length&&[...sg].sort().join('')===[...st].sort().join('');
+      const other=knownWord(g)&&fullGloss(g)&&fullGloss(t)&&fullGloss(g)!==fullGloss(t)&&(lev(sg,st)<=2||sg.length<=3&&st.length<=3);
       if(swapped&&!neg)best={k,kind:'spell'};
-      else if(neg||(same>=3&&same>=Math.min(sg.length,st.length)-3))best={k,kind:'ending'};
+      else if(neg||endSlip(sg,st,same))best={k,kind:'ending'};
+      else if(other)best={k,kind:'word'};
       else if(st.length>=4&&lev(sg,st)<=2)best={k,kind:'spell'};});
     if(best){used.add(best.k);match[i]={g:G[best.k],kind:best.kind};}});
   const issues=[];
   T.forEach((t,i)=>{const m=match[i];if(!m||m.kind==='ok')return;
     if(m.kind==='ending')issues.push({kind:'ending',html:endingWhy(m.g,t,T[i-1],T[i+1])});
+    else if(m.kind==='word')issues.push({kind:'word',html:'Different word: <b>'+esc(m.g)+'</b> means "'+esc(fullGloss(m.g,1))+'", but here you need <b>'+esc(t)+'</b> ("'+esc(fullGloss(t,1))+'").'});
     else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling: <b>'+esc(m.g)+'</b> is written <b>'+esc(t)+'</b>.'});
     else issues.push({kind:'marks',html:marksNote(m.g,t)});});
   T.forEach((t,i)=>{if(match[i])return;const gl=glossOf(t);issues.push({kind:'missing',html:'You left out <b>'+esc(t)+'</b>'+(gl?' ('+esc(gl)+')':'')+'.'});});
@@ -2099,7 +2115,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   const one=issues.length===1&&issues[0].kind==='spell'?issues[0]:null;
   /* a typo is forgiven only when it can't be a real mistake: not another real word, and not i / y / j mixed up (they are different sounds) */
   const typo=!!one&&strip(one.t).length>=5&&lev(strip(one.g),strip(one.t))===1&&sameStart(strip(one.g),strip(one.t))<strip(one.t).length-2&&!knownWord(one.g)&&!ijySwap(strip(one.g),strip(one.t));
-  const rank={ending:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
+  const rank={ending:0,word:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
   return {html:issues.filter(x=>x.html).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
 /* Any mark left off (š, ė, ū...) counts as "Nearly": right, but the word doesn't move up, and the letter is shown.
    Carons (š, ž, č) are letters of their own, so they get a word of explanation. */
@@ -2143,7 +2159,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const mean=ex.type==='mc_lt_en'||ex.type==='listen';
   const answer=picHtml(it.lt,'xs')+'<b>'+esc(mean?it.en:it.lt)+'</b> · '+esc(mean?it.lt:it.en)+pr;
   $('#btn-idk').hidden=true;
-  if(Q.mode==='check'){if(ok&&first)Q.boss.hp=Math.max(0,Q.boss.hp-1);else if(!ok&&!Q.missed.includes(it))Q.missed.push(it);setTimeout(bossDraw,50);}
+  if(Q.mode==='check'){if(ok&&first&&Q.boss.hp===1)toast('Boss beaten! The rest are for practice');if(ok&&first)Q.boss.hp=Math.max(0,Q.boss.hp-1);else if(!ok&&!Q.missed.includes(it))Q.missed.push(it);setTimeout(bossDraw,50);}
   if(Q.mode==='place'){if(ok&&first)Q.place.right++;Q.place.got[it.id]=ok&&first;}
   if(ok&&first&&RECALL[ex.type]&&title!=='Nearly')Q.recall=(Q.recall||0)+1;
   if(Q.mode!=='place'&&Q.mode!=='check'&&rec(it.id).lvl>=1&&ladderAt(ex.type)>=0){const r=rec(it.id),s=ladderStep(it);
@@ -2198,7 +2214,7 @@ function finish(){dropPlace();if(Q.mode==='review')S.reviewDay=today();const sec
   let won=false;if(Q.mode==='check'){won=Q.correct>=Math.ceil(Q.total*0.8);if(won){S.checks=S.checks||{};S.checks[Q.unit.id]=today();save();}
     lines.unshift('<div class="win"><b>'+(won?'⚔️ Boss defeated':'👹 Not this time')+'</b> · '+Q.correct+' of '+Q.total+' right first time'+(won?'. Unit '+esc(Q.unit.en)+' is checked off.':'. You need '+Math.ceil(Q.total*0.8)+'.')+'</div>'+
       (Q.missed.length?'<div class="win"><b>To work on</b> · '+Q.missed.map(i=>esc(i.lt)).join(', ')+'<br><button type="button" class="btn ghost" id="boss-rev">Review these '+Q.missed.length+'</button></div>':''));}
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'think':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words met</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'think':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+' complete':Q.mode==='me'?'You talked about yourself':Q.tricky?'Tricky words workout done':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+acc+'%</strong><small>Accuracy</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+learned().length+'</strong><small>Words met</small></div></div>'+lines.join('')+'</div>';
   {const rv=$('#boss-rev');if(rv){const miss=Q.missed.slice();rv.onclick=()=>buildSession(miss,'review',null);}}
   confetti(perfect||after.i>before.i||got.length>0||chest?160:70);sfx('win');countUp();
   if(chest)setTimeout(()=>celebrate({mood:'cheer',icon:'🎁',title:'Treasure chest!',sub:'+'+chest+' amber · a chest comes with every 5th lesson'}),700);
@@ -2613,7 +2629,8 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   if(C.stronger.size)lines.push('<div class="win"><b>'+C.stronger.size+' word'+(C.stronger.size>1?'s':'')+' got stronger</b> · they were due for review, and you '+(sp?'said':'wrote')+' them right</div>');
   if(C.slipped.size)lines.push('<div class="win"><b>'+C.slipped.size+' to practise again</b> · '+[...C.slipped].slice(0,4).map(id=>esc(BYID[id].lt)).join(', ')+(C.slipped.size>4?'…':'')+' will come back in your reviews soon</div>');
   newStars.forEach(k=>lines.push('<div class="win badge"><b>'+'★'.repeat(k+1)+' New star: '+STARS[k]+'</b> · '+['you finished it in writing','every reply written by you, right first time','every reply said from memory, no peeking'][k]+'</div>'));
-  {const g=convStars(C.c.id);if(!g[1]&&!sp)lines.push('<div class="win"><b>For the next star</b> · write every reply yourself, right first time, with no hints or English. Replies where you tap the words count once you know them better.</div>');else if(g[1]&&!g[2]&&sp&&!newStars.includes(2))lines.push('<div class="win"><b>For the last star</b> · say every reply from memory, without tapping "Show me the '+LANG.en+'". Replies shown for you to repeat count once you know their words.</div>');}
+  {const g=convStars(C.c.id);if(!g[1]&&!sp)lines.push('<div class="win"><b>For the next star</b> · write every reply yourself, right first time, with no hints or English. Replies where you tap the words count once you know them better.</div>');else if(!g[2]&&sp&&!newStars.includes(2)&&C.played.some(p=>p.res==null)&&(C.checked||0)<C.turns)lines.push('<div class="win"><b>For the Spoken star</b> · the microphone has to hear each reply, said from memory. "I said it" counts toward opening the next unit, but not for the star. Turn the microphone on in Settings to earn it.</div>');
+    else if(g[1]&&!g[2]&&sp&&!newStars.includes(2))lines.push('<div class="win"><b>For the last star</b> · say every reply from memory, without tapping "Show me the '+LANG.en+'". Replies shown for you to repeat count once you know their words.</div>');}
   if(cardsNew)lines.push('<div class="win"><b>'+cardsNew+' new repl'+(cardsNew===1?'y':'ies')+' for Quick chat</b> · practise answering them in Quick chat on the Practice tab, starting tomorrow</div>');
   if(cardsUp)lines.push('<div class="win"><b>'+cardsUp+' repl'+(cardsUp===1?'y':'ies')+' got easier</b> · they move up a step in Quick chat</div>');
   if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken'+(convSpoken(C.c.id)?'':'. The next unit opens once you do')+'. Find it on the conversation\'s card.</div>');
@@ -2704,15 +2721,15 @@ const TOUR=[
 function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
   let i=0;const ov=document.createElement('div');ov.id='tour';ov.innerHTML='<div class="spot"></div><div class="bubble" role="dialog" aria-live="polite"><span class="eyebrow"></span><h3></h3><p></p><div class="row2"><button type="button" class="btn ghost" data-t="skip">Skip</button><button type="button" class="btn amber" data-t="next">Next</button></div></div>';
   document.body.appendChild(ov);const spot=ov.querySelector('.spot'),bub=ov.querySelector('.bubble');
-  const end=()=>{S.toured=true;save();ov.remove();window.removeEventListener('resize',place);};
+  const end=()=>{S.toured=true;save();ov.remove();window.removeEventListener('resize',place);window.removeEventListener('scroll',place);};
   const place=()=>{const st=steps[i];const el=document.querySelector(st.sel);const r=el.getBoundingClientRect();const pad=6;
     Object.assign(spot.style,{left:(r.left-pad)+'px',top:(r.top-pad)+'px',width:(r.width+pad*2)+'px',height:(r.height+pad*2)+'px'});
     bub.querySelector('.eyebrow').textContent='Quick tour · '+(i+1)+' of '+steps.length;bub.querySelector('h3').textContent=st.title;bub.querySelector('p').textContent=st.text;
     bub.querySelector('[data-t="next"]').textContent=i===steps.length-1?'Got it':'Next';
     const below=r.bottom+pad+12,bh=bub.offsetHeight;const top=below+bh<window.innerHeight-8?below:Math.max(8,r.top-pad-12-bh);bub.style.top=top+'px';};
-  const show=()=>{const el=document.querySelector(steps[i].sel);if(el.closest('main'))el.scrollIntoView({block:'center'});requestAnimationFrame(place);};
+  const show=()=>{const el=document.querySelector(steps[i].sel);if(el.closest('main'))el.scrollIntoView({block:'center',behavior:'instant'});requestAnimationFrame(place);setTimeout(place,400);};
   ov.querySelector('[data-t="next"]').onclick=()=>{i++;if(i>=steps.length)end();else show();};
-  ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);show();}
+  ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);window.addEventListener('scroll',place,{passive:true});show();}
 /* Something is already asking for attention: a sign-in, a dialog, the tour or a celebration. */
 window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden;
 function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour'))setTimeout(()=>{if(window.popBusy())return setTimeout(maybeTour,4000);if(!S.toured&&$('#sheet').hidden)startTour();},450);}
@@ -2916,8 +2933,8 @@ document.querySelector('#share .qr').addEventListener('toggle',async ev=>{if(!ev
 /* Leaving part way asks first. A lesson or review can be carried on later from Today's plan; a conversation or check starts over. */
 $('#btn-quit').onclick=()=>{const live=Q&&Q.idx>0&&Q.idx<Q.queue.length&&Q.mode!=='place'||CV&&!CV.quick&&CV.i>0&&CV.i<CV.lines.length||CV&&CV.quick&&CV.i>0&&CV.i<CV.queue.length;if(!live)return quit();
   const keep=Q&&(Q.mode==='lesson'||Q.mode==='review');const ov=document.createElement('div');ov.className='gate';
-  ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Leave?">'+mascot('think')+'<h2>Leave '+(CV&&CV.quick?'Quick chat':CV?'this conversation':Q.mode==='check'?'the unit check':'this lesson')+'?</h2><p class="note">'+
-    (keep?'Your answers so far are kept, and you can carry on from this card later on the Learn tab.':CV&&CV.quick?'The replies you got right are kept.':'Your answers so far are kept, but '+(CV?'the conversation':'the check')+' starts from the beginning next time.')+'</p><button type="button" class="btn amber" data-l="stay">Keep going</button><button type="button" class="btn ghost" data-l="go">Leave</button></div>';
+  ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Leave?">'+mascot('think')+'<h2>Leave '+(CV&&CV.quick?'Quick chat':CV?'this conversation':Q.mode==='check'?'the unit check':Q.mode==='me'?'About me':'this lesson')+'?</h2><p class="note">'+
+    (keep?'Your answers so far are kept, and you can carry on from this card later on the Learn tab.':CV&&CV.quick?'The replies you got right are kept.':Q&&Q.mode==='me'?'Your answers so far are kept. Practise it again any time from the About me card.':'Your answers so far are kept, but '+(CV?'the conversation':'the check')+' starts from the beginning next time.')+'</p><button type="button" class="btn amber" data-l="stay">Keep going</button><button type="button" class="btn ghost" data-l="go">Leave</button></div>';
   document.body.appendChild(ov);ov.querySelector('[data-l="stay"]').focus();ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.l==='go')quit();});};
 $('#btn-review').onclick=()=>startReview(false);
 $('#btn-weak').onclick=()=>startReview(true);$('#btn-tricky').onclick=startTricky;
@@ -2957,10 +2974,11 @@ document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$(
     if(e.key==='Backspace'){const c=[...document.querySelectorAll('#bans .chip')].pop();if(c){e.preventDefault();c.click();}return;}
     if(e.key.length===1){const k=e.key.toLowerCase(),free=t=>[...document.querySelectorAll('#bank .chip:not(.ghost)')].find(x=>x.textContent===t);
       /* the same key twice in a row swaps in the marked letter: s, s → š (and ė, e → ę) */
-      const T=tileKeys.ex===ex?tileKeys:{},lastIn=[...document.querySelectorAll('#bans .chip')].pop();
-      if(T.key===k&&LANG.dbl){const to=LANG.dbl[(T.placed&&lastIn?lastIn.textContent:k)+k];
+      const T=tileKeys.ex===ex?tileKeys:{},lastIn=[...document.querySelectorAll('#bans .chip')].pop(),plain=free(k);
+      if(!plain&&T.key===k&&LANG.dbl){const to=LANG.dbl[(T.placed&&lastIn?lastIn.textContent:k)+k];
         if(to&&to.length===1&&free(to)){e.preventDefault();if(T.placed&&lastIn)lastIn.click();free(to).click();tileKeys={ex,key:k,placed:true};return;}}
-      const c=free(k);tileKeys={ex,key:k,placed:!!c};if(c){e.preventDefault();c.click();}return;}}
+      const c=plain||[...document.querySelectorAll('#bank .chip:not(.ghost)')].find(x=>x.textContent.length===1&&strip(x.textContent)===k);
+      tileKeys={ex,key:k,placed:!!c};if(c){e.preventDefault();c.click();}return;}}
   /* Enter goes to the big button (unless it already has the focus, which presses it by itself) */
   if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(document.activeElement===b)return;e.preventDefault();if(!b.disabled)b.click();}});
 
