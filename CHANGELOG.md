@@ -4,6 +4,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.70** (2026-10-31) Speaking and listening: without the microphone the written word stays hidden until you have said it ("Show me" opens after a short countdown), and you can record yourself and play it back next to the speaker. "Almost" brings the word back to hear again. The "Said it all" bonus needs the microphone or a recording for every reply. About one card in seven is now "write what you hear", and a dictation that is too hard can turn into hear-and-pick. In Say it, what people say in words you know well is audio only, and on replays all of it is; the words show after you answer. Replies made of words you know are typed in full, and replayed conversations show only the situation.
 - **3.69** (2026-10-31) - A word always gets its New word card before it's tested, even if you first met it in a conversation or a warm-up.
 - Fill-the-gap drills only use words you've met.
 - In conversations, their message shows its English while it has words you haven't learned.
