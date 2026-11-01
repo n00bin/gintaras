@@ -766,10 +766,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="card catchup" id="catchup" hidden></div>
     <div class="card" id="place-card" hidden></div>
     <div class="goal">
-      <div class="row"><strong>Today's goal</strong><span class="num"><b id="todayxp">0</b> / <span id="goalxp">30</span> XP</span></div>
-      <div class="bar"><i id="goalbar" style="width:0%"></i></div>
-      <div class="row timerow"><span>⏱ Time in lessons</span><span class="num"><b id="todaymin">0</b> / <span id="goalmin">10</span> min</span></div>
+      <div class="row"><strong>Today's goal</strong><span class="num"><b id="todaymin">0</b> / <span id="goalmin">10</span> min</span></div>
       <div class="bar time"><i id="timebar" style="width:0%"></i></div>
+      <div class="row timerow"><span>XP today</span><span class="num"><b id="todayxp">0</b><span id="goalxp" hidden></span></span></div><i id="goalbar" hidden></i>
       <span class="note" id="goalnote">Finish one lesson to start your streak.</span>
       <span class="note hh" id="hhnote"></span>
     </div>
@@ -958,9 +957,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     </div>
     <div class="pace" id="pace-welcome">
       <span class="eyebrow">How much time each day?</span>
-      <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>One or two short lessons a day. Enough to keep words coming back.</span></button>
-      <button type="button" class="pace-opt" data-pace="m10" aria-pressed="true"><strong>Regular · 10 min</strong><span>Three lessons a day. Most people land here.</span></button>
-      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>Six lessons a day. Pick anything from 5 to 60 minutes in Settings.</span></button>
+      <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>About one lesson a day. Enough to keep words coming back.</span></button>
+      <button type="button" class="pace-opt" data-pace="m10" aria-pressed="true"><strong>Regular · 10 min</strong><span>About two lessons a day. Most people land here.</span></button>
+      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>About four lessons a day. Pick anything from 5 to 60 minutes in Settings.</span></button>
     </div>
     <p class="note">Every word is spoken by a <span class="lang-en">Lithuanian</span> voice. Tap the speaker on any word to hear it.</p>
   </div>
@@ -1021,8 +1020,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.81';
-const APP_VERSION=153;
+const APP_RELEASE='3.82';
+const APP_VERSION=154;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1125,11 +1124,11 @@ const reviewXp=q=>!!q&&(q.mode==='check'||q.mode==='review'&&(q.dueN>0||!!q.tric
 const clock=h=>(h%12||12)+(h<12?' am':' pm');
 function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt(),now=new Date().getHours();
   el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Reviews count double until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP on reviews.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
-  el.hidden=now===h;const x2=$('#x2');if(x2){x2.hidden=!(boostOn()||now===h);x2.title=boostOn()?'Double XP is on':'Happy hour: reviews count double';}
+  el.hidden=true;const x2=$('#x2');if(x2){x2.hidden=!(boostOn()||now===h);x2.title=boostOn()?'Double XP is on':'Happy hour: reviews count double';}
   const d=dueItems().length,due=d?d+' word'+(d===1?'':'s')+' to review':'';
   if(now===h&&d&&S.hhPop!==today()&&$('#sheet').hidden&&$('#welcome').hidden&&!window.popBusy()){S.hhPop=today();save();
     celebrate({mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Reviews count double until '+clock(h+1)+'. You have '+due+'.',ms:3600});}
-  const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
+  const bn=$('#hhbanner');if(bn){bn.hidden=now!==h||!d;if(now===h){const left=60-new Date().getMinutes();
     bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Reviews count double</strong><small>'+(d?due+' · until '+clock(h+1)+' · '+left+' min left':'Nothing to review yet. Happy hour pays double on reviews, so it\'s yours once words come back.')+'</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
 /* Preview: open the app with #pops at the end of the link to see every pop-up once. Changes nothing. */
@@ -1159,7 +1158,8 @@ setInterval(()=>{if(!(Q||CV)||$('#sheet').hidden||document.visibilityState!=='vi
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lastUse=Date.now();else{save();}});
 const timeOn=days=>days.reduce((n,d)=>n+((S.ltime||{})[d]||0),0);
 function mins(sec){const m=Math.floor(sec/60);return m<60?m+' min':Math.floor(m/60)+' h'+(m%60?' '+m%60+' min':'');}
-const goalMet=()=>{const P=PACES[S.pace]||PACES.m10;return S.goalDay===today()||(S.todayXp>=S.goal&&timeOn([today()])>=P.mins*60);};
+/* One daily goal: minutes in lessons (XP still counts for the league, but your day is done by time, not by XP as well) */
+const goalMet=()=>{const P=PACES[S.pace]||PACES.m10;return S.goalDay===today()||timeOn([today()])>=P.mins*60;};
 /* Pays the daily-goal amber once a day, the first time both halves are reached. Returns true that one time. */
 function goalCheck(){if(S.goalDay===today()||!goalMet())return false;S.goalDay=today();earnAmber(2,'daily goal');return true;}
 function renderTime(){const T=S.ltime||{},t=today(),wk=weekOf(Date.now());
@@ -1215,13 +1215,23 @@ function shopState(id){const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/
   if(id==='repair'&&!canRepair())return 'Not needed';
   if(id==='shield'&&window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn())return 'On this week';
   return '';}
+/* The first week is for learning: chests, double XP, challenges and the league shield come after it */
+const weekOne=()=>(S.daysLearned||0)<7,WEEK2=['boost','challenge','shield'];
+window.weekOne=weekOne;
+/* "You vs last week": minutes in lessons and words practised, this week and last, for anyone not in a league yet */
+window.youVsLast=()=>{const T=S.ltime||{},now=Date.now(),wk=weekOf(now),pw=weekOf(now-7*DAY);
+  const secs=(a,b)=>Object.keys(T).filter(d=>d>=a&&(!b||d<b)).reduce((n,d)=>n+(T[d]||0),0);
+  const since=d=>Math.floor(new Date(d+'T00:00').getTime()/1000),log=window.reviewLogSince?window.reviewLogSince(since(pw)):[];
+  const words=(a,b)=>new Set(log.filter(e=>e[1]>=since(a)&&(!b||e[1]<since(b))).map(e=>e[0])).size;
+  const tile=(v,l)=>'<div class="tile"><strong class="num">'+v+'</strong><small>'+l+'</small></div>';
+  return '<div class="tiles">'+tile(mins(secs(wk)),'this week')+tile(mins(secs(pw,wk)),'last week')+tile(words(wk),'words practised')+'</div>';};
 function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="gem.svg" alt="" width="14" height="12">';const have=amber();
   const extra={rest:(S.freezes||0)?' · you have '+S.freezes:'',repair:canRepair()?' · your '+S.brokenStreak.n+'-day streak':''};
   box.innerHTML='<div class="shop-head"><div><span class="eyebrow">Amber shop</span><div class="amber-bal"><img src="gem.svg" alt="" width="30" height="26"><b class="num">'+have+'</b><span>amber</span></div></div></div>'+
-    '<div class="shop-list">'+SHOP_USE.map(([id,icon,name,desc,cost])=>{const st=shopState(id);const short=typeof cost==='number'&&have<cost;
+    '<div class="shop-list">'+SHOP_USE.filter(r=>!(weekOne()&&WEEK2.includes(r[0]))).map(([id,icon,name,desc,cost])=>{const st=shopState(id);const short=typeof cost==='number'&&have<cost;
       return '<button type="button" class="shop-row'+(st?' done':'')+'" data-buy="'+id+'"><span class="ic" aria-hidden="true">'+icon+'</span><span class="tx"><strong>'+esc(name)+'</strong><small>'+esc(desc+(extra[id]||''))+'</small></span>'+
         (st?'<span class="tag st">'+esc(st)+'</span>':'<span class="tag cost'+(short?' short':'')+'">'+gem+cost+'</span>')+'</button>';}).join('')+'</div>'+
-    '<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
+    (weekOne()?'<p class="note">After your first week the shop also has double XP, a league shield and friend challenges.</p>':'')+'<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
   box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{const id=b.dataset.buy,item=SHOP_USE.find(x=>x[0]===id),st=shopState(id);
     if(st==='Sign in first'){if(id==='challenge'&&window.cloud&&cloud.chalPreview){cloud.chalPreview();toast('This is what a challenge looks like. Sign in to send one.',5000);}else toast('Sign in first: leagues and challenges need an account.');return;}
     if(st||typeof item[4]!=='number'||b.dataset.sure)return buy(id);
@@ -1423,7 +1433,7 @@ function renderTop(){rollDay();renderAmber();renderHappy();renderTime();$('#stre
   if(S.restNote){celebrate({mood:'rest',icon:'🌙',title:S.restNote===1?'Rest day used':S.restNote+' rest days used',sub:'Your '+S.streak+'-day streak is safe'});S.restNote=0;S.frozenNote=false;save();}
   if(S.welcomeBack){toast(amber()>=30?'Welcome back! Your '+S.welcomeBack+'-day streak can be repaired in the shop.':'Welcome back! Every word you learned is still here.');S.welcomeBack=false;save();}
   {const P=PACES[S.pace]||PACES.m10,xl=Math.max(0,S.goal-S.todayXp),ml=Math.max(0,Math.ceil((P.mins*60-timeOn([today()]))/60));
-  $('#goalnote').textContent=goalMet()?'Learning day done. Nice work today!':!S.todayXp&&!timeOn([today()])?'Reach '+S.goal+' XP and '+P.mins+' minutes in lessons to finish today.':(xl?xl+' XP':'')+(xl&&ml?' and ':'')+(ml?ml+' min':'')+' to finish today.';};
+  $('#goalnote').textContent=goalMet()?'Learning day done. Nice work today!':!timeOn([today()])?P.mins+' minutes in lessons finishes today: about '+P.lessons+(P.lessons===1?' lesson.':' lessons.'):ml+' min to finish today.';};
   const d=dueItems().length;const b=$('#due-badge');b.hidden=d===0;b.textContent=d;}
 function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id]||{};const el=document.createElement('section');el.className='convcard'+(open?'':' locked');
   const prevName=prevStepName(c.id);
@@ -1564,9 +1574,9 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-recall
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.slice().sort((a,b)=>!!S.badges[b[0]]-!!S.badges[a[0]]).map(b=>{const n=S.badges[b[0]]&&BADGE_TIMES[b[0]]?BADGE_TIMES[b[0]]():1;
     return '<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i>'+(n>1?'<span class="bd-n" aria-label="earned '+n+' times">×'+n+'</span>':'')+'<strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>';}).join('');
   {const P=PACES[S.pace]||PACES.m10;const g=$('#pace-grid');
-  if(g){g.innerHTML=Object.entries(PACES).map(([k,v])=>'<button type="button" class="pace-chip" data-pace="'+k+'" aria-pressed="'+(k===S.pace)+'"><b>'+v.mins+' min</b><small>'+v.goal+' XP</small></button>').join('');
-    g.querySelectorAll('[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' and '+PACES[S.pace].goal+' XP a day');});}
-  const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day. Your learning day is done once you reach both '+P.goal+' XP and '+P.mins+' minutes in lessons.';}
+  if(g){g.innerHTML=Object.entries(PACES).map(([k,v])=>'<button type="button" class="pace-chip" data-pace="'+k+'" aria-pressed="'+(k===S.pace)+'"><b>'+v.mins+' min</b><small>about '+v.lessons+(v.lessons===1?' lesson':' lessons')+'</small></button>').join('');
+    g.querySelectorAll('[data-pace]').forEach(b=>b.onclick=()=>{setPace(b.dataset.pace);save();renderAll();toast('Pace: '+PACES[S.pace].label+' a day, about '+PACES[S.pace].lessons+(PACES[S.pace].lessons===1?' lesson':' lessons'));});}
+  const n=$('#pace-note');if(n)n.textContent='About '+P.lessons+(P.lessons===1?' lesson':' lessons')+' a day. Your learning day is done after '+P.mins+' minutes in lessons.';}
   document.querySelectorAll('.chip[data-voice]').forEach(b=>b.classList.toggle('in',b.dataset.voice===(S.voice||'ona')));
   $('#sw-sound').setAttribute('aria-checked',String(S.sound));$('#sw-sfx').setAttribute('aria-checked',String(S.sfx!==false));$('#sw-pron').setAttribute('aria-checked',String(S.pron!==false));$('#sw-mic').setAttribute('aria-checked',String(!S.selfRate));$('#mic-setting').hidden=$('#mic-note').hidden=!SR;$('#sw-auto').setAttribute('aria-checked',String(S.autoNext!==false));updateTtsNote();renderInstall();renderOffline();}
 /* Next thing on the path: the first unfinished lesson or conversation, then lessons that are not yet mastered. */
@@ -1848,7 +1858,8 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
       let at=n===0?head.findIndex(e=>e.type==='intro'):head.findIndex((e,k)=>k>0&&!STEPLESS[e.type]&&!e.warm);
       head.splice(at<0?1:at+1,0,w);});
     old.slice(2).forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));}
-  else{shuffle(items).forEach(it=>rest.push(exFor(it,typesFor(it))));
+  /* reviews mix the directions for words you know well: the meaning of the word, or what you hear, as well as typing it */
+  else{shuffle(items).forEach(it=>rest.push(exFor(it,rec(it.id).lvl>=3?typesFor(it).concat(['mc_lt_en',canListen()?'dictate':'type']):typesFor(it))));
     {const ms=matchSet(items,5);if(ms.length>=3)rest.push({type:'match',items:ms});}}
   /* listening skipped earlier comes back (three at a time), and every session has one "write what you hear" */
   if(canListen()&&(mode==='lesson'||mode==='review')&&!(lesson&&lesson.speak)){
@@ -1902,7 +1913,7 @@ function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(
   const all=new Set(l.items.flatMap(i=>norm(i.lt).split(' '))),met=d=>norm(d.frame.replace('___',d.ans)).split(' ').every(w=>all.has(w)||(wordLvl(w)??-1)>=0);
   const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?(l.parts||[l.id]).some(id=>d.l.includes(id)):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
   if(pick.length){S.drillDay={d:today(),f:day.concat(pick.map(d=>d.frame))};}return pick;}
-const STEPLESS={intro:1,tip:1,metip:1,mesay:1};
+const STEPLESS={intro:1,tip:1,metip:1,mesay:1,revtip:1};
 /* A grammar table: a few rows of Lithuanian and English, and one line on the rule. */
 function grammarHtml(g,isNew){return '<div class="intro tipcard grammar">'+(isNew?'<span class="eyebrow">New pattern</span>':'')+'<h3>📐 '+esc(g.name)+'</h3><table>'+
   g.rows.map(r=>'<tr><td lang="'+LANG.code+'"><b>'+esc(r[0])+'</b></td><td>'+esc(r[1])+'</td></tr>').join('')+'</table><p class="note">'+esc(g.note)+'</p></div>';}
@@ -1955,7 +1966,9 @@ function startReview(weak){let L=practised();
   /* words already right twice today (and not missed) sit this one out, while there are enough others */
   {const td=today(),rest=L.filter(i=>!doneToday(rec(i.id)));if(weak&&rest.length>=5)L=rest;}let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
-  if(pick.length<1){toast('Finish a lesson first');return;}const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(Q)Q.dueN=dueN;}
+  if(pick.length<1){toast('Finish a lesson first');return;}const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(Q)Q.dueN=dueN;
+  /* before a due review: how many come back, and which of them slipped before */
+  if(Q&&!weak&&dueN){Q.queue.unshift({type:'revtip',n:pick.length,miss:pick.filter(i=>rec(i.id).bad>0).slice(0,5).map(i=>i.lt)});renderStep();}}
 function quit(){if(!Q&&!CV)return;stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
@@ -2017,6 +2030,9 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       (lt?'<div class="intro tipcard lesson-tip"><h3>💡 '+(l.speak?'Speaking tip':'Tip for this lesson')+'</h3><div>'+lt+'</div></div>':'')+
       (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'')+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
+  else if(ex.type==='revtip'){st.innerHTML='<span class="eyebrow">Review</span><div class="intro tipcard lesson-tip"><h3>🔁 '+ex.n+' word'+(ex.n===1?'':'s')+' come back today</h3><div>Each word comes back just before you would forget it. Get it right and the next gap is longer.'+
+      (ex.miss&&ex.miss.length?' These slipped before: <b>'+ex.miss.map(esc).join('</b>, <b>')+'</b>.':'')+'</div></div>'+mascot('think','tip-mascot');
+    btn.disabled=false;btn.textContent='Start';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='mesay'){st.innerHTML='<span class="eyebrow">About me · last round</span><div class="intro tipcard lesson-tip"><h3>🙈 Say it without looking</h3><div>Now you see only the English. Say each line in '+LANG.en+' from memory, then tap "Show me" to check.</div></div>'+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='I\'m ready';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='metip'){st.innerHTML='<span class="eyebrow">About me</span><div class="intro tipcard lesson-tip"><h3>💡 Talking about yourself</h3><div>'+ME_TIP.replace(/Anglijos/g,((ME_COUNTRIES.find(c=>c[0]===(S.me||{}).from)||[])[2])||'Anglijos')+'</div></div><p class="note">Practice this until you can say it without looking. It\'s the first thing anyone will ask you.</p>';
@@ -2227,7 +2243,7 @@ function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;if(Q)
   if(ok){r.ok++;if(sloppy&&count)fsReview(r,2);
     else if(count&&r.up!==today()&&r.due<=Date.now()){const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
-      if(Q)Q.ups=(Q.ups||0)+1;const iv=fsReview(r,g,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}
+      if(Q&&!isNew)Q.ups=(Q.ups||0)+1; /* a new word reaching level 1 on its first day isn't a review */const iv=fsReview(r,g,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}
     /* a right answer always takes a word off today's pile: if it didn't move up, it comes back tomorrow */
     if(r.due<=Date.now()){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+1);r.due=d.getTime();}}
   else{r.bad++;r.badAt=Date.now();if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
@@ -2407,34 +2423,42 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
   /* XP follows the work, not the number of lessons: 1 for each right answer you picked, tapped or rated yourself on, 2 for each
      one you typed or said, a small +2 for finishing, and a word moving up a level +1. A flawless run adds a quarter on top.
      (The flat 5 for finishing and 5 for flawless made a 23-second lesson worth more than a 3-minute one.) */
-  const rc=Q.recall||0,work=Q.correct+rc;
-  let xp;if(Q.mode==='check')xp=2+work+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:2+work+ups;if(typedSpk){S.typedSpk=S.typedSpk||{};S.typedSpk[Q.lesson.id]=1;}S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=1+ups+rc; /* extra practice (nothing due): what you typed or said, and words moving up */
+  /* (from 3.82) XP follows recall: 1 for each answer you typed or said right first time, half that for one you picked or
+     built, and 2 for each word that moves up at a review on a later day. An hour of tapping was out-earning the top players. */
+  const rc=Q.recall||0,work=Math.round((Q.correct-rc)/2)+rc+2*ups;
+  let xp;if(Q.mode==='check')xp=2+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work;else if(Q.mode==='lesson'){xp=replay?1+work:2+work;if(typedSpk){S.typedSpk=S.typedSpk||{};S.typedSpk[Q.lesson.id]=1;}S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=1+work; /* extra practice (nothing due): what you typed or said, and words moving up */
   let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=Math.max(1,Math.round(xp/4));S.perfects=(S.perfects||0)+1;}
   amberLog=[];const rv=reviewXp(Q),dbl=xpDouble(rv);const total=addXp(xp+bonus,rv);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
-  let chest=0;if(Q.mode==='lesson'&&S.lessonsDone%5===0){chest=3+Math.floor(Math.random()*8);earnAmber(chest,'treasure chest');}
-  const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
-  if(perfect)lines.push('<div class="win"><b>Flawless</b> · no mistakes'+(bonus?', +'+bonus+' XP bonus':'')+'</div>');
-  else if(Q.total>0&&Q.correct>=Q.total&&(Q.nearly||Q.selfRated))lines.push('<div class="win"><b>Almost Flawless</b> · '+(Q.nearly?'a few answers were nearly right':'Flawless needs the microphone or typing, not rating yourself')+'</div>');
-  if(dayDone)lines.push('<div class="win"><b>Learning day done</b> · XP and time both reached</div>');
+  let chest=0;if(Q.mode==='lesson'&&S.lessonsDone%5===0&&!weekOne()){chest=3+Math.floor(Math.random()*8);earnAmber(chest,'treasure chest');}
+  /* The finish screen keeps to what matters: what you can now say, when the words come back, and at most one reward, the
+     biggest of the day (a real-life skill, a badge, a level, a crown, the learning day, flawless, then amber). */
+  const lines=[],rw=[];
+  if(Q.mode==='lesson'&&!Q.lesson.speak){const nw=Q.items.filter(i=>Q.queue.some(e=>e.item===i&&(e.type==='intro'||e.combo)));
+    if(nw.length)lines.push('<div class="win"><b>You can now say</b> · '+nw.slice(0,4).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(i.en)+')').join(', ')+(nw.length>4?' and '+(nw.length-4)+' more':'')+'</div>');}
+  if(Q.mode==='review'){const miss=Q.items.filter(i=>Q.wrongOnce[i.id]);
+    lines.push('<div class="win"><b>Remembered '+(Q.items.length-miss.length)+' of '+Q.items.length+'</b> · '+(miss.length?'forgot '+miss.slice(0,5).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(i.en)+')').join(', ')+(miss.length>5?' and '+(miss.length-5)+' more':'')+'. They come back tomorrow.':'nothing forgotten.')+'</div>');}
+  if(Q.mode!=='check'){const td=new Date();td.setHours(0,0,0,0);const nx=Object.keys(Q.touched||{}).map(id=>(S.items[id]||{}).due).filter(d=>d>Date.now());
+    if(nx.length){const n=Math.max(1,Math.round((Math.min(...nx)-td.getTime())/DAY));lines.push('<p class="note">Next review: <b>'+(n===1?'tomorrow':'in '+n+' days')+'</b>. Each word comes back just before you would forget it.</p>');}}
   if(typedSpk)lines.push('<div class="win"><b>Typed, not said</b> · the next step is open. Say this lesson out loud later, when speaking is back on, for its crowns.</div>');
   /* "Want a nudge?" is asked here, under your results, from the second lesson on: as a pop-up it caught the next tap */
   if(Q.mode==='lesson'&&(S.lessonsDone||0)>=2&&window.cloud&&cloud.pushWanted&&cloud.pushWanted())
     lines.push('<div class="win nudge-ask" id="nudge-ask"><b>🔔 Want a nudge?</b><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league. After you tap <b>Turn on</b>, your '+(matchMedia('(pointer:coarse)').matches?'phone':'browser')+' asks for permission: tap <b>Allow</b>.</p><div class="row2"><button type="button" class="btn ghost" data-nudge="no">Not now</button><button type="button" class="btn amber" data-nudge="yes">Turn on</button></div></div>');
-  if(S.newFreeze){lines.push('<div class="win"><b>Spare rest day earned</b> · you doubled your goal today.</div>');S.newFreeze=false;}
-  const known=learned().length,gained=known-(Q.knownBefore!=null?Q.knownBefore:known);if(gained>0)lines.unshift('<div class="win"><b>+'+gained+' new word'+(gained===1?'':'s')+' met</b> · words met: '+known+' · words you can recall: '+recalled().length+'. A word counts as recalled once you remember it on a later day, and mastered once you still do a week after that.</div>');
+  cans.forEach(c=>rw.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
+  got.forEach(b=>rw.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
+  if(after.i>before.i)rw.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
   if(Q.crownsBefore){const was=Q.crownsBefore,up=Object.entries(crownSnap()).filter(([id,c])=>c>1&&c>(was[id]||0));
     const byC={};up.forEach(([id,c])=>(byC[c]=byC[c]||[]).push(id));
     Object.keys(byC).sort((a,b)=>b-a).forEach(c=>{const ids=byC[c],L=ids.map(id=>LESSON_BY[id]);c=Number(c);
-      lines.push('<div class="win"><b>'+(c>=5?'Lesson'+(ids.length>1?'s':'')+' mastered':'Crown '+c+' of 5')+'</b> · '+L.slice(0,3).map(l=>esc(l.unit.en+', '+l.title)).join('; ')+(L.length>3?' and '+(L.length-3)+' more':'')+': '+(L.every(l=>l.speak)?'every word said out loud, on '+c+' different days':'every word remembered again on a later day')+'</div>');});}
-  if(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak){const base=Q.lesson.id.replace(/-(\d+|speak)$/,'');CANDO.filter(c=>c[3].includes(base)).slice(0,1).forEach(c=>{const s=canState(c);
-    lines.push('<div class="win"><b>'+c[1]+' '+(s.got?'I can ':'Working toward: I can ')+esc(c[2])+'</b> · '+(s.got?'done!':s.seen+' of its '+s.n+' words met, '+s.m+' mastered')+'</div>');});}
-  if(Q.mode==='lesson'){const c=crowns(Q.lesson.id),g=crownGap(Q.lesson),sp=Q.lesson.speak;
-    if(c<5&&g)lines.push('<div class="win"><b>Next crown</b> · when '+(g===Q.lesson.items.length&&g===1?(sp?'this phrase is':'this word is'):g===Q.lesson.items.length?'all '+g+(sp?' phrases are':' words are'):g===1?(sp?'1 more phrase is':'1 more word is'):g+(sp?' more phrases are':' more words are'))+(sp?' said out loud again on another day':' remembered at a review on a later day')+'</div>');}
-  if(after.i>before.i)lines.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
-  got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
-  cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
+      rw.push('<div class="win"><b>'+(c>=5?'Lesson'+(ids.length>1?'s':'')+' mastered':'Crown '+c+' of 5')+'</b> · '+L.slice(0,3).map(l=>esc(l.unit.en+', '+l.title)).join('; ')+(L.length>3?' and '+(L.length-3)+' more':'')+': '+(L.every(l=>l.speak)?'every word said out loud, on '+c+' different days':'every word remembered again on a later day')+'</div>');});}
+  if(dayDone)rw.push('<div class="win"><b>Learning day done</b> · '+(PACES[S.pace]||PACES.m10).mins+' minutes in lessons today</div>');
+  if(perfect)rw.push('<div class="win"><b>Flawless</b> · no mistakes'+(bonus?', +'+bonus+' XP bonus':'')+'</div>');
+  else if(Q.total>0&&Q.correct>=Q.total&&(Q.nearly||Q.selfRated))rw.push('<div class="win"><b>Almost Flawless</b> · '+(Q.nearly?'a few answers were nearly right':'Flawless needs the microphone or typing, not rating yourself')+'</div>');
+  if(S.newFreeze){rw.push('<div class="win"><b>Spare rest day earned</b> · you doubled your goal today.</div>');S.newFreeze=false;}
+  {const am=amberLines();if(am.length)rw.push(am.join(''));}
+  if(dbl)rw.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
+  if(rw.length)lines.push(rw[0]);
   save();
   let won=false;if(Q.mode==='check'){won=Q.correct>=Math.ceil(Q.total*0.8);if(won){S.checks=S.checks||{};S.checks[Q.unit.id]=today();save();}
     lines.unshift('<div class="win"><b>'+(won?'⚔️ Boss defeated':'👹 Not this time')+'</b> · '+Q.correct+' of '+Q.total+' right first time'+(won?'. Unit '+esc(Q.unit.en)+' is checked off.':'. You need '+Math.ceil(Q.total*0.8)+'.')+'</div>'+
@@ -2806,10 +2830,10 @@ function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
   if(res!=null&&replyGrade(k.id,res))C.up.add(k.id);
   if(res===false){C.again.add(k.id);C.queue.push(k);}
   save();}
-function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>0&&C.right>=C.graded;
+function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>=3&&C.right>=C.graded;
   /* "Chat anyway" is extra practice: full XP and amber once a day, a little XP after that */
   const extra=C.any&&S.qcAnyDay===today();if(C.any)S.qcAnyDay=today();
-  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const qx=2+2*C.right,qb=perfect?Math.max(1,Math.round(qx/4)):0;const total=addXp(extra?2:qx+qb);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
+  const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const qx=1+C.right,qb=perfect?Math.max(1,Math.round(qx/4)):0;const total=addXp(extra?2:qx+qb);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   if(!extra){earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');}const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
   if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time'+(qb&&!extra?', +'+qb+' XP':'')+'</div>');

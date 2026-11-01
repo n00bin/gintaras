@@ -148,7 +148,7 @@ function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
 let gateEl=null;
 /* It comes once you've had a real taste: the first conversation written, or ten lessons. "Not now" keeps you going on this
    device (nothing is lost) until the next lesson you finish. */
-function gateDue(){const S=window.S;if(!S)return false;const conv=Object.values(S.convs||{}).some(c=>c&&(c.done||c.text));
+function gateDue(){const S=window.S;if(!S||S.signinAsked)return false; /* asked once after the first lesson; after that, Profile */const conv=Object.values(S.convs||{}).some(c=>c&&(c.done||c.text));
   return (conv||(S.lessonsDone||0)>=10)&&(S.lessonsDone||0)>(S.gateLater==null?-1:S.gateLater);}
 function signInGate(){if(!sb||!booted||user||!gateDue()){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
   if(gateEl&&document.body.contains(gateEl))return;
@@ -559,6 +559,9 @@ let boardMode='league';
 async function renderBoard(){const box=$('#board');if(!box)return;
   if(!sb){box.innerHTML='<h2>League</h2><p class="note">Online accounts are not set up yet.</p>';return;}
   if(!navigator.onLine){box.innerHTML='<h2>League</h2><p class="note">You’re offline. Your league comes back when you reconnect, and your XP keeps counting in the meantime.</p>';return;}
+  /* guests, and anyone in their first three days, see their own week instead of strangers' names and XP */
+  {const S=window.S;if(!user||(S.daysLearned||0)<3){box.innerHTML='<h2>Your week</h2>'+(window.youVsLast?window.youVsLast():'')+'<p class="note">'+(user?'Your league opens after three days of learning, so you start among people at your stage.':'Sign in and learn on three days, and you join a league of people at your stage.')+'</p>';
+    const cta=$('#board-cta');if(cta){cta.innerHTML=user?'':'<button type="button" class="btn amber" id="btn-join">Sign in to save your progress</button>';const j=$('#btn-join');if(j)j.onclick=()=>{if(window.showView)window.showView('profile');};}return;}}
   await ensureRollover();await loadBars();
   const mine=stepOf(profile&&profile.league);const L=leagueOf(mine),li=Math.floor(mine/2);
   box.innerHTML='<div class="seg"><button class="chip'+(boardMode==='league'?' in':'')+'" data-bm="league">My league</button><button class="chip'+(boardMode==='all'?' in':'')+'" data-bm="all">All time</button></div>'+
