@@ -865,7 +865,7 @@ const EMOJI={'pica':'🍕','šokoladas':'🍫','žirafa':'🦒','čempionas':'�
 /* Pictures are for things you can see. Words like these (greetings, I / you / we, a name) get none: one waving hand for
    four greetings, or the same two people for "we" and "you", teach nothing and get mixed up. Each picture also belongs to
    one word only: the first single word in the course that uses it (kava keeps ☕; "Aš geriu kavą" gets none). */
-const NO_PIC=new Set(['Labas','Sveiki','Iki','Viso gero','Iki pasimatymo','Aš','Tu','Jis','Ji','Mes','Jūs','Jie','Jos','Mano vardas Tomas','Koks tavo vardas?','aukštas','Atsiprašau','Nieko tokio','Malonu susipažinti','Gerai']);
+const NO_PIC=new Set(['Prašau','Labas','Sveiki','Iki','Viso gero','Iki pasimatymo','Aš','Tu','Jis','Ji','Mes','Jūs','Jie','Jos','Mano vardas Tomas','Koks tavo vardas?','aukštas','Atsiprašau','Nieko tokio','Malonu susipažinti','Gerai']);
 /* Every word's picture is a Twemoji illustration stored in pics/ (same on every phone, works offline),
    or a text tile when the EMOJI value starts with "#" (numbers past ten, days, months). */
 function picFile(e){let cps=[...e].map(ch=>ch.codePointAt(0).toString(16));if(!cps.includes('200d'))cps=cps.filter(c=>c!=='fe0f');return 'pics/'+cps.join('-')+'.svg';}

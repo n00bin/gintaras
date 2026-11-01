@@ -364,6 +364,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .face-top{display:flex;gap:14px;align-items:center}
 .face-top>div{min-width:0;display:grid;gap:4px}
 #face-card.editing .face-top{position:sticky;top:calc(56px + env(safe-area-inset-top,0px));z-index:2;background:var(--surface);padding:6px 0;margin-top:-6px}
+#face-card.editing .face-top .note{display:none}#face-card.editing .face-top .face{width:64px!important;height:64px!important}
+#face-card .fstep{scroll-margin-top:150px}
 .face-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .face-gal button{padding:0;border:2px solid transparent;border-radius:50%;background:none;cursor:pointer;line-height:0;justify-self:center}
 .face-gal button:focus-visible,.face-gal button:hover{border-color:var(--amber)}
@@ -431,14 +433,14 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .turn .bank .chip.used{opacity:.3}
 .turn .fill{font-family:var(--display);font-size:26px;font-weight:600;display:flex;flex-wrap:wrap;gap:8px 14px;margin:14px 0 6px}
 .turn .fw{display:inline-flex;align-items:flex-end;gap:2px}
-.turn .lb{width:1.3em;height:1.55em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
-.turn .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
+.turn .lb{width:1.05em;height:1.45em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
+.turn .lb:focus{outline:2px solid var(--amber);outline-offset:-2px}
 .turn .lb.bad{border-color:var(--bad);background:var(--bad-soft);animation:shake .3s}
 .turn .lb.right{border-color:var(--ok);background:var(--ok-soft)}
 .gfill{font-family:var(--display);font-size:28px;font-weight:600;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin:16px 0 10px}
 .gfill .fw{display:inline-flex;align-items:flex-end;gap:2px}
-.gfill .lb{width:1.3em;height:1.55em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
-.gfill .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
+.gfill .lb{width:1.05em;height:1.45em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
+.gfill .lb:focus{outline:2px solid var(--amber);outline-offset:-2px}
 .turn .hint.big{font-family:var(--display);font-size:24px;font-weight:600;color:var(--fg)}
 .copts{display:grid;gap:8px}
 .copt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);text-align:left;font-size:18px;font-weight:700;box-shadow:var(--shadow)}
@@ -1032,8 +1034,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.86';
-const APP_VERSION=158;
+const APP_RELEASE='3.87';
+const APP_VERSION=159;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1069,7 +1071,7 @@ function sharedSet(v,at){try{localStorage.setItem(SHARED_KEY,JSON.stringify({at,
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
 /* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
-const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/4.5)),label:m+' min'}); /* a lesson is 6 to 8 words, about 4 to 5 minutes */
+const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/2.5)),label:m+' min'}); /* a lesson is 6 to 8 words, about 2 to 3 minutes (two checks a word) */
 const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 /* Fresh start (2026-10-30): after the course and the scheduler were rebuilt, everyone starts again from lesson 1, so they
    all get the new lessons and FSRS learns from real answers from day one. XP, streak, amber, league, badges, About me and
@@ -1190,9 +1192,9 @@ const SHOP_USE=[['rest','🌙','Spare rest day','Covers one extra missed day',10
   ['repair','🔥','Streak repair','Brings back a streak lost in the last 2 days',30],
   ['shield','🛡️','League shield','You can\'t move down this week · once a month',25],
   ['challenge','⚔️','Friend challenge','Bet 10–50 on who earns more XP in a week','10–50']];
-const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a division','+20'],['Top 3 in your league','+15 / 10 / 5'],['Each week in the Sun league','+10'],['Sun Cup final, top 3','+100 / 50 / 25']];
+const EARN=[['A lesson','+1'],['Flawless lesson','+3'],['A conversation','+5'],['Daily goal','+2'],['Every 5th lesson, from your second week','🎁 3–10'],['7 / 30 / 100-day streak','+10 / 25 / 50'],['Moving up a division','+20'],['Top 3 in your league','+15 / 10 / 5'],['Each week in the Sun league','+10'],['Sun Cup final, top 3','+100 / 50 / 25']];
 /* Tricky words workout (free, on Practice): your most-missed words, each with a fresh look and its memory trick first. */
-function trickyPick(){return practised().filter(i=>rec(i.id).bad>0).sort((a,b)=>(rec(b.id).lapse||0)-(rec(a.id).lapse||0)||rec(b.id).bad-rec(a.id).bad).slice(0,8);}
+function trickyPick(){return practised().filter(i=>rec(i.id).bad>0).sort((a,b)=>(rec(b.id).lapse||0)-(rec(a.id).lapse||0)||rec(b.id).bad-rec(a.id).bad).slice(0,6);}
 function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('Nothing tricky yet: you need a few missed words first');
   buildSession(pick,'review',null);Q.tricky=true;
   /* typed wrong: typed again (endings and spelling are retested); picked wrong: picked again, with last time's pick among the options */
@@ -1206,7 +1208,7 @@ function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('No
   const ready=()=>pend.findIndex(p=>asked-p.at>=4);
   pick.forEach(it=>{add({type:'intro',item:it,leech:true});pend.push({it,at:asked});let k;while((k=ready())>=0)add(test(pend.splice(k,1)[0].it));add(filler());});
   while(pend.length){const k=ready();if(k>=0){add(test(pend.splice(k,1)[0].it));continue;}if(!add(filler()))add(test(pend.shift().it));}
-  Q.queue=q.filter(Boolean).concat(rest);Q.total=Q.queue.filter(e=>!STEPLESS[e.type]).length;Q.idx=0;renderStep();}
+  Q.queue=q.filter(Boolean);Q.total=Q.queue.filter(e=>!STEPLESS[e.type]).length;Q.idx=0;renderStep();}
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
@@ -1237,6 +1239,7 @@ window.youVsLast=()=>{const T=S.ltime||{},now=Date.now(),wk=weekOf(now),pw=weekO
   const words=(a,b)=>new Set(log.filter(e=>e[1]>=since(a)&&(!b||e[1]<since(b))).map(e=>e[0])).size;
   const tile=(v,l)=>'<div class="tile"><strong class="num">'+v+'</strong><small>'+l+'</small></div>';
   return '<div class="tiles">'+tile(mins(secs(wk)),'this week')+tile(mins(secs(pw,wk)),'last week')+tile(words(wk),'words practised')+'</div>';};
+let shopSure=null;
 function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="gem.svg" alt="" width="14" height="12">';const have=amber();
   const extra={rest:(S.freezes||0)?' · you have '+S.freezes:'',repair:canRepair()?' · your '+S.brokenStreak.n+'-day streak':''};
   box.innerHTML='<div class="shop-head"><div><span class="eyebrow">Amber shop</span><div class="amber-bal"><img src="gem.svg" alt="" width="30" height="26"><b class="num">'+have+'</b><span>amber</span></div></div></div>'+
@@ -1246,10 +1249,10 @@ function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="g
     (weekOne()?'<p class="note">After your first week the shop also has double XP, a league shield and friend challenges.</p>':'')+'<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
   box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{const id=b.dataset.buy,item=SHOP_USE.find(x=>x[0]===id),st=shopState(id);
     if(st==='Sign in first'){if(id==='challenge'&&window.cloud&&cloud.chalPreview){cloud.chalPreview();toast('This is what a challenge looks like. Sign in to send one.',5000);}else toast('Sign in first: leagues and challenges need an account.');return;}
-    if(st||typeof item[4]!=='number'||b.dataset.sure)return buy(id);
+    if(st||typeof item[4]!=='number'||b.dataset.sure){shopSure=null;return buy(id);}
     /* a second tap buys: amber is earned slowly, so nothing is spent by accident */
-    box.querySelectorAll('[data-sure]').forEach(x=>{delete x.dataset.sure;renderShop();});b.dataset.sure='1';const tag=b.querySelector('.tag');if(tag)tag.textContent='Tap again to buy';
-    setTimeout(()=>{if(b.isConnected&&b.dataset.sure){delete b.dataset.sure;renderShop();}},4000);});}
+    shopSure={id,at:Date.now()};renderShop();setTimeout(()=>{if(shopSure&&Date.now()-shopSure.at>=5000){shopSure=null;renderShop();}},5050);});
+  if(shopSure&&Date.now()-shopSure.at<5000){const b=box.querySelector('[data-buy="'+shopSure.id+'"]');if(b){b.dataset.sure='1';const tag=b.querySelector('.tag');if(tag)tag.textContent='Tap again to buy';}}}
 /* Profile shows only the perks you own or have running; buying happens in the Amber shop. */
 function renderMyPerks(){const box=$('#my-perks');if(!box)return;const have=[];
   if(S.freezes)have.push(['🌙','Spare rest days',S.freezes+' ready']);
@@ -1272,9 +1275,9 @@ const BADGES=[
  ['w100','100 words','Meet 100 words and phrases',()=>learned().length>=100],
  ['w250','250 words','Meet 250 words and phrases',()=>learned().length>=250],
  ['perfect','Flawless','A lesson with no mistakes',()=>(S.perfects||0)>=1],
- ['speak','Out loud','Finish a speaking lesson with the microphone',()=>(S.speakMic||0)>=1],
+ ['speak','Out loud','Finish a speaking lesson with the microphone (needs one that works in this browser)',()=>(S.speakMic||0)>=1],
  ['chat','First chat','Finish a conversation',()=>Object.values(S.convs||{}).some(c=>c.done||c.text)],
- ['talk','Talker','Say a whole conversation, checked by the microphone',()=>Object.values(S.convs||{}).some(c=>c.mic)],
+ ['talk','Talker','Say a whole conversation, checked by the microphone (needs one that works in this browser)',()=>Object.values(S.convs||{}).some(c=>c.mic)],
  ['convall','Conversationalist','Finish every conversation',()=>CONVS.length>0&&CONVS.every(c=>convDone(c.id))],
  ['unit','Unit cleared','Finish every lesson in a unit',()=>COURSE.some(u=>!u.retire&&u.lessons.filter(l=>!l.speak).every(l=>crowns(l.id)>=1))],
  ['master','Mastered','Bring one lesson to 5 crowns',()=>Object.keys(S.lessons).some(id=>crowns(id)>=5)],
@@ -1339,7 +1342,10 @@ const LESSON_BY={};COURSE.forEach(u=>u.lessons.forEach(l=>LESSON_BY[l.id]=l));
    done part, for anyone who had finished every part of it. Runs at start and after a sync, and never lowers anything. */
 /* Round 3 (3.84): misses that are right after all (an accepted way to say it, a dropped "I", a missing-letters card that
    couldn't be filled) are taken back once, so they stop showing up as "slipped before" and in Tricky words. */
-function rejudgeMisses(){if(!S||!S.items||S.rejudged==='3.84')return;S.rejudged='3.84';
+function rejudgeMisses(){if(!S||!S.items)return;
+  /* (3.87) name lines marked as slipped in a conversation, with no miss of their own, are clean again */
+  if(S.nameClean!=='3.87'){S.nameClean='3.87';Object.entries(S.items).forEach(([id,r])=>{const it=BYID[id];if(it&&r&&r.bad>0&&!r.missG&&!r.missPick&&HAS_NAME.test(it.lt0||it.lt)){r.bad=0;r.lapse=0;}});}
+  if(S.rejudged==='3.84')return;S.rejudged='3.84';
   Object.entries(S.items).forEach(([id,r])=>{const it=BYID[id];if(!it||!r||!r.missG||!(r.bad>0))return;
     const short=r.missT==='gaps'&&[...strip(r.missG)].filter(c=>/\p{L}/u.test(c)).length<[...strip(it.lt)].filter(c=>/\p{L}/u.test(c)).length;
     if(short||judgeAll(r.missG,answersFor(it),it.en).ok){r.bad--;delete r.missG;delete r.missT;if(!r.bad&&r.lapse)r.lapse=0;}});}
@@ -1531,13 +1537,16 @@ function renderConvList(){const box=$('#cv-list');if(!box)return;let n=0;
    (level 2+), due ones first; every answer is graded like a review, so playing clears what's due. Missing never ends it. */
 function gameWords(){return practised().filter(i=>rec(i.id).lvl>=1&&i.lt.length<=24&&i.lt.split(' ').length<=3);}
 function renderGameCard(){const box=$('#game-card');if(!box)return;const w=gameWords(),due=w.filter(i=>rec(i.id).due<=Date.now()).length;
-  box.innerHTML='<span class="eyebrow">Game</span><h2>🌧️ Falling words</h2><p class="note">'+(w.length>=5?'Meanings fall from the sky: type the '+LANG.en+' before they land. It uses words you already know'+(due?', '+due+' of them due now, so it counts as your review.':', so it keeps them sharp.'):'Learn a few more words first: the game uses words you have learned ('+w.length+' of 5). It opens after your first lessons.')+'</p>'+
+  box.innerHTML='<span class="eyebrow">Game</span><h2>🌧️ Falling words</h2><p class="note">'+(w.length>=5?'Meanings fall from the sky: type the '+LANG.en+' before they land. It uses words you already know'+(due?', '+due+' of them due now, so it counts as your review.':', so it keeps them sharp.'):'Meanings fall from the sky: type the '+LANG.en+' before they land. <b>Opens when you know 5 words</b> ('+(5-w.length)+' more to learn).')+'</p>'+
     '<button type="button" class="btn amber" id="btn-fall"'+(w.length>=5?'':' disabled')+'>Play</button>';
   const b=$('#btn-fall');if(b)b.onclick=startFall;
-  const ok=w.length>=6,ear=ok&&canListen();
-  box.insertAdjacentHTML('beforeend','<div class="game-more"><h2>⚡ Speed match</h2><p class="note">Six '+LANG.en+' words and their meanings: match them as fast as you can. A wrong pair adds 2 seconds. Beat your best time.'+(S.matchBest?' Best: <b>'+fmtSecs(S.matchBest)+'</b>.':'')+'</p><button type="button" class="btn ghost" id="btn-speed"'+(ok?'':' disabled')+'>Play</button>'+
-    '<h2>👂 Ear catcher</h2><p class="note">'+(canListen()?'Hear a word, tap what it means before the bar runs out. Ten in a row.'+(S.earBest?' Best: <b>'+S.earBest+' of 10</b>.':''):'Needs the sound on: turn it on in Settings.')+'</p><button type="button" class="btn ghost" id="btn-ear"'+(ear?'':' disabled')+'>Play</button></div>');
-  $('#btn-speed').onclick=startSpeed;$('#btn-ear').onclick=startEar;}
+  const ok=w.length>=6,ear=ok&&canListen(),eN=Math.min(10,w.filter(i=>i.lt.split(' ').length<=2).length),lp=(S.noListenUntil||0)>Date.now();
+  const needW=n=>'<b>Opens when you know '+n+' words</b> ('+Math.max(0,n-w.length)+' more to learn).';
+  const earWhy=S.sound===false?'Needs the sound on. <button type="button" class="linkbtn" id="ear-snd">Turn the sound on</button>':lp?'Listening is paused for '+Math.max(1,Math.ceil((S.noListenUntil-Date.now())/60000))+' more min. <button type="button" class="linkbtn" id="ear-lis">Resume listening</button>':'';
+  box.insertAdjacentHTML('beforeend','<div class="game-more"><h2>⚡ Speed match</h2><p class="note">Six '+LANG.en+' words and their meanings: match them as fast as you can, then type two of them. A wrong pair adds 2 seconds. Beat your best time.'+(S.matchBest?' Best: <b>'+fmtSecs(S.matchBest)+'</b>.':'')+(ok?'':' '+needW(6))+'</p><button type="button" class="btn ghost" id="btn-speed"'+(ok?'':' disabled')+'>Play</button>'+
+    '<h2>👂 Ear catcher</h2><p class="note">Hear a word, tap what it means before the bar runs out. '+(ok?eN+' words a game.':'')+(S.earBest?' Best: <b>'+S.earBest+'</b>.':'')+(earWhy?' '+earWhy:ok?'':' '+needW(6))+'</p><button type="button" class="btn ghost" id="btn-ear"'+(ear?'':' disabled')+'>Play</button></div>');
+  $('#btn-speed').onclick=startSpeed;$('#btn-ear').onclick=startEar;
+  {const a=$('#ear-snd');if(a)a.onclick=()=>{S.sound=true;save();renderAll();};const l=$('#ear-lis');if(l)l.onclick=()=>{S.noListenUntil=0;save();toast('Listening is back on');renderAll();};}}
 const fmtSecs=s=>(Math.round(s*10)/10).toFixed(1)+' s';
 /* Speed match: six known words, Lithuanian on the left, meanings on the right, against the clock. Practice for fun: it
    doesn't change when words come back. */
@@ -1550,10 +1559,18 @@ function startSpeed(){const pool=gameWords();if(pool.length<6)return;const its=s
   ov.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(b.classList.contains('done'))return;if(b.dataset.side==='l')say(BYID[b.dataset.id]);
     if(!sel||sel.dataset.side===b.dataset.side){if(sel)sel.setAttribute('aria-pressed','false');sel=b;b.setAttribute('aria-pressed','true');return;}
     if(sel.dataset.id===b.dataset.id){[sel,b].forEach(x=>{x.classList.add('done');x.setAttribute('aria-pressed','false');});sel=null;done++;sfx('good');
-      if(done===6){cancelAnimationFrame(raf);const secs=(performance.now()-t0)/1000+pen,best=!S.matchBest||secs<S.matchBest;if(best)S.matchBest=secs;rollDay();const total=addXp(3);save();
-        ov.innerHTML='<div class="fall-res"><div class="big num">'+fmtSecs(secs)+'</div><h2>'+(best?'New best time!':'All six matched')+'</h2><p class="note">'+(pen?'Includes '+pen+' s for wrong pairs. ':'')+(best?'':'Best: '+fmtSecs(S.matchBest)+'. ')+'+'+total+' XP</p><button type="button" class="btn amber" id="g-again">Play again</button><button type="button" class="btn ghost" id="g-done">Done</button></div>';sfx('win');
-        ov.querySelector('#g-again').onclick=()=>{ov.remove();startSpeed();};ov.querySelector('#g-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#g-again').focus();}}
-    else{pen+=2;sfx('bad');[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});sel=null;}});}
+      if(done===6)typeRound(0);}
+    else{pen+=2;sfx('bad');[sel,b].forEach(x=>{x.classList.add('shake');x.setAttribute('aria-pressed','false');setTimeout(()=>x.classList.remove('shake'),320);});sel=null;}});
+  /* then two of the six, typed from their meaning (still against the clock): matching only shows you know them when you see them */
+  const typed=sample(its,2);
+  const typeRound=n=>{if(n>=typed.length)return fin();const it=typed[n],bd=ov.querySelector('.game-board');
+    bd.innerHTML='<div class="prompt small">Now type it · '+(n+1)+' of '+typed.length+'</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+esc(it.en)+'</span></div>'+typeBox('Type in '+LANG.en)+'<p class="note" id="g-msg"></p>';
+    const fake={disabled:false,click(){}};wireTyping(bd,fake);const inp=bd.querySelector('#ans');inp.oninput=()=>{};let over=false;
+    inp.onkeydown=e=>{if(e.key!=='Enter'||over||!inp.value.trim())return;over=true;const ok=judgeTyped(inp.value,[it.lt].concat(it.alt||[])).ok;inp.disabled=true;
+      if(ok)sfx('good');else{pen+=2;sfx('bad');}bd.querySelector('#g-msg').innerHTML=(ok?'✓ ':'+2 s · ')+'<b>'+esc(it.lt)+'</b> · '+esc(it.en);setTimeout(()=>typeRound(n+1),ok?600:1600);};};
+  const fin=()=>{cancelAnimationFrame(raf);const secs=(performance.now()-t0)/1000+pen,best=!S.matchBest||secs<S.matchBest;if(best)S.matchBest=secs;rollDay();const total=addXp(3);save();
+    ov.innerHTML='<div class="fall-res"><div class="big num">'+fmtSecs(secs)+'</div><h2>'+(best?'New best time!':'All six matched')+'</h2><p class="note">'+(pen?'Includes '+pen+' s for wrong answers. ':'')+(best?'':'Best: '+fmtSecs(S.matchBest)+'. ')+'+'+total+' XP</p><button type="button" class="btn amber" id="g-again">Play again</button><button type="button" class="btn ghost" id="g-done">Done</button></div>';sfx('win');
+    ov.querySelector('#g-again').onclick=()=>{ov.remove();startSpeed();};ov.querySelector('#g-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#g-again').focus();};}
 /* Ear catcher: hear a word you know, tap its meaning before the bar runs out (6 seconds). Ten rounds; listening practice
    that needs no microphone. */
 function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);if(pool.length<6||!canListen())return;const rounds=sample(pool,Math.min(10,pool.length));let k=0,score=0,timer=0;
@@ -1567,8 +1584,8 @@ function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);
     const b=ov.querySelector('#g-b');b.innerHTML='<div class="speakrow"><button type="button" class="spk big" id="g-play" aria-label="Play it again">'+SPK+'</button></div><div class="ear-bar"><i id="g-bar"></i></div><div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'">'+esc(o.en)+'</button>').join('')+'</div><p class="note" id="g-msg"></p>';
     const bar=b.querySelector('#g-bar');requestAnimationFrame(()=>{bar.style.transition='width 6s linear';bar.style.width='0%';});
     const next=(ok,o)=>{if(over)return;over=true;clearTimeout(timer);b.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(ok){score++;sfx('good');}else sfx('bad');
-      ov.querySelector('#g-s').textContent=score;b.querySelector('#g-msg').innerHTML=(ok?'✓ ':'')+'<b>'+esc(it.lt)+'</b> · '+esc(it.en);if(o)o.classList.add(ok?'right':'wrong');b.querySelectorAll('.opt')[opts.indexOf(it)].classList.add('right');
-      k++;timer=setTimeout(round,ok?900:1800);};
+      ov.querySelector('#g-s').textContent=score;b.querySelector('#g-msg').innerHTML=(ok?'✓ ':o?'':'⏱ Time\'s up: ')+'<b>'+esc(it.lt)+'</b> means "'+esc(it.en)+'"';if(o)o.classList.add(ok?'right':'wrong');b.querySelectorAll('.opt')[opts.indexOf(it)].classList.add('right');
+      k++;timer=setTimeout(round,ok?900:o?1800:2800);};
     b.querySelector('#g-play').onclick=()=>say(it);b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>next(opts[Number(x.dataset.i)]===it,x));
     say(it);timer=setTimeout(()=>next(false,null),6500);};
   round();}
@@ -1654,7 +1671,7 @@ function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
 function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.m10;
   const planDone=goalMet();
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":S.todayLessons>=P.lessons?"Today's plan · keep going · "+P.label+' pace':"Today's plan · "+S.todayLessons+' of '+P.lessons+' lessons done today · '+P.label+' pace';
-  const sp0=savedPlace(),sp=sp0&&!sp0.tricky?sp0:null;
+  const sp0=savedPlace(),sp=sp0&&!sp0.tricky&&sp0.mode!=='check'?sp0:null; /* a unit check carries on only after a refresh */
   if(sp){const L=sp.lesson&&LESSON_BY[sp.lesson];$('#bite-title').textContent='Carry on: '+(L?L.unit.en+' · '+L.title:'your review');$('#bite-note').textContent='You stopped part way through. '+sp.left+' card'+(sp.left===1?'':'s')+' to go, and your answers so far are kept.';
     b.textContent='Carry on';b.onclick=resumePlace;b2.hidden=false;b2.textContent='Start fresh instead';b2.onclick=()=>{dropPlace();renderBite();};}
   /* reviews come first: always when 10 or more are waiting, otherwise one round a day before new lessons */
@@ -1981,7 +1998,8 @@ function hearPick(){const td=today(),seen=S.hearDay&&S.hearDay.d===td?S.hearDay.
   const ok=ln=>{if(ln.kind!=='p'||!ln.lt||ln.lt0!==undefined||HAS_NAME.test(ln.lt))return false;const v=castVoice(ln.conv.cast[ln.who]||ln.conv.cast[0]),u=unitOf(ln.id);
     if(!(SMAP[v]&&SMAP[v][u]&&SMAP[v][u][ln.id]))return false;const ws=ln.lt.split(/\s+/);return ws.length>=2&&ws.every(w=>{const l=wordLvl(w);return l===null?properNoun(w):l>=1;})&&ws.some(w=>wordLvl(w)!==null);};
   const pool=CONVS.flatMap(c=>c.all.filter(ok));if(pool.length<3)return null;const fresh=pool.filter(l=>!seen.includes(l.id));if(!fresh.length)return null;
-  const ln=sample(fresh,1)[0],others=sample(pool.filter(l=>l!==ln&&enKey(l.en)!==enKey(ln.en)),2);return others.length<2?null:{type:'hear',line:ln,others};}
+  const ln=sample(fresh,1)[0],others=[];shuffle(pool.filter(l=>l!==ln)).forEach(l=>{if(others.length<2&&![ln].concat(others).some(o=>enKey(o.en)===enKey(l.en)||norm(o.lt)===norm(l.lt)))others.push(l);});
+  return others.length<2?null:{type:'hear',line:ln,others};}
 /* Sentence drills about this lesson: the ones written for it (l), or ones whose sentence uses this lesson's own words
    (so "___ diena" stays with the greetings), and none you've already done today. */
 function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(' ')).filter(w=>!['iš','ir','ar','į','su','yra','o'].includes(w)));
@@ -2004,13 +2022,14 @@ function openGrammar(u){const upto=STEPS.indexOf(u.id),units=STEPS.slice(0,upto+
 /* A drill uses your name, and your country when it's you speaking ("___ esu iš ..."). */
 function persDrill(d){const m=S.me||{};const o={name:(m.name||'').trim(),g:'m',from:/esu iš /.test(d.frame)?m.from||'':''};if(!o.name&&!o.from)return d;
   return Object.assign({},d,{frame:persText(d.frame,'me',o),en:persEn(d.en,'me',o)});}
-function openSheet(){const sh=$('#sheet');sh.hidden=false;document.body.style.overflow='hidden';
+function preloadPics(){if(!Q||!Q.queue)return;const seen=new Set();Q.queue.forEach(e=>[e.item].concat(e.items||[]).forEach(i=>{if(!i)return;const v=typeof picFor==='function'?picFor(i.lt):'';if(v&&v[0]!=='#'&&!seen.has(v)){seen.add(v);const im=new Image();im.src=picFile(v);}}));}
+function openSheet(){const sh=$('#sheet');sh.hidden=false;document.body.style.overflow='hidden';try{preloadPics();}catch(e){}
   if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();sh.setAttribute('tabindex','-1');sh.focus({preventScroll:true});}
 /* Where you are in a lesson or review is kept on this device after every card, so a reload or a closed tab can carry on. */
 const RESKEY='gintaras.resume.'+LANG_CODE;
-function keepPlace(){if(!Q||(Q.mode!=='lesson'&&Q.mode!=='review'))return; /* a Tricky words workout is carried on from Practice, not from Today's plan */const id=x=>x&&x.id;
+function keepPlace(){if(!Q||!['lesson','review','check'].includes(Q.mode))return; /* a Tricky words workout is carried on from Practice, not from Today's plan */const id=x=>x&&x.id;
   try{localStorage.setItem(RESKEY,JSON.stringify({at:Date.now(),mode:Q.mode,lesson:id(Q.lesson),idx:Q.idx,correct:Q.correct,total:Q.total,items:Q.items.map(id),wrongOnce:Q.wrongOnce,
-    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,selfOk:Q.selfOk||0,dueN:Q.dueN||0,tricky:Q.tricky,startedAt:Q.startedAt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
+    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,selfOk:Q.selfOk||0,dueN:Q.dueN||0,tricky:Q.tricky,startedAt:Q.startedAt,unit:id(Q.unit),boss:Q.boss,missed:Q.missed&&Q.missed.map(id),backN:Q.backN,madeLt:Q.madeLt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
     queue:Q.queue.map(e=>Object.assign({},e,{item:id(e.item),items:e.items&&e.items.map(id),unit:id(e.unit),lesson:id(e.lesson),drill:e.drill?DRILLS.indexOf(e.drill):undefined,line:id(e.line),others:e.others&&e.others.map(id)}))}));}catch(e){}}
 function dropPlace(){try{localStorage.removeItem(RESKEY);}catch(e){}}
 function savedPlace(){try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(!p||Date.now()-p.at>12*3600e3||p.idx>=p.queue.length)return null;
@@ -2018,7 +2037,8 @@ function savedPlace(){try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null
 function resumePlace(){const p=savedPlace();if(!p)return renderBite();personalise();
   const queue=p.queue.map(e=>Object.assign({},e,{item:e.item?BYID[e.item]:undefined,items:e.items?e.items.map(i=>BYID[i]).filter(Boolean):undefined,unit:e.unit?UNIT_BY[e.unit]:undefined,lesson:e.lesson?LESSON_BY[e.lesson]:undefined,drill:e.drill!=null&&e.drill>=0?DRILLS[e.drill]:undefined,line:e.line?BYID[e.line]:undefined,others:e.others?e.others.map(i=>BYID[i]).filter(Boolean):undefined})).filter(e=>e.type!=='hear'||e.line&&e.others&&e.others.length===2);
   Q={queue,idx:p.idx,correct:p.correct,total:p.total,items:p.items.map(i=>BYID[i]).filter(Boolean),mode:p.mode,lesson:p.lesson?LESSON_BY[p.lesson]:null,answer:null,startedAt:Date.now()-Math.max(0,(p.at||Date.now())-(p.startedAt||p.at||Date.now())),tricky:p.tricky,
-    wrongOnce:p.wrongOnce||{},barPct:0,knownBefore:p.knownBefore,crownsBefore:p.crownsBefore,ups:p.ups,nearly:p.nearly,selfRated:p.selfRated,selfOk:p.selfOk||0,dueN:p.dueN||0};
+    wrongOnce:p.wrongOnce||{},barPct:0,knownBefore:p.knownBefore,crownsBefore:p.crownsBefore,ups:p.ups,nearly:p.nearly,selfRated:p.selfRated,selfOk:p.selfOk||0,dueN:p.dueN||0,unit:p.unit?UNIT_BY[p.unit]:undefined,boss:p.boss,missed:p.missed?p.missed.map(i=>BYID[i]).filter(Boolean):undefined,backN:p.backN,madeLt:p.madeLt};
+  if(Q.mode==='check'&&(!Q.unit||!Q.boss)){Q=null;dropPlace();return renderBite();}
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));openSheet();renderStep();}
 /* New words become future reviews, so with a big pile waiting (30 or more) a new lesson asks you to review first. Once a day you can say "Learn anyway". */
 /* ===================== UNIT CHECK (BOSS) ===================== */
@@ -2048,7 +2068,7 @@ function startReview(weak){let L=practised();
   if(pick.length<1){toast('Finish a lesson first');return;}const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(Q)Q.dueN=dueN;
   /* before a due review: how many come back, and which of them slipped before */
   if(Q&&!weak&&dueN){Q.queue.unshift({type:'revtip',n:pick.length,miss:pick.filter(i=>rec(i.id).bad>0).slice(0,5).map(i=>i.lt)});renderStep();}}
-function quit(){if(!Q&&!CV)return;stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
+function quit(){if(!Q&&!CV)return;try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(p){p.gone=1;localStorage.setItem(RESKEY,JSON.stringify(p));}}catch(e){}stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
@@ -2489,7 +2509,7 @@ function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=e
     if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
     else{const j=ex.type==='type'?judgeAll(Q.answer,A,it.en):judgeTyped(Q.answer,A.own,it.en);ok=j.ok;why=j.why||'';
       if((ex.type==='tiles'||ex.type==='gaps')&&ok&&!j.exact&&ex.type==='tiles'){ok=false;why=(whyWrong(Q.answer,A.own[0])||{}).html||'';}
-      if(ok&&ex.helped){title='Nearly';almost='<b>'+esc(it.lt)+'</b> · '+esc(it.en)+'<div class="why">You had the letters to pick from, so it doesn\'t move up yet. It comes back to type in a moment.</div>';
+      if(ok&&ex.helped){title='Nearly';almost='<b>'+esc(it.lt)+'</b> · '+esc(it.en)+'<div class="why">You had the '+(ex.type==='build'?'words':'letters')+' to pick from, so it doesn\'t move up yet. It comes back to type in a moment.</div>';
         if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'type',item:it,retry:true});}
       if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
   else ok=Q.answer===it;
@@ -2573,6 +2593,8 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
     lines.push('<div class="win"><b>Remembered '+(Q.items.length-miss.length)+' of '+Q.items.length+'</b> · '+(miss.length?'forgot '+miss.slice(0,5).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(i.en)+')').join(', ')+(miss.length>5?' and '+(miss.length-5)+' more':'')+'. They come back tomorrow.':'nothing forgotten.')+'</div>');}
   if(Q.mode!=='check'){const td=new Date();td.setHours(0,0,0,0);const nx=Object.keys(Q.touched||{}).map(id=>(S.items[id]||{}).due).filter(d=>d>Date.now());
     if(nx.length){const n=Math.max(1,Math.round((Math.min(...nx)-td.getTime())/DAY));lines.push('<p class="note">Next review: <b>'+(n===1?'tomorrow':'in '+n+' days')+'</b>. Each word comes back just before you would forget it.</p>');}}
+  if(!S.amberTold&&Q.mode!=='check'){S.amberTold=today();lines.push('<p class="note">💎 <b>Amber</b> is what you earn by learning: 1 a lesson, more for a flawless one or a conversation. Spend it in the shop (Practice tab): a spare rest day keeps your streak safe on a day you miss.</p>');}
+  else if(!S.crownTold&&Q.mode==='lesson'&&crowns(Q.lesson.id)===1){S.crownTold=today();lines.push('<p class="note">👑 Each lesson has 5 crowns. Play it again on a later day for the next one: a crown means its words came back to you again, and that is how they stay.</p>');}
   if(typedSpk)lines.push('<div class="win"><b>Typed, not said</b> · the next step is open. Say this lesson out loud later, when speaking is back on, for its crowns.</div>');
   /* "Want a nudge?" is asked here, under your results, from the second lesson on: as a pop-up it caught the next tap */
   if(Q.mode==='lesson'&&(S.lessonsDone||0)>=2&&window.cloud&&cloud.pushWanted&&cloud.pushWanted())
@@ -2626,7 +2648,7 @@ const TURTLE='<svg viewBox="0 2 24 20" fill="none" stroke="currentColor" stroke-
 function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play this line slowly':'Play this line')+'">'+(slow?TURTLE:SPK)+'</button>';}
 /* Each conversation has two versions: written (mode 'text') and spoken (mode 'speak', open once the written one is done). */
 /* redo: just the replies you skipped in Say it, each after the line it answers. */
-function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;personalise();
+function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;bossDraw();personalise();
   const st0=(S.convs||{})[id]||{};mode=redo?'speak':mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
   CV={c,mode,redo:!!redo,replay:mode==='speak'?!!st0.speak:!!(st0.done||st0.text),peeks:0,lines:redo?redo.flatMap(x=>x.prev?[x.prev,x.ln]:[x.ln]):c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=myVoice();preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,castVoice(p)));
@@ -2678,7 +2700,7 @@ function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)
 function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check');const me=myVoice();
   const okList=replyVariants(ln.lt).concat(C.quick&&C.stage==='type'?(ln.others||[]).flatMap(o=>replyVariants(o[0])):[]);
   let over=false;const done=(spoken,said,res)=>{if(over)return;over=true;stopHearing();turn.innerHTML='';
-    $('#msgs').querySelectorAll('[data-ear] .earlt[hidden]').forEach(t=>{t.hidden=false;const n=t.parentElement.querySelector('.earnote');if(n)n.hidden=true;});if(spoken)C.heard++;C.played.push({ln,res});
+    $('#msgs').querySelectorAll('[data-ear] .earlt[hidden]').forEach(t=>{t.hidden=false;const n=t.parentElement.querySelector('.earnote');if(n)n.hidden=true;});if(spoken)C.heard++;C.played.push({ln,res,st:C.mode==='text'&&!C.quick?replyStage(ln.lt):null});
     if(!spoken&&C.mode==='speak'&&!C.quick)(C.skipped=C.skipped||[]).push({ln,prev:C.prevP});if(C.quick)qcGrade(res);
     const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
@@ -2832,8 +2854,9 @@ function replyParts(text){const idx={};ITEMS.forEach(i=>{[i.lt,i.lt0].forEach(t=
     for(let j=Math.min(t.length,i+6);j>i;j--){const it=idx[t.slice(i,j).join(' ')];if(it&&wlvl(it)>=0){hit={item:it,from:i,to:j};break;}}
     if(hit){out.push(hit);i=hit.to;}else i++;}
   return out;}
-function convCredit(text,credit,slips){const C=CV;
-  replyParts(text).forEach(p=>{const r=rec(p.item.id);let slip=false;for(let k=p.from;k<p.to;k++)if(slips.has(k))slip=true;
+function convCredit(text,credit,slips){const C=CV,tk=norm(text).split(' '),nm=S.me&&S.me.name?[norm(S.me.name),norm(ltName(S.me.name,S.me.g))]:[];
+  const isName=w=>!!w&&(GLUE[w]==='your name'||PERS.baseNames.includes(w)||nm.includes(w)||properNoun(w));
+  replyParts(text).forEach(p=>{const r=rec(p.item.id);let slip=false;for(let k=p.from;k<p.to;k++)if(slips.has(k)&&!isName(tk[k]))slip=true;
     if(slip){r.bad++;r.lvl=Math.max(0,r.lvl-1);r.due=Date.now();C.slipped.add(p.item.id);}
     else if(credit){const was=r.lvl;grade(p.item,true,true);C.reviewed.add(p.item.id);if(r.lvl>was)C.stronger.add(p.item.id);}});}
 /* Letter boxes (conversations and the lesson card): one letter each, in the case of the letter it stands for. */
@@ -2912,8 +2935,10 @@ function replyCards(){if(REPLY_CARDS)return REPLY_CARDS;REPLY_CARDS={};
     walk(c.lines,null);});
   return REPLY_CARDS;}
 /* A new card starts at "pick it", or at "build it" when you already know its words well. */
-function replyNew(ln,later){S.replies=S.replies||{};const d=new Date();d.setHours(0,0,0,0);if(later)d.setDate(d.getDate()+1);
-  S.replies[ln.id]={lvl:replyLevel(ln.lt)>=3?1:0,due:later?d.getTime():Date.now(),ok:0,bad:0};}
+function replyNew(ln,later,p){S.replies=S.replies||{};const d=new Date();d.setHours(0,0,0,0);if(later)d.setDate(d.getDate()+1);
+  /* typed right in the conversation: straight to typing it (filled in: fill it), not back to picking it from three */
+  const lv=p&&p.res===true?(p.st==='type'?3:p.st==='fill'?2:0):0;
+  S.replies[ln.id]={lvl:Math.max(lv,replyLevel(ln.lt)>=3?1:0),due:later?d.getTime():Date.now(),ok:0,bad:0};}
 /* Cards from conversations finished before Quick chat existed: the main line, and the choices you tried. */
 function seedReplies(){S.replies=S.replies||{};if(S.repliesSeeded)return;S.repliesSeeded=1;const all=replyCards();
   Object.values(all).forEach(k=>{if(S.replies[k.id]||!convDone(k.c.id))return;if(k.opt&&!(convState(k.c.id).paths||[]).includes(k.opt))return;replyNew(k.me,false);});}
@@ -3070,7 +3095,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   if(!sp&&C.played.length&&C.played.every(p=>p.res===true))st.s2=st.s2||today();
   if(sp&&allSaid&&C.peeks===0&&fromMemory)st.s3=st.s3||today();
   const newStars=convStars(C.c.id).map((g,k)=>g&&!had[k]?k:-1).filter(k=>k>=0);
-  let cardsUp=0,cardsNew=0;C.played.forEach(p=>{if(!S.replies||!S.replies[p.ln.id]){if(sp)return;replyNew(p.ln,true);cardsNew++;}else if(p.res!=null&&replyGrade(p.ln.id,p.res))cardsUp++;});
+  let cardsUp=0,cardsNew=0;C.played.forEach(p=>{if(!S.replies||!S.replies[p.ln.id]){if(sp)return;replyNew(p.ln,true,p);cardsNew++;}else if(p.res!=null&&replyGrade(p.ln.id,p.res))cardsUp++;});
   const before=levelFor(S.xp);rollDay();S.todayLessons++;if(perfect)S.perfects=(S.perfects||0)+1;amberLog=[];const dbl=xpDouble();const total=addXp(xp);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(5,'conversation');if(perfect)earnAmber(3,'flawless');const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');if(perfect)lines.push('<div class="win"><b>Flawless</b> · '+(sp?'every reply from memory, no peeking':'every reply written right first time')+', +5 XP</div>');
@@ -3091,6 +3116,10 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   got.forEach(b=>lines.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   cans.forEach(c=>lines.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   const tried=(st.paths||[]).length;if(C.c.choices&&tried<C.c.choices)lines.push('<div class="win"><b>Other paths to explore</b> · you\'ve tried '+tried+' of '+C.c.choices+' choices. Play again and pick differently.</div>');
+  {const must=/Next: say it|Say every reply|You skipped|to practise again|cv-redo/,hint=/For the next star|For the Spoken star|For the last star|Every reply said|Other paths/,
+    pri=[/New in real life/,/Badge:/,/Level up/,/New star/,/Flawless/,/Said it all/,/Learning day done/,/got stronger/,/new repl/,/got easier/,/counted twice/,/./];
+    const ess=lines.filter(l=>must.test(l)),others=lines.filter(l=>!must.test(l)&&!hint.test(l)),top=pri.map(r=>others.find(l=>r.test(l))).find(Boolean),hn=lines.find(l=>hint.test(l));
+    lines.length=0;lines.push(...ess);if(top)lines.push(top);else if(hn)lines.push(hn);}
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(sp?(micAll?'You just spoke a whole conversation in '+LANG.en:allSaid?'You practised a whole conversation out loud':'You got through the whole conversation'):'You just had a conversation in '+LANG.en)+'</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div>'+(sp?'<div class="tile"><strong class="num">'+C.heard+'/'+C.turns+'</strong><small>Said out loud</small></div><div class="tile"><strong class="num">'+C.peeks+'</strong><small>Peeks</small></div>':'<div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Mistakes</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div>')+'</div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const rd=$('#cv-redo');if(rd)rd.onclick=()=>{const id=C.c.id,left=C.skipped||[];CV=null;startConv(id,'speak',left);};
@@ -3168,15 +3197,16 @@ const TOUR=[
  {sel:'#tab-board',title:'Leagues',text:'Earn XP each week to climb ten leagues from Sand to Sun, two divisions each. The top 3 move up every Monday. Your account puts you in a league, and you can challenge friends to a race.'},
  {sel:'#btn-settings',title:'Settings',text:'Voice, sound, offline download, installing the app and sharing all live here. Your daily pace is here too.'},
 ];
-function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;
+function startTour(){if(window.__touring||document.querySelector('#tour'))return;showView('learn');window.scrollTo(0,0);const steps=TOUR.filter(t=>{const el=document.querySelector(t.sel);return el&&el.offsetParent!==null;});if(!steps.length)return;window.__touring=true;
   let i=0;const ov=document.createElement('div');ov.id='tour';ov.innerHTML='<div class="spot"></div><div class="bubble" role="dialog" aria-live="polite"><span class="eyebrow"></span><h3></h3><p></p><div class="row2"><button type="button" class="btn ghost" data-t="skip">Skip</button><button type="button" class="btn amber" data-t="next">Next</button></div></div>';
   document.body.appendChild(ov);const spot=ov.querySelector('.spot'),bub=ov.querySelector('.bubble');
-  const end=()=>{S.toured=true;save();ov.remove();window.removeEventListener('resize',place);window.removeEventListener('scroll',place);};
+  const end=()=>{S.toured=true;save();ov.remove();window.__touring=false;window.removeEventListener('resize',place);window.removeEventListener('scroll',place);};
   const place=()=>{const st=steps[i];const el=document.querySelector(st.sel);const r=el.getBoundingClientRect();const pad=6;
     Object.assign(spot.style,{left:(r.left-pad)+'px',top:(r.top-pad)+'px',width:(r.width+pad*2)+'px',height:(r.height+pad*2)+'px'});
     bub.querySelector('.eyebrow').textContent='Quick tour · '+(i+1)+' of '+steps.length;bub.querySelector('h3').textContent=st.title;bub.querySelector('p').textContent=st.text;
     bub.querySelector('[data-t="next"]').textContent=i===steps.length-1?'Got it':'Next';
-    const below=r.bottom+pad+12,bh=bub.offsetHeight;const top=below+bh<window.innerHeight-8?below:Math.max(8,r.top-pad-12-bh);bub.style.top=top+'px';};
+    const below=r.bottom+pad+12,bh=bub.offsetHeight;const top=below+bh<window.innerHeight-8?below:Math.max(8,r.top-pad-12-bh);bub.style.top=top+'px';
+    if(window.innerWidth>460){const bw=Math.min(420,window.innerWidth-32),x=Math.max(16,Math.min(window.innerWidth-bw-16,r.left+r.width/2-bw/2));Object.assign(bub.style,{left:x+'px',right:'auto',margin:'0',width:bw+'px'});}};
   const show=()=>{const el=document.querySelector(steps[i].sel);if(el.closest('main'))el.scrollIntoView({block:'center',behavior:'instant'});requestAnimationFrame(place);setTimeout(place,400);};
   ov.querySelector('[data-t="next"]').onclick=()=>{i++;if(i>=steps.length)end();else show();};
   ov.querySelector('[data-t="skip"]').onclick=end;window.addEventListener('resize',place);window.addEventListener('scroll',place,{passive:true});show();}
@@ -3184,7 +3214,7 @@ function startTour(){showView('learn');window.scrollTo(0,0);const steps=TOUR.fil
 /* pop-ups (the tour, "Want a nudge?") never open just as you tap something: they wait until you've paused */
 let lastAct=0;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>{lastAct=Date.now();},true));
 window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden||Date.now()-lastAct<1500;
-function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour'))setTimeout(()=>{if(window.popBusy())return setTimeout(maybeTour,4000);if(!S.toured&&$('#sheet').hidden)startTour();},450);}
+function maybeTour(){if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour')&&!window.__touring&&lastView==='learn')setTimeout(()=>{if(window.popBusy()||lastView!=='learn'||window.__touring)return;if(!S.toured&&$('#sheet').hidden)startTour();},450);}
 $('#btn-tour').onclick=()=>startTour();
 
 /* ===================== REPORT A PROBLEM ===================== */
@@ -3394,7 +3424,7 @@ document.querySelector('#share .qr').addEventListener('toggle',async ev=>{if(!ev
 /* Leaving part way asks first. A lesson or review can be carried on later from Today's plan; a conversation or check starts over. */
 $('#btn-quit').onclick=()=>{const live=Q&&Q.idx>0&&Q.idx<Q.queue.length&&Q.mode!=='place'||CV&&!CV.quick&&CV.i>0&&CV.i<CV.lines.length||CV&&CV.quick&&CV.i>0&&CV.i<CV.queue.length;if(!live)return quit();
   const keep=Q&&(Q.mode==='lesson'||Q.mode==='review');const ov=document.createElement('div');ov.className='gate';
-  ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Leave?">'+mascot('think')+'<h2>Leave '+(CV&&CV.quick?'Quick chat':CV?'this conversation':Q.mode==='check'?'the unit check':Q.mode==='me'?'About me':'this lesson')+'?</h2><p class="note">'+
+  ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Leave?">'+mascot('think')+'<h2>Leave '+(CV&&CV.quick?'Quick chat':CV?'this conversation':Q.mode==='check'?'the unit check':Q.mode==='me'?'About me':Q.tricky?'Tricky words':Q.mode==='review'?'this review':'this lesson')+'?</h2><p class="note">'+
     (keep?'Your answers so far are kept, and you can carry on from this card later on the Learn tab.':CV&&CV.quick?'The replies you got right are kept.':Q&&Q.mode==='me'?'Your answers so far are kept. Practise it again any time from the About me card.':'Your answers so far are kept, but '+(CV?'the conversation':'the check')+' starts from the beginning next time.')+'</p><button type="button" class="btn amber" data-l="stay">Keep going</button><button type="button" class="btn ghost" data-l="go">Leave</button></div>';
   document.body.appendChild(ov);ov.querySelector('[data-l="stay"]').focus();ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.l==='go')quit();});};
 $('#btn-review').onclick=()=>startReview(false);
@@ -3428,8 +3458,8 @@ $('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voi
 if('scrollRestoration' in history)history.scrollRestoration='manual'; /* a reload opens Learn at the top */
 let tileKeys={};
 /* Enter can't skip a card that has only just appeared: a quick double Enter used to jump past a New word or Tip card unseen */
-document.addEventListener('keydown',e=>{if(e.key!=='Enter'||!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx],wait=ex&&STEPLESS[ex.type]?1200:600;
-  if(e.repeat||Date.now()-(Q.shownAt||0)<wait){e.preventDefault();e.stopImmediatePropagation();}},true);
+document.addEventListener('keydown',e=>{if(e.key!=='Enter'||!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx],wait=ex&&STEPLESS[ex.type]?700:400;
+  if(e.repeat||Date.now()-Math.max(Q.shownAt||0,Q.footAt||0)<wait){e.preventDefault();e.stopImmediatePropagation();}},true);
 /* Taps too: a quick double tap on Continue landed on the next card's "Got it" (the same button), so a New word card went by
    unseen and its word was tested cold. The same tap could also skip your result the moment it showed. */
 document.addEventListener('click',e=>{if(!Q||$('#sheet').hidden||!e.isTrusted||!e.target.closest||!e.target.closest('#btn-check'))return;
@@ -3459,8 +3489,17 @@ document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$(
         if(to&&to.length===1&&free(to)){e.preventDefault();if(T.placed&&lastIn)lastIn.click();free(to).click();tileKeys={ex,key:k,placed:true};return;}}
       const c=plain||[...document.querySelectorAll('#bank .chip:not(.ghost)')].find(x=>x.textContent.length===1&&strip(x.textContent)===k);
       tileKeys={ex,key:k,placed:!!c};if(c){e.preventDefault();c.click();}return;}}
+  if(ex.type==='build'&&document.activeElement.tagName!=='INPUT'&&!e.ctrlKey&&!e.metaKey){
+    if(e.key==='Backspace'){const c=[...document.querySelectorAll('#bans .chip')].pop();if(c){e.preventDefault();c.click();}tileKeys={ex,buf:''};return;}
+    if(e.key===' '){e.preventDefault();tileKeys={ex,buf:''};return;}
+    if(e.key.length===1&&/\p{L}/u.test(e.key)){const T=tileKeys.ex===ex?tileKeys:{ex,buf:''},buf=strip(T.buf+e.key.toLowerCase());
+      const free=[...document.querySelectorAll('#bank .chip:not(.ghost)')],fit=free.filter(x=>strip(x.textContent.toLowerCase()).startsWith(buf));
+      e.preventDefault();if(fit.length===1||fit.length>1&&fit.every(x=>strip(x.textContent.toLowerCase())===buf)){fit[0].click();tileKeys={ex,buf:''};}else tileKeys={ex,buf:fit.length?buf:''};
+      return;}}
   /* Enter goes to the big button (unless it already has the focus, which presses it by itself) */
-  if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check');if(document.activeElement===b)return;e.preventDefault();if(!b.disabled)b.click();}});
+  if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const b=$('#btn-check'),a=document.activeElement;if(a===b)return;
+    if(a&&a.closest&&a.closest('#stage button')&&!(a.matches('.spk')||a.closest('.spk')))return; /* a focused link or choice does its own thing */
+    e.preventDefault();const sa=document.querySelector('#stage #showans');if(b.disabled&&sa&&!sa.hidden&&!sa.disabled){sa.click();return;}if(!b.disabled)b.click();}});
 
 /* Welcome: step 1 is the app and your pace, step 2 is about you (name, man or woman, country; all skippable), then
    straight into the first lesson. Signing in (skippable) is offered once that lesson is done, so you see what Gintaras is
@@ -3520,6 +3559,8 @@ function start(snap){load();setTimeout(tabGuard,0);
     const owed=(S.lessonsDone||0)+5*convs+3*(S.perfects||0)+2*(S.daysLearned||0)+6*Math.floor((S.lessonsDone||0)/5)-(S.amberEarned||0);
     if(owed>0){amberAdd('amberE',owed);setTimeout(()=>toast('🎁 +'+owed+' amber for the learning you did before amber existed'),1500);}S.amberBack=1;}
   rollDay();save();renderAll();netUI();
+  /* you were in the middle of something a moment ago (a refresh, or "Use it here instead" from another tab): carry straight on */
+  setTimeout(()=>{const p=savedPlace();if(p&&!p.gone&&Date.now()-p.at<3*60e3&&!Q&&!CV&&$('#welcome').hidden&&!window.__tabQuiet)resumePlace();},400);
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}
   {const sp=$('#splash'),bye=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),400);};sp.onclick=bye;setTimeout(bye,1000);}
