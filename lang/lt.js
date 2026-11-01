@@ -41,7 +41,7 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
     if(a&&b&&a[0]===b[0]&&g!==t)return '<b>'+g+'</b> is a real word, "'+a[2]+'": it is '+LANG.formRole[a[1]]+'. Here you need <b>'+t+'</b> ("'+b[2]+'"), '+LANG.formRole[b[1]]+'.';
     /* puikus / puikiai: describing a thing, or saying how */
     const adv=w=>/[^aeiouy]i?ai$/.test(w)&&(LANG.fixed||[]).includes(w),stem=w=>w.replace(/i?ai$/,''),adj=(w,s)=>w.length>s.length&&w.startsWith(s)&&/^(i?[uo]s|i?as|i?a|i?ą|i?us|i?ūs|ūs|i|ė|is)$/.test(w.slice(s.length));
-    const en=w=>((typeof fullGloss==='function'?fullGloss(w,1):'')||'good').replace(/^great.*/,'great');if(['labas','laba','labą'].includes(g))return '';
+    const en=w=>({puikiai:'great',gerai:'good',blogai:'bad',neblogai:'not bad'})[w]||((typeof fullGloss==='function'?fullGloss(w,1):'')||'good');if(['labas','laba','labą'].includes(g))return '';
     if(adv(t)&&adj(g,stem(t)))return '<b>'+g+'</b> describes a thing (<b>'+g+'</b> vakaras, a '+en(t)+' evening); <b>'+t+'</b> describes how (aš jaučiuosi <b>'+t+'</b>, I feel '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
     if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how (aš jaučiuosi <b>'+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
     return '';},
