@@ -1032,8 +1032,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.83';
-const APP_VERSION=155;
+const APP_RELEASE='3.84';
+const APP_VERSION=156;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1337,7 +1337,13 @@ function dueItems(){const n=Date.now();return practised().filter(i=>rec(i.id).du
 const LESSON_BY={};COURSE.forEach(u=>u.lessons.forEach(l=>LESSON_BY[l.id]=l));
 /* Lessons were grouped into bigger ones (lang file, "bigger lessons"): a new lesson counts as done, as many times as its least
    done part, for anyone who had finished every part of it. Runs at start and after a sync, and never lowers anything. */
-function migrateLessons(){if(!S||!S.lessons)return;COURSE.forEach(u=>u.lessons.forEach(l=>{if(!l.parts||S.lessons[l.id]>0)return;
+/* Round 3 (3.84): misses that are right after all (an accepted way to say it, a dropped "I", a missing-letters card that
+   couldn't be filled) are taken back once, so they stop showing up as "slipped before" and in Tricky words. */
+function rejudgeMisses(){if(!S||!S.items||S.rejudged==='3.84')return;S.rejudged='3.84';
+  Object.entries(S.items).forEach(([id,r])=>{const it=BYID[id];if(!it||!r||!r.missG||!(r.bad>0))return;
+    const short=r.missT==='gaps'&&[...strip(r.missG)].filter(c=>/\p{L}/u.test(c)).length<[...strip(it.lt)].filter(c=>/\p{L}/u.test(c)).length;
+    if(short||judgeAll(r.missG,answersFor(it),it.en).ok){r.bad--;delete r.missG;delete r.missT;if(!r.bad&&r.lapse)r.lapse=0;}});}
+function migrateLessons(){rejudgeMisses();if(!S||!S.lessons)return;COURSE.forEach(u=>u.lessons.forEach(l=>{if(!l.parts||S.lessons[l.id]>0)return;
   const n=Math.min(...l.parts.map(p=>S.lessons[p]||0));if(n>0)S.lessons[l.id]=n;}));}
 /* A Speak it lesson's crowns measure speaking instead: each word's speaking level (spk) goes up by one when you say it
    right (microphone, or rating yourself Good or Easy), at most once a day, and down by one when you rate it Hard. */
@@ -1685,7 +1691,7 @@ function placeNext(){const P=Q.place;
   if(P.testout){if(P.right>=P.need&&!P.passed.length)P.passed.push(P.units[0]);return false;}
   if(P.i>=0){if(P.right>=3)P.passed.push(P.units[P.i]);else return false;}
   P.i++;P.right=0;if(P.i>=P.units.length)return false;
-  const its=sample(bossItems(UNIT_BY[P.units[P.i]]).filter(i=>i.lt.split(' ').length<=4),4);
+  const its=sample(unitItems(UNIT_BY[P.units[P.i]]).filter(i=>i.lt.split(' ').length<=4),4);
   its.forEach(it=>Q.queue.push({type:'type',item:it}));Q.items=Q.items.concat(its);Q.total=Q.queue.length;return true;}
 /* A unit you've shown you know: its lessons count as done, and its words you hadn't learned yet start at level 1 (level 2 if you
    typed them right in the check), due over the next two days, so nothing is taken on trust for long. */
@@ -1694,7 +1700,7 @@ function creditUnit(uid,got){const now=new Date();now.setHours(0,0,0,0);UNIT_BY[
 /* Test out: a unit you've opened but not finished can be skipped by showing you know it: 8 of its words to type from the
    English, 6 right first time passes. One try per unit a day. The conversation after it is still yours to have. */
 const TEST_N=8,TEST_PASS=6;
-const testWords=u=>bossItems(u).filter(i=>i.lt.split(' ').length<=4);
+const testWords=u=>unitItems(u).filter(i=>i.lt.split(' ').length<=4);
 /* Any unit can be tested out of, locked ones too: a locked unit's check also asks a word from each unfinished unit before it
    (up to four), and passing it clears those too, and everything before it on the path. */
 const canTestOut=(u,ui)=>!u.retire&&!stepDone(u.id)&&testWords(u).length>=TEST_N;
@@ -2012,7 +2018,9 @@ function resumePlace(){const p=savedPlace();if(!p)return renderBite();personalis
 /* The end-of-unit check, as a boss fight: 10 recall questions from the unit (typed, gap-filled, written from the audio,
    built), each graded as a normal review. A right answer first time is a hit; 8 of 10 beats it. Missed words are listed
    with a review of just those. Nothing is ever locked by it. */
-function bossItems(u){return u.retire?[]:u.lessons.filter(l=>!l.speak).flatMap(l=>l.items);}
+function unitItems(u){return u.retire?[]:u.lessons.filter(l=>!l.speak).flatMap(l=>l.items);}
+/* the boss only asks words you have met: a word you haven't had yet was being tested cold */
+const bossItems=u=>unitItems(u).filter(i=>wlvl(i)>=0);
 function startBoss(u){const all=bossItems(u);if(all.length<5)return;
   const pick=all.slice().sort((a,b)=>wlvl(a)-wlvl(b)||Math.random()-0.5).slice(0,Math.min(10,all.length));
   const queue=shuffle(pick).map(it=>{const ex=exFor(it,['type','cloze','type','dictate']);if(ex.type==='tiles'||ex.type==='build'||ex.type==='mc_en_lt')ex.type='type';return ex;});
@@ -2059,7 +2067,7 @@ function wireNoListen(st){const b=st.querySelector('#nolisten');if(!b)return;b.o
   const n0=Q.queue.length;Q.queue=Q.queue.filter((e,k)=>k<Q.idx||e.type!=='hear');Q.total-=n0-Q.queue.length;
   Q.queue=Q.queue.map((e,k)=>k<Q.idx||!e.item?e:e.type==='listen'?Object.assign({},e,{type:'mc_en_lt'}):e.type==='dictate'?Object.assign({},e,{type:'type'}):e);
   toast('Listening is off for an hour. It comes back by itself.');renderStep();};}
-const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1,cloze:1,dictate:1};
+const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1,cloze:1,dictate:1,gaps:1};
 
 function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();progressUI();const st=$('#stage');st.innerHTML='';st.scrollTop=0;if(st.parentElement)st.parentElement.scrollTop=0;Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
@@ -2225,9 +2233,9 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
     /* Fill in the missing letters: about four letters in ten are gone (at least one, never all), from the English */
     const chars=[...it.lt],pos=chars.map((c,i)=>/\p{L}/u.test(c)?i:-1).filter(i=>i>=0),n=Math.max(1,Math.min(pos.length-1,Math.round(pos.length*.4)));
     const gone=shuffle(pos.slice()).slice(0,n).sort((x,y)=>x-y),want=gone.map(i=>chars[i]);let last=null;
-    const box='<input class="lb" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" aria-label="Missing letter">';
+    const box='<input class="lb" maxlength="3" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" aria-label="Missing letter">';
     st.innerHTML=from+'<div class="prompt small">Fill in the missing letters</div><div class="word">'+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+
-      '<div class="gfill"><span class="fw">'+chars.map((c,i)=>c===' '?'</span><span class="fw">':gone.includes(i)?box:'<span>'+esc(c)+'</span>').join('')+'</span></div>'+'<div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>';
+      '<div class="gfill"><span class="fw">'+chars.map((c,i)=>c===' '?'</span><span class="fw">':gone.includes(i)?box:'<span>'+esc(c)+'</span>').join('')+'</span></div>'+'<div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it'+(LANG.dblTip?', '+LANG.dblTip:'')+'.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>';
     const bs=[...st.querySelectorAll('.lb')];
     const upd=()=>{let k=0;Q.answer=chars.map((c,i)=>gone.includes(i)?(bs[k++].value||''):c).join('');btn.disabled=bs.some(b=>!b.value);};
     wireBoxes(bs,want,b=>{last=b;},upd,()=>{if(!btn.disabled)btn.click();});
@@ -2346,7 +2354,7 @@ function answersFor(it){const own=[it.lt].concat(it.alt||[]),k=norm(it.lt),ek=en
   const same=ITEMS.filter(i=>{if(i===it||enKey(i.en)!==ek)return false;const pi=par(i.en);return pi===pa||!(pi&&pa)&&!/\b(m[ae]n|wom[ae]n|male|female|he|she|boys?|girls?|mixed)\b/.test(pi+' '+pa);}).map(i=>i.lt);
   /* "your" can be polite: Koks jūsų vardas? is as right as Koks tavo vardas?, unless the card says which one it wants */
   const pol=LANG.polite&&!pa?LANG.polite(it.lt):null;
-  return {own,other:[...new Set(syn.concat(same,pol?[pol]:[]))].filter(v=>!own.some(o=>norm(o)===norm(v)))};}
+  return {id:it.id,own,other:[...new Set(syn.concat(same,pol?[pol]:[]))].filter(v=>!own.some(o=>norm(o)===norm(v)))};}
 /* Says why the other word works, and how it differs (formal or informal, and so on), from the course's own notes. */
 function alsoNote(o,it){const oi=ITEMS.find(i=>norm(i.lt)===norm(o));
   const pol=!oi&&LANG.polite&&norm(LANG.polite(it.lt)||'')===norm(o);
@@ -2365,7 +2373,8 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
       const neg=sg.startsWith('ne')!==st.startsWith('ne')&&sameStart(sg.replace(/^ne/,''),st.replace(/^ne/,''))>=3;
       const swapped=sg.length===st.length&&[...sg].sort().join('')===[...st].sort().join('');
       const other=knownWord(g)&&fullGloss(g)&&fullGloss(t)&&fullGloss(g)!==fullGloss(t)&&(lev(sg,st)<=2||sg.length<=3&&st.length<=3);
-      if(swapped&&!neg)best={k,kind:'spell'};
+      if(LANG.formNote&&LANG.formNote(norm(g),norm(t)))best={k,kind:'form'};
+      else if(swapped&&!neg)best={k,kind:'spell'};
       else if(LANG.beWho&&LANG.beWho[norm(g)]&&LANG.beWho[norm(t)])best={k,kind:'person'};
       /* an ending is only explained when what you wrote is a real form; anything else is a spelling slip */
       else if(neg||endSlip(sg,st,same)&&knownWord(g)&&!fixedWord(st))best={k,kind:'ending'};
@@ -2376,7 +2385,8 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   T.forEach((t,i)=>{const m=match[i];if(!m||m.kind==='ok')return;
     if(m.kind==='ending')issues.push({kind:'ending',html:endingWhy(m.g,t,T[i-1],T[i+1])});
     else if(m.kind==='word')issues.push({kind:'word',html:'Different word: <b>'+esc(m.g)+'</b> means "'+esc(fullGloss(m.g,1))+'", but here you need <b>'+esc(t)+'</b> ("'+esc(fullGloss(t,1))+'").'+(LANG.pairRule?LANG.pairRule(m.g,t):'')});
-    else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling: <b>'+esc(m.g)+'</b> is written <b>'+esc(t)+'</b>.'});
+    else if(m.kind==='form')issues.push({kind:'word',html:LANG.formNote(norm(m.g),norm(t))});
+    else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling: <b>'+esc(m.g)+'</b> is written <b>'+spellDiff(m.g,t)+'</b>.'});
     else if(m.kind==='person')issues.push({kind:'word',html:LANG.personNote(norm(m.g),norm(t))});
     else issues.push({kind:'marks',html:marksNote(m.g,t)});});
   T.forEach((t,i)=>{if(match[i])return;const gl=glossOf(t);issues.push({kind:'missing',html:'You left out <b>'+esc(t)+'</b>'+(gl?' ('+esc(gl)+')':'')+'.'});});
@@ -2388,6 +2398,11 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   const typo=!!one&&strip(one.t).length>=5&&lev(strip(one.g),strip(one.t))===1&&sameStart(strip(one.g),strip(one.t))<strip(one.t).length-2&&!knownWord(one.g)&&!ijySwap(strip(one.g),strip(one.t));
   const rank={ending:0,word:0,person:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
   return {html:issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
+/* The right spelling with the letters that differ from yours underlined (what's the same at the start and the end isn't). */
+function spellDiff(g,t){const a=[...norm(g)],b=[...t];let i=0;while(i<a.length&&i<b.length&&a[i]===b[i].toLowerCase())i++;
+  let j=0;while(j<a.length-i&&j<b.length-i&&a[a.length-1-j]===b[b.length-1-j].toLowerCase())j++;
+  const mid=b.slice(i,b.length-j);if(!mid.length)return esc(t);
+  return esc(b.slice(0,i).join(''))+'<u class="mark">'+esc(mid.join(''))+'</u>'+esc(b.slice(b.length-j).join(''));}
 /* Any mark left off (š, ė, ū...) counts as "Nearly": right, but the word doesn't move up, and the letter is shown.
    Carons (š, ž, č) are letters of their own, so they get a word of explanation. */
 const caronKeep=s=>norm(s).normalize('NFD').replace(/[\u0300-\u030B\u030D-\u036F]/g,'');
@@ -2402,7 +2417,7 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+markDiff(given,targets[k])+'</b>'+(w?w.html:'')+(car&&LANG.caronNote?'<div class="why">'+LANG.caronNote+'</div>':'')};}
   if(LANG.fold){const f=s=>LANG.fold(strip(s)),k2=targets.map(f).indexOf(f(given));
     if(k2>=0)return {ok:true,title:'Nearly',note:'Correct, but note the spelling: <b>'+esc(targets[k2])+'</b><div class="why">'+LANG.foldNote+'</div>'};}
-  const d=dropWho(given);if(d.includes(' ')&&tn.map(dropWho).includes(d))
+  const d=dropWho(given),whoG=a.split(' ').filter(w=>WHO_WORDS.includes(w));if(d&&tn.some(x=>dropWho(x)===d&&whoG.every(w=>x.split(' ').includes(w))))
     return {ok:true,note:'<b>'+esc(targets[0])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropWho+'</div>'};
   /* "Aš iš Amerikos": everyday speech often leaves out "am / are" too */
   const be=LANG.be||[],nb=s=>dropWho(s).split(' ').filter(w=>!be.includes(w)).join(' '),nbw=s=>norm(s).split(' ').filter(w=>!be.includes(w)).join(' ');
@@ -2421,7 +2436,9 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
 
 /* Every right answer at once: the card's own, then the other right ones (the polite "your", a same-meaning word). A miss is
    explained against the right answer closest to what you wrote, so a typo in jūsų is a typo, not "you left out tavo". */
-function judgeAll(given,A,en){const j=judgeTyped(given,A.own,en);if(j.ok||!A.other.length)return j;
+function judgeAll(given,A,en){const j=judgeTyped(given,A.own,en);if(j.ok)return j;
+  if(A.id&&((S.contested||{})[A.id]||[]).includes(norm(given)))return {ok:true,title:'Nearly',note:'<b>'+esc(given.trim())+'</b>: you said this is right, so it counts while it waits for a check.'};
+  if(!A.other.length)return j;
   const o=judgeTyped(given,A.other,en);if(o.ok)return Object.assign(o,{title:'Nearly'});
   const g=norm(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,norm(x))-lev(g,norm(y)))[0];
   if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html;}return j;}
@@ -2433,6 +2450,7 @@ function properNoun(w){if(!PROPER){PROPER=new Set();const add=s=>String(s||'').s
 /* A typo or a missing mark still counts as right, but the word only moves up a level when it is exact. */
 const SLOPPY='<div class="why">Counted as right, but the word only moves up when you write it exactly.</div>';
 function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';
+  if(ex.type==='gaps'&&[...document.querySelectorAll('#stage .lb')].some(b=>!b.value))return;
   /* the gap is judged as the whole phrase with your word in it, so the Why note can use the words around it */
   if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');
     const A=answersFor(it),o=A.other.find(v=>norm(v)===norm(full));if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
@@ -2461,14 +2479,15 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   if(Q.mode!=='place'&&Q.mode!=='check'&&rec(it.id).lvl>=1&&ladderAt(ex.type)>=0){const r=rec(it.id),s=ladderStep(it);
     if(!ok)r.st=Math.max(0,s-1);else if(first&&title!=='Nearly'&&ladderAt(ex.type)>=s)r.st=Math.min(3,s+1);}
   if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(RECALL[ex.type]&&first&&!title)markRecalled(it);if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
-  else{if(!idk)sfx('bad');if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
+  else{if(!idk)sfx('bad');const snap=JSON.stringify(rec(it.id)),wasFirst=first;if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
     const pk=Q.answer&&Q.answer.lt&&Q.answer!==it?Q.answer:null;
     if(!idk&&Q.mode!=='place'){const r=rec(it.id);r.missT=ex.type;r.missG=typeof Q.answer==='string'?Q.answer.slice(0,60):undefined;r.missPick=pk?pk.id:undefined;}
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud. You will see it again in a moment.</div>');
     else setFoot('bad','Not quite',(typeof Q.answer==='string'&&Q.answer.trim()?'<div class="note">You wrote <b>'+esc(Q.answer.trim())+'</b></div>':'')+'Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
     /* it comes back a few cards later, asked another way where it can be, so the answer you just saw isn't simply tapped again */
     const back=ex.type==='listen'||ex.type==='mc_lt_en'?'mc_en_lt':ex.type==='mc_en_lt'?'mc_lt_en':ex.type;
-    if(Q.mode!=='check'&&Q.mode!=='place')comeBack(back===ex.type?Object.assign({},ex,{retry:true}):{type:back,item:it,retry:true});say(it);}
+    if(Q.mode!=='check'&&Q.mode!=='place')comeBack(back===ex.type?Object.assign({},ex,{retry:true}):{type:back,item:it,retry:true});say(it);
+    if(!idk&&typeof Q.answer==='string'&&Q.answer.trim())contestLink(it,ex,Q.answer.trim(),snap,wasFirst);}
   const stage=$('#stage');stage.querySelectorAll('.opt').forEach(b=>{b.disabled=true;});stage.querySelectorAll('.lt-after').forEach(x=>x.hidden=false);
   stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
   stage.querySelectorAll('.opt[data-ok]').forEach(b=>b.classList.add('good'));
@@ -2478,6 +2497,21 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   /* long enough to hear the word when right; a miss, a "Nearly" or another right answer waits for you, so you can read why */
   if(ok&&title!=='Nearly'&&title!=='That works too!')autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
 
+/* "I think this is right": a typed answer marked wrong can be disputed with one tap. The miss is taken back (the word's record
+   is as it was, it isn't asked again, nothing is "slipped" or tricky), it counts as right for now, and the owner gets a
+   report with the card and what you wrote. The same answer counts next time too, until it has been checked. */
+function contestLink(it,ex,given,snap,wasFirst){const fb=$('#fb-ans');if(!fb)return;const b=document.createElement('button');b.type='button';b.className='linkbtn contest';
+  b.textContent='I think this is right';fb.appendChild(b);
+  b.onclick=()=>{if(!Q||Q.queue[Q.idx]!==ex)return;stopAutoNext();try{S.items[it.id]=JSON.parse(snap);}catch(e){}
+    S.contested=S.contested||{};const c=S.contested[it.id]=S.contested[it.id]||[];if(!c.includes(norm(given)))c.push(norm(given));
+    delete Q.wrongOnce[it.id];if(wasFirst){Q.correct++;Q.nearly=(Q.nearly||0)+1;}
+    for(let k=Q.queue.length-1;k>Q.idx;k--){const e=Q.queue[k];if(e.retry&&e.item===it){Q.queue.splice(k,1);break;}}
+    if(Q.mode==='check'&&wasFirst){Q.boss.hp=Math.max(0,Q.boss.hp-1);Q.missed=Q.missed.filter(x=>x!==it);setTimeout(bossDraw,50);}
+    if(Q.mode==='place'&&wasFirst){Q.place.right++;Q.place.got[it.id]=true;}
+    const ctx=cardContext();ctx.answer=given;
+    S.reportQueue=(S.reportQueue||[]).concat([{reason:'marked',note:'Tapped "I think this is right" for: '+given,context:Object.assign({lang:LANG_CODE},ctx)}]).slice(-30);save();
+    if(window.cloud&&window.cloud.sendReports)window.cloud.sendReports();
+    setFoot('good','Counted for now','<b>'+esc(given)+'</b> · '+esc(it.en)+'<div class="note">Thanks: it\'s sent for a check. It doesn\'t count against you, and it counts as right if you write it again.</div>'+'<div class="note">This card\'s answer: <b>'+esc(it.lt)+'</b></div>');};}
 function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=today();const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.min(100,Math.round(Q.correct/Q.total*100)):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total&&!Q.nearly&&!Q.selfRated;
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
@@ -2765,9 +2799,16 @@ function convCredit(text,credit,slips){const C=CV;
     if(slip){r.bad++;r.lvl=Math.max(0,r.lvl-1);r.due=Date.now();C.slipped.add(p.item.id);}
     else if(credit){const was=r.lvl;grade(p.item,true,true);C.reviewed.add(p.item.id);if(r.lvl>was)C.stronger.add(p.item.id);}});}
 /* Letter boxes (conversations and the lesson card): one letter each, in the case of the letter it stands for. */
-function wireBoxes(bs,want,onFocus,upd,onEnter){bs.forEach((b,k)=>{b.onfocus=()=>{onFocus(b);try{b.select();}catch(e){}};
-  b.oninput=()=>{let v=b.value.slice(-1);const w=want[k]||'';if(v)v=w===w.toUpperCase()&&w!==w.toLowerCase()?v.toUpperCase():v.toLowerCase();
-    b.value=v;b.classList.remove('bad');if(v&&bs[k+1])bs[k+1].focus();upd();};
+/* Typing a letter twice gives its marked version here too (s, s → š), as the hint says: the same letter again straight
+   after goes back into the box you just filled. Some keyboards send ū as u plus a separate mark, so it is joined up first. */
+function wireBoxes(bs,want,onFocus,upd,onEnter){let lastT=null;const D=LANG.dbl||{},cs=(w,v)=>w===w.toUpperCase()&&w!==w.toLowerCase()?v.toUpperCase():v.toLowerCase();
+  bs.forEach((b,k)=>{b.onfocus=()=>{onFocus(b);try{b.select();}catch(e){}};
+  b.oninput=()=>{const raw=[...b.value.normalize('NFC')];let v=raw.pop()||'';const w=want[k]||'';
+    const two=raw.length?(raw.pop()+v).toLowerCase():'';
+    if(two&&D[two]&&D[two].length===1){v=D[two];}
+    else if(v&&lastT&&lastT.k===k-1&&Date.now()-lastT.at<1500&&bs[k-1]){const p=(bs[k-1].value+v).toLowerCase();
+      if(D[p]&&D[p].length===1){bs[k-1].value=cs(want[k-1]||'',D[p]);b.value='';lastT={k:k-1,at:Date.now()};upd();return;}}
+    if(v)v=cs(w,v);b.value=v;b.classList.remove('bad');lastT=v?{k,at:Date.now()}:null;if(v&&bs[k+1])bs[k+1].focus();upd();};
   b.onkeydown=e=>{if(e.key==='Backspace'&&!b.value&&bs[k-1]){e.preventDefault();bs[k-1].value='';bs[k-1].focus();upd();}
     else if(e.key==='ArrowLeft'&&bs[k-1]){e.preventDefault();bs[k-1].focus();}else if(e.key==='ArrowRight'&&bs[k+1]){e.preventDefault();bs[k+1].focus();}
     else if(e.key==='Enter'){e.preventDefault();onEnter();}};});}

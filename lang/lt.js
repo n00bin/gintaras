@@ -26,6 +26,25 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   /* the forms of "to be" and who they go with, so "Mes esu" is explained as the wrong person, not a missing word */
   beWho:{esu:'aš',esi:'tu',yra:'jis',esame:'mes',esate:'jūs'},
   personNote:(g,t)=>{const w={esu:'aš (I)',esi:'tu (you)',yra:'jis, ji, jie (he, she, they)',esame:'mes (we)',esate:'jūs (you, polite)'};return '<b>'+g+'</b> goes with '+w[g].replace(/^(\S+)/,'<b>$1</b>')+'. Here it\'s '+w[t].replace(/^(\S+)/,'<b>$1</b>').replace(/\s*\(.*$/,'')+', so <b>'+t+'</b>.';},
+  /* Real words that are a different form of the one the card wants: "mus" (us) for mes (we), "puikus" (a great thing) for
+     puikiai (doing great). The Why note says what the form is for, instead of calling it a spelling slip or "not needed". */
+  forms:{aš:['aš','n','I'],man:['aš','d','to me'],mane:['aš','a','me'],manęs:['aš','g','of me'],mano:['aš','p','my'],
+    tu:['tu','n','you'],tau:['tu','d','to you'],tave:['tu','a','you'],tavęs:['tu','g','of you'],tavo:['tu','p','your'],
+    mes:['mes','n','we'],mums:['mes','d','to us'],mus:['mes','a','us'],mūsų:['mes','p','our'],
+    jūs:['jūs','n','you (polite)'],jums:['jūs','d','to you (polite)'],jus:['jūs','a','you (polite)'],jūsų:['jūs','p','your (polite)'],
+    jis:['jis','n','he'],jam:['jis','d','to him'],jį:['jis','a','him'],jo:['jis','p','his'],
+    ji:['ji','n','she'],jai:['ji','d','to her'],ją:['ji','a','her'],jos:['ji','p','her'],
+    jie:['jie','n','they'],jiems:['jie','d','to them'],juos:['jie','a','them'],jų:['jie','p','their']},
+  formRole:{n:'the one doing it',d:'"to / for" someone (and the one who likes or feels something: <b>man patinka</b>, I like)',a:'the one something is done to (they see <b>us</b>)',g:'"of"',p:'whose it is'},
+  formNote:(g,t)=>{const F=LANG.forms,a=F[g],b=F[t];
+    if(a&&b&&a[1]==='p'&&b[1]==='p'&&a[0]!==b[0])return '<b>'+g+'</b> is "'+a[2]+'"; here you need <b>'+t+'</b> ("'+b[2]+'").';
+    if(a&&b&&a[0]===b[0]&&g!==t)return '<b>'+g+'</b> is a real word, "'+a[2]+'": it is '+LANG.formRole[a[1]]+'. Here you need <b>'+t+'</b> ("'+b[2]+'"), '+LANG.formRole[b[1]]+'.';
+    /* puikus / puikiai: describing a thing, or saying how */
+    const adv=w=>/[^aeiouy]i?ai$/.test(w)&&(LANG.fixed||[]).includes(w),stem=w=>w.replace(/i?ai$/,''),adj=(w,s)=>w.length>s.length&&w.startsWith(s)&&/^(i?[uo]s|i?as|i?a|i?ą|i?us|i?ūs|ūs|i|ė|is)$/.test(w.slice(s.length));
+    const en=w=>((typeof fullGloss==='function'?fullGloss(w,1):'')||'good').replace(/^great.*/,'great');if(['labas','laba','labą'].includes(g))return '';
+    if(adv(t)&&adj(g,stem(t)))return '<b>'+g+'</b> describes a thing (<b>'+g+'</b> vakaras, a '+en(t)+' evening); <b>'+t+'</b> describes how (aš jaučiuosi <b>'+t+'</b>, I feel '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
+    if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how (aš jaučiuosi <b>'+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
+    return '';},
   qWord:'ar',qNote:'Right too: <b>ar</b> at the front only marks a question, and in speech it is often left out.',dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
 /* ===================== COURSE CONTENT ===================== */
@@ -58,7 +77,7 @@ const COURSE = [
  ]},
  {id:'u1c',title:'Who I am',items:[
   ['Aš','I (myself)'],
-  ['Tu','You','Informal, one person.'],
+  ['Tu','You (to a friend)','Informal, one person.'],
   ['Jis','He'],
   ['Ji','She'],
   ['Mes','We'],
@@ -189,7 +208,7 @@ const COURSE = [
   ['skaityti','to read'],['rašyti','to write'],['norėti','to want'],['turėti','to have'],['žinoti','to know'],
  ]},
  {id:'u8b',title:'I, you, he',items:[
-  ['Aš esu','I am'],['Tu esi','You are'],['Jis yra','He is'],['Aš einu','I go'],['Aš kalbu','I speak'],
+  ['Aš esu','I am'],['Tu esi','You are (to a friend)'],['Jis yra','He is'],['Aš einu','I go'],['Aš kalbu','I speak'],
   ['Aš skaitau','I read'],['Aš noriu','I want'],['Aš turiu','I have'],['Aš žinau','I know'],['Aš nežinau','I don\'t know','"ne-" glued to the front makes a verb negative.'],
  ]},
  {id:'u8c',title:'Sentences',items:[
@@ -268,8 +287,8 @@ const COURSE = [
 ]},
 {id:'u13',title:'Klausimai',en:'Questions and help',tip:'Question words go first, just like English. Add <b>Ar</b> at the start of any sentence to make it a yes/no question. Use the <b>-ite</b> forms (galite, atleiskite) with strangers; they are the polite ones.',lessons:[
  {id:'u13a',title:'Asking',items:[
-  ['kas','who / what'],['kur','where'],['kada','when'],['kodėl','why'],['kaip','how'],['kuris','which'],
-  ['Ar galite man padėti?','Can you help me?','Polite form, for strangers.'],
+  ['kas','who / what'],['kur','where'],['kada','when (a question)'],['kodėl','why'],['kaip','how'],['kuris','which'],
+  ['Ar galite man padėti?','Can you help me? (polite)','Polite form, for strangers.'],
   ['Ar kalbate angliškai?','Do you speak English? (polite)','Polite form. To a friend: "Ar kalbi angliškai?"'],
   ['Ką tai reiškia?','What does that mean?'],
   ['Kur aš esu?','Where am I?'],
@@ -301,7 +320,7 @@ const COURSE = [
   ['Sustokite čia, prašau','Stop here, please'],
   ['Nuvežkite mane į viešbutį','Take me to the hotel'],
   ['Kiek kainuoja iki oro uosto?','How much to the airport?'],
-  ['pirmyn','ahead'],['atgal','back'],['išėjimas','exit'],['įėjimas','entrance'],['nuoma','rental'],['dviratis','bicycle'],
+  ['pirmyn','ahead'],['atgal','back (direction)'],['išėjimas','exit'],['įėjimas','entrance'],['nuoma','rental'],['dviratis','bicycle'],
  ]},
 ]},
 {id:'u15',title:'Restorane',en:'At the restaurant',tip:'<b>Aš norėčiau</b> (I would like) is the polite way to order; <b>Aš noriu</b> (I want) is blunter. Tap water is safe but you have to ask for it; waiters will bring bottled by default.',lessons:[
@@ -360,7 +379,7 @@ const COURSE = [
 {id:'u18',title:'Pagalba',en:'Emergencies and health',tip:'The emergency number is <b>112</b> and operators speak English. Pharmacies (vaistinė) are everywhere and pharmacists can advise on minor things without a doctor.',lessons:[
  {id:'u18a',title:'Getting help',items:[
   ['Gelbėkite!','Help! (emergency)','For real emergencies. "Padėkite" is a calmer "please help".'],
-  ['policija','police'],['gydytojas','doctor'],
+  ['policija','police'],['gydytojas','doctor (man)'],
   ['Man reikia gydytojo','I need a doctor'],
   ['Iškvieskite greitąją','Call an ambulance'],
   ['Man skauda čia','It hurts here'],
@@ -401,7 +420,7 @@ COURSE.push(
 {id:'u21',title:'Pokalbis',en:'Small talk',tip:'Most conversations start the same way. Someone asks <b>Kaip sekasi?</b> (How are you?), you answer, and you bounce it back with <b>O tau?</b> (And you?). Nobody expects more than that from a beginner.',lessons:[
  {id:'u21a',title:'How are you',items:[
   ['Gerai, ačiū','Fine, thanks'],
-  ['O tau?','And you?','Bounces "Kaip sekasi?" back. Literally "and to you?"'],
+  ['O tau?','And you? (after "How are you?")','Bounces "Kaip sekasi?" back. Literally "and to you?"'],
   ['Neblogai','Not bad'],
   ['Taip sau','So-so'],
   ['Man irgi gerai','I\'m fine too'],
@@ -550,7 +569,7 @@ COURSE.push(
   ['Palauk manęs','Wait for me'],['Aš skubu','I\'m in a hurry'],['Aš sėdžiu','I\'m sitting'],['Aš stoviu','I\'m standing'],['Aš ilsiuosi','I\'m resting'],
  ]},
  {id:'u27b',title:'Seeing and doing',items:[
-  ['Aš matau','I see'],['Ar tu matai?','Do you see?'],['Aš girdžiu','I hear'],['Aš darau','I\'m doing'],['Ką tu darai?','What are you doing?'],
+  ['Aš matau','I see'],['Ar tu matai?','Do you see?'],['Aš girdžiu','I hear'],['Aš darau','I\'m doing'],['Ką tu darai?','What are you doing? (to a friend)'],
   ['Aš žiūriu televizorių','I\'m watching TV'],['Aš rašau','I\'m writing'],['Aš galvoju','I\'m thinking'],['Aš klausau','I\'m listening'],['Aš juokiuosi','I\'m laughing'],
  ]},
  {id:'u27c',title:'Buying and finding',items:[
@@ -886,6 +905,18 @@ const ITEMS=[]; const BYID={};
 COURSE.forEach(u=>u.lessons.forEach(l=>{l.unit=u;l.items=l.items.map((raw,i)=>{
   const it={id:l.id+':'+i,lt:raw[0],en:raw[1],note:raw[2]||'',alt:raw[3]||[],lesson:l,unit:u};
   ITEMS.push(it);BYID[it.id]=it;return it;});}));
+/* Other right ways to say a card, as people really say them. Typed, they count as right, the same as the card's own answer,
+   and they never count as a slip. (Round 3 of the judges: "Kaip tau sekasi?", "Kuo tu vardu?", "Labos nakties", "Prašom",
+   "Man irgi" and "O tu?" were all marked wrong.) A native speaker checks the whole list: tools/export_answers.js. */
+const ACCEPT={'Kaip sekasi?':['Kaip tau sekasi?','Kaip jums sekasi?','Kaip tu?','Kaip laikaisi?'],
+  'Koks tavo vardas?':['Kuo tu vardu?','Kaip tavo vardas?','Kaip tu vadiniesi?','Kaip tave vadina?'],
+  'Labanakt':['Labos nakties','Labanaktis','Labą naktį'],'Prašau':['Prašom'],
+  'Aš irgi':['Man irgi','Aš taip pat','Man taip pat'],'Man irgi gerai':['Aš irgi gerai','Man taip pat gerai','Man irgi'],
+  'O tau?':['O tu?','O tau kaip?','O tu kaip?'],'Gerai, ačiū':['Ačiū, gerai'],'Ačiū':['Dėkui','Dėkoju'],
+  'Labas rytas':['Labą rytą'],'Laba diena':['Labą dieną'],'Labas vakaras':['Labą vakarą'],
+  'Iki pasimatymo':['Iki susitikimo'],'Nieko tokio':['Niekis','Nieko baisaus'],'Malonu susipažinti':['Malonu','Labai malonu susipažinti'],
+  'Taip sau':['Šiaip sau'],'Neblogai':['Visai neblogai'],'Labai malonu':['Man labai malonu'],'Kuo tu dirbi?':['Ką tu dirbi?']};
+ITEMS.forEach(it=>{const a=ACCEPT[it.lt];if(a)it.alt=[...new Set((it.alt||[]).concat(a))].filter(x=>x!==it.lt);});
 /* Edition 2, step 4: the very first lesson is what you need on day one: hello, thank you, please, and a whole little
    exchange (Labas! Kaip sekasi? Gerai, ačiū.). The words keep their ids, so their recordings and everyone's progress stay. */
 (()=>{const u=COURSE.find(x=>x.id==='u1');const its=['u1a-1:0','u1a-2:3','u1a-2:4','u1b-1:4','u1b-1:3'].map(id=>BYID[id]);if(!u||its.some(i=>!i))return;
