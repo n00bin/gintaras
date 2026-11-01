@@ -1032,8 +1032,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.85';
-const APP_VERSION=157;
+const APP_RELEASE='3.86';
+const APP_VERSION=158;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2567,7 +2567,7 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
   /* The finish screen keeps to what matters: what you can now say, when the words come back, and at most one reward, the
      biggest of the day (a real-life skill, a badge, a level, a crown, the learning day, flawless, then amber). */
   const lines=[],rw=[];
-  if(Q.mode==='lesson'&&!Q.lesson.speak){const nw=Q.items.filter(i=>Q.queue.some(e=>e.item===i&&(e.type==='intro'||e.combo)));
+  if(Q.mode==='lesson'&&!Q.lesson.speak&&!Q.lesson.unit.retire){const nw=Q.items.filter(i=>Q.queue.some(e=>e.item===i&&(e.type==='intro'||e.combo)));
     if(nw.length)lines.push('<div class="win"><b>You can now say</b> · '+nw.slice(0,4).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(i.en)+')').join(', ')+(nw.length>4?' and '+(nw.length-4)+' more':'')+'</div>');}
   if(Q.mode==='review'){const miss=Q.items.filter(i=>Q.wrongOnce[i.id]);
     lines.push('<div class="win"><b>Remembered '+(Q.items.length-miss.length)+' of '+Q.items.length+'</b> · '+(miss.length?'forgot '+miss.slice(0,5).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(i.en)+')').join(', ')+(miss.length>5?' and '+(miss.length-5)+' more':'')+'. They come back tomorrow.':'nothing forgotten.')+'</div>');}
@@ -2802,7 +2802,8 @@ function earLine(ln){const C=CV;if(!C||C.mode!=='speak'||C.redo||!canListen())re
   const names=lineNames();return ln.lt.split(/\s+/).every(tok=>{const w=norm(tok);if(!w||names.has(w)||GLUE[w])return true;const lv=wordLvl(w);return lv!==null&&lv>=2;});}
 function replyLevel(lt){const ls=lt.split(/\s+/).map(wordLvl).filter(l=>l!==null);return ls.length?Math.max(0,Math.min(...ls)):0;}
 /* new words → tap them; just learned (level 1) → fill in letters; known (level 2 and up) → type it all */
-function replyStage(lt){const lo=replyLevel(lt);return lo<=0?'tap':lo>=2?'type':'fill';}
+const allMet=lt=>lt.split(/\s+/).map(wordLvl).every(l=>l===null||l>=0);
+function replyStage(lt){const lo=replyLevel(lt);return lo<=0&&!allMet(lt)?'tap':lo>=2?'type':'fill';}
 /* In a conversation, a reply is as hard as your words say, or as its Quick chat card says, whichever is harder. */
 function cardLvl(id){const r=S.replies&&S.replies[id];return r?r.lvl:-1;}
 function convStage(ln){const ord=['tap','fill','type'],w=ord.indexOf(replyStage(ln.lt)),k=cardLvl(ln.id),c=k>=2?2:0;return ord[Math.max(w,c)];}
@@ -2814,7 +2815,7 @@ function promptHtml(ln,L){if(L==null){const k=cardLvl(ln.id);L=Math.max(replyLev
     /* playing a conversation again: only the situation, the English on request */
     if(CV&&CV.replay)L=Math.max(L,1);
     /* Say it comes after Write it: once you've met every word of your line, you answer what they said, not an English sentence */
-    if(CV&&CV.mode==='speak'&&ln.lt.split(/\s+/).map(wordLvl).every(l=>l===null||l>=0))L=Math.max(L,1);}
+    if(CV&&allMet(ln.lt))L=Math.max(L,1);}
   if(L<=0)return '<div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>';
   const en='<button type="button" class="linkbtn" data-prompt="'+(L<=2?'en':'hint')+'">'+(L<=2?'Show the English':'Need a hint?')+'</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
   if(L<=2)return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;
@@ -3280,7 +3281,7 @@ $('#amber-pill').onclick=()=>{renderShop();showView('store');};
 function meItems(){const m=S.me;if(!m)return [];const g=m.g==='f'?'f':'m';const out=[];
   const add=k=>{const it=ME_BY['me1:'+k]||ME_BY['me1:'+k+'-'+g];if(it)out.push(it);};
   if(m.name&&!GLUE[norm(m.name)])GLUE[norm(m.name)]='your name';
-  if(m.name)out.push(Object.assign({},ME_BY['me1:name'],{lt:PERS.nameLine(m.name),en:'My name is '+m.name}));
+  if(m.name)out.push(Object.assign({},ME_BY['me1:name'],{lt:PERS.nameLine(m.name,m.g),en:'My name is '+m.name}));
   if(m.from)add('from-'+m.from);if(m.live)add('live-'+m.live);
   if(m.job)add('job-'+m.job);if(m.work)add('work-'+m.work);
   if(m.partner)add('partner-'+m.partner);if(m.kids)add('kids-'+m.kids);if(m.sib)add('sib-'+m.sib);if(m.pet)add('pet-'+m.pet);
@@ -3313,9 +3314,10 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
       x.alt=[...new Set((x.alt||[]).concat(v))].filter(a=>norm(a)!==norm(x.lt));}}
     if(x.lt!==x.lt0&&!EMOJI[x.lt]&&EMOJI[x.lt0]){const flag=/^[a-z]{2}$/.test(o.from)&&o.from!=='sc'?String.fromCodePoint(...[...o.from.toUpperCase()].map(ch=>0x1F1A5+ch.charCodeAt(0))):'🌍';EMOJI[x.lt]=PERS.fromRe.test(x.lt0)&&o.from?flag:EMOJI[x.lt0];}});
   /* telling someone your name: "Mano vardas Tom" and "Aš esu Tom" (and Tomas) all count, in lessons and conversations */
-  persAlso.forEach(k=>delete ALSO[k]);persAlso=[];
+  persAlso.forEach(([k,was])=>{if(was)ALSO[k]=was;else delete ALSO[k];});persAlso=[];
   if(PERS.nameAlts){const nm=o.name||(g==='f'?PERS.femDefault:'Tomas'),lit=nameForms(nm,g).lt||nm,forms=[...new Set([nm,lit])].flatMap(PERS.nameAlts);
-    forms.forEach(f=>{const k=norm(f);if(!ALSO[k]){ALSO[k]=forms.filter(x=>x!==f);persAlso.push(k);}});}
+    /* your name as you wrote it (Tom) counts too, next to its Lithuanian form (Tomas) */
+    forms.forEach(f=>{const k=norm(f),was=ALSO[k];persAlso.push([k,was]);ALSO[k]=[...new Set((was||[]).concat(forms.filter(x=>x!==f)))];});}
   CONVS.forEach(c=>{if(c.scene0===undefined)c.scene0=c.scene;c.scene=persEn(c.scene0,'them',o);
     c.all.forEach(l=>{if(l.kind==='c')l.opts.forEach(op=>op.line.others=l.opts.filter(y=>y!==op).map(y=>[y.line.lt,y.line.en]));});});}
 /* Letters, spaces, apostrophes and hyphens only; each word starts with a capital. */
