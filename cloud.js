@@ -195,7 +195,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   q('up').onclick=async()=>{const email=q('mail').value.trim(),password=q('pass').value;if(!email||password.length<8)return say('Enter an email and a password of 8 or more characters',true);say('Creating account…');
     const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});if(error)return say(error.message,true);
     if(data.session){user=data.user;await afterAuth();}else say('Check your email for a confirmation link, then sign in.');};}
-window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports()};
+window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports(),pushWanted:()=>pushWanted(),pushOn:()=>pushOn()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
   box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
@@ -516,16 +516,10 @@ async function loadNotify(){const S=window.S;if(!sb||!user)return;
   await saveNotify();renderNotif();setTimeout(askPush,2500);}
 /* Phones only switch notifications on after the player taps Allow, so we ask once, right after sign-in,
    instead of leaving the button for them to find. "Not now" keeps the button in Profile. */
-function askPush(){const S=window.S;if(!S||!user||!pushOk()||Notification.permission!=='default'||S.pushAsked)return;
-  /* not before the second lesson: a new learner first sees what the app is */
-  if((S.lessonsDone||0)<2){window.addEventListener('gintaras:idle',()=>setTimeout(askPush,2500),{once:true});return;}
-  if(!$('#sheet').hidden||($('#welcome')&&!$('#welcome').hidden)||(window.popBusy?window.popBusy():document.querySelector('.league-pop')))return setTimeout(askPush,5000);
-  S.pushAsked=1;window.save();
-  const ov=document.createElement('div');ov.className='league-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Turn on notifications"><div class="lg-icon big" aria-hidden="true">🔔</div><h2>Want a nudge?</h2><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league or your challenge rival pulls ahead. You can change this any time in Profile.</p><p class="note">After you tap <b>Turn on</b>, your '+(matchMedia('(pointer:coarse)').matches?'phone':'browser')+' asks for permission: tap <b>Allow</b>.</p>'+
-    '<div class="row2"><button type="button" class="btn ghost" data-no>Not now</button><button type="button" class="btn amber" data-yes>Turn on</button></div></div>';
-  document.body.appendChild(ov);ov.querySelector('[data-no]').onclick=()=>ov.remove();
-  ov.querySelector('[data-yes]').onclick=()=>{ov.remove();pushOn();};}
+/* "Want a nudge?" is asked on a lesson's finish screen (index.html), from the second lesson on: as a pop-up it caught
+   whatever the learner tapped next. This only says whether it should still be asked. */
+function askPush(){}
+const pushWanted=()=>{const S=window.S;return !!(S&&user&&pushOk()&&Notification.permission==='default'&&!S.pushAsked);};
 async function pushOn(){if(!pushOk())return;setPhoneOff(false);
   const perm=await Notification.requestPermission();if(perm!=='granted'){renderNotif();return;}
   try{const reg=await navigator.serviceWorker.ready;pushSub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(PUSH_KEY)});
