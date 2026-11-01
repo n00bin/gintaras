@@ -50,7 +50,11 @@ say('drills pointing at a missing unit', c.DRILLS.filter(d => !units.has(d.u)).m
 // Walk the path, collecting known word forms; every me-line word must already be known.
 const tok = s => s.toLowerCase().replace(/[.,!?;:"'()¿¡]/g, ' ').split(/\s+/).filter(w => w && !/\d/.test(w));
 const known = new Set(['tomas', 'tomai', 'rūta', 'jonas', 'tomás'].concat(Object.keys(c.CAST_GV).map(n => n.toLowerCase())));
-const unknown = [];
+const unknown = [], drillUnknown = [];
+/* little words a drill may use before its unit teaches them on their own (they come inside taught phrases) */
+/* another ending of a taught word (laiminga from laimingas, Klaipėdą from Klaipėda): drills practise exactly that */
+const aForm = w => w.length >= 4 && [...known].some(k => k.length >= 4 && Math.abs(k.length - w.length) <= 2 && w.slice(0, Math.min(w.length, k.length) - 2) === k.slice(0, Math.min(w.length, k.length) - 2) && Math.min(w.length, k.length) - 2 >= 3);
+const glue = new Set(Object.keys(c.GLUE || {}).map(w => w.toLowerCase()));
 c.PATH.filter(p => typeof p === 'string').forEach(id => {
   if (c.CONV_BY[id]) {
     c.CONV_BY[id].all.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => { if (!known.has(w)) unknown.push(id + ': "' + w + '" in ' + l.lt); }));
@@ -58,9 +62,15 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   } else {
     const u = c.COURSE.find(x => x.id === id);
     u.lessons.forEach(l => l.items.forEach(i => tok(i.lt).concat(i.alt.flatMap(tok)).forEach(w => known.add(w))));
+    /* a sentence drill is a test: every word of its finished sentence is taught by its unit or earlier */
+    c.DRILLS.filter(d => d.u === id).forEach(d => tok(d.frame.replace('___', d.ans)).forEach(w => { if (/\p{L}/u.test(w) && !known.has(w) && !glue.has(w) && !aForm(w)) drillUnknown.push(id + ': "' + w + '" in ' + d.frame.replace('___', d.ans)); }));
   }
 });
 say('conversation words not taught earlier', unknown);
+say('drill words not taught by their unit or earlier', [...new Set(drillUnknown)]);
+/* Round 5: teach before test, whatever builds the cards. The app has one guard for it (a word with no New word card gets
+   one before its first test, in lessons, reviews and resumed lessons); this fails if that guard is ever taken out. */
+say('teach-before-test guard in the card player', /const need=\(e\.item\?\[e\.item\]:e\.items\|\|\[\]\)\.find\(i=>\{const r=peek\(i\.id\);return !\(r\.seen&&\(r\.intro\|\|r\.lvl>=1\)\)/.test(html) ? [] : ['the guard in renderStep() is missing']);
 { const v = (head.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
   say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }

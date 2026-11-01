@@ -9,6 +9,8 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   /* i and y: y is a long "ee" (the same sound as į), so mixing them up is a spelling slip, like a missing mark */
   fold:s=>s.replace(/y/g,'i'),
   /* words that never change their ending (adverbs and the like): a wrong letter at their end is spelling */
+  /* endings a naming word (a noun or a name) can take, written without marks: Kanada / iš Kanados / Kanadoje */
+  nounEnds:['as','a','os','o','ui','ai','e','es','is','ys','i','us','u','oje','eje','yje','uje','uose','ose','iai','iu','ius','ams','oms','ems','ais','omis','ims','iams','iui','io','ia','ios','iais','ioje','ies','imi','ei'],
   fixed:['gerai','puikiai','neblogai','blogai','labai','nelabai','lietuviškai','angliškai','teisingai','dažnai','retai','tiesiai','vėlai','pernai','galiausiai','tikrai','rimtai','visai'],
   /* the rule behind pairs learners mix up, added to "Different word" */
   pairRule:(g,t)=>({'ji|jis':' <b>Jis</b> (he) ends in <b>-s</b>, like most "he" words; <b>ji</b> is "she".','jie|jos':' <b>Jie</b> is "they" for men or a mixed group; <b>jos</b> is "they" for women only.',
@@ -40,9 +42,11 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
     if(a&&b&&a[1]==='p'&&b[1]==='p'&&a[0]!==b[0])return '<b>'+g+'</b> is "'+a[2]+'"; here you need <b>'+t+'</b> ("'+b[2]+'").';
     if(a&&b&&a[0]===b[0]&&g!==t)return '<b>'+g+'</b> is a real word, "'+a[2]+'": it is '+LANG.formRole[a[1]]+'. Here you need <b>'+t+'</b> ("'+b[2]+'"), '+LANG.formRole[b[1]]+'.';
     /* puikus / puikiai: describing a thing, or saying how */
-    const adv=w=>/[^aeiouy]i?ai$/.test(w)&&(LANG.fixed||[]).includes(w),stem=w=>w.replace(/i?ai$/,''),adj=(w,s)=>w.length>s.length&&w.startsWith(s)&&/^(i?[uo]s|i?as|i?a|i?ą|i?us|i?ūs|ūs|i|ė|is)$/.test(w.slice(s.length));
+    const adv=w=>/[^aeiouy]i?ai$/.test(w)&&(LANG.fixed||[]).includes(w),stem=w=>w.replace(/i?ai$/,''),adj=(w,s)=>w.length>s.length&&w.startsWith(s)&&(/iai$/.test(t)?/^(us|ūs|i|ios|ią|ius|ių|ų)$/:/^(as|a|i|os|ą|us|ų|ė|is)$/).test(w.slice(s.length));
     const en=w=>({puikiai:'great',gerai:'good',blogai:'bad',neblogai:'not bad'})[w]||((typeof fullGloss==='function'?fullGloss(w,1):'')||'good');if(['labas','laba','labą'].includes(g))return '';
-    if(adv(t)&&adj(g,stem(t)))return '<b>'+g+'</b> describes a thing (<b>'+g+'</b> vakaras, a '+en(t)+' evening); <b>'+t+'</b> describes how (aš jaučiuosi <b>'+t+'</b>, I feel '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
+    /* only the real describing word: "geria" is "drinks", not a form of geras */
+    const A={gerai:'geras',puikiai:'puikus',blogai:'blogas',neblogai:'neblogas'}[t]||g,gl=w=>typeof glossOf==='function'?glossOf(w):'';
+    if(adv(t)&&adj(g,stem(t))&&!(gl(g)&&gl(A)&&gl(g)!==gl(A))&&!(gl(g)&&!gl(A)&&g!==A))return '<b>'+g+'</b> describes a thing (<b>'+A+'</b> vakaras, a '+en(t)+' evening); <b>'+t+'</b> describes how (aš jaučiuosi <b>'+t+'</b>, I feel '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
     if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how (aš jaučiuosi <b>'+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
     return '';},
   qWord:'ar',qNote:'Right too: <b>ar</b> at the front only marks a question, and in speech it is often left out.',dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
@@ -915,9 +919,17 @@ const ACCEPT={'Kaip sekasi?':['Kaip tau sekasi?','Kaip jums sekasi?','Kaip tu?',
   'O tau?':['O tu?','O tau kaip?','O tu kaip?','O kaip tau?','O kaip tu?'],'Gerai, ačiū':['Ačiū, gerai'],'Ačiū':['Dėkui','Dėkoju'],
   'Labas rytas':['Labą rytą'],'Laba diena':['Labą dieną'],'Labas vakaras':['Labą vakarą'],
   'Iki pasimatymo':['Iki susitikimo'],'Nieko tokio':['Niekis','Nieko baisaus'],'Malonu susipažinti':['Malonu','Labai malonu susipažinti','Labai malonu','Man malonu'],
-  'Taip sau':['Šiaip sau'],'Neblogai':['Visai neblogai'],'Labai malonu':['Man labai malonu'],'Kuo tu dirbi?':['Ką tu dirbi?'],
+  'Taip sau':['Šiaip sau'],'Puikiai':['Puiku'],'Palauk':['Palaukite'],'Neblogai':['Visai neblogai'],'Labai malonu':['Man labai malonu'],'Kuo tu dirbi?':['Ką tu dirbi?'],
   'Ką tu darai?':['Ką tu veiki?','Ką darai?','Ką veiki?'],'Ką jūs darote?':['Ką jūs veikiate?','Ką veikiate?'],'Ką veiki?':['Ką tu veiki?','Ką darai?','Ką tu darai?']};
 ITEMS.forEach(it=>{const a=ACCEPT[it.lt];if(a)it.alt=[...new Set((it.alt||[]).concat(a))].filter(x=>x!==it.lt);});
+/* (Round 5) Right, with a word about it: "Malonu" alone is what people say, but it's short for the card's phrase. */
+const ALT_NOTE={'malonu':'<b>Malonu</b> on its own ("pleased") is fine when you speak. The full phrase is <b>Malonu susipažinti</b>.'};
+/* In a conversation: answering someone who has just said it to you. "Malonu susipažinti!" → "Man irgi malonu" (me too). */
+const ECHO_OK={'malonu susipažinti':['Man irgi malonu','Man irgi','Ir man malonu','Man taip pat malonu','Labai malonu']};
+/* An offer ("Gal arbatos?", "Ar nori kavos?") can be taken or turned down: in Quick chat, both fit. */
+const OFFER_OK={re:/^(gal|ar nori|ar norite)\b/,say:['Taip, prašau','Taip, ačiū','Ne, ačiū','Ačiū, ne']};
+/* A question you can answer "Taip, ..." to: not one that asks how, what, where, who... */
+const WH_Q=/^(kaip|kas|ką|kur|iš kur|koks|kokia|kokie|kokį|kokią|kiek|kada|kodėl|kuo|kieno|kam)(\s|$)/;
 /* Edition 2, step 4: the very first lesson is what you need on day one: hello, thank you, please, and a whole little
    exchange (Labas! Kaip sekasi? Gerai, ačiū.). The words keep their ids, so their recordings and everyone's progress stay. */
 (()=>{const u=COURSE.find(x=>x.id==='u1');const its=['u1a-1:0','u1a-2:3','u1a-2:4','u1b-1:4','u1b-1:3'].map(id=>BYID[id]);if(!u||its.some(i=>!i))return;
@@ -959,15 +971,15 @@ const LESSON_TIPS={
 'u0a-1':'Lithuanian spelling is very regular: most letters keep their sound. Learn the five tricky ones here (<b>c</b>, <b>j</b>, <b>š</b>, <b>ž</b>, <b>č</b>) and you can sound out nearly any word.',
 'u0b-1':'A vowel with a line or a hook (<b>ū</b>, <b>ą</b>, <b>ę</b>, <b>į</b>, <b>ų</b>) is held longer, and <b>ė</b> is the "ay" in "day". <b>ie</b> is one sound, "yeh" (muz<b>ie</b>jus). Roll the <b>r</b> by tapping your tongue once behind your top teeth, like a quick "d".',
 'u1d-1':'"To be" changes with who: <b>aš esu</b> (I am), <b>tu esi</b> (you are), <b>jis yra</b> and <b>ji yra</b> (he is, she is), <b>mes esame</b> (we are). The verb already says who, so <b>aš</b> and <b>tu</b> are often left out: <b>Esu Tomas.</b>',
-'u1a-0':'Your first conversation is already here. <b>Labas! Kaip sekasi?</b> means "Hi! How are you?" and the answer is <b>Gerai, ačiū</b>: "Good, thanks." <b>Prašau</b> is please, and also "you\'re welcome".<br><br><b>Sounds that differ from English:</b> <b>č</b> is "ch" and <b>ū</b> a long "oo" (a<b>čiū</b>, "AH-choo"); <b>š</b> is "sh" (pra<b>š</b>au); <b>uo</b> is one sound, "wo" (d<b>uo</b>na, bread; vand<b>uo</b>, water); <b>r</b> is a quick tap of the tongue (a<b>r</b>bata, tea); <b>j</b> is "y" (<b>j</b>ūs). Each letter keeps its sound, but which part of a word is strong isn\'t written, so listen for it (kah-<b>VAH</b>, coffee).',
+'u1a-0':'Your first conversation is already here. <b>Labas! Kaip sekasi?</b> means "Hi! How are you?" and the answer is <b>Gerai, ačiū</b>: "Good, thanks." <b>Prašau</b> is please, and also "you\'re welcome".<br><br><b>Two new letters:</b> <b>č</b> is "ch" (a<b>čiū</b>, "AH-choo") and <b>š</b> is "sh" (pra<b>š</b>au). The line on <b>ū</b> makes it a long "oo".',
 'u1a-1':'<b>Labas</b> is for friends and people your age; <b>Sveiki</b> is the safe choice with strangers, older people and groups. Notice <b>laba diena</b>, not labas: diena (day) is a feminine word, so "good" changes to match.',
 'u1a-2':'<b>Labanakt</b> is good night, said when someone goes to bed. <b>Viso gero</b> is the full goodbye; <b>iki</b> is the quick "bye" (word for word it means "until").',
-'u1b-1':'<b>Taip</b> rhymes with "type", and <b>ne</b> is no. <b>Atsiprašau</b> is sorry and excuse me in one: use it to squeeze past someone or to call a waiter.',
-'u1b-2':'Long phrases are easier in chunks: <b>nieko · tokio</b>, <b>iki · pasimatymo</b>. Say <b>sėkmės</b> to someone before an exam, a trip or a game.',
+'u1b-1':'<b>Taip</b> rhymes with "type", and <b>ne</b> is no. The <b>r</b> in <b>gerai</b> is a quick tap of the tongue. <b>Atsiprašau</b> is sorry and excuse me in one: use it to squeeze past someone or to call a waiter.',
+'u1b-2':'Long phrases are easier in chunks: <b>nieko · tokio</b>, <b>iki · pasimatymo</b>. Say <b>sėkmės</b> to someone before an exam, a trip or a game. Which part of a word is strong isn\'t written, so listen to the voice for it.',
 'u1c-1':'<b>J</b> is always the "y" in "yes", so <b>ji</b> (she) sounds like "yee" and <b>jis</b> (he) like "yis". Unlike English "I", <b>aš</b> is written small in the middle of a sentence; the words here have a capital only because each one stands alone.',
-'u1c-2':'<b>Jūs</b> is both "you all" and the polite "you" for a stranger. <b>Jie</b> is a group of men or a mixed group; <b>jos</b> is only women. <b>Mano vardas</b> means "my name". A man\'s name that ends in a consonant gets <b>-as</b> in '+LANG.en+': Tom becomes <b>Tomas</b>, Mark <b>Markas</b>. So you say <b>Mano vardas Tomas</b>.',
+'u1c-2':'<b>Jūs</b> is both "you all" and the polite "you" for a stranger. <b>Jie</b> is a group of men or a mixed group; <b>jos</b> is only women. <b>Mano vardas</b> means "my name". A man\'s name that ends in a consonant gets <b>-as</b> in '+LANG.en+': Bob becomes <b>Bobas</b>, Mark becomes <b>Markas</b>. So you say <b>Mano vardas Tomas</b>.',
 'u1c-3':'<b>Iš</b> means "from", and the country changes its ending after it: Amerika becomes <b>iš Amerikos</b>. You will see this -os ending on lots of places.',
-'u21a-1':'This is the whole small-talk script: <b>Kaip sekasi?</b> → <b>Gerai, ačiū. O tau?</b> Learn that one exchange and you can handle any greeting.',
+'u21a-1':'<b>Tau</b> means "to you": <b>Kaip sekasi?</b> is really "how is it going?", and <b>O tau?</b> is "and to you?". That\'s why "me too" is <b>Man irgi gerai</b>, "to me also good", with <b>man</b> (to me), not aš.',
 'u21a-2':'<b>Aš irgi</b> (me too) is the easiest way to keep a chat going. <b>Ką veiki?</b> is a casual "what are you up to?", and <b>nieko ypatingo</b> is the classic reply.',
 'u21b-1':'These are your rescue phrases. Locals often switch to English, so <b>aš truputį kalbu lietuviškai</b> (I speak a little Lithuanian) usually earns you patience instead.',
 'u21b-2':'Short and handy: <b>palauk</b> (wait), <b>dar kartą</b> (once more), <b>supratau</b> (got it). Supratau literally means "I understood", which is exactly how people use it.',
@@ -2301,7 +2313,7 @@ function autoPron(lt){const map=[['ch','k'],['iū','oo'],['ių','oo'],['ą','ah'
     if(hit){s+=hit[1];i+=hit[0].length-1;}else s+=w[i];}return s;}).join(' ');}
 
 /* For short words a respelling alone is hard to trust, so they also get a real English word that sounds close. */
-const PRON_LIKE={'Aš':'like "gosh" without the g','Tu':'like "two", but short and clipped','Jis':'rhymes with "this"','Ji':'like "yee", said quickly','Prašau':'SHAU is one quick sound, "sh" plus the "ow" of "cow": prah-SHAU, never "show"','Gerai':'the RAI rhymes with "rye", the way Taip sounds like "type"','Taip':'sounds like the English word "type"','Kaip sekasi?':'kaip rhymes with "type"','Kaip?':'rhymes with "type"','Puikiai':'"PWEE", said strongest, then a quick "kyay": the -iai at the end sounds like "ay" in day',
+const PRON_LIKE={'Aš':'"ahsh": the "a" of father, then "sh"','Tu':'like "two", but short and clipped','Jis':'rhymes with "this"','Ji':'like "yee", said quickly','Prašau':'SHAU is one quick sound, "sh" plus the "ow" of "cow": prah-SHAU, never "show"','Gerai':'the RAI rhymes with "rye"','Taip':'sounds like the English word "type"','Kaip sekasi?':'kaip rhymes with "type"','Kaip?':'rhymes with "type"','Puikiai':'"PWEE", said strongest, then a quick "kyay": the -iai at the end sounds like "ay" in day',
  'Mes':'like "mess"','Jūs':'like the word "use"','Jie':'"yee" sliding into "eh", in one quick beat','Jos':'rhymes with "dose"'};
 const likeHtml=lt=>PRON_LIKE[lt]?'<span class="like">'+esc(PRON_LIKE[lt])+'</span>':'';
 /* Hand-written "sounds like" respellings. Hyphens split syllables; CAPS = the stressed syllable.
@@ -2540,6 +2552,7 @@ function endingWhy(g,t,prev,next){const sg=strip(g),st=strip(t);const end=t.slic
   if(['noriu','norėčiau','nori','norite','prašau'].includes(p)&&/(os|o|ių|ų|ės|ies)$/.test(t))return head+'After <b>'+p+'</b>, food and drink take the "some" ending: <b>noriu kavos</b> means "I want some coffee".';
   if(p==='su')return head+'After <b>su</b> (with), the word takes its "with" ending.';
   if(p==='į')return head+'After <b>į</b> (to, into), the word takes its "to" ending: -ą, -ę, -į or -ų.';
+  if(p==='iš'&&typeof properNoun==='function'&&properNoun(t))return head+'After <b>iš</b> (from), the place takes its "from" ending: <b>Lietuva</b> → <b>iš Lietuvos</b>, <b>Kanada</b> → <b>iš Kanados</b>.';
   if(['iš','be','nuo','iki','prie'].includes(p))return head+'After <b>'+p+'</b>, the word takes its "of / from" ending, like <b>iš Lietuvos</b> (from Lithuania).';
   if(p==='nėra'||(p.startsWith('ne')&&p.length>3&&/(os|o|ių|ų|ės|ies)$/.test(t)))return head+'After a "not" word, the thing takes its "of" ending: <b>Turiu kavą</b> (I have coffee) but <b>Neturiu kavos</b> (I have no coffee).';
   if(/(oje|yje|uje|ėje)$/.test(t))return head+'This ending means "in / at" a place, like <b>Lietuvoje</b> (in Lithuania).';
