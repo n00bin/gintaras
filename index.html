@@ -432,6 +432,10 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .turn .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
 .turn .lb.bad{border-color:var(--bad);background:var(--bad-soft);animation:shake .3s}
 .turn .lb.right{border-color:var(--ok);background:var(--ok-soft)}
+.gfill{font-family:var(--display);font-size:28px;font-weight:600;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin:16px 0 10px}
+.gfill .fw{display:inline-flex;align-items:flex-end;gap:2px}
+.gfill .lb{width:1.3em;height:1.55em;padding:0;text-align:center;font:inherit;color:var(--fg);background:var(--surface-2);border:none;border-bottom:3px solid var(--amber);border-radius:6px 6px 0 0}
+.gfill .lb:focus{outline:2px solid var(--amber);outline-offset:1px}
 .turn .hint.big{font-family:var(--display);font-size:24px;font-weight:600;color:var(--fg)}
 .copts{display:grid;gap:8px}
 .copt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);text-align:left;font-size:18px;font-weight:700;box-shadow:var(--shadow)}
@@ -1015,8 +1019,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.79';
-const APP_VERSION=151;
+const APP_RELEASE='3.80';
+const APP_VERSION=152;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1180,11 +1184,14 @@ function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('No
   /* typed wrong: typed again (endings and spelling are retested); picked wrong: picked again, with last time's pick among the options */
   const test=it=>{const r=rec(it.id),m=r.missT||'type';if(/^mc_|^listen$/.test(m))return {type:m==='listen'&&!canListen()?'mc_lt_en':m,item:it,force:r.missPick?[r.missPick]:undefined};
     return {type:m==='dictate'&&canListen()?'dictate':'type',item:it};};
-  /* each word is tested three cards after its fresh look: the next words' fresh looks and tests (or other cards) come in between */
-  const q=[],pend=[],rest=Q.queue.filter(e=>e.type!=='intro');
-  const filler=w=>{const no=[w,(q[q.length-1]||{}).item].concat(pend),g=rest.findIndex(e=>!no.includes(e.item)&&!(e.items||[]).some(i=>no.includes(i)));return g>=0?rest.splice(g,1)[0]:null;};
-  pick.forEach(it=>{q.push({type:'intro',item:it,leech:true});pend.push(it);if(pend.length>3)q.push(test(pend.shift()));});
-  while(pend.length){const w=pend.shift();q.push(filler(w));if(!pend.length)q.push(filler(w));q.push(test(w));}
+  /* each word is tested only after four question cards about other words, so it is remembered, not just still on screen */
+  /* in between: the other cards about these words, then a few about words you know well */
+  const q=[],pend=[],rest=Q.queue.filter(e=>e.type!=='intro').concat(shuffle(practised().filter(i=>!pick.includes(i)&&rec(i.id).lvl>=1)).slice(0,6).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true})));let asked=0;
+  const add=c=>{if(!c)return false;q.push(c);if(c.type!=='intro')asked++;return true;};
+  const filler=()=>{const no=pend.map(p=>p.it).concat([(q[q.length-1]||{}).item]),g=rest.findIndex(e=>!no.includes(e.item)&&!(e.items||[]).some(i=>no.includes(i)));return g>=0?rest.splice(g,1)[0]:null;};
+  const ready=()=>pend.findIndex(p=>asked-p.at>=4);
+  pick.forEach(it=>{add({type:'intro',item:it,leech:true});pend.push({it,at:asked});let k;while((k=ready())>=0)add(test(pend.splice(k,1)[0].it));add(filler());});
+  while(pend.length){const k=ready();if(k>=0){add(test(pend.splice(k,1)[0].it));continue;}if(!add(filler()))add(test(pend.shift().it));}
   Q.queue=q.filter(Boolean).concat(rest);Q.total=Q.queue.filter(e=>!STEPLESS[e.type]).length;Q.idx=0;renderStep();}
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
@@ -1200,6 +1207,7 @@ function buy(id){
 /* Each row shows its price, or what state it's in when buying it makes no sense right now. */
 function shopState(id){const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;
   if(id==='rest'&&(S.freezes||0)>=2)return 'You have 2';
+  if((id==='shield'||id==='challenge')&&!(window.cloud&&cloud.signedIn()))return 'Sign in first';
   if(id==='boost'&&left)return 'On · '+left+' min';
   if(id==='boost'&&S.boostDay===today())return 'Used today';
   if(id==='repair'&&!canRepair())return 'Not needed';
@@ -1212,7 +1220,12 @@ function renderShop(){const box=$('#shop');if(!box)return;const gem='<img src="g
       return '<button type="button" class="shop-row'+(st?' done':'')+'" data-buy="'+id+'"><span class="ic" aria-hidden="true">'+icon+'</span><span class="tx"><strong>'+esc(name)+'</strong><small>'+esc(desc+(extra[id]||''))+'</small></span>'+
         (st?'<span class="tag st">'+esc(st)+'</span>':'<span class="tag cost'+(short?' short':'')+'">'+gem+cost+'</span>')+'</button>';}).join('')+'</div>'+
     '<details class="earn"><summary>How do I earn amber?</summary><div class="earn-list">'+EARN.map(([w,n])=>'<span>'+esc(w)+'</span><b>'+esc(n)+'</b>').join('')+'</div><p class="note">Amber only comes from learning. You can never buy it.</p></details>';
-  box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>buy(b.dataset.buy));}
+  box.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{const id=b.dataset.buy,item=SHOP_USE.find(x=>x[0]===id),st=shopState(id);
+    if(st==='Sign in first'){if(id==='challenge'&&window.cloud&&cloud.chalPreview){cloud.chalPreview();toast('This is what a challenge looks like. Sign in to send one.',5000);}else toast('Sign in first: leagues and challenges need an account.');return;}
+    if(st||typeof item[4]!=='number'||b.dataset.sure)return buy(id);
+    /* a second tap buys: amber is earned slowly, so nothing is spent by accident */
+    box.querySelectorAll('[data-sure]').forEach(x=>{delete x.dataset.sure;renderShop();});b.dataset.sure='1';const tag=b.querySelector('.tag');if(tag)tag.textContent='Tap again to buy';
+    setTimeout(()=>{if(b.isConnected&&b.dataset.sure){delete b.dataset.sure;renderShop();}},4000);});}
 /* Profile shows only the perks you own or have running; buying happens in the Amber shop. */
 function renderMyPerks(){const box=$('#my-perks');if(!box)return;const have=[];
   if(S.freezes)have.push(['🌙','Spare rest days',S.freezes+' ready']);
@@ -1426,7 +1439,7 @@ function convStars(id){const st=(S.convs||{})[id]||{};return [!!(st.done||st.tex
 function starsHtml(c){const got=convStars(c.id),n=got.filter(Boolean).length;
   return '<span class="cv-stars" role="img" aria-label="'+n+' of 3 stars'+(n?': '+STARS.filter((x,k)=>got[k]).join(', '):'')+'">'+got.map((g,k)=>'<span class="'+(g?'on':'')+'" title="'+STARS[k]+'">★</span>').join('')+'<small>'+(n?STARS[got.lastIndexOf(true)]:'No stars yet')+'</small></span>';}
 function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<small class="cv-note"><b>Next: Say it.</b> The next unit opens once you\'ve said this conversation out loud.</small>';const due=dueReplies().filter(id=>replyCards()[id].c===c).length;
-  const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints. Replies where you tap the words don\'t count yet; they will once you know those words.':!got[2]?'<b>Next star · Spoken:</b> say every reply from memory, without peeking. Replies where the '+LANG.en+' is shown for you to repeat don\'t count yet.':'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
+  const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints. Replies where you tap the words don\'t count yet; they will once you know those words.':!got[2]?'<b>Next star · Spoken:</b> say every reply from memory, without peeking. Replies where the '+LANG.en+' is shown for you to repeat don\'t count yet.'+(!SR?' This star needs a microphone the browser can listen to; without one, two stars is the top.':''):'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
   return '<small class="cv-note">'+next+(due?'<br>🔁 '+due+(due===1?' reply is':' replies are')+' due. Replay this, or practise them in Quick chat.':'')+'</small>';}
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   PATH.forEach(p=>{if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
@@ -1497,10 +1510,14 @@ function startFall(){const pool=gameWords();if(pool.length<5)return;
       (missed.length?'<div class="win"><b>Landed</b> · '+missed.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'. They come back in tomorrow\'s review.</div>':'<div class="win"><b>Nothing landed!</b> · every word caught</div>')+
       '<button type="button" class="btn amber" id="fall-done">Continue</button></div>';
     sfx('win');ov.querySelector('#fall-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#fall-done').focus();};
-  const settle=(w,ok)=>{live=live.filter(x=>x!==w);done++;(ok?caught:missed).push(w.it);w.el.classList.add(ok?'hit':'miss');if(!ok)w.el.textContent=w.it.lt;setTimeout(()=>w.el.remove(),ok?250:1400);
+  const settle=(w,ok)=>{live=live.filter(x=>x!==w);done++;(ok?caught:missed).push(w.it);w.el.classList.add(ok?'hit':'miss');if(!ok){w.el.textContent=w.it.lt+' · '+w.it.en;w.at=Date.now();landed.push(w);}setTimeout(()=>w.el.remove(),ok?250:3000);
     ov.querySelector('#fall-left').textContent=words.length-done;if(done>=words.length)setTimeout(end,900);};
-  let lastHit=0;
+  let lastHit=0;const landed=[];
   function submit(){const a=inp.value.trim();if(!a)return;let best=null,j=null;
+    /* a word that landed a moment ago still counts if you were typing it */
+    for(const w of landed.filter(x=>Date.now()-x.at<2500)){const A=answersFor(w.it),r=judgeTyped(a,A.own.concat(A.other),w.it.en);
+      if(r.ok||strip(a)===strip(w.it.lt)){landed.splice(landed.indexOf(w),1);missed.splice(missed.indexOf(w.it),1);caught.push(w.it);hits++;lastHit=Date.now();
+        ov.querySelector('#fall-hit').textContent=hits;grade(w.it,true,false,true);sfx('good');msg('✓ <b>'+esc(w.it.lt)+'</b>, just in time');w.el.classList.remove('miss');w.el.classList.add('hit');inp.value='';Q.answer='';return;}}
     for(const w of live){const A=answersFor(w.it);let r=judgeTyped(a,A.own.concat(A.other),w.it.en);
       if(!r.ok&&strip(a)===strip(w.it.lt))r={ok:true,title:'Nearly'}; /* no time for š and ė here */if(r.ok&&(!best||w.y>best.y)){best=w;j=r;}}
     if(best){hits++;lastHit=Date.now();ov.querySelector('#fall-hit').textContent=hits;grade(best.it,true,!Q.wrongOnce[best.it.id],j.title==='Nearly');Q.correct++;sfx('good');
@@ -1508,7 +1525,8 @@ function startFall(){const pool=gameWords();if(pool.length<5)return;
     else if(Date.now()-lastHit<2500){}
     else{sfx('bad');msg('Not one of the falling words. Try again.');}
     inp.value='';Q.answer='';}
-  inp.oninput=()=>{const a=inp.value.trim();if(a&&live.some(w=>[w.it.lt].concat(w.it.alt||[]).map(norm).includes(norm(a))))submit();};
+  /* only Enter answers: catching a word the moment it matched caught "Ji" (She) while you were typing "Ji yra Rūta" */
+  inp.oninput=()=>{Q.answer=inp.value;};
   const loop=now=>{const dt=Math.min(0.05,(now-last)/1000);last=now;
     if(now>=spawnAt&&next<words.length&&live.length<2){spawn(now);spawnAt=now+Math.max(1800,3500-next*120);}
     for(const w of live.slice()){w.y+=w.v*dt;w.el.style.top=w.y+'px';
@@ -1524,7 +1542,8 @@ function renderPractice(){const L=learned();const d=dueItems();
   $('#due-title').textContent=L.length===0?'Nothing to review yet':d.length===0?'All caught up':d.length+(d.length===1?' word is due':' words are due');
   $('#due-note').textContent=L.length===0?'Finish a lesson first. Words you learn come back here at growing intervals so they stick.':d.length===0?'Come back tomorrow, or practice your weakest words now.':'Review them now so they move to a longer interval.';
   {const m=document.querySelector('.due-mascot');if(m)m.hidden=!(L.length&&!d.length);}
-  $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;$('#btn-tricky').hidden=trickyPick().length<3;
+  $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4;{const tp=trickyPick(),sp=savedPlace(),bt=$('#btn-tricky');bt.hidden=tp.length<3&&!(sp&&sp.tricky);
+    bt.textContent=sp&&sp.tricky?'🧠 Carry on: Tricky words · '+sp.left+' to go':'🧠 Tricky words workout · '+tp.length+' words';bt.onclick=sp&&sp.tricky?resumePlace:startTricky;}
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--strong)'];const tot=Math.max(1,L.length);
   renderMe();renderCando();renderQuick();renderConvList();renderGameCard();
@@ -1533,7 +1552,7 @@ function renderProfile(){$('#p-words').textContent=learned().length;$('#p-recall
   const L=levelFor(S.xp);$('#lvl-eyebrow').textContent='Level '+(L.i+1)+' · '+L.en;$('#lvl-title').textContent=L.title;
   if(L.next){const p=Math.round((S.xp-L.xp)/(L.next[0]-L.xp)*100);$('#lvl-bar').style.width=p+'%';$('#lvl-note').textContent=(L.next[0]-S.xp)+' XP to '+L.next[1]+' ('+L.next[2]+')';}
   else{$('#lvl-bar').style.width='100%';$('#lvl-note').textContent='Top level. '+LANG.top;}
-  $('#p-rests').textContent=restsLeft();renderShop();renderMyPerks();renderFace();
+  {const n=restsLeft(),sp=S.freezes||0;$('#p-rests').textContent=sp?n+' ('+(n-sp)+' free this week + '+sp+' spare)':n;}renderShop();renderMyPerks();renderFace();
   S.badges=S.badges||{};$('#badges').innerHTML=BADGES.slice().sort((a,b)=>!!S.badges[b[0]]-!!S.badges[a[0]]).map(b=>{const n=S.badges[b[0]]&&BADGE_TIMES[b[0]]?BADGE_TIMES[b[0]]():1;
     return '<div class="bd'+(S.badges[b[0]]?' on':'')+'"><i aria-hidden="true">'+(BADGE_ICONS[b[0]]||'⭐')+'</i>'+(n>1?'<span class="bd-n" aria-label="earned '+n+' times">×'+n+'</span>':'')+'<strong>'+esc(b[1])+'</strong><small>'+esc(b[2])+'</small></div>';}).join('');
   {const P=PACES[S.pace]||PACES.m10;const g=$('#pace-grid');
@@ -1550,7 +1569,7 @@ function nextLesson(){for(const id of STEPS){if(!stepUnlocked(id))continue;
 function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();const b=$('#btn-bite');const b2=$('#btn-bite2');b2.hidden=true;const P=PACES[S.pace]||PACES.m10;
   const planDone=goalMet();
   $('#bite-eyebrow').textContent=planDone?"Today's plan done · extra is a bonus":S.todayLessons>=P.lessons?"Today's plan · keep going · "+P.label+' pace':"Today's plan · "+S.todayLessons+' of '+P.lessons+' lessons done today · '+P.label+' pace';
-  const sp=savedPlace();
+  const sp0=savedPlace(),sp=sp0&&!sp0.tricky?sp0:null;
   if(sp){const L=sp.lesson&&LESSON_BY[sp.lesson];$('#bite-title').textContent='Carry on: '+(L?L.unit.en+' · '+L.title:'your review');$('#bite-note').textContent='You stopped part way through. '+sp.left+' card'+(sp.left===1?'':'s')+' to go, and your answers so far are kept.';
     b.textContent='Carry on';b.onclick=resumePlace;b2.hidden=false;b2.textContent='Start fresh instead';b2.onclick=()=>{dropPlace();renderBite();};}
   /* reviews come first: always when 10 or more are waiting, otherwise one round a day before new lessons */
@@ -1742,8 +1761,8 @@ const HARD=['type','type','cloze','speak','dictate'];
 const RECALL={type:1,cloze:1,dictate:1,speak:1};
 /* Picking from choices is only for the very first check of a word. From its second showing on you produce it:
    type it, spell it, fill the gap. */
-const SECOND=['type','type','tiles','cloze'];
-const PROD={type:1,cloze:1,dictate:1,speak:1,tiles:1,build:1,frame:1};
+const SECOND=['type','type','gaps','tiles','cloze'];
+const PROD={type:1,cloze:1,dictate:1,speak:1,tiles:1,build:1,frame:1,gaps:1};
 /* Known words climb a ladder at their reviews, one step for each right answer, down one for a miss:
    build it from pieces → fill the gap → type it (or say it) → write what you hear. */
 const LADDER=['build','cloze','type','dictate'],LADDER_NAME=['build it','fill the gap','type it','write what you hear'];
@@ -1880,7 +1899,7 @@ function openSheet(){const sh=$('#sheet');sh.hidden=false;document.body.style.ov
   if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();sh.setAttribute('tabindex','-1');sh.focus({preventScroll:true});}
 /* Where you are in a lesson or review is kept on this device after every card, so a reload or a closed tab can carry on. */
 const RESKEY='gintaras.resume.'+LANG_CODE;
-function keepPlace(){if(!Q||(Q.mode!=='lesson'&&Q.mode!=='review'))return;if(Q.tricky)return dropPlace(); /* an extra workout, not your plan */const id=x=>x&&x.id;
+function keepPlace(){if(!Q||(Q.mode!=='lesson'&&Q.mode!=='review'))return; /* a Tricky words workout is carried on from Practice, not from Today's plan */const id=x=>x&&x.id;
   try{localStorage.setItem(RESKEY,JSON.stringify({at:Date.now(),mode:Q.mode,lesson:id(Q.lesson),idx:Q.idx,correct:Q.correct,total:Q.total,items:Q.items.map(id),wrongOnce:Q.wrongOnce,
     ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,dueN:Q.dueN||0,tricky:Q.tricky,startedAt:Q.startedAt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
     queue:Q.queue.map(e=>Object.assign({},e,{item:id(e.item),items:e.items&&e.items.map(id),unit:id(e.unit),lesson:id(e.lesson),drill:e.drill?DRILLS.indexOf(e.drill):undefined}))}));}catch(e){}}
@@ -1954,7 +1973,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   {const e=Q.queue[Q.idx],td=today(),made=i=>rec(i.id).prodD===td,learn=['lesson','review','me'].includes(Q.mode);
     if(learn&&e.item&&!STEPLESS[e.type]&&!rec(e.item.id).seen){Q.queue.splice(Q.idx,0,{type:'intro',item:e.item});return renderStep();}
     if(learn&&e.item&&!e.force&&!e.easy&&/^(mc_lt_en|mc_en_lt|listen)$/.test(e.type)&&made(e.item))Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'&&canListen()?'dictate':'type'});
-    else if(learn&&e.item&&/^(tiles|build)$/.test(e.type)&&rec(e.item.id).recD===td)Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
+    else if(learn&&e.item&&!e.easy&&/^(tiles|build|gaps)$/.test(e.type)&&rec(e.item.id).recD===td)Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
     /* never the same word on two cards in a row, even after cards were taken out or came back: a later card about another
        word (one you've met) is shown first */
     {const q=Q.queue,about=(x,i)=>!!x&&(x.item===i||(x.items||[]).includes(i));let pv=Q.idx-1;while(pv>=0&&STEPLESS[q[pv].type])pv--;
@@ -1965,7 +1984,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   const ex=Q.queue[Q.idx];const it=ex.item;
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
   const ls=ex.type==='speak'?-1:ladderAt(ex.type),lad=ex.item&&Q.mode==='review'&&rec(it.id).lvl>=1&&ls>=0;
-  const from=ex.owed?'<span class="eyebrow">🎧 Listening you skipped earlier</span>':lad?'<span class="eyebrow">Step '+(ls+1)+' of 4 · '+LADDER_NAME[ls]+'</span>':ex.mixed?'<span class="eyebrow">From an earlier lesson</span>':'';
+  const from=ex.owed?'<span class="eyebrow">🎧 Listening you skipped earlier</span>':lad?'<span class="eyebrow">Step '+(ls+1)+' of 4 · '+LADDER_NAME[ls]+'</span>':ex.mixed&&!(Q.lesson&&Q.lesson.items&&Q.lesson.items.includes(it))?'<span class="eyebrow">From an earlier lesson</span>':'';
   const emo=x=>picHtml(x.lt,'sm');
   const spk=(item,cls,slow)=>'<button type="button" class="spk '+(cls||'')+'" data-say="'+esc(item.id)+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play slowly':'Play audio')+'">'+(slow?TURTLE:SPK)+'</button>';
   if(ex.type==='tip'){const u=ex.unit,l=ex.lesson;const lt=l&&(l.speak?SPEAK_TIPS[u.id]:LESSON_TIPS[l.id]);
@@ -2052,14 +2071,18 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
     st.innerHTML=from+'<div class="prompt small">Fill the gap</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+shown+'</span></div><div class="en">'+esc(it.en)+'</div>'+typeBox('The missing word');
     wireTyping(st,btn);}
   else if(ex.type==='type'){
-    st.innerHTML=from+'<div class="prompt small">Write this in '+LANG.en+'</div><div class="word">'+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div><div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" placeholder="Type in '+LANG.en+'"><div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it'+(LANG.dblTip?', '+LANG.dblTip:'')+'.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>';
+    /* stuck: the letters to pick from (or the words, for a phrase); it counts as nearly and comes back to type */
+    const stuck=Q.mode!=='check'&&Q.mode!=='place'&&it.lt.replace(/[?!.,]/g,'').length<=24;
+    st.innerHTML=from+'<div class="prompt small">Write this in '+LANG.en+'</div><div class="word">'+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div><div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" placeholder="Type in '+LANG.en+'"><div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it'+(LANG.dblTip?', '+LANG.dblTip:'')+'.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>'+
+      (stuck?'<button type="button" class="linkbtn" id="showletters">Stuck? Show me the '+(it.lt.includes(' ')?'words':'letters')+'</button>':'');
+    {const sl=st.querySelector('#showletters');if(sl)sl.onclick=()=>{Q.queue[Q.idx]=Object.assign({},ex,{type:it.lt.includes(' ')?'build':'tiles',helped:true,easy:true});renderStep();};}
     const inp=st.querySelector('#ans');dblType(inp);inp.oninput=()=>{Q.answer=inp.value;btn.disabled=!inp.value.trim();};
     inp.onkeydown=e=>{if(e.key==='Enter'&&!btn.disabled)btn.click();};
     st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
     setTimeout(()=>inp.focus(),50);}
   else if(ex.type==='build'){
     const words=it.lt.split(' ');const extra=sample((it.me?Q.items:ITEMS).filter(i=>(it.me||i.unit===it.unit)&&i!==it).flatMap(i=>i.lt.split(' ')).filter(w=>!words.includes(w)),Math.min(3,words.length+1));
-    const chip=w=>{w=w.replace(/[.,!?¿¡]/g,'');return GLUE[norm(w)]==='your name'||PERS.baseNames.includes(norm(w))||/^(Lietuv|Amerik|Vilni|Anglij)/.test(w)?w:w.toLowerCase();};
+    const chip=w=>{w=w.replace(/[.,!?¿¡]/g,'');return GLUE[norm(w)]==='your name'||PERS.baseNames.includes(norm(w))||properNoun(w)?w[0].toUpperCase()+w.slice(1):w.toLowerCase();};
     const bank=shuffle([...new Set(words.concat(extra).map(chip))]);let chosen=[];
     st.innerHTML=from+'<div class="prompt small">Build the sentence</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+esc(it.en)+'</span></div><div class="build"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
     const draw=()=>{$('#bans').innerHTML=chosen.map(i=>'<button type="button" class="chip in" data-c="'+i+'">'+esc(bank[i])+'</button>').join('');
@@ -2083,7 +2106,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   else if(ex.type==='tiles'){
     const word=it.lt.replace(/[?!.,¿¡]/g,'').toLowerCase();const letters=[...word];
     const twin=[...new Set(letters.flatMap(c=>LOOKALIKE[c]||[]))].filter(c=>!letters.includes(c));
-    const decoys=sample(twin,2).concat(sample([...LANG.decoys].filter(c=>!letters.includes(c)&&!twin.includes(c)),letters.length>4?2:1));
+    const decoys=sample(twin,2).concat(sample([...LANG.decoys].filter(c=>!letters.includes(c)&&!twin.includes(c)),letters.length>4?3:2));
     const bank=shuffle(letters.concat(decoys));let chosen=[];
     st.innerHTML=from+'<div class="prompt small">Spell it with the letters</div><div class="word">'+spk(it)+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+'<div class="build spell"><div class="answer" id="bans"></div><div class="bank" id="bank">'+bank.map((w,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>').join('')+'</div></div>';
     const draw=()=>{$('#bans').innerHTML=chosen.map(i=>'<button type="button" class="chip in" data-c="'+i+'">'+esc(bank[i])+'</button>').join('');
@@ -2091,6 +2114,18 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       st.querySelectorAll('#bans .chip').forEach(c=>c.onclick=()=>{chosen=chosen.filter(x=>x!==Number(c.dataset.c));draw();});
       Q.answer=chosen.map(i=>bank[i]).join('');btn.disabled=chosen.length===0;};
     st.querySelectorAll('#bank .chip').forEach(c=>c.onclick=()=>{const i=Number(c.dataset.i);if(!chosen.includes(i)){chosen.push(i);draw();}});draw();setTimeout(()=>say(it),200);}
+  else if(ex.type==='gaps'){
+    /* Fill in the missing letters: about four letters in ten are gone (at least one, never all), from the English */
+    const chars=[...it.lt],pos=chars.map((c,i)=>/\p{L}/u.test(c)?i:-1).filter(i=>i>=0),n=Math.max(1,Math.min(pos.length-1,Math.round(pos.length*.4)));
+    const gone=shuffle(pos.slice()).slice(0,n).sort((x,y)=>x-y),want=gone.map(i=>chars[i]);let last=null;
+    const box='<input class="lb" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" aria-label="Missing letter">';
+    st.innerHTML=from+'<div class="prompt small">Fill in the missing letters</div><div class="word">'+emo(it)+'<span class="lt" style="color:var(--fg);font-size:28px">'+esc(it.en)+'</span></div>'+
+      '<div class="gfill"><span class="fw">'+chars.map((c,i)=>c===' '?'</span><span class="fw">':gone.includes(i)?box:'<span>'+esc(c)+'</span>').join('')+'</span></div>'+'<div class="keys-label">'+LANG.en+' letters your keyboard may not have. Tap one to add it.</div><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div>';
+    const bs=[...st.querySelectorAll('.lb')];
+    const upd=()=>{let k=0;Q.answer=chars.map((c,i)=>gone.includes(i)?(bs[k++].value||''):c).join('');btn.disabled=bs.some(b=>!b.value);};
+    wireBoxes(bs,want,b=>{last=b;},upd,()=>{if(!btn.disabled)btn.click();});
+    st.querySelectorAll('[data-k]').forEach(k=>{k.onmousedown=e=>e.preventDefault();k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.oninput();};});
+    setTimeout(()=>bs[0]&&bs[0].focus(),60);}
   else if(ex.type==='match'){
     const L=shuffle(ex.items);let R=shuffle(ex.items),n=0;while(n++<30&&R.some((r,i)=>r===L[i]))R=shuffle(ex.items);let sel=null,done=0;
     st.innerHTML='<div class="prompt small">Match the pairs</div><div class="pairs">'+L.map((o,i)=>'<button type="button" class="opt" data-side="l" data-id="'+esc(o.id)+'" aria-pressed="false"><span class="ot"><span>'+esc(o.lt)+'</span>'+(S.pron?'<small class="pron">'+pronHtml(o.lt)+'</small>':'')+'</span></button><button type="button" class="opt" data-side="r" data-id="'+esc(R[i].id)+'" aria-pressed="false">'+esc(R[i].en)+'</button>').join('')+'</div>';
@@ -2214,7 +2249,9 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
       const swapped=sg.length===st.length&&[...sg].sort().join('')===[...st].sort().join('');
       const other=knownWord(g)&&fullGloss(g)&&fullGloss(t)&&fullGloss(g)!==fullGloss(t)&&(lev(sg,st)<=2||sg.length<=3&&st.length<=3);
       if(swapped&&!neg)best={k,kind:'spell'};
-      else if(neg||endSlip(sg,st,same)&&!(fixedWord(st)&&!knownWord(g)))best={k,kind:'ending'};
+      else if(LANG.beWho&&LANG.beWho[norm(g)]&&LANG.beWho[norm(t)])best={k,kind:'person'};
+      /* an ending is only explained when what you wrote is a real form; anything else is a spelling slip */
+      else if(neg||endSlip(sg,st,same)&&knownWord(g)&&!fixedWord(st))best={k,kind:'ending'};
       else if(other)best={k,kind:'word'};
       else if((st.length>=4||G.length===1&&T.length===1&&st.length>=2)&&lev(sg,st)<=(st.length>=4?2:1))best={k,kind:'spell'};});
     if(best){used.add(best.k);match[i]={g:G[best.k],kind:best.kind};}});
@@ -2223,6 +2260,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
     if(m.kind==='ending')issues.push({kind:'ending',html:endingWhy(m.g,t,T[i-1],T[i+1])});
     else if(m.kind==='word')issues.push({kind:'word',html:'Different word: <b>'+esc(m.g)+'</b> means "'+esc(fullGloss(m.g,1))+'", but here you need <b>'+esc(t)+'</b> ("'+esc(fullGloss(t,1))+'").'+(LANG.pairRule?LANG.pairRule(m.g,t):'')});
     else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling: <b>'+esc(m.g)+'</b> is written <b>'+esc(t)+'</b>.'});
+    else if(m.kind==='person')issues.push({kind:'word',html:LANG.personNote(norm(m.g),norm(t))});
     else issues.push({kind:'marks',html:marksNote(m.g,t)});});
   T.forEach((t,i)=>{if(match[i])return;const gl=glossOf(t);issues.push({kind:'missing',html:'You left out <b>'+esc(t)+'</b>'+(gl?' ('+esc(gl)+')':'')+'.'});});
   G.forEach((g,k)=>{if(!used.has(k))issues.push({kind:'extra',html:'<b>'+esc(g)+'</b> isn\'t needed here.'});});
@@ -2231,7 +2269,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   const one=issues.length===1&&issues[0].kind==='spell'?issues[0]:null;
   /* a typo is forgiven only when it can't be a real mistake: not another real word, and not i / y / j mixed up (they are different sounds) */
   const typo=!!one&&strip(one.t).length>=5&&lev(strip(one.g),strip(one.t))===1&&sameStart(strip(one.g),strip(one.t))<strip(one.t).length-2&&!knownWord(one.g)&&!ijySwap(strip(one.g),strip(one.t));
-  const rank={ending:0,word:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
+  const rank={ending:0,word:0,person:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
   return {html:issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
 /* Any mark left off (š, ė, ū...) counts as "Nearly": right, but the word doesn't move up, and the letter is shown.
    Carons (š, ž, č) are letters of their own, so they get a word of explanation. */
@@ -2250,24 +2288,44 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
   const d=dropWho(given);if(d.includes(' ')&&tn.map(dropWho).includes(d))
     return {ok:true,note:'<b>'+esc(targets[0])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropWho+'</div>'};
   /* "Aš iš Amerikos": everyday speech often leaves out "am / are" too */
-  const be=LANG.be||[],nb=s=>dropWho(s).split(' ').filter(w=>!be.includes(w)).join(' ');
-  if(be.length&&nb(given).includes(' ')&&tn.some(x=>nb(x)===nb(given)))
+  const be=LANG.be||[],nb=s=>dropWho(s).split(' ').filter(w=>!be.includes(w)).join(' '),nbw=s=>norm(s).split(' ').filter(w=>!be.includes(w)).join(' ');
+  /* "Mes čia" for "Mes esame čia": the "who" word stays, only am / are goes */
+  /* only when am / are was left out, not swapped for another person's form ("Mes esu čia" is a mistake, explained below) */
+  const gbe=a.split(' ').filter(w=>be.includes(w)),keeps=x=>gbe.every(w=>x.split(' ').includes(w));
+  if(be.length&&(nb(given).includes(' ')&&tn.some(x=>keeps(x)&&nb(x)===nb(given))||a.includes(' ')&&tn.some(x=>keeps(x)&&x!==nbw(x)&&nbw(x)===nbw(given))))
     return {ok:true,note:'<b>'+esc(targets[0])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropBe+'</div>'};
+  /* "Ar tu esi Jonas?" and "Tu esi Jonas?": ar only marks a question, and speech often leaves it out */
+  if(LANG.qWord){const q=LANG.qWord,dq=s=>{const w=norm(s).split(' ');return w[0]===q?w.slice(1).join(' '):w.join(' ');},isQ=t=>/\?\s*$/.test(t)||norm(t).split(' ')[0]===q;
+    const k3=targets.findIndex(t=>isQ(t)&&dq(t)!==norm(t)!==(dq(given)!==a)&&(dq(t)===dq(given)||dropWho(dq(t))===dropWho(dq(given))));
+    if(k3>=0&&a.includes(' '))return {ok:true,note:'<b>'+esc(targets[k3])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.qNote+'</div>'};}
   const w=whyWrong(given,targets[0]);
   if(w&&w.typo)return {ok:true,title:'Nearly',note:'Small typo, we\'ll count it: <b>'+esc(targets[0])+'</b>'+w.html};
   return {ok:false,why:w?w.html:''};}
 
+/* Every right answer at once: the card's own, then the other right ones (the polite "your", a same-meaning word). A miss is
+   explained against the right answer closest to what you wrote, so a typo in jūsų is a typo, not "you left out tavo". */
+function judgeAll(given,A,en){const j=judgeTyped(given,A.own,en);if(j.ok||!A.other.length)return j;
+  const o=judgeTyped(given,A.other,en);if(o.ok)return Object.assign(o,{title:'Nearly'});
+  const g=norm(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,norm(x))-lev(g,norm(y)))[0];
+  if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html;}return j;}
+/* Names and places: words the course writes with a capital in the middle of a sentence (Rūta, Kanados, Vilniuje) */
+let PROPER=null;
+function properNoun(w){if(!PROPER){PROPER=new Set();const add=s=>String(s||'').split(/\s+/).forEach((x,i,a)=>{if(i&&!/[.!?]$/.test(a[i-1])&&/^\p{Lu}/u.test(x))PROPER.add(norm(x.replace(/[.,!?¿¡]/g,'')));});
+    ITEMS.forEach(i=>add(i.lt0||i.lt));CONVS.forEach(c=>c.all.forEach(l=>add(l.lt)));}
+  return PROPER.has(norm(w));}
 /* A typo or a missing mark still counts as right, but the word only moves up a level when it is exact. */
 const SLOPPY='<div class="why">Counted as right, but the word only moves up when you write it exactly.</div>';
 function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';
   /* the gap is judged as the whole phrase with your word in it, so the Why note can use the words around it */
   if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');
-    const o=answersFor(it).other.find(v=>norm(v)===norm(full));if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
-    else{const j=judgeTyped(full,[it.lt].concat(it.alt||[]),it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
-  else if(ex.type==='type'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'){const A=answersFor(it),o=ex.type==='type'&&A.other.find(v=>norm(v)===norm(Q.answer));
+    const A=answersFor(it),o=A.other.find(v=>norm(v)===norm(full));if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
+    else{const j=judgeAll(full,A,it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
+  else if(ex.type==='type'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'||ex.type==='gaps'){const A=answersFor(it),o=ex.type==='type'&&A.other.find(v=>norm(v)===norm(Q.answer));
     if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
-    else{const j=judgeTyped(Q.answer,A.own,it.en);ok=j.ok;why=j.why||'';
-      if(ex.type==='tiles'&&ok&&!j.exact){ok=false;why=(whyWrong(Q.answer,A.own[0])||{}).html||'';}
+    else{const j=ex.type==='type'?judgeAll(Q.answer,A,it.en):judgeTyped(Q.answer,A.own,it.en);ok=j.ok;why=j.why||'';
+      if((ex.type==='tiles'||ex.type==='gaps')&&ok&&!j.exact&&ex.type==='tiles'){ok=false;why=(whyWrong(Q.answer,A.own[0])||{}).html||'';}
+      if(ok&&ex.helped){title='Nearly';almost='<b>'+esc(it.lt)+'</b> · '+esc(it.en)+'<div class="why">You had the letters to pick from, so it doesn\'t move up yet. It comes back to type in a moment.</div>';
+        if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'type',item:it,retry:true});}
       if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
   else ok=Q.answer===it;
   reveal(ok,almost,false,why,title);}
@@ -2581,6 +2639,13 @@ function convCredit(text,credit,slips){const C=CV;
   replyParts(text).forEach(p=>{const r=rec(p.item.id);let slip=false;for(let k=p.from;k<p.to;k++)if(slips.has(k))slip=true;
     if(slip){r.bad++;r.lvl=Math.max(0,r.lvl-1);r.due=Date.now();C.slipped.add(p.item.id);}
     else if(credit){const was=r.lvl;grade(p.item,true,true);C.reviewed.add(p.item.id);if(r.lvl>was)C.stronger.add(p.item.id);}});}
+/* Letter boxes (conversations and the lesson card): one letter each, in the case of the letter it stands for. */
+function wireBoxes(bs,want,onFocus,upd,onEnter){bs.forEach((b,k)=>{b.onfocus=()=>{onFocus(b);try{b.select();}catch(e){}};
+  b.oninput=()=>{let v=b.value.slice(-1);const w=want[k]||'';if(v)v=w===w.toUpperCase()&&w!==w.toLowerCase()?v.toUpperCase():v.toLowerCase();
+    b.value=v;b.classList.remove('bad');if(v&&bs[k+1])bs[k+1].focus();upd();};
+  b.onkeydown=e=>{if(e.key==='Backspace'&&!b.value&&bs[k-1]){e.preventDefault();bs[k-1].value='';bs[k-1].focus();upd();}
+    else if(e.key==='ArrowLeft'&&bs[k-1]){e.preventDefault();bs[k-1].focus();}else if(e.key==='ArrowRight'&&bs[k+1]){e.preventDefault();bs[k+1].focus();}
+    else if(e.key==='Enter'){e.preventDefault();onEnter();}};});}
 /* Fill in the missing letters. Each word loses letters by how well you know it: about a quarter at level 1,
    nearly half at level 2, most at level 3, all of them from level 4. Which letters go missing changes every time. */
 function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const share=[0,.25,.45,.7];const want=[],wtok=[];let tries=0,used=false;const slips=new Set();
@@ -2604,14 +2669,10 @@ function fillReply(ln,done){const C=CV,turn=$('#turn'),btn=$('#btn-check');const
     tries++;C.mistakes++;sfx('bad');let first=null;
     bs.forEach((b,k)=>{if(strip(b.value)!==strip(want[k])){b.value='';b.classList.add('bad');first=first||b;slips.add(wtok[k]);}});
     cmsg.textContent='Not quite. The red boxes need a different letter.'+(tries>=2?' Stuck? Tap "Show me the answer".':'');upd();if(first)first.focus();};
-  /* typing a letter twice gives its marked version across two boxes too (s, s → š), and tapping a box selects its letter */
-  bs.forEach((b,k)=>{b.onfocus=()=>{last=b;try{b.select();}catch(e){}};
-    b.oninput=()=>{const v=b.value.slice(-1),p=bs[k-1],to=p&&v&&LANG.dbl?LANG.dbl[(p.value+v).toLowerCase()]:null;
-      if(to&&to.length===1&&p.__t&&Date.now()-p.__t<1500){p.value=to;p.__t=0;b.value='';b.focus();upd();return;}
-      b.value=v;b.__t=v?Date.now():0;b.classList.remove('bad');if(b.value&&bs[k+1])bs[k+1].focus();upd();};
-    b.onkeydown=e=>{if(e.key==='Backspace'&&!b.value&&bs[k-1]){e.preventDefault();bs[k-1].value='';bs[k-1].focus();upd();}
-      else if(e.key==='Enter'){e.preventDefault();check();}};});
-  turn.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.__t=0;b.oninput();b.__t=0;});
+  /* one letter per box: typing moves on to the next box and Backspace steps back. The type-twice trick (s, s → š) is off here,
+     because two boxes can really need the same letter twice; the letter keys below give the marked ones. */
+  wireBoxes(bs,want,b=>{last=b;},upd,check);
+  turn.querySelectorAll('[data-k]').forEach(k=>{k.onmousedown=e=>e.preventDefault();k.onclick=()=>{const b=last||bs[0];b.value=k.dataset.k;b.oninput();};});
   /* a tap near a word goes to its first empty box */
   $('#cfill').onclick=e=>{if(e.target.tagName==='INPUT')return;const fw=e.target.closest('.fw');if(!fw)return;const ins=[...fw.querySelectorAll('.lb:not(:disabled)')];const t=ins.find(x=>!x.value)||ins[0];if(t)t.focus();};
   helpBtn.onclick=()=>{used=true;const sh=$('#cshow');sh.hidden=false;sh.innerHTML='<span class="lt">'+esc(ln.lt)+'</span><div class="pron">'+pronHtml(ln.lt)+'</div>';
@@ -2671,8 +2732,8 @@ function renderQuick(){const box=$('#qc-card');if(!box)return;seedReplies();cons
     (ids.length?'<div class="qc-ladder" role="img" aria-label="Your replies by step: '+QC_STEPS.map((t,k)=>t+' '+by[k]).join(', ')+'">'+QC_STEPS.map((t,k)=>'<span'+(by[k]?'':' class="zero"')+'><b class="num">'+by[k]+'</b><small>'+t+'</small></span>').join('')+'</div>'+
       '<p class="note tiny">Each reply climbs a step when you answer it right on its review day: pick it from three, build it from its words, fill in its letters, type it, and in the end only hear them and answer.</p>':'')+
     '<button type="button" class="btn amber" id="btn-qc"'+(due.length?'':' disabled')+'>Start quick chat</button>'+
-    (ids.length>=3?'<button type="button" class="btn ghost" id="btn-qc-any">Chat anyway</button>':'')+
-    (ids.length&&!due.length?'<p class="note tiny">Nothing is due right now. The next reply is due '+qcNextDue(ids)+'.'+(ids.length<3?' "Chat anyway" opens once you have 3 replies.':'')+'</p>':'');
+    (ids.length>=3?'<button type="button" class="btn ghost" id="btn-qc-any">Practise anyway</button>':'')+
+    (ids.length&&!due.length?'<p class="note tiny">Nothing is due right now. The next reply is due '+qcNextDue(ids)+'.'+(ids.length<3?' "Practise anyway" opens once you have 3 replies.':'')+'</p>':'');
   $('#btn-qc').onclick=()=>startQuick(false);const any=$('#btn-qc-any');if(any)any.onclick=()=>startQuick(true);}
 /* Up to 8 due replies, mixed. "Chat anyway" takes your weakest replies; they only move up on their review day. */
 function startQuick(any){seedReplies();const all=replyCards();
@@ -2944,9 +3005,10 @@ function openFlag(){const ctx=cardContext();const ex=Q&&Q.queue[Q.idx];
     '<div class="row2"><button type="button" class="btn ghost" data-x>Cancel</button><button type="button" class="btn amber" data-send disabled>Send</button></div></div>';
   document.body.appendChild(ov);let reason=null;
   ov.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ov.querySelectorAll('[data-r]').forEach(x=>x.classList.remove('in'));b.classList.add('in');reason=b.dataset.r;ov.querySelector('[data-send]').disabled=false;});
-  ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  const close=()=>{ov.remove();const a=document.querySelector('#stage input:not(:disabled),#turn input:not(:disabled)');if(a)a.focus({preventScroll:true});};
+  ov.querySelector('[data-x]').onclick=close;ov.onclick=e=>{if(e.target===ov)close();};
   ov.querySelector('[data-send]').onclick=()=>{const note=ov.querySelector('#flag-note').value.trim().slice(0,500);
-    S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:Object.assign({lang:LANG_CODE},ctx)}]).slice(-30);save();ov.remove();
+    S.reportQueue=(S.reportQueue||[]).concat([{reason,note:note||null,context:Object.assign({lang:LANG_CODE},ctx)}]).slice(-30);save();close();
     toast('Thanks! Your report has been sent.');if(window.cloud&&window.cloud.sendReports)window.cloud.sendReports();};}
 $('#btn-flag').onclick=openFlag;
 
@@ -3131,7 +3193,7 @@ $('#btn-quit').onclick=()=>{const live=Q&&Q.idx>0&&Q.idx<Q.queue.length&&Q.mode!
     (keep?'Your answers so far are kept, and you can carry on from this card later on the Learn tab.':CV&&CV.quick?'The replies you got right are kept.':Q&&Q.mode==='me'?'Your answers so far are kept. Practise it again any time from the About me card.':'Your answers so far are kept, but '+(CV?'the conversation':'the check')+' starts from the beginning next time.')+'</p><button type="button" class="btn amber" data-l="stay">Keep going</button><button type="button" class="btn ghost" data-l="go">Leave</button></div>';
   document.body.appendChild(ov);ov.querySelector('[data-l="stay"]').focus();ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.l==='go')quit();});};
 $('#btn-review').onclick=()=>startReview(false);
-$('#btn-weak').onclick=()=>startReview(true);$('#btn-tricky').onclick=startTricky;
+$('#btn-weak').onclick=()=>startReview(true);
 /* Choosing the language to learn. Each language keeps its own progress; the page reloads into the one picked.
    A language that isn't ready shows as Coming soon and can't be picked yet. */
 function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(l))return;try{localStorage.setItem('gintaras.lang',code);}catch(e){}
