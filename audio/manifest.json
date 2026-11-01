@@ -1361,6 +1361,7 @@
 "me2:cv3:10o0~f": "Taip. Aš alergiška riešutams.",
 "me2:cv8:4~n": "Taip. Dviem naktims?",
 "me2:u15b-1:4~f": "Aš alergiška riešutams",
+"me2:u1d-1:0~n": "Aš esu",
 "me2:u20a-2:4~f": "Ne, aš amerikietė",
 "me2:u35b-1:1~f": "Aš pavargusi, bet laiminga",
 "me2:u3c-1:4~f": "Aš esu alkana",
@@ -1409,7 +1410,12 @@
 "u1c-2:2": "Jos",
 "u1c-2:3": "Mano vardas Tomas",
 "u1c-2:4": "Koks tavo vardas?",
-"u1c-3:0": "Aš esu iš Amerikos"
+"u1c-3:0": "Aš esu iš Amerikos",
+"u1d-1:0": "Aš esu Tomas",
+"u1d-1:1": "Tu esi Jonas?",
+"u1d-1:2": "Jis yra Jonas",
+"u1d-1:3": "Ji yra Rūta",
+"u1d-1:4": "Mes esame čia"
 },
 "u10": {
 "u10a-1:0": "bilietas",

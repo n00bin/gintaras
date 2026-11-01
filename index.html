@@ -1014,8 +1014,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.75';
-const APP_VERSION=147;
+const APP_RELEASE='3.76';
+const APP_VERSION=148;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1481,9 +1481,9 @@ function startFall(){const pool=gameWords();if(pool.length<5)return;
   const spawn=now=>{if(next>=words.length)return;const it=words[next++];const el=document.createElement('div');el.className='fall-w';el.textContent=it.en;sky.appendChild(el);
     const speed=Math.max(6,11-next*0.25);live.push({it,el,y:2,v:(sky.clientHeight+40)/speed});};
   /* the results: what you caught, what landed (and what it was), then back to Practice */
-  const end=()=>{cancelAnimationFrame(raf);rollDay();const ups=Q.ups||0;const total=addXp(3+hits);save();Q=null;
+  const end=()=>{cancelAnimationFrame(raf);rollDay();const ups=Q.ups||0;const total=addXp(3+hits);settleToday();save();Q=null;
     ov.innerHTML='<div class="fall-res"><div class="big num">+'+total+' XP</div><h2>'+hits+' of '+words.length+' caught</h2>'+(ups?'<p class="note">'+ups+' word'+(ups===1?'':'s')+' moved up.</p>':'')+
-      (missed.length?'<div class="win"><b>Landed</b> · '+missed.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'. They come back in your reviews soon.</div>':'<div class="win"><b>Nothing landed!</b> · every word caught</div>')+
+      (missed.length?'<div class="win"><b>Landed</b> · '+missed.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'. They come back in tomorrow\'s review.</div>':'<div class="win"><b>Nothing landed!</b> · every word caught</div>')+
       '<button type="button" class="btn amber" id="fall-done">Continue</button></div>';
     sfx('win');ov.querySelector('#fall-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#fall-done').focus();};
   const settle=(w,ok)=>{live=live.filter(x=>x!==w);done++;(ok?caught:missed).push(w.it);w.el.classList.add(ok?'hit':'miss');if(!ok)w.el.textContent=w.it.lt;setTimeout(()=>w.el.remove(),ok?250:1400);
@@ -1770,7 +1770,7 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     let wait=null;
     shuffle(items).forEach(it=>{const r0=rec(it.id),meet=(!r0.seen||!r0.intro&&!(S.lessons[lesson.id]>=1)&&(r0.lvl||0)<2)&&!mine.includes(norm(it.lt));if(meet)head.push({type:'intro',item:it});const a=exFor(it,meet?EASY.filter(t=>t!=='listen'):typesFor(it));
       if(wait)head.push(wait);wait=a;
-      let b=exFor(it,meet?SECOND:typesFor(it),a.type);if(meet&&!PROD[b.type])b={type:'type',item:it};rest.push(b);
+      let b=exFor(it,meet?SECOND:typesFor(it),a.type);if(meet&&!PROD[b.type])b={type:'type',item:it};if(b.type===a.type&&a.type!=='type')b={type:'type',item:it}; /* a fallback (no gap for a one-word cloze) can land on the first card's kind */rest.push(b);
       /* every word in the lesson is said out loud once, checked by the microphone */
       if(!speakOff()&&a.type!=='speak')rest.push({type:'speak',item:it,fresh:meet});});
     lastWait=wait;
@@ -1778,8 +1778,10 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     drillsFor(lesson,2).forEach(d=>rest.push({type:'frame',drill:d}));
     /* warm-up: two words from earlier lessons first, then the rest mixed in later */
     const wl=S.warmLast||[],now=Date.now(),miss=i=>{const r=rec(i.id);return (r.bad||0)/((r.ok||0)+(r.bad||0)+1);};
-    const td=today(),done2=i=>{const r=rec(i.id);return r.okD===td&&r.okN>=2&&r.badD!==td;},missT=i=>rec(i.id).badD===td;
-    const old=shuffle(practised().filter(i=>!items.includes(i)&&!done2(i))).sort((a,b)=>missT(b)-missT(a)||wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl).slice(0,items.length<=2?5:3); /* a lesson of one or two words needs more in between, or its cards come back to back */
+    const td=today(),done2=i=>doneToday(rec(i.id)),missT=i=>rec(i.id).badD===td;
+    let cand=practised().filter(i=>!items.includes(i)&&!done2(i));
+    if(items.length<=2&&cand.length<5)cand=cand.concat(practised().filter(i=>!items.includes(i)&&!cand.includes(i)));
+    const old=shuffle(cand).sort((a,b)=>missT(b)-missT(a)||wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl).slice(0,items.length<=2?5:3); /* a lesson of one or two words needs more in between, or its cards come back to back */
     S.warmLast=old.map(i=>i.id);
     /* the warm-ups sit between a new word and its first check */
     old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})).forEach((w,n)=>{
@@ -1882,10 +1884,10 @@ function startLesson(l){const d=dueItems().length;
 function startNext(l){if(!l)return;if(l.conv)startConv(l.conv);else startLesson(l);}
 function startReview(weak){let L=practised();
   /* words already right twice today (and not missed) sit this one out, while there are enough others */
-  {const td=today(),rest=L.filter(i=>{const r=rec(i.id);return !(r.okD===td&&r.okN>=2&&r.badD!==td);});if(weak&&rest.length>=5)L=rest;}let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
+  {const td=today(),rest=L.filter(i=>!doneToday(rec(i.id)));if(weak&&rest.length>=5)L=rest;}let pick=weak?L.slice().sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl||rec(a.id).due-rec(b.id).due).slice(0,10):dueItems().slice(0,10);
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1){toast('Finish a lesson first');return;}const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(Q)Q.dueN=dueN;}
-function quit(){if(!Q&&!CV)return;stopHearing();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
+function quit(){if(!Q&&!CV)return;stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
@@ -1923,6 +1925,13 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   {const e=Q.queue[Q.idx],td=today(),made=i=>rec(i.id).prodD===td,learn=['lesson','review','me'].includes(Q.mode);
     if(learn&&e.item&&!STEPLESS[e.type]&&!rec(e.item.id).seen){Q.queue.splice(Q.idx,0,{type:'intro',item:e.item});return renderStep();}
     if(learn&&e.item&&!e.force&&!e.easy&&/^(mc_lt_en|mc_en_lt|listen)$/.test(e.type)&&made(e.item))Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'&&canListen()?'dictate':'type'});
+    else if(learn&&e.item&&/^(tiles|build)$/.test(e.type)&&rec(e.item.id).recD===td)Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
+    /* never the same word on two cards in a row, even after cards were taken out or came back: a later card about another
+       word (one you've met) is shown first */
+    {const q=Q.queue,about=(x,i)=>!!x&&(x.item===i||(x.items||[]).includes(i));let pv=Q.idx-1;while(pv>=0&&STEPLESS[q[pv].type])pv--;
+      if(learn&&e.item&&!STEPLESS[e.type]&&pv>=0&&about(q[pv],e.item)){
+        const j=q.findIndex((x,m)=>m>Q.idx&&x.item&&!STEPLESS[x.type]&&!about(x,e.item)&&rec(x.item.id).seen&&!about(q[pv],x.item)&&!about(q[m-1]===e?null:q[m-1],e.item)&&!about(q[m+1],e.item));
+        if(j>0){q[Q.idx]=q[j];q[j]=e;return renderStep();}}}
     if(learn&&e.type==='match'){const left=e.items.filter(i=>!made(i));if(left.length<3){Q.queue.splice(Q.idx,1);Q.total--;return renderStep();}if(left.length<e.items.length)Q.queue[Q.idx]=Object.assign({},e,{items:left});}}
   const ex=Q.queue[Q.idx];const it=ex.item;
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
@@ -1968,7 +1977,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
     btn.disabled=true;btn.textContent=useMic?'Say it into the microphone':'Say it, then tap Show me';
     const showAns=()=>{const a=st.querySelector('#sayans');if(!a||!a.hidden)return;a.hidden=false;st.querySelectorAll('.speakrow [data-say]').forEach(b=>b.hidden=false);
       const s=st.querySelector('#showans');if(s)s.hidden=true;const r=st.querySelector('#rate');r.hidden=false;if(!passed)btn.textContent='Did you get it right?';say(it);setTimeout(()=>r.scrollIntoView({block:'nearest',behavior:'smooth'}),60);};
-    const pass=()=>{if(passed)return;passed=true;rec(it.id).prodD=today();grade(it,true,true,peeked);spoke(it,true);if(!ex.retry)Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;
+    const pass=()=>{if(passed)return;passed=true;rec(it.id).prodD=today();if(!peeked)markRecalled(it);grade(it,true,true,peeked);spoke(it,true);if(!ex.retry)Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;
       setFoot('good',peeked?'Said it':'Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en)+(peeked?'<div class="why">It moves up when you say it without looking.</div>':''));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(2800);};
     const mic=st.querySelector('#mic');
     if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{if(passed)return;
@@ -1980,10 +1989,10 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
     if(sa&&!useMic)countdown(sa,sa.textContent,recall?3:Math.ceil(S.sound?clipLen(it.id,S.voice||'ona'):1)+3);
     wireRec(st,st.querySelector('#srout'));
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;passed=true;stopHearing();const v=b.dataset.rate;rec(it.id).seen=true;
-      if(v==='again'){grade(it,false,false);spoke(it,false);Q.wrongOnce[it.id]=true;if(Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,{type:'speak',item:it,retry:true});}
-      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');if(!ex.retry&&v!=='hard')Q.correct++;Q.selfRated=(Q.selfRated||0)+1;
+      if(v==='again'){grade(it,false,false);spoke(it,false);Q.wrongOnce[it.id]=true;if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'speak',item:it,retry:true});}
+      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');if(v!=='hard'&&recall)markRecalled(it);if(!ex.retry&&v!=='hard')Q.correct++;Q.selfRated=(Q.selfRated||0)+1;
         /* "Almost" comes back once more a few cards later, played first: listen again, then say it */
-        if(v==='hard'&&!ex.retry&&Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,{type:'speak',item:it,retry:true});}
+        if(v==='hard'&&!ex.retry&&Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'speak',item:it,retry:true});}
       Q.idx++;renderStep();});
     const sm=st.querySelector('#selfmode');if(sm)sm.onclick=()=>{stopHearing();S.selfRate=true;save();toast('OK, you\'ll rate yourself from now on. Switch the microphone back on in Settings.');renderStep();};
     const mm=st.querySelector('#micmode');if(mm)mm.onclick=()=>{S.selfRate=false;save();renderStep();};
@@ -2100,14 +2109,27 @@ function logReview(id,g,r){try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOG
   clearTimeout(rlogT);rlogT=setTimeout(()=>{try{localStorage.setItem(LOGKEY,JSON.stringify(RLOG));}catch(e){}},1500);}
 /* cloud.js sends the log to the account (gintaras_review_log) a batch at a time, from the last answer it sent. */
 window.reviewLogSince=ts=>{try{if(!RLOG)RLOG=JSON.parse(localStorage.getItem(LOGKEY)||'[]');}catch(e){RLOG=[];}return RLOG.filter(e=>e[1]>ts);};
-function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;const td=today();if(ok){if(r.okD!==td){r.okD=td;r.okN=0;}r.okN++;}else r.badD=td;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
+/* A missed card comes back a few cards later, and never right next to another card about the same word: near the end
+   of a lesson, a quick card about another word from it goes in between. */
+function comeBack(c){const q=Q.queue,it=c.item,about=e=>!!e&&(e.item===it||(e.items||[]).includes(it));
+  let p=Math.min(Q.idx+4,q.length);while(p<q.length&&(about(q[p-1])||about(q[p])))p++;
+  if(p>=q.length){if(about(q[q.length-1])){const o=shuffle((Q.items||[]).filter(i=>i!==it&&rec(i.id).seen))[0];if(o)q.push({type:'mc_lt_en',item:o,mixed:true});}p=q.length;}
+  q.splice(p,0,c);}
+/* The words practised in a session never end it due again the same day: the first review is tomorrow at the earliest
+   (a miss is practised again inside the session, as a card that comes back). */
+/* Recalled right first time (typed, written from the audio, said from memory): with no miss since, the word is done for today. */
+function markRecalled(it){const r=rec(it.id);r.recD=today();r.recAt=Date.now();}
+const doneToday=r=>{const td=today();return r.recD===td&&(r.badD!==td||(r.recAt||0)>(r.badAt||0))||r.okD===td&&r.okN>=2&&r.badD!==td;};
+function settleToday(){if(!Q||!Q.touched)return;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+1);
+  Object.keys(Q.touched).forEach(id=>{const r=S.items[id];if(r&&r.due<=Date.now())r.due=d.getTime();});}
+function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;if(Q)(Q.touched=Q.touched||{})[item.id]=1;const td=today();if(ok){if(r.okD!==td){r.okD=td;r.okN=0;}r.okN++;}else r.badD=td;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
   if(ok){r.ok++;if(sloppy&&count)fsReview(r,2);
     else if(count&&r.up!==today()&&r.due<=Date.now()){const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
       if(Q)Q.ups=(Q.ups||0)+1;const iv=fsReview(r,g,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();}
     /* a right answer always takes a word off today's pile: if it didn't move up, it comes back tomorrow */
     if(r.due<=Date.now()){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+1);r.due=d.getTime();}}
-  else{r.bad++;if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
+  else{r.bad++;r.badAt=Date.now();if(r.lvl>=2&&r.lapseDay!==today()){r.lapse=(r.lapse||0)+1;r.lapseDay=today();}if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-2);r.ivl=INTERVALS[r.lvl];r.due=Date.now();}}
 /* Answers are saved as you give them, so leaving a review early keeps every one of them. */
 let saveT=null;function saveSoon(){clearTimeout(saveT);saveT=setTimeout(save,700);}
 /* Words learned together shouldn't all come back on the same day: gaps of 3 days or more move by up to 10% either way. */
@@ -2234,7 +2256,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   if(ok&&first&&RECALL[ex.type]&&title!=='Nearly')Q.recall=(Q.recall||0)+1;
   if(Q.mode!=='place'&&Q.mode!=='check'&&rec(it.id).lvl>=1&&ladderAt(ex.type)>=0){const r=rec(it.id),s=ladderStep(it);
     if(!ok)r.st=Math.max(0,s-1);else if(first&&title!=='Nearly'&&ladderAt(ex.type)>=s)r.st=Math.min(3,s+1);}
-  if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(RECALL[ex.type]&&first&&!title)markRecalled(it);if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
     const pk=Q.answer&&Q.answer.lt&&Q.answer!==it?Q.answer:null;
     if(!idk&&Q.mode!=='place'){const r=rec(it.id);r.missT=ex.type;r.missG=typeof Q.answer==='string'?Q.answer.slice(0,60):undefined;r.missPick=pk?pk.id:undefined;}
@@ -2242,7 +2264,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
     else setFoot('bad','Not quite',(typeof Q.answer==='string'&&Q.answer.trim()?'<div class="note">You wrote <b>'+esc(Q.answer.trim())+'</b></div>':'')+'Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
     /* it comes back a few cards later, asked another way where it can be, so the answer you just saw isn't simply tapped again */
     const back=ex.type==='listen'||ex.type==='mc_lt_en'?'mc_en_lt':ex.type==='mc_en_lt'?'mc_lt_en':ex.type;
-    if(Q.mode!=='check'&&Q.mode!=='place')Q.queue.splice(Math.min(Q.idx+4,Q.queue.length),0,back===ex.type?Object.assign({},ex,{retry:true}):{type:back,item:it,retry:true});say(it);}
+    if(Q.mode!=='check'&&Q.mode!=='place')comeBack(back===ex.type?Object.assign({},ex,{retry:true}):{type:back,item:it,retry:true});say(it);}
   const stage=$('#stage');stage.querySelectorAll('.opt').forEach(b=>{b.disabled=true;});stage.querySelectorAll('.lt-after').forEach(x=>x.hidden=false);
   stage.querySelectorAll('.opt[data-i]').forEach(b=>{if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');});
   stage.querySelectorAll('.opt[data-ok]').forEach(b=>b.classList.add('good'));
@@ -2252,7 +2274,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   /* long enough to hear the word when right; a miss, a "Nearly" or another right answer waits for you, so you can read why */
   if(ok&&title!=='Nearly'&&title!=='That works too!')autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
 
-function finish(){dropPlace();if(Q.mode==='review')S.reviewDay=today();const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.min(100,Math.round(Q.correct/Q.total*100)):100;
+function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=today();const secs=Math.round((Date.now()-Q.startedAt)/1000);const acc=Q.total?Math.min(100,Math.round(Q.correct/Q.total*100)):100;
   const before=levelFor(S.xp);const perfect=Q.total>0&&Q.correct>=Q.total&&!Q.nearly&&!Q.selfRated;
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
      already know earns a little, so the league can't be climbed by repeating an easy lesson. */
@@ -2507,7 +2529,9 @@ function convStage(ln){const ord=['tap','fill','type'],w=ord.indexOf(replyStage(
    means that reply doesn't count as review. */
 function promptHtml(ln,L){if(L==null){const k=cardLvl(ln.id);L=Math.max(replyLevel(ln.lt),k>=3?3:k===2?1:0);
     /* playing a conversation again: only the situation, the English on request */
-    if(CV&&CV.replay)L=Math.max(L,1);}
+    if(CV&&CV.replay)L=Math.max(L,1);
+    /* Say it comes after Write it: once you've met every word of your line, you answer what they said, not an English sentence */
+    if(CV&&CV.mode==='speak'&&ln.lt.split(/\s+/).map(wordLvl).every(l=>l===null||l>=0))L=Math.max(L,1);}
   if(L<=0)return '<div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>';
   const en='<button type="button" class="linkbtn" data-prompt="'+(L<=2?'en':'hint')+'">'+(L<=2?'Show the English':'Need a hint?')+'</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
   if(L<=2)return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;
