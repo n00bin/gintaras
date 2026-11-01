@@ -886,6 +886,30 @@ COURSE.forEach(u=>u.lessons.forEach(l=>{l.unit=u;l.items=l.items.map((raw,i)=>{
    exchange (Labas! Kaip sekasi? Gerai, ačiū.). The words keep their ids, so their recordings and everyone's progress stay. */
 (()=>{const u=COURSE.find(x=>x.id==='u1');const its=['u1a-1:0','u1a-2:3','u1a-2:4','u1b-1:4','u1b-1:3'].map(id=>BYID[id]);if(!u||its.some(i=>!i))return;
   const l={id:'u1a-0',title:'First words',items:its,unit:u,moved:true};its.forEach(i=>{i.lesson.items=i.lesson.items.filter(x=>x!==i);i.lesson=l;});u.lessons.unshift(l);})();
+/* Edition 2, step 5: bigger lessons. Five words (under 3 minutes) was too little for a 10-minute plan, so each unit's words are
+   grouped into lessons of 6 to 8 (4 to 5 minutes), in the same order. Every word keeps its id, so recordings and progress stay.
+   A new lesson is made of parts (the old 5-word lessons it holds) and counts as done for anyone who had finished all of them
+   (migrateLessons in index.html). Lessons that were moved in from elsewhere stay as they are. Basics is grouped by hand. */
+const LESSON_MAX=8;
+const REGROUP={u1:[['u1a-1','u1a-2','Hello and goodbye'],['u1b-1','u1b-2','Yes, no, great'],['u1c-1','I, you, he, she'],['u1d-1'],['u1c-2','u1c-3','Names and where you\'re from']]};
+COURSE.forEach(u=>u.lessons.forEach(l=>l.items.forEach(i=>{i.sec=l.id.replace(/-\d+$/,'');})));
+COURSE.forEach(u=>{if(u.retire)return;const keep=l=>l.moved||MOVE_BITES[l.id];const base=t=>t.replace(/ · part \d+$/,'');
+  const make=(items,id,title,parts)=>{const l={id,title,items,unit:u,parts};items.forEach(i=>{i.lesson=l;});return l;};
+  if(REGROUP[u.id]){const by={};u.lessons.forEach(l=>by[l.id]=l);const first={};
+    REGROUP[u.id].forEach(g=>{const ids=g.filter(x=>by[x]);if(!ids.length)return;const ls=ids.map(x=>by[x]);
+      const name=g.length>ids.length?g[g.length-1]:null,l=ls.length===1?ls[0]:make(ls.flatMap(x=>x.items),u.id+'.'+ids.join('+'),name,ids);if(name)l.title=name;ids.forEach((x,k)=>{first[x]=k?null:l;});});
+    u.lessons=u.lessons.map(l=>l.id in first?first[l.id]:l).filter(Boolean);return;}
+  const out=[];let run=[];
+  const flush=()=>{const items=run.flatMap(l=>l.items),n=items.length;if(!n){run=[];return;}const k=Math.ceil(n/LESSON_MAX);
+    const groups=[];for(let g=0,at=0;g<k;g++){const size=Math.floor(n/k)+(g<n%k?1:0);groups.push(items.slice(at,at+size));at+=size;}
+    /* named after the section most of its words come from (the first one on a tie), numbered when that name repeats */
+    const titles=groups.map(gr=>{const c={};gr.forEach(i=>{const b=base(run.find(l=>l.items.includes(i)).title);c[b]=(c[b]||0)+1;});
+      return Object.keys(c).reduce((a,b)=>c[b]>c[a]?b:a);});
+    groups.forEach((gr,g)=>{const parts=[...new Set(gr.map(i=>run.find(l=>l.items.includes(i)).id))],one=parts.length===1&&run.find(l=>l.id===parts[0]);
+      if(one&&one.items.length===gr.length)return out.push(one);
+      const same=titles.filter(t=>t===titles[g]).length>1?' · part '+(titles.slice(0,g+1).filter(t=>t===titles[g]).length):'';
+      out.push(make(gr,u.id+'.L'+(out.length+1),titles[g]+same,parts));});run=[];};
+  u.lessons.forEach(l=>{if(keep(l)){flush();out.push(l);}else run.push(l);});flush();u.lessons=out;});
 /* The Sounds unit (loanwords like pica and žirafa) teaches the letters, then retires: its words don't come back in warm-ups,
    reviews or games, and it has no unit check. */
 (COURSE.find(u=>u.id==='u0')||{}).retire=true;
@@ -1093,6 +1117,8 @@ const LESSON_TIPS={
 'u12a-2':'<b>Krepšinis</b> (basketball) is Lithuania\'s unofficial religion. <b>Vasario 16-oji</b>, 16 February 1918, is Independence Day.',
 };
 /* Speaking advice for each unit's "Speak it" lesson. */
+/* a grouped lesson's tip is the tips of the parts it is made of */
+COURSE.forEach(u=>u.lessons.forEach(l=>{if(!l.parts||LESSON_TIPS[l.id])return;const ts=[...new Set(l.parts.map(p=>LESSON_TIPS[p]).filter(Boolean))];if(ts.length)LESSON_TIPS[l.id]=ts.join('<br><br>');}));
 const SPEAK_TIPS={
 'u0':'Say every letter, slowly. Lithuanian rewards care: if you pronounce each letter, you will be understood.',
 'u1':'Greetings are all about rhythm. Hit the bold syllable and keep the rest quick and light.',

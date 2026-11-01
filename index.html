@@ -1014,8 +1014,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.77';
-const APP_VERSION=149;
+const APP_RELEASE='3.78';
+const APP_VERSION=150;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1051,7 +1051,7 @@ function sharedSet(v,at){try{localStorage.setItem(SHARED_KEY,JSON.stringify({at,
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
 /* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
-const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/3.3)),label:m+' min'});
+const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/4.5)),label:m+' min'}); /* a lesson is 6 to 8 words, about 4 to 5 minutes */
 const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 /* Fresh start (2026-10-30): after the course and the scheduler were rebuilt, everyone starts again from lesson 1, so they
    all get the new lessons and FSRS learns from real answers from day one. XP, streak, amber, league, badges, About me and
@@ -1254,7 +1254,7 @@ function checkBadges(){S.badges=S.badges||{};const got=[];BADGES.forEach(b=>{if(
    so at least about eleven days after it was first learned. Earned skills stay earned; a word that slips back
    below that only asks for a refresh. Reads S.items directly so unseen words don't get empty records. */
 const CAN_LVL=4;
-const CAN_ITEMS={};CANDO.forEach(c=>CAN_ITEMS[c[0]]=ITEMS.filter(i=>c[3].includes(i.lesson.id.replace(/-\d+$/,''))));
+const CAN_ITEMS={};CANDO.forEach(c=>CAN_ITEMS[c[0]]=ITEMS.filter(i=>c[3].includes(i.sec||i.lesson.id.replace(/-\d+$/,''))));
 function wlvl(i){const r=S.items[i.id];return r&&r.seen?r.lvl:-1;}
 function canState(c){const its=CAN_ITEMS[c[0]];return {its,n:its.length,m:its.filter(i=>wlvl(i)>=CAN_LVL).length,seen:its.filter(i=>wlvl(i)>=0).length,got:(S.cando||{})[c[0]]};}
 function checkCando(){S.cando=S.cando||{};const got=[];CANDO.forEach(c=>{const s=canState(c);if(!s.got&&s.n&&s.m===s.n){S.cando[c[0]]=today();got.push(c);}});return got;}
@@ -1297,6 +1297,10 @@ function dueItems(){const n=Date.now();return practised().filter(i=>rec(i.id).du
    days apart), so a crown can't be farmed by replaying. A missed word drops a level, and the crown with it.
    S.lessons[id] still counts finishes; only "finished at all" matters here. */
 const LESSON_BY={};COURSE.forEach(u=>u.lessons.forEach(l=>LESSON_BY[l.id]=l));
+/* Lessons were grouped into bigger ones (lang file, "bigger lessons"): a new lesson counts as done, as many times as its least
+   done part, for anyone who had finished every part of it. Runs at start and after a sync, and never lowers anything. */
+function migrateLessons(){if(!S||!S.lessons)return;COURSE.forEach(u=>u.lessons.forEach(l=>{if(!l.parts||S.lessons[l.id]>0)return;
+  const n=Math.min(...l.parts.map(p=>S.lessons[p]||0));if(n>0)S.lessons[l.id]=n;}));}
 /* A Speak it lesson's crowns measure speaking instead: each word's speaking level (spk) goes up by one when you say it
    right (microphone, or rating yourself Good or Easy), at most once a day, and down by one when you rate it Hard. */
 function slvl(i){const r=S.items[i.id];return r&&r.spk||0;}
@@ -1589,7 +1593,7 @@ function placeFinish(){const P=Q.place;const now=new Date();now.setHours(0,0,0,0
   $('#stage').innerHTML='<div class="done">'+mascot(P.passed.length?'cheer':'think','done-mascot')+'<h2>'+(P.passed.length?'You start at '+esc(stop?UNIT_BY[stop].en:'the end')+'!':'You start at the beginning')+'</h2><p class="note">'+
     (P.passed.length?P.passed.length+' unit'+(P.passed.length===1?'':'s')+' skipped. Those words come up in your reviews over the next few days, so anything you were unsure of comes back.':'No problem: the course starts from zero, and goes at your pace.')+'</p></div>';
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
-function renderAll(){personalise();renderTop();renderBite();renderCatchUp();renderPlaceCard();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
+function renderAll(){migrateLessons();personalise();renderTop();renderBite();renderCatchUp();renderPlaceCard();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
 
 /* ===================== FACES AND THE MASCOT ===================== */
 /* People are drawn with the Notionists set (CC0, by Zoish) through DiceBear (MIT), bundled in avatars.js so they work
@@ -1835,7 +1839,7 @@ function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(
   const day=S.drillDay&&S.drillDay.d===today()?S.drillDay.f:[];
   /* every word of the finished sentence has been met already, or is taught in this lesson: a drill never teaches a word by testing it */
   const all=new Set(l.items.flatMap(i=>norm(i.lt).split(' '))),met=d=>norm(d.frame.replace('___',d.ans)).split(' ').every(w=>all.has(w)||(wordLvl(w)??-1)>=0);
-  const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?d.l.includes(l.id):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
+  const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?(l.parts||[l.id]).some(id=>d.l.includes(id)):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
   if(pick.length){S.drillDay={d:today(),f:day.concat(pick.map(d=>d.frame))};}return pick;}
 const STEPLESS={intro:1,tip:1,metip:1,mesay:1};
 /* A grammar table: a few rows of Lithuanian and English, and one line on the rule. */
