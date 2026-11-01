@@ -968,6 +968,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <label>Where are you from?<select id="wm-from"></select></label>
     </div>
     <p class="note">Want the lessons even more about you? Add your work, family and hobbies any time on your <b>Profile</b>, under <b>About me</b>.</p>
+    <p class="note"><button type="button" class="linkbtn" id="wm-place" hidden></button></p>
   </div>
   <div class="hello" id="welcome-signin" hidden>
     <span class="gem big" aria-hidden="true"></span>
@@ -1014,8 +1015,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.78';
-const APP_VERSION=150;
+const APP_RELEASE='3.79';
+const APP_VERSION=151;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1440,13 +1441,15 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
   const sub=!unlocked?u.lessons.length+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+u.lessons.length+' lessons done':doneCount+' of '+u.lessons.length+' lessons done';
   el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
-    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+u.tip+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'');
+    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+u.tip+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
+    (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
   const ls=el.querySelector('.lessons');
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
     b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
     b.onclick=()=>startLesson(l);ls.appendChild(b);});
   const bossBtn=el.querySelector('[data-boss]');if(bossBtn)bossBtn.onclick=e=>{e.stopPropagation();startBoss(u);};
+  const toBtn=el.querySelector('[data-testout]');if(toBtn)toBtn.onclick=e=>{e.stopPropagation();startTestOut(u);};
   const gramBtn=el.querySelector('[data-gram]');if(gramBtn)gramBtn.onclick=e=>{e.stopPropagation();openGrammar(u);};
   const tipBtn=el.querySelector('[data-tip]');
   if(tipBtn)tipBtn.onclick=e=>{e.stopPropagation();const tip=el.querySelector('.tip');tip.hidden=!tip.hidden;e.currentTarget.setAttribute('aria-expanded',String(!tip.hidden));};
@@ -1576,19 +1579,37 @@ const isFresh=()=>!S.lessonsDone&&!(S.placedTo>0)&&!S.placeDone;
 function renderPlaceCard(){const box=$('#place-card');if(!box)return;box.hidden=!isFresh();if(box.hidden)return;
   box.innerHTML='<span class="eyebrow">Already know some '+esc(LANG.en)+'?</span><h2>Skip what you know</h2><p class="note">A quick check, unit by unit: type the '+esc(LANG.en)+' for a few words. Get 3 of 4 and that unit is done. Tap “I don’t know” whenever you don’t; it stops where you need to start.</p><button type="button" class="btn ghost" id="btn-place">Take the check</button>';
   $('#btn-place').onclick=startPlace;}
-function startPlace(){const units=STEPS.filter(id=>UNIT_BY[id]&&!UNIT_BY[id].retire).slice(0,15);
+function startPlace(){const units=STEPS.filter(id=>UNIT_BY[id]&&!UNIT_BY[id].retire);
   Q={queue:[],idx:0,correct:0,total:0,items:[],mode:'place',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,place:{units,i:-1,right:0,got:{},passed:[]}};
   placeNext();$('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
 /* After each unit's 4 words: passed, go on to the next unit; otherwise stop. Returns true when more questions were added. */
 function placeNext(){const P=Q.place;
+  if(P.testout){if(P.right>=P.need&&!P.passed.length)P.passed.push(P.units[0]);return false;}
   if(P.i>=0){if(P.right>=3)P.passed.push(P.units[P.i]);else return false;}
   P.i++;P.right=0;if(P.i>=P.units.length)return false;
   const its=sample(bossItems(UNIT_BY[P.units[P.i]]).filter(i=>i.lt.split(' ').length<=4),4);
   its.forEach(it=>Q.queue.push({type:'type',item:it}));Q.items=Q.items.concat(its);Q.total=Q.queue.length;return true;}
-function placeFinish(){const P=Q.place;const now=new Date();now.setHours(0,0,0,0);
+/* A unit you've shown you know: its lessons count as done, and its words you hadn't learned yet start at level 1 (level 2 if you
+   typed them right in the check), due over the next two days, so nothing is taken on trust for long. */
+function creditUnit(uid,got){const now=new Date();now.setHours(0,0,0,0);UNIT_BY[uid].lessons.forEach(l=>{S.lessons[l.id]=Math.max(1,S.lessons[l.id]||0);
+  l.items.forEach(it=>{const r=rec(it.id);if(r.lvl>0)return;r.seen=true;r.lvl=got[it.id]?2:1;r.up=today();r.due=now.getTime()+DAY*(got[it.id]?2:1);});});}
+/* Test out: a unit you've opened but not finished can be skipped by showing you know it: 8 of its words to type from the
+   English, 6 right first time passes. One try per unit a day. The conversation after it is still yours to have. */
+const TEST_N=8,TEST_PASS=6;
+const testWords=u=>bossItems(u).filter(i=>i.lt.split(' ').length<=4);
+const canTestOut=(u,ui)=>!u.retire&&unitUnlocked(ui)&&!stepDone(u.id)&&testWords(u).length>=TEST_N;
+function startTestOut(u){S.testout=S.testout||{};if(S.testout[u.id]===today())return toast('One try a day for each unit. Try again tomorrow, or carry on with the lessons.');
+  S.testout[u.id]=today();save();const its=sample(testWords(u),TEST_N);
+  Q={queue:its.map(it=>({type:'type',item:it})),idx:0,correct:0,total:its.length,items:its,mode:'place',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,
+    place:{units:[u.id],i:0,right:0,got:{},passed:[],testout:true,need:TEST_PASS}};
+  $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
+function placeFinish(){const P=Q.place;
+  if(P.testout){const u=UNIT_BY[P.units[0]],ok=P.passed.length>0;if(ok)creditUnit(u.id,P.got);save();
+    $('#stage').innerHTML='<div class="done">'+mascot(ok?'cheer':'think','done-mascot')+'<h2>'+(ok?esc(u.en)+' tested out!':'Not this time')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+P.right+' of '+Q.total+'</strong><small>Right first time</small></div></div><p class="note">'+
+      (ok?'Its lessons count as done. Its words come up in your reviews over the next few days, so anything you were unsure of comes back.':'You need '+P.need+'. The lessons will get you there, and you can test out again tomorrow.')+'</p></div>';
+    $('#lbar').style.width='100%';const b=$('#btn-check');b.textContent='Continue';b.disabled=false;b.onclick=quit;setFoot('');return;}
   const reach=P.units[P.passed.length]?STEPS.indexOf(P.units[P.passed.length]):STEPS.length;
-  P.passed.concat(P.passed.length?STEPS.filter((id,k)=>UNIT_BY[id]&&UNIT_BY[id].retire&&k<reach):[]).forEach(uid=>UNIT_BY[uid].lessons.forEach(l=>{S.lessons[l.id]=Math.max(1,S.lessons[l.id]||0);
-    l.items.forEach(it=>{const r=rec(it.id);if(r.lvl>0)return;r.seen=true;r.lvl=P.got[it.id]?2:1;r.up=today();r.due=now.getTime()+DAY*(P.got[it.id]?2:1);});}));
+  P.passed.concat(P.passed.length?STEPS.filter((id,k)=>UNIT_BY[id]&&UNIT_BY[id].retire&&k<reach):[]).forEach(uid=>creditUnit(uid,P.got));
   const stop=P.units[P.passed.length];S.placeDone=today();if(P.passed.length)S.placedTo=stop?STEPS.indexOf(stop):STEPS.length;save();
   $('#stage').innerHTML='<div class="done">'+mascot(P.passed.length?'cheer':'think','done-mascot')+'<h2>'+(P.passed.length?'You start at '+esc(stop?UNIT_BY[stop].en:'the end')+'!':'You start at the beginning')+'</h2><p class="note">'+
     (P.passed.length?P.passed.length+' unit'+(P.passed.length===1?'':'s')+' skipped. Those words come up in your reviews over the next few days, so anything you were unsure of comes back.':'No problem: the course starts from zero, and goes at your pace.')+'</p></div>';
@@ -3193,6 +3214,9 @@ window.openSignin=openSignin;
 let wmG='';
 function welcomeMe(){document.querySelector('#welcome .hello').hidden=true;$('#welcome-me').hidden=false;$('#welcome .stage').scrollTop=0;
   const m=S.me||{};wmG=m.g||'';$('#wm-name').value=m.name||'';
+  /* someone who already knows some can check where to start instead of beginning at hello */
+  const pl=$('#wm-place');pl.hidden=meOnly||!isFresh();pl.textContent='Already know some '+LANG.en+'? Take a quick check to see where to start';
+  pl.onclick=()=>{welcomeMeSave();S.welcomed=true;save();$('#welcome').hidden=true;document.body.style.overflow='';signinMode=null;renderAll();startPlace();};
   $('#wm-from').innerHTML='<option value="">Somewhere else, or skip</option>'+ME_COUNTRIES.map(c=>'<option value="'+c[0]+'"'+(c[0]===m.from?' selected':'')+'>'+esc(c[1])+'</option>').join('');
   const chips=document.querySelectorAll('[data-wg]');chips.forEach(b=>{b.classList.toggle('in',b.dataset.wg===wmG);b.setAttribute('aria-pressed',b.dataset.wg===wmG);
     b.onclick=()=>{wmG=wmG===b.dataset.wg?'':b.dataset.wg;chips.forEach(x=>{x.classList.toggle('in',x.dataset.wg===wmG);x.setAttribute('aria-pressed',x.dataset.wg===wmG);});};});}
