@@ -1014,8 +1014,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.76';
-const APP_VERSION=148;
+const APP_RELEASE='3.77';
+const APP_VERSION=149;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1087,7 +1087,7 @@ function rollDay(){if(S.todayDate!==today()){S.todayDate=today();S.todayXp=0;S.t
     const missed=Math.round((new Date(today()+'T00:00')-new Date(S.lastDay+'T00:00'))/DAY)-1;
     if(S.streak>0&&missed<=restsLeft()){for(let i=0;i<missed;i++){if((S.restsUsed||0)<FREE_RESTS)S.restsUsed=(S.restsUsed||0)+1;else S.freezes--;}S.lastDay=yesterday();S.restNote=missed;}
     else{if(S.streak>0){S.welcomeBack=S.streak;S.brokenStreak={n:S.streak,on:today()};}S.streak=0;}}}
-function addXp(n){rollDay();if(xpDouble())n*=2;S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(!(S.lastDay>=t)){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;const sb={7:10,30:25,100:50}[S.streak];if(sb)earnAmber(sb,S.streak+'-day streak');}
+function addXp(n,review){rollDay();if(xpDouble(review))n*=2;S.xp+=n;S.todayXp+=n;window.dispatchEvent(new CustomEvent('gintaras:xp',{detail:n}));const t=today();if(!(S.lastDay>=t)){S.streak=(S.lastDay===yesterday())?S.streak+1:1;S.lastDay=t;S.daysLearned=(S.daysLearned||0)+1;if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;const sb={7:10,30:25,100:50}[S.streak];if(sb)earnAmber(sb,S.streak+'-day streak');}
   if(S.todayXp>=S.goal*2&&S.freezeDay!==t&&(S.freezes||0)<2){S.freezes=(S.freezes||0)+1;S.freezeDay=t;S.newFreeze=true;}save();return n;}
 
 /* ===================== AMBER, HAPPY HOUR AND THE SHOP ===================== */
@@ -1105,20 +1105,25 @@ function spendAmber(n){if(amber()<n){toast('You need '+(n-amber())+' more amber.
 function renderAmber(){const el=$('#amber');if(el)el.textContent=amber();}
 function amberLines(){const log=amberLog||[];amberLog=null;const chest=log.find(x=>x[1]==='treasure chest');const rest=log.filter(x=>x!==chest),tot=rest.reduce((a,x)=>a+x[0],0);
   return (chest?['<div class="win amber-win chest"><b>🎁 Treasure chest!</b> · +'+chest[0]+' amber</div>']:[]).concat(rest.length?['<div class="win amber-win"><img src="gem.svg" alt="" width="18" height="16"><b>+'+tot+' amber</b> · '+esc(rest.map(x=>x[1]).join(', '))+'</div>']:[]);}
-/* Happy hour: one hour a day, the same for everyone, somewhere between noon and 10 pm, when XP counts double.
-   It does not stack with bought double XP: the most you can get is twice. */
+/* Happy hour: one hour a day, the same for everyone, somewhere between noon and 10 pm, when reviews count double:
+   due words, the Tricky words workout and the unit check. Reviews are what people skip and what makes words stick, and
+   doubling everything made replaying an easy lesson the cheapest way up the league. Bought double XP still covers
+   everything. They don't stack: the most you can get is twice. */
 function happyHourAt(day){let h=7;for(const ch of (day||today()))h=(h*31+ch.charCodeAt(0))%9973;return 12+h%10;}
 const happyHour=()=>new Date().getHours()===happyHourAt();
 const boostOn=()=>!!S.boostUntil&&Date.now()<S.boostUntil;
-const xpDouble=()=>happyHour()?'Happy hour':boostOn()?'Double XP':'';
+const xpDouble=review=>happyHour()&&review?'Happy hour':boostOn()?'Double XP':'';
+/* what happy hour pays double on */
+const reviewXp=q=>!!q&&(q.mode==='check'||q.mode==='review'&&(q.dueN>0||!!q.tricky));
 const clock=h=>(h%12||12)+(h<12?' am':' pm');
 function renderHappy(){const el=$('#hhnote');if(!el)return;const h=happyHourAt(),now=new Date().getHours();
-  el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Double XP until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
-  el.hidden=now===h;const x2=$('#x2');if(x2)x2.hidden=!xpDouble();
-  if(now===h&&S.hhPop!==today()&&$('#sheet').hidden&&$('#welcome').hidden&&!window.popBusy()){S.hhPop=today();save();
-    celebrate({mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(h+1)+'. Every lesson counts twice.',ms:3600});}
+  el.innerHTML=now===h?'🎉 <b>Happy hour!</b> Reviews count double until '+clock(h+1)+'.':now<h?'🎉 Today\'s happy hour: <b>'+clock(h)+' to '+clock(h+1)+'</b>, double XP on reviews.':'Happy hour is over for today. Tomorrow\'s is at '+clock(happyHourAt(dayStr(-1)))+'.';
+  el.hidden=now===h;const x2=$('#x2');if(x2){x2.hidden=!(boostOn()||now===h);x2.title=boostOn()?'Double XP is on':'Happy hour: reviews count double';}
+  const d=dueItems().length,due=d?d+' word'+(d===1?'':'s')+' to review':'';
+  if(now===h&&d&&S.hhPop!==today()&&$('#sheet').hidden&&$('#welcome').hidden&&!window.popBusy()){S.hhPop=today();save();
+    celebrate({mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Reviews count double until '+clock(h+1)+'. You have '+due+'.',ms:3600});}
   const bn=$('#hhbanner');if(bn){bn.hidden=now!==h;if(now===h){const left=60-new Date().getMinutes();
-    bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Double XP</strong><small>Every lesson counts twice until '+clock(h+1)+' · '+left+' min left</small></span>';}}}
+    bn.innerHTML='<span class="big" aria-hidden="true">🎉</span><span><strong>Happy hour! Reviews count double</strong><small>'+(d?due+' · until '+clock(h+1)+' · '+left+' min left':'Nothing to review yet. Happy hour pays double on reviews, so it\'s yours once words come back.')+'</small></span>';}}}
 setInterval(()=>{renderHappy();},60000);
 /* Preview: open the app with #pops at the end of the link to see every pop-up once. Changes nothing. */
 function previewPops(){if(location.hash!=='#pops')return;history.replaceState(null,'',location.pathname+location.search);
@@ -1128,7 +1133,7 @@ function previewPops(){if(location.hash!=='#pops')return;history.replaceState(nu
    {mood:'cheer',icon:'⚔️',title:'Challenge on!',sub:'Davawn accepted. Most XP before the week ends wins 40 amber'},{mood:'cheer',icon:'🏆',title:'You won!',sub:'You beat Davawn: +40 amber'},
    {mood:'happy',icon:'🤝',title:'A draw!',sub:'You and Davawn tied: 20 amber back'},{mood:'think',icon:'⚔️',title:'Davawn won this one',sub:'Rematch next week?'},
    {mood:'happy',icon:'↩️',title:'Amber back',sub:'Your challenge with Davawn didn\'t go ahead: +20 amber'},{mood:'rest',icon:'🌙',title:'Rest day used',sub:'Your streak is safe'},
-   {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Double XP until '+clock(happyHourAt()+1)+'. Every lesson counts twice.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));
+   {mood:'happy',icon:'🎉',title:'Happy hour!',sub:'Reviews count double until '+clock(happyHourAt()+1)+'. You have 12 words to review.'}].forEach(o=>celebrate(Object.assign(o,{ms:3200})));
   /* last: a challenge arriving, which waits for an answer (the buttons only close it here) */
   const wait=setInterval(()=>{if(popOn||popQ.length)return;clearInterval(wait);if(window.cloud&&window.cloud.chalPreview)window.cloud.chalPreview();
     /* then the challenger's side of a raise, once that one is closed */
@@ -1183,7 +1188,7 @@ function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('No
 function buy(id){
   if(id==='rest'){if((S.freezes||0)>=2)return toast('You already have 2 spare rest days');if(!spendAmber(10))return;S.freezes=(S.freezes||0)+1;celebrate({mood:'rest',icon:'🌙',title:'Spare rest day',sub:'It covers one extra missed day'});}
   else if(id==='boost'){if(boostOn())return toast('Double XP is already on');if(S.boostDay===today())return toast('Double XP is once a day. Back tomorrow!');
-    if(happyHour())return toast('It\'s happy hour: XP is already double. Save your amber!');if(!spendAmber(15))return;S.boostUntil=Date.now()+15*60000;S.boostDay=today();celebrate({mood:'cheer',icon:'⚡',title:'Double XP!',sub:'Every lesson counts twice for 15 minutes. Go!'});}
+    if(!spendAmber(15))return;S.boostUntil=Date.now()+15*60000;S.boostDay=today();celebrate({mood:'cheer',icon:'⚡',title:'Double XP!',sub:'Every lesson counts twice for 15 minutes. Go!'});}
   else if(id==='repair'){if(!canRepair())return toast('Nothing to repair: your streak is fine');if(!spendAmber(30))return;const n=S.brokenStreak.n;
     if(S.lastDay===today()||S.lastDay===yesterday())S.streak=n+S.streak;else{S.streak=n;S.lastDay=yesterday();}
     if(S.streak>(S.bestStreak||0))S.bestStreak=S.streak;S.brokenStreak=null;celebrate({mood:'cheer',icon:'🔥',title:'Streak repaired!',sub:'Your '+S.streak+'-day streak is back'});}
@@ -1195,7 +1200,6 @@ function buy(id){
 function shopState(id){const left=boostOn()?Math.ceil((S.boostUntil-Date.now())/60000):0;
   if(id==='rest'&&(S.freezes||0)>=2)return 'You have 2';
   if(id==='boost'&&left)return 'On · '+left+' min';
-  if(id==='boost'&&happyHour())return 'Happy hour';
   if(id==='boost'&&S.boostDay===today())return 'Used today';
   if(id==='repair'&&!canRepair())return 'Not needed';
   if(id==='shield'&&window.cloud&&window.cloud.shieldOn&&window.cloud.shieldOn())return 'On this week';
@@ -1543,8 +1547,8 @@ function renderBite(){rollDay();const d=dueItems().length;const l=nextLesson();c
   if(sp){const L=sp.lesson&&LESSON_BY[sp.lesson];$('#bite-title').textContent='Carry on: '+(L?L.unit.en+' · '+L.title:'your review');$('#bite-note').textContent='You stopped part way through. '+sp.left+' card'+(sp.left===1?'':'s')+' to go, and your answers so far are kept.';
     b.textContent='Carry on';b.onclick=resumePlace;b2.hidden=false;b2.textContent='Start fresh instead';b2.onclick=()=>{dropPlace();renderBite();};}
   /* reviews come first: always when 10 or more are waiting, otherwise one round a day before new lessons */
-  else if(d>=1&&(d>=10||S.reviewDay!==today())){const n=Math.min(d,10);$('#bite-title').textContent='Review '+n+' word'+(n===1?'':'s');
-    $('#bite-note').textContent=(d>10?d+' words are due, so this is one round of 10. ':'')+'These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);
+  else if(d>=1&&(d>=10||S.reviewDay!==today()||happyHour())){const n=Math.min(d,10);$('#bite-title').textContent='Review '+n+' word'+(n===1?'':'s');
+    $('#bite-note').textContent=(happyHour()?'Happy hour: reviews count double right now. ':'')+(d>10?d+' words are due, so this is one round of 10. ':'')+'These are about to slip. A quick review keeps them, then the next lesson is waiting.';b.textContent='Start review';b.onclick=()=>startReview(false);
     if(l&&!l.conv&&d<30){b2.hidden=false;b2.textContent='Learn something new instead';b2.onclick=()=>startLesson(l);}}
   else if(l&&l.conv){const c=CONV_BY[l.conv],w=convDone(c.id);$('#bite-title').textContent=(w?'Say it: ':'Conversation: ')+c.title;
     $('#bite-note').textContent=w?'You wrote this one. Now say the same conversation out loud, and the next unit opens.':'Chat with '+c.cast.map(p=>p.name).join(' and ')+' in '+LANG.en+'. New words are underlined. First Write it, like texting, then Say it out loud.';
@@ -2286,7 +2290,7 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
   const rc=Q.recall||0,work=Q.correct+rc;
   let xp;if(Q.mode==='check')xp=2+work+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work+ups;else if(Q.mode==='lesson'){xp=replay?2+ups+rc:2+work+ups;if(typedSpk){S.typedSpk=S.typedSpk||{};S.typedSpk[Q.lesson.id]=1;}else S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated)S.speakMic=(S.speakMic||0)+1;}}else xp=1+ups+rc; /* extra practice (nothing due): what you typed or said, and words moving up */
   let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=Math.max(1,Math.round(xp/4));S.perfects=(S.perfects||0)+1;}
-  amberLog=[];const dbl=xpDouble();const total=addXp(xp+bonus);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
+  amberLog=[];const rv=reviewXp(Q),dbl=xpDouble(rv);const total=addXp(xp+bonus,rv);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   earnAmber(1,Q.mode==='lesson'?'lesson done':'practice done');if(perfect)earnAmber(3,'flawless');
   const dayDone=goalCheck();
   let chest=0;if(Q.mode==='lesson'&&S.lessonsDone%5===0){chest=3+Math.floor(Math.random()*8);earnAmber(chest,'treasure chest');}
