@@ -1041,8 +1041,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.93';
-const APP_VERSION=165;
+const APP_RELEASE='3.94';
+const APP_VERSION=166;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1213,9 +1213,11 @@ function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('No
   /* in between: the other cards about these words, then a few about words you know well */
   const q=[],pend=[],rest=Q.queue.filter(e=>e.type!=='intro').concat(shuffle(practised().filter(i=>!pick.includes(i)&&rec(i.id).lvl>=1)).slice(0,6).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true})));let asked=0;
   const add=c=>{if(!c)return false;q.push(c);if(c.type!=='intro')asked++;return true;};
-  const filler=()=>{const no=pend.map(p=>p.it).concat([(q[q.length-1]||{}).item]),g=rest.findIndex(e=>!no.includes(e.item)&&!(e.items||[]).some(i=>no.includes(i)));return g>=0?rest.splice(g,1)[0]:null;};
+  /* (Round 8) never a card about a tricky word before its fresh look (Sveiki was typed, then re-taught) */
+  const met=new Set(),later=i=>pick.includes(i)&&!met.has(i);
+  const filler=()=>{const no=pend.map(p=>p.it).concat([(q[q.length-1]||{}).item]),g=rest.findIndex(e=>!no.includes(e.item)&&!later(e.item)&&!(e.items||[]).some(i=>no.includes(i)||later(i)));return g>=0?rest.splice(g,1)[0]:null;};
   const ready=()=>pend.findIndex(p=>asked-p.at>=4);
-  pick.forEach(it=>{add({type:'intro',item:it,leech:true});pend.push({it,at:asked});let k;while((k=ready())>=0)add(test(pend.splice(k,1)[0].it));add(filler());});
+  pick.forEach(it=>{add({type:'intro',item:it,leech:true});met.add(it);pend.push({it,at:asked});let k;while((k=ready())>=0)add(test(pend.splice(k,1)[0].it));add(filler());});
   const more=shuffle(practised().filter(i=>!pick.includes(i)&&!i.me&&peek(i.id).intro));
   const extra=()=>{const no=pend.map(p=>p.it).concat([(q[q.length-1]||{}).item]),i=more.findIndex(x=>!no.includes(x));return i>=0?{type:'mc_lt_en',item:more.splice(i,1)[0],force:true,mixed:true}:null;};
   while(pend.length){const k=ready();if(k>=0){add(test(pend.splice(k,1)[0].it));continue;}if(!add(filler())&&!add(extra()))add(test(pend.shift().it));}
@@ -1549,7 +1551,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   const ls=el.querySelector('.lessons');
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
-    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':l.items.length+(l.items.length===1?' word':' words'))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
+    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud':loadLabel(l.items))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
     b.onclick=()=>startLesson(l);ls.appendChild(b);});
   const bossBtn=el.querySelector('[data-boss]');if(bossBtn)bossBtn.onclick=e=>{e.stopPropagation();startBoss(u);};
   const toBtn=el.querySelector('[data-testout]');if(toBtn)toBtn.onclick=e=>{e.stopPropagation();startTestOut(u);};
@@ -1747,7 +1749,7 @@ function renderBite(){rollDay();const d=dueNow().length;const l=nextLesson();con
     /* (Round 7) the conversation card says what's due too, and offers the review */
     if(d){$('#bite-note').textContent+=' '+d+(d===1?' word is':' words are')+' due as well.';b2.hidden=false;b2.textContent='Review '+Math.min(d,10)+' word'+(Math.min(d,10)===1?'':'s')+' first';b2.onclick=()=>startReview(false);}}
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
-    $('#bite-note').textContent=l.speak?l.items.length+' '+(l.items.every(i=>i.lt.includes(' '))?'phrases':'words and phrases')+' from this unit, said out loud. Nobody is listening but you.':isNew?(()=>{const n=l.items.filter(i=>!taught(i)).length;return n?n+' new word'+(n===1?'':'s')+', one at a time. Meet each one, then write it and say it yourself.':'Words you have met already, written and said in new ways.';})():'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);
+    $('#bite-note').textContent=l.speak?l.items.length+' '+(l.items.every(i=>i.lt.includes(' '))?'phrases':'words and phrases')+' from this unit, said out loud. Nobody is listening but you.':isNew?(()=>{const nw=l.items.filter(i=>!taught(i)),n=nw.length;return n?loadLabel(nw).replace(/^(\d+) /,'$1 new ')+', one at a time. Meet each one, then write it and say it yourself.':'Words you have met already, written and said in new ways.';})():'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);
     if(d)$('#bite-note').textContent+=' '+d+(d===1?' word is':' words are')+' due as well: '+(d===1?'it waits':'they wait')+' for your next review (Practice).';}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}
   {const n=listenOwed().length;if(n&&canListen())$('#bite-note').textContent+=' '+Math.min(n,3)+' listening card'+(Math.min(n,3)===1?'':'s')+' you skipped '+(Math.min(n,3)===1?'is':'are')+' waiting too.';}}
@@ -2015,22 +2017,27 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
       if(wait)head.push(wait);wait=a;
       let b=exFor(it,meet?SECOND:typesFor(it),a.type);if(meet&&!PROD[b.type])b={type:'type',item:it};if(b.type===a.type&&a.type!=='type')b={type:'type',item:it}; /* a fallback (no gap for a one-word cloze) can land on the first card's kind */
       if(!speakOff()&&a.type!=='speak'&&k%3===1)b={type:'speak',item:it,fresh:meet,blind:true};
-      rest.push(b);});
+      rest.push(b);
+      /* (Round 8) a phrase of new words carries more than one word, so it is recalled once more, late in the lesson */
+      if(meet&&ltWords(it.lt).length>=2){const c=exFor(it,['type','build','cloze','gaps'].filter(t=>t!==b.type),b.type);if(PROD[c.type])rest.push(Object.assign(c,{late:true}));}});
     lastWait=wait;
-    drillsFor(lesson,1).forEach(d=>rest.push({type:'frame',drill:d}));
+    drillsFor(lesson,2).forEach(d=>rest.push({type:'frame',drill:d}));
     /* warm-up: two words from earlier lessons first, then the rest mixed in later */
     const wl=S.warmLast||[],now=Date.now(),miss=i=>{const r=rec(i.id);return (r.bad||0)/((r.ok||0)+(r.bad||0)+1);};
     const td=today(),done2=i=>doneToday(rec(i.id)),missT=i=>rec(i.id).badD===td;
     /* a word is a warm-up once a day at most (a missed word was coming back in every lesson after) */
     /* (Round 7) nor a word you've typed or said right today (Prašau came back as a warm-up minutes after you typed it) */
     let cand=practised().filter(i=>!items.includes(i)&&!done2(i)&&rec(i.id).warmD!==td&&rec(i.id).prodD!==td);
+    /* (Round 8) each lesson opens with two words from the lesson before it, even when that was a few minutes ago: recalled
+       after another lesson, not straight after typing it (not within two minutes of getting it right) */
+    const prevL=lessonBefore(lesson),fresh=i=>now-Math.max(rec(i.id).recAt||0,rec(i.id).at||0)<120000;
+    const pre=prevL?shuffle(prevL.items.filter(i=>taught(i)&&!items.includes(i)&&rec(i.id).warmD!==td&&!fresh(i))).slice(0,2):[];
+    cand=cand.filter(i=>!pre.includes(i));
     if(items.length<=2&&cand.length<5)cand=cand.concat(practised().filter(i=>!items.includes(i)&&!cand.includes(i)&&!doneToday(rec(i.id))&&prodToday(i)<2&&rec(i.id).warmD!==td));
-    const old=shuffle(cand).sort((a,b)=>missT(b)-missT(a)||wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl).slice(0,items.length<=2?5:3); /* a lesson of one or two words needs more in between, or its cards come back to back */
+    const old=pre.concat(shuffle(cand).sort((a,b)=>missT(b)-missT(a)||wl.includes(a.id)-wl.includes(b.id)||(rec(a.id).due>now)-(rec(b.id).due>now)||miss(b)-miss(a)||rec(a.id).lvl-rec(b.id).lvl)).slice(0,items.length<=2?5:3); /* a lesson of one or two words needs more in between, or its cards come back to back */
     S.warmLast=old.map(i=>i.id);old.forEach(i=>{rec(i.id).warmD=td;});
-    /* the warm-ups sit between a new word and its first check */
-    old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})).forEach((w,n)=>{
-      let at=n===0?head.findIndex(e=>e.type==='intro'):head.findIndex((e,k)=>k>0&&!STEPLESS[e.type]&&!e.warm);
-      head.splice(at<0?1:at+1,0,w);});
+    /* (Round 8) the warm-ups open the lesson: two quick recalls before anything new */
+    head.unshift(...old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})));
     old.slice(2).forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));
     /* (Round 6) the very first lesson starts with words, not a grammar box: its tip comes after the first two new words */
     if(!(S.lessonsDone||0)&&!learned().some(i=>taught(i))&&head[0]&&head[0].type==='tip'){const t=head.shift();let c=0,at=head.length;
@@ -2085,7 +2092,7 @@ function planPrune(q,mode,lesson){if(mode!=='lesson'&&mode!=='review')return q;c
     const it=e.item;if(!it){out.push(e);return;}if(cnt[it.id]==null)cnt[it.id]=prodToday(it);
     const pick=/^(mc_lt_en|mc_en_lt|listen|hear)$/.test(e.type),prod=PROD[e.type]||pick&&e.type!=='hear'&&!e.force&&!e.easy&&r(it).prodD===td;
     if(mode!=='lesson'&&pick&&prodAt(k,it))return;
-    if(!own(e)&&(made[key(it)]||prod&&cnt[it.id]>=2))return;
+    if(!own(e)&&!e.warm&&(made[key(it)]||prod&&cnt[it.id]>=2))return;
     if((per[key(it)]=(per[key(it)]||0)+1)>(own(e)?3:2))return;
     if(prod){cnt[it.id]++;made[key(it)]=1;}out.push(e);});
   return out;}
@@ -2102,6 +2109,12 @@ function hearPick(){const td=today(),seen=S.hearDay&&S.hearDay.d===td?S.hearDay.
   return others.length<2?null:{type:'hear',line:ln,others};}
 /* Sentence drills about this lesson: the ones written for it (l), or ones whose sentence uses this lesson's own words
    (so "___ diena" stays with the greetings), and none you've already done today. */
+/* the lesson just before this one on the path (the last one of the unit before, for a unit's first lesson) */
+function lessonBefore(l){if(!l)return null;const order=PATH.filter(x=>typeof x==='string').map(id=>COURSE.find(u=>u.id===id)).filter(Boolean).flatMap(u=>u.lessons.filter(x=>!x.speak));
+  const k=order.indexOf(l);return k>0?order[k-1]:null;}
+/* (Round 8) honest counts: a phrase carries several words, so it's counted as a phrase, not a word */
+function loadLabel(items){const one=items.filter(i=>ltWords(i.lt).length<2).length,ph=items.length-one;
+  return [one?one+(one===1?' word':' words'):'',ph?ph+(ph===1?' phrase':' phrases'):''].filter(Boolean).join(' and ');}
 function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(' ')).filter(w=>!['iš','ir','ar','į','su','yra','o'].includes(w)));
   const day=S.drillDay&&S.drillDay.d===today()?S.drillDay.f:[];
   /* every word of the finished sentence has been met already, or is taught in this lesson: a drill never teaches a word by testing it */
@@ -2268,7 +2281,7 @@ function settleCard(){if(!Q||Q.idx>=Q.queue.length)return false;
       /* (Round 5) a Tricky words workout keeps its cards: the ones in between are the gap after each fresh look */
       /* (Round 7) three cards about one word in a session is enough ("We are here" came seven times); a miss coming back stays */
       const shownN=Q.queue.slice(0,Q.idx).filter(x=>!STEPLESS[x.type]&&(x.item===e.item||(x.items||[]).includes(e.item))).length;
-      const drop=!Q.tricky&&(Q.madeLt&&Q.madeLt[norm(e.item.lt)]&&!own||!own&&PROD[e.type]&&prodToday(e.item)>=2||e.mixed&&doneToday(r)||many||shownN>=3);
+      const drop=!Q.tricky&&!e.warm&&(Q.madeLt&&Q.madeLt[norm(e.item.lt)]&&!own||!own&&PROD[e.type]&&prodToday(e.item)>=2||e.mixed&&doneToday(r)||many||shownN>=3); /* (Round 8) the two warm-ups that open a lesson stay */
       if(drop&&Q.queue.length-Q.idx>1){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return true;}}
     /* a review never shows you a word (a pick, a match) before the card where you have to write or say it */
     if(learn&&Q.mode!=='lesson'&&!Q.tricky&&e.item&&/^(mc_lt_en|mc_en_lt|listen|hear)$/.test(e.type)&&prodLater(e.item)){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return true;}}
@@ -2543,10 +2556,15 @@ function comeBack(c){const q=Q.queue,it=c.item,about=e=>!!e&&(e.item===it||(e.it
   while(p<q.length&&(about(q[p-1])||about(q[p])))p++;
   if(n<5){const need=5-n,later=q.slice(Q.idx+1),pool=shuffle((Q.items||[]).concat(practised()).filter((i,k,a)=>a.indexOf(i)===k&&i!==it&&!i.me&&peek(i.id).seen&&peek(i.id).intro&&
       !(Q.madeLt&&Q.madeLt[norm(i.lt)])&&!later.some(e=>about(e)||e.item===i)));
-    const k=Math.max(0,Math.min(need,pool.length,3-(Q.fillN||0)));
+    const k=Math.max(0,Math.min(need,pool.length,Math.max(3-(Q.fillN||0),3-n))); /* (Round 8) always enough for three cards in between */
     /* a review leaves it for tomorrow; a lesson asks it again at the end whatever (a miss in the lesson is always asked again) */
     if(k<need&&Q.mode!=='lesson')return false;Q.fillN=(Q.fillN||0)+k;pool.slice(0,k).forEach(o=>q.push({type:'mc_lt_en',item:o,extra:true,force:true}));p=q.length;}
-  c.at=Q.shownN||0;q.splice(p,0,c);return true;}
+  c.at=Q.shownN||0;q.splice(p,0,c);
+  /* (Round 8) any other card about the word that was coming up soon waits too: at least three cards about other words come
+     between a miss and the word's next card, so it's recalled, not echoed */
+  for(let guard=0;guard<6;guard++){let m=0,k=Q.idx+1;while(k<q.length&&m<3&&!(real(q[k])&&about(q[k])&&q[k]!==c)){if(real(q[k])&&!about(q[k]))m++;k++;}
+    if(m>=3||k>=q.length||q[k]===c)break;const e=q.splice(k,1)[0];let n2=0,at=Q.idx+1;while(at<q.length&&n2<3){if(real(q[at])&&!about(q[at]))n2++;at++;}q.splice(Math.min(at,q.indexOf(c)<0?q.length:q.indexOf(c)),0,e);}
+  return true;}
 /* The words practised in a session never end it due again the same day: the first review is tomorrow at the earliest
    (a miss is practised again inside the session, as a card that comes back). */
 /* Recalled right first time (typed, written from the audio, said from memory): with no miss since, the word is done for today. */
@@ -2591,6 +2609,8 @@ function endSlip(sg,st,same){if(same<3||same<Math.min(sg.length,st.length)-3)ret
   const e=LANG.endings;return !e||[sg.slice(same),st.slice(same)].every(x=>e.some(y=>y.endsWith(x)));}
 /* gerai, labai, puikiai...: words that never change their ending, so gerei is a spelling slip, not "a different ending" */
 const fixedWord=w=>(LANG.fixed||[]).some(x=>strip(x)===w);
+/* (Round 8) an example in a Why note is shown only when every word in it has had its New word card (names don't count) */
+function exTaught(lt){return norm(lt).split(' ').filter(Boolean).every(w=>knownWord(w)||properNoun(w)&&!/^(iš|į)$/.test(w));}
 /* (Round 8) a word the course has anywhere (a card, a meaning list), in any form it writes: not just a slip of the keys */
 function realWord(w){if(!WORD_ITEMS)wordLvl('');const k=norm(w);return !!(WORD_ITEMS[k]||WORDS[k]||GLUE[k]);}
 /* (Round 5) the same naming word with another of its endings (Kanada / Kanados, diena / dienas): an ending, not spelling */

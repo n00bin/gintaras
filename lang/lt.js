@@ -16,7 +16,7 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   pairRule:(g,t)=>({'ji|jis':' <b>Jis</b> (he) ends in <b>-s</b>, like most "he" words; <b>ji</b> is "she".','jie|jos':' <b>Jie</b> is "they" for men or a mixed group; <b>jos</b> is "they" for women only.',
     'mano|tavo':' <b>Mano</b> is "my", <b>tavo</b> is "your".','aš|tu':' <b>Aš</b> is "I", <b>tu</b> is "you".','jis|jie':' <b>Jis</b> is one man, <b>jie</b> is several.','ji|jos':' <b>Ji</b> is one woman, <b>jos</b> is several.'})[[norm(g),norm(t)].sort().join('|')]||'',
   foldNote:'<b>y</b> is a long "ee", the same sound as <b>į</b>, so it is written differently from a short <b>i</b>.',
-  politeNote:'That\'s the polite "you": <b>jūsų, jums, jus</b> for strangers, older people or more than one person. <b>Tavo, tau, tave</b> are for a friend.',
+  politeNote:'That\'s the polite "you", for strangers, older people or more than one person. The friendly one is for a friend.',
   /* the polite version of a "your / to you" phrase, or null (only when no verb has to change with it) */
   polite:lt=>{const m={tavo:'jūsų',tau:'jums',tave:'jus'},w=lt.split(' ');if(!w.some(x=>m[norm(x)])||w.some(x=>norm(x)==='tu'))return null;
     return w.map(x=>{const k=norm(x),to=m[k];if(!to)return x;return (x[0]!==x[0].toLowerCase()?to[0].toUpperCase()+to.slice(1):to)+x.slice(k.length);}).join(' ');},
@@ -27,11 +27,11 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
   stay:['irgi','ne','iš','į','su','prie','be','po','už','ar','o','ir','bet','labai','dar','nuo','iki','per','apie','pas'],
   /* (Round 8) the polite extra: adding it is never wrong, leaving it out where the English says "please" is Nearly */
   please:'prašau',
-  dropWho:'Both are right: Lithuanian can leave out <b>aš</b>, <b>tu</b>, <b>mes</b> and <b>jūs</b>, because the ending of the doing word already says who.',
+  dropWho:'Both are right: Lithuanian can leave out the word for "I", "you" or "we", because the ending of the doing word already says who.',
   be:['esu','esi','esame','esate'],
   /* the forms of "to be" and who they go with, so "Mes esu" is explained as the wrong person, not a missing word */
   beWho:{esu:'aš',esi:'tu',yra:'jis',esame:'mes',esate:'jūs'},
-  personNote:(g,t)=>{const w={esu:'aš (I)',esi:'tu (you)',yra:'jis, ji, jie (he, she, they)',esame:'mes (we)',esate:'jūs (you, polite)'};return '<b>'+g+'</b> goes with '+w[g].replace(/^(\S+)/,'<b>$1</b>')+'. Here it\'s '+w[t].replace(/^(\S+)/,'<b>$1</b>').replace(/\s*\(.*$/,'')+', so <b>'+t+'</b>.';},
+  personNote:(g,t)=>{const w={esu:'aš (I)',esi:'tu (you)',yra:'jis or ji (he, she)',esame:'mes (we)',esate:'jūs (you, polite)'};return '<b>'+g+'</b> goes with '+w[g].replace(/^(\S+)/,'<b>$1</b>')+'. Here it\'s '+w[t].replace(/^(\S+)/,'<b>$1</b>').replace(/\s*\(.*$/,'')+', so <b>'+t+'</b>.';},
   /* Real words that are a different form of the one the card wants: "mus" (us) for mes (we), "puikus" (a great thing) for
      puikiai (doing great). The Why note says what the form is for, instead of calling it a spelling slip or "not needed". */
   forms:{aš:['aš','n','I'],man:['aš','d','to me'],mane:['aš','a','me'],manęs:['aš','g','of me'],mano:['aš','p','my'],
@@ -41,7 +41,7 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
     jis:['jis','n','he'],jam:['jis','d','to him'],jį:['jis','a','him'],jo:['jis','p','his'],
     ji:['ji','n','she'],jai:['ji','d','to her'],ją:['ji','a','her'],jos:['ji','p','her'],
     jie:['jie','n','they'],jiems:['jie','d','to them'],juos:['jie','a','them'],jų:['jie','p','their']},
-  formRole:{n:'the one doing it',d:'"to / for" someone (and the one who likes or feels something: <b>man patinka</b>, I like)',a:'the one something is done to (they see <b>us</b>)',g:'"of"',p:'whose it is'},
+  formRole:{n:'the one doing it',d:'"to / for" someone (and the one something feels a certain way to: <b>man gerai</b>, I\'m fine)',a:'the one something is done to (they see <b>us</b>)',g:'"of"',p:'whose it is'},
   formNote:(g,t)=>{const F=LANG.forms,a=F[g],b=F[t];
     if(a&&b&&a[1]==='p'&&b[1]==='p'&&a[0]!==b[0])return '<b>'+g+'</b> is "'+a[2]+'"; here you need <b>'+t+'</b> ("'+b[2]+'").';
     if(a&&b&&a[0]===b[0]&&g!==t)return '<b>'+g+'</b> is a real word, "'+a[2]+'": it is '+LANG.formRole[a[1]]+'. Here you need <b>'+t+'</b> ("'+b[2]+'"), '+LANG.formRole[b[1]]+'.';
@@ -50,8 +50,8 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
     const en=w=>({puikiai:'great',gerai:'good',blogai:'bad',neblogai:'not bad'})[w]||((typeof fullGloss==='function'?fullGloss(w,1):'')||'good');if(['labas','laba','labą'].includes(g))return '';
     /* only the real describing word: "geria" is "drinks", not a form of geras */
     const A={gerai:'geras',puikiai:'puikus',blogai:'blogas',neblogai:'neblogas'}[t]||g,gl=w=>typeof glossOf==='function'?glossOf(w):'';
-    if(adv(t)&&adj(g,stem(t))&&!(gl(g)&&gl(A)&&gl(g)!==gl(A))&&!(gl(g)&&!gl(A)&&g!==A))return '<b>'+g+'</b> describes a thing (<b>'+A+'</b> vakaras, a '+en(t)+' evening); <b>'+t+'</b> describes how (aš jaučiuosi <b>'+t+'</b>, I feel '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
-    if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how (aš jaučiuosi <b>'+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
+    if(adv(t)&&adj(g,stem(t))&&!(gl(g)&&gl(A)&&gl(g)!==gl(A))&&!(gl(g)&&!gl(A)&&g!==A))return '<b>'+g+'</b> describes a thing (a '+en(t)+' evening); <b>'+t+'</b> describes how things are (<b>Man '+t+'</b>, I\'m '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
+    if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how things are (<b>Man '+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
     return '';},
   qWord:'ar',qNote:'Right too: <b>ar</b> at the front only marks a question, and in speech it is often left out.',dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are) and the like. Written in full, it is the version above.'};
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
@@ -1165,11 +1165,11 @@ const NEAR_NOTE={
   'o tau':{'o tu':{ok:true,note:'After <b>Kaip sekasi?</b> it is <b>O tau?</b> ("and to you?"): sekasi is a "to me" word (man sekasi, tau sekasi). <b>O tu?</b> is heard too, but <b>O tau?</b> is the right form.'},
     'o tu kaip':{ok:true,note:'After <b>Kaip sekasi?</b> it is <b>O tau?</b> ("and to you?"): sekasi is a "to me" word (man sekasi, tau sekasi).'},
     'o kaip tu':{ok:true,note:'After <b>Kaip sekasi?</b> it is <b>O kaip tau?</b> ("and to you?"): sekasi is a "to me" word (man sekasi, tau sekasi).'}},
-  'man irgi':{'aš irgi':{ok:true,note:'"Me too" depends on the first sentence. After a "to me" sentence (Man gerai, Man čia patinka) it is <b>Man irgi</b>. <b>Aš irgi</b> answers an aš sentence: Aš mokausi…, Aš irgi.'},
-    'aš taip pat':{ok:true,note:'"Me too" depends on the first sentence. After a "to me" sentence (Man gerai, Man čia patinka) it is <b>Man irgi</b> (or Man taip pat).'}},
-  'man irgi gerai':{'aš irgi gerai':{ok:true,note:'"I am fine too" is a "to me" sentence: <b>Man</b> gerai (to me it is good), so <b>Man irgi gerai</b>. <b>Aš irgi</b> answers an aš sentence: Aš mėgstu…, Aš irgi.'}},
-  'aš irgi':{'man irgi':{ok:true,note:'"Me too" depends on the first sentence. After <b>aš</b> + a doing word (Aš mėgstu…, I like…) it is <b>Aš irgi</b>. <b>Man irgi</b> answers a "to me" sentence: Man gerai, Malonu.'},
-    'man taip pat':{ok:true,note:'"Me too" depends on the first sentence. After <b>aš</b> + a doing word it is <b>Aš irgi</b> (or Aš taip pat). <b>Man</b> answers a "to me" sentence: Man gerai, Malonu.'}},
+  'man irgi':{'aš irgi':{ok:true,note:'"Me too" depends on the first sentence. After a "to me" sentence (Man gerai) it is <b>Man irgi</b>. <b>Aš irgi</b> answers an aš sentence: Aš esu iš Amerikos. Aš irgi.'},
+    'aš taip pat':{ok:true,note:'"Me too" depends on the first sentence. After a "to me" sentence (Man gerai) it is <b>Man irgi</b>.'}},
+  'man irgi gerai':{'aš irgi gerai':{ok:true,note:'"I am fine too" is a "to me" sentence: <b>Man</b> gerai (to me it is good), so <b>Man irgi gerai</b>. <b>Aš irgi</b> answers an aš sentence: Aš esu iš Amerikos. Aš irgi.'}},
+  'aš irgi':{'man irgi':{ok:true,note:'"Me too" depends on the first sentence. After an <b>aš</b> sentence (Aš esu iš Amerikos) it is <b>Aš irgi</b>. <b>Man irgi</b> answers a "to me" sentence: Man gerai, Malonu.'},
+    'man taip pat':{ok:true,note:'"Me too" depends on the first sentence. After an <b>aš</b> sentence it is <b>Aš irgi</b>. <b>Man</b> answers a "to me" sentence: Man gerai, Malonu.'}},
   'kaip sekasi':{'o kaip tau':{ok:false,note:'<b>O kaip tau?</b> means "and you?": you say it back after someone asks you. To ask first: <b>Kaip sekasi?</b>'},
     'o tau':{ok:false,note:'<b>O tau?</b> means "and you?": you say it back after someone asks you. To ask first: <b>Kaip sekasi?</b>'}}};
 /* In a conversation: answering someone who has just said it to you. "Malonu susipažinti!" → "Man irgi malonu" (me too). */
@@ -1250,7 +1250,7 @@ const LESSON_TIPS={
 'u8b-2':'Put <b>ne-</b> on the front of a verb to make it negative: žinau (I know) → <b>nežinau</b> (I don\'t know). It is glued on, with no space.',
 'u8c-1':'<b>Lietuviškai</b> and <b>angliškai</b> mean "in Lithuanian" and "in English". Add ne- to suprantu and you have the most useful sentence of all: <b>Aš nesuprantu</b>.',
 'u8c-2':'<b>Mes einame</b> (we go) and <b>jie valgo</b> (they eat) show two more endings: -ame for "we", the plain stem for "they". <b>Namo</b> means "homeward", so no "to" is needed.',
-'u3a-1':'Words ending in <b>-a</b> (duona, kava, arbata) are usually feminine; words ending in -as, -is or -us are masculine. <b>Vanduo</b> (water) is one of the few that fit neither.',
+'u3a-1':'Words ending in <b>-a</b> (duona, kava, arbata) are usually feminine; words ending in -as, -is or -us are masculine. <b>Vanduo</b> (water) is masculine too, though its ending does not show it: a few words end in <b>-uo</b>. Lithuanian has only these two kinds.',
 'u3a-2':'Hold the long vowels: <b>mėsa</b> (meat), <b>sūris</b> (cheese). <b>Kiaušinis</b> (egg) is long, so split it: kyow-SHI-nis.',
 'u3b-1':'<b>Obuolys</b> (apple) and <b>bulvė</b> (potato) are everyday staples. <b>Vištiena</b> is chicken meat.',
 'u3b-2':'<b>Alus</b> is like "ale" and <b>vynas</b> like "wine": same old roots. <b>Ledai</b> (ice cream) is always plural, literally "ices".',
@@ -1543,9 +1543,14 @@ const DRILLS=[
  {u:'u1',en:'She is Rūta.',l:['u1d-1'],frame:'Ji ___ Rūta.',ans:'yra',opts:['esu','esi'],why:'Yra goes with ji and jis: ji yra, she is.'},
  {u:'u1',en:'Are you Jonas?',l:['u1d-1'],frame:'Tu ___ Jonas?',ans:'esi',opts:['esu','yra'],why:'Esi goes with tu: tu esi, you are.'},
  {u:'u1',en:'We are here.',l:['u1d-1'],frame:'Mes ___ čia.',ans:'esame',opts:['esu','yra'],why:'Esame goes with mes: mes esame, we are.'},
+ /* (Round 8) more fill-the-gap on the verb forms on their own (the judges found the esu / esi / yra gap the most useful) */
+ {u:'u1',en:'I am Tomas.',l:['u1d-1'],frame:'Aš ___ Tomas.',ans:'esu',opts:['esi','yra'],why:'Esu goes with aš: aš esu, I am.'},
+ {u:'u1',en:'He is Jonas.',l:['u1d-1'],frame:'Jis ___ Jonas.',ans:'yra',opts:['esu','esi'],why:'Yra goes with jis and ji: jis yra, he is.'},
  {u:'u1',en:'My name is Tomas.',l:['u1c-2'],frame:'___ vardas Tomas.',ans:'Mano',opts:['Tavo','Aš'],why:'Mano means "my"; aš is "I".'},
  {u:'u1',en:'What is your name?',l:['u1c-2'],frame:'Koks ___ vardas?',ans:'tavo',opts:['mano','tu'],why:'Tavo means "your" (to a friend); tu is "you".'},
  {u:'u21',en:'Fine, thanks. And you?',frame:'Gerai, ačiū. O ___?',ans:'tau',opts:['mano','jis'],why:'After "how are you", bounce it back with O tau?'},
+ {u:'u8',en:'You are Tomas.',l:['u8b-1','u8b-2'],frame:'Tu ___ Tomas.',ans:'esi',opts:['esu','yra'],why:'Esi goes with tu: tu esi, you are.'},
+ {u:'u8',en:'He is here.',l:['u8b-1','u8b-2'],frame:'Jis ___ čia.',ans:'yra',opts:['esu','esi'],why:'Yra goes with jis and ji: jis yra, he is.'},
  {u:'u8',en:'I speak English.',frame:'Aš ___ angliškai.',ans:'kalbu',opts:['kalbi','kalba'],why:'-u is the ending for "I".'},
  {u:'u8',en:'Do you speak English?',frame:'Ar tu ___ angliškai?',ans:'kalbi',opts:['kalbu','kalba'],why:'-i is the ending for "you".'},
  {u:'u8',en:"I don't understand.",frame:'Aš ___.',ans:'nesuprantu',opts:['suprantu','nesupranti'],why:'Ne- in front means "not", and -u means "I".'},
@@ -1583,6 +1588,11 @@ const DRILLS=[
  {off:'words not taught yet',u:'u10',en:'I am going to Klaipėda.',frame:'Važiuoju į ___.',ans:'Klaipėdą',opts:['Klaipėda','Klaipėdoje'],why:'Į + place: Klaipėda becomes Klaipėdą.'},
  {u:'u17',en:'for two nights',frame:'___ naktims',ans:'dviem',opts:['du','dvi'],why:'"For two nights" is a fixed phrase: dviem naktims.'},
  {u:'u18',en:'I need a doctor.',frame:'Man reikia ___.',ans:'gydytojo',opts:['gydytojas','gydytoją'],why:'After reikia, gydytojas becomes gydytojo.'},
+ {u:'u27',en:'Are you coming?',l:['u27a-1','u27a-2'],frame:'Ar tu ___?',ans:'ateini',opts:['ateinu'],why:'-i is the ending for "you": tu ateini. Aš ateinu is "I\'m coming".'},
+ {u:'u27',en:'I\'m coming!',l:['u27a-1','u27a-2'],frame:'Aš ___!',ans:'ateinu',opts:['ateini'],why:'-u is the ending for "I": aš ateinu.'},
+ {u:'u27',en:'What are you doing?',l:['u27b-1','u27b-2'],frame:'Ką tu ___?',ans:'darai',opts:['darau'],why:'Tu darai, you do; aš darau, I do.'},
+ {u:'u27',en:'We speak Lithuanian.',l:['u27d-1','u27d-2'],frame:'Mes ___ lietuviškai.',ans:'kalbame',opts:['kalba','kalbate'],why:'"We" ends in -me: mes kalbame.'},
+ {u:'u27',en:'You speak Lithuanian (polite).',l:['u27d-1','u27d-2'],frame:'Jūs ___ lietuviškai.',ans:'kalbate',opts:['kalbame','kalba'],why:'Jūs ends in -te: jūs kalbate.'},
  {u:'u27',en:'We are waiting.',frame:'Mes ___.',ans:'laukiame',opts:['laukiu','laukia'],why:'"We" ends in -me.'},
  {u:'u27',en:'They speak.',frame:'Jie ___.',ans:'kalba',opts:['kalbu','kalbame'],why:'"They" uses the plain stem: kalba.'},
  {off:'choices not taught yet',u:'u27',en:'I\'m looking for the station.',frame:'Aš ieškau ___.',ans:'stoties',opts:['stotis','stotį'],why:'After ieškau, stotis becomes stoties.'},
@@ -2801,11 +2811,14 @@ const ALSO={'labas':['Sveiki'],'sveiki':['Labas'],'labas rytas':['Labas','Sveiki
 /* Why a typed word was wrong. Most beginner mistakes in Lithuanian are word endings, so endings get the most help. */
 const MARK_SOUND={'č':'"ch" as in church','š':'"sh" as in shop','ž':'the "s" in measure','ė':'a long "ay"','ū':'a long "oo"','ą':'a long "ah"','ę':'a long "eh"','į':'a long "ee"','ų':'a long "oo"'};
 const WHO_WORDS=['aš','tu','mes','jūs'];
+/* (Round 8) examples in a Why note: only those whose words you've had a New word card for (the app says which, through
+   exTaught), so a note never shows a word you haven't met. lead goes in front of the first one. */
+function EXS(pairs,lead){const ok=pairs.filter(p=>typeof exTaught!=='function'||exTaught(p[0]));return ok.length?(lead===undefined?', like ':lead)+ok.map(p=>'<b>'+p[0]+'</b>'+(p[1]?' ('+p[1]+')':'')).join(', '):'';}
 /* how long or how many times: dar kartą, visą dieną (not a thing acted on) */
 const TIME_ACC=['kartą','savaitę','valandą','minutę','akimirką','sekundę','visą'];
 function marksNote(g,t){const a=[...g],b=[...t];for(let i=0;i<b.length;i++)if(a[i]!==b[i]){const c=b[i],end=i===b.length-1;
     if(end&&['labą','rytą','dieną','vakarą','naktį'].includes(t.toLowerCase()))return 'Said as a wish ("I wish you a good morning"), a greeting ends in <b>-ą</b> on both words: <b>labą rytą</b>, <b>labą dieną</b>.';
-    if(end&&TIME_ACC.includes(t.toLowerCase()))return 'The <b>'+c+'</b> at the end matters: times take this ending, <b>dar kartą</b> (one more time), <b>visą dieną</b> (all day).';
+    if(end&&TIME_ACC.includes(t.toLowerCase()))return 'The <b>'+c+'</b> at the end matters: times take this ending'+EXS([['dar kartą','one more time'],['visą dieną','all day']])+'.';
     if(end&&'ąęį'.includes(c))return 'The <b>'+c+'</b> at the end matters: it marks the thing being acted on (what you drink, want, see or buy).';
     if(end&&c==='ų')return 'The <b>ų</b> at the end matters: it is the "of" form, used after numbers and "no".';
     if(MARK_SOUND[c])return '<b>'+c+'</b> sounds like '+MARK_SOUND[c]+', so it is a different letter from plain <b>'+esc(strip(c))+'</b>.';
@@ -2827,14 +2840,14 @@ function endingWhy(g,t,prev,next){const sg=strip(g),st=strip(t);const end=t.slic
   const p=norm(prev||'');
   const who={'aš':['I','u'],'tu':['you','i'],'mes':['we','me'],'jūs':['you (polite)','te']}[p];
   if(who&&st.endsWith(who[1]))return head+'After <b>'+p+'</b> ('+who[0]+') the doing word ends in <b>-'+who[1]+'</b>.';
-  if(['noriu','norėčiau','nori','norite','prašau'].includes(p)&&/(os|o|ių|ų|ės|ies)$/.test(t))return head+'After <b>'+p+'</b>, food and drink take the "some" ending: <b>noriu kavos</b> means "I want some coffee".';
+  if(['noriu','norėčiau','nori','norite','prašau'].includes(p)&&/(os|o|ių|ų|ės|ies)$/.test(t))return head+'After <b>'+p+'</b>, food and drink take the "some" ending'+EXS([['noriu kavos','I want some coffee']])+'.';
   if(p==='su')return head+'After <b>su</b> (with), the word takes its "with" ending.';
   if(p==='į')return head+'After <b>į</b> (to, into), the word takes its "to" ending: -ą, -ę, -į or -ų.';
-  if(p==='iš'&&typeof properNoun==='function'&&properNoun(t))return head+'After <b>iš</b> (from), the place takes its "from" ending: <b>Lietuva</b> → <b>iš Lietuvos</b>, <b>Kanada</b> → <b>iš Kanados</b>.';
-  if(['iš','be','nuo','iki','prie'].includes(p))return head+'After <b>'+p+'</b>, the word takes its "of / from" ending, like <b>iš Lietuvos</b> (from Lithuania).';
-  if(p==='nėra'||(p.startsWith('ne')&&p.length>3&&/(os|o|ių|ų|ės|ies)$/.test(t)))return head+'After a "not" word, the thing takes its "of" ending: <b>Turiu kavą</b> (I have coffee) but <b>Neturiu kavos</b> (I have no coffee).';
-  if(/(oje|yje|uje|ėje)$/.test(t))return head+'This ending means "in / at" a place, like <b>Lietuvoje</b> (in Lithuania).';
-  if(TIME_ACC.includes(t.toLowerCase()))return head+'Times take the ending <b>-'+t.slice(-1)+'</b>: <b>dar kartą</b> (one more time), <b>visą dieną</b> (all day).';
+  if(p==='iš'&&typeof properNoun==='function'&&properNoun(t))return head+'After <b>iš</b> (from), the place takes its "from" ending'+EXS([['iš Amerikos','from America'],['iš Lietuvos','from Lithuania']])+'.';
+  if(['iš','be','nuo','iki','prie'].includes(p))return head+'After <b>'+p+'</b>, the word takes its "of / from" ending'+EXS([['iš Amerikos','from America'],['iš Lietuvos','from Lithuania']])+'.';
+  if(p==='nėra'||(p.startsWith('ne')&&p.length>3&&/(os|o|ių|ų|ės|ies)$/.test(t)))return head+'After a "not" word, the thing takes its "of" ending'+EXS([['Aš nevalgau mėsos','I don\'t eat meat'],['Neturiu kavos','I have no coffee']])+'.';
+  if(/(oje|yje|uje|ėje)$/.test(t))return head+'This ending means "in / at" a place'+EXS([['Lietuvoje','in Lithuania'],['Vilniuje','in Vilnius']])+'.';
+  if(TIME_ACC.includes(t.toLowerCase()))return head+'Times take the ending <b>-'+t.slice(-1)+'</b>'+EXS([['dar kartą','one more time'],['visą dieną','all day']])+'.';
   if(/[ąęį]$/.test(t))return head+'The ending <b>-'+t.slice(-1)+'</b> marks the thing being acted on: what you drink, want, see or buy.';
   return head+'Same word, different ending. Lithuanian changes the end of a word to show its job in the sentence; here it ends in <b>-'+esc(end)+'</b>.';}
 
