@@ -1041,8 +1041,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.91';
-const APP_VERSION=163;
+const APP_RELEASE='3.92';
+const APP_VERSION=164;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1535,13 +1535,16 @@ function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
 /* Only the unit you are working on is open. Finished units fold up (tap the header to open them again);
    locked units show just their header, so the path stays short enough to scroll. */
 const OPEN_UNITS=new Set();
+/* (Round 8) the lesson a unit's tip and pattern come with, and whether it has been played */
+function tipLesson(u){return u.lessons.find(l=>l.id===u.tipAt)||u.lessons[0];}
+function tipSeen(u){return !!u&&crowns(tipLesson(u).id)>0;}
 function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.createElement('section');
   const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=doneCount===u.lessons.length;
   const open=unlocked&&(!done||OPEN_UNITS.has(u.id));
   el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
   const sub=!unlocked?u.lessons.length+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+u.lessons.length+' lessons done':doneCount+' of '+u.lessons.length+' lessons done';
   el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
-    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+u.tip+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
+    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
     (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
   const ls=el.querySelector('.lessons');
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
@@ -1998,7 +2001,8 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
   if(lesson&&lesson.speak){head.push({type:'tip',unit:lesson.unit,lesson,showUnit:false});items.forEach(it=>head.push(speakOff()?{type:'type',item:it,spk:true}:{type:'speak',item:it}));
     if(speakOff()&&typeof toast==='function')toast('Speaking is paused, so you\'ll type this one. Say it later to count it as spoken.');}
   else if(mode==='lesson'){
-    const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
+    /* (Round 8) the unit tip comes with the lesson whose cards cover its words (u.tipAt); no tip card when there's nothing to say */
+    const u=lesson.unit,showUnit=!!(u&&u.tip&&tipLesson(u)===lesson&&crowns(lesson.id)<1);if(showUnit||LESSON_TIPS[lesson.id])head.push({type:'tip',unit:u,lesson,showUnit});
     const mine=S.me?meItems().filter(m=>taught(m)).map(m=>norm(m.lt)):[];
     /* a new word's first check waits a card or two after you meet it, so it is remembered, not just copied */
     let wait=null;
@@ -2110,7 +2114,7 @@ function grammarHtml(g,isNew){return '<div class="intro tipcard grammar">'+(isNe
   g.rows.map(r=>'<tr><td lang="'+LANG.code+'"><b>'+esc(r[0])+'</b></td><td>'+esc(r[1])+'</td></tr>').join('')+'</table><p class="note">'+esc(g.note)+'</p></div>';}
 /* Every pattern and table from the start of the course up to this unit. */
 function openGrammar(u){const upto=STEPS.indexOf(u.id),units=STEPS.slice(0,upto+1).filter(id=>UNIT_BY[id]);
-  const body=units.map(id=>{const p=PATTERNS[id],gs=(typeof GRAMMAR!=='undefined'?GRAMMAR:[]).filter(g=>g.u===id&&((S.gram||{})[g.id]||stepDone(id)));if(!p&&!gs.length)return '';
+  const body=units.map(id=>{const p=tipSeen(UNIT_BY[id])||stepDone(id)?PATTERNS[id]:null,gs=(typeof GRAMMAR!=='undefined'?GRAMMAR:[]).filter(g=>g.u===id&&((S.gram||{})[g.id]||stepDone(id)));if(!p&&!gs.length)return '';
     return '<h3 class="gram-unit">'+esc(UNIT_BY[id].en)+'</h3>'+(p?patternHtml(p):'')+gs.map(g=>grammarHtml(g)).join('');}).join('');
   const ov=document.createElement('div');ov.className='league-pop gram-pop';
   ov.innerHTML='<div class="card" role="dialog" aria-label="Grammar so far"><h2>Grammar so far</h2><p class="note">Everything you\'ve met up to '+esc(u.en)+', in the order you meet it.</p>'+(body||'<p class="note">No grammar yet. It starts with the first unit.</p>')+'<button type="button" class="btn amber" data-x>Close</button></div>';
@@ -3871,7 +3875,9 @@ document.addEventListener('click',e=>{if(!Q||$('#sheet').hidden||!e.isTrusted||!
 const noFocus=x=>!x||x===document.body||x===$('#sheet'); /* the sheet itself takes the focus on a click on empty space */
 document.addEventListener('focusout',e=>{const t=e.target;if(!noFocus(e.relatedTarget)||!t.matches||!t.matches('#stage input[type=text],#turn input')||!matchMedia('(pointer:fine)').matches)return;
   setTimeout(()=>{if(t.isConnected&&!t.disabled&&noFocus(document.activeElement)&&!$('#sheet').hidden)t.focus({preventScroll:true});},0);});
-document.addEventListener('keydown',e=>{if(!$('#guide').hidden)return;if(CV&&!$('#sheet').hidden){const ae=document.activeElement;if(ae&&ae.tagName==='INPUT'&&!ae.disabled)return;
+/* (Round 8) an Enter a box already acted on (the letter tiles' own box checks or moves on, then is gone) isn't pressed
+   again here: that second press landed on the next card's Got it, so a New word card after letter tiles went by unseen */
+document.addEventListener('keydown',e=>{if(!$('#guide').hidden||e.key==='Enter'&&e.defaultPrevented)return;if(CV&&!$('#sheet').hidden){const ae=document.activeElement;if(ae&&ae.tagName==='INPUT'&&!ae.disabled)return;
     /* (Round 7) no reply box yet (their message is still coming): letters you type are kept for it */
     if(!document.querySelector('#turn input:not([disabled])')&&!$('#tilekb')&&!e.ctrlKey&&!e.metaKey&&!e.altKey){
       if(e.key.length===1&&/[\p{L} ,.!?'-]/u.test(e.key)){CV.ahead=(CV.ahead||'')+e.key;e.preventDefault();return;}

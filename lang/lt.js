@@ -64,7 +64,7 @@ const COURSE = [
   ['Labas vakaras','Good evening','Also Labą vakarą, the same greeting.',['Labą vakarą']],
   ['Labanakt','Good night'],
   ['Viso gero','Goodbye'],
-  ['Iki','Bye','Word for word it means "until": short for iki pasimatymo, "until we see each other".'],
+  ['Iki','Bye','Word for word it means "until": short for "until we see each other".'],
   ['Ačiū','Thank you','Pronounced AH-choo.'],
   ['Prašau','Please','Also means "you\'re welcome" and "here you go".'],
  ]},
@@ -101,7 +101,7 @@ const COURSE = [
   ['Mes esame čia','We are here','Esame means "are", for we.'],
  ]},
 ]},
-{id:'u2',title:'Skaičiai',en:'Numbers',tip:'Numbers 1 to 9 change ending with the noun\'s gender: <b>vienas</b> namas (house) but <b>viena</b> katė (cat). The forms here are the masculine ones you count with.',lessons:[
+{id:'u2',title:'Skaičiai',en:'Numbers',tip:'Numbers 1 to 9 change their ending to match a "him" or a "her" word. The forms here are the masculine ones you count with.',lessons:[
  {id:'u2a',title:'One to ten',items:[
   ['vienas','one'],['du','two'],['trys','three'],['keturi','four'],['penki','five'],
   ['šeši','six'],['septyni','seven'],['aštuoni','eight'],['devyni','nine'],['dešimt','ten'],
@@ -121,13 +121,13 @@ const COURSE = [
   ['pirmas','first'],['antras','second'],['trečias','third'],
  ]},
 ]},
-{id:'u3',title:'Maistas',en:'Food',tip:'After <b>noriu</b> (I want) the thing you want changes ending: kava becomes <b>kavos</b>, vanduo becomes <b>vandens</b>. You will see this "some of" ending everywhere.',lessons:[
+{id:'u3',title:'Maistas',en:'Food',tip:'After <b>noriu</b> (I want) the thing you want changes ending: kava becomes <b>kavos</b>, arbata becomes <b>arbatos</b>. You will see this "some of" ending everywhere.',lessons:[
  {id:'u3a',title:'At the table',items:[
   ['duona','bread'],['pienas','milk'],['vanduo','water'],['kava','coffee'],['arbata','tea'],
   ['sūris','cheese'],['mėsa','meat'],['sriuba','soup'],['kiaušinis','egg'],['sviestas','butter'],
  ]},
  {id:'u3b',title:'More food',items:[
-  ['obuolys','apple'],['bulvė','potato'],['žuvis','fish'],['vištiena','chicken','The meat. The bird is "višta".'],['cukrus','sugar'],
+  ['obuolys','apple'],['bulvė','potato'],['žuvis','fish'],['vištiena','chicken','The meat. The bird has its own word.'],['cukrus','sugar'],
   ['druska','salt'],['alus','beer'],['vynas','wine'],['pyragas','cake','Also "pie".'],['ledai','ice cream','Always plural.'],
  ]},
  {id:'u3c',title:'Eating out',items:[
@@ -166,7 +166,7 @@ const COURSE = [
   ['Aš turiu seserį','I have a sister','sesuo changes to seserį after "turiu".'],
  ]},
 ]},
-{id:'u5',title:'Spalvos',en:'Colors',tip:'Adjectives agree with the noun: <b>žalias</b> obuolys (green apple, masculine) but <b>žalia</b> arbata (green tea, feminine). Swap -as for -a.',lessons:[
+{id:'u5',title:'Spalvos',en:'Colors',tip:'Adjectives agree with the noun: <b>žalias obuolys</b> (a green apple, a "him" word) but <b>balta duona</b> (white bread, a "her" word). Swap -as for -a.',lessons:[
  {id:'u5a',title:'Colors',items:[
   ['raudonas','red'],['mėlynas','blue'],['žalias','green'],['geltonas','yellow'],['juodas','black'],
   ['baltas','white'],['rudas','brown'],['pilkas','grey'],['rožinis','pink'],['oranžinis','orange'],
@@ -191,7 +191,7 @@ const COURSE = [
   ['Katė miega','The cat is sleeping'],
  ]},
 ]},
-{id:'u7',title:'Laikas',en:'Time',tip:'Days are numbered: pirmadienis is "first day" (Monday), antradienis "second day", and so on up to sekmadienis, Sunday. Months are named after nature: <b>liepa</b> (July) means linden tree.',lessons:[
+{id:'u7',title:'Laikas',en:'Time',tip:'Days are numbered: pirmadienis is "first day" (Monday), antradienis "second day", and so on up to sekmadienis, Sunday. Months are named after nature: July is named after the linden tree.',lessons:[
  {id:'u7a',title:'Days of the week',items:[
   ['pirmadienis','Monday'],['antradienis','Tuesday'],['trečiadienis','Wednesday'],['ketvirtadienis','Thursday'],['penktadienis','Friday'],
   ['šeštadienis','Saturday'],['sekmadienis','Sunday'],['šiandien','today'],['rytoj','tomorrow'],['vakar','yesterday'],
@@ -249,7 +249,7 @@ const COURSE = [
  {id:'u10b',title:'Lithuania',items:[
   ['Lietuva','Lithuania'],['Vilnius','Vilnius','The capital.'],['Kaunas','Kaunas','Second city, on two rivers.'],['Klaipėda','Klaipėda','The port city.'],
   ['jūra','sea'],['Baltijos jūra','the Baltic Sea'],['miškas','forest'],['ežeras','lake'],['upė','river'],
-  ['lietuvis','a Lithuanian (man)','A woman is "lietuvė".'],
+  ['lietuvis','a Lithuanian (man)','A woman uses another ending.'],
  ]},
 ]},
 {id:'u11',title:'Oras ir jausmai',en:'Weather and feelings',tip:'Feelings often use "man" (to me): <b>Man šalta</b> is "I\'m cold", literally "to me it is cold". <b>Man patinka</b> is "I like it", literally "to me it pleases".',lessons:[
@@ -258,7 +258,7 @@ const COURSE = [
   ['debesis','cloud'],['Šilta','It\'s warm'],['Šalta','It\'s cold'],['Lyja','It\'s raining'],['Sninga','It\'s snowing'],
  ]},
  {id:'u11b',title:'Feelings',items:[
-  ['laimingas','happy','A woman: laiminga.'],['liūdnas','sad'],['pavargęs','tired','A woman: pavargusi.'],['ištroškęs','thirsty'],
+  ['laimingas','happy','A woman uses another ending.'],['liūdnas','sad'],['pavargęs','tired','A woman uses another ending.'],['ištroškęs','thirsty'],
   ['Man karšta','I\'m hot'],['Man šalta','I\'m cold'],['Aš sergu','I am sick'],
   ['Man patinka','I like it'],['Aš myliu tave','I love you'],
   ['Koks šiandien oras?','What\'s the weather like today?'],
@@ -311,7 +311,7 @@ const COURSE = [
   ['Nieko','Nothing','Also the reply to "thank you": "Nieko" means "it was nothing".'],
  ]},
 ]},
-{id:'u14',title:'Transportas',en:'Transport',tip:'Lithuanian buses and trains are cheap and on time. The place you are going to takes <b>į</b> plus a changed ending: Kaunas becomes <b>į Kauną</b>, Vilnius becomes <b>į Vilnių</b>.',lessons:[
+{id:'u14',title:'Transportas',en:'Transport',tip:'Lithuanian buses and trains are cheap and on time. The place you are going to takes <b>į</b> plus a changed ending: Kaunas becomes <b>į Kauną</b>, centras (the centre) becomes <b>į centrą</b>.',lessons:[
  {id:'u14a',title:'Buses and trains',items:[
   ['Bilietą į Kauną, prašau','A ticket to Kaunas, please'],
   ['Kada išvyksta?','When does it leave?'],
@@ -448,7 +448,7 @@ COURSE.push(
   ['Supratau','Got it','Literally "I understood".'],
  ]},
 ]},
-{id:'u20',title:'Apie mane',en:'About me',tip:'<b>Iš</b> means "from", and the place after it changes its ending: Lietuva becomes <b>iš Lietuvos</b>, Amerika becomes <b>iš Amerikos</b>. Jobs change for women too: mokytojas is a male teacher, mokytoja a female one.',lessons:[
+{id:'u20',title:'Apie mane',en:'About me',tip:'<b>Iš</b> means "from", and the place after it changes its ending: <b>iš Lietuvos</b> (from Lithuania), <b>iš Amerikos</b> (from America). Jobs change for women too: mokytojas is a male teacher, mokytoja a female one.',lessons:[
  {id:'u20a',title:'Where I\'m from',items:[
   ['Iš kur tu esi?','Where are you from?'],
   ['Aš esu iš Lietuvos','I am from Lithuania'],
@@ -458,7 +458,7 @@ COURSE.push(
   ['Aš gyvenu Vilniuje','I live in Vilnius','"In" a city is an ending, not a word: Vilnius becomes Vilniuje.'],
   ['O tu?','What about you?','Bounce any question back.'],
   ['Aš gyvenu Londone','I live in London'],
-  ['Ar tu lietuvis?','Are you Lithuanian?','To a woman: "Ar tu lietuvė?"'],
+  ['Ar tu lietuvis?','Are you Lithuanian?','To a man. To a woman the ending changes.'],
   ['Ne, aš amerikietis','No, I\'m American','A woman says "amerikietė".',['Ne, aš amerikietė']],
  ]},
  {id:'u20b',title:'Work and study',items:[
@@ -551,11 +551,11 @@ COURSE.push(
   ['Tik grynaisiais?','Cash only?'],
  ]}],
  ['u14',{id:'u14c',title:'Going places',items:[
-  ['Aš važiuoju į Kauną','I\'m going to Kaunas','Važiuoti is to go by car, bus or train.'],
+  ['Aš važiuoju į Kauną','I\'m going to Kaunas','Važiuoju is going by car, bus or train.'],
   ['Aš einu į parduotuvę','I\'m going to the shop','Eiti is to go on foot.'],
   ['Kur tu važiuoji?','Where are you going? (by car or bus)'],
   ['Aš einu namo','I\'m going home'],
-  ['Važiuojam!','Let\'s go!','Short for važiuojame. Said when you set off.'],
+  ['Važiuojam!','Let\'s go!','Short for "we are going". Said when you set off.'],
  ]}],
  ['u18',{id:'u18c',title:'Telling the doctor',items:[
   ['Man skauda galvą','My head hurts','Man skauda + the body part with an -ą/-į ending.'],
@@ -628,7 +628,7 @@ COURSE.push(
   ['Šis lagaminas sunkus','This suitcase is heavy'],['Ši knyga įdomi','This book is interesting'],['Lietuvių kalba nėra lengva','Lithuanian isn\'t easy'],['Kambarys švarus','The room is clean'],['Kava per karšta','The coffee is too hot'],
  ]},
 ]},
-{id:'u31',title:'Darbai',en:'Jobs',tip:'Jobs have a "him" and a "her" form: <b>vairuotojas / vairuotoja</b>, <b>pardavėjas / pardavėja</b>. "In" a workplace is just an ending: ligoninė → <b>ligoninėje</b>, mokykla → <b>mokykloje</b>.',lessons:[
+{id:'u31',title:'Darbai',en:'Jobs',tip:'Jobs have a "him" and a "her" form, like <b>mokytojas / mokytoja</b> (teacher). "In" a workplace is just an ending: ligoninė → <b>ligoninėje</b>, mokykla → <b>mokykloje</b>.',lessons:[
  {id:'u31a',title:'Who does what',items:[
   ['gydytoja','doctor (woman)'],['vairuotojas','driver'],['inžinierius','engineer'],['programuotojas','programmer'],['pardavėjas','shop assistant'],
   ['virėjas','cook / chef'],['slaugytoja','nurse'],['ūkininkas','farmer'],['policininkas','police officer'],['vadovas','manager / boss'],
@@ -638,7 +638,7 @@ COURSE.push(
   ['Aš ieškau darbo','I\'m looking for work'],['Mano darbas sunkus','My job is hard'],['Aš dirbu visą dieną','I work all day'],['Kada baigi darbą?','When do you finish work?'],['Aš baigiu penktą','I finish at five'],
  ]},
 ]},
-{id:'u32',title:'Namai',en:'Home',tip:'<b>Namai</b> (home) and <b>durys</b> (door) are always plural. "In" a room is an ending: virtuvė → <b>virtuvėje</b>, kambarys → <b>kambaryje</b>. Commands to a friend end in <b>-k</b>: atidaryk, uždaryk.',lessons:[
+{id:'u32',title:'Namai',en:'Home',tip:'<b>Namai</b> (home) and <b>durys</b> (door) are always plural. "In" a room is an ending: kambarys → <b>kambaryje</b>. Commands to a friend end in <b>-k</b>: atidaryk, uždaryk.',lessons:[
  {id:'u32a',title:'Rooms',items:[
   ['namai','home','Always plural when it means home.'],['butas','flat / apartment'],['virtuvė','kitchen'],['vonia','bathroom'],['miegamasis','bedroom'],
   ['svetainė','living room'],['langas','window'],['durys','door','Always plural.'],['stalas','table'],['kėdė','chair'],
@@ -652,7 +652,7 @@ COURSE.push(
   ['Atidaryk langą','Open the window'],['Uždaryk duris','Close the door'],['Įjunk šviesą','Turn on the light'],['Išjunk šviesą','Turn off the light'],['Ačiū už vaišes','Thanks for the food','Said to a host after a meal.'],
  ]},
 ]},
-{id:'u33',title:'Galiu, turiu, reikia',en:'Can, must, need',tip:'<b>Galiu</b> (I can), <b>turiu</b> (I have to), <b>noriu</b> (I want) and <b>mėgstu</b> (I like) are all followed by a verb ending in <b>-ti</b>: galiu padėti. "I need" is said "to me it is needed": <b>man reikia</b>.',lessons:[
+{id:'u33',title:'Galiu, turiu, reikia',en:'Can, must, need',tip:'<b>Galiu</b> (I can), <b>turiu</b> (I have to) and <b>noriu</b> (I want) are all followed by a verb ending in <b>-ti</b>: galiu padėti. "I need" is said "to me it is needed": <b>man reikia</b>.',lessons:[
  {id:'u33a',title:'I can',items:[
   ['Aš galiu','I can'],['Ar tu gali?','Can you?'],['Aš negaliu','I can\'t'],['Aš galiu padėti','I can help'],['Ar gali man padėti?','Can you help me? (to a friend)'],
   ['Aš moku plaukti','I know how to swim'],['Ar moki vairuoti?','Can you drive?'],['Aš nemoku šokti','I can\'t dance'],['Čia negalima rūkyti','No smoking here'],['Ar galima čia sėdėti?','Can I sit here?'],
@@ -662,7 +662,7 @@ COURSE.push(
   ['Aš turiu dirbti','I have to work'],['Aš turiu eiti','I have to go'],['Tu turi pabandyti','You have to try'],['Aš noriu miegoti','I want to sleep'],['Ar nori valgyti?','Do you want to eat?'],
  ]},
 ]},
-{id:'u34',title:'Ateitis',en:'Tomorrow',tip:'The future is easy: add <b>-siu</b> for "I will": dirbti → <b>dirbsiu</b>, valgyti → <b>valgysiu</b>. For "you will" it is <b>-si</b>: dirbsi. "It will be" is simply <b>bus</b>.',lessons:[
+{id:'u34',title:'Ateitis',en:'Tomorrow',tip:'The future is easy: add <b>-siu</b> for "I will": dirbti → <b>dirbsiu</b>, valgyti → <b>valgysiu</b>. For "you will" it is <b>-si</b>. "It will be" is simply <b>bus</b>.',lessons:[
  {id:'u34a',title:'I will',items:[
   ['Aš būsiu','I will be'],['Aš eisiu','I will go'],['Aš važiuosiu','I will travel'],['Aš dirbsiu','I will work'],['Aš valgysiu','I will eat'],
   ['Aš skambinsiu','I will call'],['Aš pamatysiu','I will see'],['Aš grįšiu','I will come back'],['Aš liksiu namie','I will stay at home'],['Aš pabandysiu','I will try'],
@@ -728,7 +728,7 @@ COURSE.push(
   ['Man sloga','I have a runny nose'],['Man svaigsta galva','I feel dizzy'],['Man reikia vaistų','I need medicine'],['Ar turite vaistų nuo galvos skausmo?','Do you have something for a headache?'],['Aš jaučiuosi geriau','I feel better'],
  ]},
 ]},
-{id:'u38',title:'Nuomonė',en:'Opinions',tip:'Opinions start with <b>Aš manau, kad...</b> (I think that...) or <b>Man atrodo, kad...</b> (it seems to me that...). To compare, use <b>geresnis už</b> (better than) and <b>man labiau patinka</b> (I prefer).',lessons:[
+{id:'u38',title:'Nuomonė',en:'Opinions',tip:'Opinions start with <b>Aš manau, kad...</b> (I think that...) or <b>Man atrodo, kad...</b> (it seems to me that...). To compare, use <b>geresnė už</b> (better than) and <b>man labiau patinka</b> (I prefer).',lessons:[
  {id:'u38a',title:'I think',items:[
   ['Aš manau','I think'],['Man atrodo','It seems to me'],['Aš sutinku','I agree'],['Aš nesutinku','I disagree'],['Tu teisus','You\'re right','To a woman: "Tu teisi".',['Tu teisi']],
   ['Tikrai?','Really?'],['Be abejo','Without a doubt'],['Mano nuomone','In my opinion'],['Kaip tu manai?','What do you think?'],['Priklauso','It depends'],
@@ -826,7 +826,7 @@ const RESHAPE={
  u13:{en:'Question words',tip:'Question words go first, just like English. Learn these six and you can ask about anything by pointing. Add <b>Ar</b> to the front of a sentence to turn it into a yes/no question.',lessons:['u13a']},
  u8:{title:'Kalbėti',en:'Talking',tip:'Verbs change their ending to show who is doing it: <b>aš kalbu</b> (I speak), <b>tu kalbi</b> (you speak). Because the ending already says who, people often drop aš and tu. Put <b>ne</b> on the front to say "not": nesuprantu, I don\'t understand.',lessons:['u8b','u8c']},
  u19:{title:'Susikalbėti',en:'Getting by',tip:'Short phrases that smooth every interaction. The <b>-ite</b> endings (atleiskite, parodykite) are the polite forms you use with strangers.',lessons:['u12b','u13b']},
- u26:{title:'Veiksmažodžiai',en:'Verb dictionary',tip:'Dictionary forms end in <b>-ti</b>. For "I", the ending becomes -u (einu, noriu); for "you", -i (eini, nori). You have been using these all along.',lessons:['u8a']},
+ u26:{title:'Veiksmažodžiai',en:'Verb dictionary',tip:'Dictionary forms end in <b>-ti</b>. For "I", the ending becomes -u (kalbu, noriu); for "you", -i (kalbi, nori). You have been using these all along.',lessons:['u8a']},
  u12:{lessons:['u12a']},
  u7:{lessons:['u7a','u7b']},
  u24:{title:'Metų laikai',en:'Seasons and months',tip:'Seasons and months are named after nature: <b>liepa</b> (July) is the linden tree, <b>birželis</b> (June) the birch. Learn them with the weather they bring.',lessons:['u7c']},
@@ -1240,7 +1240,7 @@ const LESSON_TIPS={
 'u8c-2':'<b>Mes einame</b> (we go) and <b>jie valgo</b> (they eat) show two more endings: -ame for "we", the plain stem for "they". <b>Namo</b> means "homeward", so no "to" is needed.',
 'u3a-1':'Words ending in <b>-a</b> (duona, kava, arbata) are usually feminine; words ending in -as, -is or -us are masculine. <b>Vanduo</b> (water) is one of the few that fit neither.',
 'u3a-2':'Hold the long vowels: <b>mėsa</b> (meat), <b>sūris</b> (cheese). <b>Kiaušinis</b> (egg) is long, so split it: kyow-SHI-nis.',
-'u3b-1':'<b>Obuolys</b> (apple) and <b>bulvė</b> (potato) are everyday staples. <b>Vištiena</b> is chicken meat; the bird itself is višta.',
+'u3b-1':'<b>Obuolys</b> (apple) and <b>bulvė</b> (potato) are everyday staples. <b>Vištiena</b> is chicken meat.',
 'u3b-2':'<b>Alus</b> is like "ale" and <b>vynas</b> like "wine": same old roots. <b>Ledai</b> (ice cream) is always plural, literally "ices".',
 'u3c-1':'After <b>noriu</b> (I want) the thing changes ending: kava → <b>kavos</b>. After valgau and geriu it ends in -ą or -į: <b>duoną</b>, <b>vandenį</b>. For now, learn each phrase as one chunk.',
 'u3c-2':'<b>Skanaus!</b> is said before eating, like "bon appétit". <b>Į sveikatą!</b> ("to health") is for clinking glasses. <b>Sąskaitą, prašau</b> gets you the bill anywhere.',
@@ -1286,12 +1286,12 @@ const LESSON_TIPS={
 'u25a-2':'<b>Jo</b> is "his" and <b>jos</b> is "her": Koks jo vardas? Koks jos vardas? Living "in" Kaunas is <b>Kaune</b>.',
 'u11a-1':'<b>Oras</b> means both "weather" and "air". <b>Saulė</b> (sun) shares its root with "solar".',
 'u11a-2':'<b>Lyja</b> (it\'s raining) and <b>sninga</b> (it\'s snowing) need no "it": the verb says it all. <b>Šilta</b> and <b>šalta</b> (warm, cold) differ by one letter, so listen closely.',
-'u11b-1':'Feeling words change for women: laimingas → <b>laiminga</b>, pavargęs → <b>pavargusi</b>. <b>Man karšta</b> (I\'m hot) is literally "to me it\'s hot".',
+'u11b-1':'Feeling words change for a woman; you will meet those forms later. <b>Man karšta</b> (I\'m hot) is literally "to me it\'s hot".',
 'u11b-2':'<b>Aš myliu tave</b> (I love you) is for people. For things you like, say <b>man patinka</b> ("to me it pleases").',
 'u22a-1':'<b>Man patinka</b> is built backwards: "to me it pleases". Put ne- in front for the opposite: <b>man nepatinka</b>.',
 'u22a-2':'Several of these are borrowed: <b>muzika</b>, <b>futbolas</b>, <b>filmai</b>. <b>Knygos</b> (books) and <b>kelionės</b> (trips) are plural, the way people talk about hobbies.',
 'u22b-1':'<b>Aš mėgstu</b> (I like doing) plus a verb ending in -ti: skaityti, keliauti, gaminti. That pattern works with any verb you learn.',
-'u22b-2':'<b>Klausytis</b> (to listen) takes the "of" form: klausausi <b>muzikos</b>. <b>Savaitgalis</b> is "week-end", built just like the English word.',
+'u22b-2':'<b>Aš klausausi muzikos</b> (I listen to music): after "listen" the thing takes the "of" ending. <b>Savaitgalis</b> is "week-end", built just like the English word.',
 'u10a-1':'<b>Oro uostas</b> is literally "air port". <b>Bilietas</b> (ticket) and <b>autobusas</b> (bus) look like their English cousins.',
 'u10a-2':'<b>Pinigai</b> (money) is always plural. <b>Pasas</b> (passport) and <b>žemėlapis</b> (map) are worth keeping close.',
 'u10b-1':'City names change in sentences: <b>į Kauną</b> (to Kaunas), <b>Vilniuje</b> (in Vilnius). <b>Jūra</b> is the sea; the coast is around Klaipėda.',
@@ -1308,8 +1308,8 @@ const LESSON_TIPS={
 'u18a-2':'<b>Man skauda</b> plus a body part tells a doctor what hurts. If you don\'t know the word, point and say <b>man skauda čia</b>.',
 'u18b-1':'<b>Aš pamečiau pasą</b> (I lost my passport) and <b>mane apvogė</b> (I was robbed) are for the police. Your <b>ambasada</b> (embassy) helps after that.',
 'u18b-2':'<b>Saugu</b> (safe) and <b>pavojinga</b> (dangerous) are opposites. <b>Šimtas dvylika</b> is 112, the emergency number, said as words.',
-'u5a-1':'Colours change with feminine words: raudonas → <b>raudona</b>. <b>Mėlynas</b> (blue) has a long ė, so hold it.',
-'u5a-2':'<b>Rožinis</b> (pink) comes from rožė, a rose; <b>oranžinis</b> from orange. <b>Baltas</b> (white) may be where the name "Baltic" comes from.',
+'u5a-1':'Colours change for a "her" word: <b>balta duona</b>, white bread. <b>Mėlynas</b> (blue) has a long ė, so hold it.',
+'u5a-2':'<b>Rožinis</b> (pink) comes from the word for a rose; <b>oranžinis</b> from orange. <b>Baltas</b> (white) may be where the name "Baltic" comes from.',
 'u5b-1':'Opposites stick better in pairs: <b>didelis</b>/<b>mažas</b> (big/small), <b>naujas</b>/<b>senas</b> (new/old). <b>Gražus</b> means beautiful.',
 'u5b-2':'Describing words go before the noun and match it: <b>žalias obuolys</b>, <b>balta duona</b>. Swap -as for -a with feminine nouns.',
 'u6a-1':'<b>Šuo</b> (dog) sounds like "shoo!". <b>Katė</b> is a cat and <b>karvė</b> a cow.',
@@ -1323,12 +1323,12 @@ const LESSON_TIPS={
 'u16c-1':'<b>Ar turite...?</b> (do you have...?) uses the "some of" ending: obuoliai → <b>obuolių</b>, sūris → <b>sūrio</b>. At a market, <b>tik grynaisiais?</b> checks if they only take cash.',
 'u14c-1':'Lithuanian has two verbs for "go": <b>einu</b> on foot, <b>važiuoju</b> by car, bus or train. Both take <b>į</b> + the place: į Kauną, į parduotuvę.',
 'u18c-1':'<b>Man skauda</b> plus the body part with an -ą or -ę ending: <b>galvą</b>, <b>pilvą</b>, <b>gerklę</b>. A fever is "having temperature": <b>turiu temperatūros</b>.',
-'u27a-1':'<b>Ateinu</b> (I\'m coming) and <b>išeina</b> (he\'s leaving) are built from <b>eiti</b>, to go: at- means towards, iš- means out of. One verb, many directions.',
+'u27a-1':'<b>Ateinu</b> (I\'m coming) and <b>išeina</b> (he\'s leaving) are built from the verb "to go": at- means towards, iš- means out of. One verb, many directions.',
 'u27a-2':'<b>Palauk manęs</b> (wait for me) is what you shout across the street. <b>Sėdžiu</b> and <b>stoviu</b> (sitting, standing) are easy to practise: say them as you do them.',
 'u27b-1':'<b>Matau</b> (I see) and <b>matai</b> (you see) show the pattern again: -au for I, -ai for you. <b>Ką tu darai?</b> is the everyday "what are you doing?"',
 'u27b-2':'<b>Žiūriu</b> is watching on purpose, <b>matau</b> is just seeing. <b>Juokiuosi</b> (I\'m laughing) ends in -si: you do it to yourself.',
 'u27c-1':'<b>Perku</b> (I buy) and <b>moku</b> (I pay) are shop essentials. <b>Duok man</b> is a casual "give me"; add prašau to be polite.',
-'u27c-2':'After <b>ieškau</b> (I\'m looking for) the thing takes the "some of" ending: stotis → <b>stoties</b>. <b>Parduodu</b> (I sell) is "give away for money": par- + duodu.',
+'u27c-2':'After <b>ieškau</b> (I\'m looking for) the thing takes the "some of" ending: <b>ieškau stoties</b>, I\'m looking for the station. <b>Parduodu</b> (I sell) is "give away for money": par- + duodu.',
 'u27d-1':'"We" ends in <b>-me</b> and polite "you" in <b>-te</b>: esa<b>me</b>, esa<b>te</b>, kalba<b>me</b>, kalba<b>te</b>. "They" is the plain stem: jie <b>kalba</b>.',
 'u27d-2':'Notice "they" and "he" share a form: jis <b>dirba</b>, jie <b>dirba</b>. The pronoun tells you who. <b>Kartu</b> means together.',
 'u28a-1':'<b>Keliuosi</b> and <b>prausiuosi</b> end in -uosi: you do it to yourself (get yourself up, wash yourself). Time goes after the verb: keliuosi <b>septintą valandą</b>.',
@@ -1341,7 +1341,7 @@ const LESSON_TIPS={
 'u29a-2':'<b>Striukė</b> is a jacket, <b>paltas</b> a long coat. <b>Džinsai</b> is borrowed from "jeans": dž sounds like the English j.',
 'u29b-1':'<b>Ar yra...?</b> means "is there...?": ar yra didesnis? <b>Didesnis</b> and <b>mažesnis</b> are bigger and smaller: -esnis means "more".',
 'u29b-2':'<b>Tinka</b> means it fits, and it also means "that works" in general. <b>Aš pagalvosiu</b> (I\'ll think about it) is the polite way out of a shop.',
-'u29c-1':'<b>Pirštinės</b> (gloves) and <b>kojinės</b> (socks) come from pirštas (finger) and koja (leg): words built from body parts.',
+'u29c-1':'<b>Pirštinės</b> (gloves) and <b>kojinės</b> (socks) come from the words for finger and leg: words built from body parts.',
 'u29c-2':'After <b>dėvi</b> (wears) and <b>apsivilk</b> (put on) the clothes take the -ą/-ę ending: kepurė → <b>kepurę</b>, striukė → <b>striukę</b>.',
 'u30a-1':'Learn describing words in pairs: <b>aukštas</b>/<b>žemas</b> (tall/short), <b>jaunas</b>/<b>vyresnis</b> (young/older). For a woman, -as becomes -a: aukšta.',
 'u30a-2':'Words ending in <b>-us</b> (malonus) become <b>-i</b> for a woman: maloni. <b>Juokingas</b> comes from juoktis, to laugh.',
@@ -1349,13 +1349,13 @@ const LESSON_TIPS={
 'u30b-2':'Put <b>ne-</b> on a describing word for the opposite: švarus → <b>nešvarus</b> (clean → dirty). <b>Patogus</b> is comfortable.',
 'u30c-1':'"Is" is usually left out: <b>Mano brolis aukštas</b> = my brother is tall. Change the ending for a woman: mano sesuo <b>aukšta</b>.',
 'u30c-2':'<b>Ši knyga įdomi</b>: knyga is a "her" word, so įdomus becomes <b>įdomi</b>. <b>Nėra</b> is "is not": nėra lengva.',
-'u31a-1':'Most jobs end in <b>-ojas</b> or <b>-ėjas</b> for a man and <b>-oja</b> / <b>-ėja</b> for a woman: vairuotojas, vairuotoja.',
+'u31a-1':'Most jobs end in <b>-ojas</b> or <b>-ėjas</b> for a man and <b>-oja</b> / <b>-ėja</b> for a woman, like <b>mokytojas</b> and <b>mokytoja</b> (teacher).',
 'u31a-2':'<b>Policininkas</b> and <b>ūkininkas</b> end in -ininkas, "a person who works with": polic-ija, ūk-is (farm). <b>Vadovas</b> is the boss.',
 'u31b-1':'"At" a workplace is an ending: ligoninė → <b>ligoninėje</b>, mokykla → <b>mokykloje</b>. Answer <b>Kur tu dirbi?</b> with Aš dirbu + that ending.',
 'u31b-2':'<b>Ieškau darbo</b>: after ieškau the thing takes the "some of" ending. <b>Baigiu penktą</b> means "I finish at five".',
 'u32a-1':'<b>Namai</b> is home and is always plural. Rooms end in -ė or -as: <b>virtuvė</b>, <b>vonia</b>, <b>miegamasis</b> (literally "the sleeping one").',
 'u32a-2':'<b>Durys</b> (door) is always plural. <b>Langas</b>, <b>stalas</b> and <b>kėdė</b> (window, table, chair) are worth labelling around your own home.',
-'u32b-1':'<b>Šaldytuvas</b> (fridge) comes from šaldyti, to chill. <b>Spinta</b> is any wardrobe or cupboard.',
+'u32b-1':'<b>Šaldytuvas</b> (fridge) comes from the word for "to chill". <b>Spinta</b> is any wardrobe or cupboard.',
 'u32b-2':'"In" a flat is <b>bute</b>: butas → bute. <b>Kaimynas</b> (neighbour) has kaimas (village) inside it.',
 'u32c-1':'Commands to a friend end in <b>-k</b> or <b>-is</b>: <b>sėskis</b> (sit down), <b>jauskis kaip namie</b> (make yourself at home). These are what a host says.',
 'u32c-2':'<b>Atidaryk</b> / <b>uždaryk</b> (open / close) and <b>įjunk</b> / <b>išjunk</b> (switch on / off) come in pairs: į- is in, iš- is out.',
@@ -1364,7 +1364,7 @@ const LESSON_TIPS={
 'u33b-1':'"I need" is said "to me it is needed": <b>man reikia</b>. After it, a verb (man reikia eiti) or the "some of" ending (man reikia pinigų).',
 'u33b-2':'<b>Turiu</b> + verb means "I have to": turiu dirbti. <b>Noriu</b> + verb is "I want to": noriu miegoti. Same pattern every time.',
 'u34a-1':'Future = add <b>-siu</b> for I: būti → <b>būsiu</b>, eiti → <b>eisiu</b>, dirbti → <b>dirbsiu</b>. That is all there is to it.',
-'u34a-2':'<b>Grįšiu</b> (I\'ll come back) drops the ž: grįžti → grįšiu. <b>Liksiu namie</b> means "I\'ll stay home".',
+'u34a-2':'<b>Grįšiu</b> means "I\'ll come back". <b>Liksiu namie</b> means "I\'ll stay home".',
 'u34b-1':'For "you will", use <b>-si</b>: Ką veik<b>si</b> rytoj? <b>Kitą savaitę</b> (next week) and <b>po darbo</b> (after work) say when.',
 'u34b-2':'<b>Ar ateisi?</b> (will you come?) → <b>Taip, ateisiu</b>. <b>Pamatysime</b> (we\'ll see) is the friendly non-answer.',
 'u34c-1':'<b>Atostogos</b> (holiday) is always plural. <b>Važiuosiu prie jūros</b> means "I\'ll go to the seaside": prie = by, near.',
@@ -1373,7 +1373,7 @@ const LESSON_TIPS={
 'u35a-2':'<b>Jau</b> (already) and <b>dar</b> (still, yet) are opposites. <b>Tik</b> is "only" and <b>taip pat</b> is "also".',
 'u35b-1':'<b>Aš neinu, nes lyja</b>: nes (because) gives the reason. <b>Lyja, todėl...</b> flips it: reason first, then todėl (so).',
 'u35b-2':'<b>Aš jau valgiau</b> (I\'ve already eaten) vs <b>aš dar nevalgiau</b> (I haven\'t eaten yet). Jau and dar change the whole meaning.',
-'u35c-1':'<b>Kai</b> is "when" in a statement; <b>kada</b> is "when?" in a question. <b>Jeigu</b> (if), <b>kad</b> (that) and <b>nors</b> (although) join two ideas.',
+'u35c-1':'<b>Kai</b> is "when" in a statement, never in a question. <b>Jeigu</b> (if), <b>kad</b> (that) and <b>nors</b> (although) join two ideas.',
 'u35c-2':'<b>Aš manau, kad...</b> is the key opinion phrase: kad means "that". <b>Vis tiek</b> means "anyway".',
 'u36a-1':'"I did" ends in <b>-au</b> or <b>-iau</b>: buv<b>au</b>, ėj<b>au</b>, valg<b>iau</b>. <b>Ėjau</b> is on foot, <b>važiavau</b> by car or bus.',
 'u36a-2':'<b>Mačiau</b> (I saw) comes from matyti; the t turns into č. <b>Žiūrėjau filmą</b>: the thing you watched still takes -ą.',
@@ -1396,7 +1396,7 @@ const LESSON_TIPS={
 'u38b-1':'One-word reactions end in <b>-u</b> or <b>-a</b>: įdomu, nuobodu, gražu. They work alone, like "interesting!"',
 'u38b-2':'<b>Man tas pats</b> is literally "to me the same": I don\'t mind. <b>Svarbu</b> means important.',
 'u38c-1':'<b>Aš manau, kad...</b> then the whole sentence: Aš manau, kad Vilnius gražus. <b>Su tavimi</b> means "with you".',
-'u38c-2':'To compare, use <b>geresnis už</b> (better than) or <b>man labiau patinka</b> (I prefer). Taip ir yra closes the argument.',
+'u38c-2':'To compare, use <b>geresnė už</b> (better than) or <b>man labiau patinka</b> (I prefer). Taip ir yra closes the argument.',
 'u39a-1':'<b>Beje</b> (by the way), <b>pavyzdžiui</b> (for example) and <b>na</b> (well...) buy you time to think. Locals use them constantly.',
 'u39a-2':'React to news with <b>negali būti!</b> (no way!), <b>rimtai?</b> (seriously?), <b>kaip gaila</b> (what a pity) or <b>kaip smagu!</b> (how nice!).',
 'u39b-1':'Questions keep a chat alive: <b>papasakok daugiau</b> (tell me more), <b>o kaip tavo darbas?</b> When stuck, ask back.',
@@ -1404,8 +1404,6 @@ const LESSON_TIPS={
 'u12a-2':'<b>Krepšinis</b> (basketball) is Lithuania\'s unofficial religion. <b>Vasario 16-oji</b>, 16 February 1918, is Independence Day.',
 };
 /* Speaking advice for each unit's "Speak it" lesson. */
-/* a grouped lesson's tip is the tips of the parts it is made of */
-COURSE.forEach(u=>u.lessons.forEach(l=>{if(!l.parts||LESSON_TIPS[l.id])return;const ts=[...new Set(l.parts.map(p=>LESSON_TIPS[p]).filter(Boolean))];if(ts.length)LESSON_TIPS[l.id]=ts.join('<br><br>');}));
 const SPEAK_TIPS={
 'u0':'Say every letter, slowly. Lithuanian rewards care: if you pronounce each letter, you will be understood.',
 'u1':'Greetings are all about rhythm. Hit the bold syllable and keep the rest quick and light.',
@@ -1455,19 +1453,19 @@ const SPEAK_TIPS={
 /* Sentence patterns: shown on a unit's first lesson as colour-coded slots. Each row is [word, its job]. */
 const PATTERNS={
  u1:{name:'Saying hello',rows:[[['Labas','good'],['rytas','time of day']],[['Laba','good'],['diena','time of day']],[['Labas','good'],['vakaras','time of day']]],note:'On its own, <b>labas</b> is "hello"; in front of a time of day it means "good", and changes to match: laba diena, but labas rytas. You will also hear labą dieną, labą vakarą: the same greetings.'},
- u8:{name:'Who + does',rows:[[['Aš','who'],['kalbu','does']],[['Tu','who'],['kalbi','does']],[['Jis','who'],['kalba','does']]],note:'The ending tells you who: -u for I, -i for you. That is why aš and tu are often left out.'},
- u13:{name:'Asking',rows:[[['Ar','yes/no?'],['tu','who'],['kalbi','does'],['angliškai','how']],[['Kur','question word'],['yra','is'],['stotis','what']]],note:'Ar at the start makes a yes/no question. Question words (kur, kas, kada) also go first.'},
+ u8:{name:'Who + does',rows:[[['Aš','who'],['kalbu','does']],[['Tu','who'],['kalbi','does']]],note:'The ending tells you who: -u for I, -i for you. That is why aš and tu are often left out.'},
+ u13:{name:'Asking',rows:[[['Ar','yes/no?'],['tu','who'],['kalbi','does'],['angliškai','how']],[['Kur','question word'],['aš','who'],['esu','am']]],note:'Ar at the start makes a yes/no question. Question words (kur, kas, kada) also go first.'},
  u20:{name:'From where, living where',rows:[[['Aš','who'],['esu','am'],['iš Lietuvos','from where']],[['Aš','who'],['gyvenu','live'],['Vilniuje','where']]],note:'"From" is iš plus a changed ending. "In" is only an ending: Vilnius → Vilniuje.'},
  u3:{name:'Who + does + what',rows:[[['Aš','who'],['valgau','does'],['duoną','what']],[['Aš','who'],['geriu','does'],['vandenį','what']],[['Aš','who'],['noriu','want'],['kavos','some of']]],note:'The "what" changes its ending: duona → duoną. After noriu it means "some of": kava → kavos.'},
  u15:{name:'Ordering politely',rows:[[['Aš','who'],['norėčiau','would like'],['vandens','some of']],[['Kavos','some of'],['su pienu','with what']]],note:'Su (with) and be (without) change the next word too: su pienu, be cukraus.'},
  u9:{name:'Where is…?',rows:[[['Kur','where'],['yra','is'],['stotis','what']],[['Stotis','what'],['yra','is'],['ten','where']]],note:'Word order is flexible. Kur yra stotis? and Stotis yra ten both use the same three pieces.'},
  u14:{name:'Going to a place',rows:[[['Bilietą','what'],['į Kauną','to where'],['prašau','please']],[['Autobusas','what'],['važiuoja','goes'],['į centrą','to where']]],note:'Į (to) changes the place: Kaunas → į Kauną, centras → į centrą.'},
- u5:{name:'Describing words match',rows:[[['žalias','describes'],['obuolys','thing (him)']],[['žalia','describes'],['arbata','thing (her)']]],note:'Describe a "him" word with -as and a "her" word with -a. The describing word goes first.'},
- u4:{name:'Whose is it?',rows:[[['Tai','this is'],['mano','whose'],['brolis','who']],[['Aš','who'],['turiu','have'],['seserį','what']]],note:'Mano, tavo, jo, jos (my, your, his, her) never change. The noun after turiu does.'},
+ u5:{name:'Describing words match',rows:[[['žalias','describes'],['obuolys','thing (him)']],[['balta','describes'],['duona','thing (her)']]],note:'Describe a "him" word with -as and a "her" word with -a. The describing word goes first.'},
+ u4:{name:'Whose is it?',rows:[[['Tai','this is'],['mano','whose'],['brolis','who']],[['Aš','who'],['turiu','have'],['seserį','what']]],note:'Mano and tavo (my, your) never change. The noun after turiu does.'},
  u11:{name:'"To me it is…"',rows:[[['Man','to me'],['šalta','feeling']],[['Man','to me'],['patinka','it pleases']]],note:'Feelings and likes are said "to me": man šalta (I am cold), man patinka (I like it).'},
  u22:{name:'I like doing',rows:[[['Aš','who'],['mėgstu','like'],['skaityti','doing (-ti)']],[['Aš','who'],['mėgstu','like'],['keliauti','doing (-ti)']]],note:'After mėgstu (I like), noriu (I want) and galiu (I can), use the -ti form of the verb.'},
  u23:{name:'When and what time',rows:[[['Rytoj','when'],['septintą valandą','what time']],[['Gal','maybe'],['rytoj','when']]],note:'Time words usually go first or last. At seven = septintą valandą.'},
- u27:{name:'Who + does (everyone)',rows:[[['Aš','who'],['laukiu','does']],[['Mes','who'],['laukiame','does']],[['Jie','who'],['laukia','does']]],note:'I -u, you -i, we -me, polite you -te, he/she/they the plain stem.'},
+ u27:{name:'Who + does (everyone)',rows:[[['Aš','who'],['laukiu','does']],[['Mes','who'],['laukiame','does']],[['Jie','who'],['kalba','does']]],note:'I -u, you -i, we -me, polite you -te, he/she/they the plain stem.'},
  u28:{name:'When + who + does',rows:[[['Kasdien','when'],['aš','who'],['keliuosi','does'],['septintą valandą','what time']],[['Kartais','when'],['aš','who'],['dirbu','does'],['iš namų','from where']]],note:'Time and how-often words usually go first. With niekada the verb takes ne- as well.'},
  u29:{name:'Is there...? / I like this',rows:[[['Ar','yes/no?'],['yra','is there'],['didesnis','what']],[['Man','to me'],['patinka','it pleases'],['ši striukė','what']]],note:'Ši (this) matches a "her" word, šis a "him" word: ši striukė, šis paltas.'},
  u30:{name:'Thing + describing word',rows:[[['Mano brolis','who'],['aukštas','describes']],[['Mano sesuo','who'],['aukšta','describes']],[['Ši knyga','what'],['įdomi','describes']]],note:'"Is" is usually left out. The describing word matches: -as / -a, -us / -i.'},
@@ -1476,7 +1474,7 @@ const PATTERNS={
  u33:{name:'Can / must / want + verb',rows:[[['Aš','who'],['galiu','can'],['padėti','doing (-ti)']],[['Aš','who'],['turiu','have to'],['dirbti','doing (-ti)']],[['Man','to me'],['reikia','it is needed'],['eiti','doing (-ti)']]],note:'After galiu, turiu, noriu and reikia, the next verb always ends in -ti.'},
  u34:{name:'I will',rows:[[['Rytoj','when'],['aš','who'],['dirbsiu','will do']],[['Vasarą','when'],['aš','who'],['važiuosiu','will do'],['prie jūros','where']]],note:'Future: -siu for I, -si for you, bus for "it will be".'},
  u35:{name:'Joining two ideas',rows:[[['Aš neinu','idea 1'],['nes','because'],['lyja','idea 2']],[['Aš pavargęs','idea 1'],['bet','but'],['laimingas','idea 2']]],note:'A comma goes before bet, nes, todėl and kad.'},
- u36:{name:'I did',rows:[[['Vakar','when'],['aš','who'],['buvau','did'],['mieste','where']],[['Aš','who'],['valgiau','did'],['picą','what']]],note:'Past for I: -au / -iau. "It was" = buvo.'},
+ u36:{name:'I did',rows:[[['Vakar','when'],['aš','who'],['buvau','did'],['mieste','where']],[['Aš','who'],['valgiau','did'],['duoną','what']]],note:'Past for I: -au / -iau. "It was" = buvo.'},
  u37:{name:'Did you...?',rows:[[['Kur','question word'],['buvai','did (you)'],['vakar','when']],[['Mes','who'],['valgėme','did (we)'],['restorane','where']]],note:'You -ai / -ei, he/she/they -o, we -ome / -ėme.'},
  u40:{name:'What hurts',rows:[[['Man','to me'],['skauda','it hurts'],['koją','what']],[['Man','to me'],['svaigsta','it spins'],['galva','what']]],note:'With skauda the body part takes -ą / -į / -ę.'},
  u38:{name:'Giving an opinion',rows:[[['Aš manau','I think'],['kad','that'],['Vilnius gražus','the idea']],[['Arbata','what'],['geresnė už','better than'],['kavą','what']]],note:'After kad comes a whole sentence. Už (than) changes the next word: kava → kavą.'},
@@ -1485,18 +1483,39 @@ const PATTERNS={
 };
 /* Small grammar tables. Each one is shown once, above the first gap-fill that uses it (a drill whose answer, or for
    "frame" words its sentence, holds one of its words), and every unit lists the ones so far under "Grammar so far". */
+/* (Round 8) A tip doesn't teach a word: every Lithuanian word a tip shows has its own New word card, in that lesson or
+   before it on the path. So each old lesson's tip goes with the first lesson (from its own on) whose cards cover the words
+   it shows, and the unit tip with its pattern table goes with the first lesson that covers theirs (u.tipAt). A grouped
+   lesson's tip is the tips placed in it; a lesson can have none. tools/check_course.js lists a tip no lesson covers. */
+const TIP_SHOWS=(()=>{const W=new Set(),tw=s=>(s||'').toLowerCase().replace(/[.,!?;:"'()¿¡·→=+\/…]/g,' ').split(/\s+/).filter(Boolean);
+  ITEMS.forEach(i=>tw(i.lt).concat((i.alt||[]).flatMap(tw)).forEach(w=>W.add(w)));
+  /* the words a tip shows that a card teaches (a<b>čiū</b> is one word); a word that is also English counts only in bold */
+  const EN=new Set('a i o be man is it to me no as at on in so ten bus try re vilnius kaunas klaipėda'.split(' '));
+  return h=>{const b=new Set([...(h||'').matchAll(/<b>(.*?)<\/b>/g)].flatMap(m=>tw(m[1].replace(/<[^>]+>/g,''))));
+    return [...new Set(tw((h||'').replace(/<\/?b>/g,'').replace(/<[^>]+>/g,' ')).filter(w=>W.has(w)&&!/^(vilnius|kaunas|klaipėda)$/.test(w)&&(b.has(w)||!EN.has(w))))];};})();
+const unitTipText=u=>{const p=PATTERNS[u.id];return (u.tip||'')+(p?' '+p.rows.flat().map(x=>'<b>'+x[0]+'</b>').join(' ')+' '+(p.note||''):'');};
+(()=>{const OWN=Object.assign({},LESSON_TIPS),known=new Set(),tw=s=>(s||'').toLowerCase().replace(/[.,!?;:"'()¿¡·→=+\/…]/g,' ').split(/\s+/).filter(Boolean);
+  const order=PATH.filter(id=>typeof id==='string').map(id=>COURSE.find(x=>x.id===id)).filter(Boolean);
+  COURSE.forEach(u=>{if(!order.includes(u))order.push(u);});
+  order.forEach(u=>{const at=u.lessons.map(l=>{l.items.forEach(i=>tw(i.lt).concat((i.alt||[]).flatMap(tw)).forEach(w=>known.add(w)));return new Set(known);});
+    const place=(h,from)=>{const ws=TIP_SHOWS(h),k=u.lessons.findIndex((l,j)=>j>=from&&!l.speak&&ws.every(w=>at[j].has(w)));return k<0?from:k;};
+    const got=u.lessons.map(()=>[]),done=new Set();
+    u.lessons.forEach((l,j)=>{if(l.speak)return;(l.parts||[l.id]).forEach(p=>{const t=OWN[p];if(!t||done.has(t))return;done.add(t);got[place(t,j)].push(t);});});
+    u.lessons.forEach((l,j)=>{if(l.speak)return;if(got[j].length)LESSON_TIPS[l.id]=got[j].join('<br><br>');else delete LESSON_TIPS[l.id];});
+    const first=u.lessons.findIndex(l=>!l.speak);if(first>=0)u.tipAt=u.lessons[place(unitTipText(u),first)].id;});})();
+
 const GRAMMAR=[
  {id:'be',u:'u1',name:'"To be": am, are, is',frame:['esu','esi','yra'],rows:[['aš esu','I am'],['tu esi','you are (to a friend)'],['jis, ji yra','he, she is']],note:'Each "who" has its own form. Yra also means "there is".'},
- {id:'mine',u:'u1',name:'My and your',ans:['mano','tavo'],rows:[['mano','my'],['tavo','your (to a friend)'],['jūsų','your (polite)']],note:'These never change: mano vardas, mano draugė.'},
+ {id:'mine',u:'u1',name:'My and your',ans:['mano','tavo'],rows:[['mano','my'],['tavo','your (to a friend)']],note:'These never change: mano vardas, tavo vardas.'},
  {id:'money',u:'u2',name:'How many euros',ans:['eurai','eurų'],rows:[['vienas euras','1 euro'],['du … devyni eurai','2 to 9 euros'],['dešimt eurų','10 to 20 euros']],note:'The number decides the ending of the word after it.'},
  {id:'what',u:'u3',name:'The thing you eat or drink',ans:['duoną','vandenį','žuvį'],rows:[['duona','bread'],['aš valgau duoną','I eat bread'],['aš geriu vandenį','I drink water']],note:'The "what" of a sentence ends in -ą, -į or -ę.'},
- {id:'some',u:'u3',name:'Some of it',ans:['kavos','arbatos','cukraus'],rows:[['kava','coffee'],['noriu kavos','I want (some) coffee'],['be cukraus','without sugar']],note:'"Some of", "want" and "without" all take the -os / -aus ending.'},
- {id:'adj',u:'u5',name:'Describing words match',ans:['žalias','balta','aukšta','įdomi','laiminga'],rows:[['žalias obuolys','a green apple (a "him" word)'],['žalia arbata','green tea (a "her" word)'],['aukštas brolis · aukšta sesuo','a tall brother · a tall sister']],note:'-as for a "him" word, -a for a "her" word.'},
- {id:'verb',u:'u8',name:'Who does it: the ending',ans:['kalbu','kalbi','kalba','nesuprantu'],rows:[['aš kalbu','I speak'],['tu kalbi','you speak'],['jis, ji kalba','he, she speaks']],note:'-u for I, -i for you. Ne- in front means "not".'},
- {id:'ask',u:'u13',name:'Asking a question',ans:['ar','kur'],rows:[['Ar tu kalbi angliškai?','Do you speak English? (yes or no)'],['Kur yra stotis?','Where is the station?'],['Kas tai?','What is this?']],note:'Ar at the start makes a yes/no question. Question words go first too.'},
- {id:'place',u:'u20',name:'From, and in',ans:['lietuvos','vilniuje','kaune'],rows:[['Lietuva','Lithuania'],['iš Lietuvos','from Lithuania'],['Lietuvoje, Vilniuje','in Lithuania, in Vilnius']],note:'"From" is iš plus a new ending. "In" is only an ending.'},
- {id:'future',u:'u34',name:'I will',ans:['dirbsiu','bus'],rows:[['aš dirbsiu','I will work'],['tu dirbsi','you will work'],['bus','it will be']],note:'Add -s- before the ending: dirbu → dirbsiu.'},
- {id:'past',u:'u36',name:'I did',ans:['buvau','buvai','valgėme'],rows:[['aš buvau','I was'],['tu buvai','you were'],['jis, ji buvo','he, she was'],['mes buvome','we were']],note:'-au for I, -ai for you, -o for he and she, -ome for we.'},
+ {id:'some',u:'u3',name:'Some of it',ans:['kavos','arbatos','cukraus'],rows:[['kava','coffee'],['noriu kavos','I want (some) coffee'],['noriu arbatos','I want (some) tea']],note:'After noriu the thing takes the "some of" ending: kava → kavos, arbata → arbatos.'},
+ {id:'adj',u:'u5',name:'Describing words match',ans:['žalias','balta','aukšta','įdomi','laiminga'],rows:[['žalias obuolys','a green apple (a "him" word)'],['balta duona','white bread (a "her" word)']],note:'-as for a "him" word, -a for a "her" word.'},
+ {id:'verb',u:'u8',name:'Who does it: the ending',ans:['kalbu','kalbi','kalba','nesuprantu'],rows:[['aš kalbu','I speak'],['tu kalbi','you speak']],note:'-u for I, -i for you. Ne- in front means "not".'},
+ {id:'ask',u:'u13',name:'Asking a question',ans:['ar','kur'],rows:[['Ar tu kalbi angliškai?','Do you speak English? (yes or no)'],['Kur aš esu?','Where am I?'],['Kas tai?','What is this?']],note:'Ar at the start makes a yes/no question. Question words go first too.'},
+ {id:'place',u:'u20',name:'From, and in',ans:['lietuvos','vilniuje','kaune'],rows:[['iš Lietuvos','from Lithuania'],['Lietuvoje, Vilniuje','in Lithuania, in Vilnius']],note:'"From" is iš plus a new ending. "In" is only an ending.'},
+ {id:'future',u:'u34',name:'I will',ans:['dirbsiu','bus'],rows:[['aš dirbsiu','I will work'],['bus','it will be']],note:'Add -s- before the ending: dirbu → dirbsiu.'},
+ {id:'past',u:'u36',name:'I did',ans:['buvau','buvai','valgėme'],rows:[['aš buvau','I was'],['jis, ji buvo','he, she was']],note:'-au for I, -o for he and she.'},
 ];
 function grammarFor(d){const a=norm(d.ans),f=norm(d.frame.replace('___',' ')).split(' ');
   return GRAMMAR.find(g=>(g.ans||[]).includes(a))||GRAMMAR.find(g=>(g.frame||[]).some(w=>f.includes(w))&&f.length<=6);}

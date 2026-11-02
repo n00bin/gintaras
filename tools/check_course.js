@@ -14,7 +14,7 @@ const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'ut
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,WORDS,GLUE,EMOJI,norm});')(c);
+new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -22,7 +22,9 @@ const units = new Set(c.COURSE.map(u => u.id));
 say('PATH entries that do not exist', c.PATH.filter(p => typeof p === 'string' && !units.has(p) && !c.CONV_BY[p]));
 const bases = {}; c.COURSE.forEach(u => u.lessons.filter(l => !l.speak).forEach(l => { const b = l.id.replace(/-\d+$/, ''); bases[b] = (bases[b] || 0) + 1; }));
 const parts = c.COURSE.flatMap(u => u.lessons.filter(l => !l.speak).map(l => l.id));
-say('lessons without a tip', parts.filter(id => !c.LESSON_TIPS[id]));
+/* (Round 8) a lesson can have no tip of its own (tips go with the lesson that teaches their words), but every tip is shown */
+{ const all = Object.values(c.LESSON_TIPS).join('\n'), keys = new Set(c.COURSE.flatMap(u => u.lessons.flatMap(l => l.parts || [l.id])));
+  say('lesson tips that are never shown', Object.keys(c.LESSON_TIPS).filter(k => keys.has(k) && !parts.includes(k) && !all.includes(c.LESSON_TIPS[k]) && !c.COURSE.some(u => u.lessons.some(l => (c.LESSON_TIPS[l.id] || '').includes(c.LESSON_TIPS[k]))))); }
 say('units without a speaking tip', [...units].filter(id => !c.SPEAK_TIPS[id]));
 // A phrase is covered if it has its own respelling, or every word in it has one (the app pieces them together).
 const ci = {}; Object.keys(c.PRON).forEach(k => { ci[k.toLowerCase().replace(/[.,!?]+$/, '')] = 1; });
@@ -76,6 +78,31 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   }
 });
 say('conversation words not taught earlier', unknown);
+
+/* (Round 8) A tip doesn't teach a word: every Lithuanian word a lesson tip, a speaking tip, a unit tip, its pattern table or
+   a grammar table or a New word card's note shows has its own New word card, in the lesson that shows it or before it on the path. Lithuanian here
+   is a word in bold (longer than an ending), a word with a Lithuanian letter, or a course word that isn't also English. Names (people, cities) are
+   not words to learn. */
+{ const tw = s => (s || '').toLowerCase().replace(/<[^>]+>/g, '').replace(/[.,!?;:"'()¿¡·→=+\/…]/g, ' ').split(/\s+/).filter(w => w && /\p{L}/u.test(w) && !/\d/.test(w) && !/-/.test(w));
+  const lex = new Set();
+  c.ITEMS.forEach(i => tw(i.lt).concat((i.alt || []).flatMap(tw)).forEach(w => lex.add(w)));
+  c.CONVS.forEach(v => v.all.forEach(l => l.lt && tw(l.lt).forEach(w => lex.add(w))));
+  Object.keys(c.WORDS).concat(Object.keys(c.GLUE)).forEach(k => tw(k).forEach(w => lex.add(w)));
+  const ENG = new Set('a i o be man is it to me no as at on in so ten bus try re'.split(' '));
+  const ENGB = new Set(['letters']);
+  const NAMES = new Set([...names, 'bobas', 'markas', 'markai', 'vilnius', 'kaunas', 'klaipėda', 'halės', 'amerika']);
+  const shows = h => { const b = new Set([...(h || '').matchAll(/<b>(.*?)<\/b>/g)].flatMap(m => tw(m[1])));
+    return [...new Set(tw((h || '').replace(/<\/?b>/g, '')).filter(w => (lex.has(w) || /[ąčęėįšųūž]/.test(w) || b.has(w) && w.length > 3 && !ENGB.has(w)) && (w.length > 1 || lex.has(w)) && (lex.has(w) || w.length > 3) &&
+      (b.has(w) || /[ąčęėįšųūž]/.test(w) || !ENG.has(w)) && !NAMES.has(w)))]; };
+  const cards = new Set(), bad = [];
+  const look = (where, h) => { const m = shows(h).filter(w => !cards.has(w)); if (m.length) bad.push(where + ': ' + m.join(', ')); };
+  c.PATH.filter(p => typeof p === 'string' && !c.CONV_BY[p]).forEach(id => { const u = c.COURSE.find(x => x.id === id);
+    u.lessons.forEach(l => { l.items.forEach(i => tw(i.lt).concat((i.alt || []).flatMap(tw)).forEach(w => cards.add(w)));
+      l.items.forEach(i => look(l.id + ' note on ' + i.lt, i.note));
+      if (l.speak) look(l.id + ' speaking tip', c.SPEAK_TIPS[u.id]); else look(l.id + ' tip', c.LESSON_TIPS[l.id]);
+      if (l.id === (u.tipAt || u.lessons[0].id)) look(id + ' unit tip and pattern (with ' + l.id + ')', c.unitTipText ? c.unitTipText(u) : u.tip); });
+    c.GRAMMAR.filter(g => g.u === id).forEach(g => look(id + ' grammar table "' + g.name + '"', g.rows.map(r => '<b>' + r[0] + '</b>').join(' ') + ' ' + g.note)); });
+  say('tip words with no New word card by the lesson that shows them', bad); }
 console.log('  (' + c.DRILLS.filter(d => d.off).length + ' sentence drills are off until their words are taught)');
 say('drill words (sentence, and one choice) not taught by the lesson of the drill or earlier', [...new Set(drillUnknown)]);
 /* Teach before test is checked for real by tools/check_cards.py, which plays every lesson in the app (Round 6: the old check
