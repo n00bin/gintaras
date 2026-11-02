@@ -1041,8 +1041,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.92';
-const APP_VERSION=164;
+const APP_RELEASE='3.93';
+const APP_VERSION=165;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2591,6 +2591,8 @@ function endSlip(sg,st,same){if(same<3||same<Math.min(sg.length,st.length)-3)ret
   const e=LANG.endings;return !e||[sg.slice(same),st.slice(same)].every(x=>e.some(y=>y.endsWith(x)));}
 /* gerai, labai, puikiai...: words that never change their ending, so gerei is a spelling slip, not "a different ending" */
 const fixedWord=w=>(LANG.fixed||[]).some(x=>strip(x)===w);
+/* (Round 8) a word the course has anywhere (a card, a meaning list), in any form it writes: not just a slip of the keys */
+function realWord(w){if(!WORD_ITEMS)wordLvl('');const k=norm(w);return !!(WORD_ITEMS[k]||WORDS[k]||GLUE[k]);}
 /* (Round 5) the same naming word with another of its endings (Kanada / Kanados, diena / dienas): an ending, not spelling */
 function nounSlip(sg,st){const E=LANG.nounEnds;if(!E)return false;const s=sameStart(sg,st);
   for(let k=s;k>=Math.max(3,s-2);k--){const a=sg.slice(k),b=st.slice(k);if(a!==b&&E.includes(a)&&E.includes(b))return true;}return false;}
@@ -2640,7 +2642,7 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
       else if(swapped&&!neg)best={k,kind:'spell'};
       else if(LANG.beWho&&LANG.beWho[norm(g)]&&LANG.beWho[norm(t)])best={k,kind:'person'};
       /* an ending is only explained when what you wrote is a real form; anything else is a spelling slip */
-      else if(neg||endSlip(sg,st,same)&&knownWord(g)&&!fixedWord(st)||!fixedWord(st)&&(knownWord(t)||properNoun(t))&&nounSlip(sg,st))best={k,kind:'ending'};
+      else if(neg||endSlip(sg,st,same)&&knownWord(g)&&!fixedWord(st)||!fixedWord(st)&&(knownWord(t)||properNoun(t))&&nounSlip(sg,st)&&!(lev(sg,st)===1&&!realWord(g)))best={k,kind:'ending'};
       else if(other)best={k,kind:'word'};
       else if(sg.length>=3&&st.length-sg.length>=3&&st.startsWith(sg))best={k,kind:'cut'};
       else if((st.length>=4||G.length===1&&T.length===1&&st.length>=2)&&lev(sg,st)<=(st.length>=4?2:1))best={k,kind:'spell'};});
@@ -2658,14 +2660,15 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
   T.forEach((t,i)=>{if(match[i]||T.length>1&&WHO_WORDS.includes(t))return;const gl=glossOf(t);issues.push({kind:'missing',html:'You left out <b>'+esc(t)+'</b>'+(gl?' ('+esc(enFlat(gl))+')':'')+'.'});});
   G.forEach((g,k)=>{if(!used.has(k))issues.push({kind:'extra',html:'<b>'+esc(g)+'</b> isn\'t needed here.'});});
   /* (Round 7) an order that isn't accepted isn't "flexible": say which word has its place, or that the phrase is set */
-  if(!issues.length&&G.join(' ')!==T.join(' ')){const fx=T.find((t,i)=>(LANG.fixed||[]).includes(t)&&i+1<T.length&&!G.some((g,k)=>g===t&&G[k+1]===T[i+1]));
+  if(!issues.length&&G.join(' ')!==T.join(' ')){const fx=T.find((t,i)=>(LANG.stay||[]).includes(t)&&i+1<T.length&&!G.some((g,k)=>g===t&&G[k+1]===T[i+1]));
     issues.push({kind:'order',html:'All the right words, but '+(fx?'<b>'+esc(fx)+'</b> goes in front of the word it belongs to':'this phrase always goes this way round')+': <b>'+esc(target)+'</b>.'});}
   if(issues.length>3)return {html:'',typo:false};
   const one=issues.length===1&&issues[0].kind==='spell'?issues[0]:null;
   /* a typo is forgiven only when it can't be a real mistake: not another real word, and not i / y / j mixed up (they are different sounds) */
   /* (Round 7) one letter off inside the word ("tokjo" for tokio) is a typo when it isn't another real word; the last letter
      (where the endings are) still has to be right */
-  const typo=!!one&&strip(one.t).length>=4&&lev(strip(one.g),strip(one.t))===1&&strip(one.g).slice(-1)===strip(one.t).slice(-1)&&!knownWord(one.g);
+  /* (Round 8) at the end too, when what you wrote isn't a real form (gerau for gerai): a typo, never an "ending" lesson */
+  const typo=!!one&&strip(one.t).length>=4&&lev(strip(one.g),strip(one.t))===1&&(strip(one.g).slice(-1)===strip(one.t).slice(-1)||!realWord(one.g))&&!knownWord(one.g);
   const rank={ending:0,word:0,person:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
   return {html:issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
 /* The right spelling with the letters that differ from yours underlined (what's the same at the start and the end isn't). */
@@ -2682,7 +2685,7 @@ function markDiff(given,target){const L=/\p{L}/u,g=[...norm(given).normalize('NF
 /* Judges a typed answer. ok = counts as right; note = what to show under it. */
 /* (Round 7) words whose place is fixed when the rest of a sentence moves round: irgi, ne, iš, į... stay in front of the word
    they belong to */
-function fixedOk(g,t){const gw=g.split(' '),tw=t.split(' '),F=LANG.fixed||[];
+function fixedOk(g,t){const gw=g.split(' '),tw=t.split(' '),F=LANG.stay||[];
   return tw.every((w,k)=>!F.includes(w)||k+1>=tw.length||gw.some((x,m)=>x===w&&gw[m+1]===tw[k+1]));}
 function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
   if(tn.includes(a))return {ok:true,exact:true,note:''};
@@ -2721,13 +2724,14 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     if(k5>=0)return {ok:true,note:'<b>'+esc(targets[k5])+'</b>'+(en?' · '+esc(en):'')+ord};
     if(k6>=0)return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+esc(targets[k6])+'</b>'+ord};}}
   const w=whyWrong(given,targets[0]);
-  if(w&&w.typo)return {ok:true,title:'Nearly',note:'Small typo, we\'ll count it: <b>'+esc(targets[0])+'</b>'+w.html};
+  if(w&&w.typo)return {ok:true,title:'Nearly',note:'A typo, so it counts. Check this letter: <b>'+esc(targets[0])+'</b>'+w.html};
   return {ok:false,why:w?w.html:''};}
 
 /* Every right answer at once: the card's own, then the other right ones (the polite "your", a same-meaning word). A miss is
    explained against the right answer closest to what you wrote, so a typo in jūsų is a typo, not "you left out tavo". */
 function judgeAll(given,A,en){
-  {const nn=typeof NEAR_NOTE!=='undefined'&&NEAR_NOTE[norm(A.own[0])],hit=nn&&nn[norm(given)];if(hit)return hit.ok?{ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">'+hit.note+'</div>'}:{ok:false,why:'<div class="why">'+hit.note+'</div>'};}
+  {const hit=nearNote(given,A.own[0]);if(hit)return hit.ok?{ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">'+hit.note+'</div>'}:{ok:false,why:'<div class="why">'+hit.note+'</div>'};}
+  {const pl=pleaseJudge(given,A,en);if(pl)return pl;}
   /* (Round 6) your name as you spelled it, where the lesson teaches its Lithuanian ending: counted, but Nearly, with the rule */
   {const m=S.me||{},raw=(m.name||'').trim(),lit=raw&&typeof nameForms==='function'&&nameForms(raw,m.g==='f'?'f':'m').lt;
     if(lit&&norm(lit)!==norm(raw)){const re=new RegExp('(^|[\\s,.!?])'+raw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?=$|[\\s,.!?])','i');
@@ -2747,6 +2751,23 @@ function judgeAll(given,A,en){
   /* a miss is explained against the nearest right answer, letters compared without marks (lietuviu is lietuvių, not an extra word) */
   const g=strip(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,strip(x))-lev(g,strip(y)))[0];
   if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html;}return j;}
+/* (Round 8) A near miss the course can name, as the whole answer or as part of a longer one ("Gerai, ačiū. O tu?" is the
+   same slip as "O tu?"), so lessons, conversations and Quick chat give it the same verdict. */
+function nearNote(given,target){if(typeof NEAR_NOTE==='undefined')return null;const g=norm(given),t=norm(target||'');
+  const segs=String(target||'').split(/[.!?,]/).map(norm).filter(Boolean);
+  for(const [tk,m] of Object.entries(NEAR_NOTE)){if(!segs.includes(tk))continue;
+    for(const [gk,hit] of Object.entries(m))if(g===(' '+t+' ').replace(' '+tk+' ',' '+gk+' ').trim())return hit;}
+  return null;}
+/* (Round 8) The polite extra word (prašau) is never a fail: added where the answer doesn't have it, it works too; left out
+   where the answer has it, it counts as Nearly, with a note. The same everywhere: lessons, conversations, Quick chat. */
+function pleaseJudge(given,A,en){const PW=LANG.please;if(!PW)return null;const words=s=>norm(s).split(' ').filter(Boolean),drop=s=>words(s).filter(w=>w!==PW).join(' ');
+  const g=words(given),all=A.own.concat(A.other||[]);
+  if(g.includes(PW)&&g.length>1){const bare=drop(given);if(all.some(t=>norm(t)===norm(given)))return null;
+    const t=all.find(x=>!words(x).includes(PW)&&judgeTyped(bare,[x]).ok);
+    if(t){const j=judgeTyped(bare,[t]);return {ok:true,exact:false,title:j.exact?'That works too!':'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why"><b>'+PW+'</b> (please) is a polite extra: adding it is always fine.</div>'+(j.exact?'':SLOPPY)};}}
+  else if(!g.includes(PW)){const t=all.find(x=>words(x).includes(PW)&&drop(x)&&judgeTyped(given,[drop(x)]).ok);
+    if(t)return {ok:true,exact:false,title:'Nearly',note:'<b>'+esc(t)+'</b><div class="why">Add <b>'+PW+'</b> (please) to make it polite.</div>'};}
+  return null;}
 /* Names and places: words the course writes with a capital in the middle of a sentence (Rūta, Kanados, Vilniuje) */
 let PROPER=null;
 function properNoun(w){if(!PROPER){PROPER=new Set();const add=s=>String(s||'').split(/\s+/).forEach((x,i,a)=>{if(i&&!/[.!?]$/.test(a[i-1])&&/^\p{Lu}/u.test(x))PROPER.add(norm(x.replace(/[.,!?¿¡]/g,'')));});
@@ -3123,7 +3144,9 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     if(j.ok){sfx('good');inp.disabled=true;turn.querySelectorAll('.keys button,.bank .chip').forEach(x=>x.disabled=true);helpBtn.hidden=true;if(undo)undo.hidden=true;
       const other=norm(hit)!==norm(ln.lt);
       cmsg.innerHTML=other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">Correct!</span>':(j.title?'<span class="ok">'+esc(j.title)+'</span> ':'')+j.note;
-      inp.classList.add('right');btn.disabled=true;convCredit(hit,stage!=='tap'&&!used,slips);const res=stage==='tap'&&!C.quick?null:!used&&!tries;return later(()=>done(false,hit,res),other?2600:j.exact?600:2200);}
+      inp.classList.add('right');btn.disabled=true;convCredit(hit,stage!=='tap'&&!used,slips);const res=stage==='tap'&&!C.quick?null:!used&&!tries;
+      /* (Round 8) a Nearly counts as right, but a round with one isn't Flawless */
+      if(!other&&!j.exact&&j.title!=='That works too!')C.nearly=(C.nearly||0)+1;return later(()=>done(false,hit,res),other?2600:j.exact?600:2200);}
     tries++;C.mistakes++;sfx('bad');inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),320);
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
     /* (Round 7) words all from the line itself ("Ne, ačiū" for "Laba diena! Ne, ačiū."): explained against that line, so it
@@ -3307,15 +3330,18 @@ function replyGrade(id,ok){const r=S.replies[id];if(!r)return false;
   if(ok){r.ok++;if(r.up!==today()&&r.due<=Date.now()){logReview(id,3,r);const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();const iv=fsReview(r,3,isNew),gap=r.lvl<=1?1:iv;r.ivl=gap;
     const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+fuzz(gap));r.due=d.getTime();return true;}return false;}
   logReview(id,1,r);r.bad++;if(r.fs||r.lvl>0)fsReview(r,1);r.lvl=Math.max(0,r.lvl-1);r.ivl=INTERVALS[r.lvl];r.due=Date.now();return false;}
-function dueReplies(){if(!S.replies)return [];const now=Date.now(),all=replyCards();return Object.keys(S.replies).filter(id=>all[id]&&S.replies[id].due<=now);}
+/* (Round 8) Quick chat only asks a reply once you've met every word of the message it answers (a conversation can gloss a
+   few new words; Quick chat has no word list, so those replies wait until a lesson teaches them). */
+function qcReady(id){const k=replyCards()[id];if(!k)return false;if(!k.they)return true;const prev=CV;CV={c:k.c};try{return !newInLine(k.they.lt,k.c).length;}finally{CV=prev;}}
+function dueReplies(){if(!S.replies)return [];const now=Date.now(),all=replyCards();return Object.keys(S.replies).filter(id=>all[id]&&S.replies[id].due<=now&&qcReady(id));}
 const QC_STEPS=['Pick it','Build it','Fill it in','Type it','Hear it'];
 function qcNextDue(ids){const t=Math.min(...ids.map(id=>S.replies[id].due)),d=new Date(t),n=new Date();n.setHours(0,0,0,0);
   const days=Math.round((new Date(d).setHours(0,0,0,0)-n.getTime())/864e5);
   return days<=0?'later today':days===1?'tomorrow':d.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});}
 function renderQuick(){const box=$('#qc-card');if(!box)return;seedReplies();const all=replyCards();
-  const ids=Object.keys(S.replies).filter(id=>all[id]),due=dueReplies();const by=[0,0,0,0,0];ids.forEach(id=>by[Math.min(4,S.replies[id].lvl)]++);
+  const ids=Object.keys(S.replies).filter(id=>all[id]&&qcReady(id)),due=dueReplies();const by=[0,0,0,0,0];ids.forEach(id=>by[Math.min(4,S.replies[id].lvl)]++);
   box.innerHTML='<span class="eyebrow">Conversation skill</span><h2>'+(!ids.length?'Quick chat':due.length?'Quick chat · '+due.length+(due.length===1?' reply is':' replies are')+' due':'Quick chat · all caught up')+'</h2>'+
-    '<p class="note">'+(ids.length?'Lessons teach you words. This trains the other half of talking: someone says something, and you answer, fast. People from all your conversations ask you things in a random order, so the script can\'t help you.':'Finish a conversation, and every reply in it comes here. Then you practise answering people, without the script.')+'</p>'+
+    '<p class="note">'+(ids.length?'Lessons teach you words. This trains the other half of talking: someone says something, and you answer, fast. People from all your conversations ask you things in a random order, without the rest of the conversation around them.':'Finish a conversation, and every reply in it comes here. Then you practise answering people, without the script.')+'</p>'+
     (ids.length?'<div class="qc-ladder" role="img" aria-label="Your replies by step: '+QC_STEPS.map((t,k)=>t+' '+by[k]).join(', ')+'">'+QC_STEPS.map((t,k)=>'<span'+(by[k]?'':' class="zero"')+'><b class="num">'+by[k]+'</b><small>'+t+'</small></span>').join('')+'</div>'+
       '<p class="note tiny">Each reply climbs a step when you answer it right on its review day: pick it from three, build it from its words, fill in its letters, type it, and in the end only hear them and answer.</p>':'')+
     '<button type="button" class="btn amber" id="btn-qc"'+(due.length?'':' disabled')+'>Start quick chat</button>'+
@@ -3324,7 +3350,7 @@ function renderQuick(){const box=$('#qc-card');if(!box)return;seedReplies();cons
   $('#btn-qc').onclick=()=>startQuick(false);const any=$('#btn-qc-any');if(any)any.onclick=()=>startQuick(true);}
 /* Up to 8 due replies, mixed. "Chat anyway" takes your weakest replies; they only move up on their review day. */
 function startQuick(any){seedReplies();const all=replyCards();
-  let ids=any?Object.keys(S.replies).filter(id=>all[id]).sort((a,b)=>S.replies[a].lvl-S.replies[b].lvl||S.replies[a].due-S.replies[b].due):dueReplies().sort((a,b)=>S.replies[a].due-S.replies[b].due);
+  let ids=any?Object.keys(S.replies).filter(id=>all[id]&&qcReady(id)).sort((a,b)=>S.replies[a].lvl-S.replies[b].lvl||S.replies[a].due-S.replies[b].due):dueReplies().sort((a,b)=>S.replies[a].due-S.replies[b].due);
   ids=ids.slice(0,8);if(!ids.length)return;Q=null;bossDraw();personalise();
   const queue=shuffle(ids.map(id=>all[id]));
   CV={quick:true,any,c:queue[0].c,mode:'text',peeks:0,queue,i:0,mistakes:0,turns:0,heard:0,lastWho:'',played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),
@@ -3357,13 +3383,14 @@ function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
   if(res!=null&&replyGrade(k.id,res))C.up.add(k.id);
   if(res===false){C.again.add(k.id);C.queue.push(k);}
   save();}
-function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>=3&&C.right>=C.graded;
+function qcFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const perfect=C.graded>=3&&C.right>=C.graded&&!C.nearly;
   /* "Chat anyway" is extra practice: full XP and amber once a day, a little XP after that */
   const extra=C.any&&S.qcAnyDay===today();if(C.any)S.qcAnyDay=today();
   const before=levelFor(S.xp);rollDay();amberLog=[];const dbl=xpDouble();const qx=1+C.right,qb=perfect?Math.max(1,Math.round(qx/4)):0;const total=addXp(extra?2:qx+qb);const after=levelFor(S.xp);const got=checkBadges(),cans=checkCando();
   if(!extra){earnAmber(1,'quick chat');if(perfect)earnAmber(3,'flawless');}const dayDone=goalCheck();save();
   const lines=amberLines();if(dbl)lines.push('<div class="win"><b>'+dbl+'</b> · your XP counted twice</div>');
   if(perfect)lines.push('<div class="win"><b>Flawless</b> · every reply right first time'+(qb&&!extra?', +'+qb+' XP':'')+'</div>');
+  else if(C.nearly&&C.right>=C.graded)lines.push('<div class="win"><b>Almost Flawless</b> · '+(C.nearly===1?'one reply was':C.nearly+' replies were')+' nearly right</div>');
   if(C.up.size)lines.push('<div class="win"><b>'+C.up.size+' repl'+(C.up.size===1?'y':'ies')+' moved up a step</b> · '+[...C.up].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.up.size>3?'…':'')+'</div>');
   if(C.again.size)lines.push('<div class="win"><b>'+C.again.size+' to practise again</b> · '+[...C.again].slice(0,3).map(id=>esc(BYID[id].lt)).join(' · ')+(C.again.size>3?'…':'')+' will come back soon</div>');
   if(C.any&&!C.up.size)lines.push('<div class="win"><b>Extra practice</b> · replies only move up on their review day'+(extra?'. Extra chats after the first today give a little XP':'')+'</div>');
@@ -3447,7 +3474,7 @@ function hear(target,mic,out,onResult,english){const targets=[].concat(target);
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   if(C.redo)return redoFinish(C,st);
-  const sp=C.mode==='speak',selfR=C.selfR||0;if(sp&&selfR)C.skipped=(C.skipped||[]).concat(C.selfLines||[]);const allSaid=sp&&C.turns>0&&C.heard-selfR>=C.turns;const fromMemory=C.played.length&&C.played.every(p=>p.res===true);const perfect=sp?allSaid&&C.peeks===0&&fromMemory&&(C.checked||0)>=C.turns:C.mistakes===0; /* (Round 6) Flawless in Say it is for the microphone hearing every reply */const own=C.played.filter(p=>p.res===true).length;
+  const sp=C.mode==='speak',selfR=C.selfR||0;if(sp&&selfR)C.skipped=(C.skipped||[]).concat(C.selfLines||[]);const allSaid=sp&&C.turns>0&&C.heard-selfR>=C.turns;const fromMemory=C.played.length&&C.played.every(p=>p.res===true);const perfect=sp?allSaid&&C.peeks===0&&fromMemory&&(C.checked||0)>=C.turns:C.mistakes===0&&!C.nearly; /* (Round 6) Flawless in Say it is for the microphone hearing every reply */const own=C.played.filter(p=>p.res===true).length;
   /* the "Said it all" bonus needs proof for every reply: the microphone heard it, or you recorded yourself saying it */
   const proved=allSaid&&(C.checked||0)+(C.proved||0)>=C.turns;const owe=C.turns-C.heard+selfR;
   /* XP follows what you produced: a reply typed in full right first time 2, filled in 1, tapped 0; said and heard by the
@@ -3860,6 +3887,13 @@ function buildChar(ch){const ex=CV?CV:Q&&Q.queue[Q.idx],T=tileKeys.ex===ex?tileK
   if(fit.length===1||fit.length>1&&fit.every(x=>tileLow(x)===buf)){const c=fit[0];tileKeys={ex,buf:'',word:tileLow(c),typed:buf,i:c.dataset.i};c.click();}
   else tileKeys={ex,buf:fit.length?buf:''};}
 function buildEnd(){const ex=CV?CV:Q&&Q.queue[Q.idx],T=tileKeys.ex===ex?tileKeys:{buf:''},c=T.buf&&tileFree().find(x=>tileLow(x)===T.buf);tileKeys={ex,buf:''};if(c)c.click();}
+/* (Round 8) While a dialog is open ("Leave this lesson?" and the like), the keys belong to it: nothing reaches the lesson
+   behind it (an Enter there moved the lesson on to the next card, so a New word card went by unread). Enter presses the
+   dialog's focused button, Escape is "Keep going". */
+document.addEventListener('keydown',e=>{const g=[...document.querySelectorAll('.gate,[role="dialog"]')].filter(x=>x.isConnected&&x.getClientRects().length&&!x.closest('[hidden]')).pop();if(!g)return;
+  const box=g.closest('.gate')||g,inside=box.contains(document.activeElement);e.stopImmediatePropagation();
+  if(e.key==='Escape'){const stay=box.querySelector('[data-l="stay"]');if(stay){e.preventDefault();stay.click();}return;}
+  if(!inside){e.preventDefault();const b=box.querySelector('[data-l="stay"]')||box.querySelector('button:not([disabled])');if(b)b.focus();}},true);
 /* Enter can't skip a card that has only just appeared: a quick double Enter used to jump past a New word or Tip card unseen */
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx],wait=ex&&STEPLESS[ex.type]?700:400,t=Math.max(Q.shownAt||0,Q.footAt||0),left=wait-(Date.now()-t);
   if(e.repeat||left>0){e.preventDefault();e.stopImmediatePropagation();
