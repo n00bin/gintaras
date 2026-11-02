@@ -63,11 +63,12 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   } else {
     const u = c.COURSE.find(x => x.id === id);
     u.lessons.forEach(l => l.items.forEach(i => tok(i.lt).concat(i.alt.flatMap(tok)).forEach(w => known.add(w))));
-    /* (Round 6) a sentence drill is a test: every word of its finished sentence AND of its choices is a word of a course card
-       taught by the drill's own lesson or earlier (no whole-unit shortcut, no "glue" or "another ending" exceptions). The app
-       drops a drill whose words aren't taught yet, so a drill listed here would never be shown. */
-    const strip = w => w.normalize('NFD').replace(/[̀-ͯ]/g, ''), sameStem = (a, b) => { a = strip(a); b = strip(b); let n = 0; while (n < a.length && n < b.length && a[n] === b[n]) n++; return n >= 3 && a.length - n <= 3 && b.length - n <= 3; };
-    const missing = d => { const ans = tok(d.ans); return [...new Set(tok(d.frame.replace('___', d.ans)).concat(d.opts.flatMap(o => tok(o).filter(w => !ans.some(a => sameStem(a, w))))))].filter(w => /\p{L}/u.test(w) && !taughtLt.has(w) && !names.has(w)); };
+    /* (Round 6) a sentence drill is a test: every word of its finished sentence is a word of a course card taught by the
+       drill's own lesson or earlier (no whole-unit shortcut, no "glue" exceptions). (Round 7) Its choices are offered only
+       once met, so at least one of them must be taught by then. The app drops a drill that fails either, so a drill listed
+       here would never be shown. */
+    const unmet = s => tok(s).filter(w => /\p{L}/u.test(w) && !taughtLt.has(w) && !names.has(w));
+    const missing = d => { const m = [...new Set(unmet(d.frame.replace('___', d.ans)))]; if (!d.opts.some(o => !unmet(o).length)) m.push('a choice (' + d.opts.join(' / ') + ')'); return m; };
     const fits = {};
     u.lessons.forEach((l, li) => { l.items.forEach(i => tok(i.lt).forEach(w => taughtLt.add(w)));
       c.DRILLS.filter(d => !d.off && d.u === id && (d.l ? (l.parts || [l.id]).some(x => d.l.includes(x)) : li === u.lessons.length - 1)).forEach(d => { const m = missing(d); if (!m.length) fits[d.frame] = true; else if (!fits[d.frame]) fits[d.frame] = m; }); });
@@ -76,7 +77,7 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
 });
 say('conversation words not taught earlier', unknown);
 console.log('  (' + c.DRILLS.filter(d => d.off).length + ' sentence drills are off until their words are taught)');
-say('drill words (sentence and choices) not taught by the lesson of the drill or earlier', [...new Set(drillUnknown)]);
+say('drill words (sentence, and one choice) not taught by the lesson of the drill or earlier', [...new Set(drillUnknown)]);
 /* Teach before test is checked for real by tools/check_cards.py, which plays every lesson in the app (Round 6: the old check
    here only looked for the guard's code, and passed while the guard missed sentence cards, choices and placement words). This
    only makes sure the guard still reads every Lithuanian word a card shows. */

@@ -4,6 +4,9 @@ Plays the course in the app itself, the way a brand-new learner does: every less
 lesson builder (warm-ups, sentence cards, picks, tiles, cards that come back after a miss, a reload part way), a review
 after each unit, and then again from a "Check my level" start where half of the first unit was missed.
 
+It plays with the default settings ("Move on by itself" on) and presses Continue a moment late, as a person reading their
+result does, so a card that moves on by itself onto a New word card is caught (that card would go by unseen).
+
 It FAILS when a card shows a Lithuanian word (the word asked, a sentence, a choice, a tile, a match pair) before that
 word's New word card, when a card is drawn blank, or when the page throws.
 
@@ -22,18 +25,19 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
 
 srv = socketserver.TCPServer(('127.0.0.1', 0), partial(Quiet, directory=ROOT))
 threading.Thread(target=srv.serve_forever, daemon=True).start()
-URL = 'http://127.0.0.1:%d/' % srv.server_address[1]
+URL = next((a.split('=',1)[1] for a in sys.argv if a.startswith('--url=')), 'http://127.0.0.1:%d/' % srv.server_address[1])   # --url= checks the live app
 
 # in the page: the Lithuanian words on the card as drawn, before you answer
-SCAN = r"""()=>{const e=Q&&Q.queue[Q.idx];if(!e)return null;const st=$('#stage');
+SCAN = r"""(where)=>{const e=Q&&Q.queue[Q.idx];if(!e)return null;const st=$(where||'#stage');
   const nameish=typeof NAMEISH==='function'?NAMEISH:w=>properNoun(w)||PERS.baseNames.includes(norm(w))||strip(w).startsWith(strip(S.me.name).slice(0,3)),tg=typeof taught==='function'?taught:i=>!!peek(i.id).intro;
   if(!window.__LTW){if(!WORD_ITEMS)wordLvl('');const en=new Set();ITEMS.forEach(i=>norm(i.en||'').split(/[^\p{L}]+/u).forEach(w=>en.add(w)));
     norm(document.body.innerText).split(/[^\p{L}]+/u).forEach(w=>{});window.__LTW=new Set(Object.keys(WORD_ITEMS).filter(w=>!en.has(w)&&/\p{L}/u.test(w)));}
-  const c=st.cloneNode(true);c.querySelectorAll('.pron,.why,.note,.eyebrow,.sr-only,[hidden]').forEach(x=>x.remove());
-  /* an ending drill's choices are other endings of its answer's own word (duona / duonos for duoną): allowed, as in the app */
-  const st3=s=>strip(s),stem=(a,b)=>{a=st3(a);b=st3(b);let n=0;while(n<a.length&&n<b.length&&a[n]===b[n])n++;return n>=3&&a.length-n<=3&&b.length-n<=3;};
-  const ansW=e.drill?norm(e.drill.ans).split(' '):[];
-  const words=norm(c.innerText||'').split(/[^\p{L}]+/u).filter(w=>window.__LTW.has(w)&&!nameish(w)&&!(e.type==='frame'&&ansW.some(a=>stem(a,w))));
+  const c=st.cloneNode(true);c.querySelectorAll('.pron,.why,.note,.eyebrow,.sr-only,[hidden],.keys,.keyhint,[data-k],.speaklinks').forEach(x=>x.remove());
+  /* text piece by piece (a detached copy runs neighbouring words together: "meanaš") */
+  const parts=[],tw=document.createTreeWalker(c,NodeFilter.SHOW_TEXT);while(tw.nextNode())parts.push(tw.currentNode.nodeValue);
+  /* (Round 7) every word counts, a sentence card's choices too: no "another ending of the answer" exception */
+  /* a word with a Lithuanian letter that no card teaches at all ("Labą", "Šaunu") counts as well */
+  const words=norm(parts.join(' ')).split(/[^\p{L}]+/u).filter(w=>w.length>1&&(window.__LTW.has(w)||/[ąčęėįšųūž]/.test(w))&&!nameish(w)); /* one letter on its own is a letter tile, not a word */
   return {type:e.type,id:e.item&&e.item.id,lt:e.item&&e.item.lt,drill:e.drill&&e.drill.frame,blank:!STEPLESS[e.type]&&!(st.innerText||'').trim(),
     words:[...new Set(words)].map(w=>({w,items:(WORD_ITEMS[w]||[]).map(i=>i.id),app:(WORD_ITEMS[w]||[]).filter(tg).map(i=>i.id+':'+JSON.stringify(peek(i.id)))}))};}"""
 
@@ -57,6 +61,11 @@ NEXT = r"""()=>{const btn=$('#btn-check'),st=$('#stage');const r=st.querySelecto
   if(r&&!r.hidden&&r.offsetParent!==null){r.click();return 'rate';}
   const sh=st.querySelector('#showme,#reveal,.showme');if(sh&&sh.offsetParent!==null){sh.click();return 'show';}
   if(btn&&!btn.hidden&&!btn.disabled){btn.click();return 'btn';}return 'wait';}"""
+
+# in the page: Continue pressed on what the learner thinks is still their result
+LATE = r"""()=>{const b=$('#btn-check');if(b&&!b.hidden&&!b.disabled)b.click();}"""
+# "Move on by itself" stays on (the default), only quicker than a person
+FAST_AUTO = "()=>{if(!window.__an){window.__an=autoNext;window.autoNext=ms=>__an(40);}}"
 
 fails = []
 seen_types = {}
@@ -85,11 +94,20 @@ def play(pg, label, taught, wrong_every=4, reload_at=None):
                         bad('%s: "%s" shown on a %s card (%s) before its New word card%s' % (label, w['w'], sc['type'], sc['lt'] or sc['drill'], (' [app counts as taught: %s]' % '; '.join(w['app'])[:300]) if w['app'] else ''))
             cards += 1
             if reload_at and cards == reload_at:
-                pg.reload(); pg.wait_for_function("typeof Q!=='undefined'&&typeof S!=='undefined'"); pg.wait_for_timeout(1200); s("window.signInGate=()=>{};window.say=()=>{};window.autoNext=()=>{};window.maybeTour=()=>{}")
+                pg.reload(); pg.wait_for_function("typeof Q!=='undefined'&&typeof S!=='undefined'"); pg.wait_for_timeout(1200); s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{}"); s(FAST_AUTO)
                 if not s("!!Q"): s("resumePlace()")
                 pg.wait_for_timeout(200); last = None; continue
             n += 1
-            s(ANSWER, n % wrong_every == 0)
+            did = s(ANSWER, n % wrong_every == 0)
+            if did != 'step' and sc['type'] not in ('tip', 'revtip', 'metip', 'mesay', 'intro'):
+                fb = s(SCAN, '#foot')
+                for w in (fb or {}).get('words', []):
+                    if not any(i in taught for i in w['items']):
+                        bad('%s: "%s" shown in the result of a %s card (%s) before its New word card' % (label, w['w'], sc['type'], sc['lt'] or sc['drill']))
+            if did != 'step':
+                # a learner reading the result presses Continue a little late: by then "Move on by itself" may already have
+                # moved on, and the press lands on whatever came next (a New word card's "Got it" went by unseen that way)
+                pg.wait_for_timeout(120); s(LATE)
         else:
             s(NEXT)
         pg.wait_for_timeout(30)
@@ -100,9 +118,9 @@ def fresh(pg, name='Bob'):
     # nothing is saved on the way out, or the last profile comes back
     s("()=>{window.save=window.saveSoon=()=>{};window.onbeforeunload=null;Q=null;localStorage.clear();}"); pg.reload(); pg.wait_for_timeout(1200)
     if pg.evaluate("Object.keys(S.items).length"): bad('could not start from an empty profile')
-    s("()=>{S.welcomed=true;S.signinAsked='x';S.toured=true;S.meAsked=1;S.sound=false;S.selfRate=true;S.noRecDay=today();S.autoNext=false;S.me={name:'%s',g:'m'};save();}" % name)
+    s("()=>{S.welcomed=true;S.signinAsked='x';S.toured=true;S.meAsked=1;S.sound=false;S.selfRate=true;S.noRecDay=today();S.me={name:'%s',g:'m'};save();}" % name)
     pg.reload(); pg.wait_for_timeout(1200)
-    s("window.signInGate=()=>{};window.say=()=>{};window.autoNext=()=>{};window.maybeTour=()=>{}")
+    s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{}"); s(FAST_AUTO)
 
 def course(pg, taught, units, tag):
     s = pg.evaluate
@@ -135,6 +153,17 @@ with sync_playwright() as p:
     got = pg.evaluate("""u=>{const its=unitItems(UNIT_BY[u]),got={};its.forEach((i,k)=>{if(k%2===0)got[i.id]=1;});creditUnit(u,got);save();return Object.keys(got);}""", units[0])
     taught = set(got)
     course(pg, taught, units[1:3], 'placed')
+    # (Round 7) conversations, in path order with only the units before them taught: every word the other person uses that
+    # you haven't met is underlined with a meaning (and listed before the chat), and every reply you give is taught words only
+    print('Conversations')
+    fresh(pg, 'Mark')
+    for r in pg.evaluate("""()=>{personalise();const res=[];
+      for(const id of STEPS){if(UNIT_BY[id]){unitItems(UNIT_BY[id]).forEach(i=>{S.items[i.id]={lvl:0,seen:true,intro:1,due:0,ok:0,bad:0};});continue;}
+        const c=CONV_BY[id];if(!c)continue;CV={c,mode:'text'};
+        res.push({id,noGloss:chatNewWords(c).filter(x=>!x[1]).map(x=>x[0]),mine:[...new Set(c.all.filter(l=>l.kind==='m'&&l.lt).flatMap(l=>newInLine(l.lt,c)).filter(w=>!nameVocs(c).has(norm(w))))]});CV=null;}
+      return res;}"""):
+        for w in r['noGloss']: bad('conversation %s: "%s" has no meaning to tap' % (r['id'], w))
+        for w in r['mine']: bad('conversation %s: your reply uses "%s" before its New word card' % (r['id'], w))
     for e in errs: bad('page error: ' + e[:200])
     b.close()
 srv.shutdown()
