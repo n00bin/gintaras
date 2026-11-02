@@ -1114,7 +1114,8 @@ function picFor(lt){const v=EMOJI[lt];if(!v||NO_PIC.has(lt))return '';if(v[0]===
     one.forEach(i=>{const e=EMOJI[i.lt];if(e&&!NO_PIC.has(i.lt)&&!(e in PIC_COUNT))PIC_COUNT[e]=i.lt;});}return PIC_COUNT[v]===lt?v:'';}
 function picHtml(lt,cls){const v=picFor(lt);if(!v)return '';cls=cls||'';
   if(v[0]==='#')return '<span class="pic tile '+cls+'" aria-hidden="true">'+esc(v.slice(1))+'</span>';
-  return '<img class="pic '+cls+'" src="'+picFile(v)+'" alt="" aria-hidden="true" data-e="'+esc(v)+'" onerror="this.replaceWith(this.dataset.e)">';}
+  /* (Round 8) the emoji shows straight away and the drawing covers it once loaded, so a slow or missing file is never a blank */
+  return '<span class="pic picbox '+cls+'" aria-hidden="true"><span class="pic-e">'+esc(v)+'</span><img src="'+picFile(v)+'" alt="" onload="this.parentNode.classList.add(\'ok\')" onerror="this.remove()"></span>';}
 /* Memory hooks: a silly picture or a link to English. Only for words where the hook is genuinely true or useful. */
 const HOOK={'Ačiū':'Sounds like a sneeze: AH-choo. Someone says thank you, you hear a sneeze.','Taip':'Sounds like "type". Yes, type it in.','Ne':'Short, like the start of "never". Never = no.',
  'Sveiki':'It literally means "be healthy". You wish strangers good health.','Viso gero':'Literally "all the good". You wish them all the best.','Labanakt':'Laba + nakt. "Nakt" is the same root as "night" (German "Nacht").',
