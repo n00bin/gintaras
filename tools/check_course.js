@@ -55,6 +55,7 @@ const unknown = [], drillUnknown = [];
 /* another ending of a taught word (laiminga from laimingas, Klaipėdą from Klaipėda): drills practise exactly that */
 const aForm = w => w.length >= 4 && [...known].some(k => k.length >= 4 && Math.abs(k.length - w.length) <= 2 && w.slice(0, Math.min(w.length, k.length) - 2) === k.slice(0, Math.min(w.length, k.length) - 2) && Math.min(w.length, k.length) - 2 >= 3);
 const glue = new Set(Object.keys(c.GLUE || {}).map(w => w.toLowerCase()));
+const taughtLt = new Set(), names = new Set(['tomas', 'tomai', 'rūta', 'jonas', 'tomás', 'toma', 'rūtai', 'jonai'].concat(Object.keys(c.CAST_GV).map(n => n.toLowerCase())));
 c.PATH.filter(p => typeof p === 'string').forEach(id => {
   if (c.CONV_BY[id]) {
     c.CONV_BY[id].all.filter(l => l.kind === 'm').forEach(l => tok(l.lt).forEach(w => { if (!known.has(w)) unknown.push(id + ': "' + w + '" in ' + l.lt); }));
@@ -62,15 +63,24 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   } else {
     const u = c.COURSE.find(x => x.id === id);
     u.lessons.forEach(l => l.items.forEach(i => tok(i.lt).concat(i.alt.flatMap(tok)).forEach(w => known.add(w))));
-    /* a sentence drill is a test: every word of its finished sentence is taught by its unit or earlier */
-    c.DRILLS.filter(d => d.u === id).forEach(d => tok(d.frame.replace('___', d.ans)).forEach(w => { if (/\p{L}/u.test(w) && !known.has(w) && !glue.has(w) && !aForm(w)) drillUnknown.push(id + ': "' + w + '" in ' + d.frame.replace('___', d.ans)); }));
+    /* (Round 6) a sentence drill is a test: every word of its finished sentence AND of its choices is a word of a course card
+       taught by the drill's own lesson or earlier (no whole-unit shortcut, no "glue" or "another ending" exceptions). The app
+       drops a drill whose words aren't taught yet, so a drill listed here would never be shown. */
+    const strip = w => w.normalize('NFD').replace(/[̀-ͯ]/g, ''), sameStem = (a, b) => { a = strip(a); b = strip(b); let n = 0; while (n < a.length && n < b.length && a[n] === b[n]) n++; return n >= 3 && a.length - n <= 3 && b.length - n <= 3; };
+    const missing = d => { const ans = tok(d.ans); return [...new Set(tok(d.frame.replace('___', d.ans)).concat(d.opts.flatMap(o => tok(o).filter(w => !ans.some(a => sameStem(a, w))))))].filter(w => /\p{L}/u.test(w) && !taughtLt.has(w) && !names.has(w)); };
+    const fits = {};
+    u.lessons.forEach((l, li) => { l.items.forEach(i => tok(i.lt).forEach(w => taughtLt.add(w)));
+      c.DRILLS.filter(d => !d.off && d.u === id && (d.l ? (l.parts || [l.id]).some(x => d.l.includes(x)) : li === u.lessons.length - 1)).forEach(d => { const m = missing(d); if (!m.length) fits[d.frame] = true; else if (!fits[d.frame]) fits[d.frame] = m; }); });
+    Object.entries(fits).forEach(([fr, m]) => { if (m !== true) drillUnknown.push(id + ': ' + fr + ' needs ' + m.join(', ')); });
   }
 });
 say('conversation words not taught earlier', unknown);
-say('drill words not taught by their unit or earlier', [...new Set(drillUnknown)]);
-/* Round 5: teach before test, whatever builds the cards. The app has one guard for it (a word with no New word card gets
-   one before its first test, in lessons, reviews and resumed lessons); this fails if that guard is ever taken out. */
-say('teach-before-test guard in the card player', /const need=\(e\.item\?\[e\.item\]:e\.items\|\|\[\]\)\.find\(i=>\{const r=peek\(i\.id\);return !\(r\.seen&&\(r\.intro\|\|r\.lvl>=1\)\)/.test(html) ? [] : ['the guard in renderStep() is missing']);
+console.log('  (' + c.DRILLS.filter(d => d.off).length + ' sentence drills are off until their words are taught)');
+say('drill words (sentence and choices) not taught by the lesson of the drill or earlier', [...new Set(drillUnknown)]);
+/* Teach before test is checked for real by tools/check_cards.py, which plays every lesson in the app (Round 6: the old check
+   here only looked for the guard's code, and passed while the guard missed sentence cards, choices and placement words). This
+   only makes sure the guard still reads every Lithuanian word a card shows. */
+say('teach-before-test guard reads every word a card shows', /function cardWords\(e\)/.test(html) && /wordsNeed\(cardWords\(e\)/.test(html) && /function taught\(i\)\{const r=peek\(i\.id\);return !!\(r\.intro/.test(html) ? [] : ['the guard in drawStep() or taught() has changed: run python tools/check_cards.py']);
 { const v = (head.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
   say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }

@@ -596,6 +596,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .pic.xs{width:26px;height:26px;margin-right:8px}
 @media (max-height:640px){.opt{padding:9px 12px;min-height:44px}.picwrap{min-height:64px}.pic.big{width:64px;height:64px}.stage .word .lt{font-size:24px!important}}
 .ver-line{color:var(--muted);margin:-6px 0 10px}
+.they-pin{font-size:14px;color:var(--muted);margin:0 0 8px;padding:6px 10px;border-left:3px solid var(--line);border-radius:4px}
+.they-pin .lt{color:var(--fg)}
+.said-it{display:block;margin:10px auto 0;min-height:44px}
 .tilekb{position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;border:0;padding:0}
 .picwrap{display:flex;justify-content:center;min-height:96px;align-items:center}
 .pic.tile{display:inline-grid;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--amber) 22%,var(--surface));color:var(--amber-deep);font-family:var(--display);font-weight:700;border:2px solid color-mix(in srgb,var(--amber) 55%,var(--line))}
@@ -974,9 +977,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="card"><span class="eyebrow">After Part 1 you can</span><ul class="cando-pre" id="w-cando"></ul></div>
     <div class="pace" id="pace-welcome">
       <span class="eyebrow">How much time each day?</span>
-      <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>About two lessons a day. Enough to keep words coming back.</span></button>
+      <button type="button" class="pace-opt" data-pace="m5" aria-pressed="false"><strong>Casual · 5 min</strong><span>About one lesson a day, with its review. Enough to keep words coming back.</span></button>
       <button type="button" class="pace-opt" data-pace="m10" aria-pressed="true"><strong>Regular · 10 min</strong><span>About three lessons a day, with their reviews. Most people land here.</span></button>
-      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>About seven lessons a day. Pick anything from 5 to 60 minutes in Settings.</span></button>
+      <button type="button" class="pace-opt" data-pace="m20" aria-pressed="false"><strong>Serious · 20 min</strong><span>About six lessons a day, with their reviews. Pick anything from 5 to 60 minutes in Settings.</span></button>
     </div>
     <p class="note">Every word is spoken by a <span class="lang-en">Lithuanian</span> voice. Tap the speaker on any word to hear it.</p>
   </div>
@@ -1037,8 +1040,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.89';
-const APP_VERSION=161;
+const APP_RELEASE='3.90';
+const APP_VERSION=162;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1074,7 +1077,7 @@ function sharedSet(v,at){try{localStorage.setItem(SHARED_KEY,JSON.stringify({at,
 const INTERVALS=[0,1,3,7,14,30,60]; // days per level
 const DAY=86400000;
 /* Daily pace: minutes a day. The XP goal and lessons a day follow from it (a lesson is ~24 XP in 3-4 minutes, about 7 XP a minute). */
-const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.round(m/3)),label:m+' min'}); /* a lesson is 6 to 8 words, about 2 minutes, and with the reviews it brings about 3 */
+const PACES={};[5,10,15,20,30,45,60].forEach(m=>PACES['m'+m]={mins:m,goal:m*7,lessons:Math.max(1,Math.floor(m/3.3)),label:m+' min'}); /* a lesson is 6 to 8 words, about 2 minutes, and with the reviews it brings about 3 */
 const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 /* Fresh start (2026-10-30): after the course and the scheduler were rebuilt, everyone starts again from lesson 1, so they
    all get the new lessons and FSRS learns from real answers from day one. XP, streak, amber, league, badges, About me and
@@ -1241,7 +1244,8 @@ window.weekOne=weekOne;
 window.youVsLast=()=>{const T=S.ltime||{},now=Date.now(),wk=weekOf(now),pw=weekOf(now-7*DAY);
   const secs=(a,b)=>Object.keys(T).filter(d=>d>=a&&(!b||d<b)).reduce((n,d)=>n+(T[d]||0),0);
   const since=d=>Math.floor(new Date(d+'T00:00').getTime()/1000),log=window.reviewLogSince?window.reviewLogSince(since(pw)):[];
-  const words=(a,b)=>new Set(log.filter(e=>e[1]>=since(a)&&(!b||e[1]<since(b))).map(e=>e[0])).size;
+  /* course words only (a conversation line is graded too, but it isn't a word you've met), so it can't pass "words met" */
+  const isWord=new Set(ITEMS.map(i=>i.id)),words=(a,b)=>new Set(log.filter(e=>e[1]>=since(a)&&(!b||e[1]<since(b))&&isWord.has(e[0])).map(e=>e[0])).size;
   const tile=(v,l)=>'<div class="tile"><strong class="num">'+v+'</strong><small>'+l+'</small></div>';
   return '<div class="tiles">'+tile(mins(secs(wk)),'this week')+tile(mins(secs(pw,wk)),'last week')+tile(words(wk),'words practised')+'</div>';};
 let shopSure=null;
@@ -1331,6 +1335,22 @@ function rec(id){return S.items[id]||(S.items[id]={lvl:0,due:0,seen:false,ok:0,b
 /* Read-only: for words you may never have met, so just looking doesn't add an empty record to your saved progress. */
 const NO_REC={lvl:0,due:0,seen:false,ok:0,bad:0};
 function peek(id){return S.items[id]||NO_REC;}
+/* (Round 6) taught = had its New word card, or recalled right on a later day (level 2). Being seen (a tip, a placement
+   question, a conversation, a game) is not being taught. */
+function taught(i){const r=peek(i.id);return !!(r.intro||(r.lvl||0)>=2);}
+/* The Lithuanian words a card shows that aren't its own word: a sentence card's sentence and choices, a listening card's
+   lines. Each must be taught, or be taught by a word of this session (whose New word card then comes first). */
+const NAMEISH=w=>properNoun(w)||PERS.baseNames.includes(norm(w))||GLUE[norm(w)]==='your name'||!!(S.me&&S.me.name&&strip(w).startsWith(strip(S.me.name).slice(0,Math.max(3,strip(S.me.name).length-1))));
+function ltWords(s){return norm(String(s||'').replace('___',' ')).replace(/[–…]/g,' ').split(' ').filter(Boolean);}
+/* a choice that is another ending of the answer's own word (duona / duonos for duoną) is the point of an ending drill: the word
+   is taught, so its endings may be chosen between */
+const sameStem=(a,b)=>{a=strip(a);b=strip(b);let n=0;while(n<a.length&&n<b.length&&a[n]===b[n])n++;return n>=3&&a.length-n<=3&&b.length-n<=3;};
+function cardWords(e){if(e.drill){const ans=ltWords(e.drill.ans);return ltWords(e.drill.frame.replace('___',e.drill.ans)).concat(...e.drill.opts.map(o=>ltWords(o).filter(w=>!ans.some(a=>sameStem(a,w)))));}
+  if(e.type==='hear')return [e.line].concat(e.others||[]).filter(Boolean).flatMap(l=>ltWords(l.lt0||l.lt));return [];}
+function wordsNeed(ws,pool){if(!WORD_ITEMS)wordLvl('');const need=[];let bad='';
+  ws.forEach(w=>{if(bad||NAMEISH(w))return;const its=WORD_ITEMS[w]||[];if(its.some(taught))return;
+    const here=its.filter(i=>pool.includes(i)).sort((a,b)=>a.lt.length-b.lt.length)[0];if(here){if(!need.includes(here))need.push(here);}else bad=w;});
+  return {need,bad};}
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
 /* Words still in play: a retired unit's words (the Sounds loanwords) have done their job. */
 /* Met = shown at least once. Recall = remembered at a review on a later day (level 2 and up). */
@@ -1355,6 +1375,9 @@ const LESSON_BY={};COURSE.forEach(u=>u.lessons.forEach(l=>LESSON_BY[l.id]=l));
 function rejudgeMisses(){if(!S||!S.items)return;
   /* (3.87) name lines marked as slipped in a conversation, with no miss of their own, are clean again */
   if(S.nameClean!=='3.87'){S.nameClean='3.87';Object.entries(S.items).forEach(([id,r])=>{const it=BYID[id];if(it&&r&&r.bad>0&&!r.missG&&!r.missPick&&HAS_NAME.test(it.lt0||it.lt)){r.bad=0;r.lapse=0;}});}
+  /* (3.90) 3.89 drew some cards blank (live on 1 November only), and the only way past them was "I don't know", which was
+     written down as a miss. Those "I don't know" misses of that day (no answer of yours is kept with them) are taken back once. */
+  if(S.crashFix!=='3.90'){S.crashFix='3.90';Object.values(S.items).forEach(r=>{if(r&&r.bad>0&&r.badD==='2026-11-01'&&!r.missG&&!r.missPick){r.bad--;if(!r.bad)r.lapse=0;}});}
   if(S.rejudged==='3.89')return;S.rejudged='3.89';
   Object.entries(S.items).forEach(([id,r])=>{const it=BYID[id];if(!it||!r||!r.missG||!(r.bad>0))return;
     const short=r.missT==='gaps'&&[...strip(r.missG)].filter(c=>/\p{L}/u.test(c)).length<[...strip(it.lt)].filter(c=>/\p{L}/u.test(c)).length;
@@ -1484,7 +1507,7 @@ function convCard(c,n){const open=stepUnlocked(c.id);const st=(S.convs||{})[c.id
 const STARS=['Written','On your own','Spoken'];
 function convStars(id){const st=(S.convs||{})[id]||{};return [!!(st.done||st.text),!!st.s2,!!st.s3];}
 function starsHtml(c){const got=convStars(c.id),n=got.filter(Boolean).length;
-  return '<span class="cv-stars" role="img" aria-label="'+n+' of 3 stars'+(n?': '+STARS.filter((x,k)=>got[k]).join(', '):'')+'">'+got.map((g,k)=>'<span class="'+(g?'on':'')+'" title="'+STARS[k]+'">★</span>').join('')+'<small>'+(n?STARS[got.lastIndexOf(true)]:'No stars yet')+'</small></span>';}
+  return '<span class="cv-stars" role="img" aria-label="'+n+' of 3 stars'+(n?': '+STARS.filter((x,k)=>got[k]).join(', '):'')+'">'+got.map((g,k)=>'<span class="'+(g?'on':'')+'" title="'+STARS[k]+'">★</span>').join('')+'<small>'+(n?STARS[got.lastIndexOf(true)]:'No stars yet')+(((S.convs||{})[c.id]||{}).speak&&!got[2]?' · Say it done':'')+'</small></span>';}
 function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<small class="cv-note"><b>Next: Say it.</b> The next unit opens once you\'ve said this conversation out loud.</small>';const due=dueReplies().filter(id=>replyCards()[id].c===c).length;
   const next=!got[1]?'<b>Next star · On your own:</b> write every reply yourself, right first time, with no hints. Replies where you tap the words don\'t count yet; they will once you know those words.':!got[2]?'<b>Next star · Spoken:</b> say every reply from memory, without peeking. Replies where the '+LANG.en+' is shown for you to repeat don\'t count yet.'+(!SR?' This star needs a microphone the browser can listen to; without one, two stars is the top.':''):'<b>All three stars.</b> Replay it any time; it gets harder as your replies climb in Quick chat.';
   return '<small class="cv-note">'+next+(due?'<br>🔁 '+due+(due===1?' reply is':' replies are')+' due. Replay this, or practise them in Quick chat.':'')+'</small>';}
@@ -1547,7 +1570,7 @@ function renderConvList(){const box=$('#cv-list');if(!box)return;let n=0;
 /* A game that is a review in disguise: meanings fall, you type the word before it lands. Only words you already know
    (level 2+), due ones first; every answer is graded like a review, so playing clears what's due. Missing never ends it. */
 function gameWords(){return practised().filter(i=>rec(i.id).lvl>=1&&i.lt.length<=24&&i.lt.split(' ').length<=3);}
-function renderGameCard(){const box=$('#game-card');if(!box)return;const w=gameWords(),due=w.filter(i=>rec(i.id).due<=Date.now()).length;
+function renderGameCard(){const box=$('#game-card');if(!box)return;const w=gameWords(),dn=new Set(dueNow()),due=w.filter(i=>dn.has(i)).length;
   box.innerHTML='<span class="eyebrow">Game</span><h2>🌧️ Falling words</h2><p class="note">'+(w.length>=5?'Meanings fall from the sky: type the '+LANG.en+' before they land. It uses words you already know'+(due?', '+due+' of them due now, so it counts as your review.':', so it keeps them sharp.'):'Meanings fall from the sky: type the '+LANG.en+' before they land. <b>Opens when you know 5 words</b> ('+(5-w.length)+' more to learn).')+'</p>'+
     '<button type="button" class="btn amber" id="btn-fall"'+(w.length>=5?'':' disabled')+'>Play</button>';
   const b=$('#btn-fall');if(b)b.onclick=startFall;
@@ -1582,8 +1605,8 @@ function startSpeed(){const pool=gameWords();if(pool.length<6)return;const its=n
   const typeRound=n=>{if(n>=typed.length)return fin();const it=typed[n],bd=ov.querySelector('.game-board');
     bd.innerHTML='<div class="prompt small">Now type it · '+(n+1)+' of '+typed.length+'</div><div class="word"><span class="lt" style="color:var(--fg);font-size:26px">'+esc(it.en)+'</span></div>'+typeBox('Type in '+LANG.en)+'<p class="note" id="g-msg"></p>';
     const fake={disabled:false,click(){}};wireTyping(bd,fake);const inp=bd.querySelector('#ans');inp.oninput=()=>{};let over=false;
-    inp.onkeydown=e=>{if(e.key!=='Enter'||over||!inp.value.trim())return;over=true;const ok=judgeAll(inp.value,answersFor(it),it.en).ok;inp.disabled=true;
-      if(ok)sfx('good');else{pen+=2;sfx('bad');}bd.querySelector('#g-msg').innerHTML=(ok?'✓ ':'+2 s · ')+'<b>'+esc(it.lt)+'</b> · '+esc(it.en);setTimeout(()=>typeRound(n+1),ok?600:1600);};};
+    inp.onkeydown=e=>{if(e.key!=='Enter'||over||!inp.value.trim())return;over=true;const j=judgeAll(inp.value,answersFor(it),it.en),ok=j.ok;inp.disabled=true;
+      if(ok)sfx('good');else{pen+=2;sfx('bad');}bd.querySelector('#g-msg').innerHTML=(ok?(j.title&&j.title!=='Correct!'?'✓ '+j.title+' <b>'+esc(inp.value.trim())+'</b> · this card\'s word: ':'✓ '):'+2 s · ')+'<b>'+esc(it.lt)+'</b> · '+esc(it.en);setTimeout(()=>typeRound(n+1),ok?600:1600);};};
   const fin=()=>{cancelAnimationFrame(raf);const secs=(performance.now()-t0)/1000+pen,best=!S.matchBest||secs<S.matchBest;if(best)S.matchBest=secs;rollDay();const total=addXp(2);save();
     ov.innerHTML='<div class="fall-res"><div class="big num">'+fmtSecs(secs)+'</div><h2>'+(best?'New best time!':'All six matched')+'</h2><p class="note">'+(pen?'Includes '+pen+' s for wrong answers. ':'')+(best?'':'Best: '+fmtSecs(S.matchBest)+'. ')+'+'+total+' XP</p>'+
       '<div class="win"><b>The six</b> · '+its.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'</div><button type="button" class="btn amber" id="g-again">Play again</button><button type="button" class="btn ghost" id="g-done">Done</button></div>';sfx('win');
@@ -1611,7 +1634,7 @@ function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);
 const FALLKEY='gintaras.fall.'+LANG_CODE;
 function fallSaved(){try{const p=JSON.parse(localStorage.getItem(FALLKEY)||'null');return p&&Date.now()-p.at<30*60000&&p.left&&p.left.length?p:null;}catch(e){return null;}}
 function startFall(resume){const pool=gameWords();if(pool.length<5&&!resume)return;
-  const due=shuffle(pool.filter(i=>rec(i.id).due<=Date.now())),rest=shuffle(pool.filter(i=>rec(i.id).due>Date.now()));
+  const dn=new Set(dueNow()),due=shuffle(pool.filter(i=>dn.has(i))),rest=shuffle(pool.filter(i=>!dn.has(i)));
   const sv=resume?fallSaved():null,ids=a=>(a||[]).map(id=>BYID[id]).filter(Boolean);
   const words=sv?ids(sv.caught).concat(ids(sv.missed),ids(sv.left)):due.concat(rest).slice(0,20);const caught=sv?ids(sv.caught):[],missed=sv?ids(sv.missed):[];Q={queue:[],idx:0,correct:0,total:words.length,items:words,mode:'game',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},ups:0};
   const ov=document.createElement('div');ov.className='fall';
@@ -1667,7 +1690,7 @@ function renderPractice(){const L=learned();const d=dueNow(),rest=dueItems().len
   $('#due-title').textContent=L.length===0?'Nothing to review yet':d.length===0?'All caught up':d.length+(d.length===1?' word is due':' words are due');
   $('#due-note').textContent=L.length===0?'Finish a lesson first. Words you learn come back here at growing intervals so they stick.':d.length===0?(rest?rest+(rest===1?' more word is':' more words are')+' due, but you practised '+(rest===1?'it':'them')+' enough today: tomorrow. ':'')+(canPractise().length?'Come back tomorrow, or practise your weakest words now.':'Come back tomorrow, or learn something new.'):'Review them now so they move to a longer interval.'+(rest?' '+rest+' more wait'+(rest===1?'s':'')+' for tomorrow: you practised '+(rest===1?'it':'them')+' enough today.':'');
   {const m=document.querySelector('.due-mascot');if(m)m.hidden=!(L.length&&!d.length);}
-  $('#btn-review').disabled=d.length<1;$('#btn-weak').disabled=L.length<4||!canPractise().length;{const tp=trickyPick(),sp=savedPlace(),bt=$('#btn-tricky');bt.hidden=tp.length<3&&!(sp&&sp.tricky);
+  $('#btn-review').disabled=false;$('#btn-review').classList.toggle('ghost',d.length<1);$('#btn-weak').disabled=L.length<4||!canPractise().length;{const tp=trickyPick(),sp=savedPlace(),bt=$('#btn-tricky');bt.hidden=tp.length<3&&!(sp&&sp.tricky);
     bt.textContent=sp&&sp.tricky?'🧠 Carry on: Tricky words · '+sp.left+' to go':'🧠 Tricky words workout · '+tp.length+' words';bt.onclick=sp&&sp.tricky?resumePlace:startTricky;}
   const buckets=[0,0,0,0];L.forEach(i=>{const l=rec(i.id).lvl;buckets[l<=0?0:l<=2?1:l<=3?2:3]++;});
   const cols=['var(--bad)','var(--amber)','var(--pine)','var(--strong)'];const tot=Math.max(1,L.length);
@@ -1711,7 +1734,8 @@ function renderBite(){rollDay();const d=dueNow().length;const l=nextLesson();con
     $('#bite-note').textContent=w?'You wrote this one. Now say the same conversation out loud, and the next unit opens.':'Chat with '+c.cast.map(p=>p.name).join(' and ')+' in '+LANG.en+'. New words are underlined. First Write it, like texting, then Say it out loud.';
     b.textContent=w?'Say it':'Start conversation';b.onclick=()=>startConv(c.id,w?'speak':'text');}
   else if(l){const isNew=crowns(l.id)<1;$('#bite-title').textContent=(l.speak?'Speak: ':isNew?'Learn: ':'Practice: ')+l.unit.en+(l.speak?'':' · '+l.title);
-    $('#bite-note').textContent=l.speak?l.items.length+' '+(l.items.every(i=>i.lt.includes(' '))?'phrases':'words and phrases')+' from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new word'+(l.items.length===1?'':'s')+', one at a time. Meet each one, then write it and say it yourself.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);}
+    $('#bite-note').textContent=l.speak?l.items.length+' '+(l.items.every(i=>i.lt.includes(' '))?'phrases':'words and phrases')+' from this unit, said out loud. Nobody is listening but you.':isNew?l.items.length+' new word'+(l.items.length===1?'':'s')+', one at a time. Meet each one, then write it and say it yourself.':'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);
+    if(d)$('#bite-note').textContent+=' '+d+(d===1?' word is':' words are')+' due as well: '+(d===1?'it waits':'they wait')+' for your next review (Practice).';}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}
   {const n=listenOwed().length;if(n&&canListen())$('#bite-note').textContent+=' '+Math.min(n,3)+' listening card'+(Math.min(n,3)===1?'':'s')+' you skipped '+(Math.min(n,3)===1?'is':'are')+' waiting too.';}}
 /* Lessons and conversations added behind where you already are (the course keeps growing): listed so nobody misses them. */
@@ -1886,7 +1910,7 @@ function distractors(item,n,field,ear){const part=new Set(norm(item.lt).split(' 
   const mk=field==='lt'&&MARKED.test(item.en),twin0=CONFUSE[item.lt]||[];
   let pool=shuffle(ITEMS.filter(i=>i!==item&&norm(i[field])!==norm(item[field])&&(!clash(i,item)||mk&&(twin0.includes(i.lt)||norm(i.en)!==norm(item.en)&&enKey(i.en)===enKey(item.en)))&&!right(i)&&!(norm(i.lt).split(' ').length===1&&part.has(norm(i.lt)))));
   /* options come from words you've met (and this lesson's), while there are enough of them */
-  {const known=pool.filter(i=>peek(i.id).seen||i.lesson===item.lesson);if(known.length>=n)pool=known;}
+  if(field==='lt')pool=pool.filter(taught);else{const known=pool.filter(i=>peek(i.id).seen||i.lesson===item.lesson);if(known.length>=n)pool=known;}
   const wc=i=>i.lt.split(' ').length,twin=CONFUSE[item.lt]||[];
   const met=i=>peek(i.id).seen,sw=new Set(strip(item.lt).split(' ')),shared=i=>strip(i.lt).split(' ').filter(w=>w.length>1&&sw.has(w)).length;
   const e1=s=>norm(s).split(' ')[0],sameEn=i=>e1(i.en)===e1(item.en);
@@ -1955,7 +1979,7 @@ function clozePick(item){const ws=item.lt.split(' ');if(ws.length<2)return null;
   const core=w=>w.replace(/[.,!?¿¡…–]/g,''),inEn=w=>strip(item.en||'').split(/[^\p{L}]+/u).includes(strip(w));
   /* not a name (Rūta, Jonas, your own) and not a word the English already shows */
   const ok=ws.map((w,i)=>i).filter(i=>core(ws[i]).length>=2&&!properNoun(core(ws[i]))&&GLUE[norm(core(ws[i]))]!=='your name'&&!PERS.baseNames.includes(norm(core(ws[i])))&&!inEn(core(ws[i])));if(!ok.length)return null;
-  const long=ok.filter(i=>core(ws[i]).length>=4),mid=ok.filter(i=>core(ws[i]).length>=3);const k=sample(long.length?long:mid.length?mid:ok,1)[0];return {k,word:core(ws[k])};}
+  const long=ok.filter(i=>core(ws[i]).length>=4);if(!long.length)return null;const k=sample(long,1)[0];return {k,word:core(ws[k])};}
 /* A lesson teaches one new word, checks it straight away, then the next. The second round, a match game
    and up to three words from earlier lessons are shuffled in after. */
 function buildSession(items,mode,lesson){personalise();const head=[];const rest=[];let lastWait=null;
@@ -1965,13 +1989,13 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     if(speakOff()&&typeof toast==='function')toast('Speaking is paused, so you\'ll type this one. Say it later to count it as spoken.');}
   else if(mode==='lesson'){
     const u=lesson.unit;head.push({type:'tip',unit:u,lesson,showUnit:!!(u&&u.tip&&u.lessons[0]===lesson&&crowns(lesson.id)<1)});
-    const mine=S.me?meItems().filter(m=>peek(m.id).seen).map(m=>norm(m.lt)):[];
+    const mine=S.me?meItems().filter(m=>taught(m)).map(m=>norm(m.lt)):[];
     /* a new word's first check waits a card or two after you meet it, so it is remembered, not just copied */
     let wait=null;
     /* Day one is two checks per new word, a quick pick and one you make yourself: spaced reviews do the rest (four or five
        cards a word made lessons slow). About one word in three is said instead of written, from the English, Pimsleur-style.
        A phrase made only of words you already know ("Gerai, ačiū") skips its New word card and gets just the second check. */
-    shuffle(items).forEach((it,k)=>{const r0=rec(it.id),meet=(!r0.seen||!r0.intro&&!(S.lessons[lesson.id]>=1)&&(r0.lvl||0)<2)&&!mine.includes(norm(it.lt));
+    shuffle(items).forEach((it,k)=>{const meet=!taught(it)&&!mine.includes(norm(it.lt));
       if(meet&&isCombo(it)){head.push({type:'intro',item:it});rest.push(Object.assign(exFor(it,['type','gaps','build']),{combo:true}));return;}
       if(meet)head.push({type:'intro',item:it});const a=exFor(it,meet?EASY.filter(t=>t!=='listen'):typesFor(it));
       if(wait)head.push(wait);wait=a;
@@ -1992,7 +2016,10 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     old.slice(0,2).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true,warm:true})).forEach((w,n)=>{
       let at=n===0?head.findIndex(e=>e.type==='intro'):head.findIndex((e,k)=>k>0&&!STEPLESS[e.type]&&!e.warm);
       head.splice(at<0?1:at+1,0,w);});
-    old.slice(2).forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));}
+    old.slice(2).forEach(it=>rest.push(Object.assign(exFor(it,typesFor(it)),{mixed:true})));
+    /* (Round 6) the very first lesson starts with words, not a grammar box: its tip comes after the first two new words */
+    if(!(S.lessonsDone||0)&&!learned().some(i=>taught(i))&&head[0]&&head[0].type==='tip'){const t=head.shift();let c=0,at=head.length;
+      for(let k=0;k<head.length;k++)if(head[k].type==='intro'&&++c===3){at=k;break;}head.splice(at,0,t);}}
   /* reviews mix the directions for words you know well: the meaning of the word, or what you hear, as well as typing it */
   else{shuffle(items).forEach(it=>rest.push(exFor(it,rec(it.id).lvl>=3?typesFor(it).concat(['mc_lt_en',canListen()?'dictate':'type']):typesFor(it))));
     {const ms=matchSet(items,5);if(ms.length>=3)rest.push({type:'match',items:ms});}}
@@ -2063,8 +2090,8 @@ function hearPick(){const td=today(),seen=S.hearDay&&S.hearDay.d===td?S.hearDay.
 function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(' ')).filter(w=>!['iš','ir','ar','į','su','yra','o'].includes(w)));
   const day=S.drillDay&&S.drillDay.d===today()?S.drillDay.f:[];
   /* every word of the finished sentence has been met already, or is taught in this lesson: a drill never teaches a word by testing it */
-  const all=new Set(l.items.flatMap(i=>norm(i.lt).split(' '))),met=d=>norm(d.frame.replace('___',d.ans)).split(' ').every(w=>all.has(w)||(wordLvl(w)??-1)>=0);
-  const pick=sample(DRILLS.filter(d=>d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?(l.parts||[l.id]).some(id=>d.l.includes(id)):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
+  const met=d=>!wordsNeed(cardWords({drill:d}),l.items).bad;
+  const pick=sample(DRILLS.filter(d=>!d.off&&d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?(l.parts||[l.id]).some(id=>d.l.includes(id)):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
   if(pick.length){S.drillDay={d:today(),f:day.concat(pick.map(d=>d.frame))};}return pick;}
 const STEPLESS={intro:1,tip:1,metip:1,mesay:1,revtip:1};
 /* A grammar table: a few rows of Lithuanian and English, and one line on the rule. */
@@ -2090,15 +2117,19 @@ function keepPlace(){if(!Q||!['lesson','review','check'].includes(Q.mode))return
   try{const old=localStorage.getItem(RESKEY),p=old&&JSON.parse(old);if(Q.mode==='lesson')localStorage.removeItem(RESKEY+'.held');
     else if(p&&p.mode==='lesson'&&p.idx<p.queue.length)localStorage.setItem(RESKEY+'.held',old);}catch(e){}
   try{localStorage.setItem(RESKEY,JSON.stringify({at:Date.now(),mode:Q.mode,lesson:id(Q.lesson),idx:Q.idx,correct:Q.correct,total:Q.total,items:Q.items.map(id),wrongOnce:Q.wrongOnce,
-    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,selfOk:Q.selfOk||0,dueN:Q.dueN||0,waitN:Q.waitN||0,planN:Q.planN,gone:Q.gone||0,missN:Q.missN||0,fillN:Q.fillN||0,tricky:Q.tricky,startedAt:Q.startedAt,unit:id(Q.unit),boss:Q.boss,missed:Q.missed&&Q.missed.map(id),backN:Q.backN,madeLt:Q.madeLt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
+    ups:Q.ups||0,nearly:Q.nearly||0,selfRated:Q.selfRated||0,selfOk:Q.selfOk||0,dueN:Q.dueN||0,waitN:Q.waitN||0,planN:Q.planN,gone:Q.gone||0,missN:Q.missN||0,fillN:Q.fillN||0,spkOk:Q.spkOk,selfBare:Q.selfBare||0,saidSelf:Q.saidSelf||0,typedSay:Q.typedSay||0,recall:Q.recall||0,shownN:Q.shownN||0,tricky:Q.tricky,startedAt:Q.startedAt,unit:id(Q.unit),boss:Q.boss,missed:Q.missed&&Q.missed.map(id),backN:Q.backN,madeLt:Q.madeLt,knownBefore:Q.knownBefore,crownsBefore:Q.crownsBefore,
     queue:Q.queue.map(e=>Object.assign({},e,{item:id(e.item),items:e.items&&e.items.map(id),unit:id(e.unit),lesson:id(e.lesson),drill:e.drill?DRILLS.indexOf(e.drill):undefined,line:id(e.line),others:e.others&&e.others.map(id)}))}));}catch(e){}}
 function dropPlace(){try{localStorage.removeItem(RESKEY);const h=localStorage.getItem(RESKEY+'.held');if(h){const p=JSON.parse(h);p.gone=1;localStorage.setItem(RESKEY,JSON.stringify(p));localStorage.removeItem(RESKEY+'.held');}}catch(e){}}
 function savedPlace(){try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(!p||Date.now()-p.at>12*3600e3||p.idx>=p.queue.length)return null;
     if(p.lesson&&!LESSON_BY[p.lesson]||p.queue.some(e=>e.item&&!BYID[e.item]))return null;p.left=p.queue.slice(p.idx).filter(e=>!STEPLESS[e.type]).length;return p.left?p:null;}catch(e){return null;}}
 function resumePlace(){const p=savedPlace();if(!p)return renderBite();personalise();
   const queue=p.queue.map(e=>Object.assign({},e,{item:e.item?BYID[e.item]:undefined,items:e.items?e.items.map(i=>BYID[i]).filter(Boolean):undefined,unit:e.unit?UNIT_BY[e.unit]:undefined,lesson:e.lesson?LESSON_BY[e.lesson]:undefined,drill:e.drill!=null&&e.drill>=0?DRILLS[e.drill]:undefined,line:e.line?BYID[e.line]:undefined,others:e.others?e.others.map(i=>BYID[i]).filter(Boolean):undefined})).filter(e=>e.type!=='hear'||e.line&&e.others&&e.others.length===2);
+  /* (Round 6) a card that can't be drawn any more (its sentence or word is gone) is taken out, not replayed blank */
+  const bad=(e,k)=>e.type==='frame'&&!e.drill||!STEPLESS[e.type]&&e.type!=='frame'&&e.type!=='match'&&e.type!=='hear'&&!e.item||e.type==='match'&&!(e.items&&e.items.length>=3);
+  let idx0=p.idx;const raw=queue.slice();queue.length=0;raw.forEach((e,k)=>{if(bad(e,k)){if(k<p.idx)idx0--;}else queue.push(e);});
+  if(!queue.slice(idx0).some(e=>!STEPLESS[e.type])){dropPlace();return renderBite();}p.idx=Math.max(0,idx0);
   Q={queue,idx:p.idx,correct:p.correct,total:p.total,items:p.items.map(i=>BYID[i]).filter(Boolean),mode:p.mode,lesson:p.lesson?LESSON_BY[p.lesson]:null,answer:null,startedAt:Date.now()-Math.max(0,(p.at||Date.now())-(p.startedAt||p.at||Date.now())),tricky:p.tricky,
-    wrongOnce:p.wrongOnce||{},barPct:0,knownBefore:p.knownBefore,crownsBefore:p.crownsBefore,ups:p.ups,nearly:p.nearly,selfRated:p.selfRated,selfOk:p.selfOk||0,dueN:p.dueN||0,waitN:p.waitN||0,planN:p.planN,gone:p.gone||0,missN:p.missN||0,fillN:p.fillN||0,unit:p.unit?UNIT_BY[p.unit]:undefined,boss:p.boss,missed:p.missed?p.missed.map(i=>BYID[i]).filter(Boolean):undefined,backN:p.backN,madeLt:p.madeLt};
+    wrongOnce:p.wrongOnce||{},barPct:0,knownBefore:p.knownBefore,crownsBefore:p.crownsBefore,ups:p.ups,nearly:p.nearly,selfRated:p.selfRated,selfOk:p.selfOk||0,dueN:p.dueN||0,waitN:p.waitN||0,planN:p.planN,gone:p.gone||0,missN:p.missN||0,fillN:p.fillN||0,spkOk:p.spkOk||{},selfBare:p.selfBare||0,saidSelf:p.saidSelf||0,typedSay:p.typedSay||0,recall:p.recall||0,shownN:p.shownN||0,unit:p.unit?UNIT_BY[p.unit]:undefined,boss:p.boss,missed:p.missed?p.missed.map(i=>BYID[i]).filter(Boolean):undefined,backN:p.backN,madeLt:p.madeLt};
   if(Q.mode==='check'&&(!Q.unit||!Q.boss)){Q=null;dropPlace();return renderBite();}
   new Set(queue.map(e=>e.item?unitOf(e.item.id):null).filter(Boolean)).forEach(u=>preloadUnit(u));openSheet();renderStep();}
 /* New words become future reviews, so with a big pile waiting (30 or more) a new lesson asks you to review first. Once a day you can say "Learn anyway". */
@@ -2108,7 +2139,7 @@ function resumePlace(){const p=savedPlace();if(!p)return renderBite();personalis
    with a review of just those. Nothing is ever locked by it. */
 function unitItems(u){return u.retire?[]:u.lessons.filter(l=>!l.speak).flatMap(l=>l.items);}
 /* the boss only asks words you have met: a word you haven't had yet was being tested cold */
-const bossItems=u=>unitItems(u).filter(i=>wlvl(i)>=0);
+const bossItems=u=>unitItems(u).filter(taught);
 function startBoss(u){const all=bossItems(u);if(all.length<5)return;
   const pick=all.slice().sort((a,b)=>wlvl(a)-wlvl(b)||Math.random()-0.5).slice(0,Math.min(10,all.length));
   const queue=shuffle(pick).map(it=>{const ex=exFor(it,['type','cloze','type','dictate']);if(ex.type==='tiles'||ex.type==='build'||ex.type==='mc_en_lt')ex.type='type';return ex;});
@@ -2136,7 +2167,7 @@ function startReview(weak){if(!practised().length){toast('Finish a lesson first'
   if(pick.length<4){const extra=L.filter(i=>!pick.includes(i)).sort((a,b)=>rec(a.id).lvl-rec(b.id).lvl);pick=pick.concat(extra.slice(0,4-pick.length));}
   if(pick.length<1)return nothingToReview();const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(!Q||Q.mode!=='review')return;Q.dueN=dueN;Q.waitN=Math.max(0,waitN);
   /* before a due review: how many come back, and which of them slipped before */
-  if(Q&&!weak&&dueN){Q.queue.unshift({type:'revtip',n:pick.length,miss:pick.filter(i=>rec(i.id).bad>0).slice(0,5).map(i=>i.lt)});renderStep();}}
+  if(Q&&!weak&&dueN){Q.queue.unshift({type:'revtip',n:dueN,x:pick.length-dueN,miss:pick.filter(i=>rec(i.id).bad>0).slice(0,5).map(i=>i.lt)});renderStep();}}
 function quit(){if(!Q&&!CV)return;try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(p){p.gone=1;localStorage.setItem(RESKEY,JSON.stringify(p));}}catch(e){}stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
@@ -2161,7 +2192,7 @@ function progressUI(){const q=Q.queue,card=e=>!STEPLESS[e.type];if(Q.planN==null
   const e=q[Q.idx],again=!!e&&card(e)&&isExtra(e),done=Math.min(Q.planN,q.slice(0,Q.idx).filter(x=>card(x)&&!isExtra(x)).length+(Q.gone||0)),
     more=q.filter(x=>card(x)&&isExtra(x)).length,tot=Q.planN+more,doneAll=q.slice(0,Q.idx).filter(card).length+(Q.gone||0);
   Q.barPct=Math.max(Q.barPct||0,tot?Math.min(100,doneAll/tot*100):0);$('#lbar').style.width=Q.barPct+'%';
-  $('#lcount').textContent=(again?'again · ':'')+Math.min(Q.planN,done+(e&&card(e)&&!again?1:0))+' of '+Q.planN;}
+  $('#lcount').textContent=(again?'again · ':'')+Math.max(1,Math.min(Q.planN,done+(e&&!again&&(card(e)||q.slice(Q.idx).some(x=>card(x)&&!isExtra(x)))?1:0)))+' of '+Q.planN;}
 /* "Can't listen now": listening cards turn into reading and typing ones for an hour, this one included. */
 const NOLISTEN='<button type="button" class="linkbtn" id="nolisten">Can\'t listen right now? Skip listening for an hour</button>';
 function wireNoListen(st){const b=st.querySelector('#nolisten');if(!b)return;b.onclick=()=>{S.noListenUntil=Date.now()+3600000;save();stopAllAudio();
@@ -2174,7 +2205,11 @@ const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1,cloze:1,d
 
 /* a card later in this session where you write or say this word (a miss coming back doesn't count) */
 function prodLater(it){return !!Q&&Q.mode!=='lesson'&&Q.queue.some((e,k)=>k>Q.idx&&e.item&&norm(e.item.lt)===norm(it.lt)&&PROD[e.type]&&!e.retry);}
-function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();progressUI();const st=$('#stage');st.innerHTML='';st.scrollTop=0;if(st.parentElement)st.parentElement.scrollTop=0;Q.answer=null;setFoot('');
+/* (Round 6) a card that fails to draw is skipped, never shown blank and never written down as a miss */
+function renderStep(){if(Q){Q.__rd=Q.__rdk===Q.idx?(Q.__rd||0)+1:0;Q.__rdk=Q.idx;Q.__calm=Q.__rd>25;}try{return drawStep();}catch(err){console.warn('Gintaras: a card could not be drawn, skipped',err,Q&&Q.queue&&Q.queue[Q.idx]);
+    if(!Q||!Q.queue||Q.idx>=Q.queue.length)return;Q.queue.splice(Q.idx,1);Q.total=Math.max(1,(Q.total||1)-1);Q.gone=(Q.gone||0)+1;Q.skipped=(Q.skipped||0)+1;
+    if((Q.skipped||0)>40){console.warn('Gintaras: too many cards failed, closing');try{quit();}catch(e){}return;}return renderStep();}}
+function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();progressUI();const st=$('#stage');st.innerHTML='';st.scrollTop=0;if(st.parentElement)st.parentElement.scrollTop=0;Q.answer=null;setFoot('');
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Check';btn.onclick=check;
   const idk=$('#btn-idk');idk.hidden=true;
   /* a pass can't happen any more: the rest of that unit's words aren't asked */
@@ -2189,15 +2224,19 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   {const e=Q.queue[Q.idx],td=today(),made=i=>rec(i.id).prodD===td,learn=['lesson','review','me'].includes(Q.mode);
     /* (Round 5) "seen" isn't enough: a word only seen in passing (a tip, a reply, a card you rated) still gets its New word card
        first, whatever brought the card here (a resumed lesson, a card moved or sent back, a word in a match) */
-    if(learn&&!STEPLESS[e.type]){const need=(e.item?[e.item]:e.items||[]).find(i=>{const r=peek(i.id);return !(r.seen&&(r.intro||r.lvl>=1))&&!Q.queue.slice(0,Q.idx).some(x=>x.type==='intro'&&x.item===i);});
+    if(learn&&!STEPLESS[e.type]){const shown=i=>Q.queue.slice(0,Q.idx).some(x=>x.type==='intro'&&x.item===i);
+      let need=(e.item?[e.item]:e.items||[]).find(i=>!taught(i)&&!shown(i));
+      /* (Round 6) a sentence card's other words (and its choices), a listening card's lines: taught first, or the card waits */
+      if(!need&&(e.drill||e.type==='hear')){const c=wordsNeed(cardWords(e),(Q.items||[]).concat(Q.lesson&&Q.lesson.items||[]));
+        if(c.bad){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return renderStep();}need=c.need.find(i=>!shown(i));}
       if(need){Q.queue.splice(Q.idx,0,{type:'intro',item:need});return renderStep();}}
     if(learn&&e.item&&!e.force&&!e.easy&&/^(mc_lt_en|mc_en_lt|listen)$/.test(e.type)&&made(e.item))Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'&&canListen()?'dictate':'type'});
-    else if(learn&&e.item&&!e.easy&&/^(tiles|build|gaps)$/.test(e.type)&&rec(e.item.id).recD===td)Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
+    else if(learn&&e.item&&!e.easy&&/^(tiles|build|gaps)$/.test(e.type)&&(rec(e.item.id).recD===td||!!rec(e.item.id).prodD&&!e.helped))Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
     /* never the same word on two cards in a row, even after cards were taken out or came back: a later card about another
        word (one you've met) is shown first */
     {const q=Q.queue,same=(a,b)=>a===b||!!a&&!!b&&norm(a.lt)===norm(b.lt),about=(x,i)=>!!x&&(same(x.item,i)||(x.items||[]).some(y=>same(y,i)));let pv=Q.idx-1;while(pv>=0&&STEPLESS[q[pv].type])pv--;
-      if(learn&&e.item&&!STEPLESS[e.type]&&pv>=0&&about(q[pv],e.item)){
-        const j=q.findIndex((x,m)=>m>Q.idx&&x.item&&!STEPLESS[x.type]&&!about(x,e.item)&&rec(x.item.id).seen&&!about(q[pv],x.item)&&!about(q[m-1]===e?null:q[m-1],e.item)&&!about(q[m+1],e.item));
+      if(learn&&!Q.__calm&&e.item&&!STEPLESS[e.type]&&pv>=0&&about(q[pv],e.item)){
+        const j=q.findIndex((x,m)=>m>Q.idx&&x.item&&!STEPLESS[x.type]&&!about(x,e.item)&&rec(x.item.id).seen&&!(x.at!=null&&(Q.shownN||0)-x.at<5)&&!about(q[pv],x.item)&&!about(q[m-1]===e?null:q[m-1],e.item)&&!about(q[m+1],e.item));
         if(j>0){q[Q.idx]=q[j];q[j]=e;return renderStep();}}}
     if(learn&&e.type==='match'){const left=e.items.filter(i=>!made(i)&&!prodLater(i));if(left.length<3){Q.queue.splice(Q.idx,1);Q.total--;Q.gone=(Q.gone||0)+1;return renderStep();}if(left.length<e.items.length)Q.queue[Q.idx]=Object.assign({},e,{items:left});}
     /* Not too often. A word you've produced right in this session (the same words in another card count: My name is Tom)
@@ -2210,7 +2249,10 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       if(drop&&Q.queue.length-Q.idx>1){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return renderStep();}}
     /* a review never shows you a word (a pick, a match) before the card where you have to write or say it */
     if(learn&&Q.mode!=='lesson'&&!Q.tricky&&e.item&&/^(mc_lt_en|mc_en_lt|listen|hear)$/.test(e.type)&&prodLater(e.item)){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return renderStep();}}
-  const ex=Q.queue[Q.idx];const it=ex.item;
+  /* (Round 6) a card that came back waits for five cards about other words, even when cards in between were taken out */
+  {const e=Q.queue[Q.idx];if(e&&!Q.__calm&&e.at!=null&&e.item&&(Q.shownN||0)-e.at<5&&!e.moved){const q=Q.queue,about=x=>!!x&&(x.item===e.item||(x.items||[]).includes(e.item));
+      const j=q.findIndex((x,m)=>m>Q.idx&&!STEPLESS[x.type]&&!about(x));if(j>0){q.splice(Q.idx,1);let n=0,p=Q.idx;while(p<q.length&&n<5-((Q.shownN||0)-e.at)){if(!STEPLESS[q[p].type]&&!about(q[p]))n++;p++;}q.splice(p,0,Object.assign(e,{moved:p>=q.length}));return renderStep();}}}
+  const ex=Q.queue[Q.idx];const it=ex.item;if(!STEPLESS[ex.type])Q.shownN=(Q.shownN||0)+1;
   if(IDK_TYPES[ex.type]){idk.hidden=false;idk.onclick=()=>reveal(false,'',true);}
   const ls=ex.type==='speak'?-1:ladderAt(ex.type),lad=ex.item&&Q.mode==='review'&&rec(it.id).lvl>=1&&ls>=0;
   const from=ex.owed?'<span class="eyebrow">🎧 Listening you skipped earlier</span>':lad?'<span class="eyebrow">Step '+(ls+1)+' of 4 · '+LADDER_NAME[ls]+'</span>':ex.mixed&&!(Q.lesson&&Q.lesson.items&&Q.lesson.items.includes(it))?'<span class="eyebrow">From an earlier lesson</span>':'';
@@ -2222,7 +2264,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       (lt?'<div class="intro tipcard lesson-tip"><h3>💡 '+(l.speak?'Speaking tip':'Tip for this lesson')+'</h3><div>'+lt+'</div></div>':'')+
       (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'')+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
-  else if(ex.type==='revtip'){st.innerHTML='<span class="eyebrow">Review</span><div class="intro tipcard lesson-tip"><h3>🔁 '+ex.n+' word'+(ex.n===1?'':'s')+' come back today</h3><div>Each word comes back just before you would forget it. Get it right and the next gap is longer.'+
+  else if(ex.type==='revtip'){st.innerHTML='<span class="eyebrow">Review</span><div class="intro tipcard lesson-tip"><h3>🔁 '+ex.n+' word'+(ex.n===1?' comes':'s come')+' back today</h3><div>'+(ex.x?'With '+ex.x+' more you know, to keep them fresh. ':'')+'Each word comes back just before you would forget it. Get it right and the next gap is longer.'+
       (ex.miss&&ex.miss.length?' These slipped before: <b>'+ex.miss.map(esc).join('</b>, <b>')+'</b>.':'')+'</div></div>'+mascot('think','tip-mascot');
     btn.disabled=false;btn.textContent='Start';btn.onclick=()=>{Q.idx++;renderStep();};}
   else if(ex.type==='mesay'){st.innerHTML='<span class="eyebrow">About me · last round</span><div class="intro tipcard lesson-tip"><h3>🙈 Say it without looking</h3><div>Now you see only the English. Say each line in '+LANG.en+' from memory, then tap "Show me" to check.</div></div>'+mascot('think','tip-mascot');
@@ -2275,7 +2317,9 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       btn.onclick=()=>{if(passed||shown||!Q.answer||!Q.answer.trim())return;passed=true;shown=true;stopHearing();
         const a=st.querySelector('#sayans');if(a)a.hidden=false;st.querySelectorAll('.speakrow [data-say]').forEach(b=>b.hidden=false);
         ['#showans','#recpush','#rate'].forEach(s=>{const x=st.querySelector(s);if(x)x.hidden=true;});
-        st.querySelector('#srout').innerHTML='Now say it out loud, like the voice.'+(CAN_REC?' Record yourself with the red button to compare.':'');
+        st.querySelector('#srout').innerHTML='Now say it out loud, like the voice.'+(CAN_REC?' Record yourself with the red button to compare.':'')+' <button type="button" class="btn ghost said-it" id="saidit">I said it out loud</button>';
+        /* (Round 6) written is not said: a Speak it line counts when you say it (and tell the app), or record it */
+        const sd=st.querySelector('#saidit');if(sd)sd.onclick=()=>{(Q.spkOk=Q.spkOk||{})[it.id]=1;Q.saidSelf=(Q.saidSelf||0)+1;sd.disabled=true;sd.textContent='✓ Said out loud';};
         Q.typedSay=(Q.typedSay||0)+1;check();};}
     const pass=()=>{if(passed)return;passed=true;(Q.spkOk=Q.spkOk||{})[it.id]=1;rec(it.id).prodD=today();if(!peeked)markRecalled(it);grade(it,true,true,peeked);spoke(it,true);if(!ex.retry)Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;{const p=st.querySelector('#recpush');if(p)p.hidden=true;}
       setFoot('good',peeked?'Said it':'Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en)+(peeked?'<div class="why">It moves up when you say it without looking.</div>':''));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(2800);};
@@ -2294,7 +2338,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
     wireRec(st,st.querySelector('#srout'),()=>{recd=true;if(typeIt&&sa&&!shown&&!passed){sa.textContent='Show me, and I\'ll compare my recording';sa.disabled=false;}if(shown&&st.querySelector('#rate').hidden)openRate();});
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;passed=true;stopHearing();const v=b.dataset.rate;rec(it.id).seen=true;
       if(v==='again'){grade(it,false,false);spoke(it,false);Q.wrongOnce[it.id]=true;if(!ex.retry)Q.selfRated=(Q.selfRated||0)+1;if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'speak',item:it,retry:true});}
-      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');if(v!=='hard'&&recall)markRecalled(it);if(!ex.retry){Q.selfRated=(Q.selfRated||0)+1;Q.selfOk=(Q.selfOk||0)+1;if(!recd)Q.selfBare=(Q.selfBare||0)+1;}if(recd)(Q.spkOk=Q.spkOk||{})[it.id]=1;
+      else{grade(it,true,true,v==='hard',v==='easy');spoke(it,v!=='hard');if(v!=='hard'&&recall)markRecalled(it);if(!ex.retry){Q.selfRated=(Q.selfRated||0)+1;Q.selfOk=(Q.selfOk||0)+1;if(!recd)Q.selfBare=(Q.selfBare||0)+1;}(Q.spkOk=Q.spkOk||{})[it.id]=1;
         /* "Almost" comes back once more a few cards later, played first: listen again, then say it */
         if(v==='hard'&&!ex.retry&&Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'speak',item:it,retry:true});}
       Q.idx++;renderStep();});
@@ -2308,7 +2352,8 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
     const ear=ex.type==='listen';let ds=distractors(it,3,field,ear);
-    if(ex.force){const f=ex.force.map(id=>BYID[id]).filter(x=>x&&x!==it&&norm(x[field])!==norm(it[field]));ds=f.concat(ds.filter(d=>!f.includes(d))).slice(0,3);}
+    if(field==='lt'&&!ds.length&&!ear){Q.queue[Q.idx]=Object.assign({},ex,{type:'mc_lt_en'});return renderStep();}
+    if(Array.isArray(ex.force)){const f=ex.force.map(id=>BYID[id]).filter(x=>x&&x!==it&&norm(x[field])!==norm(it[field])&&(field!=='lt'||taught(x)));ds=f.concat(ds.filter(d=>!f.includes(d))).slice(0,3);}
     let opts=shuffle([it].concat(ds));
     {const key=o=>o.map(x=>x.id).join('|'),last=(Q.optsSeen=Q.optsSeen||{})[it.id];let n=0;while(n++<8&&key(opts)===last)opts=shuffle(opts);Q.optsSeen[it.id]=key(opts);}
     let head;if(ear)head='<div class="prompt small">Listen. What does it mean?</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>';
@@ -2341,8 +2386,8 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
   else if(ex.type==='build'){
     const words=it.lt.split(' '),wn=Math.min(3,words.length+1),spare=L=>[...new Set(L.flatMap(i=>i.lt.split(' ')).filter(w=>!words.includes(w)))];
     /* the extra tiles are words you've met, from this unit first */
-    let pool=spare((it.me?Q.items:ITEMS).filter(i=>(it.me||i.unit===it.unit)&&i!==it&&(it.me||peek(i.id).seen)));
-    if(pool.length<wn&&!it.me)pool=pool.concat(spare(ITEMS.filter(i=>i!==it&&i.unit!==it.unit&&peek(i.id).seen)).filter(w=>!pool.includes(w)));
+    let pool=spare((it.me?Q.items:ITEMS).filter(i=>(it.me||i.unit===it.unit)&&i!==it&&(it.me?peek(i.id).seen:taught(i))));
+    if(pool.length<wn&&!it.me)pool=pool.concat(spare(ITEMS.filter(i=>i!==it&&i.unit!==it.unit&&taught(i))).filter(w=>!pool.includes(w)));
     const extra=sample(pool,wn);
     const chip=w=>{w=w.replace(/[.,!?¿¡]/g,'');return GLUE[norm(w)]==='your name'||PERS.baseNames.includes(norm(w))||properNoun(w)?w[0].toUpperCase()+w.slice(1):w.toLowerCase();};
     const bank=shuffle([...new Set(words.concat(extra).map(chip))]);let chosen=[];
@@ -2361,7 +2406,7 @@ function renderStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now()
       st.querySelectorAll('.opt').forEach((b,i)=>{b.disabled=true;if(b.getAttribute('aria-pressed')==='true')b.classList.add(ok?'good':'wrong');if(opts[i]===d.ans)b.classList.add('good');});$('#gap').textContent=d.ans;$('#gap').classList.add('filled');
       if(ok){sfx('good');if(first)Q.correct++;setFoot('good','Correct!',esc(d.why));}
       else{if(!idk)sfx('bad');if(!ex.retry)Q.missN=(Q.missN||0)+1;Q.wrongOnce['drill:'+d.frame]=true;setFoot(idk?'idk':'bad',idk?'Here it is':'Not quite','<b>'+esc(d.frame.replace('___',d.ans))+'</b><div class="note">'+esc(d.why)+'</div>');
-        if(first&&Q.queue.length-Q.idx>5)Q.queue.splice(Q.idx+6,0,{type:'frame',drill:d,retry:true});}
+        if(first&&Q.queue.length-Q.idx>5)Q.queue.splice(Q.idx+6,0,{type:'frame',drill:ex.drill,retry:true});}
       btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};};
     btn.onclick=()=>done(Q.answer===d.ans,false);
     const idk=$('#btn-idk');idk.hidden=false;idk.onclick=()=>done(false,true);}
@@ -2462,8 +2507,10 @@ function comeBack(c){const q=Q.queue,it=c.item,about=e=>!!e&&(e.item===it||(e.it
   while(p<q.length&&(about(q[p-1])||about(q[p])))p++;
   if(n<5){const need=5-n,later=q.slice(Q.idx+1),pool=shuffle((Q.items||[]).concat(practised()).filter((i,k,a)=>a.indexOf(i)===k&&i!==it&&!i.me&&peek(i.id).seen&&peek(i.id).intro&&
       !(Q.madeLt&&Q.madeLt[norm(i.lt)])&&!later.some(e=>about(e)||e.item===i)));
-    if(pool.length<need||(Q.fillN||0)+need>3)return false;Q.fillN=(Q.fillN||0)+need;pool.slice(0,need).forEach(o=>q.push({type:'mc_lt_en',item:o,extra:true,force:true}));p=q.length;}
-  q.splice(p,0,c);return true;}
+    const k=Math.max(0,Math.min(need,pool.length,3-(Q.fillN||0)));
+    /* a review leaves it for tomorrow; a lesson asks it again at the end whatever (a miss in the lesson is always asked again) */
+    if(k<need&&Q.mode!=='lesson')return false;Q.fillN=(Q.fillN||0)+k;pool.slice(0,k).forEach(o=>q.push({type:'mc_lt_en',item:o,extra:true,force:true}));p=q.length;}
+  c.at=Q.shownN||0;q.splice(p,0,c);return true;}
 /* The words practised in a session never end it due again the same day: the first review is tomorrow at the earliest
    (a miss is practised again inside the session, as a card that comes back). */
 /* Recalled right first time (typed, written from the audio, said from memory): with no miss since, the word is done for today. */
@@ -2474,7 +2521,7 @@ function countProd(it){const r=rec(it.id),td=today();if(r.pcD!==td){r.pcD=td;r.p
 const doneToday=r=>{const td=today();return r.recD===td&&(r.badD!==td||(r.recAt||0)>(r.badAt||0))||r.okD===td&&r.okN>=2&&r.badD!==td;};
 function settleToday(){if(!Q||!Q.touched)return;const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+1);
   Object.keys(Q.touched).forEach(id=>{const r=S.items[id];if(r&&r.due<=Date.now())r.due=d.getTime();});}
-function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;if(Q)(Q.touched=Q.touched||{})[item.id]=1;const td=today();if(ok){if(r.okD!==td){r.okD=td;r.okN=0;}r.okN++;}else r.badD=td;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
+function grade(item,ok,count,sloppy,easy){const r=rec(item.id);r.seen=true;if(Q){(Q.touched=Q.touched||{})[item.id]=1;(Q.res=Q.res||{})[item.id]=!!ok;}const td=today();if(ok){if(r.okD!==td){r.okD=td;r.okN=0;}r.okN++;}else r.badD=td;const g=!ok?1:sloppy?2:easy?4:3;if(count||!ok)logReview(item.id,g,r);saveSoon();
   if(ok){r.ok++;if(sloppy&&count)fsReview(r,2);
     else if(count&&r.up!==today()&&r.due<=Date.now()){const isNew=!r.fs&&!(r.lvl>0);r.lvl=Math.min(INTERVALS.length-1,r.lvl+1);r.up=today();
       /* a word learned today always comes back tomorrow first (a learning step), whatever FSRS would say */
@@ -2617,21 +2664,37 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     const fq=s=>nbw(dq(s)),k4=targets.findIndex(t=>isQ(t)&&keeps(norm(t))&&fq(t)===fq(given));
     if(k4>=0&&a.includes(' ')){const t=targets[k4],noBe=!gbe.length&&nbw(dq(t))!==dq(t);
       return {ok:true,note:'<b>'+esc(t)+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.qNote+(noBe?' '+LANG.dropBe:'')+'</div>'};}}
+  /* (Round 6) "Čia mes esame", "Aš kalbu truputį lietuviškai": the same words in another order are right */
+  {const so=s=>norm(s).split(' ').sort().join(' '),gs=so(given);if(a.split(' ').length>=3){const k5=tn.findIndex(x=>so(x)===gs),k6=k5>=0?-1:tn.findIndex(x=>strip(so(x))===strip(gs));
+    const ord='<div class="why">Right too: '+LANG.en+' word order is free, so the words can go round another way. This is the usual order.</div>';
+    if(k5>=0)return {ok:true,note:'<b>'+esc(targets[k5])+'</b>'+(en?' · '+esc(en):'')+ord};
+    if(k6>=0)return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+esc(targets[k6])+'</b>'+ord};}}
   const w=whyWrong(given,targets[0]);
   if(w&&w.typo)return {ok:true,title:'Nearly',note:'Small typo, we\'ll count it: <b>'+esc(targets[0])+'</b>'+w.html};
   return {ok:false,why:w?w.html:''};}
 
 /* Every right answer at once: the card's own, then the other right ones (the polite "your", a same-meaning word). A miss is
    explained against the right answer closest to what you wrote, so a typo in jūsų is a typo, not "you left out tavo". */
-function judgeAll(given,A,en){const j=judgeTyped(given,A.own,en);
+function judgeAll(given,A,en){
+  {const nn=typeof NEAR_NOTE!=='undefined'&&NEAR_NOTE[norm(A.own[0])],hit=nn&&nn[norm(given)];if(hit)return hit.ok?{ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">'+hit.note+'</div>'}:{ok:false,why:'<div class="why">'+hit.note+'</div>'};}
+  /* (Round 6) your name as you spelled it, where the lesson teaches its Lithuanian ending: counted, but Nearly, with the rule */
+  {const m=S.me||{},raw=(m.name||'').trim(),lit=raw&&typeof nameForms==='function'&&nameForms(raw,m.g==='f'?'f':'m').lt;
+    if(lit&&norm(lit)!==norm(raw)){const re=new RegExp('(^|[\\s,.!?])'+raw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?=$|[\\s,.!?])','i');
+      if(re.test(given)&&!A.own.concat(A.other).some(t=>re.test(t))){const fixed=given.replace(re,(x,p)=>p+lit),j2=judgeAll(fixed,A,en);
+        if(j2.ok)return {ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">Names get a '+LANG.en+' ending too: <b>'+esc(raw)+'</b> becomes <b>'+esc(lit)+'</b>.</div>'};}}}
+  const j=judgeTyped(given,A.own,en);
   if(j.ok&&j.exact&&typeof ALT_NOTE!=='undefined'&&ALT_NOTE[norm(given)]&&!A.own.slice(0,1).some(o=>norm(o)===norm(given)))return {ok:true,title:'That works too!',note:ALT_NOTE[norm(given)]};
   if(j.ok)return j;
   const rg=(A.reg||[]).find(v=>norm(v)===norm(given)||strip(v)===strip(given));
   if(rg)return {ok:false,why:'<div class="why"><b>'+esc(rg)+'</b> is the friendly word, for friends and family. "(formal)" asks for the one you use with strangers, groups and anyone older: <b>'+esc(A.own[0])+'</b>.</div>'};
   if(A.id&&((S.contested||{})[A.id]||[]).includes(norm(given)))return {ok:true,title:'Nearly',note:'<b>'+esc(given.trim())+'</b>: you said this is right, so it counts while it waits for a check.'};
   if(!A.other.length)return j;
-  const o=judgeTyped(given,A.other,en);if(o.ok)return Object.assign(o,{title:'Nearly'});
-  const g=norm(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,norm(x))-lev(g,norm(y)))[0];
+  const o=judgeTyped(given,A.other,en);
+  /* (Round 6) another right answer is "That works too!" everywhere (Falling words said "Nearly" for Viso gero) */
+  if(o.ok&&o.exact){const ow=A.other.find(v=>norm(v)===norm(given)),it=A.id&&BYID[A.id];return {ok:true,exact:false,title:'That works too!',note:it?alsoNote(ow,it):'<b>'+esc(ow)+'</b>'};}
+  if(o.ok)return Object.assign(o,{title:'Nearly'});
+  /* a miss is explained against the nearest right answer, letters compared without marks (lietuviu is lietuvių, not an extra word) */
+  const g=strip(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,strip(x))-lev(g,strip(y)))[0];
   if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html;}return j;}
 /* Names and places: words the course writes with a capital in the middle of a sentence (Rūta, Kanados, Vilniuje) */
 let PROPER=null;
@@ -2646,7 +2709,7 @@ function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=e
   if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');
     const A=answersFor(it),o=A.other.find(v=>norm(v)===norm(full));if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
     else{const j=judgeAll(full,A,it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
-  else if(ex.type==='type'||ex.type==='speak'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'||ex.type==='gaps'){const A=answersFor(it),free=ex.type==='type'||ex.type==='speak',o=free&&A.other.find(v=>norm(v)===norm(Q.answer));
+  else if(ex.type==='type'||ex.type==='speak'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'||ex.type==='gaps'){const A=answersFor(it),free=ex.type==='type'||ex.type==='speak'||ex.type==='build',o=free&&A.other.find(v=>norm(v)===norm(Q.answer));
     if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
     else{const j=free?judgeAll(Q.answer,A,it.en):judgeTyped(Q.answer,A.own,it.en);ok=j.ok;why=j.why||'';
       if((ex.type==='tiles'||ex.type==='gaps')&&ok&&!j.exact&&ex.type==='tiles'){ok=false;why=(whyWrong(Q.answer,A.own[0])||{}).html||'';}
@@ -2674,7 +2737,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   if(Q.mode!=='place'&&Q.mode!=='check'){const r=rec(it.id),td=today();if(r.dD!==td){r.dD=td;r.dN=0;}r.dN++;}
   if(!ok&&!isExtra(ex))Q.missN=(Q.missN||0)+1;
   if(PROD[ex.type]&&Q.mode!=='place'&&Q.mode!=='check'){countProd(it);if(ok&&first&&title!=='Nearly')(Q.madeLt=Q.madeLt||{})[norm(it.lt)]=1;}
-  if(ok&&ex.type==='speak')(Q.spkOk=Q.spkOk||{})[it.id]=1;
+  if(ok&&ex.type==='speak'&&micOn())(Q.spkOk=Q.spkOk||{})[it.id]=1;
   if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(RECALL[ex.type]&&first&&!title)markRecalled(it);if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':['Correct!'].concat(LANG.praise)[Math.floor(Math.random()*(LANG.praise.length+1))]),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');const snap=JSON.stringify(rec(it.id)),wasFirst=first;if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
     const pk=Q.answer&&Q.answer.lt&&Q.answer!==it?Q.answer:null;
@@ -2717,13 +2780,15 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
   /* counted over the cards actually asked (not the ones planned, or ones that came back after a miss) */
   const firsts=Q.queue.filter(e=>!STEPLESS[e.type]&&!isExtra(e)),asked=Q.mode==='check'?Q.total:firsts.length;
   const graded=Math.max(0,asked-(Q.selfRated||0)),acc=graded?Math.max(0,Math.min(100,Math.round(Math.min(Q.correct,graded-(Q.missN||0))/graded*100))):null;
-  const before=levelFor(S.xp);const perfect=asked>0&&Q.correct>=asked&&!Q.nearly&&!Q.selfRated&&!Object.keys(Q.wrongOnce).length;
+  const before=levelFor(S.xp);let perfect=asked>0&&Q.correct>=asked&&!Q.nearly&&!Q.selfRated&&!Object.keys(Q.wrongOnce).length;
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
      already know earns a little, so the league can't be climbed by repeating an easy lesson. */
   const typedSpk=Q.mode==='lesson'&&!!Q.lesson.speak&&!Q.queue.some(e=>e.type==='speak');
   /* (Round 5) nothing checked a line you only rated yourself on, so a Speak it lesson with any of them is practice, not done */
   const spkLeft=Q.mode==='lesson'&&!!Q.lesson.speak&&!typedSpk?Q.lesson.items.filter(i=>!(Q.spkOk||{})[i.id]).length:0;
-  const selfSpk=Q.mode==='lesson'&&!!Q.lesson.speak&&((Q.selfBare||0)>0||spkLeft>0);
+  /* (Round 6) a say-through you rated yourself on finishes it (labelled self-rated); typed only, or lines not said, don't */
+  const selfSpk=Q.mode==='lesson'&&!!Q.lesson.speak&&(spkLeft>0||typedSpk);if(selfSpk||Q.saidSelf)perfect=false;
+  const selfDone=!selfSpk&&Q.mode==='lesson'&&!!Q.lesson.speak&&((Q.saidSelf||0)+(Q.selfBare||0))>0;
   const ups=Q.ups||0,replay=Q.mode==='lesson'&&((S.lessons[Q.lesson.id]||0)>=1||typedSpk&&!!(S.typedSpk||{})[Q.lesson.id]);
   /* XP follows the work, not the number of lessons: 1 for each right answer you picked, tapped or rated yourself on, 2 for each
      one you typed or said, a small +2 for finishing, and a word moving up a level +1. A flawless run adds a quarter on top.
@@ -2732,7 +2797,7 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
      built, and 2 for each word that moves up at a review on a later day. An hour of tapping was out-earning the top players. */
   const rc=Q.recall||0,work=Math.round((Q.correct-rc+(Q.selfOk||0))/2)+rc+2*ups; /* a card you rated yourself earns like one you picked */
   const none=Q.mode!=='check'&&Q.mode!=='place'&&asked===0;
-  let xp;if(Q.mode==='check')xp=2+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work;else if(Q.mode==='lesson'&&selfSpk)xp=1+Math.round(work/2);else if(Q.mode==='lesson'){xp=replay?1+work:2+work;if(typedSpk){S.typedSpk=S.typedSpk||{};S.typedSpk[Q.lesson.id]=1;}S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated&&!Q.typedSay)S.speakMic=(S.speakMic||0)+1;}}else xp=1+work; /* extra practice (nothing due): what you typed or said, and words moving up */
+  let xp;if(Q.mode==='check')xp=2+Q.correct;else if(Q.mode==='review'&&Q.dueN)xp=2+work;else if(Q.mode==='lesson'&&selfSpk)xp=1+Math.round(work/2);else if(Q.mode==='lesson'){xp=replay?1+work:2+work;S.lessons[Q.lesson.id]=Math.min(5,(S.lessons[Q.lesson.id]||0)+1);S.lessonsDone++;rollDay();S.todayLessons++;if(Q.lesson.speak&&Q.queue.some(e=>e.type==='speak')){S.speakDone=(S.speakDone||0)+1;if(!Q.selfRated&&!Q.typedSay)S.speakMic=(S.speakMic||0)+1;}}else xp=1+work; /* extra practice (nothing due): what you typed or said, and words moving up */
   if(none)xp=0;
   let bonus=0;if(perfect&&(!replay||ups)&&(Q.mode==='lesson'||ups)){bonus=Math.max(1,Math.round(xp/4));S.perfects=(S.perfects||0)+1;}
   amberLog=[];const rv=reviewXp(Q),dbl=xpDouble(rv);const total=addXp(xp+bonus,rv);const after=levelFor(S.xp);const got=selfSpk?[]:checkBadges(),cans=selfSpk?[]:checkCando();
@@ -2742,7 +2807,7 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
   /* The finish screen keeps to what matters: what you can now say, when the words come back, and at most one reward, the
      biggest of the day (a real-life skill, a badge, a level, a crown, the learning day, flawless, then amber). */
   const lines=[],rw=[];
-  if(Q.mode==='lesson'&&!Q.lesson.speak&&!Q.lesson.unit.retire){const nw=Q.items.filter(i=>Q.queue.some(e=>e.item===i&&(e.type==='intro'||e.combo)));
+  if(Q.mode==='lesson'&&!Q.lesson.speak&&!Q.lesson.unit.retire){const nw=Q.items.filter(i=>Q.queue.some(e=>e.item===i&&(e.type==='intro'||e.combo))&&(Q.res||{})[i.id]!==false);
     if(nw.length)lines.push('<div class="win"><b>You can now say</b> · '+nw.slice(0,4).map(i=>'<b>'+esc(i.lt)+'</b> ('+esc(enFlat(i.en))+')').join(', ')+(nw.length>4?' and '+(nw.length-4)+' more':'')+'</div>');}
   if(Q.mode==='review'){const got=new Set();firsts.forEach(e=>{if(e.item)got.add(e.item.id);(e.items||[]).forEach(i=>got.add(i.id));});
     const askedI=Q.items.filter(i=>got.has(i.id)),miss=askedI.filter(i=>Q.wrongOnce[i.id]),wait=Q.items.length-askedI.length+(Q.waitN||0);
@@ -2752,8 +2817,10 @@ function finish(){dropPlace();settleToday();if(Q.mode==='review')S.reviewDay=tod
     if(nx.length){const n=Math.max(1,Math.round((Math.min(...nx)-td.getTime())/DAY));lines.push('<p class="note">Next review: <b>'+(n===1?'tomorrow':'in '+n+' days')+'</b>. Each word comes back just before you would forget it.</p>');}}
   if(!S.amberTold&&Q.mode!=='check'&&!none&&!selfSpk){S.amberTold=today();lines.push('<p class="note">💎 <b>Amber</b> is what you earn by learning: 1 a lesson, more for a flawless one or a conversation. Spend it in the shop: tap the 💎 amber count at the top. A spare rest day keeps your streak safe on a day you miss.</p>');}
   else if(!S.crownTold&&Q.mode==='lesson'&&crowns(Q.lesson.id)===1){S.crownTold=today();lines.push('<p class="note">👑 Each lesson has 5 crowns. Play it again on a later day for the next one: a crown means its words came back to you again, and that is how they stay.</p>');}
-  if(selfSpk&&!Q.selfBare)lines.push('<div class="win"><b>Not finished yet</b> · '+spkLeft+' line'+(spkLeft===1?' was not':'s were not')+' said or written right this time. Do the lesson again to finish it: it opens the next step.</div>');
-  else if(selfSpk)lines.push('<div class="win"><b>Self-rated · not finished yet</b> · you rated yourself on '+Q.selfBare+' line'+(Q.selfBare===1?'':'s')+' without writing '+(Q.selfBare===1?'it':'them')+' or recording yourself. Nothing checked '+(Q.selfBare===1?'it':'them')+', so this lesson doesn\'t open the next step yet. Do it again and write each line (or record yourself) before you look.</div>');
+  if(selfDone){const n=(Q.saidSelf||0)+(Q.selfBare||0);lines.push('<div class="win"><b>Done · self-rated</b> · you said '+n+' line'+(n===1?'':'s')+' with nothing hearing you, and told the app. That counts: the next step is open. With a microphone, the app can check you too.</div>');}
+  if(typedSpk)lines.push('<div class="win"><b>Typed, not spoken</b> · with speaking paused, every line was written. Turn speaking back on and say them to finish this lesson: it opens the next step.</div>');
+  else if(selfSpk)lines.push('<div class="win"><b>Not finished yet</b> · '+spkLeft+' line'+(spkLeft===1?' was':'s were')+' not said out loud this time (writing a line is not saying it). Do the lesson again and say each one, then tap "I said it out loud" or record yourself: that opens the next step.</div>');
+  else if(false)lines.push('<div class="win"><b>Self-rated · not finished yet</b> · you rated yourself on '+Q.selfBare+' line'+(Q.selfBare===1?'':'s')+' without writing '+(Q.selfBare===1?'it':'them')+' or recording yourself. Nothing checked '+(Q.selfBare===1?'it':'them')+', so this lesson doesn\'t open the next step yet. Do it again and write each line (or record yourself) before you look.</div>');
   else if(Q.selfRated)lines.push('<p class="note">You rated yourself on '+Q.selfRated+' line'+(Q.selfRated===1?'':'s')+(Q.selfBare?'':', after hearing your own recording')+'.</p>');
   if(typedSpk)lines.push('<div class="win"><b>Typed, not said</b> · the next step is open. Say this lesson out loud later, when speaking is back on, for its crowns.</div>');
   /* "Want a nudge?" is asked here, under your results, from the second lesson on: as a pop-up it caught the next tap */
@@ -2833,8 +2900,8 @@ function convNext(){const C=CV;if(!C)return;C.bar=Math.max(C.bar||0,C.i/C.lines.
         '<div class="bub" role="button" tabindex="0" data-tr>'+wh+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,castVoice(who)))+'</div>')+'</div>');chatScroll();
       {const nm=S.me&&S.me.name&&S.me.name.trim(),f=nm&&nameForms(nm,S.me.g);
         if(f&&f.voc!==f.nom&&!S.vocTip&&wordRe(f.voc).test(ln.lt)&&typeof VOC_TIP==='function'){S.vocTip=today();save();msgs.insertAdjacentHTML('beforeend','<div class="voc-tip">'+VOC_TIP(esc(f.nom),esc(f.voc))+'</div>');chatScroll();}}
-      C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,readTime(ln.lt));}
-      say(ln,false,castVoice(who));later(convNext,S.sound?clipLen(ln.id,castVoice(who))*1000+300:900);},C.mode==='text'?Math.min(1800,500+ln.lt.length*25):700);}
+      C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
+      say(ln,false,castVoice(who));later(convNext,S.sound?clipLen(ln.id,castVoice(who))*1000+300:400);},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
    how the other person reacts to it, and then the conversation joins up again. */
@@ -2867,8 +2934,10 @@ function replyOk(ln){const C=CV||{},they=C.quick?C.card&&C.card.they:C.prevP;let
   const sib=new Set((ln.others||[]).map(o=>norm(o[0])));
   if(they){replyFits(they).forEach(m=>{if(m!==ln&&(C.quick||!sib.has(norm(m.lt)))&&!HAS_NAME.test(m.lt0||m.lt))L=L.concat(replyVariants(m.lt));});
     const tk=norm(they.lt);Object.entries(typeof ECHO_OK!=='undefined'?ECHO_OK:{}).forEach(([k,v])=>{if((' '+tk+' ').includes(' '+k+' ')&&norm(ln.lt).includes(k))L=L.concat(v);});
-    if(C.quick&&typeof OFFER_OK!=='undefined'&&OFFER_OK.re.test(tk))L=L.concat(OFFER_OK.say);
     const lastQ=norm((they.lt.match(/[^.!?]+\?\s*$/)||[''])[0]);
+    if(C.quick&&typeof OFFER_OK!=='undefined'&&(OFFER_OK.re.test(tk)||OFFER_OK.re.test(lastQ)))L=L.concat(OFFER_OK.say);
+    /* asked how you are, you can ask back: "Gerai, ačiū. O kaip tau?" */
+    if(/^kaip (tau |jums )?sekasi/.test(lastQ)&&!/\b(tau|jums)\b/.test(norm(ln.lt))){const back=['O tau?','O kaip tau?'];L=L.concat(L.flatMap(v=>back.map(b=>v.replace(/[.!,]?\s*$/,'. ')+b)));}
     if(lastQ&&typeof WH_Q!=='undefined'&&!WH_Q.test(lastQ)&&!/^(taip|ne)(\s|$)/.test(norm(ln.lt)))L=L.concat(L.map(v=>'Taip, '+v[0].toLowerCase()+v.slice(1)));}
   if(C.quick)L=L.concat((ln.others||[]).flatMap(o=>replyVariants(o[0])));
   return [...new Set(L)];}
@@ -2884,11 +2953,11 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
   let over=false;const done=(spoken,said,res)=>{if(over)return;over=true;stopHearing();turn.innerHTML='';$('#msgs').querySelectorAll('[data-echo]').forEach(x=>{x.hidden=false;delete x.dataset.echo;});
     $('#msgs').querySelectorAll('[data-ear] .earlt[hidden]').forEach(t=>{t.hidden=false;const n=t.parentElement.querySelector('.earnote');if(n)n.hidden=true;});if(spoken)C.heard++;C.played.push({ln,res,st:C.mode==='text'&&!C.quick?replyStage(ln.lt):null});
     if(!spoken&&C.mode==='speak'&&!C.quick)(C.skipped=C.skipped||[]).push({ln,prev:C.prevP});if(C.quick)qcGrade(res);
-    const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null;
-    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
+    const own=said&&norm(said)!==norm(ln.lt),alt=own?replyItem(said):null,ownEn=own&&!alt?(typeof REPLY_EN!=='undefined'&&REPLY_EN[norm(said)])||'':'';
+    $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:own?ownEn:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
-    later(C.quick?qcNext:convNext,txt?700:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
+    later(C.quick?qcNext:convNext,txt?400:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking grows with you the same way writing does, reply by reply (convStage: your words, or the reply's Quick chat step):
      still new → the Lithuanian is shown and played, you listen and say it after; getting there → some words are gaps,
      more of them as you learn, and you say the whole line; known → only the English or the situation, from memory.
@@ -2905,7 +2974,8 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const btn=$('#btn-check')
       if(!gone.size)stage='tap';}
     const gapped=toks.map((t,k)=>gone.has(k)?'<span class="gap" style="--w:'+Math.max(2,t.replace(/[.,!?…]/g,'').length)+'" aria-label="missing word"></span>'+esc((t.match(/[.,!?…]+$/)||[''])[0]):esc(t)).join(' ');
     const full='<span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>';
-    turn.innerHTML='<div class="turn speak"><span class="eyebrow">'+(stage==='tap'?'Your turn · listen, then say it':stage==='fill'?'Your turn · say it, gaps and all':'Your turn · say it from memory')+'</span>'+promptHtml(ln)+
+    const pin=thy&&!C.quick?'<div class="they-pin"><b>'+esc(C.lastWho||'')+':</b> <span class="lt">'+esc(thy.lt)+'</span></div>':'';
+    turn.innerHTML='<div class="turn speak">'+pin+'<span class="eyebrow">'+(stage==='tap'?'Your turn · listen, then say it':stage==='fill'?'Your turn · say it, gaps and all':'Your turn · say it from memory')+'</span>'+promptHtml(ln)+
       (stage==='tap'?'<div class="say-lt" id="peekbox">'+full+'</div>':
         (stage==='fill'?'<div class="say-lt gapped" id="gapbox"><span class="lt">'+gapped+'</span></div>':'')+
         '<div class="say-lt" id="peekbox" hidden>'+full+'</div><button type="button" class="linkbtn" id="peek">Show me the '+LANG.en+'</button>')+
@@ -3038,9 +3108,9 @@ function promptHtml(ln,L){if(L==null){const k=cardLvl(ln.id);L=Math.max(replyLev
     /* Say it comes after Write it: once you've met every word of your line, you answer what they said, not an English sentence */
     if(CV&&allMet(ln.lt))L=Math.max(L,1);}
   if(L<=0)return '<div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>';
-  const en='<button type="button" class="linkbtn" data-prompt="'+(L<=2?'en':'hint')+'">'+(L<=2?'Show the English':'Need a hint?')+'</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
+  const en='<button type="button" class="linkbtn" data-prompt="en">Show the English</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
   if(L<=2)return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;
-  return '<div class="hint big">Your turn. What do you say to '+esc(CV.lastWho)+'?</div><div class="hint big" data-phint hidden>'+esc(ln.hint)+'</div>'+en;}
+  return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;}
 function wirePrompt(root,onEnglish){const b=root.querySelector('[data-prompt]');if(!b)return;
   b.onclick=()=>{if(b.dataset.prompt==='hint'){root.querySelector('[data-phint]').hidden=false;b.dataset.prompt='en';b.textContent='Show the English';}
     else{root.querySelector('[data-pen]').hidden=false;b.hidden=true;onEnglish();}chatScroll();};}
@@ -3193,7 +3263,7 @@ function qcNext(){const C=CV;if(!C)return;if(!C.base)C.base=C.queue.length;$('#l
       '<div class="bub" role="button" tabindex="0" data-ear>'+name+'<span class="speakrow">'+cvSpk(k.they.id,castVoice(who))+cvSpk(k.they.id,castVoice(who),true)+'</span><small class="earnote">Listen and answer. Tap here to read it (then this reply doesn\'t move up).</small><span class="earlt" hidden>'+theirLine(k.they,true)+'</span></div>':
       '<div class="bub" role="button" tabindex="0" data-tr>'+name+theirLine(k.they)+'</div>')+'</div>');chatScroll();
     if(C.ear){say(k.they,false,castVoice(who));return later(()=>convTurn(k.me),S.sound?clipLen(k.they.id,castVoice(who))*1000+300:600);}
-    sfx('pop');later(()=>convTurn(k.me),readTime(k.they.lt));},Math.min(1500,500+k.they.lt.length*20));}
+    sfx('pop');later(()=>convTurn(k.me),Math.min(1200,readTime(k.they.lt)));},Math.min(900,400+k.they.lt.length*12));}
 /* Only the first try at a card counts for it; a missed card comes round once more at the end. */
 function qcGrade(res){const C=CV,k=C.card;if(C.again.has(k.id))return;
   if(res===true&&C.peekedEar)res=null;C.graded++;if(res)C.right++;
@@ -3290,7 +3360,7 @@ function hear(target,mic,out,onResult,english){const targets=[].concat(target);
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
 function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   if(C.redo)return redoFinish(C,st);
-  const sp=C.mode==='speak',selfR=C.selfR||0;if(sp&&selfR)C.skipped=(C.skipped||[]).concat(C.selfLines||[]);const allSaid=sp&&C.turns>0&&C.heard-selfR>=C.turns;const fromMemory=C.played.length&&C.played.every(p=>p.res===true);const perfect=sp?allSaid&&C.peeks===0&&fromMemory:C.mistakes===0;const own=C.played.filter(p=>p.res===true).length;
+  const sp=C.mode==='speak',selfR=C.selfR||0;if(sp&&selfR)C.skipped=(C.skipped||[]).concat(C.selfLines||[]);const allSaid=sp&&C.turns>0&&C.heard-selfR>=C.turns;const fromMemory=C.played.length&&C.played.every(p=>p.res===true);const perfect=sp?allSaid&&C.peeks===0&&fromMemory&&(C.checked||0)>=C.turns:C.mistakes===0; /* (Round 6) Flawless in Say it is for the microphone hearing every reply */const own=C.played.filter(p=>p.res===true).length;
   /* the "Said it all" bonus needs proof for every reply: the microphone heard it, or you recorded yourself saying it */
   const proved=allSaid&&(C.checked||0)+(C.proved||0)>=C.turns;const owe=C.turns-C.heard+selfR;
   /* XP follows what you produced: a reply typed in full right first time 2, filled in 1, tapped 0; said and heard by the
@@ -3317,7 +3387,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
   if(cardsUp)lines.push('<div class="win"><b>'+cardsUp+' repl'+(cardsUp===1?'y':'ies')+' got easier</b> · they move up a step in Quick chat</div>');
   if(!sp)lines.push('<div class="win"><b>Next: say it</b> · the same conversation, spoken'+(convSpoken(C.c.id)?'':'. The next unit opens once you do')+'. Find it on the conversation\'s card.</div>');
   if(proved)lines.push('<div class="win"><b>Said it all</b> · every reply out loud, +3 XP</div>');
-  else if(allSaid&&(micOn()||CAN_REC))lines.push('<div class="win"><b>Every reply said</b> · '+(micOn()?'let the microphone hear every reply':'record yourself on every reply (the red button)')+' for the "Said it all" bonus and amber</div>');
+  else if(allSaid&&(micOn()||CAN_REC))lines.push('<div class="win"><b>'+(micOn()?'Every reply said':'Every reply written')+'</b> · '+(micOn()?'let the microphone hear every reply':'record yourself on every reply (the red button)')+' for the "Said it all" bonus and amber</div>');
   if(sp&&selfR)lines.push('<div class="win"><b>You rated yourself on '+selfR+' line'+(selfR===1?'':'s')+'</b> · '+(selfR===1?'it was':'they were')+' shown before you wrote '+(selfR===1?'it':'them')+' or recorded yourself, so nothing checked '+(selfR===1?'it':'them')+(convSpoken(C.c.id)?'.':', and '+(selfR===1?'it doesn\'t':'they don\'t')+' open the next unit.')+'</div>');
   if(sp&&!allSaid)lines.push('<div class="win"><b>'+(convSpoken(C.c.id)?owe+' line'+(owe===1?'':'s')+' to do again':'Say every reply to open the next unit')+'</b> · '+(convSpoken(C.c.id)?'just those, to finish them off.':(C.turns-C.heard?'you skipped '+(C.turns-C.heard)+(selfR?' and rated yourself on '+selfR:'')+'. ':'')+'Do just those again, not the whole conversation: write each one (or record yourself) before you look.')+
     '</div><button type="button" class="btn amber redo" id="cv-redo">Do the '+owe+' line'+(owe===1?'':'s')+' again</button>');
@@ -3330,7 +3400,7 @@ function convFinish(){const C=CV;const secs=Math.round((Date.now()-C.startedAt)/
     pri=[/New in real life/,/Badge:/,/Level up/,/New star/,/Flawless/,/Said it all/,/Learning day done/,/got stronger/,/new repl/,/got easier/,/counted twice/,/./];
     const ess=lines.filter(l=>must.test(l)),others=lines.filter(l=>!must.test(l)&&!hint.test(l)),top=pri.map(r=>others.find(l=>r.test(l))).find(Boolean),hn=lines.find(l=>hint.test(l));
     lines.length=0;lines.push(...ess);if(top)lines.push(top);else if(hn)lines.push(hn);}
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(sp?(micAll?'You just spoke a whole conversation in '+LANG.en:allSaid?((C.typed||0)>=C.turns?'Every reply written, then said out loud':'You practised a whole conversation out loud'):'You got through the whole conversation'):'You just had a conversation in '+LANG.en)+'</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div>'+(sp?'<div class="tile"><strong class="num">'+(C.heard-selfR)+'/'+C.turns+'</strong><small>'+(micOn()?'Said out loud':'Written or recorded')+'</small></div><div class="tile"><strong class="num">'+C.peeks+'</strong><small>Peeks</small></div>':'<div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Mistakes</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div>')+'</div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(sp?(micAll?'You just spoke a whole conversation in '+LANG.en:allSaid?((C.typed||0)>=C.turns?'Every reply written':'You practised a whole conversation out loud'):'You got through the whole conversation'):'You just had a conversation in '+LANG.en)+'</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div>'+(sp?'<div class="tile"><strong class="num">'+(C.heard-selfR)+'/'+C.turns+'</strong><small>'+(micOn()?'Said out loud':'Written or recorded')+'</small></div><div class="tile"><strong class="num">'+C.peeks+'</strong><small>Peeks</small></div>':'<div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Mistakes</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div>')+'</div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const rd=$('#cv-redo');if(rd)rd.onclick=()=>{const id=C.c.id,left=C.skipped||[];CV=null;startConv(id,'speak',left);};
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
@@ -3426,14 +3496,15 @@ let lastAct=0;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,(
 window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden||Date.now()-lastAct<1500;
 /* after your first lesson, once: it waits while you're still tapping or a pop-up is open (it used to give up, so a new guest
    never saw it) */
-function maybeTour(n){n=n||0;if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour')&&!window.__touring&&lastView==='learn')setTimeout(()=>{if(lastView!=='learn'||window.__touring||S.toured||!$('#sheet').hidden||!$('#welcome').hidden)return;if(window.popBusy()){if(n<40)maybeTour(n+1);return;}startTour();},n?800:450);}
+function maybeTour(n){n=n||0;if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour')&&!window.__touring&&lastView==='learn')setTimeout(()=>{if(lastView!=='learn'||window.__touring||S.toured||!$('#sheet').hidden||!$('#welcome').hidden)return;if(window.popBusy()||Date.now()-(window.__lastTap||0)<2500){if(n<40)maybeTour(n+1);return;}startTour();},n?1500:1500);}
+document.addEventListener('pointerdown',()=>{window.__lastTap=Date.now();},true);document.addEventListener('keydown',()=>{window.__lastTap=Date.now();},true);
 $('#btn-tour').onclick=()=>startTour();
 
 /* ===================== REPORT A PROBLEM ===================== */
 /* The flag on every card. It records exactly which card it was, so a report can be acted on.
    Reports wait on the device until they can be sent (offline, or before the account system loads). */
 const FLAG_REASONS=[['translation','The translation is wrong'],['audio','The audio is wrong or missing'],['sounds','The "sounds like" is wrong'],
-  ['picture','The picture doesn\'t fit'],['explain','The explanation is wrong'],['marked','It marked my right answer wrong'],['other','Something else']];
+  ['picture','The picture doesn\'t fit'],['explain','The explanation is wrong'],['marked','It marked my right answer wrong'],['unsure','I\'m not sure, something looks off'],['other','Something else']];
 function cardContext(){const base={voice:S.voice||'ona',device:navigator.userAgent.slice(0,140),when:new Date().toISOString()};
   if(CV){const ln=CV.quick?(CV.card&&CV.card.me)||{}:CV.lines[Math.min(CV.i,CV.lines.length-1)]||{};const inp=document.querySelector('#cin');
     return Object.assign(base,{kind:'conversation',conv:CV.c.id,title:CV.c.title,line:ln.id||null,lt:ln.lt||null,en:ln.en||null,typed:inp?inp.value.slice(0,120):null});}
@@ -3557,7 +3628,7 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
     if(x.lt!==x.lt0&&!EMOJI[x.lt]&&EMOJI[x.lt0]){const flag=/^[a-z]{2}$/.test(o.from)&&o.from!=='sc'?String.fromCodePoint(...[...o.from.toUpperCase()].map(ch=>0x1F1A5+ch.charCodeAt(0))):'🌍';EMOJI[x.lt]=PERS.fromRe.test(x.lt0)&&o.from?flag:EMOJI[x.lt0];}});
   /* telling someone your name: "Mano vardas Tom" and "Aš esu Tom" (and Tomas) all count, in lessons and conversations */
   persAlso.forEach(([k,was])=>{if(was)ALSO[k]=was;else delete ALSO[k];});persAlso=[];
-  if(PERS.nameAlts){const nm=o.name||(g==='f'?PERS.femDefault:'Tomas'),lit=nameForms(nm,g).lt||nm,forms=[...new Set([nm,lit])].flatMap(PERS.nameAlts);
+  if(PERS.nameAlts){const nm=o.name||(g==='f'?PERS.femDefault:'Tomas'),lit=nameForms(nm,g).lt||nm,forms=[...new Set([lit])].flatMap(PERS.nameAlts);
     /* your name as you wrote it (Tom) counts too, next to its Lithuanian form (Tomas) */
     forms.forEach(f=>{const k=norm(f),was=ALSO[k];persAlso.push([k,was]);ALSO[k]=[...new Set((was||[]).concat(forms.filter(x=>x!==f)))];});}
   CONVS.forEach(c=>{if(c.scene0===undefined)c.scene0=c.scene;c.scene=persEn(c.scene0,'them',o);
@@ -3639,7 +3710,7 @@ $('#btn-quit').onclick=()=>{const live=Q&&Q.idx>0&&Q.idx<Q.queue.length&&Q.mode!
   ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Leave?">'+mascot('think')+'<h2>Leave '+(CV&&CV.quick?'Quick chat':CV?'this conversation':Q.mode==='check'?'the unit check':Q.mode==='me'?'About me':Q.tricky?'Tricky words':Q.mode==='review'?'this review':'this lesson')+'?</h2><p class="note">'+
     (keep?'Your answers so far are kept, and you can carry on from this card later on the Learn tab.':CV&&CV.quick?'The replies you got right are kept.':Q&&Q.mode==='me'?'Your answers so far are kept. Practise it again any time from the About me card.':'Your answers so far are kept, but '+(CV?'the conversation':'the check')+' starts from the beginning next time.')+'</p><button type="button" class="btn amber" data-l="stay">Keep going</button><button type="button" class="btn ghost" data-l="go">Leave</button></div>';
   document.body.appendChild(ov);ov.querySelector('[data-l="stay"]').focus();ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.l==='go')quit();});};
-$('#btn-review').onclick=()=>startReview(false);
+$('#btn-review').onclick=()=>dueNow().length?startReview(false):practised().length?nothingToReview():toast('Finish a lesson first');
 $('#btn-weak').onclick=()=>startReview(true);
 /* Choosing the language to learn. Each language keeps its own progress; the page reloads into the one picked.
    A language that isn't ready shows as Coming soon and can't be picked yet. */
@@ -3677,10 +3748,13 @@ const tileFree=()=>[...document.querySelectorAll(CV?'#cbank .chip:not(.used)':'#
 const tileLow=x=>strip(x.textContent.toLowerCase());
 function tileCatcher(box,kind){if(!box||!matchMedia('(pointer:fine)').matches)return;const k=document.createElement('input');k.type='text';k.id='tilekb';k.className='tilekb';
   k.setAttribute('aria-label',kind==='build'?'Type the words':'Type the letters');k.autocomplete='off';k.setAttribute('autocapitalize','off');k.spellcheck=false;k.lang=LANG.code;box.appendChild(k);
-  k.addEventListener('keydown',e=>{if(e.key==='Backspace'){e.preventDefault();tileBack(kind);}
-    else if(e.key===' '&&kind==='build'){e.preventDefault();buildEnd();}
-    else if(e.key==='Enter'){e.preventDefault();if(kind==='build')buildEnd();const b=$('#btn-check');if(b&&!b.disabled)b.click();}});
-  k.addEventListener('input',()=>{const v=k.value.normalize('NFC');k.value='';[...v].forEach(ch=>{if(/\p{L}/u.test(ch))kind==='build'?buildChar(ch):tileChar(ch);else if(ch===' '&&kind==='build')buildEnd();});});
+  /* (Round 6) what you typed is kept as typed too: another right answer ("Iki" for Viso gero) isn't in the tiles, but it counts */
+  let raw='';const rawOk=()=>{const ex=!CV&&Q&&Q.queue[Q.idx];if(!ex||kind!=='build'||!ex.item||!raw.trim())return false;const A=answersFor(ex.item);
+    return A.other.some(v=>norm(v)===norm(raw))&&norm(Q.answer||'')!==norm(raw);};
+  k.addEventListener('keydown',e=>{if(e.key==='Backspace'){e.preventDefault();raw=raw.slice(0,-1);tileBack(kind);}
+    else if(e.key===' '&&kind==='build'){e.preventDefault();raw+=' ';buildEnd();}
+    else if(e.key==='Enter'){e.preventDefault();if(kind==='build')buildEnd();const b=$('#btn-check');if(rawOk()){Q.answer=raw.trim();if(b)b.disabled=false;}if(b&&!b.disabled)b.click();}});
+  k.addEventListener('input',()=>{const v=k.value.normalize('NFC');k.value='';raw+=v;[...v].forEach(ch=>{if(/\p{L}/u.test(ch))kind==='build'?buildChar(ch):tileChar(ch);else if(ch===' '&&kind==='build')buildEnd();});});
   setTimeout(()=>{if(k.isConnected&&!document.querySelector('#sheet[hidden]'))k.focus({preventScroll:true});},60);}
 function tileBack(kind){if(CV){const u=$('#cundo');if(u&&!u.hidden)u.click();}else{const c=[...document.querySelectorAll('#bans .chip')].pop();if(c)c.click();}tileKeys={ex:tileKeys.ex,buf:''};}
 function tileChar(ch){const ex=Q&&Q.queue[Q.idx],k=ch.toLowerCase(),free=t=>[...document.querySelectorAll('#bank .chip:not(.ghost)')].find(x=>x.textContent===t);
