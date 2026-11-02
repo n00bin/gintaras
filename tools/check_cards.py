@@ -65,7 +65,8 @@ NEXT = r"""()=>{const btn=$('#btn-check'),st=$('#stage');const r=st.querySelecto
 # in the page: Continue pressed on what the learner thinks is still their result
 LATE = r"""()=>{const b=$('#btn-check');if(b&&!b.hidden&&!b.disabled)b.click();}"""
 # "Move on by itself" stays on (the default), only quicker than a person
-FAST_AUTO = "()=>{if(!window.__an){window.__an=autoNext;window.autoNext=ms=>__an(40);}}"
+# (Round 8) a card it lands on (a New word card, a tip) is locked a moment: 150 ms here, still longer than the late press below
+FAST_AUTO = "()=>{AUTO_LOCK=150;if(!window.__an){window.__an=autoNext;window.autoNext=ms=>__an(40);}}"
 
 fails = []
 seen_types = {}
@@ -80,6 +81,8 @@ def play(pg, label, taught, wrong_every=4, reload_at=None):
         if not st or st['idx'] >= st['len']: break
         key = (st['idx'], st['len'])
         same = same + 1 if key == last else 0; last = key
+        if same > 0 and s("()=>!!(Q&&Q.lockedTo>Date.now())"):   # locked a moment after moving on by itself: wait, it isn't stuck
+            same -= 1; pg.wait_for_timeout(60); continue
         if same > 8:
             bad('%s: stuck on card %s (%s)' % (label, st['idx'], s("Q.queue[Q.idx].type"))); s("()=>{Q.idx++;renderStep();}"); continue
         if same == 0:

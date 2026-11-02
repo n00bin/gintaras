@@ -1041,8 +1041,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.94';
-const APP_VERSION=166;
+const APP_RELEASE='3.95';
+const APP_VERSION=167;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1589,7 +1589,7 @@ function renderGameCard(){const box=$('#game-card');if(!box)return;const w=gameW
   const needW=n=>'<b>Opens when you know '+n+' words</b> ('+Math.max(0,n-w.length)+' more to learn).';
   const earWhy=S.sound===false?'Needs the sound on. <button type="button" class="linkbtn" id="ear-snd">Turn the sound on</button>':lp?'Listening is paused for '+Math.max(1,Math.ceil((S.noListenUntil-Date.now())/60000))+' more min. <button type="button" class="linkbtn" id="ear-lis">Resume listening</button>':'';
   box.insertAdjacentHTML('beforeend','<div class="game-more"><h2>⚡ Speed match</h2><p class="note">Six '+LANG.en+' words and their meanings: match them as fast as you can, then type two of them. A wrong pair adds 2 seconds. Beat your best time.'+(S.matchBest?' Best: <b>'+fmtSecs(S.matchBest)+'</b>.':'')+(ok?'':' '+needW(6))+'</p><button type="button" class="btn ghost" id="btn-speed"'+(ok?'':' disabled')+'>Play</button>'+
-    '<h2>👂 Ear catcher</h2><p class="note">Hear a word, tap what it means before the bar runs out. '+(ok?eN+' words a game.':'')+(S.earBest?' Best: <b>'+S.earBest+'</b>.':'')+(earWhy?' '+earWhy:ok?'':' '+needW(6))+'</p><button type="button" class="btn ghost" id="btn-ear"'+(ear?'':' disabled')+'>Play</button></div>');
+    '<h2>👂 Ear catcher</h2><p class="note">Hear a word, tap what it means before the bar runs out. '+(ok?eN+' words a game.':'')+(S.earBest?' Best: <b>'+S.earBest+'</b>.':'')+(earWhy&&ok?' '+earWhy+' Until then, play it by reading: the word is written instead.':ok?'':' '+needW(6))+'</p><button type="button" class="btn ghost" id="btn-ear"'+(ok?'':' disabled')+'>'+(ear||!ok?'Play':'Read and pick')+'</button></div>');
   $('#btn-speed').onclick=startSpeed;$('#btn-ear').onclick=startEar;
   {const a=$('#ear-snd');if(a)a.onclick=()=>{S.sound=true;save();renderAll();};const l=$('#ear-lis');if(l)l.onclick=()=>{S.noListenUntil=0;save();toast('Listening is back on');renderAll();};}}
 const fmtSecs=s=>(Math.round(s*10)/10).toFixed(1)+' s';
@@ -1624,9 +1624,10 @@ function startSpeed(){const pool=gameWords();if(pool.length<6)return;const its=n
     ov.querySelector('#g-again').onclick=()=>{ov.remove();startSpeed();};ov.querySelector('#g-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#g-again').focus();};}
 /* Ear catcher: hear a word you know, tap its meaning before the bar runs out (6 seconds). Ten rounds; listening practice
    that needs no microphone. */
-function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);if(pool.length<6||!canListen())return;const rounds=sample(pool,Math.min(10,pool.length)),missedE=[];let k=0,score=0,timer=0;
+/* (Round 8) with listening off, it's "read and pick": the word is written, not played */
+function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);if(pool.length<6)return;const read=!canListen();const rounds=sample(pool,Math.min(10,pool.length)),missedE=[];let k=0,score=0,timer=0;
   const ov=document.createElement('div');ov.className='fall';
-  ov.innerHTML='<div class="fall-top"><button type="button" class="x" id="g-x" aria-label="Stop">✕</button><span>👂 <b id="g-s">0</b> of '+rounds.length+'</span></div><div class="game-board" id="g-b"></div>';
+  ov.innerHTML='<div class="fall-top"><button type="button" class="x" id="g-x" aria-label="Stop">✕</button><span>'+(read?'📖':'👂')+' <b id="g-s">0</b> of '+rounds.length+'</span></div><div class="game-board" id="g-b"></div>';
   document.body.appendChild(ov);const stop=()=>{clearTimeout(timer);stopAllAudio();};ov.querySelector('#g-x').onclick=()=>{stop();ov.remove();renderAll();};
   /* XP and a best only for meanings you caught: a game of guesses and time-outs earns nothing */
   const end=()=>{stop();const first=!S.earBest,best=score>=3&&score>(S.earBest||0);if(best)S.earBest=score;rollDay();const total=score?addXp(Math.round(score/2)):0;save();
@@ -1634,13 +1635,13 @@ function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);
       (missedE.length?'<div class="win"><b>To listen to again</b> · '+missedE.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'</div>':'')+'<button type="button" class="btn amber" id="g-again">Play again</button><button type="button" class="btn ghost" id="g-done">Done</button></div>';sfx('win');
     ov.querySelector('#g-again').onclick=()=>{ov.remove();startEar();};ov.querySelector('#g-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#g-again').focus();};
   const round=()=>{if(k>=rounds.length)return end();const it=rounds[k],opts=shuffle([it].concat(sample(pool.filter(i=>i!==it&&enKey(i.en)!==enKey(it.en)),2)));let over=false;
-    const b=ov.querySelector('#g-b');b.innerHTML='<div class="speakrow"><button type="button" class="spk big" id="g-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="g-slow" aria-label="Play it slowly">'+TURTLE+'</button></div><div class="ear-bar"><i id="g-bar"></i></div><div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'">'+esc(o.en)+'</button>').join('')+'</div><p class="note" id="g-msg"></p>';
+    const b=ov.querySelector('#g-b');b.innerHTML=(read?'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div>':'<div class="speakrow"><button type="button" class="spk big" id="g-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="g-slow" aria-label="Play it slowly">'+TURTLE+'</button></div>')+'<div class="ear-bar"><i id="g-bar"></i></div><div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'">'+esc(o.en)+'</button>').join('')+'</div><p class="note" id="g-msg"></p>';
     const bar=b.querySelector('#g-bar');requestAnimationFrame(()=>{bar.style.transition='width 6s linear';bar.style.width='0%';});
     const next=(ok,o)=>{if(over)return;over=true;clearTimeout(timer);b.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(ok){score++;sfx('good');}else{sfx('bad');missedE.push(it);}
       ov.querySelector('#g-s').textContent=score;b.querySelector('#g-msg').innerHTML=(ok?'✓ ':o?'':'⏱ Time\'s up: ')+'<b>'+esc(it.lt)+'</b> means "'+esc(it.en)+'"';if(o)o.classList.add(ok?'right':'wrong');b.querySelectorAll('.opt')[opts.indexOf(it)].classList.add('right');
       k++;timer=setTimeout(round,ok?900:o?1800:2800);};
-    b.querySelector('#g-play').onclick=()=>say(it);b.querySelector('#g-slow').onclick=()=>say(it,true);b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>next(opts[Number(x.dataset.i)]===it,x));
-    say(it);timer=setTimeout(()=>next(false,null),6500);};
+    if(!read){b.querySelector('#g-play').onclick=()=>say(it);b.querySelector('#g-slow').onclick=()=>say(it,true);}b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>next(opts[Number(x.dataset.i)]===it,x));
+    if(!read)say(it);timer=setTimeout(()=>next(false,null),6500);};
   round();}
 const FALLKEY='gintaras.fall.'+LANG_CODE;
 function fallSaved(){try{const p=JSON.parse(localStorage.getItem(FALLKEY)||'null');return p&&Date.now()-p.at<30*60000&&p.left&&p.left.length?p:null;}catch(e){return null;}}
@@ -2211,11 +2212,18 @@ function stopAutoNext(){clearTimeout(autoNextT);autoNextT=null;const b=$('#btn-c
    by unseen (then it was tested cold). It works out the card that really comes next, as drawing it would. */
 function autoSafe(){if(!Q)return false;const cur=Q.queue[Q.idx];if(!cur||cur.type==='speak'||STEPLESS[cur.type])return false;
   const k=Q.idx;let e=null;Q.idx++;try{for(let n=0;n<25&&settleCard();n++);e=Q.queue[Q.idx];}catch(err){e=null;}Q.idx=k;
-  return !!e&&!STEPLESS[e.type]&&e.type!=='speak';}
+  /* (Round 8) it moves on to every card but the end of the lesson; a New word card, a tip or a speaking card it lands on is
+     locked for a moment (autoLock), which is what keeps a late tap from skipping it */
+  return !!e;}
+const AUTO_WAIT=2000;let AUTO_LOCK=2500; /* tools/check_cards.py shortens the lock to play quicker than a person */
+/* the card it moved on to can't be passed for a moment: its button fills while it waits */
+function autoLock(){if(!Q)return;const e=Q.queue[Q.idx];if(!e||!(STEPLESS[e.type]||e.type==='speak'))return;const b=$('#btn-check'),at=Q.idx,q=Q;if(!b||b.disabled)return;
+  b.disabled=true;b.style.setProperty('--t',AUTO_LOCK+'ms');void b.offsetWidth;b.classList.add('timing');Q.lockedTo=Date.now()+AUTO_LOCK;
+  setTimeout(()=>{b.classList.remove('timing');if(Q===q&&Q.idx===at){b.disabled=false;Q.lockedTo=0;}},AUTO_LOCK);}
 function autoNext(ms){stopAutoNext();if(S.autoNext===false||!Q||!autoSafe())return;const btn=$('#btn-check'),myQ=Q,myIdx=Q.idx;
   btn.style.setProperty('--t',ms+'ms');void btn.offsetWidth;btn.classList.add('timing');
   autoNextT=setTimeout(()=>{btn.classList.remove('timing');autoNextT=null;
-    if(Q===myQ&&Q.idx===myIdx&&!btn.disabled&&!$('#sheet').hidden&&$('#guide').hidden&&!document.querySelector('.league-pop,#flag:not([hidden])')&&autoSafe())btn.click();},ms);}
+    if(Q===myQ&&Q.idx===myIdx&&!btn.disabled&&!$('#sheet').hidden&&$('#guide').hidden&&!document.querySelector('.league-pop,#flag:not([hidden]),.gate')&&autoSafe()){btn.click();autoLock();}},ms);}
 document.addEventListener('click',e=>{if(autoNextT&&e.target.closest('#foot .fb,#stage,#btn-flag'))stopAutoNext();},true);
 /* The bar never moves backwards: a missed word adds a card, but you keep the ground you made. */
 /* the planned cards are the total; a miss coming back (or a card that spaces it out) shows as +1 */
@@ -2339,7 +2347,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     st.innerHTML=from+'<div class="prompt small">'+(ex.retry?'Listen again, then say it':ex.blind&&recall?'How would you say this in '+LANG.en+'?':recall?'Say it in '+LANG.en:'Say it out loud')+'</div><div class="intro">'+(hasPic(it.lt)?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+
       (hide?'<div class="word"><span class="lt" style="color:var(--fg)">'+esc(it.en)+'</span></div><div id="sayans" hidden>'+answer+'</div>':answer)+'</div>'+
       (typeIt?'<div class="typing"><input id="ans" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" lang="'+LANG.code+'" placeholder="Write it in '+LANG.en+', then say it"><div class="keys">'+LANG.letters.split('').map(c=>'<button type="button" data-k="'+c+'">'+c+'</button>').join('')+'</div></div>':'')+
-      '<div class="speakrow">'+hideIf(spk(it,'big'),recall)+hideIf(spk(it,'big slow',true),recall)+(useMic?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':recBtn())+'</div>'+(useMic?'':'<button type="button" class="btn ghost mine" id="mine" hidden>&#9654; Play my recording</button>')+
+      '<div class="speakrow">'+hideIf(spk(it,'big'),recall||typeIt)+hideIf(spk(it,'big slow',true),recall||typeIt)+(useMic?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':recBtn())+'</div>'+(useMic?'':'<button type="button" class="btn ghost mine" id="mine" hidden>&#9654; Play my recording</button>')+
       '<button type="button" class="'+(typeIt?'linkbtn':'btn ghost')+' showans" id="showans">'+(useMic?(hide?'Show me the answer':'Rate myself instead'):typeIt?'I don\'t know, show me':'I\'ve said it. Show me')+'</button>'+
       '<p class="note rec-push" id="recpush" hidden>'+(CAN_REC?'Record yourself saying it (the red button), then play yours next to the voice. Then rate it. <button type="button" class="linkbtn" id="norec">I can\'t record right now</button>':'')+'</p>'+
       '<p class="heard" id="srout" role="status">'+(useMic?(recall?'Say it when the <b>microphone</b> lights up. Stuck? Tap "Show me the answer".':'Listen, then say it when the <b>microphone</b> lights up. Get it right and you move on.'):
@@ -2367,11 +2375,11 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
         Q.typedSay=(Q.typedSay||0)+1;check();
         /* (Round 7) "I said it out loud" is the big button on the result (it sat under the result, out of sight, and the card
            moved on by itself before you found it) */
-        const cont=btn.onclick;if(Q&&Q.queue[Q.idx]===ex&&cont){btn.textContent='I said it out loud';btn.onclick=()=>{(Q.spkOk=Q.spkOk||{})[it.id]=1;Q.saidSelf=(Q.saidSelf||0)+1;btn.onclick=cont;cont();};
+        const cont=btn.onclick;if(Q&&Q.queue[Q.idx]===ex&&cont&&$('#foot').classList.contains('good')){btn.textContent='I said it out loud';btn.onclick=()=>{(Q.spkOk=Q.spkOk||{})[it.id]=1;Q.saidSelf=(Q.saidSelf||0)+1;btn.onclick=cont;cont();};
           st.querySelector('#srout').innerHTML='Now say it out loud, like the voice'+(CAN_REC?' (record yourself with the red button to compare)':'')+', then tap <b>I said it out loud</b>. <button type="button" class="linkbtn" id="notsaid">Go on without saying it</button>';
           st.querySelector('#notsaid').onclick=()=>{btn.onclick=cont;cont();};}};}
     const pass=()=>{if(passed)return;passed=true;(Q.spkOk=Q.spkOk||{})[it.id]=1;rec(it.id).prodD=today();if(!peeked)markRecalled(it);grade(it,true,true,peeked);spoke(it,true);if(!ex.retry)Q.correct++;if(!peeked)Q.recall=(Q.recall||0)+1;if(peeked)Q.nearly=(Q.nearly||0)+1;rec(it.id).seen=true;showAns();st.querySelector('#rate').hidden=true;{const p=st.querySelector('#recpush');if(p)p.hidden=true;}
-      setFoot('good',peeked?'Said it':'Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en)+(peeked?'<div class="why">It moves up when you say it without looking.</div>':''));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(2800);};
+      setFoot('good',peeked?'Said it':'Spot on!','<b>'+esc(it.lt)+'</b> · '+esc(it.en)+(peeked?'<div class="why">It moves up when you say it without looking.</div>':''));btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};autoNext(AUTO_WAIT);};
     const mic=st.querySelector('#mic');
     if(mic)mic.onclick=()=>{const auto=mic.__auto;mic.__auto=false;hear(it.ht||it.lt,mic,st.querySelector('#srout'),(score,heardText,err)=>{if(passed)return;
       /* a phone that won't start the mic by itself just waits for a tap */
@@ -2497,7 +2505,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(picked)return;picked=true;const o=opts[Number(b.dataset.i)],ok=o===ln;st.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add(ok?'right':'wrong');
       if(!ok)st.querySelectorAll('.opt')[opts.indexOf(ln)].classList.add('right');
       if(ok){sfx('good');Q.correct++;setFoot('good','Right!','<b>'+esc(ln.lt)+'</b> · '+esc(ln.en));}else{sfx('bad');setFoot('bad','Not quite',esc(who.name)+' said: <b>'+esc(ln.lt)+'</b> · '+esc(ln.en));}
-      say(ln,false,v);btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};if(ok)autoNext(2800);});
+      say(ln,false,v);btn.disabled=false;btn.textContent='Continue';btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};if(ok)autoNext(AUTO_WAIT);});
     setTimeout(()=>say(ln,false,v),250);}
   else if(ex.type==='match'){
     const L=shuffle(ex.items);let R=shuffle(ex.items),n=0;while(n++<30&&R.some((r,i)=>r===L[i]))R=shuffle(ex.items);let sel=null,done=0;
@@ -2853,7 +2861,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   const inp=stage.querySelector('#ans');if(inp)inp.disabled=true;
   const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{stopAutoNext();Q.idx++;renderStep();};Q.shownAt=Date.now();
   /* long enough to hear the word when right; a miss, a "Nearly" or another right answer waits for you, so you can read why */
-  if(ok&&title!=='Nearly'&&title!=='That works too!')autoNext(ok?Math.max(3000,(ex.type!=='mc_lt_en'&&S.sound?clipLen(it.id,S.voice||'ona')*1000:0)+1800):idk?5000:why?7000:4500);}
+  if(ok&&title!=='Nearly'&&title!=='That works too!')autoNext(AUTO_WAIT);}
 
 /* "I think this is right": a typed answer marked wrong can be disputed with one tap. The miss is taken back (the word's record
    is as it was, it isn't asked again, nothing is "slipped" or tricky), it counts as right for now, and the owner gets a
@@ -2983,6 +2991,10 @@ function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))re
   convNext();}
 /* Write it is texting: no voices, just time to read each message. */
 function readTime(t){return Math.min(4000,1100+t.length*45);}
+/* (Round 8) the wait before the next line can be skipped after two seconds: the big button becomes "Skip, I read it" */
+function cvWait(fn,ms){const C=CV;if(!C)return;let ran=false;const btn=$('#btn-check');
+  const go=()=>{if(ran||CV!==C)return;ran=true;if(btn.dataset.skip){delete btn.dataset.skip;btn.onclick=null;btn.disabled=true;btn.classList.remove('ghost');btn.textContent=C.mode==='text'||C.quick?'Waiting for a reply':'Listen first';}fn();};
+  later(go,ms);if(ms>2300)later(()=>{if(ran)return;btn.dataset.skip='1';btn.disabled=false;btn.textContent='Skip, I read it';btn.classList.add('ghost');btn.onclick=()=>go();},2000);}
 function convNext(){const C=CV;if(!C)return;C.bar=Math.max(C.bar||0,C.i/C.lines.length*100);$('#lbar').style.width=C.bar+'%';
   if(C.i>=C.lines.length)return convFinish();
   const ln=C.lines[C.i];const msgs=$('#msgs');
@@ -2996,8 +3008,8 @@ function convNext(){const C=CV;if(!C)return;C.bar=Math.max(C.bar||0,C.i/C.lines.
         '<div class="bub" role="button" tabindex="0" data-tr>'+wh+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,castVoice(who)))+'</div>')+'</div>');chatScroll();
       {const nm=S.me&&S.me.name&&S.me.name.trim(),f=nm&&nameForms(nm,S.me.g);
         if(f&&f.voc!==f.nom&&!S.vocTip&&wordRe(f.voc).test(ln.lt)&&typeof VOC_TIP==='function'){S.vocTip=today();save();msgs.insertAdjacentHTML('beforeend','<div class="voc-tip">'+VOC_TIP(esc(f.nom),esc(f.voc))+'</div>');chatScroll();}}
-      C.i++;if(C.mode==='text'){sfx('pop');return later(convNext,(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
-      say(ln,false,castVoice(who));later(convNext,S.sound?clipLen(ln.id,castVoice(who))*1000+300:400);},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
+      C.i++;if(C.mode==='text'){sfx('pop');return cvWait(convNext,(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
+      say(ln,false,castVoice(who));cvWait(convNext,canListen()?clipLen(ln.id,castVoice(who))*1000+300:(C.lines[C.i]||{}).kind==='m'?400:readTime(ln.lt));},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
    how the other person reacts to it, and then the conversation joins up again. */
@@ -3053,7 +3065,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:own?ownEn:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
-    later(C.quick?qcNext:convNext,txt?400:S.sound?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
+    cvWait(C.quick?qcNext:convNext,txt?400:canListen()?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking grows with you the same way writing does, reply by reply (convStage: your words, or the reply's Quick chat step):
      still new → the Lithuanian is shown and played, you listen and say it after; getting there → some words are gaps,
      more of them as you learn, and you say the whole line; known → only the English or the situation, from memory.
@@ -3083,6 +3095,8 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
       '<p class="heard" id="srout" role="status">'+(!useMic?'Nothing can hear you here, so write your reply first'+(CAN_REC&&!noRecToday()?', or record yourself saying it (the red button)':'')+'. Then say it out loud, and the line shows for you to compare.':useMic?(stage==='tap'?'Listen, then say it when the <b>microphone</b> lights up. As you learn these words, the '+LANG.en+' fades away and you say it from memory.':stage==='fill'?'Say the whole reply, filling the gaps from memory, when the <b>microphone</b> lights up.':'Say your reply in '+LANG.en+' when the <b>microphone</b> lights up.'):(SR?'':'This browser can\'t listen, so s')+(SR?'S':'')+'ay it out loud'+(stage==='tap'?'':', check it with "Show me the '+LANG.en+'"')+', then tap "I said it".'+(CAN_REC?' Record yourself with the red button to compare (and for the "Said it all" bonus).':''))+'</p>'+
       '<div class="speaklinks">'+(SR&&!speakOff()&&useMic?'<button type="button" class="linkbtn" id="cself">Microphone not working? Say it without it from now on</button>':'')+'<button type="button" class="linkbtn" id="cskip">Skip this line</button></div></div>';
     wirePrompt(turn,()=>{used=true;});
+    /* (Round 8) the box to write your reply in takes the cursor, so you can type straight away */
+    {const si=$('#sin');if(si&&matchMedia('(pointer:fine)').matches)setTimeout(()=>{if(si.isConnected&&!si.disabled)si.focus({preventScroll:true});},60);}
     const peek=$('#peek');if(peek)peek.onclick=()=>{C.peeks++;used=true;peek.hidden=true;const g=$('#gapbox');if(g)g.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
       const m=$('#mic');if(m)autoMic(m,S.sound?clipLen(ln.id,me)*1000+350:500);chatScroll();};
     /* "I said it" shows and plays the line, and you rate yourself: Yes or Almost counts, No comes back as a line to say again */
@@ -3630,7 +3644,10 @@ let lastAct=0;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,(
 window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop').hidden||Date.now()-lastAct<1500;
 /* after your first lesson, once: it waits while you're still tapping or a pop-up is open (it used to give up, so a new guest
    never saw it) */
-function maybeTour(n){n=n||0;if(!S.toured&&(S.lessonsDone||0)>=1&&$('#sheet').hidden&&$('#welcome').hidden&&!document.querySelector('#tour')&&!window.__touring&&lastView==='learn')setTimeout(()=>{if(lastView!=='learn'||window.__touring||S.toured||!$('#sheet').hidden||!$('#welcome').hidden)return;if(window.popBusy()||Date.now()-(window.__lastTap||0)<2500){if(n<40)maybeTour(n+1);return;}startTour();},n?1500:1500);}
+/* (Round 8) the tour opens the moment you come back to the Learn screen, never a second later on a timer (it opened over
+   your next tap on Start and swallowed it). A celebration still on screen puts it off to the next visit. */
+function maybeTour(){if(S.toured||(S.lessonsDone||0)<1||!$('#sheet').hidden||!$('#welcome').hidden||document.querySelector('#tour')||window.__touring||lastView!=='learn')return;
+  if(document.querySelector('.gate,.league-pop')||!$('#pop').hidden)return;startTour();}
 document.addEventListener('pointerdown',()=>{window.__lastTap=Date.now();},true);document.addEventListener('keydown',()=>{window.__lastTap=Date.now();},true);
 $('#btn-tour').onclick=()=>startTour();
 
@@ -3918,7 +3935,7 @@ document.addEventListener('keydown',e=>{const g=[...document.querySelectorAll('.
 document.addEventListener('keydown',e=>{if(e.key!=='Enter'||!Q||$('#sheet').hidden)return;const ex=Q.queue[Q.idx],wait=ex&&STEPLESS[ex.type]?700:400,t=Math.max(Q.shownAt||0,Q.footAt||0),left=wait-(Date.now()-t);
   if(e.repeat||left>0){e.preventDefault();e.stopImmediatePropagation();
     /* Enter on a result you've just seen: done a moment later (it was simply lost). A New word or Tip card still can't be skipped. */
-    if(!e.repeat&&ex&&!STEPLESS[ex.type]&&Q.footAt&&Q.footAt>=(Q.shownAt||0)){const at=Q.idx,q=Q;setTimeout(()=>{if(Q===q&&Q.idx===at&&!$('#sheet').hidden){const b=$('#btn-check');if(b&&!b.disabled)b.click();}},left+20);}}},true);
+    if(!e.repeat&&ex&&!STEPLESS[ex.type]&&(Q.footAt&&Q.footAt>=(Q.shownAt||0)||/\b(good|bad|idk)\b/.test($('#foot').className))){ /* (Round 8) any result showing, the gold one too */const at=Q.idx,q=Q;setTimeout(()=>{if(Q===q&&Q.idx===at&&!$('#sheet').hidden){const b=$('#btn-check');if(b&&!b.disabled)b.click();}},left+20);}}},true);
 /* Taps too: a quick double tap on Continue landed on the next card's "Got it" (the same button), so a New word card went by
    unseen and its word was tested cold. The same tap could also skip your result the moment it showed. */
 document.addEventListener('click',e=>{if(!Q||$('#sheet').hidden||!e.isTrusted||!e.target.closest||!e.target.closest('#btn-check'))return;
