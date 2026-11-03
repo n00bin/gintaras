@@ -131,7 +131,7 @@ def conversation(pg, cid, label):
             break
         if st['dis'] and st['btn'] == 'Listen first':
             waited += 1
-            if waited > 60:
+            if waited > 150:  # 15 s: a few of their lines can play back to back
                 bad('%s: stuck on "Listen first" (line %s)' % (label, st['i'])); break
             continue
         waited = 0
