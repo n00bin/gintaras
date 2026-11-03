@@ -1055,8 +1055,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.99';
-const APP_VERSION=171;
+const APP_RELEASE='3.100';
+const APP_VERSION=172;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2032,8 +2032,8 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     const mine=S.me?meItems().filter(m=>taught(m)).map(m=>norm(m.lt)):[];
     /* a new word's first check waits a card or two after you meet it, so it is remembered, not just copied */
     let wait=null;
-    /* Day one is two checks per new word, a quick pick and one you make yourself: spaced reviews do the rest (four or five
-       cards a word made lessons slow). About one word in three is said instead of written, from the English, Pimsleur-style.
+    /* Day one is three checks per new word: a quick pick, one you make yourself, and one more from memory late in the
+       lesson (Round 9); spaced reviews do the rest (four or five cards a word made lessons slow). About one word in three is said instead of written, from the English, Pimsleur-style.
        A phrase made only of words you already know ("Gerai, ačiū") skips its New word card and gets just the second check. */
     shuffle(items).forEach((it,k)=>{const meet=!taught(it)&&!mine.includes(norm(it.lt));
       if(meet&&isCombo(it)){head.push({type:'intro',item:it});rest.push(Object.assign(exFor(it,['type','gaps','build']),{combo:true}));return;}
@@ -2042,8 +2042,10 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
       let b=exFor(it,meet?SECOND:typesFor(it),a.type);if(meet&&!PROD[b.type])b={type:'type',item:it};if(b.type===a.type&&a.type!=='type')b={type:'type',item:it}; /* a fallback (no gap for a one-word cloze) can land on the first card's kind */
       if(!speakOff()&&a.type!=='speak'&&k%3===1)b={type:'speak',item:it,fresh:meet,blind:true};
       rest.push(b);
-      /* (Round 8) a phrase of new words carries more than one word, so it is recalled once more, late in the lesson */
-      if(meet&&ltWords(it.lt).length>=2){const c=exFor(it,['type','build','cloze','gaps'].filter(t=>t!==b.type),b.type);if(PROD[c.type])rest.push(Object.assign(c,{late:true}));}});
+      /* (Round 8) a phrase of new words is recalled once more, late in the lesson. (Round 9) every new word is: three checks
+         on day one, and the last one written from memory (food words were getting a pick and one write, then nothing) */
+      if(meet){const c=ltWords(it.lt).length>=2?exFor(it,['type','gaps','build','cloze'].filter(t=>t!==b.type),b.type):b.type==='type'?exFor(it,['gaps','type']):{type:'type',item:it};
+        if(PROD[c.type])rest.push(Object.assign(c,{late:true}));}});
     lastWait=wait;
     drillsFor(lesson,2).forEach(d=>rest.push({type:'frame',drill:d}));
     /* warm-up: two words from earlier lessons first, then the rest mixed in later */
@@ -3275,7 +3277,7 @@ function knownWord(w){if(!WORD_ITEMS)wordLvl('');return (WORD_ITEMS[norm(w)]||[]
 function nameVocs(c){const v=new Map();c.cast.concat(S.me&&S.me.name?[{name:S.me.name,g:S.me.g}]:[]).forEach(p=>{const f=nameForms(p.name,p.g),base=f.lt||f.nom;
   if(f.voc&&norm(f.voc)!==norm(base))v.set(norm(f.voc),base+', said to '+(p.g==='f'||/a$|ė$/i.test(base)&&p.g!=='m'?'her':'him'));});return v;}
 function newInLine(lt,c){const names=lineNames(),vocs=nameVocs(c);return lt.split(/\s+/).map(t=>t.replace(/^[¿¡"(]+|[.,!?…:;")]+$/g,'')).filter(t=>{const w=norm(t);
-  return w&&/\p{L}/u.test(w)&&(vocs.has(w)||!names.has(w)&&!knownWord(w));});}
+  return w&&/\p{L}/u.test(w)&&(vocs.has(w)&&!S.vocTip||!names.has(w)&&!knownWord(w));});}
 function newGloss(t,c){const v=nameVocs(c).get(norm(t));return v||glossOf(t);}
 function theirLine(ln){const nw=newInLine(ln.lt,CV.c).map(norm);
   const lt=ln.lt.split(/(\s+)/).map(tok=>{const m=tok.match(/^(.*?)([.,!?…]*)$/);if(!nw.includes(norm(m[1])))return esc(tok);const gl=newGloss(m[1],CV.c);
@@ -3446,13 +3448,13 @@ function renderQuick(){const box=$('#qc-card');if(!box)return;seedReplies();cons
 /* Up to 8 due replies, mixed. "Chat anyway" takes your weakest replies; they only move up on their review day. */
 function startQuick(any){seedReplies();const all=replyCards();
   let ids=any?Object.keys(S.replies).filter(id=>all[id]&&qcReady(id)).sort((a,b)=>S.replies[a].lvl-S.replies[b].lvl||S.replies[a].due-S.replies[b].due):dueReplies().sort((a,b)=>S.replies[a].due-S.replies[b].due);
-  ids=ids.slice(0,8);if(!ids.length)return;Q=null;bossDraw();personalise();
+  const dueAll=ids.length;ids=ids.slice(0,8);if(!ids.length)return;Q=null;bossDraw();personalise();
   const queue=shuffle(ids.map(id=>all[id]));
   CV={quick:true,any,c:queue[0].c,mode:'text',peeks:0,queue,i:0,mistakes:0,turns:0,heard:0,lastWho:'',played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),
     right:0,graded:0,up:new Set(),again:new Set(),startedAt:Date.now(),timers:[],rec:null};
   const me=myVoice();new Set(queue.map(k=>k.c)).forEach(c=>c.cast.forEach(p=>preloadUnit(c.id,castVoice(p))));preloadUnit(queue[0].c.id,me);
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene"><div><span class="eyebrow">Quick chat · '+ids.length+(ids.length===1?' reply':' replies')+'</span><strong>Answer them</strong><small>People from your conversations message you, one after another. Read what they say and answer in '+LANG.en+'.</small><small class="tiny">Tap their message to see it in English. Asking for a hint or the English of your own reply means it doesn\'t move up this time.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  $('#stage').innerHTML='<div class="chat"><div class="scene"><div><span class="eyebrow">Quick chat · '+ids.length+(!any&&dueAll>ids.length?' of the '+dueAll+' due replies, the rest next round':ids.length===1?' reply':' replies')+'</span><strong>Answer them</strong><small>People from your conversations message you, one after another. Read what they say and answer in '+LANG.en+'.</small><small class="tiny">Tap their message to see it in English. Asking for a hint or the English of your own reply means it doesn\'t move up this time.</small></div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent='Waiting for a message';btn.onclick=null;
   qcNext();}
 function qcNext(){const C=CV;if(!C)return;if(!C.base)C.base=C.queue.length;$('#lbar').style.width=(C.i/C.queue.length*100)+'%';

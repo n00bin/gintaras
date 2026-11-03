@@ -323,9 +323,9 @@
 "cv1:7": "Malonu susipažinti!",
 "cv1:8": "Kaip sekasi?",
 "cv1:9o0": "Puikiai!",
-"cv1:9o0-0": "Aš irgi!",
+"cv1:9o0-0": "Man irgi puikiai!",
 "cv1:9o1": "Gerai, ačiū.",
-"cv1:9o1-0": "Aš irgi, ačiū!"
+"cv1:9o1-0": "Man irgi gerai, ačiū!"
 },
 "cv10": {
 "cv10:0": "Labas vakaras! Užeik!",
@@ -465,7 +465,7 @@
 "cv16:0": "Labas, Tomai! Kaip sekasi?",
 "cv16:10": "Einame... pasivaikščioti?",
 "cv16:11": "Ką reiškia šis žodis?",
-"cv16:12": "Pasivaikščioti... štai taip!",
+"cv16:12": "Pasivaikščioti... štai!",
 "cv16:13": "Supratau! Taip, gerai.",
 "cv16:15": "Kaip tai pasakyti lietuviškai?",
 "cv16:16": "Upė.",
@@ -1411,6 +1411,9 @@
 "u1c-2:3": "Mano vardas Tomas",
 "u1c-2:4": "Koks tavo vardas?",
 "u1c-3:0": "Aš esu iš Amerikos",
+"u1c-3:1": "Iš kur?",
+"u1c-3:2": "Kavos?",
+"u1c-3:3": "Arbatos?",
 "u1d-1:0": "Aš esu Tomas",
 "u1d-1:1": "Tu esi Jonas?",
 "u1d-1:2": "Jis yra Jonas",

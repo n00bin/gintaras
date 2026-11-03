@@ -249,7 +249,7 @@ with sync_playwright() as p:
             check_said(pg, 'offline conversation ' + sid)
             print('  conversation %s (Say it): done' % sid)
     # a review of due words
-    s("()=>{practised().forEach(i=>{const r=rec(i.id);r.due=Date.now()-1;r.prodD=null;r.dD=null;r.okD=null;r.recD=null;});S.drillDay=null;S.reviewDay=null;save();}")
+    s("()=>{practised().forEach(i=>{const r=rec(i.id);r.due=Date.now()-1;r.prodD=null;r.pcD=null;r.dD=null;r.okD=null;r.recD=null;});S.drillDay=null;S.reviewDay=null;save();}")
     s("()=>startReview(false)"); pg.wait_for_timeout(200)
     if s("!!Q"):
         n = play(pg, 'offline review'); check_said(pg, 'offline review'); print('  review: %d cards' % n)
