@@ -37,7 +37,9 @@ function mergeState(a,b){if(window.upEpoch){a=window.upEpoch(a);b=window.upEpoch
   if((b.restWeek||'')>(a.restWeek||'')){out.restWeek=b.restWeek;out.restsUsed=b.restsUsed;}else if(b.restWeek===a.restWeek)out.restsUsed=Math.max(a.restsUsed||0,b.restsUsed||0);
   if(b.me&&(!a.me||(b.me.at||0)>(a.me.at||0)))out.me=b.me;out.lastDay=[a.lastDay||'',b.lastDay||''].sort().pop();
   out.typedSpk=Object.assign({},a.typedSpk||{},b.typedSpk||{});out.lessons={};new Set(Object.keys(a.lessons||{}).concat(Object.keys(b.lessons||{}))).forEach(k=>out.lessons[k]=Math.max((a.lessons||{})[k]||0,(b.lessons||{})[k]||0));
-  out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;if(x.ease||y.ease)out.items[k].ease=Math.min(x.ease||2.5,y.ease||2.5);if(x.fs||y.fs)out.items[k].fs=!x.fs?y.fs:!y.fs?x.fs:(x.fs.t>=y.fs.t?x.fs:y.fs);if(x.ivl||y.ivl)out.items[k].ivl=Math.max(x.ivl||0,y.ivl||0);const ld=[x.lapseDay||'',y.lapseDay||''].sort().pop();if(ld){out.items[k].lapseDay=ld;out.items[k].lapse=Math.max(x.lapse||0,y.lapse||0);}const su=[x.spkUp||'',y.spkUp||''].sort().pop();if(su){out.items[k].spkUp=su;out.items[k].spk=Math.max(x.spk||0,y.spk||0);}}});
+  out.items={};new Set(Object.keys(a.items||{}).concat(Object.keys(b.items||{}))).forEach(k=>{const x=(a.items||{})[k],y=(b.items||{})[k];if(!x)out.items[k]=y;else if(!y)out.items[k]=x;else out.items[k]={lvl:Math.max(x.lvl,y.lvl),due:Math.max(x.due,y.due),seen:x.seen||y.seen,ok:Math.max(x.ok,y.ok),bad:Math.max(x.bad,y.bad)};if(x&&y){const up=[x.up||'',y.up||''].sort().pop();if(up)out.items[k].up=up;if(x.ease||y.ease)out.items[k].ease=Math.min(x.ease||2.5,y.ease||2.5);if(x.fs||y.fs)out.items[k].fs=!x.fs?y.fs:!y.fs?x.fs:(x.fs.t>=y.fs.t?x.fs:y.fs);if(x.ivl||y.ivl)out.items[k].ivl=Math.max(x.ivl||0,y.ivl||0);const ld=[x.lapseDay||'',y.lapseDay||''].sort().pop();if(ld){out.items[k].lapseDay=ld;out.items[k].lapse=Math.max(x.lapse||0,y.lapse||0);}const su=[x.spkUp||'',y.spkUp||''].sort().pop();if(su){out.items[k].spkUp=su;out.items[k].spk=Math.max(x.spk||0,y.spk||0);}
+    /* the copy with the newer review sets the word's schedule, so a word missed offline isn't pushed back by an older copy */
+    if(x.fs&&y.fs&&x.fs.t!==y.fs.t){const n=x.fs.t>y.fs.t?x:y,o=out.items[k];o.lvl=n.lvl;o.due=n.due;if(n.ivl!=null)o.ivl=n.ivl;if(n.ease)o.ease=n.ease;else delete o.ease;}}});
   if(a.placedTo||b.placedTo)out.placedTo=Math.max(a.placedTo||0,b.placedTo||0);
   if(a.checks||b.checks)out.checks=Object.assign({},a.checks||{},b.checks||{});
   Object.keys(out.items).forEach(k=>{const v=out.items[k];if(v&&!v.seen&&!v.ok&&!v.bad&&!v.lvl&&!v.up)delete out.items[k];});delete out.time;
@@ -175,6 +177,7 @@ function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderRep
    the box, so it can appear in two places at once. onDone runs once the account is ready. */
 function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   box.innerHTML=(o.title?'<h2>'+esc(o.title)+'</h2>':'')+(o.lead?'<p class="note">'+esc(o.lead)+'</p>':'')+
+    (navigator.onLine?'':'<p class="note offnote">Signing in needs internet. Everything you do now is kept on this device and comes with you when you sign in.</p>')+
     '<div class="stack" data-a="pick">'+(cfg.GOOGLE?'<div class="gbtn" data-a="gbtn"><button class="btn" data-a="google">Continue with Google</button></div>':'')+
     '<button type="button" class="btn ghost" data-a="email">Continue with email</button></div>'+
     '<div class="stack" data-a="form" hidden><input data-a="mail" type="email" autocomplete="email" placeholder="Email">'+
@@ -425,7 +428,7 @@ function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalanc
   document.body.appendChild(ov);
   ov.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{stake=Number(b.dataset.st);ov.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('in',x===b));ov.querySelector('[data-go]').disabled=false;});
   ov.querySelector('[data-x]').onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
-  ov.querySelector('[data-go]').onclick=async()=>{if(!window.spendAmber(stake))return;ov.remove();
+  ov.querySelector('[data-go]').onclick=async()=>{if(!navigator.onLine)return toast('Sending a challenge needs internet. Try again when you’re back online.');if(!window.spendAmber(stake))return;ov.remove();
     const {data,error}=await sb.from('gintaras_challenges').insert({to_id:pid,stake,week_start:ws,lang:LC}).select().single();
     if(error){window.earnAmber(stake);return toast(/duplicate|unique/i.test(error.message)?'You already challenged '+nick+' this week':'Could not send: '+error.message);}
     window.S.chalLedger=Object.assign(window.S.chalLedger||{},{[data.id]:stake});window.save();window.celebrate({mood:'cheer',icon:'⚔️',title:'Challenge sent!',sub:'Waiting for '+nick+' to accept'});renderBoard();};}
@@ -609,7 +612,8 @@ function boot(){if(!sb){const tab=$('#tab-board');if(tab)tab.hidden=true;renderA
   sb.auth.onAuthStateChange((ev,session)=>{if(ev==='SIGNED_IN'&&session&&(!user||user.id!==session.user.id)){user=session.user;afterAuth();}});
   loadSession().then(()=>{sendReports();const S=window.S;if(!user&&S&&S.welcomed&&!S.signinAsked&&(S.lessonsDone||0)>=1&&navigator.onLine&&window.openSignin)window.openSignin('returning');});}
 if(window.gintarasReady)boot();else window.addEventListener('gintaras:ready',boot);
-window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();});
+window.addEventListener('online',()=>{if(sb&&user)cloudSave();renderBoard();if(!user)renderAuth();});
+window.addEventListener('offline',()=>{if(!user)renderAuth();});
 window.addEventListener('gintaras:idle',()=>setTimeout(()=>{if(user)chalAlerts();},800));
 window.addEventListener('gintaras:xp',e=>{const S=window.S;const wk=monday();if(S.weekStart!==wk){S.weekStart=wk;S.weekXp=0;}S.weekXp=(S.weekXp||0)+e.detail;chalAlerts();});
 /* Coming back to the app checks for new challenges and your rival's latest XP. */

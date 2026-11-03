@@ -707,6 +707,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .hhbanner strong{display:block;font-family:var(--display);font-size:18px}
 .hhbanner small{display:block;font-size:14px;font-weight:600}
 .hhbanner[hidden]{display:none}
+.offbar{background:var(--surface-2);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-weight:600}.offbar[hidden],.iosnudge[hidden],.offready[hidden]{display:none}
+.offready{margin:-4px 2px 12px;font-size:14px}#offready-s{margin:0 0 10px}.offready .linkbtn{font-size:14px}
+.iosnudge{margin-bottom:14px}.iosnudge strong{display:block;font-family:var(--display);font-size:18px}
 .chalstrip{display:grid;gap:4px;width:100%;text-align:left;background:color-mix(in srgb,var(--pine) 12%,var(--surface));border:2px solid color-mix(in srgb,var(--pine) 35%,transparent);color:var(--fg);border-radius:var(--radius);padding:10px 14px;margin-bottom:14px;font-size:15px;font-weight:600;cursor:pointer}
 .chalstrip[hidden]{display:none}
 .time-tiles{margin-top:6px}
@@ -775,6 +778,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 
 <main>
   <section class="view" id="view-learn">
+    <div class="offbar" id="offbar" role="status" hidden></div>
+    <div class="card iosnudge" id="ios-nudge" hidden></div>
     <div class="hhbanner" id="hhbanner" role="status" hidden></div>
     <button type="button" class="chalstrip" id="chalstrip" hidden></button>
     <div class="bite">
@@ -784,6 +789,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <button class="btn amber" id="btn-bite">Start</button>
       <button class="btn ghost onpine" id="btn-bite2" hidden>Say it out loud</button>
     </div>
+    <p class="note offready" id="offready" hidden></p>
     <div class="card catchup" id="catchup" hidden></div>
     <div class="card" id="place-card" hidden></div>
     <div class="goal">
@@ -919,13 +925,13 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <span class="group">App</span>
     <div class="card" id="install">
       <h2>Install as an app</h2>
-      <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. Your progress stays exactly where it is.</p>
+      <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. It also keeps your saved lessons safe for offline. Your progress stays exactly where it is.</p>
       <div id="install-now"></div>
       <div class="howto" id="install-steps"></div>
     </div>
     <div class="card" id="offline">
       <h2>Use it offline</h2>
-      <p class="note">The app already opens without signal. Download the recordings once and every lesson and conversation works with sound: on a plane, underground, or abroad without data.</p>
+      <p class="note">Gintaras keeps learning without signal. While you are online it saves what comes next by itself: the rest of this unit and the next two, their conversations, and the words due this week, with their sound and pictures. Going away for longer? Download the whole course.</p>
       <div id="offline-box"></div>
     </div>
     <div class="card" id="share">
@@ -1043,8 +1049,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.96';
-const APP_VERSION=168;
+const APP_RELEASE='3.97';
+const APP_VERSION=169;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1209,8 +1215,8 @@ function startTricky(){const pick=trickyPick();if(pick.length<3)return toast('No
   /* (Round 7) the workout isn't trimmed like a review (words written today sat out, so it opened "Nothing to review") */
   trickyNow=true;try{buildSession(pick,'review',null);}finally{trickyNow=false;}if(!Q)return;Q.tricky=true;
   /* typed wrong: typed again (endings and spelling are retested); picked wrong: picked again, with last time's pick among the options */
-  const test=it=>{const r=rec(it.id),m=r.missT||'type';if(/^mc_|^listen$/.test(m))return {type:m==='listen'&&!canListen()?'mc_lt_en':m,item:it,force:r.missPick?[r.missPick]:undefined};
-    return {type:m==='dictate'&&canListen()?'dictate':'type',item:it};};
+  const test=it=>{const r=rec(it.id),m=r.missT||'type';if(/^mc_|^listen$/.test(m))return {type:m==='listen'&&!canListen(it)?'mc_lt_en':m,item:it,force:r.missPick?[r.missPick]:undefined};
+    return {type:m==='dictate'&&canListen(it)?'dictate':'type',item:it};};
   /* each word is tested only after four question cards about other words, so it is remembered, not just still on screen */
   /* in between: the other cards about these words, then a few about words you know well */
   const q=[],pend=[],rest=Q.queue.filter(e=>e.type!=='intro').concat(shuffle(practised().filter(i=>!pick.includes(i)&&rec(i.id).lvl>=1)).slice(0,6).map(it=>Object.assign(exFor(it,typesFor(it)),{mixed:true})));let asked=0;
@@ -1448,7 +1454,7 @@ function say(item,slow,voiceOverride){if(!S.sound||!item)return;const voice=voic
       const stop=()=>{if(my!==playToken)return;a.__on=false;a.pause();a.removeEventListener('timeupdate',onT);};
       const onT=()=>{if(a.currentTime>=start+dur)stop();};if(a.__onT)a.removeEventListener('timeupdate',a.__onT);a.__onT=onT;a.addEventListener('timeupdate',onT);
       stopTimer=setTimeout(stop,(dur/rate)*1000+60);
-      const p=a.play();if(p&&p.catch)p.catch(()=>speak(item.lt,slow));}catch(e){speak(item.lt,slow);}};
+      const p=a.play();if(p&&p.catch)p.catch(e=>{if(my===playToken&&!(e&&e.name==='AbortError'))speak(item.lt,slow);});}catch(e){speak(item.lt,slow);}};
   a.onerror=()=>speak(item.lt,slow);
   if(a.readyState>=1)go();else{a.addEventListener('loadedmetadata',go,{once:true});a.load();}}
 /* In conversations you speak in the voice that matches you (About me: a man's voice, or a woman's; a man's by default,
@@ -1462,8 +1468,9 @@ function prePics(its){its.forEach(i=>{const v=picFor(i.lt);if(v&&v[0]!=='#'){con
 /* Pictures for a session are fetched before they are needed, so none pops in late. */
 function preloadPics(items){items.forEach(i=>{if(!i)return;const v=typeof picFor==='function'?picFor(i.lt):EMOJI[i.lt];if(v&&v[0]!=='#'){const im=new Image();im.src=picFile(v);}});}
 function preloadUnit(unit,voice){voice=voice||S.voice||'ona';if(!(SMAP[voice]&&SMAP[voice][unit])){if(VOICE_BASE[voice])preloadUnit(unit,VOICE_BASE[voice]);return;}try{getPlayer(voice,unit).load();}catch(e){}}
-/* Listening needs the sound on, and "Can't listen now" pauses it for an hour. */
-function canListen(){return S.sound!==false&&!((S.noListenUntil||0)>Date.now());}
+/* Listening needs the sound on, and "Can't listen now" pauses it for an hour. Asked about one word or line (and voice),
+   it also needs that recording: online it can be fetched, offline it must be saved on this device (hearable, OFFLINE). */
+function canListen(x,voice){return S.sound!==false&&!((S.noListenUntil||0)>Date.now())&&(x==null||hearable(x,voice));}
 let ltVoice=null;
 function findVoice(){try{const v=speechSynthesis.getVoices();ltVoice=v.find(x=>x.lang&&x.lang.toLowerCase().startsWith(LANG.code))||null;}catch(e){ltVoice=null;}updateTtsNote();}
 if('speechSynthesis' in window){findVoice();speechSynthesis.onvoiceschanged=findVoice;}
@@ -1627,7 +1634,9 @@ function startSpeed(){const pool=gameWords();if(pool.length<6)return;const its=n
 /* Ear catcher: hear a word you know, tap its meaning before the bar runs out (6 seconds). Ten rounds; listening practice
    that needs no microphone. */
 /* (Round 8) with listening off, it's "read and pick": the word is written, not played */
-function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);if(pool.length<6)return;const read=!canListen();const rounds=sample(pool,Math.min(10,pool.length)),missedE=[];let k=0,score=0,timer=0;
+function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);if(pool.length<6)return;const read=!canListen();
+  /* (offline) words with a saved recording come first; any other word is read, not heard */
+  const heard=read?[]:pool.filter(i=>hearable(i)),rounds=heard.length>=Math.min(10,pool.length)?sample(heard,Math.min(10,pool.length)):sample(pool,Math.min(10,pool.length)),missedE=[];let k=0,score=0,timer=0;
   const ov=document.createElement('div');ov.className='fall';
   ov.innerHTML='<div class="fall-top"><button type="button" class="x" id="g-x" aria-label="Stop">✕</button><span>'+(read?'📖':'👂')+' <b id="g-s">0</b> of '+rounds.length+'</span></div><div class="game-board" id="g-b"></div>';
   document.body.appendChild(ov);const stop=()=>{clearTimeout(timer);stopAllAudio();};ov.querySelector('#g-x').onclick=()=>{stop();ov.remove();renderAll();};
@@ -1636,14 +1645,14 @@ function startEar(){const pool=gameWords().filter(i=>i.lt.split(' ').length<=2);
     ov.innerHTML='<div class="fall-res"><div class="big num">'+score+' of '+rounds.length+'</div><h2>'+(best&&!first?'New best!':score>=8?'Sharp ears!':score>=3?'Nicely caught':'Keep listening')+'</h2><p class="note">'+(total?'+'+total+' XP':'No XP this time: it comes from the meanings you catch.')+'</p>'+
       (missedE.length?'<div class="win"><b>To listen to again</b> · '+missedE.map(i=>'<b>'+esc(i.lt)+'</b> '+esc(i.en)).join(', ')+'</div>':'')+'<button type="button" class="btn amber" id="g-again">Play again</button><button type="button" class="btn ghost" id="g-done">Done</button></div>';sfx('win');
     ov.querySelector('#g-again').onclick=()=>{ov.remove();startEar();};ov.querySelector('#g-done').onclick=()=>{ov.remove();renderAll();};ov.querySelector('#g-again').focus();};
-  const round=()=>{if(k>=rounds.length)return end();const it=rounds[k],opts=shuffle([it].concat(sample(pool.filter(i=>i!==it&&enKey(i.en)!==enKey(it.en)),2)));let over=false;
-    const b=ov.querySelector('#g-b');b.innerHTML=(read?'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div>':'<div class="speakrow"><button type="button" class="spk big" id="g-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="g-slow" aria-label="Play it slowly">'+TURTLE+'</button></div>')+'<div class="ear-bar"><i id="g-bar"></i></div><div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'">'+esc(o.en)+'</button>').join('')+'</div><p class="note" id="g-msg"></p>';
+  const round=()=>{if(k>=rounds.length)return end();const it=rounds[k],rd=read||!hearable(it),opts=shuffle([it].concat(sample(pool.filter(i=>i!==it&&enKey(i.en)!==enKey(it.en)),2)));let over=false;
+    const b=ov.querySelector('#g-b');b.innerHTML=(rd?'<div class="word"><span class="lt">'+esc(it.lt)+'</span></div>':'<div class="speakrow"><button type="button" class="spk big" id="g-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="g-slow" aria-label="Play it slowly">'+TURTLE+'</button></div>')+'<div class="ear-bar"><i id="g-bar"></i></div><div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'">'+esc(o.en)+'</button>').join('')+'</div><p class="note" id="g-msg"></p>';
     const bar=b.querySelector('#g-bar');requestAnimationFrame(()=>{bar.style.transition='width 6s linear';bar.style.width='0%';});
     const next=(ok,o)=>{if(over)return;over=true;clearTimeout(timer);b.querySelectorAll('.opt').forEach(x=>x.disabled=true);if(ok){score++;sfx('good');}else{sfx('bad');missedE.push(it);}
       ov.querySelector('#g-s').textContent=score;b.querySelector('#g-msg').innerHTML=(ok?'✓ ':o?'':'⏱ Time\'s up: ')+'<b>'+esc(it.lt)+'</b> means "'+esc(it.en)+'"';if(o)o.classList.add(ok?'right':'wrong');b.querySelectorAll('.opt')[opts.indexOf(it)].classList.add('right');
       k++;timer=setTimeout(round,ok?900:o?1800:2800);};
-    if(!read){b.querySelector('#g-play').onclick=()=>say(it);b.querySelector('#g-slow').onclick=()=>say(it,true);}b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>next(opts[Number(x.dataset.i)]===it,x));
-    if(!read)say(it);timer=setTimeout(()=>next(false,null),6500);};
+    if(!rd){b.querySelector('#g-play').onclick=()=>say(it);b.querySelector('#g-slow').onclick=()=>say(it,true);}b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>next(opts[Number(x.dataset.i)]===it,x));
+    if(!rd)say(it);timer=setTimeout(()=>next(false,null),6500);};
   round();}
 const FALLKEY='gintaras.fall.'+LANG_CODE;
 function fallSaved(){try{const p=JSON.parse(localStorage.getItem(FALLKEY)||'null');return p&&Date.now()-p.at<30*60000&&p.left&&p.left.length?p:null;}catch(e){return null;}}
@@ -1979,17 +1988,17 @@ function wireTyping(st,btn){const inp=st.querySelector('#ans');dblType(inp);inp.
   st.querySelectorAll('[data-k]').forEach(k=>k.onmousedown=e=>e.preventDefault());
   st.querySelectorAll('[data-k]').forEach(k=>k.onclick=()=>{const s=inp.selectionStart||inp.value.length,e=inp.selectionEnd||s;inp.value=inp.value.slice(0,s)+k.dataset.k+inp.value.slice(e);inp.focus();inp.setSelectionRange(s+1,s+1);inp.oninput();});
   setTimeout(()=>inp.focus(),50);}
-function exFor(item,types,avoid){if(speakOff())types=types.filter(t=>t!=='speak');if(!canListen())types=types.filter(t=>t!=='listen'&&t!=='dictate');
+function exFor(item,types,avoid){if(speakOff())types=types.filter(t=>t!=='speak');if(!canListen(item))types=types.filter(t=>t!=='listen'&&t!=='dictate');
   if(!types.length)types=['type'];let t=types[Math.floor(Math.random()*types.length)];
   if(avoid&&types.length>1){let n=0;while(t===avoid&&n++<6)t=types[Math.floor(Math.random()*types.length)];}
-  if(t==='listen'&&!canListen())t='mc_en_lt';
+  if(t==='listen'&&!canListen(item))t='mc_en_lt';
   const single=item.lt.split(' ').length<2;
   if(t==='build'&&single)t='tiles';
   /* a missing-letters card needs a word of four letters or more (T_ for Tu is no question) */
   if(t==='gaps'&&!item.lt.split(/\s+/).some(w=>[...w].filter(c=>/\p{L}/u.test(c)).length>=4))t='type';
   if(t==='tiles'&&!single)t='build';
   if(t==='tiles'&&item.lt.replace(/[?!.,]/g,'').length>13)t=rec(item.id).lvl>=1?'type':'mc_en_lt';
-  if(t==='dictate'&&!canListen())t='type';
+  if(t==='dictate'&&!canListen(item))t='type';
   if(t==='cloze'){const c=clozePick(item);if(c)return Object.assign({type:'cloze',item},c);t=rec(item.id).lvl>=1?'type':'tiles';}
   return {type:t,item};}
 /* Fill the gap: one word of a phrase is hidden and you type it, with the rest of the phrase and its meaning as clues.
@@ -2107,7 +2116,7 @@ function isCombo(it){const ws=norm(it.lt).replace(/[?!.,]/g,'').split(' ').filte
    (level 1 or more), that you haven't heard as a clip today. Its meaning is picked from three. */
 function hearPick(){const td=today(),seen=S.hearDay&&S.hearDay.d===td?S.hearDay.ids:[];
   const ok=ln=>{if(ln.kind!=='p'||!ln.lt||ln.lt0!==undefined||HAS_NAME.test(ln.lt))return false;const v=castVoice(ln.conv.cast[ln.who]||ln.conv.cast[0]),u=unitOf(ln.id);
-    if(!(SMAP[v]&&SMAP[v][u]&&SMAP[v][u][ln.id]))return false;const ws=ln.lt.split(/\s+/);return ws.length>=2&&ws.every(w=>{const l=wordLvl(w);return l===null?properNoun(w):l>=1;})&&ws.some(w=>wordLvl(w)!==null);};
+    if(!(SMAP[v]&&SMAP[v][u]&&SMAP[v][u][ln.id])||!hearable(ln,v))return false;const ws=ln.lt.split(/\s+/);return ws.length>=2&&ws.every(w=>{const l=wordLvl(w);return l===null?properNoun(w):l>=1;})&&ws.some(w=>wordLvl(w)!==null);};
   const pool=CONVS.flatMap(c=>c.all.filter(ok));if(pool.length<3)return null;const fresh=pool.filter(l=>!seen.includes(l.id));if(!fresh.length)return null;
   const ln=sample(fresh,1)[0],others=[];shuffle(pool.filter(l=>l!==ln)).forEach(l=>{if(others.length<2&&![ln].concat(others).some(o=>enKey(o.en)===enKey(l.en)||norm(o.lt)===norm(l.lt)))others.push(l);});
   return others.length<2?null:{type:'hear',line:ln,others};}
@@ -2179,7 +2188,7 @@ function startBoss(u){const all=bossItems(u);if(all.length<5)return;
   $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
 function bossDraw(){const b=$('#bossbar');if(!b)return;if(!Q||Q.mode!=='check'){b.hidden=true;return;}b.hidden=false;
   $('#bosshp').style.width=(Q.boss.hp/Q.boss.max*100)+'%';$('#bossn').textContent=Q.boss.hp?Q.boss.hp+(Q.boss.hp===1?' hit':' hits')+' to win':'Beaten ✓';}
-function startLesson(l){const d=dueNow().length;
+function startLesson(l){offNote(l.unit.id);const d=dueNow().length;
   if(!l.speak&&crowns(l.id)<1&&d>=30&&S.gateDay!==today()){const ov=document.createElement('div');ov.className='gate';
     ov.innerHTML='<div class="card" role="dialog" aria-modal="true">'+mascot('think')+'<h2>'+d+' words are waiting</h2><p class="note">Every new word comes back for review later, so the pile only grows. Review first, then learn: you will keep far more of both.</p><button type="button" class="btn amber" data-g="review">Review first</button><button type="button" class="btn ghost" data-g="learn">Learn anyway</button></div>';
     document.body.appendChild(ov);ov.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ov.remove();if(b.dataset.g==='review')startReview(false);else{S.gateDay=today();save();buildSession(l.items,'lesson',l);}});return;}
@@ -2276,7 +2285,10 @@ function settleCard(){if(!Q||Q.idx>=Q.queue.length)return false;
       if(!need&&(e.drill||e.type==='hear')){const c=wordsNeed(cardWords(e),(Q.items||[]).concat(Q.lesson&&Q.lesson.items||[]));
         if(c.bad||e.drill&&!c.need.length&&!optsNow(persDrill(e.drill)).length){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return true;}need=c.need.find(i=>!shown(i));}
       if(need){Q.queue.splice(Q.idx,0,{type:'intro',item:need});return true;}}
-    if(learn&&e.item&&!e.force&&!e.easy&&/^(mc_lt_en|mc_en_lt|listen)$/.test(e.type)&&made(e.item))Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'&&canListen()?'dictate':'type'});
+    /* (offline) a listening card whose recording isn't on this device is asked another way: never a silent card */
+    if(e.item&&/^(listen|dictate)$/.test(e.type)&&!hearable(e.item)){Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'?'mc_en_lt':'type'});return true;}
+    if(e.type==='hear'&&e.line&&!hearable(e.line,castVoice(e.line.conv.cast[e.line.who]||e.line.conv.cast[0]))){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return true;}
+    if(learn&&e.item&&!e.force&&!e.easy&&/^(mc_lt_en|mc_en_lt|listen)$/.test(e.type)&&made(e.item))Q.queue[Q.idx]=Object.assign({},e,{type:e.type==='listen'&&canListen(e.item)?'dictate':'type'});
     else if(learn&&e.item&&!e.easy&&/^(tiles|build|gaps)$/.test(e.type)&&(rec(e.item.id).recD===td||!!rec(e.item.id).prodD&&!e.helped))Q.queue[Q.idx]=Object.assign({},e,{type:'type'});
     /* never the same word on two cards in a row, even after cards were taken out or came back: a later card about another
        word (one you've met) is shown first */
@@ -2396,7 +2408,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
       if(typeIt&&!recd){if(passed)return;passed=true;shown=true;stopHearing();Q.answer='';const a=st.querySelector('#sayans');if(a)a.hidden=false;const t=st.querySelector('.typing');if(t)t.hidden=true;return reveal(false,'',true);}
       if(typeIt){const t=st.querySelector('.typing');if(t)t.hidden=true;}showAns();};
     /* every speaking card waits a moment before "Show me": time to say it from memory first (the judges tapped through the rest) */
-    if(sa){const secs=typeIt?2:recall?3:Math.ceil(S.sound?clipLen(it.id,S.voice||'ona'):1)+2;countdown(sa,sa.textContent,useMic&&!hide?secs+2:secs);}
+    if(sa){const secs=typeIt?2:recall?3:Math.ceil(S.sound&&hearable(it)?clipLen(it.id,S.voice||'ona'):1)+2;countdown(sa,sa.textContent,useMic&&!hide?secs+2:secs);}
     wireRec(st,st.querySelector('#srout'),()=>{recd=true;if(typeIt&&sa&&!shown&&!passed){sa.textContent='Show me, and I\'ll compare my recording';sa.disabled=false;}if(shown&&st.querySelector('#rate').hidden)openRate();});
     st.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{if(passed)return;passed=true;stopHearing();const v=b.dataset.rate;rec(it.id).seen=true;
       if(v==='again'){grade(it,false,false);spoke(it,false);Q.wrongOnce[it.id]=true;if(!ex.retry)Q.selfRated=(Q.selfRated||0)+1;if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'speak',item:it,retry:true});}
@@ -2410,7 +2422,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
       const n=Q.queue.length;Q.queue=Q.queue.filter((e,k)=>k<=Q.idx||e.type!=='speak');Q.total-=1+n-Q.queue.length;
       const gone=n-Q.queue.length;toast('Speaking is off for an hour. It comes back by itself.'+(gone?' '+gone+' speaking card'+(gone===1?'':'s')+' taken out of this lesson.':''));Q.idx++;renderStep();};
     if(!recall)setTimeout(()=>say(it),200);
-    if(mic)autoMic(mic,recall?700:S.sound?200+clipLen(it.id,S.voice||'ona')*1000+350:600);}
+    if(mic)autoMic(mic,recall?700:S.sound&&hearable(it)?200+clipLen(it.id,S.voice||'ona')*1000+350:600);}
   else if(ex.type==='mc_lt_en'||ex.type==='mc_en_lt'||ex.type==='listen'){
     const toEn=ex.type!=='mc_en_lt';const field=toEn?'en':'lt';
     const ear=ex.type==='listen';let ds=distractors(it,3,field,ear);
@@ -2854,7 +2866,7 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
     else setFoot('bad','Not quite',(typeof Q.answer==='string'&&Q.answer.trim()?'<div class="note">You wrote <b>'+esc(Q.answer.trim())+'</b></div>':'')+'Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
     /* it comes back a few cards later, asked another way where it can be, so the answer you just saw isn't simply tapped again */
     const back=ex.type==='listen'||ex.type==='mc_lt_en'?'mc_en_lt':ex.type==='mc_en_lt'?'mc_lt_en':
-      ex.type==='type'?(canListen()?'dictate':'gaps'):/^(dictate|cloze|gaps|build|tiles)$/.test(ex.type)?'type':ex.type;
+      ex.type==='type'?(canListen(it)?'dictate':'gaps'):/^(dictate|cloze|gaps|build|tiles)$/.test(ex.type)?'type':ex.type;
     /* twice at most in one session: a word missed a third time comes back tomorrow instead */
     const bk=Q.backN=Q.backN||{};if(Q.mode!=='check'&&Q.mode!=='place'&&(bk[it.id]=(bk[it.id]||0)+1)<=2)comeBack(back===ex.type?Object.assign({},ex,{retry:true}):Object.assign(exFor(it,[back]),{retry:true}));say(it);
     if(!idk&&typeof Q.answer==='string'&&Q.answer.trim())contestLink(it,ex,Q.answer.trim(),snap,wasFirst);}
@@ -2984,14 +2996,14 @@ const TURTLE='<svg viewBox="0 2 24 20" fill="none" stroke="currentColor" stroke-
 function cvSpk(id,voice,slow,big){return '<button type="button" class="spk'+(big?' big':' sm')+(slow?' slow':'')+'" data-cvsay="'+esc(id)+'" data-v="'+voice+'"'+(slow?' data-slow="1"':'')+' aria-label="'+(slow?'Play this line slowly':'Play this line')+'">'+(slow?TURTLE:SPK)+'</button>';}
 /* Each conversation has two versions: written (mode 'text') and spoken (mode 'speak', open once the written one is done). */
 /* redo: just the replies you skipped in Say it, each after the line it answers. */
-function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;Q=null;bossDraw();personalise();
+function startConv(id,mode,redo){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;if(mode==='speak')offNote(id);Q=null;bossDraw();personalise();
   const st0=(S.convs||{})[id]||{};mode=redo?'speak':mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
   CV={c,mode,redo:!!redo,replay:mode==='speak'?!!st0.speak:!!(st0.done||st0.text),peeks:0,lines:redo?redo.flatMap(x=>x.prev?[x.prev,x.ln]:[x.ln]):c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=myVoice();preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,castVoice(p)));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it'+(redo?' · the lines you skipped':''):'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined: tap one for its meaning.</small>'+
     (()=>{const nw=chatNewWords(c);return nw.length&&!(redo)?'<details class="chat-new" open><summary>'+nw.length+' word'+(nw.length===1?'':'s')+' they use that you have not met yet</summary><p>'+nw.map(([t,g])=>'<b lang="'+LANG.code+'">'+esc(t)+'</b>'+(g?' = '+esc(enFlat(g)):'')).join(' · ')+'</p></details>':'';})()+
-    (mode==='speak'&&!redo&&canListen()?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+'</div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+    (mode==='speak'&&!redo&&canListen()&&convFiles(c).every(onHand)?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+'</div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
   convNext();}
 /* Write it is texting: no voices, just time to read each message. */
@@ -3014,7 +3026,7 @@ function convNext(){const C=CV;if(!C)return;C.bar=Math.max(C.bar||0,C.i/C.lines.
       {const nm=S.me&&S.me.name&&S.me.name.trim(),f=nm&&nameForms(nm,S.me.g);
         if(f&&f.voc!==f.nom&&!S.vocTip&&wordRe(f.voc).test(ln.lt)&&typeof VOC_TIP==='function'){S.vocTip=today();save();msgs.insertAdjacentHTML('beforeend','<div class="voc-tip">'+VOC_TIP(esc(f.nom),esc(f.voc))+'</div>');chatScroll();}}
       C.i++;if(C.mode==='text'){sfx('pop');return cvWait(convNext,(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
-      say(ln,false,castVoice(who));cvWait(convNext,canListen()?clipLen(ln.id,castVoice(who))*1000+300:(C.lines[C.i]||{}).kind==='m'?400:readTime(ln.lt));},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
+      say(ln,false,castVoice(who));cvWait(convNext,canListen(ln,castVoice(who))?clipLen(ln.id,castVoice(who))*1000+300:(C.lines[C.i]||{}).kind==='m'?400:readTime(ln.lt));},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
    how the other person reacts to it, and then the conversation joins up again. */
@@ -3070,7 +3082,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:own?ownEn:ln.en)+'</span></div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
-    cvWait(C.quick?qcNext:convNext,txt?400:canListen()?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
+    cvWait(C.quick?qcNext:convNext,txt?400:canListen(own?alt:ln,me)?(own?(alt?clipLen(alt.id,me):0.4):clipLen(ln.id,me))*1000+250:600);};
   /* Speaking grows with you the same way writing does, reply by reply (convStage: your words, or the reply's Quick chat step):
      still new → the Lithuanian is shown and played, you listen and say it after; getting there → some words are gaps,
      more of them as you learn, and you say the whole line; known → only the English or the situation, from memory.
@@ -3103,7 +3115,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     /* (Round 8) the box to write your reply in takes the cursor, so you can type straight away */
     {const si=$('#sin');if(si&&matchMedia('(pointer:fine)').matches)setTimeout(()=>{if(si.isConnected&&!si.disabled)si.focus({preventScroll:true});},60);}
     const peek=$('#peek');if(peek)peek.onclick=()=>{C.peeks++;used=true;peek.hidden=true;const g=$('#gapbox');if(g)g.hidden=true;$('#peekbox').hidden=false;micPause($('#stage'));say(ln,false,me);
-      const m=$('#mic');if(m)autoMic(m,S.sound?clipLen(ln.id,me)*1000+350:500);chatScroll();};
+      const m=$('#mic');if(m)autoMic(m,S.sound&&hearable(ln,me)?clipLen(ln.id,me)*1000+350:500);chatScroll();};
     /* "I said it" shows and plays the line, and you rate yourself: Yes or Almost counts, No comes back as a line to say again */
     const rateSaid=()=>{if(over||$('#crate'))return;stopHearing();btn.disabled=true;btn.textContent='Did you say it right?';
       /* (Round 5) shown before you wrote it or recorded it: that's a peek, and a line you only rate yourself on doesn't open the next unit */
@@ -3230,7 +3242,7 @@ function chatNewWords(c){const seen=new Map();(c.all||[]).filter(l=>l.kind==='p'
   return [...seen.values()];}
 /* Say it trains your ear: their lines made only of words you know well are audio only, and once you've said the
    conversation, all of them are. The words show after you answer (or when you tap the message). */
-function earLine(ln){const C=CV;if(!C||C.mode!=='speak'||C.redo||!canListen())return false;if(C.replay)return true;
+function earLine(ln){const C=CV;if(!C||C.mode!=='speak'||C.redo||!canListen(ln,castVoice(C.c.cast[ln.who]||C.c.cast[0])))return false;if(C.replay)return true;
   const names=lineNames();return ln.lt.split(/\s+/).every(tok=>{const w=norm(tok);if(!w||names.has(w)||GLUE[w])return true;const lv=wordLvl(w);return lv!==null&&lv>=2;});}
 function replyLevel(lt){const ls=lt.split(/\s+/).map(wordLvl).filter(l=>l!==null);return ls.length?Math.max(0,Math.min(...ls)):0;}
 /* new words → tap them; met but not yet remembered on a later day (level 0) → fill in letters; remembered (level 1 and up)
@@ -3404,7 +3416,7 @@ function qcNext(){const C=CV;if(!C)return;if(!C.base)C.base=C.queue.length;$('#l
   if(C.i>=C.queue.length)return qcFinish();
   const k=C.queue[C.i],msgs=$('#msgs'),r=S.replies[k.id];C.c=k.c;C.card=k;
   C.stage=['pick','tap','fill','type'][Math.min(3,r.lvl)];if(C.stage!=='type'&&k.me&&replyStage(k.me.lt)==='type')C.stage='type';C.promptL=k.they?(r.lvl>=3?4:3):1;
-  C.ear=r.lvl>=4&&S.sound&&!!k.they;C.peekedEar=false;
+  C.ear=r.lvl>=4&&S.sound&&!!k.they&&hearable(k.they,castVoice(k.c.cast[k.they.who||0]));C.peekedEar=false;
   if(C.i)msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(k.c.title)+'</span></div>');
   if(k.scene)msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(k.scene)+'</span></div>');
   if(!k.they){C.lastWho=k.c.cast[0].name;chatScroll();return later(()=>convTurn(k.me),500);}
@@ -3575,7 +3587,7 @@ $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest(
    so everyone also gets plain steps, with their own device first. */
 let installEvt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;renderInstall();});
-window.addEventListener('appinstalled',()=>{installEvt=null;renderInstall();toast('Installed. Gintaras is on your home screen.');});
+window.addEventListener('appinstalled',()=>{installEvt=null;renderInstall();keepSafe(true);toast('Installed. Gintaras is on your home screen.');});
 function devicePlatform(){const ua=navigator.userAgent;if(/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))return 'ios';return /Android/.test(ua)?'android':'desktop';}
 function isInstalled(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}
 const INSTALL_HOWTO={
@@ -3592,32 +3604,116 @@ if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.se
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&$('#sheet').hidden&&window.S)renderAll();});
 
 /* ===================== OFFLINE ===================== */
-/* Recordings live in the service worker's audio cache. "Download for offline" fills it with your voice for every
-   unit plus both voices for the conversations (the other person always speaks in their own voice). */
-const AUDIO_CACHE='gintaras-audio-v2';
+/* Learning never stops without signal.
+   - While you are online the app quietly saves what you will need next, the "ready window": the unit you are on and the
+     next two, the conversations after them in the voices they use, the words due in the coming week, About me, and the
+     pictures for all of it. One file at a time, after a lesson, when the app opens and when the signal comes back;
+     never a file it already has. With Data Saver on, nothing downloads by itself: there is a button instead.
+   - Offline, a card whose recording isn't saved is asked another way (reading or typing), never as a silent card, and
+     a picture that isn't saved shows its emoji.
+   - "Download the whole course" saves everything for a long trip: your lesson voice and the conversation voices.
+   Recordings and pictures live in caches the service worker shares (sw.js); their names never change with an update. */
+const AUDIO_CACHE='gintaras-audio-v2',PICS_CACHE='gintaras-pics-v1';
+const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1;
 const canOffline='caches' in window&&'serviceWorker' in navigator&&/^https?:/.test(location.protocol);
-let dl=null;
-function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).forEach(g=>set.add(audioUrl(me,g)));
-  CONVS.forEach(c=>Object.keys(SMAP).forEach(v=>{if(SMAP[v][c.id])set.add(audioUrl(v,c.id));}));Object.values(EMOJI).forEach(v=>{if(v[0]!=='#')set.add(picFile(v));});return [...set].map(f=>new URL(f,location.href).href);}
-async function offlineStatus(){const c=await caches.open(AUDIO_CACHE);const files=offlineFiles();let have=0;for(const f of files)if(await c.match(f))have++;return {have,total:files.length};}
-function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading recordings and pictures: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
+const HAVE=new Set();let haveReady=false,dl=null,pf=null;
+const absUrl=f=>new URL(f,location.href).href;
+/* what is saved on this device: read once at start, then kept up to date as files are saved */
+async function refreshHave(){if(!canOffline)return;try{for(const n of [AUDIO_CACHE,PICS_CACHE]){const c=await caches.open(n);(await c.keys()).forEach(r=>HAVE.add(r.url));}}catch(e){}
+  haveReady=true;}
+/* the file a word or line plays from, in this voice (or the voice it falls back to) */
+function audioAt(id,voice){const it=BYID[id];if(it&&it.au)id=it.au;const g=unitOf(id);let v=voice||S.voice||'ona';
+  for(let n=0;v&&n<4;n++,v=VOICE_BASE[v])if(SMAP[v]&&SMAP[v][g]&&SMAP[v][g][id])return absUrl(audioUrl(v,g));return '';}
+const onHand=f=>!canOffline||navigator.onLine||HAVE.has(f);
+/* a word or line can be heard: online it can be fetched; offline its recording must be saved here */
+function hearable(x,voice){const id=typeof x==='string'?x:x&&(x.au||x.id);if(!id||!canOffline||navigator.onLine)return true;const u=audioAt(id,voice);return !!u&&HAVE.has(u);}
+function unitFiles(g,voice){let v=voice||S.voice||'ona';for(let n=0;v&&n<4;n++,v=VOICE_BASE[v])if(SMAP[v]&&SMAP[v][g])return [absUrl(audioUrl(v,g))];return [];}
+/* a conversation's files: each line in the voice it is spoken in (theirs, or yours) */
+function convFiles(c){const set=new Set();(c.all||[]).forEach(ln=>{if(!ln.lt)return;const u=audioAt(ln.id,ln.kind==='p'?castVoice(c.cast[ln.who]||c.cast[0]):myVoice());if(u)set.add(u);});return [...set];}
+const picsOf=its=>its.map(i=>i&&picFor(i.lt)).filter(v=>v&&v[0]!=='#').map(v=>absUrl(picFile(v)));
+/* the files these words play from (a line with your name in it plays from its own file) */
+function filesOf(its,voice){const set=new Set();its.forEach(i=>{const u=i&&audioAt(i.au||i.id,voice);if(u)set.add(u);});return [...set];}
+/* The ready window, in the order it is saved: where you are first, then the words due, then what comes next. */
+function readyPlan(){const steps=[],lastDone=[];let ahead=0;
+  for(const id of STEPS){const u=UNIT_BY[id],c=CONV_BY[id];if(u&&ahead>=3)break;
+    if(!ahead&&!steps.length&&stepDone(id)){lastDone.push(id);continue;}
+    if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its))});}
+    else if(c)steps.push({c,files:convFiles(c)});}
+  const soon=Date.now()+7*DAY,due=practised().filter(i=>rec(i.id).due<=soon),extra=new Set();
+  filesOf(due).concat(picsOf(due)).forEach(f=>extra.add(f));
+  Object.keys(S.replies||{}).forEach(k=>{const r=S.replies[k],c=CONV_BY[unitOf(k)];if(c&&r&&r.due<=soon)convFiles(c).forEach(f=>extra.add(f));});
+  lastDone.slice(-2).forEach(id=>(UNIT_BY[id]?filesOf(UNIT_BY[id].lessons.flatMap(l=>l.items)):convFiles(CONV_BY[id])).forEach(f=>extra.add(f)));
+  if(S.me){const me=meItems();filesOf(me).concat(picsOf(me)).forEach(f=>extra.add(f));}
+  const files=[];const add=f=>{if(!files.includes(f))files.push(f);};
+  (steps[0]?steps[0].files:[]).forEach(add);extra.forEach(add);steps.slice(1).forEach(st=>st.files.forEach(add));
+  return {steps,files};}
+/* how far you can go with sound: the last unit ahead whose files (and everything before it) are saved */
+function readyUpTo(){let last=null;for(const st of readyPlan().steps){if(!st.files.every(f=>HAVE.has(f)))break;if(st.u)last=st.u;}return last;}
+async function dropOld(c,f){const p=new URL(f).pathname;for(const k of await c.keys())if(k.url!==f&&new URL(k.url).pathname===p){c.delete(k);HAVE.delete(k.url);}}
+async function saveFile(f){const mp3=/\.mp3(\?|$)/.test(f),c=await caches.open(mp3?AUDIO_CACHE:PICS_CACHE);
+  if(!(await c.match(f))){const r=await fetch(f,{priority:'low'});if(!r.ok)throw new Error(r.status);await c.put(f,r);if(mp3)await dropOld(c,f);}HAVE.add(f);}
+const saveData=()=>!!(navigator.connection&&navigator.connection.saveData);
+/* keep the ready window saved: quietly, one file at a time, only what is missing */
+async function prefetchReady(manual){if(pf||dl||!canOffline||!navigator.onLine||!window.S)return;if(!manual&&!(S.lessonsDone||0))return;
+  if(!haveReady)await refreshHave();if(saveData()&&!manual){renderReady();return;}
+  const want=readyPlan().files.filter(f=>!HAVE.has(f));if(!want.length){renderReady();return;}
+  keepSafe();pf={done:0,total:want.length};renderReady();
+  for(const f of want){if(!navigator.onLine||dl)break;try{await saveFile(f);}catch(e){}pf.done++;if(pf.done%4===0)renderReady();}
+  pf=null;renderReady();}
+/* ask the browser to keep saved files even when space runs low (it may say no; installed apps usually get a yes) */
+let persisted=null;
+async function keepSafe(again){try{if(!(navigator.storage&&navigator.storage.persist))return;persisted=await navigator.storage.persisted();
+    if(!persisted&&(again||!keepSafe.asked)){keepSafe.asked=true;persisted=await navigator.storage.persist();}}catch(e){}}
+/* the line on Learn and in Settings: how far you are ready offline */
+function readyLine(){if(!canOffline||!window.S||!(S.lessonsDone||0))return '';
+  if(pf)return 'Saving the next lessons for offline… '+pf.done+' of '+pf.total;
+  const last=readyUpTo(),missing=readyPlan().files.some(f=>!HAVE.has(f));
+  if(last&&!missing)return '✓ Ready offline, with sound, up to “'+esc(last.en)+'”';
+  if(!navigator.onLine)return last?'✓ Saved on this device, with sound, up to “'+esc(last.en)+'”. Lessons after that work as reading and typing.':'Lessons work as reading and typing until their sound is saved, next time you are online.';
+  if(saveData())return 'Data Saver is on, so nothing downloads by itself. <button type="button" class="linkbtn" data-ready-now>Save the next units now</button>';
+  return last?'✓ Ready offline, with sound, up to “'+esc(last.en)+'”':'';}
+function renderReady(){const html=readyLine();document.querySelectorAll('#offready,#offready-s').forEach(el=>{el.innerHTML=html;el.hidden=!html;
+    const b=el.querySelector('[data-ready-now]');if(b)b.onclick=()=>prefetchReady(true);});}
+/* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
+function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
+  CONVS.forEach(c=>convFiles(c).forEach(f=>set.add(f)));Object.values(EMOJI).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set];}
+/* a recording's size from its length (about 6 KB for each second of speech), a picture's about 4 KB */
+function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return 4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
+const mbOf=b=>b<1e6?'under 1 MB':'about '+Math.max(1,Math.round(b/1e6))+' MB';
+function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading the course: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
 async function renderOffline(){const box=$('#offline-box');if(!box)return;
-  if(!canOffline){box.innerHTML='<p class="note">This browser can’t save the recordings. Lessons still work offline using your device’s own voice.</p>';return;}
-  if(dl)return drawDl();
-  const st=await offlineStatus();if(dl)return drawDl();
-  if(st.have>=st.total){box.innerHTML='<div class="win badge"><b>Ready offline.</b> All recordings and pictures are saved on this device.</div><button type="button" class="linkbtn" id="btn-offline-clear">Remove the downloaded recordings</button>';
-    $('#btn-offline-clear').onclick=async()=>{await caches.delete(AUDIO_CACHE);toast('Recordings removed from this device');renderOffline();};return;}
-  const audioLeft=offlineFiles().filter(f=>f.includes('.mp3')).length;const mb=Math.max(1,Math.round(Math.min(st.total-st.have,audioLeft)*0.34+1.4));
-  box.innerHTML=(st.have?'<p class="note">'+st.have+' of '+st.total+' files are already saved from lessons you have played.</p>':'')+'<button type="button" class="btn amber" id="btn-offline">Download for offline (about '+mb+' MB)</button><p class="note">Best on Wi-Fi. If you switch voice later, download again for the new voice.</p>';
-  $('#btn-offline').onclick=downloadOffline;}
-async function downloadOffline(){if(dl||!canOffline)return;if(!navigator.onLine){toast('Connect to the internet first');return;}
-  try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch(e){}
-  const c=await caches.open(AUDIO_CACHE);const files=offlineFiles();dl={done:0,total:files.length,failed:0};drawDl();
-  for(const f of files){if(!(await c.match(f))){try{const r=await fetch(f);if(r.ok)await c.put(f,r.clone());else dl.failed++;}catch(e){dl.failed++;}}dl.done++;drawDl();}
-  const failed=dl.failed;dl=null;renderOffline();toast(failed?'Some files did not download. Try again on a better connection.':'Ready offline. Every lesson now works without signal.');}
-function netUI(){const off=!navigator.onLine;$('#net').hidden=!off;}
-window.addEventListener('offline',()=>{netUI();toast('You’re offline. Lessons still work.');});
-window.addEventListener('online',()=>{netUI();toast('Back online');});
+  if(!canOffline){box.innerHTML='<p class="note">This browser can’t save the recordings. Lessons still work offline as reading and typing.</p>';return;}
+  if(dl)return drawDl();if(!haveReady)await refreshHave();if(dl)return drawDl();try{if(navigator.storage&&navigator.storage.persisted)persisted=await navigator.storage.persisted();}catch(e){}
+  const files=offlineFiles(),left=files.filter(f=>!HAVE.has(f)),safe=persisted===true?'<p class="note">🔒 Saved files are protected: your browser keeps them even when space runs low.</p>':persisted===false?'<p class="note">Your browser may clear saved files if space runs low'+(IOS&&!isInstalled()?', or after about a week without a visit. Add Gintaras to your Home Screen (above) to keep them.':'. Installing the app (above) usually keeps them safe.')+'</p>':'';
+  const line='<p class="note offready" id="offready-s" hidden></p>';
+  if(!left.length){box.innerHTML=line+'<div class="win badge"><b>Ready offline.</b> The whole course, with sound and pictures, is saved on this device.</div>'+safe+'<button type="button" class="linkbtn" id="btn-offline-clear">Remove the downloaded course</button>';
+    $('#btn-offline-clear').onclick=async()=>{await caches.delete(AUDIO_CACHE);await caches.delete(PICS_CACHE);HAVE.clear();toast('Removed. The next lessons are saved again by themselves.');renderOffline();renderReady();};renderReady();return;}
+  const bytes=left.reduce((n,f)=>n+fileBytes(f),0);
+  box.innerHTML=line+safe+'<button type="button" class="btn amber" id="btn-offline">Download the whole course ('+mbOf(bytes)+')</button><p class="note">For a long trip without signal. Best on Wi-Fi. It saves your lesson voice ('+(S.voice==='leonas'?'man':'woman')+'); if you switch voice later, the new voice downloads as you go.</p>';
+  $('#btn-offline').onclick=()=>downloadOffline(bytes);renderReady();}
+async function downloadOffline(bytes){if(dl||!canOffline)return;if(!navigator.onLine){toast('Connect to the internet first');return;}
+  try{if(navigator.storage&&navigator.storage.estimate){const e=await navigator.storage.estimate();if(e.quota&&e.quota-(e.usage||0)<bytes*1.2){toast('Not enough free space on this device for the whole course ('+mbOf(bytes)+'). The next units still save by themselves.',5000);return;}}}catch(e){}
+  keepSafe(true);while(pf)await new Promise(r=>setTimeout(r,300));
+  const files=offlineFiles().filter(f=>!HAVE.has(f));dl={done:0,total:files.length,failed:0};drawDl();
+  for(const f of files){if(!navigator.onLine){dl.failed+=files.length-dl.done;break;}try{await saveFile(f);}catch(e){dl.failed++;}dl.done++;drawDl();}
+  const failed=dl.failed;dl=null;renderOffline();toast(failed?'Some files did not download. Try again on a better connection.':'Done. The whole course is saved: every lesson works without signal.',4000);}
+/* a lesson or conversation started offline without its sound says so, once */
+function offNote(id){if(!canOffline||navigator.onLine)return;const c=CONV_BY[id],fs=c?convFiles(c):filesOf(UNIT_BY[id]?UNIT_BY[id].lessons.flatMap(l=>l.items):[]);if(fs.every(f=>HAVE.has(f)))return;
+  toast(c?'The sound for this conversation downloads next time you’re online. For now you read it.':'Audio for this unit downloads next time you’re online. For now it’s reading and typing.',4500);}
+/* offline: a calm banner, and the things that need internet say so */
+function netUI(){const off=!navigator.onLine;$('#net').hidden=!off;const b=$('#offbar');
+  if(b){b.hidden=!off;b.textContent='You’re offline. Keep learning: '+(window.cloud&&cloud.signedIn&&cloud.signedIn()?'your progress syncs when you’re back.':'your progress is saved on this device.');}renderReady();}
+window.addEventListener('offline',()=>{netUI();toast('You’re offline. Keep learning.');});
+window.addEventListener('online',()=>{netUI();toast('Back online');setTimeout(()=>prefetchReady(),2500);});
+window.addEventListener('gintaras:idle',()=>setTimeout(()=>{renderIosNudge();prefetchReady();},1500));
+refreshHave().then(()=>{netUI();renderIosNudge();setTimeout(()=>prefetchReady(),4000);});
+/* iPhone and iPad: Safari can clear a website's saved files after about a week without a visit, unless it is on the
+   Home Screen. So once, after the first lesson, a plain nudge to add it there. */
+function renderIosNudge(){const el=$('#ios-nudge');if(!el)return;const show=IOS&&!isInstalled()&&(S.lessonsDone||0)>=1&&!S.iosNudge;el.hidden=!show;if(!show)return;
+  el.innerHTML='<strong>Keep Gintaras working offline</strong><p class="note">Add it to your Home Screen. On iPhone and iPad, Safari can clear what a website saved after about a week without a visit, but not for apps on the Home Screen. That is what keeps your lessons working without signal.</p><div class="row2"><button type="button" class="btn amber" data-a="how">Show me how</button><button type="button" class="btn ghost" data-a="no">Not now</button></div>';
+  const done=()=>{S.iosNudge=today();save();el.hidden=true;};
+  el.querySelector('[data-a="how"]').onclick=()=>{done();showView('settings');setTimeout(()=>{const x=$('#install');if(x)x.scrollIntoView({block:'start',behavior:'smooth'});},120);};
+  el.querySelector('[data-a="no"]').onclick=done;}
 
 $('#btn-jump').onclick=()=>{const cur=document.querySelector('.unit:not(.locked):not(.done)')||document.querySelector('.convcard:not(.locked)');if(cur)cur.scrollIntoView({behavior:'smooth',block:'start'});};
 

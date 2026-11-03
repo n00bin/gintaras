@@ -1,14 +1,18 @@
 /* Gintaras service worker: lets the app install, and open without signal.
    - The page and its scripts: network first, so updates arrive as soon as you are online; the saved copy is the fallback.
-   - Audio: each file is saved the first time it plays, then served from the device. The player asks for byte
-     ranges, so ranges are cut from the saved file.
+   - Audio: each file is saved the first time it plays (or when the app saves what comes next), then served from the
+     device. The player asks for byte ranges, so ranges are cut from the saved file.
+   - Pictures: saved the first time they show, then served from the device (checked for a newer drawing once a visit).
+   - Recordings and pictures keep the same cache name across updates, so an update never throws them away; only the
+     page and its scripts (SHELL) are replaced with each version.
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v168';
+const SHELL = 'gintaras-shell-v169';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
-const KEEP = [SHELL, AUDIO, CDN];
+const PICS = 'gintaras-pics-v1';
+const KEEP = [SHELL, AUDIO, CDN, PICS];
 const CORE = ['./', 'index.html', 'lang/lt.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
 const CDN_HOSTS = ['cdn.jsdelivr.net', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 const CDN_CORE = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js'];
@@ -22,7 +26,18 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys()
-    .then(keys => Promise.all(keys.filter(k => !KEEP.includes(k)).map(k => caches.delete(k))))
+    .then(async keys => {
+      // pictures saved by an older version (with the page, or with the recordings) move to their own cache first
+      const pics = await caches.open(PICS);
+      for (const k of keys.filter(k => k !== PICS && k !== CDN)) {
+        const c = await caches.open(k);
+        for (const r of await c.keys()) if (new URL(r.url).pathname.includes('/pics/')) {
+          if (!(await pics.match(r.url))) { const hit = await c.match(r); if (hit) await pics.put(r.url, hit); }
+          if (k === AUDIO) await c.delete(r);
+        }
+      }
+      return Promise.all(keys.filter(k => !KEEP.includes(k)).map(k => caches.delete(k)));
+    })
     .then(() => self.clients.claim()));
 });
 
@@ -32,6 +47,7 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   if (url.origin === location.origin) {
     if (url.pathname.endsWith('.mp3')) e.respondWith(audio(req));
+    else if (url.pathname.includes('/pics/')) e.respondWith(picture(req, e));
     else e.respondWith(networkFirst(req));
   } else if (CDN_HOSTS.includes(url.hostname)) {
     e.respondWith(cacheFirst(req));
@@ -50,6 +66,20 @@ async function networkFirst(req) {
     if (hit) return hit;
     throw err;
   }
+}
+
+// A picture: the saved copy straight away; once a visit it is also checked for a newer drawing in the background.
+const checked = new Set();
+async function picture(req, e) {
+  const cache = await caches.open(PICS);
+  const hit = await cache.match(req.url);
+  const fresh = () => fetch(req.url, { cache: 'no-cache' }).then(res => { if (res.ok) cache.put(req.url, res.clone()); return res; });
+  if (hit) {
+    if (!checked.has(req.url)) { checked.add(req.url); e.waitUntil(fresh().catch(() => {})); }
+    return hit;
+  }
+  checked.add(req.url);
+  return fresh();
 }
 
 async function cacheFirst(req) {
