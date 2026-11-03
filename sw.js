@@ -8,7 +8,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v169';
+const SHELL = 'gintaras-shell-v170';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
@@ -16,11 +16,14 @@ const KEEP = [SHELL, AUDIO, CDN, PICS];
 const CORE = ['./', 'index.html', 'lang/lt.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
 const CDN_HOSTS = ['cdn.jsdelivr.net', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 const CDN_CORE = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js'];
+// the app's fonts (the same address as in index.html), saved at install so even the first offline open has them
+const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap';
 
 self.addEventListener('install', e => {
   e.waitUntil(Promise.all([
     caches.open(SHELL).then(c => c.addAll(CORE)),
     caches.open(CDN).then(c => c.addAll(CDN_CORE)).catch(() => {}),
+    saveFonts().catch(() => {}),
   ]).then(() => self.skipWaiting()));
 });
 
@@ -80,6 +83,18 @@ async function picture(req, e) {
   }
   checked.add(req.url);
   return fresh();
+}
+
+// The font stylesheet and its files for the letters the app uses (latin and latin-ext, which has ą č ę ė į š ų ū ž).
+async function saveFonts() {
+  const cache = await caches.open(CDN);
+  if (await cache.match(FONT_CSS)) return;
+  const res = await fetch(FONT_CSS);
+  if (!res.ok) return;
+  const css = await res.clone().text(), files = [];
+  css.replace(/\/\*\s*(latin(?:-ext)?)\s*\*\/[^}]*?url\(([^)]+)\)/g, (m, sub, u) => files.push(u));
+  await Promise.all(files.map(u => fetch(u).then(r => r.ok && cache.put(u, r))));
+  await cache.put(FONT_CSS, res);
 }
 
 async function cacheFirst(req) {

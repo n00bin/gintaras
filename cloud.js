@@ -185,6 +185,8 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
     '<input data-a="pass" type="password" autocomplete="current-password" placeholder="Password (8+ characters)">'+
     '<div class="row2"><button class="btn ghost" data-a="in">Sign in</button><button class="btn ghost" data-a="up">Create account</button></div><button type="button" class="linkbtn" data-a="back">Back</button></div><p class="note" data-a="msg" role="status"></p>';
   const q=k=>box.querySelector('[data-a="'+k+'"]');const say=(t,bad)=>{const m=q('msg');m.textContent=t||'';m.style.color=bad?'var(--bad)':'var(--muted)';};
+  /* offline the sign-in buttons are switched off (the note above says why); they come back when the signal does */
+  if(!navigator.onLine){box.querySelectorAll('[data-a="pick"] button').forEach(b=>b.disabled=true);return;}
   if(cfg.GOOGLE){q('google').onclick=googleRedirect;googleButton(q('gbtn'),say);}
   q('email').onclick=()=>{q('pick').hidden=true;q('form').hidden=false;say('');q('mail').focus();};
   q('back').onclick=()=>{q('form').hidden=true;q('pick').hidden=false;say('');};

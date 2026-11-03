@@ -14,7 +14,7 @@ const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'ut
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm});')(c);
+new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,picFile:typeof picFile!=="undefined"?picFile:null});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -40,6 +40,8 @@ const lt = {}; c.ITEMS.forEach(i => { (lt[i.lt] = lt[i.lt] || []).push(i.id); })
 say('items sharing the same Lithuanian', Object.entries(lt).filter(e => e[1].length > 1).map(e => e[0]));
 say('phrase words without a meaning in "Built from"', [...new Set(c.ITEMS.filter(i => i.lt.trim().includes(' ')).flatMap(i => i.lt.split(' ').map(w => c.norm(w)).filter(k => k && !c.WORDS[k] && !c.GLUE[k])))]);
 say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt] && !c.NO_PIC.has(i.lt)).map(i => i.lt));
+// every picture must be on the server, or the app shows an emoji and the offline download never finishes
+if (c.picFile) say('pictures missing from pics/', [...new Set(Object.values(c.EMOJI).filter(v => v && v[0] !== '#'))].filter(v => !fs.existsSync(path.join(__dirname, '..', c.picFile(v)))).map(v => v + ' ' + c.picFile(v)));
 { const base = new Set(c.ITEMS.map(i => i.sec || i.lesson.id.replace(/-\d+$/, ''))); /* sec: the section a word was written in, kept when lessons are regrouped */ const ids = c.CANDO.map(x => x[0]);
   say('real-life skills pointing at a missing lesson', c.CANDO.flatMap(x => x[3].filter(l => !base.has(l)).map(l => x[0] + ': ' + l)));
   say('real-life skills pointing at a missing conversation', c.CANDO.filter(x => x[4] && !c.CONV_BY[x[4]]).map(x => x[0] + ': ' + x[4]));
