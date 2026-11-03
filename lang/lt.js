@@ -80,7 +80,7 @@ const COURSE = [
   ['Puikiai','Great'],
   ['Nieko tokio','No problem','Literally "nothing of the kind".'],
   ['Malonu susipažinti','Nice to meet you'],
-  ['Iki pasimatymo','See you later'],
+  ['Iki pasimatymo','Goodbye (until we meet)','Word for word "until seeing (each other)": goodbye to someone you will see again.'],
   ['Sėkmės','Good luck'],
  ]},
  {id:'u1c',title:'Who I am',items:[
@@ -99,11 +99,11 @@ const COURSE = [
   ['Kavos?','Some coffee?','An offer. Answer Taip, prašau (yes, please) or Ne, ačiū (no, thanks).'],
   ['Arbatos?','Some tea?'],
  ]},
- {id:'u1d',title:'I am, you are',items:[
+ {id:'u1d',title:'I am, you are, we are',items:[
   ['Aš esu Tomas','I am Tomas','Esu means "am". The verb already says who, so you can leave out aš: Esu Tomas.'],
   ['Tu esi Jonas?','Are you Jonas?','Esi means "are", to one friend. Said as a question, it asks.'],
   ['Jis yra Jonas','He is Jonas','Yra means "is". It is the same for he and she.'],
-  ['Ji yra Rūta','She is Rūta'],
+  ['Ji yra Rūta','She is Ruta'],
   ['Mes esame čia','We are here','Esame means "are", for we.'],
  ]},
 ]},
@@ -1226,7 +1226,7 @@ COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.fil
 /* One tip per lesson, written for that lesson's words. <b> marks Lithuanian. */
 const LESSON_TIPS={
 'u0a-1':'Lithuanian spelling is very regular: most letters keep their sound. Learn the five tricky ones here (<b>c</b>, <b>j</b>, <b>š</b>, <b>ž</b>, <b>č</b>) and you can sound out nearly any word.',
-'u0b-1':'A vowel with a line or a hook (<b>ū</b>, <b>ą</b>, <b>ę</b>, <b>į</b>, <b>ų</b>) is held longer, and <b>ė</b> is the "ay" in "day". <b>ie</b> is one sound, "yeh" (muz<b>ie</b>jus). Roll the <b>r</b> by tapping your tongue once behind your top teeth, like a quick "d".',
+'u0b-1':'A vowel with a line or a hook (<b>ū</b>, <b>ą</b>, <b>ę</b>, <b>į</b>, <b>ų</b>) is held longer, and <b>ė</b> is a long, steady "ay": the "ay" in "day" without sliding into "ee". <b>ie</b> is one sound, "yeh" (muz<b>ie</b>jus). Roll the <b>r</b> by tapping your tongue once behind your top teeth, like a quick "d".',
 'u1d-1':'"To be" changes with who: <b>aš esu</b> (I am), <b>tu esi</b> (you are), <b>jis yra</b> and <b>ji yra</b> (he is, she is), <b>mes esame</b> (we are). The verb already says who, so <b>aš</b> and <b>tu</b> are often left out: <b>Esu Tomas.</b>',
 'u1a-0':'Your first conversation is already here. <b>Labas! Kaip sekasi?</b> means "Hi! How are you?" and the answer is <b>Gerai, ačiū</b>: "Good, thanks." <b>Prašau</b> is please, and also "you\'re welcome".<br><br><b>Two new letters:</b> <b>č</b> is "ch" (a<b>čiū</b>, "AH-choo") and <b>š</b> is "sh" (pra<b>š</b>au). The line on <b>ū</b> makes it a long "oo".',
 'u1a-1':'<b>Labas</b> is for friends and people your age; <b>Sveiki</b> is the safe choice with strangers, older people and groups. Notice <b>laba diena</b>, not labas: diena (day) is a feminine word, so "good" changes to match.',
@@ -2815,7 +2815,7 @@ const CANDO=[
 const ALSO={'labas':['Sveiki'],'sveiki':['Labas'],'labas rytas':['Labas','Sveiki'],'laba diena':['Labas','Sveiki'],'labas vakaras':['Labas','Sveiki'],
   'viso gero':['Iki','Iki pasimatymo'],'iki':['Viso gero','Iki pasimatymo'],'iki pasimatymo':['Viso gero','Iki'],'ačiū':['Labai ačiū'],'labai ačiū':['Ačiū']};
 /* Why a typed word was wrong. Most beginner mistakes in Lithuanian are word endings, so endings get the most help. */
-const MARK_SOUND={'č':'"ch" as in church','š':'"sh" as in shop','ž':'the "s" in measure','ė':'a long "ay"','ū':'a long "oo"','ą':'a long "ah"','ę':'a long "eh"','į':'a long "ee"','ų':'a long "oo"'};
+const MARK_SOUND={'č':'"ch" as in church','š':'"sh" as in shop','ž':'the "s" in measure','ė':'a long, steady "ay" that doesn\'t slide into "ee" (closer to the "e" in "bed", held)','ū':'a long "oo"','ą':'a long "ah"','ę':'a long "eh"','į':'a long "ee"','ų':'a long "oo"'};
 const WHO_WORDS=['aš','tu','mes','jūs'];
 /* (Round 8) examples in a Why note: only those whose words you've had a New word card for (the app says which, through
    exTaught), so a note never shows a word you haven't met. lead goes in front of the first one. */
