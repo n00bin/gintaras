@@ -8,7 +8,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v174';
+const SHELL = 'gintaras-shell-v175';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
@@ -51,21 +51,25 @@ self.addEventListener('fetch', e => {
   if (url.origin === location.origin) {
     if (url.pathname.endsWith('.mp3')) e.respondWith(audio(req));
     else if (url.pathname.includes('/pics/')) e.respondWith(picture(req, e));
-    else e.respondWith(networkFirst(req));
+    else e.respondWith(networkFirst(req, e));
   } else if (CDN_HOSTS.includes(url.hostname)) {
     e.respondWith(cacheFirst(req));
   }
 });
 
-async function networkFirst(req) {
+async function networkFirst(req, ev) {
   const cache = await caches.open(SHELL);
+  const saved = async () => await cache.match(req, { ignoreSearch: true }) || (req.mode === 'navigate' && await cache.match('index.html'));
+  // 'no-cache' asks the server whether the file changed, so an update shows up on the next open, not 10 minutes later.
+  const net = fetch(req, { cache: 'no-cache' }).then(res => { if (res.ok) cache.put(req, res.clone()); return res; });
+  if (ev) ev.waitUntil(net.catch(() => {}));
+  // (Round 10) on a weak signal the network can hang for half a minute: after 3 seconds the saved copy is shown, and the
+  // fresh one still lands in the cache for the next open
+  const slow = new Promise(r => setTimeout(r, 3000)).then(saved).then(hit => hit || net);
   try {
-    // 'no-cache' asks the server whether the file changed, so an update shows up on the next open, not 10 minutes later.
-    const res = await fetch(req, { cache: 'no-cache' });
-    if (res.ok) cache.put(req, res.clone());
-    return res;
+    return await Promise.race([net, slow]);
   } catch (err) {
-    const hit = await cache.match(req, { ignoreSearch: true }) || (req.mode === 'navigate' && await cache.match('index.html'));
+    const hit = await saved();
     if (hit) return hit;
     throw err;
   }

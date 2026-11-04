@@ -53,7 +53,8 @@ const LANG={code:'lt',en:'Lithuanian',own:'Lietuvių',speech:'lt-LT',tts:'lt-LT'
     if(adv(t)&&adj(g,stem(t))&&!(gl(g)&&gl(A)&&gl(g)!==gl(A))&&!(gl(g)&&!gl(A)&&g!==A))return '<b>'+g+'</b> describes a thing (a '+en(t)+' evening); <b>'+t+'</b> describes how things are (<b>Man '+t+'</b>, I\'m '+en(t)+'). Here it\'s how, so <b>'+t+'</b>.';
     if(adv(g)&&adj(t,stem(g)))return '<b>'+g+'</b> describes how things are (<b>Man '+g+'</b>); <b>'+t+'</b> describes a thing. Here it describes a thing, so <b>'+t+'</b>.';
     return '';},
-  qWord:'ar',qNote:'Right too: <b>ar</b> at the front only marks a question, and in speech it is often left out.',dropBe:'Right too: in everyday speech Lithuanians often leave out <b>esu</b> (am), <b>esi</b> (are), <b>yra</b> (is) and the like. Written in full, it is the version above.'};
+  qWord:'ar',qNote:'Right too: <b>ar</b> at the front only marks a question, and in speech it is often left out.',dropBe:'Right too: in quick speech the "am / is" word (<b>esu</b>, <b>esi</b>, <b>yra</b>) is often dropped. Written in full, it is the version above.',
+  dropBoth:'Right too: in quick speech both <b>aš</b> (I) and <b>esu</b> (am) can be left out. Written in full, it is the version above.'};
 const LEVELS=[[0,'Turistas','Tourist'],[150,'Keliautojas','Traveler'],[400,'Pažįstamas','Acquaintance'],[800,'Draugas','Friend'],[1500,'Vilnietis','Vilnius local'],[3000,'Lietuvis','Honorary Lithuanian']];
 /* ===================== COURSE CONTENT ===================== */
 /* item: [lt, en, note?, altLt?] */

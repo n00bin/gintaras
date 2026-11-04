@@ -271,6 +271,8 @@ with sync_playwright() as p:
         pics_ok(pg, g)
         s("()=>{const x=document.querySelector('.fall #g-x,.fall #fall-x');if(x)x.click();}"); pg.wait_for_timeout(400)
         s("()=>{const d=document.querySelector('.fall #g-done,.fall .fall-res .btn.ghost');if(d)d.click();}"); pg.wait_for_timeout(200)
+        if s("()=>!!document.querySelector('.fall')"):   # (Round 10) an end button waits 0.8 s before it can be pressed
+            pg.wait_for_timeout(900); s("()=>{const d=document.querySelector('.fall #g-done,.fall .fall-res .btn.ghost');if(d)d.click();}"); pg.wait_for_timeout(200)
         if s("!!document.querySelector('.fall')"):
             bad('%s did not close' % g)
         check_said(pg, g)
