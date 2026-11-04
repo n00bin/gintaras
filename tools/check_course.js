@@ -5,6 +5,7 @@
 // - no two items share the same English (answers would be ambiguous)
 // - every word you must write or say in a conversation was taught earlier on the path
 // - every conversation reply can be said (words, English and a prompt), every choice has two or more options
+// - (Round 11) a mini chat uses only the words of the lessons before it; every make-a-sentence word is taught by some card
 const fs = require('fs');
 const path = require('path');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
@@ -14,7 +15,7 @@ const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'ut
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,picFile:typeof picFile!=="undefined"?picFile:null});')(c);
+new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,MAKE:typeof MAKE!=="undefined"?MAKE:[],picFile:typeof picFile!=="undefined"?picFile:null});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -80,6 +81,19 @@ c.PATH.filter(p => typeof p === 'string').forEach(id => {
   }
 });
 say('conversation words not taught earlier', unknown);
+/* (Round 11) a mini chat (after: a lesson) uses only words of that lesson and the ones before it, in every line, theirs and the
+   wrong options too: nothing new to announce */
+{ const bad = [], order = [];
+  c.PATH.filter(p => typeof p === 'string' && !c.CONV_BY[p]).forEach(id => { const u = c.COURSE.find(x => x.id === id); if (u) u.lessons.forEach(l => order.push(l)); });
+  c.CONVS.filter(v => v.after).forEach(v => { const k = order.findIndex(l => l.id === v.after); if (k < 0) { bad.push(v.id + ': lesson ' + v.after + ' is not on the path'); return; }
+    const kn = new Set(names); order.slice(0, k + 1).forEach(l => l.items.forEach(i => tok(i.lt).concat((i.alt || []).flatMap(tok)).forEach(w => kn.add(w))));
+    v.all.filter(l => l.lt).forEach(l => tok(l.lt).forEach(w => { if (!kn.has(w)) bad.push(v.id + ': "' + w + '" in ' + l.lt); }));
+    v.all.filter(l => l.kind === 'm').forEach(l => (l.no || []).forEach(n => tok(n[0]).forEach(w => { if (!kn.has(w)) bad.push(v.id + ': "' + w + '" in the wrong option ' + n[0]); }))); });
+  say('mini chat words not taught by the lesson it follows', bad); }
+/* (Round 11) every word of a "make your own sentence" is a word of some course card (the app shows one only once all of them
+   are taught, so a word no card teaches would hide it for good) */
+{ const lexI = new Set(); c.ITEMS.forEach(i => tok(i.lt0 || i.lt).forEach(w => lexI.add(w)));
+  say('make-a-sentence words that no card teaches', c.MAKE.flatMap(m => tok(m[0]).filter(w => !lexI.has(w) && !names.has(w)).map(w => m[0] + ': ' + w))); }
 
 /* (Round 8) A tip doesn't teach a word: every Lithuanian word a lesson tip, a speaking tip, a unit tip, its pattern table or
    a grammar table or a New word card's note shows has its own New word card, in the lesson that shows it or before it on the path. Lithuanian here

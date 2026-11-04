@@ -454,6 +454,13 @@
 "cv34:7": "Kiek laiko tu čia?",
 "cv34:9": "Ar tau čia patinka?"
 },
+"despina_cv35": {
+"cv35:1": "Labas vakaras!",
+"cv35:11": "Labanakt! Iki pasimatymo!",
+"cv35:3": "Gerai, ačiū.",
+"cv35:6": "Nieko tokio!",
+"cv35:9": "Prašau!"
+},
 "despina_cv4": {
 "cv4:0": "Atleiskite!",
 "cv4:11": "Viso gero!",
@@ -1177,6 +1184,13 @@
 "cv34:7": "Kiek laiko tu čia?",
 "cv34:9": "Ar tau čia patinka?"
 },
+"orus_cv35": {
+"cv35:1": "Labas vakaras!",
+"cv35:11": "Labanakt! Iki pasimatymo!",
+"cv35:3": "Gerai, ačiū.",
+"cv35:6": "Nieko tokio!",
+"cv35:9": "Prašau!"
+},
 "orus_cv4": {
 "cv4:0": "Atleiskite!",
 "cv4:11": "Viso gero!",
@@ -1447,6 +1461,13 @@
 "cv31:5": "Ten, tiesiai, paskui dešinėn. Jūs turistas?",
 "cv31:7": "Sveiki atvykę! Ar jau matėte jūrą?",
 "cv31:9": "O! Jūra, miškas..."
+},
+"pulcherrima_cv35": {
+"cv35:0": "Labas vakaras!",
+"cv35:10": "Labanakt!",
+"cv35:2": "Kaip sekasi?",
+"cv35:5": "Atsiprašau!",
+"cv35:8": "Ačiū!"
 },
 "sadachbia_cv33": {
 "cv33:0": "Laba diena. Kas atsitiko?",

@@ -38,7 +38,7 @@ SCAN = r"""(where)=>{const e=Q&&Q.queue[Q.idx];if(!e)return null;const st=$(wher
   /* (Round 7) every word counts, a sentence card's choices too: no "another ending of the answer" exception */
   /* a word with a Lithuanian letter that no card teaches at all ("Labą", "Šaunu") counts as well */
   const words=norm(parts.join(' ')).split(/[^\p{L}]+/u).filter(w=>w.length>1&&(window.__LTW.has(w)||/[ąčęėįšųūž]/.test(w))&&!nameish(w)); /* one letter on its own is a letter tile, not a word */
-  return {type:e.type,id:e.item&&e.item.id,lt:e.item&&e.item.lt,drill:e.drill&&e.drill.frame,blank:!STEPLESS[e.type]&&!(st.innerText||'').trim(),
+  return {type:e.type,id:e.item&&e.item.id,lt:e.item&&e.item.lt||e.sent&&e.sent.lt,drill:e.drill&&e.drill.frame,blank:!STEPLESS[e.type]&&!(st.innerText||'').trim(),
     words:[...new Set(words)].map(w=>({w,items:(WORD_ITEMS[w]||[]).map(i=>i.id),app:(WORD_ITEMS[w]||[]).filter(tg).map(i=>i.id+':'+JSON.stringify(peek(i.id)))}))};}"""
 
 # in the page: answer the card on screen (right, or "I don't know"); returns what it did
@@ -51,6 +51,8 @@ ANSWER = r"""(wrong)=>{const e=Q&&Q.queue[Q.idx];if(!e)return 'none';const st=$(
   if(e.type==='mc_en_lt'&&pick(it.lt)||(e.type==='mc_lt_en'||e.type==='listen')&&pick(it.en)||e.type==='frame'&&pick(e.drill.ans)||e.type==='hear'&&pick(e.line.en)){if(vis(btn)&&/check/i.test(btn.textContent))btn.click();return 'pick';}
   if(e.type==='match'){e.items.forEach(i=>{const l=st.querySelector('.opt[data-side="l"][data-id="'+i.id+'"]'),r=st.querySelector('.opt[data-side="r"][data-id="'+i.id+'"]');if(l&&r){l.click();r.click();}});return 'match';}
   if(e.type==='gaps'){const bs=[...st.querySelectorAll('.lb')];if(bs.length&&vis(idk)){idk.click();return 'idk';}}
+  if(e.type==='make'){const inp=$('#ans');if(inp){inp.value=e.sent.lt;inp.dispatchEvent(new Event('input',{bubbles:true}));}Q.answer=e.sent.lt;if(btn.disabled)btn.disabled=false;btn.click();return 'typed';}
+  if(e.type==='speak'||e.type==='spkask')return 'wait';
   if(/^(type|speak|dictate|build|tiles|cloze)$/.test(e.type)){const a=e.type==='cloze'?e.word:it.lt;const inp=$('#ans');if(inp&&!inp.readOnly){inp.value=a;inp.dispatchEvent(new Event('input',{bubbles:true}));}
     Q.answer=e.type==='build'||e.type==='tiles'?a.replace(/[?!.,]/g,'').toLowerCase():a;if(btn.disabled)btn.disabled=false;btn.click();return 'typed';}
   if(vis(idk)){idk.click();return 'idk';}
@@ -75,7 +77,7 @@ def bad(msg):
 
 def play(pg, label, taught, wrong_every=4, reload_at=None):
     """Plays the session on screen to the end. taught: ids whose New word card has been shown (kept across sessions)."""
-    s = pg.evaluate; n = 0; last = None; same = 0; cards = 0
+    s = pg.evaluate; n = 0; last = None; same = 0; cards = 0; spk_wait = 0
     while True:
         st = s("()=>Q?{idx:Q.idx,len:Q.queue.length}:null")
         if not st or st['idx'] >= st['len']: break
@@ -83,6 +85,10 @@ def play(pg, label, taught, wrong_every=4, reload_at=None):
         same = same + 1 if key == last else 0; last = key
         if same > 0 and s("()=>!!(Q&&Q.lockedTo>Date.now())"):   # locked a moment after moving on by itself: wait, it isn't stuck
             same -= 1; pg.wait_for_timeout(60); continue
+        # (Round 11) a speaking card out loud: the pause to say it in (a few seconds after a reload, before the test speeds it up)
+        if same > 0 and spk_wait < 150 and s("()=>!!(Q&&Q.queue[Q.idx]&&Q.queue[Q.idx].type==='speak'&&document.querySelector('#stage #rate[hidden]'))"):
+            same -= 1; spk_wait += 1; pg.wait_for_timeout(60); continue
+        if same == 0: spk_wait = 0
         if same > 8:
             bad('%s: stuck on card %s (%s)' % (label, st['idx'], s("Q.queue[Q.idx].type"))); s("()=>{Q.idx++;renderStep();}"); continue
         if same == 0:
@@ -91,18 +97,18 @@ def play(pg, label, taught, wrong_every=4, reload_at=None):
             seen_types[sc['type']] = seen_types.get(sc['type'], 0) + 1
             if sc['type'] == 'intro' and sc['id']: taught.add(sc['id'])
             elif sc['blank']: bad('%s: blank %s card (%s)' % (label, sc['type'], sc['lt'] or sc['drill']))
-            elif sc['type'] not in ('tip', 'revtip', 'metip', 'mesay', 'intro'):
+            elif sc['type'] not in ('tip', 'revtip', 'metip', 'mesay', 'intro', 'maketip', 'spkask'):
                 for w in sc['words']:
                     if not any(i in taught for i in w['items']):
                         bad('%s: "%s" shown on a %s card (%s) before its New word card%s' % (label, w['w'], sc['type'], sc['lt'] or sc['drill'], (' [app counts as taught: %s]' % '; '.join(w['app'])[:300]) if w['app'] else ''))
             cards += 1
             if reload_at and cards == reload_at:
-                pg.reload(); pg.wait_for_function("typeof Q!=='undefined'&&typeof S!=='undefined'"); pg.wait_for_timeout(1200); s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{}"); s(FAST_AUTO)
+                pg.reload(); pg.wait_for_function("typeof Q!=='undefined'&&typeof S!=='undefined'"); pg.wait_for_timeout(1200); s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{};window.SAY_PAUSE=0.05"); s(FAST_AUTO)
                 if not s("!!Q"): s("resumePlace()")
                 pg.wait_for_timeout(200); last = None; continue
             n += 1
             did = s(ANSWER, n % wrong_every == 0)
-            if did != 'step' and sc['type'] not in ('tip', 'revtip', 'metip', 'mesay', 'intro'):
+            if did != 'step' and sc['type'] not in ('tip', 'revtip', 'metip', 'mesay', 'intro', 'maketip', 'spkask'):
                 fb = s(SCAN, '#foot')
                 for w in (fb or {}).get('words', []):
                     if not any(i in taught for i in w['items']):
@@ -121,9 +127,9 @@ def fresh(pg, name='Bob'):
     # nothing is saved on the way out, or the last profile comes back
     s("()=>{window.save=window.saveSoon=()=>{};window.onbeforeunload=null;Q=null;localStorage.clear();}"); pg.reload(); pg.wait_for_timeout(1200)
     if pg.evaluate("Object.keys(S.items).length"): bad('could not start from an empty profile')
-    s("()=>{S.welcomed=true;S.signinAsked='x';S.toured=true;S.meAsked=1;S.sound=false;S.selfRate=true;S.noRecDay=today();S.me={name:'%s',g:'m'};save();}" % name)
+    s("()=>{S.welcomed=true;S.signinAsked='x';S.toured=true;S.meAsked=1;S.sound=false;S.selfRate=true;S.noRecDay=today();localStorage.setItem('gintaras.speak',JSON.stringify({mode:'aloud'}));S.me={name:'%s',g:'m'};save();}" % name)
     pg.reload(); pg.wait_for_timeout(1200)
-    s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{}"); s(FAST_AUTO)
+    s("window.signInGate=()=>{};window.say=()=>{};window.maybeTour=()=>{};window.SAY_PAUSE=0.05"); s(FAST_AUTO)
 
 def course(pg, taught, units, tag):
     s = pg.evaluate

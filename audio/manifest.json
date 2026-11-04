@@ -112,6 +112,10 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv35": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv4": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -981,6 +985,18 @@
 "cv34:7": "Kiek laiko tu čia?",
 "cv34:8": "Penki metai.",
 "cv34:9": "Ar tau čia patinka?"
+},
+"cv35": {
+"cv35:0": "Labas vakaras!",
+"cv35:1": "Labas vakaras!",
+"cv35:10": "Labanakt!",
+"cv35:11": "Labanakt! Iki pasimatymo!",
+"cv35:2": "Kaip sekasi?",
+"cv35:3": "Gerai, ačiū.",
+"cv35:5": "Atsiprašau!",
+"cv35:6": "Nieko tokio!",
+"cv35:8": "Ačiū!",
+"cv35:9": "Prašau!"
 },
 "cv4": {
 "cv4:0": "Atleiskite!",

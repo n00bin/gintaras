@@ -84,7 +84,7 @@ def pics_ok(pg, label):
 def play(pg, label):
     """Plays the lesson or review on screen to the end, answering right; listening cards must have their recording."""
     s = pg.evaluate
-    last = None; same = 0; cards = 0
+    last = None; same = 0; cards = 0; spk_wait = 0
     while True:
         st = s("()=>Q?{idx:Q.idx,len:Q.queue.length}:null")
         if not st or st['idx'] >= st['len']:
@@ -94,6 +94,10 @@ def play(pg, label):
         last = key
         if same > 0 and s("()=>!!(Q&&Q.lockedTo>Date.now())"):
             same -= 1; pg.wait_for_timeout(60); continue
+        # (Round 11) a speaking card said out loud: its voice, then the pause to say it in
+        if same > 0 and spk_wait < 150 and s("()=>!!(Q&&Q.queue[Q.idx]&&Q.queue[Q.idx].type==='speak'&&document.querySelector('#stage #rate[hidden]'))"):
+            same -= 1; spk_wait += 1; pg.wait_for_timeout(60); continue
+        if same == 0: spk_wait = 0
         if same > 10:
             bad('%s: stuck on card %s (%s)' % (label, st['idx'], s("Q.queue[Q.idx].type")))
             s("()=>{Q.idx++;renderStep();}"); continue
@@ -118,7 +122,7 @@ def play(pg, label):
 
 
 def conversation(pg, cid, label):
-    """Say it (out loud, written first as the microphone is off): every line they say must play from the device."""
+    """Say it, out loud with no microphone (listen and answer, then check yourself): every line they say must play from the device."""
     s = pg.evaluate
     s("id=>{S.convs=S.convs||{};S.convs[id]=Object.assign({},S.convs[id],{done:today(),text:today()});save();startConv(id,'speak');}", cid)
     t = 0; waited = 0; last = None
@@ -138,6 +142,8 @@ def conversation(pg, cid, label):
         if st['sin'] or st['cin']:
             s("""()=>{const x=$('#sin')&&$('#sin').offsetParent?$('#sin'):$('#cin');x.value=__ln.lt;x.dispatchEvent(new Event('input',{bubbles:true}));const b=$('#btn-check');b.disabled=false;b.click();}""")
             continue
+        if s("()=>!!document.querySelector('#crate [data-crate=\"yes\"]:not([disabled])')"):
+            s("()=>document.querySelector('#crate [data-crate=\"yes\"]').click()"); continue
         if st['opts']:
             s("()=>{const o=[...document.querySelectorAll('#turn .opt')].filter(x=>!x.disabled&&x.offsetParent);o[0].click();const b=$('#btn-check');if(b&&!b.disabled&&/check/i.test(b.textContent))b.click();}")
             continue
@@ -170,7 +176,7 @@ def boot(pg):
     pg.wait_for_function("typeof Q!=='undefined'&&typeof S!=='undefined'&&typeof prefetchReady==='function'")
     pg.wait_for_timeout(600)
     s = pg.evaluate
-    s("()=>{window.signInGate=()=>{};window.maybeTour=()=>{};window.openSignin=()=>{};}")
+    s("()=>{window.signInGate=()=>{};window.maybeTour=()=>{};window.openSignin=()=>{};window.SAY_PAUSE=0.05;}")
     s(FAST_AUTO); s(SPY)
 
 
@@ -184,7 +190,7 @@ with sync_playwright() as p:
     s = pg.evaluate
     pg.goto(URL); pg.wait_for_timeout(800)
     s("()=>navigator.serviceWorker.ready")
-    # a brand-new learner, sound on, microphone off (it writes its replies)
+    # a brand-new learner, sound on, no microphone (speaking out loud, checked by itself)
     s("()=>{window.save=window.saveSoon=()=>{};window.onbeforeunload=null;Q=null;localStorage.clear();}")
     pg.reload(); pg.wait_for_timeout(1000)
     s("()=>{S.welcomed=true;S.signinAsked='x';S.toured=true;S.meAsked=1;S.sound=true;S.selfRate=true;S.noRecDay=today();S.me={name:'Tomas',g:'m',at:1};S.iosNudge='x';save();}")
