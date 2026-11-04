@@ -1154,7 +1154,7 @@ COURSE.forEach(u=>u.lessons.forEach(l=>{l.unit=u;l.items=l.items.map((raw,i)=>{
 const ACCEPT={'Kaip sekasi?':['Kaip tau sekasi?','Kaip jums sekasi?','Kaip tu?','Kaip laikaisi?'],
   'Koks tavo vardas?':['Kuo tu vardu?','Kaip tavo vardas?','Kaip tu vadiniesi?','Kaip tave vadina?'],
   'Labanakt':['Labos nakties','Labanaktis','Labą naktį'],'Prašau':['Prašom'],
-  'Aš irgi':['Aš taip pat'],'Man irgi gerai':['Man taip pat gerai','Man irgi'],'Ar gali pakartoti?':['Dar kartą, prašau','Gal gali pakartoti?'],'Ar galite pakartoti?':['Dar kartą, prašau','Gal galite pakartoti?'],
+  'Aš irgi':['Aš taip pat'],'Man irgi gerai':['Man taip pat gerai','Man irgi'],'Ar gali pakartoti?':['Dar kartą, prašau','Dar kartą','Gal gali pakartoti?'],'Ar galite pakartoti?':['Dar kartą, prašau','Dar kartą','Gal galite pakartoti?'],
   'O tau?':['O tau kaip?','O kaip tau?'],'Dar kartą, prašau':['Ar gali pakartoti?','Ar galite pakartoti?','Gal gali pakartoti?','Gal galite pakartoti?'],'Gerai, ačiū':['Ačiū, gerai'],'Ačiū':['Dėkui','Dėkoju'],
   'Labas rytas':['Labą rytą'],'Laba diena':['Labą dieną'],'Labas vakaras':['Labą vakarą'],
   'Iki pasimatymo':['Iki susitikimo'],'Nieko tokio':['Niekis','Nieko baisaus'],'Malonu susipažinti':['Malonu','Labai malonu susipažinti','Labai malonu','Man malonu'],

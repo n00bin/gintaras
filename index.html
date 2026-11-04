@@ -656,6 +656,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .talkform input{font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
 .talkform .btn{width:auto;padding:10px 16px}
 .why{font-size:15px;line-height:1.45;margin-top:4px}
+.cmp{display:grid;gap:2px;margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-size:15px;line-height:1.4}
+.cmp span{color:var(--muted)}.cmp b{color:var(--fg);font-weight:700}
 .whybox{margin-top:8px;padding:8px 10px;border-radius:12px;background:color-mix(in srgb,var(--amber) 10%,var(--surface));display:grid;gap:2px}
 .whybox .eyebrow{margin:0}
 #cmsg .why{display:block}
@@ -1055,8 +1057,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.101';
-const APP_VERSION=173;
+const APP_RELEASE='3.102';
+const APP_VERSION=174;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1362,6 +1364,9 @@ function peek(id){return S.items[id]||NO_REC;}
 /* (Round 6) taught = had its New word card, or recalled right on a later day (level 2). Being seen (a tip, a placement
    question, a conversation, a game) is not being taught. */
 function taught(i){const r=peek(i.id);return !!(r.intro||(r.lvl||0)>=2);}
+/* (Round 10) a word of this lesson, the first time through it, that has never been answered right: its New word card comes
+   (again) in this lesson. A judge met Ačiū only in a tip: its card was "had" on an earlier visit, then it was tested cold. */
+function freshHere(i,l){if(!l||l.speak||!(l.items||[]).includes(i)||(S.lessons[l.id]||0)>0)return false;const r=peek(i.id);return !(r.ok>0)&&!((r.lvl||0)>=1);}
 /* The Lithuanian words a card shows that aren't its own word: a sentence card's sentence and choices, a listening card's
    lines. Each must be taught, or be taught by a word of this session (whose New word card then comes first). */
 const NAMEISH=w=>properNoun(w)||PERS.baseNames.includes(norm(w))||GLUE[norm(w)]==='your name'||!!(S.me&&S.me.name&&strip(w).startsWith(strip(S.me.name).slice(0,Math.max(3,strip(S.me.name).length-1))));
@@ -1705,7 +1710,7 @@ function startFall(resume){const pool=gameWords();if(pool.length<5&&!resume)retu
       msg(j.title==='Nearly'?'Nearly: <b>'+markDiff(a,best.it.lt)+'</b>':'✓ <b>'+esc(best.it.lt)+'</b>');settle(best,true);}
     else if(Date.now()-lastHit<2500)msg('Not one of the words still falling (that one was caught already).');
     else{sfx('bad');const sa=strip(a),near=live.map(w=>({w,d:lev(sa,strip(w.it.lt))/Math.max(sa.length,strip(w.it.lt).length)})).sort((x,y)=>x.d-y.d)[0];
-      if(near&&near.d<=0.5){const why=(judgeAll(a,answersFor(near.w.it),near.w.it.en).why||'').replace(/<\/?div[^>]*>/g,' ').trim();msg('Close to "<b>'+esc(near.w.it.en)+'</b>". '+(why||'Check the spelling and try again.'));}
+      if(near&&near.d<=0.5){const why=quietWhy(judgeAll(a,answersFor(near.w.it),near.w.it.en).why).replace(/<\/?div[^>]*>/g,' ').trim();msg('Close to "<b>'+esc(near.w.it.en)+'</b>". '+(why||'Check the spelling and try again.'));}
       else msg('Not one of the falling words. Try again.');}
     inp.value='';Q.answer='';fallSave();}
   /* only Enter answers: catching a word the moment it matched caught "Ji" (She) while you were typing "Ji yra Rūta" */
@@ -2039,7 +2044,7 @@ function buildSession(items,mode,lesson){personalise();const head=[];const rest=
     /* Day one is three checks per new word: a quick pick, one you make yourself, and one more from memory late in the
        lesson (Round 9); spaced reviews do the rest (four or five cards a word made lessons slow). About one word in three is said instead of written, from the English, Pimsleur-style.
        A phrase made only of words you already know ("Gerai, ačiū") skips its New word card and gets just the second check. */
-    shuffle(items).forEach((it,k)=>{const meet=!taught(it)&&!mine.includes(norm(it.lt));
+    shuffle(items).forEach((it,k)=>{const meet=(!taught(it)||freshHere(it,lesson))&&!mine.includes(norm(it.lt));
       if(meet&&isCombo(it)){head.push({type:'intro',item:it});rest.push(Object.assign(exFor(it,['type','gaps','build']),{combo:true}));return;}
       if(meet)head.push({type:'intro',item:it});const a=exFor(it,meet?EASY.filter(t=>t!=='listen'&&t!=='tiles'):typesFor(it)); /* (Round 9) a new word is picked first, then spelled */
       if(wait)head.push(wait);wait=a;
@@ -2299,7 +2304,7 @@ function settleCard(){if(!Q||Q.idx>=Q.queue.length)return false;
     /* (Round 5) "seen" isn't enough: a word only seen in passing (a tip, a reply, a card you rated) still gets its New word card
        first, whatever brought the card here (a resumed lesson, a card moved or sent back, a word in a match) */
     if(learn&&!STEPLESS[e.type]){const shown=i=>Q.queue.slice(0,Q.idx).some(x=>x.type==='intro'&&x.item===i);
-      let need=(e.item?[e.item]:e.items||[]).find(i=>!taught(i)&&!shown(i));
+      let need=(e.item?[e.item]:e.items||[]).find(i=>(!taught(i)||Q.mode==='lesson'&&freshHere(i,Q.lesson))&&!shown(i));
       /* (Round 6) a sentence card's other words (and its choices), a listening card's lines: taught first, or the card waits */
       if(!need&&(e.drill||e.type==='hear')){const c=wordsNeed(cardWords(e),(Q.items||[]).concat(Q.lesson&&Q.lesson.items||[]));
         if(c.bad||e.drill&&!c.need.length&&!optsNow(persDrill(e.drill)).length){Q.queue.splice(Q.idx,1);Q.total=Math.max(1,Q.total-1);Q.gone=(Q.gone||0)+1;return true;}need=c.need.find(i=>!shown(i));}
@@ -2502,7 +2507,9 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
       if(ok){sfx('good');if(first)Q.correct++;setFoot('good','Correct!','<div class="why">'+esc(d.why)+'</div>');}
       else{if(!idk)sfx('bad');if(!ex.retry)Q.missN=(Q.missN||0)+1;Q.wrongOnce['drill:'+d.frame]=true;setFoot(idk?'idk':'bad',idk?'Here it is':'Not quite','<b>'+esc(d.frame.replace('___',d.ans))+'</b><div class="note">'+esc(d.why)+'</div>');
         if(first&&Q.queue.length-Q.idx>5)Q.queue.splice(Q.idx+6,0,{type:'frame',drill:ex.drill,retry:true});}
-      btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};};
+      btn.textContent='Continue';btn.disabled=false;btn.onclick=()=>{Q.idx++;renderStep();};
+      /* (Round 10) a right pick moves on by itself, like every other card (time to read why; not past a new grammar box) */
+      if(ok&&!(grNew&&st.querySelector('.grammar')))autoNext(AUTO_WAIT_READ);};
     btn.onclick=()=>done(Q.answer===d.ans,false);
     const idk=$('#btn-idk');idk.hidden=false;idk.onclick=()=>done(false,true);}
   else if(ex.type==='tiles'){
@@ -2646,7 +2653,7 @@ function sameStart(a,b){let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;re
 const glossOf=w=>WORDS[norm(w)]||GLUE[norm(w)]||'';
 /* The fullest English for a word: a course card's own ("They (women)") before the word list's ("They"). Small = lower case. */
 function fullGloss(w,small){const it=ITEMS.find(i=>norm(i.lt).replace(/[?!.,]/g,'')===norm(w)),s=it?it.en.replace(/[?!.]$/,''):glossOf(w);
-  return small&&s&&!/^I\b/.test(s)&&!/^[A-Z]{2}/.test(s)?s[0].toLowerCase()+s.slice(1):s;}
+  return small&&s&&!/^(I|English|Lithuanian|Spanish|German|French|Russian|Polish|Latvian)\b/.test(s)&&!/^[A-Z]{2}/.test(s)?s[0].toLowerCase()+s.slice(1):s;}
 function knownWord(w){wordLvl('');const n=norm(w);return !!(WORD_ITEMS[n]||WORDS[n]||GLUE[n]);}
 /* Only the end of the word changed, into another ending (labas → laba, noriu → nori). One letter wrong further in
    (sekesi for sekasi), a consonant swapped (sekazi) or a letter that is no ending (labanak for labanakt) is spelling. */
@@ -2692,10 +2699,28 @@ function alsoNote(o,it){const oi=ITEMS.find(i=>norm(i.lt)===norm(o));
 const dropWho=s=>norm(s).split(' ').filter(w=>!WHO_WORDS.includes(w)).join(' ');
 /* Returns {html, typo}: html is one or two short explanations (empty when the answer is too far off to explain);
    typo is true when the only slip is one letter inside a longer word, which counts as right. */
+/* (Round 10) The English for a word, or a few words together ("my name"), small and without brackets */
+function bitGloss(ws){const bare=x=>norm(x).replace(/\s+/g,' '),ph=ws.join(' ');
+  if(ws.length>1&&ITEMS.some(i=>bare(i.lt)===ph))return enFlat(fullGloss(ph,1));if(ws.length>2)return '';
+  const g=ws.map(w=>String(fullGloss(w,1)||'').replace(/^\((.*)\)$/,'$1'));return g.every(Boolean)?enFlat(g.join(' ')):'';}
+/* (Round 10) the whole answer at the end of a reason; a conversation, where you try again, leaves it out (quietWhy) */
+const fullAns=t=>'<span class="full">: <b>'+esc(t)+'</b></span>';
+const quietWhy=h=>String(h||'').replace(/<span class="full">[\s\S]*?<\/span>/g,'').replace(/<div class="cmp">[\s\S]*?<\/div>/g,'');
+/* (Round 10) one line for a word (or words) written where the answer has another: what yours means and what goes there */
+function wroteLine(gs,ts,target){const gw=gs.join(' '),tw=ts.join(' '),gl=bitGloss(gs),tl=bitGloss(ts),base=x=>x.replace(/,.*$/,'').trim();
+  if(gs.length===1&&!realWord(gw)&&!properNoun(gw)&&!NAMEISH(gw))return '<b>'+esc(gw)+'</b> isn\'t a word in the course'+(lev(strip(gw),strip(tw))<=Math.max(2,Math.floor(tw.length/2))?': did you mean <b>'+esc(tw)+'</b>?':'. Here it\'s <b>'+esc(tw)+'</b>'+(tl?' ('+esc(tl)+')':'')+'.');
+  if(gl&&tl&&base(gl)===base(tl))return '<b>'+esc(gw)+'</b> and <b>'+esc(tw)+'</b> both mean "'+esc(base(tl))+'", but this phrase is always said with <b>'+esc(tw)+'</b>'+fullAns(target)+'.';
+  return 'You wrote <b>'+esc(gw)+'</b>'+(gl?' ('+esc(gl)+')':'')+', but here it\'s <b>'+esc(tw)+'</b>'+(tl?' ('+esc(tl)+')':'')+'.';}
+/* Returns {html, typo, cmp}: html is one or two short reasons, most important first (never empty for a miss); typo is true
+   when the only slip is one letter inside a longer word, which counts as right; cmp is what you wrote next to the answer,
+   with the words that differ underlined (shown under a miss). */
+/* (Round 10) Words left over on both sides are paired up by their place in the sentence: a word you wrote where the answer
+   has another one is ONE reason ("You wrote taip (yes), but here it's ne (no)"), not "taip isn't needed" plus "you left out
+   ne". A word left out says what it means and where it goes; a word added says what it means. */
 function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T=norm(target).split(' ').filter(Boolean);
   if(!G.length||!T.length)return null;
   const used=new Set(),match=T.map(()=>null);
-  T.forEach((t,i)=>{const j=G.findIndex((g,k)=>!used.has(k)&&strip(g)===strip(t));if(j>=0){used.add(j);match[i]={g:G[j],kind:G[j]===t?'ok':'marks'};}});
+  T.forEach((t,i)=>{const j=G.findIndex((g,k)=>!used.has(k)&&strip(g)===strip(t));if(j>=0){used.add(j);match[i]={g:G[j],k:j,kind:G[j]===t?'ok':'marks'};}});
   T.forEach((t,i)=>{if(match[i])return;const st=strip(t);let best=null;
     G.forEach((g,k)=>{if(used.has(k)||best)return;const sg=strip(g);const same=sameStart(sg,st);
       const neg=sg.startsWith('ne')!==st.startsWith('ne')&&sameStart(sg.replace(/^ne/,''),st.replace(/^ne/,''))>=3;
@@ -2712,31 +2737,53 @@ function whyWrong(given,target){const G=norm(given).split(' ').filter(Boolean),T
       else if(other)best={k,kind:'word'};
       else if(sg.length>=3&&st.length-sg.length>=3&&st.startsWith(sg))best={k,kind:'cut'};
       else if((st.length>=4||G.length===1&&T.length===1&&st.length>=2)&&lev(sg,st)<=(st.length>=4?2:1))best={k,kind:'spell'};});
-    if(best){used.add(best.k);match[i]={g:G[best.k],kind:best.kind};}});
-  const issues=[];
+    if(best){used.add(best.k);match[i]={g:G[best.k],k:best.k,kind:best.kind};}});
+  const issues=[],bare=x=>norm(x).replace(/\s+/g,' ');
+  /* (Round 10) a whole phrase the course has, written for another one ("Labas rytas" for Hello): say what it means */
+  {const gi=(G.length>1||T.length>1)&&ITEMS.find(i=>bare(i.lt)===G.join(' ')),ti=ITEMS.find(i=>bare(i.lt)===T.join(' '));
+    if(gi&&G.join(' ')!==T.join(' '))issues.push({kind:'whole',w:1,html:'You wrote <b>'+esc(gi.lt)+'</b>, which means "'+esc(gi.en)+'". Here it\'s <b>'+esc(target)+'</b>'+(ti?' ("'+esc(ti.en)+'")':'')+'.'});}
   T.forEach((t,i)=>{const m=match[i];if(!m||m.kind==='ok')return;
     if(m.kind==='ending')issues.push({kind:'ending',html:endingWhy(m.g,t,T[i-1],T[i+1])});
-    else if(m.kind==='word')issues.push({kind:'word',html:'Different word: <b>'+esc(m.g)+'</b> means "'+esc(fullGloss(m.g,1))+'", but here you need <b>'+esc(t)+'</b> ("'+esc(fullGloss(t,1))+'").'+(LANG.pairRule?LANG.pairRule(m.g,t):'')});
-    else if(m.kind==='form')issues.push({kind:'word',html:LANG.formNote(norm(m.g),norm(t))});
-    else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling: <b>'+esc(m.g)+'</b> is written <b>'+spellDiff(m.g,t)+'</b>.'});
-    else if(m.kind==='person')issues.push({kind:'word',html:LANG.personNote(norm(m.g),norm(t))});
-    else if(m.kind==='name'){const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);issues.push({kind:'ending',html:'Names get a '+LANG.en+' ending too: <b>'+esc(cap(m.g))+'</b> becomes <b>'+esc(cap(t))+'</b>.'});}
+    else if(m.kind==='word')issues.push({kind:'word',html:wroteLine([m.g],[t],target)+(LANG.pairRule?LANG.pairRule(m.g,t):'')});
+    else if(m.kind==='form')issues.push({kind:'form',html:LANG.formNote(norm(m.g),norm(t))});
+    else if(m.kind==='spell')issues.push({kind:'spell',g:m.g,t,html:'Spelling slip: <b>'+esc(m.g)+'</b> is written <b>'+spellDiff(m.g,t)+'</b>.'});
+    else if(m.kind==='person')issues.push({kind:'form',html:LANG.personNote(norm(m.g),norm(t))});
+    else if(m.kind==='name'){const cap=x=>x.charAt(0).toUpperCase()+x.slice(1);issues.push({kind:'ending',html:'Names get a '+LANG.en+' ending too: <b>'+esc(cap(m.g))+'</b> becomes <b>'+esc(cap(t))+'</b>.'});}
     else if(m.kind==='cut')issues.push({kind:'missing',html:'Not finished: <b>'+esc(m.g)+'…</b> is the start of <b>'+esc(t)+'</b>.'});
     else issues.push({kind:'marks',html:marksNote(m.g,t)});});
-  T.forEach((t,i)=>{if(match[i]||T.length>1&&WHO_WORDS.includes(t))return;const gl=glossOf(t);issues.push({kind:'missing',html:'You left out <b>'+esc(t)+'</b>'+(gl?' ('+esc(enFlat(gl))+')':'')+'.'});});
-  G.forEach((g,k)=>{if(!used.has(k))issues.push({kind:'extra',html:'<b>'+esc(g)+'</b> isn\'t needed here.'});});
+  /* what's left: each run of answer words is paired with the words you wrote in the same place, between the words that match */
+  const anchor=(from,step)=>{for(let i=from;i>=0&&i<T.length;i+=step)if(match[i])return match[i].k;return step<0?-1:G.length;};
+  for(let i=0;i<T.length;){if(match[i]){i++;continue;}let j=i;while(j<T.length&&!match[j])j++;
+    const lo=anchor(i-1,-1),hi=anchor(j,1),run=T.slice(i,j),gs=[];for(let k=lo+1;k<hi;k++)if(!used.has(k))gs.push(k);
+    if(gs.length){gs.forEach(k=>used.add(k));const gw=gs.map(k=>G[k]);
+      issues.push({kind:'word',w:Math.max(run.length,gw.length),html:Math.max(run.length,gw.length)>2?'You wrote <b>'+esc(gw.join(' '))+'</b>, but here it\'s <b>'+esc(run.join(' '))+'</b>.':wroteLine(gw,run,target)});}
+    else{const left=run.filter(t=>!(T.length>1&&WHO_WORDS.includes(t)));
+      if(left.length){const gl=bitGloss(left);issues.push({kind:'missing',w:left.length,html:'You left out <b>'+esc(left.join(' '))+'</b>'+(gl?' ('+esc(gl)+')':'')+fullAns(target)+'.'});}}
+    i=j;}
+  /* words you added, with nothing in the answer in their place */
+  for(let k=0;k<G.length;){if(used.has(k)){k++;continue;}let j=k;while(j<G.length&&!used.has(j))j++;const add=G.slice(k,j),gl=bitGloss(add),be=add.length===1&&(LANG.be||[]).includes(add[0]);
+    issues.push({kind:'extra',w:add.length,html:'You added <b>'+esc(add.join(' '))+'</b>'+(gl?' ('+esc(gl)+')':'')+'. '+(be?'It\'s usually left out here':'This one doesn\'t have '+(add.length>1?'them':'it'))+fullAns(target)+'.'});k=j;}
   /* (Round 7) an order that isn't accepted isn't "flexible": say which word has its place, or that the phrase is set */
   if(!issues.length&&G.join(' ')!==T.join(' ')){const fx=T.find((t,i)=>(LANG.stay||[]).includes(t)&&i+1<T.length&&!G.some((g,k)=>g===t&&G[k+1]===T[i+1]));
     issues.push({kind:'order',html:'All the right words, but '+(fx?'<b>'+esc(fx)+'</b> goes in front of the word it belongs to':'this phrase always goes this way round')+': <b>'+esc(target)+'</b>.'});}
-  if(issues.length>3)return {html:'',typo:false};
   const one=issues.length===1&&issues[0].kind==='spell'?issues[0]:null;
   /* a typo is forgiven only when it can't be a real mistake: not another real word, and not i / y / j mixed up (they are different sounds) */
   /* (Round 7) one letter off inside the word ("tokjo" for tokio) is a typo when it isn't another real word; the last letter
      (where the endings are) still has to be right */
   /* (Round 8) at the end too, when what you wrote isn't a real form (gerau for gerai): a typo, never an "ending" lesson */
   const typo=!!one&&strip(one.t).length>=4&&lev(strip(one.g),strip(one.t))===1&&(strip(one.g).slice(-1)===strip(one.t).slice(-1)||!realWord(one.g))&&!knownWord(one.g);
-  const rank={ending:0,word:0,person:0,missing:1,extra:2,spell:3,marks:4,order:5};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
-  return {html:issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i).slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join(''),typo};}
+  /* (Round 10) most important first: a wrong word, a word left out, an ending, a word added, spelling, marks, order */
+  if(issues.some(x=>x.kind==='whole'))for(let i=issues.length-1;i>=0;i--)if(/^(extra|missing|word)$/.test(issues[i].kind))issues.splice(i,1);
+  const rank={whole:0,word:1,missing:2,ending:3,form:3,extra:4,spell:5,marks:6,order:7};issues.sort((x,y)=>rank[x.kind]-rank[y.kind]);
+  const uniq=issues.filter((x,i,a)=>x.html&&a.findIndex(y=>y.html===x.html)===i),weight=uniq.reduce((n,x)=>n+(x.w||1),0)-(uniq[0]&&uniq[0].kind==='whole'?1:0);
+  /* what you wrote next to the answer, the words that differ underlined */
+  const okT=new Set(),okG=new Set();T.forEach((t,i)=>{if(match[i]&&match[i].kind==='ok'){okT.add(i);okG.add(match[i].k);}});
+  const toks=x=>String(x).trim().split(/\s+/).filter(w=>norm(w)),gt=toks(given),tt=toks(target),line=(ws,ok)=>ws.map((w,i)=>ok.has(i)?esc(w):'<u class="mark">'+esc(w)+'</u>').join(' ');
+  const cmp='<div class="cmp"><span>You wrote: <b>'+(gt.length===G.length?line(gt,okG):esc(given))+'</b></span><span>Right: <b>'+(tt.length===T.length?line(tt,okT):esc(target))+'</b></span></div>';
+  /* (Round 10) never silent: with many differences, say so, with the most important reason when it is a short one */
+  const top=uniq[0]&&(uniq[0].w||1)<=2?uniq[0]:null;
+  const html=weight>3?'<div class="why">A few words differ.'+(top?' '+top.html:'')+'</div>':uniq.slice(0,2).map(x=>'<div class="why">'+x.html+'</div>').join('');
+  return {html,typo,cmp};}
 /* The right spelling with the letters that differ from yours underlined (what's the same at the start and the end isn't). */
 function spellDiff(g,t){const a=[...norm(g)],b=[...t];let i=0;while(i<a.length&&i<b.length&&a[i]===b[i].toLowerCase())i++;
   let j=0;while(j<a.length-i&&j<b.length-i&&a[a.length-1-j]===b[b.length-1-j].toLowerCase())j++;
@@ -2791,7 +2838,7 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     if(k6>=0)return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+esc(targets[k6])+'</b>'+ord};}}
   const w=whyWrong(given,targets[0]);
   if(w&&w.typo)return {ok:true,title:'Nearly',note:'A typo, so it counts. Check this letter: <b>'+esc(targets[0])+'</b>'+w.html};
-  return {ok:false,why:w?w.html:''};}
+  return {ok:false,why:w?w.html+w.cmp:''};}
 
 /* Every right answer at once: the card's own, then the other right ones (the polite "your", a same-meaning word). A miss is
    explained against the right answer closest to what you wrote, so a typo in jūsų is a typo, not "you left out tavo". */
@@ -2815,6 +2862,11 @@ function judgeAll0(given,A,en){
     if(lit&&norm(lit)!==norm(raw)){const re=new RegExp('(^|[\\s,.!?])'+raw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?=$|[\\s,.!?])','i');
       if(re.test(given)&&!A.own.concat(A.other).some(t=>re.test(t))){const fixed=given.replace(re,(x,p)=>p+lit),j2=judgeAll(fixed,A,en);
         if(j2.ok)return {ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">Names get a '+LANG.en+' ending too: <b>'+esc(raw)+'</b> becomes <b>'+esc(lit)+'</b>.</div>'};}}}
+  /* (Round 10) your name alone for "My name is Mark" or "I am Mark": it answers the question, so it counts (Nearly), with the
+     whole sentence to say. (Before: "You left out esu", for an answer with no esu in it.) */
+  {const g=norm(given),w0=norm(A.own[0]).split(' '),it=A.id&&BYID[A.id];
+    if(g&&!g.includes(' ')&&w0.length>1&&w0.includes(g)&&it&&HAS_NAME.test(it.lt0||'')&&NAMEISH(g))
+      return {ok:true,title:'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why">Your name alone answers "What\'s your name?", so it counts. Here, say the whole sentence: <b>'+esc(A.own[0])+'</b>.</div>'};}
   const j=judgeTyped(given,A.own,en);
   if(j.ok&&j.exact&&typeof ALT_NOTE!=='undefined'&&ALT_NOTE[norm(given)]&&!A.own.slice(0,1).some(o=>norm(o)===norm(given)))return {ok:true,title:'That works too!',note:ALT_NOTE[norm(given)]};
   if(j.ok)return j;
@@ -2828,7 +2880,7 @@ function judgeAll0(given,A,en){
   if(o.ok)return Object.assign(o,{title:'Nearly'});
   /* a miss is explained against the nearest right answer, letters compared without marks (lietuviu is lietuvių, not an extra word) */
   const g=strip(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,strip(x))-lev(g,strip(y)))[0];
-  if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html;}return j;}
+  if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html+w.cmp;}return j;}
 /* (Round 8) A near miss the course can name, as the whole answer or as part of a longer one ("Gerai, ačiū. O tu?" is the
    same slip as "O tu?"), so lessons, conversations and Quick chat give it the same verdict. */
 function nearNote(given,target){if(typeof NEAR_NOTE==='undefined')return null;const g=norm(given),t=norm(target||'');
@@ -2840,10 +2892,10 @@ function nearNote(given,target){if(typeof NEAR_NOTE==='undefined')return null;co
    where the answer has it, it counts as Nearly, with a note. The same everywhere: lessons, conversations, Quick chat. */
 function pleaseJudge(given,A,en){const PW=LANG.please;if(!PW)return null;const words=s=>norm(s).split(' ').filter(Boolean),drop=s=>words(s).filter(w=>w!==PW).join(' ');
   const g=words(given),all=A.own.concat(A.other||[]);
-  if(g.includes(PW)&&g.length>1){const bare=drop(given);if(all.some(t=>norm(t)===norm(given)))return null;
+  if(g.includes(PW)&&g.length>1){const bare=drop(given);if(all.some(t=>norm(t)===norm(given)||strip(t)===strip(given)))return null; /* (Round 10) an answer with prašau in it: its marks are judged as usual */
     const t=all.find(x=>!words(x).includes(PW)&&judgeTyped(bare,[x]).ok);
-    if(t){const j=judgeTyped(bare,[t]);return {ok:true,exact:false,title:j.exact?'That works too!':'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why"><b>'+PW+'</b> (please) is a polite extra: adding it is always fine.</div>'+(j.exact?'':SLOPPY)};}}
-  else if(!g.includes(PW)){const t=all.find(x=>words(x).includes(PW)&&drop(x)&&judgeTyped(given,[drop(x)]).ok);
+    if(t){const j=judgeTyped(bare,[t]);return {ok:true,exact:false,title:j.exact?'That works too!':'Nearly',note:'<b>'+esc(A.own[0])+'</b><div class="why"><b>'+PW+'</b> (please) is a polite extra: adding it is always fine.</div>'+(j.exact?'':((j.note||'').match(/<div class="why">[\s\S]*<\/div>/)||[''])[0]||'<div class="why">Check the spelling: <b>'+esc(t)+'</b>.</div>')};}}
+  else if(!g.includes(PW)&&!all.some(x=>strip(x)===strip(given))){const t=all.find(x=>words(x).includes(PW)&&drop(x)&&judgeTyped(given,[drop(x)]).ok);
     if(t)return {ok:true,exact:false,title:'Nearly',note:'<b>'+esc(t)+'</b><div class="why">Add <b>'+PW+'</b> (please) to make it polite.</div>'};}
   return null;}
 /* Names and places: words the course writes with a capital in the middle of a sentence (Rūta, Kanados, Vilniuje) */
@@ -2853,24 +2905,30 @@ function properNoun(w){if(!PROPER){PROPER=new Set();const add=s=>String(s||'').s
   return PROPER.has(norm(w));}
 /* A typo or a missing mark still counts as right, but the word only moves up a level when it is exact. */
 const SLOPPY='<div class="why">Counted as right, but the word only moves up when you write it exactly.</div>';
-function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';
+function check(){if(!Q||Q.answer==null)return;const ex=Q.queue[Q.idx];const it=ex.item;let ok=false,almost='',why='',title='';Q.fullCredit=false;
   if(ex.type==='gaps'&&[...document.querySelectorAll('#stage .lb')].some(b=>!b.value))return;
   /* the gap is judged as the whole phrase with your word in it, so the Why note can use the words around it */
   if(ex.type==='cloze'){const full=it.lt.split(' ').map((w,i)=>i===ex.k?w.replace(ex.word,Q.answer.trim()):w).join(' ');
     const A=answersFor(it),o=A.other.find(v=>norm(v)===norm(full));if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
-    else{const j=judgeAll(full,A,it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
+    else{const j=judgeAll(full,A,it.en);ok=j.ok;why=j.why||'';if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||alsoOwn();}}}
   else if(ex.type==='type'||ex.type==='speak'||ex.type==='dictate'||ex.type==='build'||ex.type==='tiles'||ex.type==='gaps'){
     /* (Round 7) letter tiles: a space you typed (or didn't) between the words doesn't matter ("irtau" is ir tau) */
     if(ex.type==='tiles'&&norm(Q.answer).replace(/ /g,'')===norm(it.lt).replace(/ /g,''))Q.answer=it.lt;
     const A=answersFor(it),free=ex.type==='type'||ex.type==='speak'||ex.type==='build',o=free&&A.other.find(v=>norm(v)===norm(Q.answer));
     if(o){ok=true;title='That works too!';almost=alsoNote(o,it);}
     else{const j=free?judgeAll(Q.answer,A,it.en):judgeTyped(Q.answer,A.own,it.en);ok=j.ok;why=j.why||'';
-      if((ex.type==='tiles'||ex.type==='gaps')&&ok&&!j.exact&&ex.type==='tiles'){ok=false;why=(whyWrong(Q.answer,A.own[0])||{}).html||'';}
+      if((ex.type==='tiles'||ex.type==='gaps')&&ok&&!j.exact&&ex.type==='tiles'){ok=false;const w=whyWrong(Q.answer,A.own[0]);why=w?w.html+w.cmp:'';}
       if(ok&&ex.helped){title='Nearly';almost='<b>'+esc(it.lt)+'</b> · '+esc(it.en)+'<div class="why">You had the '+(ex.type==='build'?'words':'letters')+' to pick from, so it doesn\'t move up yet. It comes back to type in a moment.</div>';
         if(Q.mode!=='check'&&Q.mode!=='place')comeBack({type:'type',item:it,retry:true});}
-      if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||'Correct!';}}}
+      if(ok&&!j.exact){almost=j.note+(j.title==='Nearly'?SLOPPY:'');title=j.title||alsoOwn();}
+      /* (Round 10) one of the card's own other ways ("Dar kartą, prašau" for Can you repeat that?, "Mano vardas yra Tomas"):
+         "That works too!" here as in the conversations, and it still moves the word up */
+      else if(ok&&j.exact&&free&&norm(Q.answer)!==norm(A.own[0])){title=alsoOwn();almost='<b>'+esc(A.own[0])+'</b> · '+esc(it.en)+(it.note?'<div class="why">'+esc(it.note)+'</div>':'');}}}
   else ok=Q.answer===it;
   reveal(ok,almost,false,why,title);}
+/* (Round 10) right in another way the card itself gives (aš or esu left out, the words moved round, another of its forms):
+   "That works too!", the same as in a conversation, and the word still moves up */
+function alsoOwn(){if(Q)Q.fullCredit=true;return 'That works too!';}
 /* "Hello (formal)" inside brackets reads "(Hello, formal)", not "(Hello (formal))" */
 const enFlat=s=>String(s).replace(/\s*\(([^)]*)\)/g,', $1');
 /* Shows the result. A miss (or "I don't know") never ends anything: the word comes back two cards later. */
@@ -2891,12 +2949,12 @@ function reveal(ok,almost,idk,why,title){const ex=Q.queue[Q.idx];const it=ex.ite
   if(!ok&&!isExtra(ex))Q.missN=(Q.missN||0)+1;
   if(PROD[ex.type]&&Q.mode!=='place'&&Q.mode!=='check'){countProd(it);if(ok&&first&&title!=='Nearly')(Q.madeLt=Q.madeLt||{})[norm(it.lt)]=1;}
   if(ok&&ex.type==='speak'&&micOn())(Q.spkOk=Q.spkOk||{})[it.id]=1;
-  if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(RECALL[ex.type]&&first&&!title)markRecalled(it);if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!');if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':praiseTitle()),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
+  if(ok){sfx('good');if(PROD[ex.type])rec(it.id).prodD=today();if(RECALL[ex.type]&&first&&(!title||Q.fullCredit))markRecalled(it);if(Q.mode!=='place')grade(it,true,counts,title==='Nearly'||title==='That works too!'&&!Q.fullCredit);if(first)Q.correct++;if(first&&title==='Nearly')Q.nearly=(Q.nearly||0)+1;setFoot('good',title||(almost?'Nearly':praiseTitle()),picHtml(it.lt,'xs')+(almost||'<b>'+esc(it.lt)+'</b> · '+esc(it.en))+pr);if(ex.type!=='mc_lt_en')say(it);}
   else{if(!idk)sfx('bad');const snap=JSON.stringify(rec(it.id)),wasFirst=first;if(Q.mode!=='place')grade(it,false,false);Q.wrongOnce[it.id]=true;
     const pk=Q.answer&&Q.answer.lt&&Q.answer!==it?Q.answer:null;
     if(!idk&&Q.mode!=='place'){const r=rec(it.id);r.missT=ex.type;r.missG=typeof Q.answer==='string'?Q.answer.slice(0,60):undefined;r.missPick=pk?pk.id:undefined;}
     if(idk)setFoot('idk','No problem. Here it is',answer+'<div class="note">Say it once out loud.'+(Q.mode==='place'||Q.mode==='check'?'':' You will see it again in a moment.')+'</div>');
-    else setFoot('bad','Not quite',(typeof Q.answer==='string'&&Q.answer.trim()?'<div class="note">You wrote <b>'+esc(Q.answer.trim())+'</b></div>':'')+'Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
+    else setFoot('bad','Not quite',(typeof Q.answer==='string'&&Q.answer.trim()&&!/class="cmp"/.test(why||'')?'<div class="note">You wrote <b>'+esc(Q.answer.trim())+'</b></div>':'')+'Correct answer: '+answer+(pk?'<div class="note">You picked <b>'+esc(pk.lt)+'</b>, which means "'+esc(pk.en)+'".</div>':'')+(why?'<div class="whybox"><span class="eyebrow">Why</span>'+why+'</div>':''));
     /* it comes back a few cards later, asked another way where it can be, so the answer you just saw isn't simply tapped again */
     const back=ex.type==='listen'||ex.type==='mc_lt_en'?'mc_en_lt':ex.type==='mc_en_lt'?'mc_lt_en':
       ex.type==='type'?(canListen(it)?'dictate':'gaps'):/^(dictate|cloze|gaps|build|tiles)$/.test(ex.type)?'type':ex.type;
@@ -2933,7 +2991,8 @@ function finish(){dropPlace();settleToday();flushTime(Q.startedAt);if(Q.mode==='
   /* cards you rated yourself are practice, not marks: accuracy is over the cards something checked */
   /* counted over the cards actually asked (not the ones planned, or ones that came back after a miss) */
   const firsts=Q.queue.filter(e=>!STEPLESS[e.type]&&!isExtra(e)),asked=Q.mode==='check'?Q.total:firsts.length;
-  const graded=Math.max(0,asked-(Q.selfRated||0)),acc=graded?Math.max(0,Math.min(100,Math.round(Math.min(Q.correct,graded-(Q.missN||0))/graded*100))):null;
+  /* (Round 10) a Nearly counts half: "100% · 4 nearly" read as no mistakes */
+  const graded=Math.max(0,asked-(Q.selfRated||0)),acc=graded?Math.max(0,Math.min(100,Math.round((Math.min(Q.correct,graded-(Q.missN||0))-(Q.nearly||0)/2)/graded*100))):null;
   const before=levelFor(S.xp);let perfect=asked>0&&Q.correct>=asked&&!Q.nearly&&!Q.selfRated&&!Object.keys(Q.wrongOnce).length;
   /* Full XP is for real progress: a lesson the first time, and every word that moved up at its review. Replaying something you
      already know earns a little, so the league can't be climbed by repeating an easy lesson. */
@@ -2942,7 +3001,7 @@ function finish(){dropPlace();settleToday();flushTime(Q.startedAt);if(Q.mode==='
   const spkLeft=Q.mode==='lesson'&&!!Q.lesson.speak&&!typedSpk?Q.lesson.items.filter(i=>!(Q.spkOk||{})[i.id]).length:0;
   /* (Round 6) a say-through you rated yourself on finishes it (labelled self-rated); typed only, or lines not said, don't */
   const selfSpk=Q.mode==='lesson'&&!!Q.lesson.speak&&(spkLeft>0||typedSpk);if(selfSpk)perfect=false; /* (Round 8) a speaking card you wrote right and then said is no slip: it can still be Flawless */
-  const selfDone=!selfSpk&&Q.mode==='lesson'&&!!Q.lesson.speak&&((Q.saidSelf||0)+(Q.selfBare||0))>0;
+  const selfDone=!selfSpk&&Q.mode==='lesson'&&!!Q.lesson.speak&&((Q.saidSelf||0)+(Q.selfBare||0))>0;if(selfDone)perfect=false; /* (Round 10) nothing checked it: not Flawless */
   const ups=Q.ups||0,replay=Q.mode==='lesson'&&((S.lessons[Q.lesson.id]||0)>=1||typedSpk&&!!(S.typedSpk||{})[Q.lesson.id]);
   /* XP follows the work, not the number of lessons: 1 for each right answer you picked, tapped or rated yourself on, 2 for each
      one you typed or said, a small +2 for finishing, and a word moving up a level +1. A flawless run adds a quarter on top.
@@ -2999,7 +3058,7 @@ function finish(){dropPlace();settleToday();flushTime(Q.startedAt);if(Q.mode==='
   let won=false;if(Q.mode==='check'){won=Q.correct>=Math.ceil(Q.total*0.8);if(won){S.checks=S.checks||{};S.checks[Q.unit.id]=today();save();}
     lines.unshift('<div class="win"><b>'+(won?'⚔️ Boss defeated':'👹 Not this time')+'</b> · '+Q.correct+' of '+Q.total+' right first time'+(won?'. Unit '+esc(Q.unit.en)+' is checked off.':'. You need '+Math.ceil(Q.total*0.8)+'.')+'</div>'+
       (Q.missed.length?'<div class="win"><b>To work on</b> · '+Q.missed.map(i=>esc(i.lt)).join(', ')+'<br><button type="button" class="btn ghost" id="boss-rev">Review these '+Q.missed.length+'</button></div>':''));}
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'think':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+(selfSpk?(Q.selfBare?' · self-rated practice':' · practice'):' complete'):Q.mode==='me'?'You talked about yourself':Q.tricky?'Tricky words workout done':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+(acc==null?'–':acc+'%')+'</strong><small>'+(acc==null?'Rated yourself':'Accuracy'+(Q.nearly?' · '+Q.nearly+' nearly':''))+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?Q.items.length:learned().length)+'</strong><small>'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?'In this lesson':'Words met so far')+'</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'think':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+(selfSpk?(Q.selfBare?' · self-rated practice':' · practice'):' complete'):Q.mode==='me'?'You talked about yourself':Q.tricky?'Tricky words workout done':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+(acc==null?'–':acc+'%')+'</strong><small>'+(acc==null?'Rated yourself':'Accuracy'+(Q.nearly?' · '+Q.nearly+' nearly (half each)':''))+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?Q.items.length:learned().length)+'</strong><small>'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?'In this lesson':'Words met so far')+'</small></div></div>'+lines.join('')+'</div>';
   {const rv=$('#boss-rev');if(rv){const miss=Q.missed.slice();rv.onclick=()=>buildSession(miss,'review',null);}}
   document.querySelectorAll('[data-nudge]').forEach(b=>b.onclick=()=>{S.pushAsked=1;save();const n=$('#nudge-ask');if(n)n.remove();if(b.dataset.nudge==='yes')cloud.pushOn();});
   confetti(perfect||after.i>before.i||got.length>0||chest?160:70);sfx('win');countUp();
@@ -3110,11 +3169,12 @@ function replyOk(ln){const C=CV||{},they=C.quick?C.card&&C.card.they:C.prevP;let
 /* (Round 9) One judge for a reply, the same in Write it, Say it and Quick chat (Say it used a stricter one): the line's own
    words, then every other way the course accepts. hit = the accepted reply it matched. */
 function replyJudge(given,ln,okList){const j=judgeAll(given,{own:[ln.lt],other:okList.filter(v=>norm(v)!==norm(ln.lt)),reg:[]},'');
-  return Object.assign(j,{hit:okList.find(v=>judgeTyped(given,[v]).ok)||ln.lt});}
+  const hit=okList.find(v=>judgeTyped(given,[v]).ok)||ln.lt;if(CV)CV.lastHit=hit;return Object.assign(j,{hit});}
 /* what it says when a reply counts: Correct!, That works too! (with the line's own words), or Nearly (with what to fix) */
-function replyVerdict(j,ln,said){const other=norm(j.hit)!==norm(ln.lt);
-  return other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">'+(said?'Right!':'Correct!')+'</span>':(j.title?'<span class="ok">'+esc(j.title)+'</span> ':'')+j.note;}
-const replyTag=(j,ln)=>norm(j.hit)!==norm(ln.lt)||j.title==='That works too!'?'also':j.exact?null:'nearly';
+function replyVerdict(j,ln,said){const other=norm(j.hit)!==norm(ln.lt)&&j.title!=='Nearly';
+  return other?'<span class="ok">That works too!</span> The other way to say it: <b>'+esc(ln.lt)+'</b>':j.exact?'<span class="ok">'+(said?'Right!':'Correct!')+'</span>':'<span class="ok">'+esc(j.title||'That works too!')+'</span> '+j.note;}
+/* (Round 10) right with no title (aš or esu left out: "iš amerikos") is another right way, not "Nearly" */
+const replyTag=(j,ln)=>j.title==='Nearly'?'nearly':norm(j.hit)!==norm(ln.lt)||j.title==='That works too!'||!j.exact?'also':null;
 /* The audio for a reply said in other words: the course item with exactly those words, if there is one. */
 function replyItem(text){const k=norm(text);return ITEMS.find(i=>norm(i.lt)===k)||null;}
 function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C.ahead='';const btn=$('#btn-check');const me=myVoice();
@@ -3130,7 +3190,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
        reply that was nearly right, or right in other words, says so under it */
     const own=said&&norm(said)!==norm(ln.lt),near=own&&tag==='nearly',hitT=own&&!near?said:null,alt=hitT?replyItem(hitT):null,
       ownEn=hitT&&!alt?(typeof REPLY_EN!=='undefined'&&REPLY_EN[norm(hitT)])||'':'';
-    const bn=own&&tag?'<span class="bubnote">'+(near?'Nearly · <b>'+esc(ln.lt)+'</b>':'That works too')+'</span>':'';
+    const bn=own&&tag?'<span class="bubnote">'+(near?'Nearly · <b>'+esc(C.lastHit||ln.lt)+'</b>':'That works too')+'</span>':'';
     $('#msgs').insertAdjacentHTML('beforeend','<div class="msg me"><div class="bub"><span class="lt">'+esc(own?said:ln.lt)+'</span><span class="tr">'+esc(alt?alt.en:near?ln.en:own?ownEn:ln.en)+'</span>'+bn+'</div>'+myFace(36)+'</div>');chatScroll();
     const txt=C.mode==='text';if(!txt){if(!own||near)say(ln,false,me);else if(alt)say(alt,false,me);}
     C.turns++;C.i++;btn.disabled=true;btn.textContent=txt?'Waiting for a reply':'Listen first';btn.classList.remove('ghost');setFoot('');
@@ -3187,7 +3247,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
         if(j.ok){sfx('good');sin.disabled=true;turn.querySelectorAll('#sayw .keys button').forEach(x=>x.disabled=true);C.typed=(C.typed||0)+1;
           const pb=$('#peekbox'),g=$('#gapbox'),pk=$('#peek');if(g)g.hidden=true;if(pb)pb.hidden=false;if(pk)pk.hidden=true;if(tag==='nearly')C.nearly=(C.nearly||0)+1;$('#sinmsg').innerHTML=replyVerdict(j,ln,true)+' Now say it out loud, like the voice.';say(ln,false,me);
           const res=stage==='tap'?null:!used;convCredit(hit,res===true,new Set());btn.disabled=false;btn.textContent='I said it';btn.onclick=()=>done(true,tag?mine:null,res,tag);return;}
-        wtries++;C.mistakes++;sfx('bad');sin.classList.add('shake');setTimeout(()=>sin.classList.remove('shake'),320);$('#sinmsg').innerHTML='Not quite. '+(j.why||'Check each word and try again.')+(wtries>=2?' Stuck? Tap "Show me the '+LANG.en+'".':'');sin.select();};
+        wtries++;C.mistakes++;sfx('bad');sin.classList.add('shake');setTimeout(()=>sin.classList.remove('shake'),320);$('#sinmsg').innerHTML='Not quite. '+(quietWhy(j.why)||'Check each word and try again.')+(wtries>=2?' Stuck? Tap "Show me the '+LANG.en+'".':'');sin.select();};
       sin.oninput=()=>{if(over||sin.disabled)return;if(sin.value.trim()){btn.disabled=false;btn.textContent='Check';btn.onclick=wcheck;}else{btn.disabled=!recd;btn.textContent=recd?'I said it':NOSAY;btn.onclick=rateSaid;}};
       sin.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();wcheck();}};}
     /* with the microphone, the big button waits for it; without, it is "I said it" (after a moment, so a quick double tap can't press it) */
@@ -3254,7 +3314,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     const wrongMatch=ln.no.find(n=>norm(n[0])===a);const other=(ln.others||[]).find(n=>norm(n[0])===a);
     /* (Round 7) words all from the line itself ("Ne, ačiū" for "Laba diena! Ne, ačiū."): explained against that line, so it
        says everything that's missing, not against another way to say it */
-    let why=j.why;const lw=norm(ln.lt).split(' '),part=a.split(' ').every(w=>lw.some(x=>strip(x)===strip(w)));if(part){const w0=whyWrong(inp.value,ln.lt);if(w0&&w0.html)why=w0.html;}
+    let why=quietWhy(j.why);const lw=norm(ln.lt).split(' '),part=a.split(' ').every(w=>lw.some(x=>strip(x)===strip(w)));if(part){const w0=whyWrong(inp.value,ln.lt);if(w0&&w0.html)why=quietWhy(w0.html);}
     if(stage!=='tap'&&!wrongMatch&&!other){const got=a.split(' ');norm(ln.lt).split(' ').forEach((w,k)=>{if(!got.some(x=>strip(x)===strip(w)))slips.add(k);});}
     cmsg.innerHTML=other?'That\'s the other choice ("<b>'+esc(other[1])+'</b>"). You picked "'+esc(ln.en)+'", so write that one.':wrongMatch?'That means "<b>'+esc(wrongMatch[1])+'</b>". Read the situation again.':
       stage==='tap'?'Not quite. Check the order, and leave out the words that don\'t belong.':why?(part?'That\'s part of it. ':'Not quite. ')+why:'Not quite. Check each word and try again.';
