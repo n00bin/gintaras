@@ -8,7 +8,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v176';
+const SHELL = 'gintaras-shell-v177';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
@@ -57,15 +57,20 @@ self.addEventListener('fetch', e => {
   }
 });
 
+// (Round 12) set when the network was too slow and the saved copy stood in: for 20 seconds the app's files come from the
+// device straight away (each one waited 3 s in turn, so opening on a weak signal took 10 s); fresh copies still land in the cache
+let slowUntil = 0;
 async function networkFirst(req, ev) {
   const cache = await caches.open(SHELL);
   const saved = async () => await cache.match(req, { ignoreSearch: true }) || (req.mode === 'navigate' && await cache.match('index.html'));
   // 'no-cache' asks the server whether the file changed, so an update shows up on the next open, not 10 minutes later.
   const net = fetch(req, { cache: 'no-cache' }).then(res => { if (res.ok) cache.put(req, res.clone()); return res; });
   if (ev) ev.waitUntil(net.catch(() => {}));
+  if (Date.now() < slowUntil) { const hit = await saved(); if (hit) return hit; }
+  let netDone = false; net.then(() => { netDone = true; }, () => {});
   // (Round 10) on a weak signal the network can hang for half a minute: after 3 seconds the saved copy is shown, and the
   // fresh one still lands in the cache for the next open
-  const slow = new Promise(r => setTimeout(r, 3000)).then(saved).then(hit => hit || net);
+  const slow = new Promise(r => setTimeout(r, 3000)).then(saved).then(hit => { if (hit && !netDone) slowUntil = Date.now() + 20000; return hit || net; });
   try {
     return await Promise.race([net, slow]);
   } catch (err) {
@@ -92,13 +97,16 @@ async function picture(req, e) {
 // The font stylesheet and its files for the letters the app uses (latin and latin-ext, which has ą č ę ė į š ų ū ž).
 async function saveFonts() {
   const cache = await caches.open(CDN);
-  if (await cache.match(FONT_CSS)) return;
-  const res = await fetch(FONT_CSS);
+  // the saved font list when there is one (its files are what the page asks for), otherwise a fresh one
+  const had = await cache.match(FONT_CSS);
+  const res = had || await fetch(FONT_CSS);
   if (!res.ok) return;
   const css = await res.clone().text(), files = [];
-  css.replace(/\/\*\s*(latin(?:-ext)?)\s*\*\/[^}]*?url\(([^)]+)\)/g, (m, sub, u) => files.push(u));
-  await Promise.all(files.map(u => fetch(u).then(r => r.ok && cache.put(u, r))));
-  await cache.put(FONT_CSS, res);
+  // (Round 12) latin and latin-ext, and the one small cyrillic file: it also holds the combining accent mark (U+0301) the
+  // page uses, so the browser asks for it, and offline it was missing
+  css.replace(/\/\*\s*(latin(?:-ext)?|cyrillic)\s*\*\/[^}]*?url\(([^)]+)\)/g, (m, sub, u) => { if (!files.includes(u)) files.push(u); });
+  await Promise.all(files.map(async u => { if (!(await cache.match(u))) { const r = await fetch(u); if (r.ok) await cache.put(u, r); } }));
+  if (!had) await cache.put(FONT_CSS, res);
 }
 
 async function cacheFirst(req) {
