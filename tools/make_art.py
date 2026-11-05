@@ -39,7 +39,7 @@ def main():
     with sync_playwright() as p:
         b = p.chromium.launch(channel='chrome')
         pg = b.new_context(viewport={'width': 300, 'height': 300}, device_scale_factor=4, service_workers='block').new_page()
-        pg.goto('http://localhost:8765/'); pg.wait_for_timeout(1500)
+        pg.goto('http://localhost:8765/'); pg.wait_for_function('window.Ava'); pg.wait_for_timeout(500)
         pg.evaluate("src=>{(0,eval)(src);}", src)
         words = pg.evaluate("()=>WORDS_ART.map((w,k)=>({k,lt:w.lt,name:artSlug(w.lt),known:ITEMS.some(i=>i.lt===w.lt)}))")
         bad = [w['lt'] for w in words if not w['known']]
