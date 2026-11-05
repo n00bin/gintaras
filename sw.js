@@ -1,4 +1,4 @@
-/* Gintaras service worker: lets the app install, and open without signal.
+/* Wordami service worker: lets the app install, and open without signal.
    - The page and its scripts: network first, so updates arrive as soon as you are online; the saved copy is the fallback.
    - Audio: each file is saved the first time it plays (or when the app saves what comes next), then served from the
      device. The player asks for byte ranges, so ranges are cut from the saved file.
@@ -8,12 +8,14 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v181';
+const SHELL = 'gintaras-shell-v183';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
 const KEEP = [SHELL, AUDIO, CDN, PICS];
 const CORE = ['./', 'index.html', 'lang/lt.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
+const AMI_FILES = ["pics/ami/welcome.webp", "pics/ami/happy.webp", "pics/ami/cheer.webp", "pics/ami/think.webp", "pics/ami/rest.webp", "pics/ami/encourage.webp", "pics/ami/listen.webp", "pics/ami/speak.webp"];
+CORE.push('wordami-icon-180.png','wordami-icon-192.png','wordami-icon-512.png','wordami-icon-maskable-192.png','wordami-icon-maskable-512.png');
 const CDN_HOSTS = ['cdn.jsdelivr.net', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 const CDN_CORE = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js'];
 // the app's fonts (the same address as in index.html), saved at install so even the first offline open has them
@@ -22,6 +24,7 @@ const FONT_CSS = 'https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;
 self.addEventListener('install', e => {
   e.waitUntil(Promise.all([
     caches.open(SHELL).then(c => c.addAll(CORE)),
+    caches.open(PICS).then(c => c.addAll(AMI_FILES)),
     caches.open(CDN).then(c => c.addAll(CDN_CORE)).catch(() => {}),
     saveFonts().catch(() => {}),
   ]).then(() => self.skipWaiting()));
@@ -161,8 +164,8 @@ self.addEventListener('push', e => {
     // Skip the phone notification only when the app is open in front of you (it shows the message itself).
     const open = list.find(c => c.visibilityState === 'visible' && c.focused !== false);
     if (open) { open.postMessage({ type: 'gintaras-note' }); return; }
-    return self.registration.showNotification(d.title || 'Gintaras', {
-      body: d.body || '', icon: 'icon-192.png', badge: 'icon-192.png', tag: d.tag || 'gintaras', renotify: true, data: { tag: d.tag },
+    return self.registration.showNotification(!d.title || d.title === 'Gintaras' ? 'Wordami' : d.title, {
+      body: d.body || '', icon: 'wordami-icon-192.png', badge: 'wordami-icon-192.png', tag: d.tag || 'gintaras', renotify: true, data: { tag: d.tag },
     });
   }));
 });

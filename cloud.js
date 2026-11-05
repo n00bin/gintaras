@@ -543,8 +543,8 @@ function renderNotif(){const box=$('#notif'),S=window.S,t=$('#study-time');
   if(!user){box.innerHTML='<h2>Notifications</h2><p class="note">Sign in to get a nudge at study time, and to hear when someone passes you in the league or your challenge rival pulls ahead.</p>';return;}
   const n=S.notify||{},ios=window.devicePlatform&&window.devicePlatform()==='ios',home=window.isInstalled&&window.isInstalled();
   let phone;
-  if(!pushOk())phone=ios&&!home?'<p class="note">On iPhone, phone notifications work once Gintaras is on your Home Screen: in Safari tap <b>Share</b>, then <b>Add to Home Screen</b>, and open it from there.</p>':'<p class="note">This browser can’t show phone notifications. You’ll still see them here in the app.</p>';
-  else if(Notification.permission==='denied')phone='<p class="note">Notifications are blocked for Gintaras. Turn them on in your phone’s settings for this app or site, then come back.</p>';
+  if(!pushOk())phone=ios&&!home?'<p class="note">On iPhone, phone notifications work once Wordami is on your Home Screen: in Safari tap <b>Share</b>, then <b>Add to Home Screen</b>, and open it from there.</p>':'<p class="note">This browser can’t show phone notifications. You’ll still see them here in the app.</p>';
+  else if(Notification.permission==='denied')phone='<p class="note">Notifications are blocked for Wordami. Turn them on in your phone’s settings for this app or site, then come back.</p>';
   else if(Notification.permission==='granted'&&pushSub)phone='<p class="note">✅ Phone notifications are on.</p><button type="button" class="linkbtn" data-poff>Turn off on this phone</button>';
   else phone='<button type="button" class="btn amber" data-pon>Turn on phone notifications</button>';
   box.innerHTML='<h2>Notifications</h2>'+phone+'<div class="notif-sw">'+NOTIF_KINDS.map(([k,l])=>'<div class="setting"><span>'+l+'</span><button class="switch" role="switch" aria-checked="'+(n[k]!==false)+'" data-nk="'+k+'" aria-label="'+l+'"></button></div>').join('')+'</div>'+

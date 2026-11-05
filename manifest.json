@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Gintaras — Learn Lithuanian",
-  "short_name": "Gintaras",
-  "description": "Learn Lithuanian from zero to a real conversation, one word at a time.",
+  "name": "Wordami — Learn Languages",
+  "short_name": "Wordami",
+  "description": "Little lessons. Real conversations. Learn languages with Ami, your friendly parrot buddy.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -14,25 +14,25 @@
   ],
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "wordami-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "wordami-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-maskable-192.png",
+      "src": "wordami-icon-maskable-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icon-maskable-512.png",
+      "src": "wordami-icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

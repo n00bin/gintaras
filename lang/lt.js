@@ -1355,7 +1355,7 @@ const LESSON_TIPS={
 'u6b-2':'After turiu, šuo becomes <b>šunį</b>: Aš turiu šunį. <b>Katė miega</b> (the cat is sleeping) is a full sentence: who + what they do.',
 'u8a-1':'Dictionary forms end in <b>-ti</b>. For "I", swap it for -u (kalbėti → <b>kalbu</b>); for "you", -i (<b>kalbi</b>). You have been using these all along.',
 'u8a-2':'<b>Turėti</b>, <b>norėti</b>, <b>žinoti</b> are the verbs behind turiu, noriu, žinau. Spot the pattern and every new verb gets easier.',
-'u12a-1':'<b>Gintaras</b> (amber), this app\'s name, washes up on the Baltic coast. <b>Cepelinai</b> are potato dumplings named after zeppelin airships.',
+'u12a-1':'<b>Gintaras</b> means amber, which washes up on the Baltic coast. <b>Cepelinai</b> are potato dumplings named after zeppelin airships.',
 'u15c-1':'To order, name the dish with an <b>-ą</b> ending and add prašau: <b>sriubą, prašau</b>, <b>arbatą, prašau</b>. With norėčiau it takes the "some of" ending instead: <b>norėčiau sriubos</b>.',
 'u16c-1':'<b>Ar turite...?</b> (do you have...?) uses the "some of" ending: obuoliai → <b>obuolių</b>, sūris → <b>sūrio</b>. At a market, <b>tik grynaisiais?</b> checks if they only take cash.',
 'u14c-1':'Lithuanian has two verbs for "go": <b>einu</b> on foot, <b>važiuoju</b> by car, bus or train. Both take <b>į</b> + the place: į Kauną, į parduotuvę.',

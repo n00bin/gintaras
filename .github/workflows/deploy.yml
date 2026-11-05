@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir -p site
           if [ -f index.html ]; then
-            rsync -a --exclude site --exclude .git --exclude .github ./ site/
+            rsync -a --exclude site --exclude .git --exclude .github --exclude .venv --exclude .claude --exclude .agents --exclude .codex --exclude docs --exclude tools --exclude art_pilot ./ site/
           else
             unzip -o -q *.zip -d site
             if [ ! -f site/index.html ]; then

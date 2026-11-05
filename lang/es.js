@@ -8,10 +8,10 @@ const LEVELS=[[0,'Turista','Tourist'],[150,'Viajero','Traveler'],[400,'Conocido'
 /* ===================== COURSE CONTENT ===================== */
 /* item: [es, en, note?, altEs?] */
 const COURSE = [
-{id:'u0',title:'Sonidos',en:'Sounds',tip:'Spanish is written the way it sounds, and the five vowels never change: <b>a</b> "ah", <b>e</b> "eh", <b>i</b> "ee", <b>o</b> "oh", <b>u</b> "oo". A few letters trick English speakers: <b>j</b> is a breathy "h", <b>ll</b> is "y", <b>ñ</b> is "ny", and <b>h</b> is silent. Good news: you already know every word in this unit.',lessons:[
+{id:'u0',title:'Sonidos',en:'Sounds',tip:'Spanish spelling gives you reliable clues to pronunciation. Its five vowels sound like ah, eh, ee, oh and oo: keep them short and clear. A few letters trick English speakers: <b>j</b> is a breathy "h", <b>ll</b> sounds like the start of "yes" in Mexican Spanish, <b>ñ</b> sounds like the middle of "canyon", and <b>h</b> is silent. These words have familiar English relatives to help you get started.',lessons:[
  {id:'u0a',title:'Letters that trick you',items:[
   ['jirafa','giraffe','j sounds like a breathy English "h".'],
-  ['tortilla','tortilla','ll sounds like the English "y".'],
+  ['tortilla','tortilla','ll sounds like the start of the English word "yes".'],
   ['piña','pineapple','ñ sounds like the "ny" in "canyon".'],
   ['hotel','hotel','h is always silent: oh-TEHL.'],
   ['chocolate','chocolate','Every vowel is said, even the e at the end.'],
@@ -24,7 +24,7 @@ const COURSE = [
   ['cereal','cereal','c before e or i sounds like "s" in Mexico.'],
  ]},
 ]},
-{id:'u1',title:'Lo básico',en:'Basics',tip:'Spanish has two ways to say "you": <b>tú</b> for friends, family and children, <b>usted</b> for strangers and older people. In Mexico, <b>ustedes</b> is "you all", for friends and strangers alike.',lessons:[
+{id:'u1',title:'Lo básico',en:'Basics',tip:'Start with <b>Hola</b>: it works with anyone, at any time of day. You can also choose a greeting for the time of day: <b>Buenos días</b> in the morning, <b>Buenas tardes</b> in the afternoon, and <b>Buenas noches</b> after dark.',lessons:[
  {id:'u1a',title:'Greetings',items:[
   ['Hola','Hello','Works with anyone, at any time of day.'],
   ['Buenos días','Good morning','Until about noon.'],
@@ -52,7 +52,7 @@ const COURSE = [
  {id:'u1c',title:'Who I am',items:[
   ['Yo','I'],
   ['Tú','You','Informal, one person.'],
-  ['Él','He','With the accent it means "he". Without it, el means "the".'],
+  ['Él','He','Keep the accent: it distinguishes "he" from the word for "the".'],
   ['Ella','She'],
   ['Nosotros','We','A group of only women says "nosotras".'],
   ['Usted','You (polite)','For a stranger or someone older.'],
@@ -64,7 +64,7 @@ const COURSE = [
   ['Soy de Estados Unidos','I am from the United States','Mexicans say Estados Unidos: "América" is the whole continent.'],
  ]},
 ]},
-{id:'u21',title:'Plática',en:'Small talk',tip:'Most chats start the same way. Someone asks <b>¿Cómo estás?</b>, you answer, and you bounce it back with <b>¿Y tú?</b> In Mexico you will also hear <b>¿Qué onda?</b>, a friendly "what\'s up?"',lessons:[
+{id:'u21',title:'Plática',en:'Small talk',tip:'Most chats start the same way. Someone asks <b>¿Cómo estás?</b>, you answer with <b>Bien, gracias</b> or <b>Más o menos</b>, and you bounce it back with <b>¿Y tú?</b>',lessons:[
  {id:'u21a',title:'How are you',items:[
   ['Bien, gracias','Fine, thanks'],
   ['¿Y tú?','And you?','Bounces the question back.'],
@@ -115,6 +115,8 @@ const EMOJI={'jirafa':'🦒','tortilla':'🫓','piña':'🍍','hotel':'🏨','ch
  'Bien, gracias':'😊','¿Y tú?':'🔁','Más o menos':'😐','Todo bien':'✅','Yo también':'🙌','¿Qué haces?':'🤔','Nada especial':'🫥','¿Qué onda?':'🤙','Encantado':'😍','Igualmente':'🔄',
  'Hablo un poco de español':'🤏','¿Cómo se dice en español?':'💬','¿Qué significa esta palabra?':'📖','No entiendo':'😕','¿Puedes repetir?':'🔁','¿Mande?':'👂','Más despacio, por favor':'🐢',
  'Estoy aprendiendo':'📚','Otra vez':'🔂','Ya entendí':'💡'};
+// Shared app helpers ask each course for its picture by meaning.
+function picFor(lt){return EMOJI[lt]||'';}
 function picFile(e){let cps=[...e].map(ch=>ch.codePointAt(0).toString(16));if(!cps.includes('200d'))cps=cps.filter(c=>c!=='fe0f');return 'pics/'+cps.join('-')+'.svg';}
 function picHtml(lt,cls){const v=EMOJI[lt];if(!v)return '';cls=cls||'';
   if(v[0]==='#')return '<span class="pic tile '+cls+'" aria-hidden="true">'+esc(v.slice(1))+'</span>';
@@ -141,13 +143,13 @@ COURSE.forEach(u=>{const all=u.lessons.flatMap(l=>l.items);const phrases=all.fil
 
 /* One tip per lesson, written for that lesson's words. <b> marks Spanish. */
 const LESSON_TIPS={
-'u0a-1':'Spanish never surprises you: every letter always makes the same sound. Learn the tricky ones here (<b>j</b>, <b>ll</b>, <b>ñ</b> and the silent <b>h</b>) and you can sound out nearly any word.',
+'u0a-1':'Spanish spelling follows regular patterns. Learn the tricky letters here (<b>j</b>, <b>ll</b>, <b>ñ</b> and the silent <b>h</b>) to start sounding out familiar words.',
 'u0b-1':'A written accent (<b>é</b>, <b>ó</b>) only shows which syllable to stress. Without one, stress the second-to-last syllable when a word ends in a vowel, n or s (<b>TA</b>-co), and the last one otherwise (ho-<b>TEL</b>).',
 'u1a-1':'<b>Hola</b> works with everyone. <b>Buenos días</b> is for the morning, <b>buenas tardes</b> from lunch until dark, <b>buenas noches</b> after that. Notice buen<b>os</b> días but buen<b>as</b> tardes: "good" matches the word after it.',
 'u1a-2':'<b>Gracias</b> is "thank you" and <b>de nada</b> is the answer. <b>Hasta luego</b> is the everyday goodbye; <b>adiós</b> can sound more final.',
 'u1b-1':'<b>Sí</b> (yes) needs its accent: <b>si</b> without one means "if". Say <b>con permiso</b> as you squeeze past someone, and <b>perdón</b> when you bump into them.',
 'u1b-2':'<b>No pasa nada</b> is what Mexicans say when you apologise: no harm done. <b>Mucho gusto</b> is the handshake phrase when you meet someone.',
-'u1c-1':'<b>Yo</b>, <b>tú</b>, <b>él</b>, <b>ella</b>: I, you, he, she. The accents on tú and él tell them apart from tu (your) and el (the).',
+'u1c-1':'<b>Yo</b>, <b>tú</b>, <b>él</b>, <b>ella</b>: I, you, he, she. Keep the accents on <b>tú</b> and <b>él</b>: without them, the meanings change to "your" and "the".',
 'u1c-2':'<b>Usted</b> is the polite "you" for a stranger; <b>ustedes</b> is "you all", for anyone, because Mexico doesn\'t use vosotros. <b>Ellos</b> is a group of men or a mixed group; <b>ellas</b> is only women.',
 'u1c-3':'<b>Me llamo</b> literally means "I call myself". Mexicans say <b>Soy de Estados Unidos</b>, because "América" is the whole continent.',
 'u21a-1':'This is the whole small-talk script: <b>¿Cómo estás?</b> → <b>Bien, gracias. ¿Y tú?</b> Questions in Spanish start with an upside-down mark <b>¿</b> so you know a question is coming.',

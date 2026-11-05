@@ -1,4 +1,4 @@
-# Gintaras — Learn Lithuanian (and Mexican Spanish)
+# Wordami — Learn Languages
 
 A bite-size language course for complete beginners, Lithuanian first and now Mexican Spanish, from first sounds to a real conversation. One HTML file, real Lithuanian audio, plain-English pronunciation, spaced review, streaks, levels, badges, and an optional online leaderboard.
 
@@ -24,7 +24,7 @@ Progress is saved in the browser. With an account it also syncs to the cloud, so
 
 ## Accounts and the leaderboard
 
-These are switched on. They run on the Supabase project in the **SAVAGE** organization ("n00bin's Project"), shared because the free plan allows only two projects. Everything Gintaras stores lives in two tables named `gintaras_profiles` (nickname and XP for the leaderboard) and `gintaras_progress` (each player's saved progress, readable only by them). `supabase/schema.sql` creates both.
+These are switched on. They run on the Supabase project in the **SAVAGE** organization ("n00bin's Project"), shared because the free plan allows only two projects. Everything Wordami stores lives in two tables named `gintaras_profiles` (nickname and XP for the leaderboard) and `gintaras_progress` (each player's saved progress, readable only by them). `supabase/schema.sql` creates both.
 
 Settings in Supabase:
 
@@ -117,3 +117,10 @@ The Lithuanian respellings were written by hand and have not been checked by a n
 ## Local preview
 
 Any static server works, for example `python3 -m http.server` in this folder, then open http://localhost:8000.
+
+
+## Wordami branding and Ami
+
+The owner renamed the app to **Wordami** and approved **Ami the parrot** on 2026-11-05. See [the mascot guide](docs/wordami/README.md) for every interaction, source master, export and generation prompt.
+
+The public address remains `https://n00bin.github.io/gintaras/`, and the repository remains `gintaras`. Existing local progress, cloud identifiers, PWA install identity and internal events deliberately retain their `gintaras` names. Existing Google project/OAuth labels described above are unchanged. This is a visible brand update, not an account or URL migration.
