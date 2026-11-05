@@ -15,7 +15,7 @@ const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'ut
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,MAKE:typeof MAKE!=="undefined"?MAKE:[],picFile:typeof picFile!=="undefined"?picFile:null});')(c);
+new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),ART:typeof ART!=="undefined"?ART:null,ART_UNITS:typeof ART_UNITS!=="undefined"?ART_UNITS:[],ART_NONE:typeof ART_NONE!=="undefined"?ART_NONE:new Set(),artSlug:typeof artSlug!=="undefined"?artSlug:null,LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,MAKE:typeof MAKE!=="undefined"?MAKE:[],picFile:typeof picFile!=="undefined"?picFile:null});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -43,6 +43,22 @@ say('phrase words without a meaning in "Built from"', [...new Set(c.ITEMS.filter
 say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt] && !c.NO_PIC.has(i.lt)).map(i => i.lt));
 // every picture must be on the server, or the app shows an emoji and the offline download never finishes
 if (c.picFile) say('pictures missing from pics/', [...new Set(Object.values(c.EMOJI).filter(v => v && v[0] !== '#'))].filter(v => !fs.existsSync(path.join(__dirname, '..', c.picFile(v)))).map(v => v + ' ' + c.picFile(v)));
+// (the Flat warm rollout) every drawn word has a real picture: there, 256 x 256, complete, not oversized, its own file; a finished unit has every word drawn or on purpose none
+if (c.ART) { const dir = path.join(__dirname, '..', 'pics', 'art'), MAX = 13 * 1024, names = {}, have = new Set(fs.existsSync(dir) ? fs.readdirSync(dir) : []);
+  const webpSize = b => { if (b.length < 30 || b.toString('latin1', 0, 4) !== 'RIFF' || b.toString('latin1', 8, 12) !== 'WEBP' || b.readUInt32LE(4) + 8 !== b.length) return null; const kind = b.toString('latin1', 12, 16);
+    if (kind === 'VP8X') return [1 + b.readUIntLE(24, 3), 1 + b.readUIntLE(27, 3)]; if (kind === 'VP8 ') return [b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff];
+    if (kind === 'VP8L') { const v = b.readUInt32LE(21); return [(v & 0x3fff) + 1, ((v >> 14) & 0x3fff) + 1]; } return null; };
+  const broken = [], wrong = [], heavy = [];
+  c.ART.forEach(lt => { const f = c.artSlug(lt) + '.webp', p = path.join(dir, f); (names[f] = names[f] || []).push(lt); if (!fs.existsSync(p)) return; const b = fs.readFileSync(p), s = webpSize(b);
+    if (!s) broken.push(lt + ' (' + f + ')'); else if (s[0] !== 256 || s[1] !== 256) wrong.push(lt + ' is ' + s.join(' x ')); if (b.length > MAX) heavy.push(lt + ' ' + Math.round(b.length / 1024) + ' KB'); });
+  say('drawn words whose picture is missing from pics/art/', [...c.ART].filter(lt => !fs.existsSync(path.join(dir, c.artSlug(lt) + '.webp'))));
+  say('drawn pictures that are broken or cut short', broken);
+  say('drawn pictures that are not 256 x 256', wrong);
+  say('drawn pictures over 13 KB', heavy);
+  say('drawn words sharing a file name', Object.values(names).filter(v => v.length > 1).map(v => v.join(' / ')));
+  say('files in pics/art/ no word uses', [...have].filter(f => !names[f]));
+  say('drawn words that are not in the course', [...c.ART].filter(lt => !c.ITEMS.some(i => i.lt === lt)));
+  say('words in a finished unit with no drawing and not marked as no picture', c.COURSE.filter(u => c.ART_UNITS.includes(u.id)).flatMap(u => u.lessons.filter(l => !l.speak).flatMap(l => l.items.filter(i => !c.ART.has(i.lt) && !c.ART_NONE.has(i.lt)).map(i => i.lt)))); }
 { const base = new Set(c.ITEMS.map(i => i.sec || i.lesson.id.replace(/-\d+$/, ''))); /* sec: the section a word was written in, kept when lessons are regrouped */ const ids = c.CANDO.map(x => x[0]);
   say('real-life skills pointing at a missing lesson', c.CANDO.flatMap(x => x[3].filter(l => !base.has(l)).map(l => x[0] + ': ' + l)));
   say('real-life skills pointing at a missing conversation', c.CANDO.filter(x => x[4] && !c.CONV_BY[x[4]]).map(x => x[0] + ': ' + x[4]));

@@ -617,9 +617,10 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .picbox{display:inline-grid;place-items:center;container-type:size}.picbox>*{grid-area:1/1}.picbox>img{width:100%;height:100%;object-fit:contain}
 .picbox>.pic-e{font-size:72cqh;line-height:1}.picbox.ok>.pic-e{visibility:hidden}
 .pic.big{width:96px;height:96px}
+.pic.big.art{width:120px;height:120px}
 .pic.sm{width:40px;height:40px}
 .pic.xs{width:26px;height:26px;margin-right:8px}
-@media (max-height:640px){.opt{padding:9px 12px;min-height:44px}.picwrap{min-height:64px}.pic.big{width:64px;height:64px}.stage .word .lt{font-size:24px!important}}
+@media (max-height:640px){.opt{padding:9px 12px;min-height:44px}.picwrap{min-height:64px}.pic.big{width:64px;height:64px}.pic.big.art{width:72px;height:72px}.stage .word .lt{font-size:24px!important}}
 .ver-line{color:var(--muted);margin:-6px 0 10px}
 .they-pin{font-size:14px;color:var(--muted);margin:0 0 8px;padding:6px 10px;border-left:3px solid var(--line);border-radius:4px}
 .they-pin .lt{color:var(--fg)}
@@ -976,7 +977,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note"><a href="privacy.html" style="color:var(--pine);font-weight:800">Privacy: what is stored and how to delete it</a></p>
       <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
       <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
-      <p class="note">Pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
+      <p class="note">Drawn pictures: made for Gintaras. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
       <p class="note" id="app-version"></p>
       <button class="btn danger" id="btn-reset">Reset all progress</button>
       <div class="confirm" id="confirm-reset" hidden>
@@ -1074,8 +1075,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.105';
-const APP_VERSION=177;
+const APP_RELEASE='3.106';
+const APP_VERSION=178;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -4086,9 +4087,9 @@ function renderReady(){const html=readyLine();document.querySelectorAll('#offrea
     const b=el.querySelector('[data-ready-now]');if(b)b.onclick=()=>prefetchReady(true);});}
 /* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
 function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
-  CONVS.forEach(c=>convFiles(c).forEach(f=>set.add(f)));Object.values(EMOJI).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
-/* a recording's size from its length (about 6 KB for each second of speech), a picture's about 4 KB */
-function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return 4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
+  CONVS.forEach(c=>convFiles(c).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
+/* a recording's size from its length (about 6 KB for each second of speech), an emoji picture's about 4 KB, a drawn one's about 7 KB */
+function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return f.endsWith('.webp')?7000:4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
 const mbOf=b=>b<1e6?'under 1 MB':'about '+Math.max(1,Math.round(b/1e6))+' MB';
 function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading the course: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
 async function renderOffline(){const box=$('#offline-box');if(!box)return;
@@ -4293,6 +4294,7 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
     /* a foreign name said the Lithuanian way counts too: Mano vardas Tomas for Tom, Markas for Mark */
     {const lit=o.name&&nameForms(o.name,o.g).lt;if(lit&&lit!==o.name&&role==='me'){const lo=Object.assign({},o,{name:lit}),v=[x.lt0].concat(x.alt0||[]).map(t=>persText(t,role,lo));
       x.alt=[...new Set((x.alt||[]).concat(v))].filter(a=>norm(a)!==norm(x.lt));}}
+    if(x.lt!==x.lt0&&typeof ART!=='undefined'&&ART.has(x.lt0)&&!PERS.fromRe.test(x.lt0))ART_AS[x.lt]=x.lt0;
     if(x.lt!==x.lt0&&!EMOJI[x.lt]&&EMOJI[x.lt0]){const flag=/^[a-z]{2}$/.test(o.from)&&o.from!=='sc'?String.fromCodePoint(...[...o.from.toUpperCase()].map(ch=>0x1F1A5+ch.charCodeAt(0))):'🌍';EMOJI[x.lt]=PERS.fromRe.test(x.lt0)&&o.from?flag:EMOJI[x.lt0];}});
   /* telling someone your name: "Mano vardas Tom" and "Aš esu Tom" (and Tomas) all count, in lessons and conversations */
   persAlso.forEach(([k,was])=>{if(was)ALSO[k]=was;else delete ALSO[k];});persAlso=[];
