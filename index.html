@@ -1075,8 +1075,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.106';
-const APP_VERSION=178;
+const APP_RELEASE='3.107';
+const APP_VERSION=179;
 const WHATS_NEW='Thanks for learning with Gintaras!';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -3101,8 +3101,10 @@ function judgeAll0(given,A,en){
   if(o.ok&&o.exact){const ow=A.other.find(v=>norm(v)===norm(given)),it=A.id&&BYID[A.id];return {ok:true,exact:false,title:'That works too!',note:it?alsoNote(ow,it):'<b>'+esc(ow)+'</b>'};}
   if(o.ok)return Object.assign(o,{title:'Nearly'});
   /* a miss is explained against the nearest right answer, letters compared without marks (lietuviu is lietuvių, not an extra word) */
+  /* only when it is a slip of that answer: a far-off miss is explained against the answer on screen, so it can't bring in words
+     you haven't met ("labas vakaras iki" was told "here it's nakties" and "labos" for Labanakt! Iki pasimatymo!) */
   const g=strip(given),c=A.own.concat(A.other).sort((x,y)=>lev(g,strip(x))-lev(g,strip(y)))[0];
-  if(c&&c!==A.own[0]){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html+w.cmp;}return j;}
+  if(c&&c!==A.own[0]&&lev(g,strip(c))<=Math.max(1,Math.floor(strip(c).length/5))){const w=whyWrong(given,c);if(w&&w.html)j.why=w.html+w.cmp;}return j;}
 /* (Round 8) A near miss the course can name, as the whole answer or as part of a longer one ("Gerai, ačiū. O tu?" is the
    same slip as "O tu?"), so lessons, conversations and Quick chat give it the same verdict. */
 function nearNote(given,target){if(typeof NEAR_NOTE==='undefined')return null;const g=norm(given),t=norm(target||'');
