@@ -31,6 +31,7 @@ def run(sql):
         ctx = b.contexts[0]
         pages = [x for x in ctx.pages if 'supabase.com/dashboard' in x.url]
         page = pages[-1] if pages else ctx.new_page()
+        page.bring_to_front()  # a window behind others leaves the SQL editor hidden, and it never loads
         page.goto(EDITOR)
         page.wait_for_load_state('networkidle')
         page.wait_for_timeout(4000)
