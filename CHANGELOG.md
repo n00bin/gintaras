@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.112** (2026-11-05) First Lithuanian artwork rollout: 148 course pictures, all 20 conversation portraits and the default learner portrait use the approved rounded cartoon style. Optimized transparent WebPs load with lessons and remain available offline. The remaining 340 pictures retain their existing artwork while replacements are prepared. Course content, recordings, saved progress and customized avatars are preserved.
+
 - **3.111** (2026-11-05) Gintaras is now Wordami. Ami the parrot replaces the amber-gem mascot with eight individually illustrated interaction poses; the app identity, installation, sharing, privacy copy and notification branding are updated. Existing progress, accounts, course IDs and the public URL remain compatible. All Ami poses are cached for offline use. Spanish retains its existing artwork; its picture lookup and starter-tip wording are corrected so lessons work with the shared app helpers.
 
 How the numbers work: the **first** number goes up for a big change, the **middle** number for a new feature, the **last** number for a fix or polish.

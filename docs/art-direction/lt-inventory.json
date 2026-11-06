@@ -1,0 +1,3257 @@
+{
+  "cast": {
+    "Rūta": "41.0.0.15.1.2.10.5.2",
+    "Jonas": "1.3.0.4.3.3.6.8.3",
+    "Eglė": "45.0.0.12.5.1.14.2.4",
+    "Petras": "42.8.0.16.7.4.2.11.5",
+    "Aldona": "61.0.11.24.4.5.20.6.6",
+    "Darius": "33.1.0.6.9.2.8.9.7",
+    "Jurgita": "23.0.3.20.6.1.18.4.8",
+    "Inga": "37.0.0.22.2.3.12.7.1",
+    "Vytautas": "50.5.3.10.4.3.6.12.6",
+    "Irena": "23.0.2.18.5.2.16.3.4",
+    "Mindaugas": "1.6.0.7.8.4.9.14.3",
+    "Rasa": "45.0.4.19.3.2.12.6.7",
+    "Agnė": "41.0.0.21.2.5.18.2.3",
+    "Danutė": "61.0.6.23.4.4.20.5.2",
+    "Daiva": "45.0.3.24.2.2.10.3.4",
+    "Andrius": "1.0.0.25.7.3.4.9.6",
+    "Paulius": "33.2.0.8.5.1.6.11.8"
+  },
+  "units": [
+    {
+      "id": "u1",
+      "title": "Basics"
+    },
+    {
+      "id": "u21",
+      "title": "Small talk"
+    },
+    {
+      "id": "u3",
+      "title": "Food"
+    },
+    {
+      "id": "u15",
+      "title": "At the restaurant"
+    },
+    {
+      "id": "u8",
+      "title": "Talking"
+    },
+    {
+      "id": "u27",
+      "title": "Everyday verbs"
+    },
+    {
+      "id": "u41",
+      "title": "Little words"
+    },
+    {
+      "id": "u42",
+      "title": "Everyday words"
+    },
+    {
+      "id": "u13",
+      "title": "Question words"
+    },
+    {
+      "id": "u20",
+      "title": "About me"
+    },
+    {
+      "id": "u2",
+      "title": "Numbers"
+    },
+    {
+      "id": "u7",
+      "title": "Time"
+    },
+    {
+      "id": "u28",
+      "title": "My day"
+    },
+    {
+      "id": "u33",
+      "title": "Can, must, need"
+    },
+    {
+      "id": "u9",
+      "title": "In the city"
+    },
+    {
+      "id": "u19",
+      "title": "Getting by"
+    },
+    {
+      "id": "u14",
+      "title": "Transport"
+    },
+    {
+      "id": "u16",
+      "title": "Shopping"
+    },
+    {
+      "id": "u29",
+      "title": "Clothes"
+    },
+    {
+      "id": "u5",
+      "title": "Colors"
+    },
+    {
+      "id": "u30",
+      "title": "Describing"
+    },
+    {
+      "id": "u4",
+      "title": "Family"
+    },
+    {
+      "id": "u25",
+      "title": "Talking about family"
+    },
+    {
+      "id": "u31",
+      "title": "Jobs"
+    },
+    {
+      "id": "u11",
+      "title": "Weather and feelings"
+    },
+    {
+      "id": "u32",
+      "title": "Home"
+    },
+    {
+      "id": "u26",
+      "title": "Verb dictionary"
+    },
+    {
+      "id": "u22",
+      "title": "Free time"
+    },
+    {
+      "id": "u23",
+      "title": "Making plans"
+    },
+    {
+      "id": "u24",
+      "title": "Seasons and months"
+    },
+    {
+      "id": "u34",
+      "title": "Tomorrow"
+    },
+    {
+      "id": "u35",
+      "title": "Joining words"
+    },
+    {
+      "id": "u36",
+      "title": "Yesterday"
+    },
+    {
+      "id": "u37",
+      "title": "What did you do?"
+    },
+    {
+      "id": "u10",
+      "title": "Travel"
+    },
+    {
+      "id": "u17",
+      "title": "At the hotel"
+    },
+    {
+      "id": "u40",
+      "title": "Body and health"
+    },
+    {
+      "id": "u18",
+      "title": "Emergencies and health"
+    },
+    {
+      "id": "u38",
+      "title": "Opinions"
+    },
+    {
+      "id": "u39",
+      "title": "Keep it going"
+    },
+    {
+      "id": "u6",
+      "title": "Animals"
+    },
+    {
+      "id": "u12",
+      "title": "Culture"
+    },
+    {
+      "id": "u0",
+      "title": "Sounds"
+    }
+  ],
+  "pictures": [
+    {
+      "word": "Labas",
+      "en": "Hello",
+      "unit": "u1",
+      "picture": "art/labas"
+    },
+    {
+      "word": "Sveiki",
+      "en": "Hello (formal)",
+      "unit": "u1",
+      "picture": "art/sveiki"
+    },
+    {
+      "word": "Labas rytas",
+      "en": "Good morning",
+      "unit": "u1",
+      "picture": "art/labas-rytas"
+    },
+    {
+      "word": "Laba diena",
+      "en": "Good day",
+      "unit": "u1",
+      "picture": "art/laba-diena"
+    },
+    {
+      "word": "Labas vakaras",
+      "en": "Good evening",
+      "unit": "u1",
+      "picture": "art/labas-vakaras"
+    },
+    {
+      "word": "Labanakt",
+      "en": "Good night",
+      "unit": "u1",
+      "picture": "art/labanakt"
+    },
+    {
+      "word": "Viso gero",
+      "en": "Goodbye",
+      "unit": "u1",
+      "picture": "art/viso-gero"
+    },
+    {
+      "word": "Iki",
+      "en": "Bye",
+      "unit": "u1",
+      "picture": "art/iki"
+    },
+    {
+      "word": "Ačiū",
+      "en": "Thank you",
+      "unit": "u1",
+      "picture": "art/aciu"
+    },
+    {
+      "word": "Prašau",
+      "en": "Please",
+      "unit": "u1",
+      "picture": "art/prasau"
+    },
+    {
+      "word": "Taip",
+      "en": "Yes",
+      "unit": "u1",
+      "picture": "art/taip"
+    },
+    {
+      "word": "Ne",
+      "en": "No",
+      "unit": "u1",
+      "picture": "art/ne"
+    },
+    {
+      "word": "Atsiprašau",
+      "en": "Sorry",
+      "unit": "u1",
+      "picture": "art/atsiprasau"
+    },
+    {
+      "word": "Gerai",
+      "en": "OK",
+      "unit": "u1",
+      "picture": "art/gerai"
+    },
+    {
+      "word": "Kaip sekasi?",
+      "en": "How are you?",
+      "unit": "u1",
+      "picture": "art/kaip-sekasi"
+    },
+    {
+      "word": "Puikiai",
+      "en": "Great",
+      "unit": "u1",
+      "picture": "art/puikiai"
+    },
+    {
+      "word": "Nieko tokio",
+      "en": "No problem",
+      "unit": "u1",
+      "picture": "art/nieko-tokio"
+    },
+    {
+      "word": "Malonu susipažinti",
+      "en": "Nice to meet you",
+      "unit": "u1",
+      "picture": "art/malonu-susipazinti"
+    },
+    {
+      "word": "Iki pasimatymo",
+      "en": "Goodbye (until we meet)",
+      "unit": "u1",
+      "picture": "art/iki-pasimatymo"
+    },
+    {
+      "word": "Sėkmės",
+      "en": "Good luck",
+      "unit": "u1",
+      "picture": "art/sekmes"
+    },
+    {
+      "word": "Aš",
+      "en": "I (as in \"I am\")",
+      "unit": "u1",
+      "picture": "art/as"
+    },
+    {
+      "word": "Tu",
+      "en": "You (to a friend)",
+      "unit": "u1",
+      "picture": "art/tu"
+    },
+    {
+      "word": "Jis",
+      "en": "He",
+      "unit": "u1",
+      "picture": "art/jis"
+    },
+    {
+      "word": "Ji",
+      "en": "She",
+      "unit": "u1",
+      "picture": "art/ji"
+    },
+    {
+      "word": "Mes",
+      "en": "We",
+      "unit": "u1",
+      "picture": "art/mes"
+    },
+    {
+      "word": "Aš esu Tomas",
+      "en": "I am Tomas",
+      "unit": "u1",
+      "picture": "art/as-esu-tomas"
+    },
+    {
+      "word": "Tu esi Jonas?",
+      "en": "Are you Jonas?",
+      "unit": "u1",
+      "picture": "art/tu-esi-jonas"
+    },
+    {
+      "word": "Jis yra Jonas",
+      "en": "He is Jonas",
+      "unit": "u1",
+      "picture": "art/jis-yra-jonas"
+    },
+    {
+      "word": "Ji yra Rūta",
+      "en": "She is Ruta",
+      "unit": "u1",
+      "picture": "art/ji-yra-ruta"
+    },
+    {
+      "word": "Mes esame čia",
+      "en": "We are here",
+      "unit": "u1",
+      "picture": "art/mes-esame-cia"
+    },
+    {
+      "word": "Jūs",
+      "en": "You (formal or plural)",
+      "unit": "u1",
+      "picture": "art/jus"
+    },
+    {
+      "word": "Jie",
+      "en": "They (men or mixed)",
+      "unit": "u1",
+      "picture": "art/jie"
+    },
+    {
+      "word": "Jos",
+      "en": "They (women)",
+      "unit": "u1",
+      "picture": "art/jos"
+    },
+    {
+      "word": "Mano vardas Tomas",
+      "en": "My name is Tomas",
+      "unit": "u1",
+      "picture": "art/mano-vardas-tomas"
+    },
+    {
+      "word": "Koks tavo vardas?",
+      "en": "What is your name?",
+      "unit": "u1",
+      "picture": "art/koks-tavo-vardas"
+    },
+    {
+      "word": "Aš esu iš Amerikos",
+      "en": "I am from America",
+      "unit": "u1",
+      "picture": "art/as-esu-is-amerikos"
+    },
+    {
+      "word": "Iš kur?",
+      "en": "Where from?",
+      "unit": "u1",
+      "picture": "art/is-kur"
+    },
+    {
+      "word": "Kavos?",
+      "en": "Some coffee?",
+      "unit": "u1",
+      "picture": "art/kavos"
+    },
+    {
+      "word": "Arbatos?",
+      "en": "Some tea?",
+      "unit": "u1",
+      "picture": "art/arbatos"
+    },
+    {
+      "word": "Gerai, ačiū",
+      "en": "Fine, thanks",
+      "unit": "u21",
+      "picture": "art/gerai-aciu"
+    },
+    {
+      "word": "O tau?",
+      "en": "And you? (after \"How are you?\")",
+      "unit": "u21",
+      "picture": "art/o-tau"
+    },
+    {
+      "word": "Neblogai",
+      "en": "Not bad",
+      "unit": "u21",
+      "picture": "art/neblogai"
+    },
+    {
+      "word": "Taip sau",
+      "en": "So-so",
+      "unit": "u21",
+      "picture": "art/taip-sau"
+    },
+    {
+      "word": "Man irgi gerai",
+      "en": "I'm fine too",
+      "unit": "u21",
+      "picture": "art/man-irgi-gerai"
+    },
+    {
+      "word": "Aš irgi",
+      "en": "Me too",
+      "unit": "u21",
+      "picture": "art/as-irgi"
+    },
+    {
+      "word": "Ką veiki?",
+      "en": "What are you up to?",
+      "unit": "u21",
+      "picture": "art/ka-veiki"
+    },
+    {
+      "word": "Nieko ypatingo",
+      "en": "Nothing special",
+      "unit": "u21",
+      "picture": "art/nieko-ypatingo"
+    },
+    {
+      "word": "Labai malonu",
+      "en": "Very nice to meet you",
+      "unit": "u21",
+      "picture": "art/labai-malonu"
+    },
+    {
+      "word": "Ir tau",
+      "en": "You too",
+      "unit": "u21",
+      "picture": "art/ir-tau"
+    },
+    {
+      "word": "Aš truputį kalbu lietuviškai",
+      "en": "I speak a little Lithuanian",
+      "unit": "u21",
+      "picture": "art/as-truputi-kalbu-lietuviskai"
+    },
+    {
+      "word": "Kaip tai pasakyti lietuviškai?",
+      "en": "How do you say that in Lithuanian?",
+      "unit": "u21",
+      "picture": "art/kaip-tai-pasakyti-lietuviskai"
+    },
+    {
+      "word": "Ką reiškia šis žodis?",
+      "en": "What does this word mean?",
+      "unit": "u21",
+      "picture": "art/ka-reiskia-sis-zodis"
+    },
+    {
+      "word": "Aš nelabai suprantu",
+      "en": "I don't quite understand",
+      "unit": "u21",
+      "picture": "art/as-nelabai-suprantu"
+    },
+    {
+      "word": "Ar gali pakartoti?",
+      "en": "Can you repeat that? (to a friend)",
+      "unit": "u21",
+      "picture": "art/ar-gali-pakartoti"
+    },
+    {
+      "word": "Palauk",
+      "en": "Wait",
+      "unit": "u21",
+      "picture": "art/palauk"
+    },
+    {
+      "word": "Teisingai",
+      "en": "That's right",
+      "unit": "u21",
+      "picture": "art/teisingai"
+    },
+    {
+      "word": "Aš mokausi",
+      "en": "I'm learning",
+      "unit": "u21",
+      "picture": "art/as-mokausi"
+    },
+    {
+      "word": "Dar kartą",
+      "en": "One more time",
+      "unit": "u21",
+      "picture": "art/dar-karta"
+    },
+    {
+      "word": "Supratau",
+      "en": "Got it",
+      "unit": "u21",
+      "picture": "art/supratau"
+    },
+    {
+      "word": "duona",
+      "en": "bread",
+      "unit": "u3",
+      "picture": "art/duona"
+    },
+    {
+      "word": "pienas",
+      "en": "milk",
+      "unit": "u3",
+      "picture": "art/pienas"
+    },
+    {
+      "word": "vanduo",
+      "en": "water",
+      "unit": "u3",
+      "picture": "art/vanduo"
+    },
+    {
+      "word": "kava",
+      "en": "coffee",
+      "unit": "u3",
+      "picture": "art/kava"
+    },
+    {
+      "word": "arbata",
+      "en": "tea",
+      "unit": "u3",
+      "picture": "art/arbata"
+    },
+    {
+      "word": "sūris",
+      "en": "cheese",
+      "unit": "u3",
+      "picture": "art/suris"
+    },
+    {
+      "word": "mėsa",
+      "en": "meat",
+      "unit": "u3",
+      "picture": "art/mesa"
+    },
+    {
+      "word": "sriuba",
+      "en": "soup",
+      "unit": "u3",
+      "picture": "art/sriuba"
+    },
+    {
+      "word": "kiaušinis",
+      "en": "egg",
+      "unit": "u3",
+      "picture": "art/kiausinis"
+    },
+    {
+      "word": "sviestas",
+      "en": "butter",
+      "unit": "u3",
+      "picture": "art/sviestas"
+    },
+    {
+      "word": "obuolys",
+      "en": "apple",
+      "unit": "u3",
+      "picture": "art/obuolys"
+    },
+    {
+      "word": "bulvė",
+      "en": "potato",
+      "unit": "u3",
+      "picture": "art/bulve"
+    },
+    {
+      "word": "žuvis",
+      "en": "fish",
+      "unit": "u3",
+      "picture": "art/zuvis"
+    },
+    {
+      "word": "vištiena",
+      "en": "chicken",
+      "unit": "u3",
+      "picture": "art/vistiena"
+    },
+    {
+      "word": "cukrus",
+      "en": "sugar",
+      "unit": "u3",
+      "picture": "art/cukrus"
+    },
+    {
+      "word": "druska",
+      "en": "salt",
+      "unit": "u3",
+      "picture": "art/druska"
+    },
+    {
+      "word": "alus",
+      "en": "beer",
+      "unit": "u3",
+      "picture": "art/alus"
+    },
+    {
+      "word": "vynas",
+      "en": "wine",
+      "unit": "u3",
+      "picture": "art/vynas"
+    },
+    {
+      "word": "pyragas",
+      "en": "cake",
+      "unit": "u3",
+      "picture": "art/pyragas"
+    },
+    {
+      "word": "ledai",
+      "en": "ice cream",
+      "unit": "u3",
+      "picture": "art/ledai"
+    },
+    {
+      "word": "Aš noriu kavos",
+      "en": "I want coffee",
+      "unit": "u3",
+      "picture": "art/as-noriu-kavos"
+    },
+    {
+      "word": "Aš valgau duoną",
+      "en": "I am eating bread",
+      "unit": "u3",
+      "picture": "art/as-valgau-duona"
+    },
+    {
+      "word": "Aš geriu vandenį",
+      "en": "I am drinking water",
+      "unit": "u3",
+      "picture": "art/as-geriu-vandeni"
+    },
+    {
+      "word": "Skanu!",
+      "en": "Tasty!",
+      "unit": "u3",
+      "picture": "art/skanu"
+    },
+    {
+      "word": "Aš esu alkanas",
+      "en": "I am hungry",
+      "unit": "u3",
+      "picture": "art/as-esu-alkanas"
+    },
+    {
+      "word": "Sąskaitą, prašau",
+      "en": "The bill, please",
+      "unit": "u3",
+      "picture": "art/saskaita-prasau"
+    },
+    {
+      "word": "Skanaus!",
+      "en": "Enjoy your meal!",
+      "unit": "u3",
+      "picture": "art/skanaus"
+    },
+    {
+      "word": "Į sveikatą!",
+      "en": "Cheers!",
+      "unit": "u3",
+      "picture": "art/i-sveikata"
+    },
+    {
+      "word": "meniu",
+      "en": "menu",
+      "unit": "u3",
+      "picture": "art/meniu"
+    },
+    {
+      "word": "restoranas",
+      "en": "restaurant",
+      "unit": "u3",
+      "picture": "art/restoranas"
+    },
+    {
+      "word": "Ar nori kavos?",
+      "en": "Do you want coffee?",
+      "unit": "u3",
+      "picture": "art/ar-nori-kavos"
+    },
+    {
+      "word": "Aš noriu arbatos",
+      "en": "I want tea",
+      "unit": "u3",
+      "picture": "art/as-noriu-arbatos"
+    },
+    {
+      "word": "Aš valgau mėsą",
+      "en": "I eat meat",
+      "unit": "u3",
+      "picture": "art/as-valgau-mesa"
+    },
+    {
+      "word": "Aš valgau žuvį",
+      "en": "I eat fish",
+      "unit": "u3",
+      "picture": "art/as-valgau-zuvi"
+    },
+    {
+      "word": "Dar sriubos?",
+      "en": "More soup?",
+      "unit": "u3",
+      "picture": "art/dar-sriubos"
+    },
+    {
+      "word": "Taip, dar truputį",
+      "en": "Yes, a little more",
+      "unit": "u3",
+      "picture": "art/taip-dar-truputi"
+    },
+    {
+      "word": "Aš sotus",
+      "en": "I'm full",
+      "unit": "u3",
+      "picture": "art/as-sotus"
+    },
+    {
+      "word": "Paduok druską, prašau",
+      "en": "Pass the salt, please",
+      "unit": "u3",
+      "picture": "art/paduok-druska-prasau"
+    },
+    {
+      "word": "Viskas labai skanu",
+      "en": "Everything is very tasty",
+      "unit": "u3",
+      "picture": "art/viskas-labai-skanu"
+    },
+    {
+      "word": "Ačiū už viską",
+      "en": "Thanks for everything",
+      "unit": "u3",
+      "picture": "art/aciu-uz-viska"
+    },
+    {
+      "word": "Meniu, prašau",
+      "en": "The menu, please",
+      "unit": "u15",
+      "picture": "📋"
+    },
+    {
+      "word": "vandens be dujų",
+      "en": "still water",
+      "unit": "u15",
+      "picture": "🚰"
+    },
+    {
+      "word": "vandens su dujomis",
+      "en": "sparkling water",
+      "unit": "u15",
+      "picture": "💦"
+    },
+    {
+      "word": "Aš nevalgau mėsos",
+      "en": "I don't eat meat",
+      "unit": "u15",
+      "picture": "🥦"
+    },
+    {
+      "word": "Ką rekomenduojate?",
+      "en": "What do you recommend?",
+      "unit": "u15",
+      "picture": "👨‍🍳"
+    },
+    {
+      "word": "pusryčiai",
+      "en": "breakfast",
+      "unit": "u15",
+      "picture": "🍳"
+    },
+    {
+      "word": "pietūs",
+      "en": "lunch",
+      "unit": "u15",
+      "picture": "🥗"
+    },
+    {
+      "word": "vakarienė",
+      "en": "dinner",
+      "unit": "u15",
+      "picture": "🍽️"
+    },
+    {
+      "word": "Ar galima mokėti kortele?",
+      "en": "Can I pay by card?",
+      "unit": "u15",
+      "picture": "💳"
+    },
+    {
+      "word": "grynaisiais",
+      "en": "in cash",
+      "unit": "u15",
+      "picture": "💵"
+    },
+    {
+      "word": "arbatpinigiai",
+      "en": "tip",
+      "unit": "u15",
+      "picture": "💰"
+    },
+    {
+      "word": "Labai skanu",
+      "en": "Very tasty",
+      "unit": "u15",
+      "picture": "😋"
+    },
+    {
+      "word": "Aš alergiškas riešutams",
+      "en": "I'm allergic to nuts",
+      "unit": "u15",
+      "picture": "🥜"
+    },
+    {
+      "word": "su pienu",
+      "en": "with milk",
+      "unit": "u15",
+      "picture": "🥛"
+    },
+    {
+      "word": "šaukštas",
+      "en": "spoon",
+      "unit": "u15",
+      "picture": "🥄"
+    },
+    {
+      "word": "šakutė",
+      "en": "fork",
+      "unit": "u15",
+      "picture": "🍴"
+    },
+    {
+      "word": "peilis",
+      "en": "knife",
+      "unit": "u15",
+      "picture": "🔪"
+    },
+    {
+      "word": "Sriubą, prašau",
+      "en": "The soup, please",
+      "unit": "u15",
+      "picture": "🍲"
+    },
+    {
+      "word": "Arbatą, prašau",
+      "en": "Tea, please",
+      "unit": "u15",
+      "picture": "🍵"
+    },
+    {
+      "word": "Puiku!",
+      "en": "That’s great!",
+      "unit": "u15",
+      "picture": "🎉"
+    },
+    {
+      "word": "Ar tu kalbi angliškai?",
+      "en": "Do you speak English? (to a friend)",
+      "unit": "u8",
+      "picture": "🇬🇧"
+    },
+    {
+      "word": "Aš nesuprantu",
+      "en": "I don't understand",
+      "unit": "u8",
+      "picture": "😕"
+    },
+    {
+      "word": "Aš ateinu",
+      "en": "I'm coming",
+      "unit": "u27",
+      "picture": "🏃"
+    },
+    {
+      "word": "Jis išeina",
+      "en": "He is leaving",
+      "unit": "u27",
+      "picture": "🚶‍♂️"
+    },
+    {
+      "word": "Aš grįžtu",
+      "en": "I'm coming back",
+      "unit": "u27",
+      "picture": "🔙"
+    },
+    {
+      "word": "Aš skubu",
+      "en": "I'm in a hurry",
+      "unit": "u27",
+      "picture": "🏃‍♀️"
+    },
+    {
+      "word": "Aš darau",
+      "en": "I'm doing",
+      "unit": "u27",
+      "picture": "🛠️"
+    },
+    {
+      "word": "Aš žiūriu televizorių",
+      "en": "I'm watching TV",
+      "unit": "u27",
+      "picture": "📺"
+    },
+    {
+      "word": "Aš galvoju",
+      "en": "I'm thinking",
+      "unit": "u27",
+      "picture": "💭"
+    },
+    {
+      "word": "Aš klausau",
+      "en": "I'm listening",
+      "unit": "u27",
+      "picture": "🎧"
+    },
+    {
+      "word": "Aš perku duoną",
+      "en": "I'm buying bread",
+      "unit": "u27",
+      "picture": "🍞"
+    },
+    {
+      "word": "Aš ieškau",
+      "en": "I'm looking for",
+      "unit": "u27",
+      "picture": "🔍"
+    },
+    {
+      "word": "Aš ieškau stoties",
+      "en": "I'm looking for the station",
+      "unit": "u27",
+      "picture": "🔎"
+    },
+    {
+      "word": "Aš randu",
+      "en": "I find",
+      "unit": "u27",
+      "picture": "🎯"
+    },
+    {
+      "word": "Jūs esate",
+      "en": "You are (polite or plural)",
+      "unit": "u27",
+      "picture": "👥"
+    },
+    {
+      "word": "Jie yra",
+      "en": "They are",
+      "unit": "u27",
+      "picture": "👬"
+    },
+    {
+      "word": "ir",
+      "en": "and",
+      "unit": "u41",
+      "picture": "➕"
+    },
+    {
+      "word": "bet",
+      "en": "but",
+      "unit": "u41",
+      "picture": "↔️"
+    },
+    {
+      "word": "arba",
+      "en": "or",
+      "unit": "u41",
+      "picture": "🔀"
+    },
+    {
+      "word": "nes",
+      "en": "because",
+      "unit": "u41",
+      "picture": "🔗"
+    },
+    {
+      "word": "todėl",
+      "en": "so / that's why",
+      "unit": "u41",
+      "picture": "➡️"
+    },
+    {
+      "word": "tada",
+      "en": "then",
+      "unit": "u41",
+      "picture": "⏭️"
+    },
+    {
+      "word": "jau",
+      "en": "already",
+      "unit": "u41",
+      "picture": "✅"
+    },
+    {
+      "word": "dar",
+      "en": "still / yet",
+      "unit": "u41",
+      "picture": "⏳"
+    },
+    {
+      "word": "tik",
+      "en": "only",
+      "unit": "u41",
+      "picture": "☝️"
+    },
+    {
+      "word": "kai",
+      "en": "when (not a question)",
+      "unit": "u41",
+      "picture": "🕰️"
+    },
+    {
+      "word": "jeigu",
+      "en": "if",
+      "unit": "u41",
+      "picture": "🤔"
+    },
+    {
+      "word": "kad",
+      "en": "that",
+      "unit": "u41",
+      "picture": "💬"
+    },
+    {
+      "word": "nors",
+      "en": "although",
+      "unit": "u41",
+      "picture": "🤷"
+    },
+    {
+      "word": "vis tiek",
+      "en": "anyway",
+      "unit": "u41",
+      "picture": "💪"
+    },
+    {
+      "word": "Štai!",
+      "en": "Here it is!",
+      "unit": "u42",
+      "picture": "👉"
+    },
+    {
+      "word": "Daug",
+      "en": "A lot",
+      "unit": "u42",
+      "picture": "🔢"
+    },
+    {
+      "word": "Visi",
+      "en": "Everyone",
+      "unit": "u42",
+      "picture": "🧑‍🤝‍🧑"
+    },
+    {
+      "word": "Niekas",
+      "en": "Nobody",
+      "unit": "u42",
+      "picture": "🙅"
+    },
+    {
+      "word": "Vėl",
+      "en": "Again",
+      "unit": "u42",
+      "picture": "🔁"
+    },
+    {
+      "word": "Paskambink jai",
+      "en": "Call her",
+      "unit": "u42",
+      "picture": "📞"
+    },
+    {
+      "word": "Ačiū jums",
+      "en": "Thank you (polite)",
+      "unit": "u42",
+      "picture": "🙏"
+    },
+    {
+      "word": "Tiesiog",
+      "en": "Simply",
+      "unit": "u42",
+      "picture": "👌"
+    },
+    {
+      "word": "Tiesa?",
+      "en": "Right?",
+      "unit": "u42",
+      "picture": "❓"
+    },
+    {
+      "word": "Tuoj",
+      "en": "In a moment",
+      "unit": "u42",
+      "picture": "⏱️"
+    },
+    {
+      "word": "Klausyk",
+      "en": "Listen",
+      "unit": "u42",
+      "picture": "👂"
+    },
+    {
+      "word": "Pažiūrėk!",
+      "en": "Look!",
+      "unit": "u42",
+      "picture": "👀"
+    },
+    {
+      "word": "Beveik",
+      "en": "Almost",
+      "unit": "u42",
+      "picture": "🤏"
+    },
+    {
+      "word": "Visai gerai",
+      "en": "Quite good",
+      "unit": "u42",
+      "picture": "🙂"
+    },
+    {
+      "word": "kur",
+      "en": "where",
+      "unit": "u13",
+      "picture": "📍"
+    },
+    {
+      "word": "kada",
+      "en": "when (a question)",
+      "unit": "u13",
+      "picture": "⏰"
+    },
+    {
+      "word": "kaip",
+      "en": "how",
+      "unit": "u13",
+      "picture": "🧭"
+    },
+    {
+      "word": "Iš kur tu esi?",
+      "en": "Where are you from?",
+      "unit": "u20",
+      "picture": "🌍"
+    },
+    {
+      "word": "Aš esu iš Kanados",
+      "en": "I am from Canada",
+      "unit": "u20",
+      "picture": "🇨🇦"
+    },
+    {
+      "word": "Aš gyvenu Londone",
+      "en": "I live in London",
+      "unit": "u20",
+      "picture": "💂"
+    },
+    {
+      "word": "Ne, aš amerikietis",
+      "en": "No, I'm American",
+      "unit": "u20",
+      "picture": "🇺🇸"
+    },
+    {
+      "word": "Aš esu mokytojas",
+      "en": "I am a teacher",
+      "unit": "u20",
+      "picture": "🧑‍🏫"
+    },
+    {
+      "word": "Aš esu studentas",
+      "en": "I am a student",
+      "unit": "u20",
+      "picture": "🎓"
+    },
+    {
+      "word": "darbas",
+      "en": "work / job",
+      "unit": "u20",
+      "picture": "💼"
+    },
+    {
+      "word": "mama",
+      "en": "mom",
+      "unit": "u20",
+      "picture": "👩"
+    },
+    {
+      "word": "tėtis",
+      "en": "dad",
+      "unit": "u20",
+      "picture": "👨"
+    },
+    {
+      "word": "sesuo",
+      "en": "sister",
+      "unit": "u20",
+      "picture": "👧"
+    },
+    {
+      "word": "brolis",
+      "en": "brother",
+      "unit": "u20",
+      "picture": "👦"
+    },
+    {
+      "word": "vienas",
+      "en": "one",
+      "unit": "u2",
+      "picture": "1️⃣"
+    },
+    {
+      "word": "du",
+      "en": "two",
+      "unit": "u2",
+      "picture": "2️⃣"
+    },
+    {
+      "word": "trys",
+      "en": "three",
+      "unit": "u2",
+      "picture": "3️⃣"
+    },
+    {
+      "word": "keturi",
+      "en": "four",
+      "unit": "u2",
+      "picture": "4️⃣"
+    },
+    {
+      "word": "penki",
+      "en": "five",
+      "unit": "u2",
+      "picture": "5️⃣"
+    },
+    {
+      "word": "šeši",
+      "en": "six",
+      "unit": "u2",
+      "picture": "6️⃣"
+    },
+    {
+      "word": "septyni",
+      "en": "seven",
+      "unit": "u2",
+      "picture": "7️⃣"
+    },
+    {
+      "word": "aštuoni",
+      "en": "eight",
+      "unit": "u2",
+      "picture": "8️⃣"
+    },
+    {
+      "word": "devyni",
+      "en": "nine",
+      "unit": "u2",
+      "picture": "9️⃣"
+    },
+    {
+      "word": "dešimt",
+      "en": "ten",
+      "unit": "u2",
+      "picture": "🔟"
+    },
+    {
+      "word": "nulis",
+      "en": "zero",
+      "unit": "u2",
+      "picture": "0️⃣"
+    },
+    {
+      "word": "vienuolika",
+      "en": "eleven",
+      "unit": "u2",
+      "picture": "#11"
+    },
+    {
+      "word": "dvylika",
+      "en": "twelve",
+      "unit": "u2",
+      "picture": "#12"
+    },
+    {
+      "word": "trylika",
+      "en": "thirteen",
+      "unit": "u2",
+      "picture": "#13"
+    },
+    {
+      "word": "keturiolika",
+      "en": "fourteen",
+      "unit": "u2",
+      "picture": "#14"
+    },
+    {
+      "word": "penkiolika",
+      "en": "fifteen",
+      "unit": "u2",
+      "picture": "#15"
+    },
+    {
+      "word": "dvidešimt",
+      "en": "twenty",
+      "unit": "u2",
+      "picture": "#20"
+    },
+    {
+      "word": "trisdešimt",
+      "en": "thirty",
+      "unit": "u2",
+      "picture": "#30"
+    },
+    {
+      "word": "šimtas",
+      "en": "one hundred",
+      "unit": "u2",
+      "picture": "💯"
+    },
+    {
+      "word": "tūkstantis",
+      "en": "one thousand",
+      "unit": "u2",
+      "picture": "#1000"
+    },
+    {
+      "word": "Kiek tau metų?",
+      "en": "How old are you?",
+      "unit": "u2",
+      "picture": "🎂"
+    },
+    {
+      "word": "Man dvidešimt metų",
+      "en": "I am twenty years old",
+      "unit": "u2",
+      "picture": "#20"
+    },
+    {
+      "word": "pirmas",
+      "en": "first",
+      "unit": "u2",
+      "picture": "🥇"
+    },
+    {
+      "word": "antras",
+      "en": "second",
+      "unit": "u2",
+      "picture": "🥈"
+    },
+    {
+      "word": "trečias",
+      "en": "third",
+      "unit": "u2",
+      "picture": "🥉"
+    },
+    {
+      "word": "pirmadienis",
+      "en": "Monday",
+      "unit": "u7",
+      "picture": "#MON"
+    },
+    {
+      "word": "antradienis",
+      "en": "Tuesday",
+      "unit": "u7",
+      "picture": "#TUE"
+    },
+    {
+      "word": "trečiadienis",
+      "en": "Wednesday",
+      "unit": "u7",
+      "picture": "#WED"
+    },
+    {
+      "word": "ketvirtadienis",
+      "en": "Thursday",
+      "unit": "u7",
+      "picture": "#THU"
+    },
+    {
+      "word": "penktadienis",
+      "en": "Friday",
+      "unit": "u7",
+      "picture": "#FRI"
+    },
+    {
+      "word": "šeštadienis",
+      "en": "Saturday",
+      "unit": "u7",
+      "picture": "#SAT"
+    },
+    {
+      "word": "sekmadienis",
+      "en": "Sunday",
+      "unit": "u7",
+      "picture": "#SUN"
+    },
+    {
+      "word": "šiandien",
+      "en": "today",
+      "unit": "u7",
+      "picture": "📅"
+    },
+    {
+      "word": "vakar",
+      "en": "yesterday",
+      "unit": "u7",
+      "picture": "⏮️"
+    },
+    {
+      "word": "rytas",
+      "en": "morning",
+      "unit": "u7",
+      "picture": "🌅"
+    },
+    {
+      "word": "diena",
+      "en": "day",
+      "unit": "u7",
+      "picture": "☀️"
+    },
+    {
+      "word": "vakaras",
+      "en": "evening",
+      "unit": "u7",
+      "picture": "🌆"
+    },
+    {
+      "word": "naktis",
+      "en": "night",
+      "unit": "u7",
+      "picture": "🌙"
+    },
+    {
+      "word": "metai",
+      "en": "year",
+      "unit": "u7",
+      "picture": "📆"
+    },
+    {
+      "word": "Aš apsirengiu",
+      "en": "I get dressed",
+      "unit": "u28",
+      "picture": "👕"
+    },
+    {
+      "word": "Aš skaitau naujienas",
+      "en": "I read the news",
+      "unit": "u28",
+      "picture": "📰"
+    },
+    {
+      "word": "Aš dirbu iki penkių",
+      "en": "I work until five",
+      "unit": "u28",
+      "picture": "🕔"
+    },
+    {
+      "word": "Aš tvarkausi",
+      "en": "I tidy up",
+      "unit": "u28",
+      "picture": "🧹"
+    },
+    {
+      "word": "Aš miegu aštuonias valandas",
+      "en": "I sleep eight hours",
+      "unit": "u28",
+      "picture": "🛌"
+    },
+    {
+      "word": "visada",
+      "en": "always",
+      "unit": "u28",
+      "picture": "♾️"
+    },
+    {
+      "word": "kartais",
+      "en": "sometimes",
+      "unit": "u28",
+      "picture": "🌗"
+    },
+    {
+      "word": "retai",
+      "en": "rarely",
+      "unit": "u28",
+      "picture": "🐢"
+    },
+    {
+      "word": "niekada",
+      "en": "never",
+      "unit": "u28",
+      "picture": "🚫"
+    },
+    {
+      "word": "Aš niekada nevėluoju",
+      "en": "I'm never late",
+      "unit": "u28",
+      "picture": "⌚"
+    },
+    {
+      "word": "Aš moku plaukti",
+      "en": "I know how to swim",
+      "unit": "u33",
+      "picture": "🏊"
+    },
+    {
+      "word": "Aš nemoku šokti",
+      "en": "I can't dance",
+      "unit": "u33",
+      "picture": "💃"
+    },
+    {
+      "word": "Čia negalima rūkyti",
+      "en": "No smoking here",
+      "unit": "u33",
+      "picture": "🚭"
+    },
+    {
+      "word": "miestas",
+      "en": "city",
+      "unit": "u9",
+      "picture": "🏙️"
+    },
+    {
+      "word": "kaimas",
+      "en": "village",
+      "unit": "u9",
+      "picture": "🏡"
+    },
+    {
+      "word": "namas",
+      "en": "house",
+      "unit": "u9",
+      "picture": "🏠"
+    },
+    {
+      "word": "mokykla",
+      "en": "school",
+      "unit": "u9",
+      "picture": "🏫"
+    },
+    {
+      "word": "parduotuvė",
+      "en": "shop",
+      "unit": "u9",
+      "picture": "🏪"
+    },
+    {
+      "word": "gatvė",
+      "en": "street",
+      "unit": "u9",
+      "picture": "🛣️"
+    },
+    {
+      "word": "stotis",
+      "en": "station",
+      "unit": "u9",
+      "picture": "🚉"
+    },
+    {
+      "word": "bažnyčia",
+      "en": "church",
+      "unit": "u9",
+      "picture": "⛪"
+    },
+    {
+      "word": "ligoninė",
+      "en": "hospital",
+      "unit": "u9",
+      "picture": "🏥"
+    },
+    {
+      "word": "bankas",
+      "en": "bank",
+      "unit": "u9",
+      "picture": "🏦"
+    },
+    {
+      "word": "kairėn",
+      "en": "to the left",
+      "unit": "u9",
+      "picture": "⬅️"
+    },
+    {
+      "word": "tiesiai",
+      "en": "straight ahead",
+      "unit": "u9",
+      "picture": "⬆️"
+    },
+    {
+      "word": "toli",
+      "en": "far",
+      "unit": "u9",
+      "picture": "🏔️"
+    },
+    {
+      "word": "vaistinė",
+      "en": "pharmacy",
+      "unit": "u9",
+      "picture": "💊"
+    },
+    {
+      "word": "paštas",
+      "en": "post office",
+      "unit": "u9",
+      "picture": "📮"
+    },
+    {
+      "word": "Linksmų Kalėdų!",
+      "en": "Merry Christmas!",
+      "unit": "u19",
+      "picture": "🎄"
+    },
+    {
+      "word": "Laimingų Naujųjų metų!",
+      "en": "Happy New Year!",
+      "unit": "u19",
+      "picture": "🎆"
+    },
+    {
+      "word": "Padėkite!",
+      "en": "Please help!",
+      "unit": "u19",
+      "picture": "🆘"
+    },
+    {
+      "word": "Kur tualetas?",
+      "en": "Where is the toilet?",
+      "unit": "u19",
+      "picture": "🚻"
+    },
+    {
+      "word": "Aš nekalbu lietuviškai",
+      "en": "I don't speak Lithuanian",
+      "unit": "u19",
+      "picture": "🤐"
+    },
+    {
+      "word": "Atleiskite",
+      "en": "Excuse me",
+      "unit": "u19",
+      "picture": "🙋"
+    },
+    {
+      "word": "Ar toli?",
+      "en": "Is it far?",
+      "unit": "u19",
+      "picture": "📏"
+    },
+    {
+      "word": "Žinoma",
+      "en": "Of course",
+      "unit": "u19",
+      "picture": "👍"
+    },
+    {
+      "word": "Kada išvyksta?",
+      "en": "When does it leave?",
+      "unit": "u14",
+      "picture": "🛫"
+    },
+    {
+      "word": "Kada atvyksta?",
+      "en": "When does it arrive?",
+      "unit": "u14",
+      "picture": "🛬"
+    },
+    {
+      "word": "stotelė",
+      "en": "bus stop",
+      "unit": "u14",
+      "picture": "🚏"
+    },
+    {
+      "word": "centras",
+      "en": "centre",
+      "unit": "u14",
+      "picture": "🏛️"
+    },
+    {
+      "word": "tvarkaraštis",
+      "en": "timetable",
+      "unit": "u14",
+      "picture": "🗓️"
+    },
+    {
+      "word": "taksi",
+      "en": "taxi",
+      "unit": "u14",
+      "picture": "🚕"
+    },
+    {
+      "word": "Sustokite čia, prašau",
+      "en": "Stop here, please",
+      "unit": "u14",
+      "picture": "🛑"
+    },
+    {
+      "word": "pirmyn",
+      "en": "ahead",
+      "unit": "u14",
+      "picture": "⏩"
+    },
+    {
+      "word": "atgal",
+      "en": "back (direction)",
+      "unit": "u14",
+      "picture": "⏪"
+    },
+    {
+      "word": "išėjimas",
+      "en": "exit",
+      "unit": "u14",
+      "picture": "🚪"
+    },
+    {
+      "word": "nuoma",
+      "en": "rental",
+      "unit": "u14",
+      "picture": "🔑"
+    },
+    {
+      "word": "dviratis",
+      "en": "bicycle",
+      "unit": "u14",
+      "picture": "🚲"
+    },
+    {
+      "word": "Važiuojam!",
+      "en": "Let's go!",
+      "unit": "u14",
+      "picture": "🚀"
+    },
+    {
+      "word": "brangu",
+      "en": "expensive",
+      "unit": "u16",
+      "picture": "💸"
+    },
+    {
+      "word": "pigu",
+      "en": "cheap",
+      "unit": "u16",
+      "picture": "🪙"
+    },
+    {
+      "word": "per mažas",
+      "en": "too small",
+      "unit": "u16",
+      "picture": "🐜"
+    },
+    {
+      "word": "kvitas",
+      "en": "receipt",
+      "unit": "u16",
+      "picture": "🧾"
+    },
+    {
+      "word": "atidaryta",
+      "en": "open",
+      "unit": "u16",
+      "picture": "🔓"
+    },
+    {
+      "word": "uždaryta",
+      "en": "closed",
+      "unit": "u16",
+      "picture": "🔒"
+    },
+    {
+      "word": "turgus",
+      "en": "market",
+      "unit": "u16",
+      "picture": "🧺"
+    },
+    {
+      "word": "prekybos centras",
+      "en": "shopping mall",
+      "unit": "u16",
+      "picture": "🏬"
+    },
+    {
+      "word": "kepykla",
+      "en": "bakery",
+      "unit": "u16",
+      "picture": "🥐"
+    },
+    {
+      "word": "suvenyras",
+      "en": "souvenir",
+      "unit": "u16",
+      "picture": "🗿"
+    },
+    {
+      "word": "dovana",
+      "en": "gift",
+      "unit": "u16",
+      "picture": "🎁"
+    },
+    {
+      "word": "maišelis",
+      "en": "bag",
+      "unit": "u16",
+      "picture": "🛍️"
+    },
+    {
+      "word": "nuolaida",
+      "en": "discount",
+      "unit": "u16",
+      "picture": "🏷️"
+    },
+    {
+      "word": "Ar turite obuolių?",
+      "en": "Do you have apples?",
+      "unit": "u16",
+      "picture": "🍎"
+    },
+    {
+      "word": "Ar turite sūrio?",
+      "en": "Do you have cheese?",
+      "unit": "u16",
+      "picture": "🧀"
+    },
+    {
+      "word": "marškiniai",
+      "en": "shirt",
+      "unit": "u29",
+      "picture": "👔"
+    },
+    {
+      "word": "kelnės",
+      "en": "trousers",
+      "unit": "u29",
+      "picture": "👖"
+    },
+    {
+      "word": "suknelė",
+      "en": "dress",
+      "unit": "u29",
+      "picture": "👗"
+    },
+    {
+      "word": "batai",
+      "en": "shoes",
+      "unit": "u29",
+      "picture": "👞"
+    },
+    {
+      "word": "striukė",
+      "en": "jacket",
+      "unit": "u29",
+      "picture": "🧥"
+    },
+    {
+      "word": "megztinis",
+      "en": "sweater",
+      "unit": "u29",
+      "picture": "🧶"
+    },
+    {
+      "word": "kepurė",
+      "en": "hat",
+      "unit": "u29",
+      "picture": "🧢"
+    },
+    {
+      "word": "Ar yra mažesnis?",
+      "en": "Is there a smaller one?",
+      "unit": "u29",
+      "picture": "⬇️"
+    },
+    {
+      "word": "Kur yra matavimosi kabina?",
+      "en": "Where is the fitting room?",
+      "unit": "u29",
+      "picture": "🪞"
+    },
+    {
+      "word": "Netinka",
+      "en": "It doesn't fit",
+      "unit": "u29",
+      "picture": "❌"
+    },
+    {
+      "word": "Ar turite kitos spalvos?",
+      "en": "Do you have another colour?",
+      "unit": "u29",
+      "picture": "🎨"
+    },
+    {
+      "word": "šalikas",
+      "en": "scarf",
+      "unit": "u29",
+      "picture": "🧣"
+    },
+    {
+      "word": "pirštinės",
+      "en": "gloves",
+      "unit": "u29",
+      "picture": "🧤"
+    },
+    {
+      "word": "kojinės",
+      "en": "socks",
+      "unit": "u29",
+      "picture": "🧦"
+    },
+    {
+      "word": "skėtis",
+      "en": "umbrella",
+      "unit": "u29",
+      "picture": "☂️"
+    },
+    {
+      "word": "rankinė",
+      "en": "handbag",
+      "unit": "u29",
+      "picture": "👜"
+    },
+    {
+      "word": "kuprinė",
+      "en": "backpack",
+      "unit": "u29",
+      "picture": "🎒"
+    },
+    {
+      "word": "akiniai",
+      "en": "glasses",
+      "unit": "u29",
+      "picture": "👓"
+    },
+    {
+      "word": "nauji batai",
+      "en": "new shoes",
+      "unit": "u29",
+      "picture": "👟"
+    },
+    {
+      "word": "baltas",
+      "en": "white",
+      "unit": "u29",
+      "picture": "⚪"
+    },
+    {
+      "word": "rudas",
+      "en": "brown",
+      "unit": "u29",
+      "picture": "🟤"
+    },
+    {
+      "word": "pilkas",
+      "en": "grey",
+      "unit": "u29",
+      "picture": "🐘"
+    },
+    {
+      "word": "rožinis",
+      "en": "pink",
+      "unit": "u29",
+      "picture": "🌸"
+    },
+    {
+      "word": "oranžinis",
+      "en": "orange",
+      "unit": "u29",
+      "picture": "🟠"
+    },
+    {
+      "word": "raudonas",
+      "en": "red",
+      "unit": "u5",
+      "picture": "🔴"
+    },
+    {
+      "word": "mėlynas",
+      "en": "blue",
+      "unit": "u5",
+      "picture": "🔵"
+    },
+    {
+      "word": "žalias",
+      "en": "green",
+      "unit": "u5",
+      "picture": "🟢"
+    },
+    {
+      "word": "geltonas",
+      "en": "yellow",
+      "unit": "u5",
+      "picture": "🟡"
+    },
+    {
+      "word": "juodas",
+      "en": "black",
+      "unit": "u5",
+      "picture": "⚫"
+    },
+    {
+      "word": "mažas",
+      "en": "small",
+      "unit": "u5",
+      "picture": "🐭"
+    },
+    {
+      "word": "naujas",
+      "en": "new",
+      "unit": "u5",
+      "picture": "✨"
+    },
+    {
+      "word": "senas",
+      "en": "old",
+      "unit": "u5",
+      "picture": "🏚️"
+    },
+    {
+      "word": "gražus",
+      "en": "beautiful",
+      "unit": "u5",
+      "picture": "🌹"
+    },
+    {
+      "word": "blogas",
+      "en": "bad",
+      "unit": "u5",
+      "picture": "👎"
+    },
+    {
+      "word": "žalias obuolys",
+      "en": "a green apple",
+      "unit": "u5",
+      "picture": "🍏"
+    },
+    {
+      "word": "aukštas vyras",
+      "en": "a tall man",
+      "unit": "u30",
+      "picture": "🧍‍♂️"
+    },
+    {
+      "word": "žemas",
+      "en": "short (height)",
+      "unit": "u30",
+      "picture": "🐕"
+    },
+    {
+      "word": "jaunas",
+      "en": "young",
+      "unit": "u30",
+      "picture": "👶"
+    },
+    {
+      "word": "vyresnis",
+      "en": "older",
+      "unit": "u30",
+      "picture": "🧓"
+    },
+    {
+      "word": "linksmas",
+      "en": "cheerful",
+      "unit": "u30",
+      "picture": "😄"
+    },
+    {
+      "word": "protingas",
+      "en": "clever",
+      "unit": "u30",
+      "picture": "🧠"
+    },
+    {
+      "word": "malonus",
+      "en": "kind",
+      "unit": "u30",
+      "picture": "🤗"
+    },
+    {
+      "word": "juokingas",
+      "en": "funny",
+      "unit": "u30",
+      "picture": "😂"
+    },
+    {
+      "word": "rimtas",
+      "en": "serious",
+      "unit": "u30",
+      "picture": "😐"
+    },
+    {
+      "word": "tylus",
+      "en": "quiet",
+      "unit": "u30",
+      "picture": "🤫"
+    },
+    {
+      "word": "ilgas",
+      "en": "long",
+      "unit": "u30",
+      "picture": "🐍"
+    },
+    {
+      "word": "trumpas",
+      "en": "short (length)",
+      "unit": "u30",
+      "picture": "✂️"
+    },
+    {
+      "word": "sunkus",
+      "en": "heavy / difficult",
+      "unit": "u30",
+      "picture": "🏋️"
+    },
+    {
+      "word": "lengvas",
+      "en": "light / easy",
+      "unit": "u30",
+      "picture": "🪶"
+    },
+    {
+      "word": "karštas",
+      "en": "hot",
+      "unit": "u30",
+      "picture": "🔥"
+    },
+    {
+      "word": "šaltas",
+      "en": "cold",
+      "unit": "u30",
+      "picture": "🧊"
+    },
+    {
+      "word": "nešvarus",
+      "en": "dirty",
+      "unit": "u30",
+      "picture": "💩"
+    },
+    {
+      "word": "patogus",
+      "en": "comfortable",
+      "unit": "u30",
+      "picture": "🛋️"
+    },
+    {
+      "word": "įdomus",
+      "en": "interesting",
+      "unit": "u30",
+      "picture": "🤩"
+    },
+    {
+      "word": "Mano sesuo aukšta",
+      "en": "My sister is tall",
+      "unit": "u30",
+      "picture": "🧍‍♀️"
+    },
+    {
+      "word": "Ši knyga įdomi",
+      "en": "This book is interesting",
+      "unit": "u30",
+      "picture": "📕"
+    },
+    {
+      "word": "Lietuvių kalba nėra lengva",
+      "en": "Lithuanian isn't easy",
+      "unit": "u30",
+      "picture": "🧗"
+    },
+    {
+      "word": "Kambarys švarus",
+      "en": "The room is clean",
+      "unit": "u30",
+      "picture": "🧼"
+    },
+    {
+      "word": "Kava per karšta",
+      "en": "The coffee is too hot",
+      "unit": "u30",
+      "picture": "♨️"
+    },
+    {
+      "word": "senelis",
+      "en": "grandfather",
+      "unit": "u4",
+      "picture": "👴"
+    },
+    {
+      "word": "senelė",
+      "en": "grandmother",
+      "unit": "u4",
+      "picture": "👵"
+    },
+    {
+      "word": "šeima",
+      "en": "family",
+      "unit": "u4",
+      "picture": "👪"
+    },
+    {
+      "word": "vaikas",
+      "en": "child",
+      "unit": "u4",
+      "picture": "🧒"
+    },
+    {
+      "word": "žmona",
+      "en": "wife",
+      "unit": "u4",
+      "picture": "👰"
+    },
+    {
+      "word": "draugė",
+      "en": "friend (female)",
+      "unit": "u4",
+      "picture": "👭"
+    },
+    {
+      "word": "žmogus",
+      "en": "person",
+      "unit": "u4",
+      "picture": "🧑"
+    },
+    {
+      "word": "Ar turi brolių ar seserų?",
+      "en": "Do you have brothers or sisters?",
+      "unit": "u25",
+      "picture": "👨‍👩‍👧‍👦"
+    },
+    {
+      "word": "Jie labai mieli",
+      "en": "They are very sweet",
+      "unit": "u25",
+      "picture": "🥰"
+    },
+    {
+      "word": "gydytoja",
+      "en": "doctor (woman)",
+      "unit": "u31",
+      "picture": "🧑‍⚕️"
+    },
+    {
+      "word": "vairuotojas",
+      "en": "driver",
+      "unit": "u31",
+      "picture": "🚗"
+    },
+    {
+      "word": "inžinierius",
+      "en": "engineer",
+      "unit": "u31",
+      "picture": "👷"
+    },
+    {
+      "word": "programuotojas",
+      "en": "programmer",
+      "unit": "u31",
+      "picture": "💻"
+    },
+    {
+      "word": "pardavėjas",
+      "en": "shop assistant",
+      "unit": "u31",
+      "picture": "🛒"
+    },
+    {
+      "word": "virėjas",
+      "en": "cook / chef",
+      "unit": "u31",
+      "picture": "🧑‍🍳"
+    },
+    {
+      "word": "ūkininkas",
+      "en": "farmer",
+      "unit": "u31",
+      "picture": "🧑‍🌾"
+    },
+    {
+      "word": "policininkas",
+      "en": "police officer",
+      "unit": "u31",
+      "picture": "👮"
+    },
+    {
+      "word": "Mano darbas sunkus",
+      "en": "My job is hard",
+      "unit": "u31",
+      "picture": "😓"
+    },
+    {
+      "word": "Aš dirbu visą dieną",
+      "en": "I work all day",
+      "unit": "u31",
+      "picture": "🕘"
+    },
+    {
+      "word": "oras",
+      "en": "weather",
+      "unit": "u11",
+      "picture": "🌦️"
+    },
+    {
+      "word": "lietus",
+      "en": "rain",
+      "unit": "u11",
+      "picture": "🌧️"
+    },
+    {
+      "word": "sniegas",
+      "en": "snow",
+      "unit": "u11",
+      "picture": "❄️"
+    },
+    {
+      "word": "vėjas",
+      "en": "wind",
+      "unit": "u11",
+      "picture": "💨"
+    },
+    {
+      "word": "debesis",
+      "en": "cloud",
+      "unit": "u11",
+      "picture": "☁️"
+    },
+    {
+      "word": "Šilta",
+      "en": "It's warm",
+      "unit": "u11",
+      "picture": "🌤️"
+    },
+    {
+      "word": "Šalta",
+      "en": "It's cold",
+      "unit": "u11",
+      "picture": "🥶"
+    },
+    {
+      "word": "Sninga",
+      "en": "It's snowing",
+      "unit": "u11",
+      "picture": "🌨️"
+    },
+    {
+      "word": "laimingas",
+      "en": "happy",
+      "unit": "u11",
+      "picture": "😊"
+    },
+    {
+      "word": "liūdnas",
+      "en": "sad",
+      "unit": "u11",
+      "picture": "😢"
+    },
+    {
+      "word": "pavargęs",
+      "en": "tired",
+      "unit": "u11",
+      "picture": "😴"
+    },
+    {
+      "word": "ištroškęs",
+      "en": "thirsty",
+      "unit": "u11",
+      "picture": "🥤"
+    },
+    {
+      "word": "Man karšta",
+      "en": "I'm hot",
+      "unit": "u11",
+      "picture": "🥵"
+    },
+    {
+      "word": "Aš sergu",
+      "en": "I am sick",
+      "unit": "u11",
+      "picture": "🤒"
+    },
+    {
+      "word": "butas",
+      "en": "flat / apartment",
+      "unit": "u32",
+      "picture": "🏢"
+    },
+    {
+      "word": "vonia",
+      "en": "bathroom",
+      "unit": "u32",
+      "picture": "🛁"
+    },
+    {
+      "word": "miegamasis",
+      "en": "bedroom",
+      "unit": "u32",
+      "picture": "🛏️"
+    },
+    {
+      "word": "langas",
+      "en": "window",
+      "unit": "u32",
+      "picture": "🪟"
+    },
+    {
+      "word": "stalas",
+      "en": "table",
+      "unit": "u32",
+      "picture": "🪑"
+    },
+    {
+      "word": "lempa",
+      "en": "lamp",
+      "unit": "u32",
+      "picture": "💡"
+    },
+    {
+      "word": "kilimas",
+      "en": "rug",
+      "unit": "u32",
+      "picture": "🟥"
+    },
+    {
+      "word": "balkonas",
+      "en": "balcony",
+      "unit": "u32",
+      "picture": "🌇"
+    },
+    {
+      "word": "laiptai",
+      "en": "stairs",
+      "unit": "u32",
+      "picture": "🪜"
+    },
+    {
+      "word": "kaimynas",
+      "en": "neighbour",
+      "unit": "u32",
+      "picture": "🏘️"
+    },
+    {
+      "word": "Išjunk šviesą",
+      "en": "Turn off the light",
+      "unit": "u32",
+      "picture": "🌑"
+    },
+    {
+      "word": "eiti",
+      "en": "to go",
+      "unit": "u26",
+      "picture": "🚶"
+    },
+    {
+      "word": "kalbėti",
+      "en": "to speak",
+      "unit": "u26",
+      "picture": "🗣️"
+    },
+    {
+      "word": "skaityti",
+      "en": "to read",
+      "unit": "u26",
+      "picture": "📖"
+    },
+    {
+      "word": "rašyti",
+      "en": "to write",
+      "unit": "u26",
+      "picture": "✍️"
+    },
+    {
+      "word": "norėti",
+      "en": "to want",
+      "unit": "u26",
+      "picture": "🤲"
+    },
+    {
+      "word": "Man labai patinka",
+      "en": "I really like it",
+      "unit": "u22",
+      "picture": "😍"
+    },
+    {
+      "word": "Man patinka muzika",
+      "en": "I like music",
+      "unit": "u22",
+      "picture": "🎶"
+    },
+    {
+      "word": "muzika",
+      "en": "music",
+      "unit": "u22",
+      "picture": "🎵"
+    },
+    {
+      "word": "futbolas",
+      "en": "football (soccer)",
+      "unit": "u22",
+      "picture": "⚽"
+    },
+    {
+      "word": "filmai",
+      "en": "films / movies",
+      "unit": "u22",
+      "picture": "🎬"
+    },
+    {
+      "word": "knygos",
+      "en": "books",
+      "unit": "u22",
+      "picture": "📚"
+    },
+    {
+      "word": "kelionės",
+      "en": "trips / travel",
+      "unit": "u22",
+      "picture": "✈️"
+    },
+    {
+      "word": "laisvalaikis",
+      "en": "free time",
+      "unit": "u22",
+      "picture": "🏖️"
+    },
+    {
+      "word": "Neturiu laiko",
+      "en": "I don't have time",
+      "unit": "u23",
+      "picture": "⌛"
+    },
+    {
+      "word": "Sutarta!",
+      "en": "Deal!",
+      "unit": "u23",
+      "picture": "🤝"
+    },
+    {
+      "word": "Iki rytojaus!",
+      "en": "See you tomorrow!",
+      "unit": "u23",
+      "picture": "👋"
+    },
+    {
+      "word": "Septintą valandą",
+      "en": "At seven o'clock",
+      "unit": "u23",
+      "picture": "🕖"
+    },
+    {
+      "word": "Aštuntą valandą",
+      "en": "At eight o'clock",
+      "unit": "u23",
+      "picture": "🕗"
+    },
+    {
+      "word": "Dvyliktą valandą",
+      "en": "At twelve o'clock",
+      "unit": "u23",
+      "picture": "🕛"
+    },
+    {
+      "word": "anksti",
+      "en": "early",
+      "unit": "u23",
+      "picture": "🌄"
+    },
+    {
+      "word": "pavasaris",
+      "en": "spring",
+      "unit": "u24",
+      "picture": "🌷"
+    },
+    {
+      "word": "ruduo",
+      "en": "autumn",
+      "unit": "u24",
+      "picture": "🍂"
+    },
+    {
+      "word": "sausis",
+      "en": "January",
+      "unit": "u24",
+      "picture": "#JAN"
+    },
+    {
+      "word": "vasaris",
+      "en": "February",
+      "unit": "u24",
+      "picture": "#FEB"
+    },
+    {
+      "word": "kovas",
+      "en": "March",
+      "unit": "u24",
+      "picture": "#MAR"
+    },
+    {
+      "word": "birželis",
+      "en": "June",
+      "unit": "u24",
+      "picture": "#JUN"
+    },
+    {
+      "word": "liepa",
+      "en": "July",
+      "unit": "u24",
+      "picture": "#JUL"
+    },
+    {
+      "word": "gruodis",
+      "en": "December",
+      "unit": "u24",
+      "picture": "#DEC"
+    },
+    {
+      "word": "Aš būsiu",
+      "en": "I will be",
+      "unit": "u34",
+      "picture": "🔮"
+    },
+    {
+      "word": "po darbo",
+      "en": "after work",
+      "unit": "u34",
+      "picture": "🍻"
+    },
+    {
+      "word": "Pamatysime",
+      "en": "We'll see",
+      "unit": "u34",
+      "picture": "🤞"
+    },
+    {
+      "word": "Aš pavargęs, bet laimingas",
+      "en": "I'm tired but happy",
+      "unit": "u35",
+      "picture": "😅"
+    },
+    {
+      "word": "Lyja, todėl aš lieku namie",
+      "en": "It's raining, so I'm staying home",
+      "unit": "u35",
+      "picture": "☔"
+    },
+    {
+      "word": "Aš jau valgiau",
+      "en": "I've already eaten",
+      "unit": "u35",
+      "picture": "😌"
+    },
+    {
+      "word": "prieš valandą",
+      "en": "an hour ago",
+      "unit": "u36",
+      "picture": "🕐"
+    },
+    {
+      "word": "Aš nemačiau",
+      "en": "I didn't see",
+      "unit": "u36",
+      "picture": "🙈"
+    },
+    {
+      "word": "Aš pamiršau",
+      "en": "I forgot",
+      "unit": "u36",
+      "picture": "🤦"
+    },
+    {
+      "word": "Buvo smagu",
+      "en": "It was fun",
+      "unit": "u36",
+      "picture": "🥳"
+    },
+    {
+      "word": "Nieko neatsitiko",
+      "en": "Nothing happened",
+      "unit": "u36",
+      "picture": "😶"
+    },
+    {
+      "word": "Kas atsitiko?",
+      "en": "What happened?",
+      "unit": "u37",
+      "picture": "😮"
+    },
+    {
+      "word": "Galiausiai",
+      "en": "Finally",
+      "unit": "u37",
+      "picture": "🏁"
+    },
+    {
+      "word": "Staiga",
+      "en": "Suddenly",
+      "unit": "u37",
+      "picture": "⚡"
+    },
+    {
+      "word": "Ryte aš ėjau į parką",
+      "en": "In the morning I went to the park",
+      "unit": "u37",
+      "picture": "🌳"
+    },
+    {
+      "word": "bilietas",
+      "en": "ticket",
+      "unit": "u10",
+      "picture": "🎫"
+    },
+    {
+      "word": "traukinys",
+      "en": "train",
+      "unit": "u10",
+      "picture": "🚆"
+    },
+    {
+      "word": "autobusas",
+      "en": "bus",
+      "unit": "u10",
+      "picture": "🚌"
+    },
+    {
+      "word": "viešbutis",
+      "en": "hotel",
+      "unit": "u10",
+      "picture": "🏨"
+    },
+    {
+      "word": "pasas",
+      "en": "passport",
+      "unit": "u10",
+      "picture": "🛂"
+    },
+    {
+      "word": "pinigai",
+      "en": "money",
+      "unit": "u10",
+      "picture": "💶"
+    },
+    {
+      "word": "lagaminas",
+      "en": "suitcase",
+      "unit": "u10",
+      "picture": "🧳"
+    },
+    {
+      "word": "žemėlapis",
+      "en": "map",
+      "unit": "u10",
+      "picture": "🗺️"
+    },
+    {
+      "word": "Lietuva",
+      "en": "Lithuania",
+      "unit": "u10",
+      "picture": "🇱🇹"
+    },
+    {
+      "word": "Vilnius",
+      "en": "Vilnius",
+      "unit": "u10",
+      "picture": "🏰"
+    },
+    {
+      "word": "Klaipėda",
+      "en": "Klaipėda",
+      "unit": "u10",
+      "picture": "⚓"
+    },
+    {
+      "word": "jūra",
+      "en": "sea",
+      "unit": "u10",
+      "picture": "🌊"
+    },
+    {
+      "word": "miškas",
+      "en": "forest",
+      "unit": "u10",
+      "picture": "🌲"
+    },
+    {
+      "word": "ežeras",
+      "en": "lake",
+      "unit": "u10",
+      "picture": "🏞️"
+    },
+    {
+      "word": "Aš turiu rezervaciją",
+      "en": "I have a reservation",
+      "unit": "u17",
+      "picture": "📝"
+    },
+    {
+      "word": "Koks Wi-Fi slaptažodis?",
+      "en": "What is the Wi-Fi password?",
+      "unit": "u17",
+      "picture": "📶"
+    },
+    {
+      "word": "rankšluostis",
+      "en": "towel",
+      "unit": "u17",
+      "picture": "🧻"
+    },
+    {
+      "word": "liftas",
+      "en": "lift / elevator",
+      "unit": "u17",
+      "picture": "🛗"
+    },
+    {
+      "word": "dušas",
+      "en": "shower",
+      "unit": "u17",
+      "picture": "🚿"
+    },
+    {
+      "word": "Neveikia",
+      "en": "It doesn't work",
+      "unit": "u17",
+      "picture": "🔧"
+    },
+    {
+      "word": "Ar galite pakeisti kambarį?",
+      "en": "Can you change the room?",
+      "unit": "u17",
+      "picture": "🔄"
+    },
+    {
+      "word": "registratūra",
+      "en": "reception",
+      "unit": "u17",
+      "picture": "🛎️"
+    },
+    {
+      "word": "triukšminga",
+      "en": "noisy",
+      "unit": "u17",
+      "picture": "🔊"
+    },
+    {
+      "word": "ranka",
+      "en": "hand / arm",
+      "unit": "u40",
+      "picture": "✋"
+    },
+    {
+      "word": "koja",
+      "en": "leg / foot",
+      "unit": "u40",
+      "picture": "🦵"
+    },
+    {
+      "word": "akis",
+      "en": "eye",
+      "unit": "u40",
+      "picture": "👁️"
+    },
+    {
+      "word": "nosis",
+      "en": "nose",
+      "unit": "u40",
+      "picture": "👃"
+    },
+    {
+      "word": "burna",
+      "en": "mouth",
+      "unit": "u40",
+      "picture": "👄"
+    },
+    {
+      "word": "dantis",
+      "en": "tooth",
+      "unit": "u40",
+      "picture": "🦷"
+    },
+    {
+      "word": "nugara",
+      "en": "back (of the body)",
+      "unit": "u40",
+      "picture": "🧍"
+    },
+    {
+      "word": "širdis",
+      "en": "heart",
+      "unit": "u40",
+      "picture": "❤️"
+    },
+    {
+      "word": "plaukai",
+      "en": "hair",
+      "unit": "u40",
+      "picture": "💇"
+    },
+    {
+      "word": "Man skauda nugarą",
+      "en": "My back hurts",
+      "unit": "u40",
+      "picture": "🤕"
+    },
+    {
+      "word": "Aš peršalau",
+      "en": "I caught a cold",
+      "unit": "u40",
+      "picture": "🤧"
+    },
+    {
+      "word": "Aš kosėju",
+      "en": "I'm coughing",
+      "unit": "u40",
+      "picture": "😷"
+    },
+    {
+      "word": "Man svaigsta galva",
+      "en": "I feel dizzy",
+      "unit": "u40",
+      "picture": "😵‍💫"
+    },
+    {
+      "word": "Iškvieskite greitąją",
+      "en": "Call an ambulance",
+      "unit": "u18",
+      "picture": "🚑"
+    },
+    {
+      "word": "Man skauda čia",
+      "en": "It hurts here",
+      "unit": "u18",
+      "picture": "👇"
+    },
+    {
+      "word": "pilvas",
+      "en": "stomach",
+      "unit": "u18",
+      "picture": "🤰"
+    },
+    {
+      "word": "Mane apvogė",
+      "en": "I was robbed",
+      "unit": "u18",
+      "picture": "🦹"
+    },
+    {
+      "word": "pavojinga",
+      "en": "dangerous",
+      "unit": "u18",
+      "picture": "⚠️"
+    },
+    {
+      "word": "saugu",
+      "en": "safe",
+      "unit": "u18",
+      "picture": "🛡️"
+    },
+    {
+      "word": "šimtas dvylika",
+      "en": "one hundred twelve (112)",
+      "unit": "u18",
+      "picture": "🚨"
+    },
+    {
+      "word": "draudimas",
+      "en": "insurance",
+      "unit": "u18",
+      "picture": "📄"
+    },
+    {
+      "word": "Man skauda pilvą",
+      "en": "My stomach hurts",
+      "unit": "u18",
+      "picture": "🤢"
+    },
+    {
+      "word": "Turiu temperatūros",
+      "en": "I have a fever",
+      "unit": "u18",
+      "picture": "🌡️"
+    },
+    {
+      "word": "Tikrai?",
+      "en": "Really?",
+      "unit": "u38",
+      "picture": "🤨"
+    },
+    {
+      "word": "Mano nuomone",
+      "en": "In my opinion",
+      "unit": "u38",
+      "picture": "🗨️"
+    },
+    {
+      "word": "Priklauso",
+      "en": "It depends",
+      "unit": "u38",
+      "picture": "⚖️"
+    },
+    {
+      "word": "Nuobodu",
+      "en": "It's boring",
+      "unit": "u38",
+      "picture": "🥱"
+    },
+    {
+      "word": "Baisu",
+      "en": "It's scary",
+      "unit": "u38",
+      "picture": "😱"
+    },
+    {
+      "word": "Keista",
+      "en": "It's strange",
+      "unit": "u38",
+      "picture": "🤪"
+    },
+    {
+      "word": "Svarbu",
+      "en": "It's important",
+      "unit": "u38",
+      "picture": "❗"
+    },
+    {
+      "word": "Rimtai?",
+      "en": "Seriously?",
+      "unit": "u39",
+      "picture": "😳"
+    },
+    {
+      "word": "Kaip gaila",
+      "en": "What a pity",
+      "unit": "u39",
+      "picture": "😞"
+    },
+    {
+      "word": "katė",
+      "en": "cat",
+      "unit": "u6",
+      "picture": "🐈"
+    },
+    {
+      "word": "arklys",
+      "en": "horse",
+      "unit": "u6",
+      "picture": "🐎"
+    },
+    {
+      "word": "karvė",
+      "en": "cow",
+      "unit": "u6",
+      "picture": "🐄"
+    },
+    {
+      "word": "paukštis",
+      "en": "bird",
+      "unit": "u6",
+      "picture": "🐦"
+    },
+    {
+      "word": "kiaulė",
+      "en": "pig",
+      "unit": "u6",
+      "picture": "🐖"
+    },
+    {
+      "word": "višta",
+      "en": "hen",
+      "unit": "u6",
+      "picture": "🐔"
+    },
+    {
+      "word": "avis",
+      "en": "sheep",
+      "unit": "u6",
+      "picture": "🐑"
+    },
+    {
+      "word": "pelė",
+      "en": "mouse",
+      "unit": "u6",
+      "picture": "🐁"
+    },
+    {
+      "word": "triušis",
+      "en": "rabbit",
+      "unit": "u6",
+      "picture": "🐇"
+    },
+    {
+      "word": "vilkas",
+      "en": "wolf",
+      "unit": "u6",
+      "picture": "🐺"
+    },
+    {
+      "word": "lokys",
+      "en": "bear",
+      "unit": "u6",
+      "picture": "🐻"
+    },
+    {
+      "word": "lapė",
+      "en": "fox",
+      "unit": "u6",
+      "picture": "🦊"
+    },
+    {
+      "word": "briedis",
+      "en": "moose",
+      "unit": "u6",
+      "picture": "🦌"
+    },
+    {
+      "word": "varlė",
+      "en": "frog",
+      "unit": "u6",
+      "picture": "🐸"
+    },
+    {
+      "word": "bitė",
+      "en": "bee",
+      "unit": "u6",
+      "picture": "🐝"
+    },
+    {
+      "word": "drugelis",
+      "en": "butterfly",
+      "unit": "u6",
+      "picture": "🦋"
+    },
+    {
+      "word": "cepelinai",
+      "en": "zeppelins",
+      "unit": "u12",
+      "picture": "🥟"
+    },
+    {
+      "word": "šaltibarščiai",
+      "en": "cold beet soup",
+      "unit": "u12",
+      "picture": "🥣"
+    },
+    {
+      "word": "rūta",
+      "en": "rue",
+      "unit": "u12",
+      "picture": "🌿"
+    },
+    {
+      "word": "krepšinis",
+      "en": "basketball",
+      "unit": "u12",
+      "picture": "🏀"
+    },
+    {
+      "word": "Užgavėnės",
+      "en": "Shrovetide",
+      "unit": "u12",
+      "picture": "🎭"
+    },
+    {
+      "word": "pica",
+      "en": "pizza",
+      "unit": "u0",
+      "picture": "🍕"
+    },
+    {
+      "word": "šokoladas",
+      "en": "chocolate",
+      "unit": "u0",
+      "picture": "🍫"
+    },
+    {
+      "word": "žirafa",
+      "en": "giraffe",
+      "unit": "u0",
+      "picture": "🦒"
+    },
+    {
+      "word": "čempionas",
+      "en": "champion",
+      "unit": "u0",
+      "picture": "🏆"
+    },
+    {
+      "word": "šampūnas",
+      "en": "shampoo",
+      "unit": "u0",
+      "picture": "🧴"
+    },
+    {
+      "word": "kavinė",
+      "en": "café",
+      "unit": "u0",
+      "picture": "☕"
+    },
+    {
+      "word": "radijas",
+      "en": "radio",
+      "unit": "u0",
+      "picture": "📻"
+    },
+    {
+      "word": "telefonas",
+      "en": "telephone",
+      "unit": "u0",
+      "picture": "📱"
+    }
+  ]
+}

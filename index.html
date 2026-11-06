@@ -370,6 +370,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .av+.av{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
 .face{display:inline-block;flex:none;border-radius:50%;overflow:hidden;line-height:0}
 .face svg{width:100%;height:100%;display:block}
+.face.cast-art{position:relative}.cast-art>.cast-fallback{display:block;width:100%;height:100%}.cast-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden}.cast-art.ok>img{visibility:visible}.cast-art.ok>.cast-fallback{visibility:hidden}
 .cv-head .face+.face,.scene .face+.face{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
 .mascot{display:block;width:112px;max-width:100%;color:var(--fg);flex:none}
 .mascot img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
@@ -1078,9 +1079,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.111';
-const APP_VERSION=183;
-const WHATS_NEW='Gintaras is now Wordami! Meet Ami, your new parrot buddy. Your lessons and progress are right where you left them.';
+const APP_RELEASE='3.112';
+const APP_VERSION=184;
+const WHATS_NEW='Fresh rounded illustrations for 148 Lithuanian course pictures, plus matching conversation characters. More pictures are on the way. Your progress carries on as before.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1961,9 +1962,11 @@ function faceHtml(look,seed,size,name){const a=lookParse(look)||lookRand(seed||n
   if(!window.Ava)return '<span class="av" style="width:'+size+'px;height:'+size+'px" aria-hidden="true">'+esc(((name||'?')[0]||'?').toUpperCase())+'</span>';
   return '<span class="face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'>'+faceSvg(a,size)+'</span>';}
 window.faceHtml=faceHtml;
-const castFace=(p,size)=>faceHtml(CAST_LOOK[p.name],p.name,size||36,p.name);
+function pictureFace(fallback,asset,size,name){if(!asset)return fallback;
+  return '<span class="face cast-art" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'><span class="cast-fallback" aria-hidden="true">'+fallback+'</span><img src="'+picFile(asset)+'" alt="" aria-hidden="true" onload="this.parentNode.classList.add(\'ok\')" onerror="this.remove()"></span>';}
+function castFace(p,size){size=size||36;return pictureFace(faceHtml(CAST_LOOK[p.name],p.name,size,p.name),typeof CAST_PICTURES!=='undefined'&&CAST_PICTURES[p.name],size,p.name);}
 const myFaceSeed=()=>(window.cloud&&window.cloud.uid&&window.cloud.uid())||'me';
-const myFace=size=>S.look?faceHtml(S.look,null,size):faceHtml(TOMAS_LOOK,null,size);
+const myFace=size=>S.look?faceHtml(S.look,null,size):pictureFace(faceHtml(TOMAS_LOOK,null,size),typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE,size);
 
 /* Ami, Wordami's parrot buddy. Keep stable mood names for existing interactions. */
 const AMI_POSES=['welcome','happy','cheer','think','rest','encourage','listen','speak'];
@@ -4031,6 +4034,7 @@ const onHand=f=>!canOffline||navigator.onLine||HAVE.has(f);
 function hearable(x,voice){const id=typeof x==='string'?x:x&&(x.au||x.id);if(!id||!canOffline||navigator.onLine)return true;const u=audioAt(id,voice);return !!u&&HAVE.has(u);}
 function unitFiles(g,voice){let v=voice||S.voice||'ona';for(let n=0;v&&n<4;n++,v=VOICE_BASE[v])if(SMAP[v]&&SMAP[v][g])return [absUrl(audioUrl(v,g))];return [];}
 /* a conversation's files: each line in the voice it is spoken in (theirs, or yours) */
+function castPictureFiles(c){return typeof CAST_PICTURES==='undefined'?[]:(c.cast||[]).map(p=>CAST_PICTURES[p.name]).filter(Boolean).map(v=>absUrl(picFile(v)));}
 function convFiles(c){const set=new Set();(c.all||[]).forEach(ln=>{if(!ln.lt)return;const u=audioAt(ln.id,ln.kind==='p'?castVoice(c.cast[ln.who]||c.cast[0]):myVoice());if(u)set.add(u);});return [...set];}
 const picsOf=its=>its.map(i=>i&&picFor(i.lt)).filter(v=>v&&v[0]!=='#').map(v=>absUrl(picFile(v)));
 /* the files these words play from (a line with your name in it plays from its own file) */
@@ -4039,9 +4043,10 @@ function filesOf(its,voice){const set=new Set();its.forEach(i=>{const u=i&&audio
 function readyPlan(){const steps=[],lastDone=[];let ahead=0;
   for(const id of STEPS){const u=UNIT_BY[id],c=CONV_BY[id];if(u&&ahead>=3)break;
     if(!ahead&&!steps.length&&stepDone(id)){lastDone.push(id);continue;}
-    if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its),MINI.filter(c=>LESSON_BY[c.after].unit===u).flatMap(convFiles))});}
-    else if(c)steps.push({c,files:convFiles(c)});}
+    if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its),MINI.filter(c=>LESSON_BY[c.after].unit===u).flatMap(c=>convFiles(c).concat(castPictureFiles(c))))});}
+    else if(c)steps.push({c,files:convFiles(c).concat(castPictureFiles(c))});}
   const soon=Date.now()+7*DAY,due=practised().filter(i=>rec(i.id).due<=soon),extra=new Set();
+  if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE&&!S.look)extra.add(absUrl(picFile(LEARNER_PICTURE)));
   filesOf(due).concat(picsOf(due)).forEach(f=>extra.add(f));
   Object.keys(S.replies||{}).forEach(k=>{const r=S.replies[k],c=CONV_BY[unitOf(k)];if(c&&r&&r.due<=soon)convFiles(c).forEach(f=>extra.add(f));});
   /* (Round 12) the recordings of the sentences you can make in the lessons ahead (Put it together) */
@@ -4083,9 +4088,10 @@ function renderReady(){const html=readyLine();document.querySelectorAll('#offrea
     const b=el.querySelector('[data-ready-now]');if(b)b.onclick=()=>prefetchReady(true);});}
 /* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
 function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
-  CONVS.forEach(c=>convFiles(c).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
+  if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE)set.add(absUrl(picFile(LEARNER_PICTURE)));
+  CONVS.forEach(c=>convFiles(c).concat(castPictureFiles(c)).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
 /* a recording's size from its length (about 6 KB for each second of speech), an emoji picture's about 4 KB, a drawn one's about 7 KB */
-function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return f.endsWith('.webp')?7800:4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
+function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return f.includes('/art-v2/')?30000:f.endsWith('.webp')?7800:4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
 const mbOf=b=>b<1e6?'under 1 MB':'about '+Math.max(1,Math.round(b/1e6))+' MB';
 function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading the course: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
 async function renderOffline(){const box=$('#offline-box');if(!box)return;

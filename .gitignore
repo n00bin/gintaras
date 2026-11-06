@@ -1,3 +1,10 @@
 .venv/
 __pycache__/
 .claude/settings.local.json
+.env.imagegen.local
+# Full-resolution generated sources and machine-local run data stay in the authoring workspace.
+# Production WebPs, character references, prompt records and the style guide are versioned.
+docs/art-direction/masters/
+docs/art-direction/generation-records.json
+docs/art-direction/migration-run.json
+docs/art-direction/review-pages/

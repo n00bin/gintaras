@@ -1,0 +1,14 @@
+{
+  "id": "portrait-ruta",
+  "name": "Rūta",
+  "kind": "cast-portrait",
+  "prompt": "Use case: stylized-concept. Create ONE original Gintaras conversation portrait of Rūta. Reference 1 is the approved rounded flat CARTOON STYLE. Reference 2 is the character IDENTITY. If reference 2 is a character sheet, use its exact face, skin, hair and outfit; if it is a monochrome older avatar, retain identifiable hair, age, facial hair/glasses and outfit structure but redraw completely in reference 1's style and full color.  Very large friendly expressive white oval eyes, rounded geometric oversized head, chunky simple features, bright flat colors, minimal details, no black perimeter outlines, no sketch strokes, no textures, realism, gradients or shadows. Portrait framing: centered head and upper shoulders, friendly relaxed smile, front three-quarter view facing slightly right, head and hair entirely inside canvas with 10 percent transparent margin, shoulders stop naturally at lower edge of portrait, readable at 36px. TRUE transparent background, no circular background, no disc, no ground plane or contact shadow, no other people, objects, text, labels or watermark. Exactly ONE portrait, not a grid or character sheet.",
+  "references": [
+    "G:/AI_PROJECTS/gintaras/docs/art-direction/lt-ruta-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/portrait-ruta.png",
+  "asset": "pics/art-v2/portrait-ruta.webp",
+  "bytes": 20754,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

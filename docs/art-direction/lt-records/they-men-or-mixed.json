@@ -1,0 +1,18 @@
+{
+  "id": "they-men-or-mixed",
+  "word": "Jie",
+  "en": "They (men or mixed)",
+  "unit": "u1",
+  "actor": "jonas",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is the CHARACTER identity reference, not a board to reproduce. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures or cast shadows. Subject: Jonas and Darius together as the subjects, a small pointing hand from outside the composition indicating both men. Primary character identity when a person is needed: Jonas, young adult Lithuanian man with light warm skin, short wavy dark brown hair, neat dark moustache, sky blue overshirt over navy T-shirt and backpack straps. Other recurring identities if present: Tomas, friendly young adult learner with light warm skin, short light brown hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses; Rūta, young adult Lithuanian woman with light warm skin, long straight dark brown hair with short blunt fringe, pine green blouse with a few simple dark leaf motifs, coral trousers, cream shoes; Danutė, older Lithuanian woman with light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers; Eglė, young adult Lithuanian woman with light warm skin, dark high ponytail, short fringe, white scrunchie, pale cream scarf and turquoise top; Darius, adult Lithuanian man with light warm skin, curly dark hair, short neat dark goatee, navy open overshirt over turquoise T-shirt. Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-jonas-character-sheet.png",
+    "lt-darius-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/they-men-or-mixed.png",
+  "asset": "pics/art-v2/they-men-or-mixed.webp",
+  "bytes": 46828,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

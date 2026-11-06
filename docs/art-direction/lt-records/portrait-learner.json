@@ -1,0 +1,15 @@
+{
+  "id": "portrait-learner",
+  "name": "Tomas",
+  "kind": "default-learner-portrait",
+  "prompt": "Use case: stylized-concept. Create ONE original Gintaras default learner conversation portrait of Tomas. Reference 1 is the approved rounded flat cartoon STYLE; reference 2 is Tomas's exact CHARACTER identity. Same friendly young adult with short light-brown hair, large white oval eyes and dark pupils, amber jumper, warm light skin, no beard or glasses. Preserve the referenced face, haircut and outfit exactly. Centered head and upper shoulders, relaxed friendly smile, front three-quarter view facing slightly left, complete hair and head with generous transparent margin, readable at 36px. Rounded geometric shapes, bright flat colors, minimal detail, almost no outlines, no realism, texture, gradients, ground plane or shadows. TRUE transparent background. No disc, frame, people, other objects, text, labels or watermark. Exactly ONE portrait, not a grid or sheet.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/portrait-learner.png",
+  "asset": "pics/art-v2/portrait-learner.webp",
+  "bytes": 15772,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

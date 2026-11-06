@@ -1,0 +1,17 @@
+{
+  "id": "i-want-coffee",
+  "word": "Aš noriu kavos",
+  "en": "I want coffee",
+  "unit": "u3",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is a CHARACTER identity reference only when the subject explicitly names that character; otherwise use it only for illustration style and proportions. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures, ground plane or cast shadows. Subject: Tomas eagerly looking toward a thought bubble containing a steaming coffee cup. Primary character identity when a person is needed: Tomas, friendly young adult learner with light warm skin, short light brown hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses. Other recurring identities if present: Rūta, young adult Lithuanian woman with light warm skin, long straight dark brown hair with short blunt fringe, pine green blouse with a few simple dark leaf motifs, coral trousers, cream shoes; Jonas, young adult Lithuanian man with light warm skin, short wavy dark brown hair, neat dark moustache, sky blue overshirt over navy T-shirt and backpack straps; Danutė, older Lithuanian woman with light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers; Eglė, young adult Lithuanian woman with light warm skin, dark high ponytail, short fringe, white scrunchie, pale cream scarf and turquoise top; Darius, adult Lithuanian man with light warm skin, curly dark hair, short neat dark goatee, navy open overshirt over turquoise T-shirt. Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-want-coffee.png",
+  "asset": "pics/art-v2/i-want-coffee.webp",
+  "bytes": 37684,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}
