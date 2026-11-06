@@ -78,13 +78,23 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
 /* Top bar */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);
   padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:flex;align-items:center;justify-content:space-between;gap:12px}
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px}
 .brand .ami-mark{width:34px;height:34px;flex:none;background:url(pics/ami/welcome.webp) center/contain no-repeat}
 .brand h1{font-size:22px;font-weight:700;letter-spacing:.01em}
 .stats{display:flex;gap:14px;font-weight:800;font-size:14px}
 .stats span{display:inline-flex;align-items:center;gap:5px}
 .stats svg{width:18px;height:18px}
+
+.course-flag{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:48px;min-height:44px;padding:4px 6px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer;flex:none}
+.course-flag img{width:30px;height:30px;display:block}.course-flag svg{width:12px;height:12px}
+.course-flag:hover,.course-flag[aria-expanded="true"]{border-color:var(--pine)}
+.course-picker{position:fixed;inset:auto;margin:0;padding:18px;width:min(340px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;border:2px solid var(--line);border-radius:20px;background:var(--surface);color:var(--fg);box-shadow:0 12px 36px #0003}
+.course-picker::backdrop{background:#0002}.course-picker h2{font-size:21px}.course-picker-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.course-picker-close{border:0;background:transparent;color:var(--muted);font:inherit;min-width:36px;min-height:36px;cursor:pointer}
+.course-choices{display:grid;gap:8px;list-style:none;padding:0;margin:0}.course-choice{width:100%;display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:10px;text-align:left;padding:12px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.course-choice img{width:40px;height:40px}.course-choice strong,.course-choice small{display:block}.course-choice small{color:var(--muted);font-size:12px;margin-top:3px}.course-choice[aria-current="true"]{border-color:var(--pine);background:color-mix(in srgb,var(--pine) 7%,var(--surface))}.course-choice:disabled{cursor:default;opacity:.65}.course-choice:not(:disabled):hover{border-color:var(--pine)}.course-status{font-size:11px;font-weight:800;color:var(--pine)}
+@media(max-width:620px){.brand h1{display:none}.brand{gap:6px}.brand .ami-mark{width:28px;height:28px}.top{gap:8px}.top .stats{gap:6px}}
 
 /* Main column */
 main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 96px;max-width:640px;margin:0 auto}
@@ -794,7 +804,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 <div class="splash" id="splash" aria-hidden="true"><span class="ami-mark"></span><h1>Wordami</h1><small id="splash-v"></small></div>
 
 <header class="top">
-  <div class="brand"><span class="ami-mark" aria-hidden="true"></span><h1>Wordami</h1></div>
+  <div class="brand"><span class="ami-mark" aria-hidden="true"></span><h1>Wordami</h1><button type="button" class="course-flag" id="btn-course-language" aria-label="Change course language" aria-haspopup="dialog" aria-expanded="false" aria-controls="course-picker"><img id="course-flag-image" src="pics/1f1f1-1f1f9.svg" alt=""><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   <div class="stats">
     <span class="net" id="net" hidden title="Offline" aria-label="Offline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.6a10 10 0 0 1 5.2-2.6M16.8 11a10 10 0 0 1 2.2 1.6M8.5 16.4a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></svg><span class="net-t">Offline</span></span>
     <span title="Day streak"><svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c0-5 2-6 2-10z"/></svg><span class="num" id="streak">0</span></span>
@@ -803,6 +813,11 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <button type="button" class="gear" id="btn-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </div>
 </header>
+<dialog class="course-picker" id="course-picker" aria-labelledby="course-picker-title">
+  <div class="course-picker-head"><h2 id="course-picker-title">Choose your language</h2><button type="button" class="course-picker-close" id="course-picker-close" aria-label="Close language chooser">✕</button></div>
+  <ul class="course-choices" id="course-choices"></ul>
+  <p class="note">Each language keeps its own lessons, progress and streak.</p>
+</dialog>
 
 <main>
   <section class="view" id="view-learn">
@@ -932,8 +947,6 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="card" id="notif" hidden></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
-      <div class="setting"><span>Language</span><select class="lang-select" id="lang-select" aria-label="Language to learn"></select></div>
-      <p class="note" id="lang-note"></p>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read <span class="lang-en">Lithuanian</span> spelling on its own.</p>
       <div class="setting spk-set"><span>Speaking, on this device</span>
@@ -1079,9 +1092,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.112';
-const APP_VERSION=184;
-const WHATS_NEW='Fresh rounded illustrations for 148 Lithuanian course pictures, plus matching conversation characters. More pictures are on the way. Your progress carries on as before.';
+const APP_RELEASE='3.113';
+const APP_VERSION=185;
+const WHATS_NEW='Tap the flag in the top bar to choose your course language. Each language keeps its own progress and streak.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1092,7 +1105,7 @@ const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:
 /* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
 const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
 const langUsable=l=>l.ready||LANG_PREVIEW;
-const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
+const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');const requested=new URLSearchParams(location.search).get('lang');if(LANGS.some(l=>l.code===requested&&langUsable(l))){c=requested;localStorage.setItem('gintaras.lang',c);}}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
 document.write('<script src="lang/'+LANG_CODE+'.js"><\/script>');
 </script>
 <script>
@@ -4392,11 +4405,18 @@ function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(
   /* Show it's happening straight away. The waiting online save gets a second and a half; anything it doesn't finish
      is still on this device and goes up the next time this language opens. */
   document.body.insertAdjacentHTML('beforeend','<div class="lang-switching" role="status"><div>'+mascot('think')+'<p>Switching to '+esc(l.en)+'…</p></div></div>');
-  Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>location.reload());}
+  Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>{const next=new URL(location.href);if(next.searchParams.has('lang'))next.searchParams.set('lang',code);location.assign(next.href);});}
 function renderLangPick(){
   const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.label+' · '+l.own)+(l.ready?'':LANG_PREVIEW?' · preview':' · coming soon')+'</option>').join('');
-  ['#lang-select','#lang-select-w'].forEach(id=>{const s=$(id);if(s){s.innerHTML=opts;s.onchange=()=>pickLang(s.value);}});
-  const n=$('#lang-note');if(n)n.textContent=LANGS.filter(l=>!l.ready).map(l=>l.label+' is coming soon. ').join('')+'Each language keeps its own progress, streak and leagues. Your account, face and About me stay the same.';}
+  const welcome=$('#lang-select-w');if(welcome){welcome.innerHTML=opts;welcome.onchange=()=>pickLang(welcome.value);}
+  const flagPath=l=>'pics/'+[...l.flag].map(ch=>ch.codePointAt(0).toString(16)).join('-')+'.svg';
+  const current=LANGS.find(l=>l.code===LANG_CODE),button=$('#btn-course-language'),dialog=$('#course-picker');
+  $('#course-flag-image').src=flagPath(current);button.setAttribute('aria-label',current.label+' course. Change language');button.title=current.label+' · Change language';
+  $('#course-choices').innerHTML=LANGS.map(l=>'<li><button type="button" class="course-choice" data-course-language="'+l.code+'"'+(l.code===LANG_CODE?' aria-current="true"':'')+(langUsable(l)?'':' disabled')+'><img src="'+flagPath(l)+'" alt=""><span><strong>'+esc(l.label)+'</strong><small>'+esc(l.own)+'</small></span><span class="course-status">'+(l.code===LANG_CODE?'Learning':l.ready?'':LANG_PREVIEW?'Preview':'Coming soon')+'</span></button></li>').join('');
+  button.onclick=()=>{dialog.showModal();button.setAttribute('aria-expanded','true');const r=button.getBoundingClientRect();dialog.style.left=Math.min(Math.max(12,r.left),Math.max(12,innerWidth-dialog.offsetWidth-12))+'px';dialog.style.top=Math.min(r.bottom+10,Math.max(12,innerHeight-dialog.offsetHeight-12))+'px';(dialog.querySelector('[aria-current="true"]')||dialog.querySelector('button')).focus();};
+  $('#course-picker-close').onclick=()=>dialog.close();dialog.onclose=()=>button.setAttribute('aria-expanded','false');
+  dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
+  dialog.querySelectorAll('[data-course-language]').forEach(b=>b.onclick=()=>{dialog.close();pickLang(b.dataset.courseLanguage);});}
 renderLangPick();
 /* The page's own words follow the language: its name, its hello, and its pronunciation guide (from the language file). */
 document.querySelectorAll('.lang-en').forEach(e=>e.textContent=LANG.en);document.querySelectorAll('.lang-hi').forEach(e=>e.textContent=LANG.hello);
