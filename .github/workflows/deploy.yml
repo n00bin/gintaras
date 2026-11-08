@@ -18,19 +18,18 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Unpack site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check first three Lithuanian units
         run: |
-          mkdir -p site
-          if [ -f index.html ]; then
-            rsync -a --exclude site --exclude .git --exclude .github --exclude '.env*' --exclude .venv --exclude .claude --exclude .agents --exclude .codex --exclude docs --exclude tools --exclude art_pilot ./ site/
-          else
-            unzip -o -q *.zip -d site
-            if [ ! -f site/index.html ]; then
-              d=$(find site -maxdepth 3 -name index.html -printf '%h\n' | head -1)
-              [ -n "$d" ] && cp -r "$d"/. site/
-            fi
-          fi
-          ls site
+          node tools/check_course.js
+          node tools/audit_first_three_release.js
+      - name: Package public site
+        run: python tools/package_site.py --output site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

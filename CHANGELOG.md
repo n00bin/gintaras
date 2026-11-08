@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.114** (2026-11-08) Practical activities for the first three Lithuanian path units: Basics, Small talk and Food. Each has two reading tasks, two listening tasks, two writing tasks and a recording/comparison speaking task. Activities use exact previously taught course cards, unlock at their source lessons, offer optional hints, save locally and resume offline. All 99 illustrated cards in these units have the approved artwork. Existing lesson IDs, course order, audio, FSRS records and account sync are preserved. Later course development and Spanish remain outside this release. Deployment now packages only public site assets.
+
 - **3.113** (2026-11-06) The current course flag opens a language chooser from the top bar, replacing the Settings selector. Switching preserves each course’s saved progress, updates direct preview links, and keeps unfinished languages behind Coming soon. Flags are cached for offline use; the chooser supports keyboard dismissal and mobile layouts.
 
 - **3.112** (2026-11-05) First Lithuanian artwork rollout: 148 course pictures, all 20 conversation portraits and the default learner portrait use the approved rounded cartoon style. Optimized transparent WebPs load with lessons and remain available offline. The remaining 340 pictures retain their existing artwork while replacements are prepared. Course content, recordings, saved progress and customized avatars are preserved.

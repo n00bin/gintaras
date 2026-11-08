@@ -1092,9 +1092,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.113';
-const APP_VERSION=185;
-const WHATS_NEW='Tap the flag in the top bar to choose your course language. Each language keeps its own progress and streak.';
+const APP_RELEASE='3.114';
+const APP_VERSION=186;
+const WHATS_NEW='Units 1–3 now have practical reading, listening, writing and speaking activities using the language you have learned, alongside the updated illustrations.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1643,7 +1643,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
     (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
     (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
   const ls=el.querySelector('.lessons');
-  if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
+  if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.dataset.lessonId=l.id;b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
     b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud · extra':loadLabel(l.items))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':(S.lpart||{})[l.id]?' · part '+((S.lpart||{})[l.id]+1)+' of '+(lessonPart(l).part||{of:2}).of+' next':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
     b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
@@ -3890,7 +3890,7 @@ function recStop(){if(recNow){clearTimeout(recNow.t);try{if(recNow.mr.state!=='i
 const noRecToday=()=>S.noRecDay===today();
 function noRecSet(){S.noRecDay=today();save();}
 function recBtn(){return CAN_REC?'<button type="button" class="spk big rec" id="recb" aria-label="Record yourself saying it">'+RECDOT+'</button>':'';}
-function playMine(){if(!recUrl)return;stopAllAudio();try{if(recAudio)recAudio.pause();recAudio=new Audio(recUrl);recAudio.play();}catch(e){}}
+async function playMine(){if(!recUrl)return false;stopAllAudio();try{if(recAudio)recAudio.pause();recAudio=new Audio(recUrl);await recAudio.play();return true;}catch(e){if(e.name!=='AbortError')toast('This recording could not play. Try recording it again.');return false;}}
 function wireRec(root,out,onDone){const b=root.querySelector('#recb');if(!b)return;
   b.onclick=async()=>{if(recNow)return recStop();stopHearing();stopAllAudio();let stream;out.innerHTML='<b>Waiting for the microphone…</b> If your browser asks, allow it.';
     try{stream=await navigator.mediaDevices.getUserMedia({audio:true});}catch(e){b.hidden=true;out.textContent='The microphone is blocked, so I can\'t record you. Say it out loud anyway.';return;}
@@ -4618,6 +4618,11 @@ window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.ho
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="foundation-evidence.js"></script>
+<script src="foundation-ui.js"></script>
+<script src="foundation-content.js"></script>
+<script src="foundation-practice.js"></script>
+<script src="foundation-path.js"></script>
 <script src="config.js"></script>
 <script src="cloud.js"></script>
 </body>
