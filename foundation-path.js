@@ -1,4 +1,4 @@
-/* Put optional practice beside its actual teaching, without changing saved PATH IDs. */
+/* Required unit application after its source language has been taught. */
 (()=>{
 'use strict';
 const core=window.WordamiActivities,ui=window.WordamiPracticeUI;
@@ -17,9 +17,9 @@ const tree=document.getElementById('tree');let pending=false;
 function mount(){pending=false;const anchors=new Map();for(const entry of placements){
  const unit=document.getElementById('unit-'+entry.lesson.unit.id);if(!unit)continue;
  const id='path-'+entry.activityId.replaceAll('.','-');let card=document.getElementById(id);
- if(!card){card=document.createElement('section');card.id=id;card.className='a1-course-practice';card.dataset.activity=entry.activityId;card.dataset.afterLesson=entry.lesson.id;const h=document.createElement('h3');h.textContent=entry.title;const p=document.createElement('p');p.className='a1-path-status';const b=document.createElement('button');b.type='button';b.onclick=()=>ui.openActivity(entry.activityId);card.append(h,p,b);unit.append(card);}
- const r=core.requirements(entry.activityId),text=r.ready?'Use the words and phrases you have learned in a practical situation.':'Learn the required language first. This activity follows '+entry.lesson.title+'.';
- const p=card.querySelector('p'),b=card.querySelector('button');if(p.textContent!==text)p.textContent=text;const label=r.ready?'Try this activity':'See required lessons';if(b.textContent!==label)b.textContent=label;
+ if(!card){card=document.createElement('section');card.id=id;card.className='a1-course-practice';card.dataset.activity=entry.activityId;card.dataset.required='true';card.dataset.afterLesson=entry.lesson.id;const h=document.createElement('h3');h.textContent=entry.title;const p=document.createElement('p');p.className='a1-path-status';const b=document.createElement('button');b.type='button';b.onclick=()=>ui.openActivity(entry.activityId);card.append(h,p,b);unit.append(card);}
+ const r=core.requirements(entry.activityId),finished=core.status(entry.activityId).finished&&core.status(entry.activityId+'-speaking').finished,text=finished?'Completed: reading, listening, writing and recorded speaking.':r.ready?'Required to finish this unit: read, listen, write and record your spoken reply.':'Required unit lesson. First learn the language in '+entry.lesson.title+'.';
+ const p=card.querySelector('p'),b=card.querySelector('button');if(p.textContent!==text)p.textContent=text;const label=finished?'Review unit skills':r.ready?'Continue required lesson':'See required lessons';if(b.textContent!==label)b.textContent=label;
  const row=[...unit.querySelectorAll('[data-lesson-id]')].find(n=>n.dataset.lessonId===entry.lesson.id);
  // Place directly after the source lesson when open; keep it reachable on a folded unit.
  if(row){const anchor=anchors.get(entry.lesson.id)||row;if(anchor.nextElementSibling!==card)anchor.after(card);anchors.set(entry.lesson.id,card);}

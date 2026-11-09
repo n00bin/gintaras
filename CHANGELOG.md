@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.116** (2026-11-09) Required practical lessons now sit inside Lithuanian Units 1–3 and count toward unit completion. Vocabulary test-out defers skip credit until independent reading/listening/writing checks and recorded speaking are complete. Resume, offline access and previously learned words are preserved. Speaking is self-compared, not assigned a proficiency score.
+
 - **3.115** (2026-11-08) Added 149 reviewed Lithuanian illustrations, bringing course picture coverage to 297 of 488. Existing pictures remain for the 191 pending replacements. Lesson content, IDs, recordings, activities, saved progress and persistent audio/picture caches are preserved.
 
 - **3.114** (2026-11-08) Practical activities for the first three Lithuanian path units: Basics, Small talk and Food. Each has two reading tasks, two listening tasks, two writing tasks and a recording/comparison speaking task. Activities use exact previously taught course cards, unlock at their source lessons, offer optional hints, save locally and resume offline. All 99 illustrated cards in these units have the approved artwork. Existing lesson IDs, course order, audio, FSRS records and account sync are preserved. Later course development and Spanish remain outside this release. Deployment now packages only public site assets.

@@ -8,12 +8,12 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v187';
+const SHELL = 'gintaras-shell-v188';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
 const KEEP = [SHELL, AUDIO, CDN, PICS];
-const CORE = ['foundation-evidence.js', 'foundation-ui.js', 'foundation-content.js', 'foundation-practice.js', 'foundation-path.js', './', 'index.html', 'lang/lt.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
+const CORE = ['foundation-unit-skills.js', 'foundation-evidence.js', 'foundation-ui.js', 'foundation-content.js', 'foundation-practice.js', 'foundation-path.js', './', 'index.html', 'lang/lt.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
 CORE.push('pics/1f1f1-1f1f9.svg','pics/1f1f2-1f1fd.svg');
 const AMI_FILES = ["pics/ami/welcome.webp", "pics/ami/happy.webp", "pics/ami/cheer.webp", "pics/ami/think.webp", "pics/ami/rest.webp", "pics/ami/encourage.webp", "pics/ami/listen.webp", "pics/ami/speak.webp"];
 CORE.push('wordami-icon-180.png','wordami-icon-192.png','wordami-icon-512.png','wordami-icon-maskable-192.png','wordami-icon-maskable-512.png');

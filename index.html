@@ -1092,9 +1092,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.115';
-const APP_VERSION=187;
-const WHATS_NEW='149 more Lithuanian pictures now use our rounded illustration style. Your lessons and saved progress carry on as before.';
+const APP_RELEASE='3.116';
+const APP_VERSION=188;
+const WHATS_NEW='Units 1–3 now include required reading, listening, writing and recorded speaking lessons. Unit test-out checks those skills too. Your word progress is preserved.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1470,9 +1470,8 @@ function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.done||c.text||c.
 function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
 /* Steps before where the placement check put you count as done (S.placedTo = index in STEPS). */
 const placed=id=>(S.placedTo||0)>STEPS.indexOf(id);
-/* (Round 11) speaking never locks anything: a conversation step is done once written, a unit once its lessons are (its Speak it
-   lesson is extra practice, and so is Say it) */
-function stepDone(id){if(placed(id))return true;return CONV_BY[id]?convDone(id):UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
+/* Units require their taught lessons and assigned practical skills. Additional Speak it and conversation replay remain available for strengthening. */
+function stepDone(id){const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
 function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const mc=CONV_BY[id];if(mc&&mc.after){const l=LESSON_BY[mc.after];return !l||crowns(l.id)>=1||!!(S.convs||{})[id]||placed(l.unit.id);}const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
@@ -1634,11 +1633,11 @@ const OPEN_UNITS=new Set();
 function tipLesson(u){return u.lessons.find(l=>l.id===u.tipAt)||u.lessons[0];}
 function tipSeen(u){return !!u&&crowns(tipLesson(u).id)>0;}
 function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.createElement('section');
-  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0);
+  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0)&&(!window.WordamiUnitSkills||WordamiUnitSkills.done(u.id));
   const open=unlocked&&(!done||OPEN_UNITS.has(u.id));
   el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
-  const nL=u.lessons.filter(l=>!l.speak).length,spk=u.lessons.find(l=>l.speak),spkTodo=spk&&crowns(spk.id)<1;
-  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo?' · Speak it to try':''):u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+' of '+nL+' lessons done';
+  const skillProgress=window.WordamiUnitSkills?.summary(u.id)||{required:0,complete:0};const nL=u.lessons.filter(l=>!l.speak).length+skillProgress.required,spk=u.lessons.find(l=>l.speak),spkTodo=spk&&crowns(spk.id)<1;
+  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo?' · Speak it to try':''):(u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+skillProgress.complete)+' of '+nL+' lessons done';
   el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
     (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
     (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
@@ -1938,10 +1937,10 @@ function startTestOut(u){S.testout=S.testout||{};if(S.testout[u.id]===today())re
     place:{units:[u.id],also:unitsBefore(u),i:0,right:0,got:{},passed:[],testout:true,need:Math.ceil(its.length*TEST_PASS/TEST_N)}};
   $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
 function placeFinish(){const P=Q.place;$('#lcount').textContent=''; /* (Round 7) the results don't keep the last card's "3 of 4" */
-  if(P.testout){const u=UNIT_BY[P.units[0]],ok=P.passed.length>0;if(ok){creditUnit(u.id,P.got);(P.also||[]).forEach(id=>creditUnit(id,P.got));if((P.also||[]).length)S.placedTo=Math.max(S.placedTo||0,STEPS.indexOf(u.id));}save();
-    $('#stage').innerHTML='<div class="done">'+mascot(ok?'cheer':'encourage','done-mascot')+'<h2>'+(ok?esc(u.en)+' tested out!':'Not this time')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+P.right+' of '+(Q.total-(P.early||0))+'</strong><small>Right first time</small></div></div><p class="note">'+(P.early&&!ok?'Stopped early: '+P.need+' right wasn\'t possible any more. ':'')+
-      (ok?'Its lessons count as done. Its words come up in your reviews over the next few days, so anything you were unsure of comes back.':'You need '+P.need+'. The lessons will get you there, and you can test out again tomorrow.')+'</p></div>';
-    $('#lbar').style.width='100%';const b=$('#btn-check');b.textContent='Continue';b.disabled=false;b.onclick=quit;setFoot('');return;}
+  if(P.testout){const u=UNIT_BY[P.units[0]],ok=P.passed.length>0;const skillPending=ok&&window.WordamiUnitSkills?.beginTestout([u.id,...(P.also||[])],P.got);if(ok&&!skillPending){creditUnit(u.id,P.got);(P.also||[]).forEach(id=>creditUnit(id,P.got));if((P.also||[]).length)S.placedTo=Math.max(S.placedTo||0,STEPS.indexOf(u.id));}save();
+    $('#stage').innerHTML='<div class="done">'+mascot(ok?'cheer':'encourage','done-mascot')+'<h2>'+(skillPending?'Words passed. Next: use them.':ok?esc(u.en)+' tested out!':'Not this time')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+P.right+' of '+(Q.total-(P.early||0))+'</strong><small>Right first time</small></div></div><p class="note">'+(P.early&&!ok?'Stopped early: '+P.need+' right wasn\'t possible any more. ':'')+
+      (skillPending?'Finish the required reading, listening, writing and speaking tasks to complete this unit check. Your lessons have not been skipped yet.':ok?'Its lessons count as done. Its words come up in your reviews over the next few days, so anything you were unsure of comes back.':'You need '+P.need+'. The lessons will get you there, and you can test out again tomorrow.')+'</p></div>';
+    $('#lbar').style.width='100%';const b=$('#btn-check');b.textContent=skillPending?'Continue to unit skills':'Continue';b.disabled=false;b.onclick=()=>{quit();if(skillPending)WordamiUnitSkills.continueTestout();};setFoot('');return;}
   const reach=P.units[P.passed.length]?STEPS.indexOf(P.units[P.passed.length]):STEPS.length;
   P.passed.concat(P.passed.length?STEPS.filter((id,k)=>UNIT_BY[id]&&UNIT_BY[id].retire&&k<reach):[]).forEach(uid=>creditUnit(uid,P.got));
   const stop=P.units[P.passed.length],started=Object.keys(S.lessons||{}).some(id=>S.lessons[id]>0);S.placeDone=today();if(P.passed.length)S.placedTo=Math.max(S.placedTo||0,stop?STEPS.indexOf(stop):STEPS.length);save();
@@ -4623,6 +4622,7 @@ window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.ho
 <script src="foundation-content.js"></script>
 <script src="foundation-practice.js"></script>
 <script src="foundation-path.js"></script>
+<script src="foundation-unit-skills.js"></script>
 <script src="config.js"></script>
 <script src="cloud.js"></script>
 </body>
