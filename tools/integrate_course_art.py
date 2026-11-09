@@ -11,11 +11,14 @@ DIR = ROOT / 'docs/art-direction'
 
 def main():
     jobs = json.loads((DIR / 'lithuanian-art-jobs.json').read_text(encoding='utf-8'))
+    reviewed = set(json.loads((DIR / 'visual-review.json').read_text(encoding='utf-8'))['approved_ids'])
     ready = {}
     for word, asset in jobs['mapping'].items():
         file = ROOT / 'pics' / (asset + '.webp')
         # A file may exist while an export is still being written. Integrate only committed records.
         if asset.rsplit('/', 1)[-1] not in {'coffee', 'chocolate', 'giraffe', 'hotel', 'telephone'}:
+            if asset.rsplit('/', 1)[-1] not in reviewed:
+                continue
             record = DIR / 'lt-records' / (asset.rsplit('/', 1)[-1] + '.json')
             try:
                 if json.loads(record.read_text(encoding='utf-8')).get('status') != 'exported':

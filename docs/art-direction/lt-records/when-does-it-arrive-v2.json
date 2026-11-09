@@ -1,0 +1,17 @@
+{
+  "id": "when-does-it-arrive-v2",
+  "word": "Kada atvyksta?",
+  "en": "When does it arrive?",
+  "unit": "u14",
+  "actor": "learner",
+  "prompt": "Edit the FIRST reference image: the cartoon showing a woman at a bus shelter on the LEFT, an approaching bus on the RIGHT, and a clock and question mark above. Fix ONLY the coral direction arrow beneath the bus and shelter: flip it so that its arrowhead points LEFT toward the bus shelter, and its tail begins on the RIGHT near the bus. This must clearly mean the bus is ARRIVING at the stop, never leaving. Keep the woman, bus, clock, question mark, colours and clean cartoon style unchanged. Remove the old right-pointing arrow completely. Transparent outer background; no text, glow, fog or shadows. SECOND reference is the approved illustration style.",
+  "references": [
+    "G:/ai_projects/gintaras/docs/art-direction/masters/when-does-it-arrive.png",
+    "G:/ai_projects/gintaras/docs/art-direction/approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/when-does-it-arrive-v2.png",
+  "asset": "pics/art-v2/when-does-it-arrive-v2.webp",
+  "bytes": 49568,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

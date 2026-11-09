@@ -1,0 +1,18 @@
+{
+  "id": "small",
+  "word": "mažas",
+  "en": "small",
+  "unit": "u5",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent vocabulary illustration for the Wordami language app. Reference 1 is the authoritative flat cartoon style. Reference 2 is Tomas identity if named; reference 3 is Ruta identity if named, long straight brown hair, fringe, green leaf blouse, coral trousers. Subject: A very small turquoise suitcase beside an otherwise identical much larger light grey suitcase. Small suitcase is foreground focal subject, amber arrow points directly at the SMALL one. No numbers.. Rounded geometric cartoon shapes, large expressive white oval eyes for people, chunky hands, simple silhouettes, bright flat colours, no black perimeter outlines. Flat opaque colour surfaces. Composition: square centered complete scene, 10% empty transparent margin. No letters, words, labels, translation, title, watermark, disc or extra scenery. Do not reuse a previous picture's composition or effects. Transparent immediately outside clean crisp edges. NO external glow, fog, blur, bloom, vignette, ground shadow or soft aura. Interior shadows only as small crisp flat colour shapes.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png",
+    "lt-ruta-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/small.png",
+  "asset": "pics/art-v2/small.webp",
+  "bytes": 36774,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

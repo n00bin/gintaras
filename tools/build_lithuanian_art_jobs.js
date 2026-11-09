@@ -112,11 +112,13 @@ Object.entries(colourWords).forEach(([word,[colour,hex]])=>{
   scenes[word]=['learner','One clean analog clock showing exactly '+hour+' o’clock: long minute hand points straight up at twelve; short hour hand points exactly at '+hour+'. Use simple hour ticks without numerals or letters. Make the two hands easy to distinguish. No people, faces, text, extra clocks or decorations.'];
 });
 const seen = new Set(), jobs = [], mapping = {};
+const overrideFile=path.join(dir,'art-job-overrides.json');
+const overrides=fs.existsSync(overrideFile)?JSON.parse(fs.readFileSync(overrideFile,'utf8')):{};
 for (const row of inventory.pictures) {
   if (row.picture.startsWith('#')) continue;
   if (shared[row.word]) { mapping[row.word] = 'art-v2/' + shared[row.word]; continue; }
   const revisions={'kiaušinis':'egg-v2','Niekas':'nobody-v2','tik':'only-v2','nes':'because-v2'};
-  let id = revisions[row.word] || slug(row.en);
+  let id = overrides[row.word]?.id || revisions[row.word] || slug(row.en);
   if (seen.has(id)) id += '-' + crypto.createHash('sha1').update(row.word).digest('hex').slice(0,6);
   seen.add(id);
   mapping[row.word] = 'art-v2/' + id;
@@ -128,7 +130,7 @@ for (const row of inventory.pictures) {
   const otherBrief = scene ? ' Other recurring identities if present: '+Object.entries(identity).filter(([k])=>k!==actor).map(([,v])=>v).join('; ')+'.' : '';
   const context = inventory.units.find(u=>u.id===row.unit)?.title || '';
   const prompt = 'Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Vocabulary context: the beginner Lithuanian unit "'+context+'". Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is a CHARACTER identity reference only when the subject explicitly names that character; otherwise use it only for illustration style and proportions. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures, ground plane or cast shadows. Subject: '+subject+' Primary character identity when a person is needed: '+actorBrief+'.'+otherBrief+' Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations.';
-  jobs.push({id,word:row.word,en:row.en,unit:row.unit,actor,prompt});
+  jobs.push({id,word:row.word,en:row.en,unit:row.unit,actor,prompt:overrides[row.word]?.prompt || prompt});
 }
 fs.writeFileSync(path.join(dir,'lithuanian-art-jobs.json'),JSON.stringify({mapping,jobs},null,2)+'\n');
 console.log(JSON.stringify({pictures:Object.keys(mapping).length,jobs:jobs.length,reused:Object.keys(shared).length,units:[...new Set(jobs.map(j=>j.unit))]}));
