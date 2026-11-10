@@ -1,0 +1,16 @@
+{
+  "id": "tooth",
+  "word": "dantis",
+  "en": "tooth",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning tooth. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE large healthy cartoon TOOTH, cream-white opaque crown with three rounded top lobes and TWO short rounded roots. Simple pale-grey interior side accent and one small cream highlight. No face, decay, toothbrush, dentist, sparkles or diagram labels. Complete centered feature with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/tooth.png",
+  "asset": "pics/art-v2/tooth.webp",
+  "bytes": 24032,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

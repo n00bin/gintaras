@@ -1,0 +1,17 @@
+{
+  "id": "dangerous",
+  "word": "pavojinga",
+  "en": "dangerous",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square language-learning illustration matching reference 1 flat rounded cartoon style, huge white oval eyes, warm colours, navy/turquoise/amber/coral/cream solid shapes, minimal detail. Reference 2 fixes Tomas: short wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Generous transparent margins, entire scene visible and readable at 56px. Opaque object interiors. No words, text, logos, outlines, gradients, glow, shadow, texture or backdrop. Meaning: dangerous. Tomas recoils worriedly from a broken turquoise electrical cord with two tiny coral zigzag sparks at its broken end, keeping both hands away. A prominent amber warning triangle with navy exclamation mark floats beside the damaged cord. Exactly two arms, two hands. No injury. No floor or background.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/dangerous.png",
+  "asset": "pics/art-v2/dangerous.webp",
+  "bytes": 44496,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

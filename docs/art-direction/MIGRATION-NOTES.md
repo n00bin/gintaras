@@ -1,7 +1,5 @@
-# Lithuanian artwork continuation
+# Lithuanian artwork complete
 
-Release 3.115 / build 187 ships 297 reviewed course mappings, all 20 named portraits and the default learner portrait. The remaining 191 course jobs retain existing artwork. PICTURE_MIGRATION_COMPLETE remains false.
+Release 3.119/build 191 includes all 488 reviewed course picture mappings, all 20 conversation portraits and the default learner portrait. Every export was reviewed at 112px and 56px on light and dark backgrounds. Exact prompts and references are in lt-records/; preserved masters remain local.
 
-Exact prompts are stored in lt-records/. Full-resolution masters remain local. Continue with the approved style and character references. Review every new image before integration. Preserve all vocabulary, lesson IDs, recordings, progress and customized avatars.
-
-Checks: check_course.js, audit_first_three_release.js, check_art_compatibility.js and check_lithuanian_art.py. Use --require-complete only when the entire 488-picture migration is complete.
+Course vocabulary, IDs, recordings, customized avatars and saved progress are preserved. This scoped production release retains the existing required Units 1–3 skills. The broader curriculum preview is separate and is not published by this image release.

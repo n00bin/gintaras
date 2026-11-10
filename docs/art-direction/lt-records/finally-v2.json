@@ -1,0 +1,17 @@
+{
+  "id": "finally-v2",
+  "word": "Galiausiai",
+  "en": "Finally",
+  "unit": "u37",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Finally. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands and shapes, opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas crosses a simple coral FINISH RIBBON at last, relieved and smiling with gently tired eyes, one foot stepping past the broken ribbon and both arms raised in relief. A single small turquoise checkmark. The ribbon floats between two short navy posts. No trophy, puzzle, numbered race bib, scenery or lettering. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/finally-v2.png",
+  "asset": "pics/art-v2/finally-v2.webp",
+  "bytes": 37200,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

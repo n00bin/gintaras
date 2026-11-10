@@ -1,0 +1,17 @@
+{
+  "id": "i-m-tired-but-happy",
+  "word": "Aš pavargęs, bet laimingas",
+  "en": "I'm tired but happy",
+  "unit": "u35",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I'm tired but happy. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas is visibly TIRED BUT HAPPY at the same time: gently slumped shoulders and half-closed tired white oval eyes, but a clear warm happy smile. He sits on a simple turquoise stool, one hand rubbing a sleepy eye, other hand giving a thumbs-up. No sad tears, food, sweat, text or sleeping symbols. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-m-tired-but-happy.png",
+  "asset": "pics/art-v2/i-m-tired-but-happy.webp",
+  "bytes": 30270,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

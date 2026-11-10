@@ -1,0 +1,16 @@
+{
+  "id": "forest",
+  "word": "miškas",
+  "en": "forest",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning forest. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details, no black outlines. Subject: A dense FOREST cluster of five overlapping trees of varied heights: three dark-green rounded pine trees and two turquoise-green broadleaf trees, sturdy short brown trunks visible. No isolated single tree, person, wildlife, water or landscape backdrop. A tiny shared green root mound is part of forest silhouette. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/forest.png",
+  "asset": "pics/art-v2/forest.webp",
+  "bytes": 20420,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "interesting",
+  "word": "įdomus",
+  "en": "interesting",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration for INTERESTING. Reference 1 is the approved flat cartoon STYLE, reference 2 if present is Tomas's exact CHARACTER IDENTITY. Rounded geometric shapes, chunky features, oversized friendly heads and large white oval eyes for people, bright opaque flat colours, sparse darker crisp interior shapes, no black outlines. Subject: Tomas looks fascinated by an INTERESTING illustrated book: he leans forward, big eyes wide with attention, smiling and pointing to a simple picture of a ringed planet on the open page. Preserve his exact brown wavy hair, amber sweatshirt, navy trousers and cream shoes. The book contains only that simple picture, no writing or letters. Only Tomas and the open book; no backdrop or floating effects. Center the entire composition with 12% genuinely empty transparent margin. Readable at 56px. Fully opaque surfaces and zero alpha directly outside clean edges. No texture, gradient, glow, halo, blur, fog, cast shadow, ground, disc, background, lettering or logo.",
+  "master": "docs/art-direction/masters/interesting.png",
+  "asset": "pics/art-v2/interesting.webp",
+  "bytes": 31204,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "i-really-like-it",
+  "word": "Man labai patinka",
+  "en": "I really like it",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I really like it. Reference 1 governs rounded flat cartoon STYLE: big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas enthusiastically gives one large THUMBS UP toward a small open turquoise book held in his other hand, delighted smile, with two small coral hearts above the book. This clearly means he really LIKES the book. No reaching, question mark or words. Exactly two arms and two hands. Complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-really-like-it.png",
+  "asset": "pics/art-v2/i-really-like-it.webp",
+  "bytes": 37782,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

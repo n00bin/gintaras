@@ -1,0 +1,16 @@
+{
+  "id": "table",
+  "word": "stalas",
+  "en": "table",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning table. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE simple household TABLE seen in three-quarter view: broad rounded rectangular amber tabletop with FOUR sturdy navy legs all visibly distinct. No chairs, food, tablecloth, writing materials or surrounding room. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/table.png",
+  "asset": "pics/art-v2/table.webp",
+  "bytes": 21020,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

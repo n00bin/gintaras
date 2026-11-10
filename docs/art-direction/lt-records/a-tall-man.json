@@ -1,0 +1,16 @@
+{
+  "id": "a-tall-man",
+  "word": "aukštas vyras",
+  "en": "a tall man",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square vocabulary illustration meaning A TALL MAN. Attached image is ONLY the approved Wordami STYLE reference: rounded geometric flat cartoon shapes, oversized expressive heads, large white oval eyes for people, chunky features, bright solid colours, sparse darker flat interior shapes, no black perimeter outlines. A very TALL adult man standing beside a simple narrow doorframe: the man is visibly taller than the doorway. He has a friendly expressive face, short brown hair, a turquoise top, long navy trouser legs and cream shoes. Keep him an adult with a large rounded cartoon head; make his height unmistakable. Only the man and the minimal doorframe, no room or floor. Fit the complete composition inside the middle 76% of the square, with ample transparent margin. Opaque interiors; clear sharp transparent outer boundary. No gradient, texture, glow, mist, blur, shadow, background, lettering, labels, logos, disc or decorative extras.",
+  "master": "docs/art-direction/masters/a-tall-man.png",
+  "asset": "pics/art-v2/a-tall-man.webp",
+  "bytes": 27086,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "passport",
+  "word": "pasas",
+  "en": "passport",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning passport. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE closed PASSPORT booklet with rounded navy cover and cream page edge. A large simple amber globe emblem centred on the cover, with two latitude arcs and one longitude arc. Small coral bookmark tab. No national flag, words, letters, coat of arms, person or readable identity details. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/passport.png",
+  "asset": "pics/art-v2/passport.webp",
+  "bytes": 17614,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

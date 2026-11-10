@@ -1,0 +1,16 @@
+{
+  "id": "hen",
+  "word": "višta",
+  "en": "hen",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached approved style: rounded chunky flat 2D cartoon, huge friendly white oval eyes, solid turquoise/amber/coral/navy/cream colours, minimal details and almost no outlines. Complete animal unclipped, centered, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent background. No people, accessories, scenery, words, logos, texture, gradients, glow or shadows. Subject: one adult HEN, cream rounded body, small coral comb and wattles, short amber beak, two amber scaly legs with three forward toes, two rounded cream wings, short navy tail feathers. Modest small hen comb, no rooster's long tail or large comb. Three-quarter side view.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/hen.png",
+  "asset": "pics/art-v2/hen.webp",
+  "bytes": 24280,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

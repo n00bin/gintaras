@@ -1,0 +1,16 @@
+{
+  "id": "window",
+  "word": "langas",
+  "en": "window",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning window. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE closed rectangular WINDOW with chunky coral frame, four pale-blue glass panes separated by cream crossbars, a simple small amber latch, and short turquoise curtains pulled to each side. No view through window, wall, room, sun or plant. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/window.png",
+  "asset": "pics/art-v2/window.webp",
+  "bytes": 14898,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

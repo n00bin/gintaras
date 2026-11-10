@@ -1,0 +1,16 @@
+{
+  "id": "one-hundred-twelve-112",
+  "word": "šimtas dvylika",
+  "en": "one hundred twelve (112)",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square vocabulary illustration matching reference 1: rounded flat cartoon, chunky shapes, warm navy/turquoise/amber/coral/cream, huge expressive white oval eyes if person. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Opaque interiors, true transparent outside, generous margins, complete unclipped scene readable at 56px. No gradients, glow, shadow, texture, floor, backdrop, logo or lettering except specifically requested digits. Meaning: one hundred twelve (112), emergency telephone number. One large rounded turquoise smartphone facing viewer, opaque cream screen bearing ONLY the exact navy digits 112, large and perfectly readable, with a simple coral phone handset symbol below. No person, no other digits, no other text.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/one-hundred-twelve-112.png",
+  "asset": "pics/art-v2/one-hundred-twelve-112.webp",
+  "bytes": 18814,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

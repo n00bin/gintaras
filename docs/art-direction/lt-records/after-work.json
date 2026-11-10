@@ -1,0 +1,17 @@
+{
+  "id": "after-work",
+  "word": "po darbo",
+  "en": "after work",
+  "unit": "u34",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning after work. Reference 1 governs rounded geometric flat cartoon STYLE, large white oval eyes, chunky shapes and hands, bright opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas happily closes a navy laptop with one hand and lifts a turquoise backpack strap over his shoulder with the other. A single coral right-pointing arrow leads from the closed laptop to one small setting sun, conveying AFTER WORK and leaving at the end of the workday. Exactly two arms, no desk, clock numerals or scenery. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/after-work.png",
+  "asset": "pics/art-v2/after-work.webp",
+  "bytes": 35024,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

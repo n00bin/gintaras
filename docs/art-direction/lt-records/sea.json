@@ -1,0 +1,16 @@
+{
+  "id": "sea",
+  "word": "jūra",
+  "en": "sea",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning sea. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details, no black outlines. Subject: ONE compact SEA cutout: three broad deep-blue and turquoise rolling waves with thick cream foam crests, one small coral sailboat on the far wave and a simple amber sun near the horizon. Open water with NO enclosing shoreline, lake bank, pool edge, palms or person. Outside water silhouette transparent. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/sea.png",
+  "asset": "pics/art-v2/sea.webp",
+  "bytes": 22138,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

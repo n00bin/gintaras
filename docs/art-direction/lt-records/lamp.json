@@ -1,0 +1,16 @@
+{
+  "id": "lamp",
+  "word": "lempa",
+  "en": "lamp",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning lamp. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE clear household table LAMP with rounded amber shade, a short navy stem, one coral round base and a tiny cream pull switch. No table beneath it, no glowing light rays, cable, background or room. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/lamp.png",
+  "asset": "pics/art-v2/lamp.webp",
+  "bytes": 16152,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

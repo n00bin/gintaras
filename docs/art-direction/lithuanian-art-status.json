@@ -1,7 +1,7 @@
 {
-  "mapped": 297,
+  "mapped": 488,
   "total": 488,
-  "complete": false,
+  "complete": true,
   "portraits": 20,
   "portraits_total": 20,
   "learner_portrait": true,
@@ -79,103 +79,103 @@
       "total": 15
     },
     "u29": {
-      "ready": 22,
+      "ready": 24,
       "total": 24
     },
     "u5": {
-      "ready": 7,
+      "ready": 11,
       "total": 11
     },
     "u30": {
-      "ready": 0,
+      "ready": 24,
       "total": 24
     },
     "u4": {
-      "ready": 0,
+      "ready": 7,
       "total": 7
     },
     "u25": {
-      "ready": 0,
+      "ready": 2,
       "total": 2
     },
     "u31": {
-      "ready": 0,
+      "ready": 10,
       "total": 10
     },
     "u11": {
-      "ready": 0,
+      "ready": 14,
       "total": 14
     },
     "u32": {
-      "ready": 0,
+      "ready": 11,
       "total": 11
     },
     "u26": {
-      "ready": 0,
+      "ready": 5,
       "total": 5
     },
     "u22": {
-      "ready": 0,
+      "ready": 8,
       "total": 8
     },
     "u23": {
-      "ready": 0,
+      "ready": 7,
       "total": 7
     },
     "u24": {
-      "ready": 0,
+      "ready": 2,
       "total": 2
     },
     "u34": {
-      "ready": 0,
+      "ready": 3,
       "total": 3
     },
     "u35": {
-      "ready": 0,
+      "ready": 3,
       "total": 3
     },
     "u36": {
-      "ready": 0,
+      "ready": 5,
       "total": 5
     },
     "u37": {
-      "ready": 0,
+      "ready": 4,
       "total": 4
     },
     "u10": {
-      "ready": 0,
+      "ready": 13,
       "total": 13
     },
     "u17": {
-      "ready": 0,
+      "ready": 9,
       "total": 9
     },
     "u40": {
-      "ready": 0,
+      "ready": 13,
       "total": 13
     },
     "u18": {
-      "ready": 0,
+      "ready": 10,
       "total": 10
     },
     "u38": {
-      "ready": 0,
+      "ready": 7,
       "total": 7
     },
     "u39": {
-      "ready": 0,
+      "ready": 2,
       "total": 2
     },
     "u6": {
-      "ready": 0,
+      "ready": 16,
       "total": 16
     },
     "u12": {
-      "ready": 0,
+      "ready": 5,
       "total": 5
     },
     "u0": {
-      "ready": 0,
+      "ready": 5,
       "total": 5
     }
   }

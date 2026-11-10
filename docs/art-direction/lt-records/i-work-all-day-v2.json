@@ -1,0 +1,17 @@
+{
+  "id": "i-work-all-day-v2",
+  "word": "Aš dirbu visą dieną",
+  "en": "I work all day",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create ONE transparent square vocabulary cutout meaning I work all day. Reference 1 is the flat rounded cartoon STYLE, reference 2 if present fixes Tomas's identity. Large white oval eyes, chunky hands, solid turquoise/amber/coral/navy, minimal details. Subject: Tomas, wavy brown hair, amber sweatshirt and navy trousers, types at a navy laptop. Above him a thin crisp coral arrow goes from a small rising sun at left to a small setting sun at right, meaning work from morning to evening. Suns and arrow are discrete solid opaque shapes, NEVER light sources. Exactly two arms. No scenery. CRITICAL: no glow, bloom, fog, soft lighting, gradients, shadows or coloured haze anywhere. Render like clean cut paper: flat opaque interior, crisp immediate transition to true transparent outside. Generous transparent margins on all sides; complete composition readable at 56px. No floor, backdrop, lettering or logos.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-work-all-day-v2.png",
+  "asset": "pics/art-v2/i-work-all-day-v2.webp",
+  "bytes": 34994,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

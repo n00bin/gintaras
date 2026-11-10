@@ -1,0 +1,16 @@
+{
+  "id": "snow",
+  "word": "sniegas",
+  "en": "snow",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning snow. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details, no black outlines. Subject: ONE opaque pale-blue cloud dropping three large cream snowflakes with thick rounded six-armed branches. Clear SNOW, not rain. The snowflakes are solid shapes with clean transparent spaces between branches. No sun, person or landscape. Center complete composition with generous transparent margins and clear silhouettes at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/snow.png",
+  "asset": "pics/art-v2/snow.webp",
+  "bytes": 51256,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

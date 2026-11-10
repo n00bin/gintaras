@@ -1,0 +1,16 @@
+{
+  "id": "lift-elevator",
+  "word": "liftas",
+  "en": "lift / elevator",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning lift / elevator. Reference 1 governs rounded flat cartoon STYLE, big white oval eyes when people present, chunky simple shapes, opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE ELEVATOR doorway: chunky navy outer frame, two closed turquoise sliding doors meeting in the centre, small cream call-button panel at right with two CORAL up and down triangles. One simple amber up arrow and down arrow above doors, no letters or floor numbers, people, stairs or surrounding hallway. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/lift-elevator.png",
+  "asset": "pics/art-v2/lift-elevator.webp",
+  "bytes": 13376,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "it-s-raining-so-i-m-staying-home",
+  "word": "Lyja, todėl aš lieku namie",
+  "en": "It's raining, so I'm staying home",
+  "unit": "u35",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It's raining, so I'm staying home. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas stays INSIDE a small coral house cutaway, seated comfortably on a navy sofa with a book. Outside the house on the right, a pale-blue cloud drops three blue raindrops. A clear window separates Tomas safely indoors from the rain outdoors. House has a simple roof, one wall and cream floor; outside cutaway transparent. No umbrella, sun or person outside. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-raining-so-i-m-staying-home.png",
+  "asset": "pics/art-v2/it-s-raining-so-i-m-staying-home.webp",
+  "bytes": 24528,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

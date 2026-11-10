@@ -1,0 +1,16 @@
+{
+  "id": "cold-beet-soup",
+  "word": "šaltibarščiai",
+  "en": "cold beet soup",
+  "unit": "u12",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, bright solid colours, minimal crisp detail, almost no outlines. Entire subject unclipped, generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No lettering, logos, gradients, glow, shadows, texture, scenery or backdrop. Subject: Lithuanian cold beet soup šaltibarščiai. One simple turquoise bowl filled with vivid PINK chilled beet-and-kefir soup, with small green cucumber pieces and dill sprigs, two white boiled egg halves with yellow yolks floating visibly. Small cream side plate bearing two yellow boiled potato pieces beside bowl. Food only, no people, no steam.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/cold-beet-soup.png",
+  "asset": "pics/art-v2/cold-beet-soup.webp",
+  "bytes": 32186,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

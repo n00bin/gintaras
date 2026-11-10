@@ -1,0 +1,16 @@
+{
+  "id": "reception",
+  "word": "registratūra",
+  "en": "reception",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning reception. Reference 1 governs rounded flat cartoon STYLE, expressive large white oval eyes, oversized heads, chunky hands and shapes, opaque solid colours and minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE clearly recognizable HOTEL RECEPTION desk, amber counter with cream top, a small turquoise desk bell and a navy hotel-room key tag with cream bed pictogram. Behind desk one friendly adult female receptionist in turquoise with a cream blank name badge. No guest, room number, written sign, lobby or background. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/reception.png",
+  "asset": "pics/art-v2/reception.webp",
+  "bytes": 24494,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

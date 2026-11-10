@@ -1,0 +1,16 @@
+{
+  "id": "mouse",
+  "word": "pelė",
+  "en": "mouse",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached approved style: rounded chunky flat 2D cartoon, huge friendly white oval eyes, solid turquoise/amber/coral/navy/cream colours, minimal details and almost no outlines. Complete animal unclipped, centered, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent background. No people, accessories, scenery, words, logos, texture, gradients, glow or shadows. Subject: one tiny friendly MOUSE, rounded pale grey body, two very large circular ears with coral inner ears, pointed muzzle with small coral nose, big white oval eyes, four small paws and one long thin curved coral tail. Three simple navy whiskers each side. No computer, cheese or props.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/mouse.png",
+  "asset": "pics/art-v2/mouse.webp",
+  "bytes": 22846,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "call-an-ambulance",
+  "word": "Iškvieskite greitąją",
+  "en": "Call an ambulance",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One friendly transparent cartoon vocabulary illustration meaning Call an ambulance. Reference 1 sets the approved rounded geometric flat STYLE with big white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas making a PHONE CALL, holding a coral mobile phone to his ear with one hand and gesturing toward a small clearly recognizable cream-and-turquoise AMBULANCE beside him with the other. Ambulance has a coral medical cross and simple amber roof beacon. The scene means CALL AN AMBULANCE. No text or numbers. Exactly two arms. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors and clean edges, true transparency outside shapes. No glow, gradients, shadows, texture, backdrop, lettering or logos.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/call-an-ambulance.png",
+  "asset": "pics/art-v2/call-an-ambulance.webp",
+  "bytes": 26090,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

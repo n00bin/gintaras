@@ -1,0 +1,17 @@
+{
+  "id": "clever",
+  "word": "protingas",
+  "en": "clever",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration meaning CLEVER. Image 1 is the approved flat cartoon STYLE; any image 2 is the named CHARACTER IDENTITY reference. Rounded geometric flat shapes, oversized expressive heads, white oval eyes, chunky hands, bright solid colours, sparse darker interior shapes, no black perimeter outlines. Tomas from reference 2 has just found a CLEVER solution: he confidently fits the final big piece into a simple three-piece turquoise jigsaw, smiling with an 'I have an idea' expression. One small amber lightbulb above him has crisp flat rays, no glow. Preserve his brown wavy hair, amber sweatshirt, navy trousers and cream shoes. Only Tomas, the large simple puzzle pieces and the small idea symbol. Complete centered composition, 12% empty transparent margin on each side, readable at 56px. Every object interior fully opaque; zero alpha immediately outside clean edges. No background, floor, disc, lettering, logos, gradient, texture, glow, blur, fog, ground shadow or extra scenery.",
+  "master": "docs/art-direction/masters/clever.png",
+  "asset": "pics/art-v2/clever.webp",
+  "bytes": 37120,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

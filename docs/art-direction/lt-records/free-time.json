@@ -1,0 +1,17 @@
+{
+  "id": "free-time",
+  "word": "laisvalaikis",
+  "en": "free time",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning free time. Reference 1 governs rounded flat cartoon STYLE: big expressive white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas relaxing in one small turquoise armchair, reading an open cream book with a happy calm face, legs casually stretched out. One soccer ball rests beside the chair to suggest enjoyable FREE TIME. No clock, work laptop, sleep symbols or scenery. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/free-time.png",
+  "asset": "pics/art-v2/free-time.webp",
+  "bytes": 28130,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

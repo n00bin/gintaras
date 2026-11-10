@@ -1,0 +1,16 @@
+{
+  "id": "bus",
+  "word": "autobusas",
+  "en": "bus",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning bus. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE city BUS in three-quarter view, coral main body with turquoise lower panel, large navy front windscreen, three cream side windows, clear front passenger door and TWO visible large navy rubber wheels. No rail tracks, train carriage, face, logos, route numbers, driver or scenery. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bus.png",
+  "asset": "pics/art-v2/bus.webp",
+  "bytes": 17816,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "i-m-hot",
+  "word": "Man karšta",
+  "en": "I'm hot",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I'm hot. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas feels uncomfortably HOT: flushed cheeks, two clear blue sweat drops, tongue slightly out, one hand fanning face with a small cream fan, other hand at side. One small blazing amber sun above. Sweat and fanning distinguish hot from thirsty. No water glass or thermometer. Exactly two arms and two hands. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors and clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-m-hot.png",
+  "asset": "pics/art-v2/i-m-hot.webp",
+  "bytes": 36450,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

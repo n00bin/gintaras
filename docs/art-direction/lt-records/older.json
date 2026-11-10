@@ -1,0 +1,16 @@
+{
+  "id": "older",
+  "word": "vyresnis",
+  "en": "older",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration meaning OLDER. Image 1 is the approved flat cartoon STYLE; any image 2 is the named CHARACTER IDENTITY reference. Rounded geometric flat shapes, oversized expressive heads, white oval eyes, chunky hands, bright solid colours, sparse darker interior shapes, no black perimeter outlines. Two brothers side by side: an OLDER young-adult brother on the left in a turquoise sweater and navy trousers, and a noticeably younger boy on the right in a coral top. The older brother is the main subject, with a small crisp coral arrow pointing to him. Similar brown hair suggests family, but their ages are visibly different. Friendly neutral expressions; no grey-haired grandfather, no labels or numbers. Complete centered composition, 12% empty transparent margin on each side, readable at 56px. Every object interior fully opaque; zero alpha immediately outside clean edges. No background, floor, disc, lettering, logos, gradient, texture, glow, blur, fog, ground shadow or extra scenery.",
+  "master": "docs/art-direction/masters/older.png",
+  "asset": "pics/art-v2/older.webp",
+  "bytes": 42846,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

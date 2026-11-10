@@ -1,0 +1,17 @@
+{
+  "id": "light-easy",
+  "word": "lengvas",
+  "en": "light / easy",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning LIGHT / EASY. Image 1 is the approved flat cartoon STYLE; any image 2 is Tomas's CHARACTER IDENTITY. Rounded geometric shapes, oversized friendly heads and white oval eyes on people, chunky hands, bright opaque flat colours, minimal crisp interior details and no black outlines. Subject: Tomas effortlessly lifts a small LIGHT empty cardboard box on one open hand, smiling with relaxed posture. A tiny white feather inside the open box reinforces lightness. Preserve his amber sweatshirt, navy trousers, cream shoes, brown wavy hair and large white oval eyes. Make the task look easy, not physically strenuous; no text or weight labels. Center the complete subject in the middle 76% of the canvas. Genuinely empty transparent margins, fully opaque objects, clean crisp outer contours. No gradient, texture, glow, mist, blur, cast shadow, ground, backdrop, disc, logo, lettering or extra scenery.",
+  "master": "docs/art-direction/masters/light-easy.png",
+  "asset": "pics/art-v2/light-easy.webp",
+  "bytes": 35726,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "rue",
+  "word": "rūta",
+  "en": "rue",
+  "unit": "u12",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, bright solid colours, minimal crisp detail, almost no outlines. Entire subject unclipped, generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No lettering, logos, gradients, glow, shadows, texture, scenery or backdrop. Subject: RUE HERB PLANT, Lithuanian rūta, NOT a woman named Ruta. One botanical sprig of common rue with a green branching stem, distinctive small rounded lobed blue-green leaves, and three small bright yellow four-petalled flowers with yellow centres. Simplified correct herb shape, not rosemary or mint. Plant only, no pot or people.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "research_sources": [
+    "https://www.rhs.org.uk/plants/41891/ruta-graveolens/details"
+  ],
+  "master": "docs/art-direction/masters/rue.png",
+  "asset": "pics/art-v2/rue.webp",
+  "bytes": 55048,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

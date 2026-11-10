@@ -1,0 +1,17 @@
+{
+  "id": "i-caught-a-cold",
+  "word": "Aš peršalau",
+  "en": "I caught a cold",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I caught a cold. Reference 1 governs rounded flat cartoon STYLE: expressive large white oval eyes, oversized head, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas has a COMMON COLD: red runny nose, weary half-closed eyes, turquoise scarf over amber sweatshirt, holds one cream tissue to his nose with one hand. Other hand holds a small closed cream tissue packet. No ice, snowflake, low-temperature thermometer, severe distress or medication. Exactly two arms and two hands. Complete centered character with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-caught-a-cold.png",
+  "asset": "pics/art-v2/i-caught-a-cold.webp",
+  "bytes": 24588,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

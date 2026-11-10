@@ -1,0 +1,17 @@
+{
+  "id": "it-s-strange",
+  "word": "Keista",
+  "en": "It's strange",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat cartoon style: huge white oval eyes, chunky shapes, bright solid turquoise/amber/coral/navy/cream. Reference 2 fixes Tomas short wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Complete unclipped scene, generous transparent margins, readable at 56px. Exactly two arms and hands if person. Fully opaque interiors, crisp edges, true transparent outside. No text, logos, gradients, texture, floor, backdrop, shadows or glow. Meaning: It's strange. Puzzled Tomas leans back and tilts his head at a turquoise teapot on four short coral animal legs, an obviously odd impossible object. One hand scratches his head, other points at the walking teapot. Small coral question mark beside him. Keep whimsical and readable, teapot has handle, spout and lid, no face.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-strange.png",
+  "asset": "pics/art-v2/it-s-strange.webp",
+  "bytes": 44622,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

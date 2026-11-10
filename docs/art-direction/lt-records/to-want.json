@@ -1,0 +1,17 @@
+{
+  "id": "to-want",
+  "word": "norėti",
+  "en": "to want",
+  "unit": "u26",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning to want. Reference 1 governs rounded flat cartoon STYLE: big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas reaches one open hand toward a single turquoise cup held just beyond him, looking at it with an eager hopeful expression. His other hand points to his own chest. One small coral heart in a simple thought bubble above conveys WANTING that cup. Do not depict drinking or already holding it. Exactly two arms and two hands. Complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/to-want.png",
+  "asset": "pics/art-v2/to-want.webp",
+  "bytes": 40996,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

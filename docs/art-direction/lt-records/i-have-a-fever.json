@@ -1,0 +1,17 @@
+{
+  "id": "i-have-a-fever",
+  "word": "Turiu temperatūros",
+  "en": "I have a fever",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square vocabulary illustration. Match reference 1 rounded geometric flat cartoon, huge white oval eyes, warm orange faces, chunky hands, bright solid turquoise/amber/coral/navy/cream. Reference 2 fixes Tomas short wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Complete unclipped scene, generous margins, readable at 56px, exactly two arms and hands per person. Opaque interiors, crisp edges, true transparent outside shapes. No text, lettering, logo, shadow, glow, gradients, texture, floor or backdrop. Meaning: I have a fever. Tomas looks unwell with rosy cheeks and a worried expression, holding a large simple glass thermometer beside his face in one hand; its coral liquid column visibly rises high with three short abstract navy ticks, no digits. Other hand rests against his forehead, forehead has two small coral heat waves. No injuries.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-have-a-fever.png",
+  "asset": "pics/art-v2/i-have-a-fever.webp",
+  "bytes": 34798,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

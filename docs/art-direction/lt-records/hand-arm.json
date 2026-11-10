@@ -1,0 +1,16 @@
+{
+  "id": "hand-arm",
+  "word": "ranka",
+  "en": "hand / arm",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning hand / arm. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE intact cartoon ARM AND HAND shown from shoulder to fingertips, bent gently at the elbow, warm orange skin tone matching style board. Open palm with one thumb and four rounded fingers, minimal crease marks. Rounded neutral shoulder end, no injury, red cut edge, torso, extra hand or surrounding person. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, labels, lettering or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/hand-arm.png",
+  "asset": "pics/art-v2/hand-arm.webp",
+  "bytes": 16868,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

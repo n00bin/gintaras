@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.119** (2026-11-09) Completed all 488 Lithuanian course picture mappings in the approved illustration style, with all 20 conversation portraits and the default learner. Existing number/day text tiles, vocabulary, recordings, progress IDs and custom avatars remain. Unit test-out keeps source phrases taught; recorded audio waits for the full file before seeking so cold-cache listening works reliably.
+
 - **3.116** (2026-11-09) Required practical lessons now sit inside Lithuanian Units 1–3 and count toward unit completion. Vocabulary test-out defers skip credit until independent reading/listening/writing checks and recorded speaking are complete. Resume, offline access and previously learned words are preserved. Speaking is self-compared, not assigned a proficiency score.
 
 - **3.115** (2026-11-08) Added 149 reviewed Lithuanian illustrations, bringing course picture coverage to 297 of 488. Existing pictures remain for the 191 pending replacements. Lesson content, IDs, recordings, activities, saved progress and persistent audio/picture caches are preserved.

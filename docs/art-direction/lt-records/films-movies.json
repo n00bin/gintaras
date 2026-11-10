@@ -1,0 +1,16 @@
+{
+  "id": "films-movies",
+  "word": "filmai",
+  "en": "films / movies",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning films / movies. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE FILMS/MOVIES composition: a simple navy-and-cream film clapperboard beside a small coral film reel with four cream round holes and a short turquoise film strip. No writing, numbers, movie titles, person or scenery. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/films-movies.png",
+  "asset": "pics/art-v2/films-movies.webp",
+  "bytes": 23968,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

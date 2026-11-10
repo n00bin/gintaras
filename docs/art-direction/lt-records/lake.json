@@ -1,0 +1,16 @@
+{
+  "id": "lake",
+  "word": "ežeras",
+  "en": "lake",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning lake. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details, no black outlines. Subject: ONE clearly enclosed LAKE: a rounded turquoise oval body of still water surrounded on ALL sides by an irregular solid green shore ring, with two brown-and-green reeds at one edge and one small tree beyond the far shore. Two short cream ripple strokes only. No waves, boat, pool tiles, ocean horizon or people. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/lake.png",
+  "asset": "pics/art-v2/lake.webp",
+  "bytes": 21888,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

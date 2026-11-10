@@ -1,0 +1,16 @@
+{
+  "id": "sheep",
+  "word": "avis",
+  "en": "sheep",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached approved style: rounded chunky flat 2D cartoon, huge friendly white oval eyes, solid turquoise/amber/coral/navy/cream colours, minimal details and almost no outlines. Complete animal unclipped, centered, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent background. No people, accessories, scenery, words, logos, texture, gradients, glow or shadows. Subject: one friendly SHEEP, fluffy cream wool forming large rounded scallops, navy face and two floppy navy ears, four short navy legs and hooves, small cream tail. No horns, no clothes, no props. Three-quarter side view.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/sheep.png",
+  "asset": "pics/art-v2/sheep.webp",
+  "bytes": 22808,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

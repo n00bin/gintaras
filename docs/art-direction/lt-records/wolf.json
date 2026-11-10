@@ -1,0 +1,16 @@
+{
+  "id": "wolf",
+  "word": "vilkas",
+  "en": "wolf",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY. Attached reference fixes rounded chunky flat 2D cartoon style, huge friendly white oval eyes, solid bright colours, minimal crisp detail, almost no outlines. Complete animal unclipped with generous transparent margins, readable at 56px. Opaque interiors and true transparent outside shapes. No person, props, scenery, clothes, lettering, logo, gradient, glow, shadow or texture. Subject: one friendly grey WOLF standing in three-quarter side view. Slate grey coat, cream muzzle and chest, two upright pointed ears, long canine muzzle, four legs with rounded paws, one long bushy tail angled down. Slight cheek ruff and navy nose. Wild wolf, no collar, no clothes, not a fox, no orange fur.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/wolf.png",
+  "asset": "pics/art-v2/wolf.webp",
+  "bytes": 31910,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

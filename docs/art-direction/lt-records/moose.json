@@ -1,0 +1,16 @@
+{
+  "id": "moose",
+  "word": "briedis",
+  "en": "moose",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached reference rounded flat cartoon, huge friendly white oval eyes, chunky geometric solid-colour shapes, minimal details, almost no outlines. Whole animal fully visible with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No person, clothes, props, scenery, lettering, logo, gradients, texture, glow or shadows. Subject: one friendly MOOSE standing three-quarter side view. Brown stocky high-shouldered body, long rounded drooping muzzle, two large wide PALMATE antlers with broad flattened paddle centres and a few short points, two ears, four long legs, cream hooves, short tail, small throat dewlap. Antlers distinguish moose from branching-antler deer. No scenery.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/moose.png",
+  "asset": "pics/art-v2/moose.webp",
+  "bytes": 43000,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

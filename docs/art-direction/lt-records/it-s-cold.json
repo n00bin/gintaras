@@ -1,0 +1,17 @@
+{
+  "id": "it-s-cold",
+  "word": "Šalta",
+  "en": "It's cold",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It's cold. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair and amber/navy identity. Subject: Tomas wearing a turquoise scarf over his amber sweatshirt, arms folded close around himself and shoulders raised, shivering. Small crisp blue shiver strokes beside shoulders and one low blue thermometer. No snow or rain. Cold weather, clearly uncomfortable chilly expression. Exactly two arms and two hands. Center complete scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, transparent outside. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-cold.png",
+  "asset": "pics/art-v2/it-s-cold.webp",
+  "bytes": 33646,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

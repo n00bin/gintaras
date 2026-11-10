@@ -1,0 +1,17 @@
+{
+  "id": "nothing-happened",
+  "word": "Nieko neatsitiko",
+  "en": "Nothing happened",
+  "unit": "u36",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Nothing happened. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas calmly holds both hands open with a reassuring gentle smile. Beside him a small simple cream calendar/history card is completely empty except for one turquoise checkmark, and a short coral backward arrow indicates past. No accident, broken object, injury, fireworks or dramatic event. Meaning NOTHING HAPPENED; keep calm and uneventful. Exactly two arms per person. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/nothing-happened.png",
+  "asset": "pics/art-v2/nothing-happened.webp",
+  "bytes": 33894,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "insurance",
+  "word": "draudimas",
+  "en": "insurance",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square vocabulary illustration matching reference 1: rounded flat cartoon, chunky shapes, warm navy/turquoise/amber/coral/cream, huge expressive white oval eyes if person. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Opaque interiors, true transparent outside, generous margins, complete unclipped scene readable at 56px. No gradients, glow, shadow, texture, floor, backdrop, logo or lettering except specifically requested digits. Meaning: insurance. A large cream insurance document with a turquoise folded corner, three short navy abstract horizontal lines (not letters), and a prominent turquoise protective shield over its lower half containing an amber checkmark. Small coral umbrella above the document conveys protection. No person, no currency, no written words.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/insurance.png",
+  "asset": "pics/art-v2/insurance.webp",
+  "bytes": 21164,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

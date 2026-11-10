@@ -1,0 +1,16 @@
+{
+  "id": "a-green-apple",
+  "word": "žalias obuolys",
+  "en": "a green apple",
+  "unit": "u5",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent vocabulary illustration for Wordami meaning A GREEN APPLE. The attached board is a STYLE reference only. One healthy bright green apple with a short brown stem and one small green leaf. A simple rounded asymmetrical apple silhouette, crisp flat lime-green body and one small darker-green flat crescent for depth. No red or yellow patches, bites, rotten spots, face, eyes or extra fruit. Match the approved playful rounded flat cartoon shapes, without black outlines or realism. Complete object centered within the middle 76% of a square canvas; generous truly transparent margins. Fully opaque object interiors and zero alpha outside sharp edges. No gradient, glow, blur, drop shadow, ground plane, text, letters, logos or backdrop.",
+  "master": "docs/art-direction/masters/a-green-apple.png",
+  "asset": "pics/art-v2/a-green-apple.webp",
+  "bytes": 22432,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

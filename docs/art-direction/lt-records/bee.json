@@ -1,0 +1,16 @@
+{
+  "id": "bee",
+  "word": "bitė",
+  "en": "bee",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style: rounded chunky flat cartoon, bright solid amber/turquoise/coral/navy/cream, minimal crisp details, almost no outlines. Complete subject unclipped with generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No person, scenery, lettering, logos, gradients, texture, glow or shadows. Subject: ONE friendly BEE. Rounded amber-yellow body with two broad navy stripes, two large friendly white oval eyes, two navy antennae, exactly two pale cream wings and six small navy legs. Bee flying at a slight angle, no flower, honey pot or stinger emphasis.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bee.png",
+  "asset": "pics/art-v2/bee.webp",
+  "bytes": 20944,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

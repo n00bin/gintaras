@@ -1,0 +1,16 @@
+{
+  "id": "leg-foot",
+  "word": "koja",
+  "en": "leg / foot",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning leg / foot. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE intact cartoon LEG AND FOOT, warm orange skin tone, bent slightly at knee, bare rounded foot with five simple toes. Show full leg from rounded upper thigh to toes, neutral anatomical cutout with NO injury, red cut edge, clothing, shoe, extra leg or body. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, labels, lettering or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/leg-foot.png",
+  "asset": "pics/art-v2/leg-foot.webp",
+  "bytes": 17874,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

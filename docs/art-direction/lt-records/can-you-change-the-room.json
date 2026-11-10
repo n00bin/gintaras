@@ -1,0 +1,17 @@
+{
+  "id": "can-you-change-the-room",
+  "word": "Ar galite pakeisti kambarį?",
+  "en": "Can you change the room?",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Can you change the room?. Reference 1 governs rounded flat cartoon STYLE, expressive large white oval eyes, oversized heads, chunky hands and shapes, opaque solid colours and minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas politely asks a hotel receptionist to CHANGE ROOMS. Tomas holds one navy room-key tag with a cream bed pictogram; receptionist offers a different coral room-key tag with the same bed pictogram. One clear curved turquoise exchange arrow between tags and a coral question mark above. Exactly two arms each. Small reception counter only, no room numbers or text. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/can-you-change-the-room.png",
+  "asset": "pics/art-v2/can-you-change-the-room.webp",
+  "bytes": 50484,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

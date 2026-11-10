@@ -21,7 +21,7 @@ function update(){if(updating)return;updating=true;try{
  for(const e of placements)if(complete(e)&&!canAssess(e.activityId)&&!S.lessons[key(e.activityId)]){S.lessons[key(e.activityId)]=1;changed=true;}
  const p=pending();
  if(p&&p.language===LANG.code&&!nextPending()){
-  for(const uid of p.units){for(const e of unitEntries(uid))S.lessons[key(e.activityId)]=1;creditUnit(uid,p.got);}
+  for(const uid of p.units){for(const e of unitEntries(uid)){S.lessons[key(e.activityId)]=1;for(const id of e.sourceCardIds)if(BYID[id])rec(id).intro=true;}creditUnit(uid,p.got);}
   if(p.units.length>1)S.placedTo=Math.max(S.placedTo||0,STEPS.indexOf(p.units[0]));
   delete S.unitSkillTestout;changed=true;toast('Unit check complete: words and required skills finished.');
  }

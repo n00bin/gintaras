@@ -1,0 +1,17 @@
+{
+  "id": "heart",
+  "word": "širdis",
+  "en": "heart",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning heart. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas shown waist-up, with one hand resting over his chest. A large flat CORAL HEART symbol with a short navy pulse zigzag is placed over the chest where the heart is. Friendly calm face, no romance bubbles, anatomical blood, injury, background or medical instructions. Exactly two arms. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/heart.png",
+  "asset": "pics/art-v2/heart.webp",
+  "bytes": 26270,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

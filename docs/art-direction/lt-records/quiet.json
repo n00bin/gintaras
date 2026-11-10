@@ -1,0 +1,17 @@
+{
+  "id": "quiet",
+  "word": "tylus",
+  "en": "quiet",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration for QUIET. Reference 1 is the approved STYLE: rounded flat cartoon geometry, chunky silhouettes, expressive white oval eyes on people, bright solid opaque colours, sparse darker flat interior shapes, no black perimeter outlines. Any reference 2 is Tomas's exact CHARACTER IDENTITY. Subject: Tomas calmly holds one index finger gently to his closed lips, making the familiar quiet gesture. Soft relaxed expression, shoulders down, no open mouth or shouting. Preserve the exact amber sweatshirt, navy trousers, cream shoes, brown wavy hair and white oval eyes of the character sheet. No text, sound effects or extra props. Complete centered subject or comparison, 12% empty transparent margins, readable at 56px. Crisp outer boundaries, zero alpha outside shapes, fully opaque interiors. No background, floor, disc, labels, logos, gradients, texture, glow, fog, blur, cast shadow or unrelated scenery.",
+  "master": "docs/art-direction/masters/quiet.png",
+  "asset": "pics/art-v2/quiet.webp",
+  "bytes": 22654,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "suitcase",
+  "word": "lagaminas",
+  "en": "suitcase",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning suitcase. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE upright rolling SUITCASE, coral rounded rectangular body, extended navy telescopic handle, turquoise front pocket and TWO navy wheels. One small opaque cream luggage tag with no writing. Complete object, no airplane, person, route line or travel scenery. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/suitcase.png",
+  "asset": "pics/art-v2/suitcase.webp",
+  "bytes": 16146,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

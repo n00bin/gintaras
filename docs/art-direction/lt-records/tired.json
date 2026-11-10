@@ -1,0 +1,17 @@
+{
+  "id": "tired",
+  "word": "pavargęs",
+  "en": "tired",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning tired. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas looks TIRED, drooping half-closed white oval eyes, relaxed downward eyebrows, yawning while covering mouth with one hand, other arm hanging loose, slightly slumped shoulders. Full body. No bed, sleeping symbols or moon. Exactly two arms and two hands. Center complete character with generous transparent margins, readable at 56px. Crisp edges, opaque interiors, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/tired.png",
+  "asset": "pics/art-v2/tired.webp",
+  "bytes": 22166,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

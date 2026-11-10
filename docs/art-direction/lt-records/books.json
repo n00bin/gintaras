@@ -1,0 +1,16 @@
+{
+  "id": "books",
+  "word": "knygos",
+  "en": "books",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning books. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: THREE clearly separate closed BOOKS stacked neatly, turquoise lower book, coral middle book, amber top book, each with opaque cream page edges and chunky rounded covers. No titles, letters, person, shelf or bookmark text. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/books.png",
+  "asset": "pics/art-v2/books.webp",
+  "bytes": 22256,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

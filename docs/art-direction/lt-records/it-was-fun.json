@@ -1,0 +1,17 @@
+{
+  "id": "it-was-fun",
+  "word": "Buvo smagu",
+  "en": "It was fun",
+  "unit": "u36",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It was fun. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas smiles warmly while recalling a FUN event. One cream MEMORY bubble above contains a simple scene of Tomas and a friend laughing together while playing with one soccer ball. A crisp coral backward-curving arrow points toward the memory bubble to indicate WAS in the past. Main Tomas has one hand on chest, other relaxed. No calendar text or party mess. Exactly two arms per person. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-was-fun.png",
+  "asset": "pics/art-v2/it-was-fun.webp",
+  "bytes": 55152,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

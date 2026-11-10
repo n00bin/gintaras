@@ -1,0 +1,16 @@
+{
+  "id": "bird",
+  "word": "paukštis",
+  "en": "bird",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of one animal ONLY. Match attached approved style reference: chunky rounded geometric flat 2D cartoon, huge friendly white oval eyes, bright solid colours, minimal details, almost no outlines. Entire animal visible with generous transparent margins, centered readable at 56px. Opaque interiors, true transparent outside. No person, props, scenery, lettering, logos, gradients, glow, shadows or texture. Subject: one friendly small song BIRD perched in a natural standing pose. Turquoise body, navy wing and tail feathers, cream belly, amber short pointed beak, two tiny amber legs and feet. Exactly two wings (one far-side may be partly hidden), one tail, two eyes. Generic songbird, not duck, owl or chicken.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bird.png",
+  "asset": "pics/art-v2/bird.webp",
+  "bytes": 16226,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

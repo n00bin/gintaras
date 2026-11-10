@@ -1,0 +1,17 @@
+{
+  "id": "see-you-tomorrow",
+  "word": "Iki rytojaus!",
+  "en": "See you tomorrow!",
+  "unit": "u23",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning See you tomorrow!. Reference 1 governs rounded flat cartoon STYLE, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas waves goodbye to a friendly adult woman in turquoise. Above them one small two-page calendar: the left page has a dim crescent moon, a crisp coral right-arrow points to the next page containing a bright amber rising sun. This conveys SEE YOU TOMORROW, not just hello. No numbers, letters or words. Exactly two arms per person. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/see-you-tomorrow.png",
+  "asset": "pics/art-v2/see-you-tomorrow.webp",
+  "bytes": 33132,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

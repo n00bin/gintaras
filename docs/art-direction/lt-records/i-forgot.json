@@ -1,0 +1,17 @@
+{
+  "id": "i-forgot",
+  "word": "Aš pamiršau",
+  "en": "I forgot",
+  "unit": "u36",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I forgot. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas suddenly realizes he FORGOT something: one hand on forehead, eyebrows lifted, worried open mouth. A rounded cream thought bubble beside him contains a faint simple navy key silhouette with one coral question mark. Other hand held open, not holding the key. Exactly two arms; no text or extra props. Exactly two arms per person. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-forgot.png",
+  "asset": "pics/art-v2/i-forgot.webp",
+  "bytes": 38256,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

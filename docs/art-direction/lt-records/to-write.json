@@ -1,0 +1,17 @@
+{
+  "id": "to-write",
+  "word": "rašyti",
+  "en": "to write",
+  "unit": "u26",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning to write. Reference 1 governs rounded flat cartoon STYLE: big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas WRITING with one amber pencil in his RIGHT hand on an open cream notebook supported by his LEFT hand, gaze directed at the page, focused expression. Notebook shows only two short non-letter navy strokes. Exactly two hands; no desk or extra book. Exactly two arms and two hands. Complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/to-write.png",
+  "asset": "pics/art-v2/to-write.webp",
+  "bytes": 26016,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

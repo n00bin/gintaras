@@ -1,0 +1,17 @@
+{
+  "id": "i-m-coughing",
+  "word": "Aš kosėju",
+  "en": "I'm coughing",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create one friendly flat cartoon vocabulary illustration for the Lithuanian phrase Aš kosėju, meaning I am coughing. Reference 1 sets the rounded geometric illustration style; reference 2 sets Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes, oversized head and large white oval eyes. Show Tomas standing, with a slightly tired face and mouth open for a small ordinary cough. One forearm is raised naturally across the lower face; the other arm hangs loosely at his side. Add two short simple blue breath marks near his mouth. Simple opaque solid colours, minimal clean details, complete character, generous transparent margins. True transparent background. No lettering, scenery, lighting effects or extra objects.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-m-coughing.png",
+  "asset": "pics/art-v2/i-m-coughing.webp",
+  "bytes": 23048,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

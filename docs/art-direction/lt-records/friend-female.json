@@ -1,0 +1,18 @@
+{
+  "id": "friend-female",
+  "word": "draugė",
+  "en": "friend (female)",
+  "unit": "u4",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png",
+    "lt-ruta-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning FRIEND (FEMALE). Reference 1 governs approved STYLE only: rounded geometric flat cartoon shapes, oversized expressive heads, large white oval eyes, chunky hands, bright opaque solid colours, minimal crisp interior details, no black perimeter outlines. Additional references, when present, govern the named characters' identities exactly. Subject: Rūta from reference 3 is a FEMALE FRIEND, giving a friendly fist bump to Tomas from reference 2. Rūta is the main subject: long straight dark-brown hair with a blunt fringe, gold round earrings, dark-green blouse with simple darker leaf sprigs, coral trousers and cream shoes. Tomas keeps brown wavy hair, amber sweatshirt, navy trousers and cream shoes. Both are young adults. Platonic friendly interaction: no hearts, romance, wedding rings or children. Center the complete composition with generous transparent margins and clear silhouettes at 56px. Opaque interiors, crisp clean edges and zero alpha outside shapes. No gradient, texture, glow, mist, blur, cast shadow, floor, disc, backdrop, lettering or logos.",
+  "master": "docs/art-direction/masters/friend-female.png",
+  "asset": "pics/art-v2/friend-female.webp",
+  "bytes": 42096,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "zeppelins",
+  "word": "cepelinai",
+  "en": "zeppelins",
+  "unit": "u12",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style: rounded chunky flat cartoon, bright solid amber/turquoise/coral/navy/cream, minimal crisp details, almost no outlines. Complete subject unclipped with generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No person, scenery, lettering, logos, gradients, texture, glow or shadows. Subject: Lithuanian CEPELINAI potato dumplings, NEVER aircraft. A simple turquoise oval ceramic plate holding TWO large cream elongated oval cooked potato dumplings with rounded tapered ends. One dumpling cut open at one end showing brown minced meat filling inside thick cream potato shell. Small dollop of white sour cream and a few coral bacon pieces on top. Food only, no faces, flags, aircraft or words.",
+  "semantic_note": "Lithuanian food cepelinai; existing English label zeppelins refers to potato dumplings, not aircraft.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/zeppelins.png",
+  "asset": "pics/art-v2/zeppelins.webp",
+  "bytes": 25636,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

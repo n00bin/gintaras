@@ -1,0 +1,17 @@
+{
+  "id": "lithuanian-isn-t-easy",
+  "word": "Lietuvių kalba nėra lengva",
+  "en": "Lithuanian isn't easy",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration for the phrase: Lithuanian isn't easy. Reference 1 is the approved rounded geometric flat cartoon STYLE. Any reference 2 is Tomas's exact CHARACTER IDENTITY. Oversized expressive heads, large white oval eyes, chunky hands, bright opaque flat colours, minimal crisp darker interior shapes and no black outlines. Subject: Tomas studies Lithuanian with a puzzled but determined expression, scratching his head while looking at an open language book. A small perfectly rectangular Lithuanian flag on the book cover has exactly THREE equal horizontal stripes: yellow top, green middle, red bottom. No coat of arms or letters. One coral question mark indicates the language is not easy for him. Preserve Tomas's amber sweatshirt, brown wavy hair, navy trousers and cream shoes. No other flags, speech text or random symbols. Show the complete composition, centered with generous transparent margins, readable at 56px. Opaque interiors and clean crisp outer edges with zero alpha outside. No gradient, texture, glow, fog, blur, external shadow, backdrop disc, logo or lettering.",
+  "master": "docs/art-direction/masters/lithuanian-isn-t-easy.png",
+  "asset": "pics/art-v2/lithuanian-isn-t-easy.webp",
+  "bytes": 32846,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

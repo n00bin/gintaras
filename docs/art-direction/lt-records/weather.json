@@ -1,0 +1,16 @@
+{
+  "id": "weather",
+  "word": "oras",
+  "en": "weather",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning weather. Reference 1 governs STYLE: rounded flat geometric cartoons, expressive large white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's identity exactly. Subject: ONE compact weather symbol composition: a large amber sun partly behind an opaque cream cloud, with three large solid blue raindrops below. Clear warm sun rays, rounded shapes. No face, person, landscape, ground or labelled forecast. Center complete composition with generous transparent margins, readable at 56px. Opaque interiors, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/weather.png",
+  "asset": "pics/art-v2/weather.webp",
+  "bytes": 31930,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

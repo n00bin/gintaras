@@ -1,0 +1,17 @@
+{
+  "id": "back-of-the-body",
+  "word": "nugara",
+  "en": "back (of the body)",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning back (of the body). Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, bright opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas seen from BEHIND, wavy brown hair, amber sweatshirt, navy trousers and cream shoes. One large clear coral arrow points to the centre of his BACK on the sweatshirt, between shoulders and waist. Arms relaxed at sides. No face visible, back pain marks, injury, second person or text. Exactly two arms. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/back-of-the-body.png",
+  "asset": "pics/art-v2/back-of-the-body.webp",
+  "bytes": 24634,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

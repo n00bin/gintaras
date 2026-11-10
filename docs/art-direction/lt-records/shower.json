@@ -1,0 +1,16 @@
+{
+  "id": "shower",
+  "word": "dušas",
+  "en": "shower",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning shower. Reference 1 governs rounded flat cartoon STYLE, big white oval eyes when people present, chunky simple shapes, opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE wall-mounted SHOWER with a curved navy pipe and round turquoise showerhead, releasing four distinct thick blue water droplets downward. A short cream wall attachment and simple coral circular tap below. No bathtub, person, whole bathroom, mist or lettering. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/shower.png",
+  "asset": "pics/art-v2/shower.webp",
+  "bytes": 33900,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

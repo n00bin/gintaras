@@ -1,0 +1,16 @@
+{
+  "id": "cow",
+  "word": "karvė",
+  "en": "cow",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of one animal ONLY. Match attached approved style reference: chunky rounded geometric flat 2D cartoon, huge friendly white oval eyes, bright solid colours, minimal details, almost no outlines. Entire animal visible with generous transparent margins, centered readable at 56px. Opaque interiors, true transparent outside. No person, props, scenery, lettering, logos, gradients, glow, shadows or texture. Subject: one friendly dairy COW in three-quarter side view. Cream body with large navy patches, four legs with navy hooves, coral muzzle and small coral udder visible, two little amber horns, two ears, one thin tail ending in navy tuft. Clearly cow, not bull, no nose ring.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/cow.png",
+  "asset": "pics/art-v2/cow.webp",
+  "bytes": 33096,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

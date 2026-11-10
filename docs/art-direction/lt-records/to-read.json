@@ -1,0 +1,17 @@
+{
+  "id": "to-read",
+  "word": "skaityti",
+  "en": "to read",
+  "unit": "u26",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning to read. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas READING an open turquoise book held in BOTH hands, eyes directed down at the open pages, focused interested face. Pages contain only two small simple illustration shapes, no letters. No desk or extra objects. Exactly two arms and two hands. Center complete character with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/to-read.png",
+  "asset": "pics/art-v2/to-read.webp",
+  "bytes": 27748,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "neighbour",
+  "word": "kaimynas",
+  "en": "neighbour",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning neighbour. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Two adult NEIGHBOURS wave to each other from adjacent apartment doorways. Main male neighbour in turquoise shirt and navy trousers stands in one coral doorway; Tomas in amber sweatshirt stands in the other. Doorways side by side on a minimal shared cream wall strip communicate living next door. Exactly two arms per person. No houses, street, hearts or extra people. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors and crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop disc, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/neighbour.png",
+  "asset": "pics/art-v2/neighbour.webp",
+  "bytes": 21510,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

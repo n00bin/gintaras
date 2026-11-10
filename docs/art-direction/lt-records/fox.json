@@ -1,0 +1,16 @@
+{
+  "id": "fox",
+  "word": "lapė",
+  "en": "fox",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached reference rounded flat cartoon, huge friendly white oval eyes, chunky geometric solid-colour shapes, minimal details, almost no outlines. Whole animal fully visible with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No person, clothes, props, scenery, lettering, logo, gradients, texture, glow or shadows. Subject: one friendly FOX standing three-quarter side view. Bright burnt orange body, pointed canine face, two upright pointed ears with navy tips, cream cheek ruff and chest, four slim legs with navy paws, one very bushy orange tail with a large cream tip. Not wolf or domestic dog.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/fox.png",
+  "asset": "pics/art-v2/fox.webp",
+  "bytes": 34238,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

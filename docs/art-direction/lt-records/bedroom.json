@@ -1,0 +1,16 @@
+{
+  "id": "bedroom",
+  "word": "miegamasis",
+  "en": "bedroom",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning bedroom. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: A compact BEDROOM cutaway with one clearly recognizable bed: navy bedframe, turquoise blanket, cream pillow, coral bedside cabinet with small amber lamp. Minimal cream floor and short pale-blue rear wall only. No people, sofa, kitchen or text; outside cutaway transparent. Complete centered composition with generous transparent margins, strong silhouettes at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bedroom.png",
+  "asset": "pics/art-v2/bedroom.webp",
+  "bytes": 16506,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

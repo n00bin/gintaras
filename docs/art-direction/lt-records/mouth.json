@@ -1,0 +1,16 @@
+{
+  "id": "mouth",
+  "word": "burna",
+  "en": "mouth",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning mouth. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE friendly cartoon MOUTH, wide open smiling coral lips, dark-brown mouth interior, one simple cream upper-tooth band and rounded pink tongue. No eyes, nose, face, lipstick styling, speech bubble or extra objects. Entire feature opaque. Complete centered feature with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/mouth.png",
+  "asset": "pics/art-v2/mouth.webp",
+  "bytes": 19260,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

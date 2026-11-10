@@ -1,0 +1,16 @@
+{
+  "id": "old",
+  "word": "senas",
+  "en": "old",
+  "unit": "u5",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create one transparent square vocabulary illustration for Wordami meaning OLD. Use the attached approved board as a STYLE reference only: rounded geometric flat cartoon shapes, large expressive white oval eyes on people, simple silhouettes, chunky features, bright opaque flat colours and no black perimeter outlines. Subject: ONE friendly elderly man with unmistakably grey hair, round glasses, a few simple forehead and smile lines, turquoise cardigan, navy trousers, cream shoes and a simple brown walking cane. Kindly confident expression. Show an older adult, not a young man in a grey wig. Center the complete subject in 76% of the square with generous genuinely empty transparent margins. Clean crisp edges, fully opaque interiors and alpha zero outside all shapes. No glow, blur, fog, gradient, texture, drop shadow, ground plane, disc, backdrop, lettering, labels or logos. Do not copy the reference board's layout or text.",
+  "master": "docs/art-direction/masters/old.png",
+  "asset": "pics/art-v2/old.webp",
+  "bytes": 29436,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

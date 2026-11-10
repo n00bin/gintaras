@@ -1,0 +1,17 @@
+{
+  "id": "suddenly",
+  "word": "Staiga",
+  "en": "Suddenly",
+  "unit": "u37",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Suddenly. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas reacts with a startled wide-eyed face and raised hands as ONE small turquoise cat suddenly leaps out from behind a coral box. Two short crisp amber surprise strokes and one coral exclamation mark reinforce sudden unexpected action. Friendly harmless surprise, no injury, impact, extra limbs or scenery. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/suddenly.png",
+  "asset": "pics/art-v2/suddenly.webp",
+  "bytes": 35760,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

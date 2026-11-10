@@ -1,0 +1,17 @@
+{
+  "id": "it-s-warm",
+  "word": "Šilta",
+  "en": "It's warm",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It's warm. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair and amber/navy identity. Subject: Tomas wearing his amber sweatshirt and navy trousers, smiling comfortably under one small amber sun. He has sleeves casually pushed up and open relaxed hands, with no sweat or distress. A simple thermometer beside him has a medium-height coral level, communicating pleasant warmth rather than extreme heat. Exactly two arms and two hands. Center complete scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, transparent outside. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-warm.png",
+  "asset": "pics/art-v2/it-s-warm.webp",
+  "bytes": 37792,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "farmer",
+  "word": "ūkininkas",
+  "en": "farmer",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning farmer. Match attached reference STYLE only: rounded flat geometric cartoons, large expressive white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details, no black perimeter outlines. Subject: ONE adult male farmer in a straw hat, turquoise shirt and navy overalls, cream boots, holding one small basket of carrots in his left hand and resting his right hand on his hip. Exactly two arms and two hands. No fork, field, livestock or scenery. Complete centered composition with generous transparent margins and clear silhouettes at 56px. Zero alpha outside shapes and opaque interiors. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/farmer.png",
+  "asset": "pics/art-v2/farmer.webp",
+  "bytes": 37986,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

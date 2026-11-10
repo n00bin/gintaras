@@ -1,0 +1,17 @@
+{
+  "id": "turn-off-the-light",
+  "word": "Išjunk šviesą",
+  "en": "Turn off the light",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Turn off the light. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas presses DOWN on a simple cream wall rocker switch with one finger, while a nearby hanging light bulb is DARK grey-blue with NO rays, clearly turned OFF. A short crisp coral downward arrow beside the switch reinforces the off action. Tomas looks at the switch; his other arm rests at his side. No illuminated sun or lit lamp, no words or letters. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors and crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop disc, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/turn-off-the-light.png",
+  "asset": "pics/art-v2/turn-off-the-light.webp",
+  "bytes": 32242,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

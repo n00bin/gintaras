@@ -1,0 +1,16 @@
+{
+  "id": "beautiful",
+  "word": "gražus",
+  "en": "beautiful",
+  "unit": "u5",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create one transparent square vocabulary illustration for Wordami meaning BEAUTIFUL. Use the attached approved board as a STYLE reference only: rounded geometric flat cartoon shapes, large expressive white oval eyes on people, simple silhouettes, chunky features, bright opaque flat colours and no black perimeter outlines. Subject: ONE especially beautiful pink flower blossom with a yellow center, two graceful green leaves and a tiny turquoise flowerpot. Three small crisp amber sparkle shapes beside the blossom convey admiration. A simple elegant balanced flower, not a bouquet. Center the complete subject in 76% of the square with generous genuinely empty transparent margins. Clean crisp edges, fully opaque interiors and alpha zero outside all shapes. No glow, blur, fog, gradient, texture, drop shadow, ground plane, disc, backdrop, lettering, labels or logos. Do not copy the reference board's layout or text.",
+  "master": "docs/art-direction/masters/beautiful.png",
+  "asset": "pics/art-v2/beautiful.webp",
+  "bytes": 27654,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

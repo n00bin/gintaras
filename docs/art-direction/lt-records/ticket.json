@@ -1,0 +1,16 @@
+{
+  "id": "ticket",
+  "word": "bilietas",
+  "en": "ticket",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning ticket. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands and shapes, opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE large rectangular TRAVEL TICKET with rounded corners, coral border, cream interior and a clear turquoise BUS pictogram in its centre. Two short navy decorative bars at one end and a dotted perforation at the other. No letters, numbers, QR code, person or scenery. Entire paper fully opaque. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/ticket.png",
+  "asset": "pics/art-v2/ticket.webp",
+  "bytes": 15352,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}
