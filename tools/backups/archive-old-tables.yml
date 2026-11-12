@@ -1,0 +1,64 @@
+# One-off: an encrypted copy of the 31 old in-database backup tables (gintaras_*_backup_YYYYMMDD), kept 30 days,
+# so they can be deleted from the database with a month's safety net. Run it by hand from the Actions tab.
+# Needs the same two secrets as the nightly backup, and the backup login must be allowed to read those tables
+# (a one-line grant, run in the Supabase SQL Editor). Fails loudly if any table is missing or unreadable.
+name: Save the old backup tables (one-off)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: backup
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check the secrets are set
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          [ -n "$DB_URL" ] || { echo "::error::The DB_URL secret is missing"; exit 1; }
+          [ -n "$BACKUP_PASSPHRASE" ] || { echo "::error::The BACKUP_PASSPHRASE secret is missing"; exit 1; }
+      - name: Install the Postgres tools
+        run: |
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+      - name: Copy the old tables
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+        run: |
+          P=/usr/lib/postgresql/17/bin
+          # Which old tables exist, and how many rows each holds right now.
+          $P/psql "$DB_URL" -v ON_ERROR_STOP=1 -At -c "select tablename from pg_tables where schemaname='public' and tablename ~ '^gintaras_.*_backup_[0-9]{8}[a-z]?$' order by 1" > tables.txt
+          n=$(wc -l < tables.txt); echo "Old tables found: $n"
+          [ "$n" -ge 1 ] || { echo "::error::No old backup tables found"; exit 1; }
+          echo "table,rows" > rows.csv
+          while read -r t; do
+            c=$($P/psql "$DB_URL" -v ON_ERROR_STOP=1 -At -c "select count(*) from public.\"$t\"") || { echo "::error::Can't read $t: run the grant in the Supabase SQL Editor first"; exit 1; }
+            echo "$t,$c" >> rows.csv
+          done < tables.txt
+          cat rows.csv
+          # Structure and rows together, so each table can be restored on its own.
+          $P/pg_dump "$DB_URL" --format=custom --no-owner --no-privileges -t 'public.gintaras_*_backup_*' -f old-tables.dump
+          got=$($P/pg_restore --list old-tables.dump | grep -c 'TABLE DATA')
+          echo "Tables in the copy: $got"
+          [ "$got" -eq "$n" ] || { echo "::error::Copied $got tables, expected $n"; exit 1; }
+      - name: Encrypt and check it opens
+        env:
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          tar -cf old-tables.tar old-tables.dump rows.csv tables.txt
+          printf '%s' "$BACKUP_PASSPHRASE" > .pass
+          gpg --batch --yes --pinentry-mode loopback --passphrase-file .pass --symmetric --cipher-algo AES256 -o old-tables.tar.gpg old-tables.tar
+          gpg --batch --yes --pinentry-mode loopback --passphrase-file .pass --decrypt -o check.tar old-tables.tar.gpg
+          cmp old-tables.tar check.tar
+          shred -u .pass check.tar old-tables.tar old-tables.dump tables.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wordami-old-tables-${{ github.run_id }}
+          path: old-tables.tar.gpg
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error

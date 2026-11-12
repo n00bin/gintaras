@@ -25,7 +25,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Check this release keeps learners' progress
-        run: node tools/check_data_safety.js
+        run: |
+          node tools/check_data_safety.js
+          node tools/check_progress_ids.js
       - name: Check first three Lithuanian units
         run: |
           node tools/check_course.js
