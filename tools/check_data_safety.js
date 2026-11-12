@@ -20,7 +20,7 @@ else if (Number(found[1]) !== FROZEN_EPOCH) problems.push('EPOCH is ' + found[1]
 
 // Scripts written to be run again safely. A new script joins this list only if running it twice changes nothing;
 // otherwise it gets the stop line once it has been applied.
-const SAFE_TO_RERUN = new Set(['account-deletion.sql', 'drop-old-backups.sql', 'allow-backup-old-tables.sql']);
+const SAFE_TO_RERUN = new Set(['account-deletion.sql', 'drop-old-backups.sql', 'allow-backup-old-tables.sql', 'report-limits.sql']);
 const STOP = /^do \$\$ begin raise exception 'This script was already applied\./m;
 const sqlDir = path.join(__dirname, '..', 'supabase');
 fs.readdirSync(sqlDir).filter(f => f.endsWith('.sql') && !SAFE_TO_RERUN.has(f)).forEach(f => {

@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.121** (2026-11-12) Problem reports can't be flooded: limits per internet address, per account and overall, with anything over a limit sent later. The privacy page explains the one-hour scrambled address, and reports that have been dealt with are deleted after 90 days.
+
 - **3.120** (2026-11-12) Data safety. Starting a language again from zero now keeps your About me, face and settings, and your other devices no longer bring the old progress back. Signing in says up front what the league shows publicly. Signing out asks whether this is your own device and never clears one that holds unsaved progress. Deleting an account lists everything it removes, including the 30-day backups. The privacy page is rewritten to match what the app really stores. Old database setup scripts are locked, and every release checks that learners' progress is not reset.
 
 - **3.119** (2026-11-09) Completed all 488 Lithuanian course picture mappings in the approved illustration style, with all 20 conversation portraits and the default learner. Existing number/day text tiles, vocabulary, recordings, progress IDs and custom avatars remain. Unit test-out keeps source phrases taught; recorded audio waits for the full file before seeking so cold-cache listening works reliably.
