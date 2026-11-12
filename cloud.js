@@ -181,7 +181,7 @@ function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderRep
 function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   box.innerHTML=(o.title?'<h2>'+esc(o.title)+'</h2>':'')+(o.lead?'<p class="note">'+esc(o.lead)+'</p>':'')+
     /* Said before anyone signs in: what joining makes public. */
-    '<p class="note">Joining the league shows a nickname, your face, XP and streak to everyone. Your nickname starts as your first name if we know it, and you can change it any time. Your email and your lessons stay private. <a href="privacy.html" style="color:var(--pine)">Privacy details</a></p>'+
+    '<p class="note">Joining the league shows a nickname, your face, XP and streak to everyone. Your nickname starts as your first name if we know it, and you can change it any time. Your email and your lessons stay private. Accounts are for ages 13 and over. <a href="privacy.html" style="color:var(--pine)">Privacy details</a></p>'+
     (navigator.onLine?'':'<p class="note offnote">Signing in needs internet. Everything you do now is kept on this device and comes with you when you sign in.</p>')+
     '<div class="stack" data-a="pick">'+(cfg.GOOGLE?'<div class="gbtn" data-a="gbtn"><button class="btn" data-a="google">Continue with Google</button></div>':'')+
     '<button type="button" class="btn ghost" data-a="email">Continue with email</button></div>'+

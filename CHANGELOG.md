@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.123** (2026-11-12) Accounts are for ages 13 and over: said in the sign-in box and on the privacy page, which also tells a parent how to have a child's account deleted. Learning without an account stays open to everyone.
+
 - **3.122** (2026-11-12) League nicknames stay decent: rude, hurtful or fake-staff nicknames are refused in English, Lithuanian and Spanish (a refused first name falls back to "Learner" and a number). Tap a player in the league to challenge them or report their nickname; the owner can reset a reported nickname from Problem reports.
 
 - **3.121** (2026-11-12) Problem reports can't be flooded: limits per internet address, per account and overall, with anything over a limit sent later. The privacy page explains the one-hour scrambled address, and reports that have been dealt with are deleted after 90 days.
