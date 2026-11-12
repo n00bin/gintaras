@@ -139,9 +139,10 @@ function autoProfile(){return profileMaking||(profileMaking=(async()=>{const md=
   const me=(window.S&&window.S.me&&window.S.me.name)||'';
   const raw=(me||md.given_name||md.full_name||md.name||'').trim().split(/\s+/)[0]||'';
   let base=raw.replace(/[^\p{L}\p{N}._-]/gu,'').slice(0,16);if(base.length<2)base='Learner'+Math.floor(100+Math.random()*900);base=base[0].toUpperCase()+base.slice(1);
-  const S=window.S;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
+  const S=window.S;let refused=false;const names=[base].concat([1,2,3,4].map(()=>base+Math.floor(10+Math.random()*90)),['Learner'+Math.floor(1000+Math.random()*9000)]);
   for(const n of names){const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
-    const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error){if(n!==base)setTimeout(()=>toast(base+' was taken, so your league name is '+n+'. You can change it in Settings.',6000),1500);return Object.assign(row,{league:0,league_moved:0});}if(!/duplicate|unique/i.test(error.message))return null;}
+    const {error}=await sb.from('gintaras_profiles').upsert(row);if(!error){if(n!==base)setTimeout(()=>toast((refused?'Your league name is ':base+' was taken, so your league name is ')+n+'. You can change it in Settings.',6000),1500);return Object.assign(row,{league:0,league_moved:0});}
+    if(/not allowed/i.test(error.message)){refused=true;continue;}if(!/duplicate|unique/i.test(error.message))return null;}
   return null;})().finally(()=>{profileMaking=null;}));}
 let afterSignIn=null;
 function setStatus(t){const s=$('#cloud-status');if(s)s.textContent=t;}
@@ -211,7 +212,7 @@ function showNickname(){const box=$('#auth');const changing=!!profile;if(window.
   if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
     const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
-    const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':error.message,true);profile=Object.assign({},profile||{},row);renderAuth();renderBoard();cloudSave();};}
+    const {error}=await sb.from('gintaras_profiles').upsert(row);if(error)return msg(/duplicate|unique/i.test(error.message)?'That nickname is taken':/not allowed/i.test(error.message)?'That nickname isn’t allowed. Please pick another.':error.message,true);profile=Object.assign({},profile||{},row);renderAuth();renderBoard();cloudSave();};}
 
 /* Settings → Account: nickname, sign out, and deleting the account for good. */
 function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;box.hidden=!sb;head.hidden=!sb;if(!sb)return;
@@ -279,12 +280,16 @@ async function renderReports(){const box=$('#reports'),head=$('#reports-group');
   if(error){box.innerHTML='<p class="note">Could not load reports: '+esc(error.message)+'</p>';return;}
   if(!data.length){box.innerHTML='<h2>All clear</h2><p class="note">No open problem reports. Players can flag any card with the 🚩 at the top of a lesson.</p>';return;}
   box.innerHTML='<h2>'+data.length+' open report'+(data.length===1?'':'s')+'</h2>'+data.map(r=>{const x=r.context||{};
-    return '<div class="rep" data-id="'+r.id+'"><span class="what">'+esc(r.reason)+' · '+esc(x.lt||x.drill||x.title||'(no card)')+(x.en?' <span class="note">('+esc(x.en)+')</span>':'')+'</span>'+
+    return '<div class="rep" data-id="'+r.id+'"'+(x.kind==='player'&&x.player?' data-player="'+esc(x.player)+'"':'')+'><span class="what">'+esc(r.reason)+' · '+esc(x.kind==='player'?'Nickname: '+(x.nickname||'?'):(x.lt||x.drill||x.title||'(no card)'))+(x.en?' <span class="note">('+esc(x.en)+')</span>':'')+'</span>'+
       (r.note?'<span>“'+esc(r.note)+'”</span>':'')+
       '<span class="meta">'+esc([x.kind,x.lesson||x.conv,x.type,x.item||x.line,x.answer?'answered: '+x.answer:'',x.typed?'typed: '+x.typed:'','voice: '+(x.voice||''),new Date(r.created_at).toLocaleString()].filter(Boolean).join(' · '))+'</span>'+
-      '<span class="btns"><button type="button" class="chip" data-st="fixed">✓ Fixed</button><button type="button" class="chip" data-st="ignored">Ignore</button></span></div>';}).join('');
+      '<span class="btns">'+(x.kind==='player'&&x.player?'<button type="button" class="chip" data-reset>Reset nickname</button>':'')+'<button type="button" class="chip" data-st="fixed">✓ Fixed</button><button type="button" class="chip" data-st="ignored">Ignore</button></span></div>';}).join('');
   box.querySelectorAll('[data-st]').forEach(b=>b.onclick=async()=>{const row=b.closest('.rep');const {error}=await sb.from('gintaras_reports').update({status:b.dataset.st}).eq('id',row.dataset.id);
-    if(error){toast('Could not update: '+error.message);return;}renderReports();});}
+    if(error){toast('Could not update: '+error.message);return;}renderReports();});
+  /* A reported nickname: change it to "Learner" and a number (only the owner's account may), then close the report. */
+  box.querySelectorAll('[data-reset]').forEach(b=>b.onclick=async()=>{const row=b.closest('.rep');
+    const {data:fresh,error}=await sb.rpc('gintaras_owner_reset_nickname',{player:row.dataset.player});if(error){toast('Could not reset: '+error.message);return;}
+    await sb.from('gintaras_reports').update({status:'fixed'}).eq('id',row.dataset.id);toast('Nickname changed to '+fresh);renderReports();renderBoard();});}
 window.addEventListener('online',()=>sendReports());
 
 /* ---------- leagues ---------- */
@@ -428,6 +433,21 @@ function payChallenges(){const S=window.S;if(!S)return;S.chalLedger=S.chalLedger
       else if(!x.winner){window.earnAmber(put);msgs.push({mood:'happy',icon:'🤝',title:'A draw!',sub:'You and '+other+' tied: '+put+' amber back'});}
       else msgs.push({mood:'think',icon:'⚔️',title:other+' won this one',sub:'Rematch next week?'});}});
   if(msgs.length){window.save();chalPops.push(...msgs);}}
+/* Tapping someone in the league: challenge them, or report a rude or hurtful nickname. */
+function openPlayer(pid){const nick=nameOf(pid);const ov=document.createElement('div');ov.className='league-pop';
+  ov.innerHTML='<div class="card" role="dialog" aria-label="'+esc(nick)+'"><h2>'+esc(nick)+'</h2>'+
+    '<button type="button" class="btn amber" data-p="chal">Challenge '+esc(nick)+'</button>'+
+    '<button type="button" class="btn ghost" data-p="rep">Report this nickname</button><button type="button" class="linkbtn" data-p="x">Cancel</button></div>';
+  document.body.appendChild(ov);ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  ov.querySelector('[data-p="x"]').onclick=()=>ov.remove();
+  ov.querySelector('[data-p="chal"]').onclick=()=>{ov.remove();openChallenge(pid);};
+  ov.querySelector('[data-p="rep"]').onclick=()=>{const c=ov.querySelector('.card');
+    c.innerHTML='<h2>Report '+esc(nick)+'?</h2><p class="note">Report this nickname if it’s rude, hurtful or pretends to be Wordami. If it breaks the rules, it’s changed. They aren’t told who reported it.</p>'+
+      '<button type="button" class="btn danger" data-p="yes">Report the nickname</button><button type="button" class="linkbtn" data-p="no">Cancel</button>';
+    c.querySelector('[data-p="no"]').onclick=()=>ov.remove();
+    c.querySelector('[data-p="yes"]').onclick=()=>{ov.remove();const S=window.S;
+      S.reportQueue=(S.reportQueue||[]).concat([{reason:'nickname',note:null,context:{lang:LC,kind:'player',player:pid,nickname:nick}}]).slice(-30);window.save();sendReports();
+      toast('Thanks. We’ll take a look.');};};}
 function openChallenge(pid){const nick=nameOf(pid);const have=window.amberBalance(),theirs=amberOf[pid]||0,cap=Math.min(have,theirs);
   if(have<CH_MIN)return toast('You need at least '+CH_MIN+' amber to start a challenge. You have '+have+'.');
   if(theirs<CH_MIN)return toast(nick+' needs '+CH_MIN+' amber before they can be challenged');
@@ -597,7 +617,7 @@ async function renderBoard(){const box=$('#board');if(!box)return;
   renderChallenges();renderCup(mine);
   const bn=$('#bar-note');if(bn&&barLog&&barLog.week===monday()&&barLog.players>=3&&Number(barLog.new_scale)!==Number(barLog.old_scale)){const pc=Math.round((barLog.new_scale/barLog.old_scale-1)*100);
     bn.textContent='This week’s bars went '+(pc>0?'up ':'down ')+Math.abs(pc)+'% to match how fast everyone is earning XP (about '+Number(barLog.median_rate).toFixed(1)+' XP a minute in lessons).';bn.hidden=false;}
-  ol.onclick=e=>{const b=e.target.closest('[data-pid]');if(b)openChallenge(b.dataset.pid);};
+  ol.onclick=e=>{const b=e.target.closest('[data-pid]');if(b)openPlayer(b.dataset.pid);};
   data.forEach(r=>{people[r.id]=Object.assign(people[r.id]||{},r);});await loadAmber(data.map(r=>r.id));
   if(boardMode==='all'){if(!data.length){note.textContent='No players yet. Be the first!';return;}note.textContent='';
     ol.innerHTML=data.map((r,i)=>row(r,i,r.xp,'')).join('');return;}

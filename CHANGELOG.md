@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.122** (2026-11-12) League nicknames stay decent: rude, hurtful or fake-staff nicknames are refused in English, Lithuanian and Spanish (a refused first name falls back to "Learner" and a number). Tap a player in the league to challenge them or report their nickname; the owner can reset a reported nickname from Problem reports.
+
 - **3.121** (2026-11-12) Problem reports can't be flooded: limits per internet address, per account and overall, with anything over a limit sent later. The privacy page explains the one-hour scrambled address, and reports that have been dealt with are deleted after 90 days.
 
 - **3.120** (2026-11-12) Data safety. Starting a language again from zero now keeps your About me, face and settings, and your other devices no longer bring the old progress back. Signing in says up front what the league shows publicly. Signing out asks whether this is your own device and never clears one that holds unsaved progress. Deleting an account lists everything it removes, including the 30-day backups. The privacy page is rewritten to match what the app really stores. Old database setup scripts are locked, and every release checks that learners' progress is not reset.
