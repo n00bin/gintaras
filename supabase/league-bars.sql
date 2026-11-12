@@ -1,4 +1,6 @@
 -- Gintaras: one XP bar per league that everyone must reach to move up (rising as leagues get higher).
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after divisions.sql). Replaces the weekly job again; changes no player data.
 --   Sand 150 · Pebble 200 · Amber 250 · Silver 300 · Gold 350 · Crystal 425 · Sun 500 XP in a week,
 --   the same for all three divisions of a league. Top 3 still; no XP still moves you down (unless shielded).

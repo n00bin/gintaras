@@ -40,6 +40,21 @@ Settings in Supabase:
 
 `config.js` holds the project URL and the publishable key. That key is meant to be public; the table rules decide what anyone can do.
 
+**Keeping learners' data safe:**
+
+- **Deleting an account:** `supabase/account-deletion.sql` sets up one eraser, `gintaras_erase_user`. **Delete my account** in the app uses it, and it also clears that person's backup-table rows, problem reports, Supabase's sign-in history and league messages naming them under any nickname they've used. Messages are tidied after 30 days. New tables holding someone's data need `on delete cascade` to the account.
+- **When someone emails asking to be deleted:** check the email came from the address on the account, then run this in the SQL Editor, with their address in place of the example:
+
+  ```sql
+  select public.gintaras_erase_user((select id from auth.users where email = 'their@email.example'));
+  ```
+
+  Never delete people from Supabase's Authentication page, because that skips the cleanup.
+- **Old database scripts:** every script in `supabase/` that has already been applied starts with a stop line, so running it again by mistake does nothing. The deploy blocks a release if one is missing, and the folder isn't published on the site.
+- **Backups:** `tools/backups/nightly-backup.yml` makes an encrypted copy each night and keeps it for 30 days. It only works from a private repo; `tools/backups/RESTORE.md` explains how to restore. Don't make new backup tables inside the database, because they outlive the data they copy. The October backup tables are still in the database. They hold the only copy of the history from before the fresh start, so removing them is a separate decision: save a copy first if that history matters.
+- **No more fresh starts:** `EPOCH` in `index.html` stays at 2, and `tools/check_data_safety.js` blocks any deploy that changes it.
+- **Privacy page:** `privacy.html` must match what's really stored. Update it whenever the app starts storing or sending something new.
+
 ## How the course is laid out
 
 About 920 words and phrases in 11 parts, built as a **sentence ladder**: each part adds one new way to build sentences, and every lesson only uses what came before it. The plan behind it is in `docs/expansion-plan.md`.

@@ -1,0 +1,71 @@
+# Encrypted nightly backup of Wordami's accounts and progress, kept for 30 days.
+# NOT active here. It belongs in a PRIVATE repo at .github/workflows/nightly-backup.yml: run logs and files in a public repo can be seen by others.
+# Needs two secrets on that repo:
+#   DB_URL             Set by tools/backups/connect-db.js: a read-only login through the Session pooler,
+#                      because GitHub's machines can't reach the direct address.
+#   BACKUP_PASSPHRASE  The password the backups are encrypted with. Keep a copy somewhere other than GitHub:
+#                      GitHub won't show it again, and a backup can't be opened without it.
+# A failed run emails the repo owner.
+name: Nightly database backup
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: backup
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check the secrets are set
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          [ -n "$DB_URL" ] || { echo "::error::The DB_URL secret is missing"; exit 1; }
+          [ -n "$BACKUP_PASSPHRASE" ] || { echo "::error::The BACKUP_PASSPHRASE secret is missing"; exit 1; }
+      - name: Install the Postgres tools
+        run: |
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+      - name: Copy the data
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+        run: |
+          # The rows: Wordami's tables. Old backup tables stay out.
+          /usr/lib/postgresql/17/bin/pg_dump "$DB_URL" --format=custom --no-owner --data-only \
+            -t 'public.gintaras_*' -T 'public.gintaras_*_backup_*' -f data.dump
+          # The sign-in records, through the backup's private views. Without these, a restored app has no accounts.
+          for t in users identities; do
+            /usr/lib/postgresql/17/bin/psql "$DB_URL" -v ON_ERROR_STOP=1 -c "\copy (select * from wordami_backup_export.auth_$t) to 'auth_$t.csv' csv header"
+          done
+          [ "$(wc -l < auth_users.csv)" -ge 2 ] || { echo "::error::No sign-in records were copied"; exit 1; }
+          # The structure: tables, functions, triggers, row rules and, crucially, who is allowed to do what.
+          # A restore without these access rules would let any visitor call functions that must stay locked.
+          /usr/lib/postgresql/17/bin/pg_dump "$DB_URL" --schema-only --no-owner --schema=public \
+            -T 'public.gintaras_*_backup_*' -f structure.sql
+          grep -q 'REVOKE ALL ON FUNCTION public.gintaras_note_add' structure.sql || { echo "::error::The access rules were not copied"; exit 1; }
+          grep -q 'CREATE POLICY' structure.sql || { echo "::error::The row rules were not copied"; exit 1; }
+          tables=$(/usr/lib/postgresql/17/bin/pg_restore --list data.dump | grep -c 'TABLE DATA')
+          echo "Tables copied: $tables"
+          [ "$tables" -ge 10 ] || { echo "::error::Only $tables tables were copied, expected at least 10"; exit 1; }
+      - name: Encrypt and check it opens
+        env:
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          tar -cf backup.tar data.dump structure.sql auth_users.csv auth_identities.csv
+          printf '%s' "$BACKUP_PASSPHRASE" > .pass
+          gpg --batch --yes --pinentry-mode loopback --passphrase-file .pass --symmetric --cipher-algo AES256 -o backup.tar.gpg backup.tar
+          gpg --batch --yes --pinentry-mode loopback --passphrase-file .pass --decrypt -o check.tar backup.tar.gpg
+          cmp backup.tar check.tar
+          shred -u .pass check.tar backup.tar data.dump structure.sql auth_users.csv auth_identities.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wordami-backup-${{ github.run_id }}
+          path: backup.tar.gpg
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: error

@@ -1,4 +1,6 @@
 -- Gintaras: 10 leagues with 2 divisions each (steps 0-19), and the monthly Sun Cup.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after league-bars.sql). Replaces the weekly job again.
 
 -- 1. Move from 7 leagues x 3 divisions (0-20) to 10 leagues x 2 divisions (0-19), once.

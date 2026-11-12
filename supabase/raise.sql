@@ -1,4 +1,6 @@
 -- Gintaras: the person challenged can raise the stake; the challenger then accepts the raise or backs out.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after week-clock.sql and settle-safe.sql). Changes no player data.
 
 -- 1. A new state, 'raised': the person challenged has offered a bigger stake and the challenger hasn't answered yet.

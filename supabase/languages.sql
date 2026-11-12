@@ -1,4 +1,6 @@
 -- Gintaras: one account, many languages (step 2 of docs/multilang-design.md).
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in the Supabase SQL editor. It is all one transaction: if any line fails, nothing changes.
 --
 -- What it does

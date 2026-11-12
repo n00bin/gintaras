@@ -26,37 +26,68 @@ a{color:var(--pine)}
 <main>
 <a class="back" href="./">← Back to Wordami</a>
 <h1>Privacy</h1>
-<p class="muted">Wordami is a free hobby app for learning languages, including Lithuanian and Mexican Spanish. Last updated 27 October 2026 (account deletion and leagues).</p>
+<p class="muted">Wordami is a free app for learning languages, including Lithuanian and Mexican Spanish, run by one person. Last updated 8 November 2026.</p>
+
+<div style="border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 16px;margin:16px 0">
+<p><b>In short</b></p>
+<ul>
+<li><b>Public, if you join the league:</b> your nickname, face, XP, streak, level and league results.</li>
+<li><b>Private:</b> your email, lessons, answers and About me.</li>
+<li><b>Without an account:</b> almost nothing leaves your device.</li>
+<li><b>Delete everything any time:</b> <a href="#delete">here's how</a>.</li>
+</ul>
+</div>
 
 <h2>Without an account</h2>
-<p>Everything stays on your device. Your lessons, words, streak and settings are saved in your browser, and the recordings you download for offline use are saved there too. Nothing is sent anywhere.</p>
+<p>Your lessons, words, streak and settings stay in your browser on this device, and we can't see them. The one risk is that browsers can clear saved site data: Safari on iPhone, for example, may clear it after 7 days without a visit unless Wordami is on your Home Screen. An account is the only way to back it up.</p>
+<p>Almost nothing leaves your device, but a few things do:</p>
+<ul>
+<li><b>Opening the app.</b> Like any website, it loads from other companies, which see your internet address: GitHub (hosting), Google Fonts (lettering) and jsDelivr (a code library). Google's sign-in code loads when a sign-in box is shown, and cdnjs when the app shows a QR code.</li>
+<li><b>Flagging a card.</b> If you report a problem, we receive your reason, your note, which card it was, what you answered (in a conversation, up to 120 characters of what you typed), the time, and your browser and device type. Without an account, it doesn't say who sent it.</li>
+<li><b>The microphone and the translator,</b> as explained below.</li>
+</ul>
 
 <h2>With an account (optional)</h2>
-<p>If you create an account so your progress follows you between devices and you appear on the leaderboard, these are stored with our database provider, Supabase:</p>
+<p>If you create an account so your progress follows you between devices and you can join the league, these are stored with our database provider, Supabase, on servers in the United States (Virginia):</p>
 <ul>
-<li>Your email address, used only to sign you in.</li>
-<li>Your nickname, XP, streak, level and weekly league. These are shown publicly in the League tab. Your nickname starts as your first name (from Google) or the start of your email address, and you can change it any time on Profile.</li>
-<li>Your learning progress (which lessons and words you have done), visible only to you.</li>
+<li><b>Your email address,</b> used only to sign you in. If you use a password, only a scrambled form of it is stored. Supabase also records each sign-in: the time, your internet address and your browser.</li>
+<li><b>Your league card:</b> nickname, face, XP, streak, level, daily goal, league results, when it last changed, and a random code for your account. These are public: anyone can see them, even without signing in. Your nickname starts as your first name if we know it (from About me or Google), otherwise "Learner" and a number, and you can change it any time on Profile.</li>
+<li><b>Your learning progress:</b> lessons and words, when each word is due, amber, badges and settings, and a random code for each device. Only you can see this in the app.</li>
+<li><b>Every answer you give:</b> which word, when, how you did, and its level at the time. This is how reviews are planned for you. It's kept until you delete your account.</li>
+<li><b>About me,</b> if you fill it in: your name, country, city, job, family, likes, reason for learning and gender. It's only used to make the course about you.</li>
+<li><b>Reminders and messages:</b> your study time, time zone, notification choices, and messages like "someone passed you". Messages are deleted after 30 days.</li>
+<li><b>Nicknames you've used,</b> kept privately so that messages naming you can be found and removed if you delete your account.</li>
+<li><b>Phone notifications,</b> if you turn them on: an address from your browser's notification service (such as Google's or Apple's), which also carries the messages to your phone.</li>
+<li><b>Challenges:</b> the other player can see who challenged whom, the stake and the result.</li>
+<li><b>Problem reports</b> you send while signed in are linked to your account.</li>
 </ul>
 <p>If you sign in with Google, Google tells us your email address and basic profile (name and picture) so we can create your account. We do not get your Google password or anything else from your Google account.</p>
+
+<h2>Backups</h2>
+<p>Each night an encrypted copy of accounts and progress is saved with GitHub, so nothing is lost if something goes wrong. Each copy is deleted automatically after 30 days.</p>
 
 <h2>What we never do</h2>
 <ul>
 <li>No ads, no tracking, no analytics.</li>
-<li>We never sell or share your information with anyone.</li>
-<li>We never email you, except an email you ask for, like a password reset.</li>
+<li>We never sell your information. It only goes to the services named on this page, to run the app.</li>
+<li>We never email you, except an email you ask for, like a sign-in link.</li>
 </ul>
 
 <h2>Microphone</h2>
-<p>In speaking lessons and conversations you can tap the microphone to check your pronunciation. Your browser does the listening: Google's speech service on Android and in Chrome, Apple's on iPhone. Wordami only receives the words that were heard, uses them for that one check, and does not keep them or any audio.</p>
+<p>In speaking lessons and conversations you can tap the microphone to check your pronunciation. Your browser does the listening: Google's speech service on Android and in Chrome, Apple's on iPhone. Wordami only receives the words that were heard, uses them for that one check, and does not keep them. If you record yourself to compare with the voice, the recording is never sent or saved: it's only held in memory while the app is open.</p>
 
 <h2>Translator</h2>
-<p>When you use the face-to-face translator, the words you say or type are sent to a translation service to be translated: Google Cloud Translation, or the free MyMemory service if Google is not switched on. Your phone's speech recognition turns speech into text first (Google's on Android and in Chrome, Apple's on iPhone). Wordami does not keep your translator conversations; they disappear when you close the translator.</p>
+<p>When you use the face-to-face translator, the words you say or type are sent to a translation service to be translated: Google Cloud Translation, or the free MyMemory service if Google is not switched on. MyMemory may keep what it translates, under its own terms. Your phone's speech recognition turns speech into text first (Google's on Android and in Chrome, Apple's on iPhone). Wordami does not keep your translator conversations; they disappear when you close the translator.</p>
 
-<h2>Deleting your data</h2>
-<p>You can delete your account yourself, any time: open <b>Settings</b> (the ⚙ at the top right), go to <b>Account</b>, and tap <b>Delete my account</b>. It happens straight away and removes your account, your nickname, your place in the league, and the progress saved online. There is no undo.</p>
-<p>Can't sign in any more? Email <a href="mailto:n00binhard@gmail.com">n00binhard@gmail.com</a> from the address you signed up with and it will be deleted for you.</p>
-<p>To clear what is saved on a phone or computer, use <b>Settings → About → Reset all progress</b>, or clear the site's data in your browser.</p>
+<h2 id="delete">Deleting your Wordami account and data</h2>
+<p>You can delete your account yourself, any time: open <b>Settings</b> (the ⚙ at the top right), go to <b>Account</b>, and tap <b>Delete my account</b>. It happens straight away and removes your account, email, nickname, league card, progress in every language, answers, About me, reminders, phone notification details, challenges, problem reports, sign-in records and the nicknames you've used. League messages sent to other players about you go too. There is no undo.</p>
+<p>The nightly backups can hold a copy for up to 30 days, until they are deleted automatically. Problem reports sent without an account can't be traced to you, so they stay.</p>
+<p>Can't sign in any more? Email <a href="mailto:n00binhard@gmail.com">n00binhard@gmail.com</a> from the address you signed up with, and everything above will be deleted for you.</p>
+<p>Deleting your account doesn't clear your phone or computer. To clear a device, choose <b>Sign out and clear this device</b> when you sign out: it removes your progress, About me and settings from that device. Or clear the site's data in your browser. The course recordings saved for offline use stay until you clear the site's data, but they're the same for everyone and say nothing about you.</p>
+<p><b>Settings → About → Start again from zero</b> is different: it erases one language's lessons, words, XP, streak and amber, on this device and, if you're signed in, in your account and on your other devices. It doesn't delete your account, your answers, About me or your other languages.</p>
+
+<h2>Getting a copy of your data</h2>
+<p>Email <a href="mailto:n00binhard@gmail.com">n00binhard@gmail.com</a> from the address you signed up with and you'll be sent a copy of what's stored about you within a month.</p>
 
 <h2>Questions</h2>
 <p>Email <a href="mailto:n00binhard@gmail.com">n00binhard@gmail.com</a>.</p>

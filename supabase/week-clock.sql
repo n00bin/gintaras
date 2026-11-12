@@ -1,4 +1,6 @@
 -- Gintaras: one clock for the week. Run once in Supabase -> SQL Editor (after challenge-rules.sql). Changes no player data.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- The weekly job has always counted weeks from Monday 00:00 UTC; the app now does too, so the challenge rules follow it.
 
 -- 1. Sending a challenge: only on the week's first day (UTC Monday), only for this week, and the stake can't be more

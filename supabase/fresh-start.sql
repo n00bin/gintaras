@@ -1,4 +1,6 @@
 -- Gintaras fresh start (2026-10-30). Run once in Supabase -> SQL Editor, after app 3.64 is live.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Everyone starts again from lesson 1, keeping their XP, streak, amber, league, badges, About me and settings.
 -- The two judge test accounts are reset to zero (logins kept). Everything is backed up first, inside the same transaction.
 begin;

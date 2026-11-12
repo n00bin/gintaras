@@ -1,4 +1,6 @@
 -- Gintaras perks: the league shield and friend challenges. Run once in Supabase -> SQL Editor (after leagues.sql).
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Amber itself lives in saved progress, like XP. This file replaces the weekly job from leagues.sql.
 
 -- 1. League shield: a player who shields a week cannot move down at the end of it.

@@ -70,7 +70,9 @@ function mergeState(a,b){if(window.upEpoch){a=window.upEpoch(a);b=window.upEpoch
 
 /* ---------- cloud save (debounced; called by the app's save()) ---------- */
 let quiet=false,cloudAt=null; // cloudAt: when the cloud copy was last written, as this phone last saw it
-window.cloudDirty=function(){if(quiet||!sb||!user||!booted)return;clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,1500);};
+/* Whether this device has progress the account doesn't have yet. Signing out and clearing the device checks it first. */
+let savePending=false,lastSaveFailed=false;
+window.cloudDirty=function(){if(quiet||!sb||!user||!booted)return;savePending=true;clearTimeout(saveTimer);saveTimer=setTimeout(cloudSave,1500);};
 /* Before saving, check whether another phone or tab saved since this one last did. If so, fold its progress in
    first (waiting until any open lesson is finished), so an older copy never writes over newer progress. */
 function adopt(state,at){quiet=true;window.S=mergeState(window.S,state);window.save();quiet=false;cloudAt=at;window.renderAll();}
@@ -84,7 +86,7 @@ async function cloudSave(){if(!sb||!user||!window.S)return;
     const {error:e3}=await progWrite(S,at);if(e3)throw e3;cloudAt=at;
     if(profile&&!LT){const {error:e4}=await sb.from('gintaras_players').upsert(playerRow(S));if(e4)throw e4;}
     if(profile&&LT){const {error:e4}=await sb.from('gintaras_profiles').update({xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:wk,daily_goal:Math.min(420,Math.max(20,S.goal||70)),level_title:(window.levelFor?window.levelFor(S.xp).title:null),updated_at:new Date().toISOString()}).eq('id',user.id);if(e4)throw e4;}
-    syncShared();uploadLog();setStatus('Saved to your account');}catch(e){setStatus('Could not save online; progress is kept on this device');}}
+    savePending=false;lastSaveFailed=false;syncShared();uploadLog();setStatus('Saved to your account');}catch(e){lastSaveFailed=true;setStatus('Could not save online; progress is kept on this device');}}
 /* The review log (every answer, see logReview in index.html) goes to gintaras_review_log, up to 5 batches of 500 per save.
    What was sent is remembered per account and language; duplicates are ignored by the table. If the table isn't there yet, it just waits. */
 let logUp=false;
@@ -171,12 +173,14 @@ function renderAuth(){const box=$('#auth');if(!box)return;renderAcct();renderRep
   if(user&&!profile){box.innerHTML='<p class="note">Setting up your account…</p>';return;}
   if(user){box.innerHTML='<div class="acct-who">'+(window.faceHtml?window.faceHtml(window.S.look||profile.look,user.id,44):'<span class="av">'+esc((profile.nickname||'?')[0].toUpperCase())+'</span>')+'<div><strong>'+esc(profile.nickname)+'</strong><small>'+leagueOf(profile.league).icon+' '+esc(leagueOf(profile.league).name)+' league · '+esc(user.email||'')+'</small></div><button type="button" class="chip" id="btn-nick-p">Change nickname</button></div><p class="note" id="cloud-status">Your progress is saved to your account after every lesson.</p>';
     $('#btn-nick-p').onclick=showNickname;return;}
-  authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the leaderboard. Everything you have already done on this device comes with you.'});}
+  authWidget(box,{title:'Save your progress',lead:'Sign in to keep your progress on every device and join the league. Everything you have already done on this device comes with you.'});}
 
 /* The sign-in box: Google, or "Continue with email" which opens the email fields. Everything is looked up inside
    the box, so it can appear in two places at once. onDone runs once the account is ready. */
 function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
   box.innerHTML=(o.title?'<h2>'+esc(o.title)+'</h2>':'')+(o.lead?'<p class="note">'+esc(o.lead)+'</p>':'')+
+    /* Said before anyone signs in: what joining makes public. */
+    '<p class="note">Joining the league shows a nickname, your face, XP and streak to everyone. Your nickname starts as your first name if we know it, and you can change it any time. Your email and your lessons stay private. <a href="privacy.html" style="color:var(--pine)">Privacy details</a></p>'+
     (navigator.onLine?'':'<p class="note offnote">Signing in needs internet. Everything you do now is kept on this device and comes with you when you sign in.</p>')+
     '<div class="stack" data-a="pick">'+(cfg.GOOGLE?'<div class="gbtn" data-a="gbtn"><button class="btn" data-a="google">Continue with Google</button></div>':'')+
     '<button type="button" class="btn ghost" data-a="email">Continue with email</button></div>'+
@@ -203,7 +207,7 @@ function authWidget(box,o){o=o||{};afterSignIn=o.onDone||afterSignIn;
 window.cloud={chalPreview:()=>chalDialog({nick:'Davawn',stake:20},true),raisePreview:()=>raiseDialog({nick:'Davawn',stake:40,put:20},true),uid:()=>user&&user.id,pushLook:()=>pushLook(),chalOpen:()=>!!(user&&profile),chalWhen:()=>weekWhen(7)+' to '+weekWhen(8),buyShield:()=>buyShield(),shieldOn:()=>shieldOn(),enabled:()=>!!sb,signedIn:()=>!!user,widget:authWidget,nickname:()=>profile&&profile.nickname,sendReports:()=>sendReports(),pushWanted:()=>pushWanted(),pushOn:()=>pushOn()};
 
 function showNickname(){const box=$('#auth');const changing=!!profile;if(window.showView)window.showView('profile');
-  box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what others see on the leaderboard. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
+  box.innerHTML='<h2>'+(changing?'Change your nickname':'Pick a nickname')+'</h2><p class="note">This is what everyone sees in the league. 2 to 20 characters.</p><input id="nick" type="text" maxlength="20" autocomplete="nickname" placeholder="Nickname" value="'+esc(profile?profile.nickname:'')+'"><button class="btn amber" id="btn-nick-save">Save</button>'+(changing?'<button type="button" class="linkbtn" id="btn-nick-cancel">Cancel</button>':'')+'<p class="note" id="auth-msg"></p>';
   if(changing)$('#btn-nick-cancel').onclick=renderAuth;
   $('#btn-nick-save').onclick=async()=>{const n=$('#nick').value.trim();if(n.length<2)return msg('A little longer',true);const S=window.S;
     const row=LT?{id:user.id,nickname:n,xp:S.xp,streak:S.streak,week_xp:S.weekXp||0,week_start:monday(),level_title:window.levelFor?window.levelFor(S.xp).title:null,updated_at:new Date().toISOString()}:{id:user.id,nickname:n,updated_at:new Date().toISOString()};
@@ -211,21 +215,27 @@ function showNickname(){const box=$('#auth');const changing=!!profile;if(window.
 
 /* Settings → Account: nickname, sign out, and deleting the account for good. */
 function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;box.hidden=!sb;head.hidden=!sb;if(!sb)return;
-  if(!user){box.innerHTML='<p class="note">You are not signed in. Sign in to keep your progress on every device, show your nickname on the leaderboard, and manage or delete your account here.</p><button type="button" class="btn amber" id="btn-acct-signin">Sign in</button>';
+  if(!user){box.innerHTML='<p class="note">You are not signed in. Sign in to keep your progress on every device, join the league, and manage or delete your account here.</p><button type="button" class="btn amber" id="btn-acct-signin">Go to sign in</button>';
     $('#btn-acct-signin').onclick=()=>{if(window.showView)window.showView('profile');};return;}
   box.innerHTML='<div class="setting"><span>Signed in as</span><strong>'+esc(profile?profile.nickname:(user.email||''))+'</strong></div>'+
     '<div class="setting"><span>Nickname</span><button type="button" class="chip" id="btn-nick">Change</button></div>'+
     '<button type="button" class="btn ghost" id="btn-out">Sign out</button>'+
     '<div class="danger-zone"><button type="button" class="btn danger" id="btn-del">Delete my account</button>'+
-    '<div class="confirm" id="del-confirm" hidden><span>This permanently deletes your account, your nickname and leaderboard spot, and the progress saved online. There is no undo. Progress on this device stays unless you also reset it below.</span>'+
+    '<div class="confirm" id="del-confirm" hidden><span>This permanently deletes your account and everything saved with it: your email, nickname, league card, progress in every language, answers, About me, reminders, challenges and problem reports. Nightly backups keep a copy for up to 30 days, then it\'s gone. Your progress on this device stays; to remove it, clear this site\'s data in your browser. There is no undo.</span>'+
     '<button type="button" class="btn danger" id="btn-del-yes">Yes, delete my account</button><button type="button" class="btn ghost" id="btn-del-no">Keep my account</button><p class="note" id="del-msg"></p></div></div>';
   $('#btn-nick').onclick=showNickname;
   /* On a shared phone the next person shouldn't inherit your progress (or carry it into their account), so you choose. */
   $('#btn-out').onclick=()=>{const ov=document.createElement('div');ov.className='league-pop';
-    ov.innerHTML='<div class="card" role="dialog" aria-label="Sign out"><h2>Sign out</h2><p class="note">Your progress is safe in your account either way. Is this your own device?</p>'+
-      '<button type="button" class="btn amber" data-o="keep">Sign out, keep my progress here</button><button type="button" class="btn ghost" data-o="wipe">Sign out and remove it from this device</button><button type="button" class="linkbtn" data-o="x">Cancel</button></div>';
+    const behind=savePending||lastSaveFailed;
+    ov.innerHTML='<div class="card" role="dialog" aria-label="Sign out"><h2>Sign out</h2><p class="note">Is this your own phone or computer? '+
+      (behind?'Your latest progress hasn\'t reached your account yet. Signing out saves it first if it can.':'Your account has a copy of your progress either way.')+
+      ' Clearing removes your progress, About me and settings from this device only.</p>'+
+      '<button type="button" class="btn amber" data-o="keep">Sign out. This is my own device</button><button type="button" class="btn ghost" data-o="wipe">Sign out and clear this device (shared device)</button><button type="button" class="linkbtn" data-o="x">Cancel</button></div>';
     document.body.appendChild(ov);ov.onclick=e=>{if(e.target===ov)ov.remove();};
     ov.querySelectorAll('[data-o]').forEach(b=>b.onclick=async()=>{const o=b.dataset.o;ov.remove();if(o==='x')return;
+      /* Send anything still waiting first. Never clear a device that holds progress the account doesn't have. */
+      if(savePending||lastSaveFailed)await cloudSave();
+      if(o==='wipe'&&(savePending||lastSaveFailed)){toast('Your latest progress couldn\'t be saved to your account, so nothing was cleared and you\'re still signed in. Try again when you\'re online.',7000);return;}
       await dropPhone();await sb.auth.signOut();signedOut();
       if(o==='wipe'){window.__wiped=true;try{Object.keys(localStorage).filter(k=>/^gintaras\./.test(k)&&k!=='gintaras.lang').forEach(k=>localStorage.removeItem(k));}catch(e){}location.reload();return;}
       renderAuth();renderBoard();toast('Signed out');});};
@@ -233,7 +243,7 @@ function renderAcct(){const box=$('#acct'),head=$('#acct-group');if(!box)return;
   $('#btn-del-no').onclick=()=>{$('#del-confirm').hidden=true;$('#btn-del').hidden=false;};
   $('#btn-del-yes').onclick=async()=>{const m=$('#del-msg');m.textContent='Deleting…';
     const {error}=await sb.rpc('gintaras_delete_account');if(error){m.textContent='Could not delete: '+error.message;return;}
-    try{await sb.auth.signOut();}catch(e){}signedOut();renderAuth();renderBoard();toast('Your account has been deleted');};}
+    try{await sb.auth.signOut();}catch(e){}signedOut();renderAuth();renderBoard();toast('Your account and everything saved online have been deleted. Your progress on this device is still here.',7000);};}
 function toast(t,ms){if(window.toastMsg)window.toastMsg(t,ms);}
 
 /* ---------- Google sign-in ----------

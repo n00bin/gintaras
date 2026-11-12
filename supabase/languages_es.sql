@@ -1,4 +1,6 @@
 -- Spanish gets its own league (run after languages.sql, 2026-10-30).
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- A row in gintaras_meta is what makes a language a league: the weekly settle (gintaras_league_rollover) walks these rows.
 -- Spanish starts on this week, with the standard bars, and with the one-time conversions of the old Lithuanian
 -- scripts (divisions, ten leagues) marked done so nothing tries to convert it later. Nothing else is changed.

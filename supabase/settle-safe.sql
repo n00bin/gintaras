@@ -1,4 +1,6 @@
 -- Gintaras: the weekly settle-up can't be jammed by one player's damaged saved data.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after bar-watcher.sql). Same weekly job as bar-watcher.sql, except:
 --   * a lesson time that isn't a number counts as 0, and
 --   * if working out the bar adjustment fails for any reason, the bars stay as they are and the week still settles.

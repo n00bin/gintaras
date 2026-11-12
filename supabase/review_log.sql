@@ -1,4 +1,6 @@
 -- Every review answer, kept with the account (2026-10-30), so the FSRS scheduler can later be fitted to how each learner forgets,
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- and so answers given on different devices end up in one history. Adds one table; nothing existing is changed.
 -- Each row: which word or reply card, when, the grade (1 wrong, 2 right but sloppy / hard, 3 right, 4 easy), how many days
 -- overdue it was, and its level at the time. Only the owner can read or add their own rows; deleting the account deletes them.

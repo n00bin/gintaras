@@ -1,4 +1,6 @@
 -- Gintaras: players can save their own face (avatar) on their league row.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor. Changes no player data.
 -- A look is nine small numbers joined by dots, e.g. 41.0.0.15.1.2.10.5.2 (hair, beard, glasses, clothes, eyebrows,
 -- eyes, mouth, nose, background). The app reads it for everyone on the board; each player can only change their own.

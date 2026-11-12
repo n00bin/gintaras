@@ -1,4 +1,6 @@
 -- Gintaras: study-time reminders also work for times between 23:30 and midnight.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after notify.sql). Same reminder job as notify.sql, except the 30-minute window
 -- now wraps past midnight and each reminder counts toward the day its time was on. Changes no player data.
 create or replace function public.gintaras_study_tick() returns void

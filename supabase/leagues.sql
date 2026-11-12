@@ -1,4 +1,6 @@
 -- Gintaras weekly leagues. Run once in Supabase → SQL Editor (after schema.sql).
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 
 -- 1. Every player has a league (0 = Sand ... 6 = Sun) and how they moved at the last week change (+1, 0, -1).
 alter table public.gintaras_profiles add column if not exists league smallint not null default 0;

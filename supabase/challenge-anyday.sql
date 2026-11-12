@@ -1,4 +1,6 @@
 -- Gintaras: friend challenges can be sent any day of the week (2026-10-30). Changes no player data.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- A challenge sent on a Monday (UTC) runs that week; sent on any other day, it runs the next week, so everyone still starts even.
 -- It can be answered (accepted or raised) until its own week is over. Settling and expiring are unchanged.
 -- Run once in Supabase -> SQL Editor (after languages.sql).

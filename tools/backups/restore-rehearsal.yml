@@ -1,0 +1,132 @@
+# Practice restore: rebuilds the newest backup in a throwaway database on GitHub's temporary machine, then checks it really works.
+# Belongs in the PRIVATE backup repo at .github/workflows/restore-rehearsal.yml. Runs weekly; a failure emails the repo owner.
+# Logs show only table names and counts, never learners' data.
+name: Practice restore
+on:
+  schedule:
+    - cron: '37 4 * * 0'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  rehearse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APP_DB: postgresql://postgres:postgres@127.0.0.1:54322/postgres
+      ADMIN_DB: postgresql://supabase_admin:postgres@127.0.0.1:54322/postgres
+      PSQL: /usr/lib/postgresql/17/bin/psql
+      PG_RESTORE: /usr/lib/postgresql/17/bin/pg_restore
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the Postgres tools
+        run: |
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y -qq postgresql-client-17
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start a throwaway Supabase database
+        run: |
+          mkdir sb && cd sb
+          supabase init --force >/dev/null
+          sed -i 's/^major_version = .*/major_version = 17/' supabase/config.toml
+          supabase start -x studio,imgproxy,kong,mailpit,postgrest,postgres-meta,realtime,storage-api,edge-runtime,logflare,vector,supavisor --ignore-health-check
+          for i in $(seq 1 30); do
+            [ "$($PSQL "$ADMIN_DB" -Atc "select count(*) from information_schema.tables where table_schema='auth' and table_name='identities'")" = "1" ] && break
+            sleep 5
+          done
+          $PSQL "$ADMIN_DB" -Atc "select 'Throwaway database ready: ' || current_setting('server_version')"
+      - name: Fetch and open the newest backup
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          id=$(gh run list -R "$GITHUB_REPOSITORY" --workflow nightly-backup.yml --status success --limit 1 --json databaseId --jq '.[0].databaseId')
+          [ -n "$id" ] || { echo "::error::No successful backup found"; exit 1; }
+          echo "Using backup from run $id"
+          gh run download "$id" -R "$GITHUB_REPOSITORY" -D fetched
+          mkdir restore
+          printf '%s' "$BACKUP_PASSPHRASE" > .pass
+          gpg --batch --yes --pinentry-mode loopback --passphrase-file .pass --decrypt -o restore/backup.tar fetched/*/backup.tar.gpg
+          shred -u .pass
+          tar -xf restore/backup.tar -C restore
+          ls restore
+      - name: Rebuild the app
+        run: |
+          # Nothing restored may reach the outside world: without this, restoring messages could notify real learners.
+          $PSQL "$ADMIN_DB" -qAtc "drop extension if exists pg_net cascade"
+          $PSQL "$ADMIN_DB" -qAtc "create role wordami_backup nologin"
+          # A new Supabase project hands new objects to the public roles by default. Stop that first, or locked functions would come back open.
+          $PSQL "$APP_DB" -qAtc "alter default privileges in schema public revoke all on tables from anon, authenticated, service_role; alter default privileges in schema public revoke all on functions from anon, authenticated, service_role; alter default privileges in schema public revoke all on sequences from anon, authenticated, service_role"
+          $PSQL "$APP_DB" -q -f restore/structure.sql > /dev/null 2> structure.err || true
+          $PSQL "$ADMIN_DB" -q -c "set session_replication_role = replica" -c "\copy auth.users($(head -1 restore/auth_users.csv)) from 'restore/auth_users.csv' csv header" -c "\copy auth.identities($(head -1 restore/auth_identities.csv)) from 'restore/auth_identities.csv' csv header" 2> auth.err || true
+          $PG_RESTORE --no-owner --data-only --disable-triggers -d "$ADMIN_DB" restore/data.dump 2> data.err || true
+          # Only the error headline is printed, because the lines after it can quote a learner's row.
+          status=0
+          for f in structure auth data; do
+            grep -E 'ERROR:|error:' "$f.err" | grep -vE 'schema "public" already exists|must be owner of schema public|permission denied to change default privileges|errors ignored on restore' | sed -E 's/^[^E]*(ERROR:.*)$/\1/' | cut -c1-170 > "$f.problems" || true
+            echo "--- $f: $(wc -l < "$f.problems") problems"
+            sort "$f.problems" | uniq -c | head -25
+            [ -s "$f.problems" ] && status=1
+          done
+          exit $status
+      - name: Compare with the live database
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+        run: |
+          $PSQL "$DB_URL" -v ON_ERROR_STOP=1 -At -f fingerprint.sql -o live.txt
+          $PSQL "$APP_DB" -v ON_ERROR_STOP=1 -At -f fingerprint.sql -o restored.txt
+          echo "Access rules on live: $(wc -l < live.txt). On restored: $(wc -l < restored.txt)."
+          if ! diff live.txt restored.txt > rules.diff; then
+            echo "::error::The restored access rules differ from live"
+            head -60 rules.diff | cut -c1-200
+            exit 1
+          fi
+          echo "All access rules match."
+          status=0
+          for t in $($PSQL "$APP_DB" -At -c "select tablename from pg_tables where schemaname='public' and tablename like 'gintaras%' order by 1"); do
+            live=$($PSQL "$DB_URL" -At -c "select count(*) from public.$t")
+            restored=$($PSQL "$ADMIN_DB" -At -c "select count(*) from public.$t")
+            echo "$t: live $live, restored $restored"
+            if [ "$live" -gt 0 ] && [ "$restored" -eq 0 ]; then status=1; echo "::error::$t came back empty"; fi
+          done
+          echo "sign-in accounts: live $($PSQL "$DB_URL" -At -c 'select count(*) from wordami_backup_export.auth_users'), restored $($PSQL "$ADMIN_DB" -At -c 'select count(*) from auth.users')"
+          exit $status
+      - name: Try the restored app
+        run: |
+          $PSQL "$ADMIN_DB" -v ON_ERROR_STOP=1 -At <<'SQL'
+          select 'Restored accounts: ' || count(*) from auth.users;
+          do $$ begin if (select count(*) from auth.users) = 0 then raise exception 'no accounts came back'; end if; end $$;
+          SQL
+          # A visitor must not see private progress or call locked functions.
+          $PSQL "$APP_DB" -v ON_ERROR_STOP=1 -At <<'SQL'
+          set role anon;
+          do $$ begin
+            if (select count(*) from public.gintaras_progress) <> 0 then raise exception 'a visitor can read private progress'; end if;
+            if has_function_privilege('public.gintaras_note_add(uuid,text,text,text)', 'execute') then raise exception 'a visitor can send messages'; end if;
+            if has_function_privilege('public.gintaras_delete_account()', 'execute') then raise exception 'a visitor can call delete'; end if;
+          end $$;
+          reset role;
+          select 'Visitor checks passed';
+          SQL
+          # Delete my account has to work on a restored account, and must not touch anyone else.
+          $PSQL "$APP_DB" -v ON_ERROR_STOP=1 -At <<'SQL'
+          do $$
+          declare who uuid; before_users bigint; before_profiles bigint;
+          begin
+            select p.id into who from public.gintaras_profiles p order by p.id limit 1;
+            select count(*) into before_users from auth.users;
+            select count(*) into before_profiles from public.gintaras_profiles;
+            perform set_config('request.jwt.claims', json_build_object('sub', who, 'role', 'authenticated')::text, true);
+            perform public.gintaras_delete_account();
+            if exists (select 1 from auth.users where id = who) then raise exception 'the account survived deletion'; end if;
+            if exists (select 1 from public.gintaras_profiles where id = who) then raise exception 'the profile survived deletion'; end if;
+            if exists (select 1 from public.gintaras_progress where user_id = who) then raise exception 'the progress survived deletion'; end if;
+            if (select count(*) from auth.users) <> before_users - 1 then raise exception 'deletion removed other accounts'; end if;
+            if (select count(*) from public.gintaras_profiles) <> before_profiles - 1 then raise exception 'deletion removed other profiles'; end if;
+          end $$;
+          select 'Delete my account works on a restored account';
+          SQL
+          echo "PRACTICE RESTORE PASSED"

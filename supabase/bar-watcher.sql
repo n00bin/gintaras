@@ -1,4 +1,6 @@
 -- Gintaras bar watcher: the league XP bars adjust themselves each Monday to how fast players really earn XP.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after leagues10.sql). Replaces the weekly job again; changes no player data.
 
 -- 1. The current scale on the base bars (1 = Sand 150 ... Sun 500), and a log of every Monday's check.

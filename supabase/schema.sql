@@ -1,4 +1,6 @@
 -- Gintaras: run this once in Supabase → SQL Editor → New query → Run.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 
 -- Public leaderboard rows. One per signed-in person.
 create table if not exists public.gintaras_profiles (

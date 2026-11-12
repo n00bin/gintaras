@@ -1,4 +1,6 @@
 -- Gintaras league divisions, a minimum to move up, position bonuses and the Sun crown.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Run once in Supabase -> SQL Editor (after leagues.sql and perks.sql). This file replaces the weekly job again.
 
 -- 1. Each league now has three divisions (III, II, I), so "league" becomes a step from 0 (Sand III) to 20 (Sun I).

@@ -978,7 +978,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     </div>
     <div class="card" id="share">
       <h2>Share with friends</h2>
-      <p class="note">Learning is easier together. Send Wordami to a friend and race each other on the leaderboard.</p>
+      <p class="note">Learning is easier together. Send Wordami to a friend and race each other in the league.</p>
       <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
       <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Wordami link"></div><p class="note">Point a phone camera at it to open Wordami.</p></details>
     </div>
@@ -995,9 +995,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
       <p class="note">Drawn pictures: made for Wordami, with the cast's Notionists faces. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
       <p class="note" id="app-version"></p>
-      <button class="btn danger" id="btn-reset">Reset all progress</button>
+      <button class="btn danger" id="btn-reset"><span>Start <span class="lang-en">Lithuanian</span> again from zero</span></button>
       <div class="confirm" id="confirm-reset" hidden>
-        <span>This erases your XP, streak and every lesson. There is no undo.</span>
+        <span>This erases your <span class="lang-en">Lithuanian</span> lessons, words, XP, streak and amber. If you're signed in, it erases them in your account and on your other devices too, and your league card goes back to zero. Your account, nickname, About me, face and settings stay, and so do your other languages. There is no undo.</span>
         <button class="btn danger" id="btn-reset-yes">Yes, erase everything</button>
         <button class="btn ghost" id="btn-reset-no">Keep my progress</button>
       </div>
@@ -1092,8 +1092,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.119';
-const APP_VERSION=191;
+const APP_RELEASE='3.120';
+const APP_VERSION=192;
 const WHATS_NEW='The new illustration style now covers every Lithuanian course picture and conversation character. Required unit skill lessons and your saved progress continue as before.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1134,7 +1134,9 @@ const OLD_PACE={casual:'m5',regular:'m10',serious:'m20'};
 /* Fresh start (2026-10-30): after the course and the scheduler were rebuilt, everyone starts again from lesson 1, so they
    all get the new lessons and FSRS learns from real answers from day one. XP, streak, amber, league, badges, About me and
    settings stay; the learning history goes. It runs once on every saved copy, on this device or from the account, so old
-   progress on another phone can't come back. */
+   progress on another phone can't come back.
+   FROZEN: this only cleans copies from before that date. EPOCH must never go up, because that would reset every learner's
+   lessons on every device. tools/check_data_safety.js blocks any release that changes it. */
 const EPOCH=2,HISTORY=['items','lessons','lessonsDone','convs','replies','repliesSeeded','checks','placedTo','placeDone','speakDone','perfects','perfectToday','drillDay','reviewDay','gateDay','gateLater','qcAnyDay'];
 function upEpoch(st){if(!st||(st.epoch||0)>=EPOCH)return st;const o=Object.assign({},st);HISTORY.forEach(k=>delete o[k]);
   return Object.assign(o,{items:{},lessons:{},lessonsDone:0,epoch:EPOCH});}
@@ -4376,7 +4378,7 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!n.classList|
 /* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
 const SHARE_URL='https://n00bin.github.io/gintaras/';
 function shareText(){const n=window.cloud&&window.cloud.nickname&&window.cloud.nickname();
-  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
+  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' in the league!':' Join me in the league!');}
 async function copyLink(){try{await navigator.clipboard.writeText(shareText()+' '+SHARE_URL);toast('Link copied. Paste it in a message.');}
   catch(e){prompt('Copy this link:',SHARE_URL);}}
 async function shareApp(){if(navigator.share){try{await navigator.share({title:'Wordami: learn '+LANG.en,text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
@@ -4430,7 +4432,13 @@ document.querySelectorAll('#spk-chips [data-spk]').forEach(b=>b.onclick=()=>{con
   toast(m==='mic'?(SR?'The microphone checks your speaking':'You record yourself and compare'):m==='aloud'?'You say it out loud, then check yourself':'Speaking waits in Say it later until tomorrow');renderAll();});
 $('#btn-reset').onclick=()=>{$('#confirm-reset').hidden=false;};
 $('#btn-reset-no').onclick=()=>{$('#confirm-reset').hidden=true;};
-$('#btn-reset-yes').onclick=()=>{const keep={pace:S.pace,goal:S.goal,voice:S.voice,sound:S.sound,pron:S.pron};S=Object.assign(fresh(),keep,{welcomed:true});save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast('Progress erased');};
+/* Starting a language again erases only that language, everywhere. The settings that belong to you (About me, your face,
+   sound, reminders) are kept: before, they were erased in every language too. The "wipe" mark makes your other devices
+   and the account drop their older copy of this language when they next sync, instead of merging it back in. */
+$('#btn-reset-yes').onclick=()=>{const keep=Object.assign({pace:S.pace,goal:S.goal,voice:S.voice},sharedPick());
+  S=Object.assign(fresh(),keep,{welcomed:true,wipe:new Date().toISOString()});
+  try{['gintaras.log.'+LANG_CODE,'gintaras.resume.'+LANG_CODE,'gintaras.resume.'+LANG_CODE+'.held','gintaras.cv.'+LANG_CODE,'gintaras.qc.'+LANG_CODE,'gintaras.fall.'+LANG_CODE].forEach(k=>localStorage.removeItem(k));}catch(e){}RLOG=null;
+  save();$('#confirm-reset').hidden=true;renderAll();showView('learn');toast(LANG.en+' starts again from zero');};
 if('scrollRestoration' in history)history.scrollRestoration='manual'; /* a reload opens Learn at the top */
 let tileKeys={};
 /* (Round 5) Typing on tiles. With a keyboard, a hidden box under the tiles takes what you type, so every letter gets there:

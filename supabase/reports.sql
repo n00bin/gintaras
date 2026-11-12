@@ -1,4 +1,6 @@
 -- Gintaras problem reports ("flag this card"). Run once in Supabase → SQL Editor.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- Anyone can send a report (signed in or not). Only the app owner can read them and mark them fixed.
 
 create table if not exists public.gintaras_reports (

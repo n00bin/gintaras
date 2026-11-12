@@ -1,4 +1,6 @@
 -- Gintaras challenge rules. Run once in Supabase -> SQL Editor (after perks.sql). Changes no player data.
+-- ALREADY APPLIED to the live database. Kept as a record only. Running it again would put back older database code and can change players' data.
+do $$ begin raise exception 'This script was already applied. Don''t run it again: it would undo newer changes. See README, Keeping learners'' data safe.'; end $$;
 -- 1. Anyone signed in can see a player's amber balance (worked out from their saved progress), so a challenge
 --    never bets more than the person being challenged has.
 create or replace function public.gintaras_amber_of(p uuid) returns int
