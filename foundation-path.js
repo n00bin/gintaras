@@ -12,7 +12,7 @@ const placements=entries.map(entry=>{
  const required=[...new Set(items.map(i=>i.lesson))].sort((a,b)=>order.get(a.id)-order.get(b.id));
  return {...entry,lesson:required[required.length-1],sourceCardIds:items.map(i=>i.id),sourceLessonIds:required.map(l=>l.id)};
 }).filter(Boolean);
-const style=document.createElement('style');style.textContent='.a1-course-practice{padding:16px;margin:12px 0 20px;border:2px solid #c9dbcf;border-radius:18px;background:#edf5e9;color:#173f36}.a1-course-practice h3{margin:0 0 8px;font-family:Fredoka,Nunito,sans-serif}.a1-course-practice p{font-size:14px}.a1-course-practice button{min-height:44px;padding:10px 16px;border:0;border-radius:12px;background:#176b51;color:white;font:inherit;font-weight:700;cursor:pointer}.a1-course-practice button:focus-visible{outline:3px solid #de991d;outline-offset:3px}';document.head.append(style);
+const style=document.createElement('style');style.textContent='.a1-course-practice{padding:16px;margin:12px 0 20px;border:2px solid var(--line);border-radius:18px;background:var(--pine-soft);color:var(--fg)}.a1-course-practice h3{margin:0 0 8px;font-family:Fredoka,Nunito,sans-serif}.a1-course-practice p{font-size:14px}.a1-course-practice button{min-height:44px;padding:10px 16px;border:0;border-radius:12px;background:var(--pine);color:var(--on-pine);font:inherit;font-weight:700;cursor:pointer}.a1-course-practice button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}';document.head.append(style);
 const tree=document.getElementById('tree');let pending=false;
 function mount(){pending=false;const anchors=new Map();for(const entry of placements){
  const unit=document.getElementById('unit-'+entry.lesson.unit.id);if(!unit)continue;

@@ -4,7 +4,7 @@
 <link rel="preload" href="lang/lt.js" as="script">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#2F6B4A">
+<meta name="theme-color" content="#1D3366">
 <meta name="description" content="Learn languages with little lessons, listening and speaking practice. Build from your first words to real conversations with Ami, your friendly parrot buddy.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wordami · Learn Languages">
@@ -26,44 +26,46 @@
 <style>
 /* Layout: a single scrolling column of unit bands with a fixed bottom tab bar; lessons open as a full-screen sheet. */
 :root{
-  --band:#2F6B4A;     /* green behind white text */
-  --bg:#F3F5F0;        /* pale birch, a touch of green */
+  --band:#1D3366;     /* navy behind white text, from the illustration palette */
+  --bg:#FFF9F0;        /* warm cream */
   --surface:#FFFFFF;
-  --surface-2:#E7ECE4;
-  --fg:#1C2A22;
-  --muted:#5F6F66;
-  --line:#D5DDD3;
-  --amber:#E89A1E;     /* gintaras */
-  --amber-deep:#B86E07;
-  --pine:#2F6B4A;      /* forest green */
-  --pine-soft:#DCEBE0;
-  --ok:#2E8B57;
-  --strong:#2F6FB3;
+  --surface-2:#F5ECDD;
+  --fg:#14264E;        /* illustration navy */
+  --muted:#56627F;
+  --line:#EADFCC;
+  --amber:#FFB400;     /* illustration amber */
+  --amber-deep:#A86400;
+  --pine:#00756E;      /* deep turquoise: the main action colour (the illustrations' turquoise, darkened to read on cream) */
+  --pine-soft:#D9F3EF;
+  --amber-soft:#FFF1CC;
+  --on-pine:#FFFFFF;
+  --coral:#FF6355;
+  --ok:#0B7F5B;
+  --strong:#2F5FC4;
 --warn:#A98200;
-  --ok-soft:#DCF2E3;
-  --bad:#C93A3A;
-  --bad-soft:#F8DEDE;
-  --shadow:0 2px 0 rgba(28,42,34,.12);
+  --ok-soft:#DDF4EA;
+  --bad:#D9382B;
+  --bad-soft:#FFE3DF;
+  --shadow:0 2px 0 rgba(20,38,78,.10);
   --display:"Fredoka","Nunito","Segoe UI",system-ui,sans-serif;
   --body:"Nunito","Segoe UI",system-ui,sans-serif;
   --radius:16px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
-    --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;--band:#24553A;
-    --ok:#5FC07F;--strong:#7AAEEA;
---warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
-    --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
+    --bg:#0F1830;--surface:#18233F;--surface-2:#22304F;--fg:#F4EFE6;--muted:#A7B1CC;--line:#2C3B60;
+    --amber:#FFC23D;--amber-deep:#FFD77A;--pine:#3FD3C8;--pine-soft:#143F49;--amber-soft:#3A3018;--on-pine:#0F1830;--band:#24418A;--coral:#FF7B6E;
+    --ok:#4FD39E;--strong:#86A8F0;
+--warn:#F0CC45;--ok-soft:#133A33;--bad:#FF7B6E;--bad-soft:#43222A;
+    --shadow:0 2px 0 rgba(0,0,0,.35);color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --band:#24553A;
-  --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
-  --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
-  --ok:#5FC07F;--strong:#7AAEEA;
---warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
-  --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
+  --bg:#0F1830;--surface:#18233F;--surface-2:#22304F;--fg:#F4EFE6;--muted:#A7B1CC;--line:#2C3B60;
+  --amber:#FFC23D;--amber-deep:#FFD77A;--pine:#3FD3C8;--pine-soft:#143F49;--amber-soft:#3A3018;--on-pine:#0F1830;--band:#24418A;--coral:#FF7B6E;
+  --ok:#4FD39E;--strong:#86A8F0;
+--warn:#F0CC45;--ok-soft:#133A33;--bad:#FF7B6E;--bad-soft:#43222A;
+  --shadow:0 2px 0 rgba(0,0,0,.35);color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -112,7 +114,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .hello p{margin:0;font-size:17px}
 .how{display:grid;gap:12px}
 .how div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
-.how b{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2A1A02;display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.how b{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#14264E;display:grid;place-items:center;font-family:var(--display);font-weight:700}
 .how span{min-width:0}
 .steps{display:flex;gap:4px;overflow-x:auto;padding:4px 0}
 .steps span{flex:none;font-size:12px;font-weight:800;color:var(--muted);padding:2px 0;position:relative}
@@ -221,9 +223,9 @@ div.done:not(.unit){position:relative;z-index:2}
 .cv-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.cv-row-t{min-width:0}.cv-row-t strong{display:block}
 .cv-row-b{display:flex;gap:6px;flex:0 0 auto}.cv-row-b .btn{padding:8px 10px;font-size:14px;border-radius:12px;white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:14px;font-weight:800;font-size:16px;
-  background:var(--pine);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.18);width:100%;transition:transform .08s}
+  background:var(--pine);color:var(--on-pine);box-shadow:0 4px 0 rgba(20,38,78,.22);width:100%;transition:transform .08s}
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
-.btn.amber{background:var(--amber);color:#2A1A02}
+.btn.amber{background:var(--amber);color:#14264E}
 .btn.ghost{background:var(--surface-2);color:var(--fg);box-shadow:none}
 .btn.danger{background:var(--bad-soft);color:var(--bad);box-shadow:none}
 .btn[disabled]{opacity:.45;box-shadow:none;transform:none;cursor:not-allowed}
@@ -268,7 +270,7 @@ div.done:not(.unit){position:relative;z-index:2}
 .tabs button{padding:10px 4px 8px;display:grid;justify-items:center;gap:2px;font-size:12px;font-weight:800;color:var(--muted);border-top:3px solid transparent}
 .tabs button svg{width:24px;height:24px}
 .tabs button[aria-selected="true"]{color:var(--pine);border-top-color:var(--amber)}
-.tabs .badge{position:absolute;margin-left:28px;margin-top:-2px;background:var(--amber);color:#2A1A02;font-size:11px;border-radius:999px;padding:0 6px;line-height:18px}
+.tabs .badge{position:absolute;margin-left:28px;margin-top:-2px;background:var(--amber);color:#14264E;font-size:11px;border-radius:999px;padding:0 6px;line-height:18px}
 
 /* Lesson sheet */
 .sheet{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;
@@ -286,7 +288,7 @@ div.done:not(.unit){position:relative;z-index:2}
 .word .lt{font-family:var(--display);font-size:34px;font-weight:700;color:var(--amber-deep);min-width:0;overflow-wrap:anywhere}
 .spk{width:44px;height:44px;border-radius:12px;background:var(--pine-soft);color:var(--pine);display:grid;place-items:center;flex:none}
 .spk svg{width:22px;height:22px}
-.spk.big{width:96px;height:96px;border-radius:24px;background:var(--pine);color:#fff;margin:0 auto}
+.spk.big{width:96px;height:96px;border-radius:24px;background:var(--pine);color:var(--on-pine);margin:0 auto}
 .spk.big svg{width:44px;height:44px}
 .intro{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
 .intro .en{font-size:22px;font-weight:800}
@@ -375,7 +377,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .cv-head .sub{font-size:14px;color:var(--muted)}
 .cv-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cv-btns .btn{padding:12px 8px;font-size:15px}
-.av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;background:var(--pine)}
+.av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--on-pine);background:var(--pine)}
 .av[data-v="ona"]{background:#B4531F}
 .av+.av{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
 .face{display:inline-block;flex:none;border-radius:50%;overflow:hidden;line-height:0}
@@ -396,6 +398,15 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 #face-card.editing .face-top .note{display:none}#face-card.editing .face-top .face{width:64px!important;height:64px!important}
 #face-card .fstep{scroll-margin-top:150px}
 .face-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.art-face{background:var(--pine-soft)}.art-face img{width:100%;height:100%;object-fit:cover;display:block}
+.art-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:12px}
+.art-gal button{padding:2px;border-radius:50%;border:3px solid transparent;background:none;line-height:0}
+.art-gal button[aria-pressed="true"]{border-color:var(--amber)}
+.art-gal .face{width:100%!important;height:auto!important;aspect-ratio:1}
+.art-tops{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.art-tops .chip{font-size:15px;padding:8px 12px;display:inline-flex;align-items:center;gap:6px}
+.art-tops .chip i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(20,38,78,.2)}
+.art-tops .chip[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft)}
 .face-gal button{padding:0;border:2px solid transparent;border-radius:50%;background:none;cursor:pointer;line-height:0;justify-self:center}
 .face-gal button:focus-visible,.face-gal button:hover{border-color:var(--amber)}
 .face-gal .face{width:min(52px,100%)!important;height:auto!important;aspect-ratio:1}
@@ -419,7 +430,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .foot.idk{background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .foot.idk .fb{display:grid}
 .foot.idk .fb strong{color:var(--amber-deep)}
-.foot.idk .btn{background:var(--amber);color:#2A1A02}
+.foot.idk .btn{background:var(--amber);color:#14264E}
 
 /* Conversation chat */
 .chat{display:grid;gap:14px}
@@ -435,7 +446,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .msg.me{justify-self:end}
 .msg .bub{border-radius:18px;padding:10px 14px;display:grid;gap:2px;font-size:18px;min-width:0;overflow-wrap:anywhere}
 .msg.them .bub{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;cursor:pointer}
-.msg.me .bub{background:var(--pine);color:#fff;border-bottom-right-radius:6px}
+.msg.me .bub{background:var(--pine);color:var(--on-pine);border-bottom-right-radius:6px}
 .msg .bubnote{font-size:13px;opacity:.85}
 .msg .nw{text-decoration:underline dotted var(--amber);text-underline-offset:4px;text-decoration-thickness:2px}
 .chat-new{margin-top:6px;font-size:.85em}.chat-new summary{cursor:pointer;color:var(--amber)}.chat-new p{margin:4px 0 0;line-height:1.6}
@@ -482,7 +493,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .copt.shake{animation:shake .3s}
 .say-lt{display:grid;gap:4px;background:var(--surface-2);border-radius:12px;padding:12px}
 .say-lt .lt{font-family:var(--display);font-size:26px;font-weight:700;color:var(--amber-deep)}
-.spk.mic{background:var(--amber);color:#2A1A02}
+.spk.mic{background:var(--amber);color:#14264E}
 .spk.mic.on{animation:pulse 1s infinite}
 .spk.rec{background:var(--bad);color:#fff}.spk.rec.on{animation:pulse 1s infinite}.spk.rec svg{width:30px;height:30px}
 .mine{display:block;margin:12px auto 0}
@@ -561,11 +572,11 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .slot{display:grid;justify-items:center;gap:2px;padding:6px 10px;border-radius:10px;border:2px solid;min-width:56px}
 .slot b{font-family:var(--display);font-size:18px}
 .slot small{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
-.slot.r1{border-color:#2F6B4A;background:color-mix(in srgb,#2F6B4A 12%,var(--surface))}
-.slot.r2{border-color:#E89A1E;background:color-mix(in srgb,#E89A1E 14%,var(--surface))}
-.slot.r3{border-color:#3A6FB0;background:color-mix(in srgb,#3A6FB0 12%,var(--surface))}
+.slot.r1{border-color:#00A79D;background:color-mix(in srgb,#00A79D 12%,var(--surface))}
+.slot.r2{border-color:#FFB400;background:color-mix(in srgb,#FFB400 16%,var(--surface))}
+.slot.r3{border-color:#2F5FC4;background:color-mix(in srgb,#2F5FC4 12%,var(--surface))}
 .slot.r4{border-color:#8A4FB0;background:color-mix(in srgb,#8A4FB0 12%,var(--surface))}
-.slot.r5{border-color:#B0503A;background:color-mix(in srgb,#B0503A 12%,var(--surface))}
+.slot.r5{border-color:#FF6355;background:color-mix(in srgb,#FF6355 14%,var(--surface))}
 .slot.r6{border-color:var(--line);background:var(--surface-2)}
 .frame{font-family:var(--display);font-size:26px;font-weight:600;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
 .gap{display:inline-block;min-width:3em;border-bottom:3px dashed var(--amber);color:var(--amber-deep);padding:0 6px}
@@ -740,7 +751,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .amber-pill{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:999px;font:inherit;color:inherit;cursor:pointer}
 .x2{margin-left:4px;font-size:12px;padding:1px 5px;border-radius:999px;background:var(--amber);color:#1b1b1b}
 .hh{display:block}
-.hhbanner{display:flex;align-items:center;gap:12px;background:var(--amber);color:#1b1b1b;border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
+.hhbanner{display:flex;align-items:center;gap:12px;background:var(--amber);color:#14264E;border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
 .hhbanner .big{font-size:28px;line-height:1}
 .hhbanner strong{display:block;font-family:var(--display);font-size:18px}
 .hhbanner small{display:block;font-size:14px;font-weight:600}
@@ -800,6 +811,19 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .splash .ami-mark{width:144px;height:144px;background:url(pics/ami/welcome.webp) center/contain no-repeat;animation:popin .5s cubic-bezier(.2,1.6,.4,1)}
 .splash h1{font-family:var(--display);font-size:34px;font-weight:700;margin:6px 0 0;color:var(--amber-deep)}
 .splash small{color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.04em}
+
+/* Course activity windows (unit practice, skills studio, writing studio, café adventure): the same look as the rest
+   of the app. The title keeps its row; Close is a compact button beside it instead of dropping underneath. */
+dialog#a1-practice,dialog#skills-studio,dialog#writing-studio,dialog#cafe-adventure{border-radius:24px;box-shadow:0 18px 50px rgba(15,24,48,.28)}
+dialog#a1-practice header,dialog#skills-studio header,dialog#writing-studio header,dialog#cafe-adventure header{align-items:flex-start;gap:10px}
+dialog#a1-practice header h2,dialog#skills-studio header h2,dialog#writing-studio header h2,dialog#cafe-adventure header h2{flex:1 1 0;min-width:0;font-family:var(--display);font-weight:600;line-height:1.2}
+dialog#a1-practice header>button,dialog#skills-studio header>button,dialog#writing-studio header>button,dialog#cafe-adventure header>button{flex:0 0 auto;min-height:38px;padding:7px 14px;margin:0;font-size:14px;border-radius:999px}
+dialog#a1-practice button,dialog#skills-studio button,dialog#writing-studio button,dialog#cafe-adventure button{box-shadow:0 3px 0 rgba(20,38,78,.12)}
+dialog#a1-practice button:disabled,dialog#skills-studio button:disabled,dialog#writing-studio button:disabled,dialog#cafe-adventure button:disabled{box-shadow:none}
+dialog#a1-practice h3,dialog#skills-studio h3,dialog#writing-studio h3{margin:18px 0 8px;font-family:var(--display);font-weight:600}
+dialog#a1-practice ul:has(> li > button){list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+dialog#a1-practice ul > li:has(> button){display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12px;font-size:14px;border-radius:999px;margin:0}
 </style>
 <div class="splash" id="splash" aria-hidden="true"><span class="ami-mark"></span><h1>Wordami</h1><small id="splash-v"></small></div>
 
@@ -992,8 +1016,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note">Progress is saved on this device, and to your account when you are signed in, so it follows you to every device. Audio is recorded by natural <span class="lang-en">Lithuanian</span> voices; a word whose recording isn't on this device yet is shown and typed instead (the device's own voice stands in only when it has a <span class="lang-en">Lithuanian</span> one).</p>
       <p class="note"><a href="privacy.html" style="color:var(--pine);font-weight:800">Privacy: what is stored and how to delete it</a></p>
       <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
-      <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
-      <p class="note">Drawn pictures: made for Wordami, with the cast's Notionists faces. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
+      <p class="note">Faces made with the older face builder: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
+      <p class="note">Drawn pictures and faces: made for Wordami. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
       <p class="note" id="app-version"></p>
       <button class="btn danger" id="btn-reset"><span>Start <span class="lang-en">Lithuanian</span> again from zero</span></button>
       <div class="confirm" id="confirm-reset" hidden>
@@ -1092,8 +1116,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.123';
-const APP_VERSION=195;
+const APP_RELEASE='3.124';
+const APP_VERSION=196;
 const WHATS_NEW='The new illustration style now covers every Lithuanian course picture and conversation character. Required unit skill lessons and your saved progress continue as before.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -1972,7 +1996,17 @@ function faceSvg(a,size){const k=a.join('.')+'@'+size,v=n=>'variant'+String(n).p
     if(a[1])o.beard=[v(a[1])];if(a[2])o.glasses=[v(a[2])];FACE_RAW[k]=Ava.svg(o,size);}
   /* Each copy on the page gets its own ids, so a hidden copy never breaks a visible one's clipping. */
   const n=++faceN;return FACE_RAW[k].replace(/id="([^"]+)"/g,'id="$1-'+n+'"').replace(/url\(#([^)]+)\)/g,'url(#$1-'+n+')');}
-function faceHtml(look,seed,size,name){const a=lookParse(look)||lookRand(seed||name||'gintaras');
+/* Picture-style faces (pics/faces): 24 people, each with a top in one of five colours. */
+const ART_FACES=24,ART_TOPS=[['turquoise','Turquoise','#00BFB3'],['amber','Amber','#FFB900'],['coral','Coral','#FF6355'],['navy','Navy','#24418A'],['green','Green','#2EC24A']];
+function artLook(s){if(typeof s!=='string')return null;const a=s.split('.').map(Number);
+  return a.length===9&&a[0]===99&&Number.isInteger(a[1])&&a[1]>=1&&a[1]<=ART_FACES&&Number.isInteger(a[2])&&a[2]>=1&&a[2]<=ART_TOPS.length&&a.slice(3).every(x=>x===0)?{face:a[1],top:a[2]}:null;}
+const artCode=(f,c)=>'99.'+f+'.'+c+'.0.0.0.0.0.0';
+const artFile=(f,c)=>'pics/faces/f'+String(f).padStart(2,'0')+'-'+ART_TOPS[c-1][0]+'.webp';
+/* Someone who never picked a face still gets the same one every time, chosen from their account id. */
+function artSeeded(seed){const r=seeded(String(seed||'gintaras'));const f=1+Math.floor(r()*ART_FACES);return artCode(f,1+Math.floor(r()*ART_TOPS.length));}
+function artFaceHtml(a,size,name){return '<span class="face art-face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'><img src="'+artFile(a.face,a.top)+'" alt="" decoding="async"></span>';}
+function faceHtml(look,seed,size,name){const art=artLook(look)||(lookParse(look)?null:artLook(artSeeded(seed||name||'gintaras')));if(art)return artFaceHtml(art,size,name);
+  const a=lookParse(look)||lookRand(seed||name||'gintaras');
   if(!window.Ava)return '<span class="av" style="width:'+size+'px;height:'+size+'px" aria-hidden="true">'+esc(((name||'?')[0]||'?').toUpperCase())+'</span>';
   return '<span class="face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'>'+faceSvg(a,size)+'</span>';}
 window.faceHtml=faceHtml;
@@ -2002,29 +2036,25 @@ function nextPop(){const o=popQ.shift(),el=$('#pop');if(!o||!el){popOn=false;ret
     if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)b.click();};nextPop.t=setTimeout(close,o.ms||2800);}
 
 
-/* Your face: pick a ready-made one, or step through each feature. Saved on this phone, synced, and shown on the board. */
-let faceDraft=null,faceGal=[];
-function renderFace(){const box=$('#face-card');if(!box)return;box.classList.toggle('editing',!!faceDraft);
-  if(!window.Ava){box.hidden=true;return;}
-  if(!faceDraft){box.innerHTML='<div class="face-top">'+faceHtml(S.look,myFaceSeed(),88)+'<div><span class="eyebrow">Your face</span><h2>'+(S.look?'This is you':'Make your face')+'</h2>'+
-      '<p class="note">'+(S.look?'Shown next to your name on the league board, and on your side of every conversation.':'Pick a face for the league board and your side of every conversation. Until you do, you get one at random.')+'</p></div></div>'+
-      '<button type="button" class="btn ghost" id="btn-face">'+(S.look?'Change my face':'Make my face')+'</button>';
-    $('#btn-face').onclick=()=>{faceDraft=(lookParse(S.look)||lookRand(myFaceSeed())).slice();faceGal=[];renderFace();};return;}
-  if(!faceGal.length)faceGal=Array.from({length:12},()=>lookRand());
-  box.innerHTML='<div class="face-top">'+faceHtml(faceDraft.join('.'),null,104)+'<div><span class="eyebrow">Your face</span><h2>Make it yours</h2><p class="note">Tap a face below to start from it, then change anything.</p></div></div>'+
-    '<div class="face-gal">'+faceGal.map((a,i)=>'<button type="button" data-gi="'+i+'" aria-label="Use face '+(i+1)+'">'+faceHtml(a.join('.'),null,52)+'</button>').join('')+'</div>'+
-    '<button type="button" class="linkbtn" id="face-more">Show me 12 more</button>'+
-    '<div class="fsteps">'+FACE_KEYS.map((k,i)=>{const val=faceDraft[i];return '<div class="fstep"><span>'+k[1]+'</span><button type="button" data-fk="'+i+'" data-d="-1" aria-label="Previous '+k[1].toLowerCase()+'">‹</button>'+
-      '<b class="num">'+(k[3]&&!val?'None':k[0]==='hair'&&val===64?'Hat':val+' / '+k[2])+'</b><button type="button" data-fk="'+i+'" data-d="1" aria-label="Next '+k[1].toLowerCase()+'">›</button></div>';}).join('')+'</div>'+
-    '<div class="row2"><button type="button" class="btn amber" id="face-save">Save my face</button><button type="button" class="btn ghost" id="face-rand">Surprise me</button></div>'+
-    '<button type="button" class="linkbtn" id="face-cancel">Cancel</button>';
-  box.querySelectorAll('[data-gi]').forEach(b=>b.onclick=()=>{faceDraft=faceGal[b.dataset.gi].slice();renderFace();});
-  box.querySelectorAll('[data-fk]').forEach(b=>b.onclick=()=>{const i=+b.dataset.fk,k=FACE_KEYS[i],lo=k[3]?0:1,span=k[2]-lo+1;
-    faceDraft[i]=lo+((faceDraft[i]-lo+Number(b.dataset.d))%span+span)%span;renderFace();const again=box.querySelector('[data-fk="'+i+'"][data-d="'+b.dataset.d+'"]');if(again)again.focus();});
-  $('#face-more').onclick=()=>{faceGal=[];renderFace();};
-  $('#face-rand').onclick=()=>{faceDraft=lookRand();renderFace();};
-  $('#face-cancel').onclick=()=>{faceDraft=null;renderFace();};
-  $('#face-save').onclick=()=>{S.look=faceDraft.join('.');S.lookAt=Date.now();faceDraft=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
+/* Your face: pick one of 24 people drawn in the course's picture style, and the colour of their top.
+   Saved as the look "99.<person>.<colour>.0.0.0.0.0.0", which the database's existing rule (nine small numbers) accepts.
+   Faces made with the older builder keep showing until their owner picks a new one. */
+let facePick=null;
+function renderFace(){const box=$('#face-card');if(!box)return;box.hidden=false;box.classList.toggle('editing',!!facePick);
+  if(!facePick){const has=!!S.look;
+    box.innerHTML='<div class="face-top">'+faceHtml(S.look,myFaceSeed(),88)+'<div><span class="eyebrow">Your face</span><h2>'+(has?'This is you':'Pick your face')+'</h2>'+
+      '<p class="note">'+(has?'Shown next to your name on the league board, and on your side of every conversation.':'Pick a face for the league board and your side of every conversation. Until you do, you get one at random.')+'</p></div></div>'+
+      '<button type="button" class="btn ghost" id="btn-face">'+(has?'Change my face':'Pick my face')+'</button>';
+    $('#btn-face').onclick=()=>{const a=artLook(S.look)||artLook(artSeeded(myFaceSeed()));facePick={face:a.face,top:a.top};renderFace();};return;}
+  const p=facePick;
+  box.innerHTML='<div class="face-top">'+faceHtml(artCode(p.face,p.top),null,104)+'<div><span class="eyebrow">Your face</span><h2>Pick your face</h2><p class="note">Tap the face that feels like you, then pick a colour for your top.</p></div></div>'+
+    '<div class="art-gal">'+Array.from({length:ART_FACES},(_,i)=>'<button type="button" data-af="'+(i+1)+'" aria-pressed="'+(p.face===i+1)+'" aria-label="Face '+(i+1)+'">'+faceHtml(artCode(i+1,p.top),null,56)+'</button>').join('')+'</div>'+
+    '<div class="art-tops" role="group" aria-label="Colour of your top">'+ART_TOPS.map((c,i)=>'<button type="button" class="chip" data-at="'+(i+1)+'" aria-pressed="'+(p.top===i+1)+'"><i style="background:'+c[2]+'"></i>'+c[1]+'</button>').join('')+'</div>'+
+    '<div class="row2"><button type="button" class="btn amber" id="face-save">Save my face</button><button type="button" class="btn ghost" id="face-cancel">Cancel</button></div>';
+  box.querySelectorAll('[data-af]').forEach(b=>b.onclick=()=>{facePick.face=+b.dataset.af;renderFace();const again=box.querySelector('[data-af="'+b.dataset.af+'"]');if(again)again.focus();});
+  box.querySelectorAll('[data-at]').forEach(b=>b.onclick=()=>{facePick.top=+b.dataset.at;renderFace();const again=box.querySelector('[data-at="'+b.dataset.at+'"]');if(again)again.focus();});
+  $('#face-cancel').onclick=()=>{facePick=null;renderFace();};
+  $('#face-save').onclick=()=>{S.look=artCode(p.face,p.top);S.lookAt=Date.now();facePick=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
 
 /* ===================== TABS ===================== */
 const VIEWS=['learn','practice','board','talk','profile','settings','store'];
@@ -4061,6 +4091,7 @@ function readyPlan(){const steps=[],lastDone=[];let ahead=0;
     else if(c)steps.push({c,files:convFiles(c).concat(castPictureFiles(c))});}
   const soon=Date.now()+7*DAY,due=practised().filter(i=>rec(i.id).due<=soon),extra=new Set();
   if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE&&!S.look)extra.add(absUrl(picFile(LEARNER_PICTURE)));
+  {const mine=artLook(S.look);if(mine)extra.add(absUrl(artFile(mine.face,mine.top)));}
   filesOf(due).concat(picsOf(due)).forEach(f=>extra.add(f));
   Object.keys(S.replies||{}).forEach(k=>{const r=S.replies[k],c=CONV_BY[unitOf(k)];if(c&&r&&r.due<=soon)convFiles(c).forEach(f=>extra.add(f));});
   /* (Round 12) the recordings of the sentences you can make in the lessons ahead (Put it together) */
