@@ -1,0 +1,16 @@
+{
+  "id": "es-youre-welcome",
+  "word": "De nada",
+  "en": "You're welcome",
+  "unit": "u1",
+  "references": [
+    "approved-style-reference.png",
+    "mariana-diego-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached reference 1 approved rounded flat cartoon, huge white oval eyes, chunky hands and oversized heads, solid turquoise/amber/coral/navy/cream, minimal detail, almost no outlines. Reference 2 fixes Mariana (dark brown bob, round gold earrings, turquoise sweatshirt, coral trousers) and Diego (dark brown short wavy hair, amber sweatshirt, navy trousers), both warm brown skin and cream shoes. Entire simple scene fully visible with generous transparent margins, readable at 56px. Exactly two arms and two hands per person. Fully opaque interiors, true transparent outside, crisp edges. No words, letters, labels, logos, texture, gradient, glow, shadow, backdrop or floor. Meaning: You're welcome, a gracious response after receiving thanks. Smiling Mariana has one hand at her chest and the other palm open warmly toward Diego. Diego smiles gratefully with both hands clasped at chest height. Small coral heart between them. No gift, transaction or speech text.",
+  "master": "docs/art-direction/masters/es-youre-welcome.png",
+  "asset": "pics/art-v2/es-youre-welcome.webp",
+  "bytes": 41522,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "es-boarding-gate",
+  "word": "la puerta de embarque",
+  "en": "the boarding gate",
+  "unit": "u10",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: an airport BOARDING GATE: a turquoise jet bridge tunnel connecting to the open front door of a cream airplane, with a small coral gate desk beside the tunnel entrance. No letters, numbers or people.",
+  "master": "docs/art-direction/masters/es-boarding-gate.png",
+  "asset": "pics/art-v2/es-boarding-gate.webp",
+  "bytes": 27946,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

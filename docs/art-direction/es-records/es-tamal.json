@@ -1,0 +1,15 @@
+{
+  "id": "es-tamal",
+  "word": "el tamal",
+  "en": "the tamal (filled corn dough)",
+  "unit": "u12",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a Mexican TAMAL: one tamal in an opened pale-green-cream corn husk wrapper, showing soft yellow corn dough with a little red filling visible, on a small turquoise plate. Not a burrito, not a sandwich.",
+  "master": "docs/art-direction/masters/es-tamal.png",
+  "asset": "pics/art-v2/es-tamal.webp",
+  "bytes": 29106,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

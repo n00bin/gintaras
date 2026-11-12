@@ -1,0 +1,15 @@
+{
+  "id": "es-park",
+  "word": "el parque",
+  "en": "the park",
+  "unit": "u4",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a PARK represented by one rounded green leafy tree with short amber trunk, one small coral bench with turquoise supports beside it, and a short gently curving cream path between two small green bushes. One compact complete little public-park scene, no people, buildings, signs, sky, ground plane or enclosing background.",
+  "master": "docs/art-direction/masters/es-park.png",
+  "asset": "pics/art-v2/es-park.webp",
+  "bytes": 34018,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

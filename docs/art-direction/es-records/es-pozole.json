@@ -1,0 +1,15 @@
+{
+  "id": "es-pozole",
+  "word": "el pozole",
+  "en": "the pozole (hominy soup)",
+  "unit": "u12",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: Mexican POZOLE: one turquoise clay bowl of red broth soup full of big white hominy corn kernels, topped with shredded green lettuce, pink radish slices, and a green lime wedge on the rim. A little steam.",
+  "master": "docs/art-direction/masters/es-pozole.png",
+  "asset": "pics/art-v2/es-pozole.webp",
+  "bytes": 39592,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

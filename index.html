@@ -1116,8 +1116,8 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.124';
-const APP_VERSION=196;
+const APP_RELEASE='3.125';
+const APP_VERSION=197;
 const WHATS_NEW='The new illustration style now covers every Lithuanian course picture and conversation character. Required unit skill lessons and your saved progress continue as before.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -2935,7 +2935,7 @@ let NAME_SET=null;
 function isName(w){if(!NAME_SET){NAME_SET=new Set(PERS.baseNames.map(norm));Object.keys(CAST_GV).forEach(n=>{NAME_SET.add(norm(n));try{Object.values(nameForms(n,/[aė]$/.test(n)?'f':'m')).forEach(f=>NAME_SET.add(norm(f)));}catch(e){}});}
   const k=norm(w);return NAME_SET.has(k)||NAMEISH(w)&&!(WORD_ITEMS||{})[k];}
 /* (Round 12) what is left after leaving out "I / you" has to say something: "kaip" alone is not "Kaip tu?" (How are you?) */
-const BARE_LEFT=new Set(['kaip','kas','ką','kur','kada','kodėl','koks','kokia','kiek','iš','o','ir','ar','bet','irgi','taip','ne','tai','čia']);
+const BARE_LEFT=new Set(['kaip','kas','ką','kur','kada','kodėl','koks','kokia','kiek','iš','o','ir','ar','bet','irgi','taip','ne','tai','čia'].concat(LANG.bareLeft||[]));
 const sayable=d=>norm(d).split(' ').some(w=>w&&!BARE_LEFT.has(w));
 /* every part of the answer that loses its "I / you" still says something ("Labas! Kaip tu?" without tu is "Labas! Kaip": no) */
 const dropOk=t=>String(t).split(/[.!?,;]+/).every(seg=>{const n=norm(seg);return !n||dropWho(n)===n||sayable(dropWho(n));});
@@ -3086,7 +3086,7 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     if(k7>=0)return {ok:true,note:'<b>'+esc(targets[k7])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropWho+(dropWho(tn[k7])===dg?'':' The words can go round another way too; this is the usual order.')+'</div>'};}}
   /* (Round 6) "Čia mes esame", "Aš kalbu truputį lietuviškai": the same words in another order are right (Round 7: a word
      that belongs in front of the next one stays there: "Man gerai irgi" isn't "Man irgi gerai") */
-  {const so=s=>norm(s).split(' ').sort().join(' '),gs=so(given);if(a.split(' ').length>=3){const k5=tn.findIndex(x=>so(x)===gs&&fixedOk(a,x)),k6=k5>=0?-1:tn.findIndex(x=>strip(so(x))===strip(gs)&&fixedOk(strip(a),strip(x)));
+  if(LANG.freeOrder!==false){const so=s=>norm(s).split(' ').sort().join(' '),gs=so(given);if(a.split(' ').length>=3){const k5=tn.findIndex(x=>so(x)===gs&&fixedOk(a,x)),k6=k5>=0?-1:tn.findIndex(x=>strip(so(x))===strip(gs)&&fixedOk(strip(a),strip(x)));
     const ord='<div class="why">Right too: '+LANG.en+' word order is free, so the words can go round another way. This is the usual order.</div>';
     if(k5>=0)return {ok:true,note:'<b>'+esc(targets[k5])+'</b>'+(en?' · '+esc(en):'')+ord};
     if(k6>=0)return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+esc(targets[k6])+'</b>'+ord};}}

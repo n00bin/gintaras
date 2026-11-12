@@ -1,0 +1,15 @@
+{
+  "id": "es-message",
+  "word": "el mensaje",
+  "en": "the message",
+  "unit": "u39",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a text MESSAGE: one navy smartphone with a turquoise screen showing one coral chat bubble with three cream dots, and a second cream speech bubble with three dots popping out of the phone. No letters.",
+  "master": "docs/art-direction/masters/es-message.png",
+  "asset": "pics/art-v2/es-message.webp",
+  "bytes": 12808,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "portrait-diego",
+  "name": "Diego",
+  "kind": "cast-portrait",
+  "references": [
+    "approved-style-reference.png",
+    "mariana-diego-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE transparent conversation portrait of DIEGO, the MAN in the bottom row of reference 2. Reference 1 supplies the approved rounded flat cartoon STYLE; reference 2 supplies his exact IDENTITY. Preserve his warm medium skin, short dark brown rounded wavy hair, large white oval eyes and amber yellow jumper. No beard or glasses. Centered head and upper shoulders, friendly relaxed smile, front three-quarter view facing slightly left. Complete hair and head inside the canvas with generous transparent margin. Readable at 36px. Rounded geometric shapes, bright flat colors, minimal details, almost no outlines. True transparent background, fully opaque character interiors. No realism, texture, gradients, shadows, disc, frame, ground, hands, props, other people, labels, text or watermark. Exactly ONE portrait, not a sheet or collage.",
+  "master": "docs/art-direction/masters/portrait-diego.png",
+  "asset": "pics/art-v2/portrait-diego.webp",
+  "bytes": 19418,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Identity checked against mariana-diego-character-sheet.png; inspected at 200px and 56px on light and dark."
+}

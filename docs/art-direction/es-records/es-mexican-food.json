@@ -1,0 +1,15 @@
+{
+  "id": "es-mexican-food",
+  "word": "Me encanta la comida mexicana",
+  "en": "I love Mexican food",
+  "unit": "u37",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: MEXICAN FOOD: one plate with two soft tacos, a small bowl of green guacamole and a small bowl of red salsa, with a lime wedge. A small coral heart above the plate.",
+  "master": "docs/art-direction/masters/es-mexican-food.png",
+  "asset": "pics/art-v2/es-mexican-food.webp",
+  "bytes": 36390,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

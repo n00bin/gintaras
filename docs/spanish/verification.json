@@ -1,0 +1,10 @@
+{
+  "units": 37,
+  "cards": 807,
+  "conversations": 15,
+  "grading_cases": 18,
+  "language_storage": "isolated",
+  "gender_personalisation": "passed",
+  "offline_new_audio": "passed",
+  "page_errors": []
+}

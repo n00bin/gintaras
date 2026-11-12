@@ -1,0 +1,15 @@
+{
+  "id": "es-seat",
+  "word": "el asiento",
+  "en": "the seat",
+  "unit": "u10",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: one airplane passenger SEAT in side three-quarter view: navy cushioned seat and backrest with a cream headrest cover, a turquoise armrest and a buckled amber seat belt lying on the seat. Seat only.",
+  "master": "docs/art-direction/masters/es-seat.png",
+  "asset": "pics/art-v2/es-seat.webp",
+  "bytes": 25750,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

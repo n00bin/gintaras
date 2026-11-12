@@ -1,0 +1,15 @@
+{
+  "id": "es-subway",
+  "word": "el metro",
+  "en": "the subway",
+  "unit": "u7",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: SUBWAY train. A rounded turquoise front of a metro train emerging from a simple dark navy underground tunnel arch with coral rim. Cream train windows and two amber headlights, two short cream rails visible below. A small descending staircase beside tunnel indicates underground transit. No letters, numbers, map or people.",
+  "master": "docs/art-direction/masters/es-subway.png",
+  "asset": "pics/art-v2/es-subway.webp",
+  "bytes": 22526,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

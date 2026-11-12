@@ -1,0 +1,15 @@
+{
+  "id": "es-airport",
+  "word": "el aeropuerto",
+  "en": "the airport",
+  "unit": "u7",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: AIRPORT. A simple turquoise airport terminal with three large cream windows and a tall amber control tower beside it. Above terminal one unmistakable small cream passenger airplane with coral wings and navy cockpit window, shown side view in flight. Compact symbolic place scene, no runway floor, lettering or people.",
+  "master": "docs/art-direction/masters/es-airport.png",
+  "asset": "pics/art-v2/es-airport.webp",
+  "bytes": 28676,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

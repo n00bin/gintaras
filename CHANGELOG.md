@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.125** (2026-11-12) The full Mexican Spanish course (37 units, 807 cards, 15 conversations, recordings and 472 pictures) is included but stays behind Coming soon until a native speaker has reviewed it. Spanish answers keep their word order and don't accept a lone "y". Lithuanian is unchanged.
+
 - **3.124** (2026-11-12) The app now matches its pictures: navy, turquoise, amber and coral on warm cream, with a navy dark mode, and the unit practice windows follow the same colours (including dark mode). "Pick your face" replaces the face builder: 24 people drawn in the picture style, each with a top in 5 colours. Faces made with the old builder keep showing until their owner picks a new one; players who never picked get a picture-style face.
 
 - **3.123** (2026-11-12) Accounts are for ages 13 and over: said in the sign-in box and on the privacy page, which also tells a parent how to have a child's account deleted. Learning without an account stays open to everyone.

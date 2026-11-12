@@ -1,0 +1,15 @@
+{
+  "id": "es-square",
+  "word": "la plaza",
+  "en": "the square",
+  "unit": "u4",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a public town SQUARE. One small central turquoise fountain with a cream basin and three blue water arcs, surrounded by four simple cream paving tiles, a coral bench and two low green potted trees, with one small amber town building behind. One compact scene, open public space; no sky or filled ground background.",
+  "master": "docs/art-direction/masters/es-square.png",
+  "asset": "pics/art-v2/es-square.webp",
+  "bytes": 36378,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

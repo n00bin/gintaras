@@ -1,0 +1,15 @@
+{
+  "id": "es-key",
+  "word": "la llave",
+  "en": "the key",
+  "unit": "u30",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: one door KEY: a single amber metal key with a round bow and simple teeth, on a small turquoise key ring with a coral key tag. Key only.",
+  "master": "docs/art-direction/masters/es-key.png",
+  "asset": "pics/art-v2/es-key.webp",
+  "bytes": 28388,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

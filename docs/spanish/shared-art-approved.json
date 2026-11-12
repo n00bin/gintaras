@@ -1,0 +1,1918 @@
+{
+  "status": "semantic_mapping_reviewed",
+  "source": "docs/art-direction/visual-review.json",
+  "mappings": [
+    {
+      "word": "¿Qué significa esta palabra?",
+      "en": "What does this word mean?",
+      "asset": "art-v2/what-does-this-word-mean",
+      "source_word": "Ką reiškia šis žodis?",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Soy estudiante",
+      "en": "I am a student",
+      "asset": "art-v2/i-am-a-student",
+      "source_word": "Aš esu studentas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "hablar",
+      "en": "to speak",
+      "asset": "art-v2/to-speak",
+      "source_word": "kalbėti",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "dónde",
+      "en": "where",
+      "asset": "art-v2/where",
+      "source_word": "kur",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "cómo",
+      "en": "how",
+      "asset": "art-v2/how",
+      "source_word": "kaip",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la mesa",
+      "en": "the table",
+      "asset": "art-v2/table",
+      "source_word": "stalas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "¿De dónde eres?",
+      "en": "Where are you from?",
+      "asset": "art-v2/where-are-you-from-v2",
+      "source_word": "Iš kur tu esi?",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "¿Cuántos años tienes?",
+      "en": "How old are you?",
+      "asset": "art-v2/how-old-are-you",
+      "source_word": "Kiek tau metų?",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Soy maestro",
+      "en": "I am a teacher",
+      "asset": "art-v2/i-am-a-teacher-v3",
+      "source_word": "Aš esu mokytojas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "a las ocho",
+      "en": "at eight o'clock",
+      "asset": "art-v2/at-eight-o-clock",
+      "source_word": "Aštuntą valandą",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Me visto",
+      "en": "I get dressed",
+      "asset": "art-v2/i-get-dressed",
+      "source_word": "Aš apsirengiu",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "siempre",
+      "en": "always",
+      "asset": "art-v2/always",
+      "source_word": "visada",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "a veces",
+      "en": "sometimes",
+      "asset": "art-v2/sometimes",
+      "source_word": "kartais",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "nunca",
+      "en": "never",
+      "asset": "art-v2/never",
+      "source_word": "niekada",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "El menú, por favor",
+      "en": "The menu, please",
+      "asset": "art-v2/the-menu-please",
+      "source_word": "Meniu, prašau",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la ciudad",
+      "en": "the city",
+      "asset": "art-v2/city",
+      "source_word": "miestas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la calle",
+      "en": "the street",
+      "asset": "art-v2/street",
+      "source_word": "gatvė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la tienda",
+      "en": "the shop",
+      "asset": "art-v2/shop",
+      "source_word": "parduotuvė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el banco",
+      "en": "the bank",
+      "asset": "art-v2/bank",
+      "source_word": "bankas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la farmacia",
+      "en": "the pharmacy",
+      "asset": "art-v2/pharmacy",
+      "source_word": "vaistinė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el hospital",
+      "en": "the hospital",
+      "asset": "art-v2/hospital",
+      "source_word": "ligoninė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el mercado",
+      "en": "the market",
+      "asset": "art-v2/market",
+      "source_word": "turgus",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "a la izquierda",
+      "en": "to the left",
+      "asset": "art-v2/to-the-left",
+      "source_word": "kairėn",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "derecho",
+      "en": "straight ahead",
+      "asset": "art-v2/straight-ahead",
+      "source_word": "tiesiai",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el taxi",
+      "en": "the taxi",
+      "asset": "art-v2/taxi",
+      "source_word": "taksi",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la bicicleta",
+      "en": "the bicycle",
+      "asset": "art-v2/bicycle",
+      "source_word": "dviratis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la estación",
+      "en": "the station",
+      "asset": "art-v2/station",
+      "source_word": "stotis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el boleto",
+      "en": "the ticket",
+      "asset": "art-v2/ticket",
+      "source_word": "bilietas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el tren",
+      "en": "the train",
+      "asset": "art-v2/train",
+      "source_word": "traukinys",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el dinero",
+      "en": "the money",
+      "asset": "art-v2/money",
+      "source_word": "pinigai",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la bolsa",
+      "en": "the bag",
+      "asset": "art-v2/bag",
+      "source_word": "maišelis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "caro",
+      "en": "expensive",
+      "asset": "art-v2/expensive",
+      "source_word": "brangu",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "barato",
+      "en": "cheap",
+      "asset": "art-v2/cheap",
+      "source_word": "pigu",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la camisa",
+      "en": "the shirt",
+      "asset": "art-v2/shirt",
+      "source_word": "marškiniai",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el pantalón",
+      "en": "the trousers",
+      "asset": "art-v2/trousers",
+      "source_word": "kelnės",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "los zapatos",
+      "en": "the shoes",
+      "asset": "art-v2/shoes",
+      "source_word": "batai",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "rojo",
+      "en": "red",
+      "asset": "art-v2/red",
+      "source_word": "raudonas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "azul",
+      "en": "blue",
+      "asset": "art-v2/blue-v2",
+      "source_word": "mėlynas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "verde",
+      "en": "green",
+      "asset": "art-v2/green",
+      "source_word": "žalias",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "negro",
+      "en": "black",
+      "asset": "art-v2/black",
+      "source_word": "juodas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "blanco",
+      "en": "white",
+      "asset": "art-v2/white-v5",
+      "source_word": "baltas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "pequeño",
+      "en": "small",
+      "asset": "art-v2/small",
+      "source_word": "mažas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la familia",
+      "en": "the family",
+      "asset": "art-v2/family",
+      "source_word": "šeima",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el hermano",
+      "en": "the brother",
+      "asset": "art-v2/brother",
+      "source_word": "brolis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la hermana",
+      "en": "the sister",
+      "asset": "art-v2/sister",
+      "source_word": "sesuo",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la abuela",
+      "en": "the grandmother",
+      "asset": "art-v2/grandmother",
+      "source_word": "senelė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el abuelo",
+      "en": "the grandfather",
+      "asset": "art-v2/grandfather",
+      "source_word": "senelis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la casa",
+      "en": "the house",
+      "asset": "art-v2/house",
+      "source_word": "namas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el baño",
+      "en": "the bathroom",
+      "asset": "art-v2/bathroom",
+      "source_word": "vonia",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la ventana",
+      "en": "the window",
+      "asset": "art-v2/window",
+      "source_word": "langas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "bajo",
+      "en": "short (height)",
+      "asset": "art-v2/short-height",
+      "source_word": "žemas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "joven",
+      "en": "young",
+      "asset": "art-v2/young",
+      "source_word": "jaunas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "mayor",
+      "en": "older",
+      "asset": "art-v2/older",
+      "source_word": "vyresnis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "amable",
+      "en": "kind",
+      "asset": "art-v2/kind",
+      "source_word": "malonus",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "nuevo",
+      "en": "new",
+      "asset": "art-v2/new",
+      "source_word": "naujas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "viejo",
+      "en": "old",
+      "asset": "art-v2/old",
+      "source_word": "senas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "malo",
+      "en": "bad",
+      "asset": "art-v2/bad",
+      "source_word": "blogas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Mi hermana es alta",
+      "en": "My sister is tall",
+      "asset": "art-v2/my-sister-is-tall",
+      "source_word": "Mano sesuo aukšta",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la lluvia",
+      "en": "the rain",
+      "asset": "art-v2/rain",
+      "source_word": "lietus",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "chofer",
+      "en": "driver",
+      "asset": "art-v2/driver",
+      "source_word": "vairuotojas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la escuela",
+      "en": "the school",
+      "asset": "art-v2/school",
+      "source_word": "mokykla",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el trabajo",
+      "en": "the work / job",
+      "asset": "art-v2/work-job",
+      "source_word": "darbas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "leer",
+      "en": "to read",
+      "asset": "art-v2/to-read",
+      "source_word": "skaityti",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Me gusta la música",
+      "en": "I like music",
+      "asset": "art-v2/i-like-music",
+      "source_word": "Man patinka muzika",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la primavera",
+      "en": "the spring",
+      "asset": "art-v2/spring",
+      "source_word": "pavasaris",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el otoño",
+      "en": "the autumn",
+      "asset": "art-v2/autumn",
+      "source_word": "ruduo",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el año",
+      "en": "the year",
+      "asset": "art-v2/year",
+      "source_word": "metai",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "porque",
+      "en": "because",
+      "asset": "art-v2/because-v2",
+      "source_word": "nes",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "solo",
+      "en": "only",
+      "asset": "art-v2/only-v2",
+      "source_word": "tik",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "nadie",
+      "en": "nobody",
+      "asset": "art-v2/nobody-v2",
+      "source_word": "Niekas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "ayer",
+      "en": "yesterday",
+      "asset": "art-v2/yesterday",
+      "source_word": "vakar",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "primero",
+      "en": "first",
+      "asset": "art-v2/first",
+      "source_word": "pirmas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "de repente",
+      "en": "suddenly",
+      "asset": "art-v2/suddenly",
+      "source_word": "Staiga",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la noche",
+      "en": "the night",
+      "asset": "art-v2/night",
+      "source_word": "naktis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Tengo una reservación",
+      "en": "I have a reservation",
+      "asset": "art-v2/i-have-a-reservation",
+      "source_word": "Aš turiu rezervaciją",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el pasaporte",
+      "en": "the passport",
+      "asset": "art-v2/passport",
+      "source_word": "pasas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la maleta",
+      "en": "the suitcase",
+      "asset": "art-v2/suitcase",
+      "source_word": "lagaminas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el estómago",
+      "en": "the stomach",
+      "asset": "art-v2/stomach",
+      "source_word": "pilvas",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Me duele el estómago",
+      "en": "My stomach hurts",
+      "asset": "art-v2/my-stomach-hurts",
+      "source_word": "Man skauda pilvą",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Tengo fiebre",
+      "en": "I have a fever",
+      "asset": "art-v2/i-have-a-fever",
+      "source_word": "Turiu temperatūros",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "Me duele la espalda",
+      "en": "My back hurts",
+      "asset": "art-v2/my-back-hurts",
+      "source_word": "Man skauda nugarą",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "¿En serio?",
+      "en": "Really?",
+      "asset": "art-v2/really",
+      "source_word": "Tikrai?",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el gato",
+      "en": "the cat",
+      "asset": "art-v2/cat",
+      "source_word": "katė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el pájaro",
+      "en": "the bird",
+      "asset": "art-v2/bird",
+      "source_word": "paukštis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el conejo",
+      "en": "the rabbit",
+      "asset": "art-v2/rabbit",
+      "source_word": "triušis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el caballo",
+      "en": "the horse",
+      "asset": "art-v2/horse",
+      "source_word": "arklys",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la vaca",
+      "en": "the cow",
+      "asset": "art-v2/cow",
+      "source_word": "karvė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "el cerdo",
+      "en": "the pig",
+      "asset": "art-v2/pig",
+      "source_word": "kiaulė",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la gallina",
+      "en": "the hen",
+      "asset": "art-v2/hen",
+      "source_word": "višta",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la oveja",
+      "en": "the sheep",
+      "asset": "art-v2/sheep",
+      "source_word": "avis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "la mariposa",
+      "en": "the butterfly",
+      "asset": "art-v2/butterfly",
+      "source_word": "drugelis",
+      "reason": "Same vocabulary sense after removing the English definite article; use the existing visually approved asset. The shared learner is Tomás. Keep number/day/time text tiles separately."
+    },
+    {
+      "word": "¿Hablas inglés?",
+      "en": "Do you speak English?",
+      "asset": "art-v2/do-you-speak-english-to-a-friend",
+      "source_word": "Ar tu kalbi angliškai?",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "el camión",
+      "en": "the bus (Mexico)",
+      "asset": "art-v2/bus",
+      "source_word": "autobusas",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "la chamarra",
+      "en": "the jacket (Mexico)",
+      "asset": "art-v2/jacket",
+      "source_word": "striukė",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "el departamento",
+      "en": "the apartment (Mexico)",
+      "asset": "art-v2/flat-apartment",
+      "source_word": "butas",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "la recámara",
+      "en": "the bedroom (Mexico)",
+      "asset": "art-v2/bedroom",
+      "source_word": "miegamasis",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "ingeniero",
+      "en": "engineer (masculine)",
+      "asset": "art-v2/engineer",
+      "source_word": "inžinierius",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "cocinero",
+      "en": "cook (masculine)",
+      "asset": "art-v2/cook-chef-v2",
+      "source_word": "virėjas",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "luego",
+      "en": "then / afterwards",
+      "asset": "art-v2/then",
+      "source_word": "tada",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "el elevador",
+      "en": "the lift / elevator (Mexico)",
+      "asset": "art-v2/lift-elevator",
+      "source_word": "liftas",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "la salida",
+      "en": "the exit / departure",
+      "asset": "art-v2/exit",
+      "source_word": "išėjimas",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "la mano",
+      "en": "the hand",
+      "asset": "art-v2/hand-arm",
+      "source_word": "ranka",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "el pie",
+      "en": "the foot",
+      "asset": "art-v2/leg-foot",
+      "source_word": "koja",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "Llame a una ambulancia",
+      "en": "Call an ambulance (polite)",
+      "asset": "art-v2/call-an-ambulance",
+      "source_word": "Iškvieskite greitąją",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "sale",
+      "en": "OK / agreed (Mexico)",
+      "asset": "art-v2/ok",
+      "source_word": "Gerai",
+      "reason": "Explicit semantic review: regional term, polite command or noun sense matches the existing illustration."
+    },
+    {
+      "word": "la espalda",
+      "en": "the back",
+      "asset": "art-v2/back-of-the-body",
+      "source_word": "nugara",
+      "reason": "Body-part back, explicitly selected instead of backwards direction."
+    },
+    {
+      "word": "la madre",
+      "en": "the mother",
+      "asset": "art-v2/mom",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "el padre",
+      "en": "the father",
+      "asset": "art-v2/dad",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "la doctora",
+      "en": "the female doctor",
+      "asset": "art-v2/doctor-woman",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "el celular",
+      "en": "the mobile phone (Mexico)",
+      "asset": "art-v2/telephone",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "la parada",
+      "en": "the stop",
+      "asset": "art-v2/bus-stop",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "la recepción",
+      "en": "the reception desk",
+      "asset": "art-v2/reception",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "el equipaje",
+      "en": "the luggage",
+      "asset": "art-v2/suitcase",
+      "reason": "Manual semantic review of the specific parent, profession, transport, desk, luggage or phone sense. Reuses a visually approved illustration."
+    },
+    {
+      "word": "trabajar",
+      "en": "to work",
+      "asset": "art-v2/work-job",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "comer",
+      "en": "to eat",
+      "asset": "art-v2/i-am-eating-bread",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "como",
+      "en": "I eat",
+      "asset": "art-v2/i-am-eating-bread",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "beber",
+      "en": "to drink",
+      "asset": "art-v2/i-am-drinking-water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "bebo",
+      "en": "I drink",
+      "asset": "art-v2/i-am-drinking-water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "aprender",
+      "en": "to learn",
+      "asset": "art-v2/i-m-learning",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "aprendo",
+      "en": "I learn",
+      "asset": "art-v2/i-m-learning",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "cuándo",
+      "en": "when",
+      "asset": "art-v2/when-a-question-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "quiero",
+      "en": "I want",
+      "asset": "art-v2/to-want",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "años",
+      "en": "years",
+      "asset": "art-v2/year",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero agua",
+      "en": "I want water",
+      "asset": "art-v2/water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo un teléfono",
+      "en": "I have a telephone",
+      "asset": "art-v2/telephone",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "por la mañana",
+      "en": "in the morning",
+      "asset": "art-v2/morning",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "por la noche",
+      "en": "at night",
+      "asset": "art-v2/night",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me baño",
+      "en": "I take a bath / shower",
+      "asset": "art-v2/shower",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "desayuno",
+      "en": "I eat breakfast",
+      "asset": "art-v2/breakfast",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "duermo",
+      "en": "I sleep",
+      "asset": "art-v2/i-sleep-eight-hours",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Como arroz",
+      "en": "I eat rice",
+      "asset": "art-v2/es-rice",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Bebo agua",
+      "en": "I drink water",
+      "asset": "art-v2/i-am-drinking-water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo sed",
+      "en": "I am thirsty",
+      "asset": "art-v2/thirsty",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Una mesa para dos",
+      "en": "A table for two",
+      "asset": "art-v2/table",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero un taco",
+      "en": "I want a taco",
+      "asset": "art-v2/taco",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Un café, por favor",
+      "en": "A coffee, please",
+      "asset": "art-v2/coffee",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Soy alérgico a los cacahuates",
+      "en": "I am allergic to peanuts",
+      "asset": "art-v2/i-m-allergic-to-nuts",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "sin carne",
+      "en": "without meat",
+      "asset": "art-v2/i-don-t-eat-meat",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Tiene leche?",
+      "en": "Does it contain milk?",
+      "asset": "art-v2/milk",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "lejos",
+      "en": "far away",
+      "asset": "art-v2/far",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Dónde está la farmacia?",
+      "en": "Where is the pharmacy?",
+      "asset": "art-v2/pharmacy",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "vamos",
+      "en": "we go",
+      "asset": "art-v2/let-s-go",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Voy al parque",
+      "en": "I go to the park",
+      "asset": "art-v2/es-park",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Vamos a la tienda",
+      "en": "We go to the shop",
+      "asset": "art-v2/shop",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Siga derecho",
+      "en": "Go straight ahead (polite)",
+      "asset": "art-v2/straight-ahead",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Dónde está el museo?",
+      "en": "Where is the museum?",
+      "asset": "art-v2/es-museum",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "La tienda está lejos",
+      "en": "The shop is far away",
+      "asset": "art-v2/far",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Me puede ayudar?",
+      "en": "Can you help me? (polite)",
+      "asset": "art-v2/please-help",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "en camión",
+      "en": "by bus",
+      "asset": "art-v2/bus",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Voy en taxi",
+      "en": "I am going by taxi",
+      "asset": "art-v2/taxi",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Un boleto, por favor",
+      "en": "One ticket, please",
+      "asset": "art-v2/ticket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Va al centro?",
+      "en": "Does it go downtown?",
+      "asset": "art-v2/centre",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿A qué hora sale?",
+      "en": "What time does it leave?",
+      "asset": "art-v2/when-does-it-leave",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Cuánto cuesta el boleto?",
+      "en": "How much is the ticket?",
+      "asset": "art-v2/ticket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Aquí, por favor",
+      "en": "Here, please",
+      "asset": "art-v2/stop-here-please",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Cuesta treinta pesos",
+      "en": "It costs thirty pesos",
+      "asset": "art-v2/money",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero dos manzanas",
+      "en": "I want two apples",
+      "asset": "art-v2/apple",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Acepta tarjeta?",
+      "en": "Do you accept cards?",
+      "asset": "art-v2/can-i-pay-by-card",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me queda pequeña",
+      "en": "It is too small on me (feminine item)",
+      "asset": "art-v2/too-small",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me llevo la chamarra",
+      "en": "I will take the jacket",
+      "asset": "art-v2/jacket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "mi familia",
+      "en": "my family",
+      "asset": "art-v2/family",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "tu hermano",
+      "en": "your brother",
+      "asset": "art-v2/brother",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo una hermana",
+      "en": "I have a sister",
+      "asset": "art-v2/sister",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Ella es mi madre",
+      "en": "She is my mother",
+      "asset": "art-v2/mom",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Él es mi padre",
+      "en": "He is my father",
+      "asset": "art-v2/dad",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Tienes hijos?",
+      "en": "Do you have children?",
+      "asset": "art-v2/child",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Mi familia vive aquí",
+      "en": "My family lives here",
+      "asset": "art-v2/family",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "la cama",
+      "en": "the bed",
+      "asset": "art-v2/bedroom",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hay una mesa",
+      "en": "There is a table",
+      "asset": "art-v2/table",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hay dos sillas",
+      "en": "There are two chairs",
+      "asset": "art-v2/es-chair-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Hay un baño?",
+      "en": "Is there a bathroom?",
+      "asset": "art-v2/bathroom",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "La puerta está abierta",
+      "en": "The door is open",
+      "asset": "art-v2/open",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "La ventana está cerrada",
+      "en": "The window is closed",
+      "asset": "art-v2/window",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Vivo en un departamento",
+      "en": "I live in an apartment",
+      "asset": "art-v2/flat-apartment",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Mi casa es pequeña",
+      "en": "My house is small",
+      "asset": "art-v2/house",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "alto",
+      "en": "tall",
+      "asset": "art-v2/a-tall-man",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "bonito",
+      "en": "pretty",
+      "asset": "art-v2/beautiful",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Mi hermano es alto",
+      "en": "My brother is tall",
+      "asset": "art-v2/a-tall-man",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Los libros son nuevos",
+      "en": "The books are new",
+      "asset": "art-v2/books",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "La casa es bonita",
+      "en": "The house is pretty",
+      "asset": "art-v2/house",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Son muy amables",
+      "en": "They are very kind",
+      "asset": "art-v2/kind",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Estoy contento",
+      "en": "I am happy",
+      "asset": "art-v2/happy",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Estoy cansado",
+      "en": "I am tired",
+      "asset": "art-v2/tired",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Estoy enfermo",
+      "en": "I am ill",
+      "asset": "art-v2/i-am-sick",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Estoy triste",
+      "en": "I am sad",
+      "asset": "art-v2/sad",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo frío",
+      "en": "I feel cold",
+      "asset": "art-v2/it-s-cold",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo calor",
+      "en": "I feel hot",
+      "asset": "art-v2/i-m-hot",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hace frío",
+      "en": "The weather is cold",
+      "asset": "art-v2/cold-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hace calor",
+      "en": "The weather is hot",
+      "asset": "art-v2/hot",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "llueve",
+      "en": "it is raining",
+      "asset": "art-v2/rain",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hace viento",
+      "en": "It is windy",
+      "asset": "art-v2/wind",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Está nublado",
+      "en": "It is cloudy",
+      "asset": "art-v2/cloud",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Hoy hace calor",
+      "en": "It is hot today",
+      "asset": "art-v2/it-s-warm",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "el maestro",
+      "en": "the male teacher",
+      "asset": "art-v2/i-am-a-teacher-v3",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "estudiante",
+      "en": "student",
+      "asset": "art-v2/i-am-a-student",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "vendedor",
+      "en": "salesperson (masculine)",
+      "asset": "art-v2/shop-assistant",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿En qué trabajas?",
+      "en": "What do you do for work?",
+      "asset": "art-v2/work-job",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Termino a las cinco",
+      "en": "I finish at five",
+      "asset": "art-v2/i-work-until-five",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "cocinar",
+      "en": "to cook",
+      "asset": "art-v2/cook-chef-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "nadar",
+      "en": "to swim",
+      "asset": "art-v2/i-know-how-to-swim",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "escuchar música",
+      "en": "to listen to music",
+      "asset": "art-v2/i-like-music",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "ver películas",
+      "en": "to watch films",
+      "asset": "art-v2/films-movies",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "jugar futbol",
+      "en": "to play soccer",
+      "asset": "art-v2/football-soccer",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "viajar",
+      "en": "to travel",
+      "asset": "art-v2/trips-travel",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me gusta leer",
+      "en": "I like reading",
+      "asset": "art-v2/to-read",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me gusta cocinar",
+      "en": "I like cooking",
+      "asset": "art-v2/cook-chef-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me gustan los libros",
+      "en": "I like books",
+      "asset": "art-v2/books",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Te gusta viajar?",
+      "en": "Do you like travelling?",
+      "asset": "art-v2/trips-travel",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo que trabajar",
+      "en": "I have to work",
+      "asset": "art-v2/work-job",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Necesito ayuda",
+      "en": "I need help",
+      "asset": "art-v2/please-help",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Necesito comprar agua",
+      "en": "I need to buy water",
+      "asset": "art-v2/still-water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero aprender",
+      "en": "I want to learn",
+      "asset": "art-v2/i-m-learning",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero comer",
+      "en": "I want to eat",
+      "asset": "art-v2/i-am-hungry",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Voy a viajar",
+      "en": "I am going to travel",
+      "asset": "art-v2/trips-travel",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "esta noche",
+      "en": "tonight",
+      "asset": "art-v2/night",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Vamos al cine?",
+      "en": "Shall we go to the cinema?",
+      "asset": "art-v2/films-movies",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Vamos al museo",
+      "en": "Let's go to the museum",
+      "asset": "art-v2/es-museum",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Nos vemos mañana",
+      "en": "See you tomorrow",
+      "asset": "art-v2/see-you-tomorrow",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Nos vemos en el parque",
+      "en": "See you in the park",
+      "asset": "art-v2/es-park",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Con mi familia",
+      "en": "With my family",
+      "asset": "art-v2/family",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Mi cumpleaños es en mayo",
+      "en": "My birthday is in May",
+      "asset": "art-v2/cake",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Ayer fui al mercado",
+      "en": "Yesterday I went to the market",
+      "asset": "art-v2/market",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Comí pollo",
+      "en": "I ate chicken",
+      "asset": "art-v2/chicken",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Compré una camisa",
+      "en": "I bought a shirt",
+      "asset": "art-v2/shirt",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Estuve en casa",
+      "en": "I was at home",
+      "asset": "art-v2/house",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Iba al parque todos los días",
+      "en": "I used to go to the park every day",
+      "asset": "art-v2/es-park",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Fuiste al mercado?",
+      "en": "Did you go to the market?",
+      "asset": "art-v2/market",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Cuando era niño",
+      "en": "When I was a child",
+      "asset": "art-v2/child",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "la reservación",
+      "en": "the reservation (Mexico)",
+      "asset": "art-v2/i-have-a-reservation",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Incluye desayuno?",
+      "en": "Does it include breakfast?",
+      "asset": "art-v2/breakfast",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Necesito otra toalla",
+      "en": "I need another towel",
+      "asset": "art-v2/towel",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Puedo dejar mi maleta?",
+      "en": "Can I leave my suitcase?",
+      "asset": "art-v2/suitcase",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Necesito un taxi",
+      "en": "I need a taxi",
+      "asset": "art-v2/taxi",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "el viaje",
+      "en": "the trip",
+      "asset": "art-v2/trips-travel",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Dónde está la salida?",
+      "en": "Where is the exit?",
+      "asset": "art-v2/exit",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿A qué hora llega?",
+      "en": "What time does it arrive?",
+      "asset": "art-v2/when-does-it-arrive-v2",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Perdí mi maleta",
+      "en": "I lost my suitcase",
+      "asset": "art-v2/suitcase",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Aquí está mi pasaporte",
+      "en": "Here is my passport",
+      "asset": "art-v2/passport",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Quiero un boleto a México",
+      "en": "I want a ticket to Mexico",
+      "asset": "art-v2/ticket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Puedo cambiar mi boleto?",
+      "en": "Can I change my ticket?",
+      "asset": "art-v2/ticket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tengo tos",
+      "en": "I have a cough",
+      "asset": "art-v2/i-m-coughing",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Es una emergencia",
+      "en": "It is an emergency",
+      "asset": "art-v2/call-an-ambulance",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Dónde está el hospital?",
+      "en": "Where is the hospital?",
+      "asset": "art-v2/hospital",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Tiene algo para la tos?",
+      "en": "Do you have something for a cough?",
+      "asset": "art-v2/i-m-coughing",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Tienes fiebre?",
+      "en": "Do you have a fever?",
+      "asset": "art-v2/i-have-a-fever",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Necesitas ayuda?",
+      "en": "Do you need help?",
+      "asset": "art-v2/please-help",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "para mí",
+      "en": "for me / in my opinion",
+      "asset": "art-v2/in-my-opinion",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Es interesante",
+      "en": "It is interesting",
+      "asset": "art-v2/interesting",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Es importante",
+      "en": "It is important",
+      "asset": "art-v2/it-s-important",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Prefiero el té",
+      "en": "I prefer tea",
+      "asset": "art-v2/tea",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¡Qué lástima!",
+      "en": "What a shame!",
+      "asset": "art-v2/what-a-pity",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Es verdad",
+      "en": "It is true",
+      "asset": "art-v2/that-s-right",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Tienes razón",
+      "en": "You are right",
+      "asset": "art-v2/that-s-right",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me parece bien",
+      "en": "That sounds good to me",
+      "asset": "art-v2/ok",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "un momento",
+      "en": "one moment",
+      "asset": "art-v2/in-a-moment",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "déjame pensar",
+      "en": "let me think",
+      "asset": "art-v2/i-m-thinking",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Cuál es tu número?",
+      "en": "What is your number?",
+      "asset": "art-v2/telephone",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Cuál es la contraseña?",
+      "en": "What is the password?",
+      "asset": "art-v2/what-is-the-wi-fi-password",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "la contraseña",
+      "en": "the password",
+      "asset": "art-v2/what-is-the-wi-fi-password",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Me gustaría un café",
+      "en": "I would like a coffee",
+      "asset": "art-v2/coffee",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Me trae agua, por favor?",
+      "en": "Could you bring me water, please?",
+      "asset": "art-v2/water",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Me puede llamar un taxi?",
+      "en": "Can you call me a taxi?",
+      "asset": "art-v2/taxi",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Puede hablar más despacio?",
+      "en": "Can you speak more slowly? (polite)",
+      "asset": "art-v2/es-slower-please",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "No funciona",
+      "en": "It does not work",
+      "asset": "art-v2/it-doesn-t-work",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Dónde puedo comprar un boleto?",
+      "en": "Where can I buy a ticket?",
+      "asset": "art-v2/ticket",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "el pez",
+      "en": "the fish (animal)",
+      "asset": "art-v2/fish",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "Mi gato duerme",
+      "en": "My cat sleeps",
+      "asset": "art-v2/cat",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "El pájaro canta",
+      "en": "The bird sings",
+      "asset": "art-v2/bird",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "La comida está muy rica",
+      "en": "The food tastes very good",
+      "asset": "art-v2/very-tasty",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "¿Puede repetir?",
+      "en": "Can you repeat? (polite)",
+      "asset": "art-v2/can-you-repeat-that-to-a-friend",
+      "reason": "Reviewed 2026-11-12: the existing approved picture shows this meaning at 150px and 56px on light and dark; currency, colour and gender mismatches were excluded."
+    },
+    {
+      "word": "en metro",
+      "en": "by subway",
+      "asset": "art-v2/es-subway",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el metro\", which shows this meaning."
+    },
+    {
+      "word": "Quiero ir al aeropuerto",
+      "en": "I want to go to the airport",
+      "asset": "art-v2/es-airport",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el aeropuerto\", which shows this meaning."
+    },
+    {
+      "word": "Me levanto",
+      "en": "I get up",
+      "asset": "art-v2/es-wake-up",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Me despierto\", which shows this meaning."
+    },
+    {
+      "word": "Me levanto temprano",
+      "en": "I get up early",
+      "asset": "art-v2/es-wake-up",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Me despierto\", which shows this meaning."
+    },
+    {
+      "word": "¿Te levantas temprano?",
+      "en": "Do you get up early?",
+      "asset": "art-v2/es-wake-up",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Me despierto\", which shows this meaning."
+    },
+    {
+      "word": "en la esquina",
+      "en": "on the corner",
+      "asset": "art-v2/es-corner",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la esquina\", which shows this meaning."
+    },
+    {
+      "word": "dos cuadras",
+      "en": "two blocks",
+      "asset": "art-v2/es-city-block",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la cuadra\", which shows this meaning."
+    },
+    {
+      "word": "¿Cuántas cuadras?",
+      "en": "How many blocks?",
+      "asset": "art-v2/es-city-block",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la cuadra\", which shows this meaning."
+    },
+    {
+      "word": "a la derecha",
+      "en": "to the right",
+      "asset": "art-v2/es-turn-right",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Gire a la derecha\", which shows this meaning."
+    },
+    {
+      "word": "¿A la derecha?",
+      "en": "To the right? (checking)",
+      "asset": "art-v2/es-turn-right",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Gire a la derecha\", which shows this meaning."
+    },
+    {
+      "word": "caminar",
+      "en": "to walk",
+      "asset": "art-v2/es-walk",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"a pie\", which shows this meaning."
+    },
+    {
+      "word": "Prefiero caminar",
+      "en": "I prefer walking",
+      "asset": "art-v2/es-walk",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"a pie\", which shows this meaning."
+    },
+    {
+      "word": "Podemos caminar",
+      "en": "We can walk",
+      "asset": "art-v2/es-walk",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"a pie\", which shows this meaning."
+    },
+    {
+      "word": "¿Cuánto cuesta?",
+      "en": "How much does it cost?",
+      "asset": "art-v2/es-price",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el precio\", which shows this meaning."
+    },
+    {
+      "word": "Es muy grande",
+      "en": "It is very big",
+      "asset": "art-v2/es-big",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"grande\", which shows this meaning."
+    },
+    {
+      "word": "La llave está aquí",
+      "en": "The key is here",
+      "asset": "art-v2/es-key",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la llave\", which shows this meaning."
+    },
+    {
+      "word": "Aquí está la llave",
+      "en": "Here is the key",
+      "asset": "art-v2/es-key",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la llave\", which shows this meaning."
+    },
+    {
+      "word": "Hace buen tiempo",
+      "en": "The weather is nice",
+      "asset": "art-v2/es-sunny",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Hace sol\", which shows this meaning."
+    },
+    {
+      "word": "Necesito un doctor",
+      "en": "I need a doctor",
+      "asset": "art-v2/es-doctor-man",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el doctor\", which shows this meaning."
+    },
+    {
+      "word": "Necesito hablar con un doctor",
+      "en": "I need to speak with a doctor",
+      "asset": "art-v2/es-doctor-man",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el doctor\", which shows this meaning."
+    },
+    {
+      "word": "Trabajo en una oficina",
+      "en": "I work in an office",
+      "asset": "art-v2/es-office",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la oficina\", which shows this meaning."
+    },
+    {
+      "word": "Tengo un perro",
+      "en": "I have a dog",
+      "asset": "art-v2/es-dog",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el perro\", which shows this meaning."
+    },
+    {
+      "word": "Tenía un perro",
+      "en": "I used to have a dog",
+      "asset": "art-v2/es-dog",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el perro\", which shows this meaning."
+    },
+    {
+      "word": "¿Tenías un perro?",
+      "en": "Did you have a dog?",
+      "asset": "art-v2/es-dog",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el perro\", which shows this meaning."
+    },
+    {
+      "word": "El perro es pequeño",
+      "en": "The dog is small",
+      "asset": "art-v2/es-dog",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el perro\", which shows this meaning."
+    },
+    {
+      "word": "Una habitación para dos",
+      "en": "A room for two",
+      "asset": "art-v2/es-hotel-room",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la habitación\", which shows this meaning."
+    },
+    {
+      "word": "¿Dónde está mi habitación?",
+      "en": "Where is my room?",
+      "asset": "art-v2/es-hotel-room",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la habitación\", which shows this meaning."
+    },
+    {
+      "word": "¿Te duele la cabeza?",
+      "en": "Does your head hurt?",
+      "asset": "art-v2/es-headache",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"Me duele la cabeza\", which shows this meaning."
+    },
+    {
+      "word": "¿Tienes una alergia?",
+      "en": "Do you have an allergy?",
+      "asset": "art-v2/es-allergy",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la alergia\", which shows this meaning."
+    },
+    {
+      "word": "Te mando un mensaje",
+      "en": "I will send you a message",
+      "asset": "art-v2/es-message",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"el mensaje\", which shows this meaning."
+    },
+    {
+      "word": "¿La salsa está picante?",
+      "en": "Is the salsa spicy?",
+      "asset": "art-v2/es-salsa",
+      "reason": "Reviewed 2026-11-12: same new Spanish picture as \"la salsa\", which shows this meaning."
+    }
+  ]
+}

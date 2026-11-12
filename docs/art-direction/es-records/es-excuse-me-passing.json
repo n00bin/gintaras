@@ -1,0 +1,16 @@
+{
+  "id": "es-excuse-me-passing",
+  "word": "Con permiso",
+  "en": "Excuse me",
+  "unit": "u1",
+  "references": [
+    "approved-style-reference.png",
+    "mariana-diego-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached reference 1 approved rounded flat cartoon, huge white oval eyes, chunky hands and oversized heads, solid turquoise/amber/coral/navy/cream, minimal detail, almost no outlines. Reference 2 fixes Mariana (dark brown bob, round gold earrings, turquoise sweatshirt, coral trousers) and Diego (dark brown short wavy hair, amber sweatshirt, navy trousers), both warm brown skin and cream shoes. Entire simple scene fully visible with generous transparent margins, readable at 56px. Exactly two arms and two hands per person. Fully opaque interiors, true transparent outside, crisp edges. No words, letters, labels, logos, texture, gradient, glow, shadow, backdrop or floor. Meaning: excuse me while passing by. Diego politely steps sideways past Mariana, with one hand held up in a small courteous gesture; Mariana steps aside and opens one hand to let him pass. One curved navy arrow clearly follows Diego's path past her. Full bodies, no collision, no apology-for-mistake pose.",
+  "master": "docs/art-direction/masters/es-excuse-me-passing.png",
+  "asset": "pics/art-v2/es-excuse-me-passing.webp",
+  "bytes": 47158,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

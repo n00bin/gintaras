@@ -1,0 +1,15 @@
+{
+  "id": "es-bank-card",
+  "word": "la tarjeta",
+  "en": "the card",
+  "unit": "u16",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a BANK PAYMENT CARD, one turquoise rounded rectangular plastic card in three-quarter view, gold chip made from one small amber rounded square with four simple darker divisions, cream horizontal blank stripe and small coral contactless-wave symbol. No words, digits, bank logos, hands or extra cards.",
+  "master": "docs/art-direction/masters/es-bank-card.png",
+  "asset": "pics/art-v2/es-bank-card.webp",
+  "bytes": 13034,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

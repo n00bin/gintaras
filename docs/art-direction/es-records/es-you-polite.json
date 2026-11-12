@@ -1,0 +1,16 @@
+{
+  "id": "es-you-polite",
+  "word": "Usted",
+  "en": "You (polite)",
+  "unit": "u1",
+  "references": [
+    "approved-style-reference.png",
+    "mariana-diego-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached reference 1 approved rounded flat cartoon, huge white oval eyes, chunky hands and oversized heads, solid turquoise/amber/coral/navy/cream, minimal detail, almost no outlines. Reference 2 fixes Mariana (dark brown bob, round gold earrings, turquoise sweatshirt, coral trousers) and Diego (dark brown short wavy hair, amber sweatshirt, navy trousers), both warm brown skin and cream shoes. Entire simple scene fully visible with generous transparent margins, readable at 56px. Exactly two arms and two hands per person. Fully opaque interiors, true transparent outside, crisp edges. No words, letters, labels, logos, texture, gradient, glow, shadow, backdrop or floor. Meaning: YOU addressed politely to ONE person. Diego turns respectfully toward ONE older adult woman with short grey hair, coral cardigan over cream top and navy skirt. Diego gestures with a single open palm toward her, a simple turquoise arrow from Diego toward the older woman. She smiles and stands calmly. Exactly two people, no pointing at viewer, no group, no lettering.",
+  "master": "docs/art-direction/masters/es-you-polite.png",
+  "asset": "pics/art-v2/es-you-polite.webp",
+  "bytes": 39294,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}
