@@ -36,37 +36,42 @@
     "A1": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "2026-11-12: every finish-line number met. 20 reading texts + 15 recordings (graded module); 100 new words (u*x* lessons in lang/lt.js) with pictures, recordings, guides and tips; rough dictionary-word count 705/700; course check passes; no published names moved (104 new to add to tools/progress-ids.json at release). Native review pending."
+      "finished_note": "2026-11-12: every finish-line number met. 20 reading texts + 15 recordings (graded module); 100 new words (u*x* lessons in lang/lt.js) with pictures, recordings, guides and tips; rough dictionary-word count 705/700; course check passes; no published names moved (104 new to add to tools/progress-ids.json at release). Native review pending.",
+      "live": "3.126+"
     },
     "A2": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "Build finished 2026-11-12: all 14 grammar points, 25 reading texts, 25 listening recordings, 20+ conversations, 12 writing and 12 speaking tasks, and 16 new themed word units (u44-u59, 675 cards) bringing A1+A2 to about 1,503 dictionary words (rough count; lemma list pending). Not live yet; native review pending."
+      "finished_note": "Build finished 2026-11-12: all 14 grammar points, 25 reading texts, 25 listening recordings, 20+ conversations, 12 writing and 12 speaking tasks, and 16 new themed word units (u44-u59, 675 cards) bringing A1+A2 to about 1,503 dictionary words (rough count; lemma list pending). Not live yet; native review pending.",
+      "live": "3.126+"
     },
     "B1": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u60-u68), 30 reading texts (251-318 English words), 30 listening recordings (60-95 s), 20 conversations (11 new cv35-cv45, with phrase unit u69), 15 writing and 15 speaking tasks, and B1 word units u70-u95 bringing A1+A2+B1 to about 2,765 dictionary words (rough count). Not live; native review pending."
+      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u60-u68), 30 reading texts (251-318 English words), 30 listening recordings (60-95 s), 20 conversations (11 new cv35-cv45, with phrase unit u69), 15 writing and 15 speaking tasks, and B1 word units u70-u95 bringing A1+A2+B1 to about 2,765 dictionary words (rough count). Not live; native review pending.",
+      "live": "3.126+"
     },
     "B2": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u96-u104), 30 reading texts (500-570 English words), 30 listening recordings (2-2.5 min), 20 conversations (11 new cv46-cv56 with phrase unit u105), 15 writing and 15 speaking tasks with recorded models, and B2 word units u106-u142 bringing A1-B2 to about 4,507 dictionary words (rough). Not live; native review pending."
+      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u96-u104), 30 reading texts (500-570 English words), 30 listening recordings (2-2.5 min), 20 conversations (11 new cv46-cv56 with phrase unit u105), 15 writing and 15 speaking tasks with recorded models, and B2 word units u106-u142 bringing A1-B2 to about 4,507 dictionary words (rough). Not live; native review pending.",
+      "live": "3.126+"
     },
     "C1": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "Build finished 2026-11-12: all 8 grammar points (u143-u150), 30 reading texts (800-1500 English words), 30 listening recordings (4-5 min each), 16 conversations (7 new cv57-cv63 with phrase unit u179), 15 writing and 15 speaking tasks with recorded models, and C1 word units u151-u186 bringing word forms to the 6,500 target (about 5,370 dictionary words, rough). All card and conversation audio recorded, audio check clean, tests pass. Not live; native review pending."
+      "finished_note": "Build finished 2026-11-12: all 8 grammar points (u143-u150), 30 reading texts (800-1500 English words), 30 listening recordings (4-5 min each), 16 conversations (7 new cv57-cv63 with phrase unit u179), 15 writing and 15 speaking tasks with recorded models, and C1 word units u151-u186 bringing word forms to the 6,500 target (about 5,370 dictionary words, rough). All card and conversation audio recorded, audio check clean, tests pass. Not live; native review pending.",
+      "live": "3.126+"
     },
     "C2": {
       "status": "finished_build",
       "native_review": "pending",
-      "finished_note": "Build finished 2026-11-12: grammar u187-u190 (dual and literary forms, dialects for recognition, irony and wordplay, paraphrase and mediation), 30 reading texts (1197-1300 English words), 30 listening recordings (360-420 s), conversations cv64-cv70 with phrase unit u191, 7 writing and 5 speaking tasks, and C2 word and sentence units u192-u243 bringing the running total to about 8,570 word forms (rough count; lemma list pending). All audio recorded and loud enough (19,130 clips); course check, units, conversation, graded and writing/speaking tests pass. Not live; native review pending."
+      "finished_note": "Build finished 2026-11-12: grammar u187-u190 (dual and literary forms, dialects for recognition, irony and wordplay, paraphrase and mediation), 30 reading texts (1197-1300 English words), 30 listening recordings (360-420 s), conversations cv64-cv70 with phrase unit u191, 7 writing and 5 speaking tasks, and C2 word and sentence units u192-u243 bringing the running total to about 8,570 word forms (rough count; lemma list pending). All audio recorded and loud enough (19,130 clips); course check, units, conversation, graded and writing/speaking tests pass. Not live; native review pending.",
+      "live": "3.126+"
     }
   },
   "next_actions": [
-    "Native-speaker review of A1-C2 (all levels finished_build, review pending)",
-    "Release when the user says so: merge onto live, run check_progress_ids.js --update, bump version, get the user's OK before publishing"
+    "Native-speaker review of A1-C2 (live, unreviewed)"
   ],
   "live_units": {
     "A1": [
@@ -657,6 +662,9 @@
     "2026-11-12 C2 listening l01-l10 written and recorded (360-420 s); dialogues need about 790 Lithuanian words, monologues about 740",
     "2026-11-12 C2 listening l01-l30 recorded (346-420 s, all >= 360 after padding); C2 writing w01-w07 and speaking s01-s05; conversations cv64-cv70 with phrase unit u191. Only C2 word forms left (6780/8500).",
     "2026-11-12 C2 word forms 8505/8500 via sentence units u226-u241; all new cards and conversations recorded (1 quiet clip re-recorded); check_course, units_test (u44-u241), conv_test_c2, graded_test, ws_test all pass. C2 finished_build: every level A1-C2 meets the finish line.",
-    "2026-11-13 C2 margin: sentence units u242 (nature/environment) and u243 (home/household), +65 word forms. Published-name guard (origin/main check_progress_ids.js run against root): no published name moved or removed; 7902 new names to add with --update at release."
+    "2026-11-13 C2 margin: sentence units u242 (nature/environment) and u243 (home/household), +65 word forms. Published-name guard (origin/main check_progress_ids.js run against root): no published name moved or removed; 7902 new names to add with --update at release.",
+    "2026-11-13 Release 3.126 prepared (owner chose open to everyone): branch cefr-release in G:/AI_PROJECTS/.work/wordami-cefr-release, commit bf95859, merged onto live 3.125, COURSE_V2 on, all checks and an update test pass. Not pushed; waiting for the owner's OK.",
+    "2026-11-13 PUBLISHED 3.126 (b5153ee, deploy run 43465575706): full A1-C2 Lithuanian open to every learner; verified live.",
+    "2026-11-13 3.127 recordings moved to their own sites (wordami-audio-lt, -lt-long, -es; audio-host.js, tools/publish_audio.py); 3.128 main site 35 MB without mp3. Root checkout brought up to live main (c239f0d)."
   ]
 }
