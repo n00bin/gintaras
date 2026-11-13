@@ -1011,7 +1011,7 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
     </div>
     <div class="card" id="share">
       <h2>Share with friends</h2>
-      <p class="note">Learning is easier together. Send Wordami to a friend and race each other on the leaderboard.</p>
+      <p class="note">Learning is easier together. Send Wordami to a friend and race each other in the league.</p>
       <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
       <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Wordami link"></div><p class="note">Point a phone camera at it to open Wordami.</p></details>
     </div>
@@ -4423,7 +4423,7 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!n.classList|
 /* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
 const SHARE_URL='https://n00bin.github.io/gintaras/';
 function shareText(){const n=window.cloud&&window.cloud.nickname&&window.cloud.nickname();
-  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
+  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' in the league!':' Join me in the league!');}
 async function copyLink(){try{await navigator.clipboard.writeText(shareText()+' '+SHARE_URL);toast('Link copied. Paste it in a message.');}
   catch(e){prompt('Copy this link:',SHARE_URL);}}
 async function shareApp(){if(navigator.share){try{await navigator.share({title:'Wordami: learn '+LANG.en,text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
