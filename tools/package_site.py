@@ -42,6 +42,9 @@ def inventory():
             if path.is_file() and not path.is_symlink() and path.suffix.lower() in ASSET_SUFFIXES:
                 if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
                     continue
+                # recordings are served from their own sites (audio-host.js, tools/publish_audio.py), not this one
+                if folder == 'audio' and path.suffix.lower() == '.mp3':
+                    continue
                 files.add(path.relative_to(ROOT))
     # A symlink at the root or in an asset subtree must never escape the workspace.
     for path in files:
@@ -65,6 +68,8 @@ def validate(files):
     core = json.loads(subprocess.check_output(['node', '-e', program], cwd=ROOT).decode('utf8'))
     assert len(core) == len(set(core)), 'Duplicate offline cache path'
     for path in core:
+        if path.startswith('audio/') and path.endswith('.mp3'):
+            continue  # downloaded from its recordings site at install
         assert (path.removeprefix('./') or 'index.html') in names, 'Offline asset not packaged: ' + path
     assert not any(any(part.startswith('.') for part in p.parts) for p in files if p.name != '.nojekyll')
 

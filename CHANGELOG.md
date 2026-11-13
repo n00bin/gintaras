@@ -1,5 +1,9 @@
 # Gintaras version history
 
+- **3.128** The app site no longer carries its own copy of the recordings (now about 35 MB instead of 893 MB); the deploy checks every recording is on its recordings site first.
+
+- **3.127** (2026-11-13) Recordings come from their own sites, two per language (wordami-audio-lt, wordami-audio-lt-long, wordami-audio-es), each with its own 1 GB, leaving room for more languages. Recordings already saved on a phone keep working.
+
 - **3.126** (2026-11-13) The Lithuanian course now runs from beginner to C2 (CEFR A1–C2). New word and sentence units (u44–u243), grammar units for every level, graded readings and listening recordings, new conversations, and writing and speaking tasks with model answers, plus the all-skills practice windows (activities, reading and listening checks, writing studio, course path). Every published course name is kept, so saved progress carries over. Native-speaker review is still to come.
 
 - **3.125** (2026-11-12) The full Mexican Spanish course (37 units, 807 cards, 15 conversations, recordings and 472 pictures) is included but stays behind Coming soon until a native speaker has reviewed it. Spanish answers keep their word order and don't accept a lone "y". Lithuanian is unchanged.

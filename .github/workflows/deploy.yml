@@ -32,6 +32,8 @@ jobs:
         run: |
           node tools/check_course.js
           node tools/audit_first_three_release.js
+      - name: Check every recording is on its recordings site
+        run: python tools/publish_audio.py --check
       - name: Package public site
         run: python tools/package_site.py --output site
       - uses: actions/configure-pages@v5

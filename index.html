@@ -1126,9 +1126,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.127';
-const APP_VERSION=199;
-const WHATS_NEW='Recordings now come from their own home on the web, which leaves room for more languages. Nothing changes in your lessons or your saved progress.';
+const APP_RELEASE='3.128';
+const APP_VERSION=200;
+const WHATS_NEW='A tidy-up behind the scenes: the app is now much smaller, so updates arrive faster. Your lessons and saved progress are unchanged.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
