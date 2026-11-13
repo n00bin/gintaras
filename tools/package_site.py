@@ -61,7 +61,7 @@ def validate(files):
     for icon in manifest.get('icons', []):
         assert icon['src'].lstrip('./') in names, 'Unpackaged installation icon'
     assert 'learning-design.js' in names and 'source-support.js' in names
-    program = "const fs=require('fs'),s=fs.readFileSync('sw.js','utf8');console.log(JSON.stringify(new Function(s.split('self.addEventListener')[0]+';return CORE;')()));"
+    program = "const fs=require('fs'),s=fs.readFileSync('sw.js','utf8');console.log(JSON.stringify(new Function('self','importScripts','WordamiAudioHost',s.split('self.addEventListener')[0]+';return CORE;')({registration:{scope:'https://example.invalid/'}},()=>{},{create:()=>({})})));"
     core = json.loads(subprocess.check_output(['node', '-e', program], cwd=ROOT).decode('utf8'))
     assert len(core) == len(set(core)), 'Duplicate offline cache path'
     for path in core:

@@ -21,6 +21,7 @@
 <title>Wordami · Learn Languages</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
+<script src="audio-host.js"></script>
 </head>
 <body>
 <style>
@@ -1125,9 +1126,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.126';
-const APP_VERSION=198;
-const WHATS_NEW='The Lithuanian course now goes all the way from beginner to C2: new word units, readings, listening, conversations, writing and speaking. Your saved progress stays as it was.';
+const APP_RELEASE='3.127';
+const APP_VERSION=199;
+const WHATS_NEW='Recordings now come from their own home on the web, which leaves room for more languages. Nothing changes in your lessons or your saved progress.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}

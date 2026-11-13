@@ -8,12 +8,15 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v198';
+const SHELL = 'gintaras-shell-v199';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
 const KEEP = [SHELL, AUDIO, CDN, PICS];
-const CORE = ['./', 'index.html', 'lang/lt.js', 'lang/es.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
+// recordings come from a site per language (audio-host.js) but are saved under the app's own address
+importScripts('audio-host.js');
+const HOST = WordamiAudioHost.create(self.registration.scope);
+const CORE = ['./', 'index.html', 'audio-host.js', 'lang/lt.js', 'lang/es.js', 'avatars.js', 'cloud.js', 'config.js', 'manifest.json', 'icon.svg', 'gem.svg', 'icon-192.png', 'icon-512.png'];
 CORE.push('written-interaction-content.js','written-interaction.js','form-practice-content.js','form-practice.js','document-reading-content.js','document-reading.js','extended-reading-content.js','extended-reading.js');
 CORE.push('pics/1f1f1-1f1f9.svg','pics/1f1f2-1f1fd.svg');
 CORE.push('adventures.js','pics/art-v2/portrait-danute.webp','pics/art-v2/coffee.webp','pics/art-v2/tea.webp','pics/art-v2/menu.webp');
@@ -46,7 +49,13 @@ CORE.push('interaction-practice-audio.js',"audio/interaction-practice/lt.A1.conf
 self.addEventListener('install', e => {
   e.waitUntil(Promise.all([
     caches.open(SHELL).then(c => c.addAll(CORE.filter(u => !u.endsWith('.mp3')))),
-    caches.open(AUDIO).then(c => c.addAll(CORE.filter(u => u.endsWith('.mp3')))),
+    caches.open(AUDIO).then(c => Promise.all(CORE.filter(u => u.endsWith('.mp3')).map(async u => {
+      const key = new URL(u, self.registration.scope).href;
+      if (await c.match(key)) return;
+      const res = await fetch(HOST.remote(key) || key);
+      if (!res.ok) throw new Error('recording ' + res.status + ' ' + u);
+      await c.put(key, res);
+    }))),
     caches.open(PICS).then(c => c.addAll(AMI_FILES)),
     caches.open(CDN).then(c => Promise.all(CDN_CORE.map(async url => {const response=await fetchRemote(url);if(response.ok||response.type==='opaque')await c.put(url,response);}))).catch(() => {}),
     saveFonts().catch(() => {}),
@@ -75,9 +84,11 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin === location.origin) {
-    if (url.pathname.endsWith('.mp3')) e.respondWith(audio(req));
+    if (url.pathname.endsWith('.mp3')) e.respondWith(audio(req, req.url));
     else if (url.pathname.includes('/pics/')) e.respondWith(picture(req, e));
     else e.respondWith(networkFirst(req, e));
+  } else if (HOST.home(req.url)) {
+    e.respondWith(audio(req, HOST.home(req.url)));
   } else if (CDN_HOSTS.includes(url.hostname)) {
     e.respondWith(cacheFirst(req));
   }
@@ -145,20 +156,22 @@ async function cacheFirst(req) {
   return res;
 }
 
-async function audio(req) {
+// key: the app's own address of the recording (what it is saved under); it is downloaded from its recordings site
+async function audio(req, key) {
   const cache = await caches.open(AUDIO);
-  let full = await cache.match(req.url);
+  let full = await cache.match(key);
   if (!full) {
+    const from = HOST.remote(key) || key;
     try {
-      const res = await fetch(req.url);
+      const res = await fetch(from);
       if (!res.ok) return res;
-      await cache.put(req.url, res.clone());
+      await cache.put(key, res.clone());
       full = res;
       // a newer recording of the same file replaces the old one
-      const path = new URL(req.url).pathname;
-      for (const k of await cache.keys()) if (new URL(k.url).pathname === path && k.url !== req.url) cache.delete(k);
+      const path = new URL(key).pathname;
+      for (const k of await cache.keys()) if (new URL(k.url).pathname === path && k.url !== key) cache.delete(k);
     } catch (err) {
-      return fetch(req);
+      return fetch(from);
     }
   }
   const range = req.headers.get('range');
