@@ -1,0 +1,17 @@
+{
+  "id": "a1x-aikste",
+  "word": "aikštė",
+  "en": "square",
+  "unit": "u9",
+  "actor": "",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: A TOWN SQUARE in Lithuania: a wide cream paved square with a small fountain and old town houses in amber and coral with red roofs behind. No people.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/a1x-aikste.png",
+  "asset": "pics/art-v2/a1x-aikste.webp",
+  "bytes": 40254,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Inspected at 150px and 52px on light and dark; speck scan clean (2026-11-12)."
+}

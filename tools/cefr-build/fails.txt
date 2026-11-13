@@ -1,0 +1,37 @@
+✗ Visada moku laiku ir rūpinuosi butu. Gal penkiasdešimt eurų daugiau?  -> rūpinuosi, butu, penkiasdešimt
+✗ O jei pasirašyčiau sutartį dvejiems metams?  -> pasirašyčiau, dvejiems, metams
+✗ Sutarta. Atsiųskite sutartį el. paštu.  -> atsiųskite, paštu
+✗ Laba diena. Gavau sąskaitą, ir joje yra klaida.  -> gavau, joje
+✗ Man priskaičiavo už skambučius į užsienį, bet aš į užsienį neskambinau.  -> priskaičiavo, skambučius, užsienį, užsienį, neskambinau
+✗ Ne, telefoną visada laikau su savimi. Prašau grąžinti pinigus.  -> laikau, savimi, pinigus
+✗ Ačiū. Ar galite atsiųsti patvirtinimą el. paštu?  -> atsiųsti, patvirtinimą, paštu
+✗ Kitose šalyse, kai uždraudė automobilius, žmonių atėjo daugiau.  -> kitose, šalyse, uždraudė, automobilius
+✗ Tiesa. Todėl reikia daugiau autobusų ir leidimų žmonėms su negalia.  -> leidimų, žmonėms, negalia
+✗ Mano stiprybė yra kantrybė. Moku išklausyti žmones ir ramiai spręsti konfliktus.  -> stiprybė, kantrybė, žmones, ramiai, konfliktus
+✗ Kartais per daug stengiuosi viską padaryti pati. Bet mokausi deleguoti.  -> stengiuosi, pati, deleguoti
+✗ Noriu daugiau atsakomybės ir galimybės vadovauti komandai.  -> atsakomybės
+✗ Tikiuosi vadovauti skyriui ir toliau mokytis.  -> tikiuosi, skyriui
+✗ Man skauda nugarą jau savaitę. Ypač ryte, kai atsikeliu.  -> atsikeliu
+✗ Praeitą savaitę nešiau baldus, kai kraustėmės.  -> praeitą, nešiau, baldus, kraustėmės
+✗ Ne, skauda tik apačioje, čia.  -> apačioje
+✗ Ar galiu dirbti? Dirbu prie kompiuterio.  -> kompiuterio
+✗ Graikija graži, bet man paplūdimyje nuobodu. Norėčiau į kalnus.  -> graikija, graži, paplūdimyje, kalnus
+✗ O jei rastume vietą, kur yra ir jūra, ir kalnai?  -> rastume, vietą
+✗ Pavyzdžiui, Kroatija. Ryte vaikščiotume kalnuose, o po pietų gulėtume prie jūros.  -> kroatija, vaikščiotume, kalnuose, gulėtume
+✗ Sutarta! Šįvakar paieškosiu viešbučio.  -> šįvakar, paieškosiu
+✗ Būtų puiku. Ar galėtum patikrinti skaičius lentelėse?  -> patikrinti, lentelėse
+✗ Rytoj tinka. Kitą kartą aš tau padėsiu.  -> padėsiu
+✗ Labas, Rasa. Labai atsiprašau, kad neatėjau į tavo gimtadienį.  -> neatėjau, gimtadienį
+✗ Tu teisi. Turėjau parašyti. Mano mama susirgo, ir visą vakarą buvau ligoninėje.  -> turėjau, susirgo
+✗ Jau geriau, ačiū. Tai daugiau nepasikartos.  -> nepasikartos
+✗ Ačiū. Gal šeštadienį išgerkime kavos? Aš vaišinu.  -> šeštadienį, išgerkime, vaišinu
+✗ Prieš savaitę pirkau šias ausines, bet jos jau nebeveikia.  -> pirkau, šias, ausines, nebeveikia
+✗ Taip, štai. Prašau grąžinti pinigus.  -> pinigus
+✗ Norėčiau atgauti pinigus. Šios man nepatiko.  -> atgauti, pinigus, šios
+✗ Labas vakaras. Norėjau pasikalbėti apie jūsų obelį.  -> norėjau, obelį
+✗ Šakos auga į mano kiemą ir užstoja šviesą. Mano daržovės neauga.  -> šakos, auga, kiemą, užstoja, neauga
+✗ Suprantu. Nereikia jos kirsti. Gal galėtume tik nupjauti kelias šakas?  -> kirsti, nupjauti, šakas
+✗ Ačiū! Iškepsiu pyragą ir jus pavaišinsiu.  -> iškepsiu, pyragą, jus, pavaišinsiu
+✗ Jei būčiau tavo vietoje, pirmiausia ieškočiau naujo darbo, o tik paskui išeičiau.  -> ieškočiau, išeičiau
+✗ Gal pabandyk dar kartą pasikalbėti su vadovu? Pasakyk, kas tau nepatinka.  -> pabandyk, vadovu
+✗ Visada prašom. Ir pranešk, kaip sekėsi.  -> pranešk, sekėsi

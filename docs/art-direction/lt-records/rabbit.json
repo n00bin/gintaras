@@ -1,0 +1,16 @@
+{
+  "id": "rabbit",
+  "word": "triušis",
+  "en": "rabbit",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY. Attached reference fixes rounded chunky flat 2D cartoon style, huge friendly white oval eyes, solid bright colours, minimal crisp detail, almost no outlines. Complete animal unclipped with generous transparent margins, readable at 56px. Opaque interiors and true transparent outside shapes. No person, props, scenery, clothes, lettering, logo, gradient, glow, shadow or texture. Subject: one friendly RABBIT sitting, cream round body, two very long upright ears with coral centres, small coral nose, short front paws and large back feet, single small round fluffy tail. Clearly rabbit not mouse, huge ears.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/rabbit.png",
+  "asset": "pics/art-v2/rabbit.webp",
+  "bytes": 31900,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

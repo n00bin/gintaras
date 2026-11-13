@@ -1,0 +1,17 @@
+{
+  "id": "really",
+  "word": "Tikrai?",
+  "en": "Really?",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square vocabulary illustration. Match reference 1 rounded geometric flat cartoon, huge white oval eyes, warm orange faces, chunky hands, bright solid turquoise/amber/coral/navy/cream. Reference 2 fixes Tomas short wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Complete unclipped scene, generous margins, readable at 56px, exactly two arms and hands per person. Opaque interiors, crisp edges, true transparent outside shapes. No text, lettering, logo, shadow, glow, gradients, texture, floor or backdrop. Meaning: Really? Tomas raises both eyebrows high in surprised disbelief, mouth small open O, one hand lifted palm outward near shoulder and other down by his side. Large coral question mark beside his face. Friendly conversational surprise, no fear, no additional props.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/really.png",
+  "asset": "pics/art-v2/really.webp",
+  "bytes": 31182,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

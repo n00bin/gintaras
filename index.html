@@ -4,21 +4,21 @@
 <link rel="preload" href="lang/lt.js" as="script">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#2F6B4A">
-<meta name="description" content="Learn Lithuanian from zero to a real conversation, one word at a time. Free, with real Lithuanian voices.">
+<meta name="theme-color" content="#1D3366">
+<meta name="description" content="Learn languages with little lessons, listening and speaking practice. Build from your first words to real conversations with Ami, your friendly parrot buddy.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gintaras: learn Lithuanian">
-<meta property="og:description" content="From zero to a real conversation, one word at a time. Free, with real Lithuanian voices and a friendly leaderboard.">
+<meta property="og:title" content="Wordami · Learn Languages">
+<meta property="og:description" content="Little lessons. Real conversations. Learn languages with Ami, your friendly parrot buddy.">
 <meta property="og:url" content="https://n00bin.github.io/gintaras/">
-<meta property="og:image" content="https://n00bin.github.io/gintaras/og-image.png">
+<meta property="og:image" content="https://n00bin.github.io/gintaras/wordami-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="wordami-icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="wordami-icon-180.png">
 <style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Gintaras</title>
+<title>Wordami · Learn Languages</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
 </head>
@@ -26,44 +26,46 @@
 <style>
 /* Layout: a single scrolling column of unit bands with a fixed bottom tab bar; lessons open as a full-screen sheet. */
 :root{
-  --band:#2F6B4A;     /* green behind white text */
-  --bg:#F3F5F0;        /* pale birch, a touch of green */
+  --band:#1D3366;     /* navy behind white text, from the illustration palette */
+  --bg:#FFF9F0;        /* warm cream */
   --surface:#FFFFFF;
-  --surface-2:#E7ECE4;
-  --fg:#1C2A22;
-  --muted:#5F6F66;
-  --line:#D5DDD3;
-  --amber:#E89A1E;     /* gintaras */
-  --amber-deep:#B86E07;
-  --pine:#2F6B4A;      /* forest green */
-  --pine-soft:#DCEBE0;
-  --ok:#2E8B57;
-  --strong:#2F6FB3;
+  --surface-2:#F5ECDD;
+  --fg:#14264E;        /* illustration navy */
+  --muted:#56627F;
+  --line:#EADFCC;
+  --amber:#FFB400;     /* illustration amber */
+  --amber-deep:#A86400;
+  --pine:#00756E;      /* deep turquoise: the main action colour (the illustrations' turquoise, darkened to read on cream) */
+  --pine-soft:#D9F3EF;
+  --amber-soft:#FFF1CC;
+  --on-pine:#FFFFFF;
+  --coral:#FF6355;
+  --ok:#0B7F5B;
+  --strong:#2F5FC4;
 --warn:#A98200;
-  --ok-soft:#DCF2E3;
-  --bad:#C93A3A;
-  --bad-soft:#F8DEDE;
-  --shadow:0 2px 0 rgba(28,42,34,.12);
+  --ok-soft:#DDF4EA;
+  --bad:#D9382B;
+  --bad-soft:#FFE3DF;
+  --shadow:0 2px 0 rgba(20,38,78,.10);
   --display:"Fredoka","Nunito","Segoe UI",system-ui,sans-serif;
   --body:"Nunito","Segoe UI",system-ui,sans-serif;
   --radius:16px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
-    --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;--band:#24553A;
-    --ok:#5FC07F;--strong:#7AAEEA;
---warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
-    --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
+    --bg:#0F1830;--surface:#18233F;--surface-2:#22304F;--fg:#F4EFE6;--muted:#A7B1CC;--line:#2C3B60;
+    --amber:#FFC23D;--amber-deep:#FFD77A;--pine:#3FD3C8;--pine-soft:#143F49;--amber-soft:#3A3018;--on-pine:#0F1830;--band:#24418A;--coral:#FF7B6E;
+    --ok:#4FD39E;--strong:#86A8F0;
+--warn:#F0CC45;--ok-soft:#133A33;--bad:#FF7B6E;--bad-soft:#43222A;
+    --shadow:0 2px 0 rgba(0,0,0,.35);color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --band:#24553A;
-  --bg:#111A15;--surface:#1A2620;--surface-2:#223129;--fg:#E8EEE9;--muted:#9AAEA3;--line:#2E3F36;
-  --amber:#F2A93B;--amber-deep:#F7C56E;--pine:#5FB37F;--pine-soft:#1F3A2B;
-  --ok:#5FC07F;--strong:#7AAEEA;
---warn:#F0CC45;--ok-soft:#1E3A29;--bad:#F07070;--bad-soft:#3F2222;
-  --shadow:0 2px 0 rgba(0,0,0,.4);color-scheme:dark;
+  --bg:#0F1830;--surface:#18233F;--surface-2:#22304F;--fg:#F4EFE6;--muted:#A7B1CC;--line:#2C3B60;
+  --amber:#FFC23D;--amber-deep:#FFD77A;--pine:#3FD3C8;--pine-soft:#143F49;--amber-soft:#3A3018;--on-pine:#0F1830;--band:#24418A;--coral:#FF7B6E;
+  --ok:#4FD39E;--strong:#86A8F0;
+--warn:#F0CC45;--ok-soft:#133A33;--bad:#FF7B6E;--bad-soft:#43222A;
+  --shadow:0 2px 0 rgba(0,0,0,.35);color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -78,13 +80,22 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
 /* Top bar */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);
   padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:flex;align-items:center;justify-content:space-between;gap:12px}
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px}
-.brand .gem{width:30px;height:26px;background:url(gem.svg) center/contain no-repeat}
+.brand .ami-mark{width:34px;height:34px;flex:none;background:url(pics/ami/welcome.webp) center/contain no-repeat}
 .brand h1{font-size:22px;font-weight:700;letter-spacing:.01em}
 .stats{display:flex;gap:14px;font-weight:800;font-size:14px}
 .stats span{display:inline-flex;align-items:center;gap:5px}
 .stats svg{width:18px;height:18px}
+.course-flag{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:48px;min-height:44px;padding:4px 6px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer;flex:none}
+.course-flag img{width:30px;height:30px;display:block}.course-flag svg{width:12px;height:12px}
+.course-flag:hover,.course-flag[aria-expanded="true"]{border-color:var(--pine)}
+.course-picker{position:fixed;inset:auto;margin:0;padding:18px;width:min(340px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;border:2px solid var(--line);border-radius:20px;background:var(--surface);color:var(--fg);box-shadow:0 12px 36px #0003}
+.course-picker::backdrop{background:#0002}.course-picker h2{font-size:21px}.course-picker-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.course-picker-close{border:0;background:transparent;color:var(--muted);font:inherit;min-width:36px;min-height:36px;cursor:pointer}
+.course-choices{display:grid;gap:8px;list-style:none;padding:0;margin:0}.course-choice{width:100%;display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:10px;text-align:left;padding:12px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.course-choice img{width:40px;height:40px}.course-choice strong,.course-choice small{display:block}.course-choice small{color:var(--muted);font-size:12px;margin-top:3px}.course-choice[aria-current="true"]{border-color:var(--pine);background:color-mix(in srgb,var(--pine) 7%,var(--surface))}.course-choice:disabled{cursor:default;opacity:.65}.course-choice:not(:disabled):hover{border-color:var(--pine)}.course-status{font-size:11px;font-weight:800;color:var(--pine)}
+@media(max-width:620px){.brand h1{display:none}.brand{gap:6px}.brand .ami-mark{width:28px;height:28px}.top{gap:8px}.top .stats{gap:6px}}
 
 /* Main column */
 main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 96px;max-width:640px;margin:0 auto}
@@ -102,7 +113,7 @@ main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px
 .hello p{margin:0;font-size:17px}
 .how{display:grid;gap:12px}
 .how div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
-.how b{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2A1A02;display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.how b{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#14264E;display:grid;place-items:center;font-family:var(--display);font-weight:700}
 .how span{min-width:0}
 .steps{display:flex;gap:4px;overflow-x:auto;padding:4px 0}
 .steps span{flex:none;font-size:12px;font-weight:800;color:var(--muted);padding:2px 0;position:relative}
@@ -211,9 +222,9 @@ div.done:not(.unit){position:relative;z-index:2}
 .cv-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.cv-row-t{min-width:0}.cv-row-t strong{display:block}
 .cv-row-b{display:flex;gap:6px;flex:0 0 auto}.cv-row-b .btn{padding:8px 10px;font-size:14px;border-radius:12px;white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:14px;font-weight:800;font-size:16px;
-  background:var(--pine);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.18);width:100%;transition:transform .08s}
+  background:var(--pine);color:var(--on-pine);box-shadow:0 4px 0 rgba(20,38,78,.22);width:100%;transition:transform .08s}
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
-.btn.amber{background:var(--amber);color:#2A1A02}
+.btn.amber{background:var(--amber);color:#14264E}
 .btn.ghost{background:var(--surface-2);color:var(--fg);box-shadow:none}
 .btn.danger{background:var(--bad-soft);color:var(--bad);box-shadow:none}
 .btn[disabled]{opacity:.45;box-shadow:none;transform:none;cursor:not-allowed}
@@ -258,7 +269,7 @@ div.done:not(.unit){position:relative;z-index:2}
 .tabs button{padding:10px 4px 8px;display:grid;justify-items:center;gap:2px;font-size:12px;font-weight:800;color:var(--muted);border-top:3px solid transparent}
 .tabs button svg{width:24px;height:24px}
 .tabs button[aria-selected="true"]{color:var(--pine);border-top-color:var(--amber)}
-.tabs .badge{position:absolute;margin-left:28px;margin-top:-2px;background:var(--amber);color:#2A1A02;font-size:11px;border-radius:999px;padding:0 6px;line-height:18px}
+.tabs .badge{position:absolute;margin-left:28px;margin-top:-2px;background:var(--amber);color:#14264E;font-size:11px;border-radius:999px;padding:0 6px;line-height:18px}
 
 /* Lesson sheet */
 .sheet{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;
@@ -276,7 +287,7 @@ div.done:not(.unit){position:relative;z-index:2}
 .word .lt{font-family:var(--display);font-size:34px;font-weight:700;color:var(--amber-deep);min-width:0;overflow-wrap:anywhere}
 .spk{width:44px;height:44px;border-radius:12px;background:var(--pine-soft);color:var(--pine);display:grid;place-items:center;flex:none}
 .spk svg{width:22px;height:22px}
-.spk.big{width:96px;height:96px;border-radius:24px;background:var(--pine);color:#fff;margin:0 auto}
+.spk.big{width:96px;height:96px;border-radius:24px;background:var(--pine);color:var(--on-pine);margin:0 auto}
 .spk.big svg{width:44px;height:44px}
 .intro{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
 .intro .en{font-size:22px;font-weight:800}
@@ -365,14 +376,17 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .cv-head .sub{font-size:14px;color:var(--muted)}
 .cv-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .cv-btns .btn{padding:12px 8px;font-size:15px}
-.av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;background:var(--pine)}
+.av{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--on-pine);background:var(--pine)}
 .av[data-v="ona"]{background:#B4531F}
 .av+.av{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
 .face{display:inline-block;flex:none;border-radius:50%;overflow:hidden;line-height:0}
 .face svg{width:100%;height:100%;display:block}
+.face.cast-art{position:relative}.cast-art>.cast-fallback{display:block;width:100%;height:100%}.cast-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;visibility:hidden}.cast-art.ok>img{visibility:visible}.cast-art.ok>.cast-fallback{visibility:hidden}
 .cv-head .face+.face,.scene .face+.face{margin-left:-14px;box-shadow:0 0 0 2px var(--surface)}
-.mascot{display:block;color:var(--fg)}
-.mascot svg{width:100%;height:auto;display:block;overflow:visible}
+.mascot{display:block;width:112px;max-width:100%;color:var(--fg);flex:none}
+.mascot img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.mascot.prompt-mascot{width:72px;justify-self:center;margin:0 auto}
+.mascot.speaking-buddy{width:64px;margin:0 auto 6px}
 .hello .mascot.big{width:132px;margin-left:-8px}
 .tip-mascot{width:120px;justify-self:center;margin-top:8px}
 .done-mascot{width:112px;justify-self:center}
@@ -383,6 +397,15 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 #face-card.editing .face-top .note{display:none}#face-card.editing .face-top .face{width:64px!important;height:64px!important}
 #face-card .fstep{scroll-margin-top:150px}
 .face-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.art-face{background:var(--pine-soft)}.art-face img{width:100%;height:100%;object-fit:cover;display:block}
+.art-gal{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:12px}
+.art-gal button{padding:2px;border-radius:50%;border:3px solid transparent;background:none;line-height:0}
+.art-gal button[aria-pressed="true"]{border-color:var(--amber)}
+.art-gal .face{width:100%!important;height:auto!important;aspect-ratio:1}
+.art-tops{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.art-tops .chip{font-size:15px;padding:8px 12px;display:inline-flex;align-items:center;gap:6px}
+.art-tops .chip i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(20,38,78,.2)}
+.art-tops .chip[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft)}
 .face-gal button{padding:0;border:2px solid transparent;border-radius:50%;background:none;cursor:pointer;line-height:0;justify-self:center}
 .face-gal button:focus-visible,.face-gal button:hover{border-color:var(--amber)}
 .face-gal .face{width:min(52px,100%)!important;height:auto!important;aspect-ratio:1}
@@ -406,7 +429,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .foot.idk{background:color-mix(in srgb,var(--amber) 16%,var(--surface))}
 .foot.idk .fb{display:grid}
 .foot.idk .fb strong{color:var(--amber-deep)}
-.foot.idk .btn{background:var(--amber);color:#2A1A02}
+.foot.idk .btn{background:var(--amber);color:#14264E}
 
 /* Conversation chat */
 .chat{display:grid;gap:14px}
@@ -422,7 +445,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .msg.me{justify-self:end}
 .msg .bub{border-radius:18px;padding:10px 14px;display:grid;gap:2px;font-size:18px;min-width:0;overflow-wrap:anywhere}
 .msg.them .bub{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;cursor:pointer}
-.msg.me .bub{background:var(--pine);color:#fff;border-bottom-right-radius:6px}
+.msg.me .bub{background:var(--pine);color:var(--on-pine);border-bottom-right-radius:6px}
 .msg .bubnote{font-size:13px;opacity:.85}
 .msg .nw{text-decoration:underline dotted var(--amber);text-underline-offset:4px;text-decoration-thickness:2px}
 .chat-new{margin-top:6px;font-size:.85em}.chat-new summary{cursor:pointer;color:var(--amber)}.chat-new p{margin:4px 0 0;line-height:1.6}
@@ -469,7 +492,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .copt.shake{animation:shake .3s}
 .say-lt{display:grid;gap:4px;background:var(--surface-2);border-radius:12px;padding:12px}
 .say-lt .lt{font-family:var(--display);font-size:26px;font-weight:700;color:var(--amber-deep)}
-.spk.mic{background:var(--amber);color:#2A1A02}
+.spk.mic{background:var(--amber);color:#14264E}
 .spk.mic.on{animation:pulse 1s infinite}
 .spk.rec{background:var(--bad);color:#fff}.spk.rec.on{animation:pulse 1s infinite}.spk.rec svg{width:30px;height:30px}
 .mine{display:block;margin:12px auto 0}
@@ -548,11 +571,11 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .slot{display:grid;justify-items:center;gap:2px;padding:6px 10px;border-radius:10px;border:2px solid;min-width:56px}
 .slot b{font-family:var(--display);font-size:18px}
 .slot small{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;opacity:.8}
-.slot.r1{border-color:#2F6B4A;background:color-mix(in srgb,#2F6B4A 12%,var(--surface))}
-.slot.r2{border-color:#E89A1E;background:color-mix(in srgb,#E89A1E 14%,var(--surface))}
-.slot.r3{border-color:#3A6FB0;background:color-mix(in srgb,#3A6FB0 12%,var(--surface))}
+.slot.r1{border-color:#00A79D;background:color-mix(in srgb,#00A79D 12%,var(--surface))}
+.slot.r2{border-color:#FFB400;background:color-mix(in srgb,#FFB400 16%,var(--surface))}
+.slot.r3{border-color:#2F5FC4;background:color-mix(in srgb,#2F5FC4 12%,var(--surface))}
 .slot.r4{border-color:#8A4FB0;background:color-mix(in srgb,#8A4FB0 12%,var(--surface))}
-.slot.r5{border-color:#B0503A;background:color-mix(in srgb,#B0503A 12%,var(--surface))}
+.slot.r5{border-color:#FF6355;background:color-mix(in srgb,#FF6355 14%,var(--surface))}
 .slot.r6{border-color:var(--line);background:var(--surface-2)}
 .frame{font-family:var(--display);font-size:26px;font-weight:600;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
 .gap{display:inline-block;min-width:3em;border-bottom:3px dashed var(--amber);color:var(--amber-deep);padding:0 6px}
@@ -727,7 +750,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .amber-pill{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:2px 4px;border-radius:999px;font:inherit;color:inherit;cursor:pointer}
 .x2{margin-left:4px;font-size:12px;padding:1px 5px;border-radius:999px;background:var(--amber);color:#1b1b1b}
 .hh{display:block}
-.hhbanner{display:flex;align-items:center;gap:12px;background:var(--amber);color:#1b1b1b;border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
+.hhbanner{display:flex;align-items:center;gap:12px;background:var(--amber);color:#14264E;border-radius:var(--radius);padding:12px 16px;margin-bottom:14px}
 .hhbanner .big{font-size:28px;line-height:1}
 .hhbanner strong{display:block;font-family:var(--display);font-size:18px}
 .hhbanner small{display:block;font-size:14px;font-weight:600}
@@ -784,14 +807,27 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 .splash{position:fixed;inset:0;z-index:90;display:grid;place-content:center;justify-items:center;gap:8px;background:var(--bg);transition:opacity .35s}
 .splash.out{opacity:0;pointer-events:none}
-.splash .gem.big{width:96px;height:84px;background:url(gem.svg) center/contain no-repeat;animation:popin .5s cubic-bezier(.2,1.6,.4,1)}
+.splash .ami-mark{width:144px;height:144px;background:url(pics/ami/welcome.webp) center/contain no-repeat;animation:popin .5s cubic-bezier(.2,1.6,.4,1)}
 .splash h1{font-family:var(--display);font-size:34px;font-weight:700;margin:6px 0 0;color:var(--amber-deep)}
 .splash small{color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.04em}
+
+/* Course activity windows (unit practice, skills studio, writing studio, café adventure): the same look as the rest
+   of the app. The title keeps its row; Close is a compact button beside it instead of dropping underneath. */
+dialog#a1-practice,dialog#skills-studio,dialog#writing-studio,dialog#cafe-adventure{border-radius:24px;box-shadow:0 18px 50px rgba(15,24,48,.28)}
+dialog#a1-practice header,dialog#skills-studio header,dialog#writing-studio header,dialog#cafe-adventure header{align-items:flex-start;gap:10px}
+dialog#a1-practice header h2,dialog#skills-studio header h2,dialog#writing-studio header h2,dialog#cafe-adventure header h2{flex:1 1 0;min-width:0;font-family:var(--display);font-weight:600;line-height:1.2}
+dialog#a1-practice header>button,dialog#skills-studio header>button,dialog#writing-studio header>button,dialog#cafe-adventure header>button{flex:0 0 auto;min-height:38px;padding:7px 14px;margin:0;font-size:14px;border-radius:999px}
+dialog#a1-practice button,dialog#skills-studio button,dialog#writing-studio button,dialog#cafe-adventure button{box-shadow:0 3px 0 rgba(20,38,78,.12)}
+dialog#a1-practice button:disabled,dialog#skills-studio button:disabled,dialog#writing-studio button:disabled,dialog#cafe-adventure button:disabled{box-shadow:none}
+dialog#a1-practice h3,dialog#skills-studio h3,dialog#writing-studio h3{margin:18px 0 8px;font-family:var(--display);font-weight:600}
+dialog#a1-practice ul:has(> li > button){list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+dialog#a1-practice ul > li:has(> button){display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12px;font-size:14px;border-radius:999px;margin:0}
 </style>
-<div class="splash" id="splash" aria-hidden="true"><span class="gem big"></span><h1>Gintaras</h1><small id="splash-v"></small></div>
+<div class="splash" id="splash" aria-hidden="true"><span class="ami-mark"></span><h1>Wordami</h1><small id="splash-v"></small></div>
 
 <header class="top">
-  <div class="brand"><span class="gem" aria-hidden="true"></span><h1>Gintaras</h1></div>
+  <div class="brand"><span class="ami-mark" aria-hidden="true"></span><h1>Wordami</h1><button type="button" class="course-flag" id="btn-course-language" aria-label="Change course language" aria-haspopup="dialog" aria-expanded="false" aria-controls="course-picker"><img id="course-flag-image" src="pics/1f1f1-1f1f9.svg" alt=""><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   <div class="stats">
     <span class="net" id="net" hidden title="Offline" aria-label="Offline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.6a10 10 0 0 1 5.2-2.6M16.8 11a10 10 0 0 1 2.2 1.6M8.5 16.4a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></svg><span class="net-t">Offline</span></span>
     <span title="Day streak"><svg viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 1-3s0 3 2 3c0-5 2-6 2-10z"/></svg><span class="num" id="streak">0</span></span>
@@ -800,6 +836,11 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <button type="button" class="gear" id="btn-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </div>
 </header>
+<dialog class="course-picker" id="course-picker" aria-labelledby="course-picker-title">
+  <div class="course-picker-head"><h2 id="course-picker-title">Choose your language</h2><button type="button" class="course-picker-close" id="course-picker-close" aria-label="Close language chooser">✕</button></div>
+  <ul class="course-choices" id="course-choices"></ul>
+  <p class="note">Each language keeps its own lessons, progress and streak.</p>
+</dialog>
 
 <main>
   <section class="view" id="view-learn">
@@ -874,7 +915,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note" id="talk-engine"></p>
     </div>
     <div class="card"><h2>Good to know</h2>
-      <p class="note">Your phone listens in the language set for each side. If someone types, or says something in another language, Gintaras spots it and switches that side to the right language. It needs an internet connection, and what you say is sent to the translation service to be translated (see Privacy).</p></div>
+      <p class="note">Your phone listens in the language set for each side. If someone types, or says something in another language, Wordami spots it and switches that side to the right language. It needs an internet connection, and what you say is sent to the translation service to be translated (see Privacy).</p></div>
   </section>
 
   <section class="view" id="view-profile" hidden>
@@ -929,8 +970,6 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <div class="card" id="notif" hidden></div>
     <span class="group">Learning</span>
     <div class="card" id="settings">
-      <div class="setting"><span>Language</span><select class="lang-select" id="lang-select" aria-label="Language to learn"></select></div>
-      <p class="note" id="lang-note"></p>
       <div class="setting"><span>Show "sounds like" everywhere</span><button class="switch" role="switch" aria-checked="true" id="sw-pron" aria-label="Show sounds like"></button></div>
       <p class="note">The bolder syllable is the one you stress. Turn this off once you can read <span class="lang-en">Lithuanian</span> spelling on its own.</p>
       <div class="setting spk-set"><span>Speaking, on this device</span>
@@ -951,20 +990,20 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <span class="group">App</span>
     <div class="card" id="install">
       <h2>Install as an app</h2>
-      <p class="note">Put Gintaras on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. It also keeps your saved lessons safe for offline. Your progress stays exactly where it is.</p>
+      <p class="note">Put Wordami on your home screen like any other app: its own icon, full screen, no browser bars, and it opens even without signal. It also keeps your saved lessons safe for offline. Your progress stays exactly where it is.</p>
       <div id="install-now"></div>
       <div class="howto" id="install-steps"></div>
     </div>
     <div class="card" id="offline">
       <h2>Use it offline</h2>
-      <p class="note">Gintaras keeps learning without signal. While you are online it saves what comes next by itself: the rest of this unit and the next two, their conversations, and the words due this week, with their sound and pictures. Going away for longer? Download the whole course.</p>
+      <p class="note">Wordami keeps learning without signal. While you are online it saves what comes next by itself: the rest of this unit and the next two, their conversations, and the words due this week, with their sound and pictures. Going away for longer? Download the whole course.</p>
       <div id="offline-box"></div>
     </div>
     <div class="card" id="share">
       <h2>Share with friends</h2>
-      <p class="note">Learning is easier together. Send Gintaras to a friend and race each other on the leaderboard.</p>
+      <p class="note">Learning is easier together. Send Wordami to a friend and race each other on the leaderboard.</p>
       <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
-      <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Gintaras link"></div><p class="note">Point a phone camera at it to open Gintaras.</p></details>
+      <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Wordami link"></div><p class="note">Point a phone camera at it to open Wordami.</p></details>
     </div>
     <span class="group" id="reports-group" hidden>Problem reports</span>
     <div class="card" id="reports" hidden></div>
@@ -976,8 +1015,8 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
       <p class="note">Progress is saved on this device, and to your account when you are signed in, so it follows you to every device. Audio is recorded by natural <span class="lang-en">Lithuanian</span> voices; a word whose recording isn't on this device yet is shown and typed instead (the device's own voice stands in only when it has a <span class="lang-en">Lithuanian</span> one).</p>
       <p class="note"><a href="privacy.html" style="color:var(--pine);font-weight:800">Privacy: what is stored and how to delete it</a></p>
       <button type="button" class="linkbtn" id="btn-tour" style="justify-self:start">Show the quick tour again</button>
-      <p class="note">People: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
-      <p class="note">Drawn pictures: made for Gintaras, with the cast's Notionists faces. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
+      <p class="note">Faces made with the older face builder: <a href="https://heyzoish.gumroad.com/l/notionists" style="color:var(--pine)">Notionists</a> by Zoish (CC0), drawn with <a href="https://www.dicebear.com" style="color:var(--pine)">DiceBear</a> (MIT).</p>
+      <p class="note">Drawn pictures and faces: made for Wordami. Other pictures: <a href="https://github.com/jdecked/twemoji" style="color:var(--pine)">Twemoji</a> by Twitter, Inc. and contributors, used under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:var(--pine)">CC BY 4.0</a>.</p>
       <p class="note" id="app-version"></p>
       <button class="btn danger" id="btn-reset">Reset all progress</button>
       <div class="confirm" id="confirm-reset" hidden>
@@ -999,8 +1038,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 
 <section class="sheet" id="welcome" hidden aria-label="Welcome">
   <div class="stage"><div class="hello">
-    <span data-mood="happy" data-cls="big"></span>
+    <span data-mood="welcome" data-cls="big"></span>
     <h2><span class="lang-hi">Labas!</span> Let's learn <span class="lang-en">Lithuanian</span>.</h2><p class="tiny ver-line" id="w-ver"></p>
+    <p class="note">Meet Ami, your language buddy.</p>
     <p>Never learned a language before? Bad at it? Good. This app assumes both. You start with hello and thank you, and by the end you can hold a real conversation.</p>
     <label class="lang-welcome" id="lang-welcome"><span class="eyebrow">What do you want to learn?</span><select class="lang-select" id="lang-select-w"></select></label>
     <div class="how">
@@ -1019,7 +1059,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
     <p class="note">Every word is spoken by a <span class="lang-en">Lithuanian</span> voice. Tap the speaker on any word to hear it.</p>
   </div>
   <div class="hello" id="welcome-me" hidden>
-    <span data-mood="happy" data-cls="big"></span>
+    <span data-mood="welcome" data-cls="big"></span>
     <h2>Make it about you</h2>
     <p>The first thing people ask is your name and where you're from. Tell me now and the lessons use your answers, so you practise what you'll really say. Skip anything you like.</p>
     <div class="card me-quick">
@@ -1075,9 +1115,9 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.109';
-const APP_VERSION=181;
-const WHATS_NEW='Thanks for learning with Gintaras!';
+const APP_RELEASE='3.122-preview';
+const APP_VERSION=194;
+const WHATS_NEW='Course preview: longer readings now connect passage preparation, whole-text questions, purposeful notes and revised briefs. Existing word and lesson progress is preserved.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1088,7 +1128,7 @@ const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:
 /* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
 const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
 const langUsable=l=>l.ready||LANG_PREVIEW;
-const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
+const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');const requested=new URLSearchParams(location.search).get('lang');if(LANGS.some(l=>l.code===requested&&langUsable(l))){c=requested;localStorage.setItem('gintaras.lang',c);}}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
 document.write('<script src="lang/'+LANG_CODE+'.js"><\/script>');
 </script>
 <script>
@@ -1455,8 +1495,8 @@ function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
 const placed=id=>(S.placedTo||0)>STEPS.indexOf(id);
 /* (Round 11) speaking never locks anything: a conversation step is done once written, a unit once its lessons are (its Speak it
    lesson is extra practice, and so is Say it) */
-function stepDone(id){if(placed(id))return true;return CONV_BY[id]?convDone(id):UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
-function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
+function stepDone(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.done(id);const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
+function stepStarted(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.started(id);return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const mc=CONV_BY[id];if(mc&&mc.after){const l=LESSON_BY[mc.after];return !l||crowns(l.id)>=1||!!(S.convs||{})[id]||placed(l.unit.id);}const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
 function lessonUnlocked(ui,li){if(!unitUnlocked(ui))return false;if(li===0)return true;return crowns(COURSE[ui].lessons[li-1].id)>=1;}
@@ -1599,7 +1639,7 @@ function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<sma
 let ALL_PARTS=false;
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   const partOf=[];{let k=0;PATH.forEach(p=>{if(typeof p!=='string')k++;partOf.push(k);});}
-  const at=PATH.findIndex(p=>typeof p==='string'&&(CONV_BY[p]||UNIT_BY[p])&&!stepDone(p)),cur=at<0?part:partOf[at],last=partOf[partOf.length-1];
+  const at=PATH.findIndex(p=>typeof p==='string'&&(CONV_BY[p]||UNIT_BY[p]||window.WordamiCoursePath?.isUnit(p))&&!stepDone(p)),cur=at<0?part:partOf[at],last=partOf[partOf.length-1];
   const show=k=>ALL_PARTS||k>=cur&&k<=cur+1||cur===0&&k<=1;
   const fold=(label,parts)=>{const b=document.createElement('button');b.type='button';b.className='linkbtn part-fold';b.textContent=label;b.onclick=()=>{ALL_PARTS=true;const y=window.scrollY;renderTree();window.scrollTo(0,y);};t.appendChild(b);};
   let foldedBefore=false,foldedAfter=false;
@@ -1608,6 +1648,7 @@ function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
       if(typeof p!=='string')part++;else if(CONV_BY[p])++conv;return;}
     if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
     else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
+    else if(window.WordamiCoursePath?.isUnit(p))WordamiCoursePath.renderUnit(p,t);
     else if(UNIT_BY[p])unitBand(UNIT_BY[p],COURSE.indexOf(UNIT_BY[p]),t);});
   if(ALL_PARTS){const b=document.createElement('button');b.type='button';b.className='linkbtn part-fold';b.textContent='Show only where I am';b.onclick=()=>{ALL_PARTS=false;renderTree();};t.appendChild(b);}}
 /* Only the unit you are working on is open. Finished units fold up (tap the header to open them again);
@@ -1617,11 +1658,11 @@ const OPEN_UNITS=new Set();
 function tipLesson(u){return u.lessons.find(l=>l.id===u.tipAt)||u.lessons[0];}
 function tipSeen(u){return !!u&&crowns(tipLesson(u).id)>0;}
 function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.createElement('section');
-  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0);
+  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0)&&(!window.WordamiUnitSkills||WordamiUnitSkills.done(u.id));
   const open=unlocked&&(!done||OPEN_UNITS.has(u.id));
   el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
-  const nL=u.lessons.filter(l=>!l.speak).length,spk=u.lessons.find(l=>l.speak),spkTodo=spk&&crowns(spk.id)<1;
-  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo?' · Speak it to try':''):u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+' of '+nL+' lessons done';
+  const skillProgress=window.WordamiUnitSkills?.summary(u.id)||{required:0,complete:0};const nL=u.lessons.filter(l=>!l.speak).length+skillProgress.required,spk=u.lessons.find(l=>l.speak),spkTodo=spk&&crowns(spk.id)<1;
+  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo?' · Speak it to try':''):(u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+skillProgress.complete)+' of '+nL+' lessons done';
   el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
     (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
     (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
@@ -1629,7 +1670,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
     b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud · extra':loadLabel(l.items))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':(S.lpart||{})[l.id]?' · part '+((S.lpart||{})[l.id]+1)+' of '+(lessonPart(l).part||{of:2}).of+' next':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
-    b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
+    b.dataset.lessonId=l.id;b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
   const bossBtn=el.querySelector('[data-boss]');if(bossBtn)bossBtn.onclick=e=>{e.stopPropagation();startBoss(u);};
   const toBtn=el.querySelector('[data-testout]');if(toBtn)toBtn.onclick=e=>{e.stopPropagation();startTestOut(u);};
   const gramBtn=el.querySelector('[data-gram]');if(gramBtn)gramBtn.onclick=e=>{e.stopPropagation();openGrammar(u);};
@@ -1644,7 +1685,7 @@ function miniRow(c){const open=stepUnlocked(c.id),st=(S.convs||{})[c.id]||{},don
   el.innerHTML='<span class="ring" style="--p:'+(done?100:0)+'"><b class="num">'+(done?'✓':'💬')+'</b></span><span class="t"><strong>'+esc(c.title)+'</strong><small>'+(open?'A first short chat with '+esc(c.cast.map(p=>p.name).join(' and '))+', only words you know':'Opens after the lesson above')+'</small></span>'+
     '<span class="mini-btns"><button type="button" class="btn '+(done?'ghost':'amber')+'" data-conv="text"'+(open?'':' disabled')+'>'+(done?'✓ ':'')+'✍️ Write</button><button type="button" class="btn ghost" data-conv="speak"'+(open&&done?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say</button></span>';
   el.querySelectorAll('[data-conv]').forEach(b=>b.onclick=e=>{e.stopPropagation();startConv(c.id,b.dataset.conv);});return el;}
-function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
+function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':window.WordamiCoursePath?.isUnit(p)?WordamiCoursePath.title(p):CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
 /* Every conversation you have reached, in path order, with its stars and its Write it / Say it buttons, so you can
@@ -1915,20 +1956,20 @@ const testWords=u=>unitItems(u).filter(i=>i.lt.split(' ').length<=4);
    (up to four), and passing it clears those too, and everything before it on the path. */
 const canTestOut=(u,ui)=>!u.retire&&!stepDone(u.id)&&testWords(u).length>=TEST_N;
 const unitsBefore=u=>unitUnlocked(COURSE.indexOf(u))?[]:STEPS.slice(0,STEPS.indexOf(u.id)).filter(id=>UNIT_BY[id]&&!UNIT_BY[id].retire&&!stepDone(id)&&testWords(UNIT_BY[id]).length);
-function startTestOut(u){S.testout=S.testout||{};if(S.testout[u.id]===today())return toast('One try a day for each unit. Try again tomorrow, or carry on with the lessons.');
+function startTestOut(u){if(window.WordamiUnitSkills&&S.unitSkillTestout?.language===LANG.code&&S.unitSkillTestout.units.includes(u.id)){WordamiUnitSkills.continueTestout();return;}S.testout=S.testout||{};if(S.testout[u.id]===today())return toast('One try a day for each unit. Try again tomorrow, or carry on with the lessons.');
   S.testout[u.id]=today();save();const before=unitsBefore(u).slice(-4),tw=testWords(u),one=perLesson(u,tw,TEST_N),its=one.concat(sample(tw.filter(i=>!one.includes(i)),TEST_N-one.length)).concat(before.map(id=>sample(testWords(UNIT_BY[id]),1)[0]));
   Q={queue:shuffle(its).map(it=>({type:'type',item:it})),idx:0,correct:0,total:its.length,items:its,mode:'place',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,
     place:{units:[u.id],also:unitsBefore(u),i:0,right:0,got:{},passed:[],testout:true,need:Math.ceil(its.length*TEST_PASS/TEST_N)}};
   $('#sheet').hidden=false;document.body.style.overflow='hidden';renderStep();}
 function placeFinish(){const P=Q.place;$('#lcount').textContent=''; /* (Round 7) the results don't keep the last card's "3 of 4" */
-  if(P.testout){const u=UNIT_BY[P.units[0]],ok=P.passed.length>0;if(ok){creditUnit(u.id,P.got);(P.also||[]).forEach(id=>creditUnit(id,P.got));if((P.also||[]).length)S.placedTo=Math.max(S.placedTo||0,STEPS.indexOf(u.id));}save();
-    $('#stage').innerHTML='<div class="done">'+mascot(ok?'cheer':'think','done-mascot')+'<h2>'+(ok?esc(u.en)+' tested out!':'Not this time')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+P.right+' of '+(Q.total-(P.early||0))+'</strong><small>Right first time</small></div></div><p class="note">'+(P.early&&!ok?'Stopped early: '+P.need+' right wasn\'t possible any more. ':'')+
-      (ok?'Its lessons count as done. Its words come up in your reviews over the next few days, so anything you were unsure of comes back.':'You need '+P.need+'. The lessons will get you there, and you can test out again tomorrow.')+'</p></div>';
-    $('#lbar').style.width='100%';const b=$('#btn-check');b.textContent='Continue';b.disabled=false;b.onclick=quit;setFoot('');return;}
+  if(P.testout){const u=UNIT_BY[P.units[0]],ok=P.passed.length>0;const skillPending=ok&&window.WordamiUnitSkills?.beginTestout([u.id,...(P.also||[])],P.got);if(ok&&!skillPending){creditUnit(u.id,P.got);(P.also||[]).forEach(id=>creditUnit(id,P.got));if((P.also||[]).length)S.placedTo=Math.max(S.placedTo||0,STEPS.indexOf(u.id));}save();
+    $('#stage').innerHTML='<div class="done">'+mascot(ok?'cheer':'encourage','done-mascot')+'<h2>'+(skillPending?'Words passed. Next: use them.':ok?esc(u.en)+' tested out!':'Not this time')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+P.right+' of '+(Q.total-(P.early||0))+'</strong><small>Right first time</small></div></div><p class="note">'+(P.early&&!ok?'Stopped early: '+P.need+' right wasn\'t possible any more. ':'')+
+      (skillPending?'Finish the required reading, listening, writing and speaking tasks to complete this unit check. Your lessons have not been skipped yet.':ok?'Its lessons count as done. Its words come up in your reviews over the next few days, so anything you were unsure of comes back.':'You need '+P.need+'. The lessons will get you there, and you can test out again tomorrow.')+'</p></div>';
+    $('#lbar').style.width='100%';const b=$('#btn-check');b.textContent=skillPending?'Continue to unit skills':'Continue';b.disabled=false;b.onclick=()=>{quit();if(skillPending)WordamiUnitSkills.continueTestout();};setFoot('');return;}
   const reach=P.units[P.passed.length]?STEPS.indexOf(P.units[P.passed.length]):STEPS.length;
   P.passed.concat(P.passed.length?STEPS.filter((id,k)=>UNIT_BY[id]&&UNIT_BY[id].retire&&k<reach):[]).forEach(uid=>creditUnit(uid,P.got));
   const stop=P.units[P.passed.length],started=Object.keys(S.lessons||{}).some(id=>S.lessons[id]>0);S.placeDone=today();if(P.passed.length)S.placedTo=Math.max(S.placedTo||0,stop?STEPS.indexOf(stop):STEPS.length);save();
-  $('#stage').innerHTML='<div class="done">'+mascot(P.passed.length?'cheer':'think','done-mascot')+'<h2>'+(P.passed.length?'You start at '+esc(stop?UNIT_BY[stop].en:'the end')+'!':started?'You carry on from '+esc(UNIT_BY[P.units[0]].en):'You start at the beginning')+'</h2><p class="note">'+
+  $('#stage').innerHTML='<div class="done">'+mascot(P.passed.length?'cheer':'encourage','done-mascot')+'<h2>'+(P.passed.length?'You start at '+esc(stop?UNIT_BY[stop].en:'the end')+'!':started?'You carry on from '+esc(UNIT_BY[P.units[0]].en):'You start at the beginning')+'</h2><p class="note">'+
     (P.passed.length?P.passed.length+' unit'+(P.passed.length===1?'':'s')+' skipped. Those words come up in your reviews over the next few days, so anything you were unsure of comes back.':started?'Everything you have done so far is kept. The lessons in '+esc(UNIT_BY[P.units[0]].en)+' are next.':'No problem: the course starts from zero, and goes at your pace.')+'</p></div>';
   $('#lbar').style.width='100%';const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.onclick=quit;setFoot('');}
 function renderAll(){migrateLessons();personalise();renderTop();renderBite();renderCatchUp();renderPlaceCard();renderTree();renderPractice();renderProfile();if(typeof renderTalkIntro==='function')renderTalkIntro();}
@@ -1954,30 +1995,33 @@ function faceSvg(a,size){const k=a.join('.')+'@'+size,v=n=>'variant'+String(n).p
     if(a[1])o.beard=[v(a[1])];if(a[2])o.glasses=[v(a[2])];FACE_RAW[k]=Ava.svg(o,size);}
   /* Each copy on the page gets its own ids, so a hidden copy never breaks a visible one's clipping. */
   const n=++faceN;return FACE_RAW[k].replace(/id="([^"]+)"/g,'id="$1-'+n+'"').replace(/url\(#([^)]+)\)/g,'url(#$1-'+n+')');}
-function faceHtml(look,seed,size,name){const a=lookParse(look)||lookRand(seed||name||'gintaras');
+/* Picture-style faces (pics/faces): 24 people, each with a top in one of five colours. */
+const ART_FACES=24,ART_TOPS=[['turquoise','Turquoise','#00BFB3'],['amber','Amber','#FFB900'],['coral','Coral','#FF6355'],['navy','Navy','#24418A'],['green','Green','#2EC24A']];
+function artLook(s){if(typeof s!=='string')return null;const a=s.split('.').map(Number);
+  return a.length===9&&a[0]===99&&Number.isInteger(a[1])&&a[1]>=1&&a[1]<=ART_FACES&&Number.isInteger(a[2])&&a[2]>=1&&a[2]<=ART_TOPS.length&&a.slice(3).every(x=>x===0)?{face:a[1],top:a[2]}:null;}
+const artCode=(f,c)=>'99.'+f+'.'+c+'.0.0.0.0.0.0';
+const artFile=(f,c)=>'pics/faces/f'+String(f).padStart(2,'0')+'-'+ART_TOPS[c-1][0]+'.webp';
+/* Someone who never picked a face still gets the same one every time, chosen from their account id. */
+function artSeeded(seed){const r=seeded(String(seed||'gintaras'));const f=1+Math.floor(r()*ART_FACES);return artCode(f,1+Math.floor(r()*ART_TOPS.length));}
+function artFaceHtml(a,size,name){return '<span class="face art-face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'><img src="'+artFile(a.face,a.top)+'" alt="" decoding="async"></span>';}
+function faceHtml(look,seed,size,name){const art=artLook(look)||(lookParse(look)?null:artLook(artSeeded(seed||name||'gintaras')));if(art)return artFaceHtml(art,size,name);
+  const a=lookParse(look)||lookRand(seed||name||'gintaras');
   if(!window.Ava)return '<span class="av" style="width:'+size+'px;height:'+size+'px" aria-hidden="true">'+esc(((name||'?')[0]||'?').toUpperCase())+'</span>';
   return '<span class="face" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'>'+faceSvg(a,size)+'</span>';}
 window.faceHtml=faceHtml;
-const castFace=(p,size)=>faceHtml(CAST_LOOK[p.name],p.name,size||36,p.name);
+function pictureFace(fallback,asset,size,name){if(!asset)return fallback;
+  return '<span class="face cast-art" style="width:'+size+'px;height:'+size+'px"'+(name?' role="img" aria-label="'+esc(name)+'"':' aria-hidden="true"')+'><span class="cast-fallback" aria-hidden="true">'+fallback+'</span><img src="'+picFile(asset)+'" alt="" aria-hidden="true" onload="this.parentNode.classList.add(\'ok\')" onerror="this.remove()"></span>';}
+function castFace(p,size){size=size||36;return pictureFace(faceHtml(CAST_LOOK[p.name],p.name,size,p.name),typeof CAST_PICTURES!=='undefined'&&CAST_PICTURES[p.name],size,p.name);}
 const myFaceSeed=()=>(window.cloud&&window.cloud.uid&&window.cloud.uid())||'me';
-const myFace=size=>S.look?faceHtml(S.look,null,size):faceHtml(TOMAS_LOOK,null,size);
+const myFace=size=>S.look?faceHtml(S.look,null,size):pictureFace(faceHtml(TOMAS_LOOK,null,size),typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE,size);
 
-/* Gintarėlis, the little amber: the app's gem with a face, in four moods. */
-function mascot(mood,cls){const ink='#4A2A05',P='<polygon points="21.5,18.5 42.5,18.5 51.2,28.1 12.8,28.1" fill="#F2A93B"/><polygon points="21.5,18.5 32,18.5 27.2,28.1 12.8,28.1" fill="#F7C56E"/><polygon points="32,18.5 42.5,18.5 51.2,28.1 36.8,28.1" fill="#E89A1E"/><polygon points="12.8,28.1 27.2,28.1 32,49" fill="#E89A1E"/><polygon points="27.2,28.1 36.8,28.1 32,49" fill="#F2A93B"/><polygon points="36.8,28.1 51.2,28.1 32,49" fill="#B86E07"/><polygon points="22.5,19.2 30,19.2 26,27.3 16,27.3" fill="#FFF0C8" opacity=".65"/>';
-  const cheeks='<ellipse cx="24.2" cy="34.2" rx="2" ry="1.2" fill="#E2603A" opacity=".45"/><ellipse cx="39.8" cy="34.2" rx="2" ry="1.2" fill="#E2603A" opacity=".45"/>';
-  const dots=(dx,dy)=>'<ellipse cx="'+(27.5+dx)+'" cy="'+(31+dy)+'" rx="1.5" ry="1.9" fill="'+ink+'"/><ellipse cx="'+(36.5+dx)+'" cy="'+(31+dy)+'" rx="1.5" ry="1.9" fill="'+ink+'"/><circle cx="'+(28+dx)+'" cy="'+(30.3+dy)+'" r=".5" fill="#fff"/><circle cx="'+(37+dx)+'" cy="'+(30.3+dy)+'" r=".5" fill="#fff"/>';
-  const arm=d=>'<path d="'+d+'" stroke="#B86E07" stroke-width="2" fill="none" stroke-linecap="round"/>';
-  const line=d=>'<path d="'+d+'" stroke="'+ink+'" stroke-width="1.3" fill="none" stroke-linecap="round"/>';
-  const spark=(x,y,s)=>'<path d="M'+x+' '+(y-s)+'L'+(x+s*.3)+' '+(y-s*.3)+'L'+(x+s)+' '+y+'L'+(x+s*.3)+' '+(y+s*.3)+'L'+x+' '+(y+s)+'L'+(x-s*.3)+' '+(y+s*.3)+'L'+(x-s)+' '+y+'L'+(x-s*.3)+' '+(y-s*.3)+'Z" fill="#F2A93B"/>';
-  const M={happy:[arm('M13.5 29 Q9 31 8.5 35')+arm('M50.5 29 Q55 27 56 23'),dots(0,0)+cheeks+line('M29.4 35.2 Q32 38 34.6 35.2')],
-    think:[arm('M13.5 29 Q9 32 10 36')+arm('M50.5 29 Q53 33 47 36')+'<text x="50" y="18" font-family="Fredoka,sans-serif" font-weight="700" font-size="9" fill="#2F6B4A">?</text>',dots(1,-1)+cheeks+'<circle cx="33.5" cy="36.3" r="1.1" fill="'+ink+'"/>'],
-    cheer:[arm('M13.5 28.5 Q8 24 8 18')+arm('M50.5 28.5 Q56 24 56 18')+spark(9,13,2.6)+spark(56,12,2.2)+spark(59,30,1.6),line('M25.8 31.4 Q27.5 29.2 29.2 31.4M34.8 31.4 Q36.5 29.2 38.2 31.4')+cheeks+'<path d="M28.8 34.4 Q32 40.5 35.2 34.4Z" fill="'+ink+'"/><path d="M30.3 36.6 Q32 38.6 33.7 36.6" fill="#E2603A"/>'],
-    rest:[arm('M13.5 29 Q10 33 12 37')+arm('M50.5 29 Q54 33 52 37')+'<text x="49" y="17" font-family="Fredoka,sans-serif" font-weight="700" font-size="6" fill="#7A8A80">z</text><text x="53.5" y="11.5" font-family="Fredoka,sans-serif" font-weight="700" font-size="8" fill="#7A8A80">z</text>',line('M25.8 31.2 Q27.5 32.6 29.2 31.2M34.8 31.2 Q36.5 32.6 38.2 31.2')+cheeks+line('M30.6 36 Q32 37 33.4 36')]};
-  const m=M[mood]||M.happy;
-  return '<span class="mascot '+(cls||'')+'" aria-hidden="true"><svg viewBox="4 6 58 50" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="53" rx="9" ry="1.6" fill="currentColor" opacity=".14"/>'+m[0]+P+m[1]+'</svg></span>';}
+/* Ami, Wordami's parrot buddy. Keep stable mood names for existing interactions. */
+const AMI_POSES=['welcome','happy','cheer','think','rest','encourage','listen','speak'];
+function mascot(mood,cls){const pose=AMI_POSES.includes(mood)?mood:'happy';
+  return '<span class="mascot '+esc(cls||'')+'" data-ami="'+pose+'" aria-hidden="true"><img src="pics/ami/'+pose+'.webp" alt="" width="512" height="512" decoding="async" onerror="this.onerror=null;this.src=\'wordami-icon-512.png\'"></span>';}
 document.querySelectorAll('[data-mood]').forEach(e=>{e.outerHTML=mascot(e.dataset.mood,e.dataset.cls);});
 
-/* Big moments pop up over the screen for a few seconds: Gintarėlis, a large icon and one line. Tap to close sooner.
+/* Big moments pop up over the screen for a few seconds: Ami, a large icon and one line. Tap to close sooner.
    Several in a row wait their turn. */
 const popQ=[];let popOn=false;
 function celebrate(o){popQ.push(o);if(!popOn)nextPop();}
@@ -1991,29 +2035,25 @@ function nextPop(){const o=popQ.shift(),el=$('#pop');if(!o||!el){popOn=false;ret
     if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom)b.click();};nextPop.t=setTimeout(close,o.ms||2800);}
 
 
-/* Your face: pick a ready-made one, or step through each feature. Saved on this phone, synced, and shown on the board. */
-let faceDraft=null,faceGal=[];
-function renderFace(){const box=$('#face-card');if(!box)return;box.classList.toggle('editing',!!faceDraft);
-  if(!window.Ava){box.hidden=true;return;}
-  if(!faceDraft){box.innerHTML='<div class="face-top">'+faceHtml(S.look,myFaceSeed(),88)+'<div><span class="eyebrow">Your face</span><h2>'+(S.look?'This is you':'Make your face')+'</h2>'+
-      '<p class="note">'+(S.look?'Shown next to your name on the league board, and on your side of every conversation.':'Pick a face for the league board and your side of every conversation. Until you do, you get one at random.')+'</p></div></div>'+
-      '<button type="button" class="btn ghost" id="btn-face">'+(S.look?'Change my face':'Make my face')+'</button>';
-    $('#btn-face').onclick=()=>{faceDraft=(lookParse(S.look)||lookRand(myFaceSeed())).slice();faceGal=[];renderFace();};return;}
-  if(!faceGal.length)faceGal=Array.from({length:12},()=>lookRand());
-  box.innerHTML='<div class="face-top">'+faceHtml(faceDraft.join('.'),null,104)+'<div><span class="eyebrow">Your face</span><h2>Make it yours</h2><p class="note">Tap a face below to start from it, then change anything.</p></div></div>'+
-    '<div class="face-gal">'+faceGal.map((a,i)=>'<button type="button" data-gi="'+i+'" aria-label="Use face '+(i+1)+'">'+faceHtml(a.join('.'),null,52)+'</button>').join('')+'</div>'+
-    '<button type="button" class="linkbtn" id="face-more">Show me 12 more</button>'+
-    '<div class="fsteps">'+FACE_KEYS.map((k,i)=>{const val=faceDraft[i];return '<div class="fstep"><span>'+k[1]+'</span><button type="button" data-fk="'+i+'" data-d="-1" aria-label="Previous '+k[1].toLowerCase()+'">‹</button>'+
-      '<b class="num">'+(k[3]&&!val?'None':k[0]==='hair'&&val===64?'Hat':val+' / '+k[2])+'</b><button type="button" data-fk="'+i+'" data-d="1" aria-label="Next '+k[1].toLowerCase()+'">›</button></div>';}).join('')+'</div>'+
-    '<div class="row2"><button type="button" class="btn amber" id="face-save">Save my face</button><button type="button" class="btn ghost" id="face-rand">Surprise me</button></div>'+
-    '<button type="button" class="linkbtn" id="face-cancel">Cancel</button>';
-  box.querySelectorAll('[data-gi]').forEach(b=>b.onclick=()=>{faceDraft=faceGal[b.dataset.gi].slice();renderFace();});
-  box.querySelectorAll('[data-fk]').forEach(b=>b.onclick=()=>{const i=+b.dataset.fk,k=FACE_KEYS[i],lo=k[3]?0:1,span=k[2]-lo+1;
-    faceDraft[i]=lo+((faceDraft[i]-lo+Number(b.dataset.d))%span+span)%span;renderFace();const again=box.querySelector('[data-fk="'+i+'"][data-d="'+b.dataset.d+'"]');if(again)again.focus();});
-  $('#face-more').onclick=()=>{faceGal=[];renderFace();};
-  $('#face-rand').onclick=()=>{faceDraft=lookRand();renderFace();};
-  $('#face-cancel').onclick=()=>{faceDraft=null;renderFace();};
-  $('#face-save').onclick=()=>{S.look=faceDraft.join('.');S.lookAt=Date.now();faceDraft=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
+/* Your face: pick one of 24 people drawn in the course's picture style, and the colour of their top.
+   Saved as the look "99.<person>.<colour>.0.0.0.0.0.0", which the database's existing rule (nine small numbers) accepts.
+   Faces made with the older builder keep showing until their owner picks a new one. */
+let facePick=null;
+function renderFace(){const box=$('#face-card');if(!box)return;box.hidden=false;box.classList.toggle('editing',!!facePick);
+  if(!facePick){const has=!!S.look;
+    box.innerHTML='<div class="face-top">'+faceHtml(S.look,myFaceSeed(),88)+'<div><span class="eyebrow">Your face</span><h2>'+(has?'This is you':'Pick your face')+'</h2>'+
+      '<p class="note">'+(has?'Shown next to your name on the league board, and on your side of every conversation.':'Pick a face for the league board and your side of every conversation. Until you do, you get one at random.')+'</p></div></div>'+
+      '<button type="button" class="btn ghost" id="btn-face">'+(has?'Change my face':'Pick my face')+'</button>';
+    $('#btn-face').onclick=()=>{const a=artLook(S.look)||artLook(artSeeded(myFaceSeed()));facePick={face:a.face,top:a.top};renderFace();};return;}
+  const p=facePick;
+  box.innerHTML='<div class="face-top">'+faceHtml(artCode(p.face,p.top),null,104)+'<div><span class="eyebrow">Your face</span><h2>Pick your face</h2><p class="note">Tap the face that feels like you, then pick a colour for your top.</p></div></div>'+
+    '<div class="art-gal">'+Array.from({length:ART_FACES},(_,i)=>'<button type="button" data-af="'+(i+1)+'" aria-pressed="'+(p.face===i+1)+'" aria-label="Face '+(i+1)+'">'+faceHtml(artCode(i+1,p.top),null,56)+'</button>').join('')+'</div>'+
+    '<div class="art-tops" role="group" aria-label="Colour of your top">'+ART_TOPS.map((c,i)=>'<button type="button" class="chip" data-at="'+(i+1)+'" aria-pressed="'+(p.top===i+1)+'"><i style="background:'+c[2]+'"></i>'+c[1]+'</button>').join('')+'</div>'+
+    '<div class="row2"><button type="button" class="btn amber" id="face-save">Save my face</button><button type="button" class="btn ghost" id="face-cancel">Cancel</button></div>';
+  box.querySelectorAll('[data-af]').forEach(b=>b.onclick=()=>{facePick.face=+b.dataset.af;renderFace();const again=box.querySelector('[data-af="'+b.dataset.af+'"]');if(again)again.focus();});
+  box.querySelectorAll('[data-at]').forEach(b=>b.onclick=()=>{facePick.top=+b.dataset.at;renderFace();const again=box.querySelector('[data-at="'+b.dataset.at+'"]');if(again)again.focus();});
+  $('#face-cancel').onclick=()=>{facePick=null;renderFace();};
+  $('#face-save').onclick=()=>{S.look=artCode(p.face,p.top);S.lookAt=Date.now();facePick=null;save();renderAll();if(window.cloud&&window.cloud.pushLook)window.cloud.pushLook();toast('Saved. Looking good!');};}
 
 /* ===================== TABS ===================== */
 const VIEWS=['learn','practice','board','talk','profile','settings','store'];
@@ -2104,7 +2144,7 @@ function laterAdd(k){S.sayLater=S.sayLater||{};if(!S.sayLater[k])S.sayLater[k]=D
 function laterDel(k){if(S.sayLater&&S.sayLater[k])delete S.sayLater[k];}
 /* asked once, the first time speaking comes up (and again after "not now" when you go to say something) */
 function askSpeakHtml(o){o=o||{};const mic=!!(SR||CAN_REC);let n=0;const opt=(m,t,sub)=>'<button type="button" class="opt" data-i="'+(n++)+'" data-sm="'+m+'"><span class="k">'+n+'</span><span class="ot"><span>'+t+'</span><small>'+sub+'</small></span></button>';
-  return '<div class="spk-ask"><span class="eyebrow">Speaking</span><div class="prompt">'+(o.again?'Can you speak out loud now?':'Can you speak out loud right now?')+'</div>'+
+  return '<div class="spk-ask">'+mascot('speak','prompt-mascot')+'<span class="eyebrow">Speaking</span><div class="prompt">'+(o.again?'Can you speak out loud now?':'Can you speak out loud right now?')+'</div>'+
     '<p class="note">'+(o.note||'Speaking cards are where you say it, not just write it. Pick what fits you. You can change it any time in Settings.')+'</p><div class="opts">'+
     (mic?opt('mic','🎙️ Yes, with my mic',SR?'The app listens and checks you. Where it can\'t, you record yourself and compare.':'You record yourself and compare it with the voice.'):'')+
     opt('aloud','🗣️ Yes, but no mic','You say it out loud in a short pause, then hear the answer and check yourself.')+
@@ -2406,8 +2446,8 @@ function quit(){if(!Q&&!CV)return;if(Q&&Q.mode==='check')setTimeout(()=>window.s
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
-  /* Gintarėlis reacts: cheers when you're right, thinks it over with you when you're not */
-  const m=$('#fb-m');if(m)m.innerHTML=state&&title?mascot(state==='good'?(Math.random()<.6?'cheer':'happy'):state==='bad'?'think':'happy'):'';}
+  /* Ami celebrates correct answers and offers a kind try-again gesture after a miss. */
+  const m=$('#fb-m');if(m)m.innerHTML=state&&title?mascot(state==='good'?(Math.random()<.6?'cheer':'happy'):state==='bad'||state==='idk'?'encourage':'happy'):'';}
 /* After an answer the lesson moves on by itself (a bar drains on the button). Tap Continue to go sooner,
    tap the feedback to stay and read it. Off in Settings. */
 let autoNextT=null;
@@ -2461,9 +2501,9 @@ const IDK_TYPES={mc_lt_en:1,mc_en_lt:1,listen:1,type:1,build:1,tiles:1,cloze:1,d
 /* a card later in this session where you write or say this word (a miss coming back doesn't count) */
 function prodLater(it){return !!Q&&Q.mode!=='lesson'&&Q.queue.some((e,k)=>k>Q.idx&&e.item&&norm(e.item.lt)===norm(it.lt)&&PROD[e.type]&&!e.retry);}
 /* (Round 6) a card that fails to draw is skipped, never shown blank and never written down as a miss */
-function renderStep(){if(Q){Q.__rd=Q.__rdk===Q.idx?(Q.__rd||0)+1:0;Q.__rdk=Q.idx;Q.__calm=Q.__rd>25;}try{return drawStep();}catch(err){console.warn('Gintaras: a card could not be drawn, skipped',err,Q&&Q.queue&&Q.queue[Q.idx]);
+function renderStep(){if(Q){Q.__rd=Q.__rdk===Q.idx?(Q.__rd||0)+1:0;Q.__rdk=Q.idx;Q.__calm=Q.__rd>25;}try{return drawStep();}catch(err){console.warn('Wordami: a card could not be drawn, skipped',err,Q&&Q.queue&&Q.queue[Q.idx]);
     if(!Q||!Q.queue||Q.idx>=Q.queue.length)return;Q.queue.splice(Q.idx,1);Q.total=Math.max(1,(Q.total||1)-1);Q.gone=(Q.gone||0)+1;Q.skipped=(Q.skipped||0)+1;
-    if((Q.skipped||0)>40){console.warn('Gintaras: too many cards failed, closing');try{quit();}catch(e){}return;}return renderStep();}}
+    if((Q.skipped||0)>40){console.warn('Wordami: too many cards failed, closing');try{quit();}catch(e){}return;}return renderStep();}}
 /* (Round 7) What happens to the card about to be shown, before anything is drawn: its New word card goes in first, a card
    that can't be asked yet is taken out or moved. drawStep runs it, and so does "Move on by itself", to see what comes next. */
 /* (Round 7) praise is in Lithuanian only with a word you've met ("Gerai!" showed before Gerai's card, "Šaunu!" never has one) */
@@ -2544,7 +2584,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     st.innerHTML='<span class="eyebrow">'+(l&&crowns(l.id)>0?'Quick reminder':Q.queue.slice(0,Q.idx).some(x=>!STEPLESS[x.type])?'A quick tip':'Before you start')+'</span>'+
       (ex.showUnit?'<div class="intro tipcard"><h3>'+esc(u.en)+' <small>'+esc(u.title)+'</small></h3><div>'+u.tip+'</div></div>'+(PATTERNS[u.id]?patternHtml(PATTERNS[u.id]):''):'')+
       (lt?'<div class="intro tipcard lesson-tip"><h3>💡 '+(l.speak?'Speaking tip':'Tip for this lesson')+'</h3><div>'+lt+'</div></div>':'')+
-      (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'')+mascot('think','tip-mascot');
+      (ex.showUnit?'<p class="note">You can read the unit tip again any time with the Tip button on the unit.</p>':'')+mascot(l&&l.speak?'speak':'think','tip-mascot');
     btn.disabled=false;btn.textContent='Got it';btn.onclick=()=>{Q.idx++;renderStep();};}
   /* (Round 8) after a gap, plainly: how many are due, how many now, and why the rest wait */
   else if(ex.type==='revtip'){st.innerHTML='<span class="eyebrow">Review</span><div class="intro tipcard lesson-tip"><h3>🔁 '+((ex.due||0)>ex.n?ex.due+' words are due: '+ex.n+' in this round':ex.n+' word'+(ex.n===1?' comes':'s come')+' back today')+'</h3><div>'+((ex.due||0)>ex.n?'The other '+(ex.due-ex.n)+' come in the next round. ':'')+(ex.wait?ex.wait+(ex.wait===1?' more word waits':' more wait')+' for tomorrow, because you have practised '+(ex.wait===1?'it':'them')+' enough today. ':'')+(ex.x?'With '+ex.x+' more you know, to keep them fresh. ':'')+'Each word comes back just before you would forget it. Get it right and the next gap is longer.'+
@@ -2578,7 +2618,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     const hide=recall;let passed=false,peeked=false,misses=0,shown=!hide;
     const answer='<div class="word"><span class="lt">'+esc(it.lt)+'</span></div>'+(hide?'':'<div class="en">'+esc(it.en)+'</div>')+'<div class="say">sounds like</div><div class="pron big">'+pronHtml(it.lt)+likeHtml(it.lt)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>'+builtFrom(it);
     const hideIf=(h,on)=>on?h.replace('<button','<button hidden'):h;
-    st.innerHTML=from+'<div class="prompt small">'+(ex.retry?'Listen again, then say it':recall?'How would you say this in '+LANG.en+'?':'Listen, then say it out loud')+'</div>'+
+    st.innerHTML=from+mascot('speak','prompt-mascot')+'<div class="prompt small">'+(ex.retry?'Listen again, then say it':recall?'How would you say this in '+LANG.en+'?':'Listen, then say it out loud')+'</div>'+
       (Q.mode==='me'?'':'<div class="speaklinks top"><button type="button" class="linkbtn" id="notnow">Can\'t speak right now? Save it for later</button></div>')+'<div class="intro">'+(hasPic(it.lt)?'<div class="picwrap">'+picHtml(it.lt,'big')+'</div>':'')+
       (hide?'<div class="word"><span class="lt" style="color:var(--fg)">'+esc(it.en)+'</span></div><div id="sayans" hidden>'+answer+'</div>':answer)+'</div>'+
       '<div class="speakrow">'+hideIf(spk(it,'big'),hide)+hideIf(spk(it,'big slow',true),hide)+(useMic?'<button type="button" class="spk big mic" id="mic" aria-label="Say it into the microphone">'+MIC+'</button>':useRec?recBtn():'')+'</div>'+
@@ -2650,7 +2690,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     let opts=shuffle([it].concat(ds));
     {const key=o=>o.map(x=>x.id).join('|'),last=(Q.optsSeen=Q.optsSeen||{})[it.id];let n=0;while(n++<8&&key(opts)===last)opts=shuffle(opts);Q.optsSeen[it.id]=key(opts);}
     opts=evenSlot(opts,it);
-    let head;if(ear)head='<div class="prompt small">Listen. What does it mean?</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>';
+    let head;if(ear)head=mascot('listen','prompt-mascot')+'<div class="prompt small">Listen. What does it mean?</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>';
     else head='<div class="prompt small">'+(toEn?'What does this mean?':'Choose the '+LANG.en)+'</div><div class="word">'+(toEn?spk(it):emo(it))+'<span class="lt" style="'+(toEn?'':'color:var(--fg);font-size:28px')+'">'+esc(toEn?it.lt:it.en)+'</span></div>'+(toEn&&S.pron?'<div class="pron">'+pronHtml(it.lt)+'</div>':'');
     const showP=S.pron&&!toEn;
     st.innerHTML=from+head+'<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'"'+(o===it?' data-ok="1"':'')+' aria-pressed="false"><span class="k">'+(i+1)+'</span><span class="ot"><span>'+esc(o[field])+'</span>'+(showP?'<small class="pron lt-after" hidden>'+pronHtml(o.lt)+'</small>':'')+(ear?'<small class="lt-after" hidden>'+esc(o.lt)+'</small>':'')+'</span></button>').join('')+'</div>'+(ear?NOLISTEN:'');
@@ -2658,7 +2698,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{st.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');Q.answer=opts[Number(b.dataset.i)];btn.disabled=false;});
     if(ex.type==='listen'||toEn)setTimeout(()=>say(it),200);}
   else if(ex.type==='dictate'){
-    st.innerHTML=from+'<div class="prompt small">Write down what you hear</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>'+typeBox('Type what you hear')+'<button type="button" class="linkbtn" id="toeasy">Too hard? Hear it and pick from choices instead</button>'+NOLISTEN;
+    st.innerHTML=from+mascot('listen','prompt-mascot')+'<div class="prompt small">Write down what you hear</div><div class="speakrow">'+spk(it,'big')+spk(it,'big slow',true)+'</div>'+typeBox('Type what you hear')+'<button type="button" class="linkbtn" id="toeasy">Too hard? Hear it and pick from choices instead</button>'+NOLISTEN;
     wireTyping(st,btn);wireNoListen(st);setTimeout(()=>say(it),250);
     st.querySelector('#toeasy').onclick=()=>{Q.queue[Q.idx]=Object.assign({},ex,{type:'listen',easy:true});renderStep();};}
   else if(ex.type==='cloze'){const ws=it.lt.split(' ');
@@ -2736,7 +2776,7 @@ function drawStep(){bossDraw();if(!Q)return;stopHearing();Q.shownAt=Date.now();p
     setTimeout(()=>bs[0]&&bs[0].focus(),60);}
   else if(ex.type==='hear'){const ln=ex.line,who=ln.conv.cast[ln.who]||ln.conv.cast[0],v=castVoice(who),opts=shuffle([ln].concat(ex.others));let picked=false;
     S.hearDay=S.hearDay&&S.hearDay.d===today()?S.hearDay:{d:today(),ids:[]};S.hearDay.ids.push(ln.id);
-    st.innerHTML='<span class="eyebrow">Listening</span><div class="prompt small">What did '+esc(who.name)+' just say?</div><div class="speakrow"><button type="button" class="spk big" id="h-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="h-slow" aria-label="Play slowly">'+TURTLE+'</button></div>'+
+    st.innerHTML=mascot('listen','prompt-mascot')+'<span class="eyebrow">Listening</span><div class="prompt small">What did '+esc(who.name)+' just say?</div><div class="speakrow"><button type="button" class="spk big" id="h-play" aria-label="Play it again">'+SPK+'</button><button type="button" class="spk big slow" id="h-slow" aria-label="Play slowly">'+TURTLE+'</button></div>'+
       '<div class="opts">'+opts.map((o,i)=>'<button type="button" class="opt" data-i="'+i+'"><span class="ot"><span>'+esc(o.en)+'</span></span></button>').join('')+'</div>'+NOLISTEN;
     st.querySelector('#h-play').onclick=()=>say(ln,false,v);st.querySelector('#h-slow').onclick=()=>say(ln,true,v);wireNoListen(st);
     st.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(picked)return;picked=true;const o=opts[Number(b.dataset.i)],ok=o===ln;st.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add(ok?'right':'wrong');
@@ -2894,7 +2934,7 @@ let NAME_SET=null;
 function isName(w){if(!NAME_SET){NAME_SET=new Set(PERS.baseNames.map(norm));Object.keys(CAST_GV).forEach(n=>{NAME_SET.add(norm(n));try{Object.values(nameForms(n,/[aė]$/.test(n)?'f':'m')).forEach(f=>NAME_SET.add(norm(f)));}catch(e){}});}
   const k=norm(w);return NAME_SET.has(k)||NAMEISH(w)&&!(WORD_ITEMS||{})[k];}
 /* (Round 12) what is left after leaving out "I / you" has to say something: "kaip" alone is not "Kaip tu?" (How are you?) */
-const BARE_LEFT=new Set(['kaip','kas','ką','kur','kada','kodėl','koks','kokia','kiek','iš','o','ir','ar','bet','irgi','taip','ne','tai','čia']);
+const BARE_LEFT=new Set(['kaip','kas','ką','kur','kada','kodėl','koks','kokia','kiek','iš','o','ir','ar','bet','irgi','taip','ne','tai','čia'].concat(LANG.bareLeft||[]));
 const sayable=d=>norm(d).split(' ').some(w=>w&&!BARE_LEFT.has(w));
 /* every part of the answer that loses its "I / you" still says something ("Labas! Kaip tu?" without tu is "Labas! Kaip": no) */
 const dropOk=t=>String(t).split(/[.!?,;]+/).every(seg=>{const n=norm(seg);return !n||dropWho(n)===n||sayable(dropWho(n));});
@@ -3045,7 +3085,7 @@ function judgeTyped(given,targets,en){const tn=targets.map(norm),a=norm(given);
     if(k7>=0)return {ok:true,note:'<b>'+esc(targets[k7])+'</b>'+(en?' · '+esc(en):'')+'<div class="why">'+LANG.dropWho+(dropWho(tn[k7])===dg?'':' The words can go round another way too; this is the usual order.')+'</div>'};}}
   /* (Round 6) "Čia mes esame", "Aš kalbu truputį lietuviškai": the same words in another order are right (Round 7: a word
      that belongs in front of the next one stays there: "Man gerai irgi" isn't "Man irgi gerai") */
-  {const so=s=>norm(s).split(' ').sort().join(' '),gs=so(given);if(a.split(' ').length>=3){const k5=tn.findIndex(x=>so(x)===gs&&fixedOk(a,x)),k6=k5>=0?-1:tn.findIndex(x=>strip(so(x))===strip(gs)&&fixedOk(strip(a),strip(x)));
+  if(LANG.freeOrder!==false){const so=s=>norm(s).split(' ').sort().join(' '),gs=so(given);if(a.split(' ').length>=3){const k5=tn.findIndex(x=>so(x)===gs&&fixedOk(a,x)),k6=k5>=0?-1:tn.findIndex(x=>strip(so(x))===strip(gs)&&fixedOk(strip(a),strip(x)));
     const ord='<div class="why">Right too: '+LANG.en+' word order is free, so the words can go round another way. This is the usual order.</div>';
     if(k5>=0)return {ok:true,note:'<b>'+esc(targets[k5])+'</b>'+(en?' · '+esc(en):'')+ord};
     if(k6>=0)return {ok:true,title:'Nearly',note:'Correct, but note the marks: <b>'+esc(targets[k6])+'</b>'+ord};}}
@@ -3280,7 +3320,7 @@ function finish(){dropPlace();settleToday();flushTime(Q.startedAt);if(Q.mode==='
   if(selfSpk)lines.push('<div class="win"><b>Not finished yet</b> · '+spkLeft+' line'+(spkLeft===1?' is':'s are')+' still to say. Say '+(spkLeft===1?'it':'them')+' from Say it later, or do this lesson again when you can speak. Nothing is locked meanwhile.</div>');
   /* "Want a nudge?" is asked here, under your results, from the second lesson on: as a pop-up it caught the next tap */
   if(Q.mode==='lesson'&&(S.lessonsDone||0)>=2&&window.cloud&&cloud.pushWanted&&cloud.pushWanted())
-    lines.push('<div class="win nudge-ask" id="nudge-ask"><b>🔔 Want a nudge?</b><p class="note">Gintaras can remind you at your study time, and tell you when someone passes you in the league. After you tap <b>Turn on</b>, your '+(matchMedia('(pointer:coarse)').matches?'phone':'browser')+' asks for permission: tap <b>Allow</b>.</p><div class="row2"><button type="button" class="btn ghost" data-nudge="no">Not now</button><button type="button" class="btn amber" data-nudge="yes">Turn on</button></div></div>');
+    lines.push('<div class="win nudge-ask" id="nudge-ask"><b>🔔 Want a nudge?</b><p class="note">Wordami can remind you at your study time, and tell you when someone passes you in the league. After you tap <b>Turn on</b>, your '+(matchMedia('(pointer:coarse)').matches?'phone':'browser')+' asks for permission: tap <b>Allow</b>.</p><div class="row2"><button type="button" class="btn ghost" data-nudge="no">Not now</button><button type="button" class="btn amber" data-nudge="yes">Turn on</button></div></div>');
   cans.forEach(c=>rw.push('<div class="win badge"><b>'+c[1]+' New in real life</b> · I can '+esc(c[2])+'</div>'));
   got.forEach(b=>rw.push('<div class="win badge"><b>Badge: '+esc(b[1])+'</b> · '+esc(b[2])+'</div>'));
   if(after.i>before.i)rw.push('<div class="win level"><b>Level up</b> · you are now <b>'+esc(after.title)+'</b>, '+esc(after.en)+'</div>');
@@ -3300,7 +3340,7 @@ function finish(){dropPlace();settleToday();flushTime(Q.startedAt);if(Q.mode==='
   let won=false;if(Q.mode==='check'){won=Q.correct>=Math.ceil(Q.total*0.8);if(won){S.checks=S.checks||{};S.checks[Q.unit.id]=today();save();}
     lines.unshift('<div class="win"><b>'+(won?'⚔️ Boss defeated':'👹 Not this time')+'</b> · '+Q.correct+' of '+Q.total+' right first time'+(won?'. Unit '+esc(Q.unit.en)+' is checked off.':'. You need '+Math.ceil(Q.total*0.8)+'.')+'</div>'+
       (Q.missed.length?'<div class="win"><b>To work on</b> · '+Q.missed.map(i=>esc(i.lt)).join(', ')+'<br><button type="button" class="btn ghost" id="boss-rev">Review these '+Q.missed.length+'</button></div>':''));}
-  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'think':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+(Q.part&&Q.part.k<Q.part.of-1?' · part '+(Q.part.k+1)+' of '+Q.part.of:selfSpk?' · not finished':' complete'):Q.mode==='me'?'You talked about yourself':Q.mode==='later'?'Speaking practice done':Q.tricky?'Tricky words workout done':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+(acc==null?(Q.selfRated||0):acc+'%')+'</strong><small>'+(acc==null?'Self-checked':'Accuracy'+(Q.nearly?' · '+Q.nearly+' nearly (half each)':''))+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?Q.items.length:learned().length)+'</strong><small>'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?'In this lesson':'Words met so far')+'</small></div></div>'+lines.join('')+'</div>';
+  $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot(Q.mode==='check'&&!won?'encourage':'cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(Q.mode==='check'?(won?'Boss defeated!':'The boss survives… for now'):Q.mode==='lesson'?esc(Q.lesson.title)+(Q.part&&Q.part.k<Q.part.of-1?' · part '+(Q.part.k+1)+' of '+Q.part.of:selfSpk?' · not finished':' complete'):Q.mode==='me'?'You talked about yourself':Q.mode==='later'?'Speaking practice done':Q.tricky?'Tricky words workout done':'Review complete')+'</h2><div class="tiles"><div class="tile"><strong class="num">'+(acc==null?(Q.selfRated||0):acc+'%')+'</strong><small>'+(acc==null?'Self-checked':'Accuracy'+(Q.nearly?' · '+Q.nearly+' nearly (half each)':''))+'</small></div><div class="tile"><strong class="num">'+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0')+'</strong><small>Time</small></div><div class="tile"><strong class="num">'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?Q.items.length:learned().length)+'</strong><small>'+(Q.mode==='lesson'&&Q.lesson&&!Q.lesson.speak?'In this lesson':'Words met so far')+'</small></div></div>'+lines.join('')+'</div>';
   {const rv=$('#boss-rev');if(rv){const miss=Q.missed.slice();rv.onclick=()=>buildSession(miss,'review',null);}}
   document.querySelectorAll('[data-nudge]').forEach(b=>b.onclick=()=>{S.pushAsked=1;save();const n=$('#nudge-ask');if(n)n.remove();if(b.dataset.nudge==='yes')cloud.pushOn();});
   confetti(perfect||after.i>before.i||got.length>0||chest?160:70);sfx('win');countUp();
@@ -3497,7 +3537,7 @@ function convTurn(ln){const C=CV;const turn=$('#turn');const ahead=C.ahead||'';C
     const gapped=toks.map((t,k)=>gone.has(k)?'<span class="gap" style="--w:'+Math.max(2,t.replace(/[.,!?…]/g,'').length)+'" aria-label="missing word"></span>'+esc((t.match(/[.,!?…]+$/)||[''])[0]):esc(t)).join(' ');
     const full='<span class="lt">'+esc(ln.lt)+'</span><div class="pron big">'+pronHtml(ln.lt)+'</div><div class="speakrow">'+cvSpk(ln.id,me,false)+cvSpk(ln.id,me,true)+'</div><button type="button" class="linkbtn guide-link" data-guide>How do I read this?</button>';
     const pin=C.quick?'':thy?'<div class="they-pin"><b>'+esc(C.lastWho||'')+':</b> <span class="lt">'+esc(thy.lt)+'</span></div>':C.lastT?'<div class="they-pin">'+esc(C.lastT)+'</div>':'';
-    turn.innerHTML='<div class="turn speak">'+pin+'<span class="eyebrow">'+(stage==='tap'?'Your turn · listen, then say it':stage==='fill'?'Your turn · say it, gaps and all':'Your turn · say it from memory')+'</span>'+promptHtml(ln)+
+    turn.innerHTML='<div class="turn speak">'+pin+mascot('speak','speaking-buddy')+'<span class="eyebrow">'+(stage==='tap'?'Your turn · listen, then say it':stage==='fill'?'Your turn · say it, gaps and all':'Your turn · say it from memory')+'</span>'+promptHtml(ln)+
       (stage==='tap'?'<div class="say-lt" id="peekbox">'+full+'</div>':
         (stage==='fill'?'<div class="say-lt gapped" id="gapbox"><span class="lt">'+gapped+'</span></div>':'')+
         '<div class="say-lt" id="peekbox" hidden>'+full+'</div>'+(aloud?'':'<button type="button" class="linkbtn" id="peek">Show me the '+LANG.en+'</button>'))+
@@ -3880,7 +3920,7 @@ function recStop(){if(recNow){clearTimeout(recNow.t);try{if(recNow.mr.state!=='i
 const noRecToday=()=>S.noRecDay===today();
 function noRecSet(){S.noRecDay=today();save();}
 function recBtn(){return CAN_REC?'<button type="button" class="spk big rec" id="recb" aria-label="Record yourself saying it">'+RECDOT+'</button>':'';}
-function playMine(){if(!recUrl)return;stopAllAudio();try{if(recAudio)recAudio.pause();recAudio=new Audio(recUrl);recAudio.play();}catch(e){}}
+async function playMine(){if(!recUrl)return false;stopAllAudio();try{if(recAudio)recAudio.pause();recAudio=new Audio(recUrl);await recAudio.play();return true;}catch(e){if(e.name!=='AbortError')toast('This recording could not play. Try recording it again.');return false;}}
 function wireRec(root,out,onDone){const b=root.querySelector('#recb');if(!b)return;
   b.onclick=async()=>{if(recNow)return recStop();stopHearing();stopAllAudio();let stream;out.innerHTML='<b>Waiting for the microphone…</b> If your browser asks, allow it.';
     try{stream=await navigator.mediaDevices.getUserMedia({audio:true});}catch(e){b.hidden=true;out.textContent='The microphone is blocked, so I can\'t record you. Say it out loud anyway.';return;}
@@ -3990,16 +4030,16 @@ $('#stage').addEventListener('click',e=>{if(!CV)return;const b=e.target.closest(
    so everyone also gets plain steps, with their own device first. */
 let installEvt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;renderInstall();});
-window.addEventListener('appinstalled',()=>{installEvt=null;renderInstall();keepSafe(true);toast('Installed. Gintaras is on your home screen.');});
+window.addEventListener('appinstalled',()=>{installEvt=null;renderInstall();keepSafe(true);toast('Installed. Wordami is on your home screen.');});
 function devicePlatform(){const ua=navigator.userAgent;if(/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))return 'ios';return /Android/.test(ua)?'android':'desktop';}
 function isInstalled(){return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}
 const INSTALL_HOWTO={
- ios:{name:'iPhone or iPad',steps:['Open this page in <b>Safari</b>.','Tap the <b>Share</b> button: the square with an arrow pointing up, at the bottom of the screen (top right on an iPad).','Scroll down the list and tap <b>Add to Home Screen</b>.','Tap <b>Add</b>. Gintaras is now on your home screen.']},
- android:{name:'Android phone or tablet',steps:['Open this page in <b>Chrome</b>.','Tap the <b>⋮</b> menu at the top right.','Tap <b>Add to Home screen</b> (on some phones it says <b>Install app</b>).','Tap <b>Install</b>. Gintaras is now on your home screen.']},
- desktop:{name:'Computer',steps:['Open this page in <b>Chrome</b> or <b>Edge</b>.','Click the small <b>install icon</b> at the right end of the address bar (a screen with a down arrow).','No icon? In Chrome open the <b>⋮</b> menu → <b>Cast, save and share</b> → <b>Install page as app</b>. In Edge open the <b>…</b> menu → <b>Apps</b> → <b>Install this site as an app</b>.','Click <b>Install</b>. Gintaras opens in its own window with its own icon.']}};
+ ios:{name:'iPhone or iPad',steps:['Open this page in <b>Safari</b>.','Tap the <b>Share</b> button: the square with an arrow pointing up, at the bottom of the screen (top right on an iPad).','Scroll down the list and tap <b>Add to Home Screen</b>.','Tap <b>Add</b>. Wordami is now on your home screen.']},
+ android:{name:'Android phone or tablet',steps:['Open this page in <b>Chrome</b>.','Tap the <b>⋮</b> menu at the top right.','Tap <b>Add to Home screen</b> (on some phones it says <b>Install app</b>).','Tap <b>Install</b>. Wordami is now on your home screen.']},
+ desktop:{name:'Computer',steps:['Open this page in <b>Chrome</b> or <b>Edge</b>.','Click the small <b>install icon</b> at the right end of the address bar (a screen with a down arrow).','No icon? In Chrome open the <b>⋮</b> menu → <b>Cast, save and share</b> → <b>Install page as app</b>. In Edge open the <b>…</b> menu → <b>Apps</b> → <b>Install this site as an app</b>.','Click <b>Install</b>. Wordami opens in its own window with its own icon.']}};
 function renderInstall(){const now=$('#install-now'),st=$('#install-steps');if(!now)return;
   if(isInstalled()){now.innerHTML='<div class="win badge"><b>You are using the app.</b> Nothing else to do.</div>';st.innerHTML='';return;}
-  now.innerHTML=installEvt?'<button type="button" class="btn amber" id="btn-install">Install Gintaras</button>':'';
+  now.innerHTML=installEvt?'<button type="button" class="btn amber" id="btn-install">Install Wordami</button>':'';
   if(installEvt)$('#btn-install').onclick=async()=>{const e=installEvt;e.prompt();await e.userChoice;installEvt=null;renderInstall();};
   const mine=devicePlatform();const order=[mine].concat(['ios','android','desktop'].filter(k=>k!==mine));
   st.innerHTML=order.map((k,i)=>'<details'+(i===0&&!installEvt?' open':'')+'><summary>'+(i===0?(installEvt?'Or step by step on this ':'Step by step on this ')+'device: ':'')+INSTALL_HOWTO[k].name+'</summary><ol>'+INSTALL_HOWTO[k].steps.map(s=>'<li>'+s+'</li>').join('')+'</ol></details>').join('');}
@@ -4037,6 +4077,7 @@ const onHand=f=>!canOffline||navigator.onLine||HAVE.has(f);
 function hearable(x,voice){const id=typeof x==='string'?x:x&&(x.au||x.id);if(!id||!canOffline||navigator.onLine)return true;const u=audioAt(id,voice);return !!u&&HAVE.has(u);}
 function unitFiles(g,voice){let v=voice||S.voice||'ona';for(let n=0;v&&n<4;n++,v=VOICE_BASE[v])if(SMAP[v]&&SMAP[v][g])return [absUrl(audioUrl(v,g))];return [];}
 /* a conversation's files: each line in the voice it is spoken in (theirs, or yours) */
+function castPictureFiles(c){return typeof CAST_PICTURES==='undefined'?[]:(c.cast||[]).map(p=>CAST_PICTURES[p.name]).filter(Boolean).map(v=>absUrl(picFile(v)));}
 function convFiles(c){const set=new Set();(c.all||[]).forEach(ln=>{if(!ln.lt)return;const u=audioAt(ln.id,ln.kind==='p'?castVoice(c.cast[ln.who]||c.cast[0]):myVoice());if(u)set.add(u);});return [...set];}
 const picsOf=its=>its.map(i=>i&&picFor(i.lt)).filter(v=>v&&v[0]!=='#').map(v=>absUrl(picFile(v)));
 /* the files these words play from (a line with your name in it plays from its own file) */
@@ -4045,9 +4086,11 @@ function filesOf(its,voice){const set=new Set();its.forEach(i=>{const u=i&&audio
 function readyPlan(){const steps=[],lastDone=[];let ahead=0;
   for(const id of STEPS){const u=UNIT_BY[id],c=CONV_BY[id];if(u&&ahead>=3)break;
     if(!ahead&&!steps.length&&stepDone(id)){lastDone.push(id);continue;}
-    if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its),MINI.filter(c=>LESSON_BY[c.after].unit===u).flatMap(convFiles))});}
-    else if(c)steps.push({c,files:convFiles(c)});}
+    if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its),MINI.filter(c=>LESSON_BY[c.after].unit===u).flatMap(c=>convFiles(c).concat(castPictureFiles(c))))});}
+    else if(c)steps.push({c,files:convFiles(c).concat(castPictureFiles(c))});}
   const soon=Date.now()+7*DAY,due=practised().filter(i=>rec(i.id).due<=soon),extra=new Set();
+  if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE&&!S.look)extra.add(absUrl(picFile(LEARNER_PICTURE)));
+  {const mine=artLook(S.look);if(mine)extra.add(absUrl(artFile(mine.face,mine.top)));}
   filesOf(due).concat(picsOf(due)).forEach(f=>extra.add(f));
   Object.keys(S.replies||{}).forEach(k=>{const r=S.replies[k],c=CONV_BY[unitOf(k)];if(c&&r&&r.due<=soon)convFiles(c).forEach(f=>extra.add(f));});
   /* (Round 12) the recordings of the sentences you can make in the lessons ahead (Put it together) */
@@ -4089,15 +4132,16 @@ function renderReady(){const html=readyLine();document.querySelectorAll('#offrea
     const b=el.querySelector('[data-ready-now]');if(b)b.onclick=()=>prefetchReady(true);});}
 /* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
 function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
-  CONVS.forEach(c=>convFiles(c).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
+  if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE)set.add(absUrl(picFile(LEARNER_PICTURE)));
+  CONVS.forEach(c=>convFiles(c).concat(castPictureFiles(c)).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
 /* a recording's size from its length (about 6 KB for each second of speech), an emoji picture's about 4 KB, a drawn one's about 7 KB */
-function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return f.endsWith('.webp')?7800:4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
+function fileBytes(f){const m=/\/([a-z]+)_([a-z]+\d+)\.mp3/.exec(f);if(!m)return f.includes('/art-v2/')?30000:f.endsWith('.webp')?7800:4000;const t=(SMAP[m[1]]||{})[m[2]];if(!t)return 300000;let end=0;for(const k in t)end=Math.max(end,t[k][0]+t[k][1]);return Math.round(end*6100+4000);}
 const mbOf=b=>b<1e6?'under 1 MB':'about '+Math.max(1,Math.round(b/1e6))+' MB';
 function drawDl(){const box=$('#offline-box');if(box&&dl)box.innerHTML='<div class="bar"><i style="width:'+Math.round(dl.done/dl.total*100)+'%"></i></div><p class="note">Downloading the course: '+dl.done+' of '+dl.total+' files. You can keep learning while this runs.</p>';}
 async function renderOffline(){const box=$('#offline-box');if(!box)return;
   if(!canOffline){box.innerHTML='<p class="note">This browser can’t save the recordings. Lessons still work offline as reading and typing.</p>';return;}
   if(dl)return drawDl();await refreshHave();if(dl)return drawDl(); /* (Round 10) always fresh: the size jumped about */try{if(navigator.storage&&navigator.storage.persisted)persisted=await navigator.storage.persisted();}catch(e){}
-  const files=offlineFiles(),left=files.filter(f=>!HAVE.has(f)),safe=persisted===true?'<p class="note">🔒 Saved files are protected: your browser keeps them even when space runs low.</p>':persisted===false?'<p class="note">Your browser may clear saved files if space runs low'+(IOS&&!isInstalled()?', or after about a week without a visit. Add Gintaras to your Home Screen (above) to keep them.':'. Installing the app (above) usually keeps them safe.')+'</p>':'';
+  const files=offlineFiles(),left=files.filter(f=>!HAVE.has(f)),safe=persisted===true?'<p class="note">🔒 Saved files are protected: your browser keeps them even when space runs low.</p>':persisted===false?'<p class="note">Your browser may clear saved files if space runs low'+(IOS&&!isInstalled()?', or after about a week without a visit. Add Wordami to your Home Screen (above) to keep them.':'. Installing the app (above) usually keeps them safe.')+'</p>':'';
   const line='<p class="note offready" id="offready-s" hidden></p>';
   if(!left.length){box.innerHTML=line+'<div class="win badge"><b>✓ Whole course saved.</b> Every lesson and conversation, with sound and pictures, works on this device without signal.</div>'+safe+'<button type="button" class="linkbtn" id="btn-offline-clear">Remove the downloaded course</button>';
     $('#btn-offline-clear').onclick=async()=>{await caches.delete(AUDIO_CACHE);await caches.delete(PICS_CACHE);HAVE.clear();toast('Removed. The next lessons are saved again by themselves.');renderOffline();renderReady();};renderReady();return;}
@@ -4124,7 +4168,7 @@ refreshHave().then(()=>{netUI();renderIosNudge();setTimeout(()=>prefetchReady(),
 /* iPhone and iPad: Safari can clear a website's saved files after about a week without a visit, unless it is on the
    Home Screen. So once, after the first lesson, a plain nudge to add it there. */
 function renderIosNudge(){const el=$('#ios-nudge');if(!el)return;const show=IOS&&!isInstalled()&&(S.lessonsDone||0)>=1&&!S.iosNudge;el.hidden=!show;if(!show)return;
-  el.innerHTML='<strong>Keep Gintaras working offline</strong><p class="note">Add it to your Home Screen. On iPhone and iPad, Safari can clear what a website saved after about a week without a visit, but not for apps on the Home Screen. That is what keeps your lessons working without signal.</p><div class="row2"><button type="button" class="btn amber" data-a="how">Show me how</button><button type="button" class="btn ghost" data-a="no">Not now</button></div>';
+  el.innerHTML='<strong>Keep Wordami working offline</strong><p class="note">Add it to your Home Screen. On iPhone and iPad, Safari can clear what a website saved after about a week without a visit, but not for apps on the Home Screen. That is what keeps your lessons working without signal.</p><div class="row2"><button type="button" class="btn amber" data-a="how">Show me how</button><button type="button" class="btn ghost" data-a="no">Not now</button></div>';
   const done=()=>{S.iosNudge=today();save();el.hidden=true;};
   el.querySelector('[data-a="how"]').onclick=()=>{done();showView('settings');setTimeout(()=>{const x=$('#install');if(x)x.scrollIntoView({block:'start',behavior:'smooth'});},120);};
   el.querySelector('[data-a="no"]').onclick=done;}
@@ -4183,7 +4227,7 @@ function openFlag(){const ctx=cardContext();const ex=Q&&Q.queue[Q.idx];
   const open=!!ex&&(STEPLESS[ex.type]||/\b(good|bad|idk)\b/.test($('#foot').className));
   const what=CV?'this line of “'+ctx.title+'”':open&&ctx.lt?'“'+ctx.lt+'”':open&&ctx.drill?ctx.drill:'this question';
   const ov=document.createElement('div');ov.className='league-pop flag-pop';
-  ov.innerHTML='<div class="card" role="dialog" aria-label="Report a problem"><h2>What\'s wrong?</h2><p class="note">About '+esc(what)+'. Thanks for helping make Gintaras better.'+(navigator.onLine?'':' You’re offline: it is kept on this device and sent when you’re back online.')+'</p>'+
+  ov.innerHTML='<div class="card" role="dialog" aria-label="Report a problem"><h2>What\'s wrong?</h2><p class="note">About '+esc(what)+'. Thanks for helping make Wordami better.'+(navigator.onLine?'':' You’re offline: it is kept on this device and sent when you’re back online.')+'</p>'+
     '<div class="flag-reasons">'+FLAG_REASONS.map(([k,t])=>'<button type="button" class="chip" data-r="'+k+'">'+esc(t)+'</button>').join('')+'</div>'+
     '<textarea id="flag-note" maxlength="500" rows="3" placeholder="Anything else? For example, what it should say (optional)"></textarea>'+
     '<div class="row2"><button type="button" class="btn ghost" data-x>Cancel</button><button type="button" class="btn amber" data-send disabled>Send</button></div></div>';
@@ -4273,7 +4317,7 @@ function meItems(){const m=S.me;if(!m)return [];const g=m.g==='f'?'f':'m';const 
   if(out.length){add('learn');if(m.why)add('why-'+m.why);add('nice');}
   out.forEach(i=>BYID[i.id]=i);return out;}
 function renderMe(){personalise();const box=$('#me-card');if(!box)return;const items=meItems();
-  if(!items.length)box.innerHTML='<span class="eyebrow">About me</span><h2>Talk about yourself</h2><p class="note">The first thing anyone asks is who you are. Answer a few quick questions and Gintaras builds a lesson about your own life: your name, where you\'re from, your work and your family. The lessons and conversations use your answers too, so people greet you by name.</p><button type="button" class="btn amber" id="btn-me-set">Tell me about you</button>';
+  if(!items.length)box.innerHTML='<span class="eyebrow">About me</span><h2>Talk about yourself</h2><p class="note">The first thing anyone asks is who you are. Answer a few quick questions and Wordami builds a lesson about your own life: your name, where you\'re from, your work and your family. The lessons and conversations use your answers too, so people greet you by name.</p><button type="button" class="btn amber" id="btn-me-set">Tell me about you</button>';
   else box.innerHTML='<span class="eyebrow">About me</span><h2>Your introduction</h2><p class="note">This is you, in '+LANG.en+'. Practice it until you can say it without looking. The lessons and conversations use your name and country too.</p><div class="me-lines">'+
     items.map(it=>'<div class="me-line"><button type="button" class="spk'+(hearable(it)?'':' nosound')+'" data-mesay="'+esc(it.id)+'" aria-label="Play">'+SPK+'</button><div><span class="lt">'+esc(it.lt)+'</span><small>'+esc(it.en)+'</small></div></div>').join('')+
     '</div>'+(items.some(it=>!hearable(it))?'<p class="note">Lines with a pale speaker play once their sound is saved, next time you\'re online.</p>':'')+'<button type="button" class="btn amber" id="btn-me-go">Practice it</button><button type="button" class="btn ghost" id="btn-me-set">Change my answers</button>';
@@ -4364,10 +4408,10 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!n.classList|
 /* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
 const SHARE_URL='https://n00bin.github.io/gintaras/';
 function shareText(){const n=window.cloud&&window.cloud.nickname&&window.cloud.nickname();
-  return 'I\'m learning '+LANG.en+' with Gintaras: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
+  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
 async function copyLink(){try{await navigator.clipboard.writeText(shareText()+' '+SHARE_URL);toast('Link copied. Paste it in a message.');}
   catch(e){prompt('Copy this link:',SHARE_URL);}}
-async function shareApp(){if(navigator.share){try{await navigator.share({title:'Gintaras: learn '+LANG.en,text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
+async function shareApp(){if(navigator.share){try{await navigator.share({title:'Wordami: learn '+LANG.en,text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
 document.addEventListener('click',e=>{if(e.target.closest('[data-share]'))shareApp();else if(e.target.closest('[data-copy]'))copyLink();});
 let qrLoading=null;
 document.querySelector('#share .qr').addEventListener('toggle',async ev=>{if(!ev.target.open)return;const box=$('#qr');if(box.childNodes.length)return;
@@ -4392,11 +4436,18 @@ function pickLang(code){const l=LANGS.find(x=>x.code===code);if(!l||!langUsable(
   /* Show it's happening straight away. The waiting online save gets a second and a half; anything it doesn't finish
      is still on this device and goes up the next time this language opens. */
   document.body.insertAdjacentHTML('beforeend','<div class="lang-switching" role="status"><div>'+mascot('think')+'<p>Switching to '+esc(l.en)+'…</p></div></div>');
-  Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>location.reload());}
+  Promise.race([Promise.resolve(window.cloudFlush&&window.cloudFlush()).catch(()=>{}),new Promise(r=>setTimeout(r,1500))]).then(()=>{const next=new URL(location.href);if(next.searchParams.has('lang'))next.searchParams.set('lang',code);location.assign(next.href);});}
 function renderLangPick(){
   const opts=LANGS.map(l=>'<option value="'+l.code+'"'+(l.code===LANG_CODE?' selected':'')+(langUsable(l)?'':' disabled')+'>'+esc(l.label+' · '+l.own)+(l.ready?'':LANG_PREVIEW?' · preview':' · coming soon')+'</option>').join('');
-  ['#lang-select','#lang-select-w'].forEach(id=>{const s=$(id);if(s){s.innerHTML=opts;s.onchange=()=>pickLang(s.value);}});
-  const n=$('#lang-note');if(n)n.textContent=LANGS.filter(l=>!l.ready).map(l=>l.label+' is coming soon. ').join('')+'Each language keeps its own progress, streak and leagues. Your account, face and About me stay the same.';}
+  const welcome=$('#lang-select-w');if(welcome){welcome.innerHTML=opts;welcome.onchange=()=>pickLang(welcome.value);}
+  const flagPath=l=>'pics/'+[...l.flag].map(ch=>ch.codePointAt(0).toString(16)).join('-')+'.svg';
+  const current=LANGS.find(l=>l.code===LANG_CODE),button=$('#btn-course-language'),dialog=$('#course-picker');
+  $('#course-flag-image').src=flagPath(current);button.setAttribute('aria-label',current.label+' course. Change language');button.title=current.label+' · Change language';
+  $('#course-choices').innerHTML=LANGS.map(l=>'<li><button type="button" class="course-choice" data-course-language="'+l.code+'"'+(l.code===LANG_CODE?' aria-current="true"':'')+(langUsable(l)?'':' disabled')+'><img src="'+flagPath(l)+'" alt=""><span><strong>'+esc(l.label)+'</strong><small>'+esc(l.own)+'</small></span><span class="course-status">'+(l.code===LANG_CODE?'Learning':l.ready?'':LANG_PREVIEW?'Preview':'Coming soon')+'</span></button></li>').join('');
+  button.onclick=()=>{dialog.showModal();button.setAttribute('aria-expanded','true');const r=button.getBoundingClientRect();dialog.style.left=Math.min(Math.max(12,r.left),Math.max(12,innerWidth-dialog.offsetWidth-12))+'px';dialog.style.top=Math.min(r.bottom+10,Math.max(12,innerHeight-dialog.offsetHeight-12))+'px';(dialog.querySelector('[aria-current="true"]')||dialog.querySelector('button')).focus();};
+  $('#course-picker-close').onclick=()=>dialog.close();dialog.onclose=()=>button.setAttribute('aria-expanded','false');
+  dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
+  dialog.querySelectorAll('[data-course-language]').forEach(b=>b.onclick=()=>{dialog.close();pickLang(b.dataset.courseLanguage);});}
 renderLangPick();
 /* The page's own words follow the language: its name, its hello, and its pronunciation guide (from the language file). */
 document.querySelectorAll('.lang-en').forEach(e=>e.textContent=LANG.en);document.querySelectorAll('.lang-hi').forEach(e=>e.textContent=LANG.hello);
@@ -4513,7 +4564,7 @@ document.addEventListener('keydown',e=>{if(!$('#guide').hidden||e.key==='Enter'&
     e.preventDefault();const sa=document.querySelector('#stage #showans');if(b.disabled&&sa&&!sa.hidden&&!sa.disabled){sa.click();return;}if(!b.disabled)b.click();}});
 
 /* Welcome: step 1 is the app and your pace, step 2 is about you (name, man or woman, country; all skippable), then
-   straight into the first lesson. Signing in (skippable) is offered once that lesson is done, so you see what Gintaras is
+   straight into the first lesson. Signing in (skippable) is offered once that lesson is done, so you see what Wordami is
    before anyone asks for an account. Players who started before accounts existed see it on its own, once. */
 let signinMode=null;
 /* (Round 9) Enter on the welcome screen is its big button (unless a box, a list or another button has the focus) */
@@ -4563,7 +4614,7 @@ $('#btn-welcome').onclick=()=>{if(meOnly){welcomeMeSave();closeMeOnly();return;}
    says so, with a button to carry on there instead (it reloads with the latest progress). */
 function tabGuard(){if(!('BroadcastChannel' in window))return;const me=Math.random().toString(36).slice(2),bc=new BroadcastChannel('gintaras-tab');
   const hush=()=>{if(window.__tabQuiet)return;try{save();}catch(e){}window.__tabQuiet=true;stopAllAudio&&stopAllAudio();
-    const ov=document.createElement('div');ov.className='gate';ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Open in another tab">'+mascot('think')+'<h2>Gintaras is open in another tab</h2><p class="note">To keep your progress safe it runs in one tab at a time. Everything you did here is saved.</p><button type="button" class="btn amber" id="tab-here">Use it here instead</button></div>';
+    const ov=document.createElement('div');ov.className='gate';ov.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Open in another tab">'+mascot('think')+'<h2>Wordami is open in another tab</h2><p class="note">To keep your progress safe it runs in one tab at a time. Everything you did here is saved.</p><button type="button" class="btn amber" id="tab-here">Use it here instead</button></div>';
     document.body.appendChild(ov);ov.querySelector('#tab-here').onclick=()=>{bc.postMessage({hi:me});location.reload();};};
   /* (Round 10) when the tab that took over closes, this one carries on by itself, with the latest progress */
   let by=null;bc.onmessage=e=>{const d=e.data||{};if(d.hi&&d.hi!==me){by=d.hi;hush();}else if(d.bye&&window.__tabQuiet&&d.bye===by){bc.postMessage({hi:me});location.reload();}};
@@ -4588,7 +4639,7 @@ function start(snap){load();setTimeout(tabGuard,0);
   const h=(location.hash||'').replace('#','');showView(VIEWS.includes(h)?h:'learn');
   if(!S.welcomed){$('#welcome').hidden=false;document.body.style.overflow='hidden';$('#btn-welcome').textContent='Next';}
   {const sp=$('#splash'),bye=()=>{sp.classList.add('out');setTimeout(()=>sp.remove(),400);};sp.onclick=bye;setTimeout(bye,1000);}
-  $('#app-version').textContent='Gintaras version '+APP_RELEASE;
+  $('#app-version').textContent='Wordami version '+APP_RELEASE;
   {const v=$('#w-ver');if(v)v.textContent='Version '+APP_RELEASE;}
   if(S.welcomed&&(S.seenVersion||0)<APP_VERSION)setTimeout(()=>celebrate({mood:'cheer',icon:'✨',title:'Updated to version '+APP_RELEASE,sub:WHATS_NEW,ms:4500}),1600);
   S.seenVersion=APP_VERSION;save();
@@ -4600,5 +4651,83 @@ window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.ho
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="cloud.js"></script>
+<script src="activity-core.js"></script>
+<script src="adventures.js"></script>
+<script src="activities.js"></script>
+<script src="introductions.js"></script>
+<script src="topic-content.js"></script>
+<script src="topic-practice.js"></script>
+<script src="writing-content.js"></script>
+<script src="writing-studio.js"></script>
+<script src="independent-checks.js"></script>
+<script src="a1-dialogue-content.js"></script>
+<script src="a1-dialogue-assets.js"></script>
+<script src="a1-listening.js"></script>
+<script src="speaking-check.js"></script>
+<script src="a1-message-coach.js"></script>
+<script src="a1-course.js"></script>
+<script src="a1-route.js"></script>
+<script src="skills-content.js"></script>
+<script src="curriculum-content.js"></script>
+<script src="vocabulary-content.js"></script>
+<script src="learning-design.js"></script>
+<script src="source-support.js"></script>
+<script src="a2-source-support.js"></script>
+<script src="b1-source-support.js"></script>
+<script src="b2-source-support.js"></script>
+<script src="c1-source-support.js"></script>
+<script src="c2-source-support.js"></script>
+<script src="a1-feedback.js"></script>
+<script src="writing-preparation.js"></script>
+<script src="a2-writing-preparation.js"></script>
+<script src="b1-writing-preparation.js"></script>
+<script src="b2-writing-preparation.js"></script>
+<script src="c1-writing-preparation.js"></script>
+<script src="c2-writing-preparation.js"></script>
+<script src="skills-audio.js"></script>
+<script src="capstone-content.js"></script>
+<script src="capstone-audio.js"></script>
+<script src="grammar-content.js"></script>
+<script src="grammar-practice.js"></script>
+<script src="phrase-review.js"></script>
+<script src="skills-studio.js"></script>
+<script src="transfer-content.js"></script>
+<script src="a2-transfer-content.js"></script>
+<script src="listening-transfer-content.js"></script>
+<script src="a2-listening-transfer-content.js"></script>
+<script src="b1-application-content.js"></script>
+<script src="b2-application-content.js"></script>
+<script src="c1-application-content.js"></script>
+<script src="c2-application-content.js"></script>
+<script src="listening-transfer-audio.js"></script>
+<script src="transfer-checks.js"></script>
+<script src="interaction-practice-content.js"></script>
+<script src="higher-interaction-content.js"></script>
+<script src="interaction-practice-audio.js"></script>
+<script src="interaction-practice.js"></script>
+<script src="written-interaction-content.js"></script>
+<script src="written-interaction.js"></script>
+<script src="form-practice-content.js"></script>
+<script src="form-practice.js"></script>
+<script src="document-reading-content.js"></script>
+<script src="document-reading.js"></script>
+<script src="extended-reading-content.js"></script>
+<script src="extended-reading.js"></script>
+<script src="native-application-content.js"></script>
+<script src="unit-application-content.js"></script>
+<script src="unit-application.js"></script>
+<script src="unit-progress.js"></script>
+<script src="unit-application-path.js"></script>
+<script src="course-path.js"></script>
+<script src="graded-content-lt.js"></script>
+<script src="graded-audio.js"></script>
+<script src="graded-reading.js"></script>
+<script src="assessment-portfolio.js"></script>
+<script src="foundation-evidence.js"></script>
+<script src="foundation-ui.js"></script>
+<script src="foundation-content.js"></script>
+<script src="foundation-practice.js"></script>
+<script src="foundation-path.js"></script>
+<script src="foundation-unit-skills.js"></script>
 </body>
 </html>

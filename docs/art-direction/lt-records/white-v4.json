@@ -1,0 +1,19 @@
+{
+  "id": "white-v4",
+  "word": "baltas",
+  "en": "white",
+  "unit": "u29",
+  "actor": "learner",
+  "references": [
+    "masters/white-v3.png",
+    "approved-style-reference.png"
+  ],
+  "prompt": "Edit image 1, the white polar bear. Image 2 is ONLY the approved flat cartoon style reference. Keep the same friendly bear identity, pose, white body, navy eyes/nose and simple pale-grey interior shapes. Remove every stray speckle, mist, glow, grey smudge and disconnected mark outside its silhouette. Make the entire bear opaque white with clean hard vector-like contours, no soft halo or feathering. Reduce the bear to fit completely within the center 76% of a square canvas, leaving at least 12% genuinely empty transparent margin on all four sides. Background must have alpha zero right outside the silhouette. No texture, lighting, ground shadow, gradients, extra objects or text.",
+  "master": "docs/art-direction/masters/white-v4.png",
+  "asset": "pics/art-v2/white-v4.webp",
+  "bytes": 20668,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "white-v5",
+  "revision_reason": "The bear still has detached edge flecks and its body is difficult to distinguish on the light lesson surface. Replace it with a single fully opaque white T-shirt, matching the approved pink T-shirt silhouette. Use an opaque pale-grey edge and hem for visibility, no transparent hole, no texture and no stray pixels outside the clean silhouette."
+}

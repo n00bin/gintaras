@@ -1,0 +1,17 @@
+{
+  "id": "deal",
+  "word": "Sutarta!",
+  "en": "Deal!",
+  "unit": "u23",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Deal!. Reference 1 governs rounded flat cartoon STYLE: big expressive white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas and one adult woman with long dark-brown hair and coral blouse shake RIGHT HANDS firmly in agreement, both smiling and facing each other. One small turquoise checkmark above their clasped hands communicates DEAL AGREED. Exactly two arms each, free hands at sides; no money, romance, contract text or scenery. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/deal.png",
+  "asset": "pics/art-v2/deal.webp",
+  "bytes": 38380,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

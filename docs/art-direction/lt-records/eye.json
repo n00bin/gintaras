@@ -1,0 +1,16 @@
+{
+  "id": "eye",
+  "word": "akis",
+  "en": "eye",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning eye. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE large friendly cartoon EYE, opaque cream-white oval sclera, dark-brown oval pupil and iris with one small cream highlight, simple warm-orange eyelid surround and one rounded dark-brown eyebrow. No tears, glasses, injury, face, eyelashes, words or additional eyes. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, labels, lettering or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/eye.png",
+  "asset": "pics/art-v2/eye.webp",
+  "bytes": 24822,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

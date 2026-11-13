@@ -1,0 +1,16 @@
+{
+  "id": "one-hundred-v2",
+  "word": "šimtas",
+  "en": "one hundred",
+  "unit": "u2",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One production Lithuanian vocabulary asset meaning ONE HUNDRED (šimtas). Reference is the approved rounded flat cartoon illustration style. Draw ONLY the exact numeral 100, as three large clean amber rounded geometric digit shapes: a 1 followed by exactly two 0 digits. All three digits sit together in the centre. The zero counters are clean transparent cutouts. No counting blocks, no squares, no grid, no objects, no people, no stars, no confetti, no icons, no words or letters, no glow, no shadow, no fog. Opaque solid amber digit interiors, crisp edges, true transparent background. Square canvas, generous transparent margin.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/one-hundred-v2.png",
+  "asset": "pics/art-v2/one-hundred-v2.webp",
+  "bytes": 25344,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

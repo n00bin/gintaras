@@ -1,0 +1,17 @@
+{
+  "id": "i-ve-already-eaten",
+  "word": "Aš jau valgiau",
+  "en": "I've already eaten",
+  "unit": "u35",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I've already eaten. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands and shapes, opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas has ALREADY EATEN: sits contentedly with one hand resting on his comfortably full stomach, other hand raised in a polite no-more gesture. In front is an EMPTY cream plate with only two tiny crumbs, fork beside plate and one turquoise checkmark. No uneaten meal, active bite or extra arms. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-ve-already-eaten.png",
+  "asset": "pics/art-v2/i-ve-already-eaten.webp",
+  "bytes": 34846,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

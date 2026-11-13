@@ -1,0 +1,17 @@
+{
+  "id": "i-am-a-teacher-v3",
+  "word": "Aš esu mokytojas",
+  "en": "I am a teacher",
+  "unit": "u20",
+  "actor": "learner",
+  "prompt": "Edit the FIRST reference image (the existing cartoon teacher). Change ONLY the board surface: replace the entire dark green interior inside the wooden frame with a single smooth fully opaque LIGHT MINT GREEN (#A8E5CE) surface, uniform colour from edge to edge. The wooden frame remains amber. Keep Tomas, his pose, face, clothes, chalk, textbook, proportions and overall composition the same. Do not add writing. Keep the outer background truly transparent. Preserve clean illustration edges. The SECOND reference is the approved illustration style. Do not add glow, fog, soft shadows or any backdrop. This is one final production vocabulary asset, 'I am a teacher'.",
+  "references": [
+    "G:/ai_projects/gintaras/docs/art-direction/masters/i-am-a-teacher-v2.png",
+    "G:/ai_projects/gintaras/docs/art-direction/approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/i-am-a-teacher-v3.png",
+  "asset": "pics/art-v2/i-am-a-teacher-v3.webp",
+  "bytes": 29590,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

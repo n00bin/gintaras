@@ -1,0 +1,17 @@
+{
+  "id": "it-doesn-t-work",
+  "word": "Neveikia",
+  "en": "It doesn't work",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It doesn't work. Reference 1 governs rounded flat cartoon STYLE, big white oval eyes when people present, chunky simple shapes, opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas holds a small coral hairdryer with a clearly visible navy power button and a short cable ending in a normal plug. He presses the button but NO air comes out. One large coral X beside the hairdryer and puzzled raised eyebrows communicate IT DOESN'T WORK. Other hand supports the device, exactly two hands, no sparks, fire, injury, repair tools or text. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-doesn-t-work.png",
+  "asset": "pics/art-v2/it-doesn-t-work.webp",
+  "bytes": 34380,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

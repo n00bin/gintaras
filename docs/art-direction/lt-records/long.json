@@ -1,0 +1,16 @@
+{
+  "id": "long",
+  "word": "ilgas",
+  "en": "long",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration for LONG. Reference 1 is the approved STYLE: rounded flat cartoon geometry, chunky silhouettes, expressive white oval eyes on people, bright solid opaque colours, sparse darker flat interior shapes, no black perimeter outlines. Any reference 2 is Tomas's exact CHARACTER IDENTITY. Subject: Two simple horizontal pencils aligned at their left ends: a very LONG amber pencil is the large main subject above a much shorter muted navy pencil. A small crisp coral arrow points to the long pencil. Make the length difference immediately obvious, with visible sharpened tips. No ruler, numerals, hands or writing. Complete centered subject or comparison, 12% empty transparent margins, readable at 56px. Crisp outer boundaries, zero alpha outside shapes, fully opaque interiors. No background, floor, disc, labels, logos, gradients, texture, glow, fog, blur, cast shadow or unrelated scenery.",
+  "master": "docs/art-direction/masters/long.png",
+  "asset": "pics/art-v2/long.webp",
+  "bytes": 15792,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

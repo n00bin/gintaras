@@ -15,7 +15,7 @@ const js = fs.readFileSync(path.join(__dirname, '..', 'lang', lang + '.js'), 'ut
 const head = html.split('<script>')[1].split('/* ===================== LANGUAGES')[0];
 const pre = "function norm(s){return s.toLowerCase().replace(/[.,!?;:\"'¿¡]/g,'').replace(/\\s+/g,' ').trim();}function esc(s){return s}";
 const c = {};
-new Function('c', pre + js + ';Object.assign(c,{NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),ART:typeof ART!=="undefined"?ART:null,ART_UNITS:typeof ART_UNITS!=="undefined"?ART_UNITS:[],ART_NONE:typeof ART_NONE!=="undefined"?ART_NONE:new Set(),artSlug:typeof artSlug!=="undefined"?artSlug:null,LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,MAKE:typeof MAKE!=="undefined"?MAKE:[],picFile:typeof picFile!=="undefined"?picFile:null});')(c);
+new Function('c', pre + js + ';Object.assign(c,{PICTURE_ASSETS:typeof PICTURE_ASSETS!=="undefined"?PICTURE_ASSETS:{},NO_PIC:typeof NO_PIC!=="undefined"?NO_PIC:new Set(),ART:typeof ART!=="undefined"?ART:null,ART_UNITS:typeof ART_UNITS!=="undefined"?ART_UNITS:[],ART_NONE:typeof ART_NONE!=="undefined"?ART_NONE:new Set(),artSlug:typeof artSlug!=="undefined"?artSlug:null,LANG,pronFor,CAST_GV,CANDO,ME_BANK,COURSE,ITEMS,PRON,CONVS,CONV_BY,PATH,LESSON_TIPS,SPEAK_TIPS,DRILLS,PATTERNS,GRAMMAR:typeof GRAMMAR!=="undefined"?GRAMMAR:[],unitTipText:typeof unitTipText!=="undefined"?unitTipText:null,WORDS,GLUE,EMOJI,norm,MAKE:typeof MAKE!=="undefined"?MAKE:[],picFile:typeof picFile!=="undefined"?picFile:null});')(c);
 let problems = 0;
 const say = (label, list) => { if (list.length) { problems += list.length; console.log('✗ ' + label + ':', list.join(' | ')); } else console.log('✓ ' + label); };
 
@@ -43,6 +43,8 @@ say('phrase words without a meaning in "Built from"', [...new Set(c.ITEMS.filter
 say('words without a picture', c.ITEMS.filter(i => !c.EMOJI[i.lt] && !c.NO_PIC.has(i.lt)).map(i => i.lt));
 // every picture must be on the server, or the app shows an emoji and the offline download never finishes
 if (c.picFile) say('pictures missing from pics/', [...new Set(Object.values(c.EMOJI).filter(v => v && v[0] !== '#'))].filter(v => !fs.existsSync(path.join(__dirname, '..', c.picFile(v)))).map(v => v + ' ' + c.picFile(v)));
+if (c.picFile) say('shared illustrations missing from pics/', Object.entries(c.PICTURE_ASSETS).filter(([word, asset]) => !fs.existsSync(path.join(__dirname, '..', c.picFile(asset)))).map(([word, asset]) => word + ' ' + c.picFile(asset)));
+say('shared illustrations mapped to words outside the course', Object.keys(c.PICTURE_ASSETS).filter(word => !c.ITEMS.some(i => i.lt === word)));
 // (the Flat warm rollout) every drawn word has a real picture: there, 256 x 256, complete, not oversized, its own file; a finished unit has every word drawn or on purpose none
 if (c.ART) { const dir = path.join(__dirname, '..', 'pics', 'art'), MAX = 13 * 1024, names = {}, have = new Set(fs.existsSync(dir) ? fs.readdirSync(dir) : []);
   const webpSize = b => { if (b.length < 30 || b.toString('latin1', 0, 4) !== 'RIFF' || b.toString('latin1', 8, 12) !== 'WEBP' || b.readUInt32LE(4) + 8 !== b.length) return null; const kind = b.toString('latin1', 12, 16);
@@ -142,7 +144,7 @@ say('drill words (sentence, and one choice) not taught by the lesson of the dril
    only makes sure the guard still reads every Lithuanian word a card shows. */
 say('teach-before-test guard reads every word a card shows', /function cardWords\(e\)/.test(html) && /wordsNeed\(cardWords\(e\)/.test(html) && /function taught\(i\)\{const r=peek\(i\.id\);return !!\(r\.intro/.test(html) ? [] : ['the guard in drawStep() or taught() has changed: run python tools/check_cards.py']);
 { const v = (head.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
-  say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
+  say('app release has a valid version and optional preview label', /const APP_RELEASE='\d+\.\d+(\.\d+)?(?:-[a-zA-Z0-9]+(?:[.-][a-zA-Z0-9]+)*)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }
 console.log(problems ? `\n${problems} problem(s)` : '\nAll checks passed.');
 process.exit(problems ? 1 : 0);

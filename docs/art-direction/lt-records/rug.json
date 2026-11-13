@@ -1,0 +1,18 @@
+{
+  "id": "rug",
+  "word": "kilimas",
+  "en": "rug",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning rug. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE oval household RUG shown from a slight overhead angle, turquoise centre with coral and cream concentric border bands and short cream fringe at both ends. Entire rug opaque, clearly flat woven mat shape. No floor underneath, furniture, person or texture. Complete centered composition with generous transparent margins and strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/rug.png",
+  "asset": "pics/art-v2/rug.webp",
+  "bytes": 27260,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "rug-v2",
+  "revision_reason": "Rug has a large unintended transparent hole in its centre. Replace with a simple RECTANGULAR coral rug with an entirely opaque solid cream centre and turquoise border. No oval, no cutout, no transparency within fabric, no texture or gradient."
+}

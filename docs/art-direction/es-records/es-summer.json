@@ -1,0 +1,15 @@
+{
+  "id": "es-summer",
+  "word": "el verano",
+  "en": "the summer",
+  "unit": "u18",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: SUMMER: a coral and cream striped beach umbrella planted in a small cream sand mound, a turquoise beach ball beside it and a big bright amber sun above. Compact, no sea or horizon.",
+  "master": "docs/art-direction/masters/es-summer.png",
+  "asset": "pics/art-v2/es-summer.webp",
+  "bytes": 40676,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

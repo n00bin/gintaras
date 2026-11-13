@@ -1,0 +1,17 @@
+{
+  "id": "in-the-morning-i-went-to-the-park",
+  "word": "Ryte aš ėjau į parką",
+  "en": "In the morning I went to the park",
+  "unit": "u37",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning In the morning I went to the park. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands and shapes, opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas walks toward a small PARK grouping of one leafy turquoise-green tree and one coral park bench. A small rising amber sun indicates morning. A short curved coral BACKWARD arrow beside a small cream memory bubble around the park scene marks this as recalling having gone there. Tomas is shown once, in the scene, walking naturally. No moon, vehicle or text. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/in-the-morning-i-went-to-the-park.png",
+  "asset": "pics/art-v2/in-the-morning-i-went-to-the-park.webp",
+  "bytes": 27628,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

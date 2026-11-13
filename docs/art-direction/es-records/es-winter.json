@@ -1,0 +1,15 @@
+{
+  "id": "es-winter",
+  "word": "el invierno",
+  "en": "the winter",
+  "unit": "u18",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: WINTER: a friendly snowman made of three cream-white snowballs with navy coal eyes and buttons, an orange carrot nose, a coral scarf and two twig arms, with five falling snowflakes around. Compact, no ground beyond a small snow mound.",
+  "master": "docs/art-direction/masters/es-winter.png",
+  "asset": "pics/art-v2/es-winter.webp",
+  "bytes": 47236,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

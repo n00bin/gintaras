@@ -1,0 +1,203 @@
+@u202|Paukščiai|Birds|Names of Lithuanian and other birds: <b>pempė</b> (lapwing), <b>griežlė</b> (corncrake) and <b>kuosa</b> (jackdaw).|Describe the birds you might see over a year in the Lithuanian countryside.
+#u202a|Birds, part 1
+pempė|lapwing|pem-PAY
+griežlė|corncrake|gryezh-LAY
+kuosa|jackdaw|kwoh-SAH
+varnėnas|starling|var-NAY-nahs
+zylė|tit|zee-LAY
+kikilis|chaffinch|ki-KI-lis
+dagilis|goldfinch|dah-GI-lis
+sniegena|bullfinch|snye-geh-NAH
+strazdas|thrush|STRAHZ-dahs
+kryklė|teal|kreek-LAY
+#u202b|Birds, part 2
+laukys|coot|low-KEES
+kragas|grebe|KRAH-gahs
+kurapka|partridge|ku-RAHP-kah
+putpelė|quail|put-peh-LAY
+tetervinas|black grouse|teh-ter-VI-nahs
+kurtinys|capercaillie|kur-ti-NEES
+jerubė|hazel grouse|yeh-ru-BAY
+apuokas|eagle owl|ah-PWOH-kahs
+kukutis|hoopoe|ku-KU-tis
+kielė|wagtail|kyeh-LAY
+#u202c|Birds, part 3
+vieversys|skylark|vye-ver-SEES
+tilvikas|sandpiper|TIL-vi-kahs
+slanka|woodcock|slahn-KAH
+sakalas|falcon|SAH-kah-lahs
+suopis|buzzard|SWOH-pis
+grifas|vulture|GRI-fahs
+papūga|parrot|pah-POO-gah
+povas|peacock|POH-vahs
+pingvinas|penguin|ping-VI-nahs
+flamingas|flamingo|flah-MIN-gahs
+viščiukas|chick|vish-CHYU-kahs
+@u203|Vandens gyvūnai|Water creatures|Fish and other creatures of lakes, rivers and seas: <b>lynas</b> (tench), <b>karosas</b> (crucian carp) and <b>kuoja</b> (roach).|Describe a fishing trip or a visit to an aquarium, naming at least eight creatures.
+#u203a|Water creatures, part 1
+lynas|tench|LEE-nahs
+karosas|crucian carp|kah-ROH-sahs
+kuoja|roach (fish)|KWOH-yah
+raudė|rudd|row-DAY
+vėgėlė|burbot|vay-gay-LAY
+sterkas|zander|STER-kahs
+šamas|catfish|SHAH-mahs
+upėtakis|trout|u-PAY-tah-kis
+stinta|smelt|stin-TAH
+strimelė|Baltic herring|stri-meh-LAY
+#u203b|Water creatures, part 2
+plekšnė|flounder|PLEKSH-nay
+vimba|vimba bream|vim-BAH
+krabas|crab|KRAH-bahs
+krevetė|shrimp|kreh-VEH-tay
+omaras|lobster|oh-MAH-rahs
+midija|mussel|MI-di-yah
+austrė|oyster|ows-TRAY
+aštuonkojis|octopus|ahsh-twohn-KOH-yis
+kalmaras|squid|kahl-MAH-rahs
+medūza|jellyfish|meh-DOO-zah
+#u203c|Water creatures, part 3
+delfinas|dolphin|del-FI-nahs
+ruonis|seal|RWOH-nis
+banginis|whale|bahn-GI-nis
+ryklys|shark|reek-LEES
+vėžlys|turtle, tortoise|vayzh-LEES
+buožgalvis|tadpole|bwohzh-GAHL-vis
+tritonas|newt|tri-TOH-nahs
+dėlė|leech|day-LAY
+žvynai|scales (of a fish)|ZHVEE-nai
+pelekas|fin|PEH-leh-kahs
+žiaunos|gills|ZHYAU-nohs
+masalas žuvims|fishing bait|MAH-sah-lahs zhu-VIMS
+meškerė|fishing rod|mesh-keh-RAY
+tinklas žvejybai|fishing net|TINK-lahs zhveh-YEE-bai
+@u204|Vabzdžiai ir smulkūs gyvūnai|Insects and small creatures|Insects and other small creatures: <b>kamanė</b> (bumblebee), <b>širšė</b> (hornet) and <b>skruzdėlynas</b> (anthill).|Describe a summer evening by a lake from the point of view of the insects.
+#u204a|Insects and small creatures, part 1
+kamanė|bumblebee|kah-mah-NAY
+širšė|hornet|shir-SHAY
+skruzdėlynas|anthill|skruz-day-LEE-nahs
+kandis|moth|kahn-DIS
+žiogas|grasshopper|ZHYOH-gahs
+svirplys|cricket|svirp-LEES
+boružė|ladybird|boh-ru-ZHAY
+laumžirgis|dragonfly|lowm-ZHIR-gis
+vabalas|beetle|VAH-bah-lahs
+karkvabalis|cockchafer|kark-VAH-bah-lis
+#u204b|Insects and small creatures, part 2
+erkė|tick|er-KAY
+utėlė|louse|u-tay-LAY
+blusa|flea|blu-SAH
+tarakonas|cockroach|tah-rah-KOH-nahs
+šliužas|slug|SHLYU-zhahs
+slieka|earthworm|slyeh-KAH
+voratinklis|cobweb|voh-rah-TINK-lis
+vikšras|caterpillar|VIKSH-rahs
+lerva|larva|ler-VAH
+kokonas|cocoon|koh-KOH-nahs
+#u204c|Insects and small creatures, part 3
+uodo įkandimas|mosquito bite|WOH-doh ee-kahn-DI-mahs
+bičių spiečius|swarm of bees|bi-CHYOO SPYEH-chyus
+korys|honeycomb|koh-REES
+vaškas|wax|VAHSH-kahs
+žiurkė|rat|zhyur-KAY
+@u205|Uogos, grybai ir gėlės|Berries, mushrooms and flowers|Wild berries, mushrooms and flowers: <b>ūmėdė</b> (russula), <b>rudmėsė</b> (saffron milk cap) and <b>kazlėkas</b> (slippery jack).|Describe a walk in the forest in late summer: what you picked, smelled and saw.
+#u205a|Berries, mushrooms and flowers, part 1
+ūmėdė|russula|oo-may-DAY
+rudmėsė|saffron milk cap|rud-may-SAY
+kazlėkas|slippery jack|kahz-LAY-kahs
+pievagrybis|field mushroom|pye-vah-GREE-bis
+kelmutis|honey fungus|kel-MU-tis
+grybiena|mycelium|gree-BYEH-nah
+žemuogė|wild strawberry|ZHEH-mwoh-gay
+bruknė|lingonberry|bruk-NAY
+spanguolė|cranberry|spahn-gwoh-LAY
+avietė|raspberry|ah-VYEH-tay
+#u205b|Berries, mushrooms and flowers, part 2
+gervuogė|blackberry|GER-vwoh-gay
+serbentas|currant|ser-BEN-tahs
+šaltalankis|sea buckthorn|shahl-tah-LAHN-kis
+erškėtis|wild rose|ersh-KAY-tis
+putinas|guelder rose|pu-TI-nahs
+ieva|bird cherry|yeh-VAH
+alyva|lilac|ah-LEE-vah
+jazminas|jasmine|yahz-MI-nahs
+saulėgrąža|sunflower|sow-lay-GRAA-zhah
+pakalnutė|lily of the valley|pah-kahl-NU-tay
+#u205c|Berries, mushrooms and flowers, part 3
+žibuoklė|hepatica (spring flower)|zhi-bwohk-LAY
+snieguolė|snowdrop|snye-gwoh-LAY
+narcizas|daffodil|nar-TSI-zahs
+gysločiai|plantain (plant)|GEES-loh-chyai
+usnis|thistle|us-NIS
+viksva|sedge|viks-VAH
+nendrė|reed|nen-DRAY
+meldas|bulrush|MEL-dahs
+kiminai|sphagnum moss|ki-mi-NAI
+viržis|heather|VIR-zhis
+gegužraibė|wild orchid|geh-guzh-RAI-bay
+@u206|Kūnas iš arti|The body in detail|Precise words for the human body: <b>kaukolė</b> (skull), <b>nugaros smegenys</b> (spinal cord) and <b>krūtinkaulis</b> (breastbone).|Explain to a doctor exactly where it hurts after a fall, using at least six words from this unit.
+#u206a|The body in detail, part 1
+kaukolė|skull|kow-KOH-lay
+nugaros smegenys|spinal cord|NU-gah-rohs SMEH-geh-nees
+krūtinkaulis|breastbone|kroo-TIN-kow-lis
+raktikaulis|collarbone|rahk-TI-kow-lis
+mentė|shoulder blade|men-TAY
+dubuo kūne|pelvis|du-BWOH koo-NEH
+šlaunikaulis|thigh bone|shlow-NI-kow-lis
+kelio girnelė|kneecap|KEH-lyoh gir-NEH-lay
+blauzda|calf (of the leg)|blowz-DAH
+čiurna|ankle|chyur-NAH
+#u206b|The body in detail, part 2
+nykštys|thumb|neeksh-TEES
+mažasis pirštas|little finger|mah-ZHAH-sis PIRSH-tahs
+sausgyslė|tendon|SOWS-gees-lay
+raištis|ligament|RAISH-tis
+kremzlė|cartilage|kremz-LAY
+arterija|artery|ar-TEH-ri-yah
+vena|vein|VEH-nah
+širdies vožtuvas|heart valve|shir-DYES vozh-TU-vahs
+žarnynas|intestines|zhar-NEE-nahs
+tulžis|bile|tul-ZHIS
+#u206c|The body in detail, part 3
+blužnis|spleen|bluzh-NIS
+šlapimo pūslė|bladder|shlah-PI-moh POOS-lay
+gerklos|larynx|GERK-lohs
+stemplė|oesophagus|stemp-LAY
+trachėja|windpipe|trah-KHAY-yah
+tonzilės|tonsils|ton-ZI-lays
+apendiksas|appendix|ah-PEN-dik-sahs
+poros|pores|POH-rohs
+@u207|Seni daiktai|Old household and farm objects|Objects from old Lithuanian homes and farms: <b>ąsotis</b> (jug), <b>puodynė</b> (earthenware pot) and <b>samtis</b> (ladle).|Describe your grandparents’ house or an open-air museum, naming at least eight objects.
+#u207a|Old household and farm objects, part 1
+ąsotis|jug|aa-SOH-tis
+puodynė|earthenware pot|pwoh-DEE-nay
+samtis|ladle|SAHM-tis
+kočėlas|rolling pin|koh-CHAY-lahs
+grūstuvė|mortar (for grinding)|groos-TU-vay
+sietas|sieve|SYEH-tahs
+verpstė|spindle|verps-TAY
+verpimo ratelis|spinning wheel|ver-PI-moh rah-TEH-lis
+skrynia|chest, trunk|SKREE-nyah
+kraitis|dowry|KRAI-tis
+#u207b|Old household and farm objects, part 2
+žvakidė|candlestick|zhvah-KI-day
+ugniakuras|hearth|ug-nyah-KU-rahs
+malkinė|woodshed|mahl-KI-nay
+šulinio svirtis|well sweep|SHU-li-nyoh svir-TIS
+varteliai|garden gate|var-TEH-lyai
+aruodas|grain bin|ah-RWOH-dahs
+girnos|quern stones|GIR-nohs
+malūnas|mill|mah-LOO-nahs
+kalvė|smithy|kahl-VAY
+šakės|pitchfork|SHAH-kays
+#u207c|Old household and farm objects, part 3
+spragilas|flail|SPRAH-gi-lahs
+akėčios|harrow|ah-KAY-chyohs
+žagrė|wooden plough|zhahg-RAY
+pjautuvas|sickle|pyau-TU-vahs
+kaplys|hoe|kahp-LEES
+gelda|trough|gel-DAH
+kubilas|tub, vat|KU-bi-lahs
+pintinė|wicker basket|pin-TI-nay
+vežimas|cart|veh-ZHI-mahs
+pakinktai|harness|pah-KINK-tai

@@ -1,0 +1,16 @@
+{
+  "id": "family",
+  "word": "šeima",
+  "en": "family",
+  "unit": "u4",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning FAMILY. The attached approved board governs STYLE only, not these people's identities. Original rounded geometric flat cartoon characters, oversized expressive heads, large white oval eyes, chunky rounded hands, simple readable silhouettes, bright opaque flat colours and sparse darker crisp interior shapes. No black outlines. Subject: One affectionate FAMILY group: an adult father with short dark-brown hair and a navy sweater, an adult mother with a long brown braid and a turquoise top, and two genuinely young children in coral and amber clothes. The parents stand behind the children, gently hugging them. Clearly different adult and child ages, four readable friendly faces, no pets, toys, background or written labels. Center the complete group with generous empty transparent margins; readable at 56px. Every body and clothing surface opaque; clean sharp transparent outer boundaries. No texture, gradient, glow, mist, blur, floor, ground shadow, backdrop disc, lettering, logos or extra scenery.",
+  "master": "docs/art-direction/masters/family.png",
+  "asset": "pics/art-v2/family.webp",
+  "bytes": 43042,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,111 @@
+@u180|Išvaizda ir apranga|Appearance and clothing|Words for describing appearance and clothes precisely: <b>apgamas</b> (birthmark, mole), <b>randas</b> (scar) and <b>raukšlės</b> (wrinkles).|Describe someone’s appearance and outfit in detail, as a novelist would.
+#u180a|Appearance and clothing, part 1
+apgamas|birthmark, mole|AHP-gah-mahs
+randas|scar|RAHN-dahs
+raukšlės|wrinkles|ROWKSH-lays
+duobutės skruostuose|dimples|dwoh-BU-tays skrwohs-twoh-SEH
+smilkiniai|temples (of the head)|smil-KI-nyai
+plikė|bald patch|pli-KAY
+garbanoti plaukai|curly hair|gar-bah-NOH-ti plow-KAI
+kuodas|bun (hair)|KWOH-dahs
+liesas kaip šapas|thin as a rake|LYEH-sahs kaip SHAH-pahs
+kresnas|stocky|kres-NAHS
+#u180b|Appearance and clothing, part 2
+laibas|slender|LAI-bahs
+kumpas|stooped|KUM-pahs
+tiesus kaip styga|straight as a rod|tye-SUS kaip stee-GAH
+apsileidęs|scruffy|ahp-si-LAY-days
+apykaklė|collar|ah-PEE-kahk-lay
+rankogalis|cuff|rahn-KOH-gah-lis
+segtukas|clip, hairpin|seg-TU-kahs
+apsiaustas|cloak, coat|ahp-SYAUS-tahs
+prijuostė|apron|pri-YWOHS-tay
+@u181|Infrastruktūra|Infrastructure and transport|Words for roads, networks and getting around: <b>įkrovimo stotelė</b> (charging point), <b>geležinkelis</b> (railway) and <b>bėgiai</b> (rails, tracks).|Describe what you would improve in your town’s roads and transport, and why.
+#u181a|Infrastructure and transport, part 1
+įkrovimo stotelė|charging point|eek-roh-VI-moh stoh-TEH-lay
+geležinkelis|railway|geh-leh-ZHIN-keh-lis
+bėgiai|rails, tracks|BAY-gyai
+pervaža|level crossing|PER-vah-zhah
+perkėla|ferry crossing|per-KAY-lah
+vamzdynas|pipeline|vahmz-DEE-nahs
+elektros linija|power line|eh-LEK-trohs LI-ni-yah
+pastotė|substation|pahs-TOH-tay
+nuotekų valykla|sewage treatment plant|NWOH-teh-koo vah-LEEK-lah
+atliekų tvarkymas|waste management|aht-LYEH-koo TVAR-kee-mahs
+sąvartynas|landfill|saa-var-TEE-nahs
+paspirtukų nuoma|scooter hire|pahs-pir-TU-koo NWOH-mah
+viešojo transporto tinklas|public transport network|vye-SHOH-yoh TRAHNS-por-toh TINK-lahs
+@u182|Geografija|Geography and the earth|Words for geography and the earth: <b>žemuma</b> (lowland), <b>plynaukštė</b> (plateau) and <b>kalnagūbris</b> (mountain ridge).|Describe the geography of a country you know: relief, rivers, climate and regions.
+#u182a|Geography and the earth, part 1
+žemuma|lowland|zheh-mu-MAH
+plynaukštė|plateau|plee-NOWKSH-tay
+kalnagūbris|mountain ridge|kahl-nah-GOOB-ris
+viršukalnė|summit|vir-SHU-kahl-nay
+tarpeklis|gorge|tar-PEK-lis
+marios|lagoon|MAH-ryohs
+delta|delta|DEL-tah
+intakas|tributary|IN-tah-kahs
+ilguma|longitude|il-gu-MAH
+naudingosios iškasenos|mineral resources|now-DIN-goh-syohs ish-KAH-seh-nohs
+#u182b|Geography and the earth, part 2
+klintis|limestone|KLIN-tis
+smiltainis|sandstone|smil-TAI-nis
+molis|clay|MOH-lis
+žvyras|gravel|ZHVEE-rahs
+riedulys|boulder|rye-du-LEES
+gyventojų tankumas|population density|gee-VEN-toh-yoo tahn-KU-mahs
+etnografinis regionas|ethnographic region|et-noh-GRAH-fi-nis reh-GYOH-nahs
+@u183|Filosofija ir tikėjimas|Philosophy and belief|Words for philosophy, ethics and religion: <b>būtis</b> (being, existence), <b>laisva valia</b> (free will) and <b>beprasmybė</b> (meaninglessness).|Explain what gives life meaning for you, using some of these words.
+#u183a|Philosophy and belief, part 1
+būtis|being, existence|BOO-tis
+laisva valia|free will|lais-VAH vah-LYAH
+beprasmybė|meaninglessness|beh-prahs-MEE-bay
+etika|ethics|EH-ti-kah
+dorybė|virtue|doh-REE-bay
+yda|vice|ee-DAH
+sąžinė|conscience|SAA-zhi-nay
+nuodėmė|sin|NWOH-day-may
+atgaila|repentance|aht-gai-LAH
+išganymas|salvation|ish-GAH-nee-mahs
+#u183b|Philosophy and belief, part 2
+netikėjimas|unbelief|neh-ti-KAY-yi-mahs
+ateizmas|atheism|ah-teh-IZ-mahs
+agnosticizmas|agnosticism|ahg-nohs-ti-TSIZ-mahs
+dvasingumas|spirituality|dvah-sin-GU-mahs
+pasaulėžiūra|worldview|pah-sow-lay-ZHYOO-rah
+vertybių sistema|value system|ver-TEE-byoo sis-TEH-mah
+pomirtinis gyvenimas|afterlife|poh-mir-TI-nis gee-VEH-ni-mahs
+sielos ramybė|peace of mind|SYEH-lohs rah-MEE-bay
+tiesos paieškos|search for truth|tye-SOHS pah-YESH-kohs
+gėris|good (the good)|GAY-ris
+blogis|evil|BLOH-gis
+maldininkas|pilgrim, worshipper|mahl-DI-nin-kahs
+parapija|parish|pah-RAH-pi-yah
+šventovė|sanctuary, shrine|shven-TOH-vay
+@u184|Judesys ir jėga|Movement and effort|Verbs for movement and physical effort: <b>tempti</b> (to drag), <b>stumdyti</b> (to push around) and <b>ridenti</b> (to roll).|Describe a hard physical task you did, step by step, using precise verbs.
+#u184a|Movement and effort, part 1
+tempti|to drag|TEMP-ti
+stumdyti|to push around|STUM-dee-ti
+ridenti|to roll|ri-DEN-ti
+sviesti|to hurl|SVYES-ti
+mėtyti|to toss about|MAY-tee-ti
+gniaužti|to clench, squeeze|GNYAUZH-ti
+traiškyti|to crush|TRAISH-kee-ti
+tampyti|to tug, stretch|tahm-PEE-ti
+plėšyti|to tear apart|play-SHEE-ti
+kapoti|to chop|kah-POH-ti
+#u184b|Movement and effort, part 2
+skelti|to split (wood)|SKEL-ti
+kasti|to dig|KAHS-ti
+šliaužti|to creep|SHLYAUZH-ti
+striksėti|to hop|striks-AY-ti
+sprukti|to flee|SPRUK-ti
+lėkti|to rush, fly|LAYK-ti
+dumti|to dash|DUM-ti
+trypti|to stamp|TREEP-ti
+spardyti|to kick about|spar-DEE-ti
+krypuoti|to waddle|kree-PWOH-ti
+nardyti|to dive|nar-DEE-ti
+plaukioti|to swim about|plow-KYOH-ti
+alsuoti|to pant|ahl-SWOH-ti
+uždusti|to become breathless|uzh-DUS-ti

@@ -1,0 +1,17 @@
+{
+  "id": "what-happened",
+  "word": "Kas atsitiko?",
+  "en": "What happened?",
+  "unit": "u37",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning What happened?. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas asks WHAT HAPPENED: surprised concerned face, both palms open, looking at a tipped-over turquoise cup and one small opaque blue puddle. One coral question mark above the spilled cup. No injury, broken glass, dramatic accident or text. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/what-happened.png",
+  "asset": "pics/art-v2/what-happened.webp",
+  "bytes": 43632,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

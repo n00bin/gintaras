@@ -1,0 +1,17 @@
+{
+  "id": "lithuania",
+  "word": "Lietuva",
+  "en": "Lithuania",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square course illustration meaning Lithuania. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE accurate national FLAG OF LITHUANIA on a short navy pole. Rectangular flag with EXACTLY THREE equal horizontal bands in this order: GOLDEN YELLOW TOP, GREEN MIDDLE, RED BOTTOM. No emblem, star, extra stripe, shading or other flag. The flag is the main subject, no country outline, person or scenery. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, words, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "research_sources": [],
+  "master": "docs/art-direction/masters/lithuania.png",
+  "asset": "pics/art-v2/lithuania.webp",
+  "bytes": 6094,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

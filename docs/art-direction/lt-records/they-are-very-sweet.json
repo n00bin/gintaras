@@ -1,0 +1,16 @@
+{
+  "id": "they-are-very-sweet",
+  "word": "Jie labai mieli",
+  "en": "They are very sweet",
+  "unit": "u25",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create ONE transparent square course vocabulary illustration meaning They are very sweet. Reference 1 governs the approved rounded flat cartoon style: expressive large white oval eyes, oversized heads, chunky hands, opaque solid amber/turquoise/coral/navy, minimal crisp details and no black outlines. Reference 2 if present is Tomas's exact identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Two cheerful young siblings, a boy and a girl, together kindly offer a small flower to their smiling grandmother. The siblings are the main subjects. One small coral heart reinforces their kindness. Meaning: THEY are very sweet/kind, not sweet food. No candy, words or scenery. Center the complete scene with generous transparent margins, readable at 56px. Opaque interiors and clean edges. No gradient, texture, glow, mist, shadow, ground, backdrop, text, letters or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/they-are-very-sweet.png",
+  "asset": "pics/art-v2/they-are-very-sweet.webp",
+  "bytes": 45084,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "es-sunny",
+  "word": "Hace sol",
+  "en": "It is sunny",
+  "unit": "u9",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: SUNNY weather: one big bright amber sun with a round face-free disc and ten rounded rays, alone, with no clouds and no rain.",
+  "master": "docs/art-direction/masters/es-sunny.png",
+  "asset": "pics/art-v2/es-sunny.webp",
+  "bytes": 49618,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

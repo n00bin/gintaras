@@ -1,0 +1,17 @@
+{
+  "id": "i-was-robbed-v2",
+  "word": "Mane apvogė",
+  "en": "I was robbed",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square language-learning illustration matching reference 1 flat rounded cartoon style, huge white oval eyes, warm colours, navy/turquoise/amber/coral/cream solid shapes, minimal detail. Reference 2 fixes Tomas: short wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Generous transparent margins, entire scene visible and readable at 56px. Opaque object interiors. No words, text, logos, outlines, gradients, glow, shadow, texture or backdrop. Meaning: I was robbed. Worried Tomas holds a wide-open visibly EMPTY navy wallet in his LEFT hand by its top edge; his RIGHT arm hangs down beside his body with its single hand clearly visible. Exactly TWO arms and TWO hands on Tomas, no supporting hand beneath wallet. A separate small cream memory bubble overhead shows a coral anonymous hand taking a single amber coin from a navy wallet, with a backward arrow to convey past theft. No injury or weapon.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-was-robbed-v2.png",
+  "asset": "pics/art-v2/i-was-robbed-v2.webp",
+  "bytes": 42682,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

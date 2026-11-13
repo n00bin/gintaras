@@ -1,0 +1,20 @@
+{
+  "id": "klaipeda",
+  "word": "Klaipėda",
+  "en": "Klaipėda",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square course illustration meaning Klaipėda. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: A compact symbolic KLAIPEDA PORT composition: one simple traditional cream half-timbered old-town building with dark-brown diagonal beams and coral pitched roof, beside one small navy-hulled sailboat with turquoise-and-cream sails on two short blue water strokes. This represents the coastal port city, not a precise landmark reconstruction. No lighthouse, tropical palms, person, flag or lettering. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, words, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "research_sources": [
+    "https://lithuania.travel/en/mice/general-information/locations/mice-cities/klaipeda-mice",
+    "https://lithuania.travel/en/why-lithuania/by-the-baltic-sea/klaipeda/fachwerk-buildings"
+  ],
+  "master": "docs/art-direction/masters/klaipeda.png",
+  "asset": "pics/art-v2/klaipeda.webp",
+  "bytes": 35890,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "happy-new-year",
+  "word": "Laimingų Naujųjų metų!",
+  "en": "Happy New Year!",
+  "unit": "u19",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Vocabulary context: the beginner Lithuanian unit \"Getting by\". Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is a CHARACTER identity reference only when the subject explicitly names that character; otherwise use it only for illustration style and proportions. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures, ground plane or cast shadows. Subject: Convey this Lithuanian vocabulary meaning accurately: \"Happy New Year!\" (Lithuanian: \"Laimingų Naujųjų metų!\"). For a concrete thing or animal, show just that thing or animal with no people. If the noun names a person, family member or profession, depict the correct gender, age and role from the meaning; a mother or female doctor must be a woman, a child must be a child. For an adjective, show an unmistakable visual example. For a first-person action or phrase, show Tomas performing that exact action. For a relationship or grammar word, use a simple readable interaction rather than random symbols. Never write the answer or any translation. Lithuanian food cepelinai means potato dumplings, never aircraft. Colours, counts and clock times must match the meaning exactly, even when they need colours outside the usual palette.  Primary character identity when a person is needed: No fixed character identity is prescribed. Any character-sheet reference is a STYLE and proportion reference only here. Follow the vocabulary's actual role, age and gender; do not turn every person into the male learner. Concrete objects need no person.. Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations. FINAL PRECISE SCENE: Tomas and Ruta celebrating beside one simple clock showing MIDNIGHT, both clock hands pointing straight up at twelve, with two small colourful firework bursts overhead. No numerals, words or written year. FINAL RENDERING RULE: flat cartoon cutout matching approved style. Named Tomas matches reference 2; named Ruta matches reference 3 (long straight brown hair, blunt fringe, GREEN leaf-pattern blouse, coral trousers). No glow, bloom, fog, blurry halo, vignette, shadows or coloured transparency around subjects. Completely transparent background immediately outside crisp silhouettes. Object interiors fully opaque. Use light or medium colours for flat surfaces, not near-black gradients. Square canvas, generous 10% transparent margin, complete objects. Only explicitly requested symbols or clock ticks; never write a word, translation or title.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png",
+    "lt-ruta-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/happy-new-year.png",
+  "asset": "pics/art-v2/happy-new-year.webp",
+  "bytes": 65738,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

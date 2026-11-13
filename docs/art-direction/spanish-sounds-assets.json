@@ -1,0 +1,82 @@
+[
+  {
+    "id": "giraffe",
+    "master": "docs/art-direction/masters/giraffe.png",
+    "asset": "pics/art-v2/giraffe.webp",
+    "bytes": 28936,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: A friendly full-body giraffe, long neck, golden yellow coat with a few large amber patches, four clearly visible legs, little rounded horns, simple cheerful face. No scenery. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "tortilla",
+    "master": "docs/art-direction/masters/tortilla.png",
+    "asset": "pics/art-v2/tortilla.webp",
+    "bytes": 23148,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: A stack of three round golden corn tortillas in three-quarter view, top tortilla fully visible, a few large toasted patches. No plate, no filling, no face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "pineapple",
+    "master": "docs/art-direction/masters/pineapple.png",
+    "asset": "pics/art-v2/pineapple.webp",
+    "bytes": 24960,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One whole pineapple with chunky green leaf crown and golden amber body, simple broad geometric skin markings. No face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "hotel",
+    "master": "docs/art-direction/masters/hotel.png",
+    "asset": "pics/art-v2/hotel.webp",
+    "bytes": 31226,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: A small welcoming hotel building with turquoise walls, coral roof, three floors, large simple windows and a central entrance. No lettering, signs, logos, stars or surrounding scenery. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "chocolate",
+    "master": "docs/art-direction/masters/chocolate.png",
+    "asset": "pics/art-v2/chocolate.webp",
+    "bytes": 21918,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One clearly recognizable thick chocolate bar with six large raised segments, lower half in a simple partially opened coral wrapper. No brand, letters or face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "coffee",
+    "master": "docs/art-direction/masters/coffee.png",
+    "asset": "pics/art-v2/coffee.webp",
+    "bytes": 27874,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One large turquoise ceramic coffee cup filled with dark coffee, handle visible, two broad amber steam curls. One simple cream flower emblem matching the approved reference cup. No saucer, letters or face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "telephone",
+    "master": "docs/art-direction/masters/telephone.png",
+    "asset": "pics/art-v2/telephone.webp",
+    "bytes": 12530,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One modern smartphone upright at a slight angle, thick navy rounded body, simple bright turquoise screen with a large cream telephone handset symbol. No letters, numbers, interface text, hands or face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "guitar",
+    "master": "docs/art-direction/masters/guitar.png",
+    "asset": "pics/art-v2/guitar.webp",
+    "bytes": 31526,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One acoustic guitar, whole instrument including headstock visible, rounded amber body, dark brown neck, simple circular sound hole and six simple strings. Slight diagonal angle. No hands, lettering or face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "taco",
+    "master": "docs/art-direction/masters/taco.png",
+    "asset": "pics/art-v2/taco.webp",
+    "bytes": 21290,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One clearly recognizable Mexican taco, single golden folded corn tortilla with visible chunky green lettuce, coral tomato pieces and brown filling. Side three-quarter view. No plate, face or lettering. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  },
+  {
+    "id": "cereal",
+    "master": "docs/art-direction/masters/cereal.png",
+    "asset": "pics/art-v2/cereal.webp",
+    "bytes": 27346,
+    "generator": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one production vocabulary illustration for the Gintaras language-learning app. The attached approved board is a STYLE REFERENCE ONLY; create ONE individual object, never a board, grid, character sheet or labelled card. Match the approved board's playful rounded flat cartoon shape language: chunky simple geometry, bright saturated turquoise, amber, coral, navy and cream, minimal darker flat detail, essentially no outlines, no sketch strokes, no realism, no texture, no gradients or cast shadows. Clear silhouette readable at 56px. Subject: One turquoise bowl filled with simple golden cereal rings and visible cream milk, a short navy spoon resting in the bowl. Three-quarter view. No packaging, fruit, letters or face. Composition: one centered isolated subject, complete object fully visible, approximately 75 percent of square canvas, generous equal transparent margins. No text, labels, watermark, beige circular frame or background. TRUE TRANSPARENT background."
+  }
+]

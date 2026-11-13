@@ -1,0 +1,783 @@
+{
+  "schema": 1,
+  "scope": "controlled reading and listening transfer, not complete CEFR assessment",
+  "languages": {
+    "lt": [
+      {
+        "unitId": "A1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-shopping",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-shopping",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-home",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-home",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-travel",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-travel",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-services",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-services",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-work",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-work",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-meals",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-meals",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-appointments",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-appointments",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-community",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-community",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-housing",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-housing",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-workplace",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-workplace",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-media",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-media",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-mobility",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-mobility",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-academic",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-academic",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-culture",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-culture",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-professional",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-professional",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-science",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-science",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-literature",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-literature",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-register",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-register",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      }
+    ],
+    "es": [
+      {
+        "unitId": "A1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-shopping",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-shopping",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-home",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-home",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-travel",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A1-travel",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-services",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-services",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-work",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-work",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-meals",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "A2-meals",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-appointments",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-appointments",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-community",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-community",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-housing",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B1-housing",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-workplace",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-workplace",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-media",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-media",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-mobility",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "B2-mobility",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-academic",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-academic",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-culture",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-culture",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-professional",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C1-professional",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-science",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-science",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-literature",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-literature",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-register",
+        "skill": "reading",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      },
+      {
+        "unitId": "C2-register",
+        "skill": "listening",
+        "variants": 2,
+        "questions": 6,
+        "newTargetLanguageForms": [],
+        "scope": "changed details using explicitly prepared language"
+      }
+    ]
+  },
+  "counts": {
+    "reading": 96,
+    "listening": 96,
+    "questions": 576
+  }
+}

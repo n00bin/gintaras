@@ -1,0 +1,16 @@
+{
+  "id": "es-lost",
+  "word": "Estoy perdido",
+  "en": "I am lost",
+  "unit": "u14",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration for a Mexican Spanish course. Reference 1 is the authoritative STYLE: rounded geometric flat 2D cartoon, oversized heads, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. If a second reference is attached it is the IDENTITY of Tomas, the friendly young adult learner: light warm skin, short light brown curly hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses. Only draw Tomas when the subject names him. A mother, nurse or female teacher must be a woman; a child must be a child. Only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous 10% transparent margin, no cropped heads, hands or objects. No text, letters, labels, logos, watermark, discs or busy scenery. No glow, bloom, blur, halo, vignette, shadows, gradients, texture, floor or backdrop. Completely transparent background immediately outside crisp shapes; all interiors fully opaque. Exactly ONE illustration, not a sheet or collage. Subject: Tomas is LOST: he holds a large unfolded turquoise paper map with simple coral roads, turning his head with a confused worried expression, two navy question marks above his head.",
+  "master": "docs/art-direction/masters/es-lost.png",
+  "asset": "pics/art-v2/es-lost.webp",
+  "bytes": 32180,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

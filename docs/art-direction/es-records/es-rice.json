@@ -1,0 +1,16 @@
+{
+  "id": "es-rice",
+  "word": "el arroz",
+  "en": "the rice",
+  "unit": "u3",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: cooked white RICE in ONE turquoise bowl, a rounded mound of many distinct short cream oval rice grains rising above rim. A few cream grains beside bowl. Food only, no spoon, chopsticks, garnish or steam.",
+  "course_item_id": "u3b-1:0",
+  "master": "docs/art-direction/masters/es-rice.png",
+  "asset": "pics/art-v2/es-rice.webp",
+  "bytes": 25244,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

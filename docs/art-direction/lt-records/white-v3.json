@@ -1,0 +1,18 @@
+{
+  "id": "white-v3",
+  "word": "baltas",
+  "en": "white",
+  "unit": "u29",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE square transparent vocabulary illustration for Wordami, meaning WHITE. The attached approved board is a STYLE REFERENCE ONLY: use its playful rounded flat geometric cartoon shapes, sparse crisp interior details and friendly face. Subject: one cute WHITE POLAR BEAR standing on all four short rounded paws, three-quarter view, big rounded white body, small round white ears, dark navy oval eyes and nose. Every part of the bear is FULLY OPAQUE WHITE, with only a few crisp pale-grey interior shapes so its white colour is unmistakable. Clean silhouette visible on a cream or dark interface. No other objects, no ball, ring, holes, clothes, letters, labels, logos or scenery. Center complete bear with generous transparent margin. Background genuinely transparent immediately outside the bear. No glow, blur, fog, drop shadow, lighting spill, halo, gradients or textured fur. Do not copy the board's lettering or layout.",
+  "master": "docs/art-direction/masters/white-v3.png",
+  "asset": "pics/art-v2/white-v3.webp",
+  "bytes": 43120,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "white-v4",
+  "revision_reason": "The outer silhouette has speckled grey/white halo pixels and insufficient empty margin. Keep the friendly white polar bear but clean every outside edge, remove all detached speckles, and fit the complete bear inside a generous transparent margin. Preserve fully opaque white body interiors."
+}

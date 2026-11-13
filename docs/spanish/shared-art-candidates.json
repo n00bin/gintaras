@@ -1,0 +1,548 @@
+[
+  {
+    "word": "eres",
+    "en": "you are (identity)",
+    "id": "u22a-1:1",
+    "current": "",
+    "options": [
+      {
+        "word": "Jūs esate",
+        "en": "You are (polite or plural)",
+        "asset": "art-v2/you-are-polite-or-plural"
+      }
+    ]
+  },
+  {
+    "word": "es",
+    "en": "he / she / it is (identity)",
+    "id": "u22a-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      },
+      {
+        "word": "Ji",
+        "en": "She",
+        "asset": "art-v2/she"
+      }
+    ]
+  },
+  {
+    "word": "son",
+    "en": "they / you all are (identity)",
+    "id": "u22a-1:4",
+    "current": "",
+    "options": [
+      {
+        "word": "Jie",
+        "en": "They (men or mixed)",
+        "asset": "art-v2/they-men-or-mixed"
+      },
+      {
+        "word": "Jos",
+        "en": "They (women)",
+        "asset": "art-v2/they-women"
+      }
+    ]
+  },
+  {
+    "word": "estás",
+    "en": "you are (state or location)",
+    "id": "u22b-1:1",
+    "current": "",
+    "options": [
+      {
+        "word": "Jūs esate",
+        "en": "You are (polite or plural)",
+        "asset": "art-v2/you-are-polite-or-plural"
+      }
+    ]
+  },
+  {
+    "word": "está",
+    "en": "he / she / it is (state or location)",
+    "id": "u22b-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      },
+      {
+        "word": "Ji",
+        "en": "She",
+        "asset": "art-v2/she"
+      }
+    ]
+  },
+  {
+    "word": "están",
+    "en": "they / you all are (state or location)",
+    "id": "u22b-1:4",
+    "current": "",
+    "options": [
+      {
+        "word": "Jie",
+        "en": "They (men or mixed)",
+        "asset": "art-v2/they-men-or-mixed"
+      },
+      {
+        "word": "Jos",
+        "en": "They (women)",
+        "asset": "art-v2/they-women"
+      }
+    ]
+  },
+  {
+    "word": "habla",
+    "en": "he / she speaks",
+    "id": "u23e-1:0",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "trabaja",
+    "en": "he / she works",
+    "id": "u23e-1:1",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "come",
+    "en": "he / she eats",
+    "id": "u23e-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "vive",
+    "en": "he / she lives",
+    "id": "u23e-1:3",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "hablan",
+    "en": "they / you all speak",
+    "id": "u23f-1:0",
+    "current": "",
+    "options": [
+      {
+        "word": "Jie",
+        "en": "They (men or mixed)",
+        "asset": "art-v2/they-men-or-mixed"
+      },
+      {
+        "word": "Jos",
+        "en": "They (women)",
+        "asset": "art-v2/they-women"
+      }
+    ]
+  },
+  {
+    "word": "trabajan",
+    "en": "they / you all work",
+    "id": "u23f-1:1",
+    "current": "",
+    "options": [
+      {
+        "word": "Jie",
+        "en": "They (men or mixed)",
+        "asset": "art-v2/they-men-or-mixed"
+      },
+      {
+        "word": "Jos",
+        "en": "They (women)",
+        "asset": "art-v2/they-women"
+      }
+    ]
+  },
+  {
+    "word": "bebe",
+    "en": "he / she drinks",
+    "id": "u23f-1:3",
+    "current": "",
+    "options": [
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "beben",
+    "en": "they / you all drink",
+    "id": "u23f-1:4",
+    "current": "",
+    "options": [
+      {
+        "word": "Jie",
+        "en": "They (men or mixed)",
+        "asset": "art-v2/they-men-or-mixed"
+      },
+      {
+        "word": "Jos",
+        "en": "They (women)",
+        "asset": "art-v2/they-women"
+      }
+    ]
+  },
+  {
+    "word": "cuándo",
+    "en": "when",
+    "id": "u24a-1:3",
+    "current": "",
+    "options": [
+      {
+        "word": "kai",
+        "en": "when (not a question)",
+        "asset": "art-v2/when-not-a-question"
+      },
+      {
+        "word": "kada",
+        "en": "when (a question)",
+        "asset": "art-v2/when-a-question-v2"
+      }
+    ]
+  },
+  {
+    "word": "uno",
+    "en": "one",
+    "id": "u2a-1:0",
+    "current": "#one",
+    "options": [
+      {
+        "word": "vienas",
+        "en": "one",
+        "asset": "art-v2/one"
+      }
+    ]
+  },
+  {
+    "word": "dos",
+    "en": "two",
+    "id": "u2a-1:1",
+    "current": "#two",
+    "options": [
+      {
+        "word": "du",
+        "en": "two",
+        "asset": "art-v2/two-v2"
+      }
+    ]
+  },
+  {
+    "word": "tres",
+    "en": "three",
+    "id": "u2a-1:2",
+    "current": "#three",
+    "options": [
+      {
+        "word": "trys",
+        "en": "three",
+        "asset": "art-v2/three"
+      }
+    ]
+  },
+  {
+    "word": "cuatro",
+    "en": "four",
+    "id": "u2a-1:3",
+    "current": "#four",
+    "options": [
+      {
+        "word": "keturi",
+        "en": "four",
+        "asset": "art-v2/four"
+      }
+    ]
+  },
+  {
+    "word": "cinco",
+    "en": "five",
+    "id": "u2a-1:4",
+    "current": "#five",
+    "options": [
+      {
+        "word": "penki",
+        "en": "five",
+        "asset": "art-v2/five"
+      }
+    ]
+  },
+  {
+    "word": "seis",
+    "en": "six",
+    "id": "u2b-1:0",
+    "current": "#six",
+    "options": [
+      {
+        "word": "šeši",
+        "en": "six",
+        "asset": "art-v2/six"
+      }
+    ]
+  },
+  {
+    "word": "siete",
+    "en": "seven",
+    "id": "u2b-1:1",
+    "current": "#seven",
+    "options": [
+      {
+        "word": "septyni",
+        "en": "seven",
+        "asset": "art-v2/seven"
+      }
+    ]
+  },
+  {
+    "word": "ocho",
+    "en": "eight",
+    "id": "u2b-1:2",
+    "current": "#eight",
+    "options": [
+      {
+        "word": "aštuoni",
+        "en": "eight",
+        "asset": "art-v2/eight"
+      }
+    ]
+  },
+  {
+    "word": "nueve",
+    "en": "nine",
+    "id": "u2b-1:3",
+    "current": "#nine",
+    "options": [
+      {
+        "word": "devyni",
+        "en": "nine",
+        "asset": "art-v2/nine"
+      }
+    ]
+  },
+  {
+    "word": "diez",
+    "en": "ten",
+    "id": "u2b-1:4",
+    "current": "#ten",
+    "options": [
+      {
+        "word": "dešimt",
+        "en": "ten",
+        "asset": "art-v2/ten"
+      }
+    ]
+  },
+  {
+    "word": "cien",
+    "en": "one hundred",
+    "id": "u2d-1:2",
+    "current": "#one hundred",
+    "options": [
+      {
+        "word": "šimtas",
+        "en": "one hundred",
+        "asset": "art-v2/one-hundred-v2"
+      }
+    ]
+  },
+  {
+    "word": "cero",
+    "en": "zero",
+    "id": "u2f-1:0",
+    "current": "#zero",
+    "options": [
+      {
+        "word": "nulis",
+        "en": "zero",
+        "asset": "art-v2/zero"
+      }
+    ]
+  },
+  {
+    "word": "hoy",
+    "en": "today",
+    "id": "u5b-1:2",
+    "current": "#today",
+    "options": [
+      {
+        "word": "šiandien",
+        "en": "today",
+        "asset": "art-v2/today"
+      }
+    ]
+  },
+  {
+    "word": "temprano",
+    "en": "early",
+    "id": "u5d-1:3",
+    "current": "#early",
+    "options": [
+      {
+        "word": "anksti",
+        "en": "early",
+        "asset": "art-v2/early"
+      }
+    ]
+  },
+  {
+    "word": "Me baño",
+    "en": "I take a bath / shower",
+    "id": "u26a-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "dušas",
+        "en": "shower",
+        "asset": "art-v2/shower"
+      }
+    ]
+  },
+  {
+    "word": "era",
+    "en": "I / he / she used to be (identity)",
+    "id": "u35b-1:0",
+    "current": "",
+    "options": [
+      {
+        "word": "Aš",
+        "en": "I (as in \"I am\")",
+        "asset": "art-v2/i-as-in-i-am"
+      },
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "estaba",
+    "en": "I / he / she was (state or location)",
+    "id": "u35b-1:1",
+    "current": "",
+    "options": [
+      {
+        "word": "Aš",
+        "en": "I (as in \"I am\")",
+        "asset": "art-v2/i-as-in-i-am"
+      },
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "tenía",
+    "en": "I / he / she had / used to have",
+    "id": "u35b-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "Aš",
+        "en": "I (as in \"I am\")",
+        "asset": "art-v2/i-as-in-i-am"
+      },
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "vivía",
+    "en": "I / he / she used to live",
+    "id": "u35b-1:3",
+    "current": "",
+    "options": [
+      {
+        "word": "Aš",
+        "en": "I (as in \"I am\")",
+        "asset": "art-v2/i-as-in-i-am"
+      },
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "iba",
+    "en": "I / he / she used to go / was going",
+    "id": "u35b-1:4",
+    "current": "",
+    "options": [
+      {
+        "word": "Aš",
+        "en": "I (as in \"I am\")",
+        "asset": "art-v2/i-as-in-i-am"
+      },
+      {
+        "word": "Jis",
+        "en": "He",
+        "asset": "art-v2/he"
+      }
+    ]
+  },
+  {
+    "word": "para mí",
+    "en": "for me / in my opinion",
+    "id": "u37a-1:2",
+    "current": "",
+    "options": [
+      {
+        "word": "Mano nuomone",
+        "en": "In my opinion",
+        "asset": "art-v2/in-my-opinion"
+      }
+    ]
+  },
+  {
+    "word": "el pez",
+    "en": "the fish (animal)",
+    "id": "u11a-1:3",
+    "current": "",
+    "options": [
+      {
+        "word": "žuvis",
+        "en": "fish",
+        "asset": "art-v2/fish"
+      }
+    ]
+  }
+]

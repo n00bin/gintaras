@@ -1,0 +1,15 @@
+{
+  "id": "es-museum",
+  "word": "el museo",
+  "en": "the museum",
+  "unit": "u4",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: MUSEUM. One compact cream museum building with turquoise triangular pediment and four simple coral columns. A large amber amphora-vase pictogram on the pediment identifies a collection of artefacts; navy doorway, two turquoise windows, no writing. No stairs that run off canvas.",
+  "master": "docs/art-direction/masters/es-museum.png",
+  "asset": "pics/art-v2/es-museum.webp",
+  "bytes": 27350,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

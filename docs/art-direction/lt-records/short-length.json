@@ -1,0 +1,16 @@
+{
+  "id": "short-length",
+  "word": "trumpas",
+  "en": "short (length)",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration for SHORT (LENGTH). Reference 1 is the approved STYLE: rounded flat cartoon geometry, chunky silhouettes, expressive white oval eyes on people, bright solid opaque colours, sparse darker flat interior shapes, no black perimeter outlines. Any reference 2 is Tomas's exact CHARACTER IDENTITY. Subject: A very SHORT turquoise pencil lies above a much longer muted grey pencil, with their left ends aligned. One small coral arrow points to the short turquoise pencil. Both are horizontal, with unmistakable sharpened tips. This illustrates length, not a short person. No rulers, numbers, hands, faces or written marks. Complete centered subject or comparison, 12% empty transparent margins, readable at 56px. Crisp outer boundaries, zero alpha outside shapes, fully opaque interiors. No background, floor, disc, labels, logos, gradients, texture, glow, fog, blur, cast shadow or unrelated scenery.",
+  "master": "docs/art-direction/masters/short-length.png",
+  "asset": "pics/art-v2/short-length.webp",
+  "bytes": 15160,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

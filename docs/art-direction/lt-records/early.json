@@ -1,0 +1,17 @@
+{
+  "id": "early",
+  "word": "anksti",
+  "en": "early",
+  "unit": "u23",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning early. Reference 1 governs rounded geometric flat cartoon STYLE, bright opaque solid colours, chunky shapes, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, large white oval eyes, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas awake EARLY in the morning, fully dressed in amber sweatshirt and navy trousers, stretching both arms gently upward, a small rising amber sun beside him and a simple navy alarm clock below the sun. Alert happy face. No moon, sleepy eyes, rushing or late symbols. No exact time numbers. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/early.png",
+  "asset": "pics/art-v2/early.webp",
+  "bytes": 38822,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

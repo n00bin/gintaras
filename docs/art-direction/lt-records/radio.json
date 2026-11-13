@@ -1,0 +1,16 @@
+{
+  "id": "radio",
+  "word": "radijas",
+  "en": "radio",
+  "unit": "u0",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style board: rounded chunky flat 2D cartoon, bright solid turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. Whole object unclipped, generous transparent margins, readable at 56px. Fully opaque object interiors, true transparent outside. No lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: RADIO. One rounded retro turquoise portable radio, large cream circular speaker with a few navy dots, cream tuning window with five short navy tick marks and a coral pointer (no numbers), two amber knobs, navy carrying handle on top, one simple raised antenna. Two small coral musical notes beside it. Radio only, no people.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/radio.png",
+  "asset": "pics/art-v2/radio.webp",
+  "bytes": 26162,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

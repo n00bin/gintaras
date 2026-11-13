@@ -1,0 +1,15 @@
+{
+  "id": "es-t-shirt",
+  "word": "la playera",
+  "en": "the T-shirt (Mexico)",
+  "unit": "u28",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: one plain short-sleeved crew-neck T-SHIRT laid flat, bright turquoise with a cream neckband. No buttons, collar, print or logo.",
+  "master": "docs/art-direction/masters/es-t-shirt.png",
+  "asset": "pics/art-v2/es-t-shirt.webp",
+  "bytes": 14086,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

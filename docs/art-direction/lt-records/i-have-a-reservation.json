@@ -1,0 +1,17 @@
+{
+  "id": "i-have-a-reservation",
+  "word": "Aš turiu rezervaciją",
+  "en": "I have a reservation",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I have a reservation. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes when people present, oversized heads, chunky hands and shapes, opaque solid colours, minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas at a small hotel reception counter shows an opaque cream booking confirmation card to a friendly receptionist in turquoise. Card has one coral calendar pictogram and turquoise checkmark, no writing. A small navy room-key tag beside the receptionist reinforces HOTEL RESERVATION. Exactly two arms each, no money, large lobby or text. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-have-a-reservation.png",
+  "asset": "pics/art-v2/i-have-a-reservation.webp",
+  "bytes": 43606,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

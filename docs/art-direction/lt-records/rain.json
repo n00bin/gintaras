@@ -1,0 +1,16 @@
+{
+  "id": "rain",
+  "word": "lietus",
+  "en": "rain",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create ONE transparent square vocabulary cutout meaning rain. Reference 1 is the flat rounded cartoon STYLE, reference 2 if present fixes Tomas's identity. Large white oval eyes, chunky hands, solid turquoise/amber/coral/navy, minimal details. Subject: ONE opaque rounded pale blue rain cloud with five large dark-blue raindrops underneath, the unmistakable meaning RAIN. No sun, person, face, umbrella or landscape. CRITICAL: no glow, bloom, fog, soft lighting, gradients, shadows or coloured haze anywhere. Render like clean cut paper: flat opaque interior, crisp immediate transition to true transparent outside. Generous transparent margins on all sides; complete composition readable at 56px. No floor, backdrop, lettering or logos.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/rain.png",
+  "asset": "pics/art-v2/rain.webp",
+  "bytes": 27344,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

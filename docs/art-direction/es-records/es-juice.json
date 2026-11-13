@@ -1,0 +1,15 @@
+{
+  "id": "es-juice",
+  "word": "el jugo",
+  "en": "the juice",
+  "unit": "u3",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: ORANGE JUICE. One simple tall rounded clear glass filled with opaque bright orange juice, with one small turquoise straw. Beside glass one whole orange fruit and one round orange slice showing five simple juicy segments. The glass juice interior must be fully opaque orange, only space outside silhouette transparent.",
+  "master": "docs/art-direction/masters/es-juice.png",
+  "asset": "pics/art-v2/es-juice.webp",
+  "bytes": 38820,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

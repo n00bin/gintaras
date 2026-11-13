@@ -1,0 +1,16 @@
+{
+  "id": "es-book",
+  "word": "el libro",
+  "en": "the book",
+  "unit": "u24",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: ONE closed hardcover BOOK in three-quarter view, bright turquoise front cover and spine, thick cream page block clearly visible, small plain amber bookmark ribbon protruding below. Simple blank cover with no symbols, no stack of books, no face or hands.",
+  "course_item_id": "u24d-1:0",
+  "master": "docs/art-direction/masters/es-book.png",
+  "asset": "pics/art-v2/es-book.webp",
+  "bytes": 19716,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

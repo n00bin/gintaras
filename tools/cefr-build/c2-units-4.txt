@@ -1,0 +1,155 @@
+@u197|Judėjimo priešdėliai|Prefixes of movement|Prefixed verbs of carrying, leading and moving: <b>sunešti</b> (to gather together), <b>panešti</b> (to manage to carry) and <b>apnešti</b> (to cover).|Describe moving house: who carried, led, ran and flew where, using ten prefixed verbs.
+#u197a|Prefixes of movement, part 1
+sunešti|to gather together|su-NESH-ti
+panešti|to manage to carry|pah-NESH-ti
+apnešti|to cover (with snow, sand)|ahp-NESH-ti
+išvesti|to lead out|ish-VES-ti
+įvesti|to introduce, lead in|ee-VES-ti
+nuvesti|to take (someone) somewhere|nu-VES-ti
+suvesti|to bring together|su-VES-ti
+pravesti|to conduct, hold (a lesson)|prah-VES-ti
+subėgti|to run together, gather|su-BAYG-ti
+atlėkti|to come flying|aht-LAYK-ti
+#u197b|Prefixes of movement, part 2
+išlėkti|to fly out, rush out|ish-LAYK-ti
+įlėkti|to fly in, burst in|ee-LAYK-ti
+nulėkti|to rush off|nu-LAYK-ti
+atplaukti|to sail in, arrive by water|aht-PLOWK-ti
+išplaukti|to sail out|ish-PLOWK-ti
+įplaukti|to sail into|ee-PLOWK-ti
+perplaukti|to swim across|per-PLOWK-ti
+nuplaukti|to swim off, float away|nu-PLOWK-ti
+priplaukti|to swim up to|pri-PLOWK-ti
+apiplaukti|to sail around|ah-pip-LOWK-ti
+#u197c|Prefixes of movement, part 3
+atskristi|to fly in, arrive by air|aht-SKRIS-ti
+išskristi|to fly away, take off|ish-SKRIS-ti
+perskristi|to fly over|per-SKRIS-ti
+nuskristi|to fly off to|nus-KRIS-ti
+apskristi|to fly around|ahps-KRIS-ti
+@u198|Dėti, imti, duoti|Putting, taking and giving|Prefixed verbs of putting, taking and giving: <b>nukelti</b> (to take down, postpone), <b>užkelti</b> (to lift up onto) and <b>prikelti</b> (to resurrect, revive).|Explain how you packed for a trip: what you put in, took out, handed over and gave back.
+#u198a|Putting, taking and giving, part 1
+nukelti|to take down, postpone|nu-KEL-ti
+užkelti|to lift up onto|uzh-KEL-ti
+prikelti|to resurrect, revive|pri-KEL-ti
+išdėti|to lay out|ish-DAY-ti
+įdėti|to put in|ee-DAY-ti
+sudėti|to put together, add up|su-DAY-ti
+uždėti|to put on (top)|uzh-DAY-ti
+apdėti mokesčiais|to tax|ahp-DAY-ti MOH-kes-chyais
+atiduoti|to give back|ah-ti-DWOH-ti
+suduoti|to strike (a blow)|su-DWOH-ti
+#u198b|Putting, taking and giving, part 2
+užduoti|to assign, set (a task)|uzh-DWOH-ti
+paduoti|to hand, pass|pah-DWOH-ti
+išimti|to take out|i-SHIM-ti
+nuimti|to take off, remove|nu-IM-ti
+suimti|to arrest|su-IM-ti
+apimti|to cover, include|ah-PIM-ti
+išmesti|to throw out|ish-MES-ti
+įmesti|to throw in|ee-MES-ti
+permesti|to throw over|per-MES-ti
+numesti|to throw down, drop|nu-MES-ti
+sumesti|to throw together|su-MES-ti
+užmesti|to throw on|uzh-MES-ti
+primesti|to impose|pri-MES-ti
+@u199|Kirsti, pjauti, siūti|Cutting, shaping and binding|Prefixed verbs of cutting, sewing and tying: <b>atkirsti</b> (to cut off, retort), <b>iškirsti</b> (to cut down) and <b>įkirsti</b> (to bite).|Describe making something by hand, step by step, with eight verbs from this unit.
+#u199a|Cutting, shaping and binding, part 1
+atkirsti|to cut off, retort|aht-KIRS-ti
+iškirsti|to cut down (a forest)|ish-KIRS-ti
+įkirsti|to bite (of a snake)|ee-KIRS-ti
+perkirsti|to cut through|per-KIRS-ti
+nukirsti|to chop off|nu-KIRS-ti
+sukirsti|to chop up|su-KIRS-ti
+pakirsti|to undermine, cut from below|pah-KIRS-ti
+atpjauti|to cut off (a piece)|aht-PYAU-ti
+išpjauti|to cut out|ish-PYAU-ti
+įpjauti|to make a cut|ee-PYAU-ti
+#u199b|Cutting, shaping and binding, part 2
+perpjauti|to saw through|per-PYAU-ti
+supjaustyti|to slice up|su-PYAUS-tee-ti
+papjauti|to slaughter|pah-PYAU-ti
+iškalti|to carve out (in stone)|ish-KAHL-ti
+įkalti|to hammer in|ee-KAHL-ti
+nukalti|to forge|nu-KAHL-ti
+sukalti|to nail together|su-KAHL-ti
+užkalti|to nail up, board up|uzh-KAHL-ti
+prikalti|to nail onto|pri-KAHL-ti
+išsiūti|to embroider|ish-SYOO-ti
+#u199c|Cutting, shaping and binding, part 3
+įsiūti|to sew in|ee-SYOO-ti
+persiūti|to resew, alter|per-SYOO-ti
+susiūti|to sew together|su-SYOO-ti
+prisiūti|to sew on|pri-SYOO-ti
+įrišti|to bind (a book)|ee-RISH-ti
+perrišti|to bandage again|per-RISH-ti
+pririšti|to tie to|pri-RISH-ti
+aprišti|to bandage|ahp-RISH-ti
+atlenkti|to unbend, fold back|aht-LENK-ti
+išlenkti|to bend outwards|ish-LENK-ti
+sulenkti|to fold, bend|su-LENK-ti
+užlenkti|to turn down (a corner)|uzh-LENK-ti
+@u200|Traukti, stumti, sukti|Pulling, pushing and turning|Prefixed verbs of pulling, pushing and turning: <b>atitraukti</b> (to pull away, distract), <b>ištraukti</b> (to pull out) and <b>sutraukti</b> (to contract, draw together).|Describe a car journey that went wrong, using at least eight of these verbs.
+#u200a|Pulling, pushing and turning, part 1
+atitraukti|to pull away, distract|ah-ti-TROWK-ti
+ištraukti|to pull out|ish-TROWK-ti
+sutraukti|to contract, draw together|su-TROWK-ti
+užtraukti|to pull shut, zip up|uzh-TROWK-ti
+pritraukti|to attract (investment)|pri-TROWK-ti
+išstumti|to push out|ish-STUM-ti
+įstumti|to push in|ees-TUM-ti
+nustumti|to push off|nus-TUM-ti
+sustumti|to push together|sus-TUM-ti
+atsukti|to unscrew, turn on (a tap)|aht-SUK-ti
+#u200b|Pulling, pushing and turning, part 2
+išsukti|to unscrew out, wring|ish-SUK-ti
+įsukti|to screw in|ee-SUK-ti
+nusukti|to turn away (one’s gaze)|nu-SUK-ti
+susukti|to roll up, twist|su-SUK-ti
+prisukti|to tighten (a screw)|pri-SUK-ti
+apsukti|to turn around|ahp-SUK-ti
+atspausti|to print, imprint|aht-SPOWS-ti
+išspausti|to squeeze out|ish-SPOWS-ti
+įspausti|to press in|ee-SPOWS-ti
+nuspausti|to press down|nus-POWS-ti
+#u200c|Pulling, pushing and turning, part 3
+prispausti|to press against|pris-POWS-ti
+apspausti|to surround, crowd|ahps-POWS-ti
+atmušti|to fend off|aht-MUSH-ti
+išmušti|to knock out|ish-MUSH-ti
+numušti|to knock down|nu-MUSH-ti
+sumušti|to beat up, defeat|su-MUSH-ti
+užmušti|to kill|uzh-MUSH-ti
+apmušti|to upholster|ahp-MUSH-ti
+@u201|Rašyti, leisti, statyti|Writing, letting and setting up|Prefixed verbs of writing, letting, building and pouring: <b>atrašyti</b> (to write back), <b>perrašyti</b> (to rewrite) and <b>nurašyti</b> (to copy, write off).|Describe how a book or a building comes into being, using ten verbs from this unit.
+#u201a|Writing, letting and setting up, part 1
+atrašyti|to write back|aht-rah-SHEE-ti
+perrašyti|to rewrite|per-rah-SHEE-ti
+nurašyti|to copy, write off|nu-rah-SHEE-ti
+surašyti|to list, draw up|su-rah-SHEE-ti
+prirašyti|to add in writing|pri-rah-SHEE-ti
+aprašyti|to describe|ahp-rah-SHEE-ti
+įleisti|to let in|ee-LAYS-ti
+perleisti|to transfer, hand over|per-LAYS-ti
+suleisti|to inject|su-LAYS-ti
+užleisti|to give up (a seat)|uzh-LAYS-ti
+#u201b|Writing, letting and setting up, part 2
+prileisti|to let near, admit|pri-LAYS-ti
+atstatyti|to rebuild|aht-stah-TEE-ti
+įstatyti|to insert, fit|ees-tah-TEE-ti
+perstatyti|to rebuild, rearrange|pers-tah-TEE-ti
+sustatyti|to arrange|sus-tah-TEE-ti
+užstatyti|to pawn, build over|uzh-stah-TEE-ti
+apstatyti|to furnish|ahps-tah-TEE-ti
+išlieti|to pour out (feelings)|ish-LYEH-ti
+įlieti|to pour in|ee-LYEH-ti
+perlieti|to pour over|per-LYEH-ti
+#u201c|Writing, letting and setting up, part 3
+sulieti|to merge|su-LYEH-ti
+užlieti|to flood|uzh-LYEH-ti
+palieti|to water (plants)|pah-LYEH-ti
+išpilti|to pour out|ish-PIL-ti
+įpilti|to pour (into a cup)|ee-PIL-ti
+perpilti|to pour from one into another|per-PIL-ti
+supilti|to pile up, pour together|su-PIL-ti
+pripilti|to fill up|pri-PIL-ti

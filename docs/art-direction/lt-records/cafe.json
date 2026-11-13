@@ -1,0 +1,16 @@
+{
+  "id": "cafe",
+  "word": "kavinė",
+  "en": "café",
+  "unit": "u0",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style board: rounded chunky flat 2D cartoon, bright solid turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. Whole object unclipped, generous transparent margins, readable at 56px. Fully opaque object interiors, true transparent outside. No lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a CAFÉ place, not just a coffee cup. One small welcoming café storefront with turquoise walls, coral-and-cream striped awning, large navy framed window, amber door, and a small hanging cream sign bearing ONLY a simple navy coffee cup icon. In front one round coral outdoor table with two cream chairs. No lettering or people, no ground, no larger street.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/cafe.png",
+  "asset": "pics/art-v2/cafe.webp",
+  "bytes": 26114,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

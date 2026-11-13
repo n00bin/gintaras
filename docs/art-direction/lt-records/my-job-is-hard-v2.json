@@ -1,0 +1,17 @@
+{
+  "id": "my-job-is-hard-v2",
+  "word": "Mano darbas sunkus",
+  "en": "My job is hard",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create ONE transparent square vocabulary cutout meaning My job is hard. Reference 1 is the flat rounded cartoon STYLE, reference 2 if present fixes Tomas's identity. Large white oval eyes, chunky hands, solid turquoise/amber/coral/navy, minimal details. Subject: Tomas, wavy brown hair, amber sweatshirt and navy trousers, has a worried tired face and holds one hand against forehead. His other hand types on a small navy laptop. Beside laptop is one tall stack of cream paperwork. Exactly TWO arms. NO decorative exclamation rays. Compact waist-up composition, no table or scenery. CRITICAL: no glow, bloom, fog, soft lighting, gradients, shadows or coloured haze anywhere. Render like clean cut paper: flat opaque interior, crisp immediate transition to true transparent outside. Generous transparent margins on all sides; complete composition readable at 56px. No floor, backdrop, lettering or logos.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/my-job-is-hard-v2.png",
+  "asset": "pics/art-v2/my-job-is-hard-v2.webp",
+  "bytes": 30214,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

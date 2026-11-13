@@ -1,0 +1,16 @@
+{
+  "id": "flat-apartment",
+  "word": "butas",
+  "en": "flat / apartment",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning flat / apartment. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: A compact cutaway of ONE apartment inside a simple coral rectangular building section: one small navy sofa, a turquoise kitchen counter with sink, and an interior doorway. A second apartment window above or beside subtly shows a shared apartment building, no detached house roof. No people, cityscape or text. Necessary room floor may be opaque cream; everything outside cutaway is transparent. Complete centered composition with generous transparent margins, strong silhouettes at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/flat-apartment.png",
+  "asset": "pics/art-v2/flat-apartment.webp",
+  "bytes": 20974,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

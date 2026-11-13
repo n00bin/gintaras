@@ -1,0 +1,60 @@
+{
+  "status": "complete",
+  "error": "HTTP 429 usage_limit_reached",
+  "reset_at_utc": "2026-11-10T22:03:00.000Z",
+  "pending_generation": [
+    {
+      "id": "es-square",
+      "word": "la plaza",
+      "en": "the square",
+      "unit": "u4",
+      "references": [
+        "approved-style-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a public town SQUARE. One small central turquoise fountain with a cream basin and three blue water arcs, surrounded by four simple cream paving tiles, a coral bench and two low green potted trees, with one small amber town building behind. One compact scene, open public space; no sky or filled ground background."
+    },
+    {
+      "id": "es-subway",
+      "word": "el metro",
+      "en": "the subway",
+      "unit": "u7",
+      "references": [
+        "approved-style-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: SUBWAY train. A rounded turquoise front of a metro train emerging from a simple dark navy underground tunnel arch with coral rim. Cream train windows and two amber headlights, two short cream rails visible below. A small descending staircase beside tunnel indicates underground transit. No letters, numbers, map or people."
+    },
+    {
+      "id": "es-car",
+      "word": "el coche",
+      "en": "the car",
+      "unit": "u7",
+      "references": [
+        "approved-style-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: one ordinary CAR in three-quarter side view, bright coral rounded compact car body, turquoise windows with cream highlights, FOUR dark navy tyres with large light cream hubs (far-side wheels partly hidden is natural). Two amber headlights, no driver, licence plate, brand or lettering."
+    },
+    {
+      "id": "es-airport",
+      "word": "el aeropuerto",
+      "en": "the airport",
+      "unit": "u7",
+      "references": [
+        "approved-style-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: AIRPORT. A simple turquoise airport terminal with three large cream windows and a tall amber control tower beside it. Above terminal one unmistakable small cream passenger airplane with coral wings and navy cockpit window, shown side view in flight. Compact symbolic place scene, no runway floor, lettering or people."
+    },
+    {
+      "id": "es-bank-card",
+      "word": "la tarjeta",
+      "en": "the card",
+      "unit": "u16",
+      "references": [
+        "approved-style-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a BANK PAYMENT CARD, one turquoise rounded rectangular plastic card in three-quarter view, gold chip made from one small amber rounded square with four simple darker divisions, cream horizontal blank stripe and small coral contactless-wave symbol. No words, digits, bank logos, hands or extra cards."
+    }
+  ],
+  "successful_export": "docs/art-direction/es-records/es-museum.json",
+  "fallback_authorized": false,
+  "completed": "2026-11-12: all five pending prompts drawn through the Codex CLI built-in image tool, inspected and approved"
+}

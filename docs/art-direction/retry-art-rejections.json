@@ -1,0 +1,10 @@
+[
+  {
+    "id": "white-v2",
+    "reason": "The white ball has an unintended transparent hole. Replace with a white polar bear with fully opaque body, navy eyes and nose, no hole, ring or ball."
+  },
+  {
+    "id": "pink-v2",
+    "reason": "Ball centre is almost transparent (alpha 8/255). Replace with a fully opaque pink T-shirt, no ball or ring; solid colour throughout fabric."
+  }
+]

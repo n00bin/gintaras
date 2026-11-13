@@ -1,0 +1,16 @@
+{
+  "id": "pink-v3",
+  "word": "rožinis",
+  "en": "pink",
+  "unit": "u29",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use the attached approved board as STYLE REFERENCE ONLY. Create ONE vocabulary illustration meaning PINK for Wordami: a single bright pink short-sleeved T-SHIRT, front view, with a rounded neck and short chunky sleeves. Simple friendly flat cartoon geometric silhouette, fully opaque solid pink fabric, a tiny darker pink crisp flat neck opening and two minimal darker pink fold shapes. Complete shirt centered within 76% of a square canvas. Generous truly transparent empty margins; alpha zero outside sharp edges. No person, hanger, face, ball, hole in the fabric, text, logo, outline, gradients, glow, blur, shading, backdrop or shadow. Match the board’s simple rounded flat-colour shape language, not its lettering or layout.",
+  "master": "docs/art-direction/masters/pink-v3.png",
+  "asset": "pics/art-v2/pink-v3.webp",
+  "bytes": 13374,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

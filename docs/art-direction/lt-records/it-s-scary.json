@@ -1,0 +1,17 @@
+{
+  "id": "it-s-scary",
+  "word": "Baisu",
+  "en": "It's scary",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat 2D cartoon style, huge expressive white oval eyes, chunky hands, bright solid turquoise/amber/coral/navy/cream, minimal details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Exactly two arms and hands, complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No text, letters, logos, gradients, shadows, glow, texture, floor or backdrop. Meaning: It's scary. Frightened Tomas recoils, eyes wide and eyebrows raised, both hands held near cheeks. Beside him is one playful coral cartoon ghost shape with two navy oval eyes, causing the fear. No horror realism, injury or weapons. One small coral exclamation mark over Tomas.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-scary.png",
+  "asset": "pics/art-v2/it-s-scary.webp",
+  "bytes": 45852,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

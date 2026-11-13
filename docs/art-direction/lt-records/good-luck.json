@@ -1,0 +1,18 @@
+{
+  "id": "good-luck",
+  "word": "Sėkmės",
+  "en": "Good luck",
+  "unit": "u1",
+  "actor": "egle",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is the CHARACTER identity reference, not a board to reproduce. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures or cast shadows. Subject: Eglė encouraging Tomas before a challenge with an upbeat thumbs-up and small four-leaf clover. Primary character identity when a person is needed: Eglė, young adult Lithuanian woman with light warm skin, dark high ponytail, short fringe, white scrunchie, pale cream scarf and turquoise top. Other recurring identities if present: Tomas, friendly young adult learner with light warm skin, short light brown hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses; Rūta, young adult Lithuanian woman with light warm skin, long straight dark brown hair with short blunt fringe, pine green blouse with a few simple dark leaf motifs, coral trousers, cream shoes; Jonas, young adult Lithuanian man with light warm skin, short wavy dark brown hair, neat dark moustache, sky blue overshirt over navy T-shirt and backpack straps; Danutė, older Lithuanian woman with light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers; Darius, adult Lithuanian man with light warm skin, curly dark hair, short neat dark goatee, navy open overshirt over turquoise T-shirt. Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-egle-character-sheet.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/good-luck.png",
+  "asset": "pics/art-v2/good-luck.webp",
+  "bytes": 52104,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,1688 @@
+{
+  "schema": 1,
+  "createdAt": "2026-11-10T15:24:21.126529+00:00",
+  "build": 194,
+  "scope": "Editorial tasks, not approval records or learner proficiency evidence",
+  "tasks": [
+    {
+      "key": "lt.A1",
+      "language": "lt",
+      "unitId": "A1",
+      "theme": "Meet and make a plan",
+      "bandTarget": "A1",
+      "contentHash": "ecf2ea8fee0a1027a26654a2c100a84d3b5e02f4dcbe4abc7946eba73be44e87",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A1-shopping",
+      "language": "lt",
+      "unitId": "A1-shopping",
+      "theme": "Buy everyday things",
+      "bandTarget": "A1",
+      "contentHash": "cdc0ff6814a28f2f77873379546bceb0e25f3ffdfc7d4d3a432de7a12dcecb03",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A1-home",
+      "language": "lt",
+      "unitId": "A1-home",
+      "theme": "Welcome someone to your home",
+      "bandTarget": "A1",
+      "contentHash": "3d53e27431637761f9b6e2d5511697ce584feb0e7c2e4a1048994848ff3dd20e",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A1-travel",
+      "language": "lt",
+      "unitId": "A1-travel",
+      "theme": "Find a stop and buy a ticket",
+      "bandTarget": "A1",
+      "contentHash": "6e4e142a66b110c447881ec954d1102e4f17d8df43cfda938eb9f57e99daae92",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A1-capstone",
+      "language": "lt",
+      "unitId": "A1-capstone",
+      "theme": "Two useful messages",
+      "bandTarget": "A1",
+      "contentHash": "788afcfc40d6ff0fde9e0e35f41c5a0291015d01c7c64d9960cfa8f428056f12",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A2",
+      "language": "lt",
+      "unitId": "A2",
+      "theme": "Change an everyday plan",
+      "bandTarget": "A2",
+      "contentHash": "fb28a5e41ca15eaebb2bbae5db5ee192b904bf1213c98b0c47836000c63e5ccb",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A2-services",
+      "language": "lt",
+      "unitId": "A2-services",
+      "theme": "Arrange and change an appointment",
+      "bandTarget": "A2",
+      "contentHash": "708f87d6fee7091e2742f9853d6c126a092f85e9fee83ffb7b7a31eadd6d5f07",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A2-work",
+      "language": "lt",
+      "unitId": "A2-work",
+      "theme": "Plan a working day",
+      "bandTarget": "A2",
+      "contentHash": "d8d45c2381ed44f80f6ff8f69b723caec74829d80c71c159d7399a4f51e9735b",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A2-meals",
+      "language": "lt",
+      "unitId": "A2-meals",
+      "theme": "Plan a meal for a group",
+      "bandTarget": "A2",
+      "contentHash": "2b43e4900a3b51b1c9619f1eb418b53d642d28b6bfe53cbc2c653c4d43541059",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.A2-capstone",
+      "language": "lt",
+      "unitId": "A2-capstone",
+      "theme": "Coordinate two arrangements",
+      "bandTarget": "A2",
+      "contentHash": "79828442ae53fe1401dd2f4b8100b3023568ec5eca41a7a16f026aba269be710",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B1",
+      "language": "lt",
+      "unitId": "B1",
+      "theme": "Handle a travel complication",
+      "bandTarget": "B1",
+      "contentHash": "0e3c188efe931b294a5bc4face5d6d9c026538d6cb4afb477da9131a7e7de9fa",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B1-appointments",
+      "language": "lt",
+      "unitId": "B1-appointments",
+      "theme": "Solve an access problem",
+      "bandTarget": "B1",
+      "contentHash": "53250e2b2b5735449f6b5c0a709dd5d1513eb9d587f0f0d543975988b00b82ae",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B1-community",
+      "language": "lt",
+      "unitId": "B1-community",
+      "theme": "Organise a community event",
+      "bandTarget": "B1",
+      "contentHash": "0c73bf81edd3fc10953ed3b041cb4a1e1733be92f7aaea5f6a275baabc8b8d40",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B1-housing",
+      "language": "lt",
+      "unitId": "B1-housing",
+      "theme": "Arrange a household repair",
+      "bandTarget": "B1",
+      "contentHash": "561cebaa02ee34b8555c5ac1f8824a80131d97ca722edd812fc50d2892a4d4e4",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B1-capstone",
+      "language": "lt",
+      "unitId": "B1-capstone",
+      "theme": "Explain a problem and a next step",
+      "bandTarget": "B1",
+      "contentHash": "68c0839f46487541b1b393e4d4166c03a1e34ee4befc76d92b0acfa2ba5c7ef5",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B2",
+      "language": "lt",
+      "unitId": "B2",
+      "theme": "Weigh a public-service decision",
+      "bandTarget": "B2",
+      "contentHash": "bf625f99c23e9943fca058df3c923b5237a77becd883b8f5302595a0a672fe6b",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B2-workplace",
+      "language": "lt",
+      "unitId": "B2-workplace",
+      "theme": "Negotiate a working arrangement",
+      "bandTarget": "B2",
+      "contentHash": "c2c6e8638f3a2a0628dae7fe20331f6d276d084db155465ed77b29d417b35bb8",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B2-media",
+      "language": "lt",
+      "unitId": "B2-media",
+      "theme": "Read a report critically",
+      "bandTarget": "B2",
+      "contentHash": "2cdb3540c839dc630335b45c7869b94a34bb8c76d4a646c26f20ff6e10cc6edb",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B2-mobility",
+      "language": "lt",
+      "unitId": "B2-mobility",
+      "theme": "Balance access in a public space",
+      "bandTarget": "B2",
+      "contentHash": "3bad1f205fdf915dab472495c08b67b41a51059793fcd73aea76db43f935de45",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.B2-capstone",
+      "language": "lt",
+      "unitId": "B2-capstone",
+      "theme": "Compare two negotiated solutions",
+      "bandTarget": "B2",
+      "contentHash": "e68a167d8bca081855a686df3eb43c3b0f557bfc64429fb84565d58f22f485c1",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C1",
+      "language": "lt",
+      "unitId": "C1",
+      "theme": "Separate evidence from inference",
+      "bandTarget": "C1",
+      "contentHash": "f72b8a67d40a1c755433ca4b8942ccff936b25de849f023b4a4172b8c0a729ef",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C1-academic",
+      "language": "lt",
+      "unitId": "C1-academic",
+      "theme": "Evaluate competing explanations",
+      "bandTarget": "C1",
+      "contentHash": "40e394aca29f9250165ff9e863888aed0d255649ebfb060b2e0df4a2f82b878e",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C1-culture",
+      "language": "lt",
+      "unitId": "C1-culture",
+      "theme": "Interpret a cultural dispute",
+      "bandTarget": "C1",
+      "contentHash": "aad4d8fc81eed922c1a3552f13079ddd3911933d275b4f808b5c5e06e15198e6",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C1-professional",
+      "language": "lt",
+      "unitId": "C1-professional",
+      "theme": "Clarify a professional commitment",
+      "bandTarget": "C1",
+      "contentHash": "2c62ad5e88e61bd1c44104692aa13bdf63885cad77117885ed471d90f9019a4b",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C1-capstone",
+      "language": "lt",
+      "unitId": "C1-capstone",
+      "theme": "Keep evidence and commitments distinct",
+      "bandTarget": "C1",
+      "contentHash": "99eb444d5b75b50ac58c14e07a0c7aacf7a922aad7c57c360e8cd5c69460572b",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C2",
+      "language": "lt",
+      "unitId": "C2",
+      "theme": "Preserve nuance under challenge",
+      "bandTarget": "C2",
+      "contentHash": "53c1787097c3f469f731a5cb26c4beacb0f04ff29b0ab75de7b2bd680fc6679c",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C2-science",
+      "language": "lt",
+      "unitId": "C2-science",
+      "theme": "Communicate uncertainty precisely",
+      "bandTarget": "C2",
+      "contentHash": "3fedf4ffe38347aa3f76c1b0e1997cd9a9eee198213031283adf882accb776c0",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C2-literature",
+      "language": "lt",
+      "unitId": "C2-literature",
+      "theme": "Interpret voice and ambiguity",
+      "bandTarget": "C2",
+      "contentHash": "72e24f0c5f3a9f1f09e937ede19b0d40b1118a57047ce352d310d79e87d63f5d",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C2-register",
+      "language": "lt",
+      "unitId": "C2-register",
+      "theme": "Change register without changing force",
+      "bandTarget": "C2",
+      "contentHash": "efea8238c664d7241e70423105153d9c7f4b82770c8d8a632e9beef6d4f747eb",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "lt.C2-capstone",
+      "language": "lt",
+      "unitId": "C2-capstone",
+      "theme": "Synthesize without losing force",
+      "bandTarget": "C2",
+      "contentHash": "0166e274f3eb6fd1f3aa118a96701f2638c4284553da9918d16d8933d865698c",
+      "sourceBook": "docs/cefr/review/lt.md",
+      "grammarBook": "docs/cefr/review/grammar-lt.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A1",
+      "language": "es",
+      "unitId": "A1",
+      "theme": "Meet and make a plan",
+      "bandTarget": "A1",
+      "contentHash": "e750342918ac29e5722c2aab5de121424b7955741304fe417d28bae6faf2f580",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A1-shopping",
+      "language": "es",
+      "unitId": "A1-shopping",
+      "theme": "Buy everyday things",
+      "bandTarget": "A1",
+      "contentHash": "6d4d60a55a3ec530af014018e47b948adca8ed2f364f23bd333d5e17868f9580",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A1-home",
+      "language": "es",
+      "unitId": "A1-home",
+      "theme": "Welcome someone to your home",
+      "bandTarget": "A1",
+      "contentHash": "c98d3d770a7f6c4df558e840515165914b600d75139ddc0abf93744659776d67",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A1-travel",
+      "language": "es",
+      "unitId": "A1-travel",
+      "theme": "Find a stop and buy a ticket",
+      "bandTarget": "A1",
+      "contentHash": "fd344c6f97c18bd1a83d09c27ebd3ef19754e55e6f26b79de6d6df3344a7e6b4",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A1-capstone",
+      "language": "es",
+      "unitId": "A1-capstone",
+      "theme": "Two useful messages",
+      "bandTarget": "A1",
+      "contentHash": "9df636c3e19b1f0c0dec54c7f43a89ee251477506fd10f7ea91eff7a6f5ae3e9",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A2",
+      "language": "es",
+      "unitId": "A2",
+      "theme": "Change an everyday plan",
+      "bandTarget": "A2",
+      "contentHash": "7c89785d633f5689579e179703d27d20d10b12fa87b9c9bae93db8ea74acebc1",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A2-services",
+      "language": "es",
+      "unitId": "A2-services",
+      "theme": "Arrange and change an appointment",
+      "bandTarget": "A2",
+      "contentHash": "c4036e80fd178da855b913c59f9f1bd4d4ba44c37013034df11f40b2307e93b8",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A2-work",
+      "language": "es",
+      "unitId": "A2-work",
+      "theme": "Plan a working day",
+      "bandTarget": "A2",
+      "contentHash": "c7410dc3b2e5a2208705508522f4717d60cbf15801f37a4ebf909d705892eeef",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A2-meals",
+      "language": "es",
+      "unitId": "A2-meals",
+      "theme": "Plan a meal for a group",
+      "bandTarget": "A2",
+      "contentHash": "d6f161b0e2d402d3959a804753830fa89aab4183616b71b9dc5ca0f269076869",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.A2-capstone",
+      "language": "es",
+      "unitId": "A2-capstone",
+      "theme": "Coordinate two arrangements",
+      "bandTarget": "A2",
+      "contentHash": "1e12ae5e977c9ebd1e1f90a2b135473d9692453c1dcf5c08e45dbec5ddbbc0b3",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B1",
+      "language": "es",
+      "unitId": "B1",
+      "theme": "Handle a travel complication",
+      "bandTarget": "B1",
+      "contentHash": "53c9af642d94a43661f1949b483bd8e31040fe7ea26413d9d07ba28665071299",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B1-appointments",
+      "language": "es",
+      "unitId": "B1-appointments",
+      "theme": "Solve an access problem",
+      "bandTarget": "B1",
+      "contentHash": "9877e0c9b18668caaf261f0842fe9ff7a6eb686bd8738a6a4096f9275d298354",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B1-community",
+      "language": "es",
+      "unitId": "B1-community",
+      "theme": "Organise a community event",
+      "bandTarget": "B1",
+      "contentHash": "84a82ed0d592208126be5c1e4842773457c29778efea376c65ffb5cc66ea5c46",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B1-housing",
+      "language": "es",
+      "unitId": "B1-housing",
+      "theme": "Arrange a household repair",
+      "bandTarget": "B1",
+      "contentHash": "0a1accec055baddd105c03972766bfeaff76f7aef853b2e7f4a40bd03c885d2c",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B1-capstone",
+      "language": "es",
+      "unitId": "B1-capstone",
+      "theme": "Explain a problem and a next step",
+      "bandTarget": "B1",
+      "contentHash": "8ff2a16d567a7efbdb5c35e3d7e60b27b13bb756dc94381cb9d30599a5b0e73d",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B2",
+      "language": "es",
+      "unitId": "B2",
+      "theme": "Weigh a public-service decision",
+      "bandTarget": "B2",
+      "contentHash": "ba4c49bd09957dfa492d4f1578dce300e47e4f7d6c28dfcf79a9ae2a164d82fa",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B2-workplace",
+      "language": "es",
+      "unitId": "B2-workplace",
+      "theme": "Negotiate a working arrangement",
+      "bandTarget": "B2",
+      "contentHash": "6ddef44f361f967f9028a4e05beb0845cf02168c047420fc6464ca2d5a2ad2e8",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B2-media",
+      "language": "es",
+      "unitId": "B2-media",
+      "theme": "Read a report critically",
+      "bandTarget": "B2",
+      "contentHash": "8a88eb4d1bfd85e94e0de6869dfdceaaf3aaaad09e85cdf4d6454f318a0a6f40",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B2-mobility",
+      "language": "es",
+      "unitId": "B2-mobility",
+      "theme": "Balance access in a public space",
+      "bandTarget": "B2",
+      "contentHash": "ab2de1363480582642c1af3fbe396e9e7c9855d03881e09f7ef32170aa15a80b",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.B2-capstone",
+      "language": "es",
+      "unitId": "B2-capstone",
+      "theme": "Compare two negotiated solutions",
+      "bandTarget": "B2",
+      "contentHash": "c72be76f02d68dc0a59c925995827aa6864f11cbc7469d94b46b2f76a3945b74",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C1",
+      "language": "es",
+      "unitId": "C1",
+      "theme": "Separate evidence from inference",
+      "bandTarget": "C1",
+      "contentHash": "baa216fe7dc8917b034b7006cc21348431fbadcee4c519c10762b10e7bc99458",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C1-academic",
+      "language": "es",
+      "unitId": "C1-academic",
+      "theme": "Evaluate competing explanations",
+      "bandTarget": "C1",
+      "contentHash": "f263d7f8fdddcbe5dd9e101a83e69cf43f90615eafaa6d8e68986ba08d0e924c",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C1-culture",
+      "language": "es",
+      "unitId": "C1-culture",
+      "theme": "Interpret a cultural dispute",
+      "bandTarget": "C1",
+      "contentHash": "a4e167697e71e9dc0d623626588be2c65b2b8fa8b0d226fcb302533a96e296e7",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C1-professional",
+      "language": "es",
+      "unitId": "C1-professional",
+      "theme": "Clarify a professional commitment",
+      "bandTarget": "C1",
+      "contentHash": "a568809ec7477b377302307ccd5e2295e4e458c3c198d93b885256863f8e5151",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C1-capstone",
+      "language": "es",
+      "unitId": "C1-capstone",
+      "theme": "Keep evidence and commitments distinct",
+      "bandTarget": "C1",
+      "contentHash": "dbeaa5995ac7992e0734e586e3ae013cb5d4d8d901e456230625fc37a1f8d520",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C2",
+      "language": "es",
+      "unitId": "C2",
+      "theme": "Preserve nuance under challenge",
+      "bandTarget": "C2",
+      "contentHash": "f624203a1de3cbfdce4315877ae2261ae8073ad2d2e5b1251ae7f8b3a3888482",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C2-science",
+      "language": "es",
+      "unitId": "C2-science",
+      "theme": "Communicate uncertainty precisely",
+      "bandTarget": "C2",
+      "contentHash": "ace56065e599b9428c3e8c5a046fbd523e9893b15e817dde81cc30aa8bf2201f",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C2-literature",
+      "language": "es",
+      "unitId": "C2-literature",
+      "theme": "Interpret voice and ambiguity",
+      "bandTarget": "C2",
+      "contentHash": "99c9ecf9853770d260f60d2980c449cbb73665cfbbcaca2726b3fc6ea1b40986",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C2-register",
+      "language": "es",
+      "unitId": "C2-register",
+      "theme": "Change register without changing force",
+      "bandTarget": "C2",
+      "contentHash": "183d3a95ff5e95876b09f1e28d96b25a031ea00924576a9369de63a8b98c1159",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    },
+    {
+      "key": "es.C2-capstone",
+      "language": "es",
+      "unitId": "C2-capstone",
+      "theme": "Synthesize without losing force",
+      "bandTarget": "C2",
+      "contentHash": "e669f2a7a04b336614d8a21a6789de3168880af4b69beff220dad8de4c02ea9c",
+      "sourceBook": "docs/cefr/review/es.md",
+      "grammarBook": "docs/cefr/review/grammar-es.md",
+      "sourceFormsForTriage": [],
+      "languageReview": "pending",
+      "descriptorReview": "pending",
+      "languageQuestions": [
+        "Check the source text, English guide, accepted forms and answer feedback for accuracy and natural register.",
+        "Listen to the linked recordings and check wording, pronunciation and clarity.",
+        "Verify that the connected lesson actually prepares each assessed form and meaning; triage items are prompts for judgement, not automatic errors.",
+        "Check practical form labels/values and table headings against their exact sources where present."
+      ],
+      "designQuestions": [
+        "Assess each task against the named scale and target band, using the actual language and discourse demands.",
+        "Check scaffolding, task validity and what a correct answer demonstrates; flag answers that can be found without the intended reading/listening.",
+        "Identify missing task types, domains, strategies, genres and repeated transfer; selected examples do not establish full coverage."
+      ],
+      "decisions": {
+        "language": null,
+        "descriptors": null
+      }
+    }
+  ]
+}

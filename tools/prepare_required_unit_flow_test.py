@@ -1,0 +1,11 @@
+from pathlib import Path
+p=Path(__file__).with_name('check_foundation_release.py')
+s=p.read_text(encoding='utf8')
+s=s.replace("assert page.evaluate('APP_VERSION')==186","assert page.evaluate('APP_VERSION')==187")
+s=s.replace("assert 'Reading, listening and writing complete' in d.inner_text()","assert 'Next: your spoken reply' in d.inner_text()",1)
+s=s.replace("done.click();assert 'Reading, listening and writing complete' in d.inner_text()","done.click();assert 'Unit skills complete' in d.inner_text()")
+s=s.replace("assert page.evaluate('JSON.stringify(S)')==baseline","assert page.evaluate('JSON.stringify(S.items)')==baseline")
+s=s.replace("baseline=page.evaluate('JSON.stringify(S)')","baseline=page.evaluate('JSON.stringify(S.items)')")
+s=s.replace("assert 'Reading, listening and writing complete' in d.inner_text()","assert 'Unit skills complete' in d.inner_text()")
+s=s.replace("ROOT/'output/foundation-release'","ROOT/'output/required-unit-skills'")
+p.with_name('check_required_unit_flows.py').write_text(s,encoding='utf8')

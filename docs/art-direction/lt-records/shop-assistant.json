@@ -1,0 +1,16 @@
+{
+  "id": "shop-assistant",
+  "word": "pardavėjas",
+  "en": "shop assistant",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning shop assistant. Match attached reference STYLE only: rounded flat geometric cartoons, large expressive white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details, no black perimeter outlines. Subject: ONE adult male shop assistant in a coral apron over turquoise shirt, behind a small simple checkout register, handing a cream paper shopping bag to a customer whose single receiving hand is visible at the edge of the scene. Friendly face; no currency, labels or store scenery. Complete centered composition with generous transparent margins and clear silhouettes at 56px. Zero alpha outside shapes and opaque interiors. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/shop-assistant.png",
+  "asset": "pics/art-v2/shop-assistant.webp",
+  "bytes": 39726,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

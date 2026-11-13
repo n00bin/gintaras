@@ -1,0 +1,16 @@
+{
+  "id": "young",
+  "word": "jaunas",
+  "en": "young",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square vocabulary illustration meaning YOUNG. Attached image is ONLY the approved Wordami STYLE reference: rounded geometric flat cartoon shapes, oversized expressive heads, large white oval eyes for people, chunky features, bright solid colours, sparse darker flat interior shapes, no black perimeter outlines. A cheerful YOUNG ADULT man in the foreground, visibly youthful, with smooth face, big lively eyes and short brown hair, turquoise sweatshirt and navy trousers. Beside him, a smaller secondary older grey-haired adult provides an unmistakable age comparison. The youthful man is the main subject, full-body, friendly and confident; the older adult is also friendly. No babies, school uniforms, numerals, clocks or text. Fit the complete composition inside the middle 76% of the square, with ample transparent margin. Opaque interiors; clear sharp transparent outer boundary. No gradient, texture, glow, mist, blur, shadow, background, lettering, labels, logos, disc or decorative extras.",
+  "master": "docs/art-direction/masters/young.png",
+  "asset": "pics/art-v2/young.webp",
+  "bytes": 40816,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

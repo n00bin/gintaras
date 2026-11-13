@@ -1,0 +1,17 @@
+{
+  "id": "es-chair",
+  "word": "la silla",
+  "en": "the chair",
+  "unit": "u24",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: ONE ordinary CHAIR in three-quarter view, rounded coral seat and matching curved rectangular backrest, four sturdy navy legs, simple navy back supports. Clear separated backrest and seat, no armrests, cushion, table or person.",
+  "course_item_id": "u24d-1:2",
+  "master": "docs/art-direction/masters/es-chair.png",
+  "asset": "pics/art-v2/es-chair.webp",
+  "bytes": 22148,
+  "generator": "built-in image_gen",
+  "status": "rejected",
+  "rejection_reason": "Navy legs and supports disappear against the dark review background at 56px. Regenerate with medium turquoise legs and supports for a readable chair silhouette."
+}

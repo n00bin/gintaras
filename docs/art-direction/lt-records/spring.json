@@ -1,0 +1,16 @@
+{
+  "id": "spring",
+  "word": "pavasaris",
+  "en": "spring",
+  "unit": "u24",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning spring. Reference 1 governs rounded geometric flat cartoon STYLE, bright opaque solid colours, chunky shapes, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, large white oval eyes, amber sweatshirt, navy trousers and cream shoes. Subject: One fresh SPRING tree branch with three simple bright-green young leaves and three coral blossoms with cream centres, beside one large yellow tulip with green stem. Small soft amber sun above reinforces spring growth. No autumn leaves, snow, fruit, person, ground or scenery. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/spring.png",
+  "asset": "pics/art-v2/spring.webp",
+  "bytes": 30846,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

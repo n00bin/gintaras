@@ -1,0 +1,16 @@
+{
+  "id": "stairs",
+  "word": "laiptai",
+  "en": "stairs",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning stairs. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE short straight flight of household STAIRS, six large amber steps rising left to right in clear three-quarter view, with one simple navy handrail and solid pale-blue side support. All steps form one coherent usable staircase, no impossible geometry, person, building or ground. Complete centered composition with generous transparent margins and strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/stairs.png",
+  "asset": "pics/art-v2/stairs.webp",
+  "bytes": 23544,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

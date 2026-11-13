@@ -1,0 +1,16 @@
+{
+  "id": "cook-chef-v2",
+  "word": "virėjas",
+  "en": "cook / chef",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning cook / chef. Match attached reference STYLE only: rounded flat geometric cartoons, large expressive white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details, no black perimeter outlines. Subject: ONE adult male chef wearing a tall white chef hat, white double-breasted jacket, navy trousers and cream shoes. Exactly TWO arms and TWO hands: one hand holds a wooden spoon upright and the other rests on his hip. NO pot, lid or extra objects. Friendly confident face. Complete centered composition with generous transparent margins and clear silhouettes at 56px. Zero alpha outside shapes and opaque interiors. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/cook-chef-v2.png",
+  "asset": "pics/art-v2/cook-chef-v2.webp",
+  "bytes": 30826,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

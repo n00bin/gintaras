@@ -1,0 +1,78 @@
+{
+  "poses": {
+    "welcome": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 31822
+    },
+    "happy": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 29412
+    },
+    "cheer": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 30626
+    },
+    "think": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 26020
+    },
+    "rest": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 25356
+    },
+    "encourage": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 30148
+    },
+    "listen": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 29410
+    },
+    "speak": {
+      "size": [
+        512,
+        512
+      ],
+      "transparent": true,
+      "bytes": 32832
+    }
+  },
+  "languages": {
+    "lt": "listening, speaking choice and real correct/wrong answer callbacks passed",
+    "es": "listening, speaking choice and real correct/wrong answer callbacks passed"
+  },
+  "page_errors": [],
+  "install_identity": "preserved; all icon exports decode",
+  "progress_reload": "existing-format XP, name and word level preserved",
+  "missing_asset_fallback": "local parrot icon loads",
+  "offline": "all eight real WebP poses render after offline app reload",
+  "sharing_card": "1200x630 rendered with actual Ami artwork"
+}

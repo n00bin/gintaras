@@ -1,0 +1,17 @@
+{
+  "id": "to-go",
+  "word": "eiti",
+  "en": "to go",
+  "unit": "u26",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning to go. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas WALKING purposefully to the right, one foot lifted mid-step, opposite arms swinging naturally, one short coral right-pointing arrow ahead. The walking action is clear. No vehicle, running sweat, destination or scenery. Exactly two arms and two hands. Center complete character with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/to-go.png",
+  "asset": "pics/art-v2/to-go.webp",
+  "bytes": 36050,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

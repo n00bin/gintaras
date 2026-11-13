@@ -1,0 +1,16 @@
+{
+  "id": "bear",
+  "word": "lokys",
+  "en": "bear",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY. Attached reference fixes rounded chunky flat 2D cartoon style, huge friendly white oval eyes, solid bright colours, minimal crisp detail, almost no outlines. Complete animal unclipped with generous transparent margins, readable at 56px. Opaque interiors and true transparent outside shapes. No person, props, scenery, clothes, lettering, logo, gradient, glow, shadow or texture. Subject: one friendly brown BEAR seated upright, round ears, broad stocky body and short thick limbs, cream oval muzzle, navy nose, huge white eyes, two forepaws and two round hind paws showing simple cream pads. Single small round tail if visible. No human clothing or accessories.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bear.png",
+  "asset": "pics/art-v2/bear.webp",
+  "bytes": 26018,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

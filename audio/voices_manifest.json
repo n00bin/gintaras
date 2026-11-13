@@ -10,6 +10,12 @@
 "cv34:6": "Aš esu iš Kauno, bet gyvenu Vilniuje.",
 "cv34:8": "Penki metai."
 },
+"achird_cv56": {
+"cv56:0": "Nebegaliu. Darbe viskas taip nuobodu, o vadovas manęs negirdi. Galvoju mesti darbą.",
+"cv56:2": "Dar ne. Bet turiu santaupų trims mėnesiams.",
+"cv56:4": "Gal tu ir teisi. Bet kartais jaučiuosi taip blogai.",
+"cv56:6": "Gerai, pabandysiu. Ačiū, kad išklausei."
+},
 "algenib_cv4": {
 "cv4:1": "Taip? Kuo galiu padėti?",
 "cv4:10": "Nėra už ką!",
@@ -18,6 +24,18 @@
 "cv4:4o1-0": "Puiku!",
 "cv4:6": "Ne, arti.",
 "cv4:8": "Žinoma. Mes esame čia, o stotis yra ten."
+},
+"algenib_cv44": {
+"cv44:0": "Ar viskas gerai?",
+"cv44:2": "Oi, labai atsiprašau. Tuoj atnešiu karštą.",
+"cv44:4": "Žinoma. Ar dar ko nors norėtumėte?",
+"cv44:6": "Prašom. Už nepatogumus vanduo nemokamas."
+},
+"algenib_cv52": {
+"cv52:0": "Atrodai pavargusi. Kas nutiko?",
+"cv52:2": "Gal galiu kuo nors padėti?",
+"cv52:4": "Žinoma. Bet tik rytoj, šiandien turiu susitikimą.",
+"cv52:6": "Sutarta. Ir nepamiršk šiandien išeiti laiku."
 },
 "alnilam_cv22": {
 "cv22:13": "Tomai, ar tu valgai mėsą?",
@@ -32,6 +50,19 @@
 "cv22:8": "O alus? Labai skanu!",
 "cv22:9o0-0": "Prašau. Į sveikatą!",
 "cv22:9o1-0": "Nieko tokio. Į sveikatą!"
+},
+"alnilam_cv48": {
+"cv48:0": "Ar girdėjai? Savivaldybė nori uždrausti automobilius senamiestyje. Manau, tai kvailystė.",
+"cv48:2": "Kodėl? O kaip parduotuvės? Žmonės nebeatvažiuos.",
+"cv48:4": "Hmm, gal. Bet vyresniems žmonėms bus sunku.",
+"cv48:6": "Gerai, tai skamba protingai. Matai, kartais tave verta paklausyti."
+},
+"alnilam_cv57": {
+"cv57:0": "Užeikite, prašau. Sakėte, kad norite pasikalbėti apie kažką svarbaus?",
+"cv57:2": "Suprantu. Jūsų projektas iš tiesų buvo sėkmingas. Bet biudžetas šiais metais labai ribotas.",
+"cv57:4": "Tai tiesa. Kiek tikėjotės?",
+"cv57:6": "Penkiolika procentų dabar neįmanoma. Galėčiau pasiūlyti aštuonis, o likusius peržiūrėtume po pusmečio.",
+"cv57:8": "Sutinku. Paruošiu dokumentą iki penktadienio."
 },
 "alnilam_me2": {
 "me2:cv22:13~n": "Ar tu valgai mėsą?",
@@ -56,6 +87,13 @@
 "cv3:8o1-0": "Gerai. Cepelinai be mėsos!",
 "cv3:9": "Ar jūs alergiškas?"
 },
+"aoede_cv39": {
+"cv39:0": "Žinai, ką daryčiau, jei turėčiau mėnesį atostogų? Keliaučiau po Italiją!",
+"cv39:2": "Į Norvegiją? Kodėl būtent ten?",
+"cv39:4": "Bet Norvegija labai brangi. Kur gyventum?",
+"cv39:6": "Cha! O gal važiuokime kartu kitą vasarą? Pusę kelio Italijoje, pusę Norvegijoje?",
+"cv39:8": "Tiesa. Nuo šiandien – jokių naujų batų!"
+},
 "autonoe_cv24": {
 "cv24:0": "Laba diena! Kuo galiu padėti?",
 "cv24:11": "Puiku! Koks jūsų vardas?",
@@ -66,6 +104,20 @@
 "cv24:5o1-0": "Gerai. Ar šitas?",
 "cv24:7": "O šitas? Didelis.",
 "cv24:9": "Atsiprašau! O šitas? Didelis, juodas ir labai sunkus!"
+},
+"autonoe_cv36": {
+"cv36:0": "Laba diena! Papasakokite trumpai apie save.",
+"cv36:10": "Jei viskas gerai, nuo kito pirmadienio. Atsakymą pranešime iki penktadienio.",
+"cv36:2": "Ar turite patirties viešbutyje?",
+"cv36:4": "Puiku. Kokiomis kalbomis kalbate?",
+"cv36:6": "O kodėl norite dirbti pas mus?",
+"cv36:8": "Darbas pamainomis, kartais ir naktį. Ar jums tinka?"
+},
+"autonoe_cv53": {
+"cv53:0": "O, labas. Nemaniau, kad paskambinsi.",
+"cv53:2": "Laukiau tavęs visą vakarą. Galėjai bent parašyti.",
+"cv53:4": "O ne… Kaip ji dabar?",
+"cv53:6": "Gerai, atleidžiu. Ir linkiu mamai greitai pasveikti."
 },
 "callirrhoe_cv26": {
 "cv26:0": "Atsiprašau, ar čia laisva?",
@@ -79,9 +131,21 @@
 "cv26:8": "Taip, bet mano darbas sunkus.",
 "cv26:9": "O tu? Kuo tu dirbi?"
 },
+"callirrhoe_cv51": {
+"cv51:0": "Šią vasarą noriu tik gulėti paplūdimyje. Gal Graikija?",
+"cv51:2": "Kalnuose šalta ir reikia daug vaikščioti. Aš noriu pailsėti.",
+"cv51:4": "Pavyzdžiui?",
+"cv51:6": "Hmm, tai skamba gerai. Bet ne daugiau nei tris valandas vaikščiojimo per dieną!"
+},
 "charon_cv1": {
 "cv1:13": "Laba diena! Kavos?",
 "cv1:15": "Arbatos?"
+},
+"charon_cv40": {
+"cv40:0": "O, labas vakaras. Kas atsitiko?",
+"cv40:2": "Oi, nežinojau, kad taip girdisi. Šiandien mano gimtadienis.",
+"cv40:4": "Suprantu. Atsiprašau. Muziką padarysiu tyliau.",
+"cv40:6": "Sutarta. O šeštadienį ateik pas mus į pyragą!"
 },
 "charon_cv8": {
 "cv8:0": "Laba diena! Sveiki atvykę.",
@@ -455,11 +519,40 @@
 "cv34:9": "Ar tau čia patinka?"
 },
 "despina_cv35": {
-"cv35:1": "Labas vakaras!",
+"cv35:1": "Laba diena. Man skauda galvą ir gerklę.",
 "cv35:11": "Labanakt! Iki pasimatymo!",
-"cv35:3": "Gerai, ačiū.",
-"cv35:6": "Nieko tokio!",
-"cv35:9": "Prašau!"
+"cv35:3": "Nuo vakar. Taip, turiu temperatūrą.",
+"cv35:5": "Kosiu naktį. Gėriau tik arbatą su medumi.",
+"cv35:7": "Ar galiu eiti į darbą?",
+"cv35:9": "Supratau. Labai ačiū, daktare."
+},
+"despina_cv36": {
+"cv36:1": "Laba diena. Aš esu iš Airijos, Lietuvoje gyvenu dvejus metus.",
+"cv36:11": "Puiku! Ačiū už pokalbį.",
+"cv36:3": "Taip, dirbau registratūroje.",
+"cv36:5": "Kalbu angliškai, prancūziškai ir šiek tiek lietuviškai.",
+"cv36:7": "Man patinka bendrauti, ir noriu geriau išmokti lietuvių kalbos.",
+"cv36:9": "Taip, tinka. Kada galiu pradėti?"
+},
+"despina_cv37": {
+"cv37:1": "Laba diena, skambinu dėl buto. Ar jis dar laisvas?",
+"cv37:3": "Kiek kainuoja nuoma?",
+"cv37:5": "Ar galima gyventi su šunimi?",
+"cv37:7": "Taip, labai norėčiau. Ar galiu ateiti rytoj po darbo?",
+"cv37:9": "Puiku. Iki rytojaus!"
+},
+"despina_cv38": {
+"cv38:1": "Laba diena. Norėčiau grąžinti šitą striukę.",
+"cv38:3": "Ji per didelė, ir spalva ne ta.",
+"cv38:5": "Taip, štai kvitas.",
+"cv38:7": "Ar turite tokią pačią, tik mėlyną ir mažesnę?",
+"cv38:9": "Taip, ačiū. Kur galiu pasimatuoti?"
+},
+"despina_cv39": {
+"cv39:1": "Būtų puiku! Jei galėčiau, keliaučiau į Norvegiją.",
+"cv39:3": "Man patinka kalnai ir jūra. Ir ten labai gražu.",
+"cv39:5": "Gyvenčiau palapinėje. Tai būtų pigiau.",
+"cv39:7": "Mielai važiuočiau! Bet reikia pradėti taupyti."
 },
 "despina_cv4": {
 "cv4:0": "Atleiskite!",
@@ -470,6 +563,66 @@
 "cv4:5": "Ar toli?",
 "cv4:7": "Parodykite žemėlapyje.",
 "cv4:9": "Supratau! Labai ačiū!"
+},
+"despina_cv40": {
+"cv40:1": "Labas vakaras. Atsiprašau, bet jau vėlu, o muzika labai garsi.",
+"cv40:3": "Su gimtadieniu! Bet aš rytoj anksti keliuosi į darbą.",
+"cv40:5": "Ačiū. Gal galėtume susitarti: darbo dienomis tyla nuo dešimtos?",
+"cv40:7": "Mielai ateičiau! Labanakt."
+},
+"despina_cv41": {
+"cv41:1": "Vasarą važiuodavome pas močiutę į kaimą.",
+"cv41:3": "Vaikystėje žaisdavau lauke ir maudydavomės ežere.",
+"cv41:5": "Taip, močiutė kepdavo pyragus.",
+"cv41:7": "Deja, retai. Bet labai pasiilgstu."
+},
+"despina_cv42": {
+"cv42:1": "Taip. Jis sakė, kad susitikimas bus rytoj.",
+"cv42:3": "Dešimtą valandą, jo kabinete.",
+"cv42:5": "Jis paklausė, ar ataskaita jau paruošta.",
+"cv42:7": "Žinoma. Pasakysiu jam, kad atsiųsi iki vakaro."
+},
+"despina_cv43": {
+"cv43:1": "Tai mano kolega, su kuriuo dirbu.",
+"cv43:3": "Tai Rūta. Ji yra mano draugo sesuo.",
+"cv43:5": "Tai šeimininkas. Tai jo namas.",
+"cv43:7": "Žinoma! Eime kartu."
+},
+"despina_cv44": {
+"cv44:1": "Atsiprašau, bet sriuba šalta.",
+"cv44:3": "Ačiū. Ir prašau be grietinės.",
+"cv44:5": "Gal stiklinę vandens su citrina.",
+"cv44:7": "Labai malonu, ačiū."
+},
+"despina_cv45": {
+"cv45:1": "Vienas bilietas į Kauną, prašau.",
+"cv45:3": "Šiandien, į abi puses.",
+"cv45:5": "Kada išvyksta traukinys?",
+"cv45:7": "Gerai. Ar galiu mokėti kortele?"
+},
+"despina_cv46": {
+"cv46:1": "Suprantu, bet tai man per daug. Ar galėtume susitarti?",
+"cv46:3": "Visada moku laiku ir rūpinuosi butu. Gal penkiasdešimt eurų daugiau?",
+"cv46:5": "O jei pasirašyčiau sutartį dvejiems metams?",
+"cv46:7": "Sutarta. Atsiųskite sutartį el. paštu."
+},
+"despina_cv47": {
+"cv47:1": "Laba diena. Gavau sąskaitą, ir joje yra klaida.",
+"cv47:3": "Man priskaičiavo už skambučius į užsienį, bet aš į užsienį neskambinau.",
+"cv47:5": "Ne, telefoną visada laikau su savimi. Prašau grąžinti pinigus.",
+"cv47:7": "Ačiū. Ar galite atsiųsti patvirtinimą el. paštu?"
+},
+"despina_cv48": {
+"cv48:1": "Girdėjau. Bet aš nesutinku su tavimi. Manau, tai gera idėja.",
+"cv48:3": "Kitose šalyse, kai uždraudė automobilius, žmonių atėjo daugiau.",
+"cv48:5": "Tiesa. Todėl reikia daugiau autobusų ir leidimų žmonėms su negalia.",
+"cv48:7": "Ačiū. Kartais ir tu teisus."
+},
+"despina_cv49": {
+"cv49:1": "Mano stiprybė yra kantrybė. Moku išklausyti žmones ir ramiai spręsti konfliktus.",
+"cv49:3": "Kartais per daug stengiuosi viską padaryti pati. Bet mokausi deleguoti.",
+"cv49:5": "Noriu daugiau atsakomybės ir galimybės vadovauti komandai.",
+"cv49:7": "Tikiuosi vadovauti skyriui ir toliau mokytis."
 },
 "despina_cv5": {
 "cv5:1": "Laba diena! Ar turite obuolių?",
@@ -483,6 +636,66 @@
 "cv5:9o0-1": "Gerai, aš imu.",
 "cv5:9o1": "Gerai, aš imu."
 },
+"despina_cv50": {
+"cv50:1": "Man skauda nugarą jau savaitę. Ypač ryte, kai atsikeliu.",
+"cv50:3": "Praeitą savaitę nešiau baldus, kai kraustėmės.",
+"cv50:5": "Ne, skauda tik apačioje, čia.",
+"cv50:7": "Ar galiu dirbti? Dirbu prie kompiuterio."
+},
+"despina_cv51": {
+"cv51:1": "Graikija graži, bet man paplūdimyje nuobodu. Norėčiau į kalnus.",
+"cv51:3": "O jei rastume vietą, kur yra ir jūra, ir kalnai?",
+"cv51:5": "Pavyzdžiui, Kroatija. Ryte vaikščiotume kalnuose, o po pietų gulėtume prie jūros.",
+"cv51:7": "Sutarta! Šįvakar paieškosiu viešbučio."
+},
+"despina_cv52": {
+"cv52:1": "Turiu per daug darbo. Ataskaita turi būti paruošta iki penktadienio.",
+"cv52:3": "Būtų puiku. Ar galėtum patikrinti skaičius lentelėse?",
+"cv52:5": "Rytoj tinka. Kitą kartą aš tau padėsiu."
+},
+"despina_cv53": {
+"cv53:1": "Labas, Rasa. Labai atsiprašau, kad neatėjau į tavo gimtadienį.",
+"cv53:3": "Tu teisi. Turėjau parašyti. Mano mama susirgo, ir visą vakarą buvau ligoninėje.",
+"cv53:5": "Jau geriau, ačiū. Tai daugiau nepasikartos.",
+"cv53:7": "Ačiū. Gal šeštadienį išgerkime kavos? Aš vaišinu."
+},
+"despina_cv54": {
+"cv54:1": "Prieš savaitę pirkau šias ausines, bet jos jau nebeveikia.",
+"cv54:3": "Taip, štai. Prašau grąžinti pinigus.",
+"cv54:5": "Norėčiau atgauti pinigus. Šios man nepatiko."
+},
+"despina_cv55": {
+"cv55:1": "Labas vakaras. Norėjau pasikalbėti apie jūsų obelį.",
+"cv55:3": "Šakos auga į mano kiemą ir užstoja šviesą. Mano daržovės neauga.",
+"cv55:5": "Suprantu. Nereikia jos kirsti. Gal galėtume tik nupjauti kelias šakas?",
+"cv55:7": "Ačiū! Iškepsiu pyragą ir jus pavaišinsiu."
+},
+"despina_cv56": {
+"cv56:1": "Suprantu tave. Bet ar jau turi kitą darbą?",
+"cv56:3": "Jei būčiau tavo vietoje, pirmiausia ieškočiau naujo darbo, o tik paskui išeičiau.",
+"cv56:5": "Gal pabandyk dar kartą pasikalbėti su vadovu? Pasakyk, kas tau nepatinka.",
+"cv56:7": "Visada prašom. Ir pranešk, kaip sekėsi."
+},
+"despina_cv57": {
+"cv57:1": "Taip. Norėčiau aptarti savo atlyginimą, atsižvelgiant į šių metų rezultatus.",
+"cv57:3": "Suprantu apribojimus, tačiau mano atsakomybės per metus gerokai išaugo.",
+"cv57:5": "Remiantis rinkos duomenimis, panašios pareigos vertinamos maždaug penkiolika procentų daugiau.",
+"cv57:7": "Tai priimtinas kompromisas, jei susitarimą užfiksuotume raštu.",
+"cv57:9": "Ačiū, kad išklausėte. Vertinu jūsų atvirumą."
+},
+"despina_cv58": {
+"cv58:1": "Labai atsiprašau dėl nepatogumų. Leiskite man patikrinti jūsų užsakymą.",
+"cv58:3": "Jūs visiškai teisi. Užsakyme aiškiai nurodytas vaizdas į jūrą. Tai mūsų klaida.",
+"cv58:5": "Galiu nedelsiant perkelti jus į liuksą su balkonu, be jokio papildomo mokesčio.",
+"cv58:7": "Be to, nuo sąskaitos nuskaičiuosime vienos nakties kainą ir pakviesime jus vakarienės.",
+"cv58:9": "Džiaugiuosi, kad radome sprendimą. Jei ko nors prireiks, kreipkitės bet kada."
+},
+"despina_cv59": {
+"cv59:1": "Suprantu tavo nerimą, bet nemanau, kad viskas taip vienareikšmiška.",
+"cv59:3": "Greičiau, taip, bet ne visada tiksliau. Kažkas turi tikrinti faktus ir prisiimti atsakomybę.",
+"cv59:5": "Tikėtina, kad dalis užduočių pasikeis, tačiau atsiras ir naujų, kurių šiandien net neįsivaizduojame.",
+"cv59:7": "Manau, verta mokytis su juo dirbti, užuot bandžius su juo konkuruoti."
+},
 "despina_cv6": {
 "cv6:1": "Nieko ypatingo. O tu?",
 "cv6:11": "Atsiprašau, aš vėluoju!",
@@ -492,6 +705,64 @@
 "cv6:5o1-1": "Gerai, septintą.",
 "cv6:6": "Prie kavinės.",
 "cv6:8": "Sutarta! Iki!"
+},
+"despina_cv60": {
+"cv60:1": "Inga, nuoširdžiai užjaučiu. Net neįsivaizduoju, kaip tau dabar sunku.",
+"cv60:3": "Prisimenu, kaip šiltai jis visada mus priimdavo. Jis buvo nepaprastas žmogus.",
+"cv60:5": "Nereikia atsiprašinėti. Verk tiek, kiek reikia. Aš niekur neskubu.",
+"cv60:7": "Leisk man padėti. Galiu pasirūpinti gėlėmis arba atvažiuoti anksčiau ir pabūti su tavo mama."
+},
+"despina_cv61": {
+"cv61:1": "Tuo metu slaugiau sergantį tėvą. Tai buvo sunku, bet išmokė mane kantrybės ir organizuotumo.",
+"cv61:3": "Kartais per daug prisiimu pati, užuot delegavusi kitiems. Pastaruoju metu to sąmoningai mokausi.",
+"cv61:5": "Ten pasiekiau viską, ką galėjau. Ieškau aplinkos, kurioje galėčiau toliau tobulėti ir prisiimti daugiau atsakomybės.",
+"cv61:7": "Tikiuosi vadovauti komandai ir prisidėti prie įmonės plėtros į naujas rinkas."
+},
+"despina_cv62": {
+"cv62:1": "Suprantu jūsų požiūrį, bet savivaldybė šiam parkui lėšų neskyrė jau trejus metus.",
+"cv62:3": "Žinoma, niekas jūsų nekaltina. Tiesiog jei patys nesiimsime iniciatyvos, niekas nepasikeis.",
+"cv62:5": "Jums nereikėtų nieko kilnoti. Jūs geriau už visus žinote, kaip šis parkas atrodė anksčiau. Galėtumėte mums patarti.",
+"cv62:7": "Būtent tokios istorijos mums ir reikia. Gal galėtume kartu atsodinti tas liepas?"
+},
+"despina_cv63": {
+"cv63:1": "Simona, neturiu jokio pasiteisinimo. Visiškai pamiršau, ir man dėl to labai gėda.",
+"cv63:3": "Suprantu, kodėl taip jauteisi, ir tu turi teisę pykti. Bet tu man labai rūpi.",
+"cv63:5": "Pastaruoju metu darbe tiek visko, kad pamiršau net svarbiausius dalykus. Tai ne pasiteisinimas, tik paaiškinimas.",
+"cv63:7": "Leisk man atsilyginti. Šeštadienį kviečiu tave vakarienės į tą restoraną, kurį taip seniai norėjai išbandyti."
+},
+"despina_cv64": {
+"cv64:1": "Suprantu, kodėl taip atrodo, ir tai teisėtas klausimas. Leiskite paaiškinti kontekstą.",
+"cv64:3": "Visiškai sutinku, todėl kiekvienam darbuotojui siūlome perkvalifikavimą ir išeitinę išmoką, viršijančią įstatymo reikalavimus.",
+"cv64:5": "Pelnas buvo vienkartinis, o užsakymai šiais metais sumažėjo beveik trečdaliu. Nenorime laukti, kol teks atleisti dvigubai daugiau.",
+"cv64:7": "Negaliu pažadėti to, ko nežinau, ir nenoriu jūsų klaidinti. Galiu pažadėti, kad apie bet kokius pokyčius pirmiausia sužinos patys darbuotojai."
+},
+"despina_cv65": {
+"cv65:1": "Suprantu, kad kainos kyla, tačiau sutartyje aiškiai nurodyta galutinė suma ir terminas, kuris jau praėjo prieš du mėnesius.",
+"cv65:3": "Galbūt, bet rizika dėl kainų buvo jūsų atsakomybė, kai pasirašėte sutartį. Be to, dėl vėlavimo man teko mokėti už nuomą du papildomus mėnesius.",
+"cv65:5": "Siūlau kompromisą: padengsiu pusę įrodyto medžiagų brangimo, jei pateiksite sąskaitas, o jūs užbaigsite darbus per tris savaites.",
+"cv65:7": "Tada už kiekvieną pavėluotą dieną išskaičiuosiu sutartyje numatytą baudą. Tai sąžininga abiem pusėms."
+},
+"despina_cv66": {
+"cv66:1": "Jūs visiškai teisus, ir labai atsiprašau. Tikrai nepastebėjome, kaip prabėgo laikas. Muziką tuoj pat išjungsiu.",
+"cv66:3": "Suprantu jūsų pyktį, ir tai nepateisinama. Ar galėčiau jums duoti savo telefono numerį, kad kitą kartą galėtumėte man tiesiog parašyti?",
+"cv66:5": "Pažadu, kad nuo šiol po dešimtos vakaro bus tyla. O rytoj vakare užeikite, norėčiau atsiprašyti tinkamai, su pyragu."
+},
+"despina_cv67": {
+"cv67:1": "Taip, Jonai, ir nenoriu vynioti žodžių į vatą. Po reorganizacijos tavo pareigybė bus panaikinta.",
+"cv67:3": "Ne, ir noriu, kad tai išgirstum aiškiai: tai ne tavo darbo įvertinimas. Sprendimas susijęs su tuo, kad visas skyrius perkeliamas į kitą miestą.",
+"cv67:5": "Turi kelias galimybes. Gali persikelti kartu su skyriumi, gauti išeitinę išmoką arba aš asmeniškai rekomenduosiu tave kitoms įmonėms.",
+"cv67:7": "Žinoma. Neskubėk. Ir jei norėsi pasikalbėti dar kartą, mano durys visada atviros. Man tikrai labai gaila, Jonai."
+},
+"despina_cv68": {
+"cv68:1": "Suprantu, kiek mums reiškia šis finansavimas, bet negaliu įrašyti skaičių, kurie neatitinka tikrovės.",
+"cv68:3": "Galbūt netikrins, bet jei patikrintų, rizikuotume ne tik finansavimu, bet ir visos organizacijos reputacija.",
+"cv68:5": "Ne. Siūlau sąžiningai parodyti trijų šimtų dalyvių rezultatus ir paaiškinti, kaip kitais metais pasieksime daugiau.",
+"cv68:7": "Tada bent jau galėsime žiūrėti jiems į akis. O aš mielai padėsiu parengti stiprų planą, kad taip neatsitiktų."
+},
+"despina_cv69": {
+"cv69:1": "Kol kas ne, dėde. Mano klientai, skirtingai nei teisme, visada išeina patenkinti ir dar paprašo papildomos porcijos.",
+"cv69:3": "Uždirbdavau daugiau, bet miegodavau mažiau. Dabar keliuosi ketvirtą ryto, bet bent jau žinau, kodėl keliuosi.",
+"cv69:5": "Tą patį klausė apie senelį, kai jis paliko gamyklą ir pradėjo auginti bites. Jo medus, kaip pamenate, dar ir dabar stovi jūsų spintoje."
 },
 "despina_cv7": {
 "cv7:1": "Nieko ypatingo. O tu?",
@@ -503,6 +774,11 @@
 "cv7:5o2": "Aš mėgstu gaminti.",
 "cv7:7": "Taip, aš klausausi muzikos.",
 "cv7:9": "Man patinka muzika!"
+},
+"despina_cv70": {
+"cv70:1": "Matau, kad jums labai skaudu, ir tai suprantama. Bet nenorėčiau stoti nei į vieną pusę. Jūs abi man labai brangios.",
+"cv70:3": "Galiu su ja pasikalbėti ir paklausti, kas jai trukdo atvažiuoti. Bet manau, kad svarbiausia, jog jūs pačios pasikalbėtumėte atvirai.",
+"cv70:5": "O jei pabandytumėte susitikti kur nors neutralioje vietoje, pavyzdžiui, kavinėje, kur abi jaustumėtės ramiau? Galėčiau padėti tai suorganizuoti."
 },
 "despina_cv8": {
 "cv8:1": "Laba diena! Aš turiu rezervaciją.",
@@ -621,6 +897,20 @@
 "cv23:6": "Dešimt minučių.",
 "cv23:8": "Ten, kairėn."
 },
+"erinome_cv45": {
+"cv45:0": "Laba diena. Kur važiuojate?",
+"cv45:2": "Šiandien? Į vieną pusę ar į abi?",
+"cv45:4": "Septyni eurai šešiasdešimt centų.",
+"cv45:6": "Po dvidešimties minučių, nuo antro perono. Bet jis šiandien vėluoja apie dešimt minučių.",
+"cv45:8": "Žinoma. Prašom, jūsų bilietas. Geros kelionės!"
+},
+"erinome_cv49": {
+"cv49:0": "Laba diena. Papasakokite apie savo didžiausią stiprybę.",
+"cv49:2": "O silpnybė?",
+"cv49:4": "Gerai. Kodėl norite palikti dabartinę darbovietę?",
+"cv49:6": "Suprantu. Kur matote save po penkerių metų?",
+"cv49:8": "Ačiū, atsakymą pranešime per savaitę."
+},
 "fenrir_cv23": {
 "cv23:13": "Laba diena! Taksi?",
 "cv23:15": "Gerai. Kuris?",
@@ -632,6 +922,28 @@
 "cv23:24": "Viešbutis ten.",
 "cv23:26": "Gerai. Dešimt eurų.",
 "cv23:28": "Ačiū! Viso gero!"
+},
+"fenrir_cv35": {
+"cv35:0": "Laba diena. Prašom sėstis. Kas jums atsitiko?",
+"cv35:10": "Nėra už ką. Sveikatos!",
+"cv35:2": "Nuo kada? Ar turite temperatūros?",
+"cv35:4": "Ar kosite? Ar gėrėte kokių nors vaistų?",
+"cv35:6": "Pažiūrėkime. Atrodo, kad tai peršalimas, ne gripas. Išrašysiu receptą. Gerkite daug vandens ir ilsėkitės.",
+"cv35:8": "Geriau ne. Bent tris dienas likite namie. Jei temperatūra nekris, ateikite vėl."
+},
+"fenrir_cv50": {
+"cv50:0": "Laba diena. Kas jus vargina?",
+"cv50:2": "Ar kėlėte ką nors sunkaus? Ar sportuojate?",
+"cv50:4": "Aišku. Greičiausiai patempėte raumenis. Ar skausmas plinta į koją?",
+"cv50:6": "Gerai. Išrašysiu tepalą ir pratimus. Dvi savaites nekelkite nieko sunkaus.",
+"cv50:8": "Galite, bet kas valandą atsistokite ir pajudėkite. Sveikatos!"
+},
+"gacrux_cv37": {
+"cv37:0": "Klausau.",
+"cv37:2": "Taip, laisvas. Du kambariai, virtuvė ir balkonas. Penktas aukštas, yra liftas.",
+"cv37:4": "Penki šimtai eurų per mėnesį, plius mokesčiai.",
+"cv37:6": "Su mažu šunimi – galima. Ar norėtumėte apžiūrėti butą?",
+"cv37:8": "Gerai, rytoj šeštą. Adresą atsiųsiu žinute."
 },
 "gacrux_cv5": {
 "cv5:0": "Laba diena! Prašau?",
@@ -813,6 +1125,20 @@
 "cv27:8o1-0": "Gerai, štai kava.",
 "cv27:9": "Kambaryje šalta, ar ne?"
 },
+"laomedeia_cv42": {
+"cv42:0": "Labas! Ar vadovas manęs ieškojo?",
+"cv42:2": "Rytoj? Bet aš maniau, kad penktadienį. Kada?",
+"cv42:4": "Gerai. O ar jis dar ką nors sakė?",
+"cv42:6": "Oi. Dar ne visai. Ar galėtum jam pasakyti, kad atsiųsiu iki vakaro?",
+"cv42:8": "Ačiū, tu geriausias kolega!"
+},
+"laomedeia_cv47": {
+"cv47:0": "Laba diena, klientų aptarnavimas, kuo galiu padėti?",
+"cv47:2": "Apgailestauju. Kokia klaida?",
+"cv47:4": "Patikrinsiu. Taip, matau skambučius į Latviją. Galbūt telefonu naudojosi kas nors kitas?",
+"cv47:6": "Gerai, perduosiu prašymą techniniam skyriui. Atsakymą gausite per penkias darbo dienas.",
+"cv47:8": "Žinoma, atsiųsiu iš karto. Geros dienos."
+},
 "laomedeia_me2": {
 "me2:cv17:0~n": "Labas! Aš esu Laura. Tu esi?"
 },
@@ -828,6 +1154,13 @@
 "cv12:5": "Kokio dydžio?",
 "cv12:7": "Prašau. Matavimosi kabina ten.",
 "cv12:9": "Ir kaip?"
+},
+"leda_cv60": {
+"cv60:0": "Labas. Ačiū, kad paskambinai. Dar negaliu patikėti, kad jo nebėra.",
+"cv60:2": "Viskas įvyko taip greitai. Dar praeitą savaitę kalbėjomės telefonu.",
+"cv60:4": "Taip... Jis tave labai mėgo. Atsiprašau, kad verkiu.",
+"cv60:6": "Ačiū. Laidotuvės bus šeštadienį, o dar tiek visko reikia sutvarkyti.",
+"cv60:8": "Tai būtų didelė pagalba. Ačiū tau, kad esi."
 },
 "orus_cv1": {
 "cv1:1": "Labas rytas!",
@@ -1185,11 +1518,40 @@
 "cv34:9": "Ar tau čia patinka?"
 },
 "orus_cv35": {
-"cv35:1": "Labas vakaras!",
+"cv35:1": "Laba diena. Man skauda galvą ir gerklę.",
 "cv35:11": "Labanakt! Iki pasimatymo!",
-"cv35:3": "Gerai, ačiū.",
-"cv35:6": "Nieko tokio!",
-"cv35:9": "Prašau!"
+"cv35:3": "Nuo vakar. Taip, turiu temperatūrą.",
+"cv35:5": "Kosiu naktį. Gėriau tik arbatą su medumi.",
+"cv35:7": "Ar galiu eiti į darbą?",
+"cv35:9": "Supratau. Labai ačiū, daktare."
+},
+"orus_cv36": {
+"cv36:1": "Laba diena. Aš esu iš Airijos, Lietuvoje gyvenu dvejus metus.",
+"cv36:11": "Puiku! Ačiū už pokalbį.",
+"cv36:3": "Taip, dirbau registratūroje.",
+"cv36:5": "Kalbu angliškai, prancūziškai ir šiek tiek lietuviškai.",
+"cv36:7": "Man patinka bendrauti, ir noriu geriau išmokti lietuvių kalbos.",
+"cv36:9": "Taip, tinka. Kada galiu pradėti?"
+},
+"orus_cv37": {
+"cv37:1": "Laba diena, skambinu dėl buto. Ar jis dar laisvas?",
+"cv37:3": "Kiek kainuoja nuoma?",
+"cv37:5": "Ar galima gyventi su šunimi?",
+"cv37:7": "Taip, labai norėčiau. Ar galiu ateiti rytoj po darbo?",
+"cv37:9": "Puiku. Iki rytojaus!"
+},
+"orus_cv38": {
+"cv38:1": "Laba diena. Norėčiau grąžinti šitą striukę.",
+"cv38:3": "Ji per didelė, ir spalva ne ta.",
+"cv38:5": "Taip, štai kvitas.",
+"cv38:7": "Ar turite tokią pačią, tik mėlyną ir mažesnę?",
+"cv38:9": "Taip, ačiū. Kur galiu pasimatuoti?"
+},
+"orus_cv39": {
+"cv39:1": "Būtų puiku! Jei galėčiau, keliaučiau į Norvegiją.",
+"cv39:3": "Man patinka kalnai ir jūra. Ir ten labai gražu.",
+"cv39:5": "Gyvenčiau palapinėje. Tai būtų pigiau.",
+"cv39:7": "Mielai važiuočiau! Bet reikia pradėti taupyti."
 },
 "orus_cv4": {
 "cv4:0": "Atleiskite!",
@@ -1200,6 +1562,66 @@
 "cv4:5": "Ar toli?",
 "cv4:7": "Parodykite žemėlapyje.",
 "cv4:9": "Supratau! Labai ačiū!"
+},
+"orus_cv40": {
+"cv40:1": "Labas vakaras. Atsiprašau, bet jau vėlu, o muzika labai garsi.",
+"cv40:3": "Su gimtadieniu! Bet aš rytoj anksti keliuosi į darbą.",
+"cv40:5": "Ačiū. Gal galėtume susitarti: darbo dienomis tyla nuo dešimtos?",
+"cv40:7": "Mielai ateičiau! Labanakt."
+},
+"orus_cv41": {
+"cv41:1": "Vasarą važiuodavome pas močiutę į kaimą.",
+"cv41:3": "Vaikystėje žaisdavau lauke ir maudydavomės ežere.",
+"cv41:5": "Taip, močiutė kepdavo pyragus.",
+"cv41:7": "Deja, retai. Bet labai pasiilgstu."
+},
+"orus_cv42": {
+"cv42:1": "Taip. Jis sakė, kad susitikimas bus rytoj.",
+"cv42:3": "Dešimtą valandą, jo kabinete.",
+"cv42:5": "Jis paklausė, ar ataskaita jau paruošta.",
+"cv42:7": "Žinoma. Pasakysiu jam, kad atsiųsi iki vakaro."
+},
+"orus_cv43": {
+"cv43:1": "Tai mano kolega, su kuriuo dirbu.",
+"cv43:3": "Tai Rūta. Ji yra mano draugo sesuo.",
+"cv43:5": "Tai šeimininkas. Tai jo namas.",
+"cv43:7": "Žinoma! Eime kartu."
+},
+"orus_cv44": {
+"cv44:1": "Atsiprašau, bet sriuba šalta.",
+"cv44:3": "Ačiū. Ir prašau be grietinės.",
+"cv44:5": "Gal stiklinę vandens su citrina.",
+"cv44:7": "Labai malonu, ačiū."
+},
+"orus_cv45": {
+"cv45:1": "Vienas bilietas į Kauną, prašau.",
+"cv45:3": "Šiandien, į abi puses.",
+"cv45:5": "Kada išvyksta traukinys?",
+"cv45:7": "Gerai. Ar galiu mokėti kortele?"
+},
+"orus_cv46": {
+"cv46:1": "Suprantu, bet tai man per daug. Ar galėtume susitarti?",
+"cv46:3": "Visada moku laiku ir rūpinuosi butu. Gal penkiasdešimt eurų daugiau?",
+"cv46:5": "O jei pasirašyčiau sutartį dvejiems metams?",
+"cv46:7": "Sutarta. Atsiųskite sutartį el. paštu."
+},
+"orus_cv47": {
+"cv47:1": "Laba diena. Gavau sąskaitą, ir joje yra klaida.",
+"cv47:3": "Man priskaičiavo už skambučius į užsienį, bet aš į užsienį neskambinau.",
+"cv47:5": "Ne, telefoną visada laikau su savimi. Prašau grąžinti pinigus.",
+"cv47:7": "Ačiū. Ar galite atsiųsti patvirtinimą el. paštu?"
+},
+"orus_cv48": {
+"cv48:1": "Girdėjau. Bet aš nesutinku su tavimi. Manau, tai gera idėja.",
+"cv48:3": "Kitose šalyse, kai uždraudė automobilius, žmonių atėjo daugiau.",
+"cv48:5": "Tiesa. Todėl reikia daugiau autobusų ir leidimų žmonėms su negalia.",
+"cv48:7": "Ačiū. Kartais ir tu teisus."
+},
+"orus_cv49": {
+"cv49:1": "Mano stiprybė yra kantrybė. Moku išklausyti žmones ir ramiai spręsti konfliktus.",
+"cv49:3": "Kartais per daug stengiuosi viską padaryti pati. Bet mokausi deleguoti.",
+"cv49:5": "Noriu daugiau atsakomybės ir galimybės vadovauti komandai.",
+"cv49:7": "Tikiuosi vadovauti skyriui ir toliau mokytis."
 },
 "orus_cv5": {
 "cv5:1": "Laba diena! Ar turite obuolių?",
@@ -1213,6 +1635,66 @@
 "cv5:9o0-1": "Gerai, aš imu.",
 "cv5:9o1": "Gerai, aš imu."
 },
+"orus_cv50": {
+"cv50:1": "Man skauda nugarą jau savaitę. Ypač ryte, kai atsikeliu.",
+"cv50:3": "Praeitą savaitę nešiau baldus, kai kraustėmės.",
+"cv50:5": "Ne, skauda tik apačioje, čia.",
+"cv50:7": "Ar galiu dirbti? Dirbu prie kompiuterio."
+},
+"orus_cv51": {
+"cv51:1": "Graikija graži, bet man paplūdimyje nuobodu. Norėčiau į kalnus.",
+"cv51:3": "O jei rastume vietą, kur yra ir jūra, ir kalnai?",
+"cv51:5": "Pavyzdžiui, Kroatija. Ryte vaikščiotume kalnuose, o po pietų gulėtume prie jūros.",
+"cv51:7": "Sutarta! Šįvakar paieškosiu viešbučio."
+},
+"orus_cv52": {
+"cv52:1": "Turiu per daug darbo. Ataskaita turi būti paruošta iki penktadienio.",
+"cv52:3": "Būtų puiku. Ar galėtum patikrinti skaičius lentelėse?",
+"cv52:5": "Rytoj tinka. Kitą kartą aš tau padėsiu."
+},
+"orus_cv53": {
+"cv53:1": "Labas, Rasa. Labai atsiprašau, kad neatėjau į tavo gimtadienį.",
+"cv53:3": "Tu teisi. Turėjau parašyti. Mano mama susirgo, ir visą vakarą buvau ligoninėje.",
+"cv53:5": "Jau geriau, ačiū. Tai daugiau nepasikartos.",
+"cv53:7": "Ačiū. Gal šeštadienį išgerkime kavos? Aš vaišinu."
+},
+"orus_cv54": {
+"cv54:1": "Prieš savaitę pirkau šias ausines, bet jos jau nebeveikia.",
+"cv54:3": "Taip, štai. Prašau grąžinti pinigus.",
+"cv54:5": "Norėčiau atgauti pinigus. Šios man nepatiko."
+},
+"orus_cv55": {
+"cv55:1": "Labas vakaras. Norėjau pasikalbėti apie jūsų obelį.",
+"cv55:3": "Šakos auga į mano kiemą ir užstoja šviesą. Mano daržovės neauga.",
+"cv55:5": "Suprantu. Nereikia jos kirsti. Gal galėtume tik nupjauti kelias šakas?",
+"cv55:7": "Ačiū! Iškepsiu pyragą ir jus pavaišinsiu."
+},
+"orus_cv56": {
+"cv56:1": "Suprantu tave. Bet ar jau turi kitą darbą?",
+"cv56:3": "Jei būčiau tavo vietoje, pirmiausia ieškočiau naujo darbo, o tik paskui išeičiau.",
+"cv56:5": "Gal pabandyk dar kartą pasikalbėti su vadovu? Pasakyk, kas tau nepatinka.",
+"cv56:7": "Visada prašom. Ir pranešk, kaip sekėsi."
+},
+"orus_cv57": {
+"cv57:1": "Taip. Norėčiau aptarti savo atlyginimą, atsižvelgiant į šių metų rezultatus.",
+"cv57:3": "Suprantu apribojimus, tačiau mano atsakomybės per metus gerokai išaugo.",
+"cv57:5": "Remiantis rinkos duomenimis, panašios pareigos vertinamos maždaug penkiolika procentų daugiau.",
+"cv57:7": "Tai priimtinas kompromisas, jei susitarimą užfiksuotume raštu.",
+"cv57:9": "Ačiū, kad išklausėte. Vertinu jūsų atvirumą."
+},
+"orus_cv58": {
+"cv58:1": "Labai atsiprašau dėl nepatogumų. Leiskite man patikrinti jūsų užsakymą.",
+"cv58:3": "Jūs visiškai teisi. Užsakyme aiškiai nurodytas vaizdas į jūrą. Tai mūsų klaida.",
+"cv58:5": "Galiu nedelsiant perkelti jus į liuksą su balkonu, be jokio papildomo mokesčio.",
+"cv58:7": "Be to, nuo sąskaitos nuskaičiuosime vienos nakties kainą ir pakviesime jus vakarienės.",
+"cv58:9": "Džiaugiuosi, kad radome sprendimą. Jei ko nors prireiks, kreipkitės bet kada."
+},
+"orus_cv59": {
+"cv59:1": "Suprantu tavo nerimą, bet nemanau, kad viskas taip vienareikšmiška.",
+"cv59:3": "Greičiau, taip, bet ne visada tiksliau. Kažkas turi tikrinti faktus ir prisiimti atsakomybę.",
+"cv59:5": "Tikėtina, kad dalis užduočių pasikeis, tačiau atsiras ir naujų, kurių šiandien net neįsivaizduojame.",
+"cv59:7": "Manau, verta mokytis su juo dirbti, užuot bandžius su juo konkuruoti."
+},
 "orus_cv6": {
 "cv6:1": "Nieko ypatingo. O tu?",
 "cv6:11": "Atsiprašau, aš vėluoju!",
@@ -1222,6 +1704,64 @@
 "cv6:5o1-1": "Gerai, septintą.",
 "cv6:6": "Prie kavinės.",
 "cv6:8": "Sutarta! Iki!"
+},
+"orus_cv60": {
+"cv60:1": "Inga, nuoširdžiai užjaučiu. Net neįsivaizduoju, kaip tau dabar sunku.",
+"cv60:3": "Prisimenu, kaip šiltai jis visada mus priimdavo. Jis buvo nepaprastas žmogus.",
+"cv60:5": "Nereikia atsiprašinėti. Verk tiek, kiek reikia. Aš niekur neskubu.",
+"cv60:7": "Leisk man padėti. Galiu pasirūpinti gėlėmis arba atvažiuoti anksčiau ir pabūti su tavo mama."
+},
+"orus_cv61": {
+"cv61:1": "Tuo metu slaugiau sergantį tėvą. Tai buvo sunku, bet išmokė mane kantrybės ir organizuotumo.",
+"cv61:3": "Kartais per daug prisiimu pati, užuot delegavusi kitiems. Pastaruoju metu to sąmoningai mokausi.",
+"cv61:5": "Ten pasiekiau viską, ką galėjau. Ieškau aplinkos, kurioje galėčiau toliau tobulėti ir prisiimti daugiau atsakomybės.",
+"cv61:7": "Tikiuosi vadovauti komandai ir prisidėti prie įmonės plėtros į naujas rinkas."
+},
+"orus_cv62": {
+"cv62:1": "Suprantu jūsų požiūrį, bet savivaldybė šiam parkui lėšų neskyrė jau trejus metus.",
+"cv62:3": "Žinoma, niekas jūsų nekaltina. Tiesiog jei patys nesiimsime iniciatyvos, niekas nepasikeis.",
+"cv62:5": "Jums nereikėtų nieko kilnoti. Jūs geriau už visus žinote, kaip šis parkas atrodė anksčiau. Galėtumėte mums patarti.",
+"cv62:7": "Būtent tokios istorijos mums ir reikia. Gal galėtume kartu atsodinti tas liepas?"
+},
+"orus_cv63": {
+"cv63:1": "Simona, neturiu jokio pasiteisinimo. Visiškai pamiršau, ir man dėl to labai gėda.",
+"cv63:3": "Suprantu, kodėl taip jauteisi, ir tu turi teisę pykti. Bet tu man labai rūpi.",
+"cv63:5": "Pastaruoju metu darbe tiek visko, kad pamiršau net svarbiausius dalykus. Tai ne pasiteisinimas, tik paaiškinimas.",
+"cv63:7": "Leisk man atsilyginti. Šeštadienį kviečiu tave vakarienės į tą restoraną, kurį taip seniai norėjai išbandyti."
+},
+"orus_cv64": {
+"cv64:1": "Suprantu, kodėl taip atrodo, ir tai teisėtas klausimas. Leiskite paaiškinti kontekstą.",
+"cv64:3": "Visiškai sutinku, todėl kiekvienam darbuotojui siūlome perkvalifikavimą ir išeitinę išmoką, viršijančią įstatymo reikalavimus.",
+"cv64:5": "Pelnas buvo vienkartinis, o užsakymai šiais metais sumažėjo beveik trečdaliu. Nenorime laukti, kol teks atleisti dvigubai daugiau.",
+"cv64:7": "Negaliu pažadėti to, ko nežinau, ir nenoriu jūsų klaidinti. Galiu pažadėti, kad apie bet kokius pokyčius pirmiausia sužinos patys darbuotojai."
+},
+"orus_cv65": {
+"cv65:1": "Suprantu, kad kainos kyla, tačiau sutartyje aiškiai nurodyta galutinė suma ir terminas, kuris jau praėjo prieš du mėnesius.",
+"cv65:3": "Galbūt, bet rizika dėl kainų buvo jūsų atsakomybė, kai pasirašėte sutartį. Be to, dėl vėlavimo man teko mokėti už nuomą du papildomus mėnesius.",
+"cv65:5": "Siūlau kompromisą: padengsiu pusę įrodyto medžiagų brangimo, jei pateiksite sąskaitas, o jūs užbaigsite darbus per tris savaites.",
+"cv65:7": "Tada už kiekvieną pavėluotą dieną išskaičiuosiu sutartyje numatytą baudą. Tai sąžininga abiem pusėms."
+},
+"orus_cv66": {
+"cv66:1": "Jūs visiškai teisus, ir labai atsiprašau. Tikrai nepastebėjome, kaip prabėgo laikas. Muziką tuoj pat išjungsiu.",
+"cv66:3": "Suprantu jūsų pyktį, ir tai nepateisinama. Ar galėčiau jums duoti savo telefono numerį, kad kitą kartą galėtumėte man tiesiog parašyti?",
+"cv66:5": "Pažadu, kad nuo šiol po dešimtos vakaro bus tyla. O rytoj vakare užeikite, norėčiau atsiprašyti tinkamai, su pyragu."
+},
+"orus_cv67": {
+"cv67:1": "Taip, Jonai, ir nenoriu vynioti žodžių į vatą. Po reorganizacijos tavo pareigybė bus panaikinta.",
+"cv67:3": "Ne, ir noriu, kad tai išgirstum aiškiai: tai ne tavo darbo įvertinimas. Sprendimas susijęs su tuo, kad visas skyrius perkeliamas į kitą miestą.",
+"cv67:5": "Turi kelias galimybes. Gali persikelti kartu su skyriumi, gauti išeitinę išmoką arba aš asmeniškai rekomenduosiu tave kitoms įmonėms.",
+"cv67:7": "Žinoma. Neskubėk. Ir jei norėsi pasikalbėti dar kartą, mano durys visada atviros. Man tikrai labai gaila, Jonai."
+},
+"orus_cv68": {
+"cv68:1": "Suprantu, kiek mums reiškia šis finansavimas, bet negaliu įrašyti skaičių, kurie neatitinka tikrovės.",
+"cv68:3": "Galbūt netikrins, bet jei patikrintų, rizikuotume ne tik finansavimu, bet ir visos organizacijos reputacija.",
+"cv68:5": "Ne. Siūlau sąžiningai parodyti trijų šimtų dalyvių rezultatus ir paaiškinti, kaip kitais metais pasieksime daugiau.",
+"cv68:7": "Tada bent jau galėsime žiūrėti jiems į akis. O aš mielai padėsiu parengti stiprų planą, kad taip neatsitiktų."
+},
+"orus_cv69": {
+"cv69:1": "Kol kas ne, dėde. Mano klientai, skirtingai nei teisme, visada išeina patenkinti ir dar paprašo papildomos porcijos.",
+"cv69:3": "Uždirbdavau daugiau, bet miegodavau mažiau. Dabar keliuosi ketvirtą ryto, bet bent jau žinau, kodėl keliuosi.",
+"cv69:5": "Tą patį klausė apie senelį, kai jis paliko gamyklą ir pradėjo auginti bites. Jo medus, kaip pamenate, dar ir dabar stovi jūsų spintoje."
 },
 "orus_cv7": {
 "cv7:1": "Nieko ypatingo. O tu?",
@@ -1233,6 +1773,11 @@
 "cv7:5o2": "Aš mėgstu gaminti.",
 "cv7:7": "Taip, aš klausausi muzikos.",
 "cv7:9": "Man patinka muzika!"
+},
+"orus_cv70": {
+"cv70:1": "Matau, kad jums labai skaudu, ir tai suprantama. Bet nenorėčiau stoti nei į vieną pusę. Jūs abi man labai brangios.",
+"cv70:3": "Galiu su ja pasikalbėti ir paklausti, kas jai trukdo atvažiuoti. Bet manau, kad svarbiausia, jog jūs pačios pasikalbėtumėte atvirai.",
+"cv70:5": "O jei pabandytumėte susitikti kur nors neutralioje vietoje, pavyzdžiui, kavinėje, kur abi jaustumėtės ramiau? Galėčiau padėti tai suorganizuoti."
 },
 "orus_cv8": {
 "cv8:1": "Laba diena! Aš turiu rezervaciją.",
@@ -1444,6 +1989,20 @@
 "cv3:19": "Arbatpinigiai?",
 "cv3:4": "O aš norėčiau kavos su pienu."
 },
+"puck_cv38": {
+"cv38:0": "Laba diena, kuo galiu padėti?",
+"cv38:10": "Ten, kairėje. Jei tiks, tiesiog pakeisime.",
+"cv38:2": "Kas su ja negerai?",
+"cv38:4": "Gaila. Ar turite kvitą?",
+"cv38:6": "Ačiū. Galite pasirinkti kitą dydį arba atgauti pinigus.",
+"cv38:8": "Palaukite... Taip, yra viena. Norite pasimatuoti?"
+},
+"puck_cv67": {
+"cv67:0": "Sakei, kad nori pasikalbėti asmeniškai. Kažkas atsitiko?",
+"cv67:2": "Panaikinta? Aš čia dirbu penkiolika metų. Ar tai dėl to, kaip dirbau?",
+"cv67:4": "Ir ką aš dabar turėčiau daryti? Man penkiasdešimt dveji.",
+"cv67:6": "Man reikia laiko apie tai pagalvoti. Ir pasikalbėti su žmona."
+},
 "puck_me2": {
 "me2:cv10:10~n": "Ar tau patinka Vilnius?",
 "me2:cv10:3~n": "Sveikas! Kaip sekasi?",
@@ -1478,6 +2037,12 @@
 "cv33:6": "Ar jums viskas gerai? Ar reikia gydytojo?",
 "cv33:8": "Gerai. Dėl paso – į ambasadą."
 },
+"sadachbia_cv43": {
+"cv43:0": "Aš čia beveik nieko nepažįstu. Kas tas vyras prie lango?",
+"cv43:2": "O mergina, kuri dainuoja?",
+"cv43:4": "Ji labai gražiai dainuoja. O tas, kuris kepa šašlykus?",
+"cv43:6": "Aišku. Gal supažindintum mane su Rūta?"
+},
 "schedar_cv19": {
 "cv19:11": "Senamiestis... štai! Ar kalbate angliškai?",
 "cv19:12o0-0": "Puiku! Tada kalbame lietuviškai.",
@@ -1491,6 +2056,25 @@
 "cv19:4": "Taip, taip!",
 "cv19:7": "Tai Reksas!",
 "cv19:9": "Jūs esate čia: senamiestis."
+},
+"schedar_cv46": {
+"cv46:0": "Laba diena. Kaip jau minėjau, nuo kito mėnesio nuoma bus šimtu eurų didesnė.",
+"cv46:2": "O ką siūlote?",
+"cv46:4": "Hmm. Jūs tikrai gera nuomininkė. Bet mano išlaidos irgi išaugo.",
+"cv46:6": "Tai jau kitas reikalas. Gerai, septyniasdešimt eurų daugiau ir sutartis dvejiems metams.",
+"cv46:8": "Atsiųsiu šiandien. Malonu su jumis turėti reikalų."
+},
+"schedar_cv55": {
+"cv55:0": "Labas vakaras, kaimyne. Ar kažkas atsitiko?",
+"cv55:2": "O kas su ja?",
+"cv55:4": "Nežinojau. Bet tai labai sena obelis, mano tėvas ją sodino.",
+"cv55:6": "Gera mintis. Rudenį, po derliaus, nupjausiu. O obuoliai, kurie nukris pas jus, – jūsų."
+},
+"sulafat_cv54": {
+"cv54:0": "Laba diena. Kuo galiu padėti?",
+"cv54:2": "Gaila. Ar turite kvitą?",
+"cv54:4": "Galime pakeisti ausines naujomis arba išsiųsti į servisą.",
+"cv54:6": "Gerai, kadangi praėjo mažiau nei keturiolika dienų, galime grąžinti pinigus. Prašau pasirašyti čia."
 },
 "sulafat_cv9": {
 "cv9:0": "Laba diena. Kuo galiu padėti?",
@@ -1516,6 +2100,19 @@
 "cv20:4": "Pyragas – vienas euras. Kiek?",
 "cv20:6": "Trys pyragai ir kava. Penki eurai.",
 "cv20:8": "Penki. Penki eurai."
+},
+"vindemiatrix_cv41": {
+"cv41:0": "Papasakok, kaip tu leisdavai vasaras, kai buvai mažas?",
+"cv41:2": "O ką ten veikdavai?",
+"cv41:4": "Kaip gražu. O močiutė ką nors kepdavo?",
+"cv41:6": "Mano mama irgi. Kas vakarą kvepėdavo visas namas. O dabar? Ar dar važiuoji į tą kaimą?",
+"cv41:8": "Tai važiuok šią vasarą. Tokios vietos – brangiausios."
+},
+"vindemiatrix_cv70": {
+"cv70:0": "Tu juk matai, kad mano dukra neteisi. Ji vėl neatvažiuos per mano gimtadienį. Pasakyk jai, kad ji elgiasi negražiai.",
+"cv70:2": "Bet tu juk gyveni su ja. Tu gali ją įtikinti.",
+"cv70:4": "Ji su manimi nenori kalbėtis. Kiekvienas pokalbis baigiasi ginču.",
+"cv70:6": "Kavinėje... Gal. Mes ten seniau eidavome, kai ji buvo maža. Gerai, paklausk jos."
 },
 "zephyr_cv32": {
 "cv32:0": "Laba diena. Kas yra?",

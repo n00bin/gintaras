@@ -1,0 +1,15 @@
+{
+  "id": "es-salsa",
+  "word": "la salsa",
+  "en": "the sauce / salsa",
+  "unit": "u12",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: Mexican SALSA: a dark grey stone molcajete bowl on three short legs filled with chunky red tomato salsa with green chile and cream onion bits, with one tortilla chip dipped into it. Small red chile beside it.",
+  "master": "docs/art-direction/masters/es-salsa.png",
+  "asset": "pics/art-v2/es-salsa.webp",
+  "bytes": 29036,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

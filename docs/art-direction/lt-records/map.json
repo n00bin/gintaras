@@ -1,0 +1,16 @@
+{
+  "id": "map",
+  "word": "žemėlapis",
+  "en": "map",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning map. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE folded paper MAP, three accordion panels in opaque cream. Simple turquoise river, two coral road lines, three green park patches and one large navy location pin. No words, letters, real national borders, compass text, hands or globe. Complete centered object with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/map.png",
+  "asset": "pics/art-v2/map.webp",
+  "bytes": 18466,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

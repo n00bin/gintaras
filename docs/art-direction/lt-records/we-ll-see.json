@@ -1,0 +1,17 @@
+{
+  "id": "we-ll-see",
+  "word": "Pamatysime",
+  "en": "We'll see",
+  "unit": "u34",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning We'll see. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas and one friendly adult woman in turquoise face each other with thoughtful uncertain half-smiles, each showing one open palm in a small shrug. Between them one plain cream future calendar contains a single coral QUESTION MARK. This conveys WE'LL SEE, an undecided future, not a definite agreement. No checkmark, eyesight test, words or extra people. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, backdrop disc, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/we-ll-see.png",
+  "asset": "pics/art-v2/we-ll-see.webp",
+  "bytes": 41464,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

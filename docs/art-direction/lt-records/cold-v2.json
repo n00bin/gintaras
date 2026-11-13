@@ -1,0 +1,16 @@
+{
+  "id": "cold-v2",
+  "word": "šaltas",
+  "en": "cold",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration for COLD. Reference 1 is the approved flat cartoon STYLE, reference 2 if present is Tomas's exact CHARACTER IDENTITY. Rounded geometric shapes, chunky features, oversized friendly heads and large white oval eyes for people, bright opaque flat colours, sparse darker crisp interior shapes, no black outlines. Subject: A simple opaque cream thermometer with a LOW blue liquid column and blue bulb, beside one solid light-blue ICE CUBE. The cube is a clean rounded geometric block, with only two crisp darker-blue flat edge shapes. No snowflake, branches, transparent ice, white cutouts, reflections, mist, condensation, frosty texture or loose particles. Both thermometer and ice cube are fully opaque and have razor-clean outer contours. No numbers, words or medical setting. Center the entire composition with 12% genuinely empty transparent margin. Readable at 56px. Fully opaque surfaces and zero alpha directly outside clean edges. No texture, gradient, glow, halo, blur, fog, cast shadow, ground, disc, background, lettering or logo.",
+  "master": "docs/art-direction/masters/cold-v2.png",
+  "asset": "pics/art-v2/cold-v2.webp",
+  "bytes": 23960,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

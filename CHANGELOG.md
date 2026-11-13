@@ -1,9 +1,17 @@
 # Gintaras version history
 
+- **3.122-preview / build 194** (2026-11-10, local only) Adds eight required four-part reading portfolios in Lithuanian and Mexican Spanish B1–C2 units. Every source sentence is prepared before whole-text questions; learners take source-anchored notes and use them in a revised brief for a specified reader. Checked notes and earlier reviewed briefs remain available during unfinished edits. Existing work and access are preserved, with recovery, offline and exact-version reviewer evidence. These are prepared activities and self-review, not an independent CEFR assessment. No production deployment.
+
+- **3.121-preview / build 193** (2026-11-10, local only) Adds twelve required source-based practical forms and twelve table-reading tasks across Lithuanian and Mexican Spanish. Labels, field formats and table layouts are taught before detail checks. Existing answers, later work and original course progress are preserved; exports and reviewer packets include actual activity records. Spanish has 220 approved word illustrations and the shared default learner portrait, with custom avatars retained. The full CEFR syllabus and independent review remain unfinished; this preview is not deployed.
+- **3.119 / build 191** (deployed) Completes all 488 Lithuanian word-picture mappings, twenty conversation portraits and the default learner portrait. Fixes test-out source exposure and cold-cache audio seeking. Existing progress and required Units 1–3 remain usable.
+
+- **3.111** (2026-11-05) Gintaras is now Wordami. Ami the parrot replaces the amber-gem mascot with eight individually illustrated interaction poses; the app identity, installation, sharing, privacy copy and notification branding are updated. Existing progress, accounts, course IDs and the public URL remain compatible. All Ami poses are cached for offline use.
+
 How the numbers work: the **first** number goes up for a big change, the **middle** number for a new feature, the **last** number for a fix or polish.
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.110** (2026-11-05) Spanish's Sounds unit gets ten individual illustrations in the approved rounded cartoon style. Pictures use shared meaning-based filenames, load ahead with the lessons and save for offline use. An emoji remains available if a picture cannot load. Spanish remains in preview while its course is reviewed.
 - **3.109** (2026-11-05) The people in Basics and Small talk pictures now have their chat faces, with a small colour on their clothes. Things keep their colour, with the same outline as the people. Gerai, Palauk and pointing use the same set's real hands.
 - **3.108** (2026-11-05) Older reports: Kaip jo vardas? and Kaip jos vardas? now count as right, the same as Kaip tavo vardas? (both on the native-speaker list).
 - **3.107** (2026-11-05) Your reports: 11 near-silent clips re-recorded (Taip, Tu, čia, kai, Ten, ten, trys, pigu, Ačiū), a new check fails on any clip too quiet to hear, and the reason under a wrong answer no longer quotes an accepted answer you haven't met.

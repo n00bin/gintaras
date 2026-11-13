@@ -1,0 +1,16 @@
+{
+  "id": "football-soccer",
+  "word": "futbolas",
+  "en": "football (soccer)",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning football (soccer). Reference 1 governs rounded flat cartoon STYLE: big white oval eyes when people present, chunky simple shapes, bright opaque solid colours and minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE clearly recognizable SOCCER ball, cream-white panels and navy pentagons, with one turquoise soccer boot beside it and two short coral motion strokes. Entire ball round and opaque. No American football, hands, person, field or net. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean crisp edges and zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/football-soccer.png",
+  "asset": "pics/art-v2/football-soccer.webp",
+  "bytes": 26280,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,11 @@
+# Units 1–3 are live — 2026-11-08
+
+Production is **3.114 / build 186**, commit **ad846ea5a57280140e3f51a47c65bf24ced97aea**. GitHub Pages deployment [42504122162](https://github.com/n00bin/gintaras/actions/runs/42504122162) succeeded. A fresh production browser verified build 186, all 99 card illustrations, all 20 cast portraits, three publicly available practical activities and their prerequisite locks.
+
+The actual first three Lithuanian path units are Basics (`u1`), Small talk (`u21`) and Food (`u3`). Their core course data, IDs, order, recordings, artwork and cloud code are unchanged from production build 185. New activities cover reading, listening, writing and self-recorded speaking using only source cards from those units. Later prerequisite language was excluded. Each activity is placed after its last required source lesson. Lithuanian letter keys support written replies.
+
+The scoped release was committed and pushed from `.release-lithuanian-art`, based on remote main `d27b417`. This root working tree still contains the separate unfinished full-course/Spanish preview work and an older base. **Do not push this root wholesale or assume its APP_VERSION is production.** Preserve all uncommitted work. Use current remote main as the baseline for another scoped release.
+
+Checks: structural course checker; 1,172 cards played through Units 1–3 with teach-before-test/placement/conversation checks; all six variants of practical activity flows with real audio, wrong replies, recording, replay/comparison, resume, mobile layout and offline launch; all card images rendered through the app; both lesson voices decoded with every scoped segment checked; installed-app update from build 185 to 186 with Unit-3 progress, XP, review fields, names, conversation state and picture cache preserved. Reports and screenshots are in `output/foundation-release/`.
+
+The release workflow validates course structure and scoped readiness, then packages only public assets. Tools, documentation, worktrees and authoring outputs are excluded. No full-course completion or certified CEFR proficiency claim is made by this release. The next priority can be Unit 4, based on the learner's progress, without delaying use of Units 1–3.

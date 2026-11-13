@@ -1,0 +1,16 @@
+{
+  "id": "bathroom",
+  "word": "vonia",
+  "en": "bathroom",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning bathroom. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: A compact BATHROOM cutaway: a large turquoise bathtub with cream interior and simple navy tap, a small cream sink and one round mirror. Bathtub is main feature to support Lithuanian vonia. One short pale-blue tiled wall section only. No person, toilet, water splashes or text. Outside room cutaway transparent. Complete centered composition with generous transparent margins, strong silhouettes at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/bathroom.png",
+  "asset": "pics/art-v2/bathroom.webp",
+  "bytes": 17364,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

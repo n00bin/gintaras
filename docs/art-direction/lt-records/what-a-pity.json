@@ -1,0 +1,17 @@
+{
+  "id": "what-a-pity",
+  "word": "Kaip gaila",
+  "en": "What a pity",
+  "unit": "u39",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat cartoon, chunky simple shapes, solid turquoise/amber/coral/navy/cream palette, minimal detail, almost no outlines. Entire subject centered unclipped with generous transparent margins and readable at 56px. Opaque interiors, crisp edges, true transparent outside. No lettering, logos, gradients, glow, shadows, texture, ground or backdrop. Meaning: What a pity. Reference 2 fixes Tomas wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Tomas looks regretful with sympathetic downturned mouth and raised inner eyebrows, holding one broken coral ice cream cone whose cream scoop has fallen beside it, his other palm open regretfully. Two arms, two hands. No tears or injury.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/what-a-pity.png",
+  "asset": "pics/art-v2/what-a-pity.webp",
+  "bytes": 35906,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

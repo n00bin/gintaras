@@ -1,0 +1,18 @@
+{
+  "id": "no-i-m-american-v2",
+  "word": "Ne, aš amerikietis",
+  "en": "No, I'm American",
+  "unit": "u20",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE production Lithuanian vocabulary illustration for 'Ne, aš amerikietis' meaning 'No, I'm American'. Match the rounded flat cartoon STYLE of reference 1 and TOMAS identity in reference 2: short light brown hair, amber jumper, navy trousers, cream shoes. Tomas gently shaking his head no, showing an open palm and pointing to himself. Beside him one simple flat turquoise silhouette of the contiguous United States, including recognizable Florida peninsula and west/east coast shape, with one small coral location pin in its centre. Use the map to indicate America. Do NOT draw any flag, stars, stripes, lettering or text. ONE coherent square composition, full people and objects, generous transparent margins. FINAL RENDERING RULE: pure flat cutout illustration. Crisp hard silhouette edges with ordinary anti-aliasing only. NO coloured transparent clouds around the subjects; NO luminous aura, glow, bloom, gaussian blur, soft fog, smoky background or shadow. Immediately outside every silhouette pixel the background is completely transparent. Object interiors are opaque flat solid colours, including any board or map. Square canvas. This is an app asset, not a luminous presentation slide.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png",
+    "lt-ruta-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/no-i-m-american-v2.png",
+  "asset": "pics/art-v2/no-i-m-american-v2.webp",
+  "bytes": 35864,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

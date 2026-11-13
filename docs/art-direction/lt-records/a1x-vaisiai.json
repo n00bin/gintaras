@@ -1,0 +1,17 @@
+{
+  "id": "a1x-vaisiai",
+  "word": "vaisiai",
+  "en": "fruit",
+  "unit": "u3",
+  "actor": "",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: FRUIT: a small heap of mixed fruit: one red apple, one yellow banana, one orange, one bunch of purple grapes and one pear.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/a1x-vaisiai.png",
+  "asset": "pics/art-v2/a1x-vaisiai.webp",
+  "bytes": 26982,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Inspected at 150px and 52px on light and dark; speck scan clean (2026-11-12)."
+}

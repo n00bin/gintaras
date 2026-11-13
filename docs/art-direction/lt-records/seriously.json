@@ -1,0 +1,17 @@
+{
+  "id": "seriously",
+  "word": "Rimtai?",
+  "en": "Seriously?",
+  "unit": "u39",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat cartoon style: huge white oval eyes, chunky shapes, bright solid turquoise/amber/coral/navy/cream. Reference 2 fixes Tomas short wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Complete unclipped scene, generous transparent margins, readable at 56px. Exactly two arms and hands if person. Fully opaque interiors, crisp edges, true transparent outside. No text, logos, gradients, texture, floor, backdrop, shadows or glow. Meaning: Seriously? Tomas looks at viewer with one eyebrow raised sharply, the other lowered and a straight skeptical mouth. One hand on hip, other palm held up in a questioning gesture. Above his head a coral question mark and amber exclamation mark together. Skeptical conversational expression, no smile or fear.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/seriously.png",
+  "asset": "pics/art-v2/seriously.webp",
+  "bytes": 31830,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

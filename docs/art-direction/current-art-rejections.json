@@ -1,0 +1,30 @@
+[
+  {
+    "id": "glasses",
+    "reason": "Large diffuse navy glow around the frames, instead of a clean transparent silhouette. Regenerate with medium turquoise opaque frames and no glow."
+  },
+  {
+    "id": "white",
+    "reason": "Replace glowing/backed paint picture with one fully opaque white rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+  },
+  {
+    "id": "brown",
+    "reason": "Replace glowing/backed paint picture with one fully opaque brown rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+  },
+  {
+    "id": "grey",
+    "reason": "Replace glowing/backed paint picture with one fully opaque grey rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+  },
+  {
+    "id": "pink",
+    "reason": "Replace glowing/backed paint picture with one fully opaque pink rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+  },
+  {
+    "id": "orange",
+    "reason": "Replace glowing/backed paint picture with one fully opaque orange rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+  },
+  {
+    "id": "blue",
+    "reason": "Diffuse glow around paint pot and stroke; regenerate one solid blue rubber ball without glow."
+  }
+]

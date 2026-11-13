@@ -1,0 +1,558 @@
+{
+  "status": "visually_reviewed_exports",
+  "mappings": [
+    {
+      "word": "De nada",
+      "en": "You're welcome",
+      "asset": "art-v2/es-youre-welcome",
+      "record": "docs/art-direction/es-records/es-youre-welcome.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Con permiso",
+      "en": "Excuse me",
+      "asset": "art-v2/es-excuse-me-passing",
+      "record": "docs/art-direction/es-records/es-excuse-me-passing.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Usted",
+      "en": "You (polite)",
+      "asset": "art-v2/es-you-polite",
+      "record": "docs/art-direction/es-records/es-you-polite.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Todo bien",
+      "en": "All good",
+      "asset": "art-v2/es-all-good",
+      "record": "docs/art-direction/es-records/es-all-good.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "¿Qué onda?",
+      "en": "What's up?",
+      "asset": "art-v2/es-whats-up",
+      "record": "docs/art-direction/es-records/es-whats-up.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Hablo un poco de español",
+      "en": "I speak a little Spanish",
+      "asset": "art-v2/es-speak-little-spanish",
+      "record": "docs/art-direction/es-records/es-speak-little-spanish.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "¿Cómo se dice en español?",
+      "en": "How do you say it in Spanish?",
+      "asset": "art-v2/es-how-say-spanish",
+      "record": "docs/art-direction/es-records/es-how-say-spanish.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Más despacio, por favor",
+      "en": "Slower, please",
+      "asset": "art-v2/es-slower-please",
+      "record": "docs/art-direction/es-records/es-slower-please.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "¿Mande?",
+      "en": "Sorry, what?",
+      "asset": "art-v2/es-sorry-what",
+      "record": "docs/art-direction/es-records/es-sorry-what.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el libro",
+      "en": "the book",
+      "asset": "art-v2/es-book",
+      "record": "docs/art-direction/es-records/es-book.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el arroz",
+      "en": "the rice",
+      "asset": "art-v2/es-rice",
+      "record": "docs/art-direction/es-records/es-rice.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la silla",
+      "en": "the chair",
+      "asset": "art-v2/es-chair-v2",
+      "record": "docs/art-direction/es-records/es-chair-v2.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el jugo",
+      "en": "the juice",
+      "asset": "art-v2/es-juice",
+      "record": "docs/art-direction/es-records/es-juice.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el parque",
+      "en": "the park",
+      "asset": "art-v2/es-park",
+      "record": "docs/art-direction/es-records/es-park.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el museo",
+      "en": "the museum",
+      "asset": "art-v2/es-museum",
+      "record": "docs/art-direction/es-records/es-museum.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el aeropuerto",
+      "en": "the airport",
+      "asset": "art-v2/es-airport",
+      "record": "docs/art-direction/es-records/es-airport.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la alergia",
+      "en": "the allergy",
+      "asset": "art-v2/es-allergy",
+      "record": "docs/art-direction/es-records/es-allergy.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el aguacate",
+      "en": "the avocado",
+      "asset": "art-v2/es-avocado",
+      "record": "docs/art-direction/es-records/es-avocado.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la tarjeta",
+      "en": "the card",
+      "asset": "art-v2/es-bank-card",
+      "record": "docs/art-direction/es-records/es-bank-card.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "grande",
+      "en": "big",
+      "asset": "art-v2/es-big",
+      "record": "docs/art-direction/es-records/es-big.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la puerta de embarque",
+      "en": "the boarding gate",
+      "asset": "art-v2/es-boarding-gate",
+      "record": "docs/art-direction/es-records/es-boarding-gate.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la fecha",
+      "en": "the date",
+      "asset": "art-v2/es-calendar",
+      "record": "docs/art-direction/es-records/es-calendar.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el coche",
+      "en": "the car",
+      "asset": "art-v2/es-car",
+      "record": "docs/art-direction/es-records/es-car.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Necesito cargar mi celular",
+      "en": "I need to charge my phone",
+      "asset": "art-v2/es-charge-phone",
+      "record": "docs/art-direction/es-records/es-charge-phone.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el chile",
+      "en": "the chile pepper",
+      "asset": "art-v2/es-chile",
+      "record": "docs/art-direction/es-records/es-chile.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la cuadra",
+      "en": "the city block",
+      "asset": "art-v2/es-city-block",
+      "record": "docs/art-direction/es-records/es-city-block.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la esquina",
+      "en": "the corner",
+      "asset": "art-v2/es-corner",
+      "record": "docs/art-direction/es-records/es-corner.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Cruce la calle",
+      "en": "Cross the street (polite)",
+      "asset": "art-v2/es-crosswalk",
+      "record": "docs/art-direction/es-records/es-crosswalk.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "bailar",
+      "en": "to dance",
+      "asset": "art-v2/es-dance",
+      "record": "docs/art-direction/es-records/es-dance.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la hija",
+      "en": "the daughter",
+      "asset": "art-v2/es-daughter",
+      "record": "docs/art-direction/es-records/es-daughter.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el Día de Muertos",
+      "en": "the Day of the Dead",
+      "asset": "art-v2/es-day-of-the-dead",
+      "record": "docs/art-direction/es-records/es-day-of-the-dead.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el doctor",
+      "en": "the male doctor",
+      "asset": "art-v2/es-doctor-man",
+      "record": "docs/art-direction/es-records/es-doctor-man.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el perro",
+      "en": "the dog",
+      "asset": "art-v2/es-dog",
+      "record": "docs/art-direction/es-records/es-dog.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la puerta",
+      "en": "the door",
+      "asset": "art-v2/es-door-v3",
+      "record": "docs/art-direction/es-records/es-door-v3.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el elefante",
+      "en": "the elephant",
+      "asset": "art-v2/es-elephant",
+      "record": "docs/art-direction/es-records/es-elephant.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el correo",
+      "en": "the email",
+      "asset": "art-v2/es-email",
+      "record": "docs/art-direction/es-records/es-email.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la entrada",
+      "en": "the entrance",
+      "asset": "art-v2/es-entrance",
+      "record": "docs/art-direction/es-records/es-entrance.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la fiesta",
+      "en": "the party / celebration",
+      "asset": "art-v2/es-fiesta",
+      "record": "docs/art-direction/es-records/es-fiesta.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el vuelo",
+      "en": "the flight",
+      "asset": "art-v2/es-flight",
+      "record": "docs/art-direction/es-records/es-flight.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la artesanía",
+      "en": "the handicraft",
+      "asset": "art-v2/es-handicraft",
+      "record": "docs/art-direction/es-records/es-handicraft.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la cabeza",
+      "en": "the head",
+      "asset": "art-v2/es-head",
+      "record": "docs/art-direction/es-records/es-head.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Me duele la cabeza",
+      "en": "My head hurts",
+      "asset": "art-v2/es-headache",
+      "record": "docs/art-direction/es-records/es-headache.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la habitación",
+      "en": "the hotel room",
+      "asset": "art-v2/es-hotel-room",
+      "record": "docs/art-direction/es-records/es-hotel-room.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la llave",
+      "en": "the key",
+      "asset": "art-v2/es-key",
+      "record": "docs/art-direction/es-records/es-key.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la cocina",
+      "en": "the kitchen",
+      "asset": "art-v2/es-kitchen",
+      "record": "docs/art-direction/es-records/es-kitchen.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el león",
+      "en": "the lion",
+      "asset": "art-v2/es-lion",
+      "record": "docs/art-direction/es-records/es-lion.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Estoy perdido",
+      "en": "I am lost",
+      "asset": "art-v2/es-lost",
+      "record": "docs/art-direction/es-records/es-lost.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el mariachi",
+      "en": "the mariachi musician / ensemble",
+      "asset": "art-v2/es-mariachi",
+      "record": "docs/art-direction/es-records/es-mariachi.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la medicina",
+      "en": "the medicine",
+      "asset": "art-v2/es-medicine",
+      "record": "docs/art-direction/es-records/es-medicine.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el mensaje",
+      "en": "the message",
+      "asset": "art-v2/es-message",
+      "record": "docs/art-direction/es-records/es-message.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Me encanta la comida mexicana",
+      "en": "I love Mexican food",
+      "asset": "art-v2/es-mexican-food",
+      "record": "docs/art-direction/es-records/es-mexican-food.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "México",
+      "en": "Mexico",
+      "asset": "art-v2/es-mexico",
+      "record": "docs/art-direction/es-records/es-mexico.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el mono",
+      "en": "the monkey",
+      "asset": "art-v2/es-monkey",
+      "record": "docs/art-direction/es-records/es-monkey.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Estoy nervioso",
+      "en": "I am nervous",
+      "asset": "art-v2/es-nervous",
+      "record": "docs/art-direction/es-records/es-nervous.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "enfermera",
+      "en": "nurse (feminine)",
+      "asset": "art-v2/es-nurse",
+      "record": "docs/art-direction/es-records/es-nurse.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la oficina",
+      "en": "the office",
+      "asset": "art-v2/es-office",
+      "record": "docs/art-direction/es-records/es-office.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "los padres",
+      "en": "the parents",
+      "asset": "art-v2/es-parents",
+      "record": "docs/art-direction/es-records/es-parents.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el pozole",
+      "en": "the pozole (hominy soup)",
+      "asset": "art-v2/es-pozole",
+      "record": "docs/art-direction/es-records/es-pozole.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el precio",
+      "en": "the price",
+      "asset": "art-v2/es-price",
+      "record": "docs/art-direction/es-records/es-price.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la salsa",
+      "en": "the sauce / salsa",
+      "asset": "art-v2/es-salsa",
+      "record": "docs/art-direction/es-records/es-salsa.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el asiento",
+      "en": "the seat",
+      "asset": "art-v2/es-seat",
+      "record": "docs/art-direction/es-records/es-seat.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "cantar",
+      "en": "to sing",
+      "asset": "art-v2/es-sing",
+      "record": "docs/art-direction/es-records/es-sing.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el sofá",
+      "en": "the sofa",
+      "asset": "art-v2/es-sofa",
+      "record": "docs/art-direction/es-records/es-sofa.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el hijo",
+      "en": "the son",
+      "asset": "art-v2/es-son",
+      "record": "docs/art-direction/es-records/es-son.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Está picante",
+      "en": "It is spicy",
+      "asset": "art-v2/es-spicy",
+      "record": "docs/art-direction/es-records/es-spicy.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la plaza",
+      "en": "the square",
+      "asset": "art-v2/es-square",
+      "record": "docs/art-direction/es-records/es-square.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el metro",
+      "en": "the subway",
+      "asset": "art-v2/es-subway",
+      "record": "docs/art-direction/es-records/es-subway.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el verano",
+      "en": "the summer",
+      "asset": "art-v2/es-summer",
+      "record": "docs/art-direction/es-records/es-summer.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Hace sol",
+      "en": "It is sunny",
+      "asset": "art-v2/es-sunny",
+      "record": "docs/art-direction/es-records/es-sunny.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la playera",
+      "en": "the T-shirt (Mexico)",
+      "asset": "art-v2/es-t-shirt",
+      "record": "docs/art-direction/es-records/es-t-shirt.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el tamal",
+      "en": "the tamal (filled corn dough)",
+      "asset": "art-v2/es-tamal",
+      "record": "docs/art-direction/es-records/es-tamal.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la maestra",
+      "en": "the female teacher",
+      "asset": "art-v2/es-teacher-woman",
+      "record": "docs/art-direction/es-records/es-teacher-woman.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Gire a la derecha",
+      "en": "Turn right (polite)",
+      "asset": "art-v2/es-turn-right",
+      "record": "docs/art-direction/es-records/es-turn-right.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "la tortuga",
+      "en": "the turtle",
+      "asset": "art-v2/es-turtle",
+      "record": "docs/art-direction/es-records/es-turtle.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Me despierto",
+      "en": "I wake up",
+      "asset": "art-v2/es-wake-up",
+      "record": "docs/art-direction/es-records/es-wake-up.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "a pie",
+      "en": "on foot",
+      "asset": "art-v2/es-walk",
+      "record": "docs/art-direction/es-records/es-walk.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "Me lavo las manos",
+      "en": "I wash my hands",
+      "asset": "art-v2/es-wash-hands",
+      "record": "docs/art-direction/es-records/es-wash-hands.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el invierno",
+      "en": "the winter",
+      "asset": "art-v2/es-winter",
+      "record": "docs/art-direction/es-records/es-winter.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    },
+    {
+      "word": "el zócalo",
+      "en": "the main square (Mexico)",
+      "asset": "art-v2/es-zocalo",
+      "record": "docs/art-direction/es-records/es-zocalo.json",
+      "reason": "Original Spanish scene inspected at 112px and 56px on light and dark backgrounds."
+    }
+  ]
+}

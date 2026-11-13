@@ -1,0 +1,15 @@
+{
+  "id": "es-turn-right",
+  "word": "Gire a la derecha",
+  "en": "Turn right (polite)",
+  "unit": "u14",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: TURN RIGHT: a short cream road seen from above going straight up and then bending 90 degrees to the RIGHT, with one bold coral arrow following the road and pointing clearly to the right at the end. Nothing else.",
+  "master": "docs/art-direction/masters/es-turn-right.png",
+  "asset": "pics/art-v2/es-turn-right.webp",
+  "bytes": 13562,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

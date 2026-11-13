@@ -1,0 +1,16 @@
+{
+  "id": "hot",
+  "word": "karštas",
+  "en": "hot",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning HOT. Image 1 is the approved flat cartoon STYLE; any image 2 is Tomas's CHARACTER IDENTITY. Rounded geometric shapes, oversized friendly heads and white oval eyes on people, chunky hands, bright opaque flat colours, minimal crisp interior details and no black outlines. Subject: One simple thermometer with its rounded bulb and column filled high with vivid red, beside a small amber sun and three crisp coral heat-wave shapes. Unmistakably HOT temperature. Use chunky rounded geometric forms, opaque cream thermometer body, no numerals or written scale, no medical setting, no face or people. Center the complete subject in the middle 76% of the canvas. Genuinely empty transparent margins, fully opaque objects, clean crisp outer contours. No gradient, texture, glow, mist, blur, cast shadow, ground, backdrop, disc, logo, lettering or extra scenery.",
+  "master": "docs/art-direction/masters/hot.png",
+  "asset": "pics/art-v2/hot.webp",
+  "bytes": 34486,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

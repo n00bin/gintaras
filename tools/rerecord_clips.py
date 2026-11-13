@@ -11,7 +11,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from check_audio import QUIET, loudness, read_smap  # noqa: E402
-from make_audio import AUDIO, FFMPEG, INDEX, RATE, VOICES, course, google_key, pcm, synth  # noqa: E402
+from make_audio import AUDIO, FFMPEG, INDEX, RATE, VOICES, LANG, course, google_key, pcm, synth  # noqa: E402
 
 sys.stdout.reconfigure(encoding='utf-8')
 KEEP = max(QUIET, 40)  # the loudness a new take has to reach
@@ -20,7 +20,13 @@ KEEP = max(QUIET, 40)  # the loudness a new take has to reach
 def take(key, text, voice, folder):
     """The first take loud enough to keep, as raw samples, and the letters sent to Google. None when every try is quiet."""
     letters, f = 0, os.path.join(folder, 'take.mp3')
-    for words in (text, text, text.rstrip('.!?') + '.', text.rstrip('.!?') + '!'):
+    variants=[text, text, text.rstrip('.!?') + '.', text.rstrip('.!?') + '!']
+    if LANG == 'es':
+        bare=text.strip('¿¡.!? ').capitalize()
+        variants += [bare, '¡'+bare+'!']
+        if bare.lower() in ('qué','quién','dónde','cuándo','cómo','cuánto','cuál') or text.startswith('¿'):
+            variants.append('¿'+bare+'?')
+    for words in variants:
         synth(key, words, VOICES.get(voice, voice), f)
         letters += len(words)
         raw = pcm(f)
@@ -72,6 +78,7 @@ def main():
     assert n == 1, 'SMAP line not found'
     open(INDEX, 'w', encoding='utf8', newline='').write(text)
     print(f'Done. {letters} letters sent to Google.' + (' Still quiet, kept as they were: ' + ' '.join(failed) if failed else ''))
+    return 1 if failed else 0
 
 
 if __name__ == '__main__':

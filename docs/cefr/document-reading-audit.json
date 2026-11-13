@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "scope": "Selected practical table reading; no complete scale or proficiency claim",
+  "languages": {
+    "lt": [
+      {
+        "unitId": "A1",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "1378a1a1fd36208ffec10e6c498141360172cc00b978fec7a6cdab7858b90fe1"
+      },
+      {
+        "unitId": "A1-travel",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "bde7ec064483a49a5b57cde226a08e701ac1f455aeb30ad770ba93c7f0db9714"
+      },
+      {
+        "unitId": "A2-services",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "a7c506be3fcbe730d7d42ff336c20d975449d8e22b0c37f984fafd7212de77f4"
+      }
+    ],
+    "es": [
+      {
+        "unitId": "A1",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "137e0955c6813818668db72c30d348c04fa7f759c0c8c132c41236778d7657d0"
+      },
+      {
+        "unitId": "A1-travel",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "c66c7ff2642846dd3b695823329a30f20840d02c959a82b056fb89d1fb53bba8"
+      },
+      {
+        "unitId": "A2-services",
+        "tasks": 2,
+        "questions": 6,
+        "preparedFields": 3,
+        "sourceHash": "2451f0816560c83795eb301e7b0d91286267ab00cde55ae98140cd77321205a4"
+      }
+    ]
+  }
+}

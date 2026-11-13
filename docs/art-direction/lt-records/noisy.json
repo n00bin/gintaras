@@ -1,0 +1,17 @@
+{
+  "id": "noisy",
+  "word": "triukšminga",
+  "en": "noisy",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning noisy. Reference 1 governs rounded flat cartoon STYLE, expressive large white oval eyes, oversized heads, chunky hands and shapes, opaque solid colours and minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas winces and covers BOTH ears with his two hands while a small coral portable speaker beside him emits three thick navy jagged sound strokes toward him. A clear uncomfortable facial expression communicates NOISY. No music notes, injury, extra people, written exclamation or scene backdrop. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/noisy.png",
+  "asset": "pics/art-v2/noisy.webp",
+  "bytes": 28166,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "i-am-sick",
+  "word": "Aš sergu",
+  "en": "I am sick",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I am sick. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas looks SICK, worried drooping eyes, one hand holds a cream tissue to his nose, other holds a small simple thermometer with no numbers. Coral blanket draped over shoulders while amber collar remains visible. No injuries, pills, medical treatment instructions or extra arms. Exactly two arms and two hands. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors and clean crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-am-sick.png",
+  "asset": "pics/art-v2/i-am-sick.webp",
+  "bytes": 28946,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -22,7 +22,8 @@ jobs:
         run: |
           mkdir -p site
           if [ -f index.html ]; then
-            rsync -a --exclude site --exclude .git --exclude .github ./ site/
+            python3 tools/audit_curriculum_release.py
+            python3 tools/package_site.py --output site
           else
             unzip -o -q *.zip -d site
             if [ ! -f site/index.html ]; then

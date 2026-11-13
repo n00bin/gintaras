@@ -1,0 +1,17 @@
+{
+  "id": "white-v5",
+  "word": "baltas",
+  "en": "white",
+  "unit": "u29",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "masters/pink-v3.png"
+  ],
+  "prompt": "Create ONE vocabulary illustration meaning WHITE. Image 1 is the approved flat cartoon STYLE; image 2 is a SILHOUETTE reference for a T-shirt. Make a new single WHITE short-sleeved T-SHIRT with the same rounded front-view silhouette as image 2. Opaque warm-white fabric (#FFF8EC, alpha 255) across every interior pixel, with a thin crisp pale-grey perimeter, a pale-grey collar band and hem so the white shirt is clearly visible on a white lesson card. The collar is a solid opaque light-grey fabric shape, not a transparent hole. Only two minimal flat light-grey fold shapes. Complete shirt centered in 76% of a square canvas with generous empty transparent margins. Crisp clean boundaries; zero alpha outside the shirt. No bear, face, lettering, texture, gradients, mist, glow, shadow, speckles, extra objects or background.",
+  "master": "docs/art-direction/masters/white-v5.png",
+  "asset": "pics/art-v2/white-v5.webp",
+  "bytes": 13636,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

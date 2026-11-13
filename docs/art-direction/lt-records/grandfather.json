@@ -1,0 +1,16 @@
+{
+  "id": "grandfather",
+  "word": "senelis",
+  "en": "grandfather",
+  "unit": "u4",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning GRANDFATHER. The attached approved board governs STYLE only, not these people's identities. Original rounded geometric flat cartoon characters, oversized expressive heads, large white oval eyes, chunky rounded hands, simple readable silhouettes, bright opaque flat colours and sparse darker crisp interior shapes. No black outlines. Subject: A friendly GRANDFATHER: clearly elderly man with grey hair, a small grey moustache, round glasses and a few simple smile lines. He wears a mustard vest over a cream shirt and navy trousers, and warmly holds his small granddaughter's hand. The child is genuinely a young child, with brown pigtails, a coral top and navy trousers. The grandfather is the larger main subject; show their complete bodies. No cane or text. Center the complete group with generous empty transparent margins; readable at 56px. Every body and clothing surface opaque; clean sharp transparent outer boundaries. No texture, gradient, glow, mist, blur, floor, ground shadow, backdrop disc, lettering, logos or extra scenery.",
+  "master": "docs/art-direction/masters/grandfather.png",
+  "asset": "pics/art-v2/grandfather.webp",
+  "bytes": 42620,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

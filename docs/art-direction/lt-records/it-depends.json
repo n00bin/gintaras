@@ -1,0 +1,17 @@
+{
+  "id": "it-depends",
+  "word": "Priklauso",
+  "en": "It depends",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat 2D cartoon style, huge expressive white oval eyes, chunky hands, bright solid turquoise/amber/coral/navy/cream, minimal details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Exactly two arms and hands, complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No text, letters, logos, gradients, shadows, glow, texture, floor or backdrop. Meaning: It depends. Thoughtful Tomas holds both palms up in a balanced weighing gesture, looking between two small alternative weather bubbles: turquoise rainy cloud over his left palm, amber sun over his right palm. A small coral question mark between them conveys conditional uncertainty. No arrows or other objects.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-depends.png",
+  "asset": "pics/art-v2/it-depends.webp",
+  "bytes": 41942,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

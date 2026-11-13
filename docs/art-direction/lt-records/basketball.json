@@ -1,0 +1,16 @@
+{
+  "id": "basketball",
+  "word": "krepšinis",
+  "en": "basketball",
+  "unit": "u12",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, bright solid colours, minimal crisp detail, almost no outlines. Entire subject unclipped, generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No lettering, logos, gradients, glow, shadows, texture, scenery or backdrop. Subject: BASKETBALL sport. One large orange basketball in foreground with correct dark navy curved seam lines; behind it a simple coral basketball hoop with cream woven net attached to a small turquoise rectangular backboard with cream inset target rectangle. No people, scores, lettering or court.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/basketball.png",
+  "asset": "pics/art-v2/basketball.webp",
+  "bytes": 36238,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

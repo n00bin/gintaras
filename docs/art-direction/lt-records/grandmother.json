@@ -1,0 +1,16 @@
+{
+  "id": "grandmother",
+  "word": "senelė",
+  "en": "grandmother",
+  "unit": "u4",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning GRANDMOTHER. The attached approved board governs STYLE only, not these people's identities. Original rounded geometric flat cartoon characters, oversized expressive heads, large white oval eyes, chunky rounded hands, simple readable silhouettes, bright opaque flat colours and sparse darker crisp interior shapes. No black outlines. Subject: A friendly GRANDMOTHER: clearly elderly woman with grey hair in a neat bun, round glasses, simple smile lines, a purple cardigan and a navy skirt. She warmly holds the hand of a small granddaughter with brown pigtails, a coral top and navy trousers. Keep the child clearly child-aged, not a miniature adult. The grandmother is the main subject. Full bodies, no cane or extra props. Center the complete group with generous empty transparent margins; readable at 56px. Every body and clothing surface opaque; clean sharp transparent outer boundaries. No texture, gradient, glow, mist, blur, floor, ground shadow, backdrop disc, lettering, logos or extra scenery.",
+  "master": "docs/art-direction/masters/grandmother.png",
+  "asset": "pics/art-v2/grandmother.webp",
+  "bytes": 44008,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

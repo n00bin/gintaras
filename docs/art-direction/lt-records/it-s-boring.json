@@ -1,0 +1,17 @@
+{
+  "id": "it-s-boring",
+  "word": "Nuobodu",
+  "en": "It's boring",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat 2D cartoon style, huge expressive white oval eyes, chunky hands, bright solid turquoise/amber/coral/navy/cream, minimal details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Exactly two arms and hands, complete centered scene, generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No text, letters, logos, gradients, shadows, glow, texture, floor or backdrop. Meaning: It's boring. Tomas sits slumped on one simple turquoise chair, one elbow supported by its armrest and that hand propping his cheek, half-closed drooping eyes and a flat bored mouth. His other hand rests on his lap. A small plain navy clock beside him suggests time dragging. No digits on clock.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-boring.png",
+  "asset": "pics/art-v2/it-s-boring.webp",
+  "bytes": 32440,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

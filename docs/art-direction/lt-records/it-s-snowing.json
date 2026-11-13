@@ -1,0 +1,17 @@
+{
+  "id": "it-s-snowing",
+  "word": "Sninga",
+  "en": "It's snowing",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It's snowing. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair and amber/navy identity. Subject: Tomas wearing a turquoise scarf over amber sweatshirt and navy trousers, looking upward and holding out an open palm to catch a large snowflake. Above him one pale-blue cloud drops three clearly separated thick cream six-arm snowflakes. This is actively SNOWING. No rain, sun or landscape. Exactly two arms and two hands. Center complete scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, transparent outside. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-snowing.png",
+  "asset": "pics/art-v2/it-s-snowing.webp",
+  "bytes": 39956,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

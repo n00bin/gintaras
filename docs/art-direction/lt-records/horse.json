@@ -1,0 +1,16 @@
+{
+  "id": "horse",
+  "word": "arklys",
+  "en": "horse",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat cartoon, chunky simple shapes, solid turquoise/amber/coral/navy/cream palette, minimal detail, almost no outlines. Entire subject centered unclipped with generous transparent margins and readable at 56px. Opaque interiors, crisp edges, true transparent outside. No lettering, logos, gradients, glow, shadows, texture, ground or backdrop. Meaning: horse. ONE friendly chestnut brown horse in side three-quarter view, clearly long equine face, large white oval eyes, short navy mane and long navy tail, four long legs with cream hooves, cream muzzle. Horse only, no people, saddle or other animals.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/horse.png",
+  "asset": "pics/art-v2/horse.webp",
+  "bytes": 31490,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

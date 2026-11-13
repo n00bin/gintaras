@@ -1,0 +1,1046 @@
+{
+  "schema": 1,
+  "languages": {
+    "lt": {
+      "grammarLessons": 6,
+      "workedExamples": 18,
+      "choiceExercises": 24,
+      "typedExercises": 12,
+      "vocabularyEntries": 192,
+      "senseAwareReviewItems": 372,
+      "phraseIntroductions": 192,
+      "uniqueReviewPhrases": 191,
+      "lessons": [
+        {
+          "id": "A1",
+          "title": "Place and agreement",
+          "rule": "Learn complete patterns for where someone lives and for describing a home. Lithuanian city and adjective forms change with their role in the sentence.",
+          "examples": [
+            [
+              "Kur gyveni? Aš gyvenu Vilniuje.",
+              "Where do you live? I live in Vilnius.",
+              "Vilniuje is the city form in this learned location pattern."
+            ],
+            [
+              "Mano butas mažas.",
+              "My flat is small.",
+              "Butas and mažas are singular masculine forms."
+            ],
+            [
+              "Mano namai maži.",
+              "My home is small.",
+              "Namai has a plural form, with the matching adjective maži."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Choose the city form for “Aš gyvenu …”.",
+              "options": [
+                "Vilniuje",
+                "Vilnius",
+                "Vilnių"
+              ],
+              "answer": 0,
+              "why": "Use the learned location form Vilniuje."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Complete “Mano butas …”.",
+              "options": [
+                "maži",
+                "mažas",
+                "maža"
+              ],
+              "answer": 1,
+              "why": "The adjective agrees with singular masculine butas."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Complete “Mano namai …”.",
+              "options": [
+                "mažas",
+                "maža",
+                "maži"
+              ],
+              "answer": 2,
+              "why": "The plural form namai takes maži here."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which question asks where someone lives?",
+              "options": [
+                "Koks tavo vardas?",
+                "Kur gyveni?",
+                "Ar nori arbatos?"
+              ],
+              "answer": 1,
+              "why": "Kur asks where; gyveni means you live."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the example to write “I live in Vilnius”.",
+              "accept": [
+                "Aš gyvenu Vilniuje."
+              ],
+              "why": "Keep the learned first-person verb and city form."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the example to write “My home is small”.",
+              "accept": [
+                "Mano namai maži."
+              ],
+              "why": "Use the matching plural forms namai and maži."
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "title": "Time, reasons and conditions",
+          "rule": "Keep past events, future plans and conditions distinct. Use a reason to explain a changed plan.",
+          "examples": [
+            [
+              "Vakar dirbau. Rytoj dirbsiu.",
+              "Yesterday I worked. Tomorrow I will work.",
+              "Dirbau describes the past here; dirbsiu describes the future."
+            ],
+            [
+              "Negaliu ateiti, nes turiu dirbti. Gal galime susitikti penktadienį?",
+              "I cannot come because I have to work. Perhaps we can meet on Friday?",
+              "Nes gives a reason; the second sentence proposes a replacement."
+            ],
+            [
+              "Jei lis, susitikime kavinėje.",
+              "If it rains, let us meet in a café.",
+              "Jei introduces a condition, not a report that rain has already happened."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Complete the future plan: “Rytoj …”.",
+              "options": [
+                "dirbau",
+                "dirbsiu",
+                "dirbo"
+              ],
+              "answer": 1,
+              "why": "Rytoj refers to tomorrow; dirbsiu is the learned future form."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Choose the connector giving the reason for not coming.",
+              "options": [
+                "nes",
+                "bet",
+                "arba"
+              ],
+              "answer": 0,
+              "why": "Nes introduces the reason."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does “Jei lis” express?",
+              "options": [
+                "It rained yesterday",
+                "It is certainly raining now",
+                "A condition: if it rains"
+              ],
+              "answer": 2,
+              "why": "The clause describes a condition."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which sentence proposes a replacement?",
+              "options": [
+                "Vakar dirbau.",
+                "Gal galime susitikti penktadienį?",
+                "Negaliu ateiti."
+              ],
+              "answer": 1,
+              "why": "The question suggests meeting on Friday."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Explain that you cannot come because you have to work.",
+              "accept": [
+                "Negaliu ateiti, nes turiu dirbti."
+              ],
+              "why": "Connect the problem and reason with nes."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the learned café plan if it rains.",
+              "accept": [
+                "Jei lis, susitikime kavinėje."
+              ],
+              "why": "Use the condition first, then the proposal."
+            }
+          ]
+        },
+        {
+          "id": "B1",
+          "title": "Connect events and explanations",
+          "rule": "A connected account distinguishes events, a contrast and an attributed explanation. Do not present every sentence as the same kind of claim.",
+          "examples": [
+            [
+              "Iš pradžių nusipirkau bilietą. Tačiau autobusas vėlavo.",
+              "At first I bought a ticket. However, the bus was delayed.",
+              "The first sentence reports an action; tačiau introduces a complication."
+            ],
+            [
+              "Atvykau vėliau, bet spėjau į susitikimą.",
+              "I arrived later, but made it to the meeting.",
+              "Bet contrasts the late arrival with the successful outcome."
+            ],
+            [
+              "Darbuotoja paaiškino, kad galime važiuoti kitu autobusu. Manau, kad svarbu turėti kitą planą.",
+              "The employee explained that we could take another bus. I think it is important to have another plan.",
+              "The first clause attributes information; manau marks the speaker’s view."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Choose the learned past action.",
+              "options": [
+                "nusipirksiu",
+                "nusiperku",
+                "nusipirkau"
+              ],
+              "answer": 2,
+              "why": "Nusipirkau reports the completed purchase in the example."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which connector introduces the complication after the ticket purchase?",
+              "options": [
+                "Todėl",
+                "Tačiau",
+                "Nes"
+              ],
+              "answer": 1,
+              "why": "Tačiau introduces the contrast with the plan."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Who explains the alternative bus in the example?",
+              "options": [
+                "The employee",
+                "The writer’s friend",
+                "No source is identified"
+              ],
+              "answer": 0,
+              "why": "Darbuotoja paaiškino identifies the source."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which phrase explicitly introduces the speaker’s view?",
+              "options": [
+                "Darbuotoja paaiškino",
+                "Autobusas vėlavo",
+                "Manau, kad"
+              ],
+              "answer": 2,
+              "why": "Manau means I think."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the example’s contrast between arriving late and making the meeting.",
+              "accept": [
+                "Atvykau vėliau, bet spėjau į susitikimą."
+              ],
+              "why": "The outcome is contrasted with the late arrival."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Attribute the alternative bus information to the employee.",
+              "accept": [
+                "Darbuotoja paaiškino, kad galime važiuoti kitu autobusu."
+              ],
+              "why": "The reporting clause identifies whose explanation this is."
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "title": "Concede, qualify and recommend",
+          "rule": "A concession can accept an objection without making it decisive. Conditional recommendation forms and limited claims let you express a position precisely.",
+          "examples": [
+            [
+              "Nors šis prieštaravimas pagrįstas, jis nėra lemiamas.",
+              "Although this objection is reasonable, it is not decisive.",
+              "Nors introduces an acknowledged concession."
+            ],
+            [
+              "Todėl siūlyčiau lankstesnį modelį.",
+              "I would therefore suggest a more flexible model.",
+              "Siūlyčiau makes a conditional recommendation, rather than reporting a past suggestion."
+            ],
+            [
+              "Toks sprendimas tiktų ne visiems.",
+              "Such a solution would not suit everyone.",
+              "Ne visiems does not mean that it would suit nobody."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Introduce the acknowledged concession.",
+              "options": [
+                "Nors",
+                "Nes",
+                "Todėl"
+              ],
+              "answer": 0,
+              "why": "Nors means although in this pattern."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which form expresses “I would suggest”?",
+              "options": [
+                "siūliau",
+                "siūlyčiau",
+                "siūlysiu"
+              ],
+              "answer": 1,
+              "why": "Siūlyčiau is the conditional recommendation form."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What is warranted by “tiktų ne visiems”?",
+              "options": [
+                "It suits nobody",
+                "It suits everyone",
+                "It would not suit everyone"
+              ],
+              "answer": 2,
+              "why": "The scope is limited: not everyone."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Does acknowledging a reasonable objection necessarily abandon the recommendation?",
+              "options": [
+                "Yes, every concession reverses the position",
+                "No, the example distinguishes reasonable from decisive",
+                "Yes, if nors is used"
+              ],
+              "answer": 1,
+              "why": "A concession can qualify a position without reversing it."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the learned form to recommend a more flexible model.",
+              "accept": [
+                "Todėl siūlyčiau lankstesnį modelį."
+              ],
+              "why": "Use siūlyčiau for the recommendation."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Acknowledge the objection without treating it as decisive.",
+              "accept": [
+                "Nors šis prieštaravimas pagrįstas, jis nėra lemiamas."
+              ],
+              "why": "Preserve both the acknowledgement and its limit."
+            }
+          ]
+        },
+        {
+          "id": "C1",
+          "title": "Attribute and limit a conclusion",
+          "rule": "Reporting a source, interpreting evidence and recommending action are different functions. Preserve the qualification when reformulating.",
+          "examples": [
+            [
+              "Ataskaitoje teigiama, kad registracija tapo greitesnė.",
+              "The report states that registration became faster.",
+              "This attributes the claim to a report."
+            ],
+            [
+              "Tai savaime neįrodo, kad sistema tinka visiems.",
+              "This does not in itself prove that the system suits everyone.",
+              "Savaime limits what the observation establishes; it does not deny every possible benefit."
+            ],
+            [
+              "Sprendimą vertėtų peržiūrėti gavus papildomos informacijos.",
+              "The decision should be reconsidered when additional information is available.",
+              "The recommendation names a condition for reconsideration."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Which wording explicitly attributes a claim?",
+              "options": [
+                "Sistema neabejotinai tobula.",
+                "Ataskaitoje teigiama, kad",
+                "Visi privalo sutikti."
+              ],
+              "answer": 1,
+              "why": "The reporting construction identifies the source."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does “savaime neįrodo” limit?",
+              "options": [
+                "What follows from that observation alone",
+                "Whether any observation exists",
+                "Whether any benefit is possible"
+              ],
+              "answer": 0,
+              "why": "It limits the inference rather than denying everything."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which reformulation preserves the second example?",
+              "options": [
+                "The system benefits nobody",
+                "The system certainly suits everyone",
+                "This observation alone does not establish suitability for all"
+              ],
+              "answer": 2,
+              "why": "Preserve the evidential limit."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What triggers reconsideration in the third example?",
+              "options": [
+                "A predetermined conclusion",
+                "Additional information",
+                "The absence of every possible question"
+              ],
+              "answer": 1,
+              "why": "Gavus papildomos informacijos names the condition."
+            },
+            {
+              "kind": "typed",
+              "prompt": "State the learned limit on the general conclusion.",
+              "accept": [
+                "Tai savaime neįrodo, kad sistema tinka visiems."
+              ],
+              "why": "Do not drop savaime or the scope visiems."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Give the conditional reconsideration recommendation.",
+              "accept": [
+                "Sprendimą vertėtų peržiūrėti gavus papildomos informacijos."
+              ],
+              "why": "Preserve the condition for review."
+            }
+          ]
+        },
+        {
+          "id": "C2",
+          "title": "Negation, entailment and revision conditions",
+          "rule": "Fine differences in the scope of negation and conditional language can change an argument. Reformulate without strengthening what follows.",
+          "examples": [
+            [
+              "Ne visi dalyviai sutiko. Nė vienas dalyvis nesutiko.",
+              "Not all participants agreed. Not a single participant agreed.",
+              "The first sentence does not entail the second."
+            ],
+            [
+              "Iš to neseka, kad bet koks pokytis būtų žalingas.",
+              "It does not follow that any change would be harmful.",
+              "Rejecting that inference does not establish that every change is safe."
+            ],
+            [
+              "Jeigu atsirastų naujų duomenų, reikėtų peržiūrėti rekomendaciją.",
+              "If new evidence emerged, the recommendation would need review.",
+              "The hypothetical condition supplies a genuine revision trigger."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Which conclusion follows from “Ne visi dalyviai sutiko”?",
+              "options": [
+                "Nobody agreed",
+                "Everyone agreed",
+                "Not everyone agreed"
+              ],
+              "answer": 2,
+              "why": "Do not widen not all into none."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which sentence expresses the stronger negative claim?",
+              "options": [
+                "Ne visi dalyviai sutiko.",
+                "Nė vienas dalyvis nesutiko.",
+                "Both necessarily mean the same thing."
+              ],
+              "answer": 1,
+              "why": "Nė vienas excludes every participant."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Does rejecting an inference of harm prove universal safety?",
+              "options": [
+                "No",
+                "Yes",
+                "Only if the sentence is short"
+              ],
+              "answer": 0,
+              "why": "Failure of one inference does not prove the opposite universal."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does the final example commit the speaker to?",
+              "options": [
+                "Never revising the recommendation",
+                "Ignoring new evidence",
+                "Revisiting it if the named condition occurs"
+              ],
+              "answer": 2,
+              "why": "The condition specifies when the recommendation must be reconsidered."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Reject the overbroad harmful-change inference using the example.",
+              "accept": [
+                "Iš to neseka, kad bet koks pokytis būtų žalingas."
+              ],
+              "why": "Keep the inferential and quantifier limits."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the example’s hypothetical revision condition.",
+              "accept": [
+                "Jeigu atsirastų naujų duomenų, reikėtų peržiūrėti rekomendaciją."
+              ],
+              "why": "Preserve both the condition and the required consequence."
+            }
+          ]
+        }
+      ]
+    },
+    "es": {
+      "grammarLessons": 6,
+      "workedExamples": 18,
+      "choiceExercises": 24,
+      "typedExercises": 12,
+      "vocabularyEntries": 192,
+      "senseAwareReviewItems": 364,
+      "phraseIntroductions": 192,
+      "uniqueReviewPhrases": 191,
+      "lessons": [
+        {
+          "id": "A1",
+          "title": "Origin, location and agreement",
+          "rule": "Learn origin and location as complete patterns. Use ser for the quality in these examples, estar for location, and match adjectives to their nouns.",
+          "examples": [
+            [
+              "¿Dónde vives? Vivo en México. Soy de México.",
+              "Where do you live? I live in Mexico. I am from Mexico.",
+              "Vivo en gives a place of residence; soy de gives origin."
+            ],
+            [
+              "La casa es pequeña. La cocina está aquí.",
+              "The house is small. The kitchen is here.",
+              "Es describes the quality here; está locates the kitchen."
+            ],
+            [
+              "Los cuartos son pequeños.",
+              "The rooms are small.",
+              "The plural noun takes plural son and pequeños."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Say that you are from Mexico.",
+              "options": [
+                "Soy de México.",
+                "Estoy de México.",
+                "Vivo de México."
+              ],
+              "answer": 0,
+              "why": "The learned origin pattern is soy de."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Complete the location: “La cocina … aquí”.",
+              "options": [
+                "es",
+                "está",
+                "son"
+              ],
+              "answer": 1,
+              "why": "Use está for location here."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Complete “Los cuartos son …”.",
+              "options": [
+                "pequeña",
+                "pequeño",
+                "pequeños"
+              ],
+              "answer": 2,
+              "why": "The adjective agrees with the plural masculine noun."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which question asks where someone lives?",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Dónde vives?",
+                "¿Quieres un té?"
+              ],
+              "answer": 1,
+              "why": "Dónde asks where; vives means you live."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the example to write “I live in Mexico”.",
+              "accept": [
+                "Vivo en México."
+              ],
+              "why": "Use vivo en for residence."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the example to locate the kitchen here.",
+              "accept": [
+                "La cocina está aquí."
+              ],
+              "why": "Use está for the location."
+            }
+          ]
+        },
+        {
+          "id": "A2",
+          "title": "Time, reasons and conditions",
+          "rule": "Distinguish completed past events from plans and conditional alternatives. Give a reason when changing an arrangement.",
+          "examples": [
+            [
+              "Ayer trabajé. Mañana voy a trabajar.",
+              "Yesterday I worked. Tomorrow I am going to work.",
+              "Trabajé reports the past event; voy a trabajar gives the plan."
+            ],
+            [
+              "No puedo ir porque tengo que trabajar. ¿Podemos vernos el viernes?",
+              "I cannot go because I have to work. Can we meet on Friday?",
+              "Porque gives the reason; the question proposes another day."
+            ],
+            [
+              "Si llueve, nos vemos en una cafetería.",
+              "If it rains, we will meet in a café.",
+              "Si introduces a condition, not a statement that it is already raining."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Choose the plan for tomorrow.",
+              "options": [
+                "Ayer trabajé.",
+                "Mañana voy a trabajar.",
+                "Trabajé ayer."
+              ],
+              "answer": 1,
+              "why": "Voy a trabajar expresses the planned future action."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Choose the connector giving the reason.",
+              "options": [
+                "porque",
+                "pero",
+                "o"
+              ],
+              "answer": 0,
+              "why": "Porque introduces because."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does “Si llueve” express?",
+              "options": [
+                "It rained yesterday",
+                "It is certainly raining now",
+                "A condition: if it rains"
+              ],
+              "answer": 2,
+              "why": "The clause supplies a condition."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which sentence proposes another day?",
+              "options": [
+                "Ayer trabajé.",
+                "¿Podemos vernos el viernes?",
+                "No puedo ir."
+              ],
+              "answer": 1,
+              "why": "The question proposes Friday."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Explain that you cannot go because you have to work.",
+              "accept": [
+                "No puedo ir porque tengo que trabajar."
+              ],
+              "why": "Connect the problem and reason with porque."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the learned café plan if it rains.",
+              "accept": [
+                "Si llueve, nos vemos en una cafetería."
+              ],
+              "why": "Preserve the condition and the plan."
+            }
+          ]
+        },
+        {
+          "id": "B1",
+          "title": "Narrate and attribute",
+          "rule": "Use the taught past forms to distinguish an event from its background. Connect a complication and outcome, and identify the source of an explanation.",
+          "examples": [
+            [
+              "Compré un boleto, pero el autobús llevaba retraso.",
+              "I bought a ticket, but the bus was running late.",
+              "Compré gives the event; llevaba describes the background situation here."
+            ],
+            [
+              "Llegué más tarde, pero pude asistir a la reunión.",
+              "I arrived later, but was able to attend the meeting.",
+              "Pero introduces the contrast with the successful outcome."
+            ],
+            [
+              "La empleada explicó que había otra ruta. Creo que conviene tener otro plan.",
+              "The employee explained that there was another route. I think it is useful to have another plan.",
+              "The reporting clause identifies the source; creo marks the speaker’s view."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Choose the completed purchase in the example.",
+              "options": [
+                "Compraré",
+                "Compro",
+                "Compré"
+              ],
+              "answer": 2,
+              "why": "Compré reports the completed past purchase."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which form describes the ongoing delay in the example?",
+              "options": [
+                "compré",
+                "llevaba",
+                "asistir"
+              ],
+              "answer": 1,
+              "why": "Llevaba supplies the background situation."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Who explains the other route?",
+              "options": [
+                "The employee",
+                "The writer’s friend",
+                "No source is identified"
+              ],
+              "answer": 0,
+              "why": "La empleada explicó names the source."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which wording explicitly introduces the speaker’s view?",
+              "options": [
+                "La empleada explicó",
+                "El autobús llevaba retraso",
+                "Creo que"
+              ],
+              "answer": 2,
+              "why": "Creo que means I think that."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the learned contrast between late arrival and attending the meeting.",
+              "accept": [
+                "Llegué más tarde, pero pude asistir a la reunión."
+              ],
+              "why": "Preserve the contrast and successful outcome."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Attribute the other route information to the employee.",
+              "accept": [
+                "La empleada explicó que había otra ruta."
+              ],
+              "why": "Keep the reporting clause and its source."
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "title": "Concession and conditional recommendation",
+          "rule": "Acknowledge an objection without making it decisive. Conditional recommendation forms and the scope of a negative claim matter.",
+          "examples": [
+            [
+              "Aunque la objeción es razonable, no resulta decisiva.",
+              "Although the objection is reasonable, it is not decisive.",
+              "Aunque introduces the acknowledged concession."
+            ],
+            [
+              "Por eso propondría un modelo más flexible.",
+              "I would therefore propose a more flexible model.",
+              "Propondría makes a conditional recommendation, rather than reporting a past proposal."
+            ],
+            [
+              "La solución no funcionaría para todo el mundo.",
+              "The solution would not work for everyone.",
+              "Not everyone does not mean nobody."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Introduce the acknowledged concession.",
+              "options": [
+                "Aunque",
+                "Porque",
+                "Por eso"
+              ],
+              "answer": 0,
+              "why": "Aunque introduces although here."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Choose “I would propose”.",
+              "options": [
+                "proponía",
+                "propondría",
+                "propondré"
+              ],
+              "answer": 1,
+              "why": "Propondría is the conditional form."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does the third example establish?",
+              "options": [
+                "It would work for nobody",
+                "It would work for everyone",
+                "It would not work for everyone"
+              ],
+              "answer": 2,
+              "why": "Preserve the scope of the limited negative claim."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Does a reasonable objection necessarily defeat the recommendation?",
+              "options": [
+                "Yes, every concession reverses the position",
+                "No, the example distinguishes reasonable from decisive",
+                "Yes, whenever aunque appears"
+              ],
+              "answer": 1,
+              "why": "Acknowledgement need not be abandonment."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Use the example to recommend a more flexible model.",
+              "accept": [
+                "Por eso propondría un modelo más flexible."
+              ],
+              "why": "Use the conditional recommendation form."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Acknowledge the objection while retaining its limit.",
+              "accept": [
+                "Aunque la objeción es razonable, no resulta decisiva."
+              ],
+              "why": "Preserve both clauses."
+            }
+          ]
+        },
+        {
+          "id": "C1",
+          "title": "Attribution and evidential limits",
+          "rule": "Separate what a report states from what the evidence establishes and what you recommend. Do not drop the condition in a reformulation.",
+          "examples": [
+            [
+              "El informe señala que el registro se volvió más rápido.",
+              "The report states that registration became faster.",
+              "The reporting phrase attributes the claim."
+            ],
+            [
+              "Esto no demuestra por sí solo que el sistema sirva para todos.",
+              "This does not in itself prove that the system suits everyone.",
+              "Por sí solo limits the inference without denying every benefit."
+            ],
+            [
+              "La decisión debería revisarse cuando se disponga de más información.",
+              "The decision should be reconsidered when more information becomes available.",
+              "The recommendation preserves a condition for reconsideration."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "Which phrase explicitly attributes a claim?",
+              "options": [
+                "El sistema es indudablemente perfecto.",
+                "El informe señala que",
+                "Todos deben estar de acuerdo."
+              ],
+              "answer": 1,
+              "why": "The reporting construction identifies the source."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What does “por sí solo” limit?",
+              "options": [
+                "What the observation establishes on its own",
+                "Whether any observation exists",
+                "Whether a benefit is possible at all"
+              ],
+              "answer": 0,
+              "why": "It bounds the inference."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which reformulation preserves the second example?",
+              "options": [
+                "Nobody can benefit",
+                "The system certainly suits everyone",
+                "This observation alone does not prove suitability for all"
+              ],
+              "answer": 2,
+              "why": "Keep the evidential limit."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What condition is named for review?",
+              "options": [
+                "A predetermined conclusion",
+                "Further information becoming available",
+                "The end of all possible discussion"
+              ],
+              "answer": 1,
+              "why": "Cuando se disponga de más información identifies the trigger."
+            },
+            {
+              "kind": "typed",
+              "prompt": "State the taught limit on the general conclusion.",
+              "accept": [
+                "Esto no demuestra por sí solo que el sistema sirva para todos."
+              ],
+              "why": "Keep por sí solo and para todos."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the conditional reconsideration recommendation.",
+              "accept": [
+                "La decisión debería revisarse cuando se disponga de más información."
+              ],
+              "why": "Preserve the trigger for review."
+            }
+          ]
+        },
+        {
+          "id": "C2",
+          "title": "Negation, entailment and revision conditions",
+          "rule": "Small differences in negation scope and hypothetical conditions can substantially change an argument. Preserve what follows, and what does not.",
+          "examples": [
+            [
+              "No todos los participantes estuvieron de acuerdo. Ningún participante estuvo de acuerdo.",
+              "Not all participants agreed. Not a single participant agreed.",
+              "The first does not entail the second."
+            ],
+            [
+              "De ahí no se sigue que cualquier cambio sea perjudicial.",
+              "It does not follow that any change would be harmful.",
+              "Rejecting this inference does not establish that every change is safe."
+            ],
+            [
+              "Si aparecieran nuevos datos, habría que revisar la recomendación.",
+              "If new evidence emerged, the recommendation would need review.",
+              "The hypothetical condition provides a genuine revision trigger."
+            ]
+          ],
+          "tasks": [
+            {
+              "kind": "choice",
+              "prompt": "What follows from “No todos los participantes estuvieron de acuerdo”?",
+              "options": [
+                "Nobody agreed",
+                "Everyone agreed",
+                "Not everyone agreed"
+              ],
+              "answer": 2,
+              "why": "Do not strengthen not all into none."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Which sentence makes the stronger negative claim?",
+              "options": [
+                "No todos los participantes estuvieron de acuerdo.",
+                "Ningún participante estuvo de acuerdo.",
+                "Both necessarily mean the same thing."
+              ],
+              "answer": 1,
+              "why": "Ningún excludes every participant."
+            },
+            {
+              "kind": "choice",
+              "prompt": "Does rejecting the harmful-change inference establish universal safety?",
+              "options": [
+                "No",
+                "Yes",
+                "Only if the sentence is short"
+              ],
+              "answer": 0,
+              "why": "Failure of an inference does not prove the opposite universal."
+            },
+            {
+              "kind": "choice",
+              "prompt": "What commitment is made in the third example?",
+              "options": [
+                "Never revise the recommendation",
+                "Ignore new evidence",
+                "Reconsider it if the named condition occurs"
+              ],
+              "answer": 2,
+              "why": "The condition names a real trigger for revision."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Reject the overbroad harmful-change inference using the example.",
+              "accept": [
+                "De ahí no se sigue que cualquier cambio sea perjudicial."
+              ],
+              "why": "Keep the inferential limit and quantifier scope."
+            },
+            {
+              "kind": "typed",
+              "prompt": "Write the taught hypothetical revision condition.",
+              "accept": [
+                "Si aparecieran nuevos datos, habría que revisar la recomendación."
+              ],
+              "why": "Preserve both condition and consequence."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "phraseReview": {
+    "engine": "existing fsReview / FSRS-4.5",
+    "storage": "separate per-language local deck",
+    "newPhraseFollowup": "one day",
+    "missedPhraseFollowup": "ten minutes",
+    "successfulExtraPractice": "does not extend the due date",
+    "typedAnswersStored": false,
+    "cefrLevelAssigned": false
+  }
+}

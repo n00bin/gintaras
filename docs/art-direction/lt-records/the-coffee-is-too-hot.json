@@ -1,0 +1,17 @@
+{
+  "id": "the-coffee-is-too-hot",
+  "word": "Kava per karšta",
+  "en": "The coffee is too hot",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration for the phrase: The coffee is too hot. Reference 1 is the approved rounded geometric flat cartoon STYLE. Any reference 2 is Tomas's exact CHARACTER IDENTITY. Oversized expressive heads, large white oval eyes, chunky hands, bright opaque flat colours, minimal crisp darker interior shapes and no black outlines. Subject: Tomas holds a turquoise coffee mug by its handle and leans his face back because the coffee is TOO HOT, with a gently surprised uncomfortable expression. Three large crisp coral steam curves rise from the visible flat dark-brown coffee. His other open hand fans the air near the mug. Preserve his brown wavy hair, amber sweatshirt, navy trousers and cream shoes. No flames, injuries, extra drinks, written labels or background. Show the complete composition, centered with generous transparent margins, readable at 56px. Opaque interiors and clean crisp outer edges with zero alpha outside. No gradient, texture, glow, fog, blur, external shadow, backdrop disc, logo or lettering.",
+  "master": "docs/art-direction/masters/the-coffee-is-too-hot.png",
+  "asset": "pics/art-v2/the-coffee-is-too-hot.webp",
+  "bytes": 36692,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

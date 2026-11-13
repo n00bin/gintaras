@@ -1,0 +1,16 @@
+{
+  "id": "balcony",
+  "word": "balkonas",
+  "en": "balcony",
+  "unit": "u32",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning balcony. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE BALCONY attached to a small pale-blue section of apartment wall: coral rectangular balcony slab, navy safety railing with five sturdy vertical bars, and a closed turquoise door behind it. One small cream pot with green leaves. No person, cityscape, freestanding stairs or roof. Outside architecture cutout transparent. Complete centered composition with generous transparent margins and strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/balcony.png",
+  "asset": "pics/art-v2/balcony.webp",
+  "bytes": 16716,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

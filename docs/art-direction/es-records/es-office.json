@@ -1,0 +1,15 @@
+{
+  "id": "es-office",
+  "word": "la oficina",
+  "en": "the office",
+  "unit": "u31",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: an OFFICE workplace: a turquoise desk with a navy computer monitor and keyboard, a coral office chair on wheels, a small amber filing cabinet and a potted green plant. Compact unit, no walls or floor.",
+  "master": "docs/art-direction/masters/es-office.png",
+  "asset": "pics/art-v2/es-office.webp",
+  "bytes": 32690,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

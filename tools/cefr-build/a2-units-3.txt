@@ -1,0 +1,56 @@
+@u59|Išvaizda|Looks and clothes|To describe someone, start with their hair: <b>plaukai</b> is always plural, so "she has long hair" is literally "she has long hairs".|Describe someone in the room or in a photo: their hair, their face, and what they are wearing.
+#u59a|Hair and face
+plaukai|hair|PLAU-kai
+barzda|beard|barz-DAH
+ūsai|moustache|OO-sai
+garbanotas|curly|gar-bah-NOH-tahs
+šviesiaplaukis|blond|shvyeh-syah-PLAU-kis
+tamsiaplaukis|dark-haired|tahm-syah-PLAU-kis
+plikas|bald|PLI-kahs
+akiniai|glasses|ah-ki-NYAI
+raukšlė|wrinkle|RAUKSH-lay
+strazdanos|freckles|STRAHZ-dah-nohs
+#u59b|Build and looks
+lieknas|slim|LYEHK-nahs
+apkūnus|plump|ahp-koo-NUS
+stiprus|strong|stip-RUS
+silpnas|weak|SILP-nahs
+dailus|good-looking, neat|dai-LUS
+negražus|ugly|neh-grah-ZHUS
+vidutinis|average|vi-du-TI-nis
+ūgis|height|OO-gis
+išvaizda|appearance|ish-vaiz-DAH
+panašus|similar, alike|pah-nah-SHUS
+#u59c|More clothes
+kostiumas|suit|kohs-TYU-mahs
+kaklaraištis|tie|kahk-LAH-raish-tis
+diržas|belt|DIR-zhahs
+pirštinės|gloves|PIRSH-ti-nays
+šalikas|scarf|SHAH-li-kahs
+lietpaltis|raincoat|LYET-pahl-tis
+pižama|pyjamas|pi-ZHAH-mah
+maudymosi kostiumėlis|swimsuit|MAU-dee-moh-si kohs-tyu-MAY-lis
+kojinės|socks|KOH-yi-nays
+apatiniai|underwear|ah-pah-ti-NYAI
+#u59d|Wearing things
+apsirengti|to put on clothes|ahp-si-RENK-ti
+nusirengti|to take off clothes|nu-si-RENK-ti
+dėvėti|to wear|day-VAY-ti
+avėti|to wear (shoes)|ah-VAY-ti
+segėti|to wear (a tie or belt)|seh-GAY-ti
+užsidėti|to put on (a hat or glasses)|uzh-si-DAY-ti
+nusiimti|to take off (a hat or glasses)|nu-si-IM-ti
+sagutė|button (on clothes)|sah-GU-tay
+užtrauktukas|zip|uzh-trauk-TU-kahs
+kišenė|pocket|ki-SHEH-nay
+#u59e|Jewellery and things you carry
+žiedas|ring|ZHYEH-dahs
+auskarai|earrings|AUS-kah-rai
+apyrankė|bracelet|ah-pee-RAHN-kay
+grandinėlė|necklace, chain|grahn-di-NAY-lay
+rankinė|handbag|rahn-KI-nay
+skėtis|umbrella|SKAY-tis
+kepurė su snapeliu|cap|keh-PU-ray su snah-PEH-lyu
+rankinis laikrodis|wristwatch|rahn-KI-nis LAIK-roh-dis
+kvepalai|perfume|kveh-pah-LAI
+makiažas|make-up|mah-KYAH-zhahs

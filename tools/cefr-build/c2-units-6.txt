@@ -1,0 +1,158 @@
+@u208|Profesijos ir amatai|Trades and professions|Names for trades and professions: <b>archyvaras</b> (archivist), <b>bibliotekininkas</b> (librarian) and <b>anesteziologas</b> (anaesthetist).|Describe the people who worked on a building, a film or a concert, naming their jobs.
+#u208a|Trades and professions, part 1
+archyvaras|archivist|ahr-khee-VAH-rahs
+bibliotekininkas|librarian|bib-li-oh-teh-KI-nin-kahs
+anesteziologas|anaesthetist|ah-nes-teh-zi-OH-loh-gahs
+akušerė|midwife|ah-ku-SHEH-ray
+farmacininkas|pharmacist|far-mah-TSI-nin-kahs
+veterinaras|vet|veh-teh-ri-NAH-rahs
+agronomas|agronomist|ah-groh-NOH-mahs
+miškininkas|forester|mish-KI-nin-kahs
+eigulys|forest warden|ay-gu-LEES
+medžiotojas|hunter|med-ZHYOH-toh-yahs
+#u208b|Trades and professions, part 2
+sodininkas|gardener|soh-DI-nin-kahs
+kirpėjas|hairdresser|kir-PAY-yahs
+siuvėjas|tailor|syu-VAY-yahs
+batsiuvys|shoemaker|baht-syu-VEES
+juvelyras|jeweller|yu-veh-LEE-rahs
+mūrininkas|bricklayer|moo-RI-nin-kahs
+tinkuotojas|plasterer|tin-KWOH-toh-yahs
+dažytojas|painter and decorator|dah-ZHEE-toh-yahs
+suvirintojas|welder|su-vi-RIN-toh-yahs
+mechanikas|mechanic|meh-KHAH-ni-kahs
+#u208c|Trades and professions, part 3
+konduktorius|conductor (on a bus)|kon-duk-TOH-ryus
+skrydžio palydovas|flight attendant|SKREED-zhyoh pah-lee-DOH-vahs
+antstolis|bailiff|AHNT-stoh-lis
+korektorius|proofreader|koh-rek-TOH-ryus
+iliustratorius|illustrator|i-lyus-trah-TOH-ryus
+skulptorius|sculptor|skulp-TOH-ryus
+keramikas|ceramicist|keh-RAH-mi-kahs
+restauratorius|restorer|res-tow-rah-TOH-ryus
+dirigentas|conductor (music)|di-ri-GEN-tahs
+choreografas|choreographer|khoh-reh-oh-GRAH-fahs
+kaskadininkas|stuntman|kahs-kah-DI-nin-kahs
+akrobatas|acrobat|ahk-roh-BAH-tahs
+šokėjas|dancer|shoh-KAY-yahs
+kaminkrėtys|chimney sweep|kah-min-KRAY-tees
+@u209|Muzika ir instrumentai|Music and instruments|Words for instruments and music: <b>altas</b> (viola), <b>violončelė</b> (cello) and <b>kontrabasas</b> (double bass).|Describe a concert you attended or would like to attend, naming the instruments and the pieces.
+#u209a|Music and instruments, part 1
+altas|viola|AHL-tahs
+violončelė|cello|vi-oh-lon-CHEH-lay
+kontrabasas|double bass|kon-trah-BAH-sahs
+arfa|harp|AR-fah
+fleita|flute|FLAY-tah
+klarnetas|clarinet|klar-NEH-tahs
+obojus|oboe|oh-BOH-yus
+fagotas|bassoon|fah-GOH-tahs
+trimitas|trumpet|tri-MI-tahs
+valtorna|French horn|vahl-TOR-nah
+#u209b|Music and instruments, part 2
+trombonas|trombone|trom-BOH-nahs
+tūba|tuba|TOO-bah
+mušamieji instrumentai|percussion instruments|mu-shah-MYEH-yi ins-tru-men-TAI
+akordeonas|accordion|ah-kor-deh-OH-nahs
+lūpinė armonikėlė|harmonica|LOO-pi-nay ar-moh-ni-KAY-lay
+vargonai|organ (instrument)|var-GOH-nai
+birbynė|birbynė (reed pipe)|bir-BEE-nay
+skudučiai|skudučiai (panpipes)|sku-DU-chyai
+daudytė|daudytė (long wooden trumpet)|dow-DEE-tay
+partitūra|score (music)|par-ti-TOO-rah
+#u209c|Music and instruments, part 3
+natos|sheet music|NAH-tohs
+gaida|note, melody|gai-DAH
+akordas|chord|ah-KOR-dahs
+derinti instrumentą|to tune an instrument|DEH-rin-ti ins-tru-MEN-taa
+taktas|bar, beat|TAHK-tahs
+tempas|tempo|TEM-pahs
+solistas|soloist|soh-LIS-tahs
+duetas|duet|du-EH-tahs
+kvartetas|quartet|kvar-TEH-tahs
+simfonija|symphony|sim-FOH-ni-yah
+#u209d|Music and instruments, part 4
+uvertiūra|overture|u-ver-TYOO-rah
+arija|aria|AH-ri-yah
+oratorija|oratorio|oh-rah-TOH-ri-yah
+operetė|operetta|oh-peh-REH-tay
+miuziklas|musical|MYU-zik-lahs
+pasiklausymas|audition|pah-sik-LOW-see-mahs
+@u210|Oras ir dangus|Weather and sky|Precise words for weather: <b>dulksna</b> (drizzle), <b>šerkšnas</b> (hoarfrost) and <b>varveklis</b> (icicle).|Describe the weather of each season in Lithuania as precisely as you can.
+#u210a|Weather and sky, part 1
+dulksna|drizzle|dulks-NAH
+šerkšnas|hoarfrost|SHERKSH-nahs
+varveklis|icicle|var-VEK-lis
+pusnis|snowdrift|pus-NIS
+rūkana|haze|roo-kah-NAH
+apsiniaukę|overcast|ahp-si-NYAU-kay
+giedra|clear sky|gyed-RAH
+pašvaistė|aurora, glow in the sky|pahsh-VAIS-tay
+žvaigždėtas|starry|zhvaigzh-DAY-tahs
+saulėkaita|blazing sunshine|sow-LAY-kai-tah
+#u210b|Weather and sky, part 2
+tvanka|sultry heat|tvahn-KAH
+pragiedrulys|sunny spell|prah-gyed-ru-LEES
+vėjuotas|windy|vay-YWOH-tahs
+gūsis|gust|GOO-sis
+škvalas|squall|SHKVAH-lahs
+plikšala|black frost|plik-SHAH-lah
+ledonešis|ice drift|leh-doh-NEH-shis
+polaidis|spring thaw|POH-lai-dis
+orų prognozė|weather forecast|oh-ROO prog-NOH-zay
+@u211|Drabužiai ir audiniai|Clothes and fabrics|Words for clothes, fabrics and sewing: <b>sermėga</b> (homespun coat), <b>kailiniai</b> (fur coat) and <b>skrybėlė</b> (brimmed hat).|Describe a traditional Lithuanian costume, or your favourite outfit, in detail.
+#u211a|Clothes and fabrics, part 1
+sermėga|homespun coat|ser-MAY-gah
+kailiniai|fur coat|kai-li-NYAI
+skrybėlė|brimmed hat|skree-bay-LAY
+beretė|beret|beh-REH-tay
+kaklaskarė|neckerchief|kahk-lahs-kah-RAY
+kumštinės|mittens|kumsh-TI-nays
+pėdkelnės|tights|payd-KEL-nays
+naktiniai marškiniai|nightdress|nahk-ti-NYAI marsh-ki-NYAI
+tautinė juosta|woven national sash|tow-TI-nay YWOHS-tah
+drobė|linen cloth|droh-BAY
+#u211b|Clothes and fabrics, part 2
+zomša|suede|ZOM-shah
+nėriniai|lace|nay-ri-NYAI
+klostė|pleat|klohs-TAY
+siūlė|seam|syoo-LAY
+lopas|patch|LOH-pahs
+@u212|Virtuvė ir patiekalai|Kitchen and traditional food|Kitchen tools, spices and Lithuanian dishes: <b>šaukštelis</b> (teaspoon), <b>kiaurasamtis</b> (slotted spoon) and <b>troškintuvas</b> (casserole dish).|Give a recipe for a Lithuanian dish, naming the tools and spices.
+#u212a|Kitchen and traditional food, part 1
+šaukštelis|teaspoon|showksh-TEH-lis
+kiaurasamtis|slotted spoon|kyau-rah-SAHM-tis
+troškintuvas|casserole dish|trosh-kin-TU-vahs
+tarka|grater|tar-KAH
+pjaustymo lentelė|chopping board|PYAUS-tee-moh len-TEH-lay
+piltuvėlis|funnel|pil-tu-VAY-lis
+mentelė|spatula|men-TEH-lay
+gvazdikėliai|cloves|gvahz-di-KAY-lyai
+muskatas|nutmeg|mus-KAH-tahs
+vanilė|vanilla|vah-NI-lay
+#u212b|Kitchen and traditional food, part 2
+šafranas|saffron|shahf-RAH-nahs
+lauro lapai|bay leaves|LOW-roh lah-PAI
+perlinės kruopos|pearl barley|PER-li-nays KRWOH-pohs
+avižiniai dribsniai|oat flakes|ah-vi-ZHI-nyai DRIBS-nyai
+rūgpienis|soured milk|ROOG-pye-nis
+skilandis|skilandis (smoked meat sausage)|ski-LAHN-dis
+vėdarai|vėdarai (potato sausages)|vay-dah-RAI
+šakotis|šakotis (spit cake)|shah-KOH-tis
+šaltiena|aspic|shahl-TYEH-nah
+trauktinė|herbal liqueur|trowk-TI-nay
+@u213|Žemės paviršius|Landforms|Words for landscapes and landforms: <b>kalnynas</b> (mountain range), <b>aukštikalnės</b> (highlands) and <b>slenkstis upėje</b> (rapids).|Describe a dramatic landscape you have seen or would like to see.
+#u213a|Landforms, part 1
+kalnynas|mountain range|kahl-NEE-nahs
+aukštikalnės|highlands|owksh-ti-KAHL-nays
+slenkstis upėje|rapids|SLENKS-tis u-pay-YEH
+verpetas|whirlpool|VER-peh-tahs
+rifas|reef|RI-fahs
+krateris|crater|KRAH-teh-ris
+lava|lava|LAH-vah
+geizeris|geyser|GAY-zeh-ris
+smegduobė|sinkhole|smeg-DWOH-bay
+stalaktitas|stalactite|stah-lahk-TI-tahs
+stalagmitas|stalagmite|stah-lahg-MI-tahs
+smėlynas|sandy area|smay-LEE-nahs
+oazė|oasis|oh-AH-zay
+taiga|taiga|TAI-gah

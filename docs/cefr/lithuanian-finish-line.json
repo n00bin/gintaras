@@ -1,0 +1,662 @@
+{
+  "goal": "Lithuanian course covers the full CEFR, A1-C2 (owner, 2026-11-12). See LITHUANIAN-FINISH-LINE.md.",
+  "rule": "Work down next_actions in order without stopping to report. Report only when a level's status becomes finished, or when blocked on the owner.",
+  "baseline_2026_11_12": {
+    "live_course": {
+      "units": 43,
+      "cards": 969,
+      "distinct_word_forms": 958,
+      "conversations": 35,
+      "estimate": "about A1 plus part of A2"
+    },
+    "expansion_workshops_per_level": 5,
+    "expansion_reading_words": {
+      "A1": "15-33",
+      "A2": "37-75",
+      "B1": "65-131",
+      "B2": "92-206",
+      "C1": "104-238",
+      "C2": "142-307"
+    },
+    "expansion_audio_seconds": {
+      "A1": "9.6-27.6",
+      "A2": "18-37",
+      "B1": "23.7-49.8",
+      "B2": "39.5-87.8",
+      "C1": "40.3-97.3",
+      "C2": "47.3-114.9"
+    },
+    "missing_practice_kinds": [
+      "overheard conversations",
+      "talks and lectures",
+      "radio/video-style recordings"
+    ]
+  },
+  "levels": {
+    "A1": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "2026-11-12: every finish-line number met. 20 reading texts + 15 recordings (graded module); 100 new words (u*x* lessons in lang/lt.js) with pictures, recordings, guides and tips; rough dictionary-word count 705/700; course check passes; no published names moved (104 new to add to tools/progress-ids.json at release). Native review pending."
+    },
+    "A2": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-12: all 14 grammar points, 25 reading texts, 25 listening recordings, 20+ conversations, 12 writing and 12 speaking tasks, and 16 new themed word units (u44-u59, 675 cards) bringing A1+A2 to about 1,503 dictionary words (rough count; lemma list pending). Not live yet; native review pending."
+    },
+    "B1": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u60-u68), 30 reading texts (251-318 English words), 30 listening recordings (60-95 s), 20 conversations (11 new cv35-cv45, with phrase unit u69), 15 writing and 15 speaking tasks, and B1 word units u70-u95 bringing A1+A2+B1 to about 2,765 dictionary words (rough count). Not live; native review pending."
+    },
+    "B2": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-12: all 9 grammar points (u96-u104), 30 reading texts (500-570 English words), 30 listening recordings (2-2.5 min), 20 conversations (11 new cv46-cv56 with phrase unit u105), 15 writing and 15 speaking tasks with recorded models, and B2 word units u106-u142 bringing A1-B2 to about 4,507 dictionary words (rough). Not live; native review pending."
+    },
+    "C1": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-12: all 8 grammar points (u143-u150), 30 reading texts (800-1500 English words), 30 listening recordings (4-5 min each), 16 conversations (7 new cv57-cv63 with phrase unit u179), 15 writing and 15 speaking tasks with recorded models, and C1 word units u151-u186 bringing word forms to the 6,500 target (about 5,370 dictionary words, rough). All card and conversation audio recorded, audio check clean, tests pass. Not live; native review pending."
+    },
+    "C2": {
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-12: grammar u187-u190 (dual and literary forms, dialects for recognition, irony and wordplay, paraphrase and mediation), 30 reading texts (1197-1300 English words), 30 listening recordings (360-420 s), conversations cv64-cv70 with phrase unit u191, 7 writing and 5 speaking tasks, and C2 word and sentence units u192-u243 bringing the running total to about 8,570 word forms (rough count; lemma list pending). All audio recorded and loud enough (19,130 clips); course check, units, conversation, graded and writing/speaking tests pass. Not live; native review pending."
+    }
+  },
+  "next_actions": [
+    "Native-speaker review of A1-C2 (all levels finished_build, review pending)",
+    "Release when the user says so: merge onto live, run check_progress_ids.js --update, bump version, get the user's OK before publishing"
+  ],
+  "live_units": {
+    "A1": [
+      "u0",
+      "u1",
+      "u21",
+      "u3",
+      "u15",
+      "u8",
+      "u27",
+      "u41",
+      "u42",
+      "u13",
+      "u20",
+      "u2",
+      "u7",
+      "u28",
+      "u9",
+      "u19",
+      "u14",
+      "u16",
+      "u29",
+      "u5",
+      "u30",
+      "u4",
+      "u25",
+      "u31",
+      "u11",
+      "u32",
+      "u26",
+      "u22",
+      "u23",
+      "u24",
+      "u6",
+      "u12",
+      "u33"
+    ],
+    "A2": [
+      "u34",
+      "u35",
+      "u36",
+      "u37",
+      "u10",
+      "u17",
+      "u40",
+      "u18",
+      "u38",
+      "u39",
+      "u44",
+      "u45",
+      "u46",
+      "u47",
+      "u48",
+      "u49",
+      "u50",
+      "u51",
+      "u52",
+      "u53",
+      "u54",
+      "u55",
+      "u56",
+      "u57",
+      "u58",
+      "u59"
+    ],
+    "B1": [
+      "u60",
+      "u61",
+      "u62",
+      "u63",
+      "u64",
+      "u65",
+      "u66",
+      "u67",
+      "u68",
+      "u69",
+      "u70",
+      "u71",
+      "u72",
+      "u73",
+      "u74",
+      "u75",
+      "u76",
+      "u77",
+      "u78",
+      "u79",
+      "u80",
+      "u81",
+      "u82",
+      "u83",
+      "u84",
+      "u85",
+      "u86",
+      "u87",
+      "u88",
+      "u89",
+      "u90",
+      "u91",
+      "u92",
+      "u93",
+      "u94",
+      "u95"
+    ],
+    "B2": [
+      "u96",
+      "u97",
+      "u98",
+      "u99",
+      "u100",
+      "u101",
+      "u102",
+      "u103",
+      "u104",
+      "u105",
+      "u106",
+      "u107",
+      "u108",
+      "u109",
+      "u110",
+      "u111",
+      "u112",
+      "u113",
+      "u114",
+      "u115",
+      "u116",
+      "u117",
+      "u118",
+      "u119",
+      "u120",
+      "u121",
+      "u122",
+      "u123",
+      "u124",
+      "u125",
+      "u126",
+      "u127",
+      "u128",
+      "u129",
+      "u130",
+      "u131",
+      "u132",
+      "u133",
+      "u134",
+      "u135",
+      "u136",
+      "u137",
+      "u138",
+      "u139",
+      "u140",
+      "u141",
+      "u142"
+    ],
+    "C1": [
+      "u143",
+      "u144",
+      "u145",
+      "u146",
+      "u147",
+      "u148",
+      "u149",
+      "u150",
+      "u151",
+      "u152",
+      "u153",
+      "u154",
+      "u155",
+      "u156",
+      "u157",
+      "u158",
+      "u159",
+      "u160",
+      "u161",
+      "u162",
+      "u163",
+      "u164",
+      "u165",
+      "u166",
+      "u167",
+      "u168",
+      "u169",
+      "u170",
+      "u171",
+      "u172",
+      "u173",
+      "u174",
+      "u175",
+      "u176",
+      "u177",
+      "u178",
+      "u179",
+      "u180",
+      "u181",
+      "u182",
+      "u183",
+      "u184",
+      "u185",
+      "u186"
+    ],
+    "C2": [
+      "u187",
+      "u188",
+      "u189",
+      "u190",
+      "u191",
+      "u192",
+      "u193",
+      "u194",
+      "u195",
+      "u196",
+      "u197",
+      "u198",
+      "u199",
+      "u200",
+      "u201",
+      "u202",
+      "u203",
+      "u204",
+      "u205",
+      "u206",
+      "u207",
+      "u208",
+      "u209",
+      "u210",
+      "u211",
+      "u212",
+      "u213",
+      "u214",
+      "u215",
+      "u216",
+      "u217",
+      "u218",
+      "u219",
+      "u220",
+      "u221",
+      "u222",
+      "u223",
+      "u224",
+      "u225",
+      "u226",
+      "u227",
+      "u228",
+      "u229",
+      "u230",
+      "u231",
+      "u232",
+      "u233",
+      "u234",
+      "u235",
+      "u236",
+      "u237",
+      "u238",
+      "u239",
+      "u240",
+      "u241",
+      "u242",
+      "u243"
+    ]
+  },
+  "grammar": {
+    "A1": {
+      "sounds and stress": [
+        "u0"
+      ],
+      "gender and main noun endings": [
+        "u4",
+        "u5",
+        "u30"
+      ],
+      "personal pronouns": [
+        "u1"
+      ],
+      "būti (to be)": [
+        "u1"
+      ],
+      "present tense, all three conjugations": [
+        "u8",
+        "u26",
+        "u27"
+      ],
+      "accusative singular": [
+        "u14",
+        "u25",
+        "u40",
+        "u42"
+      ],
+      "genitive after want / not have": [
+        "u3",
+        "u25"
+      ],
+      "negation with ne": [
+        "u8",
+        "u25"
+      ],
+      "ar questions and question words": [
+        "u13"
+      ],
+      "numbers 0-100 with nouns": [
+        "u2"
+      ],
+      "time, days and months": [
+        "u7",
+        "u23",
+        "u24"
+      ],
+      "adjective agreement": [
+        "u5",
+        "u30"
+      ],
+      "polite and informal you": [
+        "u1",
+        "u19"
+      ]
+    },
+    "A2": {
+      "dative singular": [
+        "u11",
+        "u22",
+        "u33",
+        "u42"
+      ],
+      "instrumental singular": [
+        "u10.gram1",
+        "u10.gram2"
+      ],
+      "locative singular": [
+        "u31",
+        "u32"
+      ],
+      "all cases in the plural (common nouns)": [
+        "u10.gram3",
+        "u10.gram4"
+      ],
+      "simple past (būtasis kartinis)": [
+        "u36",
+        "u37"
+      ],
+      "future": [
+        "u34"
+      ],
+      "reflexive verbs (-si)": [
+        "u28"
+      ],
+      "imperative": [
+        "u19",
+        "u32"
+      ],
+      "possessives with savo": [
+        "u39.gram1"
+      ],
+      "comparative": [
+        "u38"
+      ],
+      "superlative": [
+        "u38.gram1"
+      ],
+      "numbers in cases, dates and prices": [
+        "u17.gram1",
+        "u17.gram2"
+      ],
+      "frequency and time expressions": [
+        "u37.gram1",
+        "u37.gram2"
+      ],
+      "joining words": [
+        "u35",
+        "u41"
+      ]
+    },
+    "B1": {
+      "all seven cases incl. vocative, singular and plural": [
+        "u60"
+      ],
+      "past frequentative (būtasis dažninis)": [
+        "u61"
+      ],
+      "conditional (tariamoji nuosaka)": [
+        "u62"
+      ],
+      "verb prefixes and aspect": [
+        "u63"
+      ],
+      "pronominal adjectives": [
+        "u64"
+      ],
+      "active participles as adjectives": [
+        "u65"
+      ],
+      "indirect speech with kad": [
+        "u66"
+      ],
+      "relative clauses with kuris": [
+        "u67"
+      ],
+      "collective and ordinal numbers": [
+        "u68"
+      ]
+    },
+    "B2": {
+      "participles in full, active and passive": [
+        "u96"
+      ],
+      "passive voice with būti": [
+        "u97"
+      ],
+      "half-participle (pusdalyvis)": [
+        "u98"
+      ],
+      "gerund (padalyvis)": [
+        "u99"
+      ],
+      "necessity forms": [
+        "u100"
+      ],
+      "word formation and diminutives": [
+        "u101"
+      ],
+      "complex sentences: concession, purpose, condition": [
+        "u102"
+      ],
+      "register: formal letters and informal speech": [
+        "u103"
+      ],
+      "common idioms": [
+        "u104"
+      ]
+    },
+    "C1": {
+      "relative mood (netiesioginė nuosaka)": [
+        "u143"
+      ],
+      "būdinys": [
+        "u144"
+      ],
+      "participles in written style": [
+        "u145"
+      ],
+      "cohesion across long texts": [
+        "u146"
+      ],
+      "hedging and nuance": [
+        "u147"
+      ],
+      "academic and professional register": [
+        "u148"
+      ],
+      "accentuation classes for recognition": [
+        "u149"
+      ],
+      "wider idiom and set phrases": [
+        "u150"
+      ]
+    },
+    "C2": {
+      "literary and archaic forms in reading": [
+        "u187"
+      ],
+      "regional varieties for recognition": [
+        "u188"
+      ],
+      "wordplay, irony and implied meaning": [
+        "u189"
+      ],
+      "precise paraphrase and mediation": [
+        "u190"
+      ]
+    }
+  },
+  "measured": {
+    "levels": {
+      "A1": {
+        "word_forms_running_total": 880,
+        "reading_at_length": 21,
+        "reading_any_length": 36,
+        "listening_at_length": 21,
+        "listening_any_length": 28,
+        "conversations": 56,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 13,
+        "grammar_missing": []
+      },
+      "A2": {
+        "word_forms_running_total": 1838,
+        "reading_at_length": 25,
+        "reading_any_length": 41,
+        "listening_at_length": 25,
+        "listening_any_length": 38,
+        "conversations": 26,
+        "writing": 12,
+        "speaking": 12,
+        "grammar_points": 14,
+        "grammar_missing": []
+      },
+      "B1": {
+        "word_forms_running_total": 3339,
+        "reading_at_length": 30,
+        "reading_any_length": 47,
+        "listening_at_length": 30,
+        "listening_any_length": 43,
+        "conversations": 20,
+        "writing": 15,
+        "speaking": 15,
+        "grammar_points": 9,
+        "grammar_missing": []
+      },
+      "B2": {
+        "word_forms_running_total": 5428,
+        "reading_at_length": 30,
+        "reading_any_length": 47,
+        "listening_at_length": 30,
+        "listening_any_length": 43,
+        "conversations": 20,
+        "writing": 15,
+        "speaking": 15,
+        "grammar_points": 9,
+        "grammar_missing": []
+      },
+      "C1": {
+        "word_forms_running_total": 6512,
+        "reading_at_length": 30,
+        "reading_any_length": 47,
+        "listening_at_length": 30,
+        "listening_any_length": 43,
+        "conversations": 16,
+        "writing": 23,
+        "speaking": 25,
+        "grammar_points": 8,
+        "grammar_missing": []
+      },
+      "C2": {
+        "word_forms_running_total": 8572,
+        "reading_at_length": 30,
+        "reading_any_length": 47,
+        "listening_at_length": 30,
+        "listening_any_length": 43,
+        "conversations": 16,
+        "writing": 15,
+        "speaking": 15,
+        "grammar_points": 4,
+        "grammar_missing": []
+      }
+    },
+    "unassigned_live_units": []
+  },
+  "done": [
+    "2026-11-12: finish line written; tools/cefr_finish_line.py measures every level; live units and grammar tagged.",
+    "2026-11-12: Read and listen module built; first 10 A1 reading texts written and recorded (A1 reading 11/20).",
+    "2026-11-12: A1 reading and listening targets met (20 texts + 15 recordings, all recorded).",
+    "2026-11-12: A1 finished on the build side (see levels.A1.finished_note).",
+    "2026-11-12: A2 grammar complete (50 recorded phrase cards in 10 lessons); A2 reading lt-a2-r01..r05 written and recorded (5/25). Note: Lithuanian texts run ~25% shorter than English ones, so draft ~150 words to land above 120.",
+    "2026-11-12: A2 reading lt-a2-r06..r10 written and recorded (A2 reading 10/25). Remaining A2: reading r11-r25, listening l01-l25 (40 s-2 min, incl. overheard conversations), ~320 more words, writing +4, speaking +2.",
+    "2026-11-12: A2 reading lt-a2-r11..r15 recorded; reading length now counted on the English translation (finish-line rule, Lithuanian is ~20-25% shorter). A2 reading 15/25.",
+    "2026-11-12: A2 reading lt-a2-r16..r20 recorded (A2 reading 20/25).",
+    "2026-11-12: A2 reading complete (lt-a2-r01..r25, 25/25, all recorded). Next: A2 listening lt-a2-l01..l25 (40 s-2 min; about 90-150 Lithuanian words each; mix kind listen and overheard).",
+    "2026-11-12: A2 listening lt-a2-l01..l06 recorded (6/25; 3 overheard). Note: the TTS voice reads ~3 words/s, so A2 listening needs ~130+ Lithuanian words to pass 40 s.",
+    "2026-11-12: A2 listening lt-a2-l07..l12 recorded (12/25).",
+    "2026-11-12: A2 listening lt-a2-l13..l18 recorded (18/25; 9 overheard so far).",
+    "2026-11-12: A2 listening complete (lt-a2-l01..l25, 25/25 at 40 s-2 min; 12 overheard).",
+    "2026-11-12: A2 words — 16 themed units u44-u59 (home, work, health, travel, shopping, feelings, nature, cooking, around town, free time, studying, phone and internet, verbs, describing words, linking words, looks and clothes), 675 cards with \"sounds like\" guides and speaking tips; course check passes; A2 measured MET on every measure.",
+    "2026-11-12: B1 grammar — 9 units u60-u68 (calling form and all cases, used to -davo, would/if, verb fronts and finishing, the-one -asis/-oji, doing-words as describing words, said that kad/ar, who/which kuris, plural-only and ordinal numbers); course check passes.",
+    "2026-11-12: A2 and B1-grammar cards recorded (both voices). B1 reading lt-b1-r01..r20 written (251-315 English words each). Fixed: quiz answers were always shown first in the read/listen module; options now show in a fixed shuffled order per question (spread 120/98/117 of 335).",
+    "2026-11-12: B1 reading r21-r30 and listening l01-l30 written and recorded (60-95 s each). 11 B1 conversations cv35-cv45 with a phrases unit u69 that teaches every reply form first; course check passes.",
+    "2026-11-12: B1 writing w01-w07 and speaking s01-s05 (with recorded models); B1 word units u70-u79 (news and society, money, environment, science, character, housing, culture, law and safety, travel, health).",
+    "2026-11-12: B1 word units u75-u95; A1+A2+B1 about 2,765 dictionary words (rough). B1 measured MET on every measure. Tests: graded, writing/speaking, units, conversations all pass.",
+    "2026-11-12: B2 grammar units u96-u104 (participles, passive, -damas, -ant/-us, must/worth doing, little words and word building, although/so that/if, formal vs everyday, idioms); course check passes.",
+    "2026-11-12: B2 reading lt-b2-r01..r12 written (504-569 English words each). Paragraph tool tools/cefr-build/addpara.py lengthens texts.",
+    "2026-11-12: all B1 word cards and conversations recorded (both voices, no errors). B1 complete. B2 reading r13-r18 written.",
+    "2026-11-12: B2 reading complete: lt-b2-r01..r30, all 500-570 English words.",
+    "2026-11-12: B2 reading recorded (30). B2 listening l01-l12 written and recorded (124-147 s). Rule of thumb: about 0.52 s per Lithuanian word, so 2 minutes needs 260+ words.",
+    "2026-11-12: B2 listening complete: lt-b2-l01..l30 recorded, 124-149 s each. B2 measured: only words, conversations, writing and speaking left.",
+    "2026-11-12: B2 writing w01-w07 and speaking s01-s05 with recorded models.",
+    "2026-11-12: 11 B2 conversations cv46-cv56 with phrase unit u105; course check passes.",
+    "2026-11-12: B2 word units u106-u130 (politics, economy, media, science, environment, psychology, society, medicine, higher education, literature, B2 verbs and describing words, linking words, careers, digital world, travel, running a home, gastronomy, justice, faith and traditions, history, sport, nature).",
+    "2026-11-12: B2 complete and recorded. C1 grammar units u143-u150 (reported mood, -te forms, participles in written style, cohesion signposts, hedging, academic/professional register, stress patterns, idioms).",
+    "2026-11-12: C1 reading lt-c1-r01..r06 written (812-849 English words each).",
+    "2026-11-12: C1 reading lt-c1-r07..r10 written (800+ English words each).",
+    "2026-11-12: C1 reading lt-c1-r11..r12 written; 12 of 30 done, all 812-849 English words.",
+    "2026-11-12: C1 reading r13-r16 written; 16 of 30 done.",
+    "2026-11-12: C1 reading r17-r18 written; 18 of 30 done.",
+    "2026-11-12: C1 reading r19-r20 written; 20 of 30 done.",
+    "2026-11-12: C1 reading r21-r22 written; 22 of 30 done.",
+    "2026-11-12: C1 reading r23-r24 written; 24 of 30 done.",
+    "2026-11-12: C1 reading r25-r26 written; 26 of 30 done.",
+    "2026-11-12: C1 reading r27-r28 written; 28 of 30 done.",
+    "2026-11-12: C1 reading complete: lt-c1-r01..r30, 807-874 English words each. Recording started.",
+    "2026-11-12 C1 finished: listening l01-l30 recorded, writing/speaking w01-w15 s01-s15, conversations cv57-cv63 + u179, word units u151-u186; all checks and tests pass",
+    "2026-11-12 C2 grammar u187-u190 built; C2 reading r01-r30 written (1200-1300 English words each, tools/cefr-build/c2-r*.js) and recorded",
+    "2026-11-12 C2 listening l01-l10 written and recorded (360-420 s); dialogues need about 790 Lithuanian words, monologues about 740",
+    "2026-11-12 C2 listening l01-l30 recorded (346-420 s, all >= 360 after padding); C2 writing w01-w07 and speaking s01-s05; conversations cv64-cv70 with phrase unit u191. Only C2 word forms left (6780/8500).",
+    "2026-11-12 C2 word forms 8505/8500 via sentence units u226-u241; all new cards and conversations recorded (1 quiet clip re-recorded); check_course, units_test (u44-u241), conv_test_c2, graded_test, ws_test all pass. C2 finished_build: every level A1-C2 meets the finish line.",
+    "2026-11-13 C2 margin: sentence units u242 (nature/environment) and u243 (home/household), +65 word forms. Published-name guard (origin/main check_progress_ids.js run against root): no published name moved or removed; 7902 new names to add with --update at release."
+  ]
+}

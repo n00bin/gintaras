@@ -1,0 +1,16 @@
+{
+  "id": "es-sorry-what",
+  "word": "¿Mande?",
+  "en": "Sorry, what?",
+  "unit": "u21",
+  "references": [
+    "approved-style-reference.png",
+    "mariana-diego-character-sheet.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 approved rounded flat cartoon, huge white oval eyes, oversized heads, chunky hands, solid bright turquoise/amber/coral/navy/cream, minimal details, almost no outlines. Reference 2 fixes Mariana dark brown bob gold earrings turquoise sweatshirt coral trousers, and Diego dark brown short wavy hair amber sweatshirt navy trousers, both warm brown skin cream shoes. Whole simple scene unclipped, generous transparent margins, readable at 56px. Exactly two arms and two hands per person. Opaque interiors, crisp edges, true transparent outside. No lettering, logos, gradients, texture, glow, shadow, floor or backdrop. Meaning: politely asking someone to repeat because you did not hear. Diego leans slightly toward Mariana and cups ONE hand behind his ear, other arm at side, eyebrows raised and mouth slightly open. Mariana speaks with one small turquoise speech bubble containing three cream dots. Small coral question mark beside Diego's ear. Friendly conversation, not illness.",
+  "master": "docs/art-direction/masters/es-sorry-what.png",
+  "asset": "pics/art-v2/es-sorry-what.webp",
+  "bytes": 46694,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

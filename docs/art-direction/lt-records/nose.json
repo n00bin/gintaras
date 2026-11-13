@@ -1,0 +1,16 @@
+{
+  "id": "nose",
+  "word": "nosis",
+  "en": "nose",
+  "unit": "u40",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning nose. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: ONE clearly recognizable friendly cartoon NOSE, warm-orange rounded nose bridge and large rounded tip, two small darker-orange nostril curves underneath, slight three-quarter view. Standalone neutral facial feature with no eyes, mouth, tissue, injury, face outline or text. Complete centered feature with generous transparent margins, strong silhouette at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/nose.png",
+  "asset": "pics/art-v2/nose.webp",
+  "bytes": 19260,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

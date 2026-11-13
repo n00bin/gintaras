@@ -1,0 +1,20 @@
+{
+  "id": "vilnius",
+  "word": "Vilnius",
+  "en": "Vilnius",
+  "unit": "u10",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square course illustration meaning Vilnius. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Subject: A simplified recognizable GEDIMINAS TOWER to represent VILNIUS: reddish-brown OCTAGONAL brick tower, three stacked levels, flat roof terrace with a low plain parapet, NO crenellations and three narrow dark window openings, standing on a compact green hill cutout. A small accurate Lithuanian tricolour flies above: yellow top, green middle, red bottom, equal horizontal bands. No conical fairytale roof, huge castle, person, lettering or city backdrop. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, backdrop disc, words, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "research_sources": [
+    "https://www.govilnius.lt/visit-vilnius/places/the-gediminas-tower",
+    "https://lnm.lt/en/news/gediminas-tower-how-well-do-you-know-the-history-of-this-national-symbol/"
+  ],
+  "master": "docs/art-direction/masters/vilnius.png",
+  "asset": "pics/art-v2/vilnius.webp",
+  "bytes": 20132,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

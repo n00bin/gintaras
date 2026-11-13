@@ -1,0 +1,17 @@
+{
+  "id": "it-s-important",
+  "word": "Svarbu",
+  "en": "It's important",
+  "unit": "u38",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching reference 1 rounded flat cartoon style: huge white oval eyes, chunky shapes, bright solid turquoise/amber/coral/navy/cream. Reference 2 fixes Tomas short wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Complete unclipped scene, generous transparent margins, readable at 56px. Exactly two arms and hands if person. Fully opaque interiors, crisp edges, true transparent outside. No text, logos, gradients, texture, floor, backdrop, shadows or glow. Meaning: It's important. Attentive Tomas points with one hand at a large cream memo sheet, marked with a prominent coral exclamation mark and amber star, while holding the sheet by its side with his other hand. Focused serious expression, no other markings or writing. The single memo dominates.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-s-important.png",
+  "asset": "pics/art-v2/it-s-important.webp",
+  "bytes": 35850,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

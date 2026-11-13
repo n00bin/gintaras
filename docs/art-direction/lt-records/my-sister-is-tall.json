@@ -1,0 +1,17 @@
+{
+  "id": "my-sister-is-tall",
+  "word": "Mano sesuo aukšta",
+  "en": "My sister is tall",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration for MY SISTER IS TALL. Reference 1 is the approved flat cartoon STYLE, reference 2 if present is Tomas's exact CHARACTER IDENTITY. Rounded geometric shapes, chunky features, oversized friendly heads and large white oval eyes for people, bright opaque flat colours, sparse darker crisp interior shapes, no black outlines. Subject: Tomas gestures toward his very TALL SISTER beside him. Tomas matches reference 2: amber sweatshirt, brown wavy hair, navy trousers, cream shoes, average height. His sister is unmistakably a young adult woman, much taller than him, with long brown hair in a ponytail, a purple top, teal trousers, cream shoes and a friendly similar family face. Her long legs and taller head position convey height. Full bodies, friendly sibling interaction, no romance, hearts, labels or other people. Center the entire composition with 12% genuinely empty transparent margin. Readable at 56px. Fully opaque surfaces and zero alpha directly outside clean edges. No texture, gradient, glow, halo, blur, fog, cast shadow, ground, disc, background, lettering or logo.",
+  "master": "docs/art-direction/masters/my-sister-is-tall.png",
+  "asset": "pics/art-v2/my-sister-is-tall.webp",
+  "bytes": 39210,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

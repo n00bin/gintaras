@@ -1,0 +1,336 @@
+@u136|Biurokratija|Paperwork and offices|Dealing with offices: a <b>pažyma</b> is an official certificate, a <b>įgaliojimas</b> a power of attorney, and the <b>registras</b> the register.|Explain the steps to get an official document in your country, and what usually goes wrong.
+#u136a|Documents
+pažyma|official certificate|pah-ZHEE-mah
+įgaliojimas|power of attorney|ee-gah-lyoh-YI-mahs
+registras|register|reh-GIS-trahs
+pasirašymas|signing|pah-si-rah-SHEE-mahs
+notaras|notary|noh-TAH-rahs
+antspaudas oficialus|official stamp|AHNT-spau-dahs oh-fi-tsyah-LUS
+kopija patvirtinta|certified copy|KOH-pi-yah paht-vir-tin-TAH
+blankas|blank form|BLAHN-kahs
+paraiška|application (form)|pah-RAISH-kah
+galiojimo laikas|validity period|gah-lyoh-YI-moh LAI-kahs
+#u136b|Offices
+įstaiga|institution, office|ees-tai-GAH
+skyrius įstaigoje|department (in an office)|SKEE-ryus ees-tai-goh-YEH
+langelis|counter, window|lahn-GEH-lis
+eilė prie langelio|queue at the counter|ay-LAY prye lahn-GEH-lyoh
+valdininkas|civil servant|vahl-DI-nin-kahs
+priimamasis|reception room|pri-i-mah-MAH-sis
+darbo valandos|opening hours|DAR-boh VAH-lahn-dohs
+elektroniniai valdžios vartai|e-government portal|eh-lek-TROH-ni-nyai vahl-JYOHS VAR-tai
+mokesčių inspekcija|tax office|moh-kes-CHYOO ins-PEK-tsi-yah
+migracijos tarnyba|migration office|mig-RAH-tsi-yohs tar-NEE-bah
+#u136c|Paperwork verbs
+užpildyti formą|to fill in a form|uzh-pil-DEE-ti FOR-maa
+pateikti dokumentus|to submit documents|pah-TAYK-ti doh-ku-MEN-tus
+patvirtinti parašu|to confirm with a signature|paht-VIR-tin-ti PAH-rah-shu
+pratęsti|to extend, to renew|prah-TAYS-ti
+atnaujinti pasą|to renew a passport|aht-nau-YIN-ti PAH-saa
+deklaruoti|to declare|dek-lah-RWOH-ti
+registruoti|to register|reh-gis-TRWOH-ti
+išregistruoti|to deregister|ish-reh-gis-TRWOH-ti
+apskųsti|to appeal against|ahps-KOOS-ti
+atmesti|to turn down|aht-MES-ti
+#u136d|Paperwork problems
+klaida dokumente|a mistake in a document|klai-DAH doh-ku-men-TEH
+trūkstamas dokumentas|missing document|TROOKS-tah-mahs doh-ku-MEN-tahs
+atsisakymas|refusal|aht-si-SAH-kee-mahs
+uždelsimas|holdup|uzh-del-SI-mahs
+biurokratas|bureaucrat|byu-roh-KRAH-tahs
+popierizmas|red tape|poh-pye-RIZ-mahs
+terminas praleistas|missed deadline|TER-mi-nahs prah-LAYS-tahs
+bauda už vėlavimą|late fee|bau-DAH uzh vay-LAH-vi-maa
+skundas|complaint|SKUN-dahs
+prašymas atmestas|application rejected|PRAH-shee-mahs AHT-mes-tahs
+#u136e|Status
+pilietybė dviguba|dual citizenship|pi-lye-TEE-bay dvi-gu-BAH
+leidimas gyventi|residence permit|lay-DI-mahs gee-VEN-ti
+nuolatinis gyvenamasis|permanent resident (status)|nwoh-lah-TI-nis gee-veh-NAH-mah-sis
+deklaruota gyvenamoji vieta|registered address|dek-lah-RWOH-tah gee-veh-nah-MOH-yi vye-TAH
+šeiminė padėtis|marital status|shay-MI-nay pah-day-TIS
+vedęs|married (a man)|VEH-days
+ištekėjusi|married (a woman)|ish-teh-KAY-yu-si
+išsiskyręs|divorced|ish-si-SKEE-rays
+nevedęs|single (a man)|neh-VEH-days
+netekėjusi|single (a woman)|neh-teh-KAY-yu-si
+@u137|Vaikystė ir tėvystė|Childhood and parenting|Parenting words: <b>auklėjimas</b> (upbringing), <b>auklė</b> (nanny) and <b>vystymasis</b> (development).|Describe how parenting has changed since your grandparents’ time.
+#u137a|Upbringing
+auklėjimas|upbringing|auk-LAY-yi-mahs
+auklė|nanny|auk-LAY
+vystymasis|growing up, development|VEES-tee-mah-sis
+nėštumas|pregnancy|naysh-TU-mahs
+gimdymas|childbirth|gim-DEE-mahs
+motinystės atostogos|maternity leave|moh-ti-NEES-tays ah-TOHS-toh-gohs
+tėvystė|fatherhood|tay-VEES-tay
+vaiko priežiūra|childcare|VAI-koh pryeh-ZHYOO-rah
+lopšelis|nursery (for babies)|lohp-SHEH-lis
+vaikų darželis|kindergarten|vai-KOO dar-ZHEH-lis
+#u137b|Babies and toddlers
+vystyklai|nappies|VEES-teek-lai
+vežimėlis kūdikiui|pram|veh-zhi-MAY-lis KOO-di-kyui
+žindukas|dummy|zhin-DU-kahs
+lopšys|cradle|lohp-SHEES
+žaislas|toy|ZHAIS-lahs
+barškutis|rattle|barsh-KU-tis
+lopšinė|lullaby|lohp-SHI-nay
+pirmieji žingsniai|first steps|pir-MYEH-yi ZHINGS-nyai
+dantukai dygsta|teething|dahn-TU-kai DEEKS-tah
+mažylis|little one, toddler|mah-ZHEE-lis
+#u137c|Parenting verbs
+auginti vaikus|to raise children|au-GIN-ti vai-KUS
+žindyti|to breastfeed|zhin-DEE-ti
+migdyti|to put to sleep|mig-DEE-ti
+lepinti|to spoil|LEH-pin-ti
+bausti|to punish (in general)|BAUS-ti
+girti vaiką|to praise a child|GIR-ti VAI-kaa
+drausti|to forbid|DRAUS-ti
+leisti žaisti|to let play|LAYS-ti ZHAIS-ti
+prižiūrėti|to look after|pri-zhyoo-RAY-ti
+ugdyti|to nurture, to educate|ug-DEE-ti
+#u137d|Children’s life
+paauglystė|adolescence|pah-aug-LEES-tay
+kišenpinigiai|pocket money|ki-shen-pi-ni-GYAI
+būrelis|club, activity group|boo-REH-lis
+vasaros stovykla|summer camp|VAH-sah-rohs stoh-VEEK-lah
+gimtadienio vakarėlis|birthday party|gim-TAH-dye-nyoh vah-kah-RAY-lis
+kaprizai|tantrums|kah-PRI-zai
+nepaklusnumas|disobedience|neh-pahk-lus-NU-mahs
+paauglių maištas|teenage rebellion|pah-aug-LYOO MAISH-tahs
+draugų įtaka|peer pressure|drau-GOO EE-tah-kah
+ekrano laikas|screen time|ek-RAH-noh LAI-kahs
+#u137e|Describing children
+neklaužada|naughty child|neh-klau-ZHAH-dah
+paklusnus|obedient|pahk-lus-NUS
+išlepintas|spoilt|ish-LEH-pin-tahs
+judrus|active, lively|yud-RUS
+žingeidus|inquisitive|zhin-gay-DUS
+užsispyręs vaikas|a stubborn child|uzh-si-SPEE-rays VAI-kahs
+mandagus vaikas|a polite child|mahn-dah-GUS VAI-kahs
+savarankiškas vaikas|an independent child|sah-vah-RAHN-kish-kahs VAI-kahs
+nesuvaldomas|uncontrollable|neh-su-VAHL-doh-mahs
+miegalius|sleepyhead|mye-gah-LYUS
+@u138|Kalba apie kalbą|Talking about language|Words about language itself: <b>tarimas</b> (pronunciation), <b>kirčiavimas</b> (stress) and <b>linksniavimas</b> (declension, the case system).|Explain what is hardest for you in Lithuanian and what helps you most.
+#u138a|Grammar terms
+tarimas|pronunciation|tah-RI-mahs
+kirčiavimas|stress (in words)|kir-CHYAH-vi-mahs
+linksniavimas|declension|links-NYAH-vi-mahs
+asmenuotė|conjugation|ahs-meh-NWOH-tay
+daiktavardis|noun|daik-TAH-var-dis
+veiksmažodis|verb|vayks-MAH-zhoh-dis
+būdvardis|adjective|BOOD-var-dis
+prieveiksmis|adverb|PRYEH-vayks-mis
+įvardis|pronoun|EE-var-dis
+prielinksnis|preposition|PRYEH-links-nis
+#u138b|More language words
+galūnė|ending|gah-LOO-nay
+šaknis žodžio|root of a word|shahk-NIS ZHOH-jyoh
+priešdėlis|prefix|PRYESH-day-lis
+priesaga|suffix|PRYEH-sah-gah
+skiemuo|syllable|skye-MWOH
+balsis|vowel|BAHL-sis
+priebalsis|consonant|PRYEH-bahl-sis
+rašyba|spelling|rah-SHEE-bah
+skyryba|punctuation|skee-REE-bah
+gimtakalbis|native speaker|gim-tah-KAHL-bis
+#u138c|Learning a language
+žodynas internetinis|online dictionary|zhoh-DEE-nahs in-ter-NEH-ti-nis
+vertimas|translation|ver-TI-mahs
+vertėjas raštu|translator (written)|ver-TAY-yahs rahsh-TU
+vertėjas žodžiu|interpreter|ver-TAY-yahs zhoh-JYU
+intonacija|intonation|in-toh-NAH-tsi-yah
+sklandumas|fluency|sklahn-DU-mahs
+klaidų taisymas|correcting mistakes|klai-DOO TAI-see-mahs
+kalbų mainai|language exchange|kahl-BOO MAI-nai
+kalbos lygis|language level|kahl-BOHS LEE-gis
+žodžių atsargos|vocabulary (store of words)|zhoh-JYOO aht-SAR-gohs
+#u138d|Language verbs
+tarti aiškiai|to pronounce clearly|TAR-ti AISH-kyai
+kirčiuoti|to stress (a syllable)|kir-CHYWOH-ti
+linksniuoti|to decline (a noun)|links-NYWOH-ti
+asmenuoti|to conjugate|ahs-meh-NWOH-ti
+versti iš anglų|to translate from English|VERS-ti ish ahn-GLOO
+susikalbėti|to make yourself understood|su-si-kahl-BAY-ti
+maišyti kalbas|to mix languages|mai-SHEE-ti kahl-BAHS
+taisyti klaidas|to correct mistakes|tai-SEE-ti klai-DAHS
+paaiškinti žodį|to explain a word|pah-AISH-kin-ti ZHOH-dee
+perfrazuoti|to paraphrase|per-frah-ZWOH-ti
+#u138e|Ways of speaking
+šnekamoji kalba|spoken language|shneh-kah-MOH-yi kahl-BAH
+bendrinė kalba|standard language|ben-DRI-nay kahl-BAH
+žargonas|slang, jargon|zhar-GOH-nahs
+keiksmažodis|swear word|kayks-MAH-zhoh-dis
+mandagumo frazė|polite phrase|mahn-dah-GU-moh FRAH-zay
+frazeologizmas|idiom|frah-zeh-oh-loh-GIZ-mahs
+patarlė ir priežodis|proverb and saying|pah-tar-LAY ir PRYEH-zhoh-dis
+kreipinys|form of address|kray-pi-NEES
+mažybinė forma|diminutive form|mah-ZHEE-bi-nay FOR-mah
+tarmiškas|dialectal|TAR-mish-kahs
+@u139|Vartotojo teisės|Consumer rights|Shopping at B2: <b>vartotojo teisės</b> (consumer rights), <b>garantinis laikotarpis</b> (warranty period) and <b>prekės grąžinimas</b> (product return).|Explain your rights if something you bought online is faulty, and what you would do.
+#u139a|Rights
+vartotojo teisės|consumer rights|var-TOH-toh-yoh TAY-says
+garantinis laikotarpis|warranty period|gah-RAHN-ti-nis lai-KOH-tar-pis
+prekės grąžinimas|product return|PREH-kays graa-ZHI-ni-mahs
+pinigų grąžinimas|refund|pi-ni-GOO graa-ZHI-ni-mahs
+brokas|faulty goods|BROH-kahs
+defektas|defect|deh-FEK-tahs
+kompensavimas|compensating|kohm-pen-SAH-vi-mahs
+pretenzija|claim, complaint|preh-TEN-zi-yah
+taisymo sąnaudos|repair costs|TAI-see-moh SAA-nau-dohs
+pirkimo sąlygos|terms of sale|pir-KI-moh SAA-lee-gohs
+#u139b|Shopping 3
+akcijos kaina|sale price|AHK-tsi-yohs kai-NAH
+lojalumo kortelė|loyalty card|loh-yah-LU-moh kor-TEH-lay
+nuolaidų kuponas|discount coupon|nwoh-lai-DOO ku-POH-nahs
+išpardavimų sezonas|sales season|ish-par-dah-vi-MOO seh-ZOH-nahs
+impulsyvus pirkimas|impulse buy|im-pul-see-VUS pir-KI-mahs
+prekių ženklas|brand, trademark|PREH-kyoo ZHENK-lahs
+padirbinys|counterfeit, fake|pah-dir-bi-NEES
+pristatymo mokestis|delivery charge|pris-TAH-tee-moh MOH-kes-tis
+krepšelis internete|online basket|krep-SHEH-lis in-ter-neh-TEH
+užsakymo sekimas|order tracking|uzh-SAH-kee-moh seh-KI-mahs
+#u139c|Consumer verbs
+apsipirkinėti|to go shopping (habitually)|ahp-si-pir-ki-NAY-ti
+išsimokėtinai pirkti|to buy in instalments|ish-si-moh-kay-ti-NAI PIRK-ti
+reklamacija|complaint about faulty goods|rek-lah-MAH-tsi-yah
+pareikšti pretenziją|to make a claim|pah-RAIKSH-ti preh-TEN-zi-yaa
+pakeisti prekę|to exchange an item|pah-KAYS-ti PREH-kyay
+atsisakyti pirkimo|to cancel a purchase|aht-si-sah-KEE-ti pir-KI-moh
+lyginti kainas|to compare prices|LEE-gin-ti kai-NAHS
+taupyti pinigus|to save money|tau-PEE-ti PI-ni-gus
+švaistyti|to waste (money)|shvais-TEE-ti
+užsiprenumeruoti|to sign up for|uzh-si-preh-nu-meh-RWOH-ti
+#u139d|Describing products
+kokybiškas|high-quality|koh-KEE-bish-kahs
+nekokybiškas|poor-quality|neh-koh-KEE-bish-kahs
+sugedęs|broken, faulty|su-GEH-days
+pažeistas|damaged|pah-ZHAYS-tahs
+naudotas|used, second-hand|nau-DOH-tahs
+originalus produktas|original product|oh-ri-gi-nah-LUS proh-DUK-tahs
+madingas modelis|fashionable model|mah-DIN-gahs MOH-deh-lis
+pigus ir prastas|cheap and poor|pi-GUS ir PRAHS-tahs
+vertas savo kainos|worth its price|VER-tahs SAH-voh kai-NOHS
+ekologiškai pagamintas|eco-friendly made|eh-koh-LOH-gish-kai pah-gah-MIN-tahs
+#u139e|Consumer society
+vartotojiškumas|consumerism|var-toh-toh-yish-KU-mahs
+prekybos tinklas|retail chain|preh-KEE-bohs TINK-lahs
+mažmeninė prekyba|retail|mahzh-meh-NI-nay preh-KEE-bah
+didmeninė prekyba|wholesale|did-meh-NI-nay preh-KEE-bah
+tiekimo grandinė|supply chain|tye-KI-moh grahn-DI-nay
+gamintojas|manufacturer|gah-MIN-toh-yahs
+platintojas|distributor|PLAH-tin-toh-yahs
+vartotojų elgsena|consumer behaviour|var-toh-toh-YOO ELK-seh-nah
+pirkimo galia|purchasing power|pir-KI-moh gah-LYAH
+kainų kilimas|price rise|kai-NOO ki-LI-mahs
+@u140|Transportas ir infrastruktūra|Transport and infrastructure|Getting around at B2: <b>infrastruktūra</b> (infrastructure), <b>estakada</b> (elevated road) and <b>aplinkkelis</b> (bypass).|Describe the transport in your town: what works well, what doesn’t, and one thing you would build.
+#u140a|Roads
+infrastruktūra|infrastructure|in-frahs-truk-TOO-rah
+reguliuojama sankryža|controlled junction|reh-gu-LYWOH-yah-mah sahn-kree-ZHAH
+aplinkkelis|bypass|ah-PLINK-keh-lis
+magistralė|main road, highway|mah-gis-TRAH-lay
+estakada|elevated road|es-tah-KAH-dah
+pėsčiųjų perėja su šviesoforu|pelican crossing|pays-CHYOO-yoo PEH-ray-yah su shvye-soh-FOH-ru
+kelkraštis|roadside, hard shoulder|kel-KRAHSH-tis
+skiriamoji juosta|central reservation|ski-ryah-MOH-yi ywos-TAH
+kelio remontas|roadworks|KYAH-lyoh reh-MOHN-tahs
+apvažiavimas|detour|ahp-vah-zhyah-VI-mahs
+#u140b|Public transport 2
+greitasis traukinys|express train|gray-TAH-sis trau-ki-NEES
+elektrinis autobusas|electric bus|eh-LEK-tri-nis au-toh-BU-sahs
+stotelių tinklas|network of stops|stoh-teh-LYOO TINK-lahs
+persėdimo stotis|interchange|per-say-DI-moh stoh-TIS
+bilietų automatas|ticket machine|bi-lye-TOO au-toh-MAH-tahs
+eismo tvarkaraštis|transport timetable|AYS-moh tvar-KAH-rahsh-tis
+piko valandos|rush hour|PI-koh VAH-lahn-dohs
+keleivių srautas|passenger flow|keh-lay-VYOO SRAU-tahs
+dalijimosi automobiliai|car sharing|dah-li-YI-moh-si au-toh-moh-BI-lyai
+paspirtukas|scooter|pahs-pir-TU-kahs
+#u140c|Driving
+vairavimo egzaminas|driving test|vai-rah-VI-moh eg-ZAH-mi-nahs
+saugos diržas|seat belt|sau-GOHS DIR-zhahs
+stovėjimo bilietas|parking ticket|stoh-VAY-yi-moh BI-lye-tahs
+greičio matuoklis|speed camera|GRAY-chyoh mah-TWOHK-lis
+alkotesteris|breathalyser|ahl-koh-TES-teh-ris
+techninė apžiūra automobiliui|car inspection|TEKH-ni-nay ahp-zhyoo-RAH au-toh-moh-BI-lyui
+draudimas automobiliui|car insurance|drau-DI-mahs au-toh-moh-BI-lyui
+padanga|tyre|pah-dahn-GAH
+variklis|engine|vah-RIK-lis
+bagažinė|boot (of a car)|bah-gah-ZHI-nay
+#u140d|Transport verbs
+vairuoti atsargiai|to drive carefully|vai-RWOH-ti aht-sar-GYAI
+apvažiuoti|to drive around|ahp-vah-ZHYWOH-ti
+sustoti pakelėje|to stop by the roadside|sus-TOH-ti pah-keh-LAY-yeh
+pasukti į kairę|to turn left|pah-SUK-ti ee KAI-ryay
+duoti kelią|to give way|DWOH-ti KYAH-lyaa
+viršyti greitį|to speed|vir-SHEE-ti GRAY-tee
+įstrigti|to get stuck|ees-TRIK-ti
+užvesti variklį|to start the engine|uzh-VES-ti vah-RIK-lee
+išjungti variklį|to switch off the engine|ish-YUNK-ti vah-RIK-lee
+užpilti degalų|to fill up with fuel|uzh-PIL-ti deh-gah-LOO
+#u140e|Transport problems
+kelių policija|traffic police|keh-LYOO poh-LI-tsi-yah
+eismo srautas|traffic flow|AYS-moh SRAU-tahs
+gedimas kelyje|breakdown on the road|geh-DI-mahs keh-lee-YEH
+susidūrimas|collision|su-si-doo-RI-mahs
+pėsčiojo partrenkimas|pedestrian accident|pays-CHYOH-yoh par-tren-KI-mahs
+girtas vairuotojas|drunk driver|GIR-tahs vai-RWOH-toh-yahs
+nuleista padanga|flat tyre|nu-LAYS-tah pah-dahn-GAH
+akligatvis|dead end|ahk-li-GAHT-vis
+transporto streikas|transport strike|trahns-POR-toh STRAY-kahs
+atšauktas reisas|cancelled service|aht-SHAUK-tahs RAY-sahs
+@u141|Laiko planavimas|Planning your time|Planning at B2: <b>prioritetas</b> (priority), <b>darbotvarkė</b> you know, and <b>atidėliojimas</b> (procrastination).|Describe how you plan a busy week and what you do when plans fall apart.
+#u141a|Planning
+prioritetas|priority (the noun)|pri-oh-ri-TEH-tahs
+atidėliojimas|procrastination|ah-ti-day-lyoh-YI-mahs
+planavimas|planning|plah-NAH-vi-mahs
+tvarkaraščio sudarymas|scheduling|tvar-kah-RAHSH-chyoh su-DAH-ree-mahs
+užduočių sąrašas|to-do list|uzh-dwoh-CHYOO SAA-rah-shahs
+priminimas|reminder|pri-mi-NI-mahs
+etapas|stage, phase|eh-TAH-pahs
+tikslų nustatymas|goal setting|tiks-LOO nus-TAH-tee-mahs
+laiko valdymas|time management|LAI-koh VAHL-dee-mahs
+efektyvumas|efficiency|eh-fek-tee-VU-mahs
+#u141b|Time pressure
+skuba|rush, haste|sku-BAH
+spaudimas|pressure|spau-DI-mahs
+paskutinė minutė|the last minute|pahs-ku-TI-nay mi-NU-tay
+laiko trūkumas|lack of time|LAI-koh TROO-ku-mahs
+pervargimas|exhaustion|per-var-GI-mahs
+daugiaužduotiškumas|multitasking|dau-gyau-zhdwoh-tish-KU-mahs
+trukdžiai|distractions|truk-JYAI
+pertraukėlė|short break|per-trau-KAY-lay
+laisva diena|a free day|lais-VAH dyeh-NAH
+poilsio laikas|rest time|POY-l-syoh LAI-kahs
+#u141c|Planning verbs
+suplanuoti savaitę|to plan the week|su-plah-NWOH-ti sah-VAI-tyay
+nustatyti prioritetus|to set priorities|nus-tah-TEE-ti pri-oh-ri-TEH-tus
+paskirstyti laiką|to divide up your time|pahs-kirs-TEE-ti LAI-kaa
+suspėti|to manage in time|sus-PAY-ti
+nespėti|to not make it in time|neh-SPAY-ti
+vėluoti su darbu|to be behind with work|vay-LWOH-ti su dar-BU
+pasivyti|to catch up|pah-si-VEE-ti
+išbraukti|to cross out|ish-BRAUK-ti
+pažymėti kalendoriuje|to mark in the calendar|pah-zhee-MAY-ti kah-len-DOH-ryu-yeh
+susitarti dėl laiko|to agree on a time|su-si-TAR-ti dayl LAI-koh
+#u141d|Time words 4
+artimiausiu metu|in the near future|ar-ti-MYAU-syu meh-TU
+nedelsiant|without delay|neh-DEL-syahnt
+paskubomis|hastily|pahs-ku-boh-MIS
+iš anksto susitarus|by prior arrangement|ish AHNKS-toh su-si-TAH-rus
+laiku ir tiksliai|on time and accurately|lai-KU ir tiks-LYAI
+per vėlai|too late|per vay-LAI
+per anksti|too early|per ahnks-TI
+kas savaitę|every week|kahs sah-VAI-tyay
+kartas nuo karto|now and again|KAR-tahs nwoh KAR-toh
+ilgalaikėje perspektyvoje|in the long run|il-gah-LAI-kay-yeh pers-pek-tee-voh-YEH
+#u141e|Describing plans
+realus planas|a realistic plan|reh-ah-LUS PLAH-nahs
+ambicingas tikslas|an ambitious goal|ahm-bi-TSIN-gahs TIKS-lahs
+įtemptas grafikas|a tight schedule|EE-temp-tahs GRAH-fi-kahs
+lankstus planas|a flexible plan|lahnks-TUS PLAH-nahs
+neįgyvendinamas|unachievable|neh-ee-gee-VEN-di-nah-mahs
+skubus|urgent|sku-BUS
+neatidėliotinas|that cannot wait|neh-ah-ti-day-LYOH-ti-nahs
+savaitinis|weekly|sah-vai-TI-nis
+mėnesinis planas|monthly plan|may-neh-SI-nis PLAH-nahs
+kasdienis įprotis|a daily habit|kahs-DYEH-nis EEP-roh-tis

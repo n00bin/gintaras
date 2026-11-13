@@ -1,0 +1,18 @@
+{
+  "id": "cook-chef",
+  "word": "virėjas",
+  "en": "cook / chef",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning cook / chef. Match attached reference STYLE only: rounded flat geometric cartoons, large expressive white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details, no black perimeter outlines. Subject: ONE adult male chef with a tall white chef's hat and white double-breasted jacket, navy trousers and cream shoes. Holding a wooden spoon and a simple turquoise cooking pot with lid lifted slightly. Friendly confident expression. No kitchen backdrop, labels or food mess. Complete centered composition with generous transparent margins and clear silhouettes at 56px. Zero alpha outside shapes and opaque interiors. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/cook-chef.png",
+  "asset": "pics/art-v2/cook-chef.webp",
+  "bytes": 38450,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "cook-chef-v2",
+  "revision_reason": "Chef has three hands: one holds spoon, one lifts lid and one supports pot. Depict exactly TWO arms and TWO hands. Remove the pot and lid entirely. One hand holds a wooden spoon and the other rests on the hip. Keep chef hat and jacket."
+}

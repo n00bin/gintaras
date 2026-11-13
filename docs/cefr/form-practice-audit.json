@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "scope": "Prepared-source form practice, not an independent writing test",
+  "languages": {
+    "lt": [
+      {
+        "unitId": "A1",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "570bf3b7f99e87200caa5f6dfc12c8704bc16ec7cf407e5811dd7fe85135f283",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      },
+      {
+        "unitId": "A1-travel",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "4390bc6bcecade849c4df21e50757c572667360f19fe594f584ca8cb9e08254d",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      },
+      {
+        "unitId": "A2-services",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "6f893fa57e16c1438993f54e66fc29fcda75f99846b82b86e62f4df36e269b06",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      }
+    ],
+    "es": [
+      {
+        "unitId": "A1",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "da0739a66c90e4b7c1a5dd95eab9fbc16b2cf65cb53206949b2eee5511e4c909",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      },
+      {
+        "unitId": "A1-travel",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "5d9d449ec4f5984d5b9c691b445304b817b18a6898ad22da609b57517cb72e3d",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      },
+      {
+        "unitId": "A2-services",
+        "forms": 2,
+        "labelsTaught": 3,
+        "valuesExplicitlyPrepared": 6,
+        "hash": "145f34b968be0c79dceeff4e5431c07f10aed370184b15acec8e17b7eeecb68b",
+        "sourceBinding": "current prepared reading and message",
+        "independentAssessment": false
+      }
+    ]
+  }
+}

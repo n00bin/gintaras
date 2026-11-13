@@ -1,0 +1,16 @@
+{
+  "id": "frog",
+  "word": "varlė",
+  "en": "frog",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration of ONE animal ONLY matching attached reference rounded flat cartoon, huge friendly white oval eyes, chunky geometric solid-colour shapes, minimal details, almost no outlines. Whole animal fully visible with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No person, clothes, props, scenery, lettering, logo, gradients, texture, glow or shadows. Subject: one friendly green FROG sitting front three-quarter view. Bright leaf-green squat body, cream belly, two bulging white oval eyes on top of head, wide simple smiling mouth, two small front limbs with rounded toes and two large folded hind legs with broad webbed feet. Four limbs total, no tail. No lily pad.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/frog.png",
+  "asset": "pics/art-v2/frog.webp",
+  "bytes": 28964,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

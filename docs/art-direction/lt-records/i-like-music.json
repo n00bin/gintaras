@@ -1,0 +1,17 @@
+{
+  "id": "i-like-music",
+  "word": "Man patinka muzika",
+  "en": "I like music",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I like music. Reference 1 governs rounded flat cartoon STYLE: big white oval eyes when people present, chunky simple shapes, bright opaque solid colours and minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas enjoying MUSIC through turquoise over-ear headphones, eyes bright and happy, one hand giving a thumbs-up, other gently touching a headphone. Two small navy musical notes and one coral heart beside his head show he LIKES music. No phone, player, text or stage. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors, clean crisp edges and zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-like-music.png",
+  "asset": "pics/art-v2/i-like-music.webp",
+  "bytes": 35798,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "i-will-be",
+  "word": "Aš būsiu",
+  "en": "I will be",
+  "unit": "u34",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I will be. Reference 1 governs rounded geometric flat cartoon STYLE, large white oval eyes, chunky shapes and hands, bright opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas points to himself with one hand and gestures toward a single future calendar with the other. A crisp coral arrow moves RIGHT from Tomas to the calendar, whose plain cream page contains one small simplified portrait of the SAME Tomas. One tiny amber sun at the calendar top conveys a future day. No letters, numbers, job uniforms or fixed destination. Meaning I WILL BE, future self. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-will-be.png",
+  "asset": "pics/art-v2/i-will-be.webp",
+  "bytes": 29342,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

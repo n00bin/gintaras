@@ -1,0 +1,17 @@
+{
+  "id": "cheerful",
+  "word": "linksmas",
+  "en": "cheerful",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration meaning CHEERFUL. Image 1 is the approved flat cartoon STYLE; any image 2 is the named CHARACTER IDENTITY reference. Rounded geometric flat shapes, oversized expressive heads, white oval eyes, chunky hands, bright solid colours, sparse darker interior shapes, no black perimeter outlines. Tomas from reference 2 is CHEERFUL: huge warm open smile, delighted bright eyes, relaxed shoulders and hands lifted happily. Preserve his short brown wavy hair, amber sweatshirt, navy trousers, cream shoes, skin tone and friendly oversized head. Show his complete body and three small crisp amber excitement marks, no other objects. Complete centered composition, 12% empty transparent margin on each side, readable at 56px. Every object interior fully opaque; zero alpha immediately outside clean edges. No background, floor, disc, lettering, logos, gradient, texture, glow, blur, fog, ground shadow or extra scenery.",
+  "master": "docs/art-direction/masters/cheerful.png",
+  "asset": "pics/art-v2/cheerful.webp",
+  "bytes": 29058,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

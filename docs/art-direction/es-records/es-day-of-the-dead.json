@@ -1,0 +1,15 @@
+{
+  "id": "es-day-of-the-dead",
+  "word": "el Día de Muertos",
+  "en": "the Day of the Dead",
+  "unit": "u12",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: DAY OF THE DEAD: a small cheerful ofrenda arrangement: a white sugar skull decorated with coral, turquoise and amber flowers, bright orange marigold flowers, one lit cream candle with a small flame, and a round pan de muerto bread with bone-shaped decoration. Friendly, not scary.",
+  "master": "docs/art-direction/masters/es-day-of-the-dead.png",
+  "asset": "pics/art-v2/es-day-of-the-dead.webp",
+  "bytes": 37288,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

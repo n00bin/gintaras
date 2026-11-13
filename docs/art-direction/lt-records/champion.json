@@ -1,0 +1,17 @@
+{
+  "id": "champion",
+  "word": "čempionas",
+  "en": "champion",
+  "unit": "u0",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached reference rounded flat cartoon, chunky solid shapes, huge white oval eyes for person, warm turquoise/amber/coral/navy/cream palette, minimal details, almost no outlines. Complete unclipped subject with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No words, logos, texture, gradients, glow, shadow or backdrop. Subject: CHAMPION, a victorious male athlete, Tomas as fixed by reference 2 wavy brown hair amber sweatshirt navy trousers cream shoes. Tomas proudly holds ONE golden trophy with two handles in both hands at chest height. A navy ribbon around his neck holds a round gold medal. Happy triumphant expression and two coral celebration marks. Two arms, two hands only. No podium or digits.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/champion.png",
+  "asset": "pics/art-v2/champion.webp",
+  "bytes": 32358,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

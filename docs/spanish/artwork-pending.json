@@ -1,0 +1,1686 @@
+{
+  "priority": "Lithuanian artwork completed and live in 3.119. Continue Spanish in the approved shared style; preserve intentional text tiles and all course content.",
+  "jobs": [
+    {
+      "id": "u22a-1:0",
+      "word": "soy",
+      "en": "I am (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22a-1:1",
+      "word": "eres",
+      "en": "you are (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22a-1:2",
+      "word": "es",
+      "en": "he / she / it is (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22a-1:3",
+      "word": "somos",
+      "en": "we are (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22a-1:4",
+      "word": "son",
+      "en": "they / you all are (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22b-1:0",
+      "word": "estoy",
+      "en": "I am (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22b-1:1",
+      "word": "estás",
+      "en": "you are (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22b-1:2",
+      "word": "está",
+      "en": "he / she / it is (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22b-1:3",
+      "word": "estamos",
+      "en": "we are (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22b-1:4",
+      "word": "están",
+      "en": "they / you all are (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22c-1:0",
+      "word": "aquí",
+      "en": "here",
+      "unit": "u22"
+    },
+    {
+      "id": "u22c-1:1",
+      "word": "allá",
+      "en": "over there",
+      "unit": "u22"
+    },
+    {
+      "id": "u22c-1:4",
+      "word": "¿Dónde estás?",
+      "en": "Where are you?",
+      "unit": "u22"
+    },
+    {
+      "id": "u22d-1:0",
+      "word": "¿Eres estudiante?",
+      "en": "Are you a student?",
+      "unit": "u22"
+    },
+    {
+      "id": "u22d-1:1",
+      "word": "Ella es mexicana",
+      "en": "She is Mexican",
+      "unit": "u22"
+    },
+    {
+      "id": "u22d-1:2",
+      "word": "Somos amigos",
+      "en": "We are friends",
+      "unit": "u22"
+    },
+    {
+      "id": "u22d-1:3",
+      "word": "Estoy en México",
+      "en": "I am in Mexico",
+      "unit": "u22"
+    },
+    {
+      "id": "u22d-1:4",
+      "word": "¿Están aquí?",
+      "en": "Are they here?",
+      "unit": "u22"
+    },
+    {
+      "id": "u22e-1:0",
+      "word": "ser",
+      "en": "to be (identity)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22e-1:1",
+      "word": "estar",
+      "en": "to be (state or location)",
+      "unit": "u22"
+    },
+    {
+      "id": "u22e-1:2",
+      "word": "Estoy aquí",
+      "en": "I am here",
+      "unit": "u22"
+    },
+    {
+      "id": "u22e-1:3",
+      "word": "¿Somos amigos?",
+      "en": "Are we friends?",
+      "unit": "u22"
+    },
+    {
+      "id": "u22e-1:4",
+      "word": "¿Es de México?",
+      "en": "Is he / she from Mexico?",
+      "unit": "u22"
+    },
+    {
+      "id": "u23a-1:1",
+      "word": "hablas",
+      "en": "you speak",
+      "unit": "u23"
+    },
+    {
+      "id": "u23a-1:3",
+      "word": "trabajas",
+      "en": "you work",
+      "unit": "u23"
+    },
+    {
+      "id": "u23a-1:4",
+      "word": "Trabajo aquí",
+      "en": "I work here",
+      "unit": "u23"
+    },
+    {
+      "id": "u23b-1:2",
+      "word": "comes",
+      "en": "you eat",
+      "unit": "u23"
+    },
+    {
+      "id": "u23c-1:0",
+      "word": "vivir",
+      "en": "to live",
+      "unit": "u23"
+    },
+    {
+      "id": "u23c-1:1",
+      "word": "vives",
+      "en": "you live",
+      "unit": "u23"
+    },
+    {
+      "id": "u23c-1:4",
+      "word": "No trabajo aquí",
+      "en": "I do not work here",
+      "unit": "u23"
+    },
+    {
+      "id": "u23d-1:0",
+      "word": "hablamos",
+      "en": "we speak",
+      "unit": "u23"
+    },
+    {
+      "id": "u23d-1:1",
+      "word": "comemos",
+      "en": "we eat",
+      "unit": "u23"
+    },
+    {
+      "id": "u23d-1:2",
+      "word": "vivimos",
+      "en": "we live",
+      "unit": "u23"
+    },
+    {
+      "id": "u23d-1:3",
+      "word": "Aprendemos español",
+      "en": "We learn Spanish",
+      "unit": "u23"
+    },
+    {
+      "id": "u23d-1:4",
+      "word": "No hablo inglés",
+      "en": "I do not speak English",
+      "unit": "u23"
+    },
+    {
+      "id": "u23e-1:0",
+      "word": "habla",
+      "en": "he / she speaks",
+      "unit": "u23"
+    },
+    {
+      "id": "u23e-1:1",
+      "word": "trabaja",
+      "en": "he / she works",
+      "unit": "u23"
+    },
+    {
+      "id": "u23e-1:2",
+      "word": "come",
+      "en": "he / she eats",
+      "unit": "u23"
+    },
+    {
+      "id": "u23e-1:3",
+      "word": "vive",
+      "en": "he / she lives",
+      "unit": "u23"
+    },
+    {
+      "id": "u23e-1:4",
+      "word": "Vivo aquí",
+      "en": "I live here",
+      "unit": "u23"
+    },
+    {
+      "id": "u23f-1:0",
+      "word": "hablan",
+      "en": "they / you all speak",
+      "unit": "u23"
+    },
+    {
+      "id": "u23f-1:1",
+      "word": "trabajan",
+      "en": "they / you all work",
+      "unit": "u23"
+    },
+    {
+      "id": "u23f-1:2",
+      "word": "bebes",
+      "en": "you drink",
+      "unit": "u23"
+    },
+    {
+      "id": "u23f-1:3",
+      "word": "bebe",
+      "en": "he / she drinks",
+      "unit": "u23"
+    },
+    {
+      "id": "u23f-1:4",
+      "word": "beben",
+      "en": "they / you all drink",
+      "unit": "u23"
+    },
+    {
+      "id": "u24a-1:0",
+      "word": "qué",
+      "en": "what",
+      "unit": "u24"
+    },
+    {
+      "id": "u24a-1:1",
+      "word": "quién",
+      "en": "who",
+      "unit": "u24"
+    },
+    {
+      "id": "u24a-1:4",
+      "word": "por qué",
+      "en": "why",
+      "unit": "u24"
+    },
+    {
+      "id": "u24b-1:1",
+      "word": "cuánto",
+      "en": "how much",
+      "unit": "u24"
+    },
+    {
+      "id": "u24b-1:2",
+      "word": "cuál",
+      "en": "which one",
+      "unit": "u24"
+    },
+    {
+      "id": "u24b-1:3",
+      "word": "¿Qué es?",
+      "en": "What is it?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24b-1:4",
+      "word": "¿Quién es?",
+      "en": "Who is it?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24c-1:0",
+      "word": "¿Dónde vives?",
+      "en": "Where do you live?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24c-1:2",
+      "word": "¿Cuándo trabajas?",
+      "en": "When do you work?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24c-1:3",
+      "word": "¿Por qué aprendes español?",
+      "en": "Why do you learn Spanish?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24c-1:4",
+      "word": "¿Cómo se llama?",
+      "en": "What is his / her name?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24d-1:3",
+      "word": "¿Dónde está el libro?",
+      "en": "Where is the book?",
+      "unit": "u24"
+    },
+    {
+      "id": "u24d-1:4",
+      "word": "¿Qué significa?",
+      "en": "What does it mean?",
+      "unit": "u24"
+    },
+    {
+      "id": "u25a-1:1",
+      "word": "Estados Unidos",
+      "en": "the United States",
+      "unit": "u25"
+    },
+    {
+      "id": "u25a-1:2",
+      "word": "Soy de México",
+      "en": "I am from Mexico",
+      "unit": "u25"
+    },
+    {
+      "id": "u25a-1:4",
+      "word": "Vivo en México",
+      "en": "I live in Mexico",
+      "unit": "u25"
+    },
+    {
+      "id": "u25b-1:0",
+      "word": "tengo",
+      "en": "I have",
+      "unit": "u25"
+    },
+    {
+      "id": "u25b-1:1",
+      "word": "tienes",
+      "en": "you have",
+      "unit": "u25"
+    },
+    {
+      "id": "u25b-1:3",
+      "word": "quieres",
+      "en": "you want",
+      "unit": "u25"
+    },
+    {
+      "id": "u25b-1:4",
+      "word": "necesito",
+      "en": "I need",
+      "unit": "u25"
+    },
+    {
+      "id": "u25c-1:3",
+      "word": "Soy de aquí",
+      "en": "I am from here",
+      "unit": "u25"
+    },
+    {
+      "id": "u25c-1:4",
+      "word": "Trabajo en México",
+      "en": "I work in Mexico",
+      "unit": "u25"
+    },
+    {
+      "id": "u25d-1:3",
+      "word": "Necesito un libro",
+      "en": "I need a book",
+      "unit": "u25"
+    },
+    {
+      "id": "u2d-1:4",
+      "word": "Tengo veinte años",
+      "en": "I am twenty years old",
+      "unit": "u2"
+    },
+    {
+      "id": "u2g-1:3",
+      "word": "treinta y uno",
+      "en": "thirty-one",
+      "unit": "u2"
+    },
+    {
+      "id": "u2g-1:4",
+      "word": "ciento uno",
+      "en": "one hundred and one",
+      "unit": "u2"
+    },
+    {
+      "id": "u5b-1:4",
+      "word": "el fin de semana",
+      "en": "the weekend",
+      "unit": "u5"
+    },
+    {
+      "id": "u5c-1:0",
+      "word": "¿Qué hora es?",
+      "en": "What time is it?",
+      "unit": "u5"
+    },
+    {
+      "id": "u5c-1:1",
+      "word": "Es la una",
+      "en": "It is one o'clock",
+      "unit": "u5"
+    },
+    {
+      "id": "u5c-1:2",
+      "word": "Son las dos",
+      "en": "It is two o'clock",
+      "unit": "u5"
+    },
+    {
+      "id": "u5c-1:3",
+      "word": "Son las tres y media",
+      "en": "It is half past three",
+      "unit": "u5"
+    },
+    {
+      "id": "u5d-1:1",
+      "word": "por la tarde",
+      "en": "in the afternoon",
+      "unit": "u5"
+    },
+    {
+      "id": "u26b-1:0",
+      "word": "salgo",
+      "en": "I go out",
+      "unit": "u26"
+    },
+    {
+      "id": "u26b-1:1",
+      "word": "Voy al trabajo",
+      "en": "I go to work",
+      "unit": "u26"
+    },
+    {
+      "id": "u26b-1:3",
+      "word": "descanso",
+      "en": "I rest",
+      "unit": "u26"
+    },
+    {
+      "id": "u26c-1:3",
+      "word": "todos los días",
+      "en": "every day",
+      "unit": "u26"
+    },
+    {
+      "id": "u26c-1:4",
+      "word": "después",
+      "en": "afterwards",
+      "unit": "u26"
+    },
+    {
+      "id": "u26d-1:1",
+      "word": "Desayuno a las ocho",
+      "en": "I eat breakfast at eight",
+      "unit": "u26"
+    },
+    {
+      "id": "u26d-1:2",
+      "word": "Trabajo por la mañana",
+      "en": "I work in the morning",
+      "unit": "u26"
+    },
+    {
+      "id": "u26d-1:3",
+      "word": "Después descanso",
+      "en": "Afterwards I rest",
+      "unit": "u26"
+    },
+    {
+      "id": "u26d-1:4",
+      "word": "Me acuesto tarde",
+      "en": "I go to bed late",
+      "unit": "u26"
+    },
+    {
+      "id": "u26e-1:1",
+      "word": "¿Desayunas a las ocho?",
+      "en": "Do you eat breakfast at eight?",
+      "unit": "u26"
+    },
+    {
+      "id": "u26e-1:2",
+      "word": "¿Duermes bien?",
+      "en": "Do you sleep well?",
+      "unit": "u26"
+    },
+    {
+      "id": "u26e-1:3",
+      "word": "¿A qué hora te acuestas?",
+      "en": "What time do you go to bed?",
+      "unit": "u26"
+    },
+    {
+      "id": "u15b-1:2",
+      "word": "sin azúcar",
+      "en": "without sugar",
+      "unit": "u15"
+    },
+    {
+      "id": "u4c-1:0",
+      "word": "cerca",
+      "en": "nearby",
+      "unit": "u4"
+    },
+    {
+      "id": "u4c-1:2",
+      "word": "al lado de",
+      "en": "next to",
+      "unit": "u4"
+    },
+    {
+      "id": "u4c-1:3",
+      "word": "frente a",
+      "en": "opposite",
+      "unit": "u4"
+    },
+    {
+      "id": "u4d-1:0",
+      "word": "voy",
+      "en": "I go",
+      "unit": "u4"
+    },
+    {
+      "id": "u4d-1:1",
+      "word": "vas",
+      "en": "you go",
+      "unit": "u4"
+    },
+    {
+      "id": "u14c-1:1",
+      "word": "El banco está cerca",
+      "en": "The bank is nearby",
+      "unit": "u14"
+    },
+    {
+      "id": "u14c-1:3",
+      "word": "Está al lado del banco",
+      "en": "It is next to the bank",
+      "unit": "u14"
+    },
+    {
+      "id": "u14d-1:1",
+      "word": "¿Está cerca?",
+      "en": "Is it nearby?",
+      "unit": "u14"
+    },
+    {
+      "id": "u14d-1:4",
+      "word": "Ya veo",
+      "en": "I see now",
+      "unit": "u14"
+    },
+    {
+      "id": "u16b-1:0",
+      "word": "este",
+      "en": "this one (masculine)",
+      "unit": "u16"
+    },
+    {
+      "id": "u16b-1:1",
+      "word": "esta",
+      "en": "this one (feminine)",
+      "unit": "u16"
+    },
+    {
+      "id": "u16b-1:2",
+      "word": "ese",
+      "en": "that one (masculine)",
+      "unit": "u16"
+    },
+    {
+      "id": "u16b-1:3",
+      "word": "esa",
+      "en": "that one (feminine)",
+      "unit": "u16"
+    },
+    {
+      "id": "u16b-1:4",
+      "word": "otro",
+      "en": "another (masculine)",
+      "unit": "u16"
+    },
+    {
+      "id": "u16c-1:4",
+      "word": "Es muy caro",
+      "en": "It is very expensive",
+      "unit": "u16"
+    },
+    {
+      "id": "u16d-1:0",
+      "word": "¿Tiene cambio?",
+      "en": "Do you have change?",
+      "unit": "u16"
+    },
+    {
+      "id": "u16d-1:2",
+      "word": "No necesito bolsa",
+      "en": "I do not need a bag",
+      "unit": "u16"
+    },
+    {
+      "id": "u16d-1:3",
+      "word": "Me llevo este",
+      "en": "I will take this one",
+      "unit": "u16"
+    },
+    {
+      "id": "u16d-1:4",
+      "word": "¿Tiene otro?",
+      "en": "Do you have another one?",
+      "unit": "u16"
+    },
+    {
+      "id": "u28c-1:2",
+      "word": "la talla",
+      "en": "the clothing size",
+      "unit": "u28"
+    },
+    {
+      "id": "u28c-1:3",
+      "word": "Me queda bien",
+      "en": "It fits me well",
+      "unit": "u28"
+    },
+    {
+      "id": "u28d-1:0",
+      "word": "una camisa roja",
+      "en": "a red shirt",
+      "unit": "u28"
+    },
+    {
+      "id": "u28d-1:1",
+      "word": "una chamarra azul",
+      "en": "a blue jacket",
+      "unit": "u28"
+    },
+    {
+      "id": "u28d-1:2",
+      "word": "zapatos negros",
+      "en": "black shoes",
+      "unit": "u28"
+    },
+    {
+      "id": "u28d-1:3",
+      "word": "¿Me la puedo probar?",
+      "en": "Can I try it on? (the jacket)",
+      "unit": "u28"
+    },
+    {
+      "id": "u28d-1:4",
+      "word": "Quiero una talla más grande",
+      "en": "I want a larger size",
+      "unit": "u28"
+    },
+    {
+      "id": "u28e-1:0",
+      "word": "¿Te queda bien?",
+      "en": "Does it fit you well?",
+      "unit": "u28"
+    },
+    {
+      "id": "u28e-1:1",
+      "word": "¿Quieres una talla más pequeña?",
+      "en": "Do you want a smaller size?",
+      "unit": "u28"
+    },
+    {
+      "id": "u28e-1:2",
+      "word": "¿La quiere en azul?",
+      "en": "Would you like it in blue? (polite)",
+      "unit": "u28"
+    },
+    {
+      "id": "u6c-1:2",
+      "word": "mis hijos",
+      "en": "my children",
+      "unit": "u6"
+    },
+    {
+      "id": "u6c-1:4",
+      "word": "No tengo hermanos",
+      "en": "I have no siblings",
+      "unit": "u6"
+    },
+    {
+      "id": "u6d-1:3",
+      "word": "Tengo dos hijos",
+      "en": "I have two children",
+      "unit": "u6"
+    },
+    {
+      "id": "u30c-1:0",
+      "word": "hay",
+      "en": "there is / there are",
+      "unit": "u30"
+    },
+    {
+      "id": "u30c-1:3",
+      "word": "No hay agua",
+      "en": "There is no water",
+      "unit": "u30"
+    },
+    {
+      "id": "u29b-1:3",
+      "word": "bueno",
+      "en": "good",
+      "unit": "u29"
+    },
+    {
+      "id": "u29d-1:0",
+      "word": "más grande que",
+      "en": "bigger than",
+      "unit": "u29"
+    },
+    {
+      "id": "u29d-1:1",
+      "word": "menos caro",
+      "en": "less expensive",
+      "unit": "u29"
+    },
+    {
+      "id": "u29d-1:2",
+      "word": "mejor",
+      "en": "better",
+      "unit": "u29"
+    },
+    {
+      "id": "u29d-1:3",
+      "word": "peor",
+      "en": "worse",
+      "unit": "u29"
+    },
+    {
+      "id": "u29d-1:4",
+      "word": "Este es más barato",
+      "en": "This one is cheaper",
+      "unit": "u29"
+    },
+    {
+      "id": "u9d-1:0",
+      "word": "¿Cómo te sientes?",
+      "en": "How do you feel?",
+      "unit": "u9"
+    },
+    {
+      "id": "u9d-1:1",
+      "word": "Me siento bien",
+      "en": "I feel well",
+      "unit": "u9"
+    },
+    {
+      "id": "u9d-1:2",
+      "word": "Estoy mejor",
+      "en": "I am feeling better",
+      "unit": "u9"
+    },
+    {
+      "id": "u9d-1:3",
+      "word": "Necesito descansar",
+      "en": "I need to rest",
+      "unit": "u9"
+    },
+    {
+      "id": "u31d-1:0",
+      "word": "estudiar",
+      "en": "to study",
+      "unit": "u31"
+    },
+    {
+      "id": "u31d-1:1",
+      "word": "estudio",
+      "en": "I study",
+      "unit": "u31"
+    },
+    {
+      "id": "u31d-1:2",
+      "word": "empiezo",
+      "en": "I start",
+      "unit": "u31"
+    },
+    {
+      "id": "u31d-1:3",
+      "word": "termino",
+      "en": "I finish",
+      "unit": "u31"
+    },
+    {
+      "id": "u31e-1:0",
+      "word": "¿Cuándo terminas?",
+      "en": "When do you finish?",
+      "unit": "u31"
+    },
+    {
+      "id": "u31e-1:1",
+      "word": "¿Dónde estudias?",
+      "en": "Where do you study?",
+      "unit": "u31"
+    },
+    {
+      "id": "u31e-1:2",
+      "word": "¿A qué hora empiezas?",
+      "en": "What time do you start?",
+      "unit": "u31"
+    },
+    {
+      "id": "u31e-1:3",
+      "word": "Trabajo desde casa",
+      "en": "I work from home",
+      "unit": "u31"
+    },
+    {
+      "id": "u31e-1:4",
+      "word": "No trabajo los domingos",
+      "en": "I do not work on Sundays",
+      "unit": "u31"
+    },
+    {
+      "id": "u8c-1:4",
+      "word": "No me gusta bailar",
+      "en": "I do not like dancing",
+      "unit": "u8"
+    },
+    {
+      "id": "u8d-1:1",
+      "word": "Sí, me gusta",
+      "en": "Yes, I like it",
+      "unit": "u8"
+    },
+    {
+      "id": "u8d-1:2",
+      "word": "A mí también",
+      "en": "I do too",
+      "unit": "u8"
+    },
+    {
+      "id": "u8d-1:3",
+      "word": "A mí no",
+      "en": "I do not (in contrast)",
+      "unit": "u8"
+    },
+    {
+      "id": "u32a-1:0",
+      "word": "puedo",
+      "en": "I can",
+      "unit": "u32"
+    },
+    {
+      "id": "u32a-1:1",
+      "word": "puedes",
+      "en": "you can",
+      "unit": "u32"
+    },
+    {
+      "id": "u32a-1:2",
+      "word": "podemos",
+      "en": "we can",
+      "unit": "u32"
+    },
+    {
+      "id": "u32a-1:3",
+      "word": "Puedo hablar español",
+      "en": "I can speak Spanish",
+      "unit": "u32"
+    },
+    {
+      "id": "u32a-1:4",
+      "word": "No puedo ir",
+      "en": "I cannot go",
+      "unit": "u32"
+    },
+    {
+      "id": "u32b-1:0",
+      "word": "tengo que",
+      "en": "I have to",
+      "unit": "u32"
+    },
+    {
+      "id": "u32b-1:1",
+      "word": "tienes que",
+      "en": "you have to",
+      "unit": "u32"
+    },
+    {
+      "id": "u32b-1:3",
+      "word": "Tengo que estudiar",
+      "en": "I have to study",
+      "unit": "u32"
+    },
+    {
+      "id": "u32b-1:4",
+      "word": "Tenemos que salir",
+      "en": "We have to leave",
+      "unit": "u32"
+    },
+    {
+      "id": "u32c-1:1",
+      "word": "Necesito dormir",
+      "en": "I need to sleep",
+      "unit": "u32"
+    },
+    {
+      "id": "u32c-1:4",
+      "word": "¿Puedo entrar?",
+      "en": "May I come in?",
+      "unit": "u32"
+    },
+    {
+      "id": "u32d-1:2",
+      "word": "¿Quieres venir?",
+      "en": "Do you want to come?",
+      "unit": "u32"
+    },
+    {
+      "id": "u32d-1:3",
+      "word": "No quiero salir",
+      "en": "I do not want to go out",
+      "unit": "u32"
+    },
+    {
+      "id": "u33a-1:1",
+      "word": "Voy a estudiar",
+      "en": "I am going to study",
+      "unit": "u33"
+    },
+    {
+      "id": "u33a-1:2",
+      "word": "Vas a trabajar",
+      "en": "You are going to work",
+      "unit": "u33"
+    },
+    {
+      "id": "u33a-1:3",
+      "word": "Vamos a comer",
+      "en": "We are going to eat",
+      "unit": "u33"
+    },
+    {
+      "id": "u33a-1:4",
+      "word": "Van a venir",
+      "en": "They are going to come",
+      "unit": "u33"
+    },
+    {
+      "id": "u33b-1:1",
+      "word": "la próxima semana",
+      "en": "next week",
+      "unit": "u33"
+    },
+    {
+      "id": "u33b-1:2",
+      "word": "el próximo año",
+      "en": "next year",
+      "unit": "u33"
+    },
+    {
+      "id": "u33b-1:3",
+      "word": "el lunes",
+      "en": "on Monday",
+      "unit": "u33"
+    },
+    {
+      "id": "u33b-1:4",
+      "word": "el sábado",
+      "en": "on Saturday",
+      "unit": "u33"
+    },
+    {
+      "id": "u33c-1:0",
+      "word": "¿Qué vas a hacer mañana?",
+      "en": "What are you going to do tomorrow?",
+      "unit": "u33"
+    },
+    {
+      "id": "u33c-1:2",
+      "word": "¿Quieres comer conmigo?",
+      "en": "Do you want to eat with me?",
+      "unit": "u33"
+    },
+    {
+      "id": "u33d-1:0",
+      "word": "¿A qué hora?",
+      "en": "At what time?",
+      "unit": "u33"
+    },
+    {
+      "id": "u33d-1:1",
+      "word": "A las seis",
+      "en": "At six o'clock",
+      "unit": "u33"
+    },
+    {
+      "id": "u33d-1:2",
+      "word": "Sí, puedo",
+      "en": "Yes, I can",
+      "unit": "u33"
+    },
+    {
+      "id": "u33d-1:3",
+      "word": "No puedo, tengo que trabajar",
+      "en": "I cannot; I have to work",
+      "unit": "u33"
+    },
+    {
+      "id": "u33d-1:4",
+      "word": "Está bien, nos vemos a las seis",
+      "en": "OK, see you at six",
+      "unit": "u33"
+    },
+    {
+      "id": "u33e-1:0",
+      "word": "¿Con quién vas?",
+      "en": "Who are you going with?",
+      "unit": "u33"
+    },
+    {
+      "id": "u33e-1:1",
+      "word": "¿Con quién?",
+      "en": "With whom? (asking about a plan)",
+      "unit": "u33"
+    },
+    {
+      "id": "u33e-1:3",
+      "word": "¿Dónde nos vemos?",
+      "en": "Where shall we meet?",
+      "unit": "u33"
+    },
+    {
+      "id": "u18d-1:4",
+      "word": "Hoy es cinco de mayo",
+      "en": "Today is May fifth",
+      "unit": "u18"
+    },
+    {
+      "id": "u41b-1:4",
+      "word": "también",
+      "en": "also / too",
+      "unit": "u41"
+    },
+    {
+      "id": "u41c-1:0",
+      "word": "Quiero ir pero no puedo",
+      "en": "I want to go but I cannot",
+      "unit": "u41"
+    },
+    {
+      "id": "u41c-1:1",
+      "word": "No voy porque estoy cansado",
+      "en": "I am not going because I am tired",
+      "unit": "u41"
+    },
+    {
+      "id": "u41c-1:2",
+      "word": "Quiero café o té",
+      "en": "I want coffee or tea",
+      "unit": "u41"
+    },
+    {
+      "id": "u41c-1:3",
+      "word": "Trabajo y estudio",
+      "en": "I work and study",
+      "unit": "u41"
+    },
+    {
+      "id": "u41c-1:4",
+      "word": "Todavía estoy aquí",
+      "en": "I am still here",
+      "unit": "u41"
+    },
+    {
+      "id": "u41d-1:2",
+      "word": "algo",
+      "en": "something",
+      "unit": "u41"
+    },
+    {
+      "id": "u41d-1:3",
+      "word": "No hay nadie",
+      "en": "There is nobody here",
+      "unit": "u41"
+    },
+    {
+      "id": "u41d-1:4",
+      "word": "¿Quieres algo?",
+      "en": "Do you want anything?",
+      "unit": "u41"
+    },
+    {
+      "id": "u34a-1:1",
+      "word": "anoche",
+      "en": "last night",
+      "unit": "u34"
+    },
+    {
+      "id": "u34a-1:2",
+      "word": "la semana pasada",
+      "en": "last week",
+      "unit": "u34"
+    },
+    {
+      "id": "u34a-1:3",
+      "word": "fui",
+      "en": "I went / I was",
+      "unit": "u34"
+    },
+    {
+      "id": "u34a-1:4",
+      "word": "estuve",
+      "en": "I was (state or location, completed period)",
+      "unit": "u34"
+    },
+    {
+      "id": "u34b-1:0",
+      "word": "hablé",
+      "en": "I spoke",
+      "unit": "u34"
+    },
+    {
+      "id": "u34b-1:1",
+      "word": "comí",
+      "en": "I ate",
+      "unit": "u34"
+    },
+    {
+      "id": "u34b-1:2",
+      "word": "viví",
+      "en": "I lived",
+      "unit": "u34"
+    },
+    {
+      "id": "u34b-1:3",
+      "word": "trabajé",
+      "en": "I worked",
+      "unit": "u34"
+    },
+    {
+      "id": "u34b-1:4",
+      "word": "compré",
+      "en": "I bought",
+      "unit": "u34"
+    },
+    {
+      "id": "u34c-1:0",
+      "word": "hice",
+      "en": "I did / made",
+      "unit": "u34"
+    },
+    {
+      "id": "u34c-1:1",
+      "word": "tuve",
+      "en": "I had",
+      "unit": "u34"
+    },
+    {
+      "id": "u34c-1:2",
+      "word": "vi",
+      "en": "I saw",
+      "unit": "u34"
+    },
+    {
+      "id": "u34c-1:3",
+      "word": "salí",
+      "en": "I went out / left",
+      "unit": "u34"
+    },
+    {
+      "id": "u34c-1:4",
+      "word": "llegué",
+      "en": "I arrived",
+      "unit": "u34"
+    },
+    {
+      "id": "u34d-1:4",
+      "word": "¿Qué hiciste ayer?",
+      "en": "What did you do yesterday?",
+      "unit": "u34"
+    },
+    {
+      "id": "u34e-1:0",
+      "word": "bebí",
+      "en": "I drank",
+      "unit": "u34"
+    },
+    {
+      "id": "u34e-1:1",
+      "word": "estudié",
+      "en": "I studied",
+      "unit": "u34"
+    },
+    {
+      "id": "u34e-1:2",
+      "word": "caminé",
+      "en": "I walked",
+      "unit": "u34"
+    },
+    {
+      "id": "u34e-1:3",
+      "word": "descansé",
+      "en": "I rested",
+      "unit": "u34"
+    },
+    {
+      "id": "u34e-1:4",
+      "word": "dormí",
+      "en": "I slept",
+      "unit": "u34"
+    },
+    {
+      "id": "u35a-1:2",
+      "word": "al final",
+      "en": "in the end",
+      "unit": "u35"
+    },
+    {
+      "id": "u35a-1:3",
+      "word": "antes",
+      "en": "before",
+      "unit": "u35"
+    },
+    {
+      "id": "u35b-1:0",
+      "word": "era",
+      "en": "I / he / she used to be (identity)",
+      "unit": "u35"
+    },
+    {
+      "id": "u35b-1:1",
+      "word": "estaba",
+      "en": "I / he / she was (state or location)",
+      "unit": "u35"
+    },
+    {
+      "id": "u35b-1:2",
+      "word": "tenía",
+      "en": "I / he / she had / used to have",
+      "unit": "u35"
+    },
+    {
+      "id": "u35b-1:3",
+      "word": "vivía",
+      "en": "I / he / she used to live",
+      "unit": "u35"
+    },
+    {
+      "id": "u35b-1:4",
+      "word": "iba",
+      "en": "I / he / she used to go / was going",
+      "unit": "u35"
+    },
+    {
+      "id": "u35c-1:1",
+      "word": "Vivía en México",
+      "en": "I used to live in Mexico",
+      "unit": "u35"
+    },
+    {
+      "id": "u35c-1:2",
+      "word": "Estaba en casa",
+      "en": "I was at home (background)",
+      "unit": "u35"
+    },
+    {
+      "id": "u35d-1:0",
+      "word": "¿Cómo te fue?",
+      "en": "How did it go for you?",
+      "unit": "u35"
+    },
+    {
+      "id": "u35d-1:1",
+      "word": "Me fue bien",
+      "en": "It went well for me",
+      "unit": "u35"
+    },
+    {
+      "id": "u35d-1:2",
+      "word": "Fue muy bonito",
+      "en": "It was very nice",
+      "unit": "u35"
+    },
+    {
+      "id": "u35d-1:3",
+      "word": "Primero comí, luego salí",
+      "en": "First I ate, then I went out",
+      "unit": "u35"
+    },
+    {
+      "id": "u35d-1:4",
+      "word": "Al final regresé a casa",
+      "en": "In the end I returned home",
+      "unit": "u35"
+    },
+    {
+      "id": "u35e-1:0",
+      "word": "¿Qué compraste?",
+      "en": "What did you buy?",
+      "unit": "u35"
+    },
+    {
+      "id": "u35e-1:1",
+      "word": "¿Dónde vivías cuando eras niño?",
+      "en": "Where did you live when you were a child?",
+      "unit": "u35"
+    },
+    {
+      "id": "u35e-1:4",
+      "word": "¿Qué comiste?",
+      "en": "What did you eat?",
+      "unit": "u35"
+    },
+    {
+      "id": "u13b-1:1",
+      "word": "¿Tiene internet?",
+      "en": "Does it have internet?",
+      "unit": "u13"
+    },
+    {
+      "id": "u13b-1:2",
+      "word": "por dos noches",
+      "en": "for two nights",
+      "unit": "u13"
+    },
+    {
+      "id": "u13c-1:0",
+      "word": "La llave no funciona",
+      "en": "The key does not work",
+      "unit": "u13"
+    },
+    {
+      "id": "u13c-1:1",
+      "word": "No hay agua caliente",
+      "en": "There is no hot water",
+      "unit": "u13"
+    },
+    {
+      "id": "u13c-1:4",
+      "word": "Está en el segundo piso",
+      "en": "It is on the second floor",
+      "unit": "u13"
+    },
+    {
+      "id": "u13d-1:0",
+      "word": "¿A qué hora es la salida?",
+      "en": "What time is checkout?",
+      "unit": "u13"
+    },
+    {
+      "id": "u10b-1:2",
+      "word": "la llegada",
+      "en": "the arrival",
+      "unit": "u10"
+    },
+    {
+      "id": "u10c-1:2",
+      "word": "Mi vuelo está retrasado",
+      "en": "My flight is delayed",
+      "unit": "u10"
+    },
+    {
+      "id": "u10d-1:1",
+      "word": "de ida y vuelta",
+      "en": "round trip",
+      "unit": "u10"
+    },
+    {
+      "id": "u10d-1:2",
+      "word": "solo de ida",
+      "en": "one way",
+      "unit": "u10"
+    },
+    {
+      "id": "u10d-1:3",
+      "word": "¿Cuánto dura el viaje?",
+      "en": "How long does the trip take?",
+      "unit": "u10"
+    },
+    {
+      "id": "u36b-1:2",
+      "word": "Me duelen los pies",
+      "en": "My feet hurt",
+      "unit": "u36"
+    },
+    {
+      "id": "u36c-1:0",
+      "word": "¡Ayuda!",
+      "en": "Help!",
+      "unit": "u36"
+    },
+    {
+      "id": "u36d-1:3",
+      "word": "Soy alérgico a esta medicina",
+      "en": "I am allergic to this medicine",
+      "unit": "u36"
+    },
+    {
+      "id": "u37a-1:0",
+      "word": "creo que",
+      "en": "I think that",
+      "unit": "u37"
+    },
+    {
+      "id": "u37a-1:1",
+      "word": "pienso que",
+      "en": "I think / believe that",
+      "unit": "u37"
+    },
+    {
+      "id": "u37b-1:0",
+      "word": "Estoy de acuerdo",
+      "en": "I agree",
+      "unit": "u37"
+    },
+    {
+      "id": "u37b-1:1",
+      "word": "No estoy de acuerdo",
+      "en": "I disagree",
+      "unit": "u37"
+    },
+    {
+      "id": "u37b-1:4",
+      "word": "No sé",
+      "en": "I do not know",
+      "unit": "u37"
+    },
+    {
+      "id": "u37c-1:2",
+      "word": "No me gustan los hoteles grandes",
+      "en": "I do not like big hotels",
+      "unit": "u37"
+    },
+    {
+      "id": "u37c-1:3",
+      "word": "Creo que es muy caro",
+      "en": "I think it is very expensive",
+      "unit": "u37"
+    },
+    {
+      "id": "u37c-1:4",
+      "word": "Es mejor caminar",
+      "en": "It is better to walk",
+      "unit": "u37"
+    },
+    {
+      "id": "u37d-1:0",
+      "word": "¿Qué piensas?",
+      "en": "What do you think?",
+      "unit": "u37"
+    },
+    {
+      "id": "u37d-1:1",
+      "word": "¿Qué prefieres?",
+      "en": "What do you prefer?",
+      "unit": "u37"
+    },
+    {
+      "id": "u37d-1:2",
+      "word": "¿Te parece bien?",
+      "en": "Does that sound good to you?",
+      "unit": "u37"
+    },
+    {
+      "id": "u37d-1:4",
+      "word": "¿Por qué no?",
+      "en": "Why not?",
+      "unit": "u37"
+    },
+    {
+      "id": "u38a-1:0",
+      "word": "¡Qué padre!",
+      "en": "How cool! (Mexico)",
+      "unit": "u38"
+    },
+    {
+      "id": "u38a-1:4",
+      "word": "¡No puede ser!",
+      "en": "No way!",
+      "unit": "u38"
+    },
+    {
+      "id": "u38b-1:0",
+      "word": "¿Y luego?",
+      "en": "And then?",
+      "unit": "u38"
+    },
+    {
+      "id": "u38b-1:1",
+      "word": "¿Y después?",
+      "en": "And afterwards?",
+      "unit": "u38"
+    },
+    {
+      "id": "u38b-1:2",
+      "word": "¿Con quién hablas?",
+      "en": "Who are you speaking with?",
+      "unit": "u38"
+    },
+    {
+      "id": "u38b-1:3",
+      "word": "¿Dónde fue?",
+      "en": "Where was it?",
+      "unit": "u38"
+    },
+    {
+      "id": "u38b-1:4",
+      "word": "Cuéntame",
+      "en": "Tell me",
+      "unit": "u38"
+    },
+    {
+      "id": "u38c-1:2",
+      "word": "por ejemplo",
+      "en": "for example",
+      "unit": "u38"
+    },
+    {
+      "id": "u38c-1:3",
+      "word": "quiero decir",
+      "en": "I mean",
+      "unit": "u38"
+    },
+    {
+      "id": "u38c-1:4",
+      "word": "la verdad",
+      "en": "the truth / honestly",
+      "unit": "u38"
+    },
+    {
+      "id": "u38d-1:0",
+      "word": "Me dio mucho gusto verte",
+      "en": "It was lovely to see you",
+      "unit": "u38"
+    },
+    {
+      "id": "u38d-1:1",
+      "word": "Que tengas buen día",
+      "en": "Have a good day (to a friend)",
+      "unit": "u38"
+    },
+    {
+      "id": "u38d-1:2",
+      "word": "Cuídate",
+      "en": "Take care (to a friend)",
+      "unit": "u38"
+    },
+    {
+      "id": "u38d-1:3",
+      "word": "Seguimos en contacto",
+      "en": "Let's keep in touch",
+      "unit": "u38"
+    },
+    {
+      "id": "u38d-1:4",
+      "word": "Hasta pronto",
+      "en": "See you soon",
+      "unit": "u38"
+    },
+    {
+      "id": "u39a-1:2",
+      "word": "el número",
+      "en": "the number",
+      "unit": "u39"
+    },
+    {
+      "id": "u39b-1:2",
+      "word": "¿Me lo puede escribir?",
+      "en": "Can you write it for me? (polite)",
+      "unit": "u39"
+    },
+    {
+      "id": "u39b-1:3",
+      "word": "No tengo internet",
+      "en": "I do not have internet",
+      "unit": "u39"
+    },
+    {
+      "id": "u39c-1:1",
+      "word": "¿Podría ayudarme?",
+      "en": "Could you help me?",
+      "unit": "u39"
+    },
+    {
+      "id": "u39d-1:1",
+      "word": "No encuentro mi teléfono",
+      "en": "I cannot find my telephone",
+      "unit": "u39"
+    },
+    {
+      "id": "u39d-1:2",
+      "word": "Perdí mi llave",
+      "en": "I lost my key",
+      "unit": "u39"
+    },
+    {
+      "id": "u11d-1:3",
+      "word": "Me gustan los animales",
+      "en": "I like animals",
+      "unit": "u11"
+    },
+    {
+      "id": "u12c-1:0",
+      "word": "ahorita",
+      "en": "right now / in a little while (context matters)",
+      "unit": "u12"
+    },
+    {
+      "id": "u12c-1:2",
+      "word": "chido",
+      "en": "cool (casual, Mexico)",
+      "unit": "u12"
+    },
+    {
+      "id": "u12c-1:3",
+      "word": "la plática",
+      "en": "the chat (Mexico)",
+      "unit": "u12"
+    },
+    {
+      "id": "u12c-1:4",
+      "word": "¿Qué tal?",
+      "en": "How is it going?",
+      "unit": "u12"
+    },
+    {
+      "id": "u12d-1:0",
+      "word": "Me gusta aprender español",
+      "en": "I like learning Spanish",
+      "unit": "u12"
+    },
+    {
+      "id": "u12d-1:1",
+      "word": "Quiero conocer México",
+      "en": "I want to get to know Mexico",
+      "unit": "u12"
+    },
+    {
+      "id": "u12d-1:4",
+      "word": "¡Nos vemos pronto!",
+      "en": "See you again soon!",
+      "unit": "u12"
+    }
+  ],
+  "note": "2026-11-12: every concrete or clearly picturable card now has an approved picture (472 of 807). The remaining 280 are verb forms, question words, time phrases and abstract sentences, kept as word cards like the unpictured half of Lithuanian. Add a picture only for a card a reviewer flags."
+}

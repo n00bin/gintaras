@@ -1,0 +1,16 @@
+{
+  "id": "towel",
+  "word": "rankšluostis",
+  "en": "towel",
+  "unit": "u17",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning towel. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes when people present, oversized heads, chunky hands and shapes, opaque solid colours, minimal crisp details. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE folded fluffy-looking but FLAT-SHAPED bath TOWEL, turquoise main fabric, two cream border stripes near one end, thick rounded folded edges, and a small coral hanging loop. No texture, fuzz, bathrobe, person, bathroom fixtures or letters. Entire fabric opaque. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/towel.png",
+  "asset": "pics/art-v2/towel.webp",
+  "bytes": 20644,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

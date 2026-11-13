@@ -1,0 +1,48 @@
+@u69|Tikros situacijos|Real situations|These are the phrases for the conversations that follow: at the doctor, at an interview, renting a flat, in a shop. Learn them as whole phrases first. <b>Turiu temperatūrą</b> means "I have a temperature".|Pick one situation and act it out alone: say both sides, out loud, as naturally as you can.
++cv35,cv36,cv37,cv38,cv39,cv40,cv41,cv42,cv43,cv44,cv45
+#u69a|At the doctor
+Turiu temperatūrą|I have a temperature|tu-RYU tem-peh-rah-TOO-raa
+Kosiu naktį|I cough at night|koh-SYU NAHK-tee
+arbata su medumi|tea with honey|ar-bah-TAH su meh-du-MI
+Ačiū, daktare|Thank you, doctor|AA-chyoo, dahk-TAH-reh
+#u69b|At an interview
+Esu iš Airijos|I’m from Ireland|eh-SU ish AI-ri-yohs
+Gyvenu čia dvejus metus|I’ve lived here for two years|gee-veh-NU CHYAH dveh-YUS meh-TUS
+Dirbau registratūroje|I worked at a reception desk|DIR-bau reh-gis-trah-TOO-roh-yeh
+Kalbu prancūziškai|I speak French|kahl-BU prahn-TSOO-zish-kai
+šiek tiek|a little|SHYEK TYEK
+Man patinka bendrauti|I like dealing with people|mahn pah-TIN-kah ben-DRAU-ti
+Ačiū už pokalbį|Thank you for the chat|AA-chyoo uzh POH-kahl-bee
+#u69c|Flats and shops
+Skambinu dėl buto|I’m calling about the flat|SKAHM-bi-nu dayl BU-toh
+su šunimi|with a dog|su shu-ni-MI
+Ji per didelė|It’s too big (about a "she" word)|yi per di-deh-LAY
+Spalva ne ta|It’s the wrong colour|spahl-VAH neh TAH
+Ar turite mėlyną?|Do you have a blue one?|ar TU-ri-teh MAY-lee-naa
+tokią pačią, tik mažesnę|the same one, only smaller|toh-KYAA pah-CHYAA, tik mah-ZHES-nyay
+#u69d|Plans and neighbours
+į Norvegiją|to Norway|ee nor-VEH-gi-yaa
+kalnai ir jūra|mountains and the sea|kahl-NAI ir YOO-rah
+Gyvenčiau palapinėje|I’d live in a tent|gee-VEN-chyau pah-lah-PI-nay-yeh
+Tai būtų pigiau|That would be cheaper|tai BOO-too pi-GYAU
+Mielai važiuočiau|I’d gladly go|myeh-LAI vah-ZHYWOH-chyau
+pradėti taupyti|to start saving|prah-DAY-ti tau-PEE-ti
+Jau vėlu|It’s late already|yau vay-LU
+Muzika labai garsi|The music is very loud|MU-zi-kah lah-BAI gar-SI
+Gal galėtume susitarti?|Maybe we could agree?|gahl gah-LAY-tu-meh su-si-TAR-ti
+darbo dienomis|on working days|DAR-boh dyeh-noh-MIS
+tyla nuo dešimtos|quiet from ten|tee-LAH nwoh deh-shim-TOHS
+#u69e|Memories and messages
+į kaimą|to the countryside|ee KAI-maa
+Labai pasiilgstu|I really miss it|lah-BAI pah-si-ILKS-tu
+Susitikimas bus rytoj|The meeting will be tomorrow|su-si-ti-KI-mahs bus ree-TOY
+dešimtą valandą|at ten o’clock|deh-SHIM-taa VAH-lahn-daa
+jo kabinete|in his office|yoh kah-bi-neh-TEH
+Ataskaita paruošta|The report is ready|AH-tahs-kai-tah pah-rwohsh-TAH
+Pasakysiu jam|I’ll tell him|pah-sah-KEE-syu yahm
+Atsiųsi iki vakaro|You’ll send it by the evening|aht-SYOO-si i-KI VAH-kah-roh
+mano draugo sesuo|my friend’s sister|MAH-noh DRAU-goh seh-SWOH
+Eime kartu!|Let’s go together!|AY-meh kar-TU
+be grietinės|without sour cream|beh gryeh-TI-nays
+Gal stiklinę vandens?|A glass of water, maybe?|gahl stik-LI-nyay vahn-DENS
+į abi puses|return (both ways)|ee ah-BI PU-ses

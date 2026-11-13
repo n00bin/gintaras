@@ -1,0 +1,16 @@
+{
+  "id": "wind",
+  "word": "vėjas",
+  "en": "wind",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning wind. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid colours, minimal crisp details, no black outlines. Subject: ONE small leafy tree bent visibly to the right by WIND, with three thick pale-blue curved gust strokes moving left to right and two green leaves blowing right. Tree has a short brown trunk and compact turquoise-green foliage. No person, cloud face, ground or landscape. Center complete composition with generous transparent margins and clear silhouettes at 56px. Opaque interiors, crisp edges and zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/wind.png",
+  "asset": "pics/art-v2/wind.webp",
+  "bytes": 23646,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

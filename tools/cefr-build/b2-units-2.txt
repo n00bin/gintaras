@@ -1,0 +1,44 @@
+@u105|Rimti pokalbiai|Real-life talks|Whole sentences for negotiating, complaining, apologising and giving advice. Learn them as you would say them: <b>Visada moku laiku ir rūpinuosi butu.</b>|Choose one situation and act out both sides, then change one detail and say it again.
++cv46,cv47,cv48,cv49,cv50,cv51,cv52,cv53,cv54,cv55,cv56
+#u105a|Rent and bills
+Visada moku laiku ir rūpinuosi butu. Gal penkiasdešimt eurų daugiau?|I always pay on time and look after the flat. Maybe fifty euros more?|vi-sah-DAH moh-KU lai-KU ir ROO-pi-nwoh-si BU-tu. gahl pen-kyahs-deh-SHIMT EH-u-roo dau-GYAU
+O jei pasirašyčiau sutartį dvejiems metams?|And what if I signed the agreement for two years?|oh yay pah-si-rah-SHEE-chyau SU-tar-tee dveh-YEMS meh-TAHMS
+Sutarta. Atsiųskite sutartį el. paštu.|Agreed. Send the agreement by email.|su-tar-TAH. aht-SYOOS-ki-teh SU-tar-tee el pahsh-TU
+Laba diena. Gavau sąskaitą, ir joje yra klaida.|Good afternoon. I got a bill, and there’s a mistake in it.|LAH-bah dyeh-NAH. gah-VAU SAAS-kai-taa, ir yoh-YEH ee-RAH klai-DAH
+Man priskaičiavo už skambučius į užsienį, bet aš į užsienį neskambinau.|I’ve been charged for calls abroad, but I didn’t call abroad.|mahn pris-kai-CHYAH-voh uzh skahm-BU-chyus ee UZH-syeh-nee, bet AHSH ee UZH-syeh-nee neh-skahm-bi-NAU
+Ne, telefoną visada laikau su savimi. Prašau grąžinti pinigus.|No, I always keep the phone with me. Please refund the money.|neh, teh-leh-FOH-naa vi-sah-DAH lai-KAU su sah-vi-MI. prah-SHAU graa-ZHIN-ti PI-ni-gus
+Ačiū. Ar galite atsiųsti patvirtinimą el. paštu?|Thank you. Can you send a confirmation by email?|AA-chyoo. ar GAH-li-teh aht-SYOOS-ti paht-vir-TI-ni-maa el pahsh-TU
+#u105b|Opinions and interviews
+Kitose šalyse, kai uždraudė automobilius, žmonių atėjo daugiau.|In other countries, when cars were banned, more people came.|ki-toh-SEH shah-lee-SEH, kai uzh-DRAU-day au-toh-moh-BI-lyus, zhmoh-NYOO ah-TAY-yoh dau-GYAU
+Tiesa. Todėl reikia daugiau autobusų ir leidimų žmonėms su negalia.|True. That’s why we need more buses and permits for people with disabilities.|tyeh-SAH. toh-DAYL RAY-kyah dau-GYAU au-toh-bu-SOO ir lay-di-MOO zhmoh-NAYMS su neh-gah-LYAH
+Mano stiprybė yra kantrybė. Moku išklausyti žmones ir ramiai spręsti konfliktus.|My strength is patience. I can listen to people and resolve conflicts calmly.|MAH-noh stip-REE-bay ee-RAH kahnt-REE-bay. MOH-ku ish-klau-SEE-ti ZHMOH-nes ir rah-MYAI SPRYAYS-ti kohn-FLIK-tus
+Kartais per daug stengiuosi viską padaryti pati. Bet mokausi deleguoti.|Sometimes I try too hard to do everything myself. But I’m learning to delegate.|KAR-tais per DAUG STEN-gyoh-si VIS-kaa pah-dah-REE-ti pah-TI. bet moh-KAU-si deh-leh-GWOH-ti
+Noriu daugiau atsakomybės ir galimybės vadovauti komandai.|I want more responsibility and the chance to lead a team.|NOH-ryu dau-GYAU aht-sah-koh-MEE-bays ir gah-li-MEE-bays vah-doh-VAU-ti koh-MAHN-dai
+Tikiuosi vadovauti skyriui ir toliau mokytis.|I hope to be running a department and still learning.|ti-KYOH-si vah-doh-VAU-ti SKEE-ryui ir toh-LYAU MOH-kee-tis
+#u105c|Health and help
+Man skauda nugarą jau savaitę. Ypač ryte, kai atsikeliu.|My back has been hurting for a week. Especially in the morning, when I get up.|mahn SKAU-dah NU-gah-raa yau sah-VAI-tyay. EE-pahch ree-TEH, kai aht-si-KEH-lyu
+Praeitą savaitę nešiau baldus, kai kraustėmės.|Last week I carried furniture when we were moving house.|PRAH-ay-taa sah-VAI-tyay neh-SHYAU bahl-DUS, kai KRAUS-tay-mays
+Ne, skauda tik apačioje, čia.|No, it only hurts at the bottom, here.|neh, SKAU-dah tik ah-pah-chyoh-YEH, CHYAH
+Ar galiu dirbti? Dirbu prie kompiuterio.|Can I work? I work at a computer.|ar gah-LYU DIRP-ti? DIR-bu prye kohm-PYU-teh-ryoh
+Būtų puiku. Ar galėtum patikrinti skaičius lentelėse?|That would be great. Could you check the figures in the tables?|BOO-too pui-KU. ar gah-LAY-tum pah-TIK-rin-ti SKAI-chyus len-teh-LAY-seh
+Rytoj tinka. Kitą kartą aš tau padėsiu.|Tomorrow’s fine. Next time I’ll help you.|ree-TOY TIN-kah. KI-taa KAR-taa AHSH tau pah-DAY-syu
+#u105d|Plans and apologies
+Graikija graži, bet man paplūdimyje nuobodu. Norėčiau į kalnus.|Greece is beautiful, but I get bored on the beach. I’d like to go to the mountains.|GRAI-ki-yah grah-ZHI, bet mahn pahp-loo-di-MEE-yeh nwoh-boh-DU. noh-RAY-chyau ee kahl-NUS
+O jei rastume vietą, kur yra ir jūra, ir kalnai?|And what if we found a place with both the sea and the mountains?|oh yay RAHS-tu-meh VYEH-taa, kur ee-RAH ir YOO-rah, ir kahl-NAI
+Pavyzdžiui, Kroatija. Ryte vaikščiotume kalnuose, o po pietų gulėtume prie jūros.|For example, Croatia. In the morning we’d walk in the mountains, and in the afternoon lie by the sea.|pah-VEEZ-jyui, kroh-AH-ti-yah. ree-TEH VAIKSH-chyoh-tu-meh kahl-nwoh-SEH, oh poh pye-TOO gu-LAY-tu-meh prye YOO-rohs
+Sutarta! Šįvakar paieškosiu viešbučio.|Deal! I’ll look for a hotel this evening.|su-tar-TAH! SHEE-vah-kar pah-yesh-KOH-syu VYESH-bu-chyoh
+Labas, Rasa. Labai atsiprašau, kad neatėjau į tavo gimtadienį.|Hi, Rasa. I’m really sorry I didn’t come to your birthday.|LAH-bahs, RAH-sah. lah-BAI aht-si-prah-SHAU, kahd neh-ah-TAY-yau ee TAH-voh gim-TAH-dyeh-nee
+Tu teisi. Turėjau parašyti. Mano mama susirgo, ir visą vakarą buvau ligoninėje.|You’re right. I should have written. My mum fell ill, and I spent the whole evening at the hospital.|tu tay-SI. tu-RAY-yau pah-rah-SHEE-ti. MAH-noh MAH-mah su-SIR-goh, ir VI-saa VAH-kah-raa bu-VAU li-goh-NI-nay-yeh
+Jau geriau, ačiū. Tai daugiau nepasikartos.|Better now, thanks. It won’t happen again.|yau geh-RYAU, AA-chyoo. tai dau-GYAU neh-pah-si-KAR-tohs
+Ačiū. Gal šeštadienį išgerkime kavos? Aš vaišinu.|Thanks. Maybe let’s have a coffee on Saturday? My treat.|AA-chyoo. gahl shesh-TAH-dyeh-nee ish-GER-ki-meh kah-VOHS? AHSH vai-shi-NU
+#u105e|Shops, neighbours and advice
+Prieš savaitę pirkau šias ausines, bet jos jau nebeveikia.|A week ago I bought these headphones, but they don’t work any more.|pryesh sah-VAI-tyay pir-KAU SHYAHS au-SI-nes, bet YOHS yau neh-beh-VAY-kyah
+Taip, štai. Prašau grąžinti pinigus.|Yes, here. Please give me a refund.|taip, SHTAI. prah-SHAU graa-ZHIN-ti PI-ni-gus
+Norėčiau atgauti pinigus. Šios man nepatiko.|I’d like my money back. I didn’t like these.|noh-RAY-chyau aht-GAU-ti PI-ni-gus. SHYOHS mahn neh-pah-TI-koh
+Labas vakaras. Norėjau pasikalbėti apie jūsų obelį.|Good evening. I wanted to talk about your apple tree.|LAH-bahs VAH-kah-rahs. noh-RAY-yau pah-si-kahl-BAY-ti AH-pyeh YOO-soo OH-beh-lee
+Šakos auga į mano kiemą ir užstoja šviesą. Mano daržovės neauga.|The branches grow into my yard and block the light. My vegetables aren’t growing.|SHAH-kohs AU-gah ee MAH-noh KYEH-maa ir uzh-STOH-yah SHVYEH-saa. MAH-noh dar-ZHOH-vays neh-AU-gah
+Suprantu. Nereikia jos kirsti. Gal galėtume tik nupjauti kelias šakas?|I understand. There’s no need to cut it down. Maybe we could just cut off a few branches?|sup-rahn-TU. neh-RAY-kyah YOHS KIRS-ti. gahl gah-LAY-tu-meh tik nup-YAU-ti KEH-lyahs shah-KAHS
+Ačiū! Iškepsiu pyragą ir jus pavaišinsiu.|Thank you! I’ll bake a cake and give you some.|AA-chyoo! ish-KEP-syu pee-RAH-gaa ir YUS pah-vai-SHIN-syu
+Jei būčiau tavo vietoje, pirmiausia ieškočiau naujo darbo, o tik paskui išeičiau.|If I were you, I’d look for a new job first and only then leave.|yay BOO-chyau TAH-voh VYEH-toh-yeh, pir-MYAU-syah yesh-KOH-chyau NAU-yoh DAR-boh, oh tik pahs-KUI ish-AY-chyau
+Gal pabandyk dar kartą pasikalbėti su vadovu? Pasakyk, kas tau nepatinka.|Maybe try talking to your boss once more? Tell him what you don’t like.|gahl pah-BAHN-deek dar KAR-taa pah-si-kahl-BAY-ti su vah-DOH-vu? pah-sah-KEEK, kahs tau neh-pah-TIN-kah
+Visada prašom. Ir pranešk, kaip sekėsi.|Any time. And let me know how it went.|vi-sah-DAH prah-SHOHM. ir prah-NESHK, kaip SEH-kay-si

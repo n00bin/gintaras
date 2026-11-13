@@ -1,0 +1,17 @@
+{
+  "id": "my-stomach-hurts",
+  "word": "Man skauda pilvą",
+  "en": "My stomach hurts",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. One transparent square vocabulary illustration matching reference 1: rounded flat cartoon, chunky shapes, warm navy/turquoise/amber/coral/cream, huge expressive white oval eyes if person. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Opaque interiors, true transparent outside, generous margins, complete unclipped scene readable at 56px. No gradients, glow, shadow, texture, floor, backdrop, logo or lettering except specifically requested digits. Meaning: My stomach hurts. Tomas looks uncomfortable with downturned eyebrows and mouth. His two hands rest together on the centre of his lower abdomen, over amber sweatshirt, with three small coral pain zigzags next to his belly. Exactly two arms and two hands. No injury, no anatomical cutaway, no other person or body part focus.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/my-stomach-hurts.png",
+  "asset": "pics/art-v2/my-stomach-hurts.webp",
+  "bytes": 27166,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

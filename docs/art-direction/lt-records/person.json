@@ -1,0 +1,16 @@
+{
+  "id": "person",
+  "word": "žmogus",
+  "en": "person",
+  "unit": "u4",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Create ONE transparent square course vocabulary illustration meaning person. Reference 1 governs the approved rounded flat cartoon style: expressive large white oval eyes, oversized heads, chunky hands, opaque solid amber/turquoise/coral/navy, minimal crisp details and no black outlines. Reference 2 if present is Tomas's exact identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: ONE full-body adult person, smiling neutrally, short dark hair, turquoise shirt, navy trousers and cream shoes, standing in a natural relaxed pose. No job uniform or props. Center the complete scene with generous transparent margins, readable at 56px. Opaque interiors and clean edges. No gradient, texture, glow, mist, shadow, ground, backdrop, text, letters or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/person.png",
+  "asset": "pics/art-v2/person.webp",
+  "bytes": 21008,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

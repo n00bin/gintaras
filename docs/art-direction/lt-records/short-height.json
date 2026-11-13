@@ -1,0 +1,16 @@
+{
+  "id": "short-height",
+  "word": "žemas",
+  "en": "short (height)",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Create ONE transparent square vocabulary illustration meaning SHORT HEIGHT. Attached image is ONLY the approved Wordami STYLE reference: rounded geometric flat cartoon shapes, oversized expressive heads, large white oval eyes for people, chunky features, bright solid colours, sparse darker flat interior shapes, no black perimeter outlines. Two simple evergreen trees side by side on the same baseline, one clearly SHORT tree on the left and one much taller tree on the right. The short tree is the bright green foreground subject; the tall tree is a simpler muted teal comparison. A single small coral arrow points toward the short tree. Keep both trunks visible so the height comparison is clear. No ground, scenery or words. Fit the complete composition inside the middle 76% of the square, with ample transparent margin. Opaque interiors; clear sharp transparent outer boundary. No gradient, texture, glow, mist, blur, shadow, background, lettering, labels, logos, disc or decorative extras.",
+  "master": "docs/art-direction/masters/short-height.png",
+  "asset": "pics/art-v2/short-height.webp",
+  "bytes": 28314,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

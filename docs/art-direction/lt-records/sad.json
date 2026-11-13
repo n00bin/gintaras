@@ -1,0 +1,17 @@
+{
+  "id": "sad",
+  "word": "liūdnas",
+  "en": "sad",
+  "unit": "u11",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning sad. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized head, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's identity: wavy brown hair, amber sweatshirt, navy trousers, cream shoes. Subject: Tomas looks SAD, mouth turned downward, eyebrows sloping upward at centre, shoulders drooping, one small blue tear on cheek, hands hanging low. Full body, no loss scene, text or extra objects. Exactly two arms and two hands. Center complete character with generous transparent margins, readable at 56px. Crisp edges, opaque interiors, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/sad.png",
+  "asset": "pics/art-v2/sad.webp",
+  "bytes": 24172,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

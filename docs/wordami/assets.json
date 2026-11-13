@@ -1,0 +1,133 @@
+[
+  {
+    "id": "welcome",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/welcome.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-8c6452df-5374-4795-a496-48e0b4831acd.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Friendly welcome: standing three-quarter view, one turquoise wing raised waving, other wing relaxed, bright open eyes looking toward viewer, open happy beak.",
+    "asset": "pics/ami/welcome.webp",
+    "bytes": 31822
+  },
+  {
+    "id": "happy",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/happy.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-fc774078-6cfa-42c3-ba15-4a9f4d627658.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Pleased encouragement after a correct answer: standing three-quarter view, both wings relaxed slightly outward, bright attentive eyes, gentle confident smile in beak. No props.",
+    "asset": "pics/ami/happy.webp",
+    "bytes": 29412
+  },
+  {
+    "id": "cheer",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/cheer.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-1996706e-9486-4702-9b0e-7ad6f2390335.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Joyful success: both turquoise wings lifted high, delighted expression, eyes smiling as upward curved dark crescents on white eye patches, open joyful beak, little feet in a light celebratory hop. No confetti or extra objects.",
+    "asset": "pics/ami/cheer.webp",
+    "bytes": 30626
+  },
+  {
+    "id": "think",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/think.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-aa4b2fbf-9d98-45ea-b5f3-bf35d1f846c0.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Thoughtful learning tip: head cocked inquisitively, one turquoise wing tip near cheek, other wing resting, one eyebrow slightly raised, two white eyes looking upward, small curious beak opening. No question marks or symbols.",
+    "asset": "pics/ami/think.webp",
+    "bytes": 26020
+  },
+  {
+    "id": "rest",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/rest.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-5759bad0-9c7b-4fd5-909a-218f4349fb90.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Peaceful rest: same parrot sitting comfortably, eyes softly closed, beak closed in a content expression, wings tucked, short tail and coral feet visible. No moon, pillow or letters.",
+    "asset": "pics/ami/rest.webp",
+    "bytes": 25356
+  },
+  {
+    "id": "encourage",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/encourage.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-717c4bfc-3955-44a6-bdcf-eba8bc4fe65f.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Kind supportive retry: same parrot tilts head gently, warm reassuring small smile, open attentive white oval eyes, one wing extends toward viewer in a welcoming try-again gesture. Never crying, angry, disappointed or shaming.",
+    "asset": "pics/ami/encourage.webp",
+    "bytes": 30148
+  },
+  {
+    "id": "listen",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/listen.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-4628e5ea-713d-43fe-8305-390f04a3afdb.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Listening attentively: one turquoise wing cups the side of its head near where an ear would be, head leaning toward incoming sound, eyes focused with interested eyebrows, beak closed. Other wing relaxed. No headphones, symbols or sound waves.",
+    "asset": "pics/ami/listen.webp",
+    "bytes": 29410
+  },
+  {
+    "id": "speak",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/speak.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-79095d48-270f-44fc-9650-7c6b2624c96f.png",
+    "prompt": "Use case: stylized-concept. Production mascot asset for Wordami, multilingual language-learning app. Image 1 is the OWNER-APPROVED CHARACTER CONCEPT: preserve Ami the parrot's exact identity, face, cheerful personality, proportions and palette. Image 2 is the authoritative FLAT CARTOON STYLE reference. Produce ONE individual full-body Ami, isolated on a genuinely TRANSPARENT background. Ami is a small plump amber-yellow parrot with oversized round head, two big white oval eyes with dark brown pupils, expressive dark brown eyebrows, three chunky curved amber head-tuft feathers, short curved coral parrot beak, turquoise wings and short turquoise tail, two little coral feet. Same compact silhouette, head/body ratio and eye placement as concept. No clothing. Flat 2D rounded geometric cartoon, bright solid colors and a few sparse darker color shapes, slightly soft edges, NO black perimeter outlines, no realistic feather texture, no metallic or glass look, no 3D or glossy shading. Palette amber #FFB900, turquoise #00BFB3, coral #FF6355, dark brown #4B241C, warm white #FFF8EC. Entire character and all gestures inside square canvas, generous 10 percent clear margins, centered at consistent scale about 80 percent canvas height. Clear at 56px. No ground plane, background objects, text, letters, numbers, flags, logos, watermark or extra characters. Pose: Speaking practice coach: one turquoise wing gently gestures outward, beak open as if pronouncing a word, lively confident eyes directed to viewer, upright welcoming stance. No speech bubble, letters, microphone or symbols.",
+    "asset": "pics/ami/speak.webp",
+    "bytes": 32832
+  },
+  {
+    "id": "app-icon",
+    "generator": "built-in image_gen",
+    "created": "2026-11-05",
+    "reference_images": [
+      "docs/wordami/approved-ami-concept.png",
+      "docs/art-direction/approved-style-reference.png"
+    ],
+    "master": "docs/wordami/masters/app-icon.png",
+    "source_generated": "C:\\Users\\N00Bin\\.codex\\generated_images\\01a1adc6-5108-77f2-a5da-a45fddfe8f6e\\exec-2c90dbad-db62-4f15-b651-7b134c1d0f21.png",
+    "prompt": "Use case: stylized-concept. Production app icon for Wordami. Use image 1 as owner-approved Ami parrot IDENTITY reference and image 2 as flat cartoon STYLE reference. One original Ami parrot face and upper body, compact oversized amber-yellow round head, three chunky amber tuft feathers, two big white oval eyes with dark brown pupils and dark brown expressive eyebrows, short curved coral parrot beak in friendly smile, turquoise wings visible at lower sides. Match reference parrot exactly, not owl or duck. Simple clean flat geometric cartoon, sparse darker color shapes, soft edges, no black perimeter outlines, no 3D. Square edge-to-edge SOLID dark navy #14264E background, no rounded corner mask drawn into image, no border or vignette. Keep all essential head, tuft, beak and eyes inside central safe 65 percent of canvas, generous navy margins for maskable icon cropping. No text, letters, logo, flags, additional objects or watermark.",
+    "exports": [
+      "wordami-icon-180.png",
+      "wordami-icon-192.png",
+      "wordami-icon-512.png",
+      "wordami-icon-maskable-192.png",
+      "wordami-icon-maskable-512.png"
+    ]
+  }
+]

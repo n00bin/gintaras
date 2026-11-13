@@ -1,0 +1,19 @@
+{
+  "id": "shrovetide",
+  "word": "Užgavėnės",
+  "en": "Shrovetide",
+  "unit": "u12",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached reference rounded flat cartoon, chunky solid shapes, huge white oval eyes for person, warm turquoise/amber/coral/navy/cream palette, minimal details, almost no outlines. Complete unclipped subject with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside. No words, logos, texture, gradients, glow, shadow or backdrop. Subject: Lithuanian UŽGAVĖNĖS Shrovetide festival represented by one simple playful brown carved wooden goat-like festival mask with curved horns, navy eye holes, broad smiling mouth, plus a turquoise plate with a stack of THREE small round golden pancakes beside it. Tiny coral and amber confetti around objects. No people wearing mask, no stereotypes or scary violence, no fire.",
+  "research_sources": [
+    "https://lithuania.travel/en/why-lithuania/culture-and-heritage/culture-and-art/museums/off-beat-museums/mardi-gras-mask-museum"
+  ],
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/shrovetide.png",
+  "asset": "pics/art-v2/shrovetide.webp",
+  "bytes": 41588,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

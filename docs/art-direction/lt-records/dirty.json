@@ -1,0 +1,16 @@
+{
+  "id": "dirty",
+  "word": "nešvarus",
+  "en": "dirty",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration meaning DIRTY. Reference 1 governs the approved flat cartoon STYLE: rounded geometric opaque colour shapes, chunky silhouettes, oversized friendly heads and white oval eyes for people, sparse darker flat interior shapes, no black outlines. Reference 2, if present, is Tomas's exact IDENTITY. Subject: One clearly DIRTY ankle boot with several large irregular brown mud smears across its turquoise upper and a muddy sole. A clean geometric boot shape beneath the dirt remains recognizable. No foot or person, no discarded rubbish, insects or text. The mud is on the boot, not a ground shadow. Fit the complete subject inside the middle 76% of a square with generous truly transparent margins. Clean crisp edges, alpha zero outside objects, opaque surfaces. No texture, gradient, glow, fog, blur, ground plane, cast shadow, background disc, lettering or logos.",
+  "master": "docs/art-direction/masters/dirty.png",
+  "asset": "pics/art-v2/dirty.webp",
+  "bytes": 22748,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

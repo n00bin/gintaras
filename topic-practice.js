@@ -1,0 +1,46 @@
+/* Shared runner for taught-language A1 scenarios. No CEFR level awards. */
+(()=>{
+'use strict';
+const core=window.WordamiActivities,ui=window.WordamiPracticeUI,content=window.WordamiTopicContent;
+if(!core||!ui||!content)return;
+const {node:n,button:b,dialog}=ui;
+const taskIds=['read-1','read-2','listen-1','listen-2','write-1','write-2'];
+const style=n('style');style.textContent='#a1-practice .topic-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:12px;background:var(--pine-soft);border-radius:16px;margin:16px 0}#a1-practice .topic-map div{padding:14px 4px;background:var(--surface);border-radius:10px;text-align:center;font-size:14px}#a1-practice textarea{width:100%;min-height:110px;resize:vertical;font:inherit;padding:14px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg)}#a1-practice textarea:focus-visible{outline:3px solid var(--amber);outline-offset:2px}#a1-practice .topic-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}#a1-practice .topic-actions button{flex:1}';document.head.append(style);
+const registered=[];
+for(const topic of content){
+ const sources=Object.fromEntries(Object.entries(topic.sources).map(([key,text])=>[key,ITEMS.find(i=>(i.lt0||i.lt)===text)]));
+ if(Object.values(sources).some(i=>!i))continue;
+ const id='a1.'+topic.id,speechId=id+'-speaking',version=1;
+ const phrases=Object.values(sources).map(i=>i.lt),signature=JSON.stringify(phrases),key='wordami.topic.v1.'+LANG.code+'.'+topic.id;
+ for(const variant of [0,1]){const tasks=topic.build(variant);if(tasks.length!==6||tasks.some((t,index)=>t.skill!==['reading','reading','listening','listening','writing','writing'][index]||(t.lines||t.accept||[t.audio]).some(k=>!sources[k])||(t.options&&!t.options.some(o=>o.value===t.answer))))throw Error('Invalid topic '+topic.id);}
+ core.define({id,version,objectiveId:'a1.'+topic.objective,title:topic.title,requiredPhrases:phrases,tasks:taskIds.map((id,index)=>({id,skill:index<2?'reading':index<4?'listening':'writing',method:index<4?'comprehension':'constrained_response'}))});
+ core.define({id:speechId,version,objectiveId:'a1.'+topic.objective,title:topic.title+' · speaking',requiredPhrases:[sources[topic.speech].lt],tasks:[{id:'say-it',skill:'speaking',method:'self_recording'}]});
+ registered.push({id,topic:topic.id,title:topic.title});
+ let state=null,heard=false,playing=false,generation=0;
+ try{const s=JSON.parse(localStorage.getItem(key)),a=core.attempt(s?.attemptId);if(a?.activityId===id&&a.version===version&&s.signature===signature&&Number.isInteger(s.step)&&s.step>=0&&s.step<=6&&[0,1].includes(s.variant))state=s;}catch(e){}
+ function save(){try{localStorage.setItem(key,JSON.stringify(state));}catch(e){ui.status('This visit cannot be saved on this device.');}}
+ function advance(){state.step++;if(state.step===6)core.finish(state.attemptId);save();draw();}
+ function start(fresh=false){if(!core.requirements(id).ready){draw();return;}if(fresh||!state){const attemptId=core.begin(id);if(!attemptId)return;state={attemptId,signature,step:0,variant:Math.random()<.5?0:1};save();}draw();}
+ function sourcePanel(keys,documentTitle){if(documentTitle)dialog.append(n('p',documentTitle,'a1-small'));const panel=n('div',null,'a1-panel');panel.lang=LANG.code;for(const k of keys)panel.append(n('div',sources[k].lt));dialog.append(panel);}
+ function map(){const panel=n('div',null,'topic-map');panel.setAttribute('role','img');panel.setAttribute('aria-label','You face north. Library is to your left, shop to your right, and park straight ahead.');for(const label of ['','Park · north','','Library · west','You · facing north','Shop · east','','Road · south',''])panel.append(n('div',label));dialog.append(panel);}
+ function checkWritten(text,task){const accepts=(line,key)=>judgeAll(line,answersFor(sources[key]),sources[key].en).ok;if(task.policy==='one')return task.accept.some(key=>accepts(text,key));const lines=text.trim().split(/\r?\n+|(?<=[.!?])\s+/u).map(x=>x.trim()).filter(Boolean);if(lines.length!==2)return false;if(task.policy==='in-order')return task.accept.length===2&&lines.every((line,index)=>accepts(line,task.accept[index]));if(task.policy==='compatible-pair')return task.pairs.some(pair=>lines.every((line,index)=>accepts(line,pair[index])));if(task.policy==='any-two'){const matches=lines.map(line=>task.accept.filter(key=>accepts(line,key)));return matches.every(m=>m.length)&&matches[0].some(a=>matches[1].some(b=>a!==b));}return false;}
+ function hint(task,taskId){const box=n('p',null,'a1-small');box.hidden=true;const show=b(task.skill==='listening'?'Show transcript and meaning':'Show a hint',()=>{core.record(state.attemptId,taskId,{type:'hint'});const keys=task.lines||task.accept||[task.audio];box.textContent=keys.map(k=>sources[k].lt+' — '+sources[k].en).join('\n');box.style.whiteSpace='pre-line';box.hidden=false;});dialog.append(show,box);}
+ function answer(correct,taskId){if(!core.requirements(id).ready){draw();return;}const task=topic.build(state.variant)[state.step];if(task.skill==='listening'&&!heard)return;if(!core.record(state.attemptId,taskId,{type:'answer',correct}))return;if(correct)advance();else ui.status('Try again. Check the detail you need, or use a hint.');}
+ function draw(){const token=++generation;heard=false;playing=false;ui.show(topic.title,()=>{
+  if(ui.locked(id))return;
+  if(!state){dialog.append(n('p',topic.brief),n('p','Use language you have already learned. Begin with reading, then listen, write and practise speaking. Hints are optional.','a1-small'),b('Start activity',()=>start(true),'a1-primary'));return;}
+  if(state.step===6){dialog.append(n('h3','Reading, listening and writing complete'),n('p','You used familiar language in this situation. Next, practise saying a useful phrase.'),b('Next: practise speaking',()=>ui.speak({activityId:speechId,taskId:'say-it',title:topic.title+' · speaking',text:sources[topic.speech].lt,prompt:'Say this in '+LANG.en+': '+sources[topic.speech].en,back:draw}),'a1-primary'),b('See skill practice',ui.hub),b('Try a new visit',()=>start(true)));return;}
+  const step=state.step,task=topic.build(state.variant)[step],taskId=taskIds[step],progress=n('progress');progress.max=6;progress.value=step;progress.setAttribute('aria-label',step+' of 6 tasks complete');dialog.append(progress,n('p',(step+1)+' of 6 · '+task.skill[0].toUpperCase()+task.skill.slice(1),'a1-small'),n('p',task.prompt));
+  if(task.map)map();if(task.lines)sourcePanel(task.lines,task.document);
+  if(task.skill==='listening'){const play=b('Play recording',async()=>{if(playing)return;playing=true;play.disabled=true;ui.status('Playing…');try{await ui.listen(sources[task.audio].lt);if(token!==generation||!dialog.open)return;heard=true;core.record(state.attemptId,taskId,{type:'audio_complete'});dialog.querySelectorAll('[data-topic-choice]').forEach(e=>e.disabled=false);ui.status('Recording finished. Choose the detail you heard.');}catch(e){if(e.message!=='cancelled'&&token===generation)ui.status('The recording could not play. Check your sound or connection and try again.');}finally{playing=false;if(play.isConnected)play.disabled=false;}});dialog.append(play);}
+  if(task.options){const row=n('div',null,'topic-actions'),options=Math.random()<.5?task.options.slice():task.options.slice().reverse();for(const option of options){const choice=b(option.label,()=>answer(option.value===task.answer,taskId));choice.dataset.topicChoice=option.value;choice.disabled=task.skill==='listening'&&!heard;row.append(choice);}dialog.append(row);}
+  else{const form=n('form'),field=n(task.policy==='one'?'input':'textarea');field.maxLength=400;field.spellcheck=false;field.autocomplete='off';field.setAttribute('aria-label','Your '+LANG.en+' reply');field.oninput=()=>ui.status('');const send=n('button','Check reply','a1-primary');send.type='submit';form.append(field,send);form.onsubmit=e=>{e.preventDefault();answer(checkWritten(field.value,task),taskId);};dialog.append(form);}
+  hint(task,taskId);ui.announce();
+ });}
+ ui.registerTopic({title:topic.title,activityId:id,route:"#a1-"+topic.id,progress:()=>state?.step===6?'Reading, listening and writing practised':state?'Continue this activity':'Ready to practise',open:()=>state?start():draw()});
+ const open=()=>state?start():draw();
+ if(location.hash==='#a1-'+topic.id)open();
+ window.addEventListener('hashchange',()=>{if(location.hash==='#a1-'+topic.id)open();});
+}
+window.WordamiTopicCatalogue=Object.freeze(registered.map(t=>Object.freeze(t)));
+})();

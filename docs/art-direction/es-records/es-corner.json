@@ -1,0 +1,15 @@
+{
+  "id": "es-corner",
+  "word": "la esquina",
+  "en": "the corner",
+  "unit": "u14",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: a STREET CORNER seen from above at an angle: two cream pavements meeting at a right angle around the corner of one small amber building, with a navy lamppost standing exactly on the corner and one coral arrow curving around the corner. Grey-navy road edges only along the two sides, no cars, no signs or letters.",
+  "master": "docs/art-direction/masters/es-corner.png",
+  "asset": "pics/art-v2/es-corner.webp",
+  "bytes": 27618,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

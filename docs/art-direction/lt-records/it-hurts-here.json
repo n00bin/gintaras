@@ -1,0 +1,17 @@
+{
+  "id": "it-hurts-here",
+  "word": "Man skauda čia",
+  "en": "It hurts here",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning It hurts here. Reference 1 governs rounded flat cartoon STYLE: large expressive white oval eyes, oversized heads, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas points with one index finger to a specific spot on his other FOREARM. Three small crisp coral marks beside that spot and his concerned face show IT HURTS HERE. Both arms clearly visible, ordinary intact skin, no wound or medical device. Exactly two arms. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside shapes. No black outlines, gradients, glow, blur, shadow, texture, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/it-hurts-here.png",
+  "asset": "pics/art-v2/it-hurts-here.webp",
+  "bytes": 27906,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

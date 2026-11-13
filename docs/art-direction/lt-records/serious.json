@@ -1,0 +1,17 @@
+{
+  "id": "serious",
+  "word": "rimtas",
+  "en": "serious",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "prompt": "Create ONE transparent square Wordami vocabulary illustration meaning SERIOUS. Image 1 governs the approved rounded flat cartoon STYLE. Image 2 is Tomas's exact IDENTITY: short brown wavy hair, oversized friendly head, large white oval eyes, amber sweatshirt, navy trousers, cream shoes. Tomas has a SERIOUS, attentive expression: straight eyebrows, calm closed mouth, upright posture, focused eyes. He holds a simple clipboard with an entirely blank opaque cream sheet, considering an important task. He is not angry, frightened or sad. No other person or written marks. Use bright opaque flat colours, chunky hands, sparse crisp interior colour shapes and no black perimeter outlines. Center the complete composition with 12% transparent margin, readable at 56px. Clean sharp edges and opaque interiors. No background, floor, disc, letters, numbers, labels, logos, gradient, texture, glow, fog, blur or cast shadow.",
+  "master": "docs/art-direction/masters/serious.png",
+  "asset": "pics/art-v2/serious.webp",
+  "bytes": 23274,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

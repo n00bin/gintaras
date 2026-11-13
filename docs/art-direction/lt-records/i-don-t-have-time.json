@@ -1,0 +1,17 @@
+{
+  "id": "i-don-t-have-time",
+  "word": "Neturiu laiko",
+  "en": "I don't have time",
+  "unit": "u23",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I don't have time. Reference 1 governs rounded flat cartoon STYLE: big expressive white oval eyes, oversized heads, chunky hands, opaque solid colours and minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas looks apologetically at one small navy clock, while raising his other hand in a clear open-palm refusal gesture. A single crisp coral X beside the clock communicates NO TIME. Clock has plain cream face and two hands, no numbers. No smiling approval, word bubbles or additional tasks. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-don-t-have-time.png",
+  "asset": "pics/art-v2/i-don-t-have-time.webp",
+  "bytes": 37048,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

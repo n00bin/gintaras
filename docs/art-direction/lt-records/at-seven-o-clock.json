@@ -1,0 +1,16 @@
+{
+  "id": "at-seven-o-clock",
+  "word": "Septintą valandą",
+  "en": "At seven o'clock",
+  "unit": "u23",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning At seven o'clock. Reference 1 governs rounded flat cartoon STYLE, chunky simple shapes, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: ONE large clear analogue CLOCK showing exactly SEVEN O'CLOCK (7:00). Circular cream face, chunky coral rim, twelve simple navy tick marks. LONG navy minute hand points straight UP to 12. SHORT navy hour hand points DOWN-LEFT to 7, thirty degrees left of vertical down. Only two hands, joined at centre. No numbers, seconds hand, person or other objects. Complete centered composition with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/at-seven-o-clock.png",
+  "asset": "pics/art-v2/at-seven-o-clock.webp",
+  "bytes": 29814,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "shampoo",
+  "word": "šampūnas",
+  "en": "shampoo",
+  "unit": "u0",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style board: rounded chunky flat 2D cartoon, bright solid turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. Whole object unclipped, generous transparent margins, readable at 56px. Fully opaque object interiors, true transparent outside. No lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: SHAMPOO. One tall rounded turquoise shampoo bottle with a coral flip-top cap opened, a simple cream droplet emblem on front and a small cluster of cream soap bubbles beside it. No words or digits, no pump, no other products or people.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/shampoo.png",
+  "asset": "pics/art-v2/shampoo.webp",
+  "bytes": 20516,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

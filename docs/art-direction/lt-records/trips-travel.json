@@ -1,0 +1,16 @@
+{
+  "id": "trips-travel",
+  "word": "kelionės",
+  "en": "trips / travel",
+  "unit": "u22",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning trips / travel. Match attached reference STYLE only: rounded geometric flat cartoon, chunky simple shapes, bright opaque solid turquoise/amber/coral/navy/cream, minimal crisp details, no black outlines. Subject: ONE TRAVEL composition: a turquoise rolling suitcase with coral handle and two navy wheels, beside a small amber airplane silhouette flying diagonally upward with a single curved coral route line. No country flag, passport text, person, globe or landscape. Complete centered composition with generous transparent margins, strong silhouette at 56px. Opaque interiors and clean edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, cast shadow, floor, backdrop, lettering, labels or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/trips-travel.png",
+  "asset": "pics/art-v2/trips-travel.webp",
+  "bytes": 28704,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

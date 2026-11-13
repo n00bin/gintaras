@@ -1,0 +1,16 @@
+{
+  "id": "butterfly",
+  "word": "drugelis",
+  "en": "butterfly",
+  "unit": "u6",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved style: rounded chunky flat cartoon, bright solid amber/turquoise/coral/navy/cream, minimal crisp details, almost no outlines. Complete subject unclipped with generous transparent margins, readable at 56px. Opaque interiors, true transparent outside. No person, scenery, lettering, logos, gradients, texture, glow or shadows. Subject: ONE friendly BUTTERFLY front view with wings spread, exactly four rounded wings: two large upper turquoise wings and two smaller coral lower wings, simple amber oval markings. Small navy body and head, two antennae, two tiny white oval eyes. No extra insects or flowers.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/butterfly.png",
+  "asset": "pics/art-v2/butterfly.webp",
+  "bytes": 22160,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

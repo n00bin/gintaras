@@ -1,0 +1,16 @@
+{
+  "id": "an-hour-ago",
+  "word": "prieš valandą",
+  "en": "an hour ago",
+  "unit": "u36",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning an hour ago. Reference 1 governs rounded geometric flat cartoon STYLE, big white oval eyes, chunky hands and shapes, opaque solid colours, minimal crisp details, no black outlines. Reference 2 if present fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: TWO small analogue clocks side by side, identical cream faces and navy rims. LEFT clock shows exactly TWO O'CLOCK: long hand straight up, short hand upper-right to 2. RIGHT clock shows exactly THREE O'CLOCK: long hand straight up, short hand straight right to 3. A single broad CORAL arrow above points LEFT from the later clock back to the earlier clock, one hour earlier. No numbers, letters or extra hands. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, clean crisp edges, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/an-hour-ago.png",
+  "asset": "pics/art-v2/an-hour-ago.webp",
+  "bytes": 28162,
+  "generator": "built-in image_gen",
+  "status": "exported"
+}

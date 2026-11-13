@@ -1,0 +1,15 @@
+{
+  "id": "es-elephant",
+  "word": "el elefante",
+  "en": "the elephant",
+  "unit": "u11",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: ONE friendly ELEPHANT standing in side three-quarter view: soft grey-blue body, big rounded ears with coral-pink insides, a curled-up trunk, two small cream tusks, large expressive white oval eye, exactly four legs. Elephant only.",
+  "master": "docs/art-direction/masters/es-elephant.png",
+  "asset": "pics/art-v2/es-elephant.webp",
+  "bytes": 27194,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "exported"
+}

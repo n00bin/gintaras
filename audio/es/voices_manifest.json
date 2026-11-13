@@ -3,6 +3,38 @@
 "cv1:13": "¡Buenos días! ¿Un café?",
 "cv1:15": "¿Un chocolate caliente?"
 },
+"charon_cv3": {
+"cv3:0": "Buenos días. ¿Cómo estás?",
+"cv3:10": "Desayuno a las ocho.",
+"cv3:12": "Después descanso.",
+"cv3:14": "Está bien. Nos vemos.",
+"cv3:2": "Muy bien. ¿Qué hora es?",
+"cv3:4": "¿Cuándo trabajas?",
+"cv3:6": "¿Te levantas temprano?",
+"cv3:8": "¿A qué hora?"
+},
+"charon_cv5": {
+"cv5:0": "Buenos días.",
+"cv5:10": "¿Vas al parque?",
+"cv5:11o0-0": "Está cerca.",
+"cv5:11o1-0": "Está bien.",
+"cv5:13": "Nos vemos.",
+"cv5:2": "Sí.",
+"cv5:4": "Está cerca. Siga derecho.",
+"cv5:6": "Dos cuadras. Gire a la derecha.",
+"cv5:8": "Sí, en la esquina."
+},
+"charon_cv8": {
+"cv8:0": "Hola. ¿Cómo estás?",
+"cv8:11": "Trabajo en una oficina.",
+"cv8:13": "Termino a las cinco.",
+"cv8:2": "¿Tienes hijos?",
+"cv8:3o0-0": "Mi familia vive aquí.",
+"cv8:3o1-0": "Mi familia vive aquí.",
+"cv8:5": "Tengo una hermana.",
+"cv8:7": "Mi hermana es alta.",
+"cv8:9": "Vive en México."
+},
 "despina_cv1": {
 "cv1:1": "¡Buenos días!",
 "cv1:11": "Soy de Estados Unidos.",
@@ -16,6 +48,58 @@
 "cv1:7": "¡Mucho gusto!",
 "cv1:9o0": "¡Muy bien!",
 "cv1:9o1": "Muy bien, gracias. ¿Cómo estás?"
+},
+"despina_cv10": {
+"cv10:1": "Me fue bien.",
+"cv10:11": "Vivía en México.",
+"cv10:13": "Tenía un perro.",
+"cv10:15": "Sí. Nos vemos.",
+"cv10:3": "Ayer fui al mercado.",
+"cv10:5": "Compré una camisa.",
+"cv10:7": "Comí pollo.",
+"cv10:9": "Al final regresé a casa."
+},
+"despina_cv11": {
+"cv11:1": "Tengo una reservación.",
+"cv11:11": "¿A qué hora es la salida?",
+"cv11:13": "¿Puedo dejar mi maleta?",
+"cv11:15": "Gracias por todo.",
+"cv11:3": "Sí, por dos noches.",
+"cv11:5": "¿Dónde está mi habitación?",
+"cv11:7": "¿Incluye desayuno?",
+"cv11:9": "¿Tiene internet?"
+},
+"despina_cv12": {
+"cv12:1": "Estoy enfermo.",
+"cv12:11": "Necesito hablar con un doctor.",
+"cv12:13": "Soy alérgico a esta medicina.",
+"cv12:15": "Gracias por todo.",
+"cv12:3": "Me duele la cabeza.",
+"cv12:5": "Tengo fiebre.",
+"cv12:7": "Sí. Necesito un doctor.",
+"cv12:9": "¿Me puede ayudar?"
+},
+"despina_cv13": {
+"cv13:10": "Quiero conocer México.",
+"cv13:12": "Me gusta aprender español.",
+"cv13:14": "Seguimos en contacto.",
+"cv13:16": "¡Nos vemos pronto!",
+"cv13:1o0": "Prefiero el té.",
+"cv13:1o1": "Quiero un café.",
+"cv13:2": "Me encanta la comida mexicana.",
+"cv13:4": "¿La salsa está picante?",
+"cv13:6": "La comida está muy rica.",
+"cv13:8": "Voy a viajar con mi familia."
+},
+"despina_cv14": {
+"cv14:1": "¿Me lo puede escribir?",
+"cv14:11": "¿Podría ayudarme?",
+"cv14:13": "Necesito cargar mi celular.",
+"cv14:15": "Gracias. Seguimos en contacto.",
+"cv14:3": "Te mando un mensaje.",
+"cv14:5": "No tengo internet.",
+"cv14:7": "Sí, por favor.",
+"cv14:9": "No funciona."
 },
 "despina_cv16": {
 "cv16:11": "¿Qué significa esta palabra?",
@@ -34,6 +118,98 @@
 "cv16:7": "¿Mande? No entiendo.",
 "cv16:9": "Más despacio, por favor."
 },
+"despina_cv2": {
+"cv2:1": "Muy bien. ¿Y tú?",
+"cv2:10": "Trabajo en México.",
+"cv2:12": "Sí. Tengo un teléfono.",
+"cv2:14": "Hasta luego.",
+"cv2:3": "Soy de Estados Unidos.",
+"cv2:5": "Vivo en México.",
+"cv2:7o0": "Sí. Soy estudiante.",
+"cv2:7o1": "No. Soy maestro.",
+"cv2:8": "Hablo un poco de español."
+},
+"despina_cv3": {
+"cv3:1": "Bien, gracias. ¿Y tú?",
+"cv3:11": "Yo también.",
+"cv3:13": "Voy al trabajo.",
+"cv3:15": "Nos vemos.",
+"cv3:3": "Son las dos.",
+"cv3:5": "Trabajo por la mañana.",
+"cv3:7": "Me levanto temprano.",
+"cv3:9": "A las ocho."
+},
+"despina_cv4": {
+"cv4:1": "Una mesa para dos, por favor.",
+"cv4:10": "Un café con leche, por favor.",
+"cv4:12": "La cuenta, por favor.",
+"cv4:14": "¿Puedo pagar con tarjeta?",
+"cv4:16": "Gracias. Hasta luego.",
+"cv4:3": "El menú, por favor.",
+"cv4:5": "¿Qué recomienda?",
+"cv4:7o0": "Quiero pollo, por favor.",
+"cv4:7o1": "No como carne. Quiero sopa.",
+"cv4:8": "Agua sin gas, por favor."
+},
+"despina_cv5": {
+"cv5:1": "Perdón. ¿Me puede ayudar?",
+"cv5:11o0": "Voy al parque.",
+"cv5:11o1": "No. Voy al museo.",
+"cv5:12": "Hasta luego.",
+"cv5:3": "¿Dónde está el museo?",
+"cv5:5": "¿Cuántas cuadras?",
+"cv5:7": "¿A la derecha?",
+"cv5:9": "Ya veo. Gracias."
+},
+"despina_cv6": {
+"cv6:1": "Estoy en la estación.",
+"cv6:11": "¿A qué hora sale?",
+"cv6:13": "Gracias.",
+"cv6:15": "Hasta luego.",
+"cv6:3": "Sí. Quiero ir al aeropuerto.",
+"cv6:5": "No. Voy en camión.",
+"cv6:7": "Un boleto, por favor.",
+"cv6:9": "¿Acepta tarjeta?"
+},
+"despina_cv7": {
+"cv7:1": "Quiero una chamarra azul.",
+"cv7:11": "Me queda bien.",
+"cv7:13o0": "Sí, por favor.",
+"cv7:13o1": "No necesito bolsa.",
+"cv7:14": "¿Puedo pagar con tarjeta?",
+"cv7:3": "Sí. ¿Cuánto cuesta?",
+"cv7:5": "¿Me la puedo probar?",
+"cv7:7": "Es muy grande.",
+"cv7:9": "Sí, por favor."
+},
+"despina_cv8": {
+"cv8:1": "Estoy contento.",
+"cv8:10": "¿En qué trabajas?",
+"cv8:12": "¿Cuándo terminas?",
+"cv8:14": "Está bien. Nos vemos.",
+"cv8:3o0": "Tengo dos hijos.",
+"cv8:3o1": "No tengo hijos.",
+"cv8:4": "¿Tienes hermanos?",
+"cv8:6": "Yo también.",
+"cv8:8": "¿Dónde vive?"
+},
+"despina_cv9": {
+"cv9:1": "Voy a estudiar.",
+"cv9:10": "¿Con quién?",
+"cv9:12": "Buena suerte.",
+"cv9:14": "Nos vemos mañana.",
+"cv9:3o0": "Sí, puedo.",
+"cv9:3o1": "No puedo, tengo que trabajar.",
+"cv9:4": "A las seis.",
+"cv9:6": "Prefiero caminar.",
+"cv9:8": "Sí, me gusta."
+},
+"despina_me2": {
+"me2:cv12:13~f": "Soy alérgica a esta medicina.",
+"me2:cv12:1~f": "Estoy enferma.",
+"me2:cv2:7o1~f": "No. Soy maestra.",
+"me2:cv8:1~f": "Estoy contenta."
+},
 "kore_cv1": {
 "cv1:0": "¡Buenos días!",
 "cv1:10": "¿De dónde eres?",
@@ -46,6 +222,58 @@
 "cv1:8": "¿Cómo estás?",
 "cv1:9o0-0": "¡Qué bueno!",
 "cv1:9o1-0": "¡Muy bien también!"
+},
+"kore_cv10": {
+"cv10:0": "Hola. ¿Cómo te fue?",
+"cv10:10": "¿Dónde vivías cuando eras niño?",
+"cv10:12": "¿Tenías un perro?",
+"cv10:14": "Fue muy bonito.",
+"cv10:2": "¿Qué hiciste ayer?",
+"cv10:4": "¿Qué compraste?",
+"cv10:6": "¿Y después?",
+"cv10:8": "¿Y luego?"
+},
+"kore_cv11": {
+"cv11:0": "Buenas tardes.",
+"cv11:10": "Sí.",
+"cv11:12": "A las doce.",
+"cv11:14": "Sí. Aquí.",
+"cv11:2": "¿Una habitación para dos?",
+"cv11:4": "Aquí está la llave.",
+"cv11:6": "Está en el segundo piso.",
+"cv11:8": "Sí. A las ocho."
+},
+"kore_cv12": {
+"cv12:0": "¿Cómo te sientes?",
+"cv12:10": "Sí. Vamos en taxi.",
+"cv12:12": "¿Tienes una alergia?",
+"cv12:14": "Está bien.",
+"cv12:2": "¿Te duele la cabeza?",
+"cv12:4": "¿Tienes fiebre?",
+"cv12:6": "¿Necesitas ayuda?",
+"cv12:8": "El hospital está cerca."
+},
+"kore_cv13": {
+"cv13:0": "¿Qué prefieres? ¿Café o té?",
+"cv13:11": "Cuéntame.",
+"cv13:13": "Me dio mucho gusto verte.",
+"cv13:15": "Cuídate.",
+"cv13:1o0-0": "A mí también.",
+"cv13:1o1-0": "Está bien.",
+"cv13:3": "Estoy de acuerdo.",
+"cv13:5": "Sí, está muy picante.",
+"cv13:7": "¿Qué vas a hacer mañana?",
+"cv13:9": "¡Qué padre! ¿Dónde?"
+},
+"kore_cv14": {
+"cv14:0": "¿Cuál es tu número?",
+"cv14:10": "¿Necesitas ayuda?",
+"cv14:12": "Sí. Un momento.",
+"cv14:14": "Está bien.",
+"cv14:2": "Sí. Aquí está.",
+"cv14:4": "¿Tienes internet?",
+"cv14:6": "¿Quieres la contraseña?",
+"cv14:8": "Aquí está."
 },
 "kore_cv16": {
 "cv16:0": "¡Hola, Tomás! ¿Qué onda?",
@@ -64,7 +292,64 @@
 "cv16:6": "¡Hoy hace un día padrísimo! ¿Vamos a caminar por el parque y luego nos tomamos un café?",
 "cv16:8": "¡No pasa nada!"
 },
+"kore_cv2": {
+"cv2:0": "Hola. ¿Cómo estás?",
+"cv2:11": "¿Tienes un teléfono?",
+"cv2:13": "Nos vemos.",
+"cv2:2": "Muy bien. ¿De dónde eres?",
+"cv2:4": "¿Dónde vives?",
+"cv2:6": "¿Eres estudiante?",
+"cv2:7o0-0": "¿Hablas inglés?",
+"cv2:7o1-0": "¿Hablas inglés?",
+"cv2:9": "¿Por qué aprendes español?"
+},
+"kore_cv4": {
+"cv4:0": "Buenas tardes.",
+"cv4:11": "Está bien.",
+"cv4:13": "Sí.",
+"cv4:15": "Sí. Gracias.",
+"cv4:2": "Aquí, por favor.",
+"cv4:4": "Aquí está el menú.",
+"cv4:6": "El pollo está rico.",
+"cv4:7o0-0": "Está bien.",
+"cv4:7o1-0": "Está bien.",
+"cv4:9": "Sí. ¿Un café?"
+},
+"kore_cv6": {
+"cv6:0": "Hola. ¿Dónde estás?",
+"cv6:10": "Sí.",
+"cv6:12": "A las ocho.",
+"cv6:14": "Buena suerte.",
+"cv6:2": "¿Quieres ir al aeropuerto?",
+"cv6:4": "¿Vas en taxi?",
+"cv6:6": "Está bien.",
+"cv6:8": "Cuesta treinta pesos."
+},
+"kore_cv7": {
+"cv7:0": "Buenas tardes.",
+"cv7:10": "¿Te queda bien?",
+"cv7:12": "¿Quieres una bolsa?",
+"cv7:13o0-0": "Aquí está.",
+"cv7:13o1-0": "Está bien.",
+"cv7:15": "Sí. Gracias.",
+"cv7:2": "¿Esta?",
+"cv7:4": "Cien pesos.",
+"cv7:6": "Sí.",
+"cv7:8": "¿Quieres una talla más pequeña?"
+},
+"kore_cv9": {
+"cv9:0": "¿Qué vas a hacer mañana?",
+"cv9:11": "Con mi familia.",
+"cv9:13": "Gracias. Nos vemos mañana.",
+"cv9:2": "¿Quieres comer conmigo?",
+"cv9:3o0-0": "¿A qué hora?",
+"cv9:3o1-0": "¿El sábado?",
+"cv9:5": "Está bien. ¿Vamos al cine?",
+"cv9:7": "¿Te gusta viajar?",
+"cv9:9": "Voy a viajar la próxima semana."
+},
 "kore_me2": {
+"me2:cv10:10~f": "¿Dónde vivías cuando eras niña?",
 "me2:cv16:0~n": "¡Hola! ¿Qué onda?",
 "me2:cv1:22~n": "¡Gracias! ¡Adiós!"
 },
@@ -82,6 +367,58 @@
 "cv1:9o0": "¡Muy bien!",
 "cv1:9o1": "Muy bien, gracias. ¿Cómo estás?"
 },
+"orus_cv10": {
+"cv10:1": "Me fue bien.",
+"cv10:11": "Vivía en México.",
+"cv10:13": "Tenía un perro.",
+"cv10:15": "Sí. Nos vemos.",
+"cv10:3": "Ayer fui al mercado.",
+"cv10:5": "Compré una camisa.",
+"cv10:7": "Comí pollo.",
+"cv10:9": "Al final regresé a casa."
+},
+"orus_cv11": {
+"cv11:1": "Tengo una reservación.",
+"cv11:11": "¿A qué hora es la salida?",
+"cv11:13": "¿Puedo dejar mi maleta?",
+"cv11:15": "Gracias por todo.",
+"cv11:3": "Sí, por dos noches.",
+"cv11:5": "¿Dónde está mi habitación?",
+"cv11:7": "¿Incluye desayuno?",
+"cv11:9": "¿Tiene internet?"
+},
+"orus_cv12": {
+"cv12:1": "Estoy enfermo.",
+"cv12:11": "Necesito hablar con un doctor.",
+"cv12:13": "Soy alérgico a esta medicina.",
+"cv12:15": "Gracias por todo.",
+"cv12:3": "Me duele la cabeza.",
+"cv12:5": "Tengo fiebre.",
+"cv12:7": "Sí. Necesito un doctor.",
+"cv12:9": "¿Me puede ayudar?"
+},
+"orus_cv13": {
+"cv13:10": "Quiero conocer México.",
+"cv13:12": "Me gusta aprender español.",
+"cv13:14": "Seguimos en contacto.",
+"cv13:16": "¡Nos vemos pronto!",
+"cv13:1o0": "Prefiero el té.",
+"cv13:1o1": "Quiero un café.",
+"cv13:2": "Me encanta la comida mexicana.",
+"cv13:4": "¿La salsa está picante?",
+"cv13:6": "La comida está muy rica.",
+"cv13:8": "Voy a viajar con mi familia."
+},
+"orus_cv14": {
+"cv14:1": "¿Me lo puede escribir?",
+"cv14:11": "¿Podría ayudarme?",
+"cv14:13": "Necesito cargar mi celular.",
+"cv14:15": "Gracias. Seguimos en contacto.",
+"cv14:3": "Te mando un mensaje.",
+"cv14:5": "No tengo internet.",
+"cv14:7": "Sí, por favor.",
+"cv14:9": "No funciona."
+},
 "orus_cv16": {
 "cv16:11": "¿Qué significa esta palabra?",
 "cv16:13": "¡Ya entendí! Sí, está bien.",
@@ -98,5 +435,97 @@
 "cv16:5": "Hablo un poco de español.",
 "cv16:7": "¿Mande? No entiendo.",
 "cv16:9": "Más despacio, por favor."
+},
+"orus_cv2": {
+"cv2:1": "Muy bien. ¿Y tú?",
+"cv2:10": "Trabajo en México.",
+"cv2:12": "Sí. Tengo un teléfono.",
+"cv2:14": "Hasta luego.",
+"cv2:3": "Soy de Estados Unidos.",
+"cv2:5": "Vivo en México.",
+"cv2:7o0": "Sí. Soy estudiante.",
+"cv2:7o1": "No. Soy maestro.",
+"cv2:8": "Hablo un poco de español."
+},
+"orus_cv3": {
+"cv3:1": "Bien, gracias. ¿Y tú?",
+"cv3:11": "Yo también.",
+"cv3:13": "Voy al trabajo.",
+"cv3:15": "Nos vemos.",
+"cv3:3": "Son las dos.",
+"cv3:5": "Trabajo por la mañana.",
+"cv3:7": "Me levanto temprano.",
+"cv3:9": "A las ocho."
+},
+"orus_cv4": {
+"cv4:1": "Una mesa para dos, por favor.",
+"cv4:10": "Un café con leche, por favor.",
+"cv4:12": "La cuenta, por favor.",
+"cv4:14": "¿Puedo pagar con tarjeta?",
+"cv4:16": "Gracias. Hasta luego.",
+"cv4:3": "El menú, por favor.",
+"cv4:5": "¿Qué recomienda?",
+"cv4:7o0": "Quiero pollo, por favor.",
+"cv4:7o1": "No como carne. Quiero sopa.",
+"cv4:8": "Agua sin gas, por favor."
+},
+"orus_cv5": {
+"cv5:1": "Perdón. ¿Me puede ayudar?",
+"cv5:11o0": "Voy al parque.",
+"cv5:11o1": "No. Voy al museo.",
+"cv5:12": "Hasta luego.",
+"cv5:3": "¿Dónde está el museo?",
+"cv5:5": "¿Cuántas cuadras?",
+"cv5:7": "¿A la derecha?",
+"cv5:9": "Ya veo. Gracias."
+},
+"orus_cv6": {
+"cv6:1": "Estoy en la estación.",
+"cv6:11": "¿A qué hora sale?",
+"cv6:13": "Gracias.",
+"cv6:15": "Hasta luego.",
+"cv6:3": "Sí. Quiero ir al aeropuerto.",
+"cv6:5": "No. Voy en camión.",
+"cv6:7": "Un boleto, por favor.",
+"cv6:9": "¿Acepta tarjeta?"
+},
+"orus_cv7": {
+"cv7:1": "Quiero una chamarra azul.",
+"cv7:11": "Me queda bien.",
+"cv7:13o0": "Sí, por favor.",
+"cv7:13o1": "No necesito bolsa.",
+"cv7:14": "¿Puedo pagar con tarjeta?",
+"cv7:3": "Sí. ¿Cuánto cuesta?",
+"cv7:5": "¿Me la puedo probar?",
+"cv7:7": "Es muy grande.",
+"cv7:9": "Sí, por favor."
+},
+"orus_cv8": {
+"cv8:1": "Estoy contento.",
+"cv8:10": "¿En qué trabajas?",
+"cv8:12": "¿Cuándo terminas?",
+"cv8:14": "Está bien. Nos vemos.",
+"cv8:3o0": "Tengo dos hijos.",
+"cv8:3o1": "No tengo hijos.",
+"cv8:4": "¿Tienes hermanos?",
+"cv8:6": "Yo también.",
+"cv8:8": "¿Dónde vive?"
+},
+"orus_cv9": {
+"cv9:1": "Voy a estudiar.",
+"cv9:10": "¿Con quién?",
+"cv9:12": "Buena suerte.",
+"cv9:14": "Nos vemos mañana.",
+"cv9:3o0": "Sí, puedo.",
+"cv9:3o1": "No puedo, tengo que trabajar.",
+"cv9:4": "A las seis.",
+"cv9:6": "Prefiero caminar.",
+"cv9:8": "Sí, me gusta."
+},
+"orus_me2": {
+"me2:cv12:13~f": "Soy alérgica a esta medicina.",
+"me2:cv12:1~f": "Estoy enferma.",
+"me2:cv2:7o1~f": "No. Soy maestra.",
+"me2:cv8:1~f": "Estoy contenta."
 }
 }
