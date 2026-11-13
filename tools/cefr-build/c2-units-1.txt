@@ -1,0 +1,93 @@
+%Mastery|C2 grammar and style: old and literary forms, dialects, irony and wordplay, precise paraphrase
+@u187|Senosios ir literatūrinės formos|Old and literary forms|Old books and folk songs keep forms modern speech has lost. The dual number talks about exactly two: <b>mudu</b> (we two) and <b>Mudu einava</b> (we two are going). Stories also use literary verbs like <b>tarė</b> (said).|Retell a short folk tale in a slightly old-fashioned style, with at least one dual form and two literary verbs.
+#u187a|The dual and literary verbs
+mudu|we two|MU-du
+judu|you two|YU-du
+mudvi|we two (both women)|mud-VI
+Mudu einava|We two are going|MU-du ay-NAH-vah
+Judu esata|You two are|YU-du eh-SAH-tah
+tarė|said (literary)|tah-RAY
+Ir tarė jis|And he said|ir tah-RAY yis
+išvydo|beheld, caught sight of|ish-VEE-doh
+regėjo|saw (literary)|reh-GAY-yoh
+bylojo|spoke, declared (literary)|bee-LOH-yoh
+#u187b|Words from old tales
+bočiai|forefathers|BOH-chyai
+vėlės|souls of the dead|VAY-lays
+aitvaras|household spirit (folk tales)|AIT-vah-rahs
+kanklės|kanklės (Lithuanian zither)|KAHNK-lays
+sakmė|legend, myth|sahk-MAY
+padavimas|local legend|pah-dah-VI-mahs
+šilas|pine wood on sandy soil|SHI-lahs
+pilkapis|burial mound|PIL-kah-pis
+dainius|bard|DAI-nyus
+Tai tau ir pasaka|And that is the end of the tale|tai tau ir PAH-sah-kah
+@u188|Tarmės|Dialects|Lithuanian has two big dialect groups and many local ways of speaking. You only need to recognise them, not use them. A <b>tarmė</b> (dialect) differs from the <b>bendrinė kalba</b> (standard language) in sounds and some words.|Listen to an older relative or a recording in dialect, and say which features you noticed.
+#u188a|Talking about dialects
+dialektologija|dialectology|di-ah-lek-toh-LOH-gi-yah
+kalbos atmaina|language variety|KAHL-bohs AHT-mai-nah
+tarmiškai|in dialect|tar-MISH-kai
+žemaičių tarmė|Samogitian dialect|zheh-MAI-chyoo tar-MAY
+aukštaičių tarmė|Aukštaitian dialect|owksh-TAI-chyoo tar-MAY
+dzūkų tarmė|Dzūkian dialect|DZOO-koo tar-MAY
+tarmybė|dialect feature|tar-MEE-bay
+šnekta|local speech|shnek-TAH
+dzūkavimas|saying dz and c for d and t|dzoo-KAH-vi-mahs
+tarmių žemėlapis|dialect map|TAR-myoo zheh-MAY-lah-pis
+#u188b|Recognising dialect words
+dzėdzė|uncle (Dzūkian for dėdė)|DZAY-dzay
+ciltas|bridge (Dzūkian for tiltas)|TSIL-tahs
+douna|bread (Samogitian for duona)|DOH-u-nah
+tievs|father (Samogitian for tėvas)|TYEVS
+veizėk|look! (Samogitian for žiūrėk)|VAY-zayk
+runka|hand (eastern Aukštaitian for ranka)|RUN-kah
+Jis kalba žemaitiškai|He speaks Samogitian|yis KAHL-bah zheh-MAI-tish-kai
+Ji dzūkuoja|She speaks with a Dzūkian accent|yi dzoo-KWOH-yah
+Iš tarmės atpažinau, iš kur jis|I could tell from his dialect where he is from|ish tar-MAYS aht-pah-zhi-NAU, ish kur yis
+Tarmės nyksta|Dialects are disappearing|tar-MAYS NEEKS-tah
+@u189|Ironija ir žodžių žaismas|Irony and wordplay|At C2 you hear what is not said. <b>Potekstė</b> (subtext) and <b>žodžių žaismas</b> (wordplay) matter, and a plain <b>Na, puiku!</b> (oh, great!) can mean the opposite.|Tell about a day when everything went wrong, using ironic phrases from this unit.
+#u189a|Saying the opposite
+potekstė|subtext|POH-teks-tay
+žodžių žaismas|wordplay|ZHOHD-zhyoo ZHAIS-mahs
+Na, puiku!|Oh, great! (ironic)|nah, pui-KU
+dviprasmybė|double meaning|dvi-prahs-MEE-bay
+kalambūras|pun|kah-lahm-BOO-rahs
+sarkazmas|sarcasm|sar-KAHZ-mahs
+Tik to ir trūko|That’s all we needed|tik toh ir TROO-koh
+Ačiū, kad priminei|Thanks for reminding me (ironic)|AH-chyoo, kahd pri-mi-NAY
+Žinoma, žinoma|Sure, sure (doubting)|ZHI-noh-mah, ZHI-noh-mah
+Labai protinga, nėra ką sakyti|Very clever, I must say (ironic)|lah-BAI proh-TIN-gah, nay-RAH kaa sah-KEE-ti
+#u189b|Reading between the lines
+skaityti tarp eilučių|to read between the lines|skai-TEE-ti tarp eh-LU-chyoo
+numanomas|implied|nu-MAH-noh-mahs
+užslėptas priekaištas|veiled reproach|uzh-SLAYP-tahs PRYEH-kaish-tahs
+Ne mano kiaulės, ne mano pupos|Not my problem (proverb)|neh MAH-noh KYAU-lays, neh MAH-noh PU-pohs
+Kas per daug, tas nesveika|Too much of anything is bad|kahs per DOWG, tahs nes-vay-KAH
+Nėra to blogo, kas neišeitų į gera|Every cloud has a silver lining|nay-RAH toh BLOH-goh, kahs neh-i-SHAY-too ee geh-RAH
+Kaip gi kitaip|How else? (of course)|kaip gi KI-taip
+Gražu, nėra ką pridurti|Lovely, nothing to add (ironic)|grah-ZHU, nay-RAH kaa pri-DUR-ti
+Jis ne iš kelmo spirtas|He’s no fool|yis neh ish KEL-moh SPIR-tahs
+Ne tas pats|Not the same thing|neh tahs PAHTS
+@u190|Tikslus perfrazavimas|Precise paraphrase and mediation|At C2 you pass on what sources say, accurately and in your own words. <b>Tiksliau sakant</b> (to be precise) narrows a claim, and <b>Pasak antrojo šaltinio</b> (according to the second source) reports one.|Read two short texts on the same topic and explain to someone what each says and where they disagree.
+#u190a|Reformulating
+Tiksliau sakant|To be precise|tiks-LYAU SAH-kahnt
+Kitais žodžiais|In other words|ki-TAIS ZHOHD-zhyais
+Trumpai drūtai|In a nutshell|trum-PAI droo-TAI
+Pasak antrojo šaltinio|According to the second source|PAH-sahk ahn-TROH-yoh shahl-TI-nyoh
+Autorius turi omenyje, kad|The author means that|ow-TOH-ryus TU-ri OH-meh-nee-yeh, kahd
+Šaltinyje teigiama, kad|The source states that|shahl-ti-NEE-yeh TAY-gyah-mah, kahd
+Abu šaltiniai sutaria, kad|Both sources agree that|ah-BU shahl-ti-NYAI SU-tah-ryah, kahd
+Skirtingai nei pirmasis šaltinis|Unlike the first source|skir-TIN-gai nay pir-MAH-sis SHAHL-ti-nis
+Šiuo atžvilgiu|In this respect|shywoh AHT-zhvil-gyu
+Kitaip nei teigiama|Contrary to what is claimed|KI-taip nay TAY-gyah-mah
+#u190b|Mediating
+tarpininkauti|to mediate|tar-pi-nin-KOW-ti
+tarpininkas|mediator, go-between|tar-pi-NIN-kahs
+perpasakoti|to retell|per-pah-sah-KOH-ti
+Atkreipčiau dėmesį, kad|I would point out that|aht-KRAYP-chyau DAY-meh-see, kahd
+Jei glaustai|To put it briefly|yay GLOWS-tai
+Esminis skirtumas tas, kad|The key difference is that|ES-mi-nis skir-TU-mahs tahs, kahd
+Abiejuose tekstuose minima|Both texts mention|ah-bye-ywoh-SEH teks-twoh-SEH MI-ni-mah
+Vienas šaltinis pabrėžia, o kitas|One source stresses, while the other|VYEH-nahs SHAHL-ti-nis pah-BRAY-zhyah, oh KI-tahs
+Tai ne visai tas pats, ką sakė|That’s not quite what was said|tai neh vi-SAI tahs pahts, kaa SAH-kay
+Leiskite patikslinti|Allow me to clarify|LAYS-ki-teh pah-TIKS-lin-ti

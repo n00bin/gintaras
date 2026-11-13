@@ -144,7 +144,7 @@ say('drill words (sentence, and one choice) not taught by the lesson of the dril
    only makes sure the guard still reads every Lithuanian word a card shows. */
 say('teach-before-test guard reads every word a card shows', /function cardWords\(e\)/.test(html) && /wordsNeed\(cardWords\(e\)/.test(html) && /function taught\(i\)\{const r=peek\(i\.id\);return !!\(r\.intro/.test(html) ? [] : ['the guard in drawStep() or taught() has changed: run python tools/check_cards.py']);
 { const v = (head.match(/const APP_VERSION=(\d+);/) || [])[1], sw = (fs.readFileSync(path.join(__dirname, '..', 'sw.js'), 'utf8').match(/gintaras-shell-v(\d+)/) || [])[1];
-  say('app release looks like 1.0 or 1.0.1', /const APP_RELEASE='\d+\.\d+(\.\d+)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
+  say('app release has a valid version and optional preview label', /const APP_RELEASE='\d+\.\d+(\.\d+)?(?:-[a-zA-Z0-9]+(?:[.-][a-zA-Z0-9]+)*)?';/.test(head) ? [] : ['APP_RELEASE missing or malformed']);
   say('app version and sw.js cache name match', v && v === sw ? [] : ['APP_VERSION ' + v + ' vs sw.js v' + sw]); }
 console.log(problems ? `\n${problems} problem(s)` : '\nAll checks passed.');
 process.exit(problems ? 1 : 0);

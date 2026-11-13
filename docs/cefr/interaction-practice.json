@@ -1,0 +1,2867 @@
+{
+  "schema": 1,
+  "scope": "guided self-reviewed interaction; no automatic speech or CEFR assessment",
+  "audioVerified": true,
+  "languages": {
+    "lt": [
+      {
+        "unitId": "A1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "Aštuntą valandą?",
+            "At eight?"
+          ],
+          [
+            "correct",
+            "Septintą valandą?",
+            "At seven?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Aštuntą valandą.",
+          "correct": "Rytoj. Aštuntą valandą."
+        },
+        "branches": null,
+        "detailGoal": "Which time did your partner clarify?",
+        "detailModel": "Aštuntą valandą.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-shopping",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "Keturi eurai?",
+            "Four euros?"
+          ],
+          [
+            "correct",
+            "Trys eurai?",
+            "Three euros?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Keturi eurai.",
+          "correct": "Keturi eurai. Mokėsiu grynaisiais."
+        },
+        "branches": null,
+        "detailGoal": "Which total did your partner clarify?",
+        "detailModel": "Keturi eurai.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-home",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "Ant kėdės?",
+            "On the chair?"
+          ],
+          [
+            "correct",
+            "Ant stalo?",
+            "On the table?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Ant kėdės.",
+          "correct": "Ant kėdės. Gal nori vandens?"
+        },
+        "branches": null,
+        "detailGoal": "Where did your partner say the key is?",
+        "detailModel": "Ant kėdės.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-travel",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "Į kairę?",
+            "To the left?"
+          ],
+          [
+            "correct",
+            "Į dešinę?",
+            "To the right?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Sukite į kairę.",
+          "correct": "Eikite tiesiai, paskui sukite į kairę."
+        },
+        "branches": null,
+        "detailGoal": "Which turn did your partner clarify?",
+        "detailModel": "Sukite į kairę.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "time",
+            "Kada galėtume susitikti?",
+            "When could we meet?"
+          ],
+          [
+            "rain",
+            "O ką darysime, jei lis?",
+            "And what will we do if it rains?"
+          ]
+        ],
+        "partnerReplies": {
+          "time": "Siūlau dešimtą valandą prie parko. Parašyk, ar tau tinka šeštadienis.",
+          "rain": "Jei lis, susitikime kavinėje šalia parko."
+        },
+        "branches": {
+          "time": {
+            "id": "time",
+            "question": [
+              "Kada galėtume susitikti?",
+              "When could we meet?"
+            ],
+            "reply": "Siūlau dešimtą valandą prie parko. Parašyk, ar tau tinka šeštadienis.",
+            "detailQuestion": "What arrangement does your partner propose?",
+            "options": [
+              "Friday at seven",
+              "Saturday at ten near the park",
+              "Saturday at eight inside the library"
+            ],
+            "answer": 1,
+            "detailModel": "Siūlau dešimtą valandą prie parko. Parašyk, ar tau tinka šeštadienis.",
+            "responseGoal": "Acknowledge Saturday at ten and say whether it works for you, or propose a prepared alternative.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "rain": {
+            "id": "rain",
+            "question": [
+              "O ką darysime, jei lis?",
+              "And what will we do if it rains?"
+            ],
+            "reply": "Jei lis, susitikime kavinėje šalia parko.",
+            "detailQuestion": "What does rain change?",
+            "options": [
+              "The meeting place becomes the café beside the park",
+              "The whole arrangement is automatically cancelled",
+              "The meeting changes back to Friday"
+            ],
+            "answer": 0,
+            "detailModel": "Jei lis, susitikime kavinėje šalia parko.",
+            "responseGoal": "Acknowledge the rain plan and restate the café location without changing the day or time.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-services",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "day",
+            "Kokiai dienai norėtumėte užsiregistruoti?",
+            "Which day would you like an appointment?"
+          ],
+          [
+            "confirmation",
+            "Kaip norėtumėte gauti patvirtinimą?",
+            "How would you like confirmation?"
+          ]
+        ],
+        "partnerReplies": {
+          "day": "Norėčiau užsiregistruoti penktadienį trečią valandą. Prašau patvirtinti laiką.",
+          "confirmation": "Prašau patvirtinti naują laiką žinute. Atsinešiu dokumentus."
+        },
+        "branches": {
+          "day": {
+            "id": "day",
+            "question": [
+              "Kokiai dienai norėtumėte užsiregistruoti?",
+              "Which day would you like an appointment?"
+            ],
+            "reply": "Norėčiau užsiregistruoti penktadienį trečią valandą. Prašau patvirtinti laiką.",
+            "detailQuestion": "Which appointment is requested?",
+            "options": [
+              "Tuesday at ten",
+              "Friday at eight",
+              "Friday at three"
+            ],
+            "answer": 2,
+            "detailModel": "Norėčiau užsiregistruoti penktadienį trečią valandą. Prašau patvirtinti laiką.",
+            "responseGoal": "Restate the requested day and time, and distinguish the request from a confirmed appointment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "confirmation": {
+            "id": "confirmation",
+            "question": [
+              "Kaip norėtumėte gauti patvirtinimą?",
+              "How would you like confirmation?"
+            ],
+            "reply": "Prašau patvirtinti naują laiką žinute. Atsinešiu dokumentus.",
+            "detailQuestion": "How does the caller want confirmation?",
+            "options": [
+              "By a message",
+              "By submitting another full form",
+              "By an unannounced visit"
+            ],
+            "answer": 0,
+            "detailModel": "Prašau patvirtinti naują laiką žinute. Atsinešiu dokumentus.",
+            "responseGoal": "Acknowledge the requested confirmation by message and the documents, without claiming confirmation has already arrived.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-work",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "meeting",
+            "Rytoj susitikimas prasidės valanda vėliau. Ar jums tinka?",
+            "Tomorrow the meeting starts an hour later. Does that work?"
+          ],
+          [
+            "tasks",
+            "Kaip galėtume pasidalyti užduotis?",
+            "How can we divide the tasks?"
+          ]
+        ],
+        "partnerReplies": {
+          "meeting": "Rytoj mūsų susitikimas bus vienuoliktą, o ne dešimtą.",
+          "tasks": "Aš patikrinsiu dokumentus. Ryte prašau paruošti klientų sąrašą. Jei nespėsi paruošti sąrašo, pranešk iki vienuoliktos."
+        },
+        "branches": {
+          "meeting": {
+            "id": "meeting",
+            "question": [
+              "Rytoj susitikimas prasidės valanda vėliau. Ar jums tinka?",
+              "Tomorrow the meeting starts an hour later. Does that work?"
+            ],
+            "reply": "Rytoj mūsų susitikimas bus vienuoliktą, o ne dešimtą.",
+            "detailQuestion": "What time is now proposed?",
+            "options": [
+              "Ten",
+              "Eleven",
+              "Nine"
+            ],
+            "answer": 1,
+            "detailModel": "Rytoj mūsų susitikimas bus vienuoliktą, o ne dešimtą.",
+            "responseGoal": "Restate eleven rather than ten and say whether the new time works for you.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "tasks": {
+            "id": "tasks",
+            "question": [
+              "Kaip galėtume pasidalyti užduotis?",
+              "How can we divide the tasks?"
+            ],
+            "reply": "Aš patikrinsiu dokumentus. Ryte prašau paruošti klientų sąrašą. Jei nespėsi paruošti sąrašo, pranešk iki vienuoliktos.",
+            "detailQuestion": "What is the listener asked to do?",
+            "options": [
+              "Check documents instead of the speaker",
+              "Call every client at nine",
+              "Prepare the list and report a problem by the stated deadline"
+            ],
+            "answer": 2,
+            "detailModel": "Aš patikrinsiu dokumentus. Ryte prašau paruošti klientų sąrašą. Jei nespėsi paruošti sąrašo, pranešk iki vienuoliktos.",
+            "responseGoal": "Acknowledge your list task, keep the speaker’s document task separate, and mention when you would ask for help.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-meals",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "group",
+            "Kiek žmonių bus jūsų grupėje?",
+            "How many people are in your group?"
+          ],
+          [
+            "preferences",
+            "Ar turite pageidavimų dėl patiekalų?",
+            "Do you have meal preferences?"
+          ]
+        ],
+        "partnerReplies": {
+          "group": "Atvyksime penkiese, o ne keturiese, ir galėsime būti tik pusę aštuonių.",
+          "preferences": "Trims žmonėms reikės patiekalų be mėsos. Du vištienos patiekalai lieka. Padažą vis dar norėtume gauti atskirai."
+        },
+        "branches": {
+          "group": {
+            "id": "group",
+            "question": [
+              "Kiek žmonių bus jūsų grupėje?",
+              "How many people are in your group?"
+            ],
+            "reply": "Atvyksime penkiese, o ne keturiese, ir galėsime būti tik pusę aštuonių.",
+            "detailQuestion": "Which changed details does the caller give?",
+            "options": [
+              "Five people at seven-thirty",
+              "Four people at seven",
+              "Five people at eight-thirty"
+            ],
+            "answer": 0,
+            "detailModel": "Atvyksime penkiese, o ne keturiese, ir galėsime būti tik pusę aštuonių.",
+            "responseGoal": "Restate the changed number and time and ask for confirmation, rather than carrying over the original order.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "preferences": {
+            "id": "preferences",
+            "question": [
+              "Ar turite pageidavimų dėl patiekalų?",
+              "Do you have meal preferences?"
+            ],
+            "reply": "Trims žmonėms reikės patiekalų be mėsos. Du vištienos patiekalai lieka. Padažą vis dar norėtume gauti atskirai.",
+            "detailQuestion": "Which request is retained alongside the new meat-free count?",
+            "options": [
+              "Chicken for everyone",
+              "Two chicken dishes and sauce separately",
+              "A cancellation of every dish"
+            ],
+            "answer": 1,
+            "detailModel": "Trims žmonėms reikės patiekalų be mėsos. Du vištienos patiekalai lieka. Padažą vis dar norėtume gauti atskirai.",
+            "responseGoal": "Summarise three meat-free dishes, two chicken dishes and separate sauce. Do not invent an allergy or additional requirement.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "reason",
+            "Kodėl pasirinkote būtent tokį sprendimą?",
+            "Why did you choose that particular solution?"
+          ],
+          [
+            "advice",
+            "Ką patartumėte kitam keliautojui?",
+            "What would you advise another traveller?"
+          ]
+        ],
+        "partnerReplies": {
+          "reason": "Turėjau kalbėti prieš pietus. Kelionė kainavo šiek tiek daugiau, tačiau atvykau laiku.",
+          "advice": "Dabar manau, kad svarbu turėti atsarginį planą. Vis dėlto ne viską galima numatyti. Kartais naudingiau ramiai paklausti, kokios yra galimybės."
+        },
+        "branches": {
+          "reason": {
+            "id": "reason",
+            "question": [
+              "Kodėl pasirinkote būtent tokį sprendimą?",
+              "Why did you choose that particular solution?"
+            ],
+            "reply": "Turėjau kalbėti prieš pietus. Kelionė kainavo šiek tiek daugiau, tačiau atvykau laiku.",
+            "detailQuestion": "Which trade-off explains the chosen alternative?",
+            "options": [
+              "A guaranteed refund replaced the trip",
+              "The traveller avoided all additional cost",
+              "Extra cost made it possible to arrive for the speaking commitment"
+            ],
+            "answer": 2,
+            "detailModel": "Turėjau kalbėti prieš pietus. Kelionė kainavo šiek tiek daugiau, tačiau atvykau laiku.",
+            "responseGoal": "Acknowledge the timing need and extra cost, then ask a useful follow-up or explain when you would make a similar choice.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "advice": {
+            "id": "advice",
+            "question": [
+              "Ką patartumėte kitam keliautojui?",
+              "What would you advise another traveller?"
+            ],
+            "reply": "Dabar manau, kad svarbu turėti atsarginį planą. Vis dėlto ne viską galima numatyti. Kartais naudingiau ramiai paklausti, kokios yra galimybės.",
+            "detailQuestion": "Which advice preserves the speaker’s qualification?",
+            "options": [
+              "Prepare an alternative and ask calmly, while recognising uncertainty",
+              "Planning guarantees every journey succeeds",
+              "Avoid planning because no problem can be handled"
+            ],
+            "answer": 0,
+            "detailModel": "Dabar manau, kad svarbu turėti atsarginį planą. Vis dėlto ne viską galima numatyti. Kartais naudingiau ramiai paklausti, kokios yra galimybės.",
+            "responseGoal": "Give a connected response linking preparation and asking for options. Preserve the limit on predicting every disruption.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-appointments",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "status",
+            "Ar teisingai supratau?",
+            "Check whether the offered appointment is confirmed"
+          ],
+          [
+            "next",
+            "Ką turėčiau daryti toliau?",
+            "Ask for the next practical step"
+          ]
+        ],
+        "partnerReplies": {
+          "status": "Galime pasiūlyti susitikimą ketvirtadienį antrą valandą. Kol negausite atskiro patvirtinimo, šis laikas dar nėra galutinai paskirtas.",
+          "next": "Prašome šiandien atsiųsti numerį elektroniniu paštu. Prašymo iš naujo pildyti nereikia."
+        },
+        "branches": {
+          "status": {
+            "id": "status",
+            "question": [
+              "Ar teisingai supratau?",
+              "Check whether the offered appointment is confirmed"
+            ],
+            "reply": "Galime pasiūlyti susitikimą ketvirtadienį antrą valandą. Kol negausite atskiro patvirtinimo, šis laikas dar nėra galutinai paskirtas.",
+            "detailQuestion": "What is the offer’s status?",
+            "options": [
+              "Already final because a time was named",
+              "Still provisional until separate confirmation",
+              "A rejected request that must be repeated entirely"
+            ],
+            "answer": 1,
+            "detailModel": "Galime pasiūlyti susitikimą ketvirtadienį antrą valandą. Kol negausite atskiro patvirtinimo, šis laikas dar nėra galutinai paskirtas.",
+            "responseGoal": "Restate the provisional status and ask for the written confirmation or next step without accusing anyone.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "next": {
+            "id": "next",
+            "question": [
+              "Ką turėčiau daryti toliau?",
+              "Ask for the next practical step"
+            ],
+            "reply": "Prašome šiandien atsiųsti numerį elektroniniu paštu. Prašymo iš naujo pildyti nereikia.",
+            "detailQuestion": "What action does the partner request?",
+            "options": [
+              "Complete every part of the form again",
+              "Attend without waiting for any confirmation",
+              "Email the number today without repeating the whole request"
+            ],
+            "answer": 2,
+            "detailModel": "Prašome šiandien atsiųsti numerį elektroniniu paštu. Prašymo iš naujo pildyti nereikia.",
+            "responseGoal": "Confirm the targeted correction and ask how you will receive confirmation. Keep the missing contact detail separate from the appointment status.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-community",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "venue",
+            "Kuri vieta renginiui būtų tinkamiausia?",
+            "Which location would be most suitable?"
+          ],
+          [
+            "capacity",
+            "O ką darysime, jei dalyvių bus per daug?",
+            "What will we do if too many people attend?"
+          ]
+        ],
+        "partnerReplies": {
+          "venue": "Į parką neisime, net jeigu oras pagerės: dalyviams jau išsiuntėme bibliotekos adresą.",
+          "capacity": "Užsiregistravo keturiasdešimt žmonių, todėl salėje rengsime dvi grupes. Pirmoji pradės antrą, antroji ketvirtą valandą."
+        },
+        "branches": {
+          "venue": {
+            "id": "venue",
+            "question": [
+              "Kuri vieta renginiui būtų tinkamiausia?",
+              "Which location would be most suitable?"
+            ],
+            "reply": "Į parką neisime, net jeigu oras pagerės: dalyviams jau išsiuntėme bibliotekos adresą.",
+            "detailQuestion": "Why will the event remain at the library?",
+            "options": [
+              "The address has already been sent, even if weather improves",
+              "The organiser guarantees rain",
+              "The park has no possible public use"
+            ],
+            "answer": 0,
+            "detailModel": "Į parką neisime, net jeigu oras pagerės: dalyviams jau išsiuntėme bibliotekos adresą.",
+            "responseGoal": "Acknowledge the fixed venue and explain how you would keep the announcement consistent with the address already sent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "capacity": {
+            "id": "capacity",
+            "question": [
+              "O ką darysime, jei dalyvių bus per daug?",
+              "What will we do if too many people attend?"
+            ],
+            "reply": "Užsiregistravo keturiasdešimt žmonių, todėl salėje rengsime dvi grupes. Pirmoji pradės antrą, antroji ketvirtą valandą.",
+            "detailQuestion": "What is the capacity response?",
+            "options": [
+              "Cancel every registration",
+              "Use two groups at two and four",
+              "Treat forty people as a single group of thirty"
+            ],
+            "answer": 1,
+            "detailModel": "Užsiregistravo keturiasdešimt žmonių, todėl salėje rengsime dvi grupes. Pirmoji pradės antrą, antroji ketvirtą valandą.",
+            "responseGoal": "Restate the group arrangement and offer a specific announcement or welcoming task, with a practical deadline.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-housing",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "arrival",
+            "Ar galėtumėte atvykti po trečios valandos?",
+            "Ask whether an afternoon arrival is possible"
+          ],
+          [
+            "completion",
+            "Tai yra atvykimo laikas, o ne pažadas iki penktos baigti remontą?",
+            "Check whether the window concerns arrival rather than completion"
+          ]
+        ],
+        "partnerReplies": {
+          "arrival": "Galėčiau atvykti tarp ketvirtos ir penktos, jeigu jums tinka. Prašau šiandien patvirtinti, ar tuo metu būsite namuose.",
+          "completion": "Negaliu pažadėti, kad remontą užbaigsiu tą pačią dieną. Jei apžiūrėjęs pamatysiu, kad reikia kitos detalės, aptarsime atskirą laiką darbui užbaigti."
+        },
+        "branches": {
+          "arrival": {
+            "id": "arrival",
+            "question": [
+              "Ar galėtumėte atvykti po trečios valandos?",
+              "Ask whether an afternoon arrival is possible"
+            ],
+            "reply": "Galėčiau atvykti tarp ketvirtos ir penktos, jeigu jums tinka. Prašau šiandien patvirtinti, ar tuo metu būsite namuose.",
+            "detailQuestion": "Which arrangement needs confirmation?",
+            "options": [
+              "Completion of the repair by three",
+              "Arrival at an unspecified time without access permission",
+              "Arrival between four and five with the resident at home"
+            ],
+            "answer": 2,
+            "detailModel": "Galėčiau atvykti tarp ketvirtos ir penktos, jeigu jums tinka. Prašau šiandien patvirtinti, ar tuo metu būsite namuose.",
+            "responseGoal": "Respond with your availability and access plan, keeping the offered window separate from repair completion.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "completion": {
+            "id": "completion",
+            "question": [
+              "Tai yra atvykimo laikas, o ne pažadas iki penktos baigti remontą?",
+              "Check whether the window concerns arrival rather than completion"
+            ],
+            "reply": "Negaliu pažadėti, kad remontą užbaigsiu tą pačią dieną. Jei apžiūrėjęs pamatysiu, kad reikia kitos detalės, aptarsime atskirą laiką darbui užbaigti.",
+            "detailQuestion": "What is still uncertain?",
+            "options": [
+              "Same-day completion, depending on inspection and any additional part",
+              "Whether the technician has ever offered an arrival window",
+              "Whether the resident may ask a question"
+            ],
+            "answer": 0,
+            "detailModel": "Negaliu pažadėti, kad remontą užbaigsiu tą pačią dieną. Jei apžiūrėjęs pamatysiu, kad reikia kitos detalės, aptarsime atskirą laiką darbui užbaigti.",
+            "responseGoal": "Acknowledge the completion uncertainty and ask for notice of changes or a follow-up after inspection, without inventing a diagnosis.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "model",
+            "Kokį registracijos modelį siūlote ir kodėl?",
+            "Which registration model do you propose, and why?"
+          ],
+          [
+            "cost",
+            "Bet ar keli aptarnavimo būdai nekainuos per daug?",
+            "But will several service channels not cost too much?"
+          ]
+        ],
+        "partnerReplies": {
+          "model": "Palaikau bandomąjį mišrų modelį: registraciją internetu kartu su pagalba telefonu ir bibliotekoje. Dalis lankytojų nori savarankiškai atlikti paprastus veiksmus.",
+          "cost": "Prieštaravimas dėl išlaidų pagrįstas. Vis dėlto turėtume skaičiuoti ir pakartotinių kreipimųsi kainą, kai žmogus iš pirmo karto negauna pagalbos."
+        },
+        "branches": {
+          "model": {
+            "id": "model",
+            "question": [
+              "Kokį registracijos modelį siūlote ir kodėl?",
+              "Which registration model do you propose, and why?"
+            ],
+            "reply": "Palaikau bandomąjį mišrų modelį: registraciją internetu kartu su pagalba telefonu ir bibliotekoje. Dalis lankytojų nori savarankiškai atlikti paprastus veiksmus.",
+            "detailQuestion": "What does the partner support?",
+            "options": [
+              "A trial combining digital registration with help through other channels",
+              "An untested claim that every user needs a conversation",
+              "Permanent removal of all independent registration"
+            ],
+            "answer": 0,
+            "detailModel": "Palaikau bandomąjį mišrų modelį: registraciją internetu kartu su pagalba telefonu ir bibliotekoje. Dalis lankytojų nori savarankiškai atlikti paprastus veiksmus.",
+            "responseGoal": "Respond with a concrete user example and one evaluation criterion. You may agree or propose a reasoned alternative.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "cost": {
+            "id": "cost",
+            "question": [
+              "Bet ar keli aptarnavimo būdai nekainuos per daug?",
+              "But will several service channels not cost too much?"
+            ],
+            "reply": "Prieštaravimas dėl išlaidų pagrįstas. Vis dėlto turėtume skaičiuoti ir pakartotinių kreipimųsi kainą, kai žmogus iš pirmo karto negauna pagalbos.",
+            "detailQuestion": "How is the cost objection answered?",
+            "options": [
+              "It is declared irrelevant because public service has no cost",
+              "It is accepted as a concern, with repeated-contact costs added to the comparison",
+              "It is treated as proof that only one channel is ever justified"
+            ],
+            "answer": 1,
+            "detailModel": "Prieštaravimas dėl išlaidų pagrįstas. Vis dėlto turėtume skaičiuoti ir pakartotinių kreipimųsi kainą, kai žmogus iš pirmo karto negauna pagalbos.",
+            "responseGoal": "Acknowledge the legitimate cost concern, explain a broader comparison and suggest how a trial could evaluate it.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-workplace",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "fairness",
+            "Ar tokios išimtys nebus nesąžiningos kitiems?",
+            "Would those exceptions not be unfair to others?"
+          ],
+          [
+            "review",
+            "Kada turėtume keisti susitarimą?",
+            "When should we change the agreement?"
+          ]
+        ],
+        "partnerReplies": {
+          "fairness": "Siūlau naujiems darbuotojams ir jų mentoriams sutarti dėl trečios dienos pirmą mėnesį. Tai nebūtų nuolatinė taisyklė visai komandai. Išimčių priežastis reikėtų užrašyti ir reguliariai peržiūrėti.",
+          "review": "Jei pagalbos trūktų, grafiką reikėtų koreguoti, net jeigu dauguma darbuotojų juo būtų patenkinti. Produktyvumo negalima vertinti vien pagal buvimą biure."
+        },
+        "branches": {
+          "fairness": {
+            "id": "fairness",
+            "question": [
+              "Ar tokios išimtys nebus nesąžiningos kitiems?",
+              "Would those exceptions not be unfair to others?"
+            ],
+            "reply": "Siūlau naujiems darbuotojams ir jų mentoriams sutarti dėl trečios dienos pirmą mėnesį. Tai nebūtų nuolatinė taisyklė visai komandai. Išimčių priežastis reikėtų užrašyti ir reguliariai peržiūrėti.",
+            "detailQuestion": "What limits the exception?",
+            "options": [
+              "It applies forever to anyone with personal connections",
+              "It removes every shared day",
+              "It concerns newcomers and mentors initially, with written reasons and review"
+            ],
+            "answer": 2,
+            "detailModel": "Siūlau naujiems darbuotojams ir jų mentoriams sutarti dėl trečios dienos pirmą mėnesį. Tai nebūtų nuolatinė taisyklė visai komandai. Išimčių priežastis reikėtų užrašyti ir reguliariai peržiūrėti.",
+            "responseGoal": "Respond to the fairness issue, preserving the temporary scope. Propose a transparent condition rather than accepting or rejecting every exception.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "review": {
+            "id": "review",
+            "question": [
+              "Kada turėtume keisti susitarimą?",
+              "When should we change the agreement?"
+            ],
+            "reply": "Jei pagalbos trūktų, grafiką reikėtų koreguoti, net jeigu dauguma darbuotojų juo būtų patenkinti. Produktyvumo negalima vertinti vien pagal buvimą biure.",
+            "detailQuestion": "What can require a change despite majority satisfaction?",
+            "options": [
+              "Insufficient support, not attendance totals alone",
+              "Any person liking the arrangement",
+              "A promise that no one will ever need help"
+            ],
+            "answer": 0,
+            "detailModel": "Jei pagalbos trūktų, grafiką reikėtų koreguoti, net jeigu dauguma darbuotojų juo būtų patenkinti. Produktyvumo negalima vertinti vien pagal buvimą biure.",
+            "responseGoal": "Acknowledge majority preferences and explain why a specific unmet support need could still require an adjustment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-media",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "evidence",
+            "Ką iš tikrųjų parodė ši apklausa?",
+            "What did this survey actually show?"
+          ],
+          [
+            "correction",
+            "Kaip turėtume paskelbti pataisymą?",
+            "How should we publish the correction?"
+          ]
+        ],
+        "partnerReplies": {
+          "evidence": "Tai rodo ryšį, bet ne priežastį. Galimi ir kiti paaiškinimai. Apklausoje dalyvavo tik savanoriai.",
+          "correction": "Pataisymas turėtų būti aiškiai matomas. Ateityje prieš skelbdami priežastinį teiginį turėsime patikrinti, kokio pobūdžio duomenimis jis remiasi."
+        },
+        "branches": {
+          "evidence": {
+            "id": "evidence",
+            "question": [
+              "Ką iš tikrųjų parodė ši apklausa?",
+              "What did this survey actually show?"
+            ],
+            "reply": "Tai rodo ryšį, bet ne priežastį. Galimi ir kiti paaiškinimai. Apklausoje dalyvavo tik savanoriai.",
+            "detailQuestion": "What claim is supported?",
+            "options": [
+              "A universal causal effect",
+              "An association with unresolved alternative explanations",
+              "Proof that the observed association cannot exist"
+            ],
+            "answer": 1,
+            "detailModel": "Tai rodo ryšį, bet ne priežastį. Galimi ir kiti paaiškinimai. Apklausoje dalyvavo tik savanoriai.",
+            "responseGoal": "Reformulate the result accurately and explain one limitation without declaring the survey worthless.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "correction": {
+            "id": "correction",
+            "question": [
+              "Kaip turėtume paskelbti pataisymą?",
+              "How should we publish the correction?"
+            ],
+            "reply": "Pataisymas turėtų būti aiškiai matomas. Ateityje prieš skelbdami priežastinį teiginį turėsime patikrinti, kokio pobūdžio duomenimis jis remiasi.",
+            "detailQuestion": "What response is proposed?",
+            "options": [
+              "Keep the correction visible and check the evidence behind future causal claims",
+              "Hide the original change and guarantee no future errors",
+              "Replace one unsupported causal claim with its opposite"
+            ],
+            "answer": 0,
+            "detailModel": "Pataisymas turėtų būti aiškiai matomas. Ateityje prieš skelbdami priežastinį teiginį turėsime patikrinti, kokio pobūdžio duomenimis jis remiasi.",
+            "responseGoal": "Offer wording for a transparent correction and a practical safeguard, acknowledging that the safeguard is not an error-free guarantee.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-mobility",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "access",
+            "Kaip atsižvelgsite į pristatymus ir skirtingas atvykimo galimybes?",
+            "How will you consider deliveries and different access needs?"
+          ],
+          [
+            "expansion",
+            "Kokie rezultatai leistų bandymą plėsti arba keisti?",
+            "What results would justify expansion or adjustment?"
+          ]
+        ],
+        "partnerReplies": {
+          "access": "Prekių pristatymui siūlau palikti dvi valandas ryte. Taip pat būtina nurodyti, kur galima saugiai išleisti keleivį, kuris negali ilgai eiti.",
+          "expansion": "Jei daugėja lankytojų, bet dalis gyventojų nuolat nebegali pasiekti parduotuvių, vien didesnio bendro skaičiaus nepakanka plėtrai pagrįsti."
+        },
+        "branches": {
+          "access": {
+            "id": "access",
+            "question": [
+              "Kaip atsižvelgsite į pristatymus ir skirtingas atvykimo galimybes?",
+              "How will you consider deliveries and different access needs?"
+            ],
+            "reply": "Prekių pristatymui siūlau palikti dvi valandas ryte. Taip pat būtina nurodyti, kur galima saugiai išleisti keleivį, kuris negali ilgai eiti.",
+            "detailQuestion": "Which needs get concrete arrangements?",
+            "options": [
+              "Only average visitor totals",
+              "Only cyclists’ preferences",
+              "Deliveries and passengers who cannot walk far"
+            ],
+            "answer": 2,
+            "detailModel": "Prekių pristatymui siūlau palikti dvi valandas ryte. Taip pat būtina nurodyti, kur galima saugiai išleisti keleivį, kuris negali ilgai eiti.",
+            "responseGoal": "Acknowledge the two access needs and suggest how the trial should check whether the arrangements actually work.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "expansion": {
+            "id": "expansion",
+            "question": [
+              "Kokie rezultatai leistų bandymą plėsti arba keisti?",
+              "What results would justify expansion or adjustment?"
+            ],
+            "reply": "Jei daugėja lankytojų, bet dalis gyventojų nuolat nebegali pasiekti parduotuvių, vien didesnio bendro skaičiaus nepakanka plėtrai pagrįsti.",
+            "detailQuestion": "What does a favourable total fail to settle?",
+            "options": [
+              "Whether persistent access barriers remain for some residents",
+              "Whether any visitor increase happened",
+              "Whether every isolated difficulty must end the trial"
+            ],
+            "answer": 0,
+            "detailModel": "Jei daugėja lankytojų, bet dalis gyventojų nuolat nebegali pasiekti parduotuvių, vien didesnio bendro skaičiaus nepakanka plėtrai pagrįsti.",
+            "responseGoal": "Address the favourable total fairly, then explain what additional group-specific evidence should affect expansion or adjustment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "inference",
+            "Ar trumpesnis registracijos laikas neįrodo, kad sistemą reikia plėsti?",
+            "Does a shorter registration time not prove the system should expand?"
+          ],
+          [
+            "perspectives",
+            "Kaip suderintumėte darbuotojų ir skaitytojų vertinimus?",
+            "How would you reconcile staff and reader evaluations?"
+          ]
+        ],
+        "partnerReplies": {
+          "inference": "Bandymo apimtis ribota, o nedalyvavusių skaitytojų patirtis lieka neaiški. Tai savaime neįrodo, kad vien skaitmeninė registracija būtų tinkama visiems.",
+          "perspectives": "Darbuotojų komanda vertino sutaupytą laiką, o skaitytojai kalbėjo apie galimybę užbaigti procesą. Šios perspektyvos neprivalo viena kitai prieštarauti."
+        },
+        "branches": {
+          "inference": {
+            "id": "inference",
+            "question": [
+              "Ar trumpesnis registracijos laikas neįrodo, kad sistemą reikia plėsti?",
+              "Does a shorter registration time not prove the system should expand?"
+            ],
+            "reply": "Bandymo apimtis ribota, o nedalyvavusių skaitytojų patirtis lieka neaiški. Tai savaime neįrodo, kad vien skaitmeninė registracija būtų tinkama visiems.",
+            "detailQuestion": "What limits the inference from faster registration?",
+            "options": [
+              "The report observed no time improvement at all",
+              "Limited participation leaves wider suitability unresolved",
+              "Every reader explicitly rejected the system"
+            ],
+            "answer": 1,
+            "detailModel": "Bandymo apimtis ribota, o nedalyvavusių skaitytojų patirtis lieka neaiški. Tai savaime neįrodo, kad vien skaitmeninė registracija būtų tinkama visiems.",
+            "responseGoal": "Recognise the observed improvement, then reformulate the inference for a non-specialist listener without overstating what the trial establishes.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "perspectives": {
+            "id": "perspectives",
+            "question": [
+              "Kaip suderintumėte darbuotojų ir skaitytojų vertinimus?",
+              "How would you reconcile staff and reader evaluations?"
+            ],
+            "reply": "Darbuotojų komanda vertino sutaupytą laiką, o skaitytojai kalbėjo apie galimybę užbaigti procesą. Šios perspektyvos neprivalo viena kitai prieštarauti.",
+            "detailQuestion": "How can the two evaluations relate?",
+            "options": [
+              "Completion must replace every time measure",
+              "Time saved proves all access concerns false",
+              "Both address distinct aspects that can inform the same decision"
+            ],
+            "answer": 2,
+            "detailModel": "Darbuotojų komanda vertino sutaupytą laiką, o skaitytojai kalbėjo apie galimybę užbaigti procesą. Šios perspektyvos neprivalo viena kitai prieštarauti.",
+            "responseGoal": "Synthesize the two concerns and propose a next evidence step, attributing each position accurately.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-academic",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "warrant",
+            "Kokią išvadą iš šių rezultatų galima daryti pagrįstai?",
+            "What conclusion is warranted?"
+          ],
+          [
+            "cancel",
+            "Ar atrankos problema nereiškia, kad programą reikia nutraukti?",
+            "Does the selection problem require cancellation?"
+          ]
+        ],
+        "partnerReplies": {
+          "warrant": "Matome skirtumą tarp grupių, bet dar nepakankamai suprantame jo kilmę. Šis skirtumas nebūtinai yra programos poveikis.",
+          "cancel": "Ši atrankos problema savaime neįrodo, kad konsultacijos nieko nepakeitė. Galima tęsti ribotos apimties programą, kartu tikslinant vertinimą ir viešai nurodant išvadų ribas."
+        },
+        "branches": {
+          "warrant": {
+            "id": "warrant",
+            "question": [
+              "Kokią išvadą iš šių rezultatų galima daryti pagrįstai?",
+              "What conclusion is warranted?"
+            ],
+            "reply": "Matome skirtumą tarp grupių, bet dar nepakankamai suprantame jo kilmę. Šis skirtumas nebūtinai yra programos poveikis.",
+            "detailQuestion": "What is warranted?",
+            "options": [
+              "An observed difference whose causal origin remains unresolved",
+              "A conclusive finding of no effect",
+              "A definitive causal effect for every participant"
+            ],
+            "answer": 0,
+            "detailModel": "Matome skirtumą tarp grupių, bet dar nepakankamai suprantame jo kilmę. Šis skirtumas nebūtinai yra programos poveikis.",
+            "responseGoal": "Explain the observation and limitation accessibly, then state what comparison would make the recommendation more defensible.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "cancel": {
+            "id": "cancel",
+            "question": [
+              "Ar atrankos problema nereiškia, kad programą reikia nutraukti?",
+              "Does the selection problem require cancellation?"
+            ],
+            "reply": "Ši atrankos problema savaime neįrodo, kad konsultacijos nieko nepakeitė. Galima tęsti ribotos apimties programą, kartu tikslinant vertinimą ir viešai nurodant išvadų ribas.",
+            "detailQuestion": "What practical position does the reply allow?",
+            "options": [
+              "Unconditional expansion labelled proved success",
+              "Limited continuation with improved evaluation and explicit limits",
+              "Automatic cancellation labelled proved failure"
+            ],
+            "answer": 1,
+            "detailModel": "Ši atrankos problema savaime neįrodo, kad konsultacijos nieko nepakeitė. Galima tęsti ribotos apimties programą, kartu tikslinant vertinimą ir viešai nurodant išvadų ribas.",
+            "responseGoal": "Answer the cancellation challenge without reversing into a claim of proved efficacy. Give a conditional decision and the evidence needed next.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-culture",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "issue",
+            "Kokia iš tikrųjų yra šio ginčo esmė?",
+            "What is the real issue in the dispute?"
+          ],
+          [
+            "name",
+            "Ar pakaktų tiesiog pakeisti dirbtuvių pavadinimą?",
+            "Would changing the workshop’s name be enough?"
+          ]
+        ],
+        "partnerReplies": {
+          "issue": "Abi pusės nori, kad amatas liktų gyvas, bet skirtingai įsivaizduoja, kas tam būtina. Kuratorė pabrėžia atvirumą naujiems dalyviams, o atstovas – tęstinumą ir mokymosi trukmę.",
+          "name": "Vien užrašo pakeisti nepakaks. Meistrai turėtų dalyvauti sprendžiant, kokią techniką rodyti ir kaip paaiškinti jos ryšį su platesne tradicija."
+        },
+        "branches": {
+          "issue": {
+            "id": "issue",
+            "question": [
+              "Kokia iš tikrųjų yra šio ginčo esmė?",
+              "What is the real issue in the dispute?"
+            ],
+            "reply": "Abi pusės nori, kad amatas liktų gyvas, bet skirtingai įsivaizduoja, kas tam būtina. Kuratorė pabrėžia atvirumą naujiems dalyviams, o atstovas – tęstinumą ir mokymosi trukmę.",
+            "detailQuestion": "What is shared and what differs?",
+            "options": [
+              "Both demand the same method but different publicity",
+              "One rejects the existence of the craft",
+              "A shared purpose with different conditions for sustaining it"
+            ],
+            "answer": 2,
+            "detailModel": "Abi pusės nori, kad amatas liktų gyvas, bet skirtingai įsivaizduoja, kas tam būtina. Kuratorė pabrėžia atvirumą naujiems dalyviams, o atstovas – tęstinumą ir mokymosi trukmę.",
+            "responseGoal": "Explain the disagreement to a visitor without labelling one side progress and the other stubbornness.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "name": {
+            "id": "name",
+            "question": [
+              "Ar pakaktų tiesiog pakeisti dirbtuvių pavadinimą?",
+              "Would changing the workshop’s name be enough?"
+            ],
+            "reply": "Vien užrašo pakeisti nepakaks. Meistrai turėtų dalyvauti sprendžiant, kokią techniką rodyti ir kaip paaiškinti jos ryšį su platesne tradicija.",
+            "detailQuestion": "What is needed beyond a new label?",
+            "options": [
+              "Practitioner participation in the design and explanation",
+              "Only a larger attendance total",
+              "A guarantee of mastery after an hour"
+            ],
+            "answer": 0,
+            "detailModel": "Vien užrašo pakeisti nepakaks. Meistrai turėtų dalyvauti sprendžiant, kokią techniką rodyti ir kaip paaiškinti jos ryšį su platesne tradicija.",
+            "responseGoal": "Propose an introductory explanation and one way to evaluate understanding, keeping practitioners and extended learning visible.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-professional",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "promise",
+            "Ar komanda pažadėjo pristatyti ataskaitą penktadienį?",
+            "Did the team promise Friday delivery?"
+          ],
+          [
+            "next",
+            "Kas konkrečiai turi įvykti toliau?",
+            "What specifically must happen next?"
+          ]
+        ],
+        "partnerReplies": {
+          "promise": "Preliminari data nėra besąlygiškas pažadas. Laiške nurodyta sąlyga liko neaptarta. Tai nereiškia, kad ataskaita būtinai vėluos.",
+          "next": "Siūlau iki rytojaus vidurdienio atskirai suderinti trūkstamas detales. Už tai būsiu atsakinga aš. Po šio patikslinimo komandos vadovas pateiks atnaujintą grafiką."
+        },
+        "branches": {
+          "promise": {
+            "id": "promise",
+            "question": [
+              "Ar komanda pažadėjo pristatyti ataskaitą penktadienį?",
+              "Did the team promise Friday delivery?"
+            ],
+            "reply": "Preliminari data nėra besąlygiškas pažadas. Laiške nurodyta sąlyga liko neaptarta. Tai nereiškia, kad ataskaita būtinai vėluos.",
+            "detailQuestion": "Which distinction is preserved?",
+            "options": [
+              "No confirmation yet does not mean a delay is inevitable",
+              "The client deliberately deceived the team",
+              "The note guarantees Friday regardless of specifications"
+            ],
+            "answer": 0,
+            "detailModel": "Preliminari data nėra besąlygiškas pažadas. Laiške nurodyta sąlyga liko neaptarta. Tai nereiškia, kad ataskaita būtinai vėluos.",
+            "responseGoal": "Reconstruct the conditional estimate tactfully, recognising the client’s understandable interpretation without inventing intent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "next": {
+            "id": "next",
+            "question": [
+              "Kas konkrečiai turi įvykti toliau?",
+              "What specifically must happen next?"
+            ],
+            "reply": "Siūlau iki rytojaus vidurdienio atskirai suderinti trūkstamas detales. Už tai būsiu atsakinga aš. Po šio patikslinimo komandos vadovas pateiks atnaujintą grafiką.",
+            "detailQuestion": "Who does what next?",
+            "options": [
+              "The client guarantees every specification immediately",
+              "The speaker clarifies details by noon, then the team lead updates the schedule",
+              "The report is approved without further action"
+            ],
+            "answer": 1,
+            "detailModel": "Siūlau iki rytojaus vidurdienio atskirai suderinti trūkstamas detales. Už tai būsiu atsakinga aš. Po šio patikslinimo komandos vadovas pateiks atnaujintą grafiką.",
+            "responseGoal": "Summarise the immediate responsibility and next written update, distinguishing commitments from unresolved dependencies.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "progress",
+            "Ar jūsų argumentas nereiškia, kad joks bendras pagerėjimas neįmanomas?",
+            "Does your argument not imply that no overall improvement is possible?"
+          ],
+          [
+            "weights",
+            "Kodėl mažos grupės patirtis turėtų nusverti teigiamą vidurkį?",
+            "Why should a small group’s experience outweigh a positive average?"
+          ]
+        ],
+        "partnerReplies": {
+          "progress": "Iš to neseka, kad kiekviena nesėkmė panaikina bet kokią pažangą. Vidutinis greitis ir patirta prieiga nėra nei tapatūs, nei savaime nesuderinami rodikliai.",
+          "weights": "Prieš pasirinkdami sėkmės apibrėžimą, turime aptarti, kokį pagerėjimą laikytume pakankamu ir kieno patiriamos kliūtys įpareigotų sprendimą peržiūrėti."
+        },
+        "branches": {
+          "progress": {
+            "id": "progress",
+            "question": [
+              "Ar jūsų argumentas nereiškia, kad joks bendras pagerėjimas neįmanomas?",
+              "Does your argument not imply that no overall improvement is possible?"
+            ],
+            "reply": "Iš to neseka, kad kiekviena nesėkmė panaikina bet kokią pažangą. Vidutinis greitis ir patirta prieiga nėra nei tapatūs, nei savaime nesuderinami rodikliai.",
+            "detailQuestion": "What does the partner reject?",
+            "options": [
+              "The existence of any operational improvement",
+              "The need to assess effective access",
+              "The inference that any failure cancels all progress"
+            ],
+            "answer": 2,
+            "detailModel": "Iš to neseka, kad kiekviena nesėkmė panaikina bet kokią pažangą. Vidutinis greitis ir patirta prieiga nėra nei tapatūs, nei savaime nesuderinami rodikliai.",
+            "responseGoal": "Concede a genuine overall improvement, correct the overstatement and retain the specific access concern that could change a decision.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "weights": {
+            "id": "weights",
+            "question": [
+              "Kodėl mažos grupės patirtis turėtų nusverti teigiamą vidurkį?",
+              "Why should a small group’s experience outweigh a positive average?"
+            ],
+            "reply": "Prieš pasirinkdami sėkmės apibrėžimą, turime aptarti, kokį pagerėjimą laikytume pakankamu ir kieno patiriamos kliūtys įpareigotų sprendimą peržiūrėti.",
+            "detailQuestion": "What should precede the final judgement?",
+            "options": [
+              "An explicit standard for sufficient improvement and review-triggering barriers",
+              "An automatic rule that every minority experience outweighs any average",
+              "An automatic rule that averages settle every fairness question"
+            ],
+            "answer": 0,
+            "detailModel": "Prieš pasirinkdami sėkmės apibrėžimą, turime aptarti, kokį pagerėjimą laikytume pakankamu ir kieno patiriamos kliūtys įpareigotų sprendimą peržiūrėti.",
+            "responseGoal": "Expose the question’s framing assumption respectfully. Propose an explicit criterion without declaring averages useless or every exception decisive.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-science",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "harm",
+            "Jei žala neįrodyta, kodėl dar reikia sąlygų?",
+            "If harm has not been proved, why require conditions?"
+          ],
+          [
+            "caution",
+            "Ar atsargumas čia nėra tik pažangos stabdymas?",
+            "Is caution merely obstructing progress?"
+          ]
+        ],
+        "partnerReplies": {
+          "harm": "Nesant duomenų, negalima teigti, kad poveikio nėra. Sprendimo slenkstis priklauso nuo pasekmių.",
+          "caution": "Reikia atskirai įvertinti galimą naudą, negrįžtamų pasekmių riziką, tolesnio bandymo kainą ir sprendimo atidėjimo poveikį. Atsargumo argumentas taip pat turi būti pagrįstas."
+        },
+        "branches": {
+          "harm": {
+            "id": "harm",
+            "question": [
+              "Jei žala neįrodyta, kodėl dar reikia sąlygų?",
+              "If harm has not been proved, why require conditions?"
+            ],
+            "reply": "Nesant duomenų, negalima teigti, kad poveikio nėra. Sprendimo slenkstis priklauso nuo pasekmių.",
+            "detailQuestion": "What follows from the evidence gap?",
+            "options": [
+              "A decision standard is still needed; absence of data is not proof of absence",
+              "Harm is already proved in every case",
+              "Every experiment must be permanently cancelled"
+            ],
+            "answer": 0,
+            "detailModel": "Nesant duomenų, negalima teigti, kad poveikio nėra. Sprendimo slenkstis priklauso nuo pasekmių.",
+            "responseGoal": "Distinguish missing evidence from established harm or safety. State a proportionate condition tied to possible consequences.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "caution": {
+            "id": "caution",
+            "question": [
+              "Ar atsargumas čia nėra tik pažangos stabdymas?",
+              "Is caution merely obstructing progress?"
+            ],
+            "reply": "Reikia atskirai įvertinti galimą naudą, negrįžtamų pasekmių riziką, tolesnio bandymo kainą ir sprendimo atidėjimo poveikį. Atsargumo argumentas taip pat turi būti pagrįstas.",
+            "detailQuestion": "How should caution be justified?",
+            "options": [
+              "By ignoring the effects of delay",
+              "By separately considering benefits, irreversible risk, testing and delay",
+              "By treating an exact midpoint as automatically correct"
+            ],
+            "answer": 1,
+            "detailModel": "Reikia atskirai įvertinti galimą naudą, negrįžtamų pasekmių riziką, tolesnio bandymo kainą ir sprendimo atidėjimo poveikį. Atsargumo argumentas taip pat turi būti pagrįstas.",
+            "responseGoal": "Answer the progress objection with a clear decision standard. Preserve the cost of delay as well as risk, and identify who should act on a review trigger.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-literature",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "ending",
+            "Ar pabaiga įrodo, kad veikėjas pasikeitė?",
+            "Does the ending prove the character has changed?"
+          ],
+          [
+            "alternative",
+            "Kuo pagrįstumėte kitokį perskaitymą?",
+            "What would support another reading?"
+          ]
+        ],
+        "partnerReplies": {
+          "ending": "Tekste matome pasikeitusį veiksmą, bet nežinome, ar jis taps nauju įpročiu. Neužbaigtas įrašas gali reikšti abejonę, bet gali būti ir trumpas sutrikimas.",
+          "alternative": "Užrašai padėjo kaimynei. Tačiau šis perskaitymas nepaaiškina pradžioje išryškinto neatitikimo tarp veikėjo žodžių ir elgesio. Dviprasmybė nėra bet kokio aiškinimo pateisinimas."
+        },
+        "branches": {
+          "ending": {
+            "id": "ending",
+            "question": [
+              "Ar pabaiga įrodo, kad veikėjas pasikeitė?",
+              "Does the ending prove the character has changed?"
+            ],
+            "reply": "Tekste matome pasikeitusį veiksmą, bet nežinome, ar jis taps nauju įpročiu. Neužbaigtas įrašas gali reikšti abejonę, bet gali būti ir trumpas sutrikimas.",
+            "detailQuestion": "What does the ending establish?",
+            "options": [
+              "A permanent conversion is explicitly announced",
+              "No meaningful action changes at all",
+              "A changed action with more than one plausible explanation"
+            ],
+            "answer": 2,
+            "detailModel": "Tekste matome pasikeitusį veiksmą, bet nežinome, ar jis taps nauju įpročiu. Neužbaigtas įrašas gali reikšti abejonę, bet gali būti ir trumpas sutrikimas.",
+            "responseGoal": "Offer a concise reading grounded in the ending, retaining what one action does not establish about a lasting transformation.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "alternative": {
+            "id": "alternative",
+            "question": [
+              "Kuo pagrįstumėte kitokį perskaitymą?",
+              "What would support another reading?"
+            ],
+            "reply": "Užrašai padėjo kaimynei. Tačiau šis perskaitymas nepaaiškina pradžioje išryškinto neatitikimo tarp veikėjo žodžių ir elgesio. Dviprasmybė nėra bet kokio aiškinimo pateisinimas.",
+            "detailQuestion": "How is the alternative reading treated?",
+            "options": [
+              "It has a concrete supporting detail and an identified limitation",
+              "It is ruled out without any supporting detail",
+              "It proves access to the author’s private intention"
+            ],
+            "answer": 0,
+            "detailModel": "Užrašai padėjo kaimynei. Tačiau šis perskaitymas nepaaiškina pradžioje išryškinto neatitikimo tarp veikėjo žodžių ir elgesio. Dviprasmybė nėra bet kokio aiškinimo pateisinimas.",
+            "responseGoal": "Acknowledge the strongest alternative and defend your emphasis through wording or structure, without claiming knowledge of private authorial intent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-register",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "courtesy",
+            "Ar mandagiai suformuluota pastaba čia buvo neprivaloma?",
+            "Was the courteous comment optional in this context?"
+          ],
+          [
+            "public",
+            "Kaip šį sprendimą pristatytumėte visuomenei?",
+            "How would you present the decision publicly?"
+          ]
+        ],
+        "partnerReplies": {
+          "courtesy": "Kol nebus atskirta stebėta nauda nuo numanomos priežasties, išvados netvirtinsime. Mandagus tonas nepanaikina reikalavimo.",
+          "public": "Po pataisymo grįšime prie tvirtinimo klausimo. Pataisymas pats savaime negarantuoja patvirtinimo, nes komitetas dar turės įvertinti jo pakankamumą."
+        },
+        "branches": {
+          "courtesy": {
+            "id": "courtesy",
+            "question": [
+              "Ar mandagiai suformuluota pastaba čia buvo neprivaloma?",
+              "Was the courteous comment optional in this context?"
+            ],
+            "reply": "Kol nebus atskirta stebėta nauda nuo numanomos priežasties, išvados netvirtinsime. Mandagus tonas nepanaikina reikalavimo.",
+            "detailQuestion": "What determines the comment’s force in this context?",
+            "options": [
+              "A universal rule that politeness always means rejection",
+              "The explicit surrounding condition on approval",
+              "A universal rule that polite requests are optional"
+            ],
+            "answer": 1,
+            "detailModel": "Kol nebus atskirta stebėta nauda nuo numanomos priežasties, išvados netvirtinsime. Mandagus tonas nepanaikina reikalavimo.",
+            "responseGoal": "Use the explicit context to explain the requirement. Avoid treating either politeness or your inferred intention as a quoted fact.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "public": {
+            "id": "public",
+            "question": [
+              "Kaip šį sprendimą pristatytumėte visuomenei?",
+              "How would you present the decision publicly?"
+            ],
+            "reply": "Po pataisymo grįšime prie tvirtinimo klausimo. Pataisymas pats savaime negarantuoja patvirtinimo, nes komitetas dar turės įvertinti jo pakankamumą.",
+            "detailQuestion": "What must a short public version preserve?",
+            "options": [
+              "Approval is already guaranteed after any correction",
+              "The whole report is permanently rejected",
+              "A promise to reconsider, without inventing guaranteed approval"
+            ],
+            "answer": 2,
+            "detailModel": "Po pataisymo grįšime prie tvirtinimo klausimo. Pataisymas pats savaime negarantuoja patvirtinimo, nes komitetas dar turės įvertinti jo pakankamumą.",
+            "responseGoal": "Give a concise public formulation, then say what extra action detail the internal team needs. Preserve the actual condition and level of commitment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      }
+    ],
+    "es": [
+      {
+        "unitId": "A1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "¿A las ocho?",
+            "At eight?"
+          ],
+          [
+            "correct",
+            "¿A las siete?",
+            "At seven?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "A las ocho.",
+          "correct": "Mañana. A las ocho."
+        },
+        "branches": null,
+        "detailGoal": "Which time did your partner clarify?",
+        "detailModel": "A las ocho.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-shopping",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "¿Cuarenta pesos?",
+            "Forty pesos?"
+          ],
+          [
+            "correct",
+            "¿Treinta pesos?",
+            "Thirty pesos?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Cuarenta pesos.",
+          "correct": "Cuarenta pesos. Voy a pagar en efectivo."
+        },
+        "branches": null,
+        "detailGoal": "Which total did your partner clarify?",
+        "detailModel": "Cuarenta pesos.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-home",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "¿Sobre la silla?",
+            "On the chair?"
+          ],
+          [
+            "correct",
+            "¿Sobre la mesa?",
+            "On the table?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Sobre la silla.",
+          "correct": "Sobre la silla. ¿Quieres agua?"
+        },
+        "branches": null,
+        "detailGoal": "Where did your partner say the key is?",
+        "detailModel": "Sobre la silla.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A1-travel",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "confirm",
+            "¿A la izquierda?",
+            "To the left?"
+          ],
+          [
+            "correct",
+            "¿A la derecha?",
+            "To the right?"
+          ]
+        ],
+        "partnerReplies": {
+          "confirm": "Dé vuelta a la izquierda.",
+          "correct": "Siga derecho y después dé vuelta a la izquierda."
+        },
+        "branches": null,
+        "detailGoal": "Which turn did your partner clarify?",
+        "detailModel": "Dé vuelta a la izquierda.",
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "time",
+            "¿Cuándo podemos vernos?",
+            "When can we meet?"
+          ],
+          [
+            "rain",
+            "¿Y qué hacemos si llueve?",
+            "And what will we do if it rains?"
+          ]
+        ],
+        "partnerReplies": {
+          "time": "Propongo a las diez, junto al parque. Dime si te viene bien el sábado.",
+          "rain": "Si llueve, nos vemos en la cafetería que está al lado del parque."
+        },
+        "branches": {
+          "time": {
+            "id": "time",
+            "question": [
+              "¿Cuándo podemos vernos?",
+              "When can we meet?"
+            ],
+            "reply": "Propongo a las diez, junto al parque. Dime si te viene bien el sábado.",
+            "detailQuestion": "What arrangement does your partner propose?",
+            "options": [
+              "Friday at seven",
+              "Saturday at ten near the park",
+              "Saturday at eight inside the library"
+            ],
+            "answer": 1,
+            "detailModel": "Propongo a las diez, junto al parque. Dime si te viene bien el sábado.",
+            "responseGoal": "Acknowledge Saturday at ten and say whether it works for you, or propose a prepared alternative.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "rain": {
+            "id": "rain",
+            "question": [
+              "¿Y qué hacemos si llueve?",
+              "And what will we do if it rains?"
+            ],
+            "reply": "Si llueve, nos vemos en la cafetería que está al lado del parque.",
+            "detailQuestion": "What does rain change?",
+            "options": [
+              "The meeting place becomes the café beside the park",
+              "The whole arrangement is automatically cancelled",
+              "The meeting changes back to Friday"
+            ],
+            "answer": 0,
+            "detailModel": "Si llueve, nos vemos en la cafetería que está al lado del parque.",
+            "responseGoal": "Acknowledge the rain plan and restate the café location without changing the day or time.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-services",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "day",
+            "¿Para qué día quisiera la cita?",
+            "Which day would you like an appointment?"
+          ],
+          [
+            "confirmation",
+            "¿Cómo desea recibir la confirmación?",
+            "How would you like confirmation?"
+          ]
+        ],
+        "partnerReplies": {
+          "day": "Quisiera cambiarla al viernes a las tres. Por favor, confirme el horario.",
+          "confirmation": "Por favor, confirmen el nuevo horario por mensaje. Voy a llevar los documentos."
+        },
+        "branches": {
+          "day": {
+            "id": "day",
+            "question": [
+              "¿Para qué día quisiera la cita?",
+              "Which day would you like an appointment?"
+            ],
+            "reply": "Quisiera cambiarla al viernes a las tres. Por favor, confirme el horario.",
+            "detailQuestion": "Which appointment is requested?",
+            "options": [
+              "Tuesday at ten",
+              "Friday at eight",
+              "Friday at three"
+            ],
+            "answer": 2,
+            "detailModel": "Quisiera cambiarla al viernes a las tres. Por favor, confirme el horario.",
+            "responseGoal": "Restate the requested day and time, and distinguish the request from a confirmed appointment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "confirmation": {
+            "id": "confirmation",
+            "question": [
+              "¿Cómo desea recibir la confirmación?",
+              "How would you like confirmation?"
+            ],
+            "reply": "Por favor, confirmen el nuevo horario por mensaje. Voy a llevar los documentos.",
+            "detailQuestion": "How does the caller want confirmation?",
+            "options": [
+              "By a message",
+              "By submitting another full form",
+              "By an unannounced visit"
+            ],
+            "answer": 0,
+            "detailModel": "Por favor, confirmen el nuevo horario por mensaje. Voy a llevar los documentos.",
+            "responseGoal": "Acknowledge the requested confirmation by message and the documents, without claiming confirmation has already arrived.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-work",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "meeting",
+            "Mañana la reunión empieza una hora más tarde. ¿Le viene bien?",
+            "Tomorrow the meeting starts an hour later. Does that work?"
+          ],
+          [
+            "tasks",
+            "¿Cómo podemos repartir las tareas?",
+            "How can we divide the tasks?"
+          ]
+        ],
+        "partnerReplies": {
+          "meeting": "Mañana nuestra reunión va a ser a las once, no a las diez.",
+          "tasks": "Yo voy a revisar los documentos. Por la mañana prepara la lista de clientes, por favor. Si no terminas la lista, avísame antes de las once."
+        },
+        "branches": {
+          "meeting": {
+            "id": "meeting",
+            "question": [
+              "Mañana la reunión empieza una hora más tarde. ¿Le viene bien?",
+              "Tomorrow the meeting starts an hour later. Does that work?"
+            ],
+            "reply": "Mañana nuestra reunión va a ser a las once, no a las diez.",
+            "detailQuestion": "What time is now proposed?",
+            "options": [
+              "Ten",
+              "Eleven",
+              "Nine"
+            ],
+            "answer": 1,
+            "detailModel": "Mañana nuestra reunión va a ser a las once, no a las diez.",
+            "responseGoal": "Restate eleven rather than ten and say whether the new time works for you.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "tasks": {
+            "id": "tasks",
+            "question": [
+              "¿Cómo podemos repartir las tareas?",
+              "How can we divide the tasks?"
+            ],
+            "reply": "Yo voy a revisar los documentos. Por la mañana prepara la lista de clientes, por favor. Si no terminas la lista, avísame antes de las once.",
+            "detailQuestion": "What is the listener asked to do?",
+            "options": [
+              "Check documents instead of the speaker",
+              "Call every client at nine",
+              "Prepare the list and report a problem by the stated deadline"
+            ],
+            "answer": 2,
+            "detailModel": "Yo voy a revisar los documentos. Por la mañana prepara la lista de clientes, por favor. Si no terminas la lista, avísame antes de las once.",
+            "responseGoal": "Acknowledge your list task, keep the speaker’s document task separate, and mention when you would ask for help.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "A2-meals",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "group",
+            "¿Cuántas personas vienen en su grupo?",
+            "How many people are in your group?"
+          ],
+          [
+            "preferences",
+            "¿Tienen alguna preferencia para los platillos?",
+            "Do you have meal preferences?"
+          ]
+        ],
+        "partnerReplies": {
+          "group": "Vamos a llegar cinco personas, no cuatro, y solo podemos estar a las siete y media.",
+          "preferences": "Tres personas necesitan platillos sin carne. Los dos platos de pollo se mantienen. Seguimos queriendo la salsa aparte."
+        },
+        "branches": {
+          "group": {
+            "id": "group",
+            "question": [
+              "¿Cuántas personas vienen en su grupo?",
+              "How many people are in your group?"
+            ],
+            "reply": "Vamos a llegar cinco personas, no cuatro, y solo podemos estar a las siete y media.",
+            "detailQuestion": "Which changed details does the caller give?",
+            "options": [
+              "Five people at seven-thirty",
+              "Four people at seven",
+              "Five people at eight-thirty"
+            ],
+            "answer": 0,
+            "detailModel": "Vamos a llegar cinco personas, no cuatro, y solo podemos estar a las siete y media.",
+            "responseGoal": "Restate the changed number and time and ask for confirmation, rather than carrying over the original order.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "preferences": {
+            "id": "preferences",
+            "question": [
+              "¿Tienen alguna preferencia para los platillos?",
+              "Do you have meal preferences?"
+            ],
+            "reply": "Tres personas necesitan platillos sin carne. Los dos platos de pollo se mantienen. Seguimos queriendo la salsa aparte.",
+            "detailQuestion": "Which request is retained alongside the new meat-free count?",
+            "options": [
+              "Chicken for everyone",
+              "Two chicken dishes and sauce separately",
+              "A cancellation of every dish"
+            ],
+            "answer": 1,
+            "detailModel": "Tres personas necesitan platillos sin carne. Los dos platos de pollo se mantienen. Seguimos queriendo la salsa aparte.",
+            "responseGoal": "Summarise three meat-free dishes, two chicken dishes and separate sauce. Do not invent an allergy or additional requirement.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "frames_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "reason",
+            "¿Por qué eligió esa solución?",
+            "Why did you choose that solution?"
+          ],
+          [
+            "advice",
+            "¿Qué le recomendaría a otra persona que va a viajar?",
+            "What would you recommend to another traveller?"
+          ]
+        ],
+        "partnerReplies": {
+          "reason": "Tenía que hablar antes del mediodía. El viaje costó un poco más, pero llegué a tiempo.",
+          "advice": "Ahora creo que conviene tener un plan alternativo. Sin embargo, no se puede prever todo. A veces sirve más preguntar con calma qué opciones hay."
+        },
+        "branches": {
+          "reason": {
+            "id": "reason",
+            "question": [
+              "¿Por qué eligió esa solución?",
+              "Why did you choose that solution?"
+            ],
+            "reply": "Tenía que hablar antes del mediodía. El viaje costó un poco más, pero llegué a tiempo.",
+            "detailQuestion": "Which trade-off explains the chosen alternative?",
+            "options": [
+              "A guaranteed refund replaced the trip",
+              "The traveller avoided all additional cost",
+              "Extra cost made it possible to arrive for the speaking commitment"
+            ],
+            "answer": 2,
+            "detailModel": "Tenía que hablar antes del mediodía. El viaje costó un poco más, pero llegué a tiempo.",
+            "responseGoal": "Acknowledge the timing need and extra cost, then ask a useful follow-up or explain when you would make a similar choice.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "advice": {
+            "id": "advice",
+            "question": [
+              "¿Qué le recomendaría a otra persona que va a viajar?",
+              "What would you recommend to another traveller?"
+            ],
+            "reply": "Ahora creo que conviene tener un plan alternativo. Sin embargo, no se puede prever todo. A veces sirve más preguntar con calma qué opciones hay.",
+            "detailQuestion": "Which advice preserves the speaker’s qualification?",
+            "options": [
+              "Prepare an alternative and ask calmly, while recognising uncertainty",
+              "Planning guarantees every journey succeeds",
+              "Avoid planning because no problem can be handled"
+            ],
+            "answer": 0,
+            "detailModel": "Ahora creo que conviene tener un plan alternativo. Sin embargo, no se puede prever todo. A veces sirve más preguntar con calma qué opciones hay.",
+            "responseGoal": "Give a connected response linking preparation and asking for options. Preserve the limit on predicting every disruption.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-appointments",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "status",
+            "¿Entendí bien?",
+            "Check whether the offered appointment is confirmed"
+          ],
+          [
+            "next",
+            "¿Qué debería hacer ahora?",
+            "Ask for the next practical step"
+          ]
+        ],
+        "partnerReplies": {
+          "status": "Podemos ofrecerle una cita el jueves a las dos. Ese horario todavía no es definitivo: tiene que recibir una confirmación aparte.",
+          "next": "Envíenos hoy su número por correo electrónico, por favor. No necesita llenar otra vez la solicitud."
+        },
+        "branches": {
+          "status": {
+            "id": "status",
+            "question": [
+              "¿Entendí bien?",
+              "Check whether the offered appointment is confirmed"
+            ],
+            "reply": "Podemos ofrecerle una cita el jueves a las dos. Ese horario todavía no es definitivo: tiene que recibir una confirmación aparte.",
+            "detailQuestion": "What is the offer’s status?",
+            "options": [
+              "Already final because a time was named",
+              "Still provisional until separate confirmation",
+              "A rejected request that must be repeated entirely"
+            ],
+            "answer": 1,
+            "detailModel": "Podemos ofrecerle una cita el jueves a las dos. Ese horario todavía no es definitivo: tiene que recibir una confirmación aparte.",
+            "responseGoal": "Restate the provisional status and ask for the written confirmation or next step without accusing anyone.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "next": {
+            "id": "next",
+            "question": [
+              "¿Qué debería hacer ahora?",
+              "Ask for the next practical step"
+            ],
+            "reply": "Envíenos hoy su número por correo electrónico, por favor. No necesita llenar otra vez la solicitud.",
+            "detailQuestion": "What action does the partner request?",
+            "options": [
+              "Complete every part of the form again",
+              "Attend without waiting for any confirmation",
+              "Email the number today without repeating the whole request"
+            ],
+            "answer": 2,
+            "detailModel": "Envíenos hoy su número por correo electrónico, por favor. No necesita llenar otra vez la solicitud.",
+            "responseGoal": "Confirm the targeted correction and ask how you will receive confirmation. Keep the missing contact detail separate from the appointment status.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-community",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "venue",
+            "¿Qué lugar sería más adecuado para el evento?",
+            "Which location would be most suitable?"
+          ],
+          [
+            "capacity",
+            "¿Y qué haremos si hay demasiados participantes?",
+            "What will we do if too many people attend?"
+          ]
+        ],
+        "partnerReplies": {
+          "venue": "No iremos al parque aunque mejore el tiempo, porque ya enviamos la dirección de la biblioteca.",
+          "capacity": "Se registraron cuarenta personas, así que vamos a organizar dos grupos en el salón. El primero empieza a las dos y el segundo a las cuatro."
+        },
+        "branches": {
+          "venue": {
+            "id": "venue",
+            "question": [
+              "¿Qué lugar sería más adecuado para el evento?",
+              "Which location would be most suitable?"
+            ],
+            "reply": "No iremos al parque aunque mejore el tiempo, porque ya enviamos la dirección de la biblioteca.",
+            "detailQuestion": "Why will the event remain at the library?",
+            "options": [
+              "The address has already been sent, even if weather improves",
+              "The organiser guarantees rain",
+              "The park has no possible public use"
+            ],
+            "answer": 0,
+            "detailModel": "No iremos al parque aunque mejore el tiempo, porque ya enviamos la dirección de la biblioteca.",
+            "responseGoal": "Acknowledge the fixed venue and explain how you would keep the announcement consistent with the address already sent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "capacity": {
+            "id": "capacity",
+            "question": [
+              "¿Y qué haremos si hay demasiados participantes?",
+              "What will we do if too many people attend?"
+            ],
+            "reply": "Se registraron cuarenta personas, así que vamos a organizar dos grupos en el salón. El primero empieza a las dos y el segundo a las cuatro.",
+            "detailQuestion": "What is the capacity response?",
+            "options": [
+              "Cancel every registration",
+              "Use two groups at two and four",
+              "Treat forty people as a single group of thirty"
+            ],
+            "answer": 1,
+            "detailModel": "Se registraron cuarenta personas, así que vamos a organizar dos grupos en el salón. El primero empieza a las dos y el segundo a las cuatro.",
+            "responseGoal": "Restate the group arrangement and offer a specific announcement or welcoming task, with a practical deadline.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B1-housing",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "arrival",
+            "¿Puede venir después de las tres?",
+            "Ask whether an afternoon arrival is possible"
+          ],
+          [
+            "completion",
+            "¿Ese es el horario de llegada, no una promesa de terminar la reparación antes de las cinco?",
+            "Check whether the window concerns arrival rather than completion"
+          ]
+        ],
+        "partnerReplies": {
+          "arrival": "Podría llegar entre las cuatro y las cinco, si le viene bien. Confirme hoy si va a estar en casa, por favor.",
+          "completion": "No puedo prometer que termine la reparación ese mismo día. Si al revisar veo que hace falta otra pieza, acordaremos otro horario para terminar."
+        },
+        "branches": {
+          "arrival": {
+            "id": "arrival",
+            "question": [
+              "¿Puede venir después de las tres?",
+              "Ask whether an afternoon arrival is possible"
+            ],
+            "reply": "Podría llegar entre las cuatro y las cinco, si le viene bien. Confirme hoy si va a estar en casa, por favor.",
+            "detailQuestion": "Which arrangement needs confirmation?",
+            "options": [
+              "Completion of the repair by three",
+              "Arrival at an unspecified time without access permission",
+              "Arrival between four and five with the resident at home"
+            ],
+            "answer": 2,
+            "detailModel": "Podría llegar entre las cuatro y las cinco, si le viene bien. Confirme hoy si va a estar en casa, por favor.",
+            "responseGoal": "Respond with your availability and access plan, keeping the offered window separate from repair completion.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "completion": {
+            "id": "completion",
+            "question": [
+              "¿Ese es el horario de llegada, no una promesa de terminar la reparación antes de las cinco?",
+              "Check whether the window concerns arrival rather than completion"
+            ],
+            "reply": "No puedo prometer que termine la reparación ese mismo día. Si al revisar veo que hace falta otra pieza, acordaremos otro horario para terminar.",
+            "detailQuestion": "What is still uncertain?",
+            "options": [
+              "Same-day completion, depending on inspection and any additional part",
+              "Whether the technician has ever offered an arrival window",
+              "Whether the resident may ask a question"
+            ],
+            "answer": 0,
+            "detailModel": "No puedo prometer que termine la reparación ese mismo día. Si al revisar veo que hace falta otra pieza, acordaremos otro horario para terminar.",
+            "responseGoal": "Acknowledge the completion uncertainty and ask for notice of changes or a follow-up after inspection, without inventing a diagnosis.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "model",
+            "¿Qué modelo de registro propone y por qué?",
+            "Which registration model do you propose, and why?"
+          ],
+          [
+            "cost",
+            "¿Pero no será demasiado caro mantener varios canales?",
+            "But will maintaining several channels not be too expensive?"
+          ]
+        ],
+        "partnerReplies": {
+          "model": "Apoyo una prueba de un modelo híbrido: registro digital junto con ayuda telefónica y presencial. Algunos prefieren resolver solos los trámites sencillos.",
+          "cost": "La objeción sobre el costo es razonable. Pero también habría que contar el costo de los contactos repetidos cuando alguien no recibe ayuda a la primera."
+        },
+        "branches": {
+          "model": {
+            "id": "model",
+            "question": [
+              "¿Qué modelo de registro propone y por qué?",
+              "Which registration model do you propose, and why?"
+            ],
+            "reply": "Apoyo una prueba de un modelo híbrido: registro digital junto con ayuda telefónica y presencial. Algunos prefieren resolver solos los trámites sencillos.",
+            "detailQuestion": "What does the partner support?",
+            "options": [
+              "A trial combining digital registration with help through other channels",
+              "An untested claim that every user needs a conversation",
+              "Permanent removal of all independent registration"
+            ],
+            "answer": 0,
+            "detailModel": "Apoyo una prueba de un modelo híbrido: registro digital junto con ayuda telefónica y presencial. Algunos prefieren resolver solos los trámites sencillos.",
+            "responseGoal": "Respond with a concrete user example and one evaluation criterion. You may agree or propose a reasoned alternative.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "cost": {
+            "id": "cost",
+            "question": [
+              "¿Pero no será demasiado caro mantener varios canales?",
+              "But will maintaining several channels not be too expensive?"
+            ],
+            "reply": "La objeción sobre el costo es razonable. Pero también habría que contar el costo de los contactos repetidos cuando alguien no recibe ayuda a la primera.",
+            "detailQuestion": "How is the cost objection answered?",
+            "options": [
+              "It is declared irrelevant because public service has no cost",
+              "It is accepted as a concern, with repeated-contact costs added to the comparison",
+              "It is treated as proof that only one channel is ever justified"
+            ],
+            "answer": 1,
+            "detailModel": "La objeción sobre el costo es razonable. Pero también habría que contar el costo de los contactos repetidos cuando alguien no recibe ayuda a la primera.",
+            "responseGoal": "Acknowledge the legitimate cost concern, explain a broader comparison and suggest how a trial could evaluate it.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-workplace",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "fairness",
+            "¿No serían injustas esas excepciones para los demás?",
+            "Would those exceptions not be unfair to others?"
+          ],
+          [
+            "review",
+            "¿Cuándo deberíamos cambiar el acuerdo?",
+            "When should we change the agreement?"
+          ]
+        ],
+        "partnerReplies": {
+          "fairness": "Sugiero que cada persona nueva acuerde un tercer día con su mentor durante el primer mes. No sería una regla permanente para todo el equipo. Sus motivos deberían quedar por escrito y revisarse regularmente.",
+          "review": "Si faltara apoyo, habría que ajustar el horario aunque la mayoría estuviera satisfecha. La productividad no se puede medir solo por la presencia en la oficina."
+        },
+        "branches": {
+          "fairness": {
+            "id": "fairness",
+            "question": [
+              "¿No serían injustas esas excepciones para los demás?",
+              "Would those exceptions not be unfair to others?"
+            ],
+            "reply": "Sugiero que cada persona nueva acuerde un tercer día con su mentor durante el primer mes. No sería una regla permanente para todo el equipo. Sus motivos deberían quedar por escrito y revisarse regularmente.",
+            "detailQuestion": "What limits the exception?",
+            "options": [
+              "It applies forever to anyone with personal connections",
+              "It removes every shared day",
+              "It concerns newcomers and mentors initially, with written reasons and review"
+            ],
+            "answer": 2,
+            "detailModel": "Sugiero que cada persona nueva acuerde un tercer día con su mentor durante el primer mes. No sería una regla permanente para todo el equipo. Sus motivos deberían quedar por escrito y revisarse regularmente.",
+            "responseGoal": "Respond to the fairness issue, preserving the temporary scope. Propose a transparent condition rather than accepting or rejecting every exception.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "review": {
+            "id": "review",
+            "question": [
+              "¿Cuándo deberíamos cambiar el acuerdo?",
+              "When should we change the agreement?"
+            ],
+            "reply": "Si faltara apoyo, habría que ajustar el horario aunque la mayoría estuviera satisfecha. La productividad no se puede medir solo por la presencia en la oficina.",
+            "detailQuestion": "What can require a change despite majority satisfaction?",
+            "options": [
+              "Insufficient support, not attendance totals alone",
+              "Any person liking the arrangement",
+              "A promise that no one will ever need help"
+            ],
+            "answer": 0,
+            "detailModel": "Si faltara apoyo, habría que ajustar el horario aunque la mayoría estuviera satisfecha. La productividad no se puede medir solo por la presencia en la oficina.",
+            "responseGoal": "Acknowledge majority preferences and explain why a specific unmet support need could still require an adjustment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-media",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "evidence",
+            "¿Qué mostró realmente esta encuesta?",
+            "What did this survey actually show?"
+          ],
+          [
+            "correction",
+            "¿Cómo deberíamos publicar la corrección?",
+            "How should we publish the correction?"
+          ]
+        ],
+        "partnerReplies": {
+          "evidence": "Esto muestra una relación, no una causa. También son posibles otras explicaciones. En la encuesta solo participaron voluntarios.",
+          "correction": "La corrección debería ser claramente visible. En adelante, antes de publicar una afirmación causal, tendremos que comprobar qué tipo de datos la respalda."
+        },
+        "branches": {
+          "evidence": {
+            "id": "evidence",
+            "question": [
+              "¿Qué mostró realmente esta encuesta?",
+              "What did this survey actually show?"
+            ],
+            "reply": "Esto muestra una relación, no una causa. También son posibles otras explicaciones. En la encuesta solo participaron voluntarios.",
+            "detailQuestion": "What claim is supported?",
+            "options": [
+              "A universal causal effect",
+              "An association with unresolved alternative explanations",
+              "Proof that the observed association cannot exist"
+            ],
+            "answer": 1,
+            "detailModel": "Esto muestra una relación, no una causa. También son posibles otras explicaciones. En la encuesta solo participaron voluntarios.",
+            "responseGoal": "Reformulate the result accurately and explain one limitation without declaring the survey worthless.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "correction": {
+            "id": "correction",
+            "question": [
+              "¿Cómo deberíamos publicar la corrección?",
+              "How should we publish the correction?"
+            ],
+            "reply": "La corrección debería ser claramente visible. En adelante, antes de publicar una afirmación causal, tendremos que comprobar qué tipo de datos la respalda.",
+            "detailQuestion": "What response is proposed?",
+            "options": [
+              "Keep the correction visible and check the evidence behind future causal claims",
+              "Hide the original change and guarantee no future errors",
+              "Replace one unsupported causal claim with its opposite"
+            ],
+            "answer": 0,
+            "detailModel": "La corrección debería ser claramente visible. En adelante, antes de publicar una afirmación causal, tendremos que comprobar qué tipo de datos la respalda.",
+            "responseGoal": "Offer wording for a transparent correction and a practical safeguard, acknowledging that the safeguard is not an error-free guarantee.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "B2-mobility",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "access",
+            "¿Cómo tendrá en cuenta las entregas y las distintas formas de llegar?",
+            "How will you consider deliveries and different access needs?"
+          ],
+          [
+            "expansion",
+            "¿Qué resultados justificarían ampliar o modificar la prueba?",
+            "What results would justify expansion or adjustment?"
+          ]
+        ],
+        "partnerReplies": {
+          "access": "Propongo reservar dos horas por la mañana para las entregas. También hace falta indicar dónde puede bajar con seguridad una persona que no puede caminar mucho.",
+          "expansion": "Si aumentan las visitas, pero algunos vecinos siguen sin poder llegar a las tiendas, el total no basta para justificar la ampliación."
+        },
+        "branches": {
+          "access": {
+            "id": "access",
+            "question": [
+              "¿Cómo tendrá en cuenta las entregas y las distintas formas de llegar?",
+              "How will you consider deliveries and different access needs?"
+            ],
+            "reply": "Propongo reservar dos horas por la mañana para las entregas. También hace falta indicar dónde puede bajar con seguridad una persona que no puede caminar mucho.",
+            "detailQuestion": "Which needs get concrete arrangements?",
+            "options": [
+              "Only average visitor totals",
+              "Only cyclists’ preferences",
+              "Deliveries and passengers who cannot walk far"
+            ],
+            "answer": 2,
+            "detailModel": "Propongo reservar dos horas por la mañana para las entregas. También hace falta indicar dónde puede bajar con seguridad una persona que no puede caminar mucho.",
+            "responseGoal": "Acknowledge the two access needs and suggest how the trial should check whether the arrangements actually work.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "expansion": {
+            "id": "expansion",
+            "question": [
+              "¿Qué resultados justificarían ampliar o modificar la prueba?",
+              "What results would justify expansion or adjustment?"
+            ],
+            "reply": "Si aumentan las visitas, pero algunos vecinos siguen sin poder llegar a las tiendas, el total no basta para justificar la ampliación.",
+            "detailQuestion": "What does a favourable total fail to settle?",
+            "options": [
+              "Whether persistent access barriers remain for some residents",
+              "Whether any visitor increase happened",
+              "Whether every isolated difficulty must end the trial"
+            ],
+            "answer": 0,
+            "detailModel": "Si aumentan las visitas, pero algunos vecinos siguen sin poder llegar a las tiendas, el total no basta para justificar la ampliación.",
+            "responseGoal": "Address the favourable total fairly, then explain what additional group-specific evidence should affect expansion or adjustment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "inference",
+            "¿No demuestra un registro más rápido que debemos ampliar el sistema?",
+            "Does faster registration not prove we should expand the system?"
+          ],
+          [
+            "perspectives",
+            "¿Cómo conciliaría las evaluaciones del personal y de los lectores?",
+            "How would you reconcile staff and reader evaluations?"
+          ]
+        ],
+        "partnerReplies": {
+          "inference": "La prueba tuvo un alcance limitado y no permite conocer la experiencia de quienes no participaron. No demuestra por sí sola que un registro exclusivamente digital resulte adecuado para todos.",
+          "perspectives": "El equipo de atención valoró el tiempo ahorrado, mientras que los lectores hablaron de la posibilidad de completar el trámite. Estas perspectivas no tienen por qué contradecirse."
+        },
+        "branches": {
+          "inference": {
+            "id": "inference",
+            "question": [
+              "¿No demuestra un registro más rápido que debemos ampliar el sistema?",
+              "Does faster registration not prove we should expand the system?"
+            ],
+            "reply": "La prueba tuvo un alcance limitado y no permite conocer la experiencia de quienes no participaron. No demuestra por sí sola que un registro exclusivamente digital resulte adecuado para todos.",
+            "detailQuestion": "What limits the inference from faster registration?",
+            "options": [
+              "The report observed no time improvement at all",
+              "Limited participation leaves wider suitability unresolved",
+              "Every reader explicitly rejected the system"
+            ],
+            "answer": 1,
+            "detailModel": "La prueba tuvo un alcance limitado y no permite conocer la experiencia de quienes no participaron. No demuestra por sí sola que un registro exclusivamente digital resulte adecuado para todos.",
+            "responseGoal": "Recognise the observed improvement, then reformulate the inference for a non-specialist listener without overstating what the trial establishes.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "perspectives": {
+            "id": "perspectives",
+            "question": [
+              "¿Cómo conciliaría las evaluaciones del personal y de los lectores?",
+              "How would you reconcile staff and reader evaluations?"
+            ],
+            "reply": "El equipo de atención valoró el tiempo ahorrado, mientras que los lectores hablaron de la posibilidad de completar el trámite. Estas perspectivas no tienen por qué contradecirse.",
+            "detailQuestion": "How can the two evaluations relate?",
+            "options": [
+              "Completion must replace every time measure",
+              "Time saved proves all access concerns false",
+              "Both address distinct aspects that can inform the same decision"
+            ],
+            "answer": 2,
+            "detailModel": "El equipo de atención valoró el tiempo ahorrado, mientras que los lectores hablaron de la posibilidad de completar el trámite. Estas perspectivas no tienen por qué contradecirse.",
+            "responseGoal": "Synthesize the two concerns and propose a next evidence step, attributing each position accurately.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-academic",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "warrant",
+            "¿Qué conclusión permiten sostener estos resultados?",
+            "What conclusion is warranted?"
+          ],
+          [
+            "cancel",
+            "¿El problema de selección no obliga a cancelar el programa?",
+            "Does the selection problem require cancellation?"
+          ]
+        ],
+        "partnerReplies": {
+          "warrant": "Observamos una diferencia entre grupos, pero todavía no entendemos suficientemente su origen. Esta diferencia no es necesariamente un efecto del programa.",
+          "cancel": "Ese problema de selección tampoco demuestra que la asesoría no haya cambiado nada. Se podría mantener una versión limitada mientras se mejora la evaluación y se comunican sus límites."
+        },
+        "branches": {
+          "warrant": {
+            "id": "warrant",
+            "question": [
+              "¿Qué conclusión permiten sostener estos resultados?",
+              "What conclusion is warranted?"
+            ],
+            "reply": "Observamos una diferencia entre grupos, pero todavía no entendemos suficientemente su origen. Esta diferencia no es necesariamente un efecto del programa.",
+            "detailQuestion": "What is warranted?",
+            "options": [
+              "An observed difference whose causal origin remains unresolved",
+              "A conclusive finding of no effect",
+              "A definitive causal effect for every participant"
+            ],
+            "answer": 0,
+            "detailModel": "Observamos una diferencia entre grupos, pero todavía no entendemos suficientemente su origen. Esta diferencia no es necesariamente un efecto del programa.",
+            "responseGoal": "Explain the observation and limitation accessibly, then state what comparison would make the recommendation more defensible.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "cancel": {
+            "id": "cancel",
+            "question": [
+              "¿El problema de selección no obliga a cancelar el programa?",
+              "Does the selection problem require cancellation?"
+            ],
+            "reply": "Ese problema de selección tampoco demuestra que la asesoría no haya cambiado nada. Se podría mantener una versión limitada mientras se mejora la evaluación y se comunican sus límites.",
+            "detailQuestion": "What practical position does the reply allow?",
+            "options": [
+              "Unconditional expansion labelled proved success",
+              "Limited continuation with improved evaluation and explicit limits",
+              "Automatic cancellation labelled proved failure"
+            ],
+            "answer": 1,
+            "detailModel": "Ese problema de selección tampoco demuestra que la asesoría no haya cambiado nada. Se podría mantener una versión limitada mientras se mejora la evaluación y se comunican sus límites.",
+            "responseGoal": "Answer the cancellation challenge without reversing into a claim of proved efficacy. Give a conditional decision and the evidence needed next.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-culture",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "issue",
+            "¿Cuál es realmente el centro de esta disputa?",
+            "What is the real issue in the dispute?"
+          ],
+          [
+            "name",
+            "¿Bastaría con cambiar el nombre del taller?",
+            "Would changing the workshop’s name be enough?"
+          ]
+        ],
+        "partnerReplies": {
+          "issue": "Ambas partes desean mantener vivo el oficio, pero imaginan de manera distinta lo que eso requiere. La curadora destaca la apertura a nuevos participantes; el representante, la continuidad y la duración del aprendizaje.",
+          "name": "No basta cambiar el letrero. Los maestros deberían participar en decidir qué técnica mostrar y cómo explicar su relación con la tradición."
+        },
+        "branches": {
+          "issue": {
+            "id": "issue",
+            "question": [
+              "¿Cuál es realmente el centro de esta disputa?",
+              "What is the real issue in the dispute?"
+            ],
+            "reply": "Ambas partes desean mantener vivo el oficio, pero imaginan de manera distinta lo que eso requiere. La curadora destaca la apertura a nuevos participantes; el representante, la continuidad y la duración del aprendizaje.",
+            "detailQuestion": "What is shared and what differs?",
+            "options": [
+              "Both demand the same method but different publicity",
+              "One rejects the existence of the craft",
+              "A shared purpose with different conditions for sustaining it"
+            ],
+            "answer": 2,
+            "detailModel": "Ambas partes desean mantener vivo el oficio, pero imaginan de manera distinta lo que eso requiere. La curadora destaca la apertura a nuevos participantes; el representante, la continuidad y la duración del aprendizaje.",
+            "responseGoal": "Explain the disagreement to a visitor without labelling one side progress and the other stubbornness.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "name": {
+            "id": "name",
+            "question": [
+              "¿Bastaría con cambiar el nombre del taller?",
+              "Would changing the workshop’s name be enough?"
+            ],
+            "reply": "No basta cambiar el letrero. Los maestros deberían participar en decidir qué técnica mostrar y cómo explicar su relación con la tradición.",
+            "detailQuestion": "What is needed beyond a new label?",
+            "options": [
+              "Practitioner participation in the design and explanation",
+              "Only a larger attendance total",
+              "A guarantee of mastery after an hour"
+            ],
+            "answer": 0,
+            "detailModel": "No basta cambiar el letrero. Los maestros deberían participar en decidir qué técnica mostrar y cómo explicar su relación con la tradición.",
+            "responseGoal": "Propose an introductory explanation and one way to evaluate understanding, keeping practitioners and extended learning visible.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C1-professional",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "promise",
+            "¿El equipo prometió entregar el informe el viernes?",
+            "Did the team promise Friday delivery?"
+          ],
+          [
+            "next",
+            "¿Qué tiene que pasar ahora, concretamente?",
+            "What specifically must happen next?"
+          ]
+        ],
+        "partnerReplies": {
+          "promise": "Una fecha provisional no es una promesa incondicional. La condición del correo quedó sin aclarar. Eso no significa que el informe vaya a retrasarse necesariamente.",
+          "next": "Propongo aclarar los detalles pendientes antes de mañana al mediodía. Yo me encargo de esa tarea. Después, el responsable del equipo enviará un calendario actualizado."
+        },
+        "branches": {
+          "promise": {
+            "id": "promise",
+            "question": [
+              "¿El equipo prometió entregar el informe el viernes?",
+              "Did the team promise Friday delivery?"
+            ],
+            "reply": "Una fecha provisional no es una promesa incondicional. La condición del correo quedó sin aclarar. Eso no significa que el informe vaya a retrasarse necesariamente.",
+            "detailQuestion": "Which distinction is preserved?",
+            "options": [
+              "No confirmation yet does not mean a delay is inevitable",
+              "The client deliberately deceived the team",
+              "The note guarantees Friday regardless of specifications"
+            ],
+            "answer": 0,
+            "detailModel": "Una fecha provisional no es una promesa incondicional. La condición del correo quedó sin aclarar. Eso no significa que el informe vaya a retrasarse necesariamente.",
+            "responseGoal": "Reconstruct the conditional estimate tactfully, recognising the client’s understandable interpretation without inventing intent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "next": {
+            "id": "next",
+            "question": [
+              "¿Qué tiene que pasar ahora, concretamente?",
+              "What specifically must happen next?"
+            ],
+            "reply": "Propongo aclarar los detalles pendientes antes de mañana al mediodía. Yo me encargo de esa tarea. Después, el responsable del equipo enviará un calendario actualizado.",
+            "detailQuestion": "Who does what next?",
+            "options": [
+              "The client guarantees every specification immediately",
+              "The speaker clarifies details by noon, then the team lead updates the schedule",
+              "The report is approved without further action"
+            ],
+            "answer": 1,
+            "detailModel": "Propongo aclarar los detalles pendientes antes de mañana al mediodía. Yo me encargo de esa tarea. Después, el responsable del equipo enviará un calendario actualizado.",
+            "responseGoal": "Summarise the immediate responsibility and next written update, distinguishing commitments from unresolved dependencies.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "progress",
+            "¿Su argumento no implica que ninguna mejora general es posible?",
+            "Does your argument not imply that no overall improvement is possible?"
+          ],
+          [
+            "weights",
+            "¿Por qué debería pesar más la experiencia de una minoría que un promedio favorable?",
+            "Why should a minority’s experience outweigh a favourable average?"
+          ]
+        ],
+        "partnerReplies": {
+          "progress": "De ahí no se sigue que cada fallo anule cualquier avance. La rapidez media y el acceso experimentado no son indicadores idénticos ni necesariamente incompatibles.",
+          "weights": "Antes de escoger una definición de éxito, debemos acordar qué mejora consideraríamos suficiente y qué barreras nos obligarían a revisar la decisión."
+        },
+        "branches": {
+          "progress": {
+            "id": "progress",
+            "question": [
+              "¿Su argumento no implica que ninguna mejora general es posible?",
+              "Does your argument not imply that no overall improvement is possible?"
+            ],
+            "reply": "De ahí no se sigue que cada fallo anule cualquier avance. La rapidez media y el acceso experimentado no son indicadores idénticos ni necesariamente incompatibles.",
+            "detailQuestion": "What does the partner reject?",
+            "options": [
+              "The existence of any operational improvement",
+              "The need to assess effective access",
+              "The inference that any failure cancels all progress"
+            ],
+            "answer": 2,
+            "detailModel": "De ahí no se sigue que cada fallo anule cualquier avance. La rapidez media y el acceso experimentado no son indicadores idénticos ni necesariamente incompatibles.",
+            "responseGoal": "Concede a genuine overall improvement, correct the overstatement and retain the specific access concern that could change a decision.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "weights": {
+            "id": "weights",
+            "question": [
+              "¿Por qué debería pesar más la experiencia de una minoría que un promedio favorable?",
+              "Why should a minority’s experience outweigh a favourable average?"
+            ],
+            "reply": "Antes de escoger una definición de éxito, debemos acordar qué mejora consideraríamos suficiente y qué barreras nos obligarían a revisar la decisión.",
+            "detailQuestion": "What should precede the final judgement?",
+            "options": [
+              "An explicit standard for sufficient improvement and review-triggering barriers",
+              "An automatic rule that every minority experience outweighs any average",
+              "An automatic rule that averages settle every fairness question"
+            ],
+            "answer": 0,
+            "detailModel": "Antes de escoger una definición de éxito, debemos acordar qué mejora consideraríamos suficiente y qué barreras nos obligarían a revisar la decisión.",
+            "responseGoal": "Expose the question’s framing assumption respectfully. Propose an explicit criterion without declaring averages useless or every exception decisive.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-science",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "harm",
+            "Si no se ha demostrado un daño, ¿por qué exigir condiciones?",
+            "If harm has not been proved, why require conditions?"
+          ],
+          [
+            "caution",
+            "¿La precaución no es aquí una forma de frenar el progreso?",
+            "Is caution merely obstructing progress?"
+          ]
+        ],
+        "partnerReplies": {
+          "harm": "La ausencia de datos no permite afirmar que no exista un efecto. El umbral para decidir depende de las consecuencias.",
+          "caution": "Hay que valorar por separado el beneficio posible, el riesgo de consecuencias irreversibles, el costo de seguir probando y los efectos de aplazar la decisión. El argumento de precaución también necesita justificación."
+        },
+        "branches": {
+          "harm": {
+            "id": "harm",
+            "question": [
+              "Si no se ha demostrado un daño, ¿por qué exigir condiciones?",
+              "If harm has not been proved, why require conditions?"
+            ],
+            "reply": "La ausencia de datos no permite afirmar que no exista un efecto. El umbral para decidir depende de las consecuencias.",
+            "detailQuestion": "What follows from the evidence gap?",
+            "options": [
+              "A decision standard is still needed; absence of data is not proof of absence",
+              "Harm is already proved in every case",
+              "Every experiment must be permanently cancelled"
+            ],
+            "answer": 0,
+            "detailModel": "La ausencia de datos no permite afirmar que no exista un efecto. El umbral para decidir depende de las consecuencias.",
+            "responseGoal": "Distinguish missing evidence from established harm or safety. State a proportionate condition tied to possible consequences.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "caution": {
+            "id": "caution",
+            "question": [
+              "¿La precaución no es aquí una forma de frenar el progreso?",
+              "Is caution merely obstructing progress?"
+            ],
+            "reply": "Hay que valorar por separado el beneficio posible, el riesgo de consecuencias irreversibles, el costo de seguir probando y los efectos de aplazar la decisión. El argumento de precaución también necesita justificación.",
+            "detailQuestion": "How should caution be justified?",
+            "options": [
+              "By ignoring the effects of delay",
+              "By separately considering benefits, irreversible risk, testing and delay",
+              "By treating an exact midpoint as automatically correct"
+            ],
+            "answer": 1,
+            "detailModel": "Hay que valorar por separado el beneficio posible, el riesgo de consecuencias irreversibles, el costo de seguir probando y los efectos de aplazar la decisión. El argumento de precaución también necesita justificación.",
+            "responseGoal": "Answer the progress objection with a clear decision standard. Preserve the cost of delay as well as risk, and identify who should act on a review trigger.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-literature",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "ending",
+            "¿El final demuestra que el personaje ha cambiado?",
+            "Does the ending prove the character has changed?"
+          ],
+          [
+            "alternative",
+            "¿En qué apoyaría una lectura diferente?",
+            "What would support another reading?"
+          ]
+        ],
+        "partnerReplies": {
+          "ending": "Vemos una acción distinta, no sabemos si se convertirá en un hábito nuevo. La anotación incompleta podría sugerir una duda, pero también una vacilación momentánea.",
+          "alternative": "Las notas ayudaron a la vecina. Pero esa lectura no explica la discrepancia inicial entre las palabras y la conducta. La ambigüedad no justifica cualquier lectura."
+        },
+        "branches": {
+          "ending": {
+            "id": "ending",
+            "question": [
+              "¿El final demuestra que el personaje ha cambiado?",
+              "Does the ending prove the character has changed?"
+            ],
+            "reply": "Vemos una acción distinta, no sabemos si se convertirá en un hábito nuevo. La anotación incompleta podría sugerir una duda, pero también una vacilación momentánea.",
+            "detailQuestion": "What does the ending establish?",
+            "options": [
+              "A permanent conversion is explicitly announced",
+              "No meaningful action changes at all",
+              "A changed action with more than one plausible explanation"
+            ],
+            "answer": 2,
+            "detailModel": "Vemos una acción distinta, no sabemos si se convertirá en un hábito nuevo. La anotación incompleta podría sugerir una duda, pero también una vacilación momentánea.",
+            "responseGoal": "Offer a concise reading grounded in the ending, retaining what one action does not establish about a lasting transformation.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "alternative": {
+            "id": "alternative",
+            "question": [
+              "¿En qué apoyaría una lectura diferente?",
+              "What would support another reading?"
+            ],
+            "reply": "Las notas ayudaron a la vecina. Pero esa lectura no explica la discrepancia inicial entre las palabras y la conducta. La ambigüedad no justifica cualquier lectura.",
+            "detailQuestion": "How is the alternative reading treated?",
+            "options": [
+              "It has a concrete supporting detail and an identified limitation",
+              "It is ruled out without any supporting detail",
+              "It proves access to the author’s private intention"
+            ],
+            "answer": 0,
+            "detailModel": "Las notas ayudaron a la vecina. Pero esa lectura no explica la discrepancia inicial entre las palabras y la conducta. La ambigüedad no justifica cualquier lectura.",
+            "responseGoal": "Acknowledge the strongest alternative and defend your emphasis through wording or structure, without claiming knowledge of private authorial intent.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      },
+      {
+        "unitId": "C2-register",
+        "preparedSourceReused": true,
+        "checkingQuestions": [
+          [
+            "courtesy",
+            "¿La observación cortés era opcional en este contexto?",
+            "Was the courteous comment optional in this context?"
+          ],
+          [
+            "public",
+            "¿Cómo presentaría esta decisión al público?",
+            "How would you present the decision publicly?"
+          ]
+        ],
+        "partnerReplies": {
+          "courtesy": "No aprobaremos la conclusión hasta que se distinga el beneficio observado de la causa supuesta. El tono cortés no elimina el requisito.",
+          "public": "Retomaremos la cuestión de la aprobación después de la revisión. La corrección no garantiza por sí sola la aprobación, porque el comité aún deberá valorar si resulta suficiente."
+        },
+        "branches": {
+          "courtesy": {
+            "id": "courtesy",
+            "question": [
+              "¿La observación cortés era opcional en este contexto?",
+              "Was the courteous comment optional in this context?"
+            ],
+            "reply": "No aprobaremos la conclusión hasta que se distinga el beneficio observado de la causa supuesta. El tono cortés no elimina el requisito.",
+            "detailQuestion": "What determines the comment’s force in this context?",
+            "options": [
+              "A universal rule that politeness always means rejection",
+              "The explicit surrounding condition on approval",
+              "A universal rule that polite requests are optional"
+            ],
+            "answer": 1,
+            "detailModel": "No aprobaremos la conclusión hasta que se distinga el beneficio observado de la causa supuesta. El tono cortés no elimina el requisito.",
+            "responseGoal": "Use the explicit context to explain the requirement. Avoid treating either politeness or your inferred intention as a quoted fact.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          },
+          "public": {
+            "id": "public",
+            "question": [
+              "¿Cómo presentaría esta decisión al público?",
+              "How would you present the decision publicly?"
+            ],
+            "reply": "Retomaremos la cuestión de la aprobación después de la revisión. La corrección no garantiza por sí sola la aprobación, porque el comité aún deberá valorar si resulta suficiente.",
+            "detailQuestion": "What must a short public version preserve?",
+            "options": [
+              "Approval is already guaranteed after any correction",
+              "The whole report is permanently rejected",
+              "A promise to reconsider, without inventing guaranteed approval"
+            ],
+            "answer": 2,
+            "detailModel": "Retomaremos la cuestión de la aprobación después de la revisión. La corrección no garantiza por sí sola la aprobación, porque el comité aún deberá valorar si resulta suficiente.",
+            "responseGoal": "Give a concise public formulation, then say what extra action detail the internal team needs. Preserve the actual condition and level of commitment.",
+            "responseContext": "Use the reply you actually heard. Keep its condition, responsibility or qualification when you respond.",
+            "responseReview": "I replayed my response and checked that it addressed this reply without changing its condition or strength."
+          }
+        },
+        "detailGoal": null,
+        "detailModel": null,
+        "supportMode": "intent_first",
+        "ownRecordedResponsesPerRound": 2,
+        "newUntaughtForms": [],
+        "speechAutomaticallyAssessed": false
+      }
+    ]
+  }
+}

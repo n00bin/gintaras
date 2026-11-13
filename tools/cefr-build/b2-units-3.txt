@@ -1,0 +1,281 @@
+%Words for the wider world|B2 words: politics, economy, media, science, environment and the mind
+@u106|Politika ir teisė|Politics and law|Words you meet in the news every day: <b>demokratija</b>, <b>opozicija</b> and <b>koalicija</b> are international, so you will recognise them.|Explain how your country is governed: who is elected, who makes laws, and how often there are elections.
+#u106a|Government
+demokratija|democracy|deh-moh-KRAH-ti-yah
+opozicija|opposition|oh-poh-ZI-tsi-yah
+koalicija|coalition|koh-ah-LI-tsi-yah
+parlamentas|parliament|par-lah-MEN-tahs
+konstitucija|constitution|kohns-ti-TU-tsi-yah
+respublika|republic|res-PUB-li-kah
+monarchija|monarchy|moh-NAR-khi-yah
+diktatūra|dictatorship|dik-tah-TOO-rah
+premjeras|prime minister|prem-YEH-rahs
+meras|mayor|MEH-rahs
+#u106b|Elections
+kandidatas|candidate|kahn-di-DAH-tahs
+rinkėjas|voter|rin-KAY-yahs
+balsavimas|voting|bahl-SAH-vi-mahs
+referendumas|referendum|reh-feh-REN-du-mahs
+kampanija|campaign|kahm-PAH-ni-yah
+programa|programme, manifesto|proh-GRAH-mah
+apygarda|constituency|AH-pee-gar-dah
+aktyvumas|turnout|ahk-tee-VU-mahs
+mandatas|seat (in parliament)|mahn-DAH-tahs
+išrinkti|to elect|ish-RINK-ti
+#u106c|Laws and rights
+įstatymų leidyba|law-making|ees-tah-tee-MOO LAY-dee-bah
+pataisa|amendment|pah-TAI-sah
+nutarimas|resolution, decree|nu-tah-RI-mahs
+žmogaus teisės|human rights|zhmoh-GAUS TAY-says
+pareiga|duty|pah-ray-GAH
+diskriminacija|discrimination|dis-kri-mi-NAH-tsi-yah
+korupcija|corruption|koh-RUP-tsi-yah
+cenzūra|censorship|tsen-ZOO-rah
+pilietinė visuomenė|civil society|pi-lye-TI-nay vi-swoh-MEH-nay
+skaidrumas|transparency|skaid-RU-mahs
+#u106d|International
+užsienio politika|foreign policy|UZH-sye-nyoh poh-LI-ti-kah
+diplomatas|diplomat|dip-loh-MAH-tahs
+sutartis tarp valstybių|treaty|su-tar-TIS tarp vahls-tee-BYOO
+sankcijos|sanctions|SAHNK-tsi-yohs
+sąjungininkas|ally|saa-yun-GI-nin-kahs
+pabėgėlis|refugee|pah-bay-GAY-lis
+imigrantas|immigrant|i-mi-GRAHN-tahs
+gynyba|defence|gee-NEE-bah
+kariuomenė|army|kah-RYWOH-meh-nay
+NATO narė|NATO member|NAH-toh nah-RAY
+#u106e|Political verbs
+valdyti|to govern, to rule|vahl-DEE-ti
+priimti įstatymą|to pass a law|PRYIM-ti ees-TAH-tee-maa
+vetuoti|to veto|veh-TWOH-ti
+atsistatydinti iš pareigų|to resign from office|aht-sis-tah-TEE-din-ti ish pah-ray-GOO
+kritikuoti vyriausybę|to criticise the government|kri-ti-KWOH-ti vee-ryau-SEE-byay
+reformuoti|to reform|reh-for-MWOH-ti
+derėtis dėl|to negotiate about|deh-RAY-tis dayl
+pasmerkti|to condemn|pahs-MERK-ti
+skelbti|to announce, to declare|SKELP-ti
+atstovauti|to represent|aht-stoh-VAU-ti
+@u107|Ekonomika ir verslas|Economy and business|Business words: <b>įmonė</b> you know; now add <b>bendrovė</b> (company, firm), <b>akcininkas</b> (shareholder) and <b>pelnas</b> (profit).|Describe a business you know: what it sells, who its customers are, and whether it is doing well.
+#u107a|Companies
+bendrovė|company, firm|ben-DROH-vay
+akcininkas|shareholder|ahk-TSI-nin-kahs
+dividendai|dividends|di-vi-DEN-dai
+įkūrėjas|founder|ee-koo-RAY-yahs
+direktorių valdyba|board of directors|di-REK-toh-ryoo vahl-DEE-bah
+apyvarta|turnover|AH-pee-var-tah
+nuostolis|loss|NWOHS-toh-lis
+konkurentas|competitor|kohn-ku-REN-tahs
+monopolis|monopoly|moh-NOH-poh-lis
+susijungimas|merger|su-si-yun-GI-mahs
+#u107b|The economy
+bendrasis vidaus produktas|GDP|ben-DRAH-sis vi-DAUS proh-DUK-tahs
+augimas|growth|au-GI-mas
+nuosmukis|recession, downturn|NWOHS-mu-kis
+nedarbo lygis|unemployment rate|neh-DAR-boh LEE-gis
+palūkanų norma|interest rate|pah-loo-kah-NOO nor-MAH
+paklausa|demand|PAHK-lau-sah
+pasiūla|supply|pah-SYOO-lah
+eksportuoti|to export|eks-por-TWOH-ti
+importuoti|to import|im-por-TWOH-ti
+birža|stock exchange|bir-ZHAH
+#u107c|Money matters
+investuotojas|investor|in-ves-TWOH-toh-yahs
+kreditas|credit|KREH-di-tahs
+įsiskolinimas|debt, arrears|ee-si-skoh-LI-ni-mahs
+mokesčių deklaracija|tax return|moh-kes-CHYOO dek-lah-RAH-tsi-yah
+PVM|VAT|peh-veh-EM
+atlygis|reward, pay|AHT-lee-gis
+išmoka|payment, benefit|ish-MOH-kah
+subsidija|subsidy|sub-SI-di-yah
+draudimo įmoka|insurance premium|drau-DI-moh EE-moh-kah
+santaupų sąskaita|savings account|sahn-tau-POO SAAS-kai-tah
+#u107d|Business verbs
+steigti|to set up, to found|STAYK-ti
+plėsti|to expand (something)|PLAYS-ti
+mažinti|to reduce, to cut|mah-ZHIN-ti
+didinti|to increase (something)|di-DIN-ti
+pelnyti|to earn, to profit|pel-NEE-ti
+finansuoti|to finance|fi-nahn-SWOH-ti
+prekiauti|to trade|preh-KYAU-ti
+reklamuoti|to advertise|rek-lah-MWOH-ti
+derybauti dėl kainos|to bargain over the price|deh-ree-BAU-ti dayl kai-NOHS
+bankrutuoti greitai|to go bankrupt quickly|bahnk-ru-TWOH-ti gray-TAI
+#u107e|At the workplace
+vadybininkas|manager|vah-DEE-bi-nin-kahs
+pavaldinys|subordinate|pah-vahl-di-NEES
+pareigybė|job title|pah-ray-GEE-bay
+atlyginimo kėlimas|pay rise|aht-lee-GI-ni-moh kay-LI-mahs
+darbo sutartis|employment contract|DAR-boh su-tar-TIS
+bandomasis laikotarpis|probation period|bahn-DOH-mah-sis lai-KOH-tar-pis
+įspėjimas|warning|ees-pay-YI-mahs
+atleidimas|dismissal|aht-lay-DI-mahs
+darbo krūvis|workload|DAR-boh KROO-vis
+produktyvumas|productivity|proh-duk-tee-VU-mahs
+@u108|Žiniasklaida|The media|The media in Lithuanian is <b>žiniasklaida</b>, literally "news-spreading". A <b>leidinys</b> is any publication, from a newspaper to a magazine.|Talk about where you get your news: which sources you trust, which you don’t, and why.
+#u108a|Media
+žiniasklaida|the media|zhi-nyahs-KLAI-dah
+leidinys|publication|lay-di-NEES
+žurnalas|magazine|zhur-NAH-lahs
+redaktorius|editor|reh-DAHK-toh-ryus
+korespondentas|correspondent|koh-res-pohn-DEN-tahs
+laida|programme, edition|lai-DAH
+tiesioginis eteris|live broadcast|tye-syoh-GI-nis EH-teh-ris
+žiūrovų skaičius|ratings, audience|zhyoo-roh-VOO SKAI-chyus
+portalas|news website|por-TAH-lahs
+naujienų agentūra|news agency|nau-ye-NOO ah-gen-TOO-rah
+#u108b|Truth and lies
+melaginga naujiena|fake news|meh-lah-GIN-gah nau-YEH-nah
+informacijos šaltinis|source of information|in-for-MAH-tsi-yohs shahl-TI-nis
+faktas|fact|FAHK-tahs
+patikrinimas|fact-check|pah-tik-ri-NI-mahs
+propaganda|propaganda|proh-pah-GAHN-dah
+manipuliacija|manipulation|mah-ni-pu-LYAH-tsi-yah
+nuomonės straipsnis|opinion piece|NWOH-moh-nays STRAIPS-nis
+objektyvus|objective|ohb-yek-tee-VUS
+šališkas|biased|SHAH-lish-kahs
+patikimas šaltinis|reliable source|pah-TI-ki-mahs shahl-TI-nis
+#u108c|Online
+tinklaraštis|blog|tink-LAH-rahsh-tis
+tinklaraštininkas|blogger|tink-lah-RAHSH-ti-nin-kahs
+nuomonės formuotojas|influencer|NWOH-moh-nays for-MWOH-toh-yahs
+komentaras|comment|koh-men-TAH-rahs
+pasidalijimas|share (online)|pah-si-dah-li-YI-mahs
+sekėjas|follower|seh-KAY-yahs
+algoritmas|algorithm|ahl-goh-RIT-mahs
+privatumas|privacy|pri-vah-TU-mahs
+slapukai|cookies (online)|slah-PU-kai
+prenumerata|subscription|preh-nu-meh-RAH-tah
+#u108d|Media verbs
+transliuoti|to broadcast|trahns-LYWOH-ti
+pranešti apie|to report on|prah-NESH-ti AH-pyeh
+skleisti|to spread|SKLAYS-ti
+cenzūruoti|to censor|tsen-zoo-RWOH-ti
+komentuoti|to comment|koh-men-TWOH-ti
+prenumeruoti|to subscribe|preh-nu-meh-RWOH-ti
+paneigti|to deny|pah-NAYK-ti
+patvirtinti žinią|to confirm the news|paht-VIR-tin-ti ZHI-nyaa
+nutekinti|to leak|nu-TEH-kin-ti
+apšmeižti|to slander|ahp-SHMAYZH-ti
+#u108e|Advertising
+reklamos kampanija|advertising campaign|rek-LAH-mohs kahm-PAH-ni-yah
+šūkis|slogan|SHOO-kis
+logotipas|logo|loh-goh-TI-pahs
+rinkodara|marketing|rin-KOH-dah-rah
+tikslinė auditorija|target audience|TIKS-li-nay au-di-TOH-ri-yah
+rėmėjas|sponsor|ray-MAY-yahs
+įvaizdis|image (public)|ee-VAIZ-dis
+ryšiai su visuomene|public relations|ree-SHYAI su vi-SWOH-meh-neh
+plakatas|poster|plah-KAH-tahs
+skrajutė|flyer|skrah-YU-tay
+@u109|Mokslas ir tyrimai|Science and research|In research, a <b>hipotezė</b> is tested by a <b>bandymas</b> (experiment, test) and leads to an <b>išvada</b> (conclusion).|Describe an experiment you did at school or read about: the question, the method and what you found.
+#u109a|Research
+hipotezė|hypothesis|hi-poh-TEH-zay
+bandymas|test, trial|BAHN-dee-mahs
+metodas|method|meh-TOH-dahs
+mėginys|sample|may-gi-NEES
+tyrėjas|researcher|tee-RAY-yahs
+mokslinis darbas|scientific paper|mohks-LI-nis DAR-bahs
+recenzija|review (academic)|reh-TSEN-zi-yah
+citata|quotation, citation|tsi-TAH-tah
+šaltinių sąrašas|bibliography|shahl-ti-NYOO SAA-rah-shahs
+anketa tyrimui|questionnaire|ahn-KEH-tah tee-RI-mui
+#u109b|Natural sciences
+fizikas|physicist|FI-zi-kahs
+chemikas|chemist|KHEH-mi-kahs
+biologas|biologist|bi-OH-loh-gahs
+astronomas|astronomer|ahs-troh-NOH-mahs
+atomas|atom|ah-TOH-mahs
+molekulė|molecule|moh-leh-KU-lay
+elementas|element|eh-leh-MEN-tahs
+gravitacija|gravity|grah-vi-TAH-tsi-yah
+evoliucija|evolution|eh-voh-LYU-tsi-yah
+organizmas|organism|or-gah-NIZ-mahs
+#u109c|Technology 2
+inžinerija|engineering|in-zhi-NEH-ri-yah
+nanotechnologija|nanotechnology|nah-noh-tekh-noh-LOH-gi-yah
+lazeris|laser|LAH-zeh-ris
+puslaidininkis|semiconductor|pus-lai-DI-nin-kis
+jutiklis|sensor|yu-TIK-lis
+algoritmų kūrimas|algorithm design|ahl-goh-rit-MOO koo-RI-mahs
+šifravimas|encryption|shif-RAH-vi-mahs
+debesų kompiuterija|cloud computing|deh-beh-SOO kohm-pyu-TEH-ri-yah
+skaitmeninis|digital|skait-meh-NI-nis
+automatizacija|automation|au-toh-mah-ti-ZAH-tsi-yah
+#u109d|Research verbs
+stebėti|to observe|steh-BAY-ti
+išmatuoti|to measure (exactly)|ish-mah-TWOH-ti
+palyginti duomenis|to compare data|pah-LEE-gin-ti DWOH-meh-nis
+paneigti teoriją|to disprove a theory|pah-NAYK-ti teh-OH-ri-yaa
+apibendrinti|to summarise|ah-pi-BEN-drin-ti
+paskelbti|to publish, to announce|pahs-KELP-ti
+cituoti|to quote|tsi-TWOH-ti
+pagrįsti|to justify, to back up|pah-GREES-ti
+kartoti bandymą|to repeat an experiment|kar-TOH-ti BAHN-dee-maa
+modeliuoti|to model|moh-deh-LYWOH-ti
+#u109e|Describing research
+patikimas rezultatas|a reliable result|pah-TI-ki-mahs reh-zul-TAH-tahs
+reikšmingas|significant|raiksh-MIN-gahs
+tikslus matavimas|an exact measurement|tiks-LUS mah-TAH-vi-mahs
+eksperimentinis|experimental|eks-peh-ri-men-TI-nis
+teorinis|theoretical|teh-OH-ri-nis
+praktinis|practical|PRAHK-ti-nis
+inovatyvus|innovative|i-noh-vah-tee-VUS
+ginčytinas|debatable|gin-CHEE-ti-nahs
+įrodytas|proven|EE-roh-dee-tahs
+nepaaiškinamas|inexplicable|neh-pah-aish-KI-nah-mahs
+@u110|Aplinkosauga|Environmental protection|Saving the planet in Lithuanian: <b>tvarumas</b> (sustainability), <b>atsinaujinanti energija</b> (renewable energy) and <b>anglies pėdsakas</b> (carbon footprint).|Explain what your town or school does for the environment and what more it could do.
+#u110a|Sustainability
+tvarumas|sustainability|tva-RU-mahs
+atsinaujinanti energija|renewable energy|aht-si-nau-YI-nahn-ti eh-NER-gi-yah
+anglies pėdsakas|carbon footprint|ahn-GLYES PAYD-sah-kahs
+šiltnamio efektas|greenhouse effect|SHILT-nah-myoh eh-FEK-tahs
+išmetamosios dujos|emissions|ish-meh-tah-MOH-syohs DU-yohs
+biologinė įvairovė|biodiversity|byoh-loh-GI-nay ee-vai-ROH-vay
+ekosistema|ecosystem|eh-koh-sis-TEH-mah
+žiedinė ekonomika|circular economy|zhye-DI-nay eh-koh-NOH-mi-kah
+ekologiškas ūkis|organic farm|eh-koh-LOH-gish-kahs OO-kis
+energijos vartojimas|energy consumption|eh-NER-gi-yohs var-toh-YI-mahs
+#u110b|Problems
+užterštumas|contamination|uzh-tersh-TU-mahs
+dirvožemio erozija|soil erosion|dir-VOH-zheh-myoh eh-ROH-zi-yah
+miškų gaisrai|forest fires|mish-KOO GAIS-rai
+jūros lygio kilimas|sea level rise|YOO-rohs LEE-gyoh ki-LI-mahs
+ledynų tirpimas|melting glaciers|leh-dee-NOO tir-PI-mahs
+rūšių nykimas|species extinction|roo-SHYOO nee-KI-mahs
+mikroplastikas|microplastics|mik-roh-PLAHS-ti-kahs
+smogas|smog|SMOH-gahs
+rūgštieji lietūs|acid rain|rooksh-TYEH-yi lye-TOOS
+triukšmo tarša|noise pollution|TRYUKSH-moh tar-SHAH
+#u110c|Solutions
+perdirbimas|recycling|per-dir-BI-mahs
+kompostavimas|composting|kohm-pohs-TAH-vi-mahs
+elektrinis transportas|electric transport|eh-LEK-tri-nis trahns-POR-tahs
+saulės baterijos|solar panels|SAU-lays bah-TEH-ri-yohs
+šilumos siurblys|heat pump|shi-lu-MOHS syurb-LEES
+apželdinimas|planting greenery|ahp-zhel-DI-ni-mahs
+taupymas|saving|TAU-pee-mahs
+pakartotinis naudojimas|reuse|pah-kar-toh-TI-nis nau-doh-YI-mahs
+nulinių atliekų|zero-waste|nu-li-NYOO aht-lye-KOO
+gamtosauga|nature conservation|gahm-toh-SAU-gah
+#u110d|Green verbs
+teršti|to pollute (all the time)|TERSH-ti
+saugoti gamtą|to protect nature|SAU-goh-ti GAHM-taa
+perdirbti|to recycle|per-DIRP-ti
+kompostuoti|to compost|kohm-pohs-TWOH-ti
+atsinaujinti|to renew|aht-si-nau-YIN-ti
+sodinti mišką|to plant a forest|soh-DIN-ti MISH-kaa
+taupyti vandenį|to save water|tau-PEE-ti VAHN-deh-nee
+mažinti taršą|to reduce pollution|mah-ZHIN-ti tar-SHAA
+išnykti visai|to die out completely|ish-NEEK-ti vi-SAI
+prisitaikyti|to adapt|pri-si-tai-KEE-ti
+#u110e|Describing the environment
+ekologiškas|eco-friendly, organic|eh-koh-LOH-gish-kahs
+užterštas|polluted|uzh-TERSH-tahs
+nykstantis|endangered|NEEKS-tahn-tis
+tvarus|sustainable|tvah-RUS
+kenksmingas gamtai|harmful to nature|kenks-MIN-gahs GAHM-tai
+energiją taupantis|energy-saving|eh-NER-gi-yaa TAU-pahn-tis
+biologiškai skaidus|biodegradable|byoh-LOH-gish-kai skai-DUS
+vienkartinis puodelis|disposable cup|vyen-kar-TI-nis pwoh-DYAH-lis
+neatsinaujinantis|non-renewable|neh-aht-si-nau-YI-nahn-tis
+švarus oras|clean air|shvah-RUS OH-rahs

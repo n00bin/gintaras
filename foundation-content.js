@@ -1,6 +1,7 @@
 /* Practical tasks use exact course cards, bound to the learner's personalised forms. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 if(!window.WordamiActivities||LANG.code!=='lt')return;
 const choice=(value,label)=>({value,label});
 const read=(prompt,lines,options,answer)=>({skill:'reading',prompt,lines,options,answer});

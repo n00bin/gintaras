@@ -1,6 +1,7 @@
 /* Shared runner for taught-language A1 scenarios. No CEFR level awards. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 const core=window.WordamiActivities,ui=window.WordamiPracticeUI,content=window.WordamiTopicContent;
 if(!core||!ui||!content)return;
 const {node:n,button:b,dialog}=ui;

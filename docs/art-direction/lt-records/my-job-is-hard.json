@@ -1,0 +1,19 @@
+{
+  "id": "my-job-is-hard",
+  "word": "Mano darbas sunkus",
+  "en": "My job is hard",
+  "unit": "u31",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning My job is hard. Reference 1 governs STYLE: rounded flat geometric cartoons, expressive large white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details and no black outlines. Reference 2 if present fixes Tomas's identity exactly. Subject: Tomas from reference 2, amber sweatshirt and navy trousers, sits behind a navy laptop with one tall uneven stack of cream work papers. He looks tired and concerned, brows raised, one hand on forehead and other on keyboard, exactly two arms. This shows his job being difficult, not physical lifting. No letters or clutter. Center complete composition with generous transparent margins, readable at 56px. Opaque interiors, zero alpha outside shapes. No gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/my-job-is-hard.png",
+  "asset": "pics/art-v2/my-job-is-hard.webp",
+  "bytes": 29878,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "my-job-is-hard-v2",
+  "revision_reason": "Large coloured glow and fog surrounds the entire character, laptop and papers. Remove ALL glow, bloom, fog and blurred lighting. Edges must end crisply at fully transparent outside pixels."
+}

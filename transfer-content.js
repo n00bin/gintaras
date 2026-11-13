@@ -1,0 +1,38 @@
+/* Controlled reading transfer: new combinations of explicitly prepared A1 language.
+   These short checks do not establish a CEFR level or independent productive ability. */
+(()=>{
+'use strict';
+const lt=LANG.code==='lt';
+const q=(prompt,answers,model)=>({prompt,answers,model});
+const units={
+ A1:{title:'Read a different invitation',documentKind:'A message from a classmate',variants:lt?[
+  {id:'rasa-seven',text:'Labas! Mano vardas Rasa. Aš gyvenu Vilniuje. Man patinka muzika. Susitikime rytoj. Septintą valandą.',questions:[q('Who wrote the invitation?',['Rasa'],'Rasa'),q('Which city does the writer live in?',['Vilnius','Vilniuje','in Vilnius'],'Vilniuje'),q('At what time is the meeting?',['7','7:00','seven','at seven','septintą','septintą valandą'],'Septintą valandą.')]},
+  {id:'lina-eight',text:'Labas! Mano vardas Lina. Mano butas mažas. Aš gyvenu Vilniuje. Susitikime rytoj. Aštuntą valandą.',questions:[q('Who wrote the invitation?',['Lina'],'Lina'),q('Which city does the writer live in?',['Vilnius','Vilniuje','in Vilnius'],'Vilniuje'),q('At what time is the meeting?',['8','8:00','eight','at eight','aštuntą','aštuntą valandą'],'Aštuntą valandą.')]}
+ ]:[
+  {id:'rosa-seven',text:'¡Hola! Me llamo Rosa. Vivo en la Ciudad de México. Me gusta la música. Nos vemos mañana. A las siete.',questions:[q('Who wrote the invitation?',['Rosa'],'Rosa'),q('Which city does the writer live in?',['Mexico City','Ciudad de México','la Ciudad de México','in Mexico City'],'La Ciudad de México'),q('At what time is the meeting?',['7','7:00','seven','at seven','a las siete'],'A las siete.')]},
+  {id:'ana-eight',text:'¡Hola! Me llamo Ana. Mi casa es pequeña. Vivo en la Ciudad de México. Nos vemos mañana. A las ocho.',questions:[q('Who wrote the invitation?',['Ana'],'Ana'),q('Which city does the writer live in?',['Mexico City','Ciudad de México','la Ciudad de México','in Mexico City'],'La Ciudad de México'),q('At what time is the meeting?',['8','8:00','eight','at eight','a las ocho'],'A las ocho.')]}
+ ]},
+ 'A1-shopping':{title:'Check a different shopping note',documentKind:'A short shopping note: item, price and planned payment',variants:lt?[
+  {id:'two-four-card',text:'Du obuoliai. Keturi eurai. Mokėsiu kortele.',questions:[q('How many apples are listed?',['2','two','du','du obuoliai'],'Du obuoliai.'),q('What is the total price in euros?',['4','four','keturi','4 eurai','keturi eurai','4 euros'],'Keturi eurai.'),q('How will the shopper pay?',['card','by card','kortele','mokėsiu kortele'],'Kortele.')]},
+  {id:'three-three-cash',text:'Trys obuoliai. Trys eurai. Mokėsiu grynaisiais.',questions:[q('How many apples are listed?',['3','three','trys','trys obuoliai'],'Trys obuoliai.'),q('What is the total price in euros?',['3','three','trys','3 eurai','trys eurai','3 euros'],'Trys eurai.'),q('How will the shopper pay?',['cash','in cash','grynaisiais','mokėsiu grynaisiais'],'Grynaisiais.')]}
+ ]:[
+  {id:'two-forty-card',text:'Dos manzanas. Cuarenta pesos. Voy a pagar con tarjeta.',questions:[q('How many apples are listed?',['2','two','dos','dos manzanas'],'Dos manzanas.'),q('What is the total price in pesos?',['40','forty','cuarenta','40 pesos','cuarenta pesos'],'Cuarenta pesos.'),q('How will the shopper pay?',['card','by card','con tarjeta','tarjeta','voy a pagar con tarjeta'],'Con tarjeta.')]},
+  {id:'three-thirty-cash',text:'Tres manzanas. Treinta pesos. Voy a pagar en efectivo.',questions:[q('How many apples are listed?',['3','three','tres','tres manzanas'],'Tres manzanas.'),q('What is the total price in pesos?',['30','thirty','treinta','30 pesos','treinta pesos'],'Treinta pesos.'),q('How will the shopper pay?',['cash','in cash','en efectivo','efectivo','voy a pagar en efectivo'],'En efectivo.')]}
+ ]},
+ 'A1-home':{title:'Read a different visitor note',documentKind:'A note for someone visiting a home',variants:lt?[
+  {id:'bright-chair-water',text:'Labas! Kambarys šviesus. Raktas yra ant kėdės. Gal nori vandens?',questions:[q('How is the room described?',['bright','light','šviesus','kambarys šviesus'],'Kambarys šviesus.'),q('Where is the key?',['chair','on the chair','ant kėdės','kėdės'],'Ant kėdės.'),q('What drink is offered?',['water','vandens'],'Vandens.')]},
+  {id:'large-table-tea',text:'Labas! Šis kambarys didelis. Raktas yra ant stalo. Ar nori arbatos?',questions:[q('How is the room described?',['big','large','didelis','šis kambarys didelis'],'Šis kambarys didelis.'),q('Where is the key?',['table','on the table','ant stalo','stalo'],'Ant stalo.'),q('What drink is offered?',['tea','arbatos'],'Arbatos.')]}
+ ]:[
+  {id:'bright-chair-water',text:'¡Hola! El cuarto es luminoso. La llave está sobre la silla. ¿Quieres agua?',questions:[q('How is the room described?',['bright','light','luminoso','el cuarto es luminoso'],'El cuarto es luminoso.'),q('Where is the key?',['chair','on the chair','sobre la silla','la silla','silla'],'Sobre la silla.'),q('What drink is offered?',['water','agua'],'Agua.')]},
+  {id:'large-table-tea',text:'¡Hola! Este cuarto es grande. La llave está sobre la mesa. ¿Quieres un té?',questions:[q('How is the room described?',['big','large','grande','este cuarto es grande'],'Este cuarto es grande.'),q('Where is the key?',['table','on the table','sobre la mesa','la mesa','mesa'],'Sobre la mesa.'),q('What drink is offered?',['tea','té','un té'],'Un té.')]}
+ ]},
+ 'A1-travel':{title:'Follow different directions',documentKind:'Directions from a local person',variants:lt?[
+  {id:'park-right-eleven',text:'Stotelė yra prie parko. Eikite tiesiai ir sukite į dešinę. Autobusas į stotį atvažiuoja vienuoliktą. Bilietą pirkite autobuse.',questions:[q('What is the stop near?',['park','the park','near the park','by the park','prie parko','parko'],'Prie parko.'),q('Which way should you turn?',['right','to the right','dešinę','į dešinę'],'Į dešinę.'),q('At what time does the bus arrive?',['11','11:00','eleven','at eleven','vienuoliktą'],'Vienuoliktą.')]},
+  {id:'shop-left-ten',text:'Stotelė yra prie parduotuvės. Eikite tiesiai, paskui sukite į kairę. Autobusas į stotį atvažiuoja dešimtą. Vieną bilietą galite nusipirkti autobuse.',questions:[q('What is the stop near?',['shop','the shop','store','the store','near the shop','by the shop','prie parduotuvės','parduotuvės'],'Prie parduotuvės.'),q('Which way should you turn?',['left','to the left','kairę','į kairę'],'Į kairę.'),q('At what time does the bus arrive?',['10','10:00','ten','at ten','dešimtą'],'Dešimtą.')]}
+ ]:[
+  {id:'park-right-eleven',text:'La parada está junto al parque. Siga derecho y dé vuelta a la derecha. El autobús a la terminal llega a las once. Compre el boleto en el autobús.',questions:[q('What is the stop near?',['park','the park','near the park','by the park','parque','el parque','junto al parque'],'Junto al parque.'),q('Which way should you turn?',['right','to the right','derecha','a la derecha'],'A la derecha.'),q('At what time does the bus arrive?',['11','11:00','eleven','at eleven','a las once','once'],'A las once.')]},
+  {id:'shop-left-ten',text:'La parada está junto a la tienda. Siga derecho y después dé vuelta a la izquierda. El autobús a la terminal llega a las diez. Puede comprar un boleto en el autobús.',questions:[q('What is the stop near?',['shop','the shop','store','the store','near the shop','by the shop','tienda','la tienda','junto a la tienda'],'Junto a la tienda.'),q('Which way should you turn?',['left','to the left','izquierda','a la izquierda'],'A la izquierda.'),q('At what time does the bus arrive?',['10','10:00','ten','at ten','a las diez','diez'],'A las diez.')]}
+ ]}
+};
+window.WordamiTransferContent=Object.freeze({version:1,language:LANG.code,skill:'reading',scope:'controlled_transfer_of_prepared_language',units});
+})();

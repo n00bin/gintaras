@@ -1,0 +1,5871 @@
+{
+  "schema": 1,
+  "scope": "Authored task-family gap inventory for spoken/written Lithuanian and Mexican Spanish; not an exhaustive official descriptor inventory",
+  "source": "https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2020/16809ea0d4",
+  "sourceChecked": "2026-11-10",
+  "completeCefrCoverageEstablished": false,
+  "languages": {
+    "lt": {
+      "contentHash": "5a58d11a468a70e1cfc5812f9225f854ef8f0940f81dfd26149da2cf7a4026f6",
+      "metrics": [
+        {
+          "band": "A1",
+          "units": [
+            "A1",
+            "A1-shopping",
+            "A1-home",
+            "A1-travel",
+            "A1-capstone"
+          ],
+          "themes": [
+            "Meet and make a plan",
+            "Buy everyday things",
+            "Welcome someone to your home",
+            "Find a stop and buy a ticket",
+            "Two useful messages"
+          ],
+          "readingWordsRange": [
+            15,
+            33
+          ],
+          "mainAudioSecondsRange": [
+            9.648,
+            27.582
+          ],
+          "forms": 4
+        },
+        {
+          "band": "A2",
+          "units": [
+            "A2",
+            "A2-services",
+            "A2-work",
+            "A2-meals",
+            "A2-capstone"
+          ],
+          "themes": [
+            "Change an everyday plan",
+            "Arrange and change an appointment",
+            "Plan a working day",
+            "Plan a meal for a group",
+            "Coordinate two arrangements"
+          ],
+          "readingWordsRange": [
+            37,
+            75
+          ],
+          "mainAudioSecondsRange": [
+            18.024,
+            37.038
+          ],
+          "forms": 2
+        },
+        {
+          "band": "B1",
+          "units": [
+            "B1",
+            "B1-appointments",
+            "B1-community",
+            "B1-housing",
+            "B1-capstone"
+          ],
+          "themes": [
+            "Handle a travel complication",
+            "Solve an access problem",
+            "Organise a community event",
+            "Arrange a household repair",
+            "Explain a problem and a next step"
+          ],
+          "readingWordsRange": [
+            65,
+            131
+          ],
+          "mainAudioSecondsRange": [
+            23.664,
+            49.83
+          ],
+          "forms": 0
+        },
+        {
+          "band": "B2",
+          "units": [
+            "B2",
+            "B2-workplace",
+            "B2-media",
+            "B2-mobility",
+            "B2-capstone"
+          ],
+          "themes": [
+            "Weigh a public-service decision",
+            "Negotiate a working arrangement",
+            "Read a report critically",
+            "Balance access in a public space",
+            "Compare two negotiated solutions"
+          ],
+          "readingWordsRange": [
+            92,
+            206
+          ],
+          "mainAudioSecondsRange": [
+            39.528,
+            87.822
+          ],
+          "forms": 0
+        },
+        {
+          "band": "C1",
+          "units": [
+            "C1",
+            "C1-academic",
+            "C1-culture",
+            "C1-professional",
+            "C1-capstone"
+          ],
+          "themes": [
+            "Separate evidence from inference",
+            "Evaluate competing explanations",
+            "Interpret a cultural dispute",
+            "Clarify a professional commitment",
+            "Keep evidence and commitments distinct"
+          ],
+          "readingWordsRange": [
+            104,
+            238
+          ],
+          "mainAudioSecondsRange": [
+            40.344,
+            97.302
+          ],
+          "forms": 0
+        },
+        {
+          "band": "C2",
+          "units": [
+            "C2",
+            "C2-science",
+            "C2-literature",
+            "C2-register",
+            "C2-capstone"
+          ],
+          "themes": [
+            "Preserve nuance under challenge",
+            "Communicate uncertainty precisely",
+            "Interpret voice and ambiguity",
+            "Change register without changing force",
+            "Synthesize without losing force"
+          ],
+          "readingWordsRange": [
+            142,
+            307
+          ],
+          "mainAudioSecondsRange": [
+            47.304,
+            114.87
+          ],
+          "forms": 0
+        }
+      ],
+      "families": [
+        {
+          "id": "read-short",
+          "family": "Short practical texts",
+          "skill": "reading",
+          "referencePages": [
+            54,
+            55
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.reading"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.reading"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.reading"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.reading"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.reading"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.reading"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.reading"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.reading"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.reading"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.reading"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.reading"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.reading"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.reading"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.reading"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.reading"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.reading"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.reading"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.reading"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.reading"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.reading"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.reading"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.reading"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.reading"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.reading"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.reading"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.reading"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.reading"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.reading"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.reading"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.reading"
+            }
+          ],
+          "nextWork": "Vary layout, purpose and contextual detail beyond the prepared message bank.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-changed",
+          "family": "Changed written details",
+          "skill": "reading",
+          "referencePages": [
+            54,
+            58
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "readingTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "readingTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "readingTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "readingTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "readingTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "readingTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "readingTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "readingTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "readingTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "readingTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "readingTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "readingTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "readingTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "readingTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "readingTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "readingTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "readingTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "readingTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "readingTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "readingTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "readingTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "readingTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "readingTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "readingTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Broaden genres and interpretations; keep first exposure separate from repeats.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-long",
+          "family": "Extended reading and leisure reading",
+          "skill": "reading",
+          "referencePages": [
+            56,
+            58
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "extendedReading.B1-community"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "extendedReading.B2-media"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "extendedReading.C1-academic"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "extendedReading.C2-science"
+            }
+          ],
+          "nextWork": "Prepared four-part narrative and analytical readings exist in selected B1–C2 units. Broaden text length, genres, independent transfer and leisure reading.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-visual",
+          "family": "Tables, diagrams and embedded information",
+          "skill": "reading",
+          "referencePages": [
+            55,
+            56
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "documents.A1"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "documents.A1-travel"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "documents.A2-services"
+            }
+          ],
+          "nextWork": "Prepared practical tables are present in selected A1–A2 units. Add varied documents and higher-band visual sources with explicit preparation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-prepared",
+          "family": "Prepared recorded messages",
+          "skill": "listening",
+          "referencePages": [
+            48,
+            51
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.listening"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.listening"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.listening"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.listening"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.listening"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.listening"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.listening"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.listening"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.listening"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.listening"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.listening"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.listening"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.listening"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.listening"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.listening"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.listening"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.listening"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.listening"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.listening"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.listening"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.listening"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.listening"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.listening"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.listening"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.listening"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.listening"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.listening"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.listening"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.listening"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.listening"
+            }
+          ],
+          "nextWork": "Current sources have controlled recordings. Review pace, variety and discourse demands by band.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-changed",
+          "family": "Changed recorded details",
+          "skill": "listening",
+          "referencePages": [
+            51,
+            52
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "listeningTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "listeningTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "listeningTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "listeningTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "listeningTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "listeningTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "listeningTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "listeningTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "listeningTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "listeningTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "listeningTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "listeningTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "listeningTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "listeningTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "listeningTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "listeningTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "listeningTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "listeningTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "listeningTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "listeningTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "listeningTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "listeningTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "listeningTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "listeningTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Extend beyond short controlled messages with varied speakers and purposes.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-others",
+          "family": "Overheard conversation",
+          "skill": "listening",
+          "referencePages": [
+            49
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add complete exchanges between distinct speakers and questions about the relationship between turns.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-lecture",
+          "family": "Talks and lectures",
+          "skill": "listening",
+          "referencePages": [
+            50
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add sustained talks with taught preparation, a note-taking purpose and questions about structure and emphasis.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-media",
+          "family": "Broadcasts and audiovisual material",
+          "skill": "listening",
+          "referencePages": [
+            52
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add rights-cleared audio/video and teach relevant nonverbal and genre cues.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-experience",
+          "family": "Describe and explain in speech",
+          "skill": "speaking",
+          "referencePages": [
+            62,
+            63
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.production"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.production"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.production"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.production"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.production"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.production"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.production"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.production"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.production"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.production"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.production"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.production"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.production"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.production"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.production"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.production"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.production"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.production"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.production"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.production"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.production"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.production"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.production"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.production"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.production"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.production"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.production"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.production"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.production"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.production"
+            }
+          ],
+          "nextWork": "Broaden subjects and require varied responses across several occasions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-case",
+          "family": "Present and defend a position",
+          "skill": "speaking",
+          "referencePages": [
+            64,
+            65
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.production"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.production"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.production"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.production"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.production"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.production"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.production"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.production"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.production"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.production"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.production"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.production"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.production"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.production"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.production"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.production"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.production"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.production"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.production"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.production"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.production"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.production"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.production"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.production"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.production"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.production"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.production"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.production"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.production"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.production"
+            }
+          ],
+          "nextWork": "Current higher-band prompts support selected positions. Add audience-specific presentations and follow-up challenges.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-public",
+          "family": "Public announcements and audience delivery",
+          "skill": "speaking",
+          "referencePages": [
+            64,
+            65
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add complete announcement and presentation tasks with audience, register and delivery preparation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-scripted",
+          "family": "Prepared partner exchanges",
+          "skill": "interaction",
+          "referencePages": [
+            72,
+            73
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.interaction"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.interaction"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.interaction"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.interaction"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.interaction"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.interaction"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.interaction"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.interaction"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.interaction"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.interaction"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.interaction"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.interaction"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.interaction"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.interaction"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.interaction"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.interaction"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.interaction"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.interaction"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.interaction"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.interaction"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.interaction"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.interaction"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.interaction"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.interaction"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.interaction"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.interaction"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.interaction"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.interaction"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.interaction"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.interaction"
+            }
+          ],
+          "nextWork": "Recorded fixed turns and selected branches are practice, not unpredictable conversation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-repair",
+          "family": "Clarification and conversational repair",
+          "skill": "interaction",
+          "referencePages": [
+            88,
+            89
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "guidedInteraction.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "guidedInteraction.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "guidedInteraction.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "guidedInteraction.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "guidedInteraction.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "guidedInteraction.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "guidedInteraction.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "guidedInteraction.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "guidedInteraction.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "guidedInteraction.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "guidedInteraction.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "guidedInteraction.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "guidedInteraction.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "guidedInteraction.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "guidedInteraction.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "guidedInteraction.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "guidedInteraction.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "guidedInteraction.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "guidedInteraction.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "guidedInteraction.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "guidedInteraction.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "guidedInteraction.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "guidedInteraction.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "guidedInteraction.C2-register"
+            }
+          ],
+          "nextWork": "Current branch selection drives the partner response. Add further clarification chains and transfer contexts.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-live",
+          "family": "Unpredictable conversation and discussion",
+          "skill": "interaction",
+          "referencePages": [
+            73,
+            75
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add a live interlocutor workflow and record observations against task-specific criteria.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-group",
+          "family": "Group planning, meetings and collaboration",
+          "skill": "interaction",
+          "referencePages": [
+            75,
+            76
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Teach shared decision making, floor management and responding to genuinely different contributions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-services",
+          "family": "Services, interviews and telephone use",
+          "skill": "interaction",
+          "referencePages": [
+            77,
+            81
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.interaction"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.interaction"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.interaction"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.interaction"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.interaction"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.interaction"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.interaction"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.interaction"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.interaction"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.interaction"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.interaction"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.interaction"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.interaction"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.interaction"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.interaction"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.interaction"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.interaction"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.interaction"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.interaction"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.interaction"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.interaction"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.interaction"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.interaction"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.interaction"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.interaction"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.interaction"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.interaction"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.interaction"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.interaction"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.interaction"
+            }
+          ],
+          "nextWork": "Foundation and workshop tasks contain selected service situations. Audit systematic breadth and add interviews and telephone-specific tasks.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-projects",
+          "family": "Purposeful extended writing",
+          "skill": "writing",
+          "referencePages": [
+            66,
+            68
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.profile"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.home-note"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.meeting-message"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writing.A1-shopping.writing"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writing.A1-home.writing"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writing.A1-travel.writing"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.day-out"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.change-plan"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.recommend-place"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writing.A2-services.writing"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writing.A2-work.writing"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writing.A2-meals.writing"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.unexpected-event"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.reasoned-review"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.practical-complaint"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writing.B1-appointments.writing"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writing.B1-community.writing"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writing.B1-housing.writing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.public-argument"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.compare-options"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.formal-response"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writing.B2-workplace.writing"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writing.B2-media.writing"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writing.B2-mobility.writing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.committee-report"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.public-briefing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.critical-response"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writing.C1-academic.writing"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writing.C1-culture.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writing.C1-professional.writing"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.synthesis-essay"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.executive-brief"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.critical-commentary"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writing.C2-science.writing"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writing.C2-literature.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writing.C2-register.writing"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writing.A1-capstone.writing"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writing.A2-capstone.writing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writing.B1-capstone.writing"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writing.B2-capstone.writing"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writing.C1-capstone.writing"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writing.C2-capstone.writing"
+            }
+          ],
+          "nextWork": "There are 84 guided projects. Review genre breadth and repeated independent performance by band.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-exchanges",
+          "family": "Written clarification and replies",
+          "skill": "writing",
+          "referencePages": [
+            82
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writtenInteraction.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writtenInteraction.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writtenInteraction.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writtenInteraction.A1-travel"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writtenInteraction.A1-capstone"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writtenInteraction.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writtenInteraction.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writtenInteraction.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writtenInteraction.A2-meals"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writtenInteraction.A2-capstone"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writtenInteraction.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writtenInteraction.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writtenInteraction.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writtenInteraction.B1-housing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writtenInteraction.B1-capstone"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writtenInteraction.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writtenInteraction.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writtenInteraction.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writtenInteraction.B2-mobility"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writtenInteraction.B2-capstone"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writtenInteraction.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writtenInteraction.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writtenInteraction.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writtenInteraction.C1-professional"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writtenInteraction.C1-capstone"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writtenInteraction.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writtenInteraction.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writtenInteraction.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writtenInteraction.C2-register"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writtenInteraction.C2-capstone"
+            }
+          ],
+          "nextWork": "There are prepared message exchanges. Add varied audiences, purposes and less predictable replies.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-forms",
+          "family": "Forms and practical field use",
+          "skill": "writing",
+          "referencePages": [
+            83
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "forms.A1"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "forms.A1-travel"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "forms.A2-services"
+            }
+          ],
+          "nextWork": "Original and changed-source forms exist in meeting, travel and service units. Expand practical documents only where appropriate.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "online-group",
+          "family": "Online discussion and collaboration",
+          "skill": "writing",
+          "referencePages": [
+            84,
+            86
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add threaded discussion, contributions from multiple people and a shared outcome; prepared one-to-one messages cover only part of this demand.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-spoken",
+          "family": "Explain and reformulate source information",
+          "skill": "mediation",
+          "referencePages": [
+            93,
+            101
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.mediation"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.mediation"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.mediation"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.mediation"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.mediation"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.mediation"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.mediation"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.mediation"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.mediation"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.mediation"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.mediation"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.mediation"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.mediation"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.mediation"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.mediation"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.mediation"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.mediation"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.mediation"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.mediation"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.mediation"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.mediation"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.mediation"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.mediation"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.mediation"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.mediation"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.mediation"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.mediation"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.mediation"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.mediation"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.mediation"
+            }
+          ],
+          "nextWork": "Current tasks preserve source details in recorded self-reviewed responses. Broaden audience and source demands.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-data",
+          "family": "Explain quantitative or visual information",
+          "skill": "mediation",
+          "referencePages": [
+            96
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add charts/tables with taught labels and require a useful interpretation for a specified audience.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-written-notes",
+          "family": "Purposeful notes from written sources",
+          "skill": "mediation",
+          "referencePages": [
+            98,
+            101
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "extendedReading.B1-community"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "extendedReading.B2-media"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "extendedReading.C1-academic"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "extendedReading.C2-science"
+            }
+          ],
+          "nextWork": "Written-source notes are reused in revised audience briefs. Broaden source genres and independent performance.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-notes",
+          "family": "Useful notes from sustained input",
+          "skill": "mediation",
+          "referencePages": [
+            105
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Written-source preparation is implemented separately. Add purposeful notes during lectures, meetings and seminars; reading notes do not demonstrate this oral-input scale.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-translation",
+          "family": "Translate for a concrete purpose",
+          "skill": "mediation",
+          "referencePages": [
+            102
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Teach meaning-preserving translation choices and evaluate the actual translated artifact.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-literary",
+          "family": "Respond to voice and interpretation",
+          "skill": "mediation",
+          "referencePages": [
+            106,
+            107
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.mediation"
+            }
+          ],
+          "nextWork": "A short higher-band literature workshop exists. Broaden texts, genres and supported alternative interpretations.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-social",
+          "family": "Construct shared meaning and resolve disagreement",
+          "skill": "mediation",
+          "referencePages": [
+            109,
+            116
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add collaborative concept building and delicate communication with actual contributions from other people.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "plan-repair",
+          "family": "Planning and revising a response",
+          "skill": "strategies",
+          "referencePages": [
+            69,
+            70
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.profile"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.home-note"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.meeting-message"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writing.A1-shopping.writing"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writing.A1-home.writing"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writing.A1-travel.writing"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.day-out"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.change-plan"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.recommend-place"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writing.A2-services.writing"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writing.A2-work.writing"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writing.A2-meals.writing"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.unexpected-event"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.reasoned-review"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.practical-complaint"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writing.B1-appointments.writing"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writing.B1-community.writing"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writing.B1-housing.writing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.public-argument"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.compare-options"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.formal-response"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writing.B2-workplace.writing"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writing.B2-media.writing"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writing.B2-mobility.writing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.committee-report"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.public-briefing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.critical-response"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writing.C1-academic.writing"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writing.C1-culture.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writing.C1-professional.writing"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.synthesis-essay"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.executive-brief"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.critical-commentary"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writing.C2-science.writing"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writing.C2-literature.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writing.C2-register.writing"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writing.A1-capstone.writing"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writing.A2-capstone.writing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writing.B1-capstone.writing"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writing.B2-capstone.writing"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writing.C1-capstone.writing"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writing.C2-capstone.writing"
+            }
+          ],
+          "nextWork": "Planning, self-review and revision are implemented. Review transfer without frames and adequacy of independent repairs.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "infer-cues",
+          "family": "Infer from context and evidence",
+          "skill": "strategies",
+          "referencePages": [
+            60
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "readingTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "readingTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "readingTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "readingTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "readingTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "readingTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "readingTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "readingTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "readingTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "readingTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "readingTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "readingTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "readingTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "readingTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "readingTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "readingTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "readingTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "readingTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "readingTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "readingTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "readingTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "readingTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "readingTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "readingTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Higher-band changed-source questions target selected interpretations. Audit the variety of cues and assess inference on different occasions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "language-control",
+          "family": "Vocabulary, grammar, spelling and sound control",
+          "skill": "competence",
+          "referencePages": [
+            130,
+            136
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "vocabulary.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "vocabulary.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "vocabulary.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "vocabulary.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "vocabulary.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "vocabulary.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "vocabulary.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "vocabulary.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "vocabulary.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "vocabulary.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "vocabulary.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "vocabulary.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "vocabulary.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "vocabulary.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "vocabulary.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "vocabulary.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "vocabulary.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "vocabulary.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "vocabulary.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "vocabulary.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "vocabulary.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "vocabulary.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "vocabulary.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "vocabulary.C2-register"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "vocabulary.A1-capstone"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "vocabulary.A2-capstone"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "vocabulary.B1-capstone"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "vocabulary.B2-capstone"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "vocabulary.C1-capstone"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "vocabulary.C2-capstone"
+            }
+          ],
+          "nextWork": "Prepared vocabulary, controlled grammar, audio models and replay exist. These do not establish independent control, intelligibility or broad range.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "discourse-register",
+          "family": "Coherence, precision, register and fluency",
+          "skill": "competence",
+          "referencePages": [
+            136,
+            142
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.writing"
+            }
+          ],
+          "nextWork": "Some higher-band tasks teach these choices. Independent performance and broader discourse evidence are still needed.",
+          "independentAssessmentEstablished": false
+        }
+      ]
+    },
+    "es": {
+      "contentHash": "7e03ddebcf14029c7704ad5c35432d7edc25531c525a35be158fb209599b7e20",
+      "metrics": [
+        {
+          "band": "A1",
+          "units": [
+            "A1",
+            "A1-shopping",
+            "A1-home",
+            "A1-travel",
+            "A1-capstone"
+          ],
+          "themes": [
+            "Meet and make a plan",
+            "Buy everyday things",
+            "Welcome someone to your home",
+            "Find a stop and buy a ticket",
+            "Two useful messages"
+          ],
+          "readingWordsRange": [
+            21,
+            50
+          ],
+          "mainAudioSecondsRange": [
+            9.816,
+            22.47
+          ],
+          "forms": 4
+        },
+        {
+          "band": "A2",
+          "units": [
+            "A2",
+            "A2-services",
+            "A2-work",
+            "A2-meals",
+            "A2-capstone"
+          ],
+          "themes": [
+            "Change an everyday plan",
+            "Arrange and change an appointment",
+            "Plan a working day",
+            "Plan a meal for a group",
+            "Coordinate two arrangements"
+          ],
+          "readingWordsRange": [
+            51,
+            110
+          ],
+          "mainAudioSecondsRange": [
+            17.304,
+            36.582
+          ],
+          "forms": 2
+        },
+        {
+          "band": "B1",
+          "units": [
+            "B1",
+            "B1-appointments",
+            "B1-community",
+            "B1-housing",
+            "B1-capstone"
+          ],
+          "themes": [
+            "Handle a travel complication",
+            "Solve an access problem",
+            "Organise a community event",
+            "Arrange a household repair",
+            "Explain a problem and a next step"
+          ],
+          "readingWordsRange": [
+            89,
+            187
+          ],
+          "mainAudioSecondsRange": [
+            23.136,
+            48.03
+          ],
+          "forms": 0
+        },
+        {
+          "band": "B2",
+          "units": [
+            "B2",
+            "B2-workplace",
+            "B2-media",
+            "B2-mobility",
+            "B2-capstone"
+          ],
+          "themes": [
+            "Weigh a public-service decision",
+            "Negotiate a working arrangement",
+            "Read a report critically",
+            "Balance access in a public space",
+            "Compare two negotiated solutions"
+          ],
+          "readingWordsRange": [
+            119,
+            268
+          ],
+          "mainAudioSecondsRange": [
+            39.336,
+            91.518
+          ],
+          "forms": 0
+        },
+        {
+          "band": "C1",
+          "units": [
+            "C1",
+            "C1-academic",
+            "C1-culture",
+            "C1-professional",
+            "C1-capstone"
+          ],
+          "themes": [
+            "Separate evidence from inference",
+            "Evaluate competing explanations",
+            "Interpret a cultural dispute",
+            "Clarify a professional commitment",
+            "Keep evidence and commitments distinct"
+          ],
+          "readingWordsRange": [
+            134,
+            301
+          ],
+          "mainAudioSecondsRange": [
+            44.016,
+            102.942
+          ],
+          "forms": 0
+        },
+        {
+          "band": "C2",
+          "units": [
+            "C2",
+            "C2-science",
+            "C2-literature",
+            "C2-register",
+            "C2-capstone"
+          ],
+          "themes": [
+            "Preserve nuance under challenge",
+            "Communicate uncertainty precisely",
+            "Interpret voice and ambiguity",
+            "Change register without changing force",
+            "Synthesize without losing force"
+          ],
+          "readingWordsRange": [
+            176,
+            392
+          ],
+          "mainAudioSecondsRange": [
+            51.504,
+            114.438
+          ],
+          "forms": 0
+        }
+      ],
+      "families": [
+        {
+          "id": "read-short",
+          "family": "Short practical texts",
+          "skill": "reading",
+          "referencePages": [
+            54,
+            55
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.reading"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.reading"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.reading"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.reading"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.reading"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.reading"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.reading"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.reading"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.reading"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.reading"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.reading"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.reading"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.reading"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.reading"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.reading"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.reading"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.reading"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.reading"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.reading"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.reading"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.reading"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.reading"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.reading"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.reading"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.reading"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.reading"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.reading"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.reading"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.reading"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.reading"
+            }
+          ],
+          "nextWork": "Vary layout, purpose and contextual detail beyond the prepared message bank.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-changed",
+          "family": "Changed written details",
+          "skill": "reading",
+          "referencePages": [
+            54,
+            58
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "readingTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "readingTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "readingTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "readingTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "readingTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "readingTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "readingTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "readingTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "readingTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "readingTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "readingTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "readingTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "readingTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "readingTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "readingTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "readingTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "readingTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "readingTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "readingTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "readingTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "readingTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "readingTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "readingTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "readingTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Broaden genres and interpretations; keep first exposure separate from repeats.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-long",
+          "family": "Extended reading and leisure reading",
+          "skill": "reading",
+          "referencePages": [
+            56,
+            58
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "extendedReading.B1-community"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "extendedReading.B2-media"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "extendedReading.C1-academic"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "extendedReading.C2-science"
+            }
+          ],
+          "nextWork": "Prepared four-part narrative and analytical readings exist in selected B1–C2 units. Broaden text length, genres, independent transfer and leisure reading.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "read-visual",
+          "family": "Tables, diagrams and embedded information",
+          "skill": "reading",
+          "referencePages": [
+            55,
+            56
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "documents.A1"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "documents.A1-travel"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "documents.A2-services"
+            }
+          ],
+          "nextWork": "Prepared practical tables are present in selected A1–A2 units. Add varied documents and higher-band visual sources with explicit preparation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-prepared",
+          "family": "Prepared recorded messages",
+          "skill": "listening",
+          "referencePages": [
+            48,
+            51
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.listening"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.listening"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.listening"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.listening"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.listening"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.listening"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.listening"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.listening"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.listening"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.listening"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.listening"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.listening"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.listening"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.listening"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.listening"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.listening"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.listening"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.listening"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.listening"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.listening"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.listening"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.listening"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.listening"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.listening"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.listening"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.listening"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.listening"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.listening"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.listening"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.listening"
+            }
+          ],
+          "nextWork": "Current sources have controlled recordings. Review pace, variety and discourse demands by band.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-changed",
+          "family": "Changed recorded details",
+          "skill": "listening",
+          "referencePages": [
+            51,
+            52
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "listeningTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "listeningTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "listeningTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "listeningTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "listeningTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "listeningTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "listeningTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "listeningTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "listeningTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "listeningTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "listeningTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "listeningTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "listeningTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "listeningTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "listeningTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "listeningTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "listeningTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "listeningTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "listeningTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "listeningTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "listeningTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "listeningTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "listeningTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "listeningTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Extend beyond short controlled messages with varied speakers and purposes.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-others",
+          "family": "Overheard conversation",
+          "skill": "listening",
+          "referencePages": [
+            49
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add complete exchanges between distinct speakers and questions about the relationship between turns.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-lecture",
+          "family": "Talks and lectures",
+          "skill": "listening",
+          "referencePages": [
+            50
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add sustained talks with taught preparation, a note-taking purpose and questions about structure and emphasis.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "hear-media",
+          "family": "Broadcasts and audiovisual material",
+          "skill": "listening",
+          "referencePages": [
+            52
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add rights-cleared audio/video and teach relevant nonverbal and genre cues.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-experience",
+          "family": "Describe and explain in speech",
+          "skill": "speaking",
+          "referencePages": [
+            62,
+            63
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.production"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.production"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.production"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.production"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.production"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.production"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.production"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.production"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.production"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.production"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.production"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.production"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.production"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.production"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.production"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.production"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.production"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.production"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.production"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.production"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.production"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.production"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.production"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.production"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.production"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.production"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.production"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.production"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.production"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.production"
+            }
+          ],
+          "nextWork": "Broaden subjects and require varied responses across several occasions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-case",
+          "family": "Present and defend a position",
+          "skill": "speaking",
+          "referencePages": [
+            64,
+            65
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.production"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.production"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.production"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.production"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.production"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.production"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.production"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.production"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.production"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.production"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.production"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.production"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.production"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.production"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.production"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.production"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.production"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.production"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.production"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.production"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.production"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.production"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.production"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.production"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.production"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.production"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.production"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.production"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.production"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.production"
+            }
+          ],
+          "nextWork": "Current higher-band prompts support selected positions. Add audience-specific presentations and follow-up challenges.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "say-public",
+          "family": "Public announcements and audience delivery",
+          "skill": "speaking",
+          "referencePages": [
+            64,
+            65
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add complete announcement and presentation tasks with audience, register and delivery preparation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-scripted",
+          "family": "Prepared partner exchanges",
+          "skill": "interaction",
+          "referencePages": [
+            72,
+            73
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.interaction"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.interaction"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.interaction"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.interaction"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.interaction"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.interaction"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.interaction"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.interaction"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.interaction"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.interaction"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.interaction"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.interaction"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.interaction"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.interaction"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.interaction"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.interaction"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.interaction"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.interaction"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.interaction"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.interaction"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.interaction"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.interaction"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.interaction"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.interaction"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.interaction"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.interaction"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.interaction"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.interaction"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.interaction"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.interaction"
+            }
+          ],
+          "nextWork": "Recorded fixed turns and selected branches are practice, not unpredictable conversation.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-repair",
+          "family": "Clarification and conversational repair",
+          "skill": "interaction",
+          "referencePages": [
+            88,
+            89
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "guidedInteraction.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "guidedInteraction.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "guidedInteraction.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "guidedInteraction.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "guidedInteraction.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "guidedInteraction.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "guidedInteraction.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "guidedInteraction.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "guidedInteraction.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "guidedInteraction.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "guidedInteraction.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "guidedInteraction.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "guidedInteraction.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "guidedInteraction.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "guidedInteraction.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "guidedInteraction.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "guidedInteraction.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "guidedInteraction.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "guidedInteraction.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "guidedInteraction.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "guidedInteraction.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "guidedInteraction.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "guidedInteraction.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "guidedInteraction.C2-register"
+            }
+          ],
+          "nextWork": "Current branch selection drives the partner response. Add further clarification chains and transfer contexts.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-live",
+          "family": "Unpredictable conversation and discussion",
+          "skill": "interaction",
+          "referencePages": [
+            73,
+            75
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add a live interlocutor workflow and record observations against task-specific criteria.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-group",
+          "family": "Group planning, meetings and collaboration",
+          "skill": "interaction",
+          "referencePages": [
+            75,
+            76
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Teach shared decision making, floor management and responding to genuinely different contributions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "talk-services",
+          "family": "Services, interviews and telephone use",
+          "skill": "interaction",
+          "referencePages": [
+            77,
+            81
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.interaction"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.interaction"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.interaction"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.interaction"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.interaction"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.interaction"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.interaction"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.interaction"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.interaction"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.interaction"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.interaction"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.interaction"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.interaction"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.interaction"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.interaction"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.interaction"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.interaction"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.interaction"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.interaction"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.interaction"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.interaction"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.interaction"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.interaction"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.interaction"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.interaction"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.interaction"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.interaction"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.interaction"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.interaction"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.interaction"
+            }
+          ],
+          "nextWork": "Foundation and workshop tasks contain selected service situations. Audit systematic breadth and add interviews and telephone-specific tasks.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-projects",
+          "family": "Purposeful extended writing",
+          "skill": "writing",
+          "referencePages": [
+            66,
+            68
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.profile"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.home-note"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.meeting-message"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writing.A1-shopping.writing"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writing.A1-home.writing"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writing.A1-travel.writing"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.day-out"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.change-plan"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.recommend-place"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writing.A2-services.writing"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writing.A2-work.writing"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writing.A2-meals.writing"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.unexpected-event"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.reasoned-review"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.practical-complaint"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writing.B1-appointments.writing"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writing.B1-community.writing"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writing.B1-housing.writing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.public-argument"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.compare-options"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.formal-response"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writing.B2-workplace.writing"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writing.B2-media.writing"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writing.B2-mobility.writing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.committee-report"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.public-briefing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.critical-response"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writing.C1-academic.writing"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writing.C1-culture.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writing.C1-professional.writing"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.synthesis-essay"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.executive-brief"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.critical-commentary"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writing.C2-science.writing"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writing.C2-literature.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writing.C2-register.writing"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writing.A1-capstone.writing"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writing.A2-capstone.writing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writing.B1-capstone.writing"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writing.B2-capstone.writing"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writing.C1-capstone.writing"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writing.C2-capstone.writing"
+            }
+          ],
+          "nextWork": "There are 84 guided projects. Review genre breadth and repeated independent performance by band.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-exchanges",
+          "family": "Written clarification and replies",
+          "skill": "writing",
+          "referencePages": [
+            82
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writtenInteraction.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writtenInteraction.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writtenInteraction.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writtenInteraction.A1-travel"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writtenInteraction.A1-capstone"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writtenInteraction.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writtenInteraction.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writtenInteraction.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writtenInteraction.A2-meals"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writtenInteraction.A2-capstone"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writtenInteraction.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writtenInteraction.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writtenInteraction.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writtenInteraction.B1-housing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writtenInteraction.B1-capstone"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writtenInteraction.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writtenInteraction.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writtenInteraction.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writtenInteraction.B2-mobility"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writtenInteraction.B2-capstone"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writtenInteraction.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writtenInteraction.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writtenInteraction.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writtenInteraction.C1-professional"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writtenInteraction.C1-capstone"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writtenInteraction.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writtenInteraction.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writtenInteraction.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writtenInteraction.C2-register"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writtenInteraction.C2-capstone"
+            }
+          ],
+          "nextWork": "There are prepared message exchanges. Add varied audiences, purposes and less predictable replies.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "write-forms",
+          "family": "Forms and practical field use",
+          "skill": "writing",
+          "referencePages": [
+            83
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "forms.A1"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "forms.A1-travel"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "forms.A2-services"
+            }
+          ],
+          "nextWork": "Original and changed-source forms exist in meeting, travel and service units. Expand practical documents only where appropriate.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "online-group",
+          "family": "Online discussion and collaboration",
+          "skill": "writing",
+          "referencePages": [
+            84,
+            86
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add threaded discussion, contributions from multiple people and a shared outcome; prepared one-to-one messages cover only part of this demand.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-spoken",
+          "family": "Explain and reformulate source information",
+          "skill": "mediation",
+          "referencePages": [
+            93,
+            101
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "skills.A1.mediation"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "skills.A1-shopping.mediation"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "skills.A1-home.mediation"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "skills.A1-travel.mediation"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "skills.A1-capstone.mediation"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "skills.A2.mediation"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "skills.A2-services.mediation"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "skills.A2-work.mediation"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "skills.A2-meals.mediation"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "skills.A2-capstone.mediation"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "skills.B1.mediation"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "skills.B1-appointments.mediation"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "skills.B1-community.mediation"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "skills.B1-housing.mediation"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "skills.B1-capstone.mediation"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "skills.B2.mediation"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.mediation"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "skills.B2-media.mediation"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "skills.B2-mobility.mediation"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "skills.B2-capstone.mediation"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "skills.C1.mediation"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "skills.C1-academic.mediation"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "skills.C1-culture.mediation"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.mediation"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "skills.C1-capstone.mediation"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "skills.C2.mediation"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "skills.C2-science.mediation"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.mediation"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.mediation"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "skills.C2-capstone.mediation"
+            }
+          ],
+          "nextWork": "Current tasks preserve source details in recorded self-reviewed responses. Broaden audience and source demands.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-data",
+          "family": "Explain quantitative or visual information",
+          "skill": "mediation",
+          "referencePages": [
+            96
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add charts/tables with taught labels and require a useful interpretation for a specified audience.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-written-notes",
+          "family": "Purposeful notes from written sources",
+          "skill": "mediation",
+          "referencePages": [
+            98,
+            101
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "extendedReading.B1-community"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "extendedReading.B2-media"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "extendedReading.C1-academic"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "extendedReading.C2-science"
+            }
+          ],
+          "nextWork": "Written-source notes are reused in revised audience briefs. Broaden source genres and independent performance.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-notes",
+          "family": "Useful notes from sustained input",
+          "skill": "mediation",
+          "referencePages": [
+            105
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Written-source preparation is implemented separately. Add purposeful notes during lectures, meetings and seminars; reading notes do not demonstrate this oral-input scale.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-translation",
+          "family": "Translate for a concrete purpose",
+          "skill": "mediation",
+          "referencePages": [
+            102
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Teach meaning-preserving translation choices and evaluate the actual translated artifact.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-literary",
+          "family": "Respond to voice and interpretation",
+          "skill": "mediation",
+          "referencePages": [
+            106,
+            107
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "skills.C2-literature.mediation"
+            }
+          ],
+          "nextWork": "A short higher-band literature workshop exists. Broaden texts, genres and supported alternative interpretations.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "mediate-social",
+          "family": "Construct shared meaning and resolve disagreement",
+          "skill": "mediation",
+          "referencePages": [
+            109,
+            116
+          ],
+          "status": "dedicated_task_family_not_implemented",
+          "evidence": [],
+          "nextWork": "Add collaborative concept building and delicate communication with actual contributions from other people.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "plan-repair",
+          "family": "Planning and revising a response",
+          "skill": "strategies",
+          "referencePages": [
+            69,
+            70
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.profile"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.home-note"
+            },
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "writing.A1.meeting-message"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "writing.A1-shopping.writing"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "writing.A1-home.writing"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "writing.A1-travel.writing"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.day-out"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.change-plan"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "writing.A2.recommend-place"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "writing.A2-services.writing"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "writing.A2-work.writing"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "writing.A2-meals.writing"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.unexpected-event"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.reasoned-review"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "writing.B1.practical-complaint"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "writing.B1-appointments.writing"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "writing.B1-community.writing"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "writing.B1-housing.writing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.public-argument"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.compare-options"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "writing.B2.formal-response"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "writing.B2-workplace.writing"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "writing.B2-media.writing"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "writing.B2-mobility.writing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.committee-report"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.public-briefing"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "writing.C1.critical-response"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "writing.C1-academic.writing"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "writing.C1-culture.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "writing.C1-professional.writing"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.synthesis-essay"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.executive-brief"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "writing.C2.critical-commentary"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "writing.C2-science.writing"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "writing.C2-literature.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "writing.C2-register.writing"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "writing.A1-capstone.writing"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "writing.A2-capstone.writing"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "writing.B1-capstone.writing"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "writing.B2-capstone.writing"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "writing.C1-capstone.writing"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "writing.C2-capstone.writing"
+            }
+          ],
+          "nextWork": "Planning, self-review and revision are implemented. Review transfer without frames and adequacy of independent repairs.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "infer-cues",
+          "family": "Infer from context and evidence",
+          "skill": "strategies",
+          "referencePages": [
+            60
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "readingTransfer.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "readingTransfer.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "readingTransfer.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "readingTransfer.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "readingTransfer.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "readingTransfer.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "readingTransfer.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "readingTransfer.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "readingTransfer.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "readingTransfer.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "readingTransfer.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "readingTransfer.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "readingTransfer.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "readingTransfer.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "readingTransfer.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "readingTransfer.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "readingTransfer.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "readingTransfer.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "readingTransfer.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "readingTransfer.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "readingTransfer.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "readingTransfer.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "readingTransfer.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "readingTransfer.C2-register"
+            }
+          ],
+          "nextWork": "Higher-band changed-source questions target selected interpretations. Audit the variety of cues and assess inference on different occasions.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "language-control",
+          "family": "Vocabulary, grammar, spelling and sound control",
+          "skill": "competence",
+          "referencePages": [
+            130,
+            136
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "A1",
+              "band": "A1",
+              "task": "vocabulary.A1"
+            },
+            {
+              "unitId": "A1-shopping",
+              "band": "A1",
+              "task": "vocabulary.A1-shopping"
+            },
+            {
+              "unitId": "A1-home",
+              "band": "A1",
+              "task": "vocabulary.A1-home"
+            },
+            {
+              "unitId": "A1-travel",
+              "band": "A1",
+              "task": "vocabulary.A1-travel"
+            },
+            {
+              "unitId": "A2",
+              "band": "A2",
+              "task": "vocabulary.A2"
+            },
+            {
+              "unitId": "A2-services",
+              "band": "A2",
+              "task": "vocabulary.A2-services"
+            },
+            {
+              "unitId": "A2-work",
+              "band": "A2",
+              "task": "vocabulary.A2-work"
+            },
+            {
+              "unitId": "A2-meals",
+              "band": "A2",
+              "task": "vocabulary.A2-meals"
+            },
+            {
+              "unitId": "B1",
+              "band": "B1",
+              "task": "vocabulary.B1"
+            },
+            {
+              "unitId": "B1-appointments",
+              "band": "B1",
+              "task": "vocabulary.B1-appointments"
+            },
+            {
+              "unitId": "B1-community",
+              "band": "B1",
+              "task": "vocabulary.B1-community"
+            },
+            {
+              "unitId": "B1-housing",
+              "band": "B1",
+              "task": "vocabulary.B1-housing"
+            },
+            {
+              "unitId": "B2",
+              "band": "B2",
+              "task": "vocabulary.B2"
+            },
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "vocabulary.B2-workplace"
+            },
+            {
+              "unitId": "B2-media",
+              "band": "B2",
+              "task": "vocabulary.B2-media"
+            },
+            {
+              "unitId": "B2-mobility",
+              "band": "B2",
+              "task": "vocabulary.B2-mobility"
+            },
+            {
+              "unitId": "C1",
+              "band": "C1",
+              "task": "vocabulary.C1"
+            },
+            {
+              "unitId": "C1-academic",
+              "band": "C1",
+              "task": "vocabulary.C1-academic"
+            },
+            {
+              "unitId": "C1-culture",
+              "band": "C1",
+              "task": "vocabulary.C1-culture"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "vocabulary.C1-professional"
+            },
+            {
+              "unitId": "C2",
+              "band": "C2",
+              "task": "vocabulary.C2"
+            },
+            {
+              "unitId": "C2-science",
+              "band": "C2",
+              "task": "vocabulary.C2-science"
+            },
+            {
+              "unitId": "C2-literature",
+              "band": "C2",
+              "task": "vocabulary.C2-literature"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "vocabulary.C2-register"
+            },
+            {
+              "unitId": "A1-capstone",
+              "band": "A1",
+              "task": "vocabulary.A1-capstone"
+            },
+            {
+              "unitId": "A2-capstone",
+              "band": "A2",
+              "task": "vocabulary.A2-capstone"
+            },
+            {
+              "unitId": "B1-capstone",
+              "band": "B1",
+              "task": "vocabulary.B1-capstone"
+            },
+            {
+              "unitId": "B2-capstone",
+              "band": "B2",
+              "task": "vocabulary.B2-capstone"
+            },
+            {
+              "unitId": "C1-capstone",
+              "band": "C1",
+              "task": "vocabulary.C1-capstone"
+            },
+            {
+              "unitId": "C2-capstone",
+              "band": "C2",
+              "task": "vocabulary.C2-capstone"
+            }
+          ],
+          "nextWork": "Prepared vocabulary, controlled grammar, audio models and replay exist. These do not establish independent control, intelligibility or broad range.",
+          "independentAssessmentEstablished": false
+        },
+        {
+          "id": "discourse-register",
+          "family": "Coherence, precision, register and fluency",
+          "skill": "competence",
+          "referencePages": [
+            136,
+            142
+          ],
+          "status": "selected_examples_require_breadth_review",
+          "evidence": [
+            {
+              "unitId": "B2-workplace",
+              "band": "B2",
+              "task": "skills.B2-workplace.writing"
+            },
+            {
+              "unitId": "C1-professional",
+              "band": "C1",
+              "task": "skills.C1-professional.writing"
+            },
+            {
+              "unitId": "C2-register",
+              "band": "C2",
+              "task": "skills.C2-register.writing"
+            }
+          ],
+          "nextWork": "Some higher-band tasks teach these choices. Independent performance and broader discourse evidence are still needed.",
+          "independentAssessmentEstablished": false
+        }
+      ]
+    }
+  }
+}

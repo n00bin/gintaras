@@ -1,0 +1,34 @@
+@u95|Buities daiktai|Things around the house|Everyday things for the bathroom and the bed: <b>muilas</b> is soap, <b>šukos</b> a comb (always plural), and <b>kempinė</b> a sponge.|Describe your morning routine naming every object you use, from the alarm to the front door.
+#u95a|Bathroom
+muilas|soap|MUI-lahs
+šukos|comb|SHU-kohs
+kempinė|sponge|kem-PI-nay
+skustuvas|razor|skus-TU-vahs
+plaukų džiovintuvas|hair dryer|plau-KOO jyoh-vin-TU-vahs
+dantų šepetėlis|toothbrush|dahn-TOO sheh-peh-TAY-lis
+dantų siūlas|dental floss|dahn-TOO SYOO-lahs
+kriauklė|washbasin|kryauk-LAY
+dušas|shower|DU-shahs
+vonia|bath|voh-NYAH
+#u95b|Bedroom and linen
+čiužinys|mattress|chyu-zhi-NEES
+užvalkalas|pillowcase, cover|uzh-VAHL-kah-lahs
+lovatiesė|bedspread|loh-VAH-tye-say
+pagalvėlė|cushion|pah-gahl-VAY-lay
+pakaba|coat hanger|pah-KAH-bah
+kabykla|coat rack|kah-BEEK-lah
+žadintuvas|alarm clock|zhah-din-TU-vahs
+naktinė lempa|bedside lamp|nahk-TI-nay LEM-pah
+komoda|chest of drawers|koh-MOH-dah
+veidrodėlis|small mirror|vayd-roh-DAY-lis
+#u95c|Cleaning things
+šluostė|cloth (for cleaning)|SHLWOHS-tay
+skalbiklis|washing powder|skahl-BIK-lis
+indų ploviklis|washing-up liquid|in-DOO ploh-VIK-lis
+dulkių siurblys|vacuum cleaner|dul-KYOO syurb-LEES
+šiukšlių maišas|bin bag|shyuksh-LYOO MAI-shahs
+pirštinės valymui|cleaning gloves|PIRSH-ti-nays VAH-lee-mui
+staltiesė|tablecloth|STAHL-tye-say
+servetėlė|napkin|ser-veh-TAY-lay
+padėkliukas|coaster|pah-dayk-LYU-kahs
+kilimėlis|mat, rug|ki-li-MAY-lis

@@ -1,0 +1,18 @@
+{
+  "id": "a1x-uzdaryti",
+  "word": "uždaryti",
+  "en": "to close",
+  "unit": "u27",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration for a language-learning course. Reference 1 is the authoritative STYLE: rounded geometric flat 2D cartoon, oversized heads, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. If a second reference is attached it is the IDENTITY of Tomas, the friendly young adult learner: light warm skin, short light brown curly hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses. Only draw Tomas when the subject names him. Only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous 10% transparent margin, no cropped heads, hands or objects. No text, letters, numbers unless stated, labels, logos, watermark, discs or busy scenery. No glow, bloom, blur, halo, vignette, shadows, gradients, texture, floor or backdrop. Completely transparent background immediately outside crisp shapes; all interiors fully opaque. Exactly ONE illustration, not a sheet or collage. Subject: TO CLOSE: Tomas pushing a turquoise door shut, the door almost closed.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/a1x-uzdaryti.png",
+  "asset": "pics/art-v2/a1x-uzdaryti.webp",
+  "bytes": 26092,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Inspected at 150px and 52px on light and dark; speck scan clean (2026-11-12)."
+}

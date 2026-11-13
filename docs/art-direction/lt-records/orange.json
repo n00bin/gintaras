@@ -1,0 +1,20 @@
+{
+  "id": "orange",
+  "word": "oranžinis",
+  "en": "orange",
+  "unit": "u29",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production vocabulary illustration for Gintaras, matching the approved attached style board. Vocabulary context: the beginner Lithuanian unit \"Clothes\". Reference 1 is the authoritative illustration STYLE. Reference 2, if attached, is a CHARACTER identity reference only when the subject explicitly names that character; otherwise use it only for illustration style and proportions. Rounded geometric flat 2D cartoon, huge expressive white oval eyes, chunky rounded hands, bright solid turquoise/amber/coral/navy/cream, little detail, almost no outlines. No sketch strokes, realism, gradients, textures, ground plane or cast shadows. Subject: One large simple rounded paint droplet, entirely orange (#FF922F). The exact colour is the vocabulary meaning: do not substitute any other hue from the usual palette. No other objects, people, faces, text, labels or decorative colours. Primary character identity when a person is needed: Tomas, friendly young adult learner with light warm skin, short light brown hair, amber jumper, navy trousers, cream shoes, no facial hair or glasses. Other recurring identities if present: Rūta, young adult Lithuanian woman with light warm skin, long straight dark brown hair with short blunt fringe, pine green blouse with a few simple dark leaf motifs, coral trousers, cream shoes; Jonas, young adult Lithuanian man with light warm skin, short wavy dark brown hair, neat dark moustache, sky blue overshirt over navy T-shirt and backpack straps; Danutė, older Lithuanian woman with light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers; Eglė, young adult Lithuanian woman with light warm skin, dark high ponytail, short fringe, white scrunchie, pale cream scarf and turquoise top; Darius, adult Lithuanian man with light warm skin, curly dark hair, short neat dark goatee, navy open overshirt over turquoise T-shirt. Composition: only the necessary people and objects, one centered complete scene, readable at 56px, square canvas, generous transparent margins, no cropped heads, hands or objects. TRUE transparent background. No text, letters, labels, logos, watermark, beige discs or busy scenery. Small punctuation, arrows and accurate national flags only when needed to show the meaning. Do NOT draw a grid, sheet, labelled card or multiple alternative illustrations. FINAL PRECISE SCENE: One simple open cylindrical paint pot filled with unmistakably ORANGE paint and one broad ORANGE paint brushstroke beside it. Both painted surfaces fully opaque. Small neutral light-grey pot rim and handle only; dominant visible colour is ORANGE. No other bright colours, no colour name or labels. For black use solid opaque charcoal-black; for white use solid opaque white with a thin light-grey inner edge so its silhouette reads on white. FINAL RENDERING RULE: Original flat cartoon cutout matching reference 1. Tomas identity reference 2, Ruta identity reference 3 only when named. Big white oval eyes, rounded simple shapes, flat solid colours. No gradients, photorealism, external glow, blur, bloom, fog, vignette, texture, scattered pixels, shadows or coloured transparency around subjects. Crisp clean smooth edges, transparent immediately outside silhouette; every object interior fully opaque. Complete objects with 10% transparent margin. No words, titles, labels or translations. Only explicitly requested symbols.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png",
+    "lt-ruta-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/orange.png",
+  "asset": "pics/art-v2/orange.webp",
+  "bytes": 17156,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "orange-v2",
+  "revision_reason": "Replace glowing/backed paint picture with one fully opaque orange rubber ball, crisp silhouette, no backing shape, pot, paint stroke, glow or fog."
+}

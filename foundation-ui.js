@@ -1,6 +1,7 @@
 /* Shared first-three-unit practice UI. Every activity checks its taught-card prerequisites. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 const core=window.WordamiActivities;if(!core||LANG.code!=='lt')return;
 const language=LANG.en;
 const mediaStops=new Set();

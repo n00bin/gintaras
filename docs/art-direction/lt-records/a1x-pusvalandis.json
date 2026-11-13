@@ -1,0 +1,17 @@
+{
+  "id": "a1x-pusvalandis",
+  "word": "pusvalandis",
+  "en": "half an hour",
+  "unit": "u7",
+  "actor": "",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: HALF AN HOUR: a round clock face with the right half shaded amber like half a pie, navy hands pointing at twelve and six, no numbers.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/a1x-pusvalandis.png",
+  "asset": "pics/art-v2/a1x-pusvalandis.webp",
+  "bytes": 20002,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Inspected at 150px and 52px on light and dark; speck scan clean (2026-11-12)."
+}

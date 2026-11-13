@@ -7,7 +7,7 @@ const units=out.PATH.filter(id=>typeof id==='string'&&out.COURSE.some(u=>u.id===
 const rows=units.map(id=>{const u=out.COURSE.find(u=>u.id===id),cards=out.ITEMS.filter(i=>i.unit.id===id);return {id,title:u.en,lessons:u.lessons.map(l=>({id:l.id,title:l.title,speaking:!!l.speak,cards:cards.filter(i=>i.lesson.id===l.id).length})),cards:cards.length,illustrations:cards.filter(i=>out.picFor(i.lt)?.startsWith('art-v2/')).length,pictureless:cards.filter(i=>!out.picFor(i.lt)).map(i=>i.lt),otherPictures:cards.filter(i=>{const p=out.picFor(i.lt);return p&&!p.startsWith('art-v2/');}).map(i=>({text:i.lt,picture:out.picFor(i.lt)})),missingAssets:cards.filter(i=>{const p=out.picFor(i.lt);return p&&p[0]!=='#'&&!fs.existsSync(path.join(root,out.picFile(p)));}).map(i=>i.lt)};});
 const assert=require('assert/strict');
 assert.deepEqual(units,['u1','u21','u3'],'Audit must follow actual teaching order');
-assert.deepEqual(rows.map(r=>r.cards),[39,20,40]);
+assert.deepEqual(rows.map(r=>r.cards),[39,20,55]);
 rows.forEach(r=>assert(r.illustrations===r.cards&&!r.missingAssets.length,'Incomplete artwork for '+r.title));
 const contentFile=path.join(root,'foundation-content.js');
 if(fs.existsSync(contentFile)){

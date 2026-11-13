@@ -1,0 +1,5 @@
+/* Shared content-only loader for audits. No browser state or learner records. */
+global.window=global;
+global.LANG=global.LANG||{code:process.argv[2]||'lt'};
+global.WordamiPracticeUI={};
+for(const file of ['writing-content','skills-content','curriculum-content','vocabulary-content','learning-design','source-support','a2-source-support','b1-source-support','b2-source-support','c1-source-support','c2-source-support','a1-feedback','writing-preparation','a2-writing-preparation','b1-writing-preparation','b2-writing-preparation','c1-writing-preparation','c2-writing-preparation','capstone-content','grammar-content','transfer-content','a2-transfer-content','listening-transfer-content','a2-listening-transfer-content','b1-application-content','b2-application-content','c1-application-content','c2-application-content','interaction-practice-content','higher-interaction-content','written-interaction-content','form-practice-content','document-reading-content','extended-reading-content'])require('../'+file+'.js');

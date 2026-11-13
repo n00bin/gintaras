@@ -1,0 +1,562 @@
+{
+  "passed": true,
+  "scope": "Prepared written interaction, not independent writing assessment",
+  "languages": {
+    "lt": [
+      {
+        "id": "A1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-shopping",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-shopping"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-home",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-home"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-travel",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-travel"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "A1-shopping",
+          "A1-travel"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-services",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-services"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-work",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-work"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-meals",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-meals"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "A2-services",
+          "A2-work"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-appointments",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-appointments"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-community",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-community"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-housing",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-housing"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "B1-community",
+          "B1-housing"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-workplace",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-workplace"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-media",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-media"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-mobility",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-mobility"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "B2-mobility",
+          "B2-workplace"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-academic",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-academic"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-culture",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-culture"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-professional",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-professional"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "C1-academic",
+          "C1-professional"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-science",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-science"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-literature",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-literature"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-register",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-register"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "C2-register",
+          "C2-science"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      }
+    ],
+    "es": [
+      {
+        "id": "A1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-shopping",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-shopping"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-home",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-home"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-travel",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A1-travel"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "A1-shopping",
+          "A1-travel"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-services",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-services"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-work",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-work"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-meals",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "A2-meals"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "A2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "A2-services",
+          "A2-work"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-appointments",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-appointments"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-community",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-community"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-housing",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B1-housing"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "B1-community",
+          "B1-housing"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-workplace",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-workplace"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-media",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-media"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-mobility",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "B2-mobility"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "B2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "B2-mobility",
+          "B2-workplace"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-academic",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-academic"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-culture",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-culture"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-professional",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C1-professional"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C1-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "C1-academic",
+          "C1-professional"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-science",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-science"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-literature",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-literature"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-register",
+        "requiredExchanges": 2,
+        "sourceUnits": [
+          "C2-register"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      },
+      {
+        "id": "C2-capstone",
+        "requiredExchanges": 4,
+        "sourceUnits": [
+          "C2-register",
+          "C2-science"
+        ],
+        "newUntaughtTargetForms": [],
+        "writingAccuracyAutomaticallyAssessed": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+%Nuance and style|C1 grammar: reported mood, -te forms, written style, hedging, register and idiom
+@u143|Netiesioginė nuosaka|Reported mood|To report something you only heard, Lithuanian has a special form ending in <b>-ąs</b> or <b>-ę</b>: <b>Jis esąs gydytojas</b> means "he is said to be a doctor". It is common in news and folk tales.|Retell a rumour or a fairy tale using the reported forms: what was said to have happened.
+#u143a|It is said that…
+Jis esąs gydytojas|He is said to be a doctor|yis eh-SAAS gee-DEE-toh-yahs
+Ji sakėsi serganti|She said she was ill|yi sah-KAY-si SER-gahn-ti
+Gyvenęs kartą karalius|Once upon a time there lived a king|gee-VEH-nays KAR-taa kah-RAH-lyus
+Pasak liudininkų, vagis pabėgęs|According to witnesses, the thief escaped|PAH-sahk lyu-di-nin-KOO, vah-GIS pah-BAY-gays
+Kalbama, kad ministras atsistatydinsiąs|It is rumoured the minister will resign|KAHL-bah-mah, kahd mi-NIS-trahs aht-sis-tah-tee-din-SYAAS
+#u143b|Reporting what others claim
+Jie teigia nieko nežiną|They claim to know nothing|yie TAY-gyah NYEH-koh neh-ZHI-naa
+Esą kainos kils|Prices are supposedly going to rise|eh-SAA kai-NOHS KILS
+Jis sakosi buvęs Paryžiuje|He says he has been in Paris|yis SAH-koh-si BU-vays pah-REE-zhyu-yeh
+Pasakojama, kad čia gyvenusi laumė|It is told that a fairy lived here|pah-sah-KOH-yah-mah, kahd CHYAH gee-VEH-nu-si LAU-may
+Neva jis viską žinojęs|Supposedly he knew everything|neh-VAH yis VIS-kaa zhi-NOH-yays
+@u144|Būdinys|Doing something in a certain way: -te|The rare <b>-te</b> form intensifies a verb: <b>bėgte bėgo</b> means "ran and ran", <b>tylėte tylėjo</b> "was completely silent". It belongs to vivid storytelling.|Tell a short dramatic story using at least three -te forms.
+#u144a|Intensifying
+bėgte bėgo|ran and ran|BAYK-teh BAY-goh
+tylėte tylėjo|was utterly silent|tee-LAY-teh tee-LAY-yoh
+verkte verkė|cried and cried|VERK-teh VER-kay
+lyte lijo|it poured and poured|LEE-teh LI-yoh
+nešte nešė|carried on and on|NESH-teh NEH-shay
+#u144b|In sentences
+Vaikai bėgte išbėgo į kiemą|The children dashed out into the yard|vai-KAI BAYK-teh ish-BAY-goh ee KYEH-maa
+Jis žiūrėte žiūrėjo į ją|He just stared and stared at her|yis zhyoo-RAY-teh zhyoo-RAY-yoh ee YAA
+Ji juokte juokėsi|She laughed and laughed|yi YWOHK-teh ywoh-KAY-si
+Žmonės plūste plūdo į aikštę|People poured into the square|ZHMOH-nays PLOOS-teh PLOO-doh ee AIKSH-tyay
+Sniegas krite krito visą naktį|Snow kept falling all night|SNYEH-gahs KRI-teh KRI-toh VI-saa NAHK-tee
+@u145|Dalyviai rašytinėje kalboje|Participles in written style|In writing, a participle can replace a whole clause: instead of "the report, which was prepared by the ministry" you write <b>ministerijos parengta ataskaita</b>.|Rewrite three sentences from a news article in a shorter, written style using participles.
+#u145a|Compressing clauses
+ministerijos parengta ataskaita|the report prepared by the ministry|mi-nis-TEH-ri-yohs pah-RENK-tah AH-tahs-kai-tah
+vyriausybės priimtas sprendimas|the decision taken by the government|vee-ryau-SEE-bays PRYIM-tahs spren-DI-mahs
+tyrimą atlikę mokslininkai|the scientists who carried out the research|tee-RI-maa aht-LI-kay mohks-li-nin-KAI
+dalyvavusieji posėdyje|those who took part in the meeting|dah-lee-vah-vu-SYEH-yi poh-say-dee-YEH
+pateiktini dokumentai|documents to be submitted|pah-tayk-ti-NI doh-ku-MEN-tai
+#u145b|Written style
+Atsižvelgiant į tai|Taking this into account|aht-sizh-VEL-gyahnt ee TAI
+Remiantis tyrimo duomenimis|Based on the research data|REH-myahn-tis tee-RI-moh dwoh-meh-ni-MIS
+Išanalizavus rezultatus, nustatyta|Having analysed the results, it was found|ish-ah-nah-li-ZAH-vus reh-zul-TAH-tus, nus-tah-TEE-tah
+Pažymėtina, kad|It should be noted that|pah-zhee-MAY-ti-nah, kahd
+Kaip minėta anksčiau|As mentioned earlier|kaip mi-NAY-tah ahnks-CHYAU
+@u146|Teksto rišlumas|Holding a long text together|Long texts hold together with signposts: <b>visų pirma</b> (first and foremost), <b>be to</b> and <b>apibendrinant</b>, which you know.|Give a two-minute talk on any topic using at least six signposts from this unit.
+#u146a|Signposts
+Visų pirma|First and foremost|vi-SOO PIR-mah
+Toliau aptarsime|Next we will discuss|toh-LYAU ahp-TAR-si-meh
+Kalbant apie|Speaking of|KAHL-bahnt AH-pyeh
+Kaip jau minėjau|As I have already mentioned|kaip yau mi-NAY-yau
+Grįžtant prie|Returning to|GREEZH-tahnt prye
+#u146b|Contrast and conclusion
+Nepaisant to, kas išdėstyta|Notwithstanding the above|neh-PAI-sahnt TOH, kahs ish-DAYS-tee-tah
+Panašiai ir|In the same way|pah-nah-SHYAI IR
+Iš to galima daryti išvadą|From this we can conclude|ish TOH GAH-li-mah dah-REE-ti ISH-vah-daa
+Galiausiai verta paminėti|Finally, it is worth mentioning|gah-LYAU-syai VER-tah pah-mi-NAY-ti
+Baigdamas norėčiau pabrėžti|In closing I would like to stress|BAIG-dah-mahs noh-RAY-chyau pahb-RAYZH-ti
+@u147|Atsargus kalbėjimas|Hedging and nuance|At C1 you soften claims: <b>galbūt</b> you know; add <b>regis</b> (it would appear), <b>ko gero</b> (in all likelihood) and <b>tam tikra prasme</b> (in a certain sense).|Give a careful opinion on a controversial topic, softening every claim.
+#u147a|Softening
+regis|it would appear|REH-gis
+ko gero|in all likelihood|koh geh-ROH
+tam tikra prasme|in a certain sense|tahm tik-RAH prahs-MEH
+iš dalies sutinku|I partly agree|ish dah-LYES su-tin-KU
+nesu visiškai tikras|I’m not entirely sure|neh-SU vi-sish-KAI TIK-rahs
+#u147b|Careful statements
+Galima būtų teigti, kad|One could argue that|GAH-li-mah BOO-too TAYK-ti, kahd
+Atrodytų, kad|It would seem that|aht-ROH-dee-too, kahd
+Nenorėčiau apibendrinti, bet|I wouldn’t want to generalise, but|neh-noh-RAY-chyau ah-pi-BEN-drin-ti, bet
+Tai priklauso nuo to, kaip žiūrėsi|It depends on how you look at it|tai prik-LAU-soh nwoh TOH, kaip zhyoo-RAY-si
+Su tam tikromis išlygomis|With certain reservations|su tahm tik-roh-MIS ish-lee-goh-MIS
+@u148|Akademinė ir dalykinė kalba|Academic and professional register|Formal writing has its own phrases: <b>šiame straipsnyje</b> (in this article), <b>tikslas yra</b> (the aim is) and <b>atsižvelgiant</b> you know.|Write or say the opening of a formal report: topic, aim, method and structure.
+#u148a|Academic phrases
+Šiame straipsnyje nagrinėjama|This article examines|shyah-MEH straips-nee-YEH nah-gri-NAY-yah-mah
+Tyrimo tikslas yra|The aim of the research is|tee-RI-moh TIKS-lahs ee-RAH
+Taikytas metodas|The method used|TAI-kee-tahs meh-TOH-dahs
+Rezultatai rodo|The results show|reh-zul-TAH-tai ROH-doh
+Būtina pažymėti|It is necessary to note|BOO-ti-nah pah-zhee-MAY-ti
+#u148b|Professional phrases
+Remdamiesi aukščiau išdėstytu|Based on the above|rem-DAH-mye-si auksh-CHYAU ish-DAYS-tee-tu
+Prašome atsižvelgti į|Please take into account|PRAH-shoh-meh aht-sizh-VELK-ti ee
+Informuojame, kad|We hereby inform you that|in-for-MWOH-yah-meh, kahd
+Iš anksto dėkojame už bendradarbiavimą|Thank you in advance for your cooperation|ish AHNKS-toh day-KOH-yah-meh uzh ben-drah-dar-BYAH-vi-maa
+Su pagarba|Respectfully|su pah-gar-BAH
+@u149|Kirčiavimas|Stress patterns|Stress in Lithuanian can move: <b>ranka</b> (hand) is stressed at the end, but <b>ranką</b> at the start. You don’t need to learn the four classes by heart, only to recognise that stress moves.|Read pairs of word forms aloud and notice where the stress jumps.
+#u149a|Stress that moves
+ranka, ranką|hand, the hand (object)|rahn-KAH, RAHN-kaa
+galva, galvą|head, the head (object)|gahl-VAH, GAHL-vaa
+žiema, žiemą|winter, in winter|zhye-MAH, ZHYEH-maa
+diena, dieną|day, by day|dyeh-NAH, DYEH-naa
+upė, upę|river, the river (object)|U-pay, U-pyay
+#u149b|Same spelling, different stress
+antis, antis|duck, bosom (stress shows which)|AHN-tis, ahn-TIS
+kasa, kasa|braid, till (stress shows which)|kah-SAH, KAH-sah
+pilis, pilis|castle, pours (stress shows which)|pi-LIS, PI-lis
+kartas, kartas|time (once), bitter|KAR-tahs, kar-TAHS
+žirnis, žirniai|pea, peas|ZHIR-nis, zhir-NYAI
+@u150|Platesnė frazeologija|More idioms|Idioms at C1 often come from country life: <b>kaip ožka ant ledo</b> (like a goat on ice, completely lost) and <b>ant vištos kojų</b> (on chicken legs, rickety).|Describe someone’s bad day using three idioms from this unit.
+#u150a|Animal idioms
+kaip ožka ant ledo|completely out of your depth|kaip ozh-KAH ahnt LEH-doh
+kaip šuo su kate|like cat and dog|kaip SHWOH su kah-TEH
+vilką mini, vilkas čia|speak of the devil|VIL-kaa MI-ni, VIL-kahs CHYAH
+kiaulę pirkti maiše|to buy a pig in a poke|KYAU-lyay PIRK-ti mai-SHEH
+ant vištos kojų|rickety, about to fall down|ahnt vish-TOHS koh-YOO
+#u150b|Body and life idioms
+pakelti nosį|to turn up your nose|pah-KEL-ti NOH-see
+kaip iš kubilo|like a downpour from a tub|kaip ish KU-bi-loh
+iki ausų įsimylėjęs|head over heels in love|i-KI au-SOO ee-si-mee-LAY-yays
+ranka ranką plauna|one hand washes the other|rahn-KAH RAHN-kaa PLAU-nah
+nei velnio, nei Dievo nebijo|fears neither God nor devil|nay VEL-nyoh, nay DYEH-voh neh-BI-yoh

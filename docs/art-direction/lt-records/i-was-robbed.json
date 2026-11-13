@@ -1,0 +1,19 @@
+{
+  "id": "i-was-robbed",
+  "word": "Mane apvogė",
+  "en": "I was robbed",
+  "unit": "u18",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning I was robbed. Reference 1 governs rounded flat cartoon STYLE: large expressive white oval eyes, oversized heads, chunky hands, opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas holds an EMPTY open navy wallet toward viewer, looking worried, other hand open apologetically. A small cream MEMORY bubble contains only a coral hand taking one amber coin from the wallet and a small backward arrow, conveying a past theft. No weapon, confrontation, injury, money text, police uniform or extra person. Exactly two arms. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, true transparent outside shapes. No black outlines, gradients, glow, blur, shadow, texture, floor, backdrop, lettering or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/i-was-robbed.png",
+  "asset": "pics/art-v2/i-was-robbed.webp",
+  "bytes": 40892,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "i-was-robbed-v2",
+  "revision_reason": "Main Tomas has three hands: one open left, one on wallet top and one under wallet. Exactly two arms and two hands: LEFT hand holds empty wallet by its top edge; RIGHT hand is open at his side. No supporting hand under wallet. Keep memory of theft separate inside bubble."
+}

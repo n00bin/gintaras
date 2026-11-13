@@ -1,6 +1,7 @@
 /* Required unit application after its source language has been taught. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 const core=window.WordamiActivities,ui=window.WordamiPracticeUI;
 if(!core||!ui||!['lt','es'].includes(LANG.code))return;
 const lessons=PATH.filter(id=>typeof id==='string'&&UNIT_BY[id]).flatMap(id=>UNIT_BY[id].lessons.filter(l=>!l.speak));

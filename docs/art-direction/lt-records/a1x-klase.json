@@ -1,0 +1,17 @@
+{
+  "id": "a1x-klase",
+  "word": "klasė",
+  "en": "classroom",
+  "unit": "u31",
+  "actor": "",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration matching attached approved reference: rounded chunky flat 2D cartoon, solid bright turquoise/amber/coral/navy/cream, minimal crisp details, almost no outlines. One complete centered object unclipped, generous transparent margins, readable at 56px. Fully opaque interiors, true transparent immediately outside shapes. No people, words, lettering, logos, gradients, texture, glow, shadows, floor or backdrop. Subject: A CLASSROOM: two rows of small amber school desks with coral chairs facing a teacher desk that holds a blue globe and a stack of books, a simple turquoise world map poster on a cream wall section behind. No board, no people, no letters, no smudges.",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "master": "docs/art-direction/masters/a1x-klase.png",
+  "asset": "pics/art-v2/a1x-klase.webp",
+  "bytes": 32902,
+  "generator": "built-in image_gen (Codex CLI)",
+  "status": "approved",
+  "review": "Inspected at 150px and 52px on light and dark; speck scan clean (2026-11-12)."
+}

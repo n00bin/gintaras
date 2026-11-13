@@ -87,6 +87,15 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
 .stats{display:flex;gap:14px;font-weight:800;font-size:14px}
 .stats span{display:inline-flex;align-items:center;gap:5px}
 .stats svg{width:18px;height:18px}
+.course-flag{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:48px;min-height:44px;padding:4px 6px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer;flex:none}
+.course-flag img{width:30px;height:30px;display:block}.course-flag svg{width:12px;height:12px}
+.course-flag:hover,.course-flag[aria-expanded="true"]{border-color:var(--pine)}
+.course-picker{position:fixed;inset:auto;margin:0;padding:18px;width:min(340px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;border:2px solid var(--line);border-radius:20px;background:var(--surface);color:var(--fg);box-shadow:0 12px 36px #0003}
+.course-picker::backdrop{background:#0002}.course-picker h2{font-size:21px}.course-picker-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.course-picker-close{border:0;background:transparent;color:var(--muted);font:inherit;min-width:36px;min-height:36px;cursor:pointer}
+.course-choices{display:grid;gap:8px;list-style:none;padding:0;margin:0}.course-choice{width:100%;display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:10px;text-align:left;padding:12px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--fg);font:inherit;cursor:pointer}
+.course-choice img{width:40px;height:40px}.course-choice strong,.course-choice small{display:block}.course-choice small{color:var(--muted);font-size:12px;margin-top:3px}.course-choice[aria-current="true"]{border-color:var(--pine);background:color-mix(in srgb,var(--pine) 7%,var(--surface))}.course-choice:disabled{cursor:default;opacity:.65}.course-choice:not(:disabled):hover{border-color:var(--pine)}.course-status{font-size:11px;font-weight:800;color:var(--pine)}
+@media(max-width:620px){.brand h1{display:none}.brand{gap:6px}.brand .ami-mark{width:28px;height:28px}.top{gap:8px}.top .stats{gap:6px}}
 
 .course-flag{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:48px;min-height:44px;padding:4px 6px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer;flex:none}
 .course-flag img{width:30px;height:30px;display:block}.course-flag svg{width:12px;height:12px}
@@ -1002,7 +1011,7 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
     </div>
     <div class="card" id="share">
       <h2>Share with friends</h2>
-      <p class="note">Learning is easier together. Send Wordami to a friend and race each other in the league.</p>
+      <p class="note">Learning is easier together. Send Wordami to a friend and race each other on the leaderboard.</p>
       <div class="row2"><button type="button" class="btn amber" data-share>Share</button><button type="button" class="btn ghost" data-copy>Copy link</button></div>
       <details class="qr"><summary>Show a QR code to scan</summary><div id="qr" aria-label="QR code for the Wordami link"></div><p class="note">Point a phone camera at it to open Wordami.</p></details>
     </div>
@@ -1116,9 +1125,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.125';
-const APP_VERSION=197;
-const WHATS_NEW='The new illustration style now covers every Lithuanian course picture and conversation character. Required unit skill lessons and your saved progress continue as before.';
+const APP_RELEASE='3.126';
+const APP_VERSION=198;
+const WHATS_NEW='The Lithuanian course now goes all the way from beginner to C2: new word units, readings, listening, conversations, writing and speaking. Your saved progress stays as it was.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1128,6 +1137,9 @@ function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\
 const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',label:'Spanish (Mexico)',own:'Español',flag:'🇲🇽',ready:false}];
 /* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
 const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
+/* COURSE_V2: the full A1-C2 course (all-skills units, readings, listening, writing studio, course path) is on for everyone since 3.126.
+   false brings back the 3.125 Units 1-3 practice layer (foundation-*.js). Spanish still needs ?preview=1 until it is marked ready. */
+const COURSE_V2=true;
 const langUsable=l=>l.ready||LANG_PREVIEW;
 const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');const requested=new URLSearchParams(location.search).get('lang');if(LANGS.some(l=>l.code===requested&&langUsable(l))){c=requested;localStorage.setItem('gintaras.lang',c);}}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();
 document.write('<script src="lang/'+LANG_CODE+'.js"><\/script>');
@@ -1496,9 +1508,10 @@ function convDone(id){const c=(S.convs||{})[id];return !!(c&&(c.done||c.text||c.
 function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
 /* Steps before where the placement check put you count as done (S.placedTo = index in STEPS). */
 const placed=id=>(S.placedTo||0)>STEPS.indexOf(id);
-/* Units require their taught lessons and assigned practical skills. Additional Speak it and conversation replay remain available for strengthening. */
-function stepDone(id){const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
-function stepStarted(id){return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
+/* (Round 11) speaking never locks anything: a conversation step is done once written, a unit once its lessons are (its Speak it
+   lesson is extra practice, and so is Say it) */
+function stepDone(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.done(id);const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
+function stepStarted(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.started(id);return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const mc=CONV_BY[id];if(mc&&mc.after){const l=LESSON_BY[mc.after];return !l||crowns(l.id)>=1||!!(S.convs||{})[id]||placed(l.unit.id);}const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
 function lessonUnlocked(ui,li){if(!unitUnlocked(ui))return false;if(li===0)return true;return crowns(COURSE[ui].lessons[li-1].id)>=1;}
@@ -1641,7 +1654,7 @@ function starNext(c){const got=convStars(c.id);if(!convSpoken(c.id))return '<sma
 let ALL_PARTS=false;
 function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
   const partOf=[];{let k=0;PATH.forEach(p=>{if(typeof p!=='string')k++;partOf.push(k);});}
-  const at=PATH.findIndex(p=>typeof p==='string'&&(CONV_BY[p]||UNIT_BY[p])&&!stepDone(p)),cur=at<0?part:partOf[at],last=partOf[partOf.length-1];
+  const at=PATH.findIndex(p=>typeof p==='string'&&(CONV_BY[p]||UNIT_BY[p]||window.WordamiCoursePath?.isUnit(p))&&!stepDone(p)),cur=at<0?part:partOf[at],last=partOf[partOf.length-1];
   const show=k=>ALL_PARTS||k>=cur&&k<=cur+1||cur===0&&k<=1;
   const fold=(label,parts)=>{const b=document.createElement('button');b.type='button';b.className='linkbtn part-fold';b.textContent=label;b.onclick=()=>{ALL_PARTS=true;const y=window.scrollY;renderTree();window.scrollTo(0,y);};t.appendChild(b);};
   let foldedBefore=false,foldedAfter=false;
@@ -1650,6 +1663,7 @@ function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
       if(typeof p!=='string')part++;else if(CONV_BY[p])++conv;return;}
     if(typeof p!=='string'){part++;const h=document.createElement('div');h.className='part';h.innerHTML='<span class="eyebrow">Part '+part+'</span><h2>'+esc(p.part)+'</h2><p class="note">'+esc(p.sub)+'</p>';t.appendChild(h);}
     else if(CONV_BY[p])t.appendChild(convCard(CONV_BY[p],++conv));
+    else if(window.WordamiCoursePath?.isUnit(p))WordamiCoursePath.renderUnit(p,t);
     else if(UNIT_BY[p])unitBand(UNIT_BY[p],COURSE.indexOf(UNIT_BY[p]),t);});
   if(ALL_PARTS){const b=document.createElement('button');b.type='button';b.className='linkbtn part-fold';b.textContent='Show only where I am';b.onclick=()=>{ALL_PARTS=false;renderTree();};t.appendChild(b);}}
 /* Only the unit you are working on is open. Finished units fold up (tap the header to open them again);
@@ -1671,7 +1685,7 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
   if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.dataset.lessonId=l.id;b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
     b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud · extra':loadLabel(l.items))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':(S.lpart||{})[l.id]?' · part '+((S.lpart||{})[l.id]+1)+' of '+(lessonPart(l).part||{of:2}).of+' next':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
-    b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
+    b.dataset.lessonId=l.id;b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
   const bossBtn=el.querySelector('[data-boss]');if(bossBtn)bossBtn.onclick=e=>{e.stopPropagation();startBoss(u);};
   const toBtn=el.querySelector('[data-testout]');if(toBtn)toBtn.onclick=e=>{e.stopPropagation();startTestOut(u);};
   const gramBtn=el.querySelector('[data-gram]');if(gramBtn)gramBtn.onclick=e=>{e.stopPropagation();openGrammar(u);};
@@ -1686,7 +1700,7 @@ function miniRow(c){const open=stepUnlocked(c.id),st=(S.convs||{})[c.id]||{},don
   el.innerHTML='<span class="ring" style="--p:'+(done?100:0)+'"><b class="num">'+(done?'✓':'💬')+'</b></span><span class="t"><strong>'+esc(c.title)+'</strong><small>'+(open?'A first short chat with '+esc(c.cast.map(p=>p.name).join(' and '))+', only words you know':'Opens after the lesson above')+'</small></span>'+
     '<span class="mini-btns"><button type="button" class="btn '+(done?'ghost':'amber')+'" data-conv="text"'+(open?'':' disabled')+'>'+(done?'✓ ':'')+'✍️ Write</button><button type="button" class="btn ghost" data-conv="speak"'+(open&&done?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say</button></span>';
   el.querySelectorAll('[data-conv]').forEach(b=>b.onclick=e=>{e.stopPropagation();startConv(c.id,b.dataset.conv);});return el;}
-function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
+function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':window.WordamiCoursePath?.isUnit(p)?WordamiCoursePath.title(p):CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
 
 /* ===================== RENDER: PRACTICE / PROFILE ===================== */
 /* Every conversation you have reached, in path order, with its stars and its Write it / Say it buttons, so you can
@@ -1957,7 +1971,7 @@ const testWords=u=>unitItems(u).filter(i=>i.lt.split(' ').length<=4);
    (up to four), and passing it clears those too, and everything before it on the path. */
 const canTestOut=(u,ui)=>!u.retire&&!stepDone(u.id)&&testWords(u).length>=TEST_N;
 const unitsBefore=u=>unitUnlocked(COURSE.indexOf(u))?[]:STEPS.slice(0,STEPS.indexOf(u.id)).filter(id=>UNIT_BY[id]&&!UNIT_BY[id].retire&&!stepDone(id)&&testWords(UNIT_BY[id]).length);
-function startTestOut(u){S.testout=S.testout||{};if(S.testout[u.id]===today())return toast('One try a day for each unit. Try again tomorrow, or carry on with the lessons.');
+function startTestOut(u){if(window.WordamiUnitSkills&&S.unitSkillTestout?.language===LANG.code&&S.unitSkillTestout.units.includes(u.id)){WordamiUnitSkills.continueTestout();return;}S.testout=S.testout||{};if(S.testout[u.id]===today())return toast('One try a day for each unit. Try again tomorrow, or carry on with the lessons.');
   S.testout[u.id]=today();save();const before=unitsBefore(u).slice(-4),tw=testWords(u),one=perLesson(u,tw,TEST_N),its=one.concat(sample(tw.filter(i=>!one.includes(i)),TEST_N-one.length)).concat(before.map(id=>sample(testWords(UNIT_BY[id]),1)[0]));
   Q={queue:shuffle(its).map(it=>({type:'type',item:it})),idx:0,correct:0,total:its.length,items:its,mode:'place',lesson:null,answer:null,startedAt:Date.now(),wrongOnce:{},barPct:0,
     place:{units:[u.id],also:unitsBefore(u),i:0,right:0,got:{},passed:[],testout:true,need:Math.ceil(its.length*TEST_PASS/TEST_N)}};
@@ -4409,7 +4423,7 @@ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(!n.classList|
 /* The phone's own share menu where there is one; otherwise copy the link. The QR code library loads only when asked for. */
 const SHARE_URL='https://n00bin.github.io/gintaras/';
 function shareText(){const n=window.cloud&&window.cloud.nickname&&window.cloud.nickname();
-  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' in the league!':' Join me in the league!');}
+  return 'I\'m learning '+LANG.en+' with Wordami: free, bite-size lessons from zero to a real conversation.'+(n?' Find me as '+n+' on the leaderboard!':' Join me on the leaderboard!');}
 async function copyLink(){try{await navigator.clipboard.writeText(shareText()+' '+SHARE_URL);toast('Link copied. Paste it in a message.');}
   catch(e){prompt('Copy this link:',SHARE_URL);}}
 async function shareApp(){if(navigator.share){try{await navigator.share({title:'Wordami: learn '+LANG.en,text:shareText(),url:SHARE_URL});}catch(e){}}else copyLink();}
@@ -4656,13 +4670,85 @@ window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.ho
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="cloud.js"></script>
+<script src="activity-core.js"></script>
+<script src="adventures.js"></script>
+<script src="activities.js"></script>
+<script src="introductions.js"></script>
+<script src="topic-content.js"></script>
+<script src="topic-practice.js"></script>
+<script src="writing-content.js"></script>
+<script src="writing-studio.js"></script>
+<script src="independent-checks.js"></script>
+<script src="a1-dialogue-content.js"></script>
+<script src="a1-dialogue-assets.js"></script>
+<script src="a1-listening.js"></script>
+<script src="speaking-check.js"></script>
+<script src="a1-message-coach.js"></script>
+<script src="a1-course.js"></script>
+<script src="a1-route.js"></script>
+<script src="skills-content.js"></script>
+<script src="curriculum-content.js"></script>
+<script src="vocabulary-content.js"></script>
+<script src="learning-design.js"></script>
+<script src="source-support.js"></script>
+<script src="a2-source-support.js"></script>
+<script src="b1-source-support.js"></script>
+<script src="b2-source-support.js"></script>
+<script src="c1-source-support.js"></script>
+<script src="c2-source-support.js"></script>
+<script src="a1-feedback.js"></script>
+<script src="writing-preparation.js"></script>
+<script src="a2-writing-preparation.js"></script>
+<script src="b1-writing-preparation.js"></script>
+<script src="b2-writing-preparation.js"></script>
+<script src="c1-writing-preparation.js"></script>
+<script src="c2-writing-preparation.js"></script>
+<script src="skills-audio.js"></script>
+<script src="capstone-content.js"></script>
+<script src="capstone-audio.js"></script>
+<script src="grammar-content.js"></script>
+<script src="grammar-practice.js"></script>
+<script src="phrase-review.js"></script>
+<script src="skills-studio.js"></script>
+<script src="transfer-content.js"></script>
+<script src="a2-transfer-content.js"></script>
+<script src="listening-transfer-content.js"></script>
+<script src="a2-listening-transfer-content.js"></script>
+<script src="b1-application-content.js"></script>
+<script src="b2-application-content.js"></script>
+<script src="c1-application-content.js"></script>
+<script src="c2-application-content.js"></script>
+<script src="listening-transfer-audio.js"></script>
+<script src="transfer-checks.js"></script>
+<script src="interaction-practice-content.js"></script>
+<script src="higher-interaction-content.js"></script>
+<script src="interaction-practice-audio.js"></script>
+<script src="interaction-practice.js"></script>
+<script src="written-interaction-content.js"></script>
+<script src="written-interaction.js"></script>
+<script src="form-practice-content.js"></script>
+<script src="form-practice.js"></script>
+<script src="document-reading-content.js"></script>
+<script src="document-reading.js"></script>
+<script src="extended-reading-content.js"></script>
+<script src="extended-reading.js"></script>
+<script src="native-application-content.js"></script>
+<script src="unit-application-content.js"></script>
+<script src="unit-application.js"></script>
+<script src="unit-progress.js"></script>
+<script src="unit-application-path.js"></script>
+<script src="course-path.js"></script>
+<script src="graded-content-lt.js"></script>
+<script src="graded-audio.js"></script>
+<script src="graded-reading.js"></script>
+<script src="assessment-portfolio.js"></script>
 <script src="foundation-evidence.js"></script>
 <script src="foundation-ui.js"></script>
 <script src="foundation-content.js"></script>
 <script src="foundation-practice.js"></script>
 <script src="foundation-path.js"></script>
 <script src="foundation-unit-skills.js"></script>
-<script src="config.js"></script>
-<script src="cloud.js"></script>
 </body>
 </html>

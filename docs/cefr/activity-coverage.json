@@ -1,0 +1,4794 @@
+{
+  "schema": 1,
+  "date": "2026-11-06",
+  "status": "preview_practice_not_validated_cefr_coverage",
+  "languages": {
+    "lt": {
+      "activityCount": 42,
+      "objectives": [
+        {
+          "id": "a1.personal-introduction",
+          "outcome": "Introduce yourself and exchange simple personal information",
+          "activities": [
+            "a1.introductions",
+            "a1.introductions-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u1c-2:3",
+            "u20a-1:1",
+            "u20a-1:2"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.clarification",
+          "outcome": "Ask for repetition or say that you do not understand",
+          "activities": [
+            "a1.clarification",
+            "a1.clarification-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u21b-1:2",
+            "u21b-1:3",
+            "u21b-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.numbers-prices",
+          "outcome": "Understand and communicate simple quantities and prices",
+          "activities": [
+            "a1.prices",
+            "a1.prices-speaking",
+            "a1.price-check"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u16c-1:0",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u2c-1:3",
+            "u2c-2:0",
+            "u2c-2:1"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.times-dates",
+          "outcome": "Exchange basic times and dates",
+          "activities": [
+            "a1.times",
+            "a1.times-speaking",
+            "a1.calendar",
+            "a1.calendar-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u23b-1:0",
+            "u23b-1:1",
+            "u23b-1:2",
+            "u24m:0",
+            "u24m:1",
+            "u24m:2",
+            "u24m:3",
+            "u24m:4",
+            "u24m:5",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u7a-1:0",
+            "u7a-1:1",
+            "u7c-1:4",
+            "u7c-2:0",
+            "u7c-2:1",
+            "u7c-2:2",
+            "u7c-2:3",
+            "u7c-2:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.food-order",
+          "outcome": "Make a simple food or drink request",
+          "activities": [
+            "a1.cafe-writing",
+            "a1.cafe-understanding",
+            "a1.cafe-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u15b-1:0",
+            "u3a-1:3",
+            "u3a-1:4",
+            "u3c-1:0",
+            "u3c-2:0",
+            "u3c-2:3",
+            "u3d-1:1"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.places-directions",
+          "outcome": "Ask where a familiar place is and follow short supported directions",
+          "activities": [
+            "a1.directions",
+            "a1.directions-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u9b-1:0",
+            "u9b-1:1",
+            "u9b-1:2",
+            "u9b-1:3"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.family-description",
+          "outcome": "Give simple information about family or someone you know",
+          "activities": [
+            "a1.family",
+            "a1.family-speaking",
+            "a1.descriptions",
+            "a1.descriptions-speaking",
+            "a1.dialogue-family"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u25a-1:0",
+            "u25a-1:1",
+            "u25a-1:3",
+            "u25a-1:4",
+            "u30c-1:0",
+            "u30c-1:1",
+            "u30c-1:2",
+            "u30c-1:3",
+            "u30c-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.daily-routine",
+          "outcome": "Communicate basic information about daily activities",
+          "activities": [
+            "a1.routines",
+            "a1.routines-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u28a-1:1",
+            "u28a-1:4",
+            "u28a-2:3",
+            "u28b-2:3"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.home-information",
+          "outcome": "Describe basic facts about where you live",
+          "activities": [
+            "a1.home",
+            "a1.home-speaking",
+            "a1.rooms",
+            "a1.rooms-speaking",
+            "a1.dialogue-home"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u23a-1:1",
+            "u32a-1:2",
+            "u32a-1:4",
+            "u32b-2:3",
+            "u32b-2:4",
+            "u32c-1:0",
+            "u32c-1:3",
+            "u32c-2:0",
+            "u32c-2:1",
+            "u32c-2:2",
+            "u9b-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.simple-purchase",
+          "outcome": "Request an everyday item and exchange basic purchase details",
+          "activities": [
+            "a1.shopping",
+            "a1.shopping-speaking",
+            "a1.dialogue-shop-two",
+            "a1.dialogue-shop-ten"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u16a-2:0",
+            "u16a-2:1",
+            "u16c-1:0",
+            "u16c-1:2",
+            "u16c-1:3",
+            "u1a-2:3",
+            "u1b-1:0",
+            "u2c-2:0",
+            "u2c-2:1"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.simple-arrangement",
+          "outcome": "Understand and reply to a simple invitation",
+          "activities": [
+            "a1.messages",
+            "a1.messages-speaking",
+            "a1.meeting-check",
+            "a1.dialogue-meeting-seven",
+            "a1.dialogue-meeting-eight"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u23a-1:0",
+            "u23a-1:1",
+            "u23a-1:3",
+            "u23a-2:0",
+            "u23a-2:1",
+            "u23b-1:0",
+            "u23b-1:1",
+            "u23b-1:2",
+            "u7a-1:0",
+            "u7a-1:1"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.preferences",
+          "outcome": "Express a simple preference about a familiar activity",
+          "activities": [
+            "a1.preferences",
+            "a1.preferences-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u22a-1:2",
+            "u22a-1:3",
+            "u22b-1:1",
+            "u22b-1:3"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        }
+      ],
+      "activities": [
+        {
+          "id": "a1.cafe-writing",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Write your café requests",
+          "requiredPhrases": [
+            "kava",
+            "arbata",
+            "meniu",
+            "Aš noriu kavos",
+            "Aš noriu arbatos",
+            "Sąskaitą, prašau",
+            "Ar galima mokėti kortele?"
+          ],
+          "tasks": [
+            {
+              "id": "order",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "bill",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "payment",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u3a-1:3",
+              "text": "kava",
+              "en": "coffee",
+              "lesson": "u3.L1",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3a-1:4",
+              "text": "arbata",
+              "en": "tea",
+              "lesson": "u3.L1",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-2:3",
+              "text": "meniu",
+              "en": "menu",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-1:0",
+              "text": "Aš noriu kavos",
+              "en": "I want coffee",
+              "lesson": "u3.L3",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3d-1:1",
+              "text": "Aš noriu arbatos",
+              "en": "I want tea",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-2:0",
+              "text": "Sąskaitą, prašau",
+              "en": "The bill, please",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u15b-1:0",
+              "text": "Ar galima mokėti kortele?",
+              "en": "Can I pay by card?",
+              "lesson": "u15.L2",
+              "unit": "u15",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.cafe-understanding",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Read and hear a café order",
+          "requiredPhrases": [
+            "kava",
+            "arbata",
+            "meniu",
+            "Aš noriu kavos"
+          ],
+          "tasks": [
+            {
+              "id": "menu",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "order",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear2",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u3a-1:3",
+              "text": "kava",
+              "en": "coffee",
+              "lesson": "u3.L1",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3a-1:4",
+              "text": "arbata",
+              "en": "tea",
+              "lesson": "u3.L1",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-2:3",
+              "text": "meniu",
+              "en": "menu",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-1:0",
+              "text": "Aš noriu kavos",
+              "en": "I want coffee",
+              "lesson": "u3.L3",
+              "unit": "u3",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.cafe-speaking",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Say your café order",
+          "requiredPhrases": [
+            "Aš noriu kavos"
+          ],
+          "tasks": [
+            {
+              "id": "say-order",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u3c-1:0",
+              "text": "Aš noriu kavos",
+              "en": "I want coffee",
+              "lesson": "u3.L3",
+              "unit": "u3",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.introductions",
+          "version": 1,
+          "objectiveId": "a1.personal-introduction",
+          "title": "Meet someone new",
+          "requiredPhrases": [
+            "Mano vardas Tomas",
+            "Aš esu iš Lietuvos",
+            "Aš esu iš Anglijos"
+          ],
+          "tasks": [
+            {
+              "id": "read-name",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-origin",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-origin-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-origin-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-name",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-origin",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u1c-2:3",
+              "text": "Mano vardas Tomas",
+              "en": "My name is Tomas",
+              "lesson": "u1.u1c-2+u1c-3",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u20a-1:1",
+              "text": "Aš esu iš Lietuvos",
+              "en": "I am from Lithuania",
+              "lesson": "u20.L1",
+              "unit": "u20",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u20a-1:2",
+              "text": "Aš esu iš Anglijos",
+              "en": "I am from England",
+              "lesson": "u20.L1",
+              "unit": "u20",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.introductions-speaking",
+          "version": 1,
+          "objectiveId": "a1.personal-introduction",
+          "title": "Say where you are from",
+          "requiredPhrases": [
+            "Aš esu iš Lietuvos",
+            "Aš esu iš Anglijos"
+          ],
+          "tasks": [
+            {
+              "id": "say-origin",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u20a-1:1",
+              "text": "Aš esu iš Lietuvos",
+              "en": "I am from Lithuania",
+              "lesson": "u20.L1",
+              "unit": "u20",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u20a-1:2",
+              "text": "Aš esu iš Anglijos",
+              "en": "I am from England",
+              "lesson": "u20.L1",
+              "unit": "u20",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.routines",
+          "version": 1,
+          "objectiveId": "a1.daily-routine",
+          "title": "A day in your life",
+          "requiredPhrases": [
+            "Aš keliuosi septintą valandą",
+            "Aš pusryčiauju",
+            "Aš einu į darbą",
+            "Aš einu miegoti"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u28a-1:1",
+              "text": "Aš keliuosi septintą valandą",
+              "en": "I get up at seven",
+              "lesson": "u28.L1",
+              "unit": "u28",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28a-1:4",
+              "text": "Aš pusryčiauju",
+              "en": "I have breakfast",
+              "lesson": "u28.L1",
+              "unit": "u28",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28a-2:3",
+              "text": "Aš einu į darbą",
+              "en": "I go to work",
+              "lesson": "u28.L2",
+              "unit": "u28",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28b-2:3",
+              "text": "Aš einu miegoti",
+              "en": "I go to bed",
+              "lesson": "u28.L3",
+              "unit": "u28",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.routines-speaking",
+          "version": 1,
+          "objectiveId": "a1.daily-routine",
+          "title": "A day in your life · speaking",
+          "requiredPhrases": [
+            "Aš keliuosi septintą valandą"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u28a-1:1",
+              "text": "Aš keliuosi septintą valandą",
+              "en": "I get up at seven",
+              "lesson": "u28.L1",
+              "unit": "u28",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.directions",
+          "version": 1,
+          "objectiveId": "a1.places-directions",
+          "title": "Find your way",
+          "requiredPhrases": [
+            "kairėn",
+            "dešinėn",
+            "tiesiai",
+            "Kur yra stotis?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u9b-1:1",
+              "text": "kairėn",
+              "en": "to the left",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:2",
+              "text": "dešinėn",
+              "en": "to the right",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:3",
+              "text": "tiesiai",
+              "en": "straight ahead",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:0",
+              "text": "Kur yra stotis?",
+              "en": "Where is the station?",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.directions-speaking",
+          "version": 1,
+          "objectiveId": "a1.places-directions",
+          "title": "Find your way · speaking",
+          "requiredPhrases": [
+            "Kur yra stotis?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u9b-1:0",
+              "text": "Kur yra stotis?",
+              "en": "Where is the station?",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.messages",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Reply to an invitation",
+          "requiredPhrases": [
+            "Ar nori eiti kartu?",
+            "Prie kavinės",
+            "Septintą valandą",
+            "Aštuntą valandą",
+            "Taip, noriu",
+            "Šiandien negaliu",
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u23a-1:0",
+              "text": "Ar nori eiti kartu?",
+              "en": "Do you want to go together?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:1",
+              "text": "Prie kavinės",
+              "en": "By the café",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:1",
+              "text": "Septintą valandą",
+              "en": "At seven o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:2",
+              "text": "Aštuntą valandą",
+              "en": "At eight o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:1",
+              "text": "Taip, noriu",
+              "en": "Yes, I'd like to",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:3",
+              "text": "Šiandien negaliu",
+              "en": "I can't today",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.messages-speaking",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Reply to an invitation · speaking",
+          "requiredPhrases": [
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.prices",
+          "version": 1,
+          "objectiveId": "a1.numbers-prices",
+          "title": "Check a price",
+          "requiredPhrases": [
+            "du eurai",
+            "dešimt eurų",
+            "Kiek kainuoja?",
+            "du",
+            "trys"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u2c-2:0",
+              "text": "du eurai",
+              "en": "two euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-2:1",
+              "text": "dešimt eurų",
+              "en": "ten euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-1:3",
+              "text": "Kiek kainuoja?",
+              "en": "How much does it cost?",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:1",
+              "text": "du",
+              "en": "two",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:2",
+              "text": "trys",
+              "en": "three",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.prices-speaking",
+          "version": 1,
+          "objectiveId": "a1.numbers-prices",
+          "title": "Check a price · speaking",
+          "requiredPhrases": [
+            "Kiek kainuoja?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u2c-1:3",
+              "text": "Kiek kainuoja?",
+              "en": "How much does it cost?",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.times",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Read a simple schedule",
+          "requiredPhrases": [
+            "pirmadienis",
+            "antradienis",
+            "Septintą valandą",
+            "Aštuntą valandą",
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u7a-1:0",
+              "text": "pirmadienis",
+              "en": "Monday",
+              "lesson": "u7.L1",
+              "unit": "u7",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7a-1:1",
+              "text": "antradienis",
+              "en": "Tuesday",
+              "lesson": "u7.L1",
+              "unit": "u7",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:1",
+              "text": "Septintą valandą",
+              "en": "At seven o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:2",
+              "text": "Aštuntą valandą",
+              "en": "At eight o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.times-speaking",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Read a simple schedule · speaking",
+          "requiredPhrases": [
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.family",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Talk about family",
+          "requiredPhrases": [
+            "Aš turiu brolį",
+            "Aš turiu du vaikus",
+            "Ar turi vaikų?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u25a-1:1",
+              "text": "Aš turiu brolį",
+              "en": "I have a brother",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u25a-1:4",
+              "text": "Aš turiu du vaikus",
+              "en": "I have two children",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u25a-1:3",
+              "text": "Ar turi vaikų?",
+              "en": "Do you have children?",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.family-speaking",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Talk about family · speaking",
+          "requiredPhrases": [
+            "Ar turi vaikų?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u25a-1:3",
+              "text": "Ar turi vaikų?",
+              "en": "Do you have children?",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.home",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Describe a home",
+          "requiredPhrases": [
+            "Aš gyvenu bute",
+            "Mano butas mažas",
+            "Kur yra virtuvė?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u32b-2:3",
+              "text": "Aš gyvenu bute",
+              "en": "I live in a flat",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32b-2:4",
+              "text": "Mano butas mažas",
+              "en": "My flat is small",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-1:0",
+              "text": "Kur yra virtuvė?",
+              "en": "Where is the kitchen?",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.home-speaking",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Describe a home · speaking",
+          "requiredPhrases": [
+            "Kur yra virtuvė?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u32c-1:0",
+              "text": "Kur yra virtuvė?",
+              "en": "Where is the kitchen?",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.preferences",
+          "version": 1,
+          "objectiveId": "a1.preferences",
+          "title": "Find a shared interest",
+          "requiredPhrases": [
+            "Aš mėgstu skaityti",
+            "Aš mėgstu gaminti",
+            "Man patinka muzika",
+            "Ar tau patinka?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u22b-1:1",
+              "text": "Aš mėgstu skaityti",
+              "en": "I like to read",
+              "lesson": "u22.L2",
+              "unit": "u22",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u22b-1:3",
+              "text": "Aš mėgstu gaminti",
+              "en": "I like to cook",
+              "lesson": "u22.L2",
+              "unit": "u22",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u22a-1:3",
+              "text": "Man patinka muzika",
+              "en": "I like music",
+              "lesson": "u22.L1",
+              "unit": "u22",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u22a-1:2",
+              "text": "Ar tau patinka?",
+              "en": "Do you like it?",
+              "lesson": "u22.L1",
+              "unit": "u22",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.preferences-speaking",
+          "version": 1,
+          "objectiveId": "a1.preferences",
+          "title": "Find a shared interest · speaking",
+          "requiredPhrases": [
+            "Ar tau patinka?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u22a-1:2",
+              "text": "Ar tau patinka?",
+              "en": "Do you like it?",
+              "lesson": "u22.L1",
+              "unit": "u22",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.shopping",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "Choose an item",
+          "requiredPhrases": [
+            "Ar turite obuolių?",
+            "per mažas",
+            "Ar galiu pasimatuoti?",
+            "Gerai, aš imu"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16c-1:0",
+              "text": "Ar turite obuolių?",
+              "en": "Do you have apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16a-2:0",
+              "text": "per mažas",
+              "en": "too small",
+              "lesson": "u16.L1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16a-2:1",
+              "text": "Ar galiu pasimatuoti?",
+              "en": "Can I try it on?",
+              "lesson": "u16.L1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:3",
+              "text": "Gerai, aš imu",
+              "en": "OK, I'll take it",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.shopping-speaking",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "Choose an item · speaking",
+          "requiredPhrases": [
+            "Ar galiu pasimatuoti?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16a-2:1",
+              "text": "Ar galiu pasimatuoti?",
+              "en": "Can I try it on?",
+              "lesson": "u16.L1",
+              "unit": "u16",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.clarification",
+          "version": 1,
+          "objectiveId": "a1.clarification",
+          "title": "Keep a conversation going",
+          "requiredPhrases": [
+            "Ar gali pakartoti?",
+            "Aš nelabai suprantu",
+            "Ką reiškia šis žodis?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u21b-1:4",
+              "text": "Ar gali pakartoti?",
+              "en": "Can you repeat that? (to a friend)",
+              "lesson": "u21.L3",
+              "unit": "u21",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u21b-1:3",
+              "text": "Aš nelabai suprantu",
+              "en": "I don't quite understand",
+              "lesson": "u21.L2",
+              "unit": "u21",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u21b-1:2",
+              "text": "Ką reiškia šis žodis?",
+              "en": "What does this word mean?",
+              "lesson": "u21.L2",
+              "unit": "u21",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.clarification-speaking",
+          "version": 1,
+          "objectiveId": "a1.clarification",
+          "title": "Keep a conversation going · speaking",
+          "requiredPhrases": [
+            "Ar gali pakartoti?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u21b-1:4",
+              "text": "Ar gali pakartoti?",
+              "en": "Can you repeat that? (to a friend)",
+              "lesson": "u21.L3",
+              "unit": "u21",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.calendar",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Use a calendar",
+          "requiredPhrases": [
+            "sausis",
+            "vasaris",
+            "kovas",
+            "balandis",
+            "gegužė",
+            "birželis",
+            "liepa",
+            "rugpjūtis",
+            "rugsėjis",
+            "spalis",
+            "lapkritis",
+            "gruodis",
+            "du",
+            "trys"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u7c-1:4",
+              "text": "sausis",
+              "en": "January",
+              "lesson": "u7c-1",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7c-2:0",
+              "text": "vasaris",
+              "en": "February",
+              "lesson": "u7c-2",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7c-2:1",
+              "text": "kovas",
+              "en": "March",
+              "lesson": "u7c-2",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:0",
+              "text": "balandis",
+              "en": "April",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:1",
+              "text": "gegužė",
+              "en": "May",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7c-2:2",
+              "text": "birželis",
+              "en": "June",
+              "lesson": "u7c-2",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7c-2:3",
+              "text": "liepa",
+              "en": "July",
+              "lesson": "u7c-2",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:2",
+              "text": "rugpjūtis",
+              "en": "August",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:3",
+              "text": "rugsėjis",
+              "en": "September",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:4",
+              "text": "spalis",
+              "en": "October",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u24m:5",
+              "text": "lapkritis",
+              "en": "November",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7c-2:4",
+              "text": "gruodis",
+              "en": "December",
+              "lesson": "u7c-2",
+              "unit": "u24",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:1",
+              "text": "du",
+              "en": "two",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:2",
+              "text": "trys",
+              "en": "three",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.calendar-speaking",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Use a calendar · speaking",
+          "requiredPhrases": [
+            "balandis"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u24m:0",
+              "text": "balandis",
+              "en": "April",
+              "lesson": "u24.months-extra",
+              "unit": "u24",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.descriptions",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Describe someone you know",
+          "requiredPhrases": [
+            "Mano brolis aukštas",
+            "Mano sesuo aukšta",
+            "Jis linksmas",
+            "Ji labai protinga",
+            "Koks jis?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u30c-1:0",
+              "text": "Mano brolis aukštas",
+              "en": "My brother is tall",
+              "lesson": "u30.L3",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:1",
+              "text": "Mano sesuo aukšta",
+              "en": "My sister is tall",
+              "lesson": "u30.L3",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:4",
+              "text": "Jis linksmas",
+              "en": "He is cheerful",
+              "lesson": "u30.L4",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:2",
+              "text": "Ji labai protinga",
+              "en": "She is very clever",
+              "lesson": "u30.L3",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:3",
+              "text": "Koks jis?",
+              "en": "What is he like?",
+              "lesson": "u30.L4",
+              "unit": "u30",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.descriptions-speaking",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Describe someone you know · speaking",
+          "requiredPhrases": [
+            "Koks jis?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u30c-1:3",
+              "text": "Koks jis?",
+              "en": "What is he like?",
+              "lesson": "u30.L4",
+              "unit": "u30",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.rooms",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Help a guest at home",
+          "requiredPhrases": [
+            "virtuvė",
+            "miegamasis",
+            "Atidaryk langą",
+            "Uždaryk duris",
+            "Įjunk šviesą",
+            "Kur yra virtuvė?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u32a-1:2",
+              "text": "virtuvė",
+              "en": "kitchen",
+              "lesson": "u32.L1",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32a-1:4",
+              "text": "miegamasis",
+              "en": "bedroom",
+              "lesson": "u32.L1",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-2:0",
+              "text": "Atidaryk langą",
+              "en": "Open the window",
+              "lesson": "u32.L4",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-2:1",
+              "text": "Uždaryk duris",
+              "en": "Close the door",
+              "lesson": "u32.L4",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-2:2",
+              "text": "Įjunk šviesą",
+              "en": "Turn on the light",
+              "lesson": "u32.L4",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-1:0",
+              "text": "Kur yra virtuvė?",
+              "en": "Where is the kitchen?",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.rooms-speaking",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Help a guest at home · speaking",
+          "requiredPhrases": [
+            "Kur yra virtuvė?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u32c-1:0",
+              "text": "Kur yra virtuvė?",
+              "en": "Where is the kitchen?",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.meeting-check",
+          "version": 1,
+          "kind": "checkpoint",
+          "objectiveId": "a1.simple-arrangement",
+          "title": "On your own · meeting details",
+          "requiredPhrases": [
+            "pirmadienis",
+            "antradienis",
+            "Septintą valandą",
+            "Aštuntą valandą",
+            "Taip, noriu",
+            "Šiandien negaliu",
+            "Kelintą valandą?",
+            "Ar nori eiti kartu?",
+            "Prie kavinės"
+          ],
+          "tasks": [
+            {
+              "id": "read-a",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-b",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-a",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-b",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "reply",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "ask",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u7a-1:0",
+              "text": "pirmadienis",
+              "en": "Monday",
+              "lesson": "u7.L1",
+              "unit": "u7",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u7a-1:1",
+              "text": "antradienis",
+              "en": "Tuesday",
+              "lesson": "u7.L1",
+              "unit": "u7",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:1",
+              "text": "Septintą valandą",
+              "en": "At seven o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:2",
+              "text": "Aštuntą valandą",
+              "en": "At eight o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:1",
+              "text": "Taip, noriu",
+              "en": "Yes, I'd like to",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:3",
+              "text": "Šiandien negaliu",
+              "en": "I can't today",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:0",
+              "text": "Ar nori eiti kartu?",
+              "en": "Do you want to go together?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:1",
+              "text": "Prie kavinės",
+              "en": "By the café",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.price-check",
+          "version": 1,
+          "kind": "checkpoint",
+          "objectiveId": "a1.numbers-prices",
+          "title": "On your own · prices and quantities",
+          "requiredPhrases": [
+            "du",
+            "trys",
+            "du eurai",
+            "dešimt eurų",
+            "Kiek kainuoja?",
+            "Ar turite obuolių?"
+          ],
+          "tasks": [
+            {
+              "id": "read-a",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-b",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-a",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-b",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "reply",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "ask",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u2a-1:1",
+              "text": "du",
+              "en": "two",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:2",
+              "text": "trys",
+              "en": "three",
+              "lesson": "u2.L1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-2:0",
+              "text": "du eurai",
+              "en": "two euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-2:1",
+              "text": "dešimt eurų",
+              "en": "ten euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-1:3",
+              "text": "Kiek kainuoja?",
+              "en": "How much does it cost?",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:0",
+              "text": "Ar turite obuolių?",
+              "en": "Do you have apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-meeting-seven",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Arrange a meeting · conversation 1",
+          "requiredPhrases": [
+            "Ar nori eiti kartu?",
+            "Taip, noriu",
+            "Kur susitiksime?",
+            "Prie kavinės",
+            "Kelintą valandą?",
+            "Septintą valandą"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u23a-1:0",
+              "text": "Ar nori eiti kartu?",
+              "en": "Do you want to go together?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:1",
+              "text": "Taip, noriu",
+              "en": "Yes, I'd like to",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:0",
+              "text": "Kur susitiksime?",
+              "en": "Where shall we meet?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:1",
+              "text": "Prie kavinės",
+              "en": "By the café",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:1",
+              "text": "Septintą valandą",
+              "en": "At seven o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-meeting-eight",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Arrange a meeting · conversation 2",
+          "requiredPhrases": [
+            "Ar nori eiti kartu?",
+            "Taip, noriu",
+            "Kur susitiksime?",
+            "Prie kavinės",
+            "Kelintą valandą?",
+            "Aštuntą valandą"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u23a-1:0",
+              "text": "Ar nori eiti kartu?",
+              "en": "Do you want to go together?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:1",
+              "text": "Taip, noriu",
+              "en": "Yes, I'd like to",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:0",
+              "text": "Kur susitiksime?",
+              "en": "Where shall we meet?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-2:1",
+              "text": "Prie kavinės",
+              "en": "By the café",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:2",
+              "text": "Aštuntą valandą",
+              "en": "At eight o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-shop-two",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "At the market · conversation 1",
+          "requiredPhrases": [
+            "Ar turite obuolių?",
+            "Taip",
+            "Kiek kainuoja obuoliai?",
+            "du eurai",
+            "Gerai, aš imu",
+            "Ačiū"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16c-1:0",
+              "text": "Ar turite obuolių?",
+              "en": "Do you have apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1b-1:0",
+              "text": "Taip",
+              "en": "Yes",
+              "lesson": "u1.u1b-1+u1b-2",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:2",
+              "text": "Kiek kainuoja obuoliai?",
+              "en": "How much are the apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-2:0",
+              "text": "du eurai",
+              "en": "two euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:3",
+              "text": "Gerai, aš imu",
+              "en": "OK, I'll take it",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1a-2:3",
+              "text": "Ačiū",
+              "en": "Thank you",
+              "lesson": "u1a-0",
+              "unit": "u1",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-shop-ten",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "At the market · conversation 2",
+          "requiredPhrases": [
+            "Ar turite obuolių?",
+            "Taip",
+            "Kiek kainuoja obuoliai?",
+            "dešimt eurų",
+            "Gerai, aš imu",
+            "Ačiū"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16c-1:0",
+              "text": "Ar turite obuolių?",
+              "en": "Do you have apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1b-1:0",
+              "text": "Taip",
+              "en": "Yes",
+              "lesson": "u1.u1b-1+u1b-2",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:2",
+              "text": "Kiek kainuoja obuoliai?",
+              "en": "How much are the apples?",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2c-2:1",
+              "text": "dešimt eurų",
+              "en": "ten euros",
+              "lesson": "u2.L4",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:3",
+              "text": "Gerai, aš imu",
+              "en": "OK, I'll take it",
+              "lesson": "u16.L4",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1a-2:3",
+              "text": "Ačiū",
+              "en": "Thank you",
+              "lesson": "u1a-0",
+              "unit": "u1",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-family",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Talk about family",
+          "requiredPhrases": [
+            "Ar turi brolių ar seserų?",
+            "Aš turiu brolį",
+            "Koks jis?",
+            "Jis linksmas"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u25a-1:0",
+              "text": "Ar turi brolių ar seserų?",
+              "en": "Do you have brothers or sisters?",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u25a-1:1",
+              "text": "Aš turiu brolį",
+              "en": "I have a brother",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:3",
+              "text": "Koks jis?",
+              "en": "What is he like?",
+              "lesson": "u30.L4",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:4",
+              "text": "Jis linksmas",
+              "en": "He is cheerful",
+              "lesson": "u30.L4",
+              "unit": "u30",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.dialogue-home",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "A guest at home",
+          "requiredPhrases": [
+            "Kur yra virtuvė?",
+            "čia",
+            "Ar nori arbatos?",
+            "Taip, noriu"
+          ],
+          "tasks": [
+            {
+              "id": "detail-0",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "detail-1",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u32c-1:0",
+              "text": "Kur yra virtuvė?",
+              "en": "Where is the kitchen?",
+              "lesson": "u32.L3",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:4",
+              "text": "čia",
+              "en": "here",
+              "lesson": "u9.L3",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u32c-1:3",
+              "text": "Ar nori arbatos?",
+              "en": "Do you want some tea?",
+              "lesson": "u32.L4",
+              "unit": "u32",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:1",
+              "text": "Taip, noriu",
+              "en": "Yes, I'd like to",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.spoken-requests",
+          "version": 1,
+          "kind": "checkpoint",
+          "objectiveId": "a1.spoken-interaction-sample",
+          "title": "Say a useful request",
+          "requiredPhrases": [
+            "Aš noriu kavos",
+            "Aš noriu arbatos",
+            "Kur yra stotis?",
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "drink",
+              "skill": "speaking",
+              "method": "transcript_response"
+            },
+            {
+              "id": "station",
+              "skill": "speaking",
+              "method": "transcript_response"
+            },
+            {
+              "id": "time",
+              "skill": "speaking",
+              "method": "transcript_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u3c-1:0",
+              "text": "Aš noriu kavos",
+              "en": "I want coffee",
+              "lesson": "u3.L3",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3d-1:1",
+              "text": "Aš noriu arbatos",
+              "en": "I want tea",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:0",
+              "text": "Kur yra stotis?",
+              "en": "Where is the station?",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.spoken-requests-self",
+          "version": 1,
+          "objectiveId": "a1.spoken-interaction-sample",
+          "title": "Practise a request aloud",
+          "requiredPhrases": [
+            "Aš noriu kavos",
+            "Aš noriu arbatos",
+            "Kur yra stotis?",
+            "Kelintą valandą?"
+          ],
+          "tasks": [
+            {
+              "id": "record-request",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u3c-1:0",
+              "text": "Aš noriu kavos",
+              "en": "I want coffee",
+              "lesson": "u3.L3",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3d-1:1",
+              "text": "Aš noriu arbatos",
+              "en": "I want tea",
+              "lesson": "u3.L4",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u9b-1:0",
+              "text": "Kur yra stotis?",
+              "en": "Where is the station?",
+              "lesson": "u9.L2",
+              "unit": "u9",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:0",
+              "text": "Kelintą valandą?",
+              "en": "At what time?",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.original-message",
+          "version": 1,
+          "objectiveId": "a1.written-personal-message",
+          "title": "Write your own short message",
+          "requiredPhrases": [
+            "Mano vardas Tomas",
+            "Labas",
+            "Aš gyvenu Vilniuje",
+            "Aš gyvenu Londone",
+            "Ar nori eiti kartu?",
+            "Septintą valandą",
+            "Aštuntą valandą"
+          ],
+          "tasks": [
+            {
+              "id": "message",
+              "skill": "writing",
+              "method": "guided_composition"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u1c-2:3",
+              "text": "Mano vardas Tomas",
+              "en": "My name is Tomas",
+              "lesson": "u1.u1c-2+u1c-3",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1a-1:0",
+              "text": "Labas",
+              "en": "Hello",
+              "lesson": "u1a-0",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u20a-2:0",
+              "text": "Aš gyvenu Vilniuje",
+              "en": "I live in Vilnius",
+              "lesson": "u20.L1",
+              "unit": "u20",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u20a-2:2",
+              "text": "Aš gyvenu Londone",
+              "en": "I live in London",
+              "lesson": "u20.L2",
+              "unit": "u20",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23a-1:0",
+              "text": "Ar nori eiti kartu?",
+              "en": "Do you want to go together?",
+              "lesson": "u23.L1",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:1",
+              "text": "Septintą valandą",
+              "en": "At seven o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u23b-1:2",
+              "text": "Aštuntą valandą",
+              "en": "At eight o'clock",
+              "lesson": "u23.L2",
+              "unit": "u23",
+              "recordingAvailable": true
+            }
+          ]
+        }
+      ]
+    },
+    "es": {
+      "activityCount": 27,
+      "objectives": [
+        {
+          "id": "a1.personal-introduction",
+          "outcome": "Introduce yourself and exchange simple personal information",
+          "activities": [
+            "a1.introductions",
+            "a1.introductions-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u1c-2:4",
+            "u1c-3:1",
+            "u25a-1:2"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.clarification",
+          "outcome": "Ask for repetition or say that you do not understand",
+          "activities": [
+            "a1.clarification",
+            "a1.clarification-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u21b-1:2",
+            "u21b-1:3",
+            "u21b-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.numbers-prices",
+          "outcome": "Understand and communicate simple quantities and prices",
+          "activities": [
+            "a1.prices",
+            "a1.prices-speaking",
+            "a1.price-check"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u16a-1:4",
+            "u16c-1:2",
+            "u16c-1:3",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u2d-1:0",
+            "u2d-1:1",
+            "u2d-1:3"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.times-dates",
+          "outcome": "Exchange basic times and dates",
+          "activities": [
+            "a1.times",
+            "a1.times-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u33d-1:0",
+            "u33d-1:1",
+            "u5a-1:0",
+            "u5a-1:1",
+            "u5c-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.food-order",
+          "outcome": "Make a simple food or drink request",
+          "activities": [
+            "a1.cafe-understanding",
+            "a1.cafe-speaking",
+            "a1.cafe-writing"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u0b-1:0",
+            "u15a-1:1",
+            "u15b-1:1",
+            "u15d-1:0",
+            "u15d-1:1",
+            "u3c-1:0"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.places-directions",
+          "outcome": "Ask where a familiar place is and follow short supported directions",
+          "activities": [
+            "a1.directions",
+            "a1.directions-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u14a-1:0",
+            "u14a-1:1",
+            "u14a-1:2",
+            "u14c-1:0"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.family-description",
+          "outcome": "Give simple information about family or someone you know",
+          "activities": [
+            "a1.family",
+            "a1.family-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u6c-1:3",
+            "u6d-1:2",
+            "u6d-1:3"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.daily-routine",
+          "outcome": "Communicate basic information about daily activities",
+          "activities": [
+            "a1.routines",
+            "a1.routines-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u26b-1:1",
+            "u26d-1:0",
+            "u26d-1:1",
+            "u26d-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.home-information",
+          "outcome": "Describe basic facts about where you live",
+          "activities": [
+            "a1.home",
+            "a1.home-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u30c-1:4",
+            "u30d-1:3",
+            "u30d-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.simple-purchase",
+          "outcome": "Request an everyday item and exchange basic purchase details",
+          "activities": [
+            "a1.shopping",
+            "a1.shopping-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u16c-1:3",
+            "u28c-1:4",
+            "u28d-1:3",
+            "u28e-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.simple-arrangement",
+          "outcome": "Understand and reply to a simple invitation",
+          "activities": [
+            "a1.messages",
+            "a1.messages-speaking",
+            "a1.meeting-check"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u33c-1:1",
+            "u33c-1:2",
+            "u33d-1:0",
+            "u33d-1:1",
+            "u33d-1:2",
+            "u33d-1:3",
+            "u33e-1:4",
+            "u5a-1:0",
+            "u5a-1:1",
+            "u5c-1:4"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        },
+        {
+          "id": "a1.preferences",
+          "outcome": "Express a simple preference about a familiar activity",
+          "activities": [
+            "a1.preferences",
+            "a1.preferences-speaking"
+          ],
+          "practiceSkills": [
+            "listening",
+            "reading",
+            "speaking",
+            "writing"
+          ],
+          "sourceCardIds": [
+            "u8c-1:0",
+            "u8c-1:1",
+            "u8c-1:2",
+            "u8d-1:0"
+          ],
+          "status": "initial_practice_implemented",
+          "descriptorReview": "pending",
+          "independentAssessment": "not_validated"
+        }
+      ],
+      "activities": [
+        {
+          "id": "a1.cafe-understanding",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Read and hear a café order",
+          "requiredPhrases": [
+            "café",
+            "el té",
+            "el menú",
+            "Un café, por favor"
+          ],
+          "tasks": [
+            {
+              "id": "menu",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "order",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear2",
+              "skill": "listening",
+              "method": "comprehension"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u0b-1:0",
+              "text": "café",
+              "en": "coffee",
+              "lesson": "u0b-1",
+              "unit": "u0",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u3c-1:0",
+              "text": "el té",
+              "en": "the tea",
+              "lesson": "u3c-1",
+              "unit": "u3",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u15a-1:1",
+              "text": "el menú",
+              "en": "the menu",
+              "lesson": "u15a-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u15b-1:1",
+              "text": "Un café, por favor",
+              "en": "A coffee, please",
+              "lesson": "u15b-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.cafe-speaking",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Say your café order",
+          "requiredPhrases": [
+            "Un café, por favor"
+          ],
+          "tasks": [
+            {
+              "id": "say-order",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u15b-1:1",
+              "text": "Un café, por favor",
+              "en": "A coffee, please",
+              "lesson": "u15b-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.cafe-writing",
+          "version": 1,
+          "objectiveId": "a1.food-order",
+          "title": "Write your café requests",
+          "requiredPhrases": [
+            "Un café, por favor",
+            "La cuenta, por favor",
+            "¿Puedo pagar con tarjeta?"
+          ],
+          "tasks": [
+            {
+              "id": "order",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "bill",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "payment",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u15b-1:1",
+              "text": "Un café, por favor",
+              "en": "A coffee, please",
+              "lesson": "u15b-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u15d-1:0",
+              "text": "La cuenta, por favor",
+              "en": "The bill, please",
+              "lesson": "u15d-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u15d-1:1",
+              "text": "¿Puedo pagar con tarjeta?",
+              "en": "Can I pay by card?",
+              "lesson": "u15d-1",
+              "unit": "u15",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.introductions",
+          "version": 1,
+          "objectiveId": "a1.personal-introduction",
+          "title": "Meet someone new",
+          "requiredPhrases": [
+            "Me llamo Tomás",
+            "Soy de Estados Unidos",
+            "Soy de México"
+          ],
+          "tasks": [
+            {
+              "id": "read-name",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-origin",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-origin-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-origin-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-name",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-origin",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u1c-2:4",
+              "text": "Me llamo Tomás",
+              "en": "My name is Tomás",
+              "lesson": "u1c-2",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u1c-3:1",
+              "text": "Soy de Estados Unidos",
+              "en": "I am from the United States",
+              "lesson": "u1c-3",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u25a-1:2",
+              "text": "Soy de México",
+              "en": "I am from Mexico",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.introductions-speaking",
+          "version": 1,
+          "objectiveId": "a1.personal-introduction",
+          "title": "Say where you are from",
+          "requiredPhrases": [
+            "Soy de Estados Unidos",
+            "Soy de México"
+          ],
+          "tasks": [
+            {
+              "id": "say-origin",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u1c-3:1",
+              "text": "Soy de Estados Unidos",
+              "en": "I am from the United States",
+              "lesson": "u1c-3",
+              "unit": "u1",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u25a-1:2",
+              "text": "Soy de México",
+              "en": "I am from Mexico",
+              "lesson": "u25a-1",
+              "unit": "u25",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.routines",
+          "version": 1,
+          "objectiveId": "a1.daily-routine",
+          "title": "A day in your life",
+          "requiredPhrases": [
+            "Me levanto temprano",
+            "Desayuno a las ocho",
+            "Voy al trabajo",
+            "Me acuesto tarde"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u26d-1:0",
+              "text": "Me levanto temprano",
+              "en": "I get up early",
+              "lesson": "u26d-1",
+              "unit": "u26",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u26d-1:1",
+              "text": "Desayuno a las ocho",
+              "en": "I eat breakfast at eight",
+              "lesson": "u26d-1",
+              "unit": "u26",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u26b-1:1",
+              "text": "Voy al trabajo",
+              "en": "I go to work",
+              "lesson": "u26b-1",
+              "unit": "u26",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u26d-1:4",
+              "text": "Me acuesto tarde",
+              "en": "I go to bed late",
+              "lesson": "u26d-1",
+              "unit": "u26",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.routines-speaking",
+          "version": 1,
+          "objectiveId": "a1.daily-routine",
+          "title": "A day in your life · speaking",
+          "requiredPhrases": [
+            "Me levanto temprano"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u26d-1:0",
+              "text": "Me levanto temprano",
+              "en": "I get up early",
+              "lesson": "u26d-1",
+              "unit": "u26",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.directions",
+          "version": 1,
+          "objectiveId": "a1.places-directions",
+          "title": "Find your way",
+          "requiredPhrases": [
+            "a la izquierda",
+            "a la derecha",
+            "derecho",
+            "¿Dónde está el museo?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u14a-1:1",
+              "text": "a la izquierda",
+              "en": "to the left",
+              "lesson": "u14a-1",
+              "unit": "u14",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u14a-1:0",
+              "text": "a la derecha",
+              "en": "to the right",
+              "lesson": "u14a-1",
+              "unit": "u14",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u14a-1:2",
+              "text": "derecho",
+              "en": "straight ahead",
+              "lesson": "u14a-1",
+              "unit": "u14",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u14c-1:0",
+              "text": "¿Dónde está el museo?",
+              "en": "Where is the museum?",
+              "lesson": "u14c-1",
+              "unit": "u14",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.directions-speaking",
+          "version": 1,
+          "objectiveId": "a1.places-directions",
+          "title": "Find your way · speaking",
+          "requiredPhrases": [
+            "¿Dónde está el museo?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u14c-1:0",
+              "text": "¿Dónde está el museo?",
+              "en": "Where is the museum?",
+              "lesson": "u14c-1",
+              "unit": "u14",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.messages",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Reply to an invitation",
+          "requiredPhrases": [
+            "¿Vamos al cine?",
+            "Nos vemos en el parque",
+            "A las seis",
+            "a las ocho",
+            "Sí, puedo",
+            "No puedo, tengo que trabajar",
+            "¿A qué hora?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u33c-1:1",
+              "text": "¿Vamos al cine?",
+              "en": "Shall we go to the cinema?",
+              "lesson": "u33c-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33e-1:4",
+              "text": "Nos vemos en el parque",
+              "en": "See you in the park",
+              "lesson": "u33e-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:1",
+              "text": "A las seis",
+              "en": "At six o'clock",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u5c-1:4",
+              "text": "a las ocho",
+              "en": "at eight o'clock",
+              "lesson": "u5c-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:2",
+              "text": "Sí, puedo",
+              "en": "Yes, I can",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:3",
+              "text": "No puedo, tengo que trabajar",
+              "en": "I cannot; I have to work",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:0",
+              "text": "¿A qué hora?",
+              "en": "At what time?",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.messages-speaking",
+          "version": 1,
+          "objectiveId": "a1.simple-arrangement",
+          "title": "Reply to an invitation · speaking",
+          "requiredPhrases": [
+            "¿A qué hora?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u33d-1:0",
+              "text": "¿A qué hora?",
+              "en": "At what time?",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.prices",
+          "version": 1,
+          "objectiveId": "a1.numbers-prices",
+          "title": "Check a price",
+          "requiredPhrases": [
+            "veinte",
+            "treinta",
+            "¿Cuánto cuesta?",
+            "dos",
+            "tres"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u2d-1:0",
+              "text": "veinte",
+              "en": "twenty",
+              "lesson": "u2d-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2d-1:1",
+              "text": "treinta",
+              "en": "thirty",
+              "lesson": "u2d-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16a-1:4",
+              "text": "¿Cuánto cuesta?",
+              "en": "How much does it cost?",
+              "lesson": "u16a-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:1",
+              "text": "dos",
+              "en": "two",
+              "lesson": "u2a-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:2",
+              "text": "tres",
+              "en": "three",
+              "lesson": "u2a-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.prices-speaking",
+          "version": 1,
+          "objectiveId": "a1.numbers-prices",
+          "title": "Check a price · speaking",
+          "requiredPhrases": [
+            "¿Cuánto cuesta?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16a-1:4",
+              "text": "¿Cuánto cuesta?",
+              "en": "How much does it cost?",
+              "lesson": "u16a-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.times",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Read a simple schedule",
+          "requiredPhrases": [
+            "lunes",
+            "martes",
+            "A las seis",
+            "a las ocho",
+            "¿A qué hora?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u5a-1:0",
+              "text": "lunes",
+              "en": "Monday",
+              "lesson": "u5a-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u5a-1:1",
+              "text": "martes",
+              "en": "Tuesday",
+              "lesson": "u5a-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:1",
+              "text": "A las seis",
+              "en": "At six o'clock",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u5c-1:4",
+              "text": "a las ocho",
+              "en": "at eight o'clock",
+              "lesson": "u5c-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:0",
+              "text": "¿A qué hora?",
+              "en": "At what time?",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.times-speaking",
+          "version": 1,
+          "objectiveId": "a1.times-dates",
+          "title": "Read a simple schedule · speaking",
+          "requiredPhrases": [
+            "¿A qué hora?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u33d-1:0",
+              "text": "¿A qué hora?",
+              "en": "At what time?",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.family",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Talk about family",
+          "requiredPhrases": [
+            "Tengo una hermana",
+            "Tengo dos hijos",
+            "¿Tienes hijos?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u6c-1:3",
+              "text": "Tengo una hermana",
+              "en": "I have a sister",
+              "lesson": "u6c-1",
+              "unit": "u6",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u6d-1:3",
+              "text": "Tengo dos hijos",
+              "en": "I have two children",
+              "lesson": "u6d-1",
+              "unit": "u6",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u6d-1:2",
+              "text": "¿Tienes hijos?",
+              "en": "Do you have children?",
+              "lesson": "u6d-1",
+              "unit": "u6",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.family-speaking",
+          "version": 1,
+          "objectiveId": "a1.family-description",
+          "title": "Talk about family · speaking",
+          "requiredPhrases": [
+            "¿Tienes hijos?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u6d-1:2",
+              "text": "¿Tienes hijos?",
+              "en": "Do you have children?",
+              "lesson": "u6d-1",
+              "unit": "u6",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.home",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Describe a home",
+          "requiredPhrases": [
+            "Vivo en un departamento",
+            "Mi casa es pequeña",
+            "¿Hay un baño?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u30d-1:3",
+              "text": "Vivo en un departamento",
+              "en": "I live in an apartment",
+              "lesson": "u30d-1",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30d-1:4",
+              "text": "Mi casa es pequeña",
+              "en": "My house is small",
+              "lesson": "u30d-1",
+              "unit": "u30",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u30c-1:4",
+              "text": "¿Hay un baño?",
+              "en": "Is there a bathroom?",
+              "lesson": "u30c-1",
+              "unit": "u30",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.home-speaking",
+          "version": 1,
+          "objectiveId": "a1.home-information",
+          "title": "Describe a home · speaking",
+          "requiredPhrases": [
+            "¿Hay un baño?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u30c-1:4",
+              "text": "¿Hay un baño?",
+              "en": "Is there a bathroom?",
+              "lesson": "u30c-1",
+              "unit": "u30",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.preferences",
+          "version": 1,
+          "objectiveId": "a1.preferences",
+          "title": "Find a shared interest",
+          "requiredPhrases": [
+            "Me gusta leer",
+            "Me gusta cocinar",
+            "Me gusta la música",
+            "¿Te gusta viajar?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u8c-1:0",
+              "text": "Me gusta leer",
+              "en": "I like reading",
+              "lesson": "u8c-1",
+              "unit": "u8",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u8c-1:1",
+              "text": "Me gusta cocinar",
+              "en": "I like cooking",
+              "lesson": "u8c-1",
+              "unit": "u8",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u8c-1:2",
+              "text": "Me gusta la música",
+              "en": "I like music",
+              "lesson": "u8c-1",
+              "unit": "u8",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u8d-1:0",
+              "text": "¿Te gusta viajar?",
+              "en": "Do you like travelling?",
+              "lesson": "u8d-1",
+              "unit": "u8",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.preferences-speaking",
+          "version": 1,
+          "objectiveId": "a1.preferences",
+          "title": "Find a shared interest · speaking",
+          "requiredPhrases": [
+            "¿Te gusta viajar?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u8d-1:0",
+              "text": "¿Te gusta viajar?",
+              "en": "Do you like travelling?",
+              "lesson": "u8d-1",
+              "unit": "u8",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.shopping",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "Choose an item",
+          "requiredPhrases": [
+            "Quiero dos manzanas",
+            "Es muy grande",
+            "¿Me la puedo probar?",
+            "Me llevo la chamarra"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u16c-1:3",
+              "text": "Quiero dos manzanas",
+              "en": "I want two apples",
+              "lesson": "u16c-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28c-1:4",
+              "text": "Es muy grande",
+              "en": "It is very big",
+              "lesson": "u28c-1",
+              "unit": "u28",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28d-1:3",
+              "text": "¿Me la puedo probar?",
+              "en": "Can I try it on? (the jacket)",
+              "lesson": "u28d-1",
+              "unit": "u28",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u28e-1:4",
+              "text": "Me llevo la chamarra",
+              "en": "I will take the jacket",
+              "lesson": "u28e-1",
+              "unit": "u28",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.shopping-speaking",
+          "version": 1,
+          "objectiveId": "a1.simple-purchase",
+          "title": "Choose an item · speaking",
+          "requiredPhrases": [
+            "¿Me la puedo probar?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u28d-1:3",
+              "text": "¿Me la puedo probar?",
+              "en": "Can I try it on? (the jacket)",
+              "lesson": "u28d-1",
+              "unit": "u28",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.clarification",
+          "version": 1,
+          "objectiveId": "a1.clarification",
+          "title": "Keep a conversation going",
+          "requiredPhrases": [
+            "¿Puedes repetir?",
+            "No entiendo",
+            "¿Qué significa esta palabra?"
+          ],
+          "tasks": [
+            {
+              "id": "read-1",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-2",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-1",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "listen-2",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "write-1",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "write-2",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u21b-1:4",
+              "text": "¿Puedes repetir?",
+              "en": "Can you repeat that?",
+              "lesson": "u21b-1",
+              "unit": "u21",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u21b-1:3",
+              "text": "No entiendo",
+              "en": "I don't understand",
+              "lesson": "u21b-1",
+              "unit": "u21",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u21b-1:2",
+              "text": "¿Qué significa esta palabra?",
+              "en": "What does this word mean?",
+              "lesson": "u21b-1",
+              "unit": "u21",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.clarification-speaking",
+          "version": 1,
+          "objectiveId": "a1.clarification",
+          "title": "Keep a conversation going · speaking",
+          "requiredPhrases": [
+            "¿Puedes repetir?"
+          ],
+          "tasks": [
+            {
+              "id": "say-it",
+              "skill": "speaking",
+              "method": "self_recording"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u21b-1:4",
+              "text": "¿Puedes repetir?",
+              "en": "Can you repeat that?",
+              "lesson": "u21b-1",
+              "unit": "u21",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.meeting-check",
+          "version": 1,
+          "kind": "checkpoint",
+          "objectiveId": "a1.simple-arrangement",
+          "title": "On your own · meeting details",
+          "requiredPhrases": [
+            "lunes",
+            "martes",
+            "A las seis",
+            "a las ocho",
+            "Sí, puedo",
+            "No puedo, tengo que trabajar",
+            "¿A qué hora?",
+            "¿Quieres comer conmigo?",
+            "Nos vemos en el parque"
+          ],
+          "tasks": [
+            {
+              "id": "read-a",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-b",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-a",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-b",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "reply",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "ask",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u5a-1:0",
+              "text": "lunes",
+              "en": "Monday",
+              "lesson": "u5a-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u5a-1:1",
+              "text": "martes",
+              "en": "Tuesday",
+              "lesson": "u5a-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:1",
+              "text": "A las seis",
+              "en": "At six o'clock",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u5c-1:4",
+              "text": "a las ocho",
+              "en": "at eight o'clock",
+              "lesson": "u5c-1",
+              "unit": "u5",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:2",
+              "text": "Sí, puedo",
+              "en": "Yes, I can",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:3",
+              "text": "No puedo, tengo que trabajar",
+              "en": "I cannot; I have to work",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33d-1:0",
+              "text": "¿A qué hora?",
+              "en": "At what time?",
+              "lesson": "u33d-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33c-1:2",
+              "text": "¿Quieres comer conmigo?",
+              "en": "Do you want to eat with me?",
+              "lesson": "u33c-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u33e-1:4",
+              "text": "Nos vemos en el parque",
+              "en": "See you in the park",
+              "lesson": "u33e-1",
+              "unit": "u33",
+              "recordingAvailable": true
+            }
+          ]
+        },
+        {
+          "id": "a1.price-check",
+          "version": 1,
+          "kind": "checkpoint",
+          "objectiveId": "a1.numbers-prices",
+          "title": "On your own · prices and quantities",
+          "requiredPhrases": [
+            "dos",
+            "tres",
+            "veinte",
+            "Cuesta treinta pesos",
+            "¿Cuánto cuesta?",
+            "Quiero dos manzanas",
+            "pesos"
+          ],
+          "tasks": [
+            {
+              "id": "read-a",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "read-b",
+              "skill": "reading",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-a",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "hear-b",
+              "skill": "listening",
+              "method": "comprehension"
+            },
+            {
+              "id": "reply",
+              "skill": "writing",
+              "method": "constrained_response"
+            },
+            {
+              "id": "ask",
+              "skill": "writing",
+              "method": "constrained_response"
+            }
+          ],
+          "sourceCards": [
+            {
+              "id": "u2a-1:1",
+              "text": "dos",
+              "en": "two",
+              "lesson": "u2a-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2a-1:2",
+              "text": "tres",
+              "en": "three",
+              "lesson": "u2a-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2d-1:0",
+              "text": "veinte",
+              "en": "twenty",
+              "lesson": "u2d-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:2",
+              "text": "Cuesta treinta pesos",
+              "en": "It costs thirty pesos",
+              "lesson": "u16c-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16a-1:4",
+              "text": "¿Cuánto cuesta?",
+              "en": "How much does it cost?",
+              "lesson": "u16a-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u16c-1:3",
+              "text": "Quiero dos manzanas",
+              "en": "I want two apples",
+              "lesson": "u16c-1",
+              "unit": "u16",
+              "recordingAvailable": true
+            },
+            {
+              "id": "u2d-1:3",
+              "text": "pesos",
+              "en": "pesos",
+              "lesson": "u2d-1",
+              "unit": "u2",
+              "recordingAvailable": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

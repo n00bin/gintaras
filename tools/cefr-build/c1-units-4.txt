@@ -1,0 +1,231 @@
+@u170|Giminystė|Family relations|Words for relatives by marriage and family life: <b>šešuras</b> (father-in-law), <b>anyta</b> (mother-in-law) and <b>žentas</b> (son-in-law).|Draw your family tree in words: name each relative and how they are connected to you.
+#u170a|Family relations, part 1
+šešuras|father-in-law (husband’s father)|SHEH-shu-rahs
+anyta|mother-in-law (husband’s mother)|AH-nee-tah
+žentas|son-in-law|ZHEN-tahs
+marti|daughter-in-law|mar-TI
+svainis|brother-in-law (wife’s brother)|SVAI-nis
+svainė|sister-in-law (wife’s sister)|svai-NAY
+dieveris|brother-in-law (husband’s brother)|DYEH-veh-ris
+mosė|sister-in-law (husband’s sister)|moh-SAY
+proanūkis|great-grandchild|proh-AH-noo-kis
+prosenelis|great-grandfather|proh-seh-NEH-lis
+#u170b|Family relations, part 2
+prosenelė|great-grandmother|proh-seh-NEH-lay
+krikštatėvis|godfather|krik-SHTAH-tay-vis
+krikštamotė|godmother|krik-SHTAH-moh-tay
+krikštasūnis|godson|krik-SHTAH-soo-nis
+krikštaduktė|goddaughter|krik-SHTAH-duk-tay
+įmotė|adoptive mother|EE-moh-tay
+įsūnis|adopted son|EE-soo-nis
+įdukra|adopted daughter|ee-duk-RAH
+podukra|stepdaughter|poh-duk-RAH
+posūnis|stepson|POH-soo-nis
+#u170c|Family relations, part 3
+našlaitis|orphan|nahsh-LAI-tis
+sužadėtinė|fiancée|su-zhah-day-TI-nay
+jaunavedžiai|newlyweds|yow-nah-VED-zhyai
+pirmagimis|firstborn|pir-mah-GI-mis
+pagrandukas|youngest child|pah-grahn-DU-kahs
+giminaitis|relative (male)|gi-mi-NAI-tis
+tolimas giminaitis|distant relative|TOH-li-mahs gi-mi-NAI-tis
+giminės medis|family tree|GI-mi-nays MEH-dis
+@u171|Virtuvės veiksmažodžiai|Cooking verbs|Precise verbs for cooking: <b>apkepinti</b> (to sear), <b>rauginti</b> (to pickle, ferment) and <b>sūdyti</b> (to salt, cure).|Explain step by step how to cook a dish you know well, using at least eight cooking verbs.
+#u171a|Cooking verbs, part 1
+apkepinti|to sear|ahp-keh-PIN-ti
+rauginti|to pickle, ferment|ROW-gin-ti
+sūdyti|to salt, cure|SOO-dee-ti
+kočioti|to roll out|koh-CHYOH-ti
+skrudinti|to toast, roast|skru-DIN-ti
+blanširuoti|to blanch|blahn-shi-RWOH-ti
+virti ant lėtos ugnies|to simmer|VIR-ti ahnt lay-TOHS ug-NYES
+nugriebti putas|to skim off the foam|nu-GRYEHB-ti PU-tahs
+pagardinti|to season|pah-gar-DIN-ti
+įdaryti|to stuff|ee-dah-REE-ti
+#u171b|Cooking verbs, part 2
+apibarstyti|to sprinkle|ah-pi-BARS-tee-ti
+apšlakstyti|to drizzle, splash|ahp-SHLAHKS-tee-ti
+nusunkti|to drain|nu-SUNK-ti
+perkošti|to strain|per-KOHSH-ti
+išsijoti|to sift|ish-si-YOH-ti
+atšildyti|to thaw out|aht-SHIL-dee-ti
+apskrudinti|to toast lightly|ahps-kru-DIN-ti
+sutirštėti|to thicken|su-tirsh-TAY-ti
+prisvilti|to burn (food)|pri-SVIL-ti
+perkepti|to overcook|per-KEP-ti
+liesas|lean|LYEH-sahs
+prėskas|bland|PRAYS-kahs
+kartokas|slightly bitter|kar-TOH-kahs
+@u172|Amatai ir įrankiai|Crafts and tools|Words for crafts, repairs and tools: <b>oblius</b> (plane), <b>dildė</b> (file) and <b>poveržlė</b> (washer).|Describe a repair you did (or should do) at home: tools, materials and steps.
+#u172a|Crafts and tools, part 1
+oblius|plane (tool)|OB-lyus
+dildė|file (tool)|dil-DAY
+poveržlė|washer|poh-verzh-LAY
+gulsčiukas|spirit level|gulsch-CHYU-kahs
+švitrinis popierius|sandpaper|shvit-RI-nis poh-PYEH-ryus
+teptukas|brush (paint)|tep-TU-kahs
+volelis|roller (paint)|voh-LEH-lis
+lakas|varnish|LAH-kahs
+lentpjūvė|sawmill|lent-PYOO-vay
+dailidė|carpenter|dai-li-DAY
+#u172b|Crafts and tools, part 2
+stalius|joiner|STAH-lyus
+kalvis|blacksmith|KAHL-vis
+puodžius|potter|PWOHD-zhyus
+audėja|weaver|ow-DAY-yah
+staklės|loom, machine tool|STAHK-lays
+pynimas|weaving, plaiting|pee-NI-mahs
+drožyba|woodcarving|droh-ZHEE-bah
+siuvinėjimas|embroidery|syu-vi-NAY-yi-mahs
+virbalai|knitting needles|vir-BAH-lai
+@u173|Kaimo gyvenimas|Rural life|Words for farming and country life: <b>kluonas</b> (barn), <b>tvartas</b> (cowshed, stable) and <b>daržinė</b> (shed, barn).|Describe life on a farm: the work in each season and the animals and machines involved.
+#u173a|Rural life, part 1
+kluonas|barn (for hay)|KLWOH-nahs
+tvartas|cowshed, stable|TVAR-tahs
+daržinė|shed, barn|dar-ZHI-nay
+svirnas|granary|SVIR-nahs
+šulinys|well (for water)|shu-li-NEES
+dirva|arable land|dir-VAH
+akėti|to harrow|ah-KAY-ti
+sėti|to sow|SAY-ti
+grėbti|to rake|GRAYB-ti
+kulti|to thresh|KUL-ti
+#u173b|Rural life, part 2
+derlius|harvest|DER-lyus
+javai|cereals, grain crops|yah-VAI
+rugiai|rye|ru-GYAI
+kviečiai|wheat|kvye-CHYAI
+miežiai|barley|mye-ZHYAI
+linai|flax|li-NAI
+šienas|hay|SHYEH-nahs
+šiaudai|straw|shyau-DAI
+mėšlas|manure|MAYSH-lahs
+traktorius|tractor|TRAHK-toh-ryus
+#u173c|Rural life, part 3
+kombainas|combine harvester|kom-BAI-nahs
+plūgas|plough|PLOO-gahs
+melžti|to milk|MELZH-ti
+ganyti|to graze, herd|gah-NEE-ti
+kerdžius|herdsman|KERD-zhyus
+bitininkas|beekeeper|bi-TI-nin-kahs
+avilys|beehive|ah-vi-LEES
+@u174|Akademinis pasaulis|Academic life|Words for universities and research careers: <b>doktorantas</b> (doctoral student), <b>magistrantas</b> (master’s student) and <b>disertacija</b> (dissertation).|Describe the path from student to professor in your field, with each stage.
+#u174a|Academic life, part 1
+doktorantas|doctoral student|dok-toh-RAHN-tahs
+magistrantas|master’s student|mah-gis-TRAHN-tahs
+disertacija|dissertation|di-ser-TAH-tsi-yah
+gynimas|defence (of a thesis)|gee-NI-mahs
+vadovas darbui|supervisor|vah-DOH-vahs DAR-bui
+oponentas|examiner, opponent|oh-poh-NEN-tahs
+mokslų daktaras|PhD (holder)|mohks-LOO DAHK-tah-rahs
+habilitacija|habilitation|hah-bi-li-TAH-tsi-yah
+dotacija|subsidy, grant|doh-TAH-tsi-yah
+recenzuojamas žurnalas|peer-reviewed journal|reh-tsen-ZWOH-yah-mahs zhur-NAH-lahs
+#u174b|Academic life, part 2
+literatūros apžvalga|literature review|li-teh-rah-TOO-rohs AHPZH-vahl-gah
+anotacija|abstract (of a paper)|ah-noh-TAH-tsi-yah
+santrauka|summary|sahn-TROW-kah
+priedai|appendices|PRYEH-dai
+paskaitų ciklas|lecture series|pahs-kai-TOO TSIK-lahs
+kolokviumas|colloquium, oral test|koh-LOHK-vyu-mahs
+kursiokas|classmate (university)|kur-SYOH-kahs
+@u175|Laukiniai gyvūnai|Wildlife|Words for wild animals and birds: <b>kiaunė</b> (marten), <b>ūdra</b> (otter) and <b>šikšnosparnis</b> (bat).|Describe the wildlife you might see on a walk in a Lithuanian forest or by a lake.
+#u175a|Wildlife, part 1
+kiaunė|marten|KYAU-nay
+ūdra|otter|ood-RAH
+šikšnosparnis|bat|shiksh-NOHS-par-nis
+angis|adder|ahn-GIS
+žaltys|grass snake|zhahl-TEES
+driežas|lizard|DRYEH-zhahs
+rupūžė|toad|ru-POO-zhay
+gervė|crane (bird)|ger-VAY
+garnys|heron|gar-NEES
+vanagas|hawk|VAH-nah-gahs
+šarka|magpie|shar-KAH
+kėkštas|jay|KAYKSH-tahs
+karšis|bream|kar-SHIS
+unguris|eel|UN-gu-ris
+@u176|Augalai|Plants and trees|Words for trees, herbs and plants: <b>uosis</b> (ash), <b>alksnis</b> (alder) and <b>drebulė</b> (aspen).|Describe a garden or forest you love, naming at least eight plants and trees.
+#u176a|Plants and trees, part 1
+uosis|ash (tree)|WOH-sis
+alksnis|alder|AHLKS-nis
+drebulė|aspen|dreh-bu-LAY
+gluosnis|willow|GLWOHS-nis
+kadagys|juniper|kah-dah-GEES
+šermukšnis|rowan|sher-MUKSH-nis
+kaštonas|chestnut tree|kahsh-TOH-nahs
+lazdynas|hazel|lahz-DEE-nahs
+maumedis|larch|MOW-meh-dis
+kankorėžis|pine cone|kahn-KOH-ray-zhis
+#u176b|Plants and trees, part 2
+gilė|acorn|gi-LAY
+riešutas|nut|RYEH-shu-tahs
+kerpė|lichen|ker-PAY
+papartis|fern|pah-PAR-tis
+mėta|mint|may-TAH
+čiobrelis|thyme|chyob-REH-lis
+kmynai|caraway|KMEE-nai
+pienė|dandelion|pye-NAY
+dobilas|clover|DOH-bi-lahs
+aguona|poppy|ah-gwoh-NAH
+bijūnas|peony|bi-YOO-nahs
+jurginas|dahlia|jur-GI-nahs
+pumpuras|bud|PUM-pu-rahs
+žiedadulkės|pollen|zhye-dah-DUL-kays
+@u177|Saugumas ir gynyba|Security and defence|Words for security and defence: <b>šauktinis</b> (conscript), <b>šaulys</b> (rifleman, volunteer) and <b>karininkas</b> (officer).|Explain what your country does to keep its citizens safe, and what civilians can do.
+#u177a|Security and defence, part 1
+šauktinis|conscript|showk-TI-nis
+šaulys|rifleman, volunteer|show-LEES
+karininkas|officer|kah-ri-NIN-kahs
+puskarininkis|sergeant, NCO|pus-kah-ri-NIN-kis
+dalinys|unit (military)|dah-li-NEES
+batalionas|battalion|bah-tah-LYOH-nahs
+brigada|brigade|bri-GAH-dah
+pratybos|military exercises|prah-TEE-bohs
+atgrasymas|deterrence|aht-GRAH-see-mahs
+mobilizacija|mobilisation|moh-bi-li-ZAH-tsi-yah
+#u177b|Security and defence, part 2
+priedanga|shelter, cover|PRYEH-dahn-gah
+slėptuvė|bunker, shelter|slayp-TU-vay
+hibridinė ataka|hybrid attack|hi-BRI-di-nay ah-TAH-kah
+dezinformacija|disinformation|deh-zin-for-MAH-tsi-yah
+šnipas|spy|SHNI-pahs
+žvalgyba|intelligence (service)|zhvahl-GEE-bah
+pavojaus signalas|alarm signal|pah-VOH-yows sig-NAH-lahs
+neutralitetas|neutrality|nyau-trah-li-TEH-tahs
+nusiginklavimas|disarmament|nu-si-gink-LAH-vi-mahs
+ginkluotė|armaments|gink-LWOH-tay
+dronas|drone|DROH-nahs
+tankas|tank|TAHN-kahs
+veteranas|veteran|veh-teh-RAH-nahs
+pilietinis pasipriešinimas|civil resistance|pi-lye-TI-nis pah-si-PRYEH-shi-ni-mahs
+@u178|Jausmų veiksmažodžiai|Verbs of feeling|Verbs for feeling and reacting: <b>piktintis</b> (to be indignant), <b>gėrėtis</b> (to delight in) and <b>didžiuotis</b> (to be proud).|Describe how you react to injustice: what makes you indignant, what you admire, what you regret.
+#u178a|Verbs of feeling, part 1
+piktintis|to be indignant|PIK-tin-tis
+gėrėtis|to delight in|gay-RAY-tis
+didžiuotis|to be proud|did-ZHYWOH-tis
+graužtis|to torment oneself|GROWZH-tis
+baimintis|to fear|bai-MIN-tis
+nuogąstauti|to be apprehensive|nwoh-gaas-TOW-ti
+liūdėti|to grieve, be sad|lyoo-DAY-ti
+ilgėtis|to long for|il-GAY-tis
+džiūgauti|to rejoice|dzhyoo-GOW-ti
+mėgautis|to enjoy, savour|may-GOW-tis
+#u178b|Verbs of feeling, part 2
+įsiaudrinti|to get worked up|ee-si-owd-RIN-ti
+sielvartauti|to grieve deeply|syel-var-TOW-ti
+nusiminti|to lose heart|nu-si-MIN-ti
+sunerimti|to become alarmed|su-neh-RIM-ti
+susigraudinti|to be moved to tears|su-si-grow-DIN-ti
+pasibjaurėti|to be disgusted|pah-sib-yau-RAY-ti
+nustebti|to be surprised|nus-TEB-ti
+sutrikti|to be thrown, confused|su-TRIK-ti
+susidomėti|to become interested|su-si-doh-MAY-ti
+nusibosti|to become tiresome|nu-si-BOHS-ti
+#u178c|Verbs of feeling, part 3
+įgristi|to bore, pall|ee-GRIS-ti
+patikti|to be liked|pah-TIK-ti
+įsimylėti|to fall in love|ee-si-mee-LAY-ti
+atšalti|to cool (feelings)|aht-SHAHL-ti
+prisirišti|to become attached|pri-si-RISH-ti
+nepasitikėti|to distrust|neh-pah-si-ti-KAY-ti

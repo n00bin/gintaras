@@ -1,0 +1,962 @@
+{
+  "lt.A1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "ecf2ea8fee0a1027a26654a2c100a84d3b5e02f4dcbe4abc7946eba73be44e87",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "ecf2ea8fee0a1027a26654a2c100a84d3b5e02f4dcbe4abc7946eba73be44e87",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A1-shopping": {
+    "language": {
+      "status": "pending",
+      "contentHash": "cdc0ff6814a28f2f77873379546bceb0e25f3ffdfc7d4d3a432de7a12dcecb03",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "cdc0ff6814a28f2f77873379546bceb0e25f3ffdfc7d4d3a432de7a12dcecb03",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A1-home": {
+    "language": {
+      "status": "pending",
+      "contentHash": "3d53e27431637761f9b6e2d5511697ce584feb0e7c2e4a1048994848ff3dd20e",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "3d53e27431637761f9b6e2d5511697ce584feb0e7c2e4a1048994848ff3dd20e",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A1-travel": {
+    "language": {
+      "status": "pending",
+      "contentHash": "6e4e142a66b110c447881ec954d1102e4f17d8df43cfda938eb9f57e99daae92",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "6e4e142a66b110c447881ec954d1102e4f17d8df43cfda938eb9f57e99daae92",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "788afcfc40d6ff0fde9e0e35f41c5a0291015d01c7c64d9960cfa8f428056f12",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "788afcfc40d6ff0fde9e0e35f41c5a0291015d01c7c64d9960cfa8f428056f12",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "fb28a5e41ca15eaebb2bbae5db5ee192b904bf1213c98b0c47836000c63e5ccb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "fb28a5e41ca15eaebb2bbae5db5ee192b904bf1213c98b0c47836000c63e5ccb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A2-services": {
+    "language": {
+      "status": "pending",
+      "contentHash": "708f87d6fee7091e2742f9853d6c126a092f85e9fee83ffb7b7a31eadd6d5f07",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "708f87d6fee7091e2742f9853d6c126a092f85e9fee83ffb7b7a31eadd6d5f07",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A2-work": {
+    "language": {
+      "status": "pending",
+      "contentHash": "d8d45c2381ed44f80f6ff8f69b723caec74829d80c71c159d7399a4f51e9735b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "d8d45c2381ed44f80f6ff8f69b723caec74829d80c71c159d7399a4f51e9735b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A2-meals": {
+    "language": {
+      "status": "pending",
+      "contentHash": "2b43e4900a3b51b1c9619f1eb418b53d642d28b6bfe53cbc2c653c4d43541059",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "2b43e4900a3b51b1c9619f1eb418b53d642d28b6bfe53cbc2c653c4d43541059",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.A2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "79828442ae53fe1401dd2f4b8100b3023568ec5eca41a7a16f026aba269be710",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "79828442ae53fe1401dd2f4b8100b3023568ec5eca41a7a16f026aba269be710",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "0e3c188efe931b294a5bc4face5d6d9c026538d6cb4afb477da9131a7e7de9fa",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "0e3c188efe931b294a5bc4face5d6d9c026538d6cb4afb477da9131a7e7de9fa",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B1-appointments": {
+    "language": {
+      "status": "pending",
+      "contentHash": "53250e2b2b5735449f6b5c0a709dd5d1513eb9d587f0f0d543975988b00b82ae",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "53250e2b2b5735449f6b5c0a709dd5d1513eb9d587f0f0d543975988b00b82ae",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B1-community": {
+    "language": {
+      "status": "pending",
+      "contentHash": "0c73bf81edd3fc10953ed3b041cb4a1e1733be92f7aaea5f6a275baabc8b8d40",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "0c73bf81edd3fc10953ed3b041cb4a1e1733be92f7aaea5f6a275baabc8b8d40",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B1-housing": {
+    "language": {
+      "status": "pending",
+      "contentHash": "561cebaa02ee34b8555c5ac1f8824a80131d97ca722edd812fc50d2892a4d4e4",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "561cebaa02ee34b8555c5ac1f8824a80131d97ca722edd812fc50d2892a4d4e4",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "68c0839f46487541b1b393e4d4166c03a1e34ee4befc76d92b0acfa2ba5c7ef5",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "68c0839f46487541b1b393e4d4166c03a1e34ee4befc76d92b0acfa2ba5c7ef5",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "bf625f99c23e9943fca058df3c923b5237a77becd883b8f5302595a0a672fe6b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "bf625f99c23e9943fca058df3c923b5237a77becd883b8f5302595a0a672fe6b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B2-workplace": {
+    "language": {
+      "status": "pending",
+      "contentHash": "c2c6e8638f3a2a0628dae7fe20331f6d276d084db155465ed77b29d417b35bb8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "c2c6e8638f3a2a0628dae7fe20331f6d276d084db155465ed77b29d417b35bb8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B2-media": {
+    "language": {
+      "status": "pending",
+      "contentHash": "2cdb3540c839dc630335b45c7869b94a34bb8c76d4a646c26f20ff6e10cc6edb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "2cdb3540c839dc630335b45c7869b94a34bb8c76d4a646c26f20ff6e10cc6edb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B2-mobility": {
+    "language": {
+      "status": "pending",
+      "contentHash": "3bad1f205fdf915dab472495c08b67b41a51059793fcd73aea76db43f935de45",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "3bad1f205fdf915dab472495c08b67b41a51059793fcd73aea76db43f935de45",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.B2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "e68a167d8bca081855a686df3eb43c3b0f557bfc64429fb84565d58f22f485c1",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "e68a167d8bca081855a686df3eb43c3b0f557bfc64429fb84565d58f22f485c1",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "f72b8a67d40a1c755433ca4b8942ccff936b25de849f023b4a4172b8c0a729ef",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "f72b8a67d40a1c755433ca4b8942ccff936b25de849f023b4a4172b8c0a729ef",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C1-academic": {
+    "language": {
+      "status": "pending",
+      "contentHash": "40e394aca29f9250165ff9e863888aed0d255649ebfb060b2e0df4a2f82b878e",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "40e394aca29f9250165ff9e863888aed0d255649ebfb060b2e0df4a2f82b878e",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C1-culture": {
+    "language": {
+      "status": "pending",
+      "contentHash": "aad4d8fc81eed922c1a3552f13079ddd3911933d275b4f808b5c5e06e15198e6",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "aad4d8fc81eed922c1a3552f13079ddd3911933d275b4f808b5c5e06e15198e6",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C1-professional": {
+    "language": {
+      "status": "pending",
+      "contentHash": "2c62ad5e88e61bd1c44104692aa13bdf63885cad77117885ed471d90f9019a4b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "2c62ad5e88e61bd1c44104692aa13bdf63885cad77117885ed471d90f9019a4b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "99eb444d5b75b50ac58c14e07a0c7aacf7a922aad7c57c360e8cd5c69460572b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "99eb444d5b75b50ac58c14e07a0c7aacf7a922aad7c57c360e8cd5c69460572b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "53c1787097c3f469f731a5cb26c4beacb0f04ff29b0ab75de7b2bd680fc6679c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "53c1787097c3f469f731a5cb26c4beacb0f04ff29b0ab75de7b2bd680fc6679c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C2-science": {
+    "language": {
+      "status": "pending",
+      "contentHash": "3fedf4ffe38347aa3f76c1b0e1997cd9a9eee198213031283adf882accb776c0",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "3fedf4ffe38347aa3f76c1b0e1997cd9a9eee198213031283adf882accb776c0",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C2-literature": {
+    "language": {
+      "status": "pending",
+      "contentHash": "72e24f0c5f3a9f1f09e937ede19b0d40b1118a57047ce352d310d79e87d63f5d",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "72e24f0c5f3a9f1f09e937ede19b0d40b1118a57047ce352d310d79e87d63f5d",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C2-register": {
+    "language": {
+      "status": "pending",
+      "contentHash": "efea8238c664d7241e70423105153d9c7f4b82770c8d8a632e9beef6d4f747eb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "efea8238c664d7241e70423105153d9c7f4b82770c8d8a632e9beef6d4f747eb",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "lt.C2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "0166e274f3eb6fd1f3aa118a96701f2638c4284553da9918d16d8933d865698c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "0166e274f3eb6fd1f3aa118a96701f2638c4284553da9918d16d8933d865698c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "e750342918ac29e5722c2aab5de121424b7955741304fe417d28bae6faf2f580",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "e750342918ac29e5722c2aab5de121424b7955741304fe417d28bae6faf2f580",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A1-shopping": {
+    "language": {
+      "status": "pending",
+      "contentHash": "6d4d60a55a3ec530af014018e47b948adca8ed2f364f23bd333d5e17868f9580",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "6d4d60a55a3ec530af014018e47b948adca8ed2f364f23bd333d5e17868f9580",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A1-home": {
+    "language": {
+      "status": "pending",
+      "contentHash": "c98d3d770a7f6c4df558e840515165914b600d75139ddc0abf93744659776d67",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "c98d3d770a7f6c4df558e840515165914b600d75139ddc0abf93744659776d67",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A1-travel": {
+    "language": {
+      "status": "pending",
+      "contentHash": "fd344c6f97c18bd1a83d09c27ebd3ef19754e55e6f26b79de6d6df3344a7e6b4",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "fd344c6f97c18bd1a83d09c27ebd3ef19754e55e6f26b79de6d6df3344a7e6b4",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "9df636c3e19b1f0c0dec54c7f43a89ee251477506fd10f7ea91eff7a6f5ae3e9",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "9df636c3e19b1f0c0dec54c7f43a89ee251477506fd10f7ea91eff7a6f5ae3e9",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "7c89785d633f5689579e179703d27d20d10b12fa87b9c9bae93db8ea74acebc1",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "7c89785d633f5689579e179703d27d20d10b12fa87b9c9bae93db8ea74acebc1",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A2-services": {
+    "language": {
+      "status": "pending",
+      "contentHash": "c4036e80fd178da855b913c59f9f1bd4d4ba44c37013034df11f40b2307e93b8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "c4036e80fd178da855b913c59f9f1bd4d4ba44c37013034df11f40b2307e93b8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A2-work": {
+    "language": {
+      "status": "pending",
+      "contentHash": "c7410dc3b2e5a2208705508522f4717d60cbf15801f37a4ebf909d705892eeef",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "c7410dc3b2e5a2208705508522f4717d60cbf15801f37a4ebf909d705892eeef",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A2-meals": {
+    "language": {
+      "status": "pending",
+      "contentHash": "d6f161b0e2d402d3959a804753830fa89aab4183616b71b9dc5ca0f269076869",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "d6f161b0e2d402d3959a804753830fa89aab4183616b71b9dc5ca0f269076869",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.A2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "1e12ae5e977c9ebd1e1f90a2b135473d9692453c1dcf5c08e45dbec5ddbbc0b3",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "1e12ae5e977c9ebd1e1f90a2b135473d9692453c1dcf5c08e45dbec5ddbbc0b3",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "53c9af642d94a43661f1949b483bd8e31040fe7ea26413d9d07ba28665071299",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "53c9af642d94a43661f1949b483bd8e31040fe7ea26413d9d07ba28665071299",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B1-appointments": {
+    "language": {
+      "status": "pending",
+      "contentHash": "9877e0c9b18668caaf261f0842fe9ff7a6eb686bd8738a6a4096f9275d298354",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "9877e0c9b18668caaf261f0842fe9ff7a6eb686bd8738a6a4096f9275d298354",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B1-community": {
+    "language": {
+      "status": "pending",
+      "contentHash": "84a82ed0d592208126be5c1e4842773457c29778efea376c65ffb5cc66ea5c46",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "84a82ed0d592208126be5c1e4842773457c29778efea376c65ffb5cc66ea5c46",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B1-housing": {
+    "language": {
+      "status": "pending",
+      "contentHash": "0a1accec055baddd105c03972766bfeaff76f7aef853b2e7f4a40bd03c885d2c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "0a1accec055baddd105c03972766bfeaff76f7aef853b2e7f4a40bd03c885d2c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "8ff2a16d567a7efbdb5c35e3d7e60b27b13bb756dc94381cb9d30599a5b0e73d",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "8ff2a16d567a7efbdb5c35e3d7e60b27b13bb756dc94381cb9d30599a5b0e73d",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "ba4c49bd09957dfa492d4f1578dce300e47e4f7d6c28dfcf79a9ae2a164d82fa",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "ba4c49bd09957dfa492d4f1578dce300e47e4f7d6c28dfcf79a9ae2a164d82fa",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B2-workplace": {
+    "language": {
+      "status": "pending",
+      "contentHash": "6ddef44f361f967f9028a4e05beb0845cf02168c047420fc6464ca2d5a2ad2e8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "6ddef44f361f967f9028a4e05beb0845cf02168c047420fc6464ca2d5a2ad2e8",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B2-media": {
+    "language": {
+      "status": "pending",
+      "contentHash": "8a88eb4d1bfd85e94e0de6869dfdceaaf3aaaad09e85cdf4d6454f318a0a6f40",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "8a88eb4d1bfd85e94e0de6869dfdceaaf3aaaad09e85cdf4d6454f318a0a6f40",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B2-mobility": {
+    "language": {
+      "status": "pending",
+      "contentHash": "ab2de1363480582642c1af3fbe396e9e7c9855d03881e09f7ef32170aa15a80b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "ab2de1363480582642c1af3fbe396e9e7c9855d03881e09f7ef32170aa15a80b",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.B2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "c72be76f02d68dc0a59c925995827aa6864f11cbc7469d94b46b2f76a3945b74",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "c72be76f02d68dc0a59c925995827aa6864f11cbc7469d94b46b2f76a3945b74",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C1": {
+    "language": {
+      "status": "pending",
+      "contentHash": "baa216fe7dc8917b034b7006cc21348431fbadcee4c519c10762b10e7bc99458",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "baa216fe7dc8917b034b7006cc21348431fbadcee4c519c10762b10e7bc99458",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C1-academic": {
+    "language": {
+      "status": "pending",
+      "contentHash": "f263d7f8fdddcbe5dd9e101a83e69cf43f90615eafaa6d8e68986ba08d0e924c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "f263d7f8fdddcbe5dd9e101a83e69cf43f90615eafaa6d8e68986ba08d0e924c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C1-culture": {
+    "language": {
+      "status": "pending",
+      "contentHash": "a4e167697e71e9dc0d623626588be2c65b2b8fa8b0d226fcb302533a96e296e7",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "a4e167697e71e9dc0d623626588be2c65b2b8fa8b0d226fcb302533a96e296e7",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C1-professional": {
+    "language": {
+      "status": "pending",
+      "contentHash": "a568809ec7477b377302307ccd5e2295e4e458c3c198d93b885256863f8e5151",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "a568809ec7477b377302307ccd5e2295e4e458c3c198d93b885256863f8e5151",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C1-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "dbeaa5995ac7992e0734e586e3ae013cb5d4d8d901e456230625fc37a1f8d520",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "dbeaa5995ac7992e0734e586e3ae013cb5d4d8d901e456230625fc37a1f8d520",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C2": {
+    "language": {
+      "status": "pending",
+      "contentHash": "f624203a1de3cbfdce4315877ae2261ae8073ad2d2e5b1251ae7f8b3a3888482",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "f624203a1de3cbfdce4315877ae2261ae8073ad2d2e5b1251ae7f8b3a3888482",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C2-science": {
+    "language": {
+      "status": "pending",
+      "contentHash": "ace56065e599b9428c3e8c5a046fbd523e9893b15e817dde81cc30aa8bf2201f",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "ace56065e599b9428c3e8c5a046fbd523e9893b15e817dde81cc30aa8bf2201f",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C2-literature": {
+    "language": {
+      "status": "pending",
+      "contentHash": "99c9ecf9853770d260f60d2980c449cbb73665cfbbcaca2726b3fc6ea1b40986",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "99c9ecf9853770d260f60d2980c449cbb73665cfbbcaca2726b3fc6ea1b40986",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C2-register": {
+    "language": {
+      "status": "pending",
+      "contentHash": "183d3a95ff5e95876b09f1e28d96b25a031ea00924576a9369de63a8b98c1159",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "183d3a95ff5e95876b09f1e28d96b25a031ea00924576a9369de63a8b98c1159",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  },
+  "es.C2-capstone": {
+    "language": {
+      "status": "pending",
+      "contentHash": "e669f2a7a04b336614d8a21a6789de3168880af4b69beff220dad8de4c02ea9c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    },
+    "descriptors": {
+      "status": "pending",
+      "contentHash": "e669f2a7a04b336614d8a21a6789de3168880af4b69beff220dad8de4c02ea9c",
+      "reviewer": "",
+      "date": "",
+      "notes": ""
+    }
+  }
+}

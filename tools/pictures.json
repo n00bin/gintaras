@@ -1,0 +1,68 @@
+{
+  "model": {
+    "name": "Recraft V3 (on fal.ai)",
+    "endpoint": "fal-ai/recraft/v3/text-to-image",
+    "price_per_image": 0.04,
+    "price_checked": "2026-11-04",
+    "price_page": "https://fal.ai/models/fal-ai/recraft/v3/text-to-image",
+    "terms": [
+      "https://www.recraft.ai/legal/developer-terms",
+      "https://fal.ai/terms",
+      "https://fal.ai/legal/api-services"
+    ],
+    "seed_param": null,
+    "params": { "image_size": "square_hd" }
+  },
+  "seed": 20261104,
+  "out_size": 256,
+  "no_text": "No text, no letters, no words, no numbers, no signs anywhere in the picture.",
+  "styles": {
+    "flat": {
+      "name": "A · Flat warm",
+      "prompt": "Flat warm illustration for a language-learning app: simple clean shapes, flat colour fills, thick soft dark-brown outlines with rounded ends, warm amber and pine-green palette, one subject centred with a generous margin, plain white background, no gradients, no shadows.",
+      "params": { "style": "digital_illustration", "colors": ["#E89A1E", "#2F6B4A", "#FBEBCB", "#D9644A", "#7FB8D6", "#3B2A1A"] }
+    },
+    "sticker": {
+      "name": "B · Sticker",
+      "prompt": "Rounded sticker illustration for a language-learning app: bright cheerful colours, chubby rounded shapes, neat dark outline, a thick white die-cut sticker edge around the whole subject, a small soft shadow under it, one subject centred with a generous margin, plain white background.",
+      "params": { "style": "digital_illustration", "colors": ["#FFB938", "#45B072", "#FF7A6B", "#8FD0F5", "#FFD84D", "#2B2B2B"] }
+    },
+    "story": {
+      "name": "C · Storybook",
+      "prompt": "Soft storybook illustration for a language-learning app: muted watercolour washes, gentle wobbly hand-drawn pencil edges, light paper grain, quiet warm palette, one subject centred with a generous margin, plain pale cream paper background.",
+      "params": { "style": "digital_illustration/child_book", "colors": ["#D9A35B", "#6E9474", "#C9826E", "#9CBFD0", "#F5ECDB", "#5A4632"] }
+    }
+  },
+  "cast": {
+    "Rūta": "a young woman with straight long dark hair and a short fringe, wearing a pine-green blouse with a small black leaf print",
+    "Jonas": "a young man with short wavy dark hair and a neat dark moustache, wearing a sky-blue overshirt over a black T-shirt, with backpack straps",
+    "Danutė": "an older woman with a short white bob and small round dark glasses, wearing a coral-red hoodie",
+    "Darius": "a man with curly black hair and a short black goatee, wearing a dark open overshirt over a black T-shirt",
+    "Eglė": "a young woman with dark hair in a high ponytail with a short fringe and a white scrunchie, wearing a pale scarf",
+    "learner": "a friendly young adult with short light-brown hair, wearing a plain amber-yellow jumper"
+  },
+  "jobs": {
+    "pilot": [
+      { "id": "01", "unit": "u3", "lt": "kava", "en": "coffee", "subject": "a steaming cup of coffee on a saucer" },
+      { "id": "02", "unit": "u3", "lt": "duona", "en": "bread", "subject": "a loaf of dark rye bread with one slice cut" },
+      { "id": "03", "unit": "u3", "lt": "sriuba", "en": "soup", "subject": "a bowl of hot soup with a spoon and a little steam rising" },
+      { "id": "04", "unit": "u3", "lt": "vanduo", "en": "water", "subject": "a clear glass of water with one water drop beside it" },
+      { "id": "05", "unit": "u3", "lt": "sūris", "en": "cheese", "subject": "a wedge of yellow cheese with holes" },
+      { "id": "06", "unit": "u3", "lt": "pienas", "en": "milk", "subject": "a glass bottle of milk with a blue cap and no label" },
+      { "id": "07", "unit": "u31", "lt": "gydytoja", "en": "doctor (a woman)", "subject": "head and shoulders of {Eglė}, as a doctor in a white coat with a stethoscope" },
+      { "id": "08", "unit": "u0", "lt": "kavinė", "en": "café", "subject": "a small café shopfront with a striped awning, a window showing a coffee cup, and a door" },
+      { "id": "09", "unit": "u1", "lt": "Labas", "en": "Hello", "subject": "head and shoulders of {Rūta}, smiling and waving hello with one hand" },
+      { "id": "10", "unit": "u1", "lt": "Ačiū", "en": "Thank you", "subject": "{Danutė} handing a cup of coffee to {learner}, who smiles gratefully, with a small heart floating between them" },
+      { "id": "11", "unit": "u1", "lt": "Atsiprašau", "en": "Sorry / excuse me", "subject": "{learner} has just bumped into {Jonas} and looks apologetic with one hand raised, with a small star marking the bump" },
+      { "id": "12", "unit": "u1", "lt": "Prašau", "en": "Please / here you go", "subject": "head and shoulders of {Danutė}, smiling and holding out a cup of coffee towards the viewer" },
+      { "id": "13", "unit": "u1", "lt": "Laba diena", "en": "Good day", "subject": "head and shoulders of {Darius}, giving a friendly wave on a sunny day, with blue sky and a bright sun behind" },
+      { "id": "14", "unit": "u1", "lt": "Labanakt", "en": "Good night", "subject": "{learner} tucked up in bed under a blanket, head on the pillow, waving goodnight, with a crescent moon and stars in the dark night sky" },
+      { "id": "15", "unit": "u1", "lt": "Nieko tokio", "en": "No problem", "subject": "head and shoulders of {learner}, with a relaxed smile and open shrugging hands, beside a small tipped-over cup and a green tick mark" },
+      { "id": "16", "unit": "u1", "lt": "Malonu susipažinti", "en": "Nice to meet you", "subject": "{Rūta} and {learner} shaking hands and smiling as they meet, with small sparkles above" },
+      { "id": "17", "unit": "u1", "lt": "Aš", "en": "I", "subject": "head and shoulders of {learner}, pointing at their own chest with one hand" },
+      { "id": "18", "unit": "u1", "lt": "Mes", "en": "We", "subject": "three friends standing close together and smiling: {learner} in the middle, {Rūta} on one side and {Jonas} on the other" },
+      { "id": "19", "unit": "", "lt": "irgi", "en": "too, also", "subject": "{Rūta} and {learner} side by side, each with a speech bubble holding only the same small picture of a coffee cup" },
+      { "id": "20", "unit": "u21", "lt": "Ar gali pakartoti?", "en": "Can you repeat that?", "subject": "head and shoulders of {learner}, with one hand cupped behind an ear, listening hard, and a speech bubble holding only a circular repeat arrow" }
+    ]
+  }
+}

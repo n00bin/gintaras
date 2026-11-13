@@ -18,6 +18,8 @@ from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QUICK = '--quick' in sys.argv          # the first three units only
+LANGUAGE = next((a.split('=',1)[1] for a in sys.argv if a.startswith('--lang=')), 'lt')
+ONLY_UNITS = next((a.split('=',1)[1].split(',') for a in sys.argv if a.startswith('--units=')), None)
 PAGE = next((a.split('=',1)[1] for a in sys.argv if a.startswith('--page=')), '')   # another copy of the page, for testing the checker
 
 class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -146,12 +148,17 @@ def course(pg, taught, units, tag):
                 play(pg, '%s review after %s' % (tag, lid), taught, reload_at=5)
 
 with sync_playwright() as p:
-    b = p.chromium.launch(channel='chrome'); ctx = b.new_context(viewport={'width': 1100, 'height': 900}); pg = ctx.new_page()
+    b = p.chromium.launch(channel='chrome', headless=True); ctx = b.new_context(viewport={'width': 1100, 'height': 900})
+    if LANGUAGE != 'lt':
+        ctx.add_init_script("localStorage.setItem('gintaras.preview','1');localStorage.setItem('gintaras.lang',%r);" % LANGUAGE)
+    pg = ctx.new_page()
     errs = []
     pg.on('pageerror', lambda e: errs.append(str(e)))
     pg.on('console', lambda m: errs.append(m.text) if 'could not be drawn' in m.text else None)
     pg.goto(URL + PAGE); pg.wait_for_timeout(1000)
     units = pg.evaluate("STEPS.filter(id=>UNIT_BY[id]&&!UNIT_BY[id].retire)")
+    assert pg.evaluate('LANG.code') == LANGUAGE, 'Requested course did not load'
+    if ONLY_UNITS: units = [u for u in units if u in ONLY_UNITS]
     if QUICK: units = units[:3]
     print('Fresh learner,', len(units), 'units')
     fresh(pg); taught = set()

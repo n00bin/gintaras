@@ -1,0 +1,19 @@
+{
+  "id": "finally",
+  "word": "Galiausiai",
+  "en": "Finally",
+  "unit": "u37",
+  "actor": "learner",
+  "prompt": "Use case: stylized-concept. ONE transparent square vocabulary illustration meaning Finally. Reference 1 governs rounded flat cartoon STYLE: expressive big white oval eyes, oversized heads, chunky hands, bright opaque solid colours, minimal crisp details. Reference 2 fixes Tomas's wavy brown hair, amber sweatshirt, navy trousers and cream shoes. Subject: Tomas reaches the END of a task at last: happily places one final large cream puzzle piece into a nearly finished turquoise three-piece jigsaw. The piece clearly fits the final empty notch; one large coral checkmark beside completed puzzle. His expression shows relief and satisfaction. Exactly two hands, no unrelated objects or numbers. Exactly two arms per person. Complete centered scene with generous transparent margins, readable at 56px. Opaque interiors, crisp edges, zero alpha outside shapes. No black outlines, gradient, texture, glow, blur, halo, shadow, floor, backdrop, text or logo.",
+  "references": [
+    "approved-style-reference.png",
+    "lt-learner-character-sheet.png"
+  ],
+  "master": "docs/art-direction/masters/finally.png",
+  "asset": "pics/art-v2/finally.webp",
+  "bytes": 42040,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "finally-v2",
+  "revision_reason": "Final puzzle piece protrudes beyond the finished puzzle and does not fit the supposed final slot. Replace puzzle scene with Tomas crossing a simple coral finish ribbon at last, relieved and smiling. One small turquoise checkmark. No puzzle, trophy, numbers or lettering."
+}

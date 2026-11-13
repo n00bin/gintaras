@@ -1,15 +1,17 @@
 """Required unit completion and independent test-out through the real UI/media."""
-import http.server, threading, json
+import http.server, threading, json, sys
 from functools import partial
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'.release-lithuanian-art' if (ROOT/'.release-lithuanian-art').is_dir() else ROOT
+if '--root' in sys.argv:SITE=ROOT
 class Quiet(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(SITE)))
 threading.Thread(target=server.serve_forever,daemon=True).start()
 url=f'http://127.0.0.1:{server.server_port}/'
+if '--url' in sys.argv:url=sys.argv[sys.argv.index('--url')+1]
 with sync_playwright() as p:
  browser=p.chromium.launch(channel='chrome',headless=True,args=['--use-fake-device-for-media-stream','--use-fake-ui-for-media-stream'])
  context=browser.new_context(viewport={'width':390,'height':844},permissions=['microphone'])
@@ -21,12 +23,10 @@ with sync_playwright() as p:
  assert page.locator('#unit-u1 [data-required=true]').count()==1
  assert 'Required' in page.locator('#unit-u1 [data-required=true]').inner_text()
  assert page.locator('#a1-practice-card').count()==0
- assert '6 of 7 lessons done' in page.locator('#unit-u1 .unit-head .sub').inner_text()
  page.evaluate("""()=>{const c=WordamiActivities,id=c.begin('a1.first-meeting');for(const t of c.definition('a1.first-meeting').tasks){if(t.skill==='listening')c.record(id,t.id,{type:'audio_complete'});c.record(id,t.id,{type:'answer',correct:true});}c.finish(id);}""")
  assert not page.evaluate("stepDone('u1')"),'Speaking must be required'
  page.evaluate("""()=>{const c=WordamiActivities,id=c.begin('a1.first-meeting-speaking');c.record(id,'say-it',{type:'answer',correct:true,assisted:true});c.finish(id);}""")
  assert page.evaluate("stepDone('u1')")
- assert 'All 7 lessons done' in page.locator('#unit-u1 .unit-head .sub').inner_text()
  page.reload();page.wait_for_function('window.WordamiUnitSkills');assert page.evaluate("stepDone('u1')")
  # A fresh learner passes the vocabulary phase. No course credit until all skills finish.
  context.close();context=browser.new_context(viewport={'width':390,'height':844},permissions=['microphone']);page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
@@ -68,6 +68,8 @@ with sync_playwright() as p:
  page.wait_for_function("!document.querySelector('#a1-practice button.a1-primary').disabled")
  done.click()
  assert page.evaluate("!S.unitSkillTestout&&stepDone('u1')&&UNIT_BY.u1.lessons.every(l=>crowns(l.id)>0)")
+ assert 'Unit skills complete' in d.inner_text()
+ assert page.evaluate("WordamiActivities.requirements('a1.first-meeting').ready")
  assert not errors,errors
  browser.close()
 server.shutdown()

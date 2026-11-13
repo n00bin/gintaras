@@ -1,0 +1,18 @@
+{
+  "id": "cold",
+  "word": "šaltas",
+  "en": "cold",
+  "unit": "u30",
+  "actor": "learner",
+  "references": [
+    "approved-style-reference.png"
+  ],
+  "prompt": "ONE transparent square Wordami vocabulary illustration meaning COLD. Reference 1 governs the approved flat cartoon STYLE: rounded geometric opaque colour shapes, chunky silhouettes, oversized friendly heads and white oval eyes for people, sparse darker flat interior shapes, no black outlines. Reference 2, if present, is Tomas's exact IDENTITY. Subject: One simple cream thermometer with a blue bulb and a LOW blue liquid column, beside one large crisp pale-blue snowflake. Unmistakably COLD temperature. Chunky rounded geometric shapes, fully opaque thermometer interior, no numerals, written scale, sun, medical setting, face or people. Fit the complete subject inside the middle 76% of a square with generous truly transparent margins. Clean crisp edges, alpha zero outside objects, opaque surfaces. No texture, gradient, glow, fog, blur, ground plane, cast shadow, background disc, lettering or logos.",
+  "master": "docs/art-direction/masters/cold.png",
+  "asset": "pics/art-v2/cold.webp",
+  "bytes": 40874,
+  "generator": "built-in image_gen",
+  "status": "needs_revision",
+  "replacement": "cold-v2",
+  "revision_reason": "The snowflake has a conspicuous cyan haze and detached flecks between its branches. Replace the snowflake with one simple fully opaque light-blue ice cube beside the low-blue thermometer. Keep only crisp flat solid-colour shapes, with no halo, mist, speckles or semi-transparent effects."
+}

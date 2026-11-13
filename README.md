@@ -4,11 +4,19 @@ A bite-size language course for complete beginners, Lithuanian first and now Mex
 
 Live: https://n00bin.github.io/gintaras/
 
+Live is **3.119/build 191**, with every Lithuanian course illustration updated. The broader **3.122-preview/build 194** remains local; its 60 required workshops, forms, table reading and longer reading portfolios are described in the [current checkpoint](docs/cefr/COURSE-PREVIEW-194.md). Full CEFR breadth and independent review remain unfinished.
+
 ## What's in here
 
 | File | What it is |
 |---|---|
-| `index.html` | The whole app: exercises, review scheduler, progress, UI. It loads exactly one language file before its code |
+| `index.html` | Main exercises, review scheduler, progress and navigation. It loads one language file and the optional preview learning modules |
+| `skills-content.js`, `curriculum-content.js`, `skills-studio.js` | The 60-unit local A1–C2 all-skills workshop sequence, including unit writing assignments |
+| `form-practice-content.js`, `form-practice.js`, `document-reading-content.js`, `document-reading.js` | Required practical forms and table reading in selected A1–A2 units, with source-bound records and exports |
+| `extended-reading-content.js`, `extended-reading.js` | Required B1–C2 four-part readings, passage preparation, whole-text questions, purposeful notes and revised source-based briefs |
+| `vocabulary-content.js` | Contextual word forms and expressions, with preparation, source checks and pronunciation |
+| `grammar-content.js`, `grammar-practice.js` | Worked grammar examples and required practice at each target band |
+| `phrase-review.js` | Taught-only word/phrase recall, preserving distinct meanings and reusing the existing FSRS calculations with separate records |
 | `lang/lt.js`, `lang/es.js` | One file per language: its course, conversations, sounds-like, audio map, About-me sentences, tips, and the grammar help for wrong answers |
 | `cloud.js` | Sign-in, progress sync and leaderboard (Supabase) |
 | `config.js` | The Supabase project URL, publishable key, and the Google sign-in switch |
@@ -20,7 +28,23 @@ Live: https://n00bin.github.io/gintaras/
 
 Players can install it as an app from **Profile → Install as an app**, which has a one-tap button where the browser supports it and step-by-step instructions for iPhone, Android and computers. When you change `sw.js` itself, bump the cache names at the top so old copies are cleared.
 
-Progress is saved in the browser. With an account it also syncs to the cloud, so it follows you across devices.
+Original lesson progress is saved in the browser and syncs with an account. The local preview workshops, grammar and phrase-review records stay on the device and offer exports.
+
+The course build is available at `?preview=1&lang=lt#skills` or `?preview=1&lang=es#skills`. See the [current structure and release audit](docs/cefr/CURRICULUM-AUDIT.md), [grammar and retention notes](docs/cefr/GRAMMAR-AND-RETENTION.md), and [source review books](docs/cefr/review/README.md). Target-band labels do not certify learner proficiency. Each unit has a learning plan and explained language patterns; 115 additional A1 source glosses support the first reading/listening and partner tasks. Writing requires the connected comprehension work.
+
+Before packaging, run `python tools/audit_curriculum_release.py` and `python tools/package_site.py --check`. The optional audit `--gate` exits unsuccessfully while the complete CEFR release remains unready. Site packaging uses an allowlist so local output, review books, worktrees and environment files are excluded.
+
+The four A1 and four A2 units per language also offer controlled reading transfer: [A1 short answers](docs/cefr/CONTROLLED-TRANSFER.md) and [A2 meaning choices](docs/cefr/A2-READING.md), totalling thirty-two documents and ninety-six questions in prepared language. Feedback is held to the end, attempts resume and first visits are tracked separately from repeats. Open from the unit or `#transfer`; this is reading practice, not a level award.
+
+[Controlled listening transfer](docs/cefr/LISTENING-TRANSFER.md) covers A1 and [A2 spoken messages](docs/cefr/A2-LISTENING.md): thirty-two complete recordings and ninety-six questions, opened from the unit or `#listen-transfer`. Complete playback is required; transcripts and explanations appear after all three answers. Listening results have their own local records, separate from reading and account sync.
+
+[Guided A1 feedback](docs/cefr/A1-GUIDED-FEEDBACK.md) now supports the six writing projects and four spoken-production activities per language. It checks prepared patterns and task details, clears stale feedback after edits, and offers concrete revision guidance. Speaking feedback checks temporary notes typed after recording and replay; it does not assess the recording or award proficiency.
+
+[A1 writing preparation](docs/cefr/A1-WRITING-PREPARATION.md) adds project-specific worked models, purpose practice and saved planning notes before drafting. Text exports include plans, and suggested lengths now fit each short task. Original project IDs, drafts and completion records are preserved.
+
+[Guided A1 checking exchanges](docs/cefr/GUIDED-INTERACTION.md) practise confirming or correcting a time, price, location or direction. Learners select and record a checking question, hear a prepared partner reply, then record a response to the clarified detail. Open from the unit or `#guided-exchange`. These are self-reviewed recorded branches, not automatic speech assessment.
+
+[A2 preparation](docs/cefr/A2-PREPARATION.md) adds contextual source explanations and six worked writing models per language, with purpose practice and saved plans. A2 source study is required before comprehension and productive tasks; existing drafts and earlier results are retained. The combined A1–A2 writing support has twenty-four models and seventy-two guided exercises.
 
 ## Accounts and the leaderboard
 
@@ -92,17 +116,21 @@ How a lesson works for a total beginner:
 
 ## Editing the course
 
+The app-wide illustration direction is documented in [the art style guide](docs/art-direction/STYLE.md), with the owner's approved visual reference and character specifications. Use this reference for new artwork in both languages; the older sketch-style preview is superseded.
+
 Each language lives in its own file in `lang/` (`lt.js` Lithuanian, `es.js` Spanish). The app code in `index.html` never names a language; it reads `LANG` (name, speech code, letters, audio folder, praise words) and the rest from the loaded file. Both files have the same shape:
 
 - `COURSE` holds the units, lessons and words. Each word is `['word', 'English', 'optional note', ['accepted alternatives']]`.
 - `PATH` sets the order of units and conversations and the part headings. `RESHAPE` (Lithuanian) regroups older lessons into units.
 - `CONVS` holds the conversations, with `CAST_GV` (each person's Google voice) and `CAST_LOOK` (their face). Use only words taught earlier on the path.
 - `PRON` is the "sounds like" respelling. Hyphens split syllables, CAPS marks the stressed one. Lithuanian is written by hand; Spanish is worked out from the spelling by `autoPron` (Spanish spelling and stress are regular), with `PRON` only for exceptions.
-- `EMOJI` gives every word and phrase a picture; `HOOK` adds memory tricks. Pictures are Twemoji illustrations stored in `pics/` (same on every phone, offline), named by the emoji's code points. A value starting with `#` is a text tile instead (numbers past ten, days, months). After adding new pictures, download any missing files from `https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/`.
+- `PICTURE_ASSETS` maps words to the approved rounded cartoon illustrations in `pics/art-v2/`; names describe meanings so courses can share an asset. `CAST_PICTURES` maps conversation characters to their portraits, and `LEARNER_PICTURE` supplies the default learner while customized player avatars keep their chosen look. `EMOJI` supplies fallbacks and the older illustrations while migration is in progress; a value starting with `#` is an intentional text tile (numbers, days, months). `HOOK` adds memory tricks.
 - `LESSON_TIPS`, `SPEAK_TIPS`, `PATTERNS` and `DRILLS` hold the tips, pattern cards and fill-the-gap drills.
 - `ME_*`, `meBank` and `PERS` hold the About-me sentences and how your name, country and gender go into the course. `ALSO`, `marksNote` and `endingWhy` explain wrong answers; `GUIDE_HTML` is the pronunciation guide.
 
-Pictures: [Twemoji](https://github.com/jdecked/twemoji) by Twitter, Inc. and contributors, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (credited in the app under Settings → About).
+New illustrations follow [the approved art direction](docs/art-direction/STYLE.md). Exact generation prompts and the frozen Lithuanian asset plan are recorded in `docs/art-direction/`; full-resolution masters stay in the local authoring workspace, and the app uses transparent 512px WebPs. Use `tools/integrate_course_art.py` to connect valid exports and `tools/check_lithuanian_art.py --require-complete` before the full Lithuanian rollout. The service worker saves the pictures and conversation portraits for offline use.
+
+Fallback and legacy pictures: [Twemoji](https://github.com/jdecked/twemoji) by Twitter, Inc. and contributors, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (credited in the app under Settings → About).
 
 Before recording audio or pushing, run `node tools/check_course.js` (Lithuanian) and `node tools/check_course.js es` (Spanish). It checks that every lesson has a tip, every word a "sounds like" and a picture, no two answers clash, and every word you must write in a conversation was taught earlier.
 

@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "scope": "Prepared reading and written-source mediation; not lecture note-taking, independent assessment or complete CEFR coverage",
+  "languages": {
+    "lt": [
+      {
+        "unitId": "B1-community",
+        "genre": "narrative",
+        "sections": 4,
+        "preparedSentences": 20,
+        "sourceWords": 328,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "6bce495a9a1793f72ad90847bd6f90809bb69c06686ab2235495062584de7dfe",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "B2-media",
+        "genre": "reported argument",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 271,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "114ec774b187042355540c9000f3528a2e3b147c6d6baf3595ebff0356106923",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "C1-academic",
+        "genre": "analytical case study",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 309,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "ef5c9b786ff029be6718153bef9cb6285ca897c336f2a9eb3d2da9df9374079b",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "C2-science",
+        "genre": "qualified public explanation",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 377,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "918803e074ceaaf5d33af3a04cdb0b1fef5c825adcce02e1784fc493d8486812",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      }
+    ],
+    "es": [
+      {
+        "unitId": "B1-community",
+        "genre": "narrative",
+        "sections": 4,
+        "preparedSentences": 20,
+        "sourceWords": 431,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "a8d4ac7cbaafd0d7ce4cad803e2cdbd2d906960a7a48081e0ddcb7dbe4b07409",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "B2-media",
+        "genre": "reported argument",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 387,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "c6b3ee82bcbb0e8c863d1813d2ff084c5181fa3152620317ad5f2994cc3c8c00",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "C1-academic",
+        "genre": "analytical case study",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 396,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "7f078e31715f2a468b673585fc516bb66a6dc5dcfa863c2296aaf7b4cb0feace",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      },
+      {
+        "unitId": "C2-science",
+        "genre": "qualified public explanation",
+        "sections": 4,
+        "preparedSentences": 16,
+        "sourceWords": 471,
+        "questions": 4,
+        "noteEvidenceAnchors": 4,
+        "revisedBrief": true,
+        "contentHash": "b54013541f47c212f931c02f4a45dfc9865c9f52dd35633ab15b25fb8c5e344d",
+        "languageReview": "pending",
+        "independentProficiencyAssessment": false
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 /* Required unit applications. Existing learning progress is retained. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 const core=window.WordamiActivities,ui=window.WordamiPracticeUI;
 if(!core||!ui||!window.WordamiA1Placement)return;
 const placements=WordamiA1Placement;

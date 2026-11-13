@@ -1,0 +1,1808 @@
+{
+  "cast": {
+    "Mariana": "37.0.0.15.6.2.18.4.3",
+    "Diego": "33.3.0.6.9.3.8.9.5"
+  },
+  "units": [
+    {
+      "id": "u0",
+      "title": "Sounds"
+    },
+    {
+      "id": "u1",
+      "title": "Basics"
+    },
+    {
+      "id": "u21",
+      "title": "Small talk"
+    },
+    {
+      "id": "u22",
+      "title": "Being and location"
+    },
+    {
+      "id": "u23",
+      "title": "Everyday verbs"
+    },
+    {
+      "id": "u24",
+      "title": "Asking questions"
+    },
+    {
+      "id": "u25",
+      "title": "Talking about yourself"
+    },
+    {
+      "id": "u2",
+      "title": "Numbers"
+    },
+    {
+      "id": "u5",
+      "title": "Days and time"
+    },
+    {
+      "id": "u26",
+      "title": "My day"
+    },
+    {
+      "id": "u3",
+      "title": "Food and drink"
+    },
+    {
+      "id": "u15",
+      "title": "At the restaurant"
+    },
+    {
+      "id": "u4",
+      "title": "Around town"
+    },
+    {
+      "id": "u14",
+      "title": "Directions"
+    },
+    {
+      "id": "u7",
+      "title": "Transport"
+    },
+    {
+      "id": "u16",
+      "title": "Shopping"
+    },
+    {
+      "id": "u28",
+      "title": "Clothes and colours"
+    },
+    {
+      "id": "u6",
+      "title": "Family"
+    },
+    {
+      "id": "u30",
+      "title": "At home"
+    },
+    {
+      "id": "u29",
+      "title": "Describing people and things"
+    },
+    {
+      "id": "u9",
+      "title": "Feelings and weather"
+    },
+    {
+      "id": "u31",
+      "title": "Work and jobs"
+    },
+    {
+      "id": "u8",
+      "title": "Free time"
+    },
+    {
+      "id": "u32",
+      "title": "Can, must and need"
+    },
+    {
+      "id": "u33",
+      "title": "Making plans"
+    },
+    {
+      "id": "u18",
+      "title": "Seasons and dates"
+    },
+    {
+      "id": "u41",
+      "title": "Joining ideas"
+    },
+    {
+      "id": "u34",
+      "title": "Yesterday"
+    },
+    {
+      "id": "u35",
+      "title": "Telling a story"
+    },
+    {
+      "id": "u13",
+      "title": "At the hotel"
+    },
+    {
+      "id": "u10",
+      "title": "Travel"
+    },
+    {
+      "id": "u36",
+      "title": "Health and getting help"
+    },
+    {
+      "id": "u37",
+      "title": "Opinions"
+    },
+    {
+      "id": "u38",
+      "title": "Keep the conversation going"
+    },
+    {
+      "id": "u39",
+      "title": "Messages and practical requests"
+    },
+    {
+      "id": "u11",
+      "title": "Animals"
+    },
+    {
+      "id": "u12",
+      "title": "Culture and everyday Mexico"
+    }
+  ],
+  "pictures": [
+    {
+      "word": "jirafa",
+      "en": "giraffe",
+      "unit": "u0",
+      "picture": "art-v2/giraffe"
+    },
+    {
+      "word": "tortilla",
+      "en": "tortilla",
+      "unit": "u0",
+      "picture": "art-v2/tortilla"
+    },
+    {
+      "word": "piña",
+      "en": "pineapple",
+      "unit": "u0",
+      "picture": "art-v2/pineapple"
+    },
+    {
+      "word": "hotel",
+      "en": "hotel",
+      "unit": "u0",
+      "picture": "art-v2/hotel"
+    },
+    {
+      "word": "chocolate",
+      "en": "chocolate",
+      "unit": "u0",
+      "picture": "art-v2/chocolate"
+    },
+    {
+      "word": "café",
+      "en": "coffee",
+      "unit": "u0",
+      "picture": "art-v2/coffee"
+    },
+    {
+      "word": "teléfono",
+      "en": "telephone",
+      "unit": "u0",
+      "picture": "art-v2/telephone"
+    },
+    {
+      "word": "guitarra",
+      "en": "guitar",
+      "unit": "u0",
+      "picture": "art-v2/guitar"
+    },
+    {
+      "word": "taco",
+      "en": "taco",
+      "unit": "u0",
+      "picture": "art-v2/taco"
+    },
+    {
+      "word": "cereal",
+      "en": "cereal",
+      "unit": "u0",
+      "picture": "art-v2/cereal"
+    },
+    {
+      "word": "Hola",
+      "en": "Hello",
+      "unit": "u1",
+      "picture": "art-v2/hello"
+    },
+    {
+      "word": "Buenos días",
+      "en": "Good morning",
+      "unit": "u1",
+      "picture": "art-v2/good-morning"
+    },
+    {
+      "word": "Buenas tardes",
+      "en": "Good afternoon",
+      "unit": "u1",
+      "picture": "art-v2/good-day"
+    },
+    {
+      "word": "Buenas noches",
+      "en": "Good evening",
+      "unit": "u1",
+      "picture": "art-v2/good-evening"
+    },
+    {
+      "word": "Adiós",
+      "en": "Goodbye",
+      "unit": "u1",
+      "picture": "art-v2/goodbye"
+    },
+    {
+      "word": "Hasta luego",
+      "en": "See you later",
+      "unit": "u1",
+      "picture": "art-v2/goodbye-until-we-meet"
+    },
+    {
+      "word": "Nos vemos",
+      "en": "See you",
+      "unit": "u1",
+      "picture": "art-v2/bye"
+    },
+    {
+      "word": "Gracias",
+      "en": "Thank you",
+      "unit": "u1",
+      "picture": "art-v2/thank-you"
+    },
+    {
+      "word": "Por favor",
+      "en": "Please",
+      "unit": "u1",
+      "picture": "art-v2/please"
+    },
+    {
+      "word": "De nada",
+      "en": "You're welcome",
+      "unit": "u1",
+      "picture": "art-v2/es-youre-welcome"
+    },
+    {
+      "word": "Sí",
+      "en": "Yes",
+      "unit": "u1",
+      "picture": "art-v2/yes"
+    },
+    {
+      "word": "No",
+      "en": "No",
+      "unit": "u1",
+      "picture": "art-v2/no"
+    },
+    {
+      "word": "Perdón",
+      "en": "Sorry",
+      "unit": "u1",
+      "picture": "art-v2/sorry"
+    },
+    {
+      "word": "Con permiso",
+      "en": "Excuse me",
+      "unit": "u1",
+      "picture": "art-v2/es-excuse-me-passing"
+    },
+    {
+      "word": "Está bien",
+      "en": "OK",
+      "unit": "u1",
+      "picture": "art-v2/ok"
+    },
+    {
+      "word": "¿Cómo estás?",
+      "en": "How are you?",
+      "unit": "u1",
+      "picture": "art-v2/how-are-you"
+    },
+    {
+      "word": "Muy bien",
+      "en": "Very well",
+      "unit": "u1",
+      "picture": "art-v2/great"
+    },
+    {
+      "word": "No pasa nada",
+      "en": "No problem",
+      "unit": "u1",
+      "picture": "art-v2/no-problem"
+    },
+    {
+      "word": "Mucho gusto",
+      "en": "Nice to meet you",
+      "unit": "u1",
+      "picture": "art-v2/nice-to-meet-you"
+    },
+    {
+      "word": "Buena suerte",
+      "en": "Good luck",
+      "unit": "u1",
+      "picture": "art-v2/good-luck"
+    },
+    {
+      "word": "Yo",
+      "en": "I",
+      "unit": "u1",
+      "picture": "art-v2/i-as-in-i-am"
+    },
+    {
+      "word": "Tú",
+      "en": "You",
+      "unit": "u1",
+      "picture": "art-v2/you-to-a-friend"
+    },
+    {
+      "word": "Él",
+      "en": "He",
+      "unit": "u1",
+      "picture": "art-v2/he"
+    },
+    {
+      "word": "Ella",
+      "en": "She",
+      "unit": "u1",
+      "picture": "art-v2/she"
+    },
+    {
+      "word": "Nosotros",
+      "en": "We",
+      "unit": "u1",
+      "picture": "art-v2/we"
+    },
+    {
+      "word": "Usted",
+      "en": "You (polite)",
+      "unit": "u1",
+      "picture": "art-v2/es-you-polite"
+    },
+    {
+      "word": "Ustedes",
+      "en": "You (all)",
+      "unit": "u1",
+      "picture": "art-v2/you-formal-or-plural"
+    },
+    {
+      "word": "Ellos",
+      "en": "They (men or mixed)",
+      "unit": "u1",
+      "picture": "art-v2/they-men-or-mixed"
+    },
+    {
+      "word": "Ellas",
+      "en": "They (women)",
+      "unit": "u1",
+      "picture": "art-v2/they-women"
+    },
+    {
+      "word": "Me llamo Tomás",
+      "en": "My name is Tomás",
+      "unit": "u1",
+      "picture": "art-v2/my-name-is-tomas"
+    },
+    {
+      "word": "¿Cómo te llamas?",
+      "en": "What is your name?",
+      "unit": "u1",
+      "picture": "art-v2/what-is-your-name"
+    },
+    {
+      "word": "Soy de Estados Unidos",
+      "en": "I am from the United States",
+      "unit": "u1",
+      "picture": "art-v2/i-am-from-america"
+    },
+    {
+      "word": "Bien, gracias",
+      "en": "Fine, thanks",
+      "unit": "u21",
+      "picture": "art-v2/fine-thanks"
+    },
+    {
+      "word": "¿Y tú?",
+      "en": "And you?",
+      "unit": "u21",
+      "picture": "art-v2/and-you-after-how-are-you"
+    },
+    {
+      "word": "Más o menos",
+      "en": "So-so",
+      "unit": "u21",
+      "picture": "art-v2/so-so"
+    },
+    {
+      "word": "Todo bien",
+      "en": "All good",
+      "unit": "u21",
+      "picture": "art-v2/es-all-good"
+    },
+    {
+      "word": "Yo también",
+      "en": "Me too",
+      "unit": "u21",
+      "picture": "art-v2/me-too"
+    },
+    {
+      "word": "¿Qué haces?",
+      "en": "What are you up to?",
+      "unit": "u21",
+      "picture": "art-v2/what-are-you-up-to"
+    },
+    {
+      "word": "Nada especial",
+      "en": "Nothing special",
+      "unit": "u21",
+      "picture": "art-v2/nothing-special"
+    },
+    {
+      "word": "¿Qué onda?",
+      "en": "What's up?",
+      "unit": "u21",
+      "picture": "art-v2/es-whats-up"
+    },
+    {
+      "word": "Encantado",
+      "en": "Delighted to meet you",
+      "unit": "u21",
+      "picture": "art-v2/very-nice-to-meet-you"
+    },
+    {
+      "word": "Igualmente",
+      "en": "Likewise",
+      "unit": "u21",
+      "picture": "art-v2/you-too"
+    },
+    {
+      "word": "Hablo un poco de español",
+      "en": "I speak a little Spanish",
+      "unit": "u21",
+      "picture": "art-v2/es-speak-little-spanish"
+    },
+    {
+      "word": "¿Cómo se dice en español?",
+      "en": "How do you say it in Spanish?",
+      "unit": "u21",
+      "picture": "art-v2/es-how-say-spanish"
+    },
+    {
+      "word": "¿Qué significa esta palabra?",
+      "en": "What does this word mean?",
+      "unit": "u21",
+      "picture": "art-v2/what-does-this-word-mean"
+    },
+    {
+      "word": "No entiendo",
+      "en": "I don't understand",
+      "unit": "u21",
+      "picture": "art-v2/i-don-t-understand"
+    },
+    {
+      "word": "¿Puedes repetir?",
+      "en": "Can you repeat that?",
+      "unit": "u21",
+      "picture": "art-v2/can-you-repeat-that-to-a-friend"
+    },
+    {
+      "word": "¿Mande?",
+      "en": "Sorry, what?",
+      "unit": "u21",
+      "picture": "art-v2/es-sorry-what"
+    },
+    {
+      "word": "Más despacio, por favor",
+      "en": "Slower, please",
+      "unit": "u21",
+      "picture": "art-v2/es-slower-please"
+    },
+    {
+      "word": "Estoy aprendiendo",
+      "en": "I'm learning",
+      "unit": "u21",
+      "picture": "art-v2/i-m-learning"
+    },
+    {
+      "word": "Otra vez",
+      "en": "One more time",
+      "unit": "u21",
+      "picture": "art-v2/one-more-time"
+    },
+    {
+      "word": "Ya entendí",
+      "en": "Got it",
+      "unit": "u21",
+      "picture": "art-v2/got-it"
+    },
+    {
+      "word": "Soy estudiante",
+      "en": "I am a student",
+      "unit": "u22",
+      "picture": "art-v2/i-am-a-student"
+    },
+    {
+      "word": "Estamos aquí",
+      "en": "We are here",
+      "unit": "u22",
+      "picture": "art-v2/we-are-here"
+    },
+    {
+      "word": "hablar",
+      "en": "to speak",
+      "unit": "u23",
+      "picture": "art-v2/to-speak"
+    },
+    {
+      "word": "dónde",
+      "en": "where",
+      "unit": "u24",
+      "picture": "art-v2/where"
+    },
+    {
+      "word": "cómo",
+      "en": "how",
+      "unit": "u24",
+      "picture": "art-v2/how"
+    },
+    {
+      "word": "¿Hablas inglés?",
+      "en": "Do you speak English?",
+      "unit": "u24",
+      "picture": "art-v2/do-you-speak-english-to-a-friend"
+    },
+    {
+      "word": "el libro",
+      "en": "the book",
+      "unit": "u24",
+      "picture": "art-v2/es-book"
+    },
+    {
+      "word": "la mesa",
+      "en": "the table",
+      "unit": "u24",
+      "picture": "art-v2/table"
+    },
+    {
+      "word": "la silla",
+      "en": "the chair",
+      "unit": "u24",
+      "picture": "art-v2/es-chair-v2"
+    },
+    {
+      "word": "¿De dónde eres?",
+      "en": "Where are you from?",
+      "unit": "u25",
+      "picture": "art-v2/where-are-you-from-v2"
+    },
+    {
+      "word": "¿Cuántos años tienes?",
+      "en": "How old are you?",
+      "unit": "u25",
+      "picture": "art-v2/how-old-are-you"
+    },
+    {
+      "word": "Soy maestro",
+      "en": "I am a teacher",
+      "unit": "u25",
+      "picture": "art-v2/i-am-a-teacher-v3"
+    },
+    {
+      "word": "el agua",
+      "en": "the water",
+      "unit": "u25",
+      "picture": "art-v2/water"
+    },
+    {
+      "word": "el pan",
+      "en": "the bread",
+      "unit": "u25",
+      "picture": "art-v2/bread"
+    },
+    {
+      "word": "uno",
+      "en": "one",
+      "unit": "u2",
+      "picture": "#one"
+    },
+    {
+      "word": "dos",
+      "en": "two",
+      "unit": "u2",
+      "picture": "#two"
+    },
+    {
+      "word": "tres",
+      "en": "three",
+      "unit": "u2",
+      "picture": "#three"
+    },
+    {
+      "word": "cuatro",
+      "en": "four",
+      "unit": "u2",
+      "picture": "#four"
+    },
+    {
+      "word": "cinco",
+      "en": "five",
+      "unit": "u2",
+      "picture": "#five"
+    },
+    {
+      "word": "seis",
+      "en": "six",
+      "unit": "u2",
+      "picture": "#six"
+    },
+    {
+      "word": "siete",
+      "en": "seven",
+      "unit": "u2",
+      "picture": "#seven"
+    },
+    {
+      "word": "ocho",
+      "en": "eight",
+      "unit": "u2",
+      "picture": "#eight"
+    },
+    {
+      "word": "nueve",
+      "en": "nine",
+      "unit": "u2",
+      "picture": "#nine"
+    },
+    {
+      "word": "diez",
+      "en": "ten",
+      "unit": "u2",
+      "picture": "#ten"
+    },
+    {
+      "word": "once",
+      "en": "eleven",
+      "unit": "u2",
+      "picture": "#eleven"
+    },
+    {
+      "word": "doce",
+      "en": "twelve",
+      "unit": "u2",
+      "picture": "#twelve"
+    },
+    {
+      "word": "trece",
+      "en": "thirteen",
+      "unit": "u2",
+      "picture": "#thirteen"
+    },
+    {
+      "word": "catorce",
+      "en": "fourteen",
+      "unit": "u2",
+      "picture": "#fourteen"
+    },
+    {
+      "word": "quince",
+      "en": "fifteen",
+      "unit": "u2",
+      "picture": "#fifteen"
+    },
+    {
+      "word": "veinte",
+      "en": "twenty",
+      "unit": "u2",
+      "picture": "#twenty"
+    },
+    {
+      "word": "treinta",
+      "en": "thirty",
+      "unit": "u2",
+      "picture": "#thirty"
+    },
+    {
+      "word": "cien",
+      "en": "one hundred",
+      "unit": "u2",
+      "picture": "#one hundred"
+    },
+    {
+      "word": "pesos",
+      "en": "pesos",
+      "unit": "u2",
+      "picture": "#pesos"
+    },
+    {
+      "word": "dieciséis",
+      "en": "sixteen",
+      "unit": "u2",
+      "picture": "#sixteen"
+    },
+    {
+      "word": "diecisiete",
+      "en": "seventeen",
+      "unit": "u2",
+      "picture": "#seventeen"
+    },
+    {
+      "word": "dieciocho",
+      "en": "eighteen",
+      "unit": "u2",
+      "picture": "#eighteen"
+    },
+    {
+      "word": "diecinueve",
+      "en": "nineteen",
+      "unit": "u2",
+      "picture": "#nineteen"
+    },
+    {
+      "word": "veintiuno",
+      "en": "twenty-one",
+      "unit": "u2",
+      "picture": "#twenty-one"
+    },
+    {
+      "word": "cero",
+      "en": "zero",
+      "unit": "u2",
+      "picture": "#zero"
+    },
+    {
+      "word": "cuarenta",
+      "en": "forty",
+      "unit": "u2",
+      "picture": "#forty"
+    },
+    {
+      "word": "cincuenta",
+      "en": "fifty",
+      "unit": "u2",
+      "picture": "#fifty"
+    },
+    {
+      "word": "sesenta",
+      "en": "sixty",
+      "unit": "u2",
+      "picture": "#sixty"
+    },
+    {
+      "word": "setenta",
+      "en": "seventy",
+      "unit": "u2",
+      "picture": "#seventy"
+    },
+    {
+      "word": "ochenta",
+      "en": "eighty",
+      "unit": "u2",
+      "picture": "#eighty"
+    },
+    {
+      "word": "noventa",
+      "en": "ninety",
+      "unit": "u2",
+      "picture": "#ninety"
+    },
+    {
+      "word": "veintidós",
+      "en": "twenty-two",
+      "unit": "u2",
+      "picture": "#twenty-two"
+    },
+    {
+      "word": "lunes",
+      "en": "Monday",
+      "unit": "u5",
+      "picture": "#Monday"
+    },
+    {
+      "word": "martes",
+      "en": "Tuesday",
+      "unit": "u5",
+      "picture": "#Tuesday"
+    },
+    {
+      "word": "miércoles",
+      "en": "Wednesday",
+      "unit": "u5",
+      "picture": "#Wednesday"
+    },
+    {
+      "word": "jueves",
+      "en": "Thursday",
+      "unit": "u5",
+      "picture": "#Thursday"
+    },
+    {
+      "word": "viernes",
+      "en": "Friday",
+      "unit": "u5",
+      "picture": "#Friday"
+    },
+    {
+      "word": "sábado",
+      "en": "Saturday",
+      "unit": "u5",
+      "picture": "#Saturday"
+    },
+    {
+      "word": "domingo",
+      "en": "Sunday",
+      "unit": "u5",
+      "picture": "#Sunday"
+    },
+    {
+      "word": "hoy",
+      "en": "today",
+      "unit": "u5",
+      "picture": "#today"
+    },
+    {
+      "word": "mañana",
+      "en": "tomorrow",
+      "unit": "u5",
+      "picture": "#tomorrow"
+    },
+    {
+      "word": "a las ocho",
+      "en": "at eight o'clock",
+      "unit": "u5",
+      "picture": "art-v2/at-eight-o-clock"
+    },
+    {
+      "word": "temprano",
+      "en": "early",
+      "unit": "u5",
+      "picture": "#early"
+    },
+    {
+      "word": "tarde",
+      "en": "late",
+      "unit": "u5",
+      "picture": "#late"
+    },
+    {
+      "word": "Me visto",
+      "en": "I get dressed",
+      "unit": "u26",
+      "picture": "art-v2/i-get-dressed"
+    },
+    {
+      "word": "regreso",
+      "en": "I return",
+      "unit": "u26",
+      "picture": "art-v2/i-m-coming-back"
+    },
+    {
+      "word": "siempre",
+      "en": "always",
+      "unit": "u26",
+      "picture": "art-v2/always"
+    },
+    {
+      "word": "a veces",
+      "en": "sometimes",
+      "unit": "u26",
+      "picture": "art-v2/sometimes"
+    },
+    {
+      "word": "nunca",
+      "en": "never",
+      "unit": "u26",
+      "picture": "art-v2/never"
+    },
+    {
+      "word": "la leche",
+      "en": "the milk",
+      "unit": "u3",
+      "picture": "art-v2/milk"
+    },
+    {
+      "word": "el queso",
+      "en": "the cheese",
+      "unit": "u3",
+      "picture": "art-v2/cheese"
+    },
+    {
+      "word": "la carne",
+      "en": "the meat",
+      "unit": "u3",
+      "picture": "art-v2/meat"
+    },
+    {
+      "word": "el pollo",
+      "en": "the chicken",
+      "unit": "u3",
+      "picture": "art-v2/chicken"
+    },
+    {
+      "word": "el pescado",
+      "en": "the fish (food)",
+      "unit": "u3",
+      "picture": "art-v2/fish"
+    },
+    {
+      "word": "el arroz",
+      "en": "the rice",
+      "unit": "u3",
+      "picture": "art-v2/es-rice"
+    },
+    {
+      "word": "el huevo",
+      "en": "the egg",
+      "unit": "u3",
+      "picture": "art-v2/egg-v2"
+    },
+    {
+      "word": "la sopa",
+      "en": "the soup",
+      "unit": "u3",
+      "picture": "art-v2/soup"
+    },
+    {
+      "word": "la manzana",
+      "en": "the apple",
+      "unit": "u3",
+      "picture": "art-v2/apple"
+    },
+    {
+      "word": "la papa",
+      "en": "the potato",
+      "unit": "u3",
+      "picture": "art-v2/potato"
+    },
+    {
+      "word": "el té",
+      "en": "the tea",
+      "unit": "u3",
+      "picture": "art-v2/tea"
+    },
+    {
+      "word": "el jugo",
+      "en": "the juice",
+      "unit": "u3",
+      "picture": "art-v2/es-juice"
+    },
+    {
+      "word": "la cerveza",
+      "en": "the beer",
+      "unit": "u3",
+      "picture": "art-v2/beer"
+    },
+    {
+      "word": "el azúcar",
+      "en": "the sugar",
+      "unit": "u3",
+      "picture": "art-v2/sugar"
+    },
+    {
+      "word": "la sal",
+      "en": "the salt",
+      "unit": "u3",
+      "picture": "art-v2/salt"
+    },
+    {
+      "word": "No como carne",
+      "en": "I do not eat meat",
+      "unit": "u3",
+      "picture": "art-v2/i-don-t-eat-meat"
+    },
+    {
+      "word": "Tengo hambre",
+      "en": "I am hungry",
+      "unit": "u3",
+      "picture": "art-v2/i-am-hungry"
+    },
+    {
+      "word": "el restaurante",
+      "en": "the restaurant",
+      "unit": "u15",
+      "picture": "art-v2/restaurant"
+    },
+    {
+      "word": "el menú",
+      "en": "the menu",
+      "unit": "u15",
+      "picture": "art-v2/menu"
+    },
+    {
+      "word": "El menú, por favor",
+      "en": "The menu, please",
+      "unit": "u15",
+      "picture": "art-v2/the-menu-please"
+    },
+    {
+      "word": "¿Qué recomienda?",
+      "en": "What do you recommend?",
+      "unit": "u15",
+      "picture": "art-v2/what-do-you-recommend"
+    },
+    {
+      "word": "con leche",
+      "en": "with milk",
+      "unit": "u15",
+      "picture": "art-v2/with-milk"
+    },
+    {
+      "word": "agua sin gas",
+      "en": "still water",
+      "unit": "u15",
+      "picture": "art-v2/still-water"
+    },
+    {
+      "word": "Está rico",
+      "en": "It tastes good",
+      "unit": "u15",
+      "picture": "art-v2/tasty"
+    },
+    {
+      "word": "La cuenta, por favor",
+      "en": "The bill, please",
+      "unit": "u15",
+      "picture": "art-v2/the-bill-please"
+    },
+    {
+      "word": "¿Puedo pagar con tarjeta?",
+      "en": "Can I pay by card?",
+      "unit": "u15",
+      "picture": "art-v2/can-i-pay-by-card"
+    },
+    {
+      "word": "en efectivo",
+      "en": "in cash",
+      "unit": "u15",
+      "picture": "art-v2/in-cash"
+    },
+    {
+      "word": "la propina",
+      "en": "the tip",
+      "unit": "u15",
+      "picture": "art-v2/tip"
+    },
+    {
+      "word": "¡Buen provecho!",
+      "en": "Enjoy your meal!",
+      "unit": "u15",
+      "picture": "art-v2/enjoy-your-meal"
+    },
+    {
+      "word": "la ciudad",
+      "en": "the city",
+      "unit": "u4",
+      "picture": "art-v2/city"
+    },
+    {
+      "word": "la calle",
+      "en": "the street",
+      "unit": "u4",
+      "picture": "art-v2/street"
+    },
+    {
+      "word": "el parque",
+      "en": "the park",
+      "unit": "u4",
+      "picture": "art-v2/es-park"
+    },
+    {
+      "word": "el museo",
+      "en": "the museum",
+      "unit": "u4",
+      "picture": "art-v2/es-museum"
+    },
+    {
+      "word": "la tienda",
+      "en": "the shop",
+      "unit": "u4",
+      "picture": "art-v2/shop"
+    },
+    {
+      "word": "el banco",
+      "en": "the bank",
+      "unit": "u4",
+      "picture": "art-v2/bank"
+    },
+    {
+      "word": "la farmacia",
+      "en": "the pharmacy",
+      "unit": "u4",
+      "picture": "art-v2/pharmacy"
+    },
+    {
+      "word": "el hospital",
+      "en": "the hospital",
+      "unit": "u4",
+      "picture": "art-v2/hospital"
+    },
+    {
+      "word": "el mercado",
+      "en": "the market",
+      "unit": "u4",
+      "picture": "art-v2/market"
+    },
+    {
+      "word": "a la izquierda",
+      "en": "to the left",
+      "unit": "u14",
+      "picture": "art-v2/to-the-left"
+    },
+    {
+      "word": "derecho",
+      "en": "straight ahead",
+      "unit": "u14",
+      "picture": "art-v2/straight-ahead"
+    },
+    {
+      "word": "el camión",
+      "en": "the bus (Mexico)",
+      "unit": "u7",
+      "picture": "art-v2/bus"
+    },
+    {
+      "word": "el taxi",
+      "en": "the taxi",
+      "unit": "u7",
+      "picture": "art-v2/taxi"
+    },
+    {
+      "word": "la bicicleta",
+      "en": "the bicycle",
+      "unit": "u7",
+      "picture": "art-v2/bicycle"
+    },
+    {
+      "word": "la estación",
+      "en": "the station",
+      "unit": "u7",
+      "picture": "art-v2/station"
+    },
+    {
+      "word": "la parada",
+      "en": "the stop",
+      "unit": "u7",
+      "picture": "art-v2/bus-stop"
+    },
+    {
+      "word": "el boleto",
+      "en": "the ticket",
+      "unit": "u7",
+      "picture": "art-v2/ticket"
+    },
+    {
+      "word": "el tren",
+      "en": "the train",
+      "unit": "u7",
+      "picture": "art-v2/train"
+    },
+    {
+      "word": "el dinero",
+      "en": "the money",
+      "unit": "u16",
+      "picture": "art-v2/money"
+    },
+    {
+      "word": "la bolsa",
+      "en": "the bag",
+      "unit": "u16",
+      "picture": "art-v2/bag"
+    },
+    {
+      "word": "caro",
+      "en": "expensive",
+      "unit": "u16",
+      "picture": "art-v2/expensive"
+    },
+    {
+      "word": "barato",
+      "en": "cheap",
+      "unit": "u16",
+      "picture": "art-v2/cheap"
+    },
+    {
+      "word": "la camisa",
+      "en": "the shirt",
+      "unit": "u28",
+      "picture": "art-v2/shirt"
+    },
+    {
+      "word": "el pantalón",
+      "en": "the trousers",
+      "unit": "u28",
+      "picture": "art-v2/trousers"
+    },
+    {
+      "word": "la chamarra",
+      "en": "the jacket (Mexico)",
+      "unit": "u28",
+      "picture": "art-v2/jacket"
+    },
+    {
+      "word": "los zapatos",
+      "en": "the shoes",
+      "unit": "u28",
+      "picture": "art-v2/shoes"
+    },
+    {
+      "word": "rojo",
+      "en": "red",
+      "unit": "u28",
+      "picture": "art-v2/red"
+    },
+    {
+      "word": "azul",
+      "en": "blue",
+      "unit": "u28",
+      "picture": "art-v2/blue-v2"
+    },
+    {
+      "word": "verde",
+      "en": "green",
+      "unit": "u28",
+      "picture": "art-v2/green"
+    },
+    {
+      "word": "negro",
+      "en": "black",
+      "unit": "u28",
+      "picture": "art-v2/black"
+    },
+    {
+      "word": "blanco",
+      "en": "white",
+      "unit": "u28",
+      "picture": "art-v2/white-v5"
+    },
+    {
+      "word": "pequeño",
+      "en": "small",
+      "unit": "u28",
+      "picture": "art-v2/small"
+    },
+    {
+      "word": "la madre",
+      "en": "the mother",
+      "unit": "u6",
+      "picture": "art-v2/mom"
+    },
+    {
+      "word": "el padre",
+      "en": "the father",
+      "unit": "u6",
+      "picture": "art-v2/dad"
+    },
+    {
+      "word": "la familia",
+      "en": "the family",
+      "unit": "u6",
+      "picture": "art-v2/family"
+    },
+    {
+      "word": "el hermano",
+      "en": "the brother",
+      "unit": "u6",
+      "picture": "art-v2/brother"
+    },
+    {
+      "word": "la hermana",
+      "en": "the sister",
+      "unit": "u6",
+      "picture": "art-v2/sister"
+    },
+    {
+      "word": "la abuela",
+      "en": "the grandmother",
+      "unit": "u6",
+      "picture": "art-v2/grandmother"
+    },
+    {
+      "word": "el abuelo",
+      "en": "the grandfather",
+      "unit": "u6",
+      "picture": "art-v2/grandfather"
+    },
+    {
+      "word": "la casa",
+      "en": "the house",
+      "unit": "u30",
+      "picture": "art-v2/house"
+    },
+    {
+      "word": "el departamento",
+      "en": "the apartment (Mexico)",
+      "unit": "u30",
+      "picture": "art-v2/flat-apartment"
+    },
+    {
+      "word": "el baño",
+      "en": "the bathroom",
+      "unit": "u30",
+      "picture": "art-v2/bathroom"
+    },
+    {
+      "word": "la recámara",
+      "en": "the bedroom (Mexico)",
+      "unit": "u30",
+      "picture": "art-v2/bedroom"
+    },
+    {
+      "word": "la ventana",
+      "en": "the window",
+      "unit": "u30",
+      "picture": "art-v2/window"
+    },
+    {
+      "word": "bajo",
+      "en": "short (height)",
+      "unit": "u29",
+      "picture": "art-v2/short-height"
+    },
+    {
+      "word": "joven",
+      "en": "young",
+      "unit": "u29",
+      "picture": "art-v2/young"
+    },
+    {
+      "word": "mayor",
+      "en": "older",
+      "unit": "u29",
+      "picture": "art-v2/older"
+    },
+    {
+      "word": "amable",
+      "en": "kind",
+      "unit": "u29",
+      "picture": "art-v2/kind"
+    },
+    {
+      "word": "nuevo",
+      "en": "new",
+      "unit": "u29",
+      "picture": "art-v2/new"
+    },
+    {
+      "word": "viejo",
+      "en": "old",
+      "unit": "u29",
+      "picture": "art-v2/old"
+    },
+    {
+      "word": "malo",
+      "en": "bad",
+      "unit": "u29",
+      "picture": "art-v2/bad"
+    },
+    {
+      "word": "Mi hermana es alta",
+      "en": "My sister is tall",
+      "unit": "u29",
+      "picture": "art-v2/my-sister-is-tall"
+    },
+    {
+      "word": "la lluvia",
+      "en": "the rain",
+      "unit": "u9",
+      "picture": "art-v2/rain"
+    },
+    {
+      "word": "la doctora",
+      "en": "the female doctor",
+      "unit": "u31",
+      "picture": "art-v2/doctor-woman"
+    },
+    {
+      "word": "ingeniero",
+      "en": "engineer (masculine)",
+      "unit": "u31",
+      "picture": "art-v2/engineer"
+    },
+    {
+      "word": "chofer",
+      "en": "driver",
+      "unit": "u31",
+      "picture": "art-v2/driver"
+    },
+    {
+      "word": "cocinero",
+      "en": "cook (masculine)",
+      "unit": "u31",
+      "picture": "art-v2/cook-chef-v2"
+    },
+    {
+      "word": "la escuela",
+      "en": "the school",
+      "unit": "u31",
+      "picture": "art-v2/school"
+    },
+    {
+      "word": "el trabajo",
+      "en": "the work / job",
+      "unit": "u31",
+      "picture": "art-v2/work-job"
+    },
+    {
+      "word": "leer",
+      "en": "to read",
+      "unit": "u8",
+      "picture": "art-v2/to-read"
+    },
+    {
+      "word": "Me gusta la música",
+      "en": "I like music",
+      "unit": "u8",
+      "picture": "art-v2/i-like-music"
+    },
+    {
+      "word": "la primavera",
+      "en": "the spring",
+      "unit": "u18",
+      "picture": "art-v2/spring"
+    },
+    {
+      "word": "el otoño",
+      "en": "the autumn",
+      "unit": "u18",
+      "picture": "art-v2/autumn"
+    },
+    {
+      "word": "el año",
+      "en": "the year",
+      "unit": "u18",
+      "picture": "art-v2/year"
+    },
+    {
+      "word": "enero",
+      "en": "January",
+      "unit": "u18",
+      "picture": "#January"
+    },
+    {
+      "word": "febrero",
+      "en": "February",
+      "unit": "u18",
+      "picture": "#February"
+    },
+    {
+      "word": "marzo",
+      "en": "March",
+      "unit": "u18",
+      "picture": "#March"
+    },
+    {
+      "word": "abril",
+      "en": "April",
+      "unit": "u18",
+      "picture": "#April"
+    },
+    {
+      "word": "mayo",
+      "en": "May",
+      "unit": "u18",
+      "picture": "#May"
+    },
+    {
+      "word": "junio",
+      "en": "June",
+      "unit": "u18",
+      "picture": "#June"
+    },
+    {
+      "word": "julio",
+      "en": "July",
+      "unit": "u18",
+      "picture": "#July"
+    },
+    {
+      "word": "agosto",
+      "en": "August",
+      "unit": "u18",
+      "picture": "#August"
+    },
+    {
+      "word": "septiembre",
+      "en": "September",
+      "unit": "u18",
+      "picture": "#September"
+    },
+    {
+      "word": "octubre",
+      "en": "October",
+      "unit": "u18",
+      "picture": "#October"
+    },
+    {
+      "word": "noviembre",
+      "en": "November",
+      "unit": "u18",
+      "picture": "#November"
+    },
+    {
+      "word": "diciembre",
+      "en": "December",
+      "unit": "u18",
+      "picture": "#December"
+    },
+    {
+      "word": "y",
+      "en": "and",
+      "unit": "u41",
+      "picture": "art-v2/and"
+    },
+    {
+      "word": "pero",
+      "en": "but",
+      "unit": "u41",
+      "picture": "art-v2/but"
+    },
+    {
+      "word": "porque",
+      "en": "because",
+      "unit": "u41",
+      "picture": "art-v2/because-v2"
+    },
+    {
+      "word": "o",
+      "en": "or",
+      "unit": "u41",
+      "picture": "art-v2/or"
+    },
+    {
+      "word": "entonces",
+      "en": "then / so",
+      "unit": "u41",
+      "picture": "art-v2/then"
+    },
+    {
+      "word": "ya",
+      "en": "already / now",
+      "unit": "u41",
+      "picture": "art-v2/already"
+    },
+    {
+      "word": "todavía",
+      "en": "still / yet",
+      "unit": "u41",
+      "picture": "art-v2/still-yet"
+    },
+    {
+      "word": "solo",
+      "en": "only",
+      "unit": "u41",
+      "picture": "art-v2/only-v2"
+    },
+    {
+      "word": "cuando",
+      "en": "when (not a question)",
+      "unit": "u41",
+      "picture": "art-v2/when-not-a-question"
+    },
+    {
+      "word": "todos",
+      "en": "everyone / all",
+      "unit": "u41",
+      "picture": "art-v2/everyone"
+    },
+    {
+      "word": "nadie",
+      "en": "nobody",
+      "unit": "u41",
+      "picture": "art-v2/nobody-v2"
+    },
+    {
+      "word": "ayer",
+      "en": "yesterday",
+      "unit": "u34",
+      "picture": "art-v2/yesterday"
+    },
+    {
+      "word": "primero",
+      "en": "first",
+      "unit": "u35",
+      "picture": "art-v2/first"
+    },
+    {
+      "word": "luego",
+      "en": "then / afterwards",
+      "unit": "u35",
+      "picture": "art-v2/then"
+    },
+    {
+      "word": "de repente",
+      "en": "suddenly",
+      "unit": "u35",
+      "picture": "art-v2/suddenly"
+    },
+    {
+      "word": "la noche",
+      "en": "the night",
+      "unit": "u13",
+      "picture": "art-v2/night"
+    },
+    {
+      "word": "Tengo una reservación",
+      "en": "I have a reservation",
+      "unit": "u13",
+      "picture": "art-v2/i-have-a-reservation"
+    },
+    {
+      "word": "la recepción",
+      "en": "the reception desk",
+      "unit": "u13",
+      "picture": "art-v2/reception"
+    },
+    {
+      "word": "el elevador",
+      "en": "the lift / elevator (Mexico)",
+      "unit": "u13",
+      "picture": "art-v2/lift-elevator"
+    },
+    {
+      "word": "Gracias por todo",
+      "en": "Thank you for everything",
+      "unit": "u13",
+      "picture": "art-v2/thanks-for-everything"
+    },
+    {
+      "word": "el pasaporte",
+      "en": "the passport",
+      "unit": "u10",
+      "picture": "art-v2/passport"
+    },
+    {
+      "word": "la maleta",
+      "en": "the suitcase",
+      "unit": "u10",
+      "picture": "art-v2/suitcase"
+    },
+    {
+      "word": "el equipaje",
+      "en": "the luggage",
+      "unit": "u10",
+      "picture": "art-v2/suitcase"
+    },
+    {
+      "word": "la salida",
+      "en": "the exit / departure",
+      "unit": "u10",
+      "picture": "art-v2/exit"
+    },
+    {
+      "word": "la mano",
+      "en": "the hand",
+      "unit": "u36",
+      "picture": "art-v2/hand-arm"
+    },
+    {
+      "word": "el pie",
+      "en": "the foot",
+      "unit": "u36",
+      "picture": "art-v2/leg-foot"
+    },
+    {
+      "word": "el estómago",
+      "en": "the stomach",
+      "unit": "u36",
+      "picture": "art-v2/stomach"
+    },
+    {
+      "word": "la espalda",
+      "en": "the back",
+      "unit": "u36",
+      "picture": "art-v2/back-of-the-body"
+    },
+    {
+      "word": "Me duele el estómago",
+      "en": "My stomach hurts",
+      "unit": "u36",
+      "picture": "art-v2/my-stomach-hurts"
+    },
+    {
+      "word": "Tengo fiebre",
+      "en": "I have a fever",
+      "unit": "u36",
+      "picture": "art-v2/i-have-a-fever"
+    },
+    {
+      "word": "Llame a una ambulancia",
+      "en": "Call an ambulance (polite)",
+      "unit": "u36",
+      "picture": "art-v2/call-an-ambulance"
+    },
+    {
+      "word": "Me duele la espalda",
+      "en": "My back hurts",
+      "unit": "u36",
+      "picture": "art-v2/my-back-hurts"
+    },
+    {
+      "word": "¿En serio?",
+      "en": "Really?",
+      "unit": "u38",
+      "picture": "art-v2/really"
+    },
+    {
+      "word": "¡Qué bueno!",
+      "en": "That is great!",
+      "unit": "u38",
+      "picture": "art-v2/that-s-great"
+    },
+    {
+      "word": "el celular",
+      "en": "the mobile phone (Mexico)",
+      "unit": "u39",
+      "picture": "art-v2/telephone"
+    },
+    {
+      "word": "el gato",
+      "en": "the cat",
+      "unit": "u11",
+      "picture": "art-v2/cat"
+    },
+    {
+      "word": "el pájaro",
+      "en": "the bird",
+      "unit": "u11",
+      "picture": "art-v2/bird"
+    },
+    {
+      "word": "el conejo",
+      "en": "the rabbit",
+      "unit": "u11",
+      "picture": "art-v2/rabbit"
+    },
+    {
+      "word": "el caballo",
+      "en": "the horse",
+      "unit": "u11",
+      "picture": "art-v2/horse"
+    },
+    {
+      "word": "la vaca",
+      "en": "the cow",
+      "unit": "u11",
+      "picture": "art-v2/cow"
+    },
+    {
+      "word": "el cerdo",
+      "en": "the pig",
+      "unit": "u11",
+      "picture": "art-v2/pig"
+    },
+    {
+      "word": "la gallina",
+      "en": "the hen",
+      "unit": "u11",
+      "picture": "art-v2/hen"
+    },
+    {
+      "word": "la oveja",
+      "en": "the sheep",
+      "unit": "u11",
+      "picture": "art-v2/sheep"
+    },
+    {
+      "word": "la mariposa",
+      "en": "the butterfly",
+      "unit": "u11",
+      "picture": "art-v2/butterfly"
+    },
+    {
+      "word": "sale",
+      "en": "OK / agreed (Mexico)",
+      "unit": "u12",
+      "picture": "art-v2/ok"
+    }
+  ]
+}

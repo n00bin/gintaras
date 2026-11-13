@@ -1,0 +1,913 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-11-06",
+  "targetProgramme": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "languages": [
+    "lt",
+    "es"
+  ],
+  "status": "initial_practice_implemented_descriptor_mapping_pending",
+  "scope": "Initial A1 task candidates, not a complete descriptor inventory or validated syllabus",
+  "rules": {
+    "unitReferenceDoesNotAssignLevel": true,
+    "emptyPrerequisitesMustNotUnlockTasks": true,
+    "teachBeforeIndependentTest": true,
+    "scoreIndependentOfXpAndFsrs": true,
+    "assessmentThresholds": "pending_calibration",
+    "publishLevelClaims": false
+  },
+  "objectives": [
+    {
+      "id": "a1.personal-introduction",
+      "outcome": "Introduce yourself and exchange simple personal information",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction",
+        "spoken_production",
+        "writing"
+      ],
+      "taskProposal": "Exchange names and origin, then write a brief introduction.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u1",
+            "u20"
+          ],
+          "candidateLessons": [
+            "u1a-0",
+            "u1.u1a-1+u1a-2",
+            "u1.u1b-1+u1b-2",
+            "u1c-1",
+            "u1d-1",
+            "u1.u1c-2+u1c-3",
+            "u20.L1",
+            "u20.L2",
+            "u20.L3",
+            "u4a-1"
+          ],
+          "requiredCardIds": [
+            "u1c-2:3",
+            "u20a-1:1",
+            "u20a-1:2"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.introductions",
+            "a1.introductions-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u1",
+            "u25"
+          ],
+          "candidateLessons": [
+            "u1a-1",
+            "u1a-2",
+            "u1b-1",
+            "u1b-2",
+            "u1c-1",
+            "u1c-2",
+            "u1c-3",
+            "u25a-1",
+            "u25b-1",
+            "u25c-1",
+            "u25d-1"
+          ],
+          "requiredCardIds": [
+            "u1c-2:4",
+            "u1c-3:1",
+            "u25a-1:2"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.introductions",
+            "a1.introductions-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.clarification",
+      "outcome": "Ask for repetition or say that you do not understand",
+      "skills": [
+        "listening",
+        "spoken_interaction"
+      ],
+      "taskProposal": "Use a taught repair phrase when a short exchange is unclear.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u21"
+          ],
+          "candidateLessons": [
+            "u21.L1",
+            "u21.L2",
+            "u21.L3"
+          ],
+          "requiredCardIds": [
+            "u21b-1:2",
+            "u21b-1:3",
+            "u21b-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.clarification",
+            "a1.clarification-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u21"
+          ],
+          "candidateLessons": [
+            "u21a-1",
+            "u21a-2",
+            "u21b-1",
+            "u21b-2"
+          ],
+          "requiredCardIds": [
+            "u21b-1:2",
+            "u21b-1:3",
+            "u21b-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.clarification",
+            "a1.clarification-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.numbers-prices",
+      "outcome": "Understand and communicate simple quantities and prices",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction"
+      ],
+      "taskProposal": "Find a price on a new label and understand a spoken amount.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u2"
+          ],
+          "candidateLessons": [
+            "u2.L1",
+            "u2.L2",
+            "u2.L3",
+            "u2.L4"
+          ],
+          "requiredCardIds": [
+            "u16c-1:0",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u2c-1:3",
+            "u2c-2:0",
+            "u2c-2:1"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.prices",
+            "a1.prices-speaking",
+            "a1.price-check"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u2"
+          ],
+          "candidateLessons": [
+            "u2a-1",
+            "u2b-1",
+            "u2c-1",
+            "u2d-1",
+            "u2e-1",
+            "u2f-1",
+            "u2g-1"
+          ],
+          "requiredCardIds": [
+            "u16a-1:4",
+            "u16c-1:2",
+            "u16c-1:3",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u2d-1:0",
+            "u2d-1:1",
+            "u2d-1:3"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.prices",
+            "a1.prices-speaking",
+            "a1.price-check"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.times-dates",
+      "outcome": "Exchange basic times and dates",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction",
+        "writing"
+      ],
+      "taskProposal": "Find the time in a short message and give a suitable reply.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u7",
+            "u24"
+          ],
+          "candidateLessons": [
+            "u7.L1",
+            "u7.L2",
+            "u7.L3",
+            "u7c-1",
+            "u7c-2",
+            "u24.months-extra"
+          ],
+          "requiredCardIds": [
+            "u23b-1:0",
+            "u23b-1:1",
+            "u23b-1:2",
+            "u24m:0",
+            "u24m:1",
+            "u24m:2",
+            "u24m:3",
+            "u24m:4",
+            "u24m:5",
+            "u2a-1:1",
+            "u2a-1:2",
+            "u7a-1:0",
+            "u7a-1:1",
+            "u7c-1:4",
+            "u7c-2:0",
+            "u7c-2:1",
+            "u7c-2:2",
+            "u7c-2:3",
+            "u7c-2:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.times",
+            "a1.times-speaking",
+            "a1.calendar",
+            "a1.calendar-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u5",
+            "u18"
+          ],
+          "candidateLessons": [
+            "u5a-1",
+            "u5b-1",
+            "u5c-1",
+            "u5d-1",
+            "u18a-1",
+            "u18b-1",
+            "u18c-1",
+            "u18d-1"
+          ],
+          "requiredCardIds": [
+            "u33d-1:0",
+            "u33d-1:1",
+            "u5a-1:0",
+            "u5a-1:1",
+            "u5c-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.times",
+            "a1.times-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.food-order",
+      "outcome": "Make a simple food or drink request",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction",
+        "writing"
+      ],
+      "taskProposal": "Choose from a small menu, request an item, and check a practical detail.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u3",
+            "u15"
+          ],
+          "candidateLessons": [
+            "u3.L1",
+            "u3.L2",
+            "u3.L3",
+            "u3.L4",
+            "u3.L5",
+            "u15.L1",
+            "u15.L2",
+            "u15.L3",
+            "u15.L4"
+          ],
+          "requiredCardIds": [
+            "u15b-1:0",
+            "u3a-1:3",
+            "u3a-1:4",
+            "u3c-1:0",
+            "u3c-2:0",
+            "u3c-2:3",
+            "u3d-1:1"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.cafe-writing",
+            "a1.cafe-understanding",
+            "a1.cafe-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u3",
+            "u15"
+          ],
+          "candidateLessons": [
+            "u3a-1",
+            "u3b-1",
+            "u3c-1",
+            "u3d-1",
+            "u15a-1",
+            "u15b-1",
+            "u15c-1",
+            "u15d-1"
+          ],
+          "requiredCardIds": [
+            "u0b-1:0",
+            "u15a-1:1",
+            "u15b-1:1",
+            "u15d-1:0",
+            "u15d-1:1",
+            "u3c-1:0"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.cafe-understanding",
+            "a1.cafe-speaking",
+            "a1.cafe-writing"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.places-directions",
+      "outcome": "Ask where a familiar place is and follow short supported directions",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction"
+      ],
+      "taskProposal": "Locate a destination using a short sign or spoken instruction.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u9",
+            "u13"
+          ],
+          "candidateLessons": [
+            "u9.L1",
+            "u9.L2",
+            "u9.L3",
+            "u13a-1",
+            "u13a-2"
+          ],
+          "requiredCardIds": [
+            "u9b-1:0",
+            "u9b-1:1",
+            "u9b-1:2",
+            "u9b-1:3"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.directions",
+            "a1.directions-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u4",
+            "u14"
+          ],
+          "candidateLessons": [
+            "u4a-1",
+            "u4b-1",
+            "u4c-1",
+            "u4d-1",
+            "u14a-1",
+            "u14b-1",
+            "u14c-1",
+            "u14d-1"
+          ],
+          "requiredCardIds": [
+            "u14a-1:0",
+            "u14a-1:1",
+            "u14a-1:2",
+            "u14c-1:0"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.directions",
+            "a1.directions-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.family-description",
+      "outcome": "Give simple information about family or someone you know",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_production",
+        "writing"
+      ],
+      "taskProposal": "Describe a person in a few original simple statements.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u4",
+            "u25",
+            "u30"
+          ],
+          "candidateLessons": [
+            "u4.L1",
+            "u4.L2",
+            "u25a-1",
+            "u25a-2",
+            "u30.L1",
+            "u30.L2",
+            "u30.L3",
+            "u30.L4"
+          ],
+          "requiredCardIds": [
+            "u25a-1:0",
+            "u25a-1:1",
+            "u25a-1:3",
+            "u25a-1:4",
+            "u30c-1:0",
+            "u30c-1:1",
+            "u30c-1:2",
+            "u30c-1:3",
+            "u30c-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.family",
+            "a1.family-speaking",
+            "a1.descriptions",
+            "a1.descriptions-speaking",
+            "a1.dialogue-family"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u6",
+            "u29"
+          ],
+          "candidateLessons": [
+            "u6a-1",
+            "u6b-1",
+            "u6c-1",
+            "u6d-1",
+            "u29a-1",
+            "u29b-1",
+            "u29c-1",
+            "u29d-1"
+          ],
+          "requiredCardIds": [
+            "u6c-1:3",
+            "u6d-1:2",
+            "u6d-1:3"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.family",
+            "a1.family-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.daily-routine",
+      "outcome": "Communicate basic information about daily activities",
+      "skills": [
+        "listening",
+        "spoken_interaction",
+        "spoken_production",
+        "writing"
+      ],
+      "taskProposal": "Answer simple routine questions and give a short personal account.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u20",
+            "u28"
+          ],
+          "candidateLessons": [
+            "u20.L1",
+            "u20.L2",
+            "u20.L3",
+            "u4a-1",
+            "u28.L1",
+            "u28.L2",
+            "u28.L3",
+            "u28.L4"
+          ],
+          "requiredCardIds": [
+            "u28a-1:1",
+            "u28a-1:4",
+            "u28a-2:3",
+            "u28b-2:3"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.routines",
+            "a1.routines-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u26",
+            "u31"
+          ],
+          "candidateLessons": [
+            "u26a-1",
+            "u26b-1",
+            "u26c-1",
+            "u26d-1",
+            "u26e-1",
+            "u31a-1",
+            "u31b-1",
+            "u31c-1",
+            "u31d-1",
+            "u31e-1"
+          ],
+          "requiredCardIds": [
+            "u26b-1:1",
+            "u26d-1:0",
+            "u26d-1:1",
+            "u26d-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.routines",
+            "a1.routines-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.home-information",
+      "outcome": "Describe basic facts about where you live",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_production",
+        "writing"
+      ],
+      "taskProposal": "Give simple information about a room or home from a visual prompt.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u32"
+          ],
+          "candidateLessons": [
+            "u32.L1",
+            "u32.L2",
+            "u32.L3",
+            "u32.L4"
+          ],
+          "requiredCardIds": [
+            "u23a-1:1",
+            "u32a-1:2",
+            "u32a-1:4",
+            "u32b-2:3",
+            "u32b-2:4",
+            "u32c-1:0",
+            "u32c-1:3",
+            "u32c-2:0",
+            "u32c-2:1",
+            "u32c-2:2",
+            "u9b-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.home",
+            "a1.home-speaking",
+            "a1.rooms",
+            "a1.rooms-speaking",
+            "a1.dialogue-home"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u30"
+          ],
+          "candidateLessons": [
+            "u30a-1",
+            "u30b-1",
+            "u30c-1",
+            "u30d-1"
+          ],
+          "requiredCardIds": [
+            "u30c-1:4",
+            "u30d-1:3",
+            "u30d-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.home",
+            "a1.home-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.simple-purchase",
+      "outcome": "Request an everyday item and exchange basic purchase details",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction"
+      ],
+      "taskProposal": "Select an item and communicate a taught size, quantity or price detail.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u16",
+            "u29"
+          ],
+          "candidateLessons": [
+            "u16.L1",
+            "u16.L2",
+            "u16.L3",
+            "u16.L4",
+            "u29.L1",
+            "u29.L2",
+            "u29.L3",
+            "u29.L4",
+            "u5a-2"
+          ],
+          "requiredCardIds": [
+            "u16a-2:0",
+            "u16a-2:1",
+            "u16c-1:0",
+            "u16c-1:2",
+            "u16c-1:3",
+            "u1a-2:3",
+            "u1b-1:0",
+            "u2c-2:0",
+            "u2c-2:1"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.shopping",
+            "a1.shopping-speaking",
+            "a1.dialogue-shop-two",
+            "a1.dialogue-shop-ten"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u16",
+            "u28"
+          ],
+          "candidateLessons": [
+            "u16a-1",
+            "u16b-1",
+            "u16c-1",
+            "u16d-1",
+            "u28a-1",
+            "u28b-1",
+            "u28c-1",
+            "u28d-1",
+            "u28e-1"
+          ],
+          "requiredCardIds": [
+            "u16c-1:3",
+            "u28c-1:4",
+            "u28d-1:3",
+            "u28e-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.shopping",
+            "a1.shopping-speaking"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.simple-arrangement",
+      "outcome": "Understand and reply to a simple invitation",
+      "skills": [
+        "reading",
+        "listening",
+        "spoken_interaction",
+        "writing"
+      ],
+      "taskProposal": "Read a short invitation and reply with a simple meeting detail.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u23"
+          ],
+          "candidateLessons": [
+            "u23.L1",
+            "u23.L2",
+            "u23.L3"
+          ],
+          "requiredCardIds": [
+            "u23a-1:0",
+            "u23a-1:1",
+            "u23a-1:3",
+            "u23a-2:0",
+            "u23a-2:1",
+            "u23b-1:0",
+            "u23b-1:1",
+            "u23b-1:2",
+            "u7a-1:0",
+            "u7a-1:1"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.messages",
+            "a1.messages-speaking",
+            "a1.meeting-check",
+            "a1.dialogue-meeting-seven",
+            "a1.dialogue-meeting-eight"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u33"
+          ],
+          "candidateLessons": [
+            "u33a-1",
+            "u33b-1",
+            "u33c-1",
+            "u33d-1",
+            "u33e-1"
+          ],
+          "requiredCardIds": [
+            "u33c-1:1",
+            "u33c-1:2",
+            "u33d-1:0",
+            "u33d-1:1",
+            "u33d-1:2",
+            "u33d-1:3",
+            "u33e-1:4",
+            "u5a-1:0",
+            "u5a-1:1",
+            "u5c-1:4"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.messages",
+            "a1.messages-speaking",
+            "a1.meeting-check"
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1.preferences",
+      "outcome": "Express a simple preference about a familiar activity",
+      "skills": [
+        "listening",
+        "spoken_interaction",
+        "spoken_production",
+        "writing"
+      ],
+      "taskProposal": "State a familiar preference and ask a simple related question.",
+      "descriptorMapping": "educator_review_required",
+      "languages": {
+        "lt": {
+          "candidateUnits": [
+            "u22"
+          ],
+          "candidateLessons": [
+            "u22.L1",
+            "u22.L2",
+            "u22.L3"
+          ],
+          "requiredCardIds": [
+            "u22a-1:2",
+            "u22a-1:3",
+            "u22b-1:1",
+            "u22b-1:3"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.preferences",
+            "a1.preferences-speaking"
+          ]
+        },
+        "es": {
+          "candidateUnits": [
+            "u8"
+          ],
+          "candidateLessons": [
+            "u8a-1",
+            "u8b-1",
+            "u8c-1",
+            "u8d-1"
+          ],
+          "requiredCardIds": [
+            "u8c-1:0",
+            "u8c-1:1",
+            "u8c-1:2",
+            "u8d-1:0"
+          ],
+          "prerequisiteReview": "runtime_sources_checked_educator_review_pending",
+          "practiceStatus": "initial_practice_implemented",
+          "independentAssessmentStatus": "not_validated",
+          "activityIds": [
+            "a1.preferences",
+            "a1.preferences-speaking"
+          ]
+        }
+      }
+    }
+  ]
+}

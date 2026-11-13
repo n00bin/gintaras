@@ -1,0 +1,76 @@
+{
+  "url": "https://n00bin.github.io/gintaras/",
+  "commit": "ffb597c546c217d72879b1cdadd6a88f2b09468f",
+  "assets": {
+    "pics/ami/welcome.webp": {
+      "http": 200,
+      "bytes": 31822,
+      "matches_release": true
+    },
+    "pics/ami/happy.webp": {
+      "http": 200,
+      "bytes": 29412,
+      "matches_release": true
+    },
+    "pics/ami/cheer.webp": {
+      "http": 200,
+      "bytes": 30626,
+      "matches_release": true
+    },
+    "pics/ami/think.webp": {
+      "http": 200,
+      "bytes": 26020,
+      "matches_release": true
+    },
+    "pics/ami/rest.webp": {
+      "http": 200,
+      "bytes": 25356,
+      "matches_release": true
+    },
+    "pics/ami/encourage.webp": {
+      "http": 200,
+      "bytes": 30148,
+      "matches_release": true
+    },
+    "pics/ami/listen.webp": {
+      "http": 200,
+      "bytes": 29410,
+      "matches_release": true
+    },
+    "pics/ami/speak.webp": {
+      "http": 200,
+      "bytes": 32832,
+      "matches_release": true
+    },
+    "wordami-icon-192.png": {
+      "http": 200,
+      "bytes": 31880,
+      "matches_release": true
+    },
+    "wordami-icon-512.png": {
+      "http": 200,
+      "bytes": 208903,
+      "matches_release": true
+    },
+    "wordami-icon-maskable-192.png": {
+      "http": 200,
+      "bytes": 31880,
+      "matches_release": true
+    },
+    "wordami-icon-maskable-512.png": {
+      "http": 200,
+      "bytes": 208903,
+      "matches_release": true
+    },
+    "wordami-icon-180.png": {
+      "http": 200,
+      "bytes": 28428,
+      "matches_release": true
+    }
+  },
+  "sharing_image_http": 200,
+  "release": "3.111",
+  "page_title": "Wordami \u00b7 Learn Languages",
+  "first_lesson": "passed",
+  "page_errors": []
+}

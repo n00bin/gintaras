@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.126** (2026-11-13) The Lithuanian course now runs from beginner to C2 (CEFR A1–C2). New word and sentence units (u44–u243), grammar units for every level, graded readings and listening recordings, new conversations, and writing and speaking tasks with model answers, plus the all-skills practice windows (activities, reading and listening checks, writing studio, course path). Every published course name is kept, so saved progress carries over. Native-speaker review is still to come.
+
 - **3.125** (2026-11-12) The full Mexican Spanish course (37 units, 807 cards, 15 conversations, recordings and 472 pictures) is included but stays behind Coming soon until a native speaker has reviewed it. Spanish answers keep their word order and don't accept a lone "y". Lithuanian is unchanged.
 
 - **3.124** (2026-11-12) The app now matches its pictures: navy, turquoise, amber and coral on warm cream, with a navy dark mode, and the unit practice windows follow the same colours (including dark mode). "Pick your face" replaces the face builder: 24 people drawn in the picture style, each with a top in 5 colours. Faces made with the old builder keep showing until their owner picks a new one; players who never picked get a picture-style face.
@@ -30,6 +32,7 @@ How the numbers work: the **first** number goes up for a big change, the **middl
 
 The app shows its version on the opening screen and at the bottom of Settings (`APP_RELEASE` in index.html).
 
+- **3.110** (2026-11-05) Spanish's Sounds unit gets ten individual illustrations in the approved rounded cartoon style. Pictures use shared meaning-based filenames, load ahead with the lessons and save for offline use. An emoji remains available if a picture cannot load. Spanish remains in preview while its course is reviewed.
 - **3.109** (2026-11-05) The people in Basics and Small talk pictures now have their chat faces, with a small colour on their clothes. Things keep their colour, with the same outline as the people. Gerai, Palauk and pointing use the same set's real hands.
 - **3.108** (2026-11-05) Older reports: Kaip jo vardas? and Kaip jos vardas? now count as right, the same as Kaip tavo vardas? (both on the native-speaker list).
 - **3.107** (2026-11-05) Your reports: 11 near-silent clips re-recorded (Taip, Tu, čia, kai, Ten, ten, trys, pigu, Ačiū), a new check fails on any clip too quiet to hear, and the reason under a wrong answer no longer quotes an accepted answer you haven't met.

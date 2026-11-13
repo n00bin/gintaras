@@ -1,6 +1,7 @@
 /* Versioned practice evidence. Never writes course state, XP, FSRS or CEFR levels. */
 (()=>{
 'use strict';
+if(typeof COURSE_V2!=='undefined'&&COURSE_V2)return;
 if(LANG.code!=='lt')return;
 const key='wordami.activities.v1.'+LANG.code,definitions=new Map(),studyGates=new Map();
 const skills=['reading','listening','speaking','writing'];
