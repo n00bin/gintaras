@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.129** A first visit no longer downloads 852 practice recordings (32 MB, both languages) in the background. The recordings of the all-skills units are saved when the unit is among the next ones on the path, like a lesson's.
+
 - **3.128** The app site no longer carries its own copy of the recordings (now about 35 MB instead of 893 MB); the deploy checks every recording is on its recordings site first.
 
 - **3.127** (2026-11-13) Recordings come from their own sites, two per language (wordami-audio-lt, wordami-audio-lt-long, wordami-audio-es), each with its own 1 GB, leaving room for more languages. Recordings already saved on a phone keep working.

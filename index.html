@@ -1126,9 +1126,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.128';
-const APP_VERSION=200;
-const WHATS_NEW='A tidy-up behind the scenes: the app is now much smaller, so updates arrive faster. Your lessons and saved progress are unchanged.';
+const APP_RELEASE='3.129';
+const APP_VERSION=201;
+const WHATS_NEW='Lighter on your data: a first visit no longer downloads hundreds of practice recordings. They are saved as you get close to them, like your lessons.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -4099,11 +4099,18 @@ const picsOf=its=>its.map(i=>i&&picFor(i.lt)).filter(v=>v&&v[0]!=='#').map(v=>ab
 /* the files these words play from (a line with your name in it plays from its own file) */
 function filesOf(its,voice){const set=new Set();its.forEach(i=>{const u=i&&audioAt(i.au||i.id,voice);if(u)set.add(u);});return [...set];}
 /* The ready window, in the order it is saved: where you are first, then the words due, then what comes next. */
+/* (3.129) the recordings of an all-skills unit on the path (its reading, listening and speaking practice): saved when it
+   is among the units ahead, like a lesson's, instead of all of them on the first visit */
+function courseUnitFiles(id){const row=window.WordamiCoursePath?.isUnit(id)&&WordamiCoursePath.units().find(r=>r.id===id);if(!row)return null;
+  const pre=LANG.code+'.'+row.unitId+'.',out=[];
+  for(const bank of [window.WordamiSkillsAudio,window.WordamiInteractionPracticeAudio,window.WordamiListeningTransferAudio])for(const k in bank||{})if(k.startsWith(pre)&&bank[k].url)out.push(absUrl(bank[k].url));
+  return out;}
 function readyPlan(){const steps=[],lastDone=[];let ahead=0;
   for(const id of STEPS){const u=UNIT_BY[id],c=CONV_BY[id];if(u&&ahead>=3)break;
     if(!ahead&&!steps.length&&stepDone(id)){lastDone.push(id);continue;}
     if(u){ahead++;const its=u.lessons.flatMap(l=>l.items);steps.push({u,files:filesOf(its).concat(picsOf(its),MINI.filter(c=>LESSON_BY[c.after].unit===u).flatMap(c=>convFiles(c).concat(castPictureFiles(c))))});}
-    else if(c)steps.push({c,files:convFiles(c).concat(castPictureFiles(c))});}
+    else if(c)steps.push({c,files:convFiles(c).concat(castPictureFiles(c))});
+    else{const k=courseUnitFiles(id);if(k&&k.length)steps.push({k:id,files:k});}}
   const soon=Date.now()+7*DAY,due=practised().filter(i=>rec(i.id).due<=soon),extra=new Set();
   if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE&&!S.look)extra.add(absUrl(picFile(LEARNER_PICTURE)));
   {const mine=artLook(S.look);if(mine)extra.add(absUrl(artFile(mine.face,mine.top)));}
