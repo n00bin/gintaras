@@ -1444,7 +1444,35 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u375": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u376": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u377": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u378": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u379": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u38": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u381": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u382": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -6781,6 +6809,62 @@
 "u374a-2:3": "El sendero bordea el acantilado hasta la playa.",
 "u374a-2:4": "Calculamos la distancia en línea recta."
 },
+"u375": {
+"u375a-1:0": "Las constelaciones cambian de posición según la estación.",
+"u375a-1:1": "Con el telescopio distinguimos los anillos de Saturno.",
+"u375a-1:2": "Una lluvia de estrellas fugaces iluminó la madrugada.",
+"u375a-1:3": "La luna menguante apenas se veía entre las nubes.",
+"u375a-1:4": "El cometa regresará dentro de setenta y seis años.",
+"u375a-2:0": "La contaminación lumínica impide observar las estrellas.",
+"u375a-2:1": "Las galaxias se alejan unas de otras a gran velocidad."
+},
+"u376": {
+"u376a-1:0": "El alfarero modeló la vasija en el torno.",
+"u376a-1:1": "Amasan el barro para quitarle las burbujas de aire.",
+"u376a-1:2": "El barro negro de Oaxaca se pule con piedra de cuarzo.",
+"u376a-1:3": "La talavera de Puebla se decora a mano con pinceles finos.",
+"u376a-1:4": "El esmaltado le da a la loza un acabado brillante.",
+"u376a-2:0": "La olla se agrietó porque se secó demasiado rápido.",
+"u376a-2:1": "Moldeó un jarro con asa y pico.",
+"u376a-2:2": "Los cántaros de barro mantienen el agua fresca.",
+"u376a-2:3": "El taller de cerámica ofrece cursos para principiantes.",
+"u376a-2:4": "Las figuras de arcilla se dejan orear antes de hornearlas.",
+"u376a-3:0": "Pintó grecas geométricas alrededor del borde.",
+"u376a-3:1": "Cada pieza artesanal es única e irrepetible."
+},
+"u377": {
+"u377a-1:0": "Lanzó el anzuelo con carnada viva.",
+"u377a-1:1": "Los pescadores tiraron las redes al amanecer.",
+"u377a-1:2": "Picó un pez enorme y casi le rompe la caña.",
+"u377a-1:3": "Enrolló el sedal con paciencia hasta sacar la trucha.",
+"u377a-1:4": "La lancha regresó cargada de huachinangos.",
+"u377a-2:0": "La veda prohíbe pescar camarón durante varios meses.",
+"u377a-2:1": "Pescan con arpón en las aguas poco profundas.",
+"u377a-2:2": "Los pescadores de Pátzcuaro usan redes en forma de mariposa.",
+"u377a-2:3": "Limpiaron el pescado en el muelle y lo vendieron fresco.",
+"u377a-2:4": "La pesca deportiva exige devolver los ejemplares pequeños.",
+"u377a-3:0": "Pasamos horas esperando a que picaran sin éxito.",
+"u377a-3:1": "La cooperativa pesquera reparte las ganancias entre sus socios."
+},
+"u378": {
+"u378a-1:0": "Me pidieron un comprobante de domicilio reciente.",
+"u378a-1:1": "La ventanilla cerró justo cuando me tocaba.",
+"u378a-1:2": "El expediente se extravió entre dos oficinas.",
+"u378a-1:3": "Me mandaron de una dependencia a otra sin resolver nada.",
+"u378a-1:4": "El sello oficial le da validez al documento.",
+"u378a-2:0": "Un gestor agiliza los trámites a cambio de una comisión.",
+"u378a-2:1": "La digitalización ha reducido las filas interminables."
+},
+"u379": {
+"u379a-1:0": "El avalúo determinó que la casa valía menos de lo esperado.",
+"u379a-1:1": "Las escrituras se firmaron ante notario.",
+"u379a-1:2": "El terreno tiene problemas con la propiedad ejidal.",
+"u379a-1:3": "El departamento está en preventa y se entrega el próximo año.",
+"u379a-1:4": "El fraccionamiento cuenta con vigilancia y áreas verdes.",
+"u379a-2:0": "Pidieron un fiador para rentar el local.",
+"u379a-2:1": "El precio de lista es negociable.",
+"u379a-2:2": "La casa se remató por falta de pago."
+},
 "u38": {
 "u38a-1:0": "¡Qué padre!",
 "u38a-1:1": "¿En serio?",
@@ -6802,6 +6886,32 @@
 "u38d-1:2": "Cuídate",
 "u38d-1:3": "Seguimos en contacto",
 "u38d-1:4": "Hasta pronto"
+},
+"u381": {
+"u381a-1:0": "Calentaron la solución con un mechero.",
+"u381a-1:1": "Midió el líquido con una probeta graduada.",
+"u381a-1:2": "La mezcla cambió de color al añadir el reactivo.",
+"u381a-1:3": "El ácido corroe ciertos metales.",
+"u381a-1:4": "Hay que usar bata, guantes y gafas protectoras.",
+"u381a-2:0": "La reacción liberó un gas de olor penetrante.",
+"u381a-2:1": "La sal se disuelve fácilmente en agua caliente.",
+"u381a-2:2": "Observaron las células con el microscopio.",
+"u381a-2:3": "El matraz se rompió por el cambio brusco de temperatura.",
+"u381a-2:4": "La tabla periódica ordena los elementos según su número atómico.",
+"u381a-3:0": "Filtraron el precipitado para separarlo del líquido.",
+"u381a-3:1": "Anotaron cada resultado en la bitácora del laboratorio."
+},
+"u382": {
+"u382a-1:0": "Los padrinos de boda regalaron el lazo y las arras.",
+"u382a-1:1": "La quinceañera bailó el vals con su papá.",
+"u382a-1:2": "El velorio duró toda la noche en casa de la familia.",
+"u382a-1:3": "Rezaron el novenario por el difunto.",
+"u382a-1:4": "Los novios intercambiaron anillos ante el altar.",
+"u382a-2:0": "La primera comunión se celebró con una comida familiar.",
+"u382a-2:1": "El cortejo fúnebre avanzó lentamente hacia el panteón.",
+"u382a-2:2": "Arrojaron arroz a los recién casados a la salida.",
+"u382a-2:3": "La ceremonia civil se hizo en el registro civil.",
+"u382a-2:4": "Le dieron el pésame a la viuda."
 },
 "u39": {
 "u39a-1:0": "el mensaje",

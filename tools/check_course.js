@@ -123,7 +123,7 @@ say('conversation words not taught earlier', unknown);
   c.CONVS.forEach(v => v.all.forEach(l => l.lt && tw(l.lt).forEach(w => lex.add(w))));
   Object.keys(c.WORDS).concat(Object.keys(c.GLUE)).forEach(k => tw(k).forEach(w => lex.add(w)));
   // course words that are also everyday English, only counted when bold (Spanish he/has/sea/red: I have, you have, may be, network)
-  const ENG = new Set('a i o be man is it to me no as at on in so ten bus try re he has sea red ah ticket social cultural series late e particular decides plan informal natural ideas reduce decide real central mural legal animal familiar director general superior virus irregular motor formal material data metal escape debate solar ring'.split(' '));
+  const ENG = new Set('a i o be man is it to me no as at on in so ten bus try re he has sea red ah ticket social cultural series late e particular decides plan informal natural ideas reduce decide real central mural legal animal familiar director general superior virus irregular motor formal material data metal escape debate solar ring altar'.split(' '));
   const ENGB = new Set(['letters']);
   const NAMES = new Set([...names, 'bobas', 'markas', 'markai', 'vilnius', 'kaunas', 'klaipėda', 'halės', 'amerika']);
   const shows = h => { const b = new Set([...(h || '').matchAll(/<b>(.*?)<\/b>/g)].flatMap(m => tw(m[1])));
