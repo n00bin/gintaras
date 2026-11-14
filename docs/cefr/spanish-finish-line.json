@@ -1,395 +1,396 @@
 {
-  "goal": "Mexican Spanish course covers the full CEFR, A1-C2 (owner, 2026-11-13). See SPANISH-FINISH-LINE.md.",
-  "rule": "Work down next_actions in order without stopping to report. Report only when a level's status becomes finished, or when blocked on the owner.",
-  "baseline_2026_11_13": {
-    "live_course": {
-      "units": 37,
-      "cards": 807,
-      "distinct_word_forms": 650,
-      "conversations": 15,
-      "estimate": "about A1, behind Coming soon"
-    }
-  },
-  "levels": {
-    "A1": {
-      "status": "finished_build",
-      "native_review": "pending",
-      "finished_note": "Build finished 2026-11-13: all 11 grammar points tagged (new grammar unit u42 for describing words and tu/usted/ustedes), word units u42-u52 (about 180 new cards, word forms over 700), 17 new readings and 13 listening recordings (graded-content-es.js, es-a1-*), all recorded; course check, audio loudness, units and graded tests pass. Behind Coming soon; native review pending."
-    },
-    "A2": {
-      "status": "finished_build",
-      "native_review": "pending",
-      "finished_note": "Build finished 2026-11-13: 11 grammar points tagged (new grammar units u53-u57: preterite, object pronouns, comparing, estar + gerund and commands, por/para and frequency), word and sentence units u58-u88 (running total over 1,500 word forms), 25 readings (120-300 English words), 25 listening recordings (41-60 s), 4 writing and 2 speaking tasks; all recorded; course check, audio loudness, units, graded and writing/speaking tests pass. Behind Coming soon; native review pending. Reopened and re-finished 2026-11-13: six conversations cv17-cv22 added with reply unit u96 (the measure had been counting all-skills rows as conversations)."
-    },
-    "B1": {
-      "status": "in_progress",
-      "native_review": "pending"
-    },
-    "B2": {
-      "status": "not_started",
-      "native_review": "pending"
-    },
-    "C1": {
-      "status": "not_started",
-      "native_review": "pending"
-    },
-    "C2": {
-      "status": "not_started",
-      "native_review": "pending"
-    }
-  },
-  "next_actions": [
-    "B1: fill the gaps the measure shows (python tools/cefr_finish_line.py --lang es)"
-  ],
-  "live_units": {
-    "A1": [
-      "u0",
-      "u1",
-      "u21",
-      "u22",
-      "u23",
-      "u24",
-      "u25",
-      "u2",
-      "u5",
-      "u26",
-      "u3",
-      "u15",
-      "u4",
-      "u14",
-      "u7",
-      "u16",
-      "u28",
-      "u6",
-      "u30",
-      "u29",
-      "u9",
-      "u31",
-      "u8",
-      "u32",
-      "u33",
-      "u18",
-      "u41",
-      "u42",
-      "u43",
-      "u44",
-      "u45",
-      "u46",
-      "u47",
-      "u48",
-      "u49",
-      "u50",
-      "u51",
-      "u52"
-    ],
-    "A2": [
-      "u34",
-      "u35",
-      "u13",
-      "u10",
-      "u36",
-      "u37",
-      "u38",
-      "u39",
-      "u11",
-      "u12",
-      "u53",
-      "u54",
-      "u55",
-      "u56",
-      "u57",
-      "u58",
-      "u59",
-      "u60",
-      "u61",
-      "u62",
-      "u63",
-      "u64",
-      "u65",
-      "u66",
-      "u67",
-      "u68",
-      "u69",
-      "u70",
-      "u71",
-      "u72",
-      "u73",
-      "u74",
-      "u75",
-      "u76",
-      "u77",
-      "u78",
-      "u79",
-      "u80",
-      "u81",
-      "u82",
-      "u83",
-      "u84",
-      "u85",
-      "u86",
-      "u87",
-      "u88",
-      "u96"
-    ],
-    "B1": [
-      "u89",
-      "u90",
-      "u91",
-      "u92",
-      "u93",
-      "u94",
-      "u95"
-    ],
-    "B2": [],
-    "C1": [],
-    "C2": []
-  },
-  "grammar": {
-    "A1": {
-      "Sounds, stress and written accents": [
-        "u0"
-      ],
-      "Gender, articles (el, la, los, las, un, una) and plurals": [
-        "u3",
-        "u30",
-        "u43"
-      ],
-      "Adjective agreement and position": [
-        "u42",
-        "u29"
-      ],
-      "Ser and estar (basic uses), and hay": [
-        "u22",
-        "u30"
-      ],
-      "Present tense of regular -ar, -er, -ir verbs": [
-        "u23",
-        "u47"
-      ],
-      "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)": [
-        "u25",
-        "u32",
-        "u33",
-        "u47"
-      ],
-      "Gustar and similar verbs": [
-        "u8"
-      ],
-      "Questions and question words": [
-        "u24"
-      ],
-      "Numbers 0–100, time, days, months": [
-        "u2",
-        "u5",
-        "u18"
-      ],
-      "Possessives (mi, tu, su, nuestro)": [
-        "u6"
-      ],
-      "Tú, usted and ustedes": [
-        "u42",
-        "u1"
-      ]
-    },
-    "A2": {
-      "Preterite: regular verbs and the common irregulars": [
-        "u53",
-        "u34"
-      ],
-      "Imperfect: description and habits": [
-        "u35"
-      ],
-      "Ir a + infinitive": [
-        "u33"
-      ],
-      "Reflexive verbs": [
-        "u26"
-      ],
-      "Direct and indirect object pronouns": [
-        "u54"
-      ],
-      "Comparatives and superlatives": [
-        "u55"
-      ],
-      "Commands for tú and usted (affirmative)": [
-        "u56",
-        "u44"
-      ],
-      "Estar + gerund": [
-        "u56"
-      ],
-      "Por and para (basic uses)": [
-        "u57"
-      ],
-      "Frequency and time expressions": [
-        "u57",
-        "u26"
-      ],
-      "Joining words (y, pero, porque, cuando, si)": [
-        "u41"
-      ]
-    },
-    "B1": {
-      "Preterite and imperfect together in stories": [
-        "u89"
-      ],
-      "Present perfect, and the Mexican preference for the preterite": [
-        "u90"
-      ],
-      "Future and conditional": [
-        "u91"
-      ],
-      "Present subjunctive: wishes, advice, feelings, doubt": [
-        "u92"
-      ],
-      "Negative commands": [
-        "u93"
-      ],
-      "Double object pronouns (se lo)": [
-        "u93"
-      ],
-      "Relative words (que, quien, donde, lo que)": [
-        "u94"
-      ],
-      "Reported speech (dijo que…)": [
-        "u95"
-      ],
-      "Ordinal numbers and dates": [
-        "u95"
-      ]
-    },
-    "B2": {
-      "Subjunctive after cuando, para que, aunque, antes de que": [],
-      "Imperfect subjunctive": [],
-      "Si-clauses with the imperfect subjunctive": [],
-      "Pluperfect": [],
-      "Passive with ser, passive and impersonal se": [],
-      "Future and conditional perfect": [],
-      "Register: formal letters and Mexican informal speech": [],
-      "Common idioms": []
-    },
-    "C1": {
-      "Pluperfect subjunctive and past si-clauses": [],
-      "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)": [],
-      "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)": [],
-      "Academic and formal connectors; nominalisation": [],
-      "Reported speech with tense changes": [],
-      "Other varieties for recognition (Spain, Río de la Plata, Caribbean)": []
-    },
-    "C2": {
-      "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)": [],
-      "Word order for emphasis and style": [],
-      "Irony, wordplay and double meanings (doble sentido), kept clean": [],
-      "Paraphrase and mediation": [],
-      "Specialised registers: legal, academic, administrative": [],
-      "Sayings and proverbs (refranes)": []
-    }
-  },
-  "done": [
-    "2026-11-13 Finish line written (SPANISH-FINISH-LINE.md), tracker started, cefr_finish_line.py takes --lang es. Baseline: A1 words 527/700, reading 3/20 at length, listening 7/20 at length, grammar not tagged yet.",
-    "2026-11-13 Tools made bilingual: build_units_es.js, assemble.js --lang es, ins.py --lang es, build_graded_audio.py --lang es, graded-content-<lang>.js loaded per language, graded-reading.js language-neutral. A1 FINISHED (build).",
-    "2026-11-13 A2 FINISHED (build). Spanish speech runs about 0.33 s per word: A2 listening needs about 130+ Spanish words for 40 s.",
-    "2026-11-13 Measure fixed: only real conversations (CONV_BY) count, not all-skills path rows. Lithuanian still meets every target; Spanish A2 conversations 14/20, so A2 reopened.",
-    "2026-11-13 A2 conversations cv17-cv22 + reply unit u96 (tools/cefr-build/conv_phrase_unit.js); named characters get voices via es-cast-gv.json; every lesson part gets an auto tip (check_spanish.js needs one). check_spanish.js --require-audio passes."
-  ],
-  "measured": {
-    "levels": {
-      "A1": {
-        "word_forms_running_total": 707,
-        "reading_at_length": 20,
-        "reading_any_length": 33,
-        "listening_at_length": 20,
-        "listening_any_length": 26,
-        "conversations": 19,
-        "writing": 8,
-        "speaking": 10,
-        "grammar_points": 11,
-        "grammar_missing": []
-      },
-      "A2": {
-        "word_forms_running_total": 1520,
-        "reading_at_length": 25,
-        "reading_any_length": 41,
-        "listening_at_length": 25,
-        "listening_any_length": 38,
-        "conversations": 20,
-        "writing": 12,
-        "speaking": 12,
-        "grammar_points": 11,
-        "grammar_missing": []
-      },
-      "B1": {
-        "word_forms_running_total": 1664,
-        "reading_at_length": 0,
-        "reading_any_length": 17,
-        "listening_at_length": 0,
-        "listening_any_length": 13,
-        "conversations": 9,
-        "writing": 8,
-        "speaking": 10,
-        "grammar_points": 9,
-        "grammar_missing": []
-      },
-      "B2": {
-        "word_forms_running_total": 1704,
-        "reading_at_length": 0,
-        "reading_any_length": 17,
-        "listening_at_length": 0,
-        "listening_any_length": 13,
-        "conversations": 9,
-        "writing": 8,
-        "speaking": 10,
-        "grammar_points": 8,
-        "grammar_missing": [
-          "Subjunctive after cuando, para que, aunque, antes de que",
-          "Imperfect subjunctive",
-          "Si-clauses with the imperfect subjunctive",
-          "Pluperfect",
-          "Passive with ser, passive and impersonal se",
-          "Future and conditional perfect",
-          "Register: formal letters and Mexican informal speech",
-          "Common idioms"
-        ]
-      },
-      "C1": {
-        "word_forms_running_total": 1744,
-        "reading_at_length": 0,
-        "reading_any_length": 17,
-        "listening_at_length": 0,
-        "listening_any_length": 13,
-        "conversations": 9,
-        "writing": 8,
-        "speaking": 10,
-        "grammar_points": 6,
-        "grammar_missing": [
-          "Pluperfect subjunctive and past si-clauses",
-          "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)",
-          "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)",
-          "Academic and formal connectors; nominalisation",
-          "Reported speech with tense changes",
-          "Other varieties for recognition (Spain, Río de la Plata, Caribbean)"
-        ]
-      },
-      "C2": {
-        "word_forms_running_total": 1784,
-        "reading_at_length": 0,
-        "reading_any_length": 17,
-        "listening_at_length": 0,
-        "listening_any_length": 13,
-        "conversations": 9,
-        "writing": 8,
-        "speaking": 10,
-        "grammar_points": 6,
-        "grammar_missing": [
-          "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)",
-          "Word order for emphasis and style",
-          "Irony, wordplay and double meanings (doble sentido), kept clean",
-          "Paraphrase and mediation",
-          "Specialised registers: legal, academic, administrative",
-          "Sayings and proverbs (refranes)"
-        ]
-      }
-    },
-    "unassigned_live_units": []
+ "goal": "Mexican Spanish course covers the full CEFR, A1-C2 (owner, 2026-11-13). See SPANISH-FINISH-LINE.md.",
+ "rule": "Work down next_actions in order without stopping to report. Report only when a level's status becomes finished, or when blocked on the owner.",
+ "baseline_2026_11_13": {
+  "live_course": {
+   "units": 37,
+   "cards": 807,
+   "distinct_word_forms": 650,
+   "conversations": 15,
+   "estimate": "about A1, behind Coming soon"
   }
+ },
+ "levels": {
+  "A1": {
+   "status": "finished_build",
+   "native_review": "pending",
+   "finished_note": "Build finished 2026-11-13: all 11 grammar points tagged (new grammar unit u42 for describing words and tu/usted/ustedes), word units u42-u52 (about 180 new cards, word forms over 700), 17 new readings and 13 listening recordings (graded-content-es.js, es-a1-*), all recorded; course check, audio loudness, units and graded tests pass. Behind Coming soon; native review pending."
+  },
+  "A2": {
+   "status": "finished_build",
+   "native_review": "pending",
+   "finished_note": "Build finished 2026-11-13: 11 grammar points tagged (new grammar units u53-u57: preterite, object pronouns, comparing, estar + gerund and commands, por/para and frequency), word and sentence units u58-u88 (running total over 1,500 word forms), 25 readings (120-300 English words), 25 listening recordings (41-60 s), 4 writing and 2 speaking tasks; all recorded; course check, audio loudness, units, graded and writing/speaking tests pass. Behind Coming soon; native review pending. Reopened and re-finished 2026-11-13: six conversations cv17-cv22 added with reply unit u96 (the measure had been counting all-skills rows as conversations)."
+  },
+  "B1": {
+   "status": "in_progress",
+   "native_review": "pending"
+  },
+  "B2": {
+   "status": "not_started",
+   "native_review": "pending"
+  },
+  "C1": {
+   "status": "not_started",
+   "native_review": "pending"
+  },
+  "C2": {
+   "status": "not_started",
+   "native_review": "pending"
+  }
+ },
+ "next_actions": [
+  "B1: fill the gaps the measure shows (python tools/cefr_finish_line.py --lang es)"
+ ],
+ "live_units": {
+  "A1": [
+   "u0",
+   "u1",
+   "u21",
+   "u22",
+   "u23",
+   "u24",
+   "u25",
+   "u2",
+   "u5",
+   "u26",
+   "u3",
+   "u15",
+   "u4",
+   "u14",
+   "u7",
+   "u16",
+   "u28",
+   "u6",
+   "u30",
+   "u29",
+   "u9",
+   "u31",
+   "u8",
+   "u32",
+   "u33",
+   "u18",
+   "u41",
+   "u42",
+   "u43",
+   "u44",
+   "u45",
+   "u46",
+   "u47",
+   "u48",
+   "u49",
+   "u50",
+   "u51",
+   "u52"
+  ],
+  "A2": [
+   "u34",
+   "u35",
+   "u13",
+   "u10",
+   "u36",
+   "u37",
+   "u38",
+   "u39",
+   "u11",
+   "u12",
+   "u53",
+   "u54",
+   "u55",
+   "u56",
+   "u57",
+   "u58",
+   "u59",
+   "u60",
+   "u61",
+   "u62",
+   "u63",
+   "u64",
+   "u65",
+   "u66",
+   "u67",
+   "u68",
+   "u69",
+   "u70",
+   "u71",
+   "u72",
+   "u73",
+   "u74",
+   "u75",
+   "u76",
+   "u77",
+   "u78",
+   "u79",
+   "u80",
+   "u81",
+   "u82",
+   "u83",
+   "u84",
+   "u85",
+   "u86",
+   "u87",
+   "u88",
+   "u96"
+  ],
+  "B1": [
+   "u89",
+   "u90",
+   "u91",
+   "u92",
+   "u93",
+   "u94",
+   "u95",
+   "u97"
+  ],
+  "B2": [],
+  "C1": [],
+  "C2": []
+ },
+ "grammar": {
+  "A1": {
+   "Sounds, stress and written accents": [
+    "u0"
+   ],
+   "Gender, articles (el, la, los, las, un, una) and plurals": [
+    "u3",
+    "u30",
+    "u43"
+   ],
+   "Adjective agreement and position": [
+    "u42",
+    "u29"
+   ],
+   "Ser and estar (basic uses), and hay": [
+    "u22",
+    "u30"
+   ],
+   "Present tense of regular -ar, -er, -ir verbs": [
+    "u23",
+    "u47"
+   ],
+   "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)": [
+    "u25",
+    "u32",
+    "u33",
+    "u47"
+   ],
+   "Gustar and similar verbs": [
+    "u8"
+   ],
+   "Questions and question words": [
+    "u24"
+   ],
+   "Numbers 0–100, time, days, months": [
+    "u2",
+    "u5",
+    "u18"
+   ],
+   "Possessives (mi, tu, su, nuestro)": [
+    "u6"
+   ],
+   "Tú, usted and ustedes": [
+    "u42",
+    "u1"
+   ]
+  },
+  "A2": {
+   "Preterite: regular verbs and the common irregulars": [
+    "u53",
+    "u34"
+   ],
+   "Imperfect: description and habits": [
+    "u35"
+   ],
+   "Ir a + infinitive": [
+    "u33"
+   ],
+   "Reflexive verbs": [
+    "u26"
+   ],
+   "Direct and indirect object pronouns": [
+    "u54"
+   ],
+   "Comparatives and superlatives": [
+    "u55"
+   ],
+   "Commands for tú and usted (affirmative)": [
+    "u56",
+    "u44"
+   ],
+   "Estar + gerund": [
+    "u56"
+   ],
+   "Por and para (basic uses)": [
+    "u57"
+   ],
+   "Frequency and time expressions": [
+    "u57",
+    "u26"
+   ],
+   "Joining words (y, pero, porque, cuando, si)": [
+    "u41"
+   ]
+  },
+  "B1": {
+   "Preterite and imperfect together in stories": [
+    "u89"
+   ],
+   "Present perfect, and the Mexican preference for the preterite": [
+    "u90"
+   ],
+   "Future and conditional": [
+    "u91"
+   ],
+   "Present subjunctive: wishes, advice, feelings, doubt": [
+    "u92"
+   ],
+   "Negative commands": [
+    "u93"
+   ],
+   "Double object pronouns (se lo)": [
+    "u93"
+   ],
+   "Relative words (que, quien, donde, lo que)": [
+    "u94"
+   ],
+   "Reported speech (dijo que…)": [
+    "u95"
+   ],
+   "Ordinal numbers and dates": [
+    "u95"
+   ]
+  },
+  "B2": {
+   "Subjunctive after cuando, para que, aunque, antes de que": [],
+   "Imperfect subjunctive": [],
+   "Si-clauses with the imperfect subjunctive": [],
+   "Pluperfect": [],
+   "Passive with ser, passive and impersonal se": [],
+   "Future and conditional perfect": [],
+   "Register: formal letters and Mexican informal speech": [],
+   "Common idioms": []
+  },
+  "C1": {
+   "Pluperfect subjunctive and past si-clauses": [],
+   "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)": [],
+   "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)": [],
+   "Academic and formal connectors; nominalisation": [],
+   "Reported speech with tense changes": [],
+   "Other varieties for recognition (Spain, Río de la Plata, Caribbean)": []
+  },
+  "C2": {
+   "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)": [],
+   "Word order for emphasis and style": [],
+   "Irony, wordplay and double meanings (doble sentido), kept clean": [],
+   "Paraphrase and mediation": [],
+   "Specialised registers: legal, academic, administrative": [],
+   "Sayings and proverbs (refranes)": []
+  }
+ },
+ "done": [
+  "2026-11-13 Finish line written (SPANISH-FINISH-LINE.md), tracker started, cefr_finish_line.py takes --lang es. Baseline: A1 words 527/700, reading 3/20 at length, listening 7/20 at length, grammar not tagged yet.",
+  "2026-11-13 Tools made bilingual: build_units_es.js, assemble.js --lang es, ins.py --lang es, build_graded_audio.py --lang es, graded-content-<lang>.js loaded per language, graded-reading.js language-neutral. A1 FINISHED (build).",
+  "2026-11-13 A2 FINISHED (build). Spanish speech runs about 0.33 s per word: A2 listening needs about 130+ Spanish words for 40 s.",
+  "2026-11-13 Measure fixed: only real conversations (CONV_BY) count, not all-skills path rows. Lithuanian still meets every target; Spanish A2 conversations 14/20, so A2 reopened.",
+  "2026-11-13 A2 conversations cv17-cv22 + reply unit u96 (tools/cefr-build/conv_phrase_unit.js); named characters get voices via es-cast-gv.json; every lesson part gets an auto tip (check_spanish.js needs one). check_spanish.js --require-audio passes."
+ ],
+ "measured": {
+  "levels": {
+   "A1": {
+    "word_forms_running_total": 707,
+    "reading_at_length": 20,
+    "reading_any_length": 33,
+    "listening_at_length": 20,
+    "listening_any_length": 26,
+    "conversations": 19,
+    "writing": 8,
+    "speaking": 10,
+    "grammar_points": 11,
+    "grammar_missing": []
+   },
+   "A2": {
+    "word_forms_running_total": 1520,
+    "reading_at_length": 25,
+    "reading_any_length": 41,
+    "listening_at_length": 25,
+    "listening_any_length": 38,
+    "conversations": 20,
+    "writing": 12,
+    "speaking": 12,
+    "grammar_points": 11,
+    "grammar_missing": []
+   },
+   "B1": {
+    "word_forms_running_total": 1756,
+    "reading_at_length": 0,
+    "reading_any_length": 17,
+    "listening_at_length": 0,
+    "listening_any_length": 13,
+    "conversations": 20,
+    "writing": 8,
+    "speaking": 10,
+    "grammar_points": 9,
+    "grammar_missing": []
+   },
+   "B2": {
+    "word_forms_running_total": 1796,
+    "reading_at_length": 0,
+    "reading_any_length": 17,
+    "listening_at_length": 0,
+    "listening_any_length": 13,
+    "conversations": 9,
+    "writing": 8,
+    "speaking": 10,
+    "grammar_points": 8,
+    "grammar_missing": [
+     "Subjunctive after cuando, para que, aunque, antes de que",
+     "Imperfect subjunctive",
+     "Si-clauses with the imperfect subjunctive",
+     "Pluperfect",
+     "Passive with ser, passive and impersonal se",
+     "Future and conditional perfect",
+     "Register: formal letters and Mexican informal speech",
+     "Common idioms"
+    ]
+   },
+   "C1": {
+    "word_forms_running_total": 1836,
+    "reading_at_length": 0,
+    "reading_any_length": 17,
+    "listening_at_length": 0,
+    "listening_any_length": 13,
+    "conversations": 9,
+    "writing": 8,
+    "speaking": 10,
+    "grammar_points": 6,
+    "grammar_missing": [
+     "Pluperfect subjunctive and past si-clauses",
+     "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)",
+     "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)",
+     "Academic and formal connectors; nominalisation",
+     "Reported speech with tense changes",
+     "Other varieties for recognition (Spain, Río de la Plata, Caribbean)"
+    ]
+   },
+   "C2": {
+    "word_forms_running_total": 1876,
+    "reading_at_length": 0,
+    "reading_any_length": 17,
+    "listening_at_length": 0,
+    "listening_any_length": 13,
+    "conversations": 9,
+    "writing": 8,
+    "speaking": 10,
+    "grammar_points": 6,
+    "grammar_missing": [
+     "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)",
+     "Word order for emphasis and style",
+     "Irony, wordplay and double meanings (doble sentido), kept clean",
+     "Paraphrase and mediation",
+     "Specialised registers: legal, academic, administrative",
+     "Sayings and proverbs (refranes)"
+    ]
+   }
+  },
+  "unassigned_live_units": []
+ }
 }

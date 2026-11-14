@@ -56,7 +56,51 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv23": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv24": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv25": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv26": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv27": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv28": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv29": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv3": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv30": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv31": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv32": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv33": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -467,6 +511,10 @@
 "u96": {
 "leonas": "Iapetus",
 "ona": "Achernar"
+},
+"u97": {
+"leonas": "Iapetus",
+"ona": "Achernar"
 }
 },
 "cv1": {
@@ -702,6 +750,80 @@
 "cv22:6": "Sí, pero no cargue nada pesado. Si no mejora, regrese el viernes.",
 "cv22:7": "Entendido. Muchas gracias, doctora."
 },
+"cv23": {
+"cv23:0": "Gracias por llamar. ¿En qué le puedo ayudar?",
+"cv23:1": "Hace una semana pedí una mesa y llegó con una pata rota.",
+"cv23:2": "Lo siento mucho. ¿Me puede dar su número de pedido?",
+"cv23:3": "Sí, es el cuatro, ocho, dos, siete. También tengo fotos del daño.",
+"cv23:4": "Perfecto. Podemos mandarle una pata nueva o cambiarle la mesa completa.",
+"cv23:5": "Prefiero que me cambien la mesa, porque la madera también está rayada.",
+"cv23:6": "Entendido. Pasamos por ella el jueves y le dejamos la nueva el mismo día.",
+"cv23:7": "El jueves no estoy en casa. ¿Podría ser el viernes en la mañana?",
+"cv23:8": "Claro, el viernes entre nueve y una. ¿Algo más?",
+"cv23:9": "No, eso es todo. Le agradezco mucho su ayuda."
+},
+"cv24": {
+"cv24:0": "Oye, ¿y si nos vamos a Cancún en Semana Santa?",
+"cv24:1": "No sé, en Semana Santa todo está lleno y carísimo.",
+"cv24:2": "Tienes razón. ¿Entonces qué propones?",
+"cv24:3": "¿Qué te parece Bacalar? Es más tranquilo y la laguna es preciosa.",
+"cv24:4": "Nunca he ido. ¿Qué se puede hacer ahí?",
+"cv24:5": "Puedes nadar, rentar un kayak y visitar los cenotes que están cerca.",
+"cv24:6": "Suena bien. ¿Y cómo llegamos?",
+"cv24:7": "Podemos volar a Chetumal y de ahí tomar un camión, son como cuarenta minutos.",
+"cv24:8": "Va. Yo busco los vuelos y tú el hotel, ¿sale?",
+"cv24:9": "Sale. Te mando opciones esta noche."
+},
+"cv25": {
+"cv25:0": "Buenas noches. Me dijo el mesero que tiene un problema.",
+"cv25:1": "Sí. Esperamos casi una hora y la comida llegó fría.",
+"cv25:2": "Le pido una disculpa. Hoy tenemos muchísima gente y nos falta un cocinero.",
+"cv25:3": "Lo entiendo, pero deberían avisar a los clientes cuando van a tardar tanto.",
+"cv25:4": "Tiene toda la razón. ¿Quiere que le calienten los platillos o prefiere pedir otra cosa?",
+"cv25:5": "Preferimos que nos traigan unos platillos nuevos, por favor.",
+"cv25:6": "Claro. Y el postre corre por cuenta de la casa.",
+"cv25:7": "Muy amable. Se lo agradecemos."
+},
+"cv26": {
+"cv26:0": "¡Oye! Te estuve esperando anoche. ¿Qué te pasó?",
+"cv26:1": "Perdóname, tuve un día horrible. Ya iba para tu casa cuando se me ponchó una llanta.",
+"cv26:2": "¡No manches! ¿Y qué hiciste?",
+"cv26:3": "Estaba lloviendo y no tenía gato, así que tuve que llamar a una grúa.",
+"cv26:4": "¿Y tardó mucho?",
+"cv26:5": "Casi dos horas. Cuando por fin llegué a casa, eran las doce y ya no podía más.",
+"cv26:6": "¡Pobre! ¿Por qué no me avisaste?",
+"cv26:7": "Se me había acabado la batería del celular. Te prometo que la próxima no me la pierdo."
+},
+"cv27": {
+"cv27:0": "Buenos días. ¿Qué tipo de cuenta le interesa?",
+"cv27:1": "Me interesa una cuenta de ahorro sin comisiones.",
+"cv27:2": "Tenemos una. Solo necesita mantener un saldo mínimo de mil pesos.",
+"cv27:3": "¿Y qué pasa si un mes tengo menos de mil pesos?",
+"cv27:4": "Le cobraríamos una comisión de cincuenta pesos ese mes.",
+"cv27:5": "Entiendo. ¿La cuenta incluye tarjeta de débito y aplicación?",
+"cv27:6": "Sí, las dos. ¿Trae su identificación y un comprobante de domicilio?",
+"cv27:7": "Traigo mi credencial, pero se me olvidó el comprobante. ¿Puedo regresar mañana?"
+},
+"cv28": {
+"cv28:0": "Me ofrecieron un trabajo en Canadá, pero no sé si aceptarlo.",
+"cv28:1": "¡Qué buena noticia! ¿Por qué tienes dudas?",
+"cv28:2": "Me da miedo estar lejos de mi familia y no hablar bien inglés.",
+"cv28:3": "Es normal tener miedo, pero puedes hablar con ellos todos los días por videollamada.",
+"cv28:4": "¿Y el idioma?",
+"cv28:5": "Si vives allá, vas a aprender rapidísimo. Yo te ayudo a practicar antes de que te vayas.",
+"cv28:6": "Gracias. ¿Tú de verdad crees que debería ir?",
+"cv28:7": "Sí, creo que es una oportunidad que no se repite. Si no te gusta, siempre puedes regresar."
+},
+"cv29": {
+"cv29:0": "¿Sí? ¿Quién es?",
+"cv29:1": "Buenas tardes, vivo en el tercer piso, abajo de usted. Está entrando agua por mi techo.",
+"cv29:2": "¿En serio? ¿De qué parte?",
+"cv29:3": "Del baño. Creo que tiene una fuga en la regadera.",
+"cv29:4": "Ay, perdón. No me había dado cuenta. Voy a cerrar la llave de paso ahorita.",
+"cv29:5": "Gracias. ¿Podría llamar a un plomero hoy mismo? Ya se manchó la pintura.",
+"cv29:6": "Claro que sí. Y si hay que pintar, yo lo pago.",
+"cv29:7": "Se lo agradezco mucho. Le dejo mi número por si necesita entrar a ver."
+},
 "cv3": {
 "cv3:0": "Buenos días. ¿Cómo estás?",
 "cv3:1": "Bien, gracias. ¿Y tú?",
@@ -719,6 +841,46 @@
 "cv3:7": "Me levanto temprano.",
 "cv3:8": "¿A qué hora?",
 "cv3:9": "A las ocho."
+},
+"cv30": {
+"cv30:0": "A ver, cuéntame. ¿Cuáles son tus opciones?",
+"cv30:1": "Me aceptaron en dos universidades: una aquí en Puebla y otra en Monterrey.",
+"cv30:2": "¿Y cuál te gusta más?",
+"cv30:3": "La de Monterrey tiene mejor programa, pero es mucho más cara y tendría que mudarme.",
+"cv30:4": "¿Has preguntado si dan becas?",
+"cv30:5": "Todavía no. Es buena idea, voy a escribirles mañana.",
+"cv30:6": "Y piensa también qué quieres hacer en cinco años, no solo ahorita.",
+"cv30:7": "Tienes razón, tía. Si consigo la beca, creo que me iría a Monterrey."
+},
+"cv31": {
+"cv31:0": "Buenas tardes. ¿Qué le pasó?",
+"cv31:1": "Me robaron la mochila en el metro, en la estación Hidalgo.",
+"cv31:2": "¿A qué hora fue y qué traía en la mochila?",
+"cv31:3": "Fue como a las seis. Traía mi computadora, mi cartera y las llaves de mi casa.",
+"cv31:4": "¿Vio a la persona que se la llevó?",
+"cv31:5": "Más o menos. Era un muchacho alto, con sudadera gris, y se bajó corriendo.",
+"cv31:6": "Bien. Necesito que llene este formato y que cancele sus tarjetas lo antes posible.",
+"cv31:7": "Ya las cancelé. ¿Me pueden dar una copia de la denuncia para el seguro?"
+},
+"cv32": {
+"cv32:0": "Entonces, la fiesta sorpresa para Beto es el sábado. ¿Qué nos falta?",
+"cv32:1": "Falta confirmar el lugar. Mi primo nos presta su terraza si llevamos las sillas.",
+"cv32:2": "¡Perfecto! ¿Y la comida?",
+"cv32:3": "Podríamos pedir tacos de canasta y que cada quien traiga algo de tomar.",
+"cv32:4": "Buena idea. ¿Y cómo hacemos para que Beto no sospeche?",
+"cv32:5": "Le voy a decir que vamos al cine y lo llevo a la terraza a las ocho.",
+"cv32:6": "¡Me encanta! Yo me encargo del pastel y de avisarle a todos.",
+"cv32:7": "Perfecto. Recuérdales que no publiquen nada en redes sociales."
+},
+"cv33": {
+"cv33:0": "Disculpa, ¿me podrías recomendar qué ver? Solo tengo un día.",
+"cv33:1": "Claro. Yo empezaría por el centro histórico, temprano, antes de que haya mucha gente.",
+"cv33:2": "¿Y para comer? Me encanta la comida típica.",
+"cv33:3": "Ve al mercado de Coyoacán. Ahí puedes probar de todo sin gastar mucho.",
+"cv33:4": "¿Es seguro caminar en la noche?",
+"cv33:5": "En el centro sí, pero te recomiendo que tomes un taxi de aplicación para regresar al hotel.",
+"cv33:6": "¡Muchas gracias! Eres muy amable.",
+"cv33:7": "De nada. Que disfrutes mucho tu visita."
 },
 "cv4": {
 "cv4:0": "Buenas tardes.",
@@ -2772,5 +2934,53 @@
 "u96c-1:1": "Sí, ayudé a un amigo con su mudanza.",
 "u96c-1:2": "¿Puedo ir a trabajar?",
 "u96c-1:3": "Entendido. Muchas gracias, doctora."
+},
+"u97": {
+"u97a-1:0": "Hace una semana pedí una mesa y llegó con una pata rota.",
+"u97a-1:1": "Sí, es el cuatro, ocho, dos, siete. También tengo fotos del daño.",
+"u97a-1:2": "Prefiero que me cambien la mesa, porque la madera también está rayada.",
+"u97a-1:3": "El jueves no estoy en casa. ¿Podría ser el viernes en la mañana?",
+"u97a-1:4": "No, eso es todo. Le agradezco mucho su ayuda.",
+"u97a-2:0": "No sé, en Semana Santa todo está lleno y carísimo.",
+"u97a-2:1": "¿Qué te parece Bacalar? Es más tranquilo y la laguna es preciosa.",
+"u97a-2:2": "Puedes nadar, rentar un kayak y visitar los cenotes que están cerca.",
+"u97a-2:3": "Podemos volar a Chetumal y de ahí tomar un camión, son como cuarenta minutos.",
+"u97a-2:4": "Sale. Te mando opciones esta noche.",
+"u97b-1:0": "Sí. Esperamos casi una hora y la comida llegó fría.",
+"u97b-1:1": "Lo entiendo, pero deberían avisar a los clientes cuando van a tardar tanto.",
+"u97b-1:2": "Preferimos que nos traigan unos platillos nuevos, por favor.",
+"u97b-1:3": "Muy amable. Se lo agradecemos.",
+"u97b-1:4": "Perdóname, tuve un día horrible. Ya iba para tu casa cuando se me ponchó una llanta.",
+"u97b-2:0": "Estaba lloviendo y no tenía gato, así que tuve que llamar a una grúa.",
+"u97b-2:1": "Casi dos horas. Cuando por fin llegué a casa, eran las doce y ya no podía más.",
+"u97b-2:2": "Se me había acabado la batería del celular. Te prometo que la próxima no me la pierdo.",
+"u97b-2:3": "Me interesa una cuenta de ahorro sin comisiones.",
+"u97b-2:4": "¿Y qué pasa si un mes tengo menos de mil pesos?",
+"u97c-1:0": "Entiendo. ¿La cuenta incluye tarjeta de débito y aplicación?",
+"u97c-1:1": "Traigo mi credencial, pero se me olvidó el comprobante. ¿Puedo regresar mañana?",
+"u97c-1:2": "¡Qué buena noticia! ¿Por qué tienes dudas?",
+"u97c-1:3": "Es normal tener miedo, pero puedes hablar con ellos todos los días por videollamada.",
+"u97c-1:4": "Si vives allá, vas a aprender rapidísimo. Yo te ayudo a practicar antes de que te vayas.",
+"u97c-2:0": "Sí, creo que es una oportunidad que no se repite. Si no te gusta, siempre puedes regresar.",
+"u97c-2:1": "Buenas tardes, vivo en el tercer piso, abajo de usted. Está entrando agua por mi techo.",
+"u97c-2:2": "Del baño. Creo que tiene una fuga en la regadera.",
+"u97c-2:3": "Gracias. ¿Podría llamar a un plomero hoy mismo? Ya se manchó la pintura.",
+"u97c-2:4": "Se lo agradezco mucho. Le dejo mi número por si necesita entrar a ver.",
+"u97d-1:0": "Me aceptaron en dos universidades: una aquí en Puebla y otra en Monterrey.",
+"u97d-1:1": "La de Monterrey tiene mejor programa, pero es mucho más cara y tendría que mudarme.",
+"u97d-1:2": "Todavía no. Es buena idea, voy a escribirles mañana.",
+"u97d-1:3": "Tienes razón, tía. Si consigo la beca, creo que me iría a Monterrey.",
+"u97d-1:4": "Me robaron la mochila en el metro, en la estación Hidalgo.",
+"u97d-2:0": "Fue como a las seis. Traía mi computadora, mi cartera y las llaves de mi casa.",
+"u97d-2:1": "Más o menos. Era un muchacho alto, con sudadera gris, y se bajó corriendo.",
+"u97d-2:2": "Ya las cancelé. ¿Me pueden dar una copia de la denuncia para el seguro?",
+"u97d-2:3": "Falta confirmar el lugar. Mi primo nos presta su terraza si llevamos las sillas.",
+"u97d-2:4": "Podríamos pedir tacos de canasta y que cada quien traiga algo de tomar.",
+"u97e-1:0": "Le voy a decir que vamos al cine y lo llevo a la terraza a las ocho.",
+"u97e-1:1": "Perfecto. Recuérdales que no publiquen nada en redes sociales.",
+"u97e-1:2": "Claro. Yo empezaría por el centro histórico, temprano, antes de que haya mucha gente.",
+"u97e-1:3": "Ve al mercado de Coyoacán. Ahí puedes probar de todo sin gastar mucho.",
+"u97e-1:4": "En el centro sí, pero te recomiendo que tomes un taxi de aplicación para regresar al hotel.",
+"u97e-2:0": "De nada. Que disfrutes mucho tu visita."
 }
 }
