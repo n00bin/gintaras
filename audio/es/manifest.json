@@ -1340,6 +1340,38 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u351": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u352": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u353": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u354": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u355": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u356": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u357": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u358": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u36": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -6303,6 +6335,117 @@
 "u350a-2:3": "El auge del petróleo transformó la economía nacional.",
 "u350a-2:4": "La transición democrática fue un proceso largo y accidentado.",
 "u350a-3:0": "Hay costumbres que sobreviven al paso de los siglos."
+},
+"u351": {
+"u351a-1:0": "Mi cuate consiguió chamba en una agencia.",
+"u351a-1:1": "¿Vamos por unas chelas después del trabajo?",
+"u351a-1:2": "Esa película estuvo bien gacha.",
+"u351a-1:3": "Ese teléfono es muy chafa, se descompuso en una semana.",
+"u351a-1:4": "Me sacó de onda que no me saludara.",
+"u351a-2:0": "Mi carnal y yo crecimos en la misma colonia.",
+"u351a-2:1": "Es muy fresa, solo compra ropa de marca.",
+"u351a-2:2": "La morra de la tienda es amiga de mi hermana.",
+"u351a-2:3": "Andamos bien crudos después de la boda.",
+"u351a-2:4": "Échame la mano con estas cajas, porfa."
+},
+"u352": {
+"u352a-1:0": "Las placas tectónicas chocan bajo el océano Pacífico.",
+"u352a-1:1": "El magma asciende por las grietas de la corteza terrestre.",
+"u352a-1:2": "La erupción expulsó una columna de ceniza de varios kilómetros.",
+"u352a-1:3": "La lava solidificada formó un campo de roca negra.",
+"u352a-1:4": "El epicentro del sismo se localizó frente a la costa.",
+"u352a-2:0": "Las réplicas continuaron durante varios días.",
+"u352a-2:1": "La erosión del viento esculpió formas caprichosas en la roca.",
+"u352a-2:2": "Los fósiles revelan cómo era la vida hace millones de años.",
+"u352a-2:3": "Las cuevas se formaron por la disolución de la piedra caliza.",
+"u352a-2:4": "Un géiser lanza chorros de agua hirviendo cada pocos minutos.",
+"u352a-3:0": "Los sismógrafos registran hasta el temblor más leve.",
+"u352a-3:1": "Las capas de sedimento cuentan la historia del planeta.",
+"u352a-3:2": "El volcán lleva siglos inactivo, pero no está extinto."
+},
+"u353": {
+"u353a-1:0": "Las hormigas forman filas interminables en la cocina.",
+"u353a-1:1": "Una araña tejió su telaraña en la esquina del techo.",
+"u353a-1:2": "Las cucarachas huyen en cuanto se enciende la luz.",
+"u353a-1:3": "Una avispa me picó en el brazo.",
+"u353a-1:4": "Las luciérnagas iluminaban el campo en las noches de verano.",
+"u353a-2:0": "El alacrán se esconde en los rincones oscuros.",
+"u353a-2:1": "Las polillas se comieron mi suéter de lana.",
+"u353a-2:2": "Una oruga se convierte en mariposa tras la metamorfosis.",
+"u353a-2:3": "Los mosquitos transmiten enfermedades como el dengue.",
+"u353a-2:4": "Las termitas devoraron las vigas de la casa vieja.",
+"u353a-3:0": "La catarina se posó sobre mi mano.",
+"u353a-3:1": "Un escarabajo enorme cruzaba lentamente el camino.",
+"u353a-3:2": "Fumigaron la casa para acabar con la plaga."
+},
+"u354": {
+"u354a-1:0": "Las golondrinas regresan cada primavera al mismo alero.",
+"u354a-1:1": "El colibrí bate las alas a una velocidad asombrosa.",
+"u354a-1:2": "Un águila planeaba en círculos sobre el valle.",
+"u354a-1:3": "Los zopilotes sobrevolaban el cadáver de un animal.",
+"u354a-1:4": "El cenzontle imita el canto de otros pájaros.",
+"u354a-2:0": "Las garzas pescaban inmóviles en la orilla.",
+"u354a-2:1": "Un pájaro carpintero picoteaba el tronco del árbol.",
+"u354a-2:2": "Las palomas anidan en los aleros de la catedral.",
+"u354a-2:3": "Los flamencos se tiñen de rosa por su alimentación.",
+"u354a-2:4": "Una bandada de patos alzó el vuelo al oír el disparo.",
+"u354a-3:0": "El tecolote salió de su nido al anochecer.",
+"u354a-3:1": "Los gorriones se pelean por las migajas de pan."
+},
+"u355": {
+"u355a-1:0": "El mezcal se elabora a partir del corazón del maguey.",
+"u355a-1:1": "Las piñas de agave se cuecen en hornos de tierra.",
+"u355a-1:2": "El pulque se obtiene fermentando el aguamiel.",
+"u355a-1:3": "El tlachiquero extrae el aguamiel cada mañana.",
+"u355a-1:4": "El destilado reposa en barricas de roble.",
+"u355a-2:0": "El tepache se hace con cáscara de piña y piloncillo.",
+"u355a-2:1": "El atole de maíz se toma caliente en las mañanas frías.",
+"u355a-2:2": "La horchata lleva arroz, canela y azúcar.",
+"u355a-2:3": "El tejuino es una bebida fermentada típica de Jalisco.",
+"u355a-2:4": "Se sirve el mezcal con rodajas de naranja y sal de gusano.",
+"u355a-3:0": "La denominación de origen protege a los productores locales.",
+"u355a-3:1": "Beber con moderación es la mejor forma de disfrutarlo.",
+"u355a-3:2": "Las pulquerías tradicionales están recuperando popularidad."
+},
+"u356": {
+"u356a-1:0": "Sufrimos turbulencias durante casi todo el trayecto.",
+"u356a-1:1": "El piloto anunció que iniciaba el descenso.",
+"u356a-1:2": "Aterrizamos de emergencia por una falla en el motor.",
+"u356a-1:3": "Los sobrecargos repartieron bebidas y botanas.",
+"u356a-1:4": "Hay que abrocharse el cinturón durante el despegue.",
+"u356a-2:0": "La torre de control autorizó el aterrizaje.",
+"u356a-2:1": "Documenté la maleta y llevé solo una mochila a bordo.",
+"u356a-2:2": "La sala de abordaje estaba repleta de pasajeros.",
+"u356a-2:3": "La aerolínea compensó a los pasajeros por el retraso.",
+"u356a-2:4": "Tras un vuelo de doce horas, el desfase horario fue terrible."
+},
+"u357": {
+"u357a-1:0": "Enhebra la aguja antes de empezar a coser.",
+"u357a-1:1": "Hay que zurcir el agujero del calcetín.",
+"u357a-1:2": "Le pegué un botón a la camisa.",
+"u357a-1:3": "La costurera tomó las medidas para el vestido.",
+"u357a-1:4": "Bordaron flores en el cuello de la blusa.",
+"u357a-2:0": "Hay que hacerle el dobladillo a la falda.",
+"u357a-2:1": "La máquina de coser se atascó con la tela gruesa.",
+"u357a-2:2": "Tejió una bufanda con estambre de colores.",
+"u357a-2:3": "Usó un patrón para cortar las piezas del pantalón.",
+"u357a-2:4": "El cierre del vestido se rompió en plena fiesta.",
+"u357a-3:0": "Planchó las costuras para que quedaran rectas.",
+"u357a-3:1": "Le puso un parche a los pantalones rotos."
+},
+"u358": {
+"u358a-1:0": "La orquesta sinfónica interpretó una obra de un compositor mexicano.",
+"u358a-1:1": "El director levantó la batuta y se hizo el silencio.",
+"u358a-1:2": "Los violines tocaron la melodía principal.",
+"u358a-1:3": "El solista de piano recibió una larga ovación.",
+"u358a-1:4": "La sinfonía consta de cuatro movimientos.",
+"u358a-2:0": "Los metales entraron con fuerza en el segundo movimiento.",
+"u358a-2:1": "La partitura original se conserva en un archivo nacional.",
+"u358a-2:2": "El coro cantó una pieza a capela.",
+"u358a-2:3": "Los aplausos entre movimientos molestaron a algunos asistentes.",
+"u358a-2:4": "La acústica del recinto realza el sonido de las cuerdas.",
+"u358a-3:0": "El cuarteto de cuerdas tocó una obra contemporánea.",
+"u358a-3:1": "La ópera duró casi cuatro horas con intermedio."
 },
 "u36": {
 "u36a-1:0": "la cabeza",

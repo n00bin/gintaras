@@ -400,7 +400,15 @@
    "u347",
    "u348",
    "u349",
-   "u350"
+   "u350",
+   "u351",
+   "u352",
+   "u353",
+   "u354",
+   "u355",
+   "u356",
+   "u357",
+   "u358"
   ]
  },
  "grammar": {
@@ -657,7 +665,7 @@
     "grammar_missing": []
    },
    "C2": {
-    "word_forms_running_total": 7281,
+    "word_forms_running_total": 7480,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
