@@ -431,7 +431,15 @@
    "u378",
    "u379",
    "u381",
-   "u382"
+   "u382",
+   "u383",
+   "u384",
+   "u385",
+   "u386",
+   "u387",
+   "u388",
+   "u389",
+   "u390"
   ]
  },
  "grammar": {
@@ -688,7 +696,7 @@
     "grammar_missing": []
    },
    "C2": {
-    "word_forms_running_total": 7976,
+    "word_forms_running_total": 8148,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,

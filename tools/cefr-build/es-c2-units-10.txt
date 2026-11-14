@@ -1,0 +1,99 @@
+@u383|Apicultura|Beekeeping|Bees, hives and honey: <b>El apicultor revisa las colmenas cada semana.</b> (The beekeeper checks the hives every week.), <b>Las abejas obreras recolectan néctar y polen.</b> (Worker bees collect nectar and pollen.) and <b>La reina pone miles de huevecillos al día.</b> (The queen lays thousands of tiny eggs a day.).|Explain how honey gets from the flower to the jar.
+#u383a|Beekeeping, part 1
+El apicultor revisa las colmenas cada semana.|The beekeeper checks the hives every week.|
+Las abejas obreras recolectan néctar y polen.|Worker bees collect nectar and pollen.|
+La reina pone miles de huevecillos al día.|The queen lays thousands of tiny eggs a day.|
+Los zánganos mueren después de fecundar a la reina.|The drones die after mating with the queen.|
+Usó el ahumador para calmar al enjambre.|He used the smoker to calm the swarm.|
+Los panales rebosaban de miel espesa.|The honeycombs were overflowing with thick honey.|
+La cera se derrite para fabricar velas.|The wax is melted down to make candles.|
+La melipona es una abeja sin aguijón de la península de Yucatán.|The melipona is a stingless bee from the Yucatán peninsula.|
+Los pesticidas diezman las poblaciones de polinizadores.|Pesticides decimate pollinator populations.|
+Extrajeron la miel con una centrifugadora manual.|They extracted the honey with a hand-cranked centrifuge.|
+El velo y el overol blanco protegen de los piquetes.|The veil and white overalls protect against stings.|
+La jalea real se considera un suplemento nutritivo.|Royal jelly is considered a nutritional supplement.|
+Una colonia sana puede producir decenas de kilos al año.|A healthy colony can produce dozens of kilos a year.|
+@u384|Arqueología|Archaeology|Excavations, ruins and ancient finds: <b>Los arqueólogos excavaron una tumba intacta.</b> (The archaeologists excavated an intact tomb.), <b>Hallaron vasijas y ofrendas bajo el templo.</b> (They found vessels and offerings beneath the temple.) and <b>La pirámide fue construida en varias etapas superpuestas.</b> (The pyramid was built in several superimposed stages.).|Describe an archaeological site you have visited or would like to visit.
+#u384a|Archaeology, part 1
+Los arqueólogos excavaron una tumba intacta.|The archaeologists excavated an intact tomb.|
+Hallaron vasijas y ofrendas bajo el templo.|They found vessels and offerings beneath the temple.|
+La pirámide fue construida en varias etapas superpuestas.|The pyramid was built in several superimposed stages.|
+Las estelas mayas narran la vida de los gobernantes.|Maya stelae tell the lives of the rulers.|
+Los saqueadores vendieron piezas en el mercado negro.|The looters sold pieces on the black market.|
+El carbono catorce permitió fechar los restos.|Carbon-14 made it possible to date the remains.|
+Restauraron los murales con técnicas no invasivas.|They restored the murals using non-invasive techniques.|
+Bajo la catedral yacen los cimientos de un templo azteca.|Beneath the cathedral lie the foundations of an Aztec temple.|
+Encontraron puntas de flecha de obsidiana.|They found obsidian arrowheads.|
+Los jeroglíficos aún no se han descifrado por completo.|The hieroglyphs have not yet been fully deciphered.|
+La excavación se suspendió por falta de presupuesto.|The excavation was suspended for lack of funding.|
+El hallazgo obligó a reescribir la cronología de la región.|The find forced the region’s chronology to be rewritten.|
+@u385|Panadería mexicana|Mexican bakery|Sweet bread and baking: <b>Las conchas tienen una costra de azúcar en forma de caparazón.</b> (Conchas have a shell-shaped sugar crust.), <b>El pan de muerto se adorna con huesitos de masa.</b> (Pan de muerto is decorated with little dough bones.) and <b>El panadero hornea los bolillos de madrugada.</b> (The baker bakes the bread rolls in the early hours.).|Describe your favourite bakery and what you would buy there.
+#u385a|Mexican bakery, part 1
+Las conchas tienen una costra de azúcar en forma de caparazón.|Conchas have a shell-shaped sugar crust.|
+El pan de muerto se adorna con huesitos de masa.|Pan de muerto is decorated with little dough bones.|
+El panadero hornea los bolillos de madrugada.|The baker bakes the bread rolls in the early hours.|
+La rosca de reyes esconde muñequitos en su interior.|The kings’ cake hides tiny figurines inside.|
+Los cuernitos se hacen con masa hojaldrada.|Cuernitos are made with flaky pastry.|
+Se toman las charolas y las pinzas para escoger el pan.|You take a tray and tongs to choose your bread.|
+La masa tiene que leudar durante dos horas.|The dough has to rise for two hours.|
+Las orejas son crujientes y caramelizadas.|Orejas are crunchy and caramelised.|
+Las teleras se usan para preparar tortas.|Teleras are used to make tortas.|
+Espolvoreó canela y azúcar sobre los buñuelos.|She sprinkled cinnamon and sugar over the fritters.|
+@u386|Ajedrez y juegos de mesa|Chess and board games|Moves, pieces and strategy: <b>Movió el alfil en diagonal para amenazar a la dama.</b> (He moved the bishop diagonally to threaten the queen.), <b>El caballo salta por encima de las demás piezas.</b> (The knight jumps over the other pieces.) and <b>Hizo un enroque para proteger al rey.</b> (She castled to protect the king.).|Explain the rules of a board game you enjoy to someone who has never played it.
+#u386a|Chess and board games, part 1
+Movió el alfil en diagonal para amenazar a la dama.|He moved the bishop diagonally to threaten the queen.|
+El caballo salta por encima de las demás piezas.|The knight jumps over the other pieces.|
+Hizo un enroque para proteger al rey.|She castled to protect the king.|
+El peón llegó a la última fila y se coronó.|The pawn reached the last rank and was promoted.|
+Le dio jaque mate en solo doce jugadas.|He checkmated her in just twelve moves.|
+Sacrificó una torre para ganar posición.|She sacrificed a rook to gain position.|
+Tiró los dados y avanzó seis casillas.|He threw the dice and moved forward six squares.|
+La lotería mexicana se juega con tablas y frijoles.|Mexican lotería is played with boards and beans.|
+Barajó las cartas y repartió siete a cada jugador.|She shuffled the cards and dealt seven to each player.|
+Hacer trampa arruina la diversión.|Cheating ruins the fun.|
+El tablero de damas tiene sesenta y cuatro casillas.|The draughts board has sixty-four squares.|
+@u387|Minería|Mining|Mines, minerals and miners’ lives: <b>Los mineros bajaban al socavón antes del amanecer.</b> (The miners went down the mine shaft before dawn.), <b>Zacatecas creció gracias a sus vetas de plata.</b> (Zacatecas grew thanks to its silver veins.) and <b>Un derrumbe atrapó a varios trabajadores.</b> (A cave-in trapped several workers.).|Describe the history of a mining town and what remains of it today.
+#u387a|Mining, part 1
+Los mineros bajaban al socavón antes del amanecer.|The miners went down the mine shaft before dawn.|
+Zacatecas creció gracias a sus vetas de plata.|Zacatecas grew thanks to its silver veins.|
+Un derrumbe atrapó a varios trabajadores.|A cave-in trapped several workers.|
+Extraen cobre y zinc de las profundidades.|They extract copper and zinc from the depths.|
+Los desechos tóxicos contaminaron el río.|The toxic waste contaminated the river.|
+El carbón se transporta en vagonetas por los túneles.|The coal is transported in carts through the tunnels.|
+El polvo de los túneles les dañaba los pulmones.|The dust in the tunnels damaged their lungs.|
+Los gambusinos buscaban oro en los arroyos.|The prospectors searched for gold in the streams.|
+La fundición separa el metal de la roca.|The smelter separates the metal from the rock.|
+@u388|Seguros|Insurance|Policies, claims and coverage: <b>La aseguradora se negó a pagar por una cláusula de exclusión.</b> (The insurer refused to pay because of an exclusion clause.), <b>La prima anual subió por el aumento de siniestros.</b> (The annual premium went up because of the rise in claims.) and <b>El seguro de vida protege a los beneficiarios.</b> (Life insurance protects the beneficiaries.).|Explain what happened when you made, or would make, an insurance claim.
+#u388a|Insurance, part 1
+La aseguradora se negó a pagar por una cláusula de exclusión.|The insurer refused to pay because of an exclusion clause.|
+La prima anual subió por el aumento de siniestros.|The annual premium went up because of the rise in claims.|
+El seguro de vida protege a los beneficiarios.|Life insurance protects the beneficiaries.|
+La cobertura amplia incluye asistencia en el camino.|Comprehensive cover includes roadside assistance.|
+Asegurar la casa contra sismos es obligatorio en algunos créditos.|Insuring the house against earthquakes is compulsory for some loans.|
+El agente le recomendó renovar antes del vencimiento.|The agent advised him to renew before the expiry date.|
+@u389|Ejército y milicia|The armed forces|Soldiers, ranks and military life: <b>Los reclutas hicieron el juramento a la bandera.</b> (The recruits swore their oath to the flag.), <b>El cuartel está a las afueras de la ciudad.</b> (The barracks are on the outskirts of the city.) and <b>El sargento castigó al soldado por desobedecer.</b> (The sergeant punished the soldier for disobeying.).|Discuss the role of the armed forces in your country today.
+#u389a|The armed forces, part 1
+Los reclutas hicieron el juramento a la bandera.|The recruits swore their oath to the flag.|
+El cuartel está a las afueras de la ciudad.|The barracks are on the outskirts of the city.|
+El sargento castigó al soldado por desobedecer.|The sergeant punished the soldier for disobeying.|
+El desfile militar recorre el Zócalo cada dieciséis de septiembre.|The military parade goes through the Zócalo every sixteenth of September.|
+El ejército apoyó a la población tras las inundaciones.|The army helped the population after the floods.|
+El capitán fue condecorado por su valentía.|The captain was decorated for his bravery.|
+Los cadetes estudian en el colegio militar.|The cadets study at the military academy.|
+Desertó en plena campaña.|He deserted in the middle of the campaign.|
+El armamento obsoleto fue destruido.|The obsolete weaponry was destroyed.|
+@u390|Botánica|Botany|Plant parts and how plants live: <b>La semilla germina cuando encuentra humedad y calor.</b> (The seed germinates when it finds moisture and warmth.), <b>Los pétalos atraen a los insectos polinizadores.</b> (The petals attract pollinating insects.) and <b>El tallo transporta el agua desde la raíz.</b> (The stem carries water up from the root.).|Explain to a child how a seed becomes a plant.
+#u390a|Botany, part 1
+La semilla germina cuando encuentra humedad y calor.|The seed germinates when it finds moisture and warmth.|
+Los pétalos atraen a los insectos polinizadores.|The petals attract pollinating insects.|
+El tallo transporta el agua desde la raíz.|The stem carries water up from the root.|
+La fotosíntesis transforma la luz en energía.|Photosynthesis transforms light into energy.|
+Los cactus almacenan agua en sus tejidos.|Cacti store water in their tissues.|
+Las espinas protegen a la planta de los herbívoros.|The thorns protect the plant from herbivores.|
+El polen se adhiere a las patas de las abejas.|Pollen sticks to the bees’ legs.|
+Las hojas caducas se desprenden en otoño.|Deciduous leaves fall off in autumn.|
+Las plantas trepadoras se enroscan en cualquier soporte.|Climbing plants twine around any support.|
+La clorofila da a las hojas su color verde.|Chlorophyll gives leaves their green colour.|
+Injertaron una rama de limonero en el naranjo.|They grafted a lemon branch onto the orange tree.|
+Las orquídeas son epífitas: crecen sobre otros árboles.|Orchids are epiphytes: they grow on other trees.|
+El herbario conserva miles de especímenes secos.|The herbarium holds thousands of dried specimens.|
