@@ -1032,7 +1032,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u287": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u288": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u289": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u29": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u290": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u291": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u292": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -4922,6 +4946,46 @@
 "u286a-3:0": "Llegamos a la misma conclusión por caminos distintos.",
 "u286a-3:1": "Cuestionar lo establecido es el primer paso para innovar."
 },
+"u287": {
+"u287a-1:0": "Los astrónomos detectaron un exoplaneta parecido a la Tierra.",
+"u287a-1:1": "La sonda tardó siete años en alcanzar Júpiter.",
+"u287a-1:2": "La Vía Láctea se aprecia mejor lejos de la contaminación lumínica.",
+"u287a-1:3": "El cohete despegó sin contratiempos.",
+"u287a-1:4": "Una lluvia de estrellas iluminó la madrugada.",
+"u287a-2:0": "El telescopio capta la luz de galaxias lejanísimas.",
+"u287a-2:1": "Los astronautas pasaron seis meses en órbita.",
+"u287a-2:2": "La gravedad de la Luna es seis veces menor que la terrestre.",
+"u287a-2:3": "Colonizar Marte plantea enormes retos técnicos y éticos.",
+"u287a-2:4": "Un agujero negro devora todo lo que se le acerca."
+},
+"u288": {
+"u288a-1:0": "Poda los rosales a finales del invierno.",
+"u288a-1:1": "Las suculentas apenas necesitan riego.",
+"u288a-1:2": "Abonamos la tierra con composta casera.",
+"u288a-1:3": "Las semillas germinaron en menos de una semana.",
+"u288a-1:4": "Una plaga de pulgones arruinó los jitomates.",
+"u288a-2:0": "Trasplanté el limonero a una maceta más grande.",
+"u288a-2:1": "Las bugambilias trepan por la barda.",
+"u288a-2:2": "Hay que arrancar la maleza antes de sembrar.",
+"u288a-2:3": "El huerto urbano abastece de verduras a todo el edificio.",
+"u288a-2:4": "Las hojas se marchitaron por exceso de sol.",
+"u288a-3:0": "Los colibríes acuden a las flores rojas.",
+"u288a-3:1": "El jardín botánico alberga miles de especies de cactus."
+},
+"u289": {
+"u289a-1:0": "Las tropas se retiraron tras el alto el fuego.",
+"u289a-1:1": "El bombardeo destruyó barrios enteros.",
+"u289a-1:2": "Miles de civiles huyeron de la zona de combate.",
+"u289a-1:3": "Firmaron un armisticio después de cuatro años de guerra.",
+"u289a-1:4": "Los desplazados viven en campamentos improvisados.",
+"u289a-2:0": "El ejército fue acusado de crímenes de lesa humanidad.",
+"u289a-2:1": "La guerrilla depuso las armas a cambio de garantías.",
+"u289a-2:2": "Las heridas de la guerra tardan generaciones en sanar.",
+"u289a-2:3": "Los cascos azules vigilan la frontera.",
+"u289a-2:4": "La carrera armamentista consume recursos que podrían salvar vidas.",
+"u289a-3:0": "Una comisión de la verdad documentó las atrocidades.",
+"u289a-3:1": "La reconciliación exige memoria, justicia y reparación."
+},
 "u29": {
 "u29a-1:0": "alto",
 "u29a-1:1": "bajo",
@@ -4943,6 +5007,41 @@
 "u29d-1:2": "mejor",
 "u29d-1:3": "peor",
 "u29d-1:4": "Este es más barato"
+},
+"u290": {
+"u290a-1:0": "La fiesta se prolongó hasta el amanecer.",
+"u290a-1:1": "Nos colamos al concierto sin boleto.",
+"u290a-1:2": "Rompieron la piñata entre gritos y risas.",
+"u290a-1:3": "El antro estaba a reventar y la música a todo volumen.",
+"u290a-1:4": "Los fuegos artificiales cerraron la verbena.",
+"u290a-2:0": "Amaneció crudo después de la boda.",
+"u290a-2:1": "Organizaron una tardeada para recaudar fondos.",
+"u290a-2:2": "El cumpleañero sopló las velas mientras todos cantaban.",
+"u290a-2:3": "Se armó el baile en cuanto empezó la cumbia.",
+"u290a-2:4": "El cadenero no nos dejó entrar.",
+"u290a-3:0": "La posada terminó con ponche y aguinaldos para los niños."
+},
+"u291": {
+"u291a-1:0": "El agua hierve a menor temperatura en la montaña.",
+"u291a-1:1": "Los metales se dilatan con el calor.",
+"u291a-1:2": "La reacción química libera una gran cantidad de energía.",
+"u291a-1:3": "El hierro se oxida al contacto con la humedad.",
+"u291a-1:4": "Los imanes atraen ciertos materiales y repelen otros.",
+"u291a-2:0": "El hielo flota porque es menos denso que el agua.",
+"u291a-2:1": "Una molécula de agua tiene dos átomos de hidrógeno.",
+"u291a-2:2": "La fricción frena el movimiento de los objetos.",
+"u291a-2:3": "El sonido no se propaga en el espacio.",
+"u291a-2:4": "La electricidad estática hace que se te pare el pelo.",
+"u291a-3:0": "Al mezclar vinagre y bicarbonato se produce gas."
+},
+"u292": {
+"u292a-1:0": "Coincido contigo solo en parte.",
+"u292a-1:1": "No lo descarto, pero lo veo poco probable.",
+"u292a-1:2": "Me inclino a pensar que tienes razón.",
+"u292a-1:3": "Con todos mis respetos, discrepo.",
+"u292a-1:4": "Reconozco que me equivoqué al juzgarlo.",
+"u292a-2:0": "Me reservo mi opinión hasta conocer los detalles.",
+"u292a-2:1": "Es discutible, pero no carece de lógica."
 },
 "u3": {
 "u3a-1:0": "la leche",
