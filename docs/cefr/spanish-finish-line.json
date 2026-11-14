@@ -298,7 +298,13 @@
    "u247",
    "u248",
    "u249",
-   "u250"
+   "u250",
+   "u251",
+   "u252",
+   "u253",
+   "u254",
+   "u255",
+   "u256"
   ],
   "C2": []
  },
@@ -531,7 +537,7 @@
     "grammar_missing": []
    },
    "C1": {
-    "word_forms_running_total": 5029,
+    "word_forms_running_total": 5175,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -543,7 +549,7 @@
     "grammar_missing": []
    },
    "C2": {
-    "word_forms_running_total": 5069,
+    "word_forms_running_total": 5215,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,

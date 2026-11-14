@@ -880,6 +880,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u251": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u252": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u253": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u254": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u255": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u256": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u26": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -4270,6 +4294,85 @@
 "u250a-2:3": "Los resultados preliminares son alentadores.",
 "u250a-2:4": "La metodología empleada ha sido cuestionada.",
 "u250a-3:0": "Redactar el marco teórico me llevó meses."
+},
+"u251": {
+"u251a-1:0": "El náhuatl tiene más de un millón y medio de hablantes.",
+"u251a-1:1": "Su acento delata que es del norte.",
+"u251a-1:2": "Muchos préstamos del inglés se han adaptado a la ortografía española.",
+"u251a-1:3": "Los modismos varían enormemente de una región a otra.",
+"u251a-1:4": "Los niños bilingües alternan de idioma con total naturalidad.",
+"u251a-2:0": "Esa expresión ha caído en desuso.",
+"u251a-2:1": "La Academia incorporó varios mexicanismos al diccionario.",
+"u251a-2:2": "La lengua materna moldea nuestra manera de percibir el mundo.",
+"u251a-2:3": "La pronunciación de la ese varía mucho entre países.",
+"u251a-2:4": "Las lenguas indígenas sufrieron siglos de discriminación.",
+"u251a-3:0": "Traducir poesía implica sacrificar algo del original.",
+"u251a-3:1": "El lenguaje inclusivo genera debates muy encendidos."
+},
+"u252": {
+"u252a-1:0": "La concentración de dióxido de carbono alcanzó niveles récord.",
+"u252a-1:1": "Los glaciares retroceden a un ritmo sin precedentes.",
+"u252a-1:2": "El deshielo de los polos eleva el nivel del mar.",
+"u252a-1:3": "Los modelos climáticos predicen sequías más prolongadas.",
+"u252a-1:4": "La acidificación de los océanos amenaza los arrecifes de coral.",
+"u252a-2:0": "Las emisiones de metano provienen en buena parte de la ganadería.",
+"u252a-2:1": "Los fenómenos meteorológicos extremos son cada vez más frecuentes.",
+"u252a-2:2": "Reducir la huella de carbono requiere cambios estructurales.",
+"u252a-2:3": "Las energías renovables ya compiten en precio con el carbón.",
+"u252a-2:4": "La transición energética no puede dejar atrás a los más pobres.",
+"u252a-3:0": "Los científicos advierten que el margen para actuar se agota.",
+"u252a-3:1": "Algunos escépticos ponen en duda el origen humano del fenómeno."
+},
+"u253": {
+"u253a-1:0": "La peregrinación a la Basílica reúne a millones de fieles cada diciembre.",
+"u253a-1:1": "Muchos rituales prehispánicos se fusionaron con el catolicismo.",
+"u253a-1:2": "Es creyente, pero no practicante.",
+"u253a-1:3": "El Estado laico garantiza la libertad de culto.",
+"u253a-1:4": "Encendió una veladora a la Virgen para pedir por su hijo.",
+"u253a-2:0": "La meditación le ayuda a encontrar paz interior.",
+"u253a-2:1": "El sacerdote ofició la misa en latín.",
+"u253a-2:2": "Cada vez más jóvenes se declaran agnósticos o ateos.",
+"u253a-2:3": "La fe le dio fuerzas para superar la enfermedad.",
+"u253a-2:4": "El templo fue edificado sobre las ruinas de una pirámide.",
+"u253a-3:0": "Las fiestas patronales combinan devoción y diversión.",
+"u253a-3:1": "El diálogo entre religiones favorece la convivencia."
+},
+"u254": {
+"u254a-1:0": "El sindicato convocó a una huelga indefinida.",
+"u254a-1:1": "Exigen un aumento salarial acorde con la inflación.",
+"u254a-1:2": "La subcontratación precarizó el empleo durante años.",
+"u254a-1:3": "Tiene derecho a una indemnización por despido injustificado.",
+"u254a-1:4": "Las jornadas agotadoras afectan la salud mental.",
+"u254a-2:0": "El acoso laboral sigue siendo poco denunciado.",
+"u254a-2:1": "Lograron un convenio colectivo tras meses de negociación.",
+"u254a-2:2": "La brecha salarial entre hombres y mujeres persiste.",
+"u254a-2:3": "Se aprobó ampliar las vacaciones a doce días."
+},
+"u255": {
+"u255a-1:0": "La sequía arruinó la cosecha de maíz.",
+"u255a-1:1": "Los ejidatarios se organizaron para defender sus tierras.",
+"u255a-1:2": "Los intermediarios se quedan con la mayor parte de las ganancias.",
+"u255a-1:3": "El uso excesivo de agroquímicos empobrece el suelo.",
+"u255a-1:4": "La milpa combina maíz, frijol y calabaza en la misma parcela.",
+"u255a-2:0": "Muchos jornaleros migran según la temporada de cosecha.",
+"u255a-2:1": "Las heladas tempranas dañaron los cultivos.",
+"u255a-2:2": "El campo se ha ido despoblando a medida que los jóvenes emigran.",
+"u255a-2:3": "Los productores orgánicos venden directamente al consumidor.",
+"u255a-2:4": "Las semillas nativas son un patrimonio que hay que proteger.",
+"u255a-3:0": "El ganado pasta libremente en los cerros."
+},
+"u256": {
+"u256a-1:0": "Los índices de delincuencia bajaron en el último año.",
+"u256a-1:1": "La extorsión afecta sobre todo a los pequeños comerciantes.",
+"u256a-1:2": "La policía desarticuló una banda de secuestradores.",
+"u256a-1:3": "Muchos delitos no se denuncian por desconfianza en las autoridades.",
+"u256a-1:4": "Instalaron cámaras de vigilancia en todo el barrio.",
+"u256a-2:0": "La prevención del delito empieza por la educación y el empleo.",
+"u256a-2:1": "El sospechoso fue capturado tras una persecución.",
+"u256a-2:2": "Los vecinos formaron una red de alerta por mensajes.",
+"u256a-2:3": "El fraude telefónico se ha vuelto cada vez más sofisticado.",
+"u256a-2:4": "La corrupción policial mina la confianza ciudadana.",
+"u256a-3:0": "Las cárceles están sobrepobladas."
 },
 "u26": {
 "u26a-1:0": "Me despierto",
