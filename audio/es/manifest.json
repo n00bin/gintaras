@@ -1236,7 +1236,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u327": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u328": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u329": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u33": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u330": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u331": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u332": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u333": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u334": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -5809,6 +5841,51 @@
 "u326c-1:2": "Ah, bueno, así sí. Las palomitas grandes y un refresco, y quedas perdonada. Por esta vez.",
 "u326c-1:3": "Ya sabes que te esperaría hasta dos horas. Pero la próxima vez, mándame un mensaje, ¿va? Así por lo menos me compro un café mientras."
 },
+"u327": {
+"u327a-1:0": "Un resplandor rojizo tiñó el horizonte al caer la tarde.",
+"u327a-1:1": "La luz se filtraba tenuemente entre las persianas.",
+"u327a-1:2": "El mar relucía bajo un sol implacable.",
+"u327a-1:3": "Las sombras se alargaban sobre el empedrado.",
+"u327a-1:4": "Un destello fugaz iluminó la habitación en penumbra.",
+"u327a-2:0": "El cielo adquirió un tono violáceo antes del anochecer.",
+"u327a-2:1": "La niebla difuminaba los contornos de las montañas.",
+"u327a-2:2": "Sus ojos centelleaban de entusiasmo.",
+"u327a-2:3": "La fachada encalada resplandecía con la luz del mediodía.",
+"u327a-2:4": "Un brillo opaco cubría los muebles abandonados.",
+"u327a-3:0": "Los últimos rayos doraban las copas de los árboles.",
+"u327a-3:1": "La oscuridad se cernía sobre el pueblo dormido.",
+"u327a-3:2": "Una luz mortecina apenas alumbraba el pasillo."
+},
+"u328": {
+"u328a-1:0": "Su integridad nunca fue puesta en duda.",
+"u328a-1:1": "Actuó con una prudencia admirable.",
+"u328a-1:2": "La arrogancia del funcionario indignó a los vecinos.",
+"u328a-1:3": "Mostró una entereza conmovedora ante la adversidad.",
+"u328a-1:4": "Su ambigüedad deliberada desconcertó a la prensa.",
+"u328a-2:0": "La mezquindad de sus críticos resultó evidente.",
+"u328a-2:1": "Se le reconoce su generosidad y su modestia.",
+"u328a-2:2": "La terquedad del director retrasó el proyecto.",
+"u328a-2:3": "Admiro la lucidez con que analiza los problemas.",
+"u328a-2:4": "Su indiferencia ante el sufrimiento ajeno escandalizó a todos.",
+"u328a-3:0": "La honradez del tesorero quedó demostrada en la auditoría.",
+"u328a-3:1": "Habló con una franqueza que rozaba la descortesía.",
+"u328a-3:2": "La ecuanimidad del juez tranquilizó a ambas partes."
+},
+"u329": {
+"u329a-1:0": "La fiscalía presentó cargos formales contra el exfuncionario.",
+"u329a-1:1": "El juez dictó auto de vinculación a proceso.",
+"u329a-1:2": "La defensa solicitó la suspensión de la audiencia.",
+"u329a-1:3": "El imputado se acogió a su derecho a guardar silencio.",
+"u329a-1:4": "Se le impuso una medida cautelar de arraigo domiciliario.",
+"u329a-2:0": "El tribunal desestimó la demanda por falta de fundamentos.",
+"u329a-2:1": "La sentencia es inapelable.",
+"u329a-2:2": "Los peritos dictaminaron que la firma era falsa.",
+"u329a-2:3": "Se reabrió el expediente tras aparecer nuevas pruebas.",
+"u329a-2:4": "El jurado deliberó durante horas antes de pronunciarse.",
+"u329a-3:0": "Interpusieron un amparo contra la resolución.",
+"u329a-3:1": "El delito prescribió antes de que se dictara sentencia.",
+"u329a-3:2": "La víctima fue resarcida por los daños sufridos."
+},
 "u33": {
 "u33a-1:0": "Voy a viajar",
 "u33a-1:1": "Voy a estudiar",
@@ -5835,6 +5912,77 @@
 "u33e-1:2": "Con mi familia",
 "u33e-1:3": "¿Dónde nos vemos?",
 "u33e-1:4": "Nos vemos en el parque"
+},
+"u330": {
+"u330a-1:0": "La devaluación de la moneda encareció las importaciones.",
+"u330a-1:1": "El déficit fiscal alcanzó niveles preocupantes.",
+"u330a-1:2": "La desaceleración económica afectó sobre todo a las pymes.",
+"u330a-1:3": "El repunte de la inflación obligó a endurecer la política monetaria.",
+"u330a-1:4": "La deuda pública supera ya la mitad del producto interno bruto.",
+"u330a-2:0": "Los mercados reaccionaron con nerviosismo al anuncio.",
+"u330a-2:1": "La recaudación tributaria aumentó gracias a la digitalización.",
+"u330a-2:2": "El estancamiento salarial erosiona el poder adquisitivo.",
+"u330a-2:3": "La fuga de capitales debilitó aún más el peso.",
+"u330a-2:4": "Se prevé una contracción del consumo en el próximo trimestre.",
+"u330a-3:0": "La política de austeridad provocó protestas generalizadas.",
+"u330a-3:1": "La inversión extranjera directa se concentra en el sector manufacturero.",
+"u330a-3:2": "Los aranceles distorsionan la competencia internacional."
+},
+"u331": {
+"u331a-1:0": "La conciencia sigue siendo uno de los grandes enigmas de la ciencia.",
+"u331a-1:1": "Percibimos el mundo a través del filtro de nuestras expectativas.",
+"u331a-1:2": "La introspección no siempre revela nuestras verdaderas motivaciones.",
+"u331a-1:3": "La intuición a veces precede al razonamiento lógico.",
+"u331a-1:4": "Los sueños podrían cumplir una función de consolidación de la memoria.",
+"u331a-2:0": "El subconsciente influye en decisiones que creemos racionales.",
+"u331a-2:1": "La empatía nos permite intuir los estados mentales ajenos.",
+"u331a-2:2": "La percepción del tiempo se altera en situaciones de peligro.",
+"u331a-2:3": "La voluntad no es tan libre como solemos suponer.",
+"u331a-2:4": "Las emociones condicionan la manera en que interpretamos los hechos.",
+"u331a-3:0": "La autoconciencia distingue al ser humano de muchas especies."
+},
+"u332": {
+"u332a-1:0": "El orador recurrió a una falacia para desacreditar a su rival.",
+"u332a-1:1": "Su discurso apelaba más a las emociones que a la razón.",
+"u332a-1:2": "Utilizó una metáfora muy eficaz para ilustrar su punto.",
+"u332a-1:3": "Refutó punto por punto los argumentos de la oposición.",
+"u332a-1:4": "La generalización apresurada debilitó su tesis.",
+"u332a-2:0": "Recurrir al insulto es señal de que se carece de argumentos.",
+"u332a-2:1": "La pregunta retórica no esperaba respuesta.",
+"u332a-2:2": "Matizó sus declaraciones para evitar malentendidos.",
+"u332a-2:3": "El argumento de autoridad no siempre es válido.",
+"u332a-2:4": "Su elocuencia cautivó al auditorio.",
+"u332a-3:0": "Convenció al jurado con una exposición impecable.",
+"u332a-3:1": "La ambigüedad del mensaje permitió múltiples interpretaciones."
+},
+"u333": {
+"u333a-1:0": "La cúpula de azulejos se ve desde toda la ciudad.",
+"u333a-1:1": "El patio interior está rodeado de arcos de cantera.",
+"u333a-1:2": "Las columnas sostienen un techo de vigas de madera.",
+"u333a-1:3": "El retablo barroco está cubierto de hoja de oro.",
+"u333a-1:4": "Una escalinata monumental conduce a la entrada principal.",
+"u333a-2:0": "Los balcones de hierro forjado adornan la fachada.",
+"u333a-2:1": "La nave central de la iglesia mide cuarenta metros de largo.",
+"u333a-2:2": "Los muros de adobe mantienen fresca la casa.",
+"u333a-2:3": "El campanario se derrumbó durante el sismo.",
+"u333a-2:4": "Una celosía permite ver sin ser visto.",
+"u333a-3:0": "El portón de madera tallada data del siglo dieciocho.",
+"u333a-3:1": "Los vitrales proyectan manchas de color sobre el suelo.",
+"u333a-3:2": "El claustro conserva sus pinturas murales originales."
+},
+"u334": {
+"u334a-1:0": "El viento silbaba entre las ramas.",
+"u334a-1:1": "Las hojas secas crujían bajo nuestros pasos.",
+"u334a-1:2": "El arroyo murmuraba al pie de la colina.",
+"u334a-1:3": "Se oía el chirrido incesante de los grillos.",
+"u334a-1:4": "Un trueno retumbó a lo lejos.",
+"u334a-2:0": "Las olas rompían con estruendo contra las rocas.",
+"u334a-2:1": "El búho ululaba desde lo alto del pino.",
+"u334a-2:2": "La lluvia tamborileaba sobre el techo de lámina.",
+"u334a-2:3": "El crepitar de la leña llenaba la cabaña.",
+"u334a-2:4": "Las ranas croaban en la orilla del estanque.",
+"u334a-3:0": "Un aullido lejano rompió el silencio de la noche.",
+"u334a-3:1": "Las ramas se mecían con un susurro suave."
 },
 "u34": {
 "u34a-1:0": "ayer",
