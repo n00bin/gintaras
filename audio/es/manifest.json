@@ -904,7 +904,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u257": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u258": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u259": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u26": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u260": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u261": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u262": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -4374,6 +4398,44 @@
 "u256a-2:4": "La corrupción policial mina la confianza ciudadana.",
 "u256a-3:0": "Las cárceles están sobrepobladas."
 },
+"u257": {
+"u257a-1:0": "La refinería opera muy por debajo de su capacidad.",
+"u257a-1:1": "Los apagones obligaron a racionar la electricidad.",
+"u257a-1:2": "El yacimiento de litio despertó el interés de varias potencias.",
+"u257a-1:3": "La planta automotriz emplea a cuatro mil obreros.",
+"u257a-1:4": "Los paneles solares se abarataron muchísimo en la última década.",
+"u257a-2:0": "La paraestatal arrastra pérdidas multimillonarias.",
+"u257a-2:1": "El parque eólico abastece a miles de hogares.",
+"u257a-2:2": "La maquila ensambla productos para la exportación.",
+"u257a-2:3": "El gasoducto atraviesa tres estados del norte.",
+"u257a-2:4": "La industria siderúrgica fue el motor de la región durante décadas.",
+"u257a-3:0": "Los combustibles fósiles siguen dominando la matriz energética.",
+"u257a-3:1": "La relocalización de fábricas atrae inversión extranjera."
+},
+"u258": {
+"u258a-1:0": "Se siente de aquí y de allá, pero de ningún lugar del todo.",
+"u258a-1:1": "Cruzó la frontera de manera irregular hace veinte años.",
+"u258a-1:2": "Echa de menos el olor de la tierra mojada de su pueblo.",
+"u258a-1:3": "La deportación separó a miles de familias.",
+"u258a-1:4": "Los paisanos que regresan suelen ser vistos como extranjeros.",
+"u258a-2:0": "El desarraigo le pesó más de lo que imaginaba.",
+"u258a-2:1": "Obtuvo la doble nacionalidad después de un largo trámite.",
+"u258a-2:2": "Las caravanas migrantes atraviesan el país rumbo al norte.",
+"u258a-2:3": "Muchos retornados no logran reintegrarse al mercado laboral.",
+"u258a-2:4": "Su identidad se construyó a partir de la nostalgia."
+},
+"u259": {
+"u259a-1:0": "La reforma eliminó los exámenes estandarizados.",
+"u259a-1:1": "Las escuelas rurales carecen de conectividad.",
+"u259a-1:2": "El rezago educativo se concentra en las zonas marginadas.",
+"u259a-1:3": "Los docentes reclaman más capacitación y mejores salarios.",
+"u259a-1:4": "La educación pública debe ser gratuita, laica y de calidad.",
+"u259a-2:0": "El plan de estudios se actualizó para incluir habilidades digitales.",
+"u259a-2:1": "La memorización ha cedido terreno al pensamiento crítico.",
+"u259a-2:2": "Las becas permiten que estudiantes de bajos recursos sigan estudiando.",
+"u259a-2:3": "El analfabetismo persiste entre las mujeres mayores del campo.",
+"u259a-2:4": "La evaluación docente causó protestas masivas."
+},
 "u26": {
 "u26a-1:0": "Me despierto",
 "u26a-1:1": "Me levanto",
@@ -4400,6 +4462,43 @@
 "u26e-1:2": "¿Duermes bien?",
 "u26e-1:3": "¿A qué hora te acuestas?",
 "u26e-1:4": "Me lavo las manos"
+},
+"u260": {
+"u260a-1:0": "La publicidad nos convence de necesitar cosas superfluas.",
+"u260a-1:1": "La marca patrocina al equipo desde hace una década.",
+"u260a-1:2": "Los anuncios dirigidos a niños deberían regularse.",
+"u260a-1:3": "Compró el celular por impulso y luego se arrepintió.",
+"u260a-1:4": "La obsolescencia programada obliga a renovar los aparatos.",
+"u260a-2:0": "El consumismo desenfrenado tiene un costo ambiental enorme.",
+"u260a-2:1": "Las rebajas de fin de año provocan compras compulsivas.",
+"u260a-2:2": "Los influencers promocionan productos sin aclarar que les pagan.",
+"u260a-2:3": "El empaque atractivo esconde ingredientes poco saludables.",
+"u260a-2:4": "Cada vez más consumidores exigen productos sostenibles.",
+"u260a-3:0": "El eslogan se volvió parte del habla cotidiana.",
+"u260a-3:1": "Comparar precios antes de comprar ahorra mucho dinero."
+},
+"u261": {
+"u261a-1:0": "El equipo descendió a segunda división tras una pésima temporada.",
+"u261a-1:1": "Dio positivo en un control antidopaje y fue suspendido.",
+"u261a-1:2": "El fichaje del delantero costó una fortuna.",
+"u261a-1:3": "Entrena seis horas diarias para clasificar a los Juegos Olímpicos.",
+"u261a-1:4": "La lesión de rodilla lo dejó fuera toda la temporada.",
+"u261a-2:0": "El entrenador fue destituido tras cinco derrotas consecutivas.",
+"u261a-2:1": "El clásico paralizó a medio país.",
+"u261a-2:2": "La boxeadora defendió su título mundial por tercera vez.",
+"u261a-2:3": "Los derechos de transmisión generan millones para los clubes."
+},
+"u262": {
+"u262a-1:0": "Rompieron después de ocho años de noviazgo.",
+"u262a-1:1": "La confianza, una vez perdida, es difícil de recuperar.",
+"u262a-1:2": "Se reconciliaron tras años sin dirigirse la palabra.",
+"u262a-1:3": "Los celos terminaron por ahogar la relación.",
+"u262a-1:4": "Son inseparables desde la primaria.",
+"u262a-2:0": "La comunicación sincera evita muchos malentendidos.",
+"u262a-2:1": "Tras el divorcio comparten la custodia de los hijos.",
+"u262a-2:2": "Me decepcionó que no me apoyara cuando más lo necesitaba.",
+"u262a-2:3": "Hay amistades que sobreviven a la distancia y al tiempo.",
+"u262a-2:4": "Aprendió a perdonar sin olvidar."
 },
 "u28": {
 "u28a-1:0": "la camisa",
