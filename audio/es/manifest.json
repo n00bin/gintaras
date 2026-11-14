@@ -1372,7 +1372,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u359": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u36": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u360": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u361": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u362": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u363": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u364": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u365": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u366": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -6447,6 +6479,21 @@
 "u358a-3:0": "El cuarteto de cuerdas tocó una obra contemporánea.",
 "u358a-3:1": "La ópera duró casi cuatro horas con intermedio."
 },
+"u359": {
+"u359a-1:0": "Los ahuehuetes milenarios bordean el río.",
+"u359a-1:1": "Las raíces del ceibo se extienden decenas de metros.",
+"u359a-1:2": "El follaje otoñal cubre el sendero de hojas amarillas.",
+"u359a-1:3": "La savia escurre por la corteza herida.",
+"u359a-1:4": "Los pinos y oyameles crecen en las laderas altas.",
+"u359a-2:0": "El bosque de niebla alberga helechos gigantes.",
+"u359a-2:1": "Un tronco hueco sirve de refugio a las ardillas.",
+"u359a-2:2": "Las bellotas caen de los encinos en otoño.",
+"u359a-2:3": "Talaron el árbol porque amenazaba con caerse sobre la casa.",
+"u359a-2:4": "La reforestación con especies nativas es más eficaz.",
+"u359a-3:0": "Los anillos del tronco permiten calcular su edad.",
+"u359a-3:1": "Un incendio forestal arrasó miles de hectáreas.",
+"u359a-3:2": "Los brotes nuevos aparecieron tras las primeras lluvias."
+},
 "u36": {
 "u36a-1:0": "la cabeza",
 "u36a-1:1": "la mano",
@@ -6473,6 +6520,99 @@
 "u36e-1:2": "¿Necesitas ayuda?",
 "u36e-1:3": "¿Tienes una alergia?",
 "u36e-1:4": "Me duele la espalda"
+},
+"u360": {
+"u360a-1:0": "Partimos del campamento base antes del amanecer.",
+"u360a-1:1": "El ascenso al Pico de Orizaba exige buena aclimatación.",
+"u360a-1:2": "Nos encordamos para cruzar el glaciar.",
+"u360a-1:3": "Los crampones se clavaban en el hielo.",
+"u360a-1:4": "El mal de altura le provocó náuseas y mareos.",
+"u360a-2:0": "Una avalancha bloqueó la ruta habitual.",
+"u360a-2:1": "Alcanzamos la cumbre justo cuando salía el sol.",
+"u360a-2:2": "El descenso resultó más peligroso que la subida.",
+"u360a-2:3": "Llevábamos piolet, casco y ropa térmica.",
+"u360a-2:4": "La pendiente era tan empinada que avanzábamos a gatas.",
+"u360a-3:0": "Un refugio de alta montaña nos protegió del viento.",
+"u360a-3:1": "La escalada en roca requiere fuerza y concentración."
+},
+"u361": {
+"u361a-1:0": "El carpintero cepilló la tabla hasta dejarla lisa.",
+"u361a-1:1": "Hay que lijar la madera a favor de la veta.",
+"u361a-1:2": "Clavó las tablas con un martillo y clavos de acero.",
+"u361a-1:3": "Atornilló las bisagras a la puerta del ropero.",
+"u361a-1:4": "El serrucho no cortaba bien porque estaba desafilado.",
+"u361a-2:0": "Pegó las piezas con cola y las sujetó con prensas.",
+"u361a-2:1": "El barniz protege la madera de la humedad.",
+"u361a-2:2": "Midió dos veces antes de cortar.",
+"u361a-2:3": "Las ensambladuras de cola de milano no necesitan clavos.",
+"u361a-2:4": "La madera de cedro desprende un aroma agradable.",
+"u361a-3:0": "Talló un adorno floral con una gubia.",
+"u361a-3:1": "El taller olía a aserrín y a barniz fresco.",
+"u361a-3:2": "Restauró una silla antigua que encontró en un tianguis."
+},
+"u362": {
+"u362a-1:0": "Le regaló un anillo de compromiso con un diamante.",
+"u362a-1:1": "Los aretes de filigrana son típicos de Oaxaca.",
+"u362a-1:2": "El collar de jade perteneció a su bisabuela.",
+"u362a-1:3": "La pulsera de plata se oscureció con el tiempo.",
+"u362a-1:4": "El orfebre engarzó una esmeralda en el centro del broche.",
+"u362a-2:0": "Las perlas cultivadas son más accesibles que las naturales.",
+"u362a-2:1": "Mandó grabar sus iniciales en el reloj.",
+"u362a-2:2": "El ámbar de Chiapas a veces contiene insectos fosilizados.",
+"u362a-2:3": "La medalla de oro macizo pesa casi veinte gramos.",
+"u362a-2:4": "El ópalo de fuego mexicano cambia de color con la luz.",
+"u362a-3:0": "Las joyas falsas se distinguen por su peso.",
+"u362a-3:1": "Empeñó el reloj de su padre para pagar la renta."
+},
+"u363": {
+"u363a-1:0": "Se descargó la batería por dejar las luces prendidas.",
+"u363a-1:1": "El motor se sobrecalentó en pleno tráfico.",
+"u363a-1:2": "Hay que cambiar las bujías y el filtro de aire.",
+"u363a-1:3": "El embrague patina cuando cambio de velocidad.",
+"u363a-1:4": "Se rompió la banda del alternador.",
+"u363a-2:0": "El radiador tiene una fuga de anticongelante.",
+"u363a-2:1": "Los amortiguadores ya no absorben los baches.",
+"u363a-2:2": "El tablero marca una falla en el sistema de frenos.",
+"u363a-2:3": "El escape hace un ruido extraño al acelerar.",
+"u363a-2:4": "La transmisión automática necesita mantenimiento cada cierto tiempo.",
+"u363a-3:0": "El volante vibra a alta velocidad.",
+"u363a-3:1": "Revisaron la alineación y el balanceo de las llantas."
+},
+"u364": {
+"u364a-1:0": "Firmó un contrato con una agencia literaria.",
+"u364a-1:1": "El tiraje inicial fue de tres mil ejemplares.",
+"u364a-1:2": "La portada fue diseñada por una ilustradora joven.",
+"u364a-1:3": "El prólogo lo escribió un autor consagrado.",
+"u364a-1:4": "Los derechos de autor se reparten entre los herederos.",
+"u364a-2:0": "La reseña elogiosa disparó las ventas.",
+"u364a-2:1": "La reedición incluye un epílogo inédito."
+},
+"u365": {
+"u365a-1:0": "El danzón se baila en pareja con movimientos elegantes.",
+"u365a-1:1": "La cumbia sonidera llena los salones de baile.",
+"u365a-1:2": "El jarabe tapatío se baila con zapateado.",
+"u365a-1:3": "Los danzantes concheros visten penachos de plumas.",
+"u365a-1:4": "En la danza de los viejitos los bailarines llevan máscaras.",
+"u365a-2:0": "La salsa exige coordinación y buen oído.",
+"u365a-2:1": "Aprendió a bailar tango en Buenos Aires.",
+"u365a-2:2": "El huapango se acompaña con violín y jarana.",
+"u365a-2:3": "Los voladores de Papantla giran colgados de un poste.",
+"u365a-2:4": "Las bailarinas de ballet folclórico usan faldas amplias y coloridas."
+},
+"u366": {
+"u366a-1:0": "Esta decisión conlleva riesgos considerables.",
+"u366a-1:1": "La propuesta suscitó un intenso debate.",
+"u366a-1:2": "Detrás del conflicto subyace una disputa territorial.",
+"u366a-1:3": "El informe pone de manifiesto graves irregularidades.",
+"u366a-1:4": "Estos datos corroboran la hipótesis inicial.",
+"u366a-2:0": "La reforma pretende subsanar las deficiencias del sistema.",
+"u366a-2:1": "Conviene esclarecer los hechos antes de opinar.",
+"u366a-2:2": "La crisis acentuó las desigualdades existentes.",
+"u366a-2:3": "Se vislumbran cambios profundos en el sector.",
+"u366a-2:4": "El estudio desmiente varios mitos populares.",
+"u366a-3:0": "La medida repercutió en toda la economía.",
+"u366a-3:1": "El autor plasma en su obra la vida rural de la época.",
+"u366a-3:2": "Hay que deslindar responsabilidades."
 },
 "u37": {
 "u37a-1:0": "creo que",
