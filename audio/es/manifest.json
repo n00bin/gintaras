@@ -152,7 +152,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv45": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv46": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv47": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv48": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv49": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv5": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv50": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -793,6 +817,10 @@
 "ona": "Achernar"
 },
 "u237": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u238": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -1618,6 +1646,56 @@
 "cv44:6": "¿Qué le diría a otras colonias que quieran hacer algo parecido?",
 "cv44:7": "Que empiecen con algo pequeño y que involucren a los niños. Lo más valioso no es la cosecha, sino la comunidad que se crea."
 },
+"cv45": {
+"cv45:0": "Llevo tres semanas esperando el pedido y nadie me ha dado una explicación. Esto es inaceptable.",
+"cv45:1": "Tiene toda la razón, licenciada, y le ofrezco una disculpa. Si me hubieran avisado antes, habría actuado de inmediato.",
+"cv45:2": "Me dijeron que el pedido salía la semana pasada, y no salió.",
+"cv45:3": "Acabo de revisarlo: el retraso se debió a un problema con el proveedor de la madera. Aun así, alguien debió haberle informado.",
+"cv45:4": "Bien, pero necesito los muebles antes de la inauguración de la oficina, el próximo lunes.",
+"cv45:5": "Le propongo lo siguiente: le enviamos el viernes las piezas que ya tenemos y, por las molestias, le descontamos el costo del envío.",
+"cv45:6": "¿Y el resto?",
+"cv45:7": "Por más que lo intente, no puedo prometerle una fecha exacta hoy, pero le llamaré personalmente mañana a las diez con una respuesta concreta."
+},
+"cv46": {
+"cv46:0": "Veo que entre dos mil veinte y dos mil veintidós no tiene experiencia laboral. ¿Qué hizo en ese tiempo?",
+"cv46:1": "Durante esos dos años me dediqué a cuidar a mi padre, que estaba muy enfermo. Fue una decisión difícil, pero no me arrepiento.",
+"cv46:2": "Lo siento mucho. ¿Y no le preocupa haber perdido contacto con el sector?",
+"cv46:3": "Aunque no trabajaba, seguí formándome: hice dos cursos en línea de análisis de datos y me mantuve al día con las novedades del sector.",
+"cv46:4": "Interesante. ¿Qué cree que aprendió de esa experiencia?",
+"cv46:5": "Aprendí a organizarme bajo presión, a tomar decisiones rápidas y a negociar con médicos y aseguradoras. Esas habilidades me sirven en cualquier trabajo.",
+"cv46:6": "Muy bien. ¿Tiene alguna pregunta para nosotros?",
+"cv46:7": "Sí. Me gustaría saber cómo se mide el desempeño durante el periodo de prueba y si existe la posibilidad de trabajar a distancia algunos días."
+},
+"cv47": {
+"cv47:0": "Yo creo que deberían prohibir las redes sociales a los menores de dieciséis años. Les están arruinando la vida.",
+"cv47:1": "Entiendo tu preocupación, pero no es que las redes sean malas en sí; el problema es cómo se usan y cuánto tiempo.",
+"cv47:2": "Pero los estudios dicen que aumentan la ansiedad y la depresión.",
+"cv47:3": "Es cierto que hay estudios preocupantes. No obstante, prohibirlas sin más podría hacer que los chavos las usaran a escondidas, sin ningún control.",
+"cv47:4": "¿Entonces qué propones? ¿No hacer nada?",
+"cv47:5": "Para nada. Propondría que las plataformas tuvieran la obligación de verificar la edad y que en las escuelas se enseñara a usarlas de forma crítica.",
+"cv47:6": "Mmm. Puede ser, pero eso depende de que las empresas quieran colaborar.",
+"cv47:7": "Por eso haría falta una ley. Si los gobiernos hubieran actuado hace diez años, quizás no estaríamos teniendo esta discusión."
+},
+"cv48": {
+"cv48:0": "Cuénteme, ¿qué lo trae por aquí?",
+"cv48:1": "Llevo casi dos meses teniendo dolores de cabeza fuertes, sobre todo por las tardes, y ya no se me quitan con los analgésicos de siempre.",
+"cv48:2": "¿Había tenido algo parecido antes?",
+"cv48:3": "De joven tuve migrañas, pero hacía más de diez años que no me daban. El médico anterior me dijo que probablemente eran por el estrés.",
+"cv48:4": "¿Ha cambiado algo en su vida últimamente? Trabajo, sueño, alimentación…",
+"cv48:5": "Sí, cambié de trabajo y paso ocho o nueve horas frente a la computadora. Además, duermo menos y tomo bastante más café que antes.",
+"cv48:6": "Eso podría explicar mucho. Vamos a hacer unos estudios para descartar otras causas.",
+"cv48:7": "Me parece bien. ¿Hay algo que deba evitar mientras tanto, o que me recomiende hacer para que no empeoren?"
+},
+"cv49": {
+"cv49:0": "Ya no aguanto más. El perro del departamento cinco ladra desde las ocho de la mañana hasta la noche. Quiero que lo saquen del edificio.",
+"cv49:1": "Comprendo que debe ser muy molesto, señora. Antes de tomar cualquier medida, me gustaría escuchar también a los dueños del perro.",
+"cv49:2": "Ya hablé con ellos dos veces y me dijeron que lo iban a resolver. No han hecho nada.",
+"cv49:3": "Hablé con ellos ayer. Me explicaron que los dos trabajan todo el día y que el perro se queda solo, pero me aseguraron que no sabían que ladraba tanto.",
+"cv49:4": "Pues que hagan algo. El reglamento dice que no se puede molestar a los vecinos.",
+"cv49:5": "En efecto. Por consiguiente, les propuse que durante un mes contraten a alguien que pasee al perro a mediodía, y que lo lleven a un entrenador.",
+"cv49:6": "¿Y si en un mes sigue igual?",
+"cv49:7": "En ese caso, lo llevaríamos a la junta de vecinos y aplicaríamos el reglamento. Pero le pido que les demos esta oportunidad."
+},
 "cv5": {
 "cv5:0": "Buenos días.",
 "cv5:1": "Perdón. ¿Me puede ayudar?",
@@ -1636,6 +1714,16 @@
 "cv5:7": "¿A la derecha?",
 "cv5:8": "Sí, en la esquina.",
 "cv5:9": "Ya veo. Gracias."
+},
+"cv50": {
+"cv50:0": "Hola, ¿cómo va la traducción? Recuerda que la entrega es el quince.",
+"cv50:1": "Precisamente de eso te quería hablar. Llevo un ochenta por ciento, pero los últimos capítulos son mucho más técnicos de lo que esperaba.",
+"cv50:2": "Uy. El libro ya está anunciado y la imprenta tiene fecha. ¿Cuánto tiempo más necesitarías?",
+"cv50:3": "Con dos semanas más podría entregarte un texto revisado y de calidad. Si lo hiciera a toda prisa, me temo que habría errores.",
+"cv50:4": "Dos semanas es mucho. Lo máximo que puedo darte es una.",
+"cv50:5": "¿Y si te entrego el día quince los capítulos ya terminados, para que el corrector vaya avanzando, y la semana siguiente el resto?",
+"cv50:6": "Eso podría funcionar. Le pregunto al corrector y te confirmo hoy.",
+"cv50:7": "Perfecto, te lo agradezco mucho. Y te prometo que no volverá a pasar; la próxima vez revisaré todo el libro antes de aceptar una fecha."
 },
 "cv6": {
 "cv6:0": "Hola. ¿Dónde estás?",
@@ -1884,11 +1972,13 @@
 "me2:cv16:0~n": "¡Hola! ¿Qué onda?",
 "me2:cv1:22~n": "¡Gracias! ¡Adiós!",
 "me2:cv2:7o1~f": "No. Soy maestra.",
+"me2:cv46:1~f": "Durante esos dos años me dediqué a cuidar a mi padre, que estaba muy enferma. Fue una decisión difícil, pero no me arrepiento.",
 "me2:cv8:1~f": "Estoy contenta.",
 "me2:u14c-1:4~f": "Estoy perdida",
 "me2:u15c-1:2~f": "Soy alérgica a los cacahuates",
 "me2:u21a-2:3~f": "Encantada",
 "me2:u233b-1:3~f": "Haga lo que haga, nunca está contenta.",
+"me2:u238a-1:4~f": "Durante esos dos años me dediqué a cuidar a mi padre, que estaba muy enferma. Fue una decisión difícil, pero no me arrepiento.",
 "me2:u35c-1:0~f": "Cuando era niña",
 "me2:u36d-1:3~f": "Soy alérgica a esta medicina",
 "me2:u41c-1:1~f": "No voy porque estoy cansada",
@@ -3902,6 +3992,32 @@
 "u237b-1:2": "¿Vamos a tomar unos mates?",
 "u237b-1:3": "Voy a coger la guagua.",
 "u237b-1:4": "¿Qué tú quieres comer?"
+},
+"u238": {
+"u238a-1:0": "Tiene toda la razón, licenciada, y le ofrezco una disculpa. Si me hubieran avisado antes, habría actuado de inmediato.",
+"u238a-1:1": "Acabo de revisarlo: el retraso se debió a un problema con el proveedor de la madera. Aun así, alguien debió haberle informado.",
+"u238a-1:2": "Le propongo lo siguiente: le enviamos el viernes las piezas que ya tenemos y, por las molestias, le descontamos el costo del envío.",
+"u238a-1:3": "Por más que lo intente, no puedo prometerle una fecha exacta hoy, pero le llamaré personalmente mañana a las diez con una respuesta concreta.",
+"u238a-1:4": "Durante esos dos años me dediqué a cuidar a mi padre, que estaba muy enfermo. Fue una decisión difícil, pero no me arrepiento.",
+"u238a-2:0": "Aunque no trabajaba, seguí formándome: hice dos cursos en línea de análisis de datos y me mantuve al día con las novedades del sector.",
+"u238a-2:1": "Aprendí a organizarme bajo presión, a tomar decisiones rápidas y a negociar con médicos y aseguradoras. Esas habilidades me sirven en cualquier trabajo.",
+"u238a-2:2": "Sí. Me gustaría saber cómo se mide el desempeño durante el periodo de prueba y si existe la posibilidad de trabajar a distancia algunos días.",
+"u238a-2:3": "Entiendo tu preocupación, pero no es que las redes sean malas en sí; el problema es cómo se usan y cuánto tiempo.",
+"u238a-2:4": "Es cierto que hay estudios preocupantes. No obstante, prohibirlas sin más podría hacer que los chavos las usaran a escondidas, sin ningún control.",
+"u238b-1:0": "Para nada. Propondría que las plataformas tuvieran la obligación de verificar la edad y que en las escuelas se enseñara a usarlas de forma crítica.",
+"u238b-1:1": "Por eso haría falta una ley. Si los gobiernos hubieran actuado hace diez años, quizás no estaríamos teniendo esta discusión.",
+"u238b-1:2": "Llevo casi dos meses teniendo dolores de cabeza fuertes, sobre todo por las tardes, y ya no se me quitan con los analgésicos de siempre.",
+"u238b-1:3": "De joven tuve migrañas, pero hacía más de diez años que no me daban. El médico anterior me dijo que probablemente eran por el estrés.",
+"u238b-1:4": "Sí, cambié de trabajo y paso ocho o nueve horas frente a la computadora. Además, duermo menos y tomo bastante más café que antes.",
+"u238b-2:0": "Me parece bien. ¿Hay algo que deba evitar mientras tanto, o que me recomiende hacer para que no empeoren?",
+"u238b-2:1": "Comprendo que debe ser muy molesto, señora. Antes de tomar cualquier medida, me gustaría escuchar también a los dueños del perro.",
+"u238b-2:2": "Hablé con ellos ayer. Me explicaron que los dos trabajan todo el día y que el perro se queda solo, pero me aseguraron que no sabían que ladraba tanto.",
+"u238b-2:3": "En efecto. Por consiguiente, les propuse que durante un mes contraten a alguien que pasee al perro a mediodía, y que lo lleven a un entrenador.",
+"u238b-2:4": "En ese caso, lo llevaríamos a la junta de vecinos y aplicaríamos el reglamento. Pero le pido que les demos esta oportunidad.",
+"u238c-1:0": "Precisamente de eso te quería hablar. Llevo un ochenta por ciento, pero los últimos capítulos son mucho más técnicos de lo que esperaba.",
+"u238c-1:1": "Con dos semanas más podría entregarte un texto revisado y de calidad. Si lo hiciera a toda prisa, me temo que habría errores.",
+"u238c-1:2": "¿Y si te entrego el día quince los capítulos ya terminados, para que el corrector vaya avanzando, y la semana siguiente el resto?",
+"u238c-1:3": "Perfecto, te lo agradezco mucho. Y te prometo que no volverá a pasar; la próxima vez revisaré todo el libro antes de aceptar una fecha."
 },
 "u24": {
 "u24a-1:0": "qué",
