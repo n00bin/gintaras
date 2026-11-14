@@ -1272,7 +1272,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u335": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u336": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u337": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u338": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u339": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u34": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u340": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u341": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u342": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -5984,6 +6016,73 @@
 "u334a-3:0": "Un aullido lejano rompió el silencio de la noche.",
 "u334a-3:1": "Las ramas se mecían con un susurro suave."
 },
+"u335": {
+"u335a-1:0": "Una congoja inexplicable le oprimía el pecho.",
+"u335a-1:1": "Sintió un desasosiego que no lo dejaba dormir.",
+"u335a-1:2": "La invadió una dicha serena al verlos reunidos.",
+"u335a-1:3": "Lo consumía una ira sorda que nunca expresaba.",
+"u335a-1:4": "Contemplaba el mar con una añoranza difícil de explicar.",
+"u335a-2:0": "Un estremecimiento le recorrió la espalda.",
+"u335a-2:1": "Su desdén era más hiriente que cualquier insulto.",
+"u335a-2:2": "La embargaba una ternura inesperada.",
+"u335a-2:3": "Vivía atormentado por los remordimientos.",
+"u335a-2:4": "Lo invadió el desaliento tras el tercer rechazo.",
+"u335a-3:0": "Sentía un rencor sordo hacia su hermano.",
+"u335a-3:1": "La euforia inicial dio paso a una calma melancólica.",
+"u335a-3:2": "Un pudor extraño le impidió confesarle lo que sentía."
+},
+"u336": {
+"u336a-1:0": "La brecha entre ricos y pobres se ha ensanchado.",
+"u336a-1:1": "Las élites concentran la mayor parte de la riqueza.",
+"u336a-1:2": "El clasismo persiste en el trato cotidiano.",
+"u336a-1:3": "Muchos hogares viven en situación de pobreza extrema.",
+"u336a-1:4": "La herencia familiar determina en gran medida el futuro de los hijos.",
+"u336a-2:0": "La clase media se siente cada vez más vulnerable.",
+"u336a-2:1": "Los programas sociales mitigan, pero no resuelven, la desigualdad.",
+"u336a-2:2": "El color de piel sigue influyendo en las oportunidades laborales.",
+"u336a-2:3": "La segregación urbana separa a los barrios ricos de los marginados.",
+"u336a-2:4": "Una reforma fiscal progresiva podría redistribuir el ingreso.",
+"u336a-3:0": "El mérito no basta cuando las condiciones de partida son desiguales."
+},
+"u337": {
+"u337a-1:0": "Un bochorno sofocante anunciaba la tormenta.",
+"u337a-1:1": "La llovizna persistente empapaba las calles.",
+"u337a-1:2": "Un aguacero repentino dispersó a la multitud.",
+"u337a-1:3": "El granizo destrozó las cosechas en minutos.",
+"u337a-1:4": "Soplaba un viento helado que cortaba la piel.",
+"u337a-2:0": "El cielo encapotado presagiaba un día gris.",
+"u337a-2:1": "La canícula de agosto vació las calles al mediodía.",
+"u337a-2:2": "Un relámpago rasgó la oscuridad.",
+"u337a-2:3": "La escarcha cubría los campos al amanecer.",
+"u337a-2:4": "Tras la tempestad, el aire quedó limpio y transparente.",
+"u337a-3:0": "El vendaval arrancó las tejas de varias casas.",
+"u337a-3:1": "La bruma matinal se disipó poco a poco.",
+"u337a-3:2": "El aire húmedo olía a tierra mojada."
+},
+"u338": {
+"u338a-1:0": "La mesa es de caoba maciza.",
+"u338a-1:1": "El jarrón de porcelana se hizo añicos.",
+"u338a-1:2": "La tela de terciopelo es suave y tupida.",
+"u338a-1:3": "El metal oxidado se desmorona al tocarlo.",
+"u338a-1:4": "Las sábanas de lino se sienten frescas y algo rugosas.",
+"u338a-2:0": "El cuero curtido adquiere brillo con los años.",
+"u338a-2:1": "La superficie de mármol es fría y pulida.",
+"u338a-2:2": "El barro cocido conserva el agua fresca.",
+"u338a-2:3": "El cristal soplado tiene pequeñas burbujas de aire.",
+"u338a-2:4": "El acero inoxidable no se mancha con facilidad.",
+"u338a-3:0": "La corteza del árbol es áspera y agrietada."
+},
+"u339": {
+"u339a-1:0": "Gastó una feria en la fiesta.",
+"u339a-1:1": "No tengo ni un quinto.",
+"u339a-1:2": "Se lo vendieron a precio de ganga.",
+"u339a-1:3": "Le prestaron una lana y nunca la devolvió.",
+"u339a-1:4": "Hay que apretarse el cinturón hasta la quincena.",
+"u339a-2:0": "Es muy codo, nunca invita nada.",
+"u339a-2:1": "Me quedé en números rojos después de las vacaciones.",
+"u339a-2:2": "Lo que se ahorra en una cosa se gasta en otra.",
+"u339a-2:3": "Está forrado desde que heredó la empresa."
+},
 "u34": {
 "u34a-1:0": "ayer",
 "u34a-1:1": "anoche",
@@ -6010,6 +6109,49 @@
 "u34e-1:2": "caminé",
 "u34e-1:3": "descansé",
 "u34e-1:4": "dormí"
+},
+"u340": {
+"u340a-1:0": "La división de poderes es un pilar de la democracia.",
+"u340a-1:1": "El poder judicial debe ser independiente del ejecutivo.",
+"u340a-1:2": "La Suprema Corte declaró inconstitucional la ley.",
+"u340a-1:3": "El federalismo otorga autonomía a los estados.",
+"u340a-1:4": "Los organismos autónomos supervisan al gobierno.",
+"u340a-2:0": "La rendición de cuentas es indispensable en una democracia.",
+"u340a-2:1": "El clientelismo distorsiona la participación política.",
+"u340a-2:2": "La sociedad civil exige mayor transparencia.",
+"u340a-2:3": "El presidente vetó la iniciativa aprobada por el Congreso.",
+"u340a-2:4": "Los contrapesos institucionales evitan la concentración del poder.",
+"u340a-3:0": "La consulta popular fue convocada por el gobierno.",
+"u340a-3:1": "El Estado de derecho se debilita cuando reina la impunidad."
+},
+"u341": {
+"u341a-1:0": "Formularon una hipótesis a partir de la observación.",
+"u341a-1:1": "El experimento debe poder replicarse.",
+"u341a-1:2": "Dividieron a los participantes en un grupo de control y otro experimental.",
+"u341a-1:3": "Los resultados no fueron estadísticamente significativos.",
+"u341a-1:4": "El artículo fue revisado por pares antes de publicarse.",
+"u341a-2:0": "Los datos contradicen la teoría vigente.",
+"u341a-2:1": "Un sesgo en la muestra invalidó las conclusiones.",
+"u341a-2:2": "El estudio fue financiado por una empresa interesada.",
+"u341a-2:3": "Se requiere más evidencia para confirmar el hallazgo.",
+"u341a-2:4": "El ensayo fue doble ciego para evitar sesgos.",
+"u341a-3:0": "Los científicos plantearon un margen de error del tres por ciento.",
+"u341a-3:1": "Una teoría solo es científica si puede refutarse."
+},
+"u342": {
+"u342a-1:0": "Las partes se obligan a cumplir las cláusulas del presente contrato.",
+"u342a-1:1": "El contrato tendrá una vigencia de doce meses.",
+"u342a-1:2": "Cualquier modificación deberá constar por escrito.",
+"u342a-1:3": "El incumplimiento dará lugar a una penalización.",
+"u342a-1:4": "El arrendatario deberá entregar un depósito en garantía.",
+"u342a-2:0": "Se podrá rescindir el contrato con treinta días de aviso.",
+"u342a-2:1": "La confidencialidad se mantendrá aun después de concluido el acuerdo.",
+"u342a-2:2": "El contrato se renovará automáticamente salvo aviso en contrario.",
+"u342a-2:3": "Ambas partes firman de conformidad.",
+"u342a-2:4": "Las controversias se someterán a los tribunales de la ciudad.",
+"u342a-3:0": "El pago se efectuará dentro de los primeros cinco días de cada mes.",
+"u342a-3:1": "La letra pequeña esconde condiciones abusivas.",
+"u342a-3:2": "Conviene leer el contrato con detenimiento antes de firmarlo."
 },
 "u35": {
 "u35a-1:0": "primero",

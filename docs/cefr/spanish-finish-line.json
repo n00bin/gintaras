@@ -385,7 +385,15 @@
    "u331",
    "u332",
    "u333",
-   "u334"
+   "u334",
+   "u335",
+   "u336",
+   "u337",
+   "u338",
+   "u339",
+   "u340",
+   "u341",
+   "u342"
   ]
  },
  "grammar": {
@@ -642,7 +650,7 @@
     "grammar_missing": []
    },
    "C2": {
-    "word_forms_running_total": 6930,
+    "word_forms_running_total": 7123,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
