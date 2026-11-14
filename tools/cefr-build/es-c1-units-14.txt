@@ -1,0 +1,76 @@
+@u305|En el banco|At the bank|Accounts, cards, transfers and loans: <b>Abrí una cuenta de nómina para recibir mi sueldo.</b> (I opened a payroll account to receive my salary.), <b>La transferencia se reflejará en un plazo de veinticuatro horas.</b> (The transfer will show up within twenty-four hours.) and <b>Solicité un crédito hipotecario a tasa fija.</b> (I applied for a fixed-rate mortgage loan.).|Explain to a newcomer how to open an account and manage their money safely.
+#u305a|At the bank, part 1
+Abrí una cuenta de nómina para recibir mi sueldo.|I opened a payroll account to receive my salary.|
+La transferencia se reflejará en un plazo de veinticuatro horas.|The transfer will show up within twenty-four hours.|
+Solicité un crédito hipotecario a tasa fija.|I applied for a fixed-rate mortgage loan.|
+El saldo de la tarjeta de crédito genera intereses altísimos.|The credit card balance generates extremely high interest.|
+El estado de cuenta muestra un cargo duplicado.|The statement shows a duplicate charge.|
+Retiré efectivo sin necesidad de tarjeta, con el celular.|I withdrew cash without a card, using my phone.|
+Liquidé el préstamo antes del plazo y me ahorré intereses.|I paid off the loan early and saved on interest.|
+Congelé la tarjeta en la aplicación en cuanto la perdí.|I froze the card in the app as soon as I lost it.|
+@u306|El sueño|Sleep and dreams|Rest, insomnia and what happens at night: <b>Padece insomnio desde que cambió de turno.</b> (She's suffered from insomnia since she changed shifts.), <b>Ronca tan fuerte que despierta a toda la casa.</b> (He snores so loudly he wakes the whole house.) and <b>Me quedé dormido en el camión y me pasé de parada.</b> (I fell asleep on the bus and missed my stop.).|Describe your sleep habits and a dream you remember vividly.
+#u306a|Sleep and dreams, part 1
+Padece insomnio desde que cambió de turno.|She's suffered from insomnia since she changed shifts.|
+Ronca tan fuerte que despierta a toda la casa.|He snores so loudly he wakes the whole house.|
+Me quedé dormido en el camión y me pasé de parada.|I fell asleep on the bus and missed my stop.|
+Una siesta breve mejora la concentración por la tarde.|A short nap improves concentration in the afternoon.|
+Es sonámbulo desde niño.|He has been a sleepwalker since he was a child.|
+Las pantallas antes de dormir alteran el ciclo del sueño.|Screens before bed disrupt the sleep cycle.|
+Madrugó para ver el amanecer desde el cerro.|She got up very early to watch the sunrise from the hill.|
+El desvelo constante acaba pasando factura.|Constant lack of sleep ends up taking its toll.|
+Duerme como un tronco en cualquier lugar.|He sleeps like a log anywhere.|
+Me desperté sobresaltado por un ruido.|I woke up with a start because of a noise.|
+Dormir menos de seis horas afecta el sistema inmunológico.|Sleeping less than six hours affects the immune system.|
+@u307|Nutrición|Nutrition|Diets, nutrients and eating well: <b>Una dieta equilibrada incluye proteínas, fibra y grasas saludables.</b> (A balanced diet includes protein, fibre and healthy fats.), <b>Los alimentos ultraprocesados abundan en azúcares añadidos.</b> (Ultra-processed foods are full of added sugars.) and <b>Decidió hacerse vegetariano por razones éticas.</b> (He decided to become vegetarian for ethical reasons.).|Give someone practical advice on improving their diet without giving up the food they love.
+#u307a|Nutrition, part 1
+Una dieta equilibrada incluye proteínas, fibra y grasas saludables.|A balanced diet includes protein, fibre and healthy fats.|
+Los alimentos ultraprocesados abundan en azúcares añadidos.|Ultra-processed foods are full of added sugars.|
+Decidió hacerse vegetariano por razones éticas.|He decided to become vegetarian for ethical reasons.|
+La deficiencia de hierro provoca cansancio.|Iron deficiency causes tiredness.|
+Hay que leer el etiquetado nutrimental con atención.|You have to read nutrition labels carefully.|
+El ayuno intermitente se puso de moda.|Intermittent fasting became fashionable.|
+Las leguminosas son una fuente barata de proteína.|Pulses are a cheap source of protein.|
+Bebe al menos dos litros de agua al día.|She drinks at least two litres of water a day.|
+Las dietas milagro suelen tener efecto rebote.|Miracle diets often have a rebound effect.|
+El exceso de sodio eleva la presión arterial.|Too much sodium raises blood pressure.|
+Picar entre comidas arruina cualquier dieta.|Snacking between meals ruins any diet.|
+La nutrióloga le diseñó un plan personalizado.|The nutritionist designed a personalised plan for her.|
+@u308|Mercados y regateo|Markets and haggling|Stalls, prices and bargaining: <b>El marchante me dio un precio especial por ser cliente frecuente.</b> (The stallholder gave me a special price for being a regular customer.), <b>Regateamos hasta que nos dejó las tres piezas en quinientos.</b> (We haggled until he let us have the three pieces for five hundred.) and <b>Los puestos se instalan en la calle cada martes.</b> (The stalls are set up in the street every Tuesday.).|Act out haggling for something at a market, from the first price to the deal.
+#u308a|Markets and haggling, part 1
+El marchante me dio un precio especial por ser cliente frecuente.|The stallholder gave me a special price for being a regular customer.|
+Regateamos hasta que nos dejó las tres piezas en quinientos.|We haggled until he let us have the three pieces for five hundred.|
+Los puestos se instalan en la calle cada martes.|The stalls are set up in the street every Tuesday.|
+Le pedí que me diera una probadita del queso.|I asked him to give me a little taste of the cheese.|
+Me dio el pilón: una naranja extra.|He gave me a little extra: one more orange.|
+El precio de los aguacates se disparó por la sequía.|The price of avocados shot up because of the drought.|
+Las marchantas pregonan sus productos a gritos.|The women traders cry out their goods.|
+Compramos al mayoreo para la fiesta.|We bought wholesale for the party.|
+Ese puesto vende artesanías a precios de turista.|That stall sells crafts at tourist prices.|
+Pesan la mercancía en una báscula antigua.|They weigh the goods on an old pair of scales.|
+Si llevas tu propia bolsa, ayudas a reducir el plástico.|If you bring your own bag, you help to cut plastic.|
+Al final del día rematan lo que no se vendió.|At the end of the day they sell off what hasn't sold.|
+@u309|Primeros auxilios|First aid|Emergencies, injuries and what to do: <b>Si alguien se desmaya, recuéstalo y levántale las piernas.</b> (If someone faints, lay them down and raise their legs.), <b>Aplica presión sobre la herida para detener el sangrado.</b> (Apply pressure to the wound to stop the bleeding.) and <b>Enfría la quemadura con agua durante varios minutos.</b> (Cool the burn with water for several minutes.).|Explain what to do if someone faints or gets a burn.
+#u309a|First aid, part 1
+Si alguien se desmaya, recuéstalo y levántale las piernas.|If someone faints, lay them down and raise their legs.|
+Aplica presión sobre la herida para detener el sangrado.|Apply pressure to the wound to stop the bleeding.|
+Enfría la quemadura con agua durante varios minutos.|Cool the burn with water for several minutes.|
+No muevas a una persona que podría tener una lesión en la columna.|Don't move someone who might have a spinal injury.|
+Le hicieron maniobras de reanimación hasta que llegó la ambulancia.|They gave him resuscitation until the ambulance arrived.|
+Se torció el tobillo jugando futbol.|He twisted his ankle playing football.|
+El botiquín debe tener vendas, gasas y antiséptico.|The first aid kit should have bandages, gauze and antiseptic.|
+Tuvo una reacción alérgica a una picadura de abeja.|She had an allergic reaction to a bee sting.|
+Inmovilizaron el brazo con un cabestrillo.|They immobilised the arm with a sling.|
+Si se atraganta, aplica la maniobra de Heimlich.|If they choke, use the Heimlich manoeuvre.|
+Los paramédicos lo estabilizaron en el lugar.|The paramedics stabilised him at the scene.|
+@u310|Muebles y espacios|Furniture and spaces|Rooms, furniture and arranging a home: <b>Compramos un sillón reclinable para la sala.</b> (We bought a reclining armchair for the living room.), <b>El librero ocupa toda la pared del estudio.</b> (The bookcase takes up the whole wall of the study.) and <b>La recámara principal tiene vestidor y baño propio.</b> (The main bedroom has a walk-in wardrobe and its own bathroom.).|Describe how you would furnish and arrange your ideal flat.
+#u310a|Furniture and spaces, part 1
+Compramos un sillón reclinable para la sala.|We bought a reclining armchair for the living room.|
+El librero ocupa toda la pared del estudio.|The bookcase takes up the whole wall of the study.|
+La recámara principal tiene vestidor y baño propio.|The main bedroom has a walk-in wardrobe and its own bathroom.|
+Pintamos las paredes de un tono más claro para dar amplitud.|We painted the walls a lighter shade to make it feel more spacious.|
+Colgamos cortinas gruesas para bloquear la luz.|We hung thick curtains to block out the light.|
+El comedor de madera maciza era de mi abuela.|The solid wood dining table was my grandmother's.|
+Armé el ropero siguiendo las instrucciones.|I assembled the wardrobe following the instructions.|
+Pusimos un tapete para que el piso no se viera tan frío.|We put down a rug so the floor wouldn't look so cold.|
+Una lámpara de pie da una luz cálida al rincón.|A floor lamp gives the corner a warm light.|
+Redecoraron toda la casa después de la mudanza.|They redecorated the whole house after the move.|

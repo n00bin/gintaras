@@ -1,0 +1,84 @@
+== u305|En el banco|At the bank|Accounts, cards, transfers and loans|Explain to a newcomer how to open an account and manage their money safely.
+Abrí una cuenta de nómina para recibir mi sueldo.|I opened a payroll account to receive my salary.|
+La transferencia se reflejará en un plazo de veinticuatro horas.|The transfer will show up within twenty-four hours.|
+El cajero se tragó mi tarjeta.|The cash machine swallowed my card.|
+Me cobraron una comisión por manejo de cuenta.|They charged me an account management fee.|
+Solicité un crédito hipotecario a tasa fija.|I applied for a fixed-rate mortgage loan.|
+El saldo de la tarjeta de crédito genera intereses altísimos.|The credit card balance generates extremely high interest.|
+Domicilié el pago de la luz para no olvidarlo.|I set up a direct debit for the electricity bill so I wouldn't forget it.|
+El estado de cuenta muestra un cargo duplicado.|The statement shows a duplicate charge.|
+Retiré efectivo sin necesidad de tarjeta, con el celular.|I withdrew cash without a card, using my phone.|
+El historial crediticio influye en la tasa que te ofrecen.|Your credit history affects the rate you're offered.|
+Liquidé el préstamo antes del plazo y me ahorré intereses.|I paid off the loan early and saved on interest.|
+La sucursal cierra a las cuatro de la tarde.|The branch closes at four in the afternoon.|
+Congelé la tarjeta en la aplicación en cuanto la perdí.|I froze the card in the app as soon as I lost it.|
+== u306|El sueño|Sleep and dreams|Rest, insomnia and what happens at night|Describe your sleep habits and a dream you remember vividly.
+Padece insomnio desde que cambió de turno.|She's suffered from insomnia since she changed shifts.|
+Ronca tan fuerte que despierta a toda la casa.|He snores so loudly he wakes the whole house.|
+Tuve una pesadilla y desperté sudando.|I had a nightmare and woke up sweating.|
+Me quedé dormido en el camión y me pasé de parada.|I fell asleep on the bus and missed my stop.|
+Una siesta breve mejora la concentración por la tarde.|A short nap improves concentration in the afternoon.|
+Es sonámbulo desde niño.|He has been a sleepwalker since he was a child.|
+Las pantallas antes de dormir alteran el ciclo del sueño.|Screens before bed disrupt the sleep cycle.|
+Soñé que volaba sobre la ciudad.|I dreamed I was flying over the city.|
+Madrugó para ver el amanecer desde el cerro.|She got up very early to watch the sunrise from the hill.|
+El desvelo constante acaba pasando factura.|Constant lack of sleep ends up taking its toll.|
+Duerme como un tronco en cualquier lugar.|He sleeps like a log anywhere.|
+Me desperté sobresaltado por un ruido.|I woke up with a start because of a noise.|
+Dormir menos de seis horas afecta el sistema inmunológico.|Sleeping less than six hours affects the immune system.|
+== u307|Nutrición|Nutrition|Diets, nutrients and eating well|Give someone practical advice on improving their diet without giving up the food they love.
+Una dieta equilibrada incluye proteínas, fibra y grasas saludables.|A balanced diet includes protein, fibre and healthy fats.|
+Los alimentos ultraprocesados abundan en azúcares añadidos.|Ultra-processed foods are full of added sugars.|
+Es intolerante a la lactosa.|She's lactose intolerant.|
+Decidió hacerse vegetariano por razones éticas.|He decided to become vegetarian for ethical reasons.|
+La deficiencia de hierro provoca cansancio.|Iron deficiency causes tiredness.|
+Hay que leer el etiquetado nutrimental con atención.|You have to read nutrition labels carefully.|
+El ayuno intermitente se puso de moda.|Intermittent fasting became fashionable.|
+Las leguminosas son una fuente barata de proteína.|Pulses are a cheap source of protein.|
+Bebe al menos dos litros de agua al día.|She drinks at least two litres of water a day.|
+Las dietas milagro suelen tener efecto rebote.|Miracle diets often have a rebound effect.|
+El exceso de sodio eleva la presión arterial.|Too much sodium raises blood pressure.|
+Picar entre comidas arruina cualquier dieta.|Snacking between meals ruins any diet.|
+La nutrióloga le diseñó un plan personalizado.|The nutritionist designed a personalised plan for her.|
+== u308|Mercados y regateo|Markets and haggling|Stalls, prices and bargaining|Act out haggling for something at a market, from the first price to the deal.
+El marchante me dio un precio especial por ser cliente frecuente.|The stallholder gave me a special price for being a regular customer.|
+Regateamos hasta que nos dejó las tres piezas en quinientos.|We haggled until he let us have the three pieces for five hundred.|
+Los puestos se instalan en la calle cada martes.|The stalls are set up in the street every Tuesday.|
+Le pedí que me diera una probadita del queso.|I asked him to give me a little taste of the cheese.|
+Me dio el pilón: una naranja extra.|He gave me a little extra: one more orange.|
+El precio de los aguacates se disparó por la sequía.|The price of avocados shot up because of the drought.|
+Las marchantas pregonan sus productos a gritos.|The women traders cry out their goods.|
+Compramos al mayoreo para la fiesta.|We bought wholesale for the party.|
+La fruta de temporada siempre es más barata.|Seasonal fruit is always cheaper.|
+Ese puesto vende artesanías a precios de turista.|That stall sells crafts at tourist prices.|
+Pesan la mercancía en una báscula antigua.|They weigh the goods on an old pair of scales.|
+Si llevas tu propia bolsa, ayudas a reducir el plástico.|If you bring your own bag, you help to cut plastic.|
+Al final del día rematan lo que no se vendió.|At the end of the day they sell off what hasn't sold.|
+== u309|Primeros auxilios|First aid|Emergencies, injuries and what to do|Explain what to do if someone faints or gets a burn.
+Si alguien se desmaya, recuéstalo y levántale las piernas.|If someone faints, lay them down and raise their legs.|
+Aplica presión sobre la herida para detener el sangrado.|Apply pressure to the wound to stop the bleeding.|
+Enfría la quemadura con agua durante varios minutos.|Cool the burn with water for several minutes.|
+No muevas a una persona que podría tener una lesión en la columna.|Don't move someone who might have a spinal injury.|
+Le hicieron maniobras de reanimación hasta que llegó la ambulancia.|They gave him resuscitation until the ambulance arrived.|
+Se torció el tobillo jugando futbol.|He twisted his ankle playing football.|
+El botiquín debe tener vendas, gasas y antiséptico.|The first aid kit should have bandages, gauze and antiseptic.|
+Tuvo una reacción alérgica a una picadura de abeja.|She had an allergic reaction to a bee sting.|
+Inmovilizaron el brazo con un cabestrillo.|They immobilised the arm with a sling.|
+Si se atraganta, aplica la maniobra de Heimlich.|If they choke, use the Heimlich manoeuvre.|
+Los paramédicos lo estabilizaron en el lugar.|The paramedics stabilised him at the scene.|
+Llama a emergencias antes de intentar cualquier cosa.|Call emergency services before trying anything.|
+Tomar un curso de primeros auxilios puede salvar una vida.|Taking a first aid course can save a life.|
+== u310|Muebles y espacios|Furniture and spaces|Rooms, furniture and arranging a home|Describe how you would furnish and arrange your ideal flat.
+Compramos un sillón reclinable para la sala.|We bought a reclining armchair for the living room.|
+El librero ocupa toda la pared del estudio.|The bookcase takes up the whole wall of the study.|
+La recámara principal tiene vestidor y baño propio.|The main bedroom has a walk-in wardrobe and its own bathroom.|
+Pintamos las paredes de un tono más claro para dar amplitud.|We painted the walls a lighter shade to make it feel more spacious.|
+La azotea se convirtió en una terraza con plantas.|The roof became a terrace with plants.|
+Colgamos cortinas gruesas para bloquear la luz.|We hung thick curtains to block out the light.|
+El comedor de madera maciza era de mi abuela.|The solid wood dining table was my grandmother's.|
+Armé el ropero siguiendo las instrucciones.|I assembled the wardrobe following the instructions.|
+Los muebles de segunda mano tienen más carácter.|Second-hand furniture has more character.|
+Pusimos un tapete para que el piso no se viera tan frío.|We put down a rug so the floor wouldn't look so cold.|
+El cuarto de servicio ahora es una oficina.|The utility room is now an office.|
+Una lámpara de pie da una luz cálida al rincón.|A floor lamp gives the corner a warm light.|
+Redecoraron toda la casa después de la mudanza.|They redecorated the whole house after the move.|

@@ -1116,7 +1116,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u305": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u306": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u307": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u308": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u309": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u31": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u310": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -5279,6 +5303,70 @@
 "u304a-2:3": "Hay que saber reírse de uno mismo.",
 "u304a-2:4": "Esa ironía se pierde en la traducción."
 },
+"u305": {
+"u305a-1:0": "Abrí una cuenta de nómina para recibir mi sueldo.",
+"u305a-1:1": "La transferencia se reflejará en un plazo de veinticuatro horas.",
+"u305a-1:2": "Solicité un crédito hipotecario a tasa fija.",
+"u305a-1:3": "El saldo de la tarjeta de crédito genera intereses altísimos.",
+"u305a-1:4": "El estado de cuenta muestra un cargo duplicado.",
+"u305a-2:0": "Retiré efectivo sin necesidad de tarjeta, con el celular.",
+"u305a-2:1": "Liquidé el préstamo antes del plazo y me ahorré intereses.",
+"u305a-2:2": "Congelé la tarjeta en la aplicación en cuanto la perdí."
+},
+"u306": {
+"u306a-1:0": "Padece insomnio desde que cambió de turno.",
+"u306a-1:1": "Ronca tan fuerte que despierta a toda la casa.",
+"u306a-1:2": "Me quedé dormido en el camión y me pasé de parada.",
+"u306a-1:3": "Una siesta breve mejora la concentración por la tarde.",
+"u306a-1:4": "Es sonámbulo desde niño.",
+"u306a-2:0": "Las pantallas antes de dormir alteran el ciclo del sueño.",
+"u306a-2:1": "Madrugó para ver el amanecer desde el cerro.",
+"u306a-2:2": "El desvelo constante acaba pasando factura.",
+"u306a-2:3": "Duerme como un tronco en cualquier lugar.",
+"u306a-2:4": "Me desperté sobresaltado por un ruido.",
+"u306a-3:0": "Dormir menos de seis horas afecta el sistema inmunológico."
+},
+"u307": {
+"u307a-1:0": "Una dieta equilibrada incluye proteínas, fibra y grasas saludables.",
+"u307a-1:1": "Los alimentos ultraprocesados abundan en azúcares añadidos.",
+"u307a-1:2": "Decidió hacerse vegetariano por razones éticas.",
+"u307a-1:3": "La deficiencia de hierro provoca cansancio.",
+"u307a-1:4": "Hay que leer el etiquetado nutrimental con atención.",
+"u307a-2:0": "El ayuno intermitente se puso de moda.",
+"u307a-2:1": "Las leguminosas son una fuente barata de proteína.",
+"u307a-2:2": "Bebe al menos dos litros de agua al día.",
+"u307a-2:3": "Las dietas milagro suelen tener efecto rebote.",
+"u307a-2:4": "El exceso de sodio eleva la presión arterial.",
+"u307a-3:0": "Picar entre comidas arruina cualquier dieta.",
+"u307a-3:1": "La nutrióloga le diseñó un plan personalizado."
+},
+"u308": {
+"u308a-1:0": "El marchante me dio un precio especial por ser cliente frecuente.",
+"u308a-1:1": "Regateamos hasta que nos dejó las tres piezas en quinientos.",
+"u308a-1:2": "Los puestos se instalan en la calle cada martes.",
+"u308a-1:3": "Le pedí que me diera una probadita del queso.",
+"u308a-1:4": "Me dio el pilón: una naranja extra.",
+"u308a-2:0": "El precio de los aguacates se disparó por la sequía.",
+"u308a-2:1": "Las marchantas pregonan sus productos a gritos.",
+"u308a-2:2": "Compramos al mayoreo para la fiesta.",
+"u308a-2:3": "Ese puesto vende artesanías a precios de turista.",
+"u308a-2:4": "Pesan la mercancía en una báscula antigua.",
+"u308a-3:0": "Si llevas tu propia bolsa, ayudas a reducir el plástico.",
+"u308a-3:1": "Al final del día rematan lo que no se vendió."
+},
+"u309": {
+"u309a-1:0": "Si alguien se desmaya, recuéstalo y levántale las piernas.",
+"u309a-1:1": "Aplica presión sobre la herida para detener el sangrado.",
+"u309a-1:2": "Enfría la quemadura con agua durante varios minutos.",
+"u309a-1:3": "No muevas a una persona que podría tener una lesión en la columna.",
+"u309a-1:4": "Le hicieron maniobras de reanimación hasta que llegó la ambulancia.",
+"u309a-2:0": "Se torció el tobillo jugando futbol.",
+"u309a-2:1": "El botiquín debe tener vendas, gasas y antiséptico.",
+"u309a-2:2": "Tuvo una reacción alérgica a una picadura de abeja.",
+"u309a-2:3": "Inmovilizaron el brazo con un cabestrillo.",
+"u309a-2:4": "Si se atraganta, aplica la maniobra de Heimlich.",
+"u309a-3:0": "Los paramédicos lo estabilizaron en el lugar."
+},
 "u31": {
 "u31a-1:0": "el maestro",
 "u31a-1:1": "la maestra",
@@ -5305,6 +5393,18 @@
 "u31e-1:2": "¿A qué hora empiezas?",
 "u31e-1:3": "Trabajo desde casa",
 "u31e-1:4": "No trabajo los domingos"
+},
+"u310": {
+"u310a-1:0": "Compramos un sillón reclinable para la sala.",
+"u310a-1:1": "El librero ocupa toda la pared del estudio.",
+"u310a-1:2": "La recámara principal tiene vestidor y baño propio.",
+"u310a-1:3": "Pintamos las paredes de un tono más claro para dar amplitud.",
+"u310a-1:4": "Colgamos cortinas gruesas para bloquear la luz.",
+"u310a-2:0": "El comedor de madera maciza era de mi abuela.",
+"u310a-2:1": "Armé el ropero siguiendo las instrucciones.",
+"u310a-2:2": "Pusimos un tapete para que el piso no se viera tan frío.",
+"u310a-2:3": "Una lámpara de pie da una luz cálida al rincón.",
+"u310a-2:4": "Redecoraron toda la casa después de la mudanza."
 },
 "u32": {
 "u32a-1:0": "puedo",
