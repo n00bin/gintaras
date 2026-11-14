@@ -1008,6 +1008,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u281": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u282": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u283": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u284": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u285": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u286": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u29": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -4820,6 +4844,83 @@
 "u280a-2:1": "El perro gruñó al cartero.",
 "u280a-2:2": "Las abejas zumbaban alrededor de las flores.",
 "u280a-2:3": "La veterinaria le recetó antiinflamatorios."
+},
+"u281": {
+"u281a-1:0": "El saco le queda holgado de los hombros.",
+"u281a-1:1": "Las prendas de lino son frescas pero se arrugan fácilmente.",
+"u281a-1:2": "Se puso un rebozo de seda para la fiesta.",
+"u281a-1:3": "La pasarela presentó diseños inspirados en textiles indígenas.",
+"u281a-1:4": "Las botas vaqueras están de moda otra vez.",
+"u281a-2:0": "Mandé ajustar el vestido porque me quedaba largo.",
+"u281a-2:1": "El uniforme escolar incluye corbata y chaleco.",
+"u281a-2:2": "Esa marca fue acusada de plagiar diseños tradicionales.",
+"u281a-2:3": "Prefiere la ropa cómoda a la elegante.",
+"u281a-2:4": "Se le descosió el dobladillo del pantalón.",
+"u281a-3:0": "Iba vestido de etiqueta, con esmoquin y moño."
+},
+"u282": {
+"u282a-1:0": "Sofríe la cebolla hasta que esté transparente.",
+"u282a-1:1": "Deja que el caldo hierva a fuego lento media hora.",
+"u282a-1:2": "Escurre la pasta y resérvala.",
+"u282a-1:3": "Espolvorea azúcar glas sobre el pastel.",
+"u282a-1:4": "Asa los chiles directamente sobre la flama.",
+"u282a-2:0": "Licúa los jitomates con un poco de agua y cuela la mezcla.",
+"u282a-2:1": "Engrasa el molde antes de verter la masa.",
+"u282a-2:2": "Remueve constantemente para que no se pegue.",
+"u282a-2:3": "Rebana el pan en rodajas delgadas."
+},
+"u283": {
+"u283a-1:0": "Tropezó con una piedra y estuvo a punto de caerse.",
+"u283a-1:1": "El niño se escabulló entre la multitud.",
+"u283a-1:2": "Trepamos por las rocas hasta llegar a la cueva.",
+"u283a-1:3": "Se deslizó por el tobogán a toda velocidad.",
+"u283a-1:4": "El ladrón saltó la barda y huyó por el callejón.",
+"u283a-2:0": "Caminaba a tientas en la oscuridad.",
+"u283a-2:1": "Se agachó para recoger las monedas.",
+"u283a-2:2": "Avanzaban a gatas por el túnel.",
+"u283a-2:3": "El coche derrapó en la curva.",
+"u283a-2:4": "Se tambaleaba de cansancio.",
+"u283a-3:0": "Los turistas deambulaban sin rumbo por el mercado.",
+"u283a-3:1": "Se lanzó al agua sin pensarlo dos veces.",
+"u283a-3:2": "Retrocedió unos pasos al ver la serpiente."
+},
+"u284": {
+"u284a-1:0": "Hay desabasto de medicamentos en los hospitales públicos.",
+"u284a-1:1": "Lo dieron de alta después de una semana internado.",
+"u284a-1:2": "Las enfermeras trabajan turnos de doce horas.",
+"u284a-1:3": "Muchos pacientes recurren a la automedicación.",
+"u284a-1:4": "El hospital fue rebasado durante la pandemia.",
+"u284a-2:0": "Las farmacias con consultorio atienden a millones de personas.",
+"u284a-2:1": "Le negaron la cobertura por una enfermedad preexistente.",
+"u284a-2:2": "La salud mental sigue siendo la gran olvidada."
+},
+"u285": {
+"u285a-1:0": "Zarparon al amanecer rumbo a la isla.",
+"u285a-1:1": "El oleaje era tan fuerte que cerraron el puerto.",
+"u285a-1:2": "Los pescadores tiran las redes al anochecer.",
+"u285a-1:3": "El velero ancló en una bahía resguardada.",
+"u285a-1:4": "Se mareó en cuanto el barco empezó a moverse.",
+"u285a-2:0": "La corriente arrastró la lancha mar adentro.",
+"u285a-2:1": "El faro guía a las embarcaciones de noche.",
+"u285a-2:2": "Avistamos ballenas jorobadas frente a la costa.",
+"u285a-2:3": "El naufragio dejó tres desaparecidos.",
+"u285a-2:4": "La tripulación trabajó sin descanso durante la tormenta.",
+"u285a-3:0": "Desembarcaron en un muelle de madera.",
+"u285a-3:1": "La veda protege a las especies durante la reproducción."
+},
+"u286": {
+"u286a-1:0": "Analizó los datos antes de sacar conclusiones.",
+"u286a-1:1": "De sus palabras deduje que no estaba de acuerdo.",
+"u286a-1:2": "Conviene sopesar los pros y los contras.",
+"u286a-1:3": "No hay que confundir correlación con causalidad.",
+"u286a-1:4": "Planteó una hipótesis audaz que nadie había considerado.",
+"u286a-2:0": "Intuyo que hay algo que no nos están diciendo.",
+"u286a-2:1": "Reflexionó largo rato antes de responder.",
+"u286a-2:2": "Su argumento carece de fundamento.",
+"u286a-2:3": "Hay que distinguir los hechos de las opiniones.",
+"u286a-2:4": "Dedujo la respuesta por eliminación.",
+"u286a-3:0": "Llegamos a la misma conclusión por caminos distintos.",
+"u286a-3:1": "Cuestionar lo establecido es el primer paso para innovar."
 },
 "u29": {
 "u29a-1:0": "alto",
