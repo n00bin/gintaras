@@ -1544,7 +1544,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u399": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u4": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u400": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u401": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u402": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u403": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u404": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u405": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u406": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -7208,6 +7240,20 @@
 "u398a-3:0": "El anticiclón mantendrá el cielo despejado.",
 "u398a-3:1": "Los modelos climáticos anticipan sequías más frecuentes."
 },
+"u399": {
+"u399a-1:0": "La dentista me encontró dos caries en las muelas.",
+"u399a-1:1": "Me hicieron una endodoncia y me pusieron una corona.",
+"u399a-1:2": "El ortodoncista le colocó aparatos metálicos.",
+"u399a-1:3": "Me sacaron la muela del juicio con anestesia local.",
+"u399a-1:4": "La limpieza dental elimina el sarro acumulado.",
+"u399a-2:0": "Las encías le sangran cuando se cepilla.",
+"u399a-2:1": "Usa hilo dental después de cada comida.",
+"u399a-2:2": "La resina sustituye a las viejas amalgamas.",
+"u399a-2:3": "El implante requiere varios meses de cicatrización.",
+"u399a-2:4": "El esmalte dental se desgasta con los refrescos.",
+"u399a-3:0": "El blanqueamiento le dejó los dientes sensibles al frío.",
+"u399a-3:1": "Le dolía tanto la muela que no podía masticar."
+},
 "u4": {
 "u4a-1:0": "la ciudad",
 "u4a-1:1": "la calle",
@@ -7229,6 +7275,98 @@
 "u4d-1:2": "vamos",
 "u4d-1:3": "Voy al parque",
 "u4d-1:4": "Vamos a la tienda"
+},
+"u400": {
+"u400a-1:0": "Se ponchó la llanta trasera a mitad del recorrido.",
+"u400a-1:1": "La cadena se salió del piñón.",
+"u400a-1:2": "Ajusta los frenos antes de bajar la cuesta.",
+"u400a-1:3": "El ciclista se colocó a rebufo del pelotón.",
+"u400a-1:4": "Infló las ruedas con una bomba de mano.",
+"u400a-2:0": "El manubrio estaba torcido después de la caída.",
+"u400a-2:1": "Pedaleamos ochenta kilómetros entre viñedos.",
+"u400a-2:2": "El sillín era tan duro que terminé adolorido.",
+"u400a-2:3": "La etapa de montaña decidió la carrera.",
+"u400a-2:4": "Pusieron un candado para que no robaran la bicicleta."
+},
+"u401": {
+"u401a-1:0": "Vacunaron al cachorro contra la rabia.",
+"u401a-1:1": "Esterilizaron a la gata para evitar camadas no deseadas.",
+"u401a-1:2": "El perro tiene pulgas y garrapatas.",
+"u401a-1:3": "Le pusieron un collar isabelino después de la cirugía.",
+"u401a-1:4": "Desparasitan a los animales cada tres meses.",
+"u401a-2:0": "El gato maúlla cuando tiene hambre.",
+"u401a-2:1": "El perico aprendió a imitar el timbre.",
+"u401a-2:2": "Adoptaron un perro callejero del albergue.",
+"u401a-2:3": "El hámster se escapó de su jaula.",
+"u401a-2:4": "Le implantaron un microchip para identificarlo.",
+"u401a-3:0": "El pez beta vive solo en su pecera."
+},
+"u402": {
+"u402a-1:0": "La vendimia se hace a mano en agosto.",
+"u402a-1:1": "El Valle de Guadalupe produce vinos de gran calidad.",
+"u402a-1:2": "Las uvas se prensan para extraer el mosto.",
+"u402a-1:3": "El catador describió notas de frutos rojos y vainilla.",
+"u402a-1:4": "Un tinto con cuerpo acompaña bien las carnes.",
+"u402a-2:0": "La cata incluyó cinco variedades de uva.",
+"u402a-2:1": "Las cepas viejas dan menos fruto pero más concentrado.",
+"u402a-2:2": "El corcho se pudrió y el vino se avinagró.",
+"u402a-2:3": "La bodega ofrece recorridos guiados entre los viñedos.",
+"u402a-2:4": "Agitó la copa para oxigenar el vino.",
+"u402a-3:0": "El clima mediterráneo del valle favorece la viticultura."
+},
+"u403": {
+"u403a-1:0": "El trapecista saltó sin red.",
+"u403a-1:1": "El payaso hizo reír a todo el público.",
+"u403a-1:2": "El malabarista lanzaba antorchas encendidas.",
+"u403a-1:3": "El equilibrista cruzó la cuerda floja con los ojos vendados.",
+"u403a-1:4": "La carpa del circo se instaló en un terreno baldío.",
+"u403a-2:0": "Subimos a la rueda de la fortuna al anochecer.",
+"u403a-2:1": "Los carritos chocones eran mi atracción favorita.",
+"u403a-2:2": "Ganó un peluche en el tiro al blanco.",
+"u403a-2:3": "El mago sacó una paloma de su sombrero.",
+"u403a-2:4": "El faquir se acostó sobre una cama de clavos.",
+"u403a-3:0": "El acróbata dio un triple salto mortal.",
+"u403a-3:1": "Compramos algodón de azúcar y manzanas acarameladas.",
+"u403a-3:2": "Los circos ya no pueden usar animales salvajes."
+},
+"u404": {
+"u404a-1:0": "El camión recolector pasa los martes y viernes.",
+"u404a-1:1": "Los envases de plástico se compactan antes de reciclarlos.",
+"u404a-1:2": "El tiradero municipal está a punto de saturarse.",
+"u404a-1:3": "Los pepenadores rescatan materiales valiosos de la basura.",
+"u404a-1:4": "El vidrio puede reciclarse indefinidamente.",
+"u404a-2:0": "Las pilas usadas se depositan en contenedores especiales.",
+"u404a-2:1": "Los residuos electrónicos contienen metales pesados.",
+"u404a-2:2": "Reutilizamos los frascos de vidrio para guardar especias.",
+"u404a-2:3": "El relleno sanitario produce gas metano.",
+"u404a-2:4": "La economía circular busca eliminar los desperdicios."
+},
+"u405": {
+"u405a-1:0": "Necesito unos taquetes y unos tornillos para colgar el espejo.",
+"u405a-1:1": "El taladro inalámbrico tiene dos baterías.",
+"u405a-1:2": "Compré una llave inglesa y un juego de desarmadores.",
+"u405a-1:3": "Sellaron la ventana con silicón.",
+"u405a-1:4": "El flexómetro mide hasta cinco metros.",
+"u405a-2:0": "Usó pinzas de presión para sujetar la tuerca.",
+"u405a-2:1": "El nivel de burbuja asegura que el cuadro quede derecho.",
+"u405a-2:2": "Compró una brocha y un rodillo para pintar la sala.",
+"u405a-2:3": "Las arandelas evitan que el tornillo se afloje.",
+"u405a-2:4": "El pegamento de contacto seca en segundos.",
+"u405a-3:0": "Cortó el tubo con una segueta.",
+"u405a-3:1": "La escalera de tijera es indispensable para alcanzar el techo."
+},
+"u406": {
+"u406a-1:0": "Los saguaros pueden vivir más de ciento cincuenta años.",
+"u406a-1:1": "La temperatura desciende bruscamente por la noche.",
+"u406a-1:2": "Un espejismo hacía parecer que había agua en el horizonte.",
+"u406a-1:3": "Los correcaminos corren entre los matorrales.",
+"u406a-1:4": "El oasis era el único lugar con sombra en kilómetros.",
+"u406a-2:0": "La deshidratación es el mayor peligro para los viajeros.",
+"u406a-2:1": "Las tormentas de arena reducen la visibilidad a cero.",
+"u406a-2:2": "Los coyotes aúllan bajo la luna llena.",
+"u406a-2:3": "Las biznagas acumulan agua en su interior.",
+"u406a-2:4": "Las lluvias repentinas provocan que el desierto florezca.",
+"u406a-3:0": "Los pueblos indígenas conocen los secretos para sobrevivir en la aridez."
 },
 "u41": {
 "u41a-1:0": "y",
