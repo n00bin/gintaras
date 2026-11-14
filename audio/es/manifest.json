@@ -1084,11 +1084,35 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u299": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u3": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
 "u30": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u300": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u301": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u302": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u303": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u304": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -5139,6 +5163,18 @@
 "u298a-2:3": "El ritmo de la prosa se nota al leer en voz alta.",
 "u298a-2:4": "La corrección de estilo pulió cada párrafo."
 },
+"u299": {
+"u299a-1:0": "Los padres sobreprotectores impiden que sus hijos maduren.",
+"u299a-1:1": "Hizo un berrinche en pleno supermercado.",
+"u299a-1:2": "La crianza respetuosa no significa ausencia de límites.",
+"u299a-1:3": "Amamantó a su bebé durante un año.",
+"u299a-1:4": "El niño ya gatea y pronto empezará a caminar.",
+"u299a-2:0": "Los castigos físicos dejan secuelas emocionales.",
+"u299a-2:1": "Lo malcriaron dándole todo lo que pedía.",
+"u299a-2:2": "Los adolescentes necesitan autonomía, pero también acompañamiento.",
+"u299a-2:3": "Los abuelos se encargan de cuidar a los nietos por las tardes.",
+"u299a-2:4": "Educar con el ejemplo vale más que mil sermones."
+},
 "u3": {
 "u3a-1:0": "la leche",
 "u3a-1:1": "el queso",
@@ -5182,6 +5218,66 @@
 "u30d-1:2": "La ventana está cerrada",
 "u30d-1:3": "Vivo en un departamento",
 "u30d-1:4": "Mi casa es pequeña"
+},
+"u300": {
+"u300a-1:0": "La esperanza de vida ha aumentado considerablemente.",
+"u300a-1:1": "Muchos ancianos viven solos y aislados.",
+"u300a-1:2": "La residencia ofrece atención las veinticuatro horas.",
+"u300a-1:3": "La pensión no le alcanza para los medicamentos.",
+"u300a-1:4": "Cuidar a un familiar con demencia es agotador.",
+"u300a-2:0": "El envejecimiento de la población presiona el sistema de salud.",
+"u300a-2:1": "Los adultos mayores tienen descuentos en el transporte.",
+"u300a-2:2": "La sabiduría de los mayores merece más respeto.",
+"u300a-2:3": "Envejecer con dignidad debería ser un derecho."
+},
+"u301": {
+"u301a-1:0": "Las rampas permiten el acceso a personas en silla de ruedas.",
+"u301a-1:1": "El semáforo emite un sonido para personas ciegas.",
+"u301a-1:2": "Los intérpretes de lengua de señas aparecen en las noticias.",
+"u301a-1:3": "La inclusión laboral de personas con discapacidad avanza despacio.",
+"u301a-1:4": "Las banquetas rotas son un peligro para quien usa bastón.",
+"u301a-2:0": "El libro está disponible en braille y en audio.",
+"u301a-2:1": "La página web no es compatible con los lectores de pantalla.",
+"u301a-2:2": "Las escuelas deben adaptarse a cada alumno.",
+"u301a-2:3": "Los cajones de estacionamiento reservados se respetan poco.",
+"u301a-2:4": "La discapacidad no está en la persona, sino en el entorno."
+},
+"u302": {
+"u302a-1:0": "Se ofreció como voluntaria en un albergue para migrantes.",
+"u302a-1:1": "La fundación recauda fondos para becas universitarias.",
+"u302a-1:2": "La colecta superó todas las expectativas.",
+"u302a-1:3": "Las organizaciones civiles llenan los vacíos que deja el Estado.",
+"u302a-1:4": "Donó sangre por primera vez.",
+"u302a-2:0": "Un grupo de vecinos rescató el parque abandonado.",
+"u302a-2:1": "La asociación brinda asesoría legal gratuita.",
+"u302a-2:2": "Tras el sismo, la ayuda ciudadana fue inmediata.",
+"u302a-2:3": "Los donativos son deducibles de impuestos.",
+"u302a-2:4": "El activismo digital no sustituye la acción en la calle.",
+"u302a-3:0": "La transparencia es clave para que la gente confíe en las ONG.",
+"u302a-3:1": "Ser solidario no requiere grandes gestos."
+},
+"u303": {
+"u303a-1:0": "Las ráfagas arrancaron techos y derribaron postes.",
+"u303a-1:1": "La marejada inundó el malecón.",
+"u303a-1:2": "Se decretó estado de emergencia en tres estados.",
+"u303a-1:3": "Los víveres llegaron por helicóptero a las comunidades aisladas.",
+"u303a-1:4": "Tapiaron las ventanas con tablas de madera.",
+"u303a-2:0": "El deslave sepultó varias casas.",
+"u303a-2:1": "La reconstrucción tardará años.",
+"u303a-2:2": "El sistema de alerta temprana salvó muchas vidas.",
+"u303a-2:3": "Tras la tormenta, el pueblo quedó incomunicado."
+},
+"u304": {
+"u304a-1:0": "Lo dijo en tono de broma, pero iba en serio.",
+"u304a-1:1": "¡Qué puntual!, le dijo con sarcasmo cuando llegó una hora tarde.",
+"u304a-1:2": "No captó la indirecta.",
+"u304a-1:3": "Se burla de sí mismo con mucha gracia.",
+"u304a-1:4": "El chiste tenía doble sentido.",
+"u304a-2:0": "Me tomó el pelo y me lo creí todo.",
+"u304a-2:1": "La caricatura ridiculiza a los políticos de turno.",
+"u304a-2:2": "Soltó una carcajada en medio del silencio.",
+"u304a-2:3": "Hay que saber reírse de uno mismo.",
+"u304a-2:4": "Esa ironía se pierde en la traducción."
 },
 "u31": {
 "u31a-1:0": "el maestro",
