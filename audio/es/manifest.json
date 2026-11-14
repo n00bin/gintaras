@@ -1408,7 +1408,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u367": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u368": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u369": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u37": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u370": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u371": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u372": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u373": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u374": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -6614,6 +6646,50 @@
 "u366a-3:1": "El autor plasma en su obra la vida rural de la época.",
 "u366a-3:2": "Hay que deslindar responsabilidades."
 },
+"u367": {
+"u367a-1:0": "La cardióloga le recomendó una prueba de esfuerzo.",
+"u367a-1:1": "El dermatólogo le extirpó un lunar sospechoso.",
+"u367a-1:2": "La neuróloga sospecha que se trata de migraña crónica.",
+"u367a-1:3": "El traumatólogo le enyesó la pierna.",
+"u367a-1:4": "La oftalmóloga le graduó la vista y le recetó lentes.",
+"u367a-2:0": "El anestesiólogo le explicó los riesgos de la sedación.",
+"u367a-2:1": "Lo ingresaron en terapia intensiva tras el accidente.",
+"u367a-2:2": "La pediatra revisó al bebé y lo encontró sano.",
+"u367a-2:3": "La operación fue mínimamente invasiva.",
+"u367a-2:4": "El postoperatorio exige reposo absoluto durante una semana.",
+"u367a-3:0": "Le hicieron una biopsia para descartar un tumor.",
+"u367a-3:1": "El ginecólogo le pidió un ultrasonido de control.",
+"u367a-3:2": "La herida tardó en cicatrizar porque se infectó."
+},
+"u368": {
+"u368a-1:0": "El óleo tarda varios días en secar.",
+"u368a-1:1": "La acuarela permite efectos de transparencia muy delicados.",
+"u368a-1:2": "Pintó el mural al fresco sobre el yeso húmedo.",
+"u368a-1:3": "El pintor mezcló los pigmentos en la paleta.",
+"u368a-1:4": "Las pinceladas gruesas dan textura al lienzo.",
+"u368a-2:0": "El claroscuro resalta el dramatismo de la escena.",
+"u368a-2:1": "Hizo un boceto a lápiz antes de empezar a pintar.",
+"u368a-2:2": "La perspectiva crea una ilusión de profundidad.",
+"u368a-2:3": "Usó una espátula para aplicar la pintura en capas.",
+"u368a-2:4": "El retrato capta la melancolía del modelo.",
+"u368a-3:0": "La naturaleza muerta representa frutas y flores sobre una mesa.",
+"u368a-3:1": "El cuadro fue barnizado para protegerlo del polvo.",
+"u368a-3:2": "Los colores complementarios se intensifican al estar juntos."
+},
+"u369": {
+"u369a-1:0": "El boxeador noqueó a su rival en el tercer asalto.",
+"u369a-1:1": "El luchador aplicó una llave que inmovilizó a su oponente.",
+"u369a-1:2": "El árbitro detuvo la pelea para proteger al púgil herido.",
+"u369a-1:3": "Ganó el campeonato por decisión unánime de los jueces.",
+"u369a-1:4": "Entrena judo desde los ocho años.",
+"u369a-2:0": "Le dio un gancho de izquierda que lo derribó.",
+"u369a-2:1": "Los guantes amortiguan los golpes, pero no evitan las lesiones.",
+"u369a-2:2": "El luchador enmascarado defendió su cabellera en el ring.",
+"u369a-2:3": "Esquivó el golpe y contraatacó de inmediato.",
+"u369a-2:4": "Fue descalificado por golpear por debajo del cinturón.",
+"u369a-3:0": "Bajó de peso para competir en una categoría inferior.",
+"u369a-3:1": "La disciplina del karate le enseñó autocontrol."
+},
 "u37": {
 "u37a-1:0": "creo que",
 "u37a-1:1": "pienso que",
@@ -6635,6 +6711,75 @@
 "u37d-1:2": "¿Te parece bien?",
 "u37d-1:3": "Me parece bien",
 "u37d-1:4": "¿Por qué no?"
+},
+"u370": {
+"u370a-1:0": "El vaquero arreó el ganado hacia el corral.",
+"u370a-1:1": "Ordeñan las vacas antes del amanecer.",
+"u370a-1:2": "Ensilló el caballo y salió a recorrer los potreros.",
+"u370a-1:3": "Herraron a la yegua porque cojeaba.",
+"u370a-1:4": "Los becerros nacieron durante la temporada de lluvias.",
+"u370a-2:0": "El abrevadero se secó y hubo que llevar agua en tambos.",
+"u370a-2:1": "Marcaron las reses con el hierro del rancho.",
+"u370a-2:2": "El toro bravo embistió contra la cerca.",
+"u370a-2:3": "Las cabras pastaban en los cerros pedregosos.",
+"u370a-2:4": "El charro lazó al novillo con destreza.",
+"u370a-3:0": "Esquilaron a los borregos al llegar el calor.",
+"u370a-3:1": "El estiércol se usa como abono en las milpas.",
+"u370a-3:2": "Las gallinas ponen huevos en el gallinero."
+},
+"u371": {
+"u371a-1:0": "Quiero que me despunte el cabello, nada más.",
+"u371a-1:1": "La estilista me tiñó las canas.",
+"u371a-1:2": "Se hizo un alaciado permanente.",
+"u371a-1:3": "El barbero le recortó la barba y el bigote.",
+"u371a-1:4": "Pidió unos rayos rubios para iluminar el rostro.",
+"u371a-2:0": "La manicurista le limó las uñas y le aplicó esmalte.",
+"u371a-2:1": "Se depila las cejas cada quince días.",
+"u371a-2:2": "Usa un acondicionador para que el cabello no se esponje.",
+"u371a-2:3": "Le hicieron un peinado de chongo para la boda.",
+"u371a-2:4": "El tratamiento facial le dejó la piel radiante.",
+"u371a-3:0": "Se rapó la cabeza para una causa benéfica.",
+"u371a-3:1": "El secador de pelo se descompuso a media sesión."
+},
+"u372": {
+"u372a-1:0": "Se reventó una tubería y se inundó la cocina.",
+"u372a-1:1": "El tinaco de la azotea está a punto de desbordarse.",
+"u372a-1:2": "Cerré la llave de paso para cortar el agua.",
+"u372a-1:3": "El electricista cambió el cableado viejo de la casa.",
+"u372a-1:4": "Hay que conectar la lavadora a tierra para evitar descargas.",
+"u372a-2:0": "Instalaron un calentador solar en el techo.",
+"u372a-2:1": "El excusado no deja de correr agua.",
+"u372a-2:2": "Destapamos el drenaje con un destapacaños.",
+"u372a-2:3": "Se quemó un fusible y nos quedamos sin luz.",
+"u372a-2:4": "Sellamos las juntas con cinta de teflón.",
+"u372a-3:0": "El voltaje variaba tanto que se dañó el refrigerador."
+},
+"u373": {
+"u373a-1:0": "Se ruborizó al escuchar el elogio.",
+"u373a-1:1": "Se indignó al enterarse de la injusticia.",
+"u373a-1:2": "Se desesperó esperando en la fila.",
+"u373a-1:3": "Se conmovió hasta las lágrimas con la carta.",
+"u373a-1:4": "Se ofendió por un comentario sin importancia.",
+"u373a-2:0": "Se resignó a perder el vuelo.",
+"u373a-2:1": "Se sobresaltó al oír el portazo.",
+"u373a-2:2": "Se entusiasmó con la idea de viajar sola.",
+"u373a-2:3": "Se desilusionó al ver los resultados.",
+"u373a-2:4": "Se avergonzó de su comportamiento en la fiesta.",
+"u373a-3:0": "Se enfureció cuando le negaron el permiso.",
+"u373a-3:1": "Se tranquilizó en cuanto oyó la voz de su madre.",
+"u373a-3:2": "Se estremeció al recordar el accidente."
+},
+"u374": {
+"u374a-1:0": "La brújula señala el norte magnético.",
+"u374a-1:1": "El mapa topográfico muestra las curvas de nivel.",
+"u374a-1:2": "Nos orientamos por la posición del sol.",
+"u374a-1:3": "El pueblo se encuentra a orillas del lago, al oeste.",
+"u374a-1:4": "Perdimos la señal del navegador en plena sierra.",
+"u374a-2:0": "La latitud y la longitud permiten ubicar cualquier punto.",
+"u374a-2:1": "Tomen la desviación a la derecha después del puente.",
+"u374a-2:2": "El faro sirve de referencia a los navegantes.",
+"u374a-2:3": "El sendero bordea el acantilado hasta la playa.",
+"u374a-2:4": "Calculamos la distancia en línea recta."
 },
 "u38": {
 "u38a-1:0": "¡Qué padre!",
