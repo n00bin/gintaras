@@ -139,7 +139,25 @@
    "u93",
    "u94",
    "u95",
-   "u97"
+   "u97",
+   "u98",
+   "u99",
+   "u100",
+   "u101",
+   "u102",
+   "u103",
+   "u104",
+   "u105",
+   "u106",
+   "u107",
+   "u108",
+   "u109",
+   "u110",
+   "u111",
+   "u112",
+   "u113",
+   "u114",
+   "u115"
   ],
   "B2": [],
   "C1": [],
@@ -320,7 +338,7 @@
     "grammar_missing": []
    },
    "B1": {
-    "word_forms_running_total": 1756,
+    "word_forms_running_total": 2108,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -332,7 +350,7 @@
     "grammar_missing": []
    },
    "B2": {
-    "word_forms_running_total": 1796,
+    "word_forms_running_total": 2148,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -353,7 +371,7 @@
     ]
    },
    "C1": {
-    "word_forms_running_total": 1836,
+    "word_forms_running_total": 2188,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -372,7 +390,7 @@
     ]
    },
    "C2": {
-    "word_forms_running_total": 1876,
+    "word_forms_running_total": 2228,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,

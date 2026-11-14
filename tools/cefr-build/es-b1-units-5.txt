@@ -1,0 +1,68 @@
+@u110|La comida mexicana|Mexican food culture|Regional dishes, cooking and eating habits: <b>Cada región de México tiene su propia cocina.</b> (Every region of Mexico has its own cuisine.), <b>En Yucatán se come la cochinita pibil.</b> (In Yucatán people eat cochinita pibil.) and <b>El mole lleva más de veinte ingredientes.</b> (Mole has more than twenty ingredients.).|Explain a dish from your country to someone who has never tried it.
+#u110a|Mexican food culture, part 1
+Cada región de México tiene su propia cocina.|Every region of Mexico has its own cuisine.|
+En Yucatán se come la cochinita pibil.|In Yucatán people eat cochinita pibil.|
+El mole lleva más de veinte ingredientes.|Mole has more than twenty ingredients.|
+Los domingos desayunamos barbacoa con consomé.|On Sundays we have barbacoa with broth for breakfast.|
+Las tortillas hechas a mano saben mucho mejor.|Handmade tortillas taste much better.|
+Mi abuela cocinaba en cazuelas de barro.|My grandmother cooked in clay pots.|
+El maíz es la base de la alimentación mexicana.|Corn is the basis of the Mexican diet.|
+Los chiles en nogada solo se preparan en agosto y septiembre.|Chiles en nogada are only made in August and September.|
+Probé los chapulines y no me desagradaron.|I tried the grasshoppers and I didn't dislike them.|
+@u111|Deporte y salud|Sport and fitness|Training, competitions and staying fit: <b>Me inscribí en un medio maratón para noviembre.</b> (I've signed up for a half marathon in November.), <b>Entreno cuatro veces por semana.</b> (I train four times a week.) and <b>Me lesioné el hombro jugando tenis.</b> (I injured my shoulder playing tennis.).|Describe how you keep fit and set yourself one goal for this year.
+#u111a|Sport and fitness, part 1
+Me inscribí en un medio maratón para noviembre.|I've signed up for a half marathon in November.|
+Entreno cuatro veces por semana.|I train four times a week.|
+Me lesioné el hombro jugando tenis.|I injured my shoulder playing tennis.|
+El fisioterapeuta me recomendó estirar más.|The physiotherapist recommended that I stretch more.|
+Desde que nado, duermo mucho mejor.|Since I started swimming, I sleep much better.|
+La selección mexicana pasó a la siguiente ronda.|The Mexican national team went through to the next round.|
+El partido terminó empatado a cero.|The match ended in a goalless draw.|
+Hay que calentar antes de hacer ejercicio.|You have to warm up before exercising.|
+Bajé de peso caminando una hora diaria.|I lost weight walking an hour a day.|
+La lucha libre es un espectáculo muy popular en México.|Mexican wrestling is a very popular show in Mexico.|
+@u112|Consumidores|Consumers|Complaints, guarantees and your rights as a customer: <b>El producto tiene garantía de un año.</b> (The product has a one-year guarantee.), <b>Quiero hablar con el gerente, por favor.</b> (I'd like to speak to the manager, please.) and <b>Me vendieron un celular defectuoso.</b> (They sold me a faulty phone.).|Explain how you would complain about a product that broke after a month.
+#u112a|Consumers, part 1
+El producto tiene garantía de un año.|The product has a one-year guarantee.|
+Quiero hablar con el gerente, por favor.|I'd like to speak to the manager, please.|
+Me vendieron un celular defectuoso.|They sold me a faulty phone.|
+Presenté una queja ante la Profeco.|I filed a complaint with the consumer protection office.|
+Me devolvieron el dinero sin problema.|They gave me my money back without any problem.|
+La letra chiquita del contrato decía otra cosa.|The small print in the contract said something else.|
+No acepto que me cobren algo que no pedí.|I won't accept being charged for something I didn't order.|
+Revisa la fecha de caducidad antes de comprar.|Check the expiry date before buying.|
+Cancelé la suscripción porque nunca la usaba.|I cancelled the subscription because I never used it.|
+@u113|Momentos de la vida|Life events|Births, weddings, graduations and farewells: <b>Mi hermana dio a luz a una niña preciosa.</b> (My sister gave birth to a beautiful baby girl.), <b>Bautizaron al bebé en la parroquia del pueblo.</b> (They christened the baby in the village church.) and <b>Mi papá se jubiló después de treinta años de trabajo.</b> (My dad retired after thirty years of work.).|Tell someone about an important day in your family's life.
+#u113a|Life events, part 1
+Mi hermana dio a luz a una niña preciosa.|My sister gave birth to a beautiful baby girl.|
+Bautizaron al bebé en la parroquia del pueblo.|They christened the baby in the village church.|
+Mi papá se jubiló después de treinta años de trabajo.|My dad retired after thirty years of work.|
+Fuimos a la graduación de mi primo.|We went to my cousin's graduation.|
+Mis papás celebraron sus bodas de plata.|My parents celebrated their silver wedding anniversary.|
+Nos despedimos de mi abuelo en el panteón.|We said goodbye to my grandfather at the cemetery.|
+Le dimos el pésame a la familia.|We offered our condolences to the family.|
+Se independizó en cuanto consiguió trabajo.|He moved out as soon as he got a job.|
+Mi prima se casó por el civil y por la iglesia.|My cousin had both a civil and a church wedding.|
+@u114|El carácter|Personality|Describing what people are like in more detail: <b>Es una persona muy generosa, siempre ayuda a los demás.</b> (She's a very generous person, she always helps others.), <b>Mi hermano es bastante terco, nunca cambia de opinión.</b> (My brother is quite stubborn, he never changes his mind.) and <b>Es muy puntual, odia llegar tarde.</b> (He's very punctual, he hates being late.).|Describe your own character: two good points and one you'd like to change.
+#u114a|Personality, part 1
+Es una persona muy generosa, siempre ayuda a los demás.|She's a very generous person, she always helps others.|
+Mi hermano es bastante terco, nunca cambia de opinión.|My brother is quite stubborn, he never changes his mind.|
+Es muy puntual, odia llegar tarde.|He's very punctual, he hates being late.|
+Es un poco desordenado, pero muy creativo.|He's a bit messy, but very creative.|
+Mi jefa es exigente pero justa.|My boss is demanding but fair.|
+Es muy sociable, hace amigos en todas partes.|She's very sociable, she makes friends everywhere.|
+No soporto a la gente egoísta.|I can't stand selfish people.|
+Es muy sensible, todo le afecta.|He's very sensitive, everything affects him.|
+Soy optimista por naturaleza.|I'm optimistic by nature.|
+Tiene mucha paciencia con los niños.|She has a lot of patience with children.|
+@u115|Seguridad|Safety|Staying safe and what to do if something happens: <b>No dejes objetos de valor a la vista en el carro.</b> (Don't leave valuables in sight in the car.), <b>Evita sacar dinero del cajero en la noche.</b> (Avoid taking money out of the cash machine at night.) and <b>Pusieron cámaras de seguridad en la calle.</b> (They put security cameras up on the street.).|Give advice to a visitor on staying safe in a big city.
+#u115a|Safety, part 1
+No dejes objetos de valor a la vista en el carro.|Don't leave valuables in sight in the car.|
+Evita sacar dinero del cajero en la noche.|Avoid taking money out of the cash machine at night.|
+Pusieron cámaras de seguridad en la calle.|They put security cameras up on the street.|
+Asaltaron una tienda cerca de mi casa.|A shop near my house was held up.|
+Hubo un simulacro de sismo en la oficina.|There was an earthquake drill at the office.|
+Cuando suena la alerta sísmica, hay que salir con calma.|When the earthquake alarm sounds, you have to go out calmly.|
+Comparte tu ubicación con alguien de confianza.|Share your location with someone you trust.|
+El número de emergencias es el nueve once.|The emergency number is nine one one.|
+Mi barrio es tranquilo, pero hay que tener cuidado.|My area is quiet, but you have to be careful.|
