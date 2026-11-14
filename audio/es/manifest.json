@@ -204,7 +204,51 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u42": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u43": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u44": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u45": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u46": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u47": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u48": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u49": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u5": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u50": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u51": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u52": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -1527,6 +1571,154 @@
 "u41d-1:3": "No hay nadie",
 "u41d-1:4": "¿Quieres algo?"
 },
+"u42": {
+"u42a-1:0": "el carro rojo",
+"u42a-1:1": "la casa roja",
+"u42a-1:2": "los zapatos negros",
+"u42a-1:3": "las flores amarillas",
+"u42a-1:4": "un señor alto",
+"u42a-2:0": "una señora alta",
+"u42a-2:1": "unos niños contentos",
+"u42b-1:0": "unas niñas cansadas",
+"u42b-1:1": "el perro pequeño",
+"u42b-1:2": "la gata pequeña",
+"u42b-1:3": "un libro interesante",
+"u42b-1:4": "una película interesante",
+"u42b-2:0": "los hoteles caros",
+"u42b-2:1": "las tiendas baratas",
+"u42c-1:0": "¿Cómo estás tú?",
+"u42c-1:1": "¿Cómo está usted?",
+"u42c-1:2": "¿Cómo están ustedes?",
+"u42c-1:3": "Usted habla muy bien.",
+"u42c-1:4": "Tú hablas muy rápido.",
+"u42c-2:0": "Ustedes son muy amables.",
+"u42c-2:1": "¿De dónde es usted?",
+"u42c-2:2": "¿De dónde son ustedes?",
+"u42c-2:3": "¿Usted tiene hijos?",
+"u42c-2:4": "¿Ustedes quieren algo de tomar?",
+"u42c-3:0": "Pase, por favor.",
+"u42c-3:1": "Siéntense, por favor."
+},
+"u43": {
+"u43a-1:0": "el cuello",
+"u43a-1:1": "los hombros",
+"u43a-1:2": "el brazo",
+"u43a-1:3": "los dedos",
+"u43a-1:4": "el pecho",
+"u43a-2:0": "la pierna",
+"u43a-2:1": "la rodilla",
+"u43a-2:2": "los ojos",
+"u43a-2:3": "las orejas",
+"u43a-2:4": "la nariz",
+"u43b-1:0": "la boca",
+"u43b-1:1": "los dientes",
+"u43b-1:2": "el pelo",
+"u43b-1:3": "la cara",
+"u43b-1:4": "Tengo gripa.",
+"u43b-2:0": "Estoy enferma.",
+"u43b-2:1": "la pastilla"
+},
+"u44": {
+"u44a-1:0": "la sala",
+"u44a-1:1": "el comedor",
+"u44a-1:2": "la regadera",
+"u44a-1:3": "el refrigerador",
+"u44a-1:4": "la estufa",
+"u44a-2:0": "el horno",
+"u44a-2:1": "el microondas",
+"u44a-2:2": "la lavadora",
+"u44a-2:3": "el sillón",
+"u44a-2:4": "la almohada",
+"u44b-1:0": "la cobija",
+"u44b-1:1": "el espejo",
+"u44b-1:2": "la escalera",
+"u44b-1:3": "el jardín",
+"u44b-1:4": "la azotea",
+"u44b-2:0": "la luz",
+"u44b-2:1": "Prende la luz, por favor.",
+"u44b-2:2": "Apaga la tele.",
+"u44b-2:3": "Cierra la puerta.",
+"u44b-2:4": "Abre la ventana."
+},
+"u45": {
+"u45a-1:0": "el jugo de naranja",
+"u45a-1:1": "el agua de jamaica",
+"u45a-1:2": "el pan dulce",
+"u45a-1:3": "los frijoles",
+"u45a-1:4": "la tortilla de maíz",
+"u45a-2:0": "el jitomate",
+"u45a-2:1": "la cebolla",
+"u45a-2:2": "el limón",
+"u45a-2:3": "la carne de res",
+"u45a-2:4": "la mantequilla",
+"u45b-1:0": "la cuchara",
+"u45b-1:1": "el tenedor",
+"u45b-1:2": "el cuchillo",
+"u45b-1:3": "el plato",
+"u45b-1:4": "el vaso",
+"u45b-2:0": "la taza",
+"u45b-2:1": "Está picoso.",
+"u45b-2:2": "¿Me pasas la sal?"
+},
+"u46": {
+"u46a-1:0": "la computadora",
+"u46a-1:1": "la cartera",
+"u46a-1:2": "la mochila",
+"u46a-1:3": "los lentes",
+"u46a-1:4": "el reloj",
+"u46a-2:0": "el paraguas",
+"u46a-2:1": "los pantalones",
+"u46a-2:2": "la falda",
+"u46a-2:3": "los tenis",
+"u46a-2:4": "el sombrero",
+"u46b-1:0": "el cargador",
+"u46b-1:1": "la botella de agua",
+"u46b-1:2": "el cuaderno",
+"u46b-1:3": "la pluma",
+"u46b-1:4": "el lápiz",
+"u46b-2:0": "No encuentro mis llaves."
+},
+"u47": {
+"u47a-1:0": "ceno",
+"u47a-1:1": "leo",
+"u47a-1:2": "escribo",
+"u47a-1:3": "escucho música",
+"u47a-1:4": "camino",
+"u47a-2:0": "corro",
+"u47a-2:1": "estudia",
+"u47a-2:2": "trabajamos",
+"u47a-2:3": "comen",
+"u47a-2:4": "viven",
+"u47a-3:0": "vengo",
+"u47a-3:1": "pongo",
+"u47a-3:2": "conozco"
+},
+"u48": {
+"u48a-1:0": "la tiendita",
+"u48a-1:1": "la iglesia",
+"u48a-1:2": "la avenida",
+"u48a-1:3": "el semáforo",
+"u48a-1:4": "el puente",
+"u48a-2:0": "el edificio",
+"u48a-2:1": "el estacionamiento",
+"u48a-2:2": "Está lloviendo.",
+"u48a-2:3": "el cielo",
+"u48a-2:4": "las nubes"
+},
+"u49": {
+"u49a-1:0": "el enfermero",
+"u49a-1:1": "el mesero",
+"u49a-1:2": "la mesera",
+"u49a-1:3": "la cocinera",
+"u49a-1:4": "el policía",
+"u49a-2:0": "el vecino",
+"u49a-2:1": "la vecina",
+"u49a-2:2": "el amigo",
+"u49a-2:3": "la amiga",
+"u49a-2:4": "el novio",
+"u49a-3:0": "la novia",
+"u49a-3:1": "Somos compañeros de trabajo."
+},
 "u5": {
 "u5a-1:0": "lunes",
 "u5a-1:1": "martes",
@@ -1548,6 +1740,60 @@
 "u5d-1:2": "por la noche",
 "u5d-1:3": "temprano",
 "u5d-1:4": "tarde"
+},
+"u50": {
+"u50a-1:0": "chico",
+"u50a-1:1": "largo",
+"u50a-1:2": "corto",
+"u50a-1:3": "gordo",
+"u50a-1:4": "delgado",
+"u50a-2:0": "fácil",
+"u50a-2:1": "difícil",
+"u50a-2:2": "limpio",
+"u50a-2:3": "sucio",
+"u50a-2:4": "lleno",
+"u50b-1:0": "vacío",
+"u50b-1:1": "lento",
+"u50b-1:2": "feo",
+"u50b-1:3": "simpático",
+"u50b-1:4": "aburrido",
+"u50b-2:0": "divertido"
+},
+"u51": {
+"u51a-1:0": "abrir",
+"u51a-1:1": "cerrar",
+"u51a-1:2": "vender",
+"u51a-1:3": "buscar",
+"u51a-1:4": "encontrar",
+"u51a-2:0": "llegar",
+"u51a-2:1": "llevar",
+"u51a-2:2": "mirar",
+"u51a-2:3": "necesitar",
+"u51a-2:4": "preguntar",
+"u51b-1:0": "contestar",
+"u51b-1:1": "usar",
+"u51b-1:2": "visitar",
+"u51b-1:3": "limpiar",
+"u51b-1:4": "lavar",
+"u51b-2:0": "manejar",
+"u51b-2:1": "ganar",
+"u51b-2:2": "perder",
+"u51b-2:3": "empezar",
+"u51b-2:4": "terminar",
+"u51c-1:0": "recordar",
+"u51c-1:1": "olvidar",
+"u51c-1:2": "entender",
+"u51c-1:3": "enseñar",
+"u51c-1:4": "esperar"
+},
+"u52": {
+"u52a-1:0": "el beisbol",
+"u52a-1:1": "la natación",
+"u52a-1:2": "el gimnasio",
+"u52a-1:3": "el concierto",
+"u52a-1:4": "¿Vamos a la playa el sábado?",
+"u52a-2:0": "Juego futbol los domingos.",
+"u52a-2:1": "Me gustan los conciertos."
 },
 "u6": {
 "u6a-1:0": "la madre",

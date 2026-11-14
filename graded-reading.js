@@ -1,4 +1,4 @@
-/* Read and listen: graded Lithuanian texts and recordings for every CEFR level (A1-C2). Content lives in
+/* Read and listen: graded texts and recordings (Lithuanian, Mexican Spanish) for every CEFR level (A1-C2). Content lives in
    graded-content-lt.js, recordings in graded-audio.js. Each item: tap a word for its meaning, listen (normal or slow),
    show the English if you need it, then answer three questions. Best score per item is kept in S.graded[id] (0-3).
    Listening items hide the text until the questions are answered, so the recording does the work. */
@@ -59,7 +59,7 @@ const words=it=>it.lines.map(l=>l[1]).join(' ').split(/\s+/).filter(Boolean).len
 
 /* Glossary entries can be several words ("su pienu"): at each word, the longest entry that matches wins. */
 function textBox(it){const gl=Object.fromEntries((it.glossary||[]).map(([lt,en])=>[lt.split(/\s+/).map(norm).join(' '),en]));
-  const longest=Math.max(1,...Object.keys(gl).map(k=>k.split(' ').length));const box=el('div','gr-text');box.lang='lt';
+  const longest=Math.max(1,...Object.keys(gl).map(k=>k.split(' ').length));const box=el('div','gr-text');box.lang=LANG.code;
   for(const [who,line] of it.lines){const p=el('p');if(who){p.append(el('span','who',who+': '));}
     const parts=line.split(/(\s+)/);let i=0;
     while(i<parts.length){let hit=null;
@@ -82,10 +82,10 @@ const draftKey=id=>'gintaras.graded.draft.'+id;
 function produce(it){open();stop();head(it.title,list);
   dlg.append(el('p','note',KIND[it.kind]+' · '+it.level+' · '+it.task));
   if(it.useful&&it.useful.length){const box=el('div','gr-useful');box.append(el('p','note','Useful phrases (tap to hear the whole model later):'));
-    const ul=el('ul');for(const [lt,en] of it.useful){const li=el('li');const b=el('b',null,lt);b.lang='lt';li.append(b,document.createTextNode(' – '+en));ul.append(li);}box.append(ul);dlg.append(box);}
+    const ul=el('ul');for(const [lt,en] of it.useful){const li=el('li');const b=el('b',null,lt);b.lang=LANG.code;li.append(b,document.createTextNode(' – '+en));ul.append(li);}box.append(ul);dlg.append(box);}
   const work=el('div','gr-work');dlg.append(work);let made=false;
   if(it.kind==='write'){
-    const ta=el('textarea','gr-draft');ta.rows=7;ta.lang='lt';ta.placeholder='Write in Lithuanian…';
+    const ta=el('textarea','gr-draft');ta.rows=7;ta.lang=LANG.code;ta.placeholder='Write in '+LANG.en+'…';
     try{ta.value=localStorage.getItem(draftKey(it.id))||'';}catch(e){}
     const count=el('p','note');const upd=()=>{const n=ta.value.trim().split(/\s+/).filter(Boolean).length;count.textContent=n+' words'+(it.minWords?' (aim for at least '+it.minWords+')':'');made=n>=(it.minWords||1);try{localStorage.setItem(draftKey(it.id),ta.value);}catch(e){}};
     ta.oninput=upd;upd();work.append(ta,count);}

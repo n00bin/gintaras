@@ -1,0 +1,82 @@
+== u48|La ciudad y el clima|Town and weather|Places in town and what the weather is like|Describe your street and today's weather to someone far away.
+el mercado|market|
+la tiendita|corner shop|
+el banco|bank|
+el parque|park|
+la iglesia|church|
+el museo|museum|
+la plaza|square|
+la parada del camión|bus stop|
+la esquina|corner|
+la calle|street|
+la avenida|avenue|
+el semáforo|traffic light|
+el puente|bridge|
+el edificio|building|
+el estacionamiento|car park|
+el centro|town centre|
+Hace calor.|It is hot.|
+Hace frío.|It is cold.|
+Hace sol.|It is sunny.|
+Hace viento.|It is windy.|
+Está nublado.|It is cloudy.|
+Está lloviendo.|It is raining.|
+Llueve mucho en septiembre.|It rains a lot in September.|
+la lluvia|rain|
+el cielo|sky|
+las nubes|clouds|
+== u49|Gente y trabajos|People and jobs|Who people are and what they do|Introduce three people you know and say what they do.
+el maestro|teacher (a man)|
+la maestra|teacher (a woman)|
+el enfermero|nurse (a man)|
+la enfermera|nurse (a woman)|
+el mesero|waiter|
+la mesera|waitress|
+el chofer|driver|
+el cocinero|cook (a man)|
+la cocinera|cook (a woman)|
+el vendedor|seller|
+el policía|police officer|
+el estudiante|student (a man)|
+la estudiante|student (a woman)|
+el vecino|neighbour (a man)|
+la vecina|neighbour (a woman)|
+el amigo|friend (a man)|
+la amiga|friend (a woman)|
+el novio|boyfriend|
+la novia|girlfriend|
+Mi vecina es enfermera.|My neighbour is a nurse.|
+Mi amigo trabaja en un banco.|My friend works in a bank.|
+Somos compañeros de trabajo.|We are work colleagues.|
+== u50|Cómo es|What it is like|Common describing words and their opposites|Describe a person, a place and a thing using two describing words each.
+nuevo|new|
+viejo|old (a thing)|
+joven|young|
+grande|big|
+chico|small, little|
+largo|long|
+corto|short (in length)|
+gordo|fat|
+delgado|thin|
+fácil|easy|
+difícil|difficult|
+limpio|clean|
+sucio|dirty|
+lleno|full|
+vacío|empty|
+rápido|fast|
+lento|slow|
+caliente|hot (to touch)|
+frío|cold (to touch)|
+bonito|pretty|
+feo|ugly|
+simpático|nice, friendly|
+aburrido|boring|
+divertido|fun|
+cerca|near|
+lejos|far|
+temprano|early|
+tarde|late|
+siempre|always|
+nunca|never|
+a veces|sometimes|

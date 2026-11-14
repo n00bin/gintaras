@@ -1,9 +1,11 @@
-"""Record every graded Lithuanian text (graded-content-lt.js) with the project's configured Google voices.
+"""Record every graded text (graded-content-<lang>.js) with the project's configured Google voices.
 
 Narration uses one voice; in dialogues each named speaker keeps their own voice. Lines are joined with short pauses
 into one MP3 per item under audio/graded/, and graded-audio.js lists url + duration. Unchanged items are reused
 (file name carries a hash of the text and voices), so running it again only records what is new or edited.
-Run: python tools/build_graded_audio.py
+Run: python tools/build_graded_audio.py            Lithuanian
+     python tools/build_graded_audio.py --lang es  Mexican Spanish
+graded-audio.js holds both languages (ids start with lt- or es-); a run only touches its own language's entries and files.
 """
 import hashlib, json, subprocess, sys, tempfile
 from concurrent.futures import ThreadPoolExecutor
@@ -18,10 +20,11 @@ MANIFEST = ROOT / 'graded-audio.js'
 NARRATOR = 'Achernar'
 SPEAKER_VOICES = ['Iapetus', 'Kore', 'Charon', 'Aoede', 'Orus', 'Despina']  # assigned in order of first appearance
 PAUSE = 0.35  # seconds between lines
+LANG = sys.argv[sys.argv.index('--lang') + 1] if '--lang' in sys.argv else 'lt'
 
 
 def items():
-    src = "global.window=global;require('./graded-content-lt.js');console.log(JSON.stringify(window.WordamiGradedContent.items))"
+    src = f"global.window=global;require('./graded-content-{LANG}.js');console.log(JSON.stringify(window.WordamiGradedContent.items))"
     return json.loads(subprocess.check_output(['node', '-e', src], cwd=ROOT).decode('utf8'))
 
 
@@ -36,12 +39,13 @@ def plan(item):
 
 
 def main():
-    audio.LANG = 'lt'; audio.GOOGLE = audio.LANGS['lt'][0] + '-Chirp3-HD-'
+    audio.LANG = LANG; audio.GOOGLE = audio.LANGS[LANG][0] + '-Chirp3-HD-'
     OUT.mkdir(parents=True, exist_ok=True)
     old = {}
     if MANIFEST.exists():
         text = MANIFEST.read_text(encoding='utf8'); old = json.loads(text[text.index('{'):text.rindex('}') + 1])
-    manifest, jobs = {}, []
+    # the other language's recordings stay as they are
+    manifest, jobs = {k: v for k, v in old.items() if not k.startswith(LANG + '-')}, []
     for it in items():
         lines = plan(it)
         digest = hashlib.sha256(json.dumps(lines, ensure_ascii=False).encode()).hexdigest()[:12]
@@ -69,11 +73,11 @@ def main():
     with ThreadPoolExecutor(max_workers=3) as pool:
         for iid, asset in pool.map(record, jobs): manifest[iid] = asset; print('recorded', iid, asset['duration'], 's')
     keep = {Path(a['url']).name for a in manifest.values()}
-    for stale in OUT.glob('*.mp3'):
+    for stale in OUT.glob(LANG + '-*.mp3'):
         if stale.name not in keep: stale.unlink()
-    MANIFEST.write_text('/* Recordings for graded-content-lt.js, made by tools/build_graded_audio.py. */\nglobalThis.WordamiGradedAudio=' +
+    MANIFEST.write_text('/* Recordings for graded-content-lt.js and graded-content-es.js, made by tools/build_graded_audio.py. */\nglobalThis.WordamiGradedAudio=' +
                         json.dumps(dict(sorted(manifest.items())), ensure_ascii=False) + ';\n', encoding='utf8')
-    print(f'{len(manifest)} items, {len(jobs)} newly recorded')
+    print(f'{LANG}: {sum(k.startswith(LANG + "-") for k in manifest)} items, {len(jobs)} newly recorded')
 
 
 if __name__ == '__main__':

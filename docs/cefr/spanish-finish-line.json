@@ -12,11 +12,12 @@
   },
   "levels": {
     "A1": {
-      "status": "not_started",
-      "native_review": "pending"
+      "status": "finished_build",
+      "native_review": "pending",
+      "finished_note": "Build finished 2026-11-13: all 11 grammar points tagged (new grammar unit u42 for describing words and tu/usted/ustedes), word units u42-u52 (about 180 new cards, word forms over 700), 17 new readings and 13 listening recordings (graded-content-es.js, es-a1-*), all recorded; course check, audio loudness, units and graded tests pass. Behind Coming soon; native review pending."
     },
     "A2": {
-      "status": "not_started",
+      "status": "in_progress",
       "native_review": "pending"
     },
     "B1": {
@@ -37,8 +38,7 @@
     }
   },
   "next_actions": [
-    "Make the build tools work for Spanish (measure, units, graded module, recordings)",
-    "A1: fill the gaps the measure shows"
+    "A2: fill the gaps the measure shows (python tools/cefr_finish_line.py --lang es)"
   ],
   "live_units": {
     "A1": [
@@ -68,7 +68,18 @@
       "u32",
       "u33",
       "u18",
-      "u41"
+      "u41",
+      "u42",
+      "u43",
+      "u44",
+      "u45",
+      "u46",
+      "u47",
+      "u48",
+      "u49",
+      "u50",
+      "u51",
+      "u52"
     ],
     "A2": [
       "u34",
@@ -89,17 +100,50 @@
   },
   "grammar": {
     "A1": {
-      "Sounds, stress and written accents": [],
-      "Gender, articles (el, la, los, las, un, una) and plurals": [],
-      "Adjective agreement and position": [],
-      "Ser and estar (basic uses), and hay": [],
-      "Present tense of regular -ar, -er, -ir verbs": [],
-      "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)": [],
-      "Gustar and similar verbs": [],
-      "Questions and question words": [],
-      "Numbers 0–100, time, days, months": [],
-      "Possessives (mi, tu, su, nuestro)": [],
-      "Tú, usted and ustedes": []
+      "Sounds, stress and written accents": [
+        "u0"
+      ],
+      "Gender, articles (el, la, los, las, un, una) and plurals": [
+        "u3",
+        "u30",
+        "u43"
+      ],
+      "Adjective agreement and position": [
+        "u42",
+        "u29"
+      ],
+      "Ser and estar (basic uses), and hay": [
+        "u22",
+        "u30"
+      ],
+      "Present tense of regular -ar, -er, -ir verbs": [
+        "u23",
+        "u47"
+      ],
+      "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)": [
+        "u25",
+        "u32",
+        "u33",
+        "u47"
+      ],
+      "Gustar and similar verbs": [
+        "u8"
+      ],
+      "Questions and question words": [
+        "u24"
+      ],
+      "Numbers 0–100, time, days, months": [
+        "u2",
+        "u5",
+        "u18"
+      ],
+      "Possessives (mi, tu, su, nuestro)": [
+        "u6"
+      ],
+      "Tú, usted and ustedes": [
+        "u42",
+        "u1"
+      ]
     },
     "A2": {
       "Preterite: regular verbs and the common irregulars": [],
@@ -153,41 +197,30 @@
     }
   },
   "done": [
-    "2026-11-13 Finish line written (SPANISH-FINISH-LINE.md), tracker started, cefr_finish_line.py takes --lang es. Baseline: A1 words 527/700, reading 3/20 at length, listening 7/20 at length, grammar not tagged yet."
+    "2026-11-13 Finish line written (SPANISH-FINISH-LINE.md), tracker started, cefr_finish_line.py takes --lang es. Baseline: A1 words 527/700, reading 3/20 at length, listening 7/20 at length, grammar not tagged yet.",
+    "2026-11-13 Tools made bilingual: build_units_es.js, assemble.js --lang es, ins.py --lang es, build_graded_audio.py --lang es, graded-content-<lang>.js loaded per language, graded-reading.js language-neutral. A1 FINISHED (build)."
   ],
   "measured": {
     "levels": {
       "A1": {
-        "word_forms_running_total": 527,
-        "reading_at_length": 3,
-        "reading_any_length": 16,
-        "listening_at_length": 7,
-        "listening_any_length": 13,
-        "conversations": 25,
+        "word_forms_running_total": 707,
+        "reading_at_length": 20,
+        "reading_any_length": 33,
+        "listening_at_length": 20,
+        "listening_any_length": 26,
+        "conversations": 45,
         "writing": 8,
         "speaking": 10,
         "grammar_points": 11,
-        "grammar_missing": [
-          "Sounds, stress and written accents",
-          "Gender, articles (el, la, los, las, un, una) and plurals",
-          "Adjective agreement and position",
-          "Ser and estar (basic uses), and hay",
-          "Present tense of regular -ar, -er, -ir verbs",
-          "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)",
-          "Gustar and similar verbs",
-          "Questions and question words",
-          "Numbers 0–100, time, days, months",
-          "Possessives (mi, tu, su, nuestro)",
-          "Tú, usted and ustedes"
-        ]
+        "grammar_missing": []
       },
       "A2": {
-        "word_forms_running_total": 730,
+        "word_forms_running_total": 906,
         "reading_at_length": 0,
         "reading_any_length": 16,
         "listening_at_length": 0,
         "listening_any_length": 13,
-        "conversations": 38,
+        "conversations": 18,
         "writing": 8,
         "speaking": 10,
         "grammar_points": 11,
@@ -206,7 +239,7 @@
         ]
       },
       "B1": {
-        "word_forms_running_total": 770,
+        "word_forms_running_total": 946,
         "reading_at_length": 0,
         "reading_any_length": 17,
         "listening_at_length": 0,
@@ -228,7 +261,7 @@
         ]
       },
       "B2": {
-        "word_forms_running_total": 810,
+        "word_forms_running_total": 986,
         "reading_at_length": 0,
         "reading_any_length": 17,
         "listening_at_length": 0,
@@ -249,7 +282,7 @@
         ]
       },
       "C1": {
-        "word_forms_running_total": 850,
+        "word_forms_running_total": 1026,
         "reading_at_length": 0,
         "reading_any_length": 17,
         "listening_at_length": 0,
@@ -268,7 +301,7 @@
         ]
       },
       "C2": {
-        "word_forms_running_total": 890,
+        "word_forms_running_total": 1066,
         "reading_at_length": 0,
         "reading_any_length": 17,
         "listening_at_length": 0,

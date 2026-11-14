@@ -1,22 +1,22 @@
-// node assemble.js raw.txt out.txt
+// node assemble.js raw.txt out.txt ["" earlier-unit-files] [--lang es]   (Spanish: the pron column may be empty)
 // raw format:  == uID|LT title|EN title|what the words are for (English)|speaking tip
 //              lt|en|pron           (candidate cards)
 // Drops candidates whose lt or en is already a card (outside these units), repeats, or that add no new word form.
 // Writes a units file for build_units.js: lessons of 10 cards, tip built from the unit's first three cards.
-const fs=require('fs');const c={};new Function('c','function esc(s){return s};function norm(s){return s.toLowerCase().trim()};'+fs.readFileSync('G:/ai_projects/gintaras/lang/lt.js','utf8')+';Object.assign(c,{COURSE,ITEMS});')(c);
-const tok=s=>s.toLowerCase().replace(/[^a-ząčęėįšųūž ]/g,' ').split(/\s+/).filter(Boolean);
+const fs=require('fs');const LANG=process.argv.includes('--lang')?process.argv[process.argv.indexOf('--lang')+1]:'lt';const c={};new Function('c','function esc(s){return s};function norm(s){return s.toLowerCase().trim()};'+fs.readFileSync('G:/ai_projects/gintaras/lang/'+LANG+'.js','utf8')+';Object.assign(c,{COURSE,ITEMS});')(c);
+const tok=s=>s.toLowerCase().replace(LANG==='es'?/[^a-záéíóúüñ ]/g:/[^a-ząčęėįšųūž ]/g,' ').split(/\s+/).filter(Boolean);
 const raw=fs.readFileSync(process.argv[2],'utf8').split('\n');
 const ids=new Set(raw.filter(l=>l.startsWith('== ')).map(l=>l.slice(3).split('|')[0]));
 // also skip units built by other cefr files that come later? no: only exclude these ids
 const forms=new Set(),lt=new Set(),en=new Set();
 for(const i of c.ITEMS){if(ids.has(i.unit.id))continue;tok(i.lt0||i.lt).forEach(w=>forms.add(w));lt.add(i.lt.toLowerCase());en.add(i.en.toLowerCase());}
-for(const f of (process.argv[4]||'').split(',').filter(Boolean))for(const l of fs.readFileSync(f,'utf8').split('\n')){if(!l.includes('|')||/^[@#%+=]/.test(l))continue;const [a,b]=l.split('|');tok(a).forEach(w=>forms.add(w));lt.add(a.toLowerCase());en.add(b.toLowerCase());}
+for(const f of (process.argv[4]&&process.argv[4]!=='--lang'?process.argv[4]:'').split(',').filter(Boolean))for(const l of fs.readFileSync(f,'utf8').split('\n')){if(!l.includes('|')||/^[@#%+=]/.test(l))continue;const [a,b]=l.split('|');tok(a).forEach(w=>forms.add(w));lt.add(a.toLowerCase());en.add(b.toLowerCase());}
 const units=[];let cur=null,dropped=0,newForms=0;
 for(const l of raw){
   if(l.startsWith('%')){units.push({part:l});continue;}
   if(l.startsWith('== ')){const [id,t,e,what,sp]=l.slice(3).split('|');cur={id,t,e,what,sp,cards:[]};units.push(cur);continue;}
   if(!l.includes('|')||!cur)continue;
-  const [a,b,p]=l.split('|').map(s=>s.trim());if(!a||!b||!p){console.log('bad line:',l);continue;}
+  const [a,b,p]=l.split('|').map(s=>s.trim());if(!a||!b||(!p&&LANG!=='es')){console.log('bad line:',l);continue;}
   if(/[а-яё]/i.test(l)){console.log('cyrillic:',l);continue;}
   const A=a.toLowerCase(),B=b.toLowerCase(),nf=tok(a).filter(w=>!forms.has(w));
   if(lt.has(A)||en.has(B)||!nf.length){dropped++;continue;}

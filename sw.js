@@ -34,7 +34,7 @@ CORE.push('foundation-evidence.js','foundation-ui.js','foundation-content.js','f
 CORE.push("capstone-content.js","capstone-audio.js");
 CORE.push('vocabulary-content.js','learning-design.js','source-support.js','a2-source-support.js','b1-source-support.js','b2-source-support.js','c1-source-support.js','c2-source-support.js','a1-feedback.js','writing-preparation.js','a2-writing-preparation.js','b1-writing-preparation.js','b2-writing-preparation.js','c1-writing-preparation.js','c2-writing-preparation.js','interaction-practice-content.js','higher-interaction-content.js','interaction-practice.js','transfer-content.js','a2-transfer-content.js','transfer-checks.js','listening-transfer-content.js','a2-listening-transfer-content.js','b1-application-content.js','b2-application-content.js','c1-application-content.js','c2-application-content.js');
 CORE.push('grammar-content.js','grammar-practice.js','phrase-review.js');
-CORE.push('graded-content-lt.js','graded-audio.js','graded-reading.js');
+CORE.push('graded-content-lt.js','graded-content-es.js','graded-audio.js','graded-reading.js');
 CORE.push('skills-content.js','skills-audio.js','skills-studio.js');
 CORE.push('a1-dialogue-content.js','a1-dialogue-assets.js','a1-listening.js','speaking-check.js');
 const AMI_FILES = ["pics/ami/welcome.webp", "pics/ami/happy.webp", "pics/ami/cheer.webp", "pics/ami/think.webp", "pics/ami/rest.webp", "pics/ami/encourage.webp", "pics/ami/listen.webp", "pics/ami/speak.webp"];

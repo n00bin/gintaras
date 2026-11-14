@@ -1,6 +1,9 @@
-"""Insert graded items from a scratch file into graded-content-lt.js, replacing any with the same id."""
+"""Insert graded items from a scratch file into graded-content-<lang>.js, replacing any with the same id.
+   python ins.py file.js            (Lithuanian)
+   python ins.py file.js --lang es  (Mexican Spanish)"""
 import re, sys
-G = 'G:/ai_projects/gintaras/graded-content-lt.js'
+LANG = sys.argv[sys.argv.index('--lang') + 1] if '--lang' in sys.argv else 'lt'
+G = f'G:/ai_projects/gintaras/graded-content-{LANG}.js'
 s = open(G, encoding='utf-8').read(); new = open(sys.argv[1], encoding='utf-8').read().rstrip() + '\n'
 ANCHOR = '];\nwindow.WordamiGradedContent'
 for i in re.findall(r"^\{id:'([^']+)'", new, re.M):

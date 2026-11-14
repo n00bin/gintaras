@@ -1,0 +1,45 @@
+@u48|La ciudad y el clima|Town and weather|Places in town and what the weather is like: <b>la tiendita</b> (corner shop), <b>la iglesia</b> (church) and <b>la avenida</b> (avenue).|Describe your street and today's weather to someone far away.
+#u48a|Town and weather, part 1
+la tiendita|corner shop|
+la iglesia|church|
+la avenida|avenue|
+el semáforo|traffic light|
+el puente|bridge|
+el edificio|building|
+el estacionamiento|car park|
+Está lloviendo.|It is raining right now.|
+el cielo|sky|
+las nubes|clouds|
+@u49|Gente y trabajos|People and jobs|Who people are and what they do: <b>el enfermero</b> (nurse), <b>el mesero</b> (waiter) and <b>la mesera</b> (waitress).|Introduce three people you know and say what they do.
+#u49a|People and jobs, part 1
+el enfermero|nurse (a man)|
+el mesero|waiter|
+la mesera|waitress|
+la cocinera|cook (a woman)|
+el policía|police officer|
+el vecino|neighbour (a man)|
+la vecina|neighbour (a woman)|
+el amigo|friend (a man)|
+la amiga|friend (a woman)|
+el novio|boyfriend|
+la novia|girlfriend|
+Somos compañeros de trabajo.|We are work colleagues.|
+@u50|Cómo es|What it is like|Common describing words and their opposites: <b>chico</b> (small, little), <b>largo</b> (long) and <b>corto</b> (short).|Describe a person, a place and a thing using two describing words each.
+#u50a|What it is like, part 1
+chico|small, little|
+largo|long|
+corto|short (in length)|
+gordo|fat|
+delgado|thin|
+fácil|easy|
+difícil|difficult|
+limpio|clean|
+sucio|dirty|
+lleno|full|
+#u50b|What it is like, part 2
+vacío|empty|
+lento|slow|
+feo|ugly|
+simpático|nice, friendly|
+aburrido|boring|
+divertido|fun|
