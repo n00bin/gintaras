@@ -11,6 +11,12 @@
 "cv22:4": "Le voy a dar algo para el dolor. Nada de ejercicio por una semana.",
 "cv22:6": "Sí, pero no cargue nada pesado. Si no mejora, regrese el viernes."
 },
+"aoede_cv51": {
+"cv51:0": "Su trabajo es interesante, pero la muestra me parece demasiado pequeña. ¿Cómo justifica conclusiones tan amplias con solo treinta entrevistas?",
+"cv51:2": "Entonces, ¿por qué en el último capítulo habla de tendencias nacionales?",
+"cv51:4": "Me parece una distinción importante. Le sugiero que la deje explícita.",
+"cv51:6": "Perfecto. ¿Algo más que quiera añadir?"
+},
 "charon_cv1": {
 "cv1:13": "¡Buenos días! ¿Un café?",
 "cv1:15": "¿Un chocolate caliente?"
@@ -59,6 +65,12 @@
 "cv5:4": "Está cerca. Siga derecho.",
 "cv5:6": "Dos cuadras. Gire a la derecha.",
 "cv5:8": "Sí, en la esquina."
+},
+"charon_cv55": {
+"cv55:0": "Los pacientes esperan hasta seis meses para una cirugía. ¿No le parece que el hospital ha fallado a la población?",
+"cv55:2": "Con todo respeto, preocuparse no basta. ¿Qué están haciendo concretamente?",
+"cv55:4": "¿Y cuándo veremos resultados?",
+"cv55:6": "Algunos dicen que el problema es la corrupción en las compras de material."
 },
 "charon_cv8": {
 "cv8:0": "Hola. ¿Cómo estás?",
@@ -423,6 +435,50 @@
 "cv50:5": "¿Y si te entrego el día quince los capítulos ya terminados, para que el corrector vaya avanzando, y la semana siguiente el resto?",
 "cv50:7": "Perfecto, te lo agradezco mucho. Y te prometo que no volverá a pasar; la próxima vez revisaré todo el libro antes de aceptar una fecha."
 },
+"despina_cv51": {
+"cv51:1": "Entiendo la objeción, y reconozco que la muestra es limitada. Sin embargo, el objetivo no era generalizar, sino comprender en profundidad cómo viven el fenómeno quienes lo padecen.",
+"cv51:3": "Tiene razón, ahí me excedí. Lo que quise decir es que mis hallazgos coinciden con los de estudios más amplios, no que los demuestren por sí solos.",
+"cv51:5": "Así lo haré. Reformularé las conclusiones para dejar claro el alcance del estudio y añadiré una sección sobre sus limitaciones.",
+"cv51:7": "Solo agradecerle la crítica. Más vale detectar ahora estas debilidades que en la defensa ante el tribunal."
+},
+"despina_cv52": {
+"cv52:1": "Le agradezco sinceramente la confianza. Es una propuesta atractiva, pero me temo que en este momento no podemos asumir un compromiso de esa magnitud.",
+"cv52:3": "No es tanto el precio como el volumen. Nuestra capacidad de almacenamiento es limitada, y una exclusividad nos obligaría a renunciar a otros proveedores con los que trabajamos desde hace años.",
+"cv52:5": "Y lo hay, sin duda. Por eso le propongo empezar con algo más modesto: un pedido de prueba sin exclusividad, y si los resultados son buenos, revisar el acuerdo dentro de un año.",
+"cv52:7": "Se lo agradezco. Le enviaré hoy mismo una propuesta por escrito, para que la puedan valorar con calma."
+},
+"despina_cv53": {
+"cv53:0": "Gracias por venir. Todavía no me lo creo. Hace una semana estábamos planeando su cumpleaños.",
+"cv53:1": "Lo siento muchísimo, Mónica. No sé qué decirte que de verdad sirva, pero quería estar aquí contigo.",
+"cv53:2": "Todo el mundo me dice que tengo que ser fuerte, pero no me siento fuerte para nada.",
+"cv53:3": "No tienes por qué ser fuerte ahora. Tienes derecho a estar triste, a llorar y a no estar bien. No hay una forma correcta de vivir esto.",
+"cv53:4": "Lo que más me duele es que no alcancé a despedirme.",
+"cv53:5": "Me imagino lo doloroso que es. Pero ella sabía cuánto la querías; se notaba en cada cosa que hacías por ella. Esa despedida la fuiste haciendo durante años.",
+"cv53:6": "Gracias. No sé qué voy a hacer estos días.",
+"cv53:7": "No tienes que saberlo ahora. Si quieres, me encargo de las llamadas y de la comida esta semana, y tú solo descansa. Y cuando quieras hablar de ella, aquí estoy."
+},
+"despina_cv54": {
+"cv54:0": "El edificio está en muy mal estado. Restaurarlo costaría el triple que construir uno nuevo. Desde el punto de vista técnico, la demolición es la opción más sensata.",
+"cv54:1": "No pongo en duda los números, licenciada. Lo que le pediría es que también se tome en cuenta lo que no aparece en el presupuesto: casi un siglo de historia y la identidad de todo un barrio.",
+"cv54:2": "La nostalgia es comprensible, pero no paga las reparaciones.",
+"cv54:3": "Precisamente por eso traemos una propuesta concreta. Hemos conseguido el apoyo de una fundación y de la universidad, que cubrirían una parte importante de la restauración.",
+"cv54:4": "Eso cambia un poco las cosas. ¿Y qué uso le darían?",
+"cv54:5": "Seguiría siendo un mercado en la planta baja, para no desplazar a los locatarios, y en el piso de arriba habría un centro cultural y talleres para jóvenes del barrio.",
+"cv54:6": "Necesitaría ver todo eso por escrito, con cifras y compromisos firmados.",
+"cv54:7": "Por supuesto. Le haremos llegar el proyecto completo antes de fin de mes. Lo único que le pedimos es que suspenda la orden de demolición mientras lo estudia."
+},
+"despina_cv55": {
+"cv55:1": "Los tiempos de espera son inaceptables, y no voy a negarlo. Detrás de cada número hay una persona que sufre, y eso nos preocupa profundamente.",
+"cv55:3": "Tiene razón. Desde el mes pasado abrimos quirófanos por la tarde y los sábados, contratamos a seis especialistas y estamos revisando caso por caso para dar prioridad a los más graves.",
+"cv55:5": "Prefiero no hacer promesas que luego no podamos cumplir. Lo que sí puedo decirle es que publicaremos cada mes los tiempos de espera, para que cualquiera pueda comprobar si estamos avanzando.",
+"cv55:7": "Es una acusación grave, y si alguien tiene pruebas, le pido que las presente ante las autoridades. Por nuestra parte, hemos solicitado una auditoría externa, cuyos resultados también serán públicos."
+},
+"despina_cv56": {
+"cv56:1": "¡Qué va! Solo llevamos una hora aquí. ¡Qué puntualidad la tuya, como siempre!",
+"cv56:3": "Claro, nunca es tu culpa. Un día de estos vas a llegar tarde a tu propia boda y le vas a echar la culpa al tráfico.",
+"cv56:5": "Ah, bueno, así sí. Las palomitas grandes y un refresco, y quedas perdonada. Por esta vez.",
+"cv56:7": "Ya sabes que te esperaría hasta dos horas. Pero la próxima vez, mándame un mensaje, ¿va? Así por lo menos me compro un café mientras."
+},
 "despina_cv6": {
 "cv6:1": "Estoy en la estación.",
 "cv6:11": "¿A qué hora sale?",
@@ -601,6 +657,12 @@
 "cv50:2": "Uy. El libro ya está anunciado y la imprenta tiene fecha. ¿Cuánto tiempo más necesitarías?",
 "cv50:4": "Dos semanas es mucho. Lo máximo que puedo darte es una.",
 "cv50:6": "Eso podría funcionar. Le pregunto al corrector y te confirmo hoy."
+},
+"kore_cv56": {
+"cv56:0": "¡Perdón, perdón! Había un tráfico horrible. ¿Ya empezó la película?",
+"cv56:2": "Ay, ya sé, ya sé. No me digas nada. Esta vez de verdad no fue mi culpa.",
+"cv56:4": "¡Qué exagerada! Bueno, para compensar, yo invito las palomitas.",
+"cv56:6": "¡Trato hecho! Y ya en serio, gracias por esperarme."
 },
 "kore_cv6": {
 "cv6:0": "Hola. ¿Dónde estás?",
@@ -988,6 +1050,46 @@
 "cv50:3": "Con dos semanas más podría entregarte un texto revisado y de calidad. Si lo hiciera a toda prisa, me temo que habría errores.",
 "cv50:5": "¿Y si te entrego el día quince los capítulos ya terminados, para que el corrector vaya avanzando, y la semana siguiente el resto?",
 "cv50:7": "Perfecto, te lo agradezco mucho. Y te prometo que no volverá a pasar; la próxima vez revisaré todo el libro antes de aceptar una fecha."
+},
+"orus_cv51": {
+"cv51:1": "Entiendo la objeción, y reconozco que la muestra es limitada. Sin embargo, el objetivo no era generalizar, sino comprender en profundidad cómo viven el fenómeno quienes lo padecen.",
+"cv51:3": "Tiene razón, ahí me excedí. Lo que quise decir es que mis hallazgos coinciden con los de estudios más amplios, no que los demuestren por sí solos.",
+"cv51:5": "Así lo haré. Reformularé las conclusiones para dejar claro el alcance del estudio y añadiré una sección sobre sus limitaciones.",
+"cv51:7": "Solo agradecerle la crítica. Más vale detectar ahora estas debilidades que en la defensa ante el tribunal."
+},
+"orus_cv52": {
+"cv52:0": "Le ofrecemos la distribución exclusiva de nuestros productos en todo el norte del país, con un compromiso mínimo de compra de dos millones al año.",
+"cv52:1": "Le agradezco sinceramente la confianza. Es una propuesta atractiva, pero me temo que en este momento no podemos asumir un compromiso de esa magnitud.",
+"cv52:2": "Entiendo. ¿Es una cuestión de precio? Podríamos negociar.",
+"cv52:3": "No es tanto el precio como el volumen. Nuestra capacidad de almacenamiento es limitada, y una exclusividad nos obligaría a renunciar a otros proveedores con los que trabajamos desde hace años.",
+"cv52:4": "Lástima. Creíamos que había un buen encaje entre nuestras empresas.",
+"cv52:5": "Y lo hay, sin duda. Por eso le propongo empezar con algo más modesto: un pedido de prueba sin exclusividad, y si los resultados son buenos, revisar el acuerdo dentro de un año.",
+"cv52:6": "Lo consultaré con mi director, pero me parece razonable.",
+"cv52:7": "Se lo agradezco. Le enviaré hoy mismo una propuesta por escrito, para que la puedan valorar con calma."
+},
+"orus_cv53": {
+"cv53:1": "Lo siento muchísimo, Mónica. No sé qué decirte que de verdad sirva, pero quería estar aquí contigo.",
+"cv53:3": "No tienes por qué ser fuerte ahora. Tienes derecho a estar triste, a llorar y a no estar bien. No hay una forma correcta de vivir esto.",
+"cv53:5": "Me imagino lo doloroso que es. Pero ella sabía cuánto la querías; se notaba en cada cosa que hacías por ella. Esa despedida la fuiste haciendo durante años.",
+"cv53:7": "No tienes que saberlo ahora. Si quieres, me encargo de las llamadas y de la comida esta semana, y tú solo descansa. Y cuando quieras hablar de ella, aquí estoy."
+},
+"orus_cv54": {
+"cv54:1": "No pongo en duda los números, licenciada. Lo que le pediría es que también se tome en cuenta lo que no aparece en el presupuesto: casi un siglo de historia y la identidad de todo un barrio.",
+"cv54:3": "Precisamente por eso traemos una propuesta concreta. Hemos conseguido el apoyo de una fundación y de la universidad, que cubrirían una parte importante de la restauración.",
+"cv54:5": "Seguiría siendo un mercado en la planta baja, para no desplazar a los locatarios, y en el piso de arriba habría un centro cultural y talleres para jóvenes del barrio.",
+"cv54:7": "Por supuesto. Le haremos llegar el proyecto completo antes de fin de mes. Lo único que le pedimos es que suspenda la orden de demolición mientras lo estudia."
+},
+"orus_cv55": {
+"cv55:1": "Los tiempos de espera son inaceptables, y no voy a negarlo. Detrás de cada número hay una persona que sufre, y eso nos preocupa profundamente.",
+"cv55:3": "Tiene razón. Desde el mes pasado abrimos quirófanos por la tarde y los sábados, contratamos a seis especialistas y estamos revisando caso por caso para dar prioridad a los más graves.",
+"cv55:5": "Prefiero no hacer promesas que luego no podamos cumplir. Lo que sí puedo decirle es que publicaremos cada mes los tiempos de espera, para que cualquiera pueda comprobar si estamos avanzando.",
+"cv55:7": "Es una acusación grave, y si alguien tiene pruebas, le pido que las presente ante las autoridades. Por nuestra parte, hemos solicitado una auditoría externa, cuyos resultados también serán públicos."
+},
+"orus_cv56": {
+"cv56:1": "¡Qué va! Solo llevamos una hora aquí. ¡Qué puntualidad la tuya, como siempre!",
+"cv56:3": "Claro, nunca es tu culpa. Un día de estos vas a llegar tarde a tu propia boda y le vas a echar la culpa al tráfico.",
+"cv56:5": "Ah, bueno, así sí. Las palomitas grandes y un refresco, y quedas perdonada. Por esta vez.",
+"cv56:7": "Ya sabes que te esperaría hasta dos horas. Pero la próxima vez, mándame un mensaje, ¿va? Así por lo menos me compro un café mientras."
 },
 "orus_cv6": {
 "cv6:1": "Estoy en la estación.",
