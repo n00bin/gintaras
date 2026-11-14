@@ -980,7 +980,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u275": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u276": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u277": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u278": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u279": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u28": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u280": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -2123,6 +2147,7 @@
 "me2:u21a-2:3~f": "Encantada",
 "me2:u233b-1:3~f": "Haga lo que haga, nunca está contenta.",
 "me2:u238a-1:4~f": "Durante esos dos años me dediqué a cuidar a mi padre, que estaba muy enferma. Fue una decisión difícil, pero no me arrepiento.",
+"me2:u279a-3:0~f": "Tartamudea cuando se pone nerviosa.",
 "me2:u35c-1:0~f": "Cuando era niña",
 "me2:u36d-1:3~f": "Soy alérgica a esta medicina",
 "me2:u41c-1:1~f": "No voy porque estoy cansada",
@@ -4696,6 +4721,68 @@
 "u274a-2:2": "Se fue de golpe y sin despedirse.",
 "u274a-2:3": "Cuanto antes lo resolvamos, mejor."
 },
+"u275": {
+"u275a-1:0": "El seguro no cubre los daños causados por inundación.",
+"u275a-1:1": "Un camión se impactó contra la barda de la escuela.",
+"u275a-1:2": "Levantaron un acta ante el ministerio público.",
+"u275a-1:3": "Se resbaló en el piso mojado y se fracturó la muñeca.",
+"u275a-1:4": "El choque fue por alcance: el de atrás no frenó a tiempo.",
+"u275a-2:0": "Reclamó una indemnización por los daños materiales.",
+"u275a-2:1": "El incendio se originó por un cortocircuito.",
+"u275a-2:2": "Afortunadamente, solo hubo lesiones leves.",
+"u275a-2:3": "La grúa se llevó el coche al corralón."
+},
+"u276": {
+"u276a-1:0": "El guion está lleno de giros inesperados.",
+"u276a-1:1": "La fotografía en blanco y negro es impecable.",
+"u276a-1:2": "La serie se renovó para una tercera temporada.",
+"u276a-1:3": "El elenco reúne a actores de varias generaciones.",
+"u276a-1:4": "Prefiero verla en versión original con subtítulos.",
+"u276a-2:0": "El documental denuncia la explotación minera.",
+"u276a-2:1": "Esa telenovela marcó a toda una generación.",
+"u276a-2:2": "El montaje es ágil y mantiene la tensión.",
+"u276a-2:3": "Las plataformas de streaming transformaron la industria."
+},
+"u277": {
+"u277a-1:0": "Activa la verificación en dos pasos para mayor seguridad.",
+"u277a-1:1": "El programa se cuelga cada vez que lo abro.",
+"u277a-1:2": "Hay que respaldar los archivos en la nube.",
+"u277a-1:3": "Recibió un correo fraudulento que imitaba al banco.",
+"u277a-1:4": "Un virus cifró todos los documentos y pidieron rescate.",
+"u277a-2:0": "Actualiza el sistema operativo para corregir las vulnerabilidades.",
+"u277a-2:1": "La filtración expuso datos de millones de usuarios.",
+"u277a-2:2": "Desarrolla aplicaciones para teléfonos inteligentes.",
+"u277a-2:3": "El servidor se cayó por exceso de tráfico.",
+"u277a-2:4": "La computadora se reinició sola y perdí el avance."
+},
+"u278": {
+"u278a-1:0": "La tela es áspera al tacto.",
+"u278a-1:1": "Un aroma a canela salía de la cocina.",
+"u278a-1:2": "Se oía el crujido de las hojas secas.",
+"u278a-1:3": "El pan recién horneado estaba crujiente por fuera y esponjoso por dentro.",
+"u278a-1:4": "El agua del cenote estaba helada y cristalina.",
+"u278a-2:0": "Un olor nauseabundo inundaba el callejón.",
+"u278a-2:1": "La luz tenue de las velas creaba un ambiente íntimo.",
+"u278a-2:2": "El zumbido del refrigerador no me dejaba dormir.",
+"u278a-2:3": "La superficie era lisa y resbaladiza.",
+"u278a-2:4": "El café tenía un regusto amargo.",
+"u278a-3:0": "El estruendo de los cohetes asustó a los perros.",
+"u278a-3:1": "La piel del durazno es suave y aterciopelada."
+},
+"u279": {
+"u279a-1:0": "Me susurró la respuesta al oído.",
+"u279a-1:1": "Balbuceó una disculpa y salió corriendo.",
+"u279a-1:2": "El maestro alzó la voz para imponer orden.",
+"u279a-1:3": "Murmuraban a sus espaldas.",
+"u279a-1:4": "Refunfuñó toda la mañana porque no había café.",
+"u279a-2:0": "Recalcó que la fecha límite era inamovible.",
+"u279a-2:1": "Insinuó que alguien había filtrado la información.",
+"u279a-2:2": "Admitió a regañadientes que se había equivocado.",
+"u279a-2:3": "El niño berreaba porque quería un dulce.",
+"u279a-2:4": "Me reprochó que no la hubiera llamado.",
+"u279a-3:0": "Tartamudea cuando se pone nervioso.",
+"u279a-3:1": "Lo regañaron por llegar tarde."
+},
 "u28": {
 "u28a-1:0": "la camisa",
 "u28a-1:1": "la playera",
@@ -4722,6 +4809,17 @@
 "u28e-1:2": "¿La quiere en azul?",
 "u28e-1:3": "Me queda pequeña",
 "u28e-1:4": "Me llevo la chamarra"
+},
+"u280": {
+"u280a-1:0": "El gato ronronea cuando le rascas la cabeza.",
+"u280a-1:1": "Adoptamos una perrita rescatada de la calle.",
+"u280a-1:2": "Hay que vacunarlo y desparasitarlo cada año.",
+"u280a-1:3": "El caballo relinchó y se encabritó.",
+"u280a-1:4": "Los gallos cantan antes del amanecer.",
+"u280a-2:0": "El loro imita la voz de mi abuela.",
+"u280a-2:1": "El perro gruñó al cartero.",
+"u280a-2:2": "Las abejas zumbaban alrededor de las flores.",
+"u280a-2:3": "La veterinaria le recetó antiinflamatorios."
 },
 "u29": {
 "u29a-1:0": "alto",
