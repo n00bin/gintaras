@@ -1,0 +1,70 @@
+@u128|El carro|Cars and driving|Driving, parking, fines and repairs: <b>Saqué mi licencia de manejo a los dieciocho.</b> (I got my driving licence at eighteen.), <b>Me pusieron una multa por estacionarme en lugar prohibido.</b> (I got a fine for parking in a no-parking zone.) and <b>Llevé el carro al taller porque hacía un ruido extraño.</b> (I took the car to the garage because it was making a strange noise.).|Tell someone about a problem you had with a car or on the road.
+#u128a|Cars and driving, part 1
+Saqué mi licencia de manejo a los dieciocho.|I got my driving licence at eighteen.|
+Me pusieron una multa por estacionarme en lugar prohibido.|I got a fine for parking in a no-parking zone.|
+Llevé el carro al taller porque hacía un ruido extraño.|I took the car to the garage because it was making a strange noise.|
+El mecánico dijo que hay que cambiar los frenos.|The mechanic said the brakes need changing.|
+Hay que verificar el carro dos veces al año.|The car has to pass its emissions check twice a year.|
+Hoy no circula mi carro por la placa.|My car can't be driven today because of its number plate.|
+Se me ponchó una llanta en la autopista.|I got a flat tyre on the motorway.|
+Cargué gasolina antes de salir a carretera.|I filled up with petrol before setting off on the road.|
+Choqué contra un poste, pero nadie salió herido.|I crashed into a post, but nobody was hurt.|
+El seguro cubrió casi todos los gastos.|The insurance covered almost all the costs.|
+@u129|Comer bien|Eating well|Nutrition, diets and healthy choices: <b>Trato de comer cinco porciones de frutas y verduras al día.</b> (I try to eat five portions of fruit and vegetables a day.), <b>Reduje el azúcar y me siento con más energía.</b> (I cut down on sugar and I feel more energetic.) and <b>Soy vegetariana desde hace dos años.</b> (I've been a vegetarian for two years.).|Describe what a healthy day of eating looks like for you.
+#u129a|Eating well, part 1
+Trato de comer cinco porciones de frutas y verduras al día.|I try to eat five portions of fruit and vegetables a day.|
+Reduje el azúcar y me siento con más energía.|I cut down on sugar and I feel more energetic.|
+Soy vegetariana desde hace dos años.|I've been a vegetarian for two years.|
+Mi doctor me prohibió la sal por la presión alta.|My doctor told me to cut out salt because of high blood pressure.|
+Leo las etiquetas antes de comprar cualquier producto.|I read the labels before buying any product.|
+La comida chatarra es barata, pero no nutre.|Junk food is cheap, but it isn't nourishing.|
+Desayuno avena con fruta casi todos los días.|I have oats with fruit for breakfast almost every day.|
+Cocinar en casa es más sano y más económico.|Cooking at home is healthier and cheaper.|
+Soy intolerante a la lactosa.|I'm lactose intolerant.|
+Los niños necesitan proteínas para crecer.|Children need protein to grow.|
+@u130|Aprender idiomas|Learning languages|How to learn a language and the difficulties: <b>Llevo dos años estudiando japonés.</b> (I've been studying Japanese for two years.), <b>Lo más difícil para mí es la pronunciación.</b> (The hardest thing for me is pronunciation.) and <b>Veo series con subtítulos para mejorar mi oído.</b> (I watch series with subtitles to improve my listening.).|Give someone three tips for learning a new language.
+#u130a|Learning languages, part 1
+Llevo dos años estudiando japonés.|I've been studying Japanese for two years.|
+Lo más difícil para mí es la pronunciación.|The hardest thing for me is pronunciation.|
+Veo series con subtítulos para mejorar mi oído.|I watch series with subtitles to improve my listening.|
+Hago intercambio de idiomas con una chica de Francia.|I do a language exchange with a girl from France.|
+Me da pena hablar porque cometo muchos errores.|I feel embarrassed speaking because I make lots of mistakes.|
+Los errores son parte del aprendizaje.|Mistakes are part of learning.|
+Apunto las palabras nuevas en una libreta.|I write new words down in a notebook.|
+Entiendo casi todo, pero me cuesta hablar con fluidez.|I understand almost everything, but I find it hard to speak fluently.|
+Aprobé el examen de certificación con buena calificación.|I passed the certification exam with a good mark.|
+Cada idioma es una forma distinta de ver el mundo.|Every language is a different way of seeing the world.|
+@u131|La carrera profesional|Careers|Promotions, training and planning a career: <b>Me ascendieron a coordinadora del área.</b> (I was promoted to area coordinator.), <b>Quiero especializarme en mercadotecnia digital.</b> (I want to specialise in digital marketing.) and <b>La empresa paga cursos de capacitación.</b> (The company pays for training courses.).|Describe where you'd like to be professionally in ten years.
+#u131a|Careers, part 1
+Me ascendieron a coordinadora del área.|I was promoted to area coordinator.|
+Quiero especializarme en mercadotecnia digital.|I want to specialise in digital marketing.|
+La empresa paga cursos de capacitación.|The company pays for training courses.|
+Estoy haciendo prácticas en un despacho de arquitectos.|I'm doing an internship at an architects' office.|
+Me ofrecieron un puesto mejor pagado en otra ciudad.|They offered me a better-paid position in another city.|
+Después de diez años en la empresa, decidí emprender.|After ten years at the company, I decided to start my own business.|
+Mi meta es tener mi propio despacho algún día.|My goal is to have my own firm one day.|
+Actualicé mi currículum y mi perfil profesional.|I updated my CV and my professional profile.|
+Me gusta mi trabajo, pero quiero nuevos retos.|I like my job, but I want new challenges.|
+@u132|Conocer lugares|Visiting places|Sights, guided tours and travel recommendations: <b>Vale la pena visitar los pueblos mágicos del estado.</b> (It's worth visiting the state's pueblos mágicos.), <b>Contratamos a un guía local que sabía muchísimo.</b> (We hired a local guide who knew a huge amount.) and <b>Desde el mirador se ve toda la bahía.</b> (From the viewpoint you can see the whole bay.).|Recommend three places to visit in your region and say why.
+#u132a|Visiting places, part 1
+Vale la pena visitar los pueblos mágicos del estado.|It's worth visiting the state's pueblos mágicos.|
+Contratamos a un guía local que sabía muchísimo.|We hired a local guide who knew a huge amount.|
+Desde el mirador se ve toda la bahía.|From the viewpoint you can see the whole bay.|
+Nos bañamos en un cenote de agua cristalina.|We swam in a cenote with crystal-clear water.|
+El centro histórico es Patrimonio de la Humanidad.|The historic centre is a World Heritage Site.|
+Es mejor ir entre semana, cuando hay menos turistas.|It's better to go on a weekday, when there are fewer tourists.|
+Subimos a la cima del cerro para ver el atardecer.|We climbed to the top of the hill to watch the sunset.|
+Nos encantó probar la comida de los puestos callejeros.|We loved trying the food from the street stalls.|
+@u133|Animales de granja|Farm animals|Animals in the countryside and on the farm: <b>el gallo</b> (rooster), <b>el borrego</b> (sheep) and <b>la cabra</b> (goat).|Describe life on a farm, real or imagined.
+#u133a|Farm animals, part 1
+el gallo|rooster|
+el borrego|sheep|
+la cabra|goat|
+el burro|donkey|
+el toro|bull|
+el puerco|pig|
+el pato|duck|
+Las gallinas ponen huevos todos los días.|The hens lay eggs every day.|
+El gallo canta antes del amanecer.|The rooster crows before dawn.|
+Mi abuelo ordeñaba las vacas a mano.|My grandfather used to milk the cows by hand.|
+Los burros cargaban la leña desde el monte.|The donkeys used to carry the firewood down from the hills.|

@@ -1,0 +1,65 @@
+@u122|Emociones y salud mental|Emotions and mental health|Talking about stress, anxiety and feeling better: <b>Últimamente me siento muy estresado.</b> (Lately I've been feeling very stressed.), <b>Me da ansiedad hablar en público.</b> (Speaking in public makes me anxious.) and <b>Fui a terapia durante un año y me ayudó mucho.</b> (I went to therapy for a year and it helped me a lot.).|Talk about what helps you when you feel stressed.
+#u122a|Emotions and mental health, part 1
+Últimamente me siento muy estresado.|Lately I've been feeling very stressed.|
+Me da ansiedad hablar en público.|Speaking in public makes me anxious.|
+Fui a terapia durante un año y me ayudó mucho.|I went to therapy for a year and it helped me a lot.|
+Me frustra no poder expresarme bien en otro idioma.|It frustrates me not being able to express myself well in another language.|
+Aprendí a decir que no sin sentirme culpable.|I learnt to say no without feeling guilty.|
+Me sentí aliviado cuando supe los resultados.|I felt relieved when I found out the results.|
+Estoy agotado, necesito unas vacaciones.|I'm exhausted, I need a holiday.|
+Le tengo miedo a las alturas.|I'm afraid of heights.|
+Medito diez minutos cada mañana.|I meditate for ten minutes every morning.|
+@u123|Arreglos en casa|Home repairs|Fixing, painting and improving your home: <b>Pintamos la sala de un color más claro.</b> (We painted the living room a lighter colour.), <b>Hay que cambiar la llave del lavabo porque gotea.</b> (The washbasin tap needs changing because it drips.) and <b>Se fundió el foco del pasillo.</b> (The bulb in the hallway has blown.).|Describe a repair you made at home or one that needs doing.
+#u123a|Home repairs, part 1
+Pintamos la sala de un color más claro.|We painted the living room a lighter colour.|
+Hay que cambiar la llave del lavabo porque gotea.|The washbasin tap needs changing because it drips.|
+Se fundió el foco del pasillo.|The bulb in the hallway has blown.|
+Contratamos a un albañil para arreglar la barda.|We hired a builder to fix the wall.|
+Se tapó el drenaje de la cocina.|The kitchen drain got blocked.|
+Instalamos paneles solares en el techo.|We installed solar panels on the roof.|
+El cerrajero vino a abrir la puerta porque perdí las llaves.|The locksmith came to open the door because I lost the keys.|
+Hay grietas en la pared desde el último temblor.|There are cracks in the wall since the last tremor.|
+Compré un taladro para colgar las repisas.|I bought a drill to put up the shelves.|
+La remodelación de la cocina tardó dos meses.|The kitchen renovation took two months.|
+@u124|Tecnología en el trabajo|Technology at work|Computers, meetings online and digital tools: <b>No se oye nada, tienes el micrófono apagado.</b> (We can't hear anything, your microphone is off.), <b>Guarda el archivo en la nube para que todos lo vean.</b> (Save the file in the cloud so everyone can see it.) and <b>Se me congeló la pantalla en plena reunión.</b> (My screen froze in the middle of the meeting.).|Explain to a new colleague how your team communicates and shares files.
+#u124a|Technology at work, part 1
+No se oye nada, tienes el micrófono apagado.|We can't hear anything, your microphone is off.|
+Guarda el archivo en la nube para que todos lo vean.|Save the file in the cloud so everyone can see it.|
+Se me congeló la pantalla en plena reunión.|My screen froze in the middle of the meeting.|
+Necesito actualizar el programa antes de usarlo.|I need to update the program before using it.|
+Te comparto el enlace por el chat.|I'll share the link with you in the chat.|
+La impresora no tiene tinta otra vez.|The printer has run out of ink again.|
+Respalda tus documentos por si falla la computadora.|Back up your documents in case the computer fails.|
+Uso la inteligencia artificial para revisar mis textos.|I use artificial intelligence to check my texts.|
+Me llegan más de cien correos al día.|I get more than a hundred emails a day.|
+@u125|Desastres naturales|Natural disasters|Earthquakes, hurricanes, floods and how to prepare: <b>El sismo de dos mil diecisiete dañó muchos edificios.</b> (The two thousand and seventeen earthquake damaged many buildings.), <b>Miles de voluntarios ayudaron a rescatar a la gente.</b> (Thousands of volunteers helped to rescue people.) and <b>Evacuaron a las familias que vivían cerca del río.</b> (They evacuated the families who lived near the river.).|Explain how people where you live prepare for a natural disaster.
+#u125a|Natural disasters, part 1
+El sismo de dos mil diecisiete dañó muchos edificios.|The two thousand and seventeen earthquake damaged many buildings.|
+Miles de voluntarios ayudaron a rescatar a la gente.|Thousands of volunteers helped to rescue people.|
+Evacuaron a las familias que vivían cerca del río.|They evacuated the families who lived near the river.|
+Las lluvias provocaron inundaciones en varias colonias.|The rain caused floods in several neighbourhoods.|
+Hay que tener una mochila de emergencia lista.|You need to have an emergency bag ready.|
+La sequía afecta a los agricultores del norte.|The drought is affecting farmers in the north.|
+Hubo un incendio forestal en la sierra.|There was a forest fire in the mountains.|
+Recolectamos víveres para los damnificados.|We collected supplies for the people affected.|
+Protección Civil revisó los edificios después del temblor.|Civil Protection checked the buildings after the tremor.|
+@u126|La apariencia|Appearance|Hair, clothes, style and looking after yourself: <b>Me corté el pelo muy corto.</b> (I had my hair cut very short.), <b>Se tiñó el pelo de rojo.</b> (She dyed her hair red.) and <b>Me hice un tatuaje en el brazo.</b> (I got a tattoo on my arm.).|Describe the style of someone you think dresses well.
+#u126a|Appearance, part 1
+Me corté el pelo muy corto.|I had my hair cut very short.|
+Se tiñó el pelo de rojo.|She dyed her hair red.|
+Me hice un tatuaje en el brazo.|I got a tattoo on my arm.|
+Siempre va muy arreglada a la oficina.|She's always very smartly dressed at the office.|
+Prefiero la ropa cómoda a la ropa de moda.|I prefer comfortable clothes to fashionable ones.|
+Se pone bloqueador todos los días, aunque esté nublado.|She puts on sun cream every day, even when it's cloudy.|
+Mi hermano es idéntico a mi papá cuando era joven.|My brother is identical to my dad when he was young.|
+No juzgues a las personas por su apariencia.|Don't judge people by their appearance.|
+@u127|Rutinas y hábitos|Routines and habits|Daily routine in more detail, good and bad habits: <b>Antes me despertaba tarde y siempre andaba con prisa.</b> (I used to wake up late and was always in a hurry.), <b>Ahora me levanto media hora antes para desayunar con calma.</b> (Now I get up half an hour earlier to have breakfast calmly.) and <b>Dejé de fumar hace tres años.</b> (I gave up smoking three years ago.).|Describe a habit you managed to change and how.
+#u127a|Routines and habits, part 1
+Antes me despertaba tarde y siempre andaba con prisa.|I used to wake up late and was always in a hurry.|
+Ahora me levanto media hora antes para desayunar con calma.|Now I get up half an hour earlier to have breakfast calmly.|
+Dejé de fumar hace tres años.|I gave up smoking three years ago.|
+Me acostumbré a tomar agua en lugar de refresco.|I got used to drinking water instead of fizzy drinks.|
+Los domingos preparo la comida de toda la semana.|On Sundays I prepare the food for the whole week.|
+Me cuesta trabajo levantarme cuando hace frío.|I find it hard to get up when it's cold.|
+Siempre se me olvida dónde dejo las llaves.|I always forget where I leave my keys.|
+Cada noche escribo tres cosas por las que estoy agradecido.|Every night I write three things I'm grateful for.|

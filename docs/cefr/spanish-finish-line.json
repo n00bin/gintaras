@@ -157,7 +157,25 @@
    "u112",
    "u113",
    "u114",
-   "u115"
+   "u115",
+   "u116",
+   "u117",
+   "u118",
+   "u119",
+   "u120",
+   "u121",
+   "u122",
+   "u123",
+   "u124",
+   "u125",
+   "u126",
+   "u127",
+   "u128",
+   "u129",
+   "u130",
+   "u131",
+   "u132",
+   "u133"
   ],
   "B2": [],
   "C1": [],
@@ -338,7 +356,7 @@
     "grammar_missing": []
    },
    "B1": {
-    "word_forms_running_total": 2108,
+    "word_forms_running_total": 2472,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -350,7 +368,7 @@
     "grammar_missing": []
    },
    "B2": {
-    "word_forms_running_total": 2148,
+    "word_forms_running_total": 2512,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -371,7 +389,7 @@
     ]
    },
    "C1": {
-    "word_forms_running_total": 2188,
+    "word_forms_running_total": 2552,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -390,7 +408,7 @@
     ]
    },
    "C2": {
-    "word_forms_running_total": 2228,
+    "word_forms_running_total": 2592,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
