@@ -772,6 +772,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u232": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u233": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u234": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u235": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u236": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u237": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u24": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -1864,6 +1888,7 @@
 "me2:u14c-1:4~f": "Estoy perdida",
 "me2:u15c-1:2~f": "Soy alérgica a los cacahuates",
 "me2:u21a-2:3~f": "Encantada",
+"me2:u233b-1:3~f": "Haga lo que haga, nunca está contenta.",
 "me2:u35c-1:0~f": "Cuando era niña",
 "me2:u36d-1:3~f": "Soy alérgica a esta medicina",
 "me2:u41c-1:1~f": "No voy porque estoy cansada",
@@ -3795,6 +3820,88 @@
 "u231b-1:2": "El chocolate se derrite a la temperatura del cuerpo.",
 "u231b-1:3": "La leche se cuaja con unas gotas de limón.",
 "u231b-1:4": "El horno debe precalentarse diez minutos."
+},
+"u232": {
+"u232a-1:0": "Si hubiera sabido, habría venido.",
+"u232a-1:1": "Ojalá hubieras estado aquí.",
+"u232a-1:2": "Si hubiéramos salido antes, no habríamos perdido el vuelo.",
+"u232a-1:3": "Si me hubieras avisado, te habría esperado.",
+"u232a-1:4": "Si no hubiera llovido, el partido no se habría suspendido.",
+"u232a-2:0": "Si hubiera estudiado más, habría pasado el examen.",
+"u232b-1:0": "Me habría gustado conocer a tu abuela.",
+"u232b-1:1": "No creo que lo hubiera hecho a propósito.",
+"u232b-1:2": "Me sorprendió que no me hubieran invitado.",
+"u232b-1:3": "Si hubiera aceptado aquel trabajo, ahora viviría en Monterrey.",
+"u232b-1:4": "Actuó como si no hubiera pasado nada.",
+"u232b-2:0": "De haberlo sabido, no habría dicho nada."
+},
+"u233": {
+"u233a-1:0": "Aunque es caro, lo compro.",
+"u233a-1:1": "Aunque sea caro, lo compro.",
+"u233a-1:2": "Aunque me lo pidas de rodillas, no voy a ir.",
+"u233a-1:3": "Aunque estaba cansada, terminó el informe.",
+"u233a-1:4": "Por más que lo intente, no me sale.",
+"u233a-2:0": "Por mucho que insistas, no voy a cambiar de opinión.",
+"u233b-1:0": "El hecho de que no conteste no significa nada.",
+"u233b-1:1": "Me molesta que siempre llegues tarde.",
+"u233b-1:2": "Quien quiera venir, que venga.",
+"u233b-1:3": "Haga lo que haga, nunca está contento.",
+"u233b-1:4": "Vayas a donde vayas, llévate un suéter.",
+"u233b-2:0": "No es que no quiera, es que no puedo."
+},
+"u234": {
+"u234a-1:0": "Llevo dos años viviendo aquí.",
+"u234a-1:1": "Acabo de llegar.",
+"u234a-1:2": "Volvió a llamarme anoche.",
+"u234a-1:3": "Se puso a llorar en medio de la junta.",
+"u234a-1:4": "Sigo pensando que tenías razón.",
+"u234a-2:0": "Llevamos media hora esperando el camión.",
+"u234b-1:0": "Dejé de fumar hace cinco años.",
+"u234b-1:1": "Acabamos discutiendo por una tontería.",
+"u234b-1:2": "Estaba a punto de salir cuando sonó el teléfono.",
+"u234b-1:3": "Lleva toda la mañana sin decir una palabra.",
+"u234b-1:4": "Anda buscando departamento cerca de su trabajo.",
+"u234b-2:0": "Va mejorando poco a poco."
+},
+"u235": {
+"u235a-1:0": "No obstante, los resultados fueron positivos.",
+"u235a-1:1": "Por consiguiente, se suspendieron las clases.",
+"u235a-1:2": "La llegada del tren se retrasó dos horas.",
+"u235a-1:3": "Cabe destacar que la participación fue muy alta.",
+"u235a-1:4": "Asimismo, se aprobó un nuevo presupuesto.",
+"u235a-2:0": "En cuanto a la seguridad, no hubo incidentes.",
+"u235b-1:0": "El aumento de los precios preocupa a las familias.",
+"u235b-1:1": "Tras la firma del acuerdo, terminó la huelga.",
+"u235b-1:2": "La falta de lluvia afectó las cosechas.",
+"u235b-1:3": "Pese a las críticas, el proyecto siguió adelante.",
+"u235b-1:4": "Dicho de otro modo, no hay dinero suficiente.",
+"u235b-2:0": "En resumidas cuentas, fue un año difícil."
+},
+"u236": {
+"u236a-1:0": "Me dijo que vendría.",
+"u236a-1:1": "Me preguntó si había comido.",
+"u236a-1:2": "Me explicó que estaba buscando trabajo.",
+"u236a-1:3": "Dijeron que ya habían terminado.",
+"u236a-1:4": "Le pregunté a qué hora salía su vuelo.",
+"u236a-2:0": "Me contó que el día anterior había ido al doctor.",
+"u236b-1:0": "Me pidió que lo llamara al día siguiente.",
+"u236b-1:1": "Nos advirtió que no tocáramos nada.",
+"u236b-1:2": "Prometió que lo haría esa misma semana.",
+"u236b-1:3": "Me aseguró que no volvería a pasar.",
+"u236b-1:4": "Le recomendé que buscara otro médico.",
+"u236b-2:0": "Insistió en que nos quedáramos a cenar."
+},
+"u237": {
+"u237a-1:0": "¿Qué queréis tomar?",
+"u237a-1:1": "¿Habéis estado alguna vez en Sevilla?",
+"u237a-1:2": "Vale, nos vemos a las ocho.",
+"u237a-1:3": "He perdido el móvil esta mañana.",
+"u237a-1:4": "Hace mucho calor en el piso.",
+"u237b-1:0": "Tenés razón, che.",
+"u237b-1:1": "¿Qué querés hacer el fin de semana?",
+"u237b-1:2": "¿Vamos a tomar unos mates?",
+"u237b-1:3": "Voy a coger la guagua.",
+"u237b-1:4": "¿Qué tú quieres comer?"
 },
 "u24": {
 "u24a-1:0": "qué",

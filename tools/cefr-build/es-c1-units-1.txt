@@ -1,0 +1,89 @@
+%C1 · How Spanish works, part 5|Past if-clauses, fine points of the subjunctive, verb phrases, formal style and other varieties
+@u232|Si hubiera sabido…|If I had known…: the pluperfect subjunctive|For things that didn't happen in the past, use <b>si</b> + hubiera + participle with habría + participle: <b>Si hubiera sabido, habría venido</b> (if I had known, I would have come).|Talk about a decision you regret: what would have happened if you had done something different?
+#u232a|If I had known, I would have
+Si hubiera sabido, habría venido.|If I had known, I would have come.
+Ojalá hubieras estado aquí.|I wish you had been here.
+Si hubiéramos salido antes, no habríamos perdido el vuelo.|If we had left earlier, we wouldn't have missed the flight.
+Si me hubieras avisado, te habría esperado.|If you had told me, I would have waited for you.
+Si no hubiera llovido, el partido no se habría suspendido.|If it hadn't rained, the match wouldn't have been called off.
+Si hubiera estudiado más, habría pasado el examen.|If I had studied more, I would have passed the exam.
+#u232b|Regrets and mixed time
+Me habría gustado conocer a tu abuela.|I would have liked to meet your grandmother.
+No creo que lo hubiera hecho a propósito.|I don't think he had done it on purpose.
+Me sorprendió que no me hubieran invitado.|It surprised me that they hadn't invited me.
+Si hubiera aceptado aquel trabajo, ahora viviría en Monterrey.|If I had accepted that job, I would be living in Monterrey now.
+Actuó como si no hubiera pasado nada.|He acted as if nothing had happened.
+De haberlo sabido, no habría dicho nada.|Had I known, I wouldn't have said anything.
+@u233|Aunque sea, el hecho de que|Although, even if, the fact that: choosing the mood|<b>Aunque</b> with the indicative states a fact; with the subjunctive it means "even if" or "I accept that": <b>Aunque es caro, lo compro</b> (it is expensive, but I'll buy it) / <b>Aunque sea caro, lo compro</b> (even if it's expensive, I'll buy it).|Talk about something you would do even if it were difficult, and something you did although it was difficult.
+#u233a|Fact or possibility
+Aunque es caro, lo compro.|Although it's expensive, I'll buy it.
+Aunque sea caro, lo compro.|Even if it's expensive, I'll buy it.
+Aunque me lo pidas de rodillas, no voy a ir.|Even if you beg me on your knees, I'm not going.
+Aunque estaba cansada, terminó el informe.|Although she was tired, she finished the report.
+Por más que lo intente, no me sale.|However hard I try, I can't get it right.
+Por mucho que insistas, no voy a cambiar de opinión.|However much you insist, I won't change my mind.
+#u233b|The fact that, whoever, wherever
+El hecho de que no conteste no significa nada.|The fact that he doesn't answer doesn't mean anything.
+Me molesta que siempre llegues tarde.|It bothers me that you're always late.
+Quien quiera venir, que venga.|Whoever wants to come, let them come.
+Haga lo que haga, nunca está contento.|Whatever he does, he's never happy.
+Vayas a donde vayas, llévate un suéter.|Wherever you go, take a jumper.
+No es que no quiera, es que no puedo.|It's not that I don't want to, it's that I can't.
+@u234|Llevo años esperando|Verb phrases: llevar, acabar de, volver a, ponerse a, seguir|Spanish uses short verb phrases for time and change: <b>Llevo dos años viviendo aquí</b> (I've been living here for two years), <b>Acabo de llegar</b> (I've just arrived).|Describe your routine: what you've been doing for a long time, what you've just started, and what you've stopped doing.
+#u234a|How long, just, again
+Llevo dos años viviendo aquí.|I've been living here for two years.
+Acabo de llegar.|I've just arrived.
+Volvió a llamarme anoche.|She called me again last night.
+Se puso a llorar en medio de la junta.|He started crying in the middle of the meeting.
+Sigo pensando que tenías razón.|I still think you were right.
+Llevamos media hora esperando el camión.|We've been waiting for the bus for half an hour.
+#u234b|Stop, end up, be about to
+Dejé de fumar hace cinco años.|I stopped smoking five years ago.
+Acabamos discutiendo por una tontería.|We ended up arguing over something silly.
+Estaba a punto de salir cuando sonó el teléfono.|I was about to go out when the phone rang.
+Lleva toda la mañana sin decir una palabra.|He's gone all morning without saying a word.
+Anda buscando departamento cerca de su trabajo.|She's going around looking for a flat near her work.
+Va mejorando poco a poco.|He's gradually getting better.
+@u235|No obstante, cabe destacar|Formal connectors and turning verbs into nouns|Formal writing links ideas with words like <b>no obstante</b> (nevertheless) and <b>por consiguiente</b> (consequently), and turns verbs into nouns: <b>la llegada</b> (the arrival) instead of "cuando llegaron".|Summarise a news story in a formal style, using at least three connectors.
+#u235a|Linking ideas formally
+No obstante, los resultados fueron positivos.|Nevertheless, the results were positive.
+Por consiguiente, se suspendieron las clases.|Consequently, classes were suspended.
+La llegada del tren se retrasó dos horas.|The arrival of the train was delayed by two hours.
+Cabe destacar que la participación fue muy alta.|It is worth highlighting that turnout was very high.
+Asimismo, se aprobó un nuevo presupuesto.|Likewise, a new budget was approved.
+En cuanto a la seguridad, no hubo incidentes.|As regards security, there were no incidents.
+#u235b|Verbs become nouns
+El aumento de los precios preocupa a las familias.|The rise in prices worries families.
+Tras la firma del acuerdo, terminó la huelga.|After the signing of the agreement, the strike ended.
+La falta de lluvia afectó las cosechas.|The lack of rain affected the harvests.
+Pese a las críticas, el proyecto siguió adelante.|Despite the criticism, the project went ahead.
+Dicho de otro modo, no hay dinero suficiente.|In other words, there isn't enough money.
+En resumidas cuentas, fue un año difícil.|In short, it was a difficult year.
+@u236|Me dijo que vendría|Reported speech: changing the tenses|When you report what someone said in the past, the verbs move back: "vendré" becomes <b>Me dijo que vendría</b> (he told me he would come); a question becomes <b>Me preguntó si había comido</b> (she asked me if I had eaten).|Tell someone about a conversation you had yesterday: what the other person said, asked and asked you to do.
+#u236a|Said, asked
+Me dijo que vendría.|He told me he would come.
+Me preguntó si había comido.|She asked me if I had eaten.
+Me explicó que estaba buscando trabajo.|He explained to me that he was looking for work.
+Dijeron que ya habían terminado.|They said they had already finished.
+Le pregunté a qué hora salía su vuelo.|I asked her what time her flight left.
+Me contó que el día anterior había ido al doctor.|She told me that the day before she had been to the doctor.
+#u236b|Asked to, warned, promised
+Me pidió que lo llamara al día siguiente.|He asked me to call him the next day.
+Nos advirtió que no tocáramos nada.|She warned us not to touch anything.
+Prometió que lo haría esa misma semana.|He promised he would do it that same week.
+Me aseguró que no volvería a pasar.|She assured me it wouldn't happen again.
+Le recomendé que buscara otro médico.|I advised him to look for another doctor.
+Insistió en que nos quedáramos a cenar.|She insisted that we stay for dinner.
+@u237|Vosotros, vos y otras formas|Recognising other varieties: Spain, Argentina and the Caribbean|Spanish sounds different in other countries. In Spain the plural “you” has its own verb forms (vosotros), and in Argentina and Uruguay vos replaces tú. You don't need to use them, only to understand them.|Explain to a friend three differences between Mexican Spanish and another variety you have heard.
+#u237a|Spain
+¿Qué queréis tomar?|(Spain) What would you all like to drink?|In Spain this plural form is used with friends; ustedes is formal there.
+¿Habéis estado alguna vez en Sevilla?|(Spain) Have you all ever been to Seville?
+Vale, nos vemos a las ocho.|(Spain) OK, see you at eight.|Vale is the Spanish “OK”; in Mexico people say sale or va.
+He perdido el móvil esta mañana.|(Spain) I lost my phone this morning.|In Spain the present perfect is used for today; móvil means mobile phone.
+Hace mucho calor en el piso.|(Spain) It's very hot in the flat.|Piso is “flat” in Spain; in Mexico, departamento.
+#u237b|Argentina and the Caribbean
+Tenés razón, che.|(Argentina) You're right, mate.|In Argentina tú is replaced by another form with its own verbs: tenés, querés, sos.
+¿Qué querés hacer el fin de semana?|(Argentina) What do you want to do at the weekend?
+¿Vamos a tomar unos mates?|(Argentina) Shall we go and drink some mate?
+Voy a coger la guagua.|(Cuba, Puerto Rico) I'm going to catch the bus.|Guagua is “bus” in the Caribbean; avoid coger in Mexico.
+¿Qué tú quieres comer?|(Caribbean) What do you want to eat?|Caribbean Spanish often keeps the subject before the verb in questions.
