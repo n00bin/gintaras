@@ -1126,20 +1126,20 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.129';
-const APP_VERSION=201;
-const WHATS_NEW='Lighter on your data: a first visit no longer downloads hundreds of practice recordings. They are saved as you get close to them, like your lessons.';
+const APP_RELEASE='3.130';
+const APP_VERSION=202;
+const WHATS_NEW='Spanish (Mexico) is open: a full course from beginner to C2, with conversations, readings, listening, writing and speaking. Pick it from the course menu at the top.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
 /* ===================== LANGUAGES ===================== */
 /* Each language you can learn has its own file in lang/; it's listed as label · own name (label has the country where there is more than one kind), and exactly one is loaded, before the app code below.
    Your choice is kept in gintaras.lang; a language that isn't ready yet shows as Coming soon. */
-const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',label:'Spanish (Mexico)',own:'Español',flag:'🇲🇽',ready:false}];
+const LANGS=[{code:'lt',en:'Lithuanian',label:'Lithuanian',own:'Lietuvių',flag:'🇱🇹',ready:true},{code:'es',en:'Spanish',label:'Spanish (Mexico)',own:'Español',flag:'🇲🇽',ready:true}];
 /* Preview: open the page once with ?preview=1 and languages that aren't ready yet can be picked on this device (?preview=0 turns it off). */
 const LANG_PREVIEW=(()=>{try{const q=new URLSearchParams(location.search).get('preview');if(q==='1')localStorage.setItem('gintaras.preview','1');if(q==='0')localStorage.removeItem('gintaras.preview');return localStorage.getItem('gintaras.preview')==='1';}catch(e){return false;}})();
 /* COURSE_V2: the full A1-C2 course (all-skills units, readings, listening, writing studio, course path) is on for everyone since 3.126.
-   false brings back the 3.125 Units 1-3 practice layer (foundation-*.js). Spanish still needs ?preview=1 until it is marked ready. */
+   false brings back the 3.125 Units 1-3 practice layer (foundation-*.js). Spanish (Mexico) is ready for everyone since 3.130. */
 const COURSE_V2=true;
 const langUsable=l=>l.ready||LANG_PREVIEW;
 const LANG_CODE=(()=>{let c=null;try{c=localStorage.getItem('gintaras.lang');const requested=new URLSearchParams(location.search).get('lang');if(LANGS.some(l=>l.code===requested&&langUsable(l))){c=requested;localStorage.setItem('gintaras.lang',c);}}catch(e){}return (LANGS.find(l=>l.code===c&&langUsable(l))||LANGS[0]).code;})();

@@ -43,7 +43,7 @@
     }
   },
   "next_actions": [
-    "All six levels A1-C2 are finished_build (2026-11-14). Remaining work needs the owner: native-speaker review of Spanish, then the owner decides when to lift Coming soon and release (node tools/check_progress_ids.js --update, python tools/publish_audio.py, push)."
+    "3.130 release prepared locally 2026-11-14 (ready:true, owner chose to open Spanish before native review): publish recordings with python tools/publish_audio.py (903 short + 374 long new), then push main and check the live site. Native-speaker review of Spanish still to come."
   ],
   "live_units": {
     "A1": [
