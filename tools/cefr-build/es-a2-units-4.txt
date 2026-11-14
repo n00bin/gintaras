@@ -1,0 +1,77 @@
+@u71|La familia y los amigos|Family and friends|Talking about the people in your life: <b>mi suegra</b> (my mother-in-law), <b>mi cuñado</b> (my brother-in-law) and <b>mi sobrina</b> (my niece).|Tell someone about a relative you get on well with and one you don't.
+#u71a|Family and friends, part 1
+mi suegra|my mother-in-law|
+mi cuñado|my brother-in-law|
+mi sobrina|my niece|
+mi nieto|my grandson|
+mi esposo|my husband|
+mi esposa|my wife|
+Mis papás llevan treinta años casados.|My parents have been married for thirty years.|
+Mi sobrina acaba de nacer.|My niece has just been born.|
+Los domingos visitamos a la familia de mi esposo.|On Sundays we visit my husband's family.|
+Conocí a mi novia en una boda.|I met my girlfriend at a wedding.|
+Mis amigos de la prepa siguen siendo mis mejores amigos.|My high school friends are still my best friends.|
+Mi abuelo cumple noventa años el mes que entra.|My grandfather turns ninety next month.|
+Se divorciaron hace dos años.|They got divorced two years ago.|
+@u72|Cómo es la gente|What people are like|Describing looks and personality: <b>Es bajita y tiene el pelo chino.</b> (She is short and has curly hair.), <b>Tiene los ojos verdes y usa lentes.</b> (He has green eyes and wears glasses.) and <b>Es güero, pero su hermano es moreno.</b> (He's fair, but his brother is dark.).|Describe a person you admire: what they look like and what they are like.
+#u72a|What people are like, part 1
+Es bajita y tiene el pelo chino.|She is short and has curly hair.|
+Tiene los ojos verdes y usa lentes.|He has green eyes and wears glasses.|
+Es güero, pero su hermano es moreno.|He's fair, but his brother is dark.|
+Lleva barba y bigote.|He has a beard and a moustache.|
+Es muy trabajadora y responsable.|She is very hard-working and responsible.|
+Es un poco flojo, nunca hace nada.|He's a bit lazy, he never does anything.|
+Es muy platicador, habla con todo el mundo.|He's very chatty, he talks to everybody.|
+Mi jefe es estricto pero justo.|My boss is strict but fair.|
+Es tímida, pero cuando te conoce es muy simpática.|She's shy, but once she knows you she's very friendly.|
+Mi tío es muy chistoso, siempre nos hace reír.|My uncle is really funny, he always makes us laugh.|
+No me cae bien, es muy presumido.|I don't like him, he's very full of himself.|
+@u73|Mi colonia|My neighbourhood|Life in the neighbourhood, good and bad: <b>la colonia</b> (neighbourhood), <b>el tianguis</b> (street market) and <b>la panadería</b> (bakery).|Describe your neighbourhood: what you like, what you would change.
+#u73a|My neighbourhood, part 1
+la colonia|neighbourhood|
+el tianguis|street market|
+la panadería|bakery|
+la tortillería|tortilla shop|
+la papelería|stationery shop|
+la lavandería|launderette|
+Los martes ponen un tianguis en mi calle.|On Tuesdays there's a street market on my street.|
+Compro las tortillas calientitas en la tortillería de la esquina.|I buy the tortillas nice and warm at the tortilla shop on the corner.|
+En mi colonia hay mucho ruido en la noche.|In my neighbourhood there's a lot of noise at night.|
+Los vecinos de al lado tienen tres perros que ladran mucho.|The next-door neighbours have three dogs that bark a lot.|
+Es una colonia segura y tranquila.|It's a safe, quiet neighbourhood.|
+Pasa el camión de la basura los lunes y jueves.|The rubbish lorry comes on Mondays and Thursdays.|
+El señor de los tamales pasa todas las mañanas.|The tamale seller comes by every morning.|
+Hay muchos baches en las calles.|There are lots of potholes in the streets.|
+@u74|Deporte y pasatiempos|Sport and hobbies|What you do in your free time and how often: <b>Juego basquetbol con mis amigos los sábados.</b> (I play basketball with my friends on Saturdays.), <b>Salgo a correr al parque tres veces por semana.</b> (I go running in the park three times a week.) and <b>Mi hija toma clases de baile.</b> (My daughter takes dance classes.).|Explain how you started a hobby and why you like it.
+#u74a|Sport and hobbies, part 1
+Juego basquetbol con mis amigos los sábados.|I play basketball with my friends on Saturdays.|
+Salgo a correr al parque tres veces por semana.|I go running in the park three times a week.|
+Mi hija toma clases de baile.|My daughter takes dance classes.|
+Me encanta leer novelas de misterio.|I love reading mystery novels.|
+Mi esposo colecciona monedas antiguas.|My husband collects old coins.|
+Aprendí a tejer con mi abuela.|I learnt to knit with my grandmother.|
+Vimos el partido en casa de mi primo.|We watched the match at my cousin's house.|
+Ganamos tres a uno.|We won three one.|
+¿A qué equipo le vas?|Which team do you support?|
+Le voy a las Chivas.|I support Chivas.|
+Ya no tengo tiempo para mis pasatiempos.|I don't have time for my hobbies any more.|
+Me inscribí en un curso de fotografía.|I signed up for a photography course.|
+@u75|Moverse por la ciudad|Getting around the city|Public transport, traffic and directions: <b>Tomo el metro y luego el metrobús.</b> (I take the metro and then the metrobus.), <b>Hay que bajarse en la siguiente estación.</b> (You have to get off at the next station.) and <b>Me subí al camión equivocado.</b> (I got on the wrong bus.).|Explain to a visitor how to get from your home to the centre.
+#u75a|Getting around the city, part 1
+Tomo el metro y luego el metrobús.|I take the metro and then the metrobus.|
+Hay que bajarse en la siguiente estación.|You have to get off at the next station.|
+Me subí al camión equivocado.|I got on the wrong bus.|
+A esta hora el tráfico está horrible.|At this time the traffic is terrible.|
+Pide un taxi por la aplicación, es más seguro.|Order a taxi through the app, it's safer.|
+Está a diez minutos caminando.|It's ten minutes on foot.|
+Cruza la calle en el semáforo.|Cross the street at the traffic lights.|
+Dobla a la derecha en la segunda calle.|Turn right at the second street.|
+@u76|Por teléfono|On the phone|Calls, messages and appointments: <b>¿De parte de quién?</b> (Who's calling?), <b>Un momento, ahorita se la paso.</b> (One moment, I'll put her on.) and <b>Se cortó la llamada.</b> (The call got cut off.).|Phone to make an appointment, then change the time.
+#u76a|On the phone, part 1
+¿De parte de quién?|Who's calling?|
+Un momento, ahorita se la paso.|One moment, I'll put her on.|
+Se cortó la llamada.|The call got cut off.|
+Quería cambiar mi cita del jueves.|I wanted to change my Thursday appointment.|
+¿Tiene algo disponible el lunes en la mañana?|Do you have anything free on Monday morning?|
+No contesta, le voy a dejar un mensaje.|There's no answer, I'll leave her a message.|
+Te escucho muy mal, ¿me oyes?|I can hear you very badly, can you hear me?|

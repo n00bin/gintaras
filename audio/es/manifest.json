@@ -252,7 +252,75 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u53": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u54": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u55": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u56": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u57": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u58": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u59": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u6": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u60": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u61": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u62": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u63": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u64": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u65": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u66": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u67": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u68": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u69": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -260,7 +328,83 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u70": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u71": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u72": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u73": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u74": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u75": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u76": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u77": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u78": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u79": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u8": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u80": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u81": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u82": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u83": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u84": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u85": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u86": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u87": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u88": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -755,6 +899,10 @@
 "me2:u35c-1:0~f": "Cuando era niña",
 "me2:u36d-1:3~f": "Soy alérgica a esta medicina",
 "me2:u41c-1:1~f": "No voy porque estoy cansada",
+"me2:u61a-2:3~f": "Me puse nerviosa en la entrevista.",
+"me2:u63a-1:0~f": "Cuando era niña vivía en un pueblo.",
+"me2:u64a-3:1~f": "El cliente no está contenta con el servicio.",
+"me2:u68a-1:4~f": "Soy alérgica a la penicilina.",
 "me2:u9a-1:0~f": "Estoy contenta",
 "me2:u9a-1:1~f": "Estoy cansada",
 "me2:u9a-1:2~f": "Estoy enferma",
@@ -1795,6 +1943,128 @@
 "u52a-2:0": "Juego futbol los domingos.",
 "u52a-2:1": "Me gustan los conciertos."
 },
+"u53": {
+"u53a-1:0": "Hablé con mi jefe.",
+"u53a-1:1": "Compraste pan ayer.",
+"u53a-1:2": "Mi hermana cocinó arroz.",
+"u53a-1:3": "Llegamos tarde a la fiesta.",
+"u53a-1:4": "Ellos trabajaron todo el día.",
+"u53a-2:0": "Comí tacos en el mercado.",
+"u53a-2:1": "¿Bebiste suficiente agua?",
+"u53a-2:2": "Mi abuelo vivió en Puebla.",
+"u53a-2:3": "Escribimos una carta.",
+"u53a-2:4": "Abrieron una tienda nueva.",
+"u53b-1:0": "Fui al doctor el lunes.",
+"u53b-1:1": "Fuimos a la playa en abril.",
+"u53b-1:2": "Tuve un problema con el carro.",
+"u53b-1:3": "Hice la tarea anoche.",
+"u53b-1:4": "Estuve en casa todo el fin de semana.",
+"u53b-2:0": "No pude dormir.",
+"u53b-2:1": "Ella dijo que sí.",
+"u53b-2:2": "Vinieron mis primos.",
+"u53b-2:3": "¿Dónde pusiste las llaves?",
+"u53b-2:4": "Quise llamarte, pero no tuve tiempo."
+},
+"u54": {
+"u54a-1:0": "¿El libro? Lo tengo yo.",
+"u54a-1:1": "¿La llave? La perdí.",
+"u54a-1:2": "¿Los boletos? Los compré en línea.",
+"u54a-1:3": "¿Las tortillas? Las traigo yo.",
+"u54a-1:4": "Te llamo mañana.",
+"u54a-2:0": "¿Me ayudas, por favor?",
+"u54a-2:1": "Nos invitaron a cenar.",
+"u54b-1:0": "Le doy el regalo a mi mamá.",
+"u54b-1:1": "Le escribí a Carlos.",
+"u54b-1:2": "Les dije la verdad.",
+"u54b-1:3": "¿Le puedo hacer una pregunta?",
+"u54b-1:4": "Mi abuela me contó una historia.",
+"u54b-2:0": "Te mando la dirección."
+},
+"u55": {
+"u55a-1:0": "Monterrey es más grande que Puebla.",
+"u55a-1:1": "El metro es más rápido que el camión.",
+"u55a-1:2": "Este hotel es menos caro que el otro.",
+"u55a-1:3": "Mi hermano es tan alto como mi papá.",
+"u55a-1:4": "Hoy no hace tanto calor como ayer.",
+"u55a-2:0": "Tengo más trabajo que tú.",
+"u55b-1:0": "Esta salsa es mejor que la otra.",
+"u55b-1:1": "El tráfico de hoy es peor que el de ayer.",
+"u55b-1:2": "Mi hermana es mayor que yo.",
+"u55b-1:3": "Soy el menor de la familia.",
+"u55b-1:4": "Es la ciudad más bonita de México.",
+"u55b-2:0": "Este es el restaurante más caro del centro."
+},
+"u56": {
+"u56a-1:0": "Estoy trabajando.",
+"u56a-1:1": "¿Qué estás haciendo?",
+"u56a-1:2": "Los niños están jugando en el patio.",
+"u56a-1:3": "Estamos esperando el camión.",
+"u56a-1:4": "Mi papá está durmiendo.",
+"u56a-2:0": "Está lloviendo muy fuerte.",
+"u56a-2:1": "Ahorita estoy manejando, te marco al rato.",
+"u56b-1:0": "Ven aquí.",
+"u56b-1:1": "Espérame un momento.",
+"u56b-1:2": "Dime la verdad.",
+"u56b-1:3": "Ponlo en la mesa.",
+"u56b-1:4": "Hazme un favor.",
+"u56b-2:0": "Venga mañana a las diez.",
+"u56b-2:1": "Espere aquí, por favor.",
+"u56b-2:2": "Llame a este número."
+},
+"u57": {
+"u57a-1:0": "Este regalo es para ti.",
+"u57a-1:1": "Necesito el informe para el viernes.",
+"u57a-1:2": "Estudio español para viajar.",
+"u57a-1:3": "Gracias por todo.",
+"u57a-1:4": "Pasamos por el centro.",
+"u57a-2:0": "Te llamo por la tarde.",
+"u57a-2:1": "Lo compré por cien pesos.",
+"u57b-1:0": "Voy al gimnasio dos veces a la semana.",
+"u57b-1:1": "Tomo café tres veces al día.",
+"u57b-1:2": "Casi nunca veo la tele.",
+"u57b-1:3": "Casi siempre llego a tiempo.",
+"u57b-1:4": "Visito a mis abuelos una vez al mes.",
+"u57b-2:0": "De vez en cuando como en la calle.",
+"u57b-2:1": "Todos los domingos comemos en familia."
+},
+"u58": {
+"u58a-1:0": "la ventanilla",
+"u58a-1:1": "el pasillo",
+"u58a-1:2": "la caseta",
+"u58a-1:3": "la carretera",
+"u58a-1:4": "la gasolinera",
+"u58a-2:0": "el retraso",
+"u58a-2:1": "El vuelo salió con dos horas de retraso.",
+"u58a-2:2": "¿Dónde se documenta el equipaje?",
+"u58a-2:3": "Quisiera un asiento de pasillo.",
+"u58a-2:4": "Rentamos un carro en el aeropuerto.",
+"u58b-1:0": "Nos quedamos en un hotel cerca de la playa.",
+"u58b-1:1": "El viaje en autobús dura seis horas.",
+"u58b-1:2": "Se nos acabó la gasolina.",
+"u58b-1:3": "Llegamos a Cancún de noche.",
+"u58b-1:4": "Me mareo en los barcos."
+},
+"u59": {
+"u59a-1:0": "el cajero automático",
+"u59a-1:1": "la sucursal",
+"u59a-1:2": "el recibo",
+"u59a-1:3": "la credencial",
+"u59a-1:4": "la fila",
+"u59a-2:0": "el paquete",
+"u59a-2:1": "el plomero",
+"u59a-2:2": "el electricista",
+"u59a-2:3": "la mudanza",
+"u59a-2:4": "El cajero se tragó mi tarjeta.",
+"u59b-1:0": "¿Me puede dar un recibo?",
+"u59b-1:1": "Necesito una copia de mi credencial.",
+"u59b-1:2": "Hay mucha fila en el banco.",
+"u59b-1:3": "Quisiera mandar este paquete a Monterrey.",
+"u59b-1:4": "¿Cuánto tarda en llegar?",
+"u59b-2:0": "Se descompuso el refrigerador.",
+"u59b-2:1": "El plomero viene mañana en la mañana.",
+"u59b-2:2": "Ya pagué la luz y el agua.",
+"u59b-2:3": "La renta sube cada año."
+},
 "u6": {
 "u6a-1:0": "la madre",
 "u6a-1:1": "el padre",
@@ -1816,6 +2086,147 @@
 "u6d-1:2": "¿Tienes hijos?",
 "u6d-1:3": "Tengo dos hijos",
 "u6d-1:4": "Mi familia vive aquí"
+},
+"u60": {
+"u60a-1:0": "la ofrenda",
+"u60a-1:1": "las velas",
+"u60a-1:2": "el pan de muerto",
+"u60a-1:3": "la calavera de azúcar",
+"u60a-1:4": "las posadas",
+"u60a-2:0": "la piñata",
+"u60a-2:1": "los villancicos",
+"u60a-2:2": "la rosca de reyes",
+"u60a-2:3": "la quinceañera",
+"u60a-2:4": "los fuegos artificiales",
+"u60b-1:0": "el desfile",
+"u60b-1:1": "En noviembre ponemos una ofrenda para mis abuelos.",
+"u60b-1:2": "Le pusimos su comida favorita.",
+"u60b-1:3": "En diciembre rompemos piñatas en las posadas.",
+"u60b-1:4": "El seis de enero partimos la rosca.",
+"u60b-2:0": "Al que le sale el muñeco paga los tamales.",
+"u60b-2:1": "Mi prima celebró sus quince años.",
+"u60b-2:2": "¡Feliz Navidad y próspero año nuevo!"
+},
+"u61": {
+"u61a-1:0": "preocupado",
+"u61a-1:1": "emocionado",
+"u61a-1:2": "enojado",
+"u61a-1:3": "orgulloso",
+"u61a-1:4": "sorprendido",
+"u61a-2:0": "celoso",
+"u61a-2:1": "tranquilo",
+"u61a-2:2": "Estoy muy emocionada por el viaje.",
+"u61a-2:3": "Me puse nervioso en la entrevista.",
+"u61a-2:4": "No te preocupes, todo va a salir bien.",
+"u61b-1:0": "Me da miedo manejar de noche.",
+"u61b-1:1": "Estoy orgullosa de ti.",
+"u61b-1:2": "Me siento un poco sola.",
+"u61b-1:3": "¡Qué alegría!",
+"u61b-1:4": "¡Qué coraje!"
+},
+"u62": {
+"u62a-1:0": "la pantalla",
+"u62a-1:1": "la aplicación",
+"u62a-1:2": "el correo electrónico",
+"u62a-1:3": "la foto",
+"u62a-1:4": "el video",
+"u62a-2:0": "la batería",
+"u62a-2:1": "la señal",
+"u62a-2:2": "Mándame la foto por WhatsApp.",
+"u62a-2:3": "Olvidé mi contraseña otra vez.",
+"u62b-1:0": "Descarga la aplicación del banco.",
+"u62b-1:1": "¿Me pasas la clave del wifi?",
+"u62b-1:2": "La computadora está muy lenta.",
+"u62b-1:3": "Te dejé un mensaje de voz.",
+"u62b-1:4": "Se cayó el internet.",
+"u62b-2:0": "Reinicia el celular y vuelve a intentarlo."
+},
+"u63": {
+"u63a-1:0": "Cuando era niño vivía en un pueblo.",
+"u63a-1:1": "Mi abuela hacía tortillas a mano.",
+"u63a-1:2": "Jugábamos en la calle hasta la noche.",
+"u63a-1:3": "No había internet en mi casa.",
+"u63a-1:4": "Mi papá trabajaba en una fábrica.",
+"u63a-2:0": "Íbamos al río los domingos.",
+"u63a-2:1": "Tenía un perro que se llamaba Firulais.",
+"u63a-2:2": "Mi mamá siempre nos cantaba en la noche.",
+"u63a-2:3": "Me gustaba mucho ir a la escuela.",
+"u63a-2:4": "Éramos cinco hermanos.",
+"u63a-3:0": "Mis tíos vivían en el rancho.",
+"u63a-3:1": "el recreo",
+"u63a-3:2": "la primaria",
+"u63a-3:3": "la secundaria"
+},
+"u64": {
+"u64a-1:0": "la junta",
+"u64a-1:1": "el horario",
+"u64a-1:2": "el sueldo",
+"u64a-1:3": "la empresa",
+"u64a-1:4": "el cliente",
+"u64a-2:0": "las vacaciones",
+"u64a-2:1": "Mi jefa me pidió un informe para hoy.",
+"u64a-2:2": "Estamos buscando a una persona con experiencia.",
+"u64a-2:3": "Me ofrecieron un trabajo nuevo.",
+"u64a-2:4": "Pedí una semana de vacaciones.",
+"u64a-3:0": "Hoy salgo temprano porque tengo cita con el dentista.",
+"u64a-3:1": "El cliente no está contento con el servicio."
+},
+"u65": {
+"u65a-1:0": "el examen",
+"u65a-1:1": "la materia",
+"u65a-1:2": "la calificación",
+"u65a-1:3": "la beca",
+"u65a-1:4": "el salón",
+"u65a-2:0": "Mañana tengo examen de matemáticas.",
+"u65a-2:1": "Saqué diez en historia.",
+"u65a-2:2": "Reprobé química, pero la voy a pasar en el extraordinario.",
+"u65a-2:3": "Estudio ingeniería en la universidad.",
+"u65a-2:4": "La maestra nos dejó mucha tarea.",
+"u65a-3:0": "Me gustan las clases en línea porque no tengo que viajar.",
+"u65a-3:1": "Voy a pedir una beca para estudiar en el extranjero.",
+"u65a-3:2": "Me falta un semestre para terminar la carrera."
+},
+"u66": {
+"u66a-1:0": "el probador",
+"u66a-1:1": "la oferta",
+"u66a-1:2": "el descuento",
+"u66a-1:3": "¿Tiene esta camisa en talla mediana?",
+"u66a-1:4": "¿Hay descuento si pago en efectivo?",
+"u66a-2:0": "Quiero cambiar estos zapatos por otros.",
+"u66a-2:1": "No traigo cambio, ¿le doy un billete de quinientos?",
+"u66a-2:2": "¿Hacen envíos a domicilio?"
+},
+"u67": {
+"u67a-1:0": "la olla",
+"u67a-1:1": "el sartén",
+"u67a-1:2": "la receta",
+"u67a-1:3": "Primero, lava y corta las verduras.",
+"u67a-1:4": "Pon a hervir el agua con sal.",
+"u67a-2:0": "Fríe la cebolla hasta que esté dorada.",
+"u67a-2:1": "Agrega el jitomate y deja que se cocine diez minutos.",
+"u67a-2:2": "Mezcla todo y sirve caliente.",
+"u67a-2:3": "A mi abuela le salen riquísimos los frijoles.",
+"u67a-2:4": "Se me quemó el arroz.",
+"u67a-3:0": "¿Me das la receta?"
+},
+"u68": {
+"u68a-1:0": "la receta médica",
+"u68a-1:1": "la radiografía",
+"u68a-1:2": "la vacuna",
+"u68a-1:3": "Me caí y me lastimé el tobillo.",
+"u68a-1:4": "Soy alérgico a la penicilina.",
+"u68a-2:0": "Tiene que hacerse unos análisis.",
+"u68a-2:1": "Tómese el medicamento después de comer.",
+"u68a-2:2": "No puede hacer ejercicio por dos semanas.",
+"u68a-2:3": "¿Necesito receta para comprarlo?"
+},
+"u69": {
+"u69a-1:0": "Este verano pensamos ir a Chiapas.",
+"u69a-1:1": "Mi hermano se va a casar en diciembre.",
+"u69a-1:2": "Algún día quiero vivir junto al mar.",
+"u69a-1:3": "Me gustaría aprender a tocar la guitarra.",
+"u69a-1:4": "Si tengo tiempo, te ayudo con la mudanza.",
+"u69a-2:0": "¿Qué planes tienes para el puente?"
 },
 "u7": {
 "u7a-1:0": "el camión",
@@ -1839,6 +2250,134 @@
 "u7d-1:3": "Quiero ir al aeropuerto",
 "u7d-1:4": "Aquí, por favor"
 },
+"u70": {
+"u70a-1:0": "la montaña",
+"u70a-1:1": "el volcán",
+"u70a-1:2": "el bosque",
+"u70a-1:3": "la selva",
+"u70a-1:4": "el desierto",
+"u70a-2:0": "la cascada",
+"u70a-2:1": "el lago",
+"u70a-2:2": "la isla",
+"u70a-2:3": "el colibrí",
+"u70a-2:4": "Desde la ciudad se ve el volcán.",
+"u70b-1:0": "Subimos la montaña en cuatro horas.",
+"u70b-1:1": "En la selva hay muchos mosquitos.",
+"u70b-1:2": "Las mariposas monarca llegan en invierno.",
+"u70b-1:3": "Nadamos en una cascada de agua azul.",
+"u70b-1:4": "Hay que cuidar el medio ambiente."
+},
+"u71": {
+"u71a-1:0": "mi suegra",
+"u71a-1:1": "mi cuñado",
+"u71a-1:2": "mi sobrina",
+"u71a-1:3": "mi nieto",
+"u71a-1:4": "mi esposo",
+"u71a-2:0": "mi esposa",
+"u71a-2:1": "Mis papás llevan treinta años casados.",
+"u71a-2:2": "Mi sobrina acaba de nacer.",
+"u71a-2:3": "Los domingos visitamos a la familia de mi esposo.",
+"u71a-2:4": "Conocí a mi novia en una boda.",
+"u71a-3:0": "Mis amigos de la prepa siguen siendo mis mejores amigos.",
+"u71a-3:1": "Mi abuelo cumple noventa años el mes que entra.",
+"u71a-3:2": "Se divorciaron hace dos años."
+},
+"u72": {
+"u72a-1:0": "Es bajita y tiene el pelo chino.",
+"u72a-1:1": "Tiene los ojos verdes y usa lentes.",
+"u72a-1:2": "Es güero, pero su hermano es moreno.",
+"u72a-1:3": "Lleva barba y bigote.",
+"u72a-1:4": "Es muy trabajadora y responsable.",
+"u72a-2:0": "Es un poco flojo, nunca hace nada.",
+"u72a-2:1": "Es muy platicador, habla con todo el mundo.",
+"u72a-2:2": "Mi jefe es estricto pero justo.",
+"u72a-2:3": "Es tímida, pero cuando te conoce es muy simpática.",
+"u72a-2:4": "Mi tío es muy chistoso, siempre nos hace reír.",
+"u72a-3:0": "No me cae bien, es muy presumido."
+},
+"u73": {
+"u73a-1:0": "la colonia",
+"u73a-1:1": "el tianguis",
+"u73a-1:2": "la panadería",
+"u73a-1:3": "la tortillería",
+"u73a-1:4": "la papelería",
+"u73a-2:0": "la lavandería",
+"u73a-2:1": "Los martes ponen un tianguis en mi calle.",
+"u73a-2:2": "Compro las tortillas calientitas en la tortillería de la esquina.",
+"u73a-2:3": "En mi colonia hay mucho ruido en la noche.",
+"u73a-2:4": "Los vecinos de al lado tienen tres perros que ladran mucho.",
+"u73a-3:0": "Es una colonia segura y tranquila.",
+"u73a-3:1": "Pasa el camión de la basura los lunes y jueves.",
+"u73a-3:2": "El señor de los tamales pasa todas las mañanas.",
+"u73a-3:3": "Hay muchos baches en las calles."
+},
+"u74": {
+"u74a-1:0": "Juego basquetbol con mis amigos los sábados.",
+"u74a-1:1": "Salgo a correr al parque tres veces por semana.",
+"u74a-1:2": "Mi hija toma clases de baile.",
+"u74a-1:3": "Me encanta leer novelas de misterio.",
+"u74a-1:4": "Mi esposo colecciona monedas antiguas.",
+"u74a-2:0": "Aprendí a tejer con mi abuela.",
+"u74a-2:1": "Vimos el partido en casa de mi primo.",
+"u74a-2:2": "Ganamos tres a uno.",
+"u74a-2:3": "¿A qué equipo le vas?",
+"u74a-2:4": "Le voy a las Chivas.",
+"u74a-3:0": "Ya no tengo tiempo para mis pasatiempos.",
+"u74a-3:1": "Me inscribí en un curso de fotografía."
+},
+"u75": {
+"u75a-1:0": "Tomo el metro y luego el metrobús.",
+"u75a-1:1": "Hay que bajarse en la siguiente estación.",
+"u75a-1:2": "Me subí al camión equivocado.",
+"u75a-1:3": "A esta hora el tráfico está horrible.",
+"u75a-1:4": "Pide un taxi por la aplicación, es más seguro.",
+"u75a-2:0": "Está a diez minutos caminando.",
+"u75a-2:1": "Cruza la calle en el semáforo.",
+"u75a-2:2": "Dobla a la derecha en la segunda calle."
+},
+"u76": {
+"u76a-1:0": "¿De parte de quién?",
+"u76a-1:1": "Un momento, ahorita se la paso.",
+"u76a-1:2": "Se cortó la llamada.",
+"u76a-1:3": "Quería cambiar mi cita del jueves.",
+"u76a-1:4": "¿Tiene algo disponible el lunes en la mañana?",
+"u76a-2:0": "No contesta, le voy a dejar un mensaje.",
+"u76a-2:1": "Te escucho muy mal, ¿me oyes?"
+},
+"u77": {
+"u77a-1:0": "Yo lavo los trastes y mi esposo barre.",
+"u77a-1:1": "¿Te toca sacar la basura hoy?",
+"u77a-1:2": "Tiendo la ropa en la azotea.",
+"u77a-1:3": "Hay que planchar las camisas.",
+"u77a-1:4": "Los niños tienden su cama solos.",
+"u77a-2:0": "Trapeamos el piso los sábados.",
+"u77a-2:1": "Odio limpiar el baño.",
+"u77a-2:2": "Riego las plantas cada tercer día.",
+"u77a-2:3": "La lavadora hace un ruido raro.",
+"u77a-2:4": "Viene una señora a ayudarnos una vez por semana."
+},
+"u78": {
+"u78a-1:0": "¿El platillo del día qué trae?",
+"u78a-1:1": "Para mí, la sopa de tortilla y una enchilada.",
+"u78a-1:2": "¿Lo quiere con crema o sin crema?",
+"u78a-1:3": "Le pedimos sin cilantro, por favor.",
+"u78a-1:4": "Esto no es lo que pedí.",
+"u78a-2:0": "¿Está incluida la propina?",
+"u78a-2:1": "Dejamos el diez por ciento de propina.",
+"u78a-2:2": "Estuvo todo delicioso."
+},
+"u79": {
+"u79a-1:0": "¡Cuidado!",
+"u79a-1:1": "¡Llamen a una ambulancia!",
+"u79a-1:2": "Hubo un accidente en la carretera.",
+"u79a-1:3": "Me robaron la cartera en el metro.",
+"u79a-1:4": "Quiero levantar una denuncia.",
+"u79a-2:0": "Se está quemando algo en la cocina.",
+"u79a-2:1": "Mi hijo se perdió en el centro comercial.",
+"u79a-2:2": "Está sangrando mucho.",
+"u79a-2:3": "No se mueva, ya viene la ambulancia.",
+"u79a-2:4": "¿Dónde está el hospital más cercano?"
+},
 "u8": {
 "u8a-1:0": "leer",
 "u8a-1:1": "cocinar",
@@ -1860,6 +2399,114 @@
 "u8d-1:2": "A mí también",
 "u8d-1:3": "A mí no",
 "u8d-1:4": "Prefiero caminar"
+},
+"u80": {
+"u80a-1:0": "la temporada de lluvias",
+"u80a-1:1": "el huracán",
+"u80a-1:2": "En el norte los inviernos son muy fríos.",
+"u80a-1:3": "En la costa hay huracanes en septiembre y octubre.",
+"u80a-1:4": "Me gusta más el otoño porque no hace ni frío ni calor.",
+"u80a-2:0": "Hoy amaneció muy nublado.",
+"u80a-2:1": "Se pronostican lluvias fuertes para el fin de semana."
+},
+"u81": {
+"u81a-1:0": "Trato de comer más verduras.",
+"u81a-1:1": "Dejé de tomar refresco.",
+"u81a-1:2": "Camino diez mil pasos al día.",
+"u81a-1:3": "Estoy a dieta.",
+"u81a-1:4": "Bajé cinco kilos.",
+"u81a-2:0": "Subí de peso en las vacaciones.",
+"u81a-2:1": "Tomo mucha agua para no deshidratarme.",
+"u81a-2:2": "El estrés me quita el sueño.",
+"u81a-2:3": "Hago yoga para relajarme."
+},
+"u82": {
+"u82a-1:0": "Estoy de acuerdo contigo.",
+"u82a-1:1": "Creo que no es buena idea.",
+"u82a-1:2": "Depende de la situación.",
+"u82a-1:3": "Yo pienso lo mismo.",
+"u82a-1:4": "No sé, tengo mis dudas.",
+"u82a-2:0": "¡Claro que sí!",
+"u82a-2:1": "¡Ni modo!"
+},
+"u83": {
+"u83a-1:0": "el currículum",
+"u83a-1:1": "la solicitud",
+"u83a-1:2": "el puesto",
+"u83a-1:3": "la vacante",
+"u83a-1:4": "Mandé mi currículum a cinco empresas.",
+"u83a-2:0": "Me llamaron para una entrevista el martes.",
+"u83a-2:1": "Busco un puesto de medio tiempo.",
+"u83a-2:2": "¿Cuánta experiencia tiene en ventas?",
+"u83a-2:3": "Hablo inglés y un poco de francés.",
+"u83a-2:4": "Me contrataron por seis meses.",
+"u83a-3:0": "Renuncié porque el sueldo era muy bajo."
+},
+"u84": {
+"u84a-1:0": "el perico",
+"u84a-1:1": "el veterinario",
+"u84a-1:2": "Tengo que sacar a pasear al perro.",
+"u84a-1:3": "Adoptamos un perrito de la calle.",
+"u84a-1:4": "Hay que llevarlo al veterinario para sus vacunas.",
+"u84a-2:0": "El perico de mi abuela dice groserías.",
+"u84a-2:1": "¿Muerde?",
+"u84a-2:2": "No, es muy cariñoso."
+},
+"u85": {
+"u85a-1:0": "Estimada señora López:",
+"u85a-1:1": "Le escribo para pedir información sobre el curso.",
+"u85a-1:2": "Quedo en espera de su respuesta.",
+"u85a-1:3": "Atentamente",
+"u85a-1:4": "Saludos cordiales",
+"u85a-2:0": "¡Hola, Pepe! ¿Qué tal todo?",
+"u85a-2:1": "Te escribo para contarte una noticia.",
+"u85a-2:2": "Adjunto el documento que me pediste.",
+"u85a-2:3": "Un abrazo fuerte."
+},
+"u86": {
+"u86a-1:0": "las quesadillas",
+"u86a-1:1": "los sopes",
+"u86a-1:2": "los tlacoyos",
+"u86a-1:3": "las gorditas",
+"u86a-1:4": "el elote",
+"u86a-2:0": "los esquites",
+"u86a-2:1": "Un elote con mayonesa, queso y chile, por favor.",
+"u86a-2:2": "Los tamales de rajas son mis favoritos.",
+"u86a-2:3": "Aquí venden los mejores tacos de canasta.",
+"u86a-2:4": "¿Pica mucho la salsa roja?"
+},
+"u87": {
+"u87a-1:0": "el traje",
+"u87a-1:1": "la corbata",
+"u87a-1:2": "el vestido",
+"u87a-1:3": "las sandalias",
+"u87a-1:4": "los aretes",
+"u87a-2:0": "el collar de plata",
+"u87a-2:1": "la bufanda",
+"u87a-2:2": "el suéter",
+"u87a-2:3": "los calcetines",
+"u87a-2:4": "Para la boda me voy a poner un vestido largo.",
+"u87a-3:0": "Este suéter está pasado de moda.",
+"u87a-3:1": "Se me rompió el pantalón.",
+"u87a-3:2": "Ponte algo cómodo, vamos a caminar mucho.",
+"u87a-3:3": "Prefiero vestirme de manera sencilla."
+},
+"u88": {
+"u88a-1:0": "la visita guiada",
+"u88a-1:1": "las pirámides",
+"u88a-1:2": "la zona arqueológica",
+"u88a-1:3": "el recuerdo",
+"u88a-1:4": "¿A qué hora sale el recorrido?",
+"u88a-2:0": "La entrada es gratis los domingos para los mexicanos.",
+"u88a-2:1": "¿Se pueden tomar fotos adentro?",
+"u88a-2:2": "Subimos a la pirámide del Sol.",
+"u88a-2:3": "Compré unos recuerdos para mi familia.",
+"u88a-2:4": "El guía nos explicó la historia del lugar.",
+"u88b-1:0": "Vale la pena levantarse temprano para verlo.",
+"u88b-1:1": "Las ruinas están rodeadas de selva.",
+"u88b-1:2": "Rentamos bicicletas para recorrer el pueblo.",
+"u88b-1:3": "El mirador tiene una vista espectacular.",
+"u88b-1:4": "Hicimos una excursión en lancha por el río."
 },
 "u9": {
 "u9a-1:0": "Estoy contento",

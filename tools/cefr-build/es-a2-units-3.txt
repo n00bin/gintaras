@@ -1,0 +1,89 @@
+@u64|En el trabajo|At work|Sentences for the office, meetings and colleagues: <b>la junta</b> (meeting), <b>el horario</b> (timetable, working hours) and <b>el sueldo</b> (salary).|Describe your job to someone who has never done it: hours, tasks, people.
+#u64a|At work, part 1
+la junta|meeting|
+el horario|timetable, working hours|
+el sueldo|salary|
+la empresa|company|
+el cliente|customer, client|
+las vacaciones|holidays|
+Mi jefa me pidió un informe para hoy.|My boss asked me for a report for today.|
+Estamos buscando a una persona con experiencia.|We are looking for someone with experience.|
+Me ofrecieron un trabajo nuevo.|They offered me a new job.|
+Pedí una semana de vacaciones.|I asked for a week's holiday.|
+Hoy salgo temprano porque tengo cita con el dentista.|Today I'm leaving early because I have a dentist's appointment.|
+El cliente no está contento con el servicio.|The customer isn't happy with the service.|
+@u65|En la escuela y la universidad|At school and university|Studying, exams and classes: <b>el examen</b> (exam), <b>la materia</b> (school subject) and <b>la calificación</b> (mark, grade).|Tell someone how you prepare for an important exam.
+#u65a|At school and university, part 1
+el examen|exam|
+la materia|school subject|
+la calificación|mark, grade|
+la beca|grant, scholarship|
+el salón|classroom|
+Mañana tengo examen de matemáticas.|Tomorrow I have a maths exam.|
+Saqué diez en historia.|I got a ten in history.|
+Reprobé química, pero la voy a pasar en el extraordinario.|I failed chemistry, but I'll pass it in the resit.|
+Estudio ingeniería en la universidad.|I study engineering at university.|
+La maestra nos dejó mucha tarea.|The teacher gave us a lot of homework.|
+Me gustan las clases en línea porque no tengo que viajar.|I like online classes because I don't have to travel.|
+Voy a pedir una beca para estudiar en el extranjero.|I'm going to apply for a grant to study abroad.|
+Me falta un semestre para terminar la carrera.|I have one more semester to finish my degree.|
+@u66|De compras|Shopping|Sizes, prices, changing things and paying: <b>el probador</b> (fitting room), <b>la oferta</b> (special offer) and <b>el descuento</b> (discount).|Return something you bought: explain what's wrong and what you want.
+#u66a|Shopping, part 1
+el probador|fitting room|
+la oferta|special offer|
+el descuento|discount|
+¿Tiene esta camisa en talla mediana?|Do you have this shirt in a medium?|
+¿Hay descuento si pago en efectivo?|Is there a discount if I pay cash?|
+Quiero cambiar estos zapatos por otros.|I want to exchange these shoes for another pair.|
+No traigo cambio, ¿le doy un billete de quinientos?|I don't have change, can I give you a five hundred note?|
+¿Hacen envíos a domicilio?|Do you deliver to your home?|
+@u67|A cocinar|Let's cook|Cooking verbs and a recipe: <b>la olla</b> (pot, pan), <b>el sartén</b> (frying pan) and <b>la receta</b> (recipe).|Explain step by step how to make a simple dish you know.
+#u67a|Let's cook, part 1
+la olla|pot, pan|
+el sartén|frying pan|
+la receta|recipe|
+Primero, lava y corta las verduras.|First, wash and cut the vegetables.|
+Pon a hervir el agua con sal.|Bring the salted water to the boil.|
+Fríe la cebolla hasta que esté dorada.|Fry the onion until it's golden.|
+Agrega el jitomate y deja que se cocine diez minutos.|Add the tomato and let it cook for ten minutes.|
+Mezcla todo y sirve caliente.|Mix everything and serve hot.|
+A mi abuela le salen riquísimos los frijoles.|My grandmother's beans turn out delicious.|
+Se me quemó el arroz.|I burnt the rice.|
+¿Me das la receta?|Will you give me the recipe?|
+@u68|Con el doctor|At the doctor's|Explaining symptoms and understanding advice: <b>la receta médica</b> (prescription), <b>la radiografía</b> (X-ray) and <b>la vacuna</b> (vaccine).|Play doctor and patient: describe what's wrong and ask what to do.
+#u68a|At the doctor's, part 1
+la receta médica|prescription|
+la radiografía|X-ray|
+la vacuna|vaccine|
+Me caí y me lastimé el tobillo.|I fell and hurt my ankle.|
+Soy alérgico a la penicilina.|I'm allergic to penicillin.|
+Tiene que hacerse unos análisis.|You need to have some tests.|
+Tómese el medicamento después de comer.|Take the medicine after eating.|
+No puede hacer ejercicio por dos semanas.|You can't exercise for two weeks.|
+¿Necesito receta para comprarlo?|Do I need a prescription to buy it?|
+@u69|Planes y futuro|Plans and the future|Talking about what you are going to do: <b>Este verano pensamos ir a Chiapas.</b> (This summer we're thinking of going to Chiapas.), <b>Mi hermano se va a casar en diciembre.</b> (My brother is getting married in December.) and <b>Algún día quiero vivir junto al mar.</b> (One day I want to live by the sea.).|Tell a friend your plans for next year.
+#u69a|Plans and the future, part 1
+Este verano pensamos ir a Chiapas.|This summer we're thinking of going to Chiapas.|
+Mi hermano se va a casar en diciembre.|My brother is getting married in December.|
+Algún día quiero vivir junto al mar.|One day I want to live by the sea.|
+Me gustaría aprender a tocar la guitarra.|I'd like to learn to play the guitar.|
+Si tengo tiempo, te ayudo con la mudanza.|If I have time, I'll help you with the move.|
+¿Qué planes tienes para el puente?|What plans do you have for the long weekend?|
+@u70|La naturaleza|Nature|Landscapes, animals and the outdoors: <b>la montaña</b> (mountain), <b>el volcán</b> (volcano) and <b>el bosque</b> (forest).|Describe the most beautiful place in nature you have visited.
+#u70a|Nature, part 1
+la montaña|mountain|
+el volcán|volcano|
+el bosque|forest|
+la selva|jungle|
+el desierto|desert|
+la cascada|waterfall|
+el lago|lake|
+la isla|island|
+el colibrí|hummingbird|
+Desde la ciudad se ve el volcán.|You can see the volcano from the city.|
+#u70b|Nature, part 2
+Subimos la montaña en cuatro horas.|We climbed the mountain in four hours.|
+En la selva hay muchos mosquitos.|There are lots of mosquitoes in the jungle.|
+Las mariposas monarca llegan en invierno.|The monarch butterflies arrive in winter.|
+Nadamos en una cascada de agua azul.|We swam in a waterfall with blue water.|
+Hay que cuidar el medio ambiente.|We have to look after the environment.|

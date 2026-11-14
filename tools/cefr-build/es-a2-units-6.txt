@@ -1,0 +1,46 @@
+@u83|Buscar trabajo|Looking for work|Job adverts, CVs and interviews: <b>el currículum</b> (CV), <b>la solicitud</b> (application) and <b>el puesto</b> (position, job).|Answer three typical interview questions about yourself.
+#u83a|Looking for work, part 1
+el currículum|CV|
+la solicitud|application|
+el puesto|position, job|
+la vacante|vacancy|
+Mandé mi currículum a cinco empresas.|I sent my CV to five companies.|
+Me llamaron para una entrevista el martes.|They called me for an interview on Tuesday.|
+Busco un puesto de medio tiempo.|I'm looking for a part-time job.|
+¿Cuánta experiencia tiene en ventas?|How much sales experience do you have?|
+Hablo inglés y un poco de francés.|I speak English and a little French.|
+Me contrataron por seis meses.|They hired me for six months.|
+Renuncié porque el sueldo era muy bajo.|I resigned because the salary was very low.|
+@u84|Las mascotas|Pets|Pets and looking after them: <b>el perico</b> (parrot), <b>el veterinario</b> (vet) and <b>Tengo que sacar a pasear al perro.</b> (I have to take the dog for a walk.).|Describe a pet you have or would like to have.
+#u84a|Pets, part 1
+el perico|parrot|
+el veterinario|vet|
+Tengo que sacar a pasear al perro.|I have to take the dog for a walk.|
+Adoptamos un perrito de la calle.|We adopted a little street dog.|
+Hay que llevarlo al veterinario para sus vacunas.|We have to take him to the vet for his vaccinations.|
+El perico de mi abuela dice groserías.|My grandmother's parrot says rude words.|
+¿Muerde?|Does it bite?|
+No, es muy cariñoso.|No, he's very affectionate.|
+@u85|Correos y cartas|Emails and letters|Writing short messages, formal and informal: <b>Estimada señora López:</b> (Dear Mrs López,), <b>Le escribo para pedir información sobre el curso.</b> (I am writing to ask for information about the course.) and <b>Quedo en espera de su respuesta.</b> (I look forward to your reply.).|Write a short email to ask a company for information.
+#u85a|Emails and letters, part 1
+Estimada señora López:|Dear Mrs López,|
+Le escribo para pedir información sobre el curso.|I am writing to ask for information about the course.|
+Quedo en espera de su respuesta.|I look forward to your reply.|
+Atentamente|Yours sincerely|
+Saludos cordiales|Kind regards|
+¡Hola, Pepe! ¿Qué tal todo?|Hi Pepe! How's everything?|
+Te escribo para contarte una noticia.|I'm writing to tell you some news.|
+Adjunto el documento que me pediste.|I'm attaching the document you asked for.|
+Un abrazo fuerte.|A big hug.|
+@u86|Antojitos mexicanos|Mexican snacks|Street food and how to order it: <b>las quesadillas</b> (quesadillas), <b>los sopes</b> (sopes) and <b>los tlacoyos</b> (tlacoyos).|Describe your favourite street food and how you like it.
+#u86a|Mexican snacks, part 1
+las quesadillas|quesadillas|
+los sopes|sopes|
+los tlacoyos|tlacoyos|
+las gorditas|gorditas|
+el elote|corn on the cob|
+los esquites|corn in a cup|
+Un elote con mayonesa, queso y chile, por favor.|A corn on the cob with mayonnaise, cheese and chilli, please.|
+Los tamales de rajas son mis favoritos.|Pepper tamales are my favourite.|
+Aquí venden los mejores tacos de canasta.|They sell the best basket tacos here.|
+¿Pica mucho la salsa roja?|Is the red salsa very hot?|
