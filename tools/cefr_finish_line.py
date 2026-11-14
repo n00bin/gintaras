@@ -1,11 +1,12 @@
-"""Measure the Lithuanian course against the full-CEFR finish line (docs/cefr/LITHUANIAN-FINISH-LINE.md).
+"""Measure a course against the full-CEFR finish line (docs/cefr/LITHUANIAN-FINISH-LINE.md, SPANISH-FINISH-LINE.md).
 
 Loads the real app (preview mode) in a headless browser, so every content file loads in its proper order, then counts
 per CEFR level: words, reading texts and their lengths, recordings and their durations, conversations, writing and
 speaking tasks, and which grammar points are taught. It prints what is missing and saves the numbers into
 docs/cefr/lithuanian-finish-line.json under "measured".
 
-Run: python tools/cefr_finish_line.py            (read-only apart from the "measured" block of the tracker)
+Run: python tools/cefr_finish_line.py            Lithuanian (read-only apart from the "measured" block of the tracker)
+     python tools/cefr_finish_line.py --lang es  Mexican Spanish
 Live-course units and grammar points are assigned to levels in the tracker's "live_units" and "grammar" blocks.
 """
 import http.server, json, re, threading
@@ -16,7 +17,9 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-TRACK = ROOT / 'docs' / 'cefr' / 'lithuanian-finish-line.json'
+LANG = sys.argv[sys.argv.index('--lang') + 1] if '--lang' in sys.argv else 'lt'
+TRACK = ROOT / 'docs' / 'cefr' / {'lt': 'lithuanian-finish-line.json', 'es': 'spanish-finish-line.json'}[LANG]
+LETTERS = {'lt': '[^a-ząčęėįšųūž ]', 'es': '[^a-záéíóúüñ ]'}[LANG]
 LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 TARGET = {  # from LITHUANIAN-FINISH-LINE.md
     'lemmas_total': dict(zip(LEVELS, [700, 1500, 2750, 4500, 6500, 8500])),
@@ -30,19 +33,20 @@ TARGET = {  # from LITHUANIAN-FINISH-LINE.md
 }
 
 COLLECT = r"""
-() => {
+(arg) => {
+  const lang = arg.lang, letters = new RegExp(arg.letters, 'g');
   const band = id => (String(id).match(/^(A1|A2|B1|B2|C1|C2)/) || [])[1] || null;
   const words = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
   const audio = Object.assign({}, window.WordamiSkillsAudio || {}, window.WordamiListeningTransferAudio || {},
     window.WordamiInteractionPracticeAudio || {}, window.WordamiCapstoneAudio || {});
-  const dur = Object.fromEntries(Object.entries(audio).filter(([k, v]) => k.startsWith('lt.') && v && v.duration).map(([k, v]) => [k, v.duration]));
+  const dur = Object.fromEntries(Object.entries(audio).filter(([k, v]) => k.startsWith(lang + '.') && v && v.duration).map(([k, v]) => [k, v.duration]));
   const out = {reading: [], listening: [], conversations: [], writing: [], speaking: [], vocab: {}, live: {}};
   const S = window.WordamiSkillsContent;
   for (const u of (S && S.units) || []) {
     const b = band(u.id); if (!b) continue;
     if (u.reading) out.reading.push({level: b, id: u.id + ':reading', words: words(u.reading)});
     for (const [i, r] of (u.extraRead || []).entries()) out.reading.push({level: b, id: u.id + ':extra-' + i, words: words(Array.isArray(r) ? r[0] : (r && (r.text || r.lt)) || r)});
-    if (u.listen) out.listening.push({level: b, id: u.id + ':listen', seconds: dur['lt.' + u.id + '.listen'] || words(u.listen) / 2.2});
+    if (u.listen) out.listening.push({level: b, id: u.id + ':listen', seconds: dur[lang + '.' + u.id + '.listen'] || words(u.listen) / 2.2});
     if ((u.turns || []).length) out.conversations.push({level: b, id: u.id + ':turns', turns: u.turns.length});
     for (const p of (u.writing && u.writing.projects) || []) out.writing.push({level: b, id: u.id + ':' + (p.id || p.title || 'project')});
     for (const [i] of (u.production || []).entries()) out.speaking.push({level: b, id: u.id + ':production-' + i});
@@ -64,7 +68,7 @@ COLLECT = r"""
   for (const [id, u] of Object.entries((W && W.units) || {})) { const b = band(id); if (b) out.writing.push({level: b, id: id + ':written-exchange'}); }
   for (const [id, list] of Object.entries((window.WordamiVocabularyContent && window.WordamiVocabularyContent.units) || {})) {
     const b = band(id); if (b) out.vocab[b] = (out.vocab[b] || 0) + list.length; }
-  const G = window.WordamiGradedContent, GA = window.WordamiGradedAudio || {};
+  const G = window.WordamiGradedContent && window.WordamiGradedContent.language === lang ? window.WordamiGradedContent : null, GA = window.WordamiGradedAudio || {};
   for (const it of (G && G.items) || []) {
     const text = it.lines.map(l => l[1]).join(' ');
     // reading length is counted on the English translation (see LITHUANIAN-FINISH-LINE.md)
@@ -76,7 +80,7 @@ COLLECT = r"""
   // the live course: cards and conversations per unit, so the tracker can assign units to levels
   for (const u of COURSE) {
     const items = ITEMS.filter(i => i.unit === u);
-    const forms = new Set(); for (const i of items) for (const w of (i.lt0 || i.lt).toLowerCase().replace(/[^a-ząčęėįšųūž ]/g, ' ').split(/\s+/)) if (w) forms.add(w);
+    const forms = new Set(); for (const i of items) for (const w of (i.lt0 || i.lt).toLowerCase().replace(letters, ' ').split(/\s+/)) if (w) forms.add(w);
     out.live[u.id] = {title: u.en, cards: items.length, forms: [...forms]};
   }
   out.path = PATH.filter(x => typeof x === 'string');
@@ -94,9 +98,9 @@ def main():
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     with sync_playwright() as p:
         b = p.chromium.launch(channel='chrome', headless=True); pg = b.new_page()
-        pg.add_init_script("localStorage.setItem('gintaras.preview','1');localStorage.setItem('gintaras.lang','lt');")
+        pg.add_init_script("localStorage.setItem('gintaras.preview','1');localStorage.setItem('gintaras.lang','%s');" % LANG)
         pg.goto(f'http://127.0.0.1:{srv.server_port}/?preview=1'); pg.wait_for_function('window.gintarasReady'); pg.wait_for_timeout(1500)
-        d = pg.evaluate(COLLECT); b.close()
+        d = pg.evaluate(COLLECT, {'lang': LANG, 'letters': LETTERS}); b.close()
     live_units = track.get('live_units', {})  # level -> [unit ids]
     unit_level = {u: lv for lv, us in live_units.items() for u in us}
     unassigned = [u for u in d['live'] if u not in unit_level]

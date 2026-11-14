@@ -1,0 +1,292 @@
+{
+  "goal": "Mexican Spanish course covers the full CEFR, A1-C2 (owner, 2026-11-13). See SPANISH-FINISH-LINE.md.",
+  "rule": "Work down next_actions in order without stopping to report. Report only when a level's status becomes finished, or when blocked on the owner.",
+  "baseline_2026_11_13": {
+    "live_course": {
+      "units": 37,
+      "cards": 807,
+      "distinct_word_forms": 650,
+      "conversations": 15,
+      "estimate": "about A1, behind Coming soon"
+    }
+  },
+  "levels": {
+    "A1": {
+      "status": "not_started",
+      "native_review": "pending"
+    },
+    "A2": {
+      "status": "not_started",
+      "native_review": "pending"
+    },
+    "B1": {
+      "status": "not_started",
+      "native_review": "pending"
+    },
+    "B2": {
+      "status": "not_started",
+      "native_review": "pending"
+    },
+    "C1": {
+      "status": "not_started",
+      "native_review": "pending"
+    },
+    "C2": {
+      "status": "not_started",
+      "native_review": "pending"
+    }
+  },
+  "next_actions": [
+    "Make the build tools work for Spanish (measure, units, graded module, recordings)",
+    "A1: fill the gaps the measure shows"
+  ],
+  "live_units": {
+    "A1": [
+      "u0",
+      "u1",
+      "u21",
+      "u22",
+      "u23",
+      "u24",
+      "u25",
+      "u2",
+      "u5",
+      "u26",
+      "u3",
+      "u15",
+      "u4",
+      "u14",
+      "u7",
+      "u16",
+      "u28",
+      "u6",
+      "u30",
+      "u29",
+      "u9",
+      "u31",
+      "u8",
+      "u32",
+      "u33",
+      "u18",
+      "u41"
+    ],
+    "A2": [
+      "u34",
+      "u35",
+      "u13",
+      "u10",
+      "u36",
+      "u37",
+      "u38",
+      "u39",
+      "u11",
+      "u12"
+    ],
+    "B1": [],
+    "B2": [],
+    "C1": [],
+    "C2": []
+  },
+  "grammar": {
+    "A1": {
+      "Sounds, stress and written accents": [],
+      "Gender, articles (el, la, los, las, un, una) and plurals": [],
+      "Adjective agreement and position": [],
+      "Ser and estar (basic uses), and hay": [],
+      "Present tense of regular -ar, -er, -ir verbs": [],
+      "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)": [],
+      "Gustar and similar verbs": [],
+      "Questions and question words": [],
+      "Numbers 0–100, time, days, months": [],
+      "Possessives (mi, tu, su, nuestro)": [],
+      "Tú, usted and ustedes": []
+    },
+    "A2": {
+      "Preterite: regular verbs and the common irregulars": [],
+      "Imperfect: description and habits": [],
+      "Ir a + infinitive": [],
+      "Reflexive verbs": [],
+      "Direct and indirect object pronouns": [],
+      "Comparatives and superlatives": [],
+      "Commands for tú and usted (affirmative)": [],
+      "Estar + gerund": [],
+      "Por and para (basic uses)": [],
+      "Frequency and time expressions": [],
+      "Joining words (y, pero, porque, cuando, si)": []
+    },
+    "B1": {
+      "Preterite and imperfect together in stories": [],
+      "Present perfect, and the Mexican preference for the preterite": [],
+      "Future and conditional": [],
+      "Present subjunctive: wishes, advice, feelings, doubt": [],
+      "Negative commands": [],
+      "Double object pronouns (se lo)": [],
+      "Relative words (que, quien, donde, lo que)": [],
+      "Reported speech (dijo que…)": [],
+      "Ordinal numbers and dates": []
+    },
+    "B2": {
+      "Subjunctive after cuando, para que, aunque, antes de que": [],
+      "Imperfect subjunctive": [],
+      "Si-clauses with the imperfect subjunctive": [],
+      "Pluperfect": [],
+      "Passive with ser, passive and impersonal se": [],
+      "Future and conditional perfect": [],
+      "Register: formal letters and Mexican informal speech": [],
+      "Common idioms": []
+    },
+    "C1": {
+      "Pluperfect subjunctive and past si-clauses": [],
+      "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)": [],
+      "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)": [],
+      "Academic and formal connectors; nominalisation": [],
+      "Reported speech with tense changes": [],
+      "Other varieties for recognition (Spain, Río de la Plata, Caribbean)": []
+    },
+    "C2": {
+      "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)": [],
+      "Word order for emphasis and style": [],
+      "Irony, wordplay and double meanings (doble sentido), kept clean": [],
+      "Paraphrase and mediation": [],
+      "Specialised registers: legal, academic, administrative": [],
+      "Sayings and proverbs (refranes)": []
+    }
+  },
+  "done": [
+    "2026-11-13 Finish line written (SPANISH-FINISH-LINE.md), tracker started, cefr_finish_line.py takes --lang es. Baseline: A1 words 527/700, reading 3/20 at length, listening 7/20 at length, grammar not tagged yet."
+  ],
+  "measured": {
+    "levels": {
+      "A1": {
+        "word_forms_running_total": 527,
+        "reading_at_length": 3,
+        "reading_any_length": 16,
+        "listening_at_length": 7,
+        "listening_any_length": 13,
+        "conversations": 25,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 11,
+        "grammar_missing": [
+          "Sounds, stress and written accents",
+          "Gender, articles (el, la, los, las, un, una) and plurals",
+          "Adjective agreement and position",
+          "Ser and estar (basic uses), and hay",
+          "Present tense of regular -ar, -er, -ir verbs",
+          "Common irregular verbs in the present (tener, ir, hacer, querer, poder, venir, decir)",
+          "Gustar and similar verbs",
+          "Questions and question words",
+          "Numbers 0–100, time, days, months",
+          "Possessives (mi, tu, su, nuestro)",
+          "Tú, usted and ustedes"
+        ]
+      },
+      "A2": {
+        "word_forms_running_total": 730,
+        "reading_at_length": 0,
+        "reading_any_length": 16,
+        "listening_at_length": 0,
+        "listening_any_length": 13,
+        "conversations": 38,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 11,
+        "grammar_missing": [
+          "Preterite: regular verbs and the common irregulars",
+          "Imperfect: description and habits",
+          "Ir a + infinitive",
+          "Reflexive verbs",
+          "Direct and indirect object pronouns",
+          "Comparatives and superlatives",
+          "Commands for tú and usted (affirmative)",
+          "Estar + gerund",
+          "Por and para (basic uses)",
+          "Frequency and time expressions",
+          "Joining words (y, pero, porque, cuando, si)"
+        ]
+      },
+      "B1": {
+        "word_forms_running_total": 770,
+        "reading_at_length": 0,
+        "reading_any_length": 17,
+        "listening_at_length": 0,
+        "listening_any_length": 13,
+        "conversations": 9,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 9,
+        "grammar_missing": [
+          "Preterite and imperfect together in stories",
+          "Present perfect, and the Mexican preference for the preterite",
+          "Future and conditional",
+          "Present subjunctive: wishes, advice, feelings, doubt",
+          "Negative commands",
+          "Double object pronouns (se lo)",
+          "Relative words (que, quien, donde, lo que)",
+          "Reported speech (dijo que…)",
+          "Ordinal numbers and dates"
+        ]
+      },
+      "B2": {
+        "word_forms_running_total": 810,
+        "reading_at_length": 0,
+        "reading_any_length": 17,
+        "listening_at_length": 0,
+        "listening_any_length": 13,
+        "conversations": 9,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 8,
+        "grammar_missing": [
+          "Subjunctive after cuando, para que, aunque, antes de que",
+          "Imperfect subjunctive",
+          "Si-clauses with the imperfect subjunctive",
+          "Pluperfect",
+          "Passive with ser, passive and impersonal se",
+          "Future and conditional perfect",
+          "Register: formal letters and Mexican informal speech",
+          "Common idioms"
+        ]
+      },
+      "C1": {
+        "word_forms_running_total": 850,
+        "reading_at_length": 0,
+        "reading_any_length": 17,
+        "listening_at_length": 0,
+        "listening_any_length": 13,
+        "conversations": 9,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 6,
+        "grammar_missing": [
+          "Pluperfect subjunctive and past si-clauses",
+          "Fine points of the subjunctive (aunque + indicative or subjunctive, el hecho de que)",
+          "Verb phrases (llevar + gerund, acabar de, volver a, ponerse a, seguir + gerund)",
+          "Academic and formal connectors; nominalisation",
+          "Reported speech with tense changes",
+          "Other varieties for recognition (Spain, Río de la Plata, Caribbean)"
+        ]
+      },
+      "C2": {
+        "word_forms_running_total": 890,
+        "reading_at_length": 0,
+        "reading_any_length": 17,
+        "listening_at_length": 0,
+        "listening_any_length": 13,
+        "conversations": 9,
+        "writing": 8,
+        "speaking": 10,
+        "grammar_points": 6,
+        "grammar_missing": [
+          "Literary and legal forms for recognition (future subjunctive in legal texts, pretérito anterior)",
+          "Word order for emphasis and style",
+          "Irony, wordplay and double meanings (doble sentido), kept clean",
+          "Paraphrase and mediation",
+          "Specialised registers: legal, academic, administrative",
+          "Sayings and proverbs (refranes)"
+        ]
+      }
+    },
+    "unassigned_live_units": []
+  }
+}
