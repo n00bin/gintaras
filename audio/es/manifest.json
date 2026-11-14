@@ -1060,6 +1060,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u293": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u294": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u295": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u296": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u297": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u298": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u3": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -5042,6 +5066,78 @@
 "u292a-1:4": "Reconozco que me equivoqué al juzgarlo.",
 "u292a-2:0": "Me reservo mi opinión hasta conocer los detalles.",
 "u292a-2:1": "Es discutible, pero no carece de lógica."
+},
+"u293": {
+"u293a-1:0": "La junta se alargó y nadie llegó a ninguna conclusión.",
+"u293a-1:1": "Mi compañero se adjudica méritos ajenos.",
+"u293a-1:2": "Hay que entregar el reporte trimestral el viernes.",
+"u293a-1:3": "El jefe lo ascendió a gerente de área.",
+"u293a-1:4": "Los chismes de pasillo envenenan el ambiente laboral.",
+"u293a-2:0": "Pedí un permiso sin goce de sueldo.",
+"u293a-2:1": "Trabaja horas extra sin que nadie se lo reconozca.",
+"u293a-2:2": "El proyecto se postergó por falta de presupuesto.",
+"u293a-2:3": "Renunció tras años de sentirse infravalorado."
+},
+"u294": {
+"u294a-1:0": "Nos cancelaron el vuelo y nos reubicaron al día siguiente.",
+"u294a-1:1": "Perdí la conexión por culpa del retraso.",
+"u294a-1:2": "La aerolínea extravió mi equipaje.",
+"u294a-1:3": "Tuvimos que pernoctar en el aeropuerto.",
+"u294a-1:4": "El hotel había sobrevendido las habitaciones.",
+"u294a-2:0": "Me cobraron una tarifa adicional por exceso de peso.",
+"u294a-2:1": "La carretera estaba bloqueada por un deslave.",
+"u294a-2:2": "Nos estafaron con un taxi que no tenía taxímetro.",
+"u294a-2:3": "Contraté un seguro de viaje que cubría cancelaciones.",
+"u294a-2:4": "Al final, el viaje accidentado se convirtió en una gran anécdota."
+},
+"u295": {
+"u295a-1:0": "Se pasó el alto y casi atropella a un peatón.",
+"u295a-1:1": "Me infraccionaron por estacionarme en doble fila.",
+"u295a-1:2": "El tope estaba mal señalizado.",
+"u295a-1:3": "Rebasar por la derecha es peligroso.",
+"u295a-1:4": "El conductor iba distraído con el celular.",
+"u295a-2:0": "Prendí las intermitentes para avisar del peligro.",
+"u295a-2:1": "Tramitó su licencia de manejo por primera vez.",
+"u295a-2:2": "La glorieta siempre está congestionada.",
+"u295a-2:3": "Pisó el acelerador en cuanto se puso el verde."
+},
+"u296": {
+"u296a-1:0": "La mina a cielo abierto contaminó los ríos de la zona.",
+"u296a-1:1": "Las comunidades exigen ser consultadas antes de cualquier concesión.",
+"u296a-1:2": "Los mantos acuíferos se están agotando.",
+"u296a-1:3": "La extracción de arena destruye los cauces de los ríos.",
+"u296a-1:4": "El derrame tóxico provocó la muerte de miles de peces.",
+"u296a-2:0": "Los recursos naturales no son inagotables.",
+"u296a-2:1": "La tala clandestina avanza sobre los bosques.",
+"u296a-2:2": "Las regalías apenas benefician a los municipios afectados.",
+"u296a-2:3": "El cobre es indispensable para la electrónica.",
+"u296a-2:4": "La explotación del subsuelo pertenece a la nación."
+},
+"u297": {
+"u297a-1:0": "El encuadre deja al personaje en un rincón de la imagen.",
+"u297a-1:1": "La foto salió movida porque había poca luz.",
+"u297a-1:2": "Usó una exposición larga para captar las estrellas.",
+"u297a-1:3": "El contraluz convierte a las personas en siluetas.",
+"u297a-1:4": "El fotógrafo retrató la vida cotidiana en los barrios obreros.",
+"u297a-2:0": "Retocaron tanto la imagen que parece irreal.",
+"u297a-2:1": "La lente gran angular deforma los bordes.",
+"u297a-2:2": "La exposición fotográfica documenta medio siglo de protestas.",
+"u297a-2:3": "El enfoque está en las manos, no en el rostro.",
+"u297a-2:4": "Las fotos antiguas se van desvaneciendo con el tiempo.",
+"u297a-3:0": "Una imagen puede manipular más que mil palabras.",
+"u297a-3:1": "Revelaba sus propias fotos en un cuarto oscuro."
+},
+"u298": {
+"u298a-1:0": "El narrador omnisciente lo sabe todo sobre los personajes.",
+"u298a-1:1": "Hay que podar el texto de adjetivos innecesarios.",
+"u298a-1:2": "El desenlace sorprende sin parecer arbitrario.",
+"u298a-1:3": "La editorial le pidió que acortara el manuscrito.",
+"u298a-1:4": "Los diálogos suenan naturales y verosímiles.",
+"u298a-2:0": "Escribe a diario, aunque sea una página.",
+"u298a-2:1": "El bloqueo del escritor le duró casi un año.",
+"u298a-2:2": "Las metáforas excesivas cansan al lector.",
+"u298a-2:3": "El ritmo de la prosa se nota al leer en voz alta.",
+"u298a-2:4": "La corrección de estilo pulió cada párrafo."
 },
 "u3": {
 "u3a-1:0": "la leche",
