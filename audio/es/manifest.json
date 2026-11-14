@@ -1512,6 +1512,38 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u391": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u392": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u393": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u394": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u395": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u396": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u397": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u398": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u4": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -7065,6 +7097,116 @@
 "u390a-3:0": "Injertaron una rama de limonero en el naranjo.",
 "u390a-3:1": "Las orquídeas son epífitas: crecen sobre otros árboles.",
 "u390a-3:2": "El herbario conserva miles de especímenes secos."
+},
+"u391": {
+"u391a-1:0": "Ajustó la apertura del diafragma para desenfocar el fondo.",
+"u391a-1:1": "Una velocidad de obturación lenta capta el movimiento del agua.",
+"u391a-1:2": "El encuadre deja al sujeto en el tercio izquierdo.",
+"u391a-1:3": "Revelaba sus negativos en un cuarto oscuro.",
+"u391a-1:4": "El objetivo gran angular deforma un poco las esquinas.",
+"u391a-2:0": "La foto salió movida porque no usé tripié.",
+"u391a-2:1": "La luz dorada del atardecer favorece los retratos.",
+"u391a-2:2": "Retocó la imagen para corregir la exposición.",
+"u391a-2:3": "La luz rebotada suaviza las sombras.",
+"u391a-2:4": "Tomó una ráfaga de imágenes para no perder el instante.",
+"u391a-3:0": "El contraluz convirtió a los caminantes en siluetas.",
+"u391a-3:1": "Prefiere el blanco y negro porque resalta las texturas.",
+"u391a-3:2": "El fotoperiodista arriesgó la vida para documentar la guerra."
+},
+"u392": {
+"u392a-1:0": "Izaron las velas al salir del puerto.",
+"u392a-1:1": "El viento de popa nos empujaba hacia la bahía.",
+"u392a-1:2": "El timonel viró a babor para esquivar las rocas.",
+"u392a-1:3": "A estribor se veía la costa rocosa.",
+"u392a-1:4": "Echaron el ancla en una cala tranquila.",
+"u392a-2:0": "El velero escoraba con cada ráfaga.",
+"u392a-2:1": "Amarraron el bote al muelle con un nudo marinero.",
+"u392a-2:2": "La tripulación arrió la vela mayor antes de la tormenta.",
+"u392a-2:3": "El mástil crujía bajo la fuerza del viento.",
+"u392a-2:4": "La marea baja dejó la embarcación varada en la arena.",
+"u392a-3:0": "Navegamos de bolina contra el viento.",
+"u392a-3:1": "El chaleco salvavidas es obligatorio a bordo."
+},
+"u393": {
+"u393a-1:0": "Un té de manzanilla calma los cólicos.",
+"u393a-1:1": "La abuela preparaba infusiones de hierbabuena para la digestión.",
+"u393a-1:2": "El árnica se aplica en golpes y moretones.",
+"u393a-1:3": "La sábila sirve para aliviar las quemaduras.",
+"u393a-1:4": "El curandero receta hierbas según los síntomas.",
+"u393a-2:0": "Hacen una limpia con ramas de pirul y huevo.",
+"u393a-2:1": "El temazcal es un baño de vapor de origen prehispánico.",
+"u393a-2:2": "La ruda se usa contra el mal de ojo.",
+"u393a-2:3": "Un ungüento de eucalipto alivia la congestión.",
+"u393a-2:4": "El gordolobo se toma para la tos.",
+"u393a-3:0": "Algunos remedios caseros carecen de respaldo científico.",
+"u393a-3:1": "Las plantas medicinales se venden secas en los mercados.",
+"u393a-3:2": "Mezclar hierbas con medicamentos puede ser riesgoso."
+},
+"u394": {
+"u394a-1:0": "La escenografía se cambia a oscuras entre escenas.",
+"u394a-1:1": "El apuntador le soplaba el texto desde el foso.",
+"u394a-1:2": "La vestuarista cosió el disfraz minutos antes de la función.",
+"u394a-1:3": "Los tramoyistas mueven los decorados con poleas.",
+"u394a-1:4": "La utilería incluye una espada falsa y un candelabro.",
+"u394a-2:0": "El maquillista tardó una hora en envejecer al protagonista.",
+"u394a-2:1": "El reflector siguió a la bailarina por todo el escenario.",
+"u394a-2:2": "La taquilla agotó las entradas para el estreno.",
+"u394a-2:3": "Los camerinos son estrechos y no tienen ventanas.",
+"u394a-2:4": "El público ovacionó de pie a la compañía."
+},
+"u395": {
+"u395a-1:0": "La víbora de cascabel avisa antes de atacar.",
+"u395a-1:1": "El ajolote puede regenerar sus extremidades.",
+"u395a-1:2": "Las iguanas toman el sol sobre las piedras calientes.",
+"u395a-1:3": "El cocodrilo acechaba inmóvil en el pantano.",
+"u395a-1:4": "El veneno del coralillo es extremadamente potente.",
+"u395a-2:0": "Los renacuajos se transforman en sapos.",
+"u395a-2:1": "La lagartija perdió la cola al huir.",
+"u395a-2:2": "El camaleón se camufla entre las hojas.",
+"u395a-2:3": "Las salamandras necesitan ambientes húmedos.",
+"u395a-2:4": "La destrucción de los humedales amenaza a muchos anfibios."
+},
+"u396": {
+"u396a-1:0": "Sembramos jitomates, chiles y calabacitas.",
+"u396a-1:1": "Hay que deshierbar el surco cada semana.",
+"u396a-1:2": "Trasplantó las plántulas cuando tenían cuatro hojas.",
+"u396a-1:3": "Las babosas se comieron las lechugas.",
+"u396a-1:4": "Pusimos tutores para que las matas de frijol treparan.",
+"u396a-2:0": "Cosechamos los elotes a finales de agosto.",
+"u396a-2:1": "La rotación de cultivos evita que se agote el suelo.",
+"u396a-2:2": "Un espantapájaros ahuyentaba a los cuervos.",
+"u396a-2:3": "El acolchado conserva la humedad del suelo.",
+"u396a-2:4": "Las hierbas aromáticas crecen bien en macetas.",
+"u396a-3:0": "Guardamos semillas de la cosecha para el año siguiente."
+},
+"u397": {
+"u397a-1:0": "La imprenta de Gutenberg revolucionó la difusión del saber.",
+"u397a-1:1": "El tipógrafo componía las líneas letra por letra.",
+"u397a-1:2": "Los tipos móviles se fundían en plomo.",
+"u397a-1:3": "La prensa estampaba la tinta sobre el papel húmedo.",
+"u397a-1:4": "El interlineado amplio facilita la lectura.",
+"u397a-2:0": "Eligió una fuente con serifas para el cuerpo del texto.",
+"u397a-2:1": "Las cursivas se usan para los títulos de obras.",
+"u397a-2:2": "La primera imprenta del continente americano se instaló en la Ciudad de México.",
+"u397a-2:3": "Los márgenes generosos dan aire a la página.",
+"u397a-2:4": "El grabado en madera ilustraba los libros antiguos.",
+"u397a-3:0": "La serigrafía permite imprimir sobre tela.",
+"u397a-3:1": "El tiraje se imprimió en una rotativa nocturna.",
+"u397a-3:2": "Las mayúsculas iniciales estaban decoradas con oro."
+},
+"u398": {
+"u398a-1:0": "Un frente frío provocará descenso de temperaturas en el norte.",
+"u398a-1:1": "La presión atmosférica bajó de golpe antes del huracán.",
+"u398a-1:2": "El pronóstico prevé chubascos aislados por la tarde.",
+"u398a-1:3": "La humedad relativa supera el ochenta por ciento.",
+"u398a-1:4": "Una onda tropical se aproxima a las costas del Pacífico.",
+"u398a-2:0": "El ojo del ciclón pasó a cincuenta kilómetros del puerto.",
+"u398a-2:1": "Las rachas de viento alcanzarán los ochenta kilómetros por hora.",
+"u398a-2:2": "Se emitió una alerta por heladas en la sierra.",
+"u398a-2:3": "El satélite meteorológico detectó la formación de una tormenta.",
+"u398a-2:4": "La temporada de lluvias se adelantó este año.",
+"u398a-3:0": "El anticiclón mantendrá el cielo despejado.",
+"u398a-3:1": "Los modelos climáticos anticipan sequías más frecuentes."
 },
 "u4": {
 "u4a-1:0": "la ciudad",
