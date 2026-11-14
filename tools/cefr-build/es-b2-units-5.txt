@@ -1,0 +1,67 @@
+@u170|Crítica cultural|Talking about the arts|Reviewing films, books, exhibitions and music: <b>La trama es predecible, pero los personajes están muy bien construidos.</b> (The plot is predictable, but the characters are very well developed.), <b>La fotografía de la película es impresionante.</b> (The film's cinematography is stunning.) and <b>El final me dejó con muchas preguntas.</b> (The ending left me with a lot of questions.).|Review a cultural event you attended, with strengths and weaknesses.
+#u170a|Talking about the arts, part 1
+La trama es predecible, pero los personajes están muy bien construidos.|The plot is predictable, but the characters are very well developed.|
+La fotografía de la película es impresionante.|The film's cinematography is stunning.|
+El final me dejó con muchas preguntas.|The ending left me with a lot of questions.|
+La novela retrata la vida en un pueblo minero.|The novel portrays life in a mining town.|
+La autora mezcla el humor con la tragedia.|The author mixes humour with tragedy.|
+La obra fue censurada en su época.|The work was censored in its time.|
+El museo exhibe piezas que nunca se habían mostrado.|The museum is showing pieces that had never been displayed.|
+Su voz conmovió a todo el público.|Her voice moved the whole audience.|
+La crítica fue muy dura con el último disco.|The critics were very harsh on the latest album.|
+Es una adaptación fiel del libro original.|It's a faithful adaptation of the original book.|
+@u171|Familias de hoy|Families today|How families and relationships are changing: <b>Muchas parejas deciden no casarse.</b> (Many couples decide not to marry.), <b>Los abuelos cuidan a los nietos mientras los papás trabajan.</b> (Grandparents look after the grandchildren while the parents work.) and <b>Las familias se han vuelto más diversas.</b> (Families have become more diverse.).|Compare families today with families in your grandparents' time.
+#u171a|Families today, part 1
+Muchas parejas deciden no casarse.|Many couples decide not to marry.|
+Los abuelos cuidan a los nietos mientras los papás trabajan.|Grandparents look after the grandchildren while the parents work.|
+Las familias se han vuelto más diversas.|Families have become more diverse.|
+La conciliación entre el trabajo y la familia sigue siendo difícil.|Balancing work and family is still difficult.|
+Las tareas domésticas deberían repartirse por igual.|Housework should be shared equally.|
+Adoptaron a dos hermanos de un orfanato.|They adopted two siblings from an orphanage.|
+Mi familia está repartida entre tres países.|My family is spread across three countries.|
+La comunicación es la base de cualquier relación.|Communication is the basis of any relationship.|
+@u172|Deporte y sociedad|Sport and society|Sport as business, identity and social change: <b>El futbol mueve millones de pesos cada temporada.</b> (Football moves millions of pesos every season.), <b>Las futbolistas exigen igualdad salarial.</b> (Women footballers are demanding equal pay.) and <b>El deporte puede alejar a los jóvenes de la violencia.</b> (Sport can keep young people away from violence.).|Discuss whether professional athletes are paid too much.
+#u172a|Sport and society, part 1
+El futbol mueve millones de pesos cada temporada.|Football moves millions of pesos every season.|
+Las futbolistas exigen igualdad salarial.|Women footballers are demanding equal pay.|
+El deporte puede alejar a los jóvenes de la violencia.|Sport can keep young people away from violence.|
+El atleta dio positivo en una prueba de dopaje.|The athlete tested positive in a doping test.|
+La afición celebró el campeonato en las calles.|The fans celebrated the championship in the streets.|
+Organizar un mundial cuesta muchísimo dinero.|Hosting a World Cup costs a huge amount of money.|
+Los atletas paralímpicos ganaron más medallas que nunca.|The Paralympic athletes won more medals than ever.|
+Faltan instalaciones deportivas públicas en las colonias populares.|There's a lack of public sports facilities in working-class neighbourhoods.|
+El equipo remontó y ganó en el último minuto.|The team came from behind and won in the last minute.|
+El árbitro anuló el gol por fuera de lugar.|The referee disallowed the goal for offside.|
+@u173|Alimentación y sociedad|Food and society|The food industry, labelling and eating habits: <b>Los alimentos ultraprocesados dominan los supermercados.</b> (Ultra-processed foods dominate the supermarkets.), <b>Los sellos negros advierten sobre el exceso de azúcar y sal.</b> (The black labels warn about excess sugar and salt.) and <b>La milpa es un sistema de cultivo muy antiguo y sostenible.</b> (The milpa is a very old and sustainable farming system.).|Discuss whether the government should regulate what people eat.
+#u173a|Food and society, part 1
+Los alimentos ultraprocesados dominan los supermercados.|Ultra-processed foods dominate the supermarkets.|
+Los sellos negros advierten sobre el exceso de azúcar y sal.|The black labels warn about excess sugar and salt.|
+La milpa es un sistema de cultivo muy antiguo y sostenible.|The milpa is a very old and sustainable farming system.|
+El maíz transgénico ha generado mucha polémica.|Genetically modified corn has caused a lot of controversy.|
+Se desperdicia una gran cantidad de comida cada día.|A huge amount of food is wasted every day.|
+Los bancos de alimentos recogen lo que los supermercados no venden.|Food banks collect what supermarkets don't sell.|
+Comer bien no debería ser un lujo.|Eating well shouldn't be a luxury.|
+La cocina tradicional mexicana es Patrimonio Cultural de la Humanidad.|Traditional Mexican cuisine is part of the Cultural Heritage of Humanity.|
+Los mercados locales apoyan a los pequeños productores.|Local markets support small producers.|
+@u174|Memoria histórica|History and memory|Remembering the past and learning from it: <b>Los estudiantes marcharon pidiendo libertad y democracia.</b> (The students marched demanding freedom and democracy.), <b>Durante años, el gobierno ocultó lo que había pasado.</b> (For years, the government hid what had happened.) and <b>Los archivos se abrieron décadas después.</b> (The archives were opened decades later.).|Talk about an event in history that you think should never be forgotten.
+#u174a|History and memory, part 1
+Los estudiantes marcharon pidiendo libertad y democracia.|The students marched demanding freedom and democracy.|
+Durante años, el gobierno ocultó lo que había pasado.|For years, the government hid what had happened.|
+Los archivos se abrieron décadas después.|The archives were opened decades later.|
+Los sobrevivientes dieron su testimonio.|The survivors gave their testimony.|
+Recordar el pasado ayuda a no repetir los mismos errores.|Remembering the past helps us not to repeat the same mistakes.|
+El museo rinde homenaje a las víctimas.|The museum pays tribute to the victims.|
+La historia oficial no siempre cuenta toda la verdad.|Official history doesn't always tell the whole truth.|
+Cada generación reinterpreta su historia.|Each generation reinterprets its history.|
+Mis abuelos vivieron la Revolución de niños.|My grandparents lived through the Revolution as children.|
+@u175|Psicología cotidiana|Everyday psychology|Habits, motivation, stress and well-being: <b>Postergo las tareas que no me gustan.</b> (I put off the tasks I don't like.), <b>Me cuesta mucho poner límites.</b> (I find it very hard to set boundaries.) and <b>La autoestima se construye desde la infancia.</b> (Self-esteem is built from childhood.).|Explain what motivates you and what makes you procrastinate.
+#u175a|Everyday psychology, part 1
+Postergo las tareas que no me gustan.|I put off the tasks I don't like.|
+Me cuesta mucho poner límites.|I find it very hard to set boundaries.|
+La autoestima se construye desde la infancia.|Self-esteem is built from childhood.|
+El agotamiento laboral es cada vez más común.|Burnout is more and more common.|
+Practicar la gratitud mejora el estado de ánimo.|Practising gratitude improves your mood.|
+Compararse con los demás genera frustración.|Comparing yourself with others creates frustration.|
+La motivación aparece cuando ya empezaste, no antes.|Motivation comes once you've started, not before.|
+Pedir ayuda es una señal de fortaleza, no de debilidad.|Asking for help is a sign of strength, not weakness.|
+El cerebro necesita descanso para consolidar lo aprendido.|The brain needs rest to consolidate what it has learnt.|

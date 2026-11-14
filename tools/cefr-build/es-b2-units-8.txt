@@ -1,0 +1,68 @@
+@u188|Geografía de México|Mexico's geography|Regions, landscapes and natural features: <b>México tiene costas en dos océanos.</b> (Mexico has coasts on two oceans.), <b>La Sierra Madre Occidental atraviesa varios estados del norte.</b> (The Sierra Madre Occidental crosses several northern states.) and <b>El desierto de Sonora es uno de los más calurosos del continente.</b> (The Sonoran Desert is one of the hottest on the continent.).|Describe the geography of a country you know well.
+#u188a|Mexico's geography, part 1
+México tiene costas en dos océanos.|Mexico has coasts on two oceans.|
+La Sierra Madre Occidental atraviesa varios estados del norte.|The Sierra Madre Occidental crosses several northern states.|
+El desierto de Sonora es uno de los más calurosos del continente.|The Sonoran Desert is one of the hottest on the continent.|
+El Eje Neovolcánico cruza el país de costa a costa.|The Trans-Mexican Volcanic Belt crosses the country from coast to coast.|
+La selva Lacandona alberga una enorme biodiversidad.|The Lacandon Jungle is home to enormous biodiversity.|
+El lago de Chapala es el más grande del país.|Lake Chapala is the largest in the country.|
+El clima cambia muchísimo según la altitud.|The climate changes enormously with altitude.|
+En pocas horas puedes pasar del bosque a la playa.|In a few hours you can go from forest to beach.|
+La Ciudad de México está a más de dos mil doscientos metros de altura.|Mexico City is more than two thousand two hundred metres above sea level.|
+@u189|La vida universitaria|University life|Lectures, exams, theses and student life: <b>Tengo que entregar la tesis antes de que termine el semestre.</b> (I have to hand in my thesis before the semester ends.), <b>El profesor nos dejó leer tres capítulos para el lunes.</b> (The lecturer set us three chapters to read for Monday.) and <b>Me desvelé toda la noche estudiando para el final.</b> (I stayed up all night studying for the final.).|Describe a typical week at university, real or imagined.
+#u189a|University life, part 1
+Tengo que entregar la tesis antes de que termine el semestre.|I have to hand in my thesis before the semester ends.|
+El profesor nos dejó leer tres capítulos para el lunes.|The lecturer set us three chapters to read for Monday.|
+Me desvelé toda la noche estudiando para el final.|I stayed up all night studying for the final.|
+Saqué un nueve en el parcial.|I got a nine in the mid-term.|
+La biblioteca está abierta las veinticuatro horas en época de exámenes.|The library is open twenty-four hours during exam season.|
+Hice un intercambio de un semestre en Argentina.|I did a semester's exchange in Argentina.|
+Mi asesor de tesis es muy exigente.|My thesis supervisor is very demanding.|
+La vida universitaria también se trata de hacer amigos.|University life is also about making friends.|
+@u190|Cultura de internet|Internet culture|Memes, streaming, creators and online trends: <b>Ese meme se volvió viral en cuestión de horas.</b> (That meme went viral in a matter of hours.), <b>Muchos jóvenes quieren ser creadores de contenido.</b> (Many young people want to be content creators.) and <b>Veo series en plataformas de streaming casi todas las noches.</b> (I watch series on streaming platforms almost every night.).|Explain an internet trend to someone who never uses social media.
+#u190a|Internet culture, part 1
+Ese meme se volvió viral en cuestión de horas.|That meme went viral in a matter of hours.|
+Muchos jóvenes quieren ser creadores de contenido.|Many young people want to be content creators.|
+Veo series en plataformas de streaming casi todas las noches.|I watch series on streaming platforms almost every night.|
+Los comentarios en redes pueden ser muy crueles.|Comments on social media can be very cruel.|
+El algoritmo decide qué contenido vemos.|The algorithm decides what content we see.|
+Hizo una transmisión en vivo con miles de espectadores.|She did a live stream with thousands of viewers.|
+Las tendencias cambian cada semana.|Trends change every week.|
+Ganan dinero con patrocinios y publicidad.|They earn money from sponsorships and advertising.|
+Hay que tener cuidado con lo que publicas, porque queda para siempre.|You need to be careful what you post, because it stays forever.|
+Algunos podcasts tienen más audiencia que la radio tradicional.|Some podcasts have bigger audiences than traditional radio.|
+@u191|Cocina profesional|Professional cooking|Restaurant kitchens and cooking techniques: <b>El chef supervisa cada plato antes de que salga de la cocina.</b> (The chef checks every plate before it leaves the kitchen.), <b>Marinamos la carne durante toda la noche.</b> (We marinate the meat overnight.) and <b>La salsa se reduce a fuego lento hasta que espese.</b> (The sauce is reduced over a low heat until it thickens.).|Describe how a dish is prepared in a restaurant kitchen.
+#u191a|Professional cooking, part 1
+El chef supervisa cada plato antes de que salga de la cocina.|The chef checks every plate before it leaves the kitchen.|
+Marinamos la carne durante toda la noche.|We marinate the meat overnight.|
+La salsa se reduce a fuego lento hasta que espese.|The sauce is reduced over a low heat until it thickens.|
+Todos los ingredientes se cortan antes de empezar el servicio.|All the ingredients are cut before service starts.|
+El menú de degustación tiene siete tiempos.|The tasting menu has seven courses.|
+La cocina mexicana contemporánea reinterpreta recetas tradicionales.|Contemporary Mexican cuisine reinterprets traditional recipes.|
+Trabajar en una cocina es intenso y muy estresante.|Working in a kitchen is intense and very stressful.|
+Emplatar bien es casi tan importante como cocinar bien.|Plating up well is almost as important as cooking well.|
+La masa se nixtamaliza con cal para hacer tortillas.|The corn is nixtamalised with lime to make tortillas.|
+@u192|Votar y gobernar|Voting and government|Elections, parties and how the country is run: <b>Las elecciones presidenciales son cada seis años.</b> (Presidential elections are every six years.), <b>En México no hay reelección presidencial.</b> (In Mexico there is no presidential re-election.) and <b>El Congreso tiene dos cámaras: diputados y senadores.</b> (Congress has two chambers: deputies and senators.).|Explain how the government works in your country in simple terms.
+#u192a|Voting and government, part 1
+Las elecciones presidenciales son cada seis años.|Presidential elections are every six years.|
+En México no hay reelección presidencial.|In Mexico there is no presidential re-election.|
+El Congreso tiene dos cámaras: diputados y senadores.|Congress has two chambers: deputies and senators.|
+Los partidos presentaron a sus candidatos.|The parties presented their candidates.|
+La participación electoral fue más alta de lo esperado.|Voter turnout was higher than expected.|
+Los ciudadanos pueden votar desde los dieciocho años.|Citizens can vote from the age of eighteen.|
+El voto es libre y secreto.|The vote is free and secret.|
+Cada estado tiene su propio gobernador.|Each state has its own governor.|
+La oposición criticó el nuevo presupuesto.|The opposition criticised the new budget.|
+Una democracia necesita ciudadanos informados.|A democracy needs informed citizens.|
+@u193|Finanzas personales|Personal finance|Investing, credit scores and planning ahead: <b>Es buena idea invertir una parte de tus ahorros.</b> (It's a good idea to invest part of your savings.), <b>Mi historial crediticio mejoró cuando pagué a tiempo.</b> (My credit history improved when I paid on time.) and <b>Contraté un seguro de vida para proteger a mi familia.</b> (I took out life insurance to protect my family.).|Give advice to a young person about managing money.
+#u193a|Personal finance, part 1
+Es buena idea invertir una parte de tus ahorros.|It's a good idea to invest part of your savings.|
+Mi historial crediticio mejoró cuando pagué a tiempo.|My credit history improved when I paid on time.|
+Contraté un seguro de vida para proteger a mi familia.|I took out life insurance to protect my family.|
+Estoy ahorrando para el enganche de una casa.|I'm saving for the deposit on a house.|
+Los intereses de la tarjeta son altísimos.|The card's interest is extremely high.|
+Diversificar las inversiones reduce el riesgo.|Diversifying investments reduces risk.|
+Hay que pensar en el retiro desde joven.|You have to think about retirement from a young age.|
+Desconfía de las inversiones que prometen ganancias rápidas.|Be wary of investments promising quick profits.|
+Hice un presupuesto mensual y por fin me alcanza.|I made a monthly budget and finally my money stretches.|
+La educación financiera debería enseñarse en las escuelas.|Financial education should be taught in schools.|

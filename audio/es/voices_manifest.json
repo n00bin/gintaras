@@ -31,6 +31,12 @@
 "cv3:6": "¿Te levantas temprano?",
 "cv3:8": "¿A qué hora?"
 },
+"charon_cv38": {
+"cv38:0": "Los estudios muestran una lesión en el menisco. Tenemos dos opciones: cirugía o un tratamiento con fisioterapia.",
+"cv38:2": "La cirugía es más rápida, pero tiene riesgos y una recuperación de seis semanas. La fisioterapia es más lenta, pero menos invasiva.",
+"cv38:4": "Entre tres y cuatro meses, siempre y cuando haga los ejercicios todos los días.",
+"cv38:6": "Claro, es una decisión muy razonable. Le voy a dar la orden para empezar la próxima semana."
+},
 "charon_cv5": {
 "cv5:0": "Buenos días.",
 "cv5:10": "¿Vas al parque?",
@@ -269,6 +275,46 @@
 "cv33:5": "En el centro sí, pero te recomiendo que tomes un taxi de aplicación para regresar al hotel.",
 "cv33:7": "De nada. Que disfrutes mucho tu visita."
 },
+"despina_cv34": {
+"cv34:0": "Le aviso que a partir del próximo mes la renta va a subir un veinte por ciento.",
+"cv34:1": "Entiendo que los precios han subido, pero un veinte por ciento me parece demasiado.",
+"cv34:2": "Es lo que están cobrando todos en la colonia.",
+"cv34:3": "Llevo cuatro años aquí, siempre he pagado a tiempo y nunca le he dado problemas.",
+"cv34:4": "Eso es cierto, nunca he tenido problemas con usted.",
+"cv34:5": "¿Qué le parece si lo dejamos en un diez por ciento y firmo por dos años más?",
+"cv34:6": "Mmm. Un contrato de dos años me da tranquilidad. ¿Qué tal doce por ciento?",
+"cv34:7": "Está bien, doce por ciento, siempre y cuando arregle la humedad del baño este mes."
+},
+"despina_cv35": {
+"cv35:1": "Quería hablar de mi sueldo. Este año asumí muchas más responsabilidades.",
+"cv35:3": "Lo entiendo. Sin embargo, mi equipo aumentó las ventas un treinta por ciento y mi sueldo sigue igual desde hace dos años.",
+"cv35:5": "Un aumento del quince por ciento me parecería justo, considerando los resultados.",
+"cv35:7": "Acepto, siempre que la revisión de seis meses quede por escrito."
+},
+"despina_cv36": {
+"cv36:1": "Sí, ya me di cuenta. Fue un error mío y lo siento muchísimo.",
+"cv36:3": "Ya les escribí a los dos clientes para pedirles disculpas y explicarles lo que pasó.",
+"cv36:5": "Propongo que alguien revise los correos importantes antes de mandarlos, por lo menos durante un tiempo.",
+"cv36:7": "Te lo agradezco mucho. Y de nuevo, perdón por meterte en este problema."
+},
+"despina_cv37": {
+"cv37:1": "No estoy tan seguro. Está comprobado que más calles solo atraen más carros.",
+"cv37:3": "Por eso hay que invertir en él. Si el metro y los camiones fueran buenos, mucha gente dejaría el carro.",
+"cv37:5": "Construir segundos pisos también es carísimo, y además contamina más.",
+"cv37:7": "Puede ser, pero yo le daría prioridad al transporte público y a las ciclovías."
+},
+"despina_cv38": {
+"cv38:1": "¿Cuáles serían las ventajas y desventajas de cada una?",
+"cv38:3": "Si eligiera la fisioterapia, ¿cuánto tiempo tardaría en poder correr otra vez?",
+"cv38:5": "Prefiero intentar primero con la fisioterapia. Si no funciona, ¿podríamos considerar la cirugía después?",
+"cv38:7": "Muchas gracias por explicarme todo con tanta paciencia."
+},
+"despina_cv39": {
+"cv39:1": "No sabía nada. Debes estar muy dolida.",
+"cv39:3": "¿Ya hablaste con él? A lo mejor no se dio cuenta de lo importante que era para ti.",
+"cv39:5": "Te entiendo, pero llevan diez años de amistad. Sería una lástima perder eso sin escuchar su versión.",
+"cv39:7": "Claro, con gusto. Pero la plática es entre ustedes; yo solo los acompaño."
+},
 "despina_cv4": {
 "cv4:1": "Una mesa para dos, por favor.",
 "cv4:10": "Un café con leche, por favor.",
@@ -280,6 +326,36 @@
 "cv4:7o0": "Quiero pollo, por favor.",
 "cv4:7o1": "No como carne. Quiero sopa.",
 "cv4:8": "Agua sin gas, por favor."
+},
+"despina_cv40": {
+"cv40:1": "Así es. Llevo un mes sin internet estable y he llamado seis veces. Cada vez me prometen una solución y nadie viene.",
+"cv40:3": "Le agradezco la disculpa, pero necesito una solución concreta y una fecha.",
+"cv40:5": "De acuerdo. Además, considero justo que no me cobren este mes, porque no tuve el servicio que pagué.",
+"cv40:7": "Perfecto. ¿Me puede dar un número de folio para darle seguimiento?"
+},
+"despina_cv41": {
+"cv41:1": "Mamá, me alegra que no haya sido grave, pero me preocupa que estés sola todo el día.",
+"cv41:3": "Lo sé, y admiro mucho lo independiente que eres. No quiero quitarte eso.",
+"cv41:5": "¿Qué te parece si viene alguien solo en las mañanas, para ayudarte con las compras y la limpieza?",
+"cv41:7": "Primero la conocemos tú y yo, y si no te cae bien, buscamos a otra persona. Tú decides."
+},
+"despina_cv42": {
+"cv42:1": "¿Nos dieron alguna explicación? Teníamos un contrato firmado.",
+"cv42:3": "Entonces tienen que devolvernos el anticipo y, si es posible, ayudarnos a encontrar otro lugar.",
+"cv42:5": "Considerando que muchos asistentes vienen de fuera, yo preferiría el lugar céntrico, aunque cueste más.",
+"cv42:7": "Podríamos buscar un patrocinador o subir un poco el precio de los boletos. Mañana lo platico con la dirección."
+},
+"despina_cv43": {
+"cv43:1": "Con todo respeto, tío, no creo que sea tan sencillo.",
+"cv43:3": "Es verdad que ustedes trabajaron muchísimo. Pero en esa época un sueldo alcanzaba para comprar una casa, y ahora no.",
+"cv43:5": "Muchos trabajan en dos empleos y aun así no les alcanza. No es falta de ganas, es que las condiciones cambiaron.",
+"cv43:7": "Y también es cierto que tenemos mucho que aprender de su generación. Podríamos platicarlo con más calma otro día."
+},
+"despina_cv44": {
+"cv44:1": "Surgió durante la pandemia, cuando nos dimos cuenta de que muchos vecinos no tenían dónde salir ni con quién platicar.",
+"cv44:3": "Era un terreno abandonado. Hablamos con el municipio y aceptaron prestárnoslo siempre que lo mantuviéramos limpio.",
+"cv44:5": "Jitomate, chile, calabaza, hierbas de olor y flores para atraer a las abejas. Todo sin químicos.",
+"cv44:7": "Que empiecen con algo pequeño y que involucren a los niños. Lo más valioso no es la cosecha, sino la comunidad que se crea."
 },
 "despina_cv5": {
 "cv5:1": "Perdón. ¿Me puede ayudar?",
@@ -339,6 +415,12 @@
 "me2:cv12:1~f": "Estoy enferma.",
 "me2:cv2:7o1~f": "No. Soy maestra.",
 "me2:cv8:1~f": "Estoy contenta."
+},
+"iapetus_cv43": {
+"cv43:0": "Los jóvenes de hoy no quieren trabajar. Todo lo quieren fácil.",
+"cv43:2": "¿Cómo no? En mis tiempos trabajábamos de sol a sol sin quejarnos.",
+"cv43:4": "Pues que trabajen más.",
+"cv43:6": "Bueno, puede que tengas algo de razón."
 },
 "kore_cv1": {
 "cv1:0": "¡Buenos días!",
@@ -438,6 +520,12 @@
 "cv26:2": "¡No manches! ¿Y qué hiciste?",
 "cv26:4": "¿Y tardó mucho?",
 "cv26:6": "¡Pobre! ¿Por qué no me avisaste?"
+},
+"kore_cv39": {
+"cv39:0": "¿Supiste lo de Beto? Ya no le hablo. Le conté un secreto y se lo dijo a todo el grupo.",
+"cv39:2": "Sí, mucho. Confiaba en él más que en nadie.",
+"cv39:4": "No quiero ni verlo.",
+"cv39:6": "Bueno… tal vez. ¿Tú podrías estar ahí cuando hablemos?"
 },
 "kore_cv4": {
 "cv4:0": "Buenas tardes.",
@@ -706,6 +794,46 @@
 "cv33:5": "En el centro sí, pero te recomiendo que tomes un taxi de aplicación para regresar al hotel.",
 "cv33:7": "De nada. Que disfrutes mucho tu visita."
 },
+"orus_cv34": {
+"cv34:1": "Entiendo que los precios han subido, pero un veinte por ciento me parece demasiado.",
+"cv34:3": "Llevo cuatro años aquí, siempre he pagado a tiempo y nunca le he dado problemas.",
+"cv34:5": "¿Qué le parece si lo dejamos en un diez por ciento y firmo por dos años más?",
+"cv34:7": "Está bien, doce por ciento, siempre y cuando arregle la humedad del baño este mes."
+},
+"orus_cv35": {
+"cv35:1": "Quería hablar de mi sueldo. Este año asumí muchas más responsabilidades.",
+"cv35:3": "Lo entiendo. Sin embargo, mi equipo aumentó las ventas un treinta por ciento y mi sueldo sigue igual desde hace dos años.",
+"cv35:5": "Un aumento del quince por ciento me parecería justo, considerando los resultados.",
+"cv35:7": "Acepto, siempre que la revisión de seis meses quede por escrito."
+},
+"orus_cv36": {
+"cv36:1": "Sí, ya me di cuenta. Fue un error mío y lo siento muchísimo.",
+"cv36:3": "Ya les escribí a los dos clientes para pedirles disculpas y explicarles lo que pasó.",
+"cv36:5": "Propongo que alguien revise los correos importantes antes de mandarlos, por lo menos durante un tiempo.",
+"cv36:7": "Te lo agradezco mucho. Y de nuevo, perdón por meterte en este problema."
+},
+"orus_cv37": {
+"cv37:0": "Yo creo que la solución al tráfico es construir más avenidas y segundos pisos.",
+"cv37:1": "No estoy tan seguro. Está comprobado que más calles solo atraen más carros.",
+"cv37:2": "Pero la gente necesita moverse, y el transporte público es lento e inseguro.",
+"cv37:3": "Por eso hay que invertir en él. Si el metro y los camiones fueran buenos, mucha gente dejaría el carro.",
+"cv37:4": "Eso suena bonito, pero cuesta muchísimo dinero.",
+"cv37:5": "Construir segundos pisos también es carísimo, y además contamina más.",
+"cv37:6": "Bueno, a lo mejor la respuesta es un poco de las dos cosas.",
+"cv37:7": "Puede ser, pero yo le daría prioridad al transporte público y a las ciclovías."
+},
+"orus_cv38": {
+"cv38:1": "¿Cuáles serían las ventajas y desventajas de cada una?",
+"cv38:3": "Si eligiera la fisioterapia, ¿cuánto tiempo tardaría en poder correr otra vez?",
+"cv38:5": "Prefiero intentar primero con la fisioterapia. Si no funciona, ¿podríamos considerar la cirugía después?",
+"cv38:7": "Muchas gracias por explicarme todo con tanta paciencia."
+},
+"orus_cv39": {
+"cv39:1": "No sabía nada. Debes estar muy dolida.",
+"cv39:3": "¿Ya hablaste con él? A lo mejor no se dio cuenta de lo importante que era para ti.",
+"cv39:5": "Te entiendo, pero llevan diez años de amistad. Sería una lástima perder eso sin escuchar su versión.",
+"cv39:7": "Claro, con gusto. Pero la plática es entre ustedes; yo solo los acompaño."
+},
 "orus_cv4": {
 "cv4:1": "Una mesa para dos, por favor.",
 "cv4:10": "Un café con leche, por favor.",
@@ -717,6 +845,36 @@
 "cv4:7o0": "Quiero pollo, por favor.",
 "cv4:7o1": "No como carne. Quiero sopa.",
 "cv4:8": "Agua sin gas, por favor."
+},
+"orus_cv40": {
+"cv40:1": "Así es. Llevo un mes sin internet estable y he llamado seis veces. Cada vez me prometen una solución y nadie viene.",
+"cv40:3": "Le agradezco la disculpa, pero necesito una solución concreta y una fecha.",
+"cv40:5": "De acuerdo. Además, considero justo que no me cobren este mes, porque no tuve el servicio que pagué.",
+"cv40:7": "Perfecto. ¿Me puede dar un número de folio para darle seguimiento?"
+},
+"orus_cv41": {
+"cv41:1": "Mamá, me alegra que no haya sido grave, pero me preocupa que estés sola todo el día.",
+"cv41:3": "Lo sé, y admiro mucho lo independiente que eres. No quiero quitarte eso.",
+"cv41:5": "¿Qué te parece si viene alguien solo en las mañanas, para ayudarte con las compras y la limpieza?",
+"cv41:7": "Primero la conocemos tú y yo, y si no te cae bien, buscamos a otra persona. Tú decides."
+},
+"orus_cv42": {
+"cv42:1": "¿Nos dieron alguna explicación? Teníamos un contrato firmado.",
+"cv42:3": "Entonces tienen que devolvernos el anticipo y, si es posible, ayudarnos a encontrar otro lugar.",
+"cv42:5": "Considerando que muchos asistentes vienen de fuera, yo preferiría el lugar céntrico, aunque cueste más.",
+"cv42:7": "Podríamos buscar un patrocinador o subir un poco el precio de los boletos. Mañana lo platico con la dirección."
+},
+"orus_cv43": {
+"cv43:1": "Con todo respeto, tío, no creo que sea tan sencillo.",
+"cv43:3": "Es verdad que ustedes trabajaron muchísimo. Pero en esa época un sueldo alcanzaba para comprar una casa, y ahora no.",
+"cv43:5": "Muchos trabajan en dos empleos y aun así no les alcanza. No es falta de ganas, es que las condiciones cambiaron.",
+"cv43:7": "Y también es cierto que tenemos mucho que aprender de su generación. Podríamos platicarlo con más calma otro día."
+},
+"orus_cv44": {
+"cv44:1": "Surgió durante la pandemia, cuando nos dimos cuenta de que muchos vecinos no tenían dónde salir ni con quién platicar.",
+"cv44:3": "Era un terreno abandonado. Hablamos con el municipio y aceptaron prestárnoslo siempre que lo mantuviéramos limpio.",
+"cv44:5": "Jitomate, chile, calabaza, hierbas de olor y flores para atraer a las abejas. Todo sin químicos.",
+"cv44:7": "Que empiecen con algo pequeño y que involucren a los niños. Lo más valioso no es la cosecha, sino la comunidad que se crea."
 },
 "orus_cv5": {
 "cv5:1": "Perdón. ¿Me puede ayudar?",

@@ -104,7 +104,51 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv34": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv35": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv36": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv37": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv38": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv39": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv4": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv40": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv41": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv42": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv43": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv44": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -368,7 +412,43 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u149": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u15": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u150": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u151": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u152": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u153": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u154": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u155": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u156": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u157": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -1086,6 +1166,66 @@
 "cv33:6": "¡Muchas gracias! Eres muy amable.",
 "cv33:7": "De nada. Que disfrutes mucho tu visita."
 },
+"cv34": {
+"cv34:0": "Le aviso que a partir del próximo mes la renta va a subir un veinte por ciento.",
+"cv34:1": "Entiendo que los precios han subido, pero un veinte por ciento me parece demasiado.",
+"cv34:2": "Es lo que están cobrando todos en la colonia.",
+"cv34:3": "Llevo cuatro años aquí, siempre he pagado a tiempo y nunca le he dado problemas.",
+"cv34:4": "Eso es cierto, nunca he tenido problemas con usted.",
+"cv34:5": "¿Qué le parece si lo dejamos en un diez por ciento y firmo por dos años más?",
+"cv34:6": "Mmm. Un contrato de dos años me da tranquilidad. ¿Qué tal doce por ciento?",
+"cv34:7": "Está bien, doce por ciento, siempre y cuando arregle la humedad del baño este mes."
+},
+"cv35": {
+"cv35:0": "Usted pidió esta reunión. ¿De qué quería hablar?",
+"cv35:1": "Quería hablar de mi sueldo. Este año asumí muchas más responsabilidades.",
+"cv35:2": "Lo sé, y estamos contentos con su trabajo. Pero el presupuesto este año está muy ajustado.",
+"cv35:3": "Lo entiendo. Sin embargo, mi equipo aumentó las ventas un treinta por ciento y mi sueldo sigue igual desde hace dos años.",
+"cv35:4": "¿Cuánto tenía en mente?",
+"cv35:5": "Un aumento del quince por ciento me parecería justo, considerando los resultados.",
+"cv35:6": "No puedo comprometerme a eso ahora, pero podría darle un diez por ciento y revisarlo en seis meses.",
+"cv35:7": "Acepto, siempre que la revisión de seis meses quede por escrito."
+},
+"cv36": {
+"cv36:0": "¿Viste lo que pasó? Mandaste la cotización de un cliente a otro cliente. Ahora los dos están molestos.",
+"cv36:1": "Sí, ya me di cuenta. Fue un error mío y lo siento muchísimo.",
+"cv36:2": "El problema es que la información era confidencial.",
+"cv36:3": "Ya les escribí a los dos clientes para pedirles disculpas y explicarles lo que pasó.",
+"cv36:4": "Bueno, eso ayuda. ¿Y cómo evitamos que vuelva a pasar?",
+"cv36:5": "Propongo que alguien revise los correos importantes antes de mandarlos, por lo menos durante un tiempo.",
+"cv36:6": "Me parece bien. Yo te puedo ayudar a revisarlos.",
+"cv36:7": "Te lo agradezco mucho. Y de nuevo, perdón por meterte en este problema."
+},
+"cv37": {
+"cv37:0": "Yo creo que la solución al tráfico es construir más avenidas y segundos pisos.",
+"cv37:1": "No estoy tan seguro. Está comprobado que más calles solo atraen más carros.",
+"cv37:2": "Pero la gente necesita moverse, y el transporte público es lento e inseguro.",
+"cv37:3": "Por eso hay que invertir en él. Si el metro y los camiones fueran buenos, mucha gente dejaría el carro.",
+"cv37:4": "Eso suena bonito, pero cuesta muchísimo dinero.",
+"cv37:5": "Construir segundos pisos también es carísimo, y además contamina más.",
+"cv37:6": "Bueno, a lo mejor la respuesta es un poco de las dos cosas.",
+"cv37:7": "Puede ser, pero yo le daría prioridad al transporte público y a las ciclovías."
+},
+"cv38": {
+"cv38:0": "Los estudios muestran una lesión en el menisco. Tenemos dos opciones: cirugía o un tratamiento con fisioterapia.",
+"cv38:1": "¿Cuáles serían las ventajas y desventajas de cada una?",
+"cv38:2": "La cirugía es más rápida, pero tiene riesgos y una recuperación de seis semanas. La fisioterapia es más lenta, pero menos invasiva.",
+"cv38:3": "Si eligiera la fisioterapia, ¿cuánto tiempo tardaría en poder correr otra vez?",
+"cv38:4": "Entre tres y cuatro meses, siempre y cuando haga los ejercicios todos los días.",
+"cv38:5": "Prefiero intentar primero con la fisioterapia. Si no funciona, ¿podríamos considerar la cirugía después?",
+"cv38:6": "Claro, es una decisión muy razonable. Le voy a dar la orden para empezar la próxima semana.",
+"cv38:7": "Muchas gracias por explicarme todo con tanta paciencia."
+},
+"cv39": {
+"cv39:0": "¿Supiste lo de Beto? Ya no le hablo. Le conté un secreto y se lo dijo a todo el grupo.",
+"cv39:1": "No sabía nada. Debes estar muy dolida.",
+"cv39:2": "Sí, mucho. Confiaba en él más que en nadie.",
+"cv39:3": "¿Ya hablaste con él? A lo mejor no se dio cuenta de lo importante que era para ti.",
+"cv39:4": "No quiero ni verlo.",
+"cv39:5": "Te entiendo, pero llevan diez años de amistad. Sería una lástima perder eso sin escuchar su versión.",
+"cv39:6": "Bueno… tal vez. ¿Tú podrías estar ahí cuando hablemos?",
+"cv39:7": "Claro, con gusto. Pero la plática es entre ustedes; yo solo los acompaño."
+},
 "cv4": {
 "cv4:0": "Buenas tardes.",
 "cv4:1": "Una mesa para dos, por favor.",
@@ -1107,6 +1247,56 @@
 "cv4:7o1-0": "Está bien.",
 "cv4:8": "Agua sin gas, por favor.",
 "cv4:9": "Sí. ¿Un café?"
+},
+"cv40": {
+"cv40:0": "Buenas tardes, soy la supervisora del área. Me dicen que tiene un problema con su servicio.",
+"cv40:1": "Así es. Llevo un mes sin internet estable y he llamado seis veces. Cada vez me prometen una solución y nadie viene.",
+"cv40:2": "Veo los reportes. Le ofrezco una disculpa; no es el servicio que queremos dar.",
+"cv40:3": "Le agradezco la disculpa, pero necesito una solución concreta y una fecha.",
+"cv40:4": "Puedo mandar a un técnico especializado mañana entre nueve y once.",
+"cv40:5": "De acuerdo. Además, considero justo que no me cobren este mes, porque no tuve el servicio que pagué.",
+"cv40:6": "Me parece razonable. Le aplico un descuento del cien por ciento en la próxima factura.",
+"cv40:7": "Perfecto. ¿Me puede dar un número de folio para darle seguimiento?"
+},
+"cv41": {
+"cv41:0": "Ya te dije que estoy bien. Fue solo una caída.",
+"cv41:1": "Mamá, me alegra que no haya sido grave, pero me preocupa que estés sola todo el día.",
+"cv41:2": "Siempre he vivido sola desde que murió tu papá, y nunca me ha pasado nada.",
+"cv41:3": "Lo sé, y admiro mucho lo independiente que eres. No quiero quitarte eso.",
+"cv41:4": "¿Entonces?",
+"cv41:5": "¿Qué te parece si viene alguien solo en las mañanas, para ayudarte con las compras y la limpieza?",
+"cv41:6": "Mmm… no me gusta tener extraños en mi casa.",
+"cv41:7": "Primero la conocemos tú y yo, y si no te cae bien, buscamos a otra persona. Tú decides."
+},
+"cv42": {
+"cv42:0": "Tenemos un problema grave: el hotel canceló el salón para el congreso. Faltan tres semanas.",
+"cv42:1": "¿Nos dieron alguna explicación? Teníamos un contrato firmado.",
+"cv42:2": "Dicen que hubo una inundación en el sótano y tienen que remodelar.",
+"cv42:3": "Entonces tienen que devolvernos el anticipo y, si es posible, ayudarnos a encontrar otro lugar.",
+"cv42:4": "Encontré dos opciones: un centro de convenciones caro pero céntrico, o una universidad más barata, pero lejos.",
+"cv42:5": "Considerando que muchos asistentes vienen de fuera, yo preferiría el lugar céntrico, aunque cueste más.",
+"cv42:6": "¿Y el presupuesto? Nos pasaríamos por unos cincuenta mil pesos.",
+"cv42:7": "Podríamos buscar un patrocinador o subir un poco el precio de los boletos. Mañana lo platico con la dirección."
+},
+"cv43": {
+"cv43:0": "Los jóvenes de hoy no quieren trabajar. Todo lo quieren fácil.",
+"cv43:1": "Con todo respeto, tío, no creo que sea tan sencillo.",
+"cv43:2": "¿Cómo no? En mis tiempos trabajábamos de sol a sol sin quejarnos.",
+"cv43:3": "Es verdad que ustedes trabajaron muchísimo. Pero en esa época un sueldo alcanzaba para comprar una casa, y ahora no.",
+"cv43:4": "Pues que trabajen más.",
+"cv43:5": "Muchos trabajan en dos empleos y aun así no les alcanza. No es falta de ganas, es que las condiciones cambiaron.",
+"cv43:6": "Bueno, puede que tengas algo de razón.",
+"cv43:7": "Y también es cierto que tenemos mucho que aprender de su generación. Podríamos platicarlo con más calma otro día."
+},
+"cv44": {
+"cv44:0": "Hoy nos acompaña quien fundó el huerto comunitario de la colonia. ¿Cómo surgió la idea?",
+"cv44:1": "Surgió durante la pandemia, cuando nos dimos cuenta de que muchos vecinos no tenían dónde salir ni con quién platicar.",
+"cv44:2": "¿Y cómo consiguieron el terreno?",
+"cv44:3": "Era un terreno abandonado. Hablamos con el municipio y aceptaron prestárnoslo siempre que lo mantuviéramos limpio.",
+"cv44:4": "¿Qué siembran ahí?",
+"cv44:5": "Jitomate, chile, calabaza, hierbas de olor y flores para atraer a las abejas. Todo sin químicos.",
+"cv44:6": "¿Qué le diría a otras colonias que quieran hacer algo parecido?",
+"cv44:7": "Que empiecen con algo pequeño y que involucren a los niños. Lo más valioso no es la cosecha, sino la comunidad que se crea."
 },
 "cv5": {
 "cv5:0": "Buenos días.",
@@ -2144,6 +2334,20 @@
 "u148b-1:3": "Firmé de recibido y me dieron el paquete.",
 "u148b-1:4": "Pon la dirección completa con número interior."
 },
+"u149": {
+"u149a-1:0": "Cuando llegues, avísame.",
+"u149a-1:1": "Te lo explico para que entiendas.",
+"u149a-1:2": "En cuanto termine, te llamo.",
+"u149a-1:3": "Hasta que no me pagues, no te ayudo.",
+"u149a-1:4": "Vamos a salir antes de que empiece a llover.",
+"u149a-2:0": "Cuando sea grande, quiero ser piloto.",
+"u149b-1:0": "Habla más fuerte para que todos te oigan.",
+"u149b-1:1": "Aunque llueva, vamos a ir a la playa.",
+"u149b-1:2": "Aunque llueve, salgo a correr.",
+"u149b-1:3": "Salió sin que nadie lo viera.",
+"u149b-1:4": "Te presto el carro con tal de que me lo devuelvas lleno.",
+"u149b-2:0": "En caso de que no puedas venir, mándame un mensaje."
+},
 "u15": {
 "u15a-1:0": "el restaurante",
 "u15a-1:1": "el menú",
@@ -2165,6 +2369,128 @@
 "u15d-1:2": "en efectivo",
 "u15d-1:3": "la propina",
 "u15d-1:4": "¡Buen provecho!"
+},
+"u150": {
+"u150a-1:0": "Me pidió que viniera temprano.",
+"u150a-1:1": "Mi papá quería que fuera ingeniero.",
+"u150a-1:2": "Les dije que no hicieran ruido.",
+"u150a-1:3": "Esperaba que me llamaras.",
+"u150a-1:4": "Era necesario que todos estuvieran de acuerdo.",
+"u150a-2:0": "No creía que fuera posible.",
+"u150b-1:0": "Quisiera hacer una reservación.",
+"u150b-1:1": "Ojalá tuviera más tiempo.",
+"u150b-1:2": "Me habló como si fuéramos amigos de toda la vida.",
+"u150b-1:3": "Si pudieras cambiar algo, ¿qué cambiarías?"
+},
+"u151": {
+"u151a-1:0": "Si tuviera dinero, viajaría por todo el mundo.",
+"u151a-1:1": "Si fuera tú, aceptaría el trabajo.",
+"u151a-1:2": "Si viviera cerca del mar, nadaría todos los días.",
+"u151a-1:3": "Si supiera la respuesta, te la diría.",
+"u151a-1:4": "Si no lloviera tanto, saldríamos a caminar.",
+"u151a-2:0": "¿Qué harías si perdieras tu trabajo?",
+"u151a-2:1": "Si tuviéramos un jardín, tendríamos un perro."
+},
+"u152": {
+"u152a-1:0": "Cuando llegué a la estación, el tren ya se había ido.",
+"u152a-1:1": "Nunca había visto tanta gente junta.",
+"u152a-1:2": "Me di cuenta de que había olvidado la cartera.",
+"u152a-1:3": "Ya habíamos cenado cuando nos invitaron.",
+"u152a-1:4": "Me dijo que nunca había salido de su pueblo.",
+"u152a-2:0": "Para entonces, ya habían cerrado la tienda."
+},
+"u153": {
+"u153a-1:0": "Se venden departamentos en esta zona.",
+"u153a-1:1": "Se habla español e inglés.",
+"u153a-1:2": "Se dice que va a subir la gasolina.",
+"u153a-1:3": "En México se come mucho maíz.",
+"u153a-1:4": "Aquí no se permite fumar.",
+"u153a-2:0": "Se busca persona con experiencia.",
+"u153b-1:0": "El puente fue construido en mil novecientos diez.",
+"u153b-1:1": "La ley fue aprobada por el Congreso.",
+"u153b-1:2": "Los ganadores serán anunciados mañana.",
+"u153b-1:3": "El ladrón fue detenido en la frontera.",
+"u153b-1:4": "La novela fue traducida a veinte idiomas."
+},
+"u154": {
+"u154a-1:0": "Para el viernes habré terminado el proyecto.",
+"u154a-1:1": "Yo en tu lugar no habría dicho nada.",
+"u154a-1:2": "Si hubiera sabido, habría venido antes.",
+"u154a-1:3": "¿Qué habrá pasado con Luis?",
+"u154a-1:4": "Ya habrán llegado a Puebla.",
+"u154a-2:0": "Me habría gustado conocer a mi abuelo."
+},
+"u155": {
+"u155a-1:0": "Le agradezco su atención.",
+"u155a-1:1": "Por medio de la presente le informo que su solicitud fue aceptada.",
+"u155a-1:2": "Le ruego que me envíe la documentación.",
+"u155a-1:3": "Sin otro particular, le envío un cordial saludo.",
+"u155a-1:4": "Quedo a sus órdenes para cualquier aclaración.",
+"u155b-1:0": "Gracias, eres un sol.",
+"u155b-1:1": "Oye, ¿me echas la mano con algo?",
+"u155b-1:2": "No te agüites, todo va a salir bien.",
+"u155b-1:3": "¿Nos vemos al rato?",
+"u155b-1:4": "Ahí nos vidrios."
+},
+"u156": {
+"u156a-1:0": "Hay que echarle ganas.",
+"u156a-1:1": "Metí la pata con mi jefe.",
+"u156a-1:2": "Ese examen fue pan comido.",
+"u156a-1:3": "Estás en las nubes.",
+"u156a-1:4": "Ponte las pilas, que ya casi es el examen.",
+"u156a-2:0": "Ese carro le costó un ojo de la cara.",
+"u156b-1:0": "Me dio el avión toda la plática.",
+"u156b-1:1": "Ya estoy hasta el gorro de tanto tráfico.",
+"u156b-1:2": "Me hice bolas con las instrucciones.",
+"u156b-1:3": "No le busques tres pies al gato.",
+"u156b-1:4": "Es muy directa, no tiene pelos en la lengua.",
+"u156b-2:0": "La película me sacó de onda."
+},
+"u157": {
+"u157a-1:0": "Entiendo que los precios han subido, pero un veinte por ciento me parece demasiado.",
+"u157a-1:1": "Llevo cuatro años aquí, siempre he pagado a tiempo y nunca le he dado problemas.",
+"u157a-1:2": "¿Qué le parece si lo dejamos en un diez por ciento y firmo por dos años más?",
+"u157a-1:3": "Está bien, doce por ciento, siempre y cuando arregle la humedad del baño este mes.",
+"u157a-1:4": "Quería hablar de mi sueldo. Este año asumí muchas más responsabilidades.",
+"u157a-2:0": "Lo entiendo. Sin embargo, mi equipo aumentó las ventas un treinta por ciento y mi sueldo sigue igual desde hace dos años.",
+"u157a-2:1": "Un aumento del quince por ciento me parecería justo, considerando los resultados.",
+"u157a-2:2": "Acepto, siempre que la revisión de seis meses quede por escrito.",
+"u157a-2:3": "Sí, ya me di cuenta. Fue un error mío y lo siento muchísimo.",
+"u157a-2:4": "Ya les escribí a los dos clientes para pedirles disculpas y explicarles lo que pasó.",
+"u157b-1:0": "Propongo que alguien revise los correos importantes antes de mandarlos, por lo menos durante un tiempo.",
+"u157b-1:1": "Te lo agradezco mucho. Y de nuevo, perdón por meterte en este problema.",
+"u157b-1:2": "No estoy tan seguro. Está comprobado que más calles solo atraen más carros.",
+"u157b-1:3": "Por eso hay que invertir en él. Si el metro y los camiones fueran buenos, mucha gente dejaría el carro.",
+"u157b-1:4": "Construir segundos pisos también es carísimo, y además contamina más.",
+"u157b-2:0": "Puede ser, pero yo le daría prioridad al transporte público y a las ciclovías.",
+"u157b-2:1": "¿Cuáles serían las ventajas y desventajas de cada una?",
+"u157b-2:2": "Si eligiera la fisioterapia, ¿cuánto tiempo tardaría en poder correr otra vez?",
+"u157b-2:3": "Prefiero intentar primero con la fisioterapia. Si no funciona, ¿podríamos considerar la cirugía después?",
+"u157b-2:4": "Muchas gracias por explicarme todo con tanta paciencia.",
+"u157c-1:0": "No sabía nada. Debes estar muy dolida.",
+"u157c-1:1": "¿Ya hablaste con él? A lo mejor no se dio cuenta de lo importante que era para ti.",
+"u157c-1:2": "Te entiendo, pero llevan diez años de amistad. Sería una lástima perder eso sin escuchar su versión.",
+"u157c-1:3": "Claro, con gusto. Pero la plática es entre ustedes; yo solo los acompaño.",
+"u157c-1:4": "Así es. Llevo un mes sin internet estable y he llamado seis veces. Cada vez me prometen una solución y nadie viene.",
+"u157c-2:0": "Le agradezco la disculpa, pero necesito una solución concreta y una fecha.",
+"u157c-2:1": "De acuerdo. Además, considero justo que no me cobren este mes, porque no tuve el servicio que pagué.",
+"u157c-2:2": "Perfecto. ¿Me puede dar un número de folio para darle seguimiento?",
+"u157c-2:3": "Mamá, me alegra que no haya sido grave, pero me preocupa que estés sola todo el día.",
+"u157c-2:4": "Lo sé, y admiro mucho lo independiente que eres. No quiero quitarte eso.",
+"u157d-1:0": "¿Qué te parece si viene alguien solo en las mañanas, para ayudarte con las compras y la limpieza?",
+"u157d-1:1": "Primero la conocemos tú y yo, y si no te cae bien, buscamos a otra persona. Tú decides.",
+"u157d-1:2": "¿Nos dieron alguna explicación? Teníamos un contrato firmado.",
+"u157d-1:3": "Entonces tienen que devolvernos el anticipo y, si es posible, ayudarnos a encontrar otro lugar.",
+"u157d-1:4": "Considerando que muchos asistentes vienen de fuera, yo preferiría el lugar céntrico, aunque cueste más.",
+"u157d-2:0": "Podríamos buscar un patrocinador o subir un poco el precio de los boletos. Mañana lo platico con la dirección.",
+"u157d-2:1": "Con todo respeto, tío, no creo que sea tan sencillo.",
+"u157d-2:2": "Es verdad que ustedes trabajaron muchísimo. Pero en esa época un sueldo alcanzaba para comprar una casa, y ahora no.",
+"u157d-2:3": "Muchos trabajan en dos empleos y aun así no les alcanza. No es falta de ganas, es que las condiciones cambiaron.",
+"u157d-2:4": "Y también es cierto que tenemos mucho que aprender de su generación. Podríamos platicarlo con más calma otro día.",
+"u157e-1:0": "Surgió durante la pandemia, cuando nos dimos cuenta de que muchos vecinos no tenían dónde salir ni con quién platicar.",
+"u157e-1:1": "Era un terreno abandonado. Hablamos con el municipio y aceptaron prestárnoslo siempre que lo mantuviéramos limpio.",
+"u157e-1:2": "Jitomate, chile, calabaza, hierbas de olor y flores para atraer a las abejas. Todo sin químicos.",
+"u157e-1:3": "Que empiecen con algo pequeño y que involucren a los niños. Lo más valioso no es la cosecha, sino la comunidad que se crea."
 },
 "u16": {
 "u16a-1:0": "el precio",

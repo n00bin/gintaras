@@ -1,0 +1,66 @@
+== u194|Flora y fauna|Plants and wildlife|Mexican animals and plants in more detail|Describe an animal or plant native to your region.
+El quetzal tiene plumas verdes brillantes y una cola larguísima.|The quetzal has bright green feathers and a very long tail.|
+La vaquita marina está al borde de la extinción.|The vaquita porpoise is on the brink of extinction.|
+Miles de flamencos rosados se alimentan en la ría de Celestún.|Thousands of pink flamingos feed in the Celestún estuary.|
+El nopal y el maguey crecen en tierras muy secas.|Prickly pear cactus and agave grow on very dry land.|
+El ocelote es un felino pequeño y nocturno.|The ocelot is a small, nocturnal wild cat.|
+Las luciérnagas iluminan el bosque en verano.|Fireflies light up the forest in summer.|
+Los manglares protegen la costa de las tormentas.|Mangroves protect the coast from storms.|
+El tiburón ballena es el pez más grande del mundo.|The whale shark is the largest fish in the world.|
+Las orquídeas silvestres crecen sobre los troncos de los árboles.|Wild orchids grow on tree trunks.|
+Los zopilotes limpian el campo de animales muertos.|Vultures clean the countryside of dead animals.|
+== u195|Industria y producción|Industry and production|Factories, supply chains and manufacturing|Explain how a product you use every day is made.
+La planta produce dos mil autos al día.|The plant produces two thousand cars a day.|
+Las maquiladoras ensamblan piezas para exportarlas.|Maquiladoras assemble parts for export.|
+La cadena de suministro se interrumpió durante la pandemia.|The supply chain was interrupted during the pandemic.|
+La automatización redujo el número de obreros.|Automation reduced the number of factory workers.|
+El control de calidad revisa cada lote.|Quality control checks every batch.|
+La empresa trasladó su fábrica a Querétaro.|The company moved its factory to Querétaro.|
+Las materias primas se encarecieron.|Raw materials became more expensive.|
+Se requiere personal con experiencia en soldadura.|Staff with welding experience are required.|
+La industria textil contamina mucha agua.|The textile industry pollutes a lot of water.|
+El tequila solo puede producirse en ciertas regiones.|Tequila can only be produced in certain regions.|
+== u196|En el jardín y en la cocina|In the garden and the kitchen|Gardening, composting and preserving food|Describe a garden or a kitchen routine you'd like to have.
+Sembré cilantro, chile y jitomate en macetas.|I planted coriander, chilli and tomatoes in pots.|
+Hago composta con las cáscaras de fruta y verdura.|I make compost from fruit and vegetable peel.|
+Hay que podar el limonero antes de la primavera.|The lime tree needs pruning before spring.|
+Las plagas se comieron todas las hojas del rosal.|Pests ate all the leaves of the rose bush.|
+Riego por goteo para no desperdiciar agua.|I use drip irrigation so as not to waste water.|
+Mi abuela hacía mermelada de guayaba y la guardaba en frascos.|My grandmother made guava jam and kept it in jars.|
+Congelo las tortillas para que no se echen a perder.|I freeze the tortillas so they don't go off.|
+Los chiles se ponen a secar al sol.|The chillies are left to dry in the sun.|
+La hierbabuena se extiende por todo el jardín si no la controlas.|Mint spreads all over the garden if you don't control it.|
+Cosechamos más calabazas de las que podíamos comer.|We harvested more squash than we could eat.|
+== u197|El cuerpo en movimiento|The body in motion|Muscles, injuries, training and recovery|Describe your ideal training week.
+Me desgarré un músculo de la pantorrilla.|I tore a calf muscle.|
+Hago estiramientos para evitar lesiones.|I stretch to avoid injuries.|
+El entrenador me corrigió la postura.|The trainer corrected my posture.|
+Después de correr me duelen las articulaciones.|After running my joints ache.|
+Tengo que fortalecer la espalda baja.|I need to strengthen my lower back.|
+Me torcí el tobillo bajando las escaleras.|I twisted my ankle going down the stairs.|
+La respiración es clave para nadar mejor.|Breathing is key to swimming better.|
+Descansar también forma parte del entrenamiento.|Resting is also part of training.|
+Perdí condición física durante el invierno.|I lost fitness over the winter.|
+Mis rodillas ya no aguantan correr en pavimento.|My knees can't take running on pavement any more.|
+== u198|Escribir|Writing|Writing stories, essays and messages well|Describe how you plan and revise a piece of writing.
+Antes de escribir, hago un esquema con las ideas principales.|Before writing, I make an outline of the main ideas.|
+El primer borrador siempre es malo.|The first draft is always bad.|
+Hay que corregir la ortografía y la puntuación.|You have to correct the spelling and punctuation.|
+Un buen párrafo tiene una sola idea central.|A good paragraph has a single central idea.|
+Evita repetir la misma palabra muchas veces.|Avoid repeating the same word many times.|
+Leí el texto en voz alta para ver si sonaba bien.|I read the text aloud to see if it sounded right.|
+La introducción debe atrapar al lector.|The introduction should hook the reader.|
+Llevo un diario desde los quince años.|I've kept a diary since I was fifteen.|
+Escribir me ayuda a ordenar mis pensamientos.|Writing helps me put my thoughts in order.|
+Revisé el ensayo tres veces antes de entregarlo.|I revised the essay three times before handing it in.|
+== u199|Logística y envíos|Logistics and shipping|Moving goods, warehouses and deliveries|Explain how a parcel gets from a factory to your door.
+El almacén funciona las veinticuatro horas.|The warehouse runs twenty-four hours a day.|
+Los pedidos se surten en menos de una hora.|Orders are filled in less than an hour.|
+El camión de carga se retrasó en la aduana.|The lorry was delayed at customs.|
+La mercancía llegó dañada por mal embalaje.|The goods arrived damaged because of poor packing.|
+El inventario se actualiza en tiempo real.|The inventory is updated in real time.|
+Los costos de envío subieron con el precio del diésel.|Shipping costs went up with the price of diesel.|
+Los repartidores trabajan bajo mucha presión.|Delivery drivers work under a lot of pressure.|
+El puerto de Manzanillo recibe miles de contenedores.|The port of Manzanillo receives thousands of containers.|
+Rastreamos cada paquete desde que sale hasta que llega.|We track every parcel from when it leaves until it arrives.|
+Un error en la dirección retrasa todo el proceso.|A mistake in the address delays the whole process.|
