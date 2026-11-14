@@ -156,7 +156,87 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u100": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u101": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u102": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u103": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u104": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u105": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u106": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u107": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u108": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u109": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u11": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u110": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u111": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u112": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u113": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u114": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u115": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u116": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u117": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u118": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u119": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -164,11 +244,127 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u120": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u121": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u122": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u123": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u124": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u125": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u126": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u127": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u128": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u129": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u13": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u130": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u131": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u132": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u133": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u134": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u135": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u136": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u137": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u138": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u139": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u14": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u140": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u141": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u142": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u143": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u144": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u145": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u146": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u147": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u148": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -513,6 +709,14 @@
 "ona": "Achernar"
 },
 "u97": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u98": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u99": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 }
@@ -1296,6 +1500,119 @@
 "u10d-1:3": "¿Cuánto dura el viaje?",
 "u10d-1:4": "¿Puedo cambiar mi boleto?"
 },
+"u100": {
+"u100a-1:0": "Tengo seguro médico por mi trabajo.",
+"u100a-1:1": "En la clínica pública hay que hacer fila desde temprano.",
+"u100a-1:2": "El especialista me mandó a hacer unos estudios.",
+"u100a-1:3": "Los resultados salen en tres días hábiles.",
+"u100a-1:4": "Me operaron de la rodilla el año pasado.",
+"u100a-2:0": "La consulta privada es cara, pero no tienes que esperar.",
+"u100a-2:1": "Tienes que tomar el antibiótico hasta terminarlo.",
+"u100a-2:2": "Mi abuela se recuperó rápido de la cirugía.",
+"u100a-2:3": "Me vacuné contra la influenza en octubre.",
+"u100a-2:4": "El dentista me dijo que tengo dos caries.",
+"u100a-3:0": "En urgencias me atendieron en veinte minutos."
+},
+"u101": {
+"u101a-1:0": "Pedí un préstamo para comprar un carro usado.",
+"u101a-1:1": "Todavía estoy pagando la tarjeta de crédito.",
+"u101a-1:2": "Este mes gasté más de lo que gané.",
+"u101a-1:3": "Los precios han subido muchísimo este año.",
+"u101a-1:4": "Comparo precios antes de comprar algo caro.",
+"u101a-2:0": "Pagamos a meses sin intereses.",
+"u101a-2:1": "Hice una transferencia desde la aplicación del banco.",
+"u101a-2:2": "No vale la pena gastar tanto en ropa de marca.",
+"u101a-2:3": "Abrimos una cuenta para los estudios de nuestra hija."
+},
+"u102": {
+"u102a-1:0": "Las rentas en esta zona están carísimas.",
+"u102a-1:1": "Nos pidieron un aval y tres meses de depósito.",
+"u102a-1:2": "Firmamos el contrato por un año.",
+"u102a-1:3": "El casero no quiere arreglar la humedad del baño.",
+"u102a-1:4": "Sacamos un crédito para comprar la casa.",
+"u102a-2:0": "La mudanza nos costó más de lo que pensábamos.",
+"u102a-2:1": "El departamento está amueblado, solo falta la lavadora.",
+"u102a-2:2": "Los vecinos nos recibieron con un pastel."
+},
+"u103": {
+"u103a-1:0": "Estoy terminando la maestría en administración.",
+"u103a-1:1": "Me titulé hace dos años.",
+"u103a-1:2": "Hice mi servicio social en una clínica rural.",
+"u103a-1:3": "Mi maestra de literatura me enseñó a disfrutar los libros.",
+"u103a-1:4": "Me cuesta mucho concentrarme cuando estudio en casa.",
+"u103a-2:0": "Aprendo mejor con ejemplos que con teoría.",
+"u103a-2:1": "La colegiatura de esa escuela es muy cara.",
+"u103a-2:2": "Estoy tomando un curso en línea de programación.",
+"u103a-2:3": "Hay que repasar todos los días un poco.",
+"u103a-2:4": "Saqué el primer lugar en el concurso de oratoria."
+},
+"u104": {
+"u104a-1:0": "Me renovaron el contrato por otro año.",
+"u104a-1:1": "Trabajo horas extras casi todas las semanas.",
+"u104a-1:2": "Mi jefe nunca reconoce el esfuerzo del equipo.",
+"u104a-1:3": "Estoy pensando en cambiarme de trabajo.",
+"u104a-1:4": "Me pagan bien, pero el ambiente laboral es pésimo.",
+"u104a-2:0": "Pedí un aumento y me lo negaron.",
+"u104a-2:1": "Ahora trabajo de forma híbrida: tres días en la oficina y dos en casa.",
+"u104a-2:2": "La empresa despidió a cuarenta personas.",
+"u104a-2:3": "Me encargo de atender a los proveedores.",
+"u104a-2:4": "Abrí mi propio negocio de comida hace un año.",
+"u104a-3:0": "Tengo una entrevista con una empresa extranjera."
+},
+"u105": {
+"u105a-1:0": "Nos conocimos en una fiesta de un amigo en común.",
+"u105a-1:1": "Llevamos cinco años juntos.",
+"u105a-1:2": "Nos peleamos por una tontería.",
+"u105a-1:3": "Ya nos reconciliamos.",
+"u105a-1:4": "Mi mejor amiga se mudó a otro país y la extraño mucho.",
+"u105a-2:0": "Confío plenamente en él.",
+"u105a-2:1": "Me decepcionó que no me invitara a su boda.",
+"u105a-2:2": "Hay que saber pedir perdón.",
+"u105a-2:3": "Se comprometieron en diciembre y se casan en junio.",
+"u105a-2:4": "Terminó con su novio después de tres años.",
+"u105a-3:0": "Mis abuelos siguen enamorados después de cincuenta años."
+},
+"u106": {
+"u106a-1:0": "Cancelaron el vuelo por mal tiempo.",
+"u106a-1:1": "Perdimos la conexión en Guadalajara.",
+"u106a-1:2": "La aerolínea nos dio un cupón para la cena.",
+"u106a-1:3": "La habitación no se parecía a las fotos.",
+"u106a-1:4": "El aire acondicionado no servía y hacía un calor terrible.",
+"u106a-2:0": "Me cobraron dos veces la misma noche.",
+"u106a-2:1": "El camión se descompuso a mitad de la carretera.",
+"u106a-2:2": "Tuvimos que esperar cuatro horas a que llegara otro.",
+"u106a-2:3": "A pesar de todo, fue un viaje inolvidable."
+},
+"u107": {
+"u107a-1:0": "Paso demasiado tiempo en las redes.",
+"u107a-1:1": "Subí las fotos del viaje a Instagram.",
+"u107a-1:2": "Ese video tiene más de un millón de vistas.",
+"u107a-1:3": "Dejé de seguir a varias cuentas que me ponían de malas.",
+"u107a-1:4": "Hay mucha información falsa en internet.",
+"u107a-2:0": "Mi hija quiere ser influencer.",
+"u107a-2:1": "Desactivé las notificaciones para concentrarme.",
+"u107a-2:2": "Compartí la publicación en el grupo de la familia.",
+"u107a-2:3": "Me hackearon la cuenta y tuve que cambiar todas mis contraseñas."
+},
+"u108": {
+"u108a-1:0": "Fuimos a una exposición de fotografía en el museo.",
+"u108a-1:1": "Esa película ganó varios premios en el festival.",
+"u108a-1:2": "El libro es mejor que la serie.",
+"u108a-1:3": "La obra de teatro duró casi tres horas.",
+"u108a-1:4": "Los murales de Diego Rivera cuentan la historia de México.",
+"u108a-2:0": "Estoy leyendo una novela de Elena Poniatowska.",
+"u108a-2:1": "Compramos los boletos para el concierto con meses de anticipación.",
+"u108a-2:2": "El ballet folclórico tiene funciones los domingos.",
+"u108a-2:3": "No soy fan del reguetón, pero en las fiestas lo bailo."
+},
+"u109": {
+"u109a-1:0": "Tardo una hora y media en llegar al trabajo.",
+"u109a-1:1": "Construyeron una ciclovía en mi avenida.",
+"u109a-1:2": "Hay mucha oferta cultural, pero todo está lejos.",
+"u109a-1:3": "Los fines de semana cierran la avenida para que la gente pasee en bici.",
+"u109a-1:4": "El ruido de la construcción empieza a las siete.",
+"u109a-2:0": "A pesar del tráfico, no cambiaría la ciudad por nada."
+},
 "u11": {
 "u11a-1:0": "el perro",
 "u11a-1:1": "el gato",
@@ -1317,6 +1634,120 @@
 "u11d-1:2": "El perro es pequeño",
 "u11d-1:3": "Me gustan los animales",
 "u11d-1:4": "El pájaro canta"
+},
+"u110": {
+"u110a-1:0": "Cada región de México tiene su propia cocina.",
+"u110a-1:1": "En Yucatán se come la cochinita pibil.",
+"u110a-1:2": "El mole lleva más de veinte ingredientes.",
+"u110a-1:3": "Los domingos desayunamos barbacoa con consomé.",
+"u110a-1:4": "Las tortillas hechas a mano saben mucho mejor.",
+"u110a-2:0": "Mi abuela cocinaba en cazuelas de barro.",
+"u110a-2:1": "El maíz es la base de la alimentación mexicana.",
+"u110a-2:2": "Los chiles en nogada solo se preparan en agosto y septiembre.",
+"u110a-2:3": "Probé los chapulines y no me desagradaron."
+},
+"u111": {
+"u111a-1:0": "Me inscribí en un medio maratón para noviembre.",
+"u111a-1:1": "Entreno cuatro veces por semana.",
+"u111a-1:2": "Me lesioné el hombro jugando tenis.",
+"u111a-1:3": "El fisioterapeuta me recomendó estirar más.",
+"u111a-1:4": "Desde que nado, duermo mucho mejor.",
+"u111a-2:0": "La selección mexicana pasó a la siguiente ronda.",
+"u111a-2:1": "El partido terminó empatado a cero.",
+"u111a-2:2": "Hay que calentar antes de hacer ejercicio.",
+"u111a-2:3": "Bajé de peso caminando una hora diaria.",
+"u111a-2:4": "La lucha libre es un espectáculo muy popular en México."
+},
+"u112": {
+"u112a-1:0": "El producto tiene garantía de un año.",
+"u112a-1:1": "Quiero hablar con el gerente, por favor.",
+"u112a-1:2": "Me vendieron un celular defectuoso.",
+"u112a-1:3": "Presenté una queja ante la Profeco.",
+"u112a-1:4": "Me devolvieron el dinero sin problema.",
+"u112a-2:0": "La letra chiquita del contrato decía otra cosa.",
+"u112a-2:1": "No acepto que me cobren algo que no pedí.",
+"u112a-2:2": "Revisa la fecha de caducidad antes de comprar.",
+"u112a-2:3": "Cancelé la suscripción porque nunca la usaba."
+},
+"u113": {
+"u113a-1:0": "Mi hermana dio a luz a una niña preciosa.",
+"u113a-1:1": "Bautizaron al bebé en la parroquia del pueblo.",
+"u113a-1:2": "Mi papá se jubiló después de treinta años de trabajo.",
+"u113a-1:3": "Fuimos a la graduación de mi primo.",
+"u113a-1:4": "Mis papás celebraron sus bodas de plata.",
+"u113a-2:0": "Nos despedimos de mi abuelo en el panteón.",
+"u113a-2:1": "Le dimos el pésame a la familia.",
+"u113a-2:2": "Se independizó en cuanto consiguió trabajo.",
+"u113a-2:3": "Mi prima se casó por el civil y por la iglesia."
+},
+"u114": {
+"u114a-1:0": "Es una persona muy generosa, siempre ayuda a los demás.",
+"u114a-1:1": "Mi hermano es bastante terco, nunca cambia de opinión.",
+"u114a-1:2": "Es muy puntual, odia llegar tarde.",
+"u114a-1:3": "Es un poco desordenado, pero muy creativo.",
+"u114a-1:4": "Mi jefa es exigente pero justa.",
+"u114a-2:0": "Es muy sociable, hace amigos en todas partes.",
+"u114a-2:1": "No soporto a la gente egoísta.",
+"u114a-2:2": "Es muy sensible, todo le afecta.",
+"u114a-2:3": "Soy optimista por naturaleza.",
+"u114a-2:4": "Tiene mucha paciencia con los niños."
+},
+"u115": {
+"u115a-1:0": "No dejes objetos de valor a la vista en el carro.",
+"u115a-1:1": "Evita sacar dinero del cajero en la noche.",
+"u115a-1:2": "Pusieron cámaras de seguridad en la calle.",
+"u115a-1:3": "Asaltaron una tienda cerca de mi casa.",
+"u115a-1:4": "Hubo un simulacro de sismo en la oficina.",
+"u115a-2:0": "Cuando suena la alerta sísmica, hay que salir con calma.",
+"u115a-2:1": "Comparte tu ubicación con alguien de confianza.",
+"u115a-2:2": "El número de emergencias es el nueve once.",
+"u115a-2:3": "Mi barrio es tranquilo, pero hay que tener cuidado."
+},
+"u116": {
+"u116a-1:0": "Los mexicas fundaron Tenochtitlan en un lago.",
+"u116a-1:1": "Los españoles llegaron en mil quinientos diecinueve.",
+"u116a-1:2": "La Independencia empezó en mil ochocientos diez.",
+"u116a-1:3": "Miguel Hidalgo tocó la campana en Dolores.",
+"u116a-1:4": "Benito Juárez fue el primer presidente indígena.",
+"u116a-2:0": "La Revolución cambió la vida en el campo.",
+"u116a-2:1": "Emiliano Zapata luchaba por la tierra de los campesinos.",
+"u116a-2:2": "En mil novecientos treinta y ocho se nacionalizó el petróleo.",
+"u116a-2:3": "Las mujeres votaron por primera vez en mil novecientos cincuenta y cinco.",
+"u116a-2:4": "En el museo aprendimos sobre las culturas prehispánicas."
+},
+"u117": {
+"u117a-1:0": "Les ponemos un horario para usar las pantallas.",
+"u117a-1:1": "Me cuesta trabajo que se duerman temprano.",
+"u117a-1:2": "Mi hija hace berrinche cuando no le compro dulces.",
+"u117a-1:3": "Tratamos de no gritarles aunque nos desesperen.",
+"u117a-1:4": "La guardería abre a las siete de la mañana.",
+"u117a-2:0": "Los abuelos nos ayudan a cuidarlos por las tardes.",
+"u117a-2:1": "Firmé la boleta de calificaciones.",
+"u117a-2:2": "Queremos que crezcan siendo responsables y felices."
+},
+"u118": {
+"u118a-1:0": "El ajolote solo vive en los canales de Xochimilco.",
+"u118a-1:1": "Las tortugas regresan a la misma playa para poner sus huevos.",
+"u118a-1:2": "Los científicos descubrieron una especie nueva de rana.",
+"u118a-1:3": "El Popocatépetl sigue activo y a veces lanza ceniza.",
+"u118a-1:4": "Las abejas son fundamentales para la agricultura.",
+"u118a-2:0": "Muchas especies están en peligro de extinción.",
+"u118a-2:1": "La Luna influye en las mareas.",
+"u118a-2:2": "El jaguar es el felino más grande de México.",
+"u118a-2:3": "Desde el desierto se ven millones de estrellas.",
+"u118a-2:4": "Las ballenas grises llegan a Baja California en invierno."
+},
+"u119": {
+"u119a-1:0": "El domingo hay elecciones para presidente municipal.",
+"u119a-1:1": "Para votar necesitas tu credencial de elector.",
+"u119a-1:2": "Los candidatos prometen mucho y cumplen poco.",
+"u119a-1:3": "Los vecinos organizaron una junta para hablar de la seguridad.",
+"u119a-1:4": "Todos tenemos derecho a la educación y a la salud.",
+"u119a-2:0": "La desigualdad sigue siendo un problema grave.",
+"u119a-2:1": "Muchos jóvenes participan como voluntarios.",
+"u119a-2:2": "Firmé una petición para salvar el parque.",
+"u119a-2:3": "Los impuestos sirven para pagar los servicios públicos.",
+"u119a-2:4": "Es importante informarse antes de votar."
 },
 "u12": {
 "u12a-1:0": "el tamal",
@@ -1340,6 +1771,117 @@
 "u12d-1:3": "¿La salsa está picante?",
 "u12d-1:4": "¡Nos vemos pronto!"
 },
+"u120": {
+"u120a-1:0": "En Oaxaca hacen alebrijes de colores.",
+"u120a-1:1": "Mi tío es carpintero y hace muebles a mano.",
+"u120a-1:2": "Las artesanas de Chiapas tejen en telar de cintura.",
+"u120a-1:3": "La talavera de Puebla se pinta a mano.",
+"u120a-1:4": "Aprendí a bordar con mi abuela.",
+"u120a-2:0": "El zapatero me arregló las botas en un día.",
+"u120a-2:1": "El herrero hizo la reja de la ventana.",
+"u120a-2:2": "Compré un rebozo tejido a mano en el mercado.",
+"u120a-2:3": "Los oficios tradicionales se están perdiendo."
+},
+"u121": {
+"u121a-1:0": "Recorrimos la península de Yucatán en carro.",
+"u121a-1:1": "Viajamos de mochilazo por Centroamérica.",
+"u121a-1:2": "Para cruzar la frontera necesitas pasaporte y visa.",
+"u121a-1:3": "Dormimos en hostales para ahorrar.",
+"u121a-1:4": "Contratamos un seguro de viaje por si acaso.",
+"u121a-2:0": "El tren de Chihuahua al Pacífico pasa por la Barranca del Cobre.",
+"u121a-2:1": "Cambiamos dólares en una casa de cambio.",
+"u121a-2:2": "Hicimos escala en Panamá.",
+"u121a-2:3": "Llevábamos tres semanas viajando y ya extrañábamos la casa."
+},
+"u122": {
+"u122a-1:0": "Últimamente me siento muy estresado.",
+"u122a-1:1": "Me da ansiedad hablar en público.",
+"u122a-1:2": "Fui a terapia durante un año y me ayudó mucho.",
+"u122a-1:3": "Me frustra no poder expresarme bien en otro idioma.",
+"u122a-1:4": "Aprendí a decir que no sin sentirme culpable.",
+"u122a-2:0": "Me sentí aliviado cuando supe los resultados.",
+"u122a-2:1": "Estoy agotado, necesito unas vacaciones.",
+"u122a-2:2": "Le tengo miedo a las alturas.",
+"u122a-2:3": "Medito diez minutos cada mañana."
+},
+"u123": {
+"u123a-1:0": "Pintamos la sala de un color más claro.",
+"u123a-1:1": "Hay que cambiar la llave del lavabo porque gotea.",
+"u123a-1:2": "Se fundió el foco del pasillo.",
+"u123a-1:3": "Contratamos a un albañil para arreglar la barda.",
+"u123a-1:4": "Se tapó el drenaje de la cocina.",
+"u123a-2:0": "Instalamos paneles solares en el techo.",
+"u123a-2:1": "El cerrajero vino a abrir la puerta porque perdí las llaves.",
+"u123a-2:2": "Hay grietas en la pared desde el último temblor.",
+"u123a-2:3": "Compré un taladro para colgar las repisas.",
+"u123a-2:4": "La remodelación de la cocina tardó dos meses."
+},
+"u124": {
+"u124a-1:0": "No se oye nada, tienes el micrófono apagado.",
+"u124a-1:1": "Guarda el archivo en la nube para que todos lo vean.",
+"u124a-1:2": "Se me congeló la pantalla en plena reunión.",
+"u124a-1:3": "Necesito actualizar el programa antes de usarlo.",
+"u124a-1:4": "Te comparto el enlace por el chat.",
+"u124a-2:0": "La impresora no tiene tinta otra vez.",
+"u124a-2:1": "Respalda tus documentos por si falla la computadora.",
+"u124a-2:2": "Uso la inteligencia artificial para revisar mis textos.",
+"u124a-2:3": "Me llegan más de cien correos al día."
+},
+"u125": {
+"u125a-1:0": "El sismo de dos mil diecisiete dañó muchos edificios.",
+"u125a-1:1": "Miles de voluntarios ayudaron a rescatar a la gente.",
+"u125a-1:2": "Evacuaron a las familias que vivían cerca del río.",
+"u125a-1:3": "Las lluvias provocaron inundaciones en varias colonias.",
+"u125a-1:4": "Hay que tener una mochila de emergencia lista.",
+"u125a-2:0": "La sequía afecta a los agricultores del norte.",
+"u125a-2:1": "Hubo un incendio forestal en la sierra.",
+"u125a-2:2": "Recolectamos víveres para los damnificados.",
+"u125a-2:3": "Protección Civil revisó los edificios después del temblor."
+},
+"u126": {
+"u126a-1:0": "Me corté el pelo muy corto.",
+"u126a-1:1": "Se tiñó el pelo de rojo.",
+"u126a-1:2": "Me hice un tatuaje en el brazo.",
+"u126a-1:3": "Siempre va muy arreglada a la oficina.",
+"u126a-1:4": "Prefiero la ropa cómoda a la ropa de moda.",
+"u126a-2:0": "Se pone bloqueador todos los días, aunque esté nublado.",
+"u126a-2:1": "Mi hermano es idéntico a mi papá cuando era joven.",
+"u126a-2:2": "No juzgues a las personas por su apariencia."
+},
+"u127": {
+"u127a-1:0": "Antes me despertaba tarde y siempre andaba con prisa.",
+"u127a-1:1": "Ahora me levanto media hora antes para desayunar con calma.",
+"u127a-1:2": "Dejé de fumar hace tres años.",
+"u127a-1:3": "Me acostumbré a tomar agua en lugar de refresco.",
+"u127a-1:4": "Los domingos preparo la comida de toda la semana.",
+"u127a-2:0": "Me cuesta trabajo levantarme cuando hace frío.",
+"u127a-2:1": "Siempre se me olvida dónde dejo las llaves.",
+"u127a-2:2": "Cada noche escribo tres cosas por las que estoy agradecido."
+},
+"u128": {
+"u128a-1:0": "Saqué mi licencia de manejo a los dieciocho.",
+"u128a-1:1": "Me pusieron una multa por estacionarme en lugar prohibido.",
+"u128a-1:2": "Llevé el carro al taller porque hacía un ruido extraño.",
+"u128a-1:3": "El mecánico dijo que hay que cambiar los frenos.",
+"u128a-1:4": "Hay que verificar el carro dos veces al año.",
+"u128a-2:0": "Hoy no circula mi carro por la placa.",
+"u128a-2:1": "Se me ponchó una llanta en la autopista.",
+"u128a-2:2": "Cargué gasolina antes de salir a carretera.",
+"u128a-2:3": "Choqué contra un poste, pero nadie salió herido.",
+"u128a-2:4": "El seguro cubrió casi todos los gastos."
+},
+"u129": {
+"u129a-1:0": "Trato de comer cinco porciones de frutas y verduras al día.",
+"u129a-1:1": "Reduje el azúcar y me siento con más energía.",
+"u129a-1:2": "Soy vegetariana desde hace dos años.",
+"u129a-1:3": "Mi doctor me prohibió la sal por la presión alta.",
+"u129a-1:4": "Leo las etiquetas antes de comprar cualquier producto.",
+"u129a-2:0": "La comida chatarra es barata, pero no nutre.",
+"u129a-2:1": "Desayuno avena con fruta casi todos los días.",
+"u129a-2:2": "Cocinar en casa es más sano y más económico.",
+"u129a-2:3": "Soy intolerante a la lactosa.",
+"u129a-2:4": "Los niños necesitan proteínas para crecer."
+},
 "u13": {
 "u13a-1:0": "la reservación",
 "u13a-1:1": "la habitación",
@@ -1362,6 +1904,119 @@
 "u13d-1:3": "Aquí está la llave",
 "u13d-1:4": "Gracias por todo"
 },
+"u130": {
+"u130a-1:0": "Llevo dos años estudiando japonés.",
+"u130a-1:1": "Lo más difícil para mí es la pronunciación.",
+"u130a-1:2": "Veo series con subtítulos para mejorar mi oído.",
+"u130a-1:3": "Hago intercambio de idiomas con una chica de Francia.",
+"u130a-1:4": "Me da pena hablar porque cometo muchos errores.",
+"u130a-2:0": "Los errores son parte del aprendizaje.",
+"u130a-2:1": "Apunto las palabras nuevas en una libreta.",
+"u130a-2:2": "Entiendo casi todo, pero me cuesta hablar con fluidez.",
+"u130a-2:3": "Aprobé el examen de certificación con buena calificación.",
+"u130a-2:4": "Cada idioma es una forma distinta de ver el mundo."
+},
+"u131": {
+"u131a-1:0": "Me ascendieron a coordinadora del área.",
+"u131a-1:1": "Quiero especializarme en mercadotecnia digital.",
+"u131a-1:2": "La empresa paga cursos de capacitación.",
+"u131a-1:3": "Estoy haciendo prácticas en un despacho de arquitectos.",
+"u131a-1:4": "Me ofrecieron un puesto mejor pagado en otra ciudad.",
+"u131a-2:0": "Después de diez años en la empresa, decidí emprender.",
+"u131a-2:1": "Mi meta es tener mi propio despacho algún día.",
+"u131a-2:2": "Actualicé mi currículum y mi perfil profesional.",
+"u131a-2:3": "Me gusta mi trabajo, pero quiero nuevos retos."
+},
+"u132": {
+"u132a-1:0": "Vale la pena visitar los pueblos mágicos del estado.",
+"u132a-1:1": "Contratamos a un guía local que sabía muchísimo.",
+"u132a-1:2": "Desde el mirador se ve toda la bahía.",
+"u132a-1:3": "Nos bañamos en un cenote de agua cristalina.",
+"u132a-1:4": "El centro histórico es Patrimonio de la Humanidad.",
+"u132a-2:0": "Es mejor ir entre semana, cuando hay menos turistas.",
+"u132a-2:1": "Subimos a la cima del cerro para ver el atardecer.",
+"u132a-2:2": "Nos encantó probar la comida de los puestos callejeros."
+},
+"u133": {
+"u133a-1:0": "el gallo",
+"u133a-1:1": "el borrego",
+"u133a-1:2": "la cabra",
+"u133a-1:3": "el burro",
+"u133a-1:4": "el toro",
+"u133a-2:0": "el puerco",
+"u133a-2:1": "el pato",
+"u133a-2:2": "Las gallinas ponen huevos todos los días.",
+"u133a-2:3": "El gallo canta antes del amanecer.",
+"u133a-2:4": "Mi abuelo ordeñaba las vacas a mano.",
+"u133a-3:0": "Los burros cargaban la leña desde el monte."
+},
+"u134": {
+"u134a-1:0": "¡Órale!",
+"u134a-1:1": "¡Ándale, pues!",
+"u134a-1:2": "¡Aguas!",
+"u134a-1:3": "No hay bronca.",
+"u134a-1:4": "¿Neta?",
+"u134a-2:0": "Estoy sin lana hasta la quincena.",
+"u134a-2:1": "Ando buscando chamba.",
+"u134a-2:2": "¡Qué oso!",
+"u134a-2:3": "Me late mucho esa idea.",
+"u134a-2:4": "¡Híjole, se me olvidó!",
+"u134a-3:0": "Está padrísimo."
+},
+"u135": {
+"u135a-1:0": "Tengo que renovar mi pasaporte antes del viaje.",
+"u135a-1:1": "Saqué cita en línea para tramitar la credencial.",
+"u135a-1:2": "Me pidieron acta de nacimiento y comprobante de domicilio.",
+"u135a-1:3": "El trámite tarda entre diez y quince días hábiles.",
+"u135a-1:4": "Hay que pagar los derechos en el banco.",
+"u135a-2:0": "Llené el formulario, pero me faltó una firma.",
+"u135a-2:1": "Necesito una copia certificada del documento.",
+"u135a-2:2": "Me mandaron de una oficina a otra toda la mañana.",
+"u135a-2:3": "Por fin me entregaron mi licencia nueva."
+},
+"u136": {
+"u136a-1:0": "La mesa es de madera de pino.",
+"u136a-1:1": "Prefiero las bolsas de tela a las de plástico.",
+"u136a-1:2": "Mi abuela tenía una olla de cobre muy antigua.",
+"u136a-1:3": "Los vasos de vidrio se rompen fácilmente.",
+"u136a-1:4": "Compré unos aretes de plata en Taxco.",
+"u136a-2:0": "La silla es ligera pero muy resistente.",
+"u136a-2:1": "Esta caja de cartón está llena de fotos viejas.",
+"u136a-2:2": "La superficie es lisa y brillante.",
+"u136a-2:3": "Ese anillo era de mi bisabuela."
+},
+"u137": {
+"u137a-1:0": "En Año Nuevo comemos doce uvas a medianoche.",
+"u137a-1:1": "Cada uva es un deseo para el año que empieza.",
+"u137a-1:2": "La Guelaguetza se celebra en julio en Oaxaca.",
+"u137a-1:3": "El doce de diciembre miles de personas visitan la Basílica.",
+"u137a-1:4": "En el Grito todos gritamos ¡Viva México!",
+"u137a-2:0": "Los niños piden su calaverita en noviembre.",
+"u137a-2:1": "En las posadas cantamos para pedir posada.",
+"u137a-2:2": "Para la fiesta del pueblo hay feria y jaripeo.",
+"u137a-2:3": "El carnaval de Veracruz dura varios días.",
+"u137a-2:4": "Brindamos por los novios con tequila."
+},
+"u138": {
+"u138a-1:0": "Trabajo de recepcionista en un hotel de playa.",
+"u138a-1:1": "Los huéspedes se quejaron del ruido de la alberca.",
+"u138a-1:2": "La camarista limpia veinte habitaciones por turno.",
+"u138a-1:3": "El chef cambia el menú cada temporada.",
+"u138a-1:4": "Las propinas son una parte importante del sueldo.",
+"u138a-2:0": "Hay que tratar a los clientes con amabilidad aunque estén enojados.",
+"u138a-2:1": "Se nos acabaron los ingredientes antes de la cena.",
+"u138a-2:2": "El restaurante tiene muy buenas reseñas en internet."
+},
+"u139": {
+"u139a-1:0": "Mis abuelos sembraban maíz, frijol y calabaza.",
+"u139a-1:1": "La cosecha de este año fue muy mala por la sequía.",
+"u139a-1:2": "En el pueblo todos se conocen.",
+"u139a-1:3": "Ahora hay internet, pero la señal es muy débil.",
+"u139a-1:4": "El agua llega en pipa una vez a la semana.",
+"u139a-2:0": "Las remesas ayudan a muchas familias a sobrevivir.",
+"u139a-2:1": "El camino de terracería se pone muy feo cuando llueve.",
+"u139a-2:2": "Me gusta la tranquilidad del campo, pero extraño el cine."
+},
 "u14": {
 "u14a-1:0": "a la derecha",
 "u14a-1:1": "a la izquierda",
@@ -1383,6 +2038,111 @@
 "u14d-1:2": "¿A la derecha?",
 "u14d-1:3": "¿Cuántas cuadras?",
 "u14d-1:4": "Ya veo"
+},
+"u140": {
+"u140a-1:0": "Apaga las luces cuando salgas de un cuarto.",
+"u140a-1:1": "El recibo de luz llegó altísimo este bimestre.",
+"u140a-1:2": "Cambiamos todos los focos por focos ahorradores.",
+"u140a-1:3": "México produce energía eólica en Oaxaca.",
+"u140a-1:4": "Los calentadores solares ahorran mucho gas.",
+"u140a-2:0": "Desconecta los aparatos que no estás usando.",
+"u140a-2:1": "El precio del gas LP sube cada invierno.",
+"u140a-2:2": "Hubo un apagón en toda la colonia por la tormenta.",
+"u140a-2:3": "Las energías renovables son el futuro."
+},
+"u141": {
+"u141a-1:0": "Contratamos a un abogado para el divorcio.",
+"u141a-1:1": "El juez le dio la razón al inquilino.",
+"u141a-1:2": "Está prohibido fumar en lugares cerrados.",
+"u141a-1:3": "Si no pagas la multa, te pueden quitar las placas.",
+"u141a-1:4": "Firmaron el acuerdo ante un notario.",
+"u141a-2:0": "La ley protege a los trabajadores contra el despido injustificado.",
+"u141a-2:1": "Lo arrestaron por manejar en estado de ebriedad.",
+"u141a-2:2": "Es ilegal vender alcohol a menores de edad.",
+"u141a-2:3": "Demandó a la empresa por no pagarle.",
+"u141a-2:4": "Todos somos iguales ante la ley."
+},
+"u142": {
+"u142a-1:0": "Me regalaron una cafetera para mi cumpleaños.",
+"u142a-1:1": "La licuadora hace un ruido espantoso.",
+"u142a-1:2": "Compré unos audífonos inalámbricos.",
+"u142a-1:3": "El control remoto se perdió otra vez entre los cojines.",
+"u142a-1:4": "Mi reloj inteligente cuenta mis pasos y mis horas de sueño.",
+"u142a-2:0": "La aspiradora robot limpia sola mientras trabajo.",
+"u142a-2:1": "Hay que cargar la tableta todas las noches.",
+"u142a-2:2": "La garantía no cubre los daños por agua.",
+"u142a-2:3": "Lee el manual antes de conectar el aparato.",
+"u142a-2:4": "Lo devolví porque no funcionaba bien."
+},
+"u143": {
+"u143a-1:0": "Este olor me recuerda a la cocina de mi abuela.",
+"u143a-1:1": "Cuando oigo esa canción, me acuerdo de la prepa.",
+"u143a-1:2": "Guardo todas las cartas que me escribió mi papá.",
+"u143a-1:3": "Me da nostalgia ver fotos de cuando éramos niños.",
+"u143a-1:4": "Nunca olvidaré el día que nació mi hija.",
+"u143a-2:0": "Antes las cosas duraban mucho más.",
+"u143a-2:1": "Mi primer trabajo fue repartir periódicos en bicicleta.",
+"u143a-2:2": "Aquel verano cambió mi vida."
+},
+"u144": {
+"u144a-1:0": "Asa los chiles en el comal hasta que se tuesten.",
+"u144a-1:1": "Pela los jitomates y pícalos finamente.",
+"u144a-1:2": "Remoja los frijoles desde la noche anterior.",
+"u144a-1:3": "Sazona la carne con sal, pimienta y ajo.",
+"u144a-1:4": "Deja reposar la masa media hora.",
+"u144a-2:0": "Hornea el pan a ciento ochenta grados.",
+"u144a-2:1": "Cuela el caldo antes de servirlo.",
+"u144a-2:2": "Ralla el queso y espolvoréalo encima.",
+"u144a-2:3": "Revuelve a fuego lento para que no se pegue.",
+"u144a-2:4": "Adorna el platillo con cilantro fresco."
+},
+"u145": {
+"u145a-1:0": "En el futuro trabajaremos menos horas.",
+"u145a-1:1": "Los robots harán muchos trabajos que hoy hacen las personas.",
+"u145a-1:2": "Me preocupa que no haya suficiente agua.",
+"u145a-1:3": "Espero que mis hijos vivan en un mundo más justo.",
+"u145a-1:4": "Dentro de diez años quizás viva en otro país.",
+"u145a-2:0": "Habrá carros que se manejen solos.",
+"u145a-2:1": "Nadie sabe qué pasará con la economía.",
+"u145a-2:2": "Ojalá encuentren una cura para el cáncer.",
+"u145a-2:3": "Pienso jubilarme en la playa.",
+"u145a-2:4": "El futuro depende de lo que hagamos hoy."
+},
+"u146": {
+"u146a-1:0": "Repartimos las tareas entre los cinco integrantes del equipo.",
+"u146a-1:1": "La fecha de entrega es el próximo viernes.",
+"u146a-1:2": "Nos atrasamos porque faltaba información del cliente.",
+"u146a-1:3": "Cada quien expuso su parte en la presentación.",
+"u146a-1:4": "Hubo un malentendido, pero lo resolvimos hablando.",
+"u146a-2:0": "Mi compañera propuso una solución muy creativa.",
+"u146a-2:1": "Escuchar a los demás es clave para llegar a acuerdos.",
+"u146a-2:2": "Felicitaron al equipo por los resultados."
+},
+"u147": {
+"u147a-1:0": "Hice la despensa de toda la quincena.",
+"u147a-1:1": "Las fresas estaban en oferta, tres por cien pesos.",
+"u147a-1:2": "Pesé las manzanas en la báscula.",
+"u147a-1:3": "Pagué con vales de despensa.",
+"u147a-1:4": "El cerillo me ayudó a llevar las bolsas al carro.",
+"u147a-2:0": "Prefiero comprar la fruta en el mercado, es más fresca.",
+"u147a-2:1": "Llené el carrito y gasté el doble de lo que pensaba."
+},
+"u148": {
+"u148a-1:0": "Rastreé el paquete con el número de guía.",
+"u148a-1:1": "El repartidor dejó un aviso porque no había nadie.",
+"u148a-1:2": "Mandé el sobre por correo certificado.",
+"u148a-1:3": "El paquete se quedó atorado en la aduana.",
+"u148a-1:4": "Tuve que pagar impuestos de importación.",
+"u148a-2:0": "Pegué las estampillas y lo eché al buzón.",
+"u148a-2:1": "La mensajería tarda un día hábil en entregar.",
+"u148a-2:2": "El remitente escribió mal el código postal.",
+"u148a-2:3": "Recogí el pedido en la sucursal más cercana.",
+"u148a-2:4": "Envolví el regalo con papel de colores.",
+"u148b-1:0": "El cartero reparte las cartas a mediodía.",
+"u148b-1:1": "Necesito una caja más grande para empacar los libros.",
+"u148b-1:2": "El envío internacional costó una fortuna.",
+"u148b-1:3": "Firmé de recibido y me dieron el paquete.",
+"u148b-1:4": "Pon la dirección completa con número interior."
 },
 "u15": {
 "u15a-1:0": "el restaurante",
@@ -2982,5 +3742,33 @@
 "u97e-1:3": "Ve al mercado de Coyoacán. Ahí puedes probar de todo sin gastar mucho.",
 "u97e-1:4": "En el centro sí, pero te recomiendo que tomes un taxi de aplicación para regresar al hotel.",
 "u97e-2:0": "De nada. Que disfrutes mucho tu visita."
+},
+"u98": {
+"u98a-1:0": "La contaminación del aire empeora cada invierno.",
+"u98a-1:1": "Separamos la basura orgánica de la inorgánica.",
+"u98a-1:2": "Deberíamos usar menos bolsas de plástico.",
+"u98a-1:3": "El calentamiento global afecta sobre todo a los más pobres.",
+"u98a-1:4": "Hay que ahorrar agua, sobre todo en temporada de secas.",
+"u98a-2:0": "Mucha gente tira basura en la calle sin pensar.",
+"u98a-2:1": "Plantamos árboles en el parque con los vecinos.",
+"u98a-2:2": "Los ríos de la ciudad están muy contaminados.",
+"u98a-2:3": "Cada vez hay más carros eléctricos en las calles.",
+"u98a-2:4": "Prefiero ir en bici al trabajo para no contaminar.",
+"u98a-3:0": "Si no cuidamos los bosques, vamos a perderlos.",
+"u98a-3:1": "El gobierno prohibió los popotes de plástico."
+},
+"u99": {
+"u99a-1:0": "Según el periódico, el precio de la gasolina va a subir.",
+"u99a-1:1": "Lo vi en las noticias de anoche.",
+"u99a-1:2": "No hay que creer todo lo que se publica en internet.",
+"u99a-1:3": "La noticia se hizo viral en unas horas.",
+"u99a-1:4": "El presidente dio un discurso esta mañana.",
+"u99a-2:0": "Hubo una manifestación frente al palacio de gobierno.",
+"u99a-2:1": "Los maestros están en huelga desde el lunes.",
+"u99a-2:2": "El terremoto causó daños en varios edificios.",
+"u99a-2:3": "Encontraron con vida a los mineros atrapados.",
+"u99a-2:4": "La economía creció menos de lo esperado.",
+"u99a-3:0": "Me suscribí a un periódico digital.",
+"u99a-3:1": "Ese periodista siempre exagera."
 }
 }
