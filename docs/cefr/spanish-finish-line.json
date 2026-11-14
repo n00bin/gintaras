@@ -310,7 +310,13 @@
    "u259",
    "u260",
    "u261",
-   "u262"
+   "u262",
+   "u263",
+   "u264",
+   "u265",
+   "u266",
+   "u267",
+   "u268"
   ],
   "C2": []
  },
@@ -543,7 +549,7 @@
     "grammar_missing": []
    },
    "C1": {
-    "word_forms_running_total": 5315,
+    "word_forms_running_total": 5446,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,
@@ -555,7 +561,7 @@
     "grammar_missing": []
    },
    "C2": {
-    "word_forms_running_total": 5355,
+    "word_forms_running_total": 5486,
     "reading_at_length": 0,
     "reading_any_length": 17,
     "listening_at_length": 0,

@@ -932,6 +932,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u263": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u264": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u265": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u266": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u267": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u268": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u28": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -4499,6 +4523,79 @@
 "u262a-2:2": "Me decepcionó que no me apoyara cuando más lo necesitaba.",
 "u262a-2:3": "Hay amistades que sobreviven a la distancia y al tiempo.",
 "u262a-2:4": "Aprendió a perdonar sin olvidar."
+},
+"u263": {
+"u263a-1:0": "La caza furtiva diezmó la población de jaguares.",
+"u263a-1:1": "Los polinizadores son imprescindibles para la agricultura.",
+"u263a-1:2": "Las especies invasoras desplazan a la fauna local.",
+"u263a-1:3": "La reserva de la biosfera abarca más de un millón de hectáreas.",
+"u263a-1:4": "El tráfico ilegal de fauna silvestre mueve millones.",
+"u263a-2:0": "La pesca de arrastre arrasa con los fondos marinos.",
+"u263a-2:1": "Las tortugas desovan en estas playas cada verano.",
+"u263a-2:2": "La fragmentación del hábitat aísla a las poblaciones.",
+"u263a-2:3": "Se reintrodujo el lobo mexicano en la sierra.",
+"u263a-2:4": "Los humedales funcionan como esponjas naturales."
+},
+"u264": {
+"u264a-1:0": "Sacó una hipoteca a veinte años para comprar su casa.",
+"u264a-1:1": "El enganche equivale al diez por ciento del valor del inmueble.",
+"u264a-1:2": "El arrendador se niega a devolver el depósito.",
+"u264a-1:3": "Los desalojos aumentaron tras el fin de la moratoria.",
+"u264a-1:4": "La plusvalía de la zona se disparó con el nuevo metro.",
+"u264a-2:0": "Viven hacinados en un cuarto de redonda.",
+"u264a-2:1": "La escritura de la casa está a nombre de su madre.",
+"u264a-2:2": "El predial subió de forma considerable este año.",
+"u264a-2:3": "Los fraccionamientos en las afueras carecen de transporte.",
+"u264a-2:4": "Muchos jóvenes posponen independizarse por los precios.",
+"u264a-3:0": "La vivienda social escasea en las grandes ciudades.",
+"u264a-3:1": "El avalúo resultó más bajo de lo esperado."
+},
+"u265": {
+"u265a-1:0": "La autopista de cuota redujo el trayecto a la mitad.",
+"u265a-1:1": "La obra lleva tres años de retraso y ha triplicado su presupuesto.",
+"u265a-1:2": "Los baches provocan accidentes constantemente.",
+"u265a-1:3": "La licitación fue otorgada a una empresa sin experiencia.",
+"u265a-1:4": "Se amplió la red de trolebuses eléctricos.",
+"u265a-2:0": "Los embotellamientos cuestan millones de horas de trabajo.",
+"u265a-2:1": "La ciclovía conecta el centro con los barrios periféricos.",
+"u265a-2:2": "Las concesiones privadas encarecen los peajes.",
+"u265a-2:3": "La inauguración se pospuso por fallas técnicas."
+},
+"u266": {
+"u266a-1:0": "La nixtamalización hace el maíz más nutritivo.",
+"u266a-1:1": "Este platillo tiene un sabor ahumado inconfundible.",
+"u266a-1:2": "La salsa resultó demasiado picosa para los invitados.",
+"u266a-1:3": "El chef reinterpreta recetas de la abuela con técnicas modernas.",
+"u266a-1:4": "La cocina mexicana es patrimonio inmaterial de la humanidad.",
+"u266a-2:0": "El maridaje con mezcal realza los sabores del platillo.",
+"u266a-2:1": "Los insectos comestibles forman parte de la dieta prehispánica.",
+"u266a-2:2": "La comida callejera refleja la creatividad popular.",
+"u266a-2:3": "El sazón de cada familia es un secreto celosamente guardado."
+},
+"u267": {
+"u267a-1:0": "El trámite exige copias certificadas de todos los documentos.",
+"u267a-1:1": "Me hicieron volver tres veces por un sello que faltaba.",
+"u267a-1:2": "La ventanilla atiende solo de nueve a una.",
+"u267a-1:3": "Hay que apostillar el acta de nacimiento.",
+"u267a-1:4": "La digitalización agilizó muchos procesos administrativos.",
+"u267a-2:0": "Le negaron el permiso por un error de captura.",
+"u267a-2:1": "El gestor cobra por hacer filas en tu lugar.",
+"u267a-2:2": "Los requisitos cambian sin previo aviso.",
+"u267a-2:3": "Presentó una queja formal ante la contraloría.",
+"u267a-2:4": "La burocracia excesiva alienta la corrupción."
+},
+"u268": {
+"u268a-1:0": "Es muy perspicaz: se da cuenta de todo.",
+"u268a-1:1": "Tiene fama de tacaño, pero es generoso con sus amigos.",
+"u268a-1:2": "Su jefe es un hombre testarudo que nunca da su brazo a torcer.",
+"u268a-1:3": "Es tan ingenua que se cree todo lo que le dicen.",
+"u268a-1:4": "Es una persona meticulosa que revisa cada detalle.",
+"u268a-2:0": "Su carácter impulsivo le ha traído muchos problemas.",
+"u268a-2:1": "Es muy sensata y siempre da buenos consejos.",
+"u268a-2:2": "Se volvió desconfiado después de la traición.",
+"u268a-2:3": "Es carismático, pero un poco manipulador.",
+"u268a-2:4": "Mi abuela era bondadosa, aunque de carácter firme.",
+"u268a-3:0": "Es tan perfeccionista que nunca termina nada."
 },
 "u28": {
 "u28a-1:0": "la camisa",
