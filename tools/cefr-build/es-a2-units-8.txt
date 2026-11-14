@@ -1,0 +1,29 @@
+@u96|Para conversar|Replies for real conversations|The replies you need for the conversations that follow, for example <b>Tengo gripa desde hace dos días.</b> (I have had the flu for two days.), <b>Me duele mucho la garganta, pero no tengo fiebre.</b> (My throat really hurts, but I don’t have a temperature.) and <b>¿Las puedo tomar con el estómago vacío?</b> (Can I take them on an empty stomach?).|Act out one of the conversations with a friend, then swap roles.
+#u96a|Replies for real conversations, part 1
+Tengo gripa desde hace dos días.|I have had the flu for two days.
+Me duele mucho la garganta, pero no tengo fiebre.|My throat really hurts, but I don’t have a temperature.
+¿Las puedo tomar con el estómago vacío?|Can I take them on an empty stomach?
+Muy bien, muchas gracias. ¿Cuánto le debo?|Very good, thank you very much. How much do I owe you?
+Buenas tardes. Le hablo por el departamento en renta.|Good afternoon. I’m calling about the flat for rent.
+¿Cuánto es la renta al mes?|How much is the rent per month?
+¿Se aceptan mascotas? Tengo un gato.|Are pets allowed? I have a cat.
+Sí, ¿puedo ir mañana en la tarde?|Yes, can I come tomorrow afternoon?
+Tengo veintiocho años y trabajé tres años en un restaurante.|I’m twenty-eight and I worked in a restaurant for three years.
+Porque me gusta mucho atender a la gente.|Because I really like looking after people.
+#u96b|Replies for real conversations, part 2
+Hablo inglés bastante bien y un poco de francés.|I speak English quite well and a little French.
+Sí, ¿cuál sería el horario de trabajo?|Yes, what would the working hours be?
+Compré esta chamarra ayer, pero me queda chica.|I bought this jacket yesterday, but it’s too small for me.
+Sí, aquí está. ¿La puedo cambiar por una talla más grande?|Yes, here it is. Can I exchange it for a bigger size?
+Está bien, el negro también me gusta.|That’s fine, I like the black too.
+Me queda perfecta. Me la llevo.|It fits me perfectly. I’ll take it.
+Todavía no. ¿Qué quieres hacer?|Not yet. What do you want to do?
+¡Qué padre! ¿A qué hora empieza?|How cool! What time does it start?
+Sí, nos vemos a las cuatro en el café de la esquina.|Yes, let’s meet at four at the café on the corner.
+Claro, yo le mando un mensaje.|Of course, I’ll send him a message.
+#u96c|Replies for real conversations, part 3
+Me duele mucho la espalda desde el lunes.|My back has hurt a lot since Monday.
+Sí, ayudé a un amigo con su mudanza.|Yes, I helped a friend with his house move.
+¿Puedo ir a trabajar?|Can I go to work?
+Entendido. Muchas gracias, doctora.|Understood. Thank you very much, doctor.
++cv17,cv18,cv19,cv20,cv21,cv22

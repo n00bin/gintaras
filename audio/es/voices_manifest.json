@@ -1,4 +1,16 @@
 {
+"aoede_cv21": {
+"cv21:0": "¡Hola! ¿Tienes planes para el sábado?",
+"cv21:2": "Hay un concierto en el parque. Es gratis.",
+"cv21:4": "A las seis. ¿Comemos algo antes?",
+"cv21:6": "Perfecto. ¿Invitamos a Diego?"
+},
+"aoede_cv22": {
+"cv22:0": "Pase, siéntese. ¿Qué le pasa?",
+"cv22:2": "¿Hizo algún esfuerzo? ¿Cargó algo pesado?",
+"cv22:4": "Le voy a dar algo para el dolor. Nada de ejercicio por una semana.",
+"cv22:6": "Sí, pero no cargue nada pesado. Si no mejora, regrese el viernes."
+},
 "charon_cv1": {
 "cv1:13": "¡Buenos días! ¿Un café?",
 "cv1:15": "¿Un chocolate caliente?"
@@ -118,6 +130,28 @@
 "cv16:7": "¿Mande? No entiendo.",
 "cv16:9": "Más despacio, por favor."
 },
+"despina_cv17": {
+"cv17:1": "Tengo gripa desde hace dos días.",
+"cv17:3": "Me duele mucho la garganta, pero no tengo fiebre.",
+"cv17:5": "¿Las puedo tomar con el estómago vacío?",
+"cv17:7": "Muy bien, muchas gracias. ¿Cuánto le debo?"
+},
+"despina_cv18": {
+"cv18:1": "Buenas tardes. Le hablo por el departamento en renta.",
+"cv18:3": "¿Cuánto es la renta al mes?",
+"cv18:5": "¿Se aceptan mascotas? Tengo un gato.",
+"cv18:7": "Sí, ¿puedo ir mañana en la tarde?"
+},
+"despina_cv19": {
+"cv19:0": "Buenos días. Siéntese, por favor. Cuénteme un poco de usted.",
+"cv19:1": "Tengo veintiocho años y trabajé tres años en un restaurante.",
+"cv19:2": "¿Y por qué quiere trabajar en este hotel?",
+"cv19:3": "Porque me gusta mucho atender a la gente.",
+"cv19:4": "¿Habla otros idiomas?",
+"cv19:5": "Hablo inglés bastante bien y un poco de francés.",
+"cv19:6": "Muy bien. ¿Tiene alguna pregunta para nosotros?",
+"cv19:7": "Sí, ¿cuál sería el horario de trabajo?"
+},
 "despina_cv2": {
 "cv2:1": "Muy bien. ¿Y tú?",
 "cv2:10": "Trabajo en México.",
@@ -128,6 +162,24 @@
 "cv2:7o0": "Sí. Soy estudiante.",
 "cv2:7o1": "No. Soy maestro.",
 "cv2:8": "Hablo un poco de español."
+},
+"despina_cv20": {
+"cv20:1": "Compré esta chamarra ayer, pero me queda chica.",
+"cv20:3": "Sí, aquí está. ¿La puedo cambiar por una talla más grande?",
+"cv20:5": "Está bien, el negro también me gusta.",
+"cv20:7": "Me queda perfecta. Me la llevo."
+},
+"despina_cv21": {
+"cv21:1": "Todavía no. ¿Qué quieres hacer?",
+"cv21:3": "¡Qué padre! ¿A qué hora empieza?",
+"cv21:5": "Sí, nos vemos a las cuatro en el café de la esquina.",
+"cv21:7": "Claro, yo le mando un mensaje."
+},
+"despina_cv22": {
+"cv22:1": "Me duele mucho la espalda desde el lunes.",
+"cv22:3": "Sí, ayudé a un amigo con su mudanza.",
+"cv22:5": "¿Puedo ir a trabajar?",
+"cv22:7": "Entendido. Muchas gracias, doctora."
 },
 "despina_cv3": {
 "cv3:1": "Bien, gracias. ¿Y tú?",
@@ -436,6 +488,28 @@
 "cv16:7": "¿Mande? No entiendo.",
 "cv16:9": "Más despacio, por favor."
 },
+"orus_cv17": {
+"cv17:1": "Tengo gripa desde hace dos días.",
+"cv17:3": "Me duele mucho la garganta, pero no tengo fiebre.",
+"cv17:5": "¿Las puedo tomar con el estómago vacío?",
+"cv17:7": "Muy bien, muchas gracias. ¿Cuánto le debo?"
+},
+"orus_cv18": {
+"cv18:0": "¿Bueno?",
+"cv18:1": "Buenas tardes. Le hablo por el departamento en renta.",
+"cv18:2": "Ah, sí. Tiene dos recámaras y está en el segundo piso.",
+"cv18:3": "¿Cuánto es la renta al mes?",
+"cv18:4": "Doce mil pesos, con mantenimiento incluido.",
+"cv18:5": "¿Se aceptan mascotas? Tengo un gato.",
+"cv18:6": "Un gato sí, no hay problema. ¿Quiere verlo?",
+"cv18:7": "Sí, ¿puedo ir mañana en la tarde?"
+},
+"orus_cv19": {
+"cv19:1": "Tengo veintiocho años y trabajé tres años en un restaurante.",
+"cv19:3": "Porque me gusta mucho atender a la gente.",
+"cv19:5": "Hablo inglés bastante bien y un poco de francés.",
+"cv19:7": "Sí, ¿cuál sería el horario de trabajo?"
+},
 "orus_cv2": {
 "cv2:1": "Muy bien. ¿Y tú?",
 "cv2:10": "Trabajo en México.",
@@ -446,6 +520,24 @@
 "cv2:7o0": "Sí. Soy estudiante.",
 "cv2:7o1": "No. Soy maestro.",
 "cv2:8": "Hablo un poco de español."
+},
+"orus_cv20": {
+"cv20:1": "Compré esta chamarra ayer, pero me queda chica.",
+"cv20:3": "Sí, aquí está. ¿La puedo cambiar por una talla más grande?",
+"cv20:5": "Está bien, el negro también me gusta.",
+"cv20:7": "Me queda perfecta. Me la llevo."
+},
+"orus_cv21": {
+"cv21:1": "Todavía no. ¿Qué quieres hacer?",
+"cv21:3": "¡Qué padre! ¿A qué hora empieza?",
+"cv21:5": "Sí, nos vemos a las cuatro en el café de la esquina.",
+"cv21:7": "Claro, yo le mando un mensaje."
+},
+"orus_cv22": {
+"cv22:1": "Me duele mucho la espalda desde el lunes.",
+"cv22:3": "Sí, ayudé a un amigo con su mudanza.",
+"cv22:5": "¿Puedo ir a trabajar?",
+"cv22:7": "Entendido. Muchas gracias, doctora."
 },
 "orus_cv3": {
 "cv3:1": "Bien, gracias. ¿Y tú?",

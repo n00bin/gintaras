@@ -50,7 +50,14 @@ const convFiles = fs.readdirSync(S).filter(f => /^es-(a1|a2|b1|b2|c1|c2)-convs\.
 const convText = '/* BEGIN ES CEFR CONVERSATIONS */\nCONVS.push(\n' + convFiles.map(f => fs.readFileSync(path.join(S, f), 'utf8').trim()).join('\n') + '\n);\n/* END ES CEFR CONVERSATIONS */\n';
 let meanings = {}; try { meanings = JSON.parse(fs.readFileSync(path.join(S, 'es-units-words.json'), 'utf8')); } catch (e) {}
 const speak = {}; units.forEach(un => speak[un.id] = un.speak);
-const extras = '/* BEGIN ES CEFR EXTRAS: speaking tips and word meanings for "Built from". */\nObject.assign(SPEAK_TIPS,' + q(speak) + ');\nObject.assign(WORDS,' + q(meanings) + ');\n/* END ES CEFR EXTRAS */\n';
+// voices for named conversation characters (role names like "Vendedor" keep the everyday voices: CAST_GV names count as names)
+let castGv = {}; try { castGv = JSON.parse(fs.readFileSync(path.join(S, 'es-cast-gv.json'), 'utf8')); } catch (e) {}
+// every lesson part (bites of 5, ids <lesson>-1, -2 ...) gets its own short tip, built from its own cards (tools/check_spanish.js needs one)
+const lessonTips = {}, plain = s => s.replace(/\s*\(.*?\)/g, '');
+units.forEach(un => un.lessons.forEach(ls => { for (let p = 0; p * 5 < ls.items.length; p++) {
+  const its = ls.items.slice(p * 5, p * 5 + 5).slice(0, 3).map(it => '<b>' + it.es + '</b> (' + plain(it.en) + ')');
+  lessonTips[ls.id + '-' + (p + 1)] = 'In this part: ' + (its.length > 1 ? its.slice(0, -1).join(', ') + ' and ' + its[its.length - 1] : its[0]) + '.'; } }));
+const extras = '/* BEGIN ES CEFR EXTRAS: speaking tips, lesson tips, word meanings for "Built from", conversation voices. */\nObject.assign(SPEAK_TIPS,' + q(speak) + ');\nObject.assign(LESSON_TIPS,' + q(lessonTips) + ');\nObject.assign(WORDS,' + q(meanings) + ');\nObject.assign(CAST_GV,' + q(castGv) + ');\n/* END ES CEFR EXTRAS */\n';
 const put = (s, begin, end, text, anchor, after) => { const a = s.indexOf(begin);
   if (a >= 0) { const b = s.indexOf(end, a); return s.slice(0, a) + text + s.slice(s.indexOf('\n', b) + 1); }
   if (anchor === null) return s.replace(/\s*$/, '\n') + text;

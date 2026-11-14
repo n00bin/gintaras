@@ -84,6 +84,7 @@ COLLECT = r"""
     out.live[u.id] = {title: u.en, cards: items.length, forms: [...forms]};
   }
   out.path = PATH.filter(x => typeof x === 'string');
+  out.convIds = typeof CONV_BY !== 'undefined' ? Object.keys(CONV_BY) : [];
   return out;
 }"""
 
@@ -104,10 +105,11 @@ def main():
     live_units = track.get('live_units', {})  # level -> [unit ids]
     unit_level = {u: lv for lv, us in live_units.items() for u in us}
     unassigned = [u for u in d['live'] if u not in unit_level]
+    conv_ids = set(d.get('convIds') or [])
     conv_level, cur = {}, 'A1'  # a live conversation belongs to the level of the unit before it on the path
     for step in d['path']:
         if step in unit_level: cur = unit_level[step]
-        elif step not in d['live']: conv_level.setdefault(cur, []).append({'id': step})
+        elif step in conv_ids: conv_level.setdefault(cur, []).append({'id': step})  # only real conversations, not the all-skills rows
     grammar = track.get('grammar', {})  # level -> {point: [where taught]} ; empty list = not taught yet
     measured, lines, total_forms = {}, [], set()
     for lv in LEVELS:

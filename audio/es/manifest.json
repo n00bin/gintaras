@@ -28,7 +28,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"cv17": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv18": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv19": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv2": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv20": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv21": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"cv22": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -408,7 +432,39 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u89": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u9": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u90": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u91": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u92": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u93": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u94": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u95": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u96": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 }
@@ -566,6 +622,36 @@
 "cv16:8": "¡No pasa nada!",
 "cv16:9": "Más despacio, por favor."
 },
+"cv17": {
+"cv17:0": "Buenas tardes. ¿En qué le puedo ayudar?",
+"cv17:1": "Tengo gripa desde hace dos días.",
+"cv17:2": "¿Tiene fiebre o le duele la garganta?",
+"cv17:3": "Me duele mucho la garganta, pero no tengo fiebre.",
+"cv17:4": "Le doy estas pastillas. Tómese una cada ocho horas.",
+"cv17:5": "¿Las puedo tomar con el estómago vacío?",
+"cv17:6": "Mejor después de comer. Y tome mucha agua.",
+"cv17:7": "Muy bien, muchas gracias. ¿Cuánto le debo?"
+},
+"cv18": {
+"cv18:0": "¿Bueno?",
+"cv18:1": "Buenas tardes. Le hablo por el departamento en renta.",
+"cv18:2": "Ah, sí. Tiene dos recámaras y está en el segundo piso.",
+"cv18:3": "¿Cuánto es la renta al mes?",
+"cv18:4": "Doce mil pesos, con mantenimiento incluido.",
+"cv18:5": "¿Se aceptan mascotas? Tengo un gato.",
+"cv18:6": "Un gato sí, no hay problema. ¿Quiere verlo?",
+"cv18:7": "Sí, ¿puedo ir mañana en la tarde?"
+},
+"cv19": {
+"cv19:0": "Buenos días. Siéntese, por favor. Cuénteme un poco de usted.",
+"cv19:1": "Tengo veintiocho años y trabajé tres años en un restaurante.",
+"cv19:2": "¿Y por qué quiere trabajar en este hotel?",
+"cv19:3": "Porque me gusta mucho atender a la gente.",
+"cv19:4": "¿Habla otros idiomas?",
+"cv19:5": "Hablo inglés bastante bien y un poco de francés.",
+"cv19:6": "Muy bien. ¿Tiene alguna pregunta para nosotros?",
+"cv19:7": "Sí, ¿cuál sería el horario de trabajo?"
+},
 "cv2": {
 "cv2:0": "Hola. ¿Cómo estás?",
 "cv2:1": "Muy bien. ¿Y tú?",
@@ -585,6 +671,36 @@
 "cv2:7o1-0": "¿Hablas inglés?",
 "cv2:8": "Hablo un poco de español.",
 "cv2:9": "¿Por qué aprendes español?"
+},
+"cv20": {
+"cv20:0": "Buenas tardes, ¿qué se le ofrece?",
+"cv20:1": "Compré esta chamarra ayer, pero me queda chica.",
+"cv20:2": "¿Trae su ticket?",
+"cv20:3": "Sí, aquí está. ¿La puedo cambiar por una talla más grande?",
+"cv20:4": "En azul ya no hay, pero la tenemos en negro.",
+"cv20:5": "Está bien, el negro también me gusta.",
+"cv20:6": "Perfecto. Pase al probador, por favor.",
+"cv20:7": "Me queda perfecta. Me la llevo."
+},
+"cv21": {
+"cv21:0": "¡Hola! ¿Tienes planes para el sábado?",
+"cv21:1": "Todavía no. ¿Qué quieres hacer?",
+"cv21:2": "Hay un concierto en el parque. Es gratis.",
+"cv21:3": "¡Qué padre! ¿A qué hora empieza?",
+"cv21:4": "A las seis. ¿Comemos algo antes?",
+"cv21:5": "Sí, nos vemos a las cuatro en el café de la esquina.",
+"cv21:6": "Perfecto. ¿Invitamos a Diego?",
+"cv21:7": "Claro, yo le mando un mensaje."
+},
+"cv22": {
+"cv22:0": "Pase, siéntese. ¿Qué le pasa?",
+"cv22:1": "Me duele mucho la espalda desde el lunes.",
+"cv22:2": "¿Hizo algún esfuerzo? ¿Cargó algo pesado?",
+"cv22:3": "Sí, ayudé a un amigo con su mudanza.",
+"cv22:4": "Le voy a dar algo para el dolor. Nada de ejercicio por una semana.",
+"cv22:5": "¿Puedo ir a trabajar?",
+"cv22:6": "Sí, pero no cargue nada pesado. Si no mejora, regrese el viernes.",
+"cv22:7": "Entendido. Muchas gracias, doctora."
 },
 "cv3": {
 "cv3:0": "Buenos días. ¿Cómo estás?",
@@ -903,6 +1019,8 @@
 "me2:u63a-1:0~f": "Cuando era niña vivía en un pueblo.",
 "me2:u64a-3:1~f": "El cliente no está contenta con el servicio.",
 "me2:u68a-1:4~f": "Soy alérgica a la penicilina.",
+"me2:u92b-1:2~f": "Siento mucho que estés enferma.",
+"me2:u95a-1:0~f": "Dijo que estaba cansada.",
 "me2:u9a-1:0~f": "Estoy contenta",
 "me2:u9a-1:1~f": "Estoy cansada",
 "me2:u9a-1:2~f": "Estoy enferma",
@@ -2508,6 +2626,21 @@
 "u88b-1:3": "El mirador tiene una vista espectacular.",
 "u88b-1:4": "Hicimos una excursión en lancha por el río."
 },
+"u89": {
+"u89a-1:0": "Hacía frío y estaba lloviendo.",
+"u89a-1:1": "Eran las once de la noche cuando sonó el teléfono.",
+"u89a-1:2": "De repente sonó el teléfono.",
+"u89a-1:3": "Mientras cocinaba, se fue la luz.",
+"u89a-1:4": "Estábamos en la playa cuando empezó la tormenta.",
+"u89a-2:0": "Yo dormía tranquilamente cuando alguien tocó la puerta.",
+"u89a-2:1": "Había mucha gente, así que nos fuimos a otro lugar.",
+"u89a-2:2": "No sabía qué hacer, entonces le llamé a mi hermano.",
+"u89b-1:0": "Al principio todo iba bien.",
+"u89b-1:1": "Un día, sin avisar, apareció en mi puerta.",
+"u89b-1:2": "Al final, todo salió bien.",
+"u89b-1:3": "Mientras tanto, mi esposa esperaba en el carro.",
+"u89b-1:4": "Unos minutos después llegó la policía."
+},
 "u9": {
 "u9a-1:0": "Estoy contento",
 "u9a-1:1": "Estoy cansado",
@@ -2529,5 +2662,115 @@
 "u9d-1:2": "Estoy mejor",
 "u9d-1:3": "Necesito descansar",
 "u9d-1:4": "Hoy hace calor"
+},
+"u90": {
+"u90a-1:0": "He vivido aquí toda mi vida.",
+"u90a-1:1": "¿Has estado en Oaxaca?",
+"u90a-1:2": "Nunca he visto la nieve.",
+"u90a-1:3": "Mis papás han viajado mucho.",
+"u90a-1:4": "Este año hemos ahorrado poco.",
+"u90a-2:0": "Todavía no he terminado el informe.",
+"u90a-2:1": "¿Alguna vez has comido chapulines?",
+"u90b-1:0": "¿Ya comiste?",
+"u90b-1:1": "Ya terminé, gracias.",
+"u90b-1:2": "¿Ya llegaron tus primos?",
+"u90b-1:3": "Todavía no llegan.",
+"u90b-1:4": "Ya vi esa película dos veces."
+},
+"u91": {
+"u91a-1:0": "Mañana lloverá en todo el país.",
+"u91a-1:1": "El próximo año viviré en Monterrey.",
+"u91a-1:2": "¿Vendrás a la boda?",
+"u91a-1:3": "Te lo diré cuando lo sepa.",
+"u91a-1:4": "Seguramente estará en su oficina.",
+"u91a-2:0": "¿Qué hora será?",
+"u91b-1:0": "Me gustaría vivir junto al mar.",
+"u91b-1:1": "¿Podrías ayudarme con esto?",
+"u91b-1:2": "Yo en tu lugar no lo compraría.",
+"u91b-1:3": "Con más tiempo, aprendería a tocar el piano.",
+"u91b-1:4": "Dijo que llegaría temprano.",
+"u91b-2:0": "Deberías descansar un poco."
+},
+"u92": {
+"u92a-1:0": "Quiero que vengas a mi fiesta.",
+"u92a-1:1": "Ojalá que no llueva mañana.",
+"u92a-1:2": "Te recomiendo que pruebes el mole.",
+"u92a-1:3": "Es mejor que salgamos temprano.",
+"u92a-1:4": "Mi mamá quiere que estudie medicina.",
+"u92a-2:0": "El doctor dice que descanse más.",
+"u92a-2:1": "Espero que te guste el regalo.",
+"u92b-1:0": "Me alegra que estés aquí.",
+"u92b-1:1": "Me molesta que lleguen tarde.",
+"u92b-1:2": "Siento mucho que estés enfermo.",
+"u92b-1:3": "No creo que sea tan difícil.",
+"u92b-1:4": "Dudo que tengan mesa a esta hora.",
+"u92b-2:0": "Es posible que cambien el horario.",
+"u92b-2:1": "Cuando llegues, mándame un mensaje."
+},
+"u93": {
+"u93a-1:0": "No vengas mañana.",
+"u93a-1:1": "No llegues tarde.",
+"u93a-1:2": "No te preocupes por eso.",
+"u93a-1:3": "No toques eso, está caliente.",
+"u93a-1:4": "No le digas a nadie.",
+"u93a-2:0": "No se olviden de sus boletos.",
+"u93a-2:1": "No hagas ruido, el bebé está dormido.",
+"u93b-1:0": "Se lo doy mañana.",
+"u93b-1:1": "¿Me lo prestas?",
+"u93b-1:2": "Te lo mando por correo.",
+"u93b-1:3": "Ya se lo dije a tu mamá.",
+"u93b-1:4": "Dámelo, por favor.",
+"u93b-2:0": "No se lo digas a nadie."
+},
+"u94": {
+"u94a-1:0": "El libro que me prestaste es muy bueno.",
+"u94a-1:1": "La señora que vive arriba es doctora.",
+"u94a-1:2": "Esta es la casa donde nací.",
+"u94a-1:3": "El amigo con quien viajé se llama Rafa.",
+"u94a-1:4": "Lo que más me gusta es la comida.",
+"u94a-2:0": "No entiendo lo que dices.",
+"u94a-2:1": "Haz lo que quieras.",
+"u94a-2:2": "El restaurante del que te hablé cerró."
+},
+"u95": {
+"u95a-1:0": "Dijo que estaba cansado.",
+"u95a-1:1": "Me dijo que no podía venir.",
+"u95a-1:2": "Me preguntó si quería un café.",
+"u95a-1:3": "Dicen que va a llover toda la semana.",
+"u95a-1:4": "Le pregunté dónde vivía.",
+"u95a-2:0": "Me contó que había perdido su trabajo.",
+"u95a-2:1": "Me pidió que le ayudara.",
+"u95b-1:0": "Vivo en el tercer piso.",
+"u95b-1:1": "Es la primera vez que vengo.",
+"u95b-1:2": "Llegó en segundo lugar.",
+"u95b-1:3": "Es su cuarto hijo.",
+"u95b-1:4": "Nació el primero de mayo de dos mil diez.",
+"u95b-2:0": "Estamos en el siglo veintiuno."
+},
+"u96": {
+"u96a-1:0": "Tengo gripa desde hace dos días.",
+"u96a-1:1": "Me duele mucho la garganta, pero no tengo fiebre.",
+"u96a-1:2": "¿Las puedo tomar con el estómago vacío?",
+"u96a-1:3": "Muy bien, muchas gracias. ¿Cuánto le debo?",
+"u96a-1:4": "Buenas tardes. Le hablo por el departamento en renta.",
+"u96a-2:0": "¿Cuánto es la renta al mes?",
+"u96a-2:1": "¿Se aceptan mascotas? Tengo un gato.",
+"u96a-2:2": "Sí, ¿puedo ir mañana en la tarde?",
+"u96a-2:3": "Tengo veintiocho años y trabajé tres años en un restaurante.",
+"u96a-2:4": "Porque me gusta mucho atender a la gente.",
+"u96b-1:0": "Hablo inglés bastante bien y un poco de francés.",
+"u96b-1:1": "Sí, ¿cuál sería el horario de trabajo?",
+"u96b-1:2": "Compré esta chamarra ayer, pero me queda chica.",
+"u96b-1:3": "Sí, aquí está. ¿La puedo cambiar por una talla más grande?",
+"u96b-1:4": "Está bien, el negro también me gusta.",
+"u96b-2:0": "Me queda perfecta. Me la llevo.",
+"u96b-2:1": "Todavía no. ¿Qué quieres hacer?",
+"u96b-2:2": "¡Qué padre! ¿A qué hora empieza?",
+"u96b-2:3": "Sí, nos vemos a las cuatro en el café de la esquina.",
+"u96b-2:4": "Claro, yo le mando un mensaje.",
+"u96c-1:0": "Me duele mucho la espalda desde el lunes.",
+"u96c-1:1": "Sí, ayudé a un amigo con su mudanza.",
+"u96c-1:2": "¿Puedo ir a trabajar?",
+"u96c-1:3": "Entendido. Muchas gracias, doctora."
 }
 }
