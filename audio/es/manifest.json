@@ -956,6 +956,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u269": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u270": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u271": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u272": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u273": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u274": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u28": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -4596,6 +4620,81 @@
 "u268a-2:3": "Es carismático, pero un poco manipulador.",
 "u268a-2:4": "Mi abuela era bondadosa, aunque de carácter firme.",
 "u268a-3:0": "Es tan perfeccionista que nunca termina nada."
+},
+"u269": {
+"u269a-1:0": "Tiene la tez morena y unas cejas muy pobladas.",
+"u269a-1:1": "Se encogió de hombros sin decir nada.",
+"u269a-1:2": "Frunció el ceño al leer la carta.",
+"u269a-1:3": "Lleva el pelo recogido en una trenza.",
+"u269a-1:4": "Tenía las mejillas sonrojadas por el frío.",
+"u269a-2:0": "Es delgado, de espalda ancha y andar pausado.",
+"u269a-2:1": "Le temblaban las rodillas antes de salir al escenario.",
+"u269a-2:2": "Me guiñó un ojo para que le siguiera el juego.",
+"u269a-2:3": "Tiene una cicatriz en la barbilla desde niño.",
+"u269a-2:4": "Se mordía las uñas cuando estaba nerviosa.",
+"u269a-3:0": "Las arrugas alrededor de sus ojos delatan que sonríe mucho.",
+"u269a-3:1": "Se le erizó la piel al oír la canción."
+},
+"u270": {
+"u270a-1:0": "La barranca tiene más de mil metros de profundidad.",
+"u270a-1:1": "El río serpentea entre cañaverales y huertas.",
+"u270a-1:2": "Desde la cima se divisa el volcán nevado.",
+"u270a-1:3": "La meseta central concentra la mayor parte de la población.",
+"u270a-1:4": "Los acantilados caen a pico sobre el mar.",
+"u270a-2:0": "La península es una planicie de roca caliza.",
+"u270a-2:1": "El lago se secó casi por completo en los últimos años.",
+"u270a-2:2": "La sierra está cubierta de pinos y encinos.",
+"u270a-2:3": "Una neblina espesa envolvía el valle al amanecer.",
+"u270a-2:4": "El litoral del Pacífico es abrupto y rocoso.",
+"u270a-3:0": "Las dunas cambian de forma con el viento."
+},
+"u271": {
+"u271a-1:0": "Necesito un desarmador de cruz y unas pinzas.",
+"u271a-1:1": "El fontanero destapó el lavabo en cinco minutos.",
+"u271a-1:2": "Hay una fuga de gas; abre las ventanas y no prendas nada.",
+"u271a-1:3": "Lija la madera antes de barnizarla.",
+"u271a-1:4": "Taladré la pared para colgar las repisas.",
+"u271a-2:0": "Se botó la pastilla y nos quedamos sin luz.",
+"u271a-2:1": "El calentador tarda mucho en encender.",
+"u271a-2:2": "Sellé las grietas con silicón para que no entrara agua.",
+"u271a-2:3": "La bisagra de la puerta rechina; échale aceite."
+},
+"u272": {
+"u272a-1:0": "El público se puso de pie para ovacionar a la orquesta.",
+"u272a-1:1": "La cantante desafinó en la nota más alta.",
+"u272a-1:2": "Toca el violonchelo desde los seis años.",
+"u272a-1:3": "La gira incluye veinte conciertos en tres continentes.",
+"u272a-1:4": "El estribillo es tan pegajoso que no me lo puedo sacar de la cabeza.",
+"u272a-2:0": "Los boletos se agotaron en cuestión de minutos.",
+"u272a-2:1": "El son jarocho se acompaña con jarana y zapateado.",
+"u272a-2:2": "La acústica del teatro es extraordinaria.",
+"u272a-2:3": "Grabaron el disco en una sola toma, sin edición.",
+"u272a-2:4": "El director de orquesta marcó un tempo muy lento."
+},
+"u273": {
+"u273a-1:0": "La participación electoral rebasó el sesenta por ciento.",
+"u273a-1:1": "El candidato opositor reconoció su derrota.",
+"u273a-1:2": "Las encuestas no anticiparon el resultado.",
+"u273a-1:3": "La campaña estuvo marcada por la guerra sucia.",
+"u273a-1:4": "El conteo rápido dio una ventaja de tres puntos.",
+"u273a-2:0": "Se anuló la elección por irregularidades graves.",
+"u273a-2:1": "Los legisladores aprobaron la reforma por mayoría calificada.",
+"u273a-2:2": "El partido gobernante perdió la mayoría en el Congreso.",
+"u273a-2:3": "La compra de votos es un delito electoral.",
+"u273a-2:4": "Una democracia sana necesita contrapesos al poder.",
+"u273a-3:0": "La alcaldesa rindió protesta ante el cabildo.",
+"u273a-3:1": "El abstencionismo es alto entre los jóvenes."
+},
+"u274": {
+"u274a-1:0": "De vez en cuando me da por cocinar algo elaborado.",
+"u274a-1:1": "A la larga, la constancia rinde frutos.",
+"u274a-1:2": "Llegó con media hora de antelación.",
+"u274a-1:3": "En lo sucesivo, las reuniones serán los martes.",
+"u274a-1:4": "Hoy en día casi nadie escribe cartas a mano.",
+"u274a-2:0": "Ocurre muy de tarde en tarde.",
+"u274a-2:1": "A estas alturas ya no tiene sentido arrepentirse.",
+"u274a-2:2": "Se fue de golpe y sin despedirse.",
+"u274a-2:3": "Cuanto antes lo resolvamos, mejor."
 },
 "u28": {
 "u28a-1:0": "la camisa",
