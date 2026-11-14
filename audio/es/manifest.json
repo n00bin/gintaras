@@ -1308,7 +1308,35 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u344": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u345": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u346": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u347": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u348": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u349": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u35": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u350": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -6153,6 +6181,89 @@
 "u342a-3:1": "La letra pequeña esconde condiciones abusivas.",
 "u342a-3:2": "Conviene leer el contrato con detenimiento antes de firmarlo."
 },
+"u344": {
+"u344a-1:0": "Vislumbró una luz al fondo del túnel.",
+"u344a-1:1": "Percibió cierta tensión en el ambiente.",
+"u344a-1:2": "Atisbó una figura entre los árboles.",
+"u344a-1:3": "Intuía que algo no andaba bien.",
+"u344a-1:4": "Le pareció distinguir una voz conocida.",
+"u344a-2:0": "Rememoraba los veranos de su infancia.",
+"u344a-2:1": "Cavilaba durante horas sin llegar a ninguna conclusión.",
+"u344a-2:2": "Se percató de su error demasiado tarde.",
+"u344a-2:3": "Discernir lo verdadero de lo falso no siempre es fácil.",
+"u344a-2:4": "Barruntaba una tormenta por el olor del aire.",
+"u344a-3:0": "Escudriñó cada rincón en busca de pistas.",
+"u344a-3:1": "Vaciló un instante antes de responder.",
+"u344a-3:2": "Se figuraba que nadie lo había visto."
+},
+"u345": {
+"u345a-1:0": "El presente artículo pretende examinar las causas del fenómeno.",
+"u345a-1:1": "Diversos autores han abordado esta cuestión desde perspectivas distintas.",
+"u345a-1:2": "Conviene precisar algunos conceptos antes de continuar.",
+"u345a-1:3": "Los datos sugieren una relación entre ambas variables.",
+"u345a-1:4": "Cabe matizar que la muestra no es representativa.",
+"u345a-2:0": "En la misma línea, otros estudios apuntan a conclusiones similares.",
+"u345a-2:1": "Este enfoque presenta ciertas limitaciones metodológicas.",
+"u345a-2:2": "Queda pendiente un análisis más exhaustivo.",
+"u345a-2:3": "El autor sostiene una postura contraria a la tradicional.",
+"u345a-2:4": "Se constata un aumento significativo en la última década.",
+"u345a-3:0": "Las citas deben ajustarse al formato establecido.",
+"u345a-3:1": "En síntesis, los hallazgos confirman la hipótesis inicial."
+},
+"u346": {
+"u346a-1:0": "El detective examinó la escena del crimen con lupa.",
+"u346a-1:1": "Encontraron huellas dactilares en el picaporte.",
+"u346a-1:2": "Una pista falsa desvió la investigación durante semanas.",
+"u346a-1:3": "El asesino borró todas las pruebas.",
+"u346a-1:4": "La autopsia reveló rastros de veneno.",
+"u346a-2:0": "El cadáver apareció en el sótano de la mansión.",
+"u346a-2:1": "Un detalle insignificante resolvió el enigma.",
+"u346a-2:2": "El culpable confesó al verse acorralado.",
+"u346a-2:3": "El desenlace sorprendió incluso a los lectores más perspicaces."
+},
+"u347": {
+"u347a-1:0": "Los tiburones ballena se alimentan de plancton.",
+"u347a-1:1": "Un banco de sardinas se movía como una sola criatura.",
+"u347a-1:2": "El pulpo cambia de color para camuflarse.",
+"u347a-1:3": "Las medusas flotaban a la deriva.",
+"u347a-1:4": "Las mantarrayas se deslizaban por el fondo arenoso.",
+"u347a-2:0": "Los delfines nadaban junto a la embarcación.",
+"u347a-2:1": "El blanqueamiento del coral es una señal de alarma.",
+"u347a-2:2": "Las ballenas grises migran cada invierno a las lagunas de Baja California.",
+"u347a-2:3": "Los caracoles marinos se adhieren a las rocas.",
+"u347a-2:4": "El lobo marino tomaba el sol sobre una roca.",
+"u347a-3:0": "Las algas forman bosques submarinos.",
+"u347a-3:1": "La sobrepesca amenaza la supervivencia de muchas especies."
+},
+"u348": {
+"u348a-1:0": "Muele las especias en el molcajete.",
+"u348a-1:1": "Calienta el comal antes de poner las tortillas.",
+"u348a-1:2": "Cuela el caldo con un colador fino.",
+"u348a-1:3": "Desglasa la sartén con un chorrito de vino.",
+"u348a-1:4": "Bate la mezcla con un batidor de globo.",
+"u348a-2:0": "Corta la cebolla en juliana.",
+"u348a-2:1": "Escalfa los huevos en agua a punto de hervir.",
+"u348a-2:2": "Gratina el platillo unos minutos antes de servir.",
+"u348a-2:3": "Emulsiona el aceite poco a poco para que no se corte la salsa.",
+"u348a-2:4": "Mide la harina con una báscula de cocina.",
+"u348a-3:0": "Forra el molde con papel encerado.",
+"u348a-3:1": "Deja reposar la masa tapada con un trapo húmedo."
+},
+"u349": {
+"u349a-1:0": "Las partes llegaron a un acuerdo tras semanas de tira y afloja.",
+"u349a-1:1": "Ninguno de los dos quiso ceder.",
+"u349a-1:2": "Hicieron concesiones mutuas para destrabar el conflicto.",
+"u349a-1:3": "El mediador logró acercar posturas.",
+"u349a-1:4": "Las negociaciones se rompieron por una cláusula.",
+"u349a-2:0": "Se mantuvieron firmes en sus exigencias.",
+"u349a-2:1": "Propuso una salida intermedia que satisfizo a todos.",
+"u349a-2:2": "Las tensiones escalaron hasta un punto sin retorno.",
+"u349a-2:3": "Hubo que limar asperezas antes de seguir trabajando juntos.",
+"u349a-2:4": "El sindicato amenazó con endurecer su postura.",
+"u349a-3:0": "Apaciguó los ánimos con una propuesta conciliadora.",
+"u349a-3:1": "El arbitraje resolvió la disputa de manera definitiva.",
+"u349a-3:2": "Firmaron una tregua que duró apenas unos meses."
+},
 "u35": {
 "u35a-1:0": "primero",
 "u35a-1:1": "luego",
@@ -6179,6 +6290,19 @@
 "u35e-1:2": "¿Tenías un perro?",
 "u35e-1:3": "¿Fuiste al mercado?",
 "u35e-1:4": "¿Qué comiste?"
+},
+"u350": {
+"u350a-1:0": "El siglo diecinueve estuvo marcado por guerras e invasiones.",
+"u350a-1:1": "Durante el Porfiriato el país vivió una modernización desigual.",
+"u350a-1:2": "La posguerra trajo un periodo de crecimiento acelerado.",
+"u350a-1:3": "Aquella década quedó en la memoria como una edad dorada.",
+"u350a-1:4": "El declive del imperio fue lento pero inexorable.",
+"u350a-2:0": "Vivimos una era de cambios vertiginosos.",
+"u350a-2:1": "La Ilustración influyó en los movimientos de independencia.",
+"u350a-2:2": "Las ruinas son vestigios de una civilización milenaria.",
+"u350a-2:3": "El auge del petróleo transformó la economía nacional.",
+"u350a-2:4": "La transición democrática fue un proceso largo y accidentado.",
+"u350a-3:0": "Hay costumbres que sobreviven al paso de los siglos."
 },
 "u36": {
 "u36a-1:0": "la cabeza",
