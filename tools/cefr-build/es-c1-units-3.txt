@@ -1,0 +1,80 @@
+%C1 · Precise language for complex topics|Law, ethics, the arts, medicine, finance and the city
+@u239|Derecho y justicia|Law and justice|Courts, rights, trials and legal language: <b>La defensa presentó pruebas que contradecían la versión de la fiscalía.</b> (The defence presented evidence that contradicted the prosecution's version.), <b>El jurado tardó tres días en emitir su veredicto.</b> (The jury took three days to reach its verdict.) and <b>Su abogada interpuso un recurso de apelación.</b> (Her lawyer lodged an appeal.).|Explain a famous court case you know about and say whether you think the verdict was fair.
+#u239a|Law and justice, part 1
+La defensa presentó pruebas que contradecían la versión de la fiscalía.|The defence presented evidence that contradicted the prosecution's version.|
+El jurado tardó tres días en emitir su veredicto.|The jury took three days to reach its verdict.|
+Su abogada interpuso un recurso de apelación.|Her lawyer lodged an appeal.|
+La sentencia fue revocada por un tribunal superior.|The sentence was overturned by a higher court.|
+Nadie puede ser detenido sin una orden judicial.|Nobody may be detained without a court order.|
+El testigo se contradijo varias veces durante el interrogatorio.|The witness contradicted himself several times during questioning.|
+La reforma pretende agilizar los juicios, que suelen durar años.|The reform aims to speed up trials, which often last years.|
+Las víctimas exigen que se haga justicia y se repare el daño.|The victims demand that justice be done and the harm be redressed.|
+La impunidad erosiona la confianza de los ciudadanos en las instituciones.|Impunity erodes citizens' trust in institutions.|
+Fue absuelto por falta de pruebas.|He was acquitted for lack of evidence.|
+El contrato quedó anulado porque una de las cláusulas era ilegal.|The contract was voided because one of the clauses was illegal.|
+@u240|Ética y filosofía|Ethics and philosophy|Values, dilemmas and ways of reasoning: <b>Se trata de un dilema ético sin una solución evidente.</b> (It is an ethical dilemma without an obvious solution.), <b>¿Es lícito mentir para proteger a alguien que amas?</b> (Is it legitimate to lie to protect someone you love?) and <b>Los filósofos llevan siglos debatiendo sobre el libre albedrío.</b> (Philosophers have been debating free will for centuries.).|Describe a moral dilemma you have faced and how you reasoned about it.
+#u240a|Ethics and philosophy, part 1
+Se trata de un dilema ético sin una solución evidente.|It is an ethical dilemma without an obvious solution.|
+¿Es lícito mentir para proteger a alguien que amas?|Is it legitimate to lie to protect someone you love?|
+Los filósofos llevan siglos debatiendo sobre el libre albedrío.|Philosophers have been debating free will for centuries.|
+Su razonamiento parte de una premisa falsa.|His reasoning starts from a false premise.|
+La felicidad no debería medirse únicamente en términos materiales.|Happiness shouldn't be measured solely in material terms.|
+Actuar con coherencia exige renunciar a ciertas comodidades.|Acting consistently requires giving up certain comforts.|
+Cada cultura tiene su propia concepción del bien y del mal.|Each culture has its own conception of good and evil.|
+Me cuesta aceptar una postura tan relativista.|I find it hard to accept such a relativist position.|
+La dignidad humana es un principio irrenunciable.|Human dignity is a principle that cannot be given up.|
+Sus convicciones religiosas influyeron en su decisión.|His religious convictions influenced his decision.|
+Todo argumento sólido debe resistir las objeciones más fuertes.|Every solid argument must withstand the strongest objections.|
+@u241|Crítica de arte|Art criticism|Describing and judging paintings, music and literature: <b>La obra destaca por el uso audaz del color.</b> (The work stands out for its bold use of colour.), <b>El autor retrata con ironía a la burguesía de su época.</b> (The author portrays the bourgeoisie of his time with irony.) and <b>La trama es predecible, pero los personajes son entrañables.</b> (The plot is predictable, but the characters are endearing.).|Choose a work of art you love and analyse what makes it powerful.
+#u241a|Art criticism, part 1
+La obra destaca por el uso audaz del color.|The work stands out for its bold use of colour.|
+El autor retrata con ironía a la burguesía de su época.|The author portrays the bourgeoisie of his time with irony.|
+La trama es predecible, pero los personajes son entrañables.|The plot is predictable, but the characters are endearing.|
+Su estilo oscila entre el realismo y lo fantástico.|Her style swings between realism and the fantastic.|
+La exposición reúne más de cien grabados inéditos.|The exhibition brings together more than a hundred unpublished prints.|
+El compositor se inspiró en melodías populares del sur.|The composer drew inspiration from folk melodies of the south.|
+La puesta en escena resultó demasiado ambiciosa.|The staging turned out to be too ambitious.|
+El poemario aborda el duelo con una sencillez conmovedora.|The poetry collection deals with grief with a moving simplicity.|
+Los críticos coincidieron en que era su novela más lograda.|Critics agreed that it was his most accomplished novel.|
+La escultura transmite una sensación de movimiento sorprendente.|The sculpture conveys a surprising sense of movement.|
+A mi juicio, el final resulta forzado.|In my view, the ending feels forced.|
+El cuadro fue restaurado tras décadas de abandono.|The painting was restored after decades of neglect.|
+@u242|Medicina e investigación|Medicine and research|Diagnoses, treatments, trials and public health: <b>El diagnóstico precoz aumenta considerablemente las probabilidades de curación.</b> (Early diagnosis considerably increases the chances of a cure.), <b>Los ensayos clínicos se realizaron con miles de voluntarios.</b> (The clinical trials were carried out with thousands of volunteers.) and <b>La resistencia a los antibióticos es una amenaza creciente.</b> (Resistance to antibiotics is a growing threat.).|Explain a medical advance that interests you and its possible risks.
+#u242a|Medicine and research, part 1
+El diagnóstico precoz aumenta considerablemente las probabilidades de curación.|Early diagnosis considerably increases the chances of a cure.|
+Los ensayos clínicos se realizaron con miles de voluntarios.|The clinical trials were carried out with thousands of volunteers.|
+La resistencia a los antibióticos es una amenaza creciente.|Resistance to antibiotics is a growing threat.|
+La paciente fue sometida a una intervención quirúrgica de urgencia.|The patient underwent emergency surgery.|
+Los síntomas remitieron al cabo de unas semanas.|The symptoms subsided after a few weeks.|
+La obesidad infantil se ha convertido en un problema de salud pública.|Childhood obesity has become a public health problem.|
+Se sospecha que la enfermedad tiene un componente genético.|The disease is suspected to have a genetic component.|
+El fármaco aún no ha sido aprobado por las autoridades sanitarias.|The drug has not yet been approved by the health authorities.|
+Un estilo de vida sedentario multiplica el riesgo cardiovascular.|A sedentary lifestyle multiplies cardiovascular risk.|
+La vacunación masiva frenó la propagación del virus.|Mass vaccination slowed the spread of the virus.|
+@u243|Finanzas personales y mercados|Finance and markets|Investing, saving, debt and the economy in detail: <b>Diversificar las inversiones reduce el riesgo de pérdidas.</b> (Diversifying investments reduces the risk of losses.), <b>La bolsa cayó un cinco por ciento en una sola jornada.</b> (The stock market fell five per cent in a single day.) and <b>Contrajo una deuda que tardó una década en saldar.</b> (He took on a debt that took a decade to pay off.).|Explain how you would invest a sum of money and what risks you would accept.
+#u243a|Finance and markets, part 1
+Diversificar las inversiones reduce el riesgo de pérdidas.|Diversifying investments reduces the risk of losses.|
+La bolsa cayó un cinco por ciento en una sola jornada.|The stock market fell five per cent in a single day.|
+Contrajo una deuda que tardó una década en saldar.|He took on a debt that took a decade to pay off.|
+Los intereses compuestos hacen crecer el ahorro a largo plazo.|Compound interest makes savings grow in the long term.|
+La empresa declaró la quiebra tras varios años de pérdidas.|The company declared bankruptcy after several years of losses.|
+Los accionistas exigieron la dimisión del director general.|The shareholders demanded the chief executive's resignation.|
+El banco central subió las tasas para contener la inflación.|The central bank raised rates to contain inflation.|
+Conviene tener un fondo de emergencia equivalente a seis meses de gastos.|It's wise to have an emergency fund equal to six months of expenses.|
+La especulación inmobiliaria disparó el precio de la vivienda.|Property speculation sent house prices soaring.|
+Muchos jóvenes desconfían del sistema de pensiones.|Many young people distrust the pension system.|
+Las criptomonedas son un activo sumamente volátil.|Cryptocurrencies are an extremely volatile asset.|
+El presupuesto familiar apenas alcanza para cubrir lo básico.|The family budget barely stretches to cover the basics.|
+@u244|Urbanismo y arquitectura|Urban planning and architecture|Buildings, neighbourhoods and how cities grow: <b>La ciudad creció de manera desordenada durante el siglo pasado.</b> (The city grew in a disorderly way during the last century.), <b>El edificio combina elementos coloniales con un diseño vanguardista.</b> (The building combines colonial elements with an avant-garde design.) and <b>Los espacios verdes mejoran la calidad de vida de los vecinos.</b> (Green spaces improve residents' quality of life.).|Describe the ideal neighbourhood and what planners would need to change to create it.
+#u244a|Urban planning and architecture, part 1
+La ciudad creció de manera desordenada durante el siglo pasado.|The city grew in a disorderly way during the last century.|
+El edificio combina elementos coloniales con un diseño vanguardista.|The building combines colonial elements with an avant-garde design.|
+Los espacios verdes mejoran la calidad de vida de los vecinos.|Green spaces improve residents' quality of life.|
+La remodelación del centro histórico desplazó a muchos comerciantes.|The renovation of the historic centre displaced many traders.|
+Las banquetas son tan estrechas que es imposible caminar.|The pavements are so narrow that it's impossible to walk.|
+Se rehabilitaron varias fábricas abandonadas como centros culturales.|Several abandoned factories were refurbished as cultural centres.|
+El proyecto prevé ciclovías, parques y vivienda asequible.|The project includes cycle lanes, parks and affordable housing.|
+La fachada fue declarada patrimonio de la ciudad.|The façade was declared part of the city's heritage.|
+El rascacielos proyecta sombra sobre todo el barrio.|The skyscraper casts a shadow over the whole neighbourhood.|
+La densidad de población dificulta la movilidad.|Population density makes getting around difficult.|
+Los urbanistas apuestan por ciudades de quince minutos.|Urban planners are betting on fifteen-minute cities.|

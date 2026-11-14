@@ -824,7 +824,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u239": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u24": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u240": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u241": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u242": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u243": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u244": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -4019,6 +4043,19 @@
 "u238c-1:2": "¿Y si te entrego el día quince los capítulos ya terminados, para que el corrector vaya avanzando, y la semana siguiente el resto?",
 "u238c-1:3": "Perfecto, te lo agradezco mucho. Y te prometo que no volverá a pasar; la próxima vez revisaré todo el libro antes de aceptar una fecha."
 },
+"u239": {
+"u239a-1:0": "La defensa presentó pruebas que contradecían la versión de la fiscalía.",
+"u239a-1:1": "El jurado tardó tres días en emitir su veredicto.",
+"u239a-1:2": "Su abogada interpuso un recurso de apelación.",
+"u239a-1:3": "La sentencia fue revocada por un tribunal superior.",
+"u239a-1:4": "Nadie puede ser detenido sin una orden judicial.",
+"u239a-2:0": "El testigo se contradijo varias veces durante el interrogatorio.",
+"u239a-2:1": "La reforma pretende agilizar los juicios, que suelen durar años.",
+"u239a-2:2": "Las víctimas exigen que se haga justicia y se repare el daño.",
+"u239a-2:3": "La impunidad erosiona la confianza de los ciudadanos en las instituciones.",
+"u239a-2:4": "Fue absuelto por falta de pruebas.",
+"u239a-3:0": "El contrato quedó anulado porque una de las cláusulas era ilegal."
+},
 "u24": {
 "u24a-1:0": "qué",
 "u24a-1:1": "quién",
@@ -4040,6 +4077,72 @@
 "u24d-1:2": "la silla",
 "u24d-1:3": "¿Dónde está el libro?",
 "u24d-1:4": "¿Qué significa?"
+},
+"u240": {
+"u240a-1:0": "Se trata de un dilema ético sin una solución evidente.",
+"u240a-1:1": "¿Es lícito mentir para proteger a alguien que amas?",
+"u240a-1:2": "Los filósofos llevan siglos debatiendo sobre el libre albedrío.",
+"u240a-1:3": "Su razonamiento parte de una premisa falsa.",
+"u240a-1:4": "La felicidad no debería medirse únicamente en términos materiales.",
+"u240a-2:0": "Actuar con coherencia exige renunciar a ciertas comodidades.",
+"u240a-2:1": "Cada cultura tiene su propia concepción del bien y del mal.",
+"u240a-2:2": "Me cuesta aceptar una postura tan relativista.",
+"u240a-2:3": "La dignidad humana es un principio irrenunciable.",
+"u240a-2:4": "Sus convicciones religiosas influyeron en su decisión.",
+"u240a-3:0": "Todo argumento sólido debe resistir las objeciones más fuertes."
+},
+"u241": {
+"u241a-1:0": "La obra destaca por el uso audaz del color.",
+"u241a-1:1": "El autor retrata con ironía a la burguesía de su época.",
+"u241a-1:2": "La trama es predecible, pero los personajes son entrañables.",
+"u241a-1:3": "Su estilo oscila entre el realismo y lo fantástico.",
+"u241a-1:4": "La exposición reúne más de cien grabados inéditos.",
+"u241a-2:0": "El compositor se inspiró en melodías populares del sur.",
+"u241a-2:1": "La puesta en escena resultó demasiado ambiciosa.",
+"u241a-2:2": "El poemario aborda el duelo con una sencillez conmovedora.",
+"u241a-2:3": "Los críticos coincidieron en que era su novela más lograda.",
+"u241a-2:4": "La escultura transmite una sensación de movimiento sorprendente.",
+"u241a-3:0": "A mi juicio, el final resulta forzado.",
+"u241a-3:1": "El cuadro fue restaurado tras décadas de abandono."
+},
+"u242": {
+"u242a-1:0": "El diagnóstico precoz aumenta considerablemente las probabilidades de curación.",
+"u242a-1:1": "Los ensayos clínicos se realizaron con miles de voluntarios.",
+"u242a-1:2": "La resistencia a los antibióticos es una amenaza creciente.",
+"u242a-1:3": "La paciente fue sometida a una intervención quirúrgica de urgencia.",
+"u242a-1:4": "Los síntomas remitieron al cabo de unas semanas.",
+"u242a-2:0": "La obesidad infantil se ha convertido en un problema de salud pública.",
+"u242a-2:1": "Se sospecha que la enfermedad tiene un componente genético.",
+"u242a-2:2": "El fármaco aún no ha sido aprobado por las autoridades sanitarias.",
+"u242a-2:3": "Un estilo de vida sedentario multiplica el riesgo cardiovascular.",
+"u242a-2:4": "La vacunación masiva frenó la propagación del virus."
+},
+"u243": {
+"u243a-1:0": "Diversificar las inversiones reduce el riesgo de pérdidas.",
+"u243a-1:1": "La bolsa cayó un cinco por ciento en una sola jornada.",
+"u243a-1:2": "Contrajo una deuda que tardó una década en saldar.",
+"u243a-1:3": "Los intereses compuestos hacen crecer el ahorro a largo plazo.",
+"u243a-1:4": "La empresa declaró la quiebra tras varios años de pérdidas.",
+"u243a-2:0": "Los accionistas exigieron la dimisión del director general.",
+"u243a-2:1": "El banco central subió las tasas para contener la inflación.",
+"u243a-2:2": "Conviene tener un fondo de emergencia equivalente a seis meses de gastos.",
+"u243a-2:3": "La especulación inmobiliaria disparó el precio de la vivienda.",
+"u243a-2:4": "Muchos jóvenes desconfían del sistema de pensiones.",
+"u243a-3:0": "Las criptomonedas son un activo sumamente volátil.",
+"u243a-3:1": "El presupuesto familiar apenas alcanza para cubrir lo básico."
+},
+"u244": {
+"u244a-1:0": "La ciudad creció de manera desordenada durante el siglo pasado.",
+"u244a-1:1": "El edificio combina elementos coloniales con un diseño vanguardista.",
+"u244a-1:2": "Los espacios verdes mejoran la calidad de vida de los vecinos.",
+"u244a-1:3": "La remodelación del centro histórico desplazó a muchos comerciantes.",
+"u244a-1:4": "Las banquetas son tan estrechas que es imposible caminar.",
+"u244a-2:0": "Se rehabilitaron varias fábricas abandonadas como centros culturales.",
+"u244a-2:1": "El proyecto prevé ciclovías, parques y vivienda asequible.",
+"u244a-2:2": "La fachada fue declarada patrimonio de la ciudad.",
+"u244a-2:3": "El rascacielos proyecta sombra sobre todo el barrio.",
+"u244a-2:4": "La densidad de población dificulta la movilidad.",
+"u244a-3:0": "Los urbanistas apuestan por ciudades de quince minutos."
 },
 "u25": {
 "u25a-1:0": "México",
