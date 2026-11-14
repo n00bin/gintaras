@@ -852,7 +852,31 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u245": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u246": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u247": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u248": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u249": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u25": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u250": {
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
@@ -4144,6 +4168,74 @@
 "u244a-2:4": "La densidad de población dificulta la movilidad.",
 "u244a-3:0": "Los urbanistas apuestan por ciudades de quince minutos."
 },
+"u245": {
+"u245a-1:0": "Sentí una mezcla de alivio y nostalgia al despedirme.",
+"u245a-1:1": "Le invadió una profunda melancolía al volver a su pueblo natal.",
+"u245a-1:2": "Tiende a reprimir sus emociones para no parecer vulnerable.",
+"u245a-1:3": "El rencor acumulado terminó por destruir la amistad.",
+"u245a-1:4": "Padece ansiedad social desde la adolescencia.",
+"u245a-2:0": "La terapia le ayudó a gestionar el duelo.",
+"u245a-2:1": "Me embarga la gratitud cuando pienso en todo lo que hicieron por mí.",
+"u245a-2:2": "Es una persona muy resiliente: se repone de todo.",
+"u245a-2:3": "La incertidumbre genera más angustia que las malas noticias.",
+"u245a-2:4": "Le dio un ataque de pánico en pleno vuelo.",
+"u245a-3:0": "Sentía envidia, aunque le avergonzaba reconocerlo."
+},
+"u246": {
+"u246a-1:0": "El virreinato duró casi tres siglos.",
+"u246a-1:1": "Los historiadores discrepan sobre las causas del conflicto.",
+"u246a-1:2": "La masacre fue silenciada durante décadas.",
+"u246a-1:3": "Los archivos desclasificados revelaron nuevos detalles.",
+"u246a-1:4": "El monumento conmemora a las víctimas de la represión.",
+"u246a-2:0": "La memoria colectiva tiende a idealizar el pasado.",
+"u246a-2:1": "Tras la independencia, el país atravesó décadas de inestabilidad.",
+"u246a-2:2": "El imperio se derrumbó en apenas unos años.",
+"u246a-2:3": "Muchos testimonios orales se perdieron con la muerte de los sobrevivientes.",
+"u246a-2:4": "La expropiación petrolera marcó un antes y un después.",
+"u246a-3:0": "Reescribir la historia con fines políticos es una tentación constante.",
+"u246a-3:1": "Las ruinas atestiguan el esplendor de una civilización desaparecida."
+},
+"u247": {
+"u247a-1:0": "El embajador fue convocado para dar explicaciones.",
+"u247a-1:1": "Las negociaciones se estancaron por diferencias sobre los aranceles.",
+"u247a-1:2": "La cumbre terminó sin una declaración conjunta.",
+"u247a-1:3": "La comunidad internacional condenó el ataque.",
+"u247a-1:4": "Impusieron sanciones económicas al régimen.",
+"u247a-2:0": "La soberanía nacional no está en discusión.",
+"u247a-2:1": "Miles de refugiados cruzaron la frontera en busca de asilo.",
+"u247a-2:2": "Ambas delegaciones mostraron disposición al diálogo.",
+"u247a-2:3": "La política exterior del país ha dado un giro radical.",
+"u247a-2:4": "El acuerdo fue ratificado por el Senado.",
+"u247a-3:0": "Las tensiones geopolíticas encarecen las materias primas."
+},
+"u248": {
+"u248a-1:0": "La periodista se negó a revelar sus fuentes.",
+"u248a-1:1": "El reportaje destapó una red de corrupción.",
+"u248a-1:2": "La noticia resultó ser un bulo que se difundió por redes.",
+"u248a-1:3": "Ese diario tiene una línea editorial muy marcada.",
+"u248a-1:4": "Los titulares sensacionalistas atraen más clics.",
+"u248a-2:0": "Hay que contrastar la información antes de compartirla.",
+"u248a-2:1": "La libertad de prensa está amenazada en muchos países.",
+"u248a-2:2": "Varios reporteros han sido asesinados por investigar al crimen organizado.",
+"u248a-2:3": "El entrevistado eludió las preguntas más incómodas.",
+"u248a-2:4": "La cobertura del caso fue parcial y tendenciosa.",
+"u248a-3:0": "El medio publicó una rectificación al día siguiente.",
+"u248a-3:1": "Los algoritmos refuerzan las opiniones que ya tenemos."
+},
+"u249": {
+"u249a-1:0": "La empresa replanteó su estrategia tras perder cuota de mercado.",
+"u249a-1:1": "Delegar tareas es una habilidad que muchos jefes no dominan.",
+"u249a-1:2": "La fusión con la competencia generó despidos masivos.",
+"u249a-1:3": "Fijamos objetivos medibles para cada trimestre.",
+"u249a-1:4": "La rotación de personal es altísima en el sector.",
+"u249a-2:0": "El liderazgo autoritario desmotiva a los equipos.",
+"u249a-2:1": "Hubo que recortar gastos para evitar la bancarrota.",
+"u249a-2:2": "La nueva directora impulsó una cultura de transparencia.",
+"u249a-2:3": "Subcontratamos el servicio de limpieza para abaratar costos.",
+"u249a-2:4": "La rentabilidad del proyecto está por demostrarse.",
+"u249a-3:0": "Los clientes valoran más la atención que el precio.",
+"u249a-3:1": "Implementar el cambio llevó más tiempo del previsto."
+},
 "u25": {
 "u25a-1:0": "México",
 "u25a-1:1": "Estados Unidos",
@@ -4165,6 +4257,19 @@
 "u25d-1:2": "Quiero agua",
 "u25d-1:3": "Necesito un libro",
 "u25d-1:4": "Tengo un teléfono"
+},
+"u250": {
+"u250a-1:0": "Defendió su tesis doctoral ante un tribunal de cinco expertos.",
+"u250a-1:1": "El artículo fue rechazado por la revista sin ser evaluado.",
+"u250a-1:2": "Hay que citar todas las fuentes para evitar el plagio.",
+"u250a-1:3": "La hipótesis inicial no se confirmó.",
+"u250a-1:4": "El estudio adolece de una muestra demasiado pequeña.",
+"u250a-2:0": "Obtuvo una beca para realizar un posgrado en el extranjero.",
+"u250a-2:1": "La bibliografía abarca más de doscientas obras.",
+"u250a-2:2": "Su director de tesis le sugirió acotar el tema.",
+"u250a-2:3": "Los resultados preliminares son alentadores.",
+"u250a-2:4": "La metodología empleada ha sido cuestionada.",
+"u250a-3:0": "Redactar el marco teórico me llevó meses."
 },
 "u26": {
 "u26a-1:0": "Me despierto",

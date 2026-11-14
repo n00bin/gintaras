@@ -1,0 +1,81 @@
+@u245|Psicología y emociones|Psychology and emotions|Naming subtle feelings and mental states: <b>Sentí una mezcla de alivio y nostalgia al despedirme.</b> (I felt a mix of relief and nostalgia as I said goodbye.), <b>Le invadió una profunda melancolía al volver a su pueblo natal.</b> (A deep melancholy came over him when he returned to his home town.) and <b>Tiende a reprimir sus emociones para no parecer vulnerable.</b> (She tends to suppress her emotions so as not to seem vulnerable.).|Describe a moment when you felt two contradictory emotions at once.
+#u245a|Psychology and emotions, part 1
+Sentí una mezcla de alivio y nostalgia al despedirme.|I felt a mix of relief and nostalgia as I said goodbye.|
+Le invadió una profunda melancolía al volver a su pueblo natal.|A deep melancholy came over him when he returned to his home town.|
+Tiende a reprimir sus emociones para no parecer vulnerable.|She tends to suppress her emotions so as not to seem vulnerable.|
+El rencor acumulado terminó por destruir la amistad.|The pent-up resentment ended up destroying the friendship.|
+Padece ansiedad social desde la adolescencia.|He has suffered from social anxiety since adolescence.|
+La terapia le ayudó a gestionar el duelo.|Therapy helped her to cope with grief.|
+Me embarga la gratitud cuando pienso en todo lo que hicieron por mí.|I'm overwhelmed with gratitude when I think of all they did for me.|
+Es una persona muy resiliente: se repone de todo.|She's a very resilient person: she bounces back from everything.|
+La incertidumbre genera más angustia que las malas noticias.|Uncertainty causes more anguish than bad news.|
+Le dio un ataque de pánico en pleno vuelo.|He had a panic attack in mid-flight.|
+Sentía envidia, aunque le avergonzaba reconocerlo.|She felt envious, although she was ashamed to admit it.|
+@u246|Historia y memoria|History and memory|Events, eras and how societies remember them: <b>El virreinato duró casi tres siglos.</b> (The viceroyalty lasted almost three centuries.), <b>Los historiadores discrepan sobre las causas del conflicto.</b> (Historians disagree about the causes of the conflict.) and <b>La masacre fue silenciada durante décadas.</b> (The massacre was hushed up for decades.).|Talk about a historical event that your country still argues about.
+#u246a|History and memory, part 1
+El virreinato duró casi tres siglos.|The viceroyalty lasted almost three centuries.|
+Los historiadores discrepan sobre las causas del conflicto.|Historians disagree about the causes of the conflict.|
+La masacre fue silenciada durante décadas.|The massacre was hushed up for decades.|
+Los archivos desclasificados revelaron nuevos detalles.|The declassified archives revealed new details.|
+El monumento conmemora a las víctimas de la represión.|The monument commemorates the victims of the repression.|
+La memoria colectiva tiende a idealizar el pasado.|Collective memory tends to idealise the past.|
+Tras la independencia, el país atravesó décadas de inestabilidad.|After independence, the country went through decades of instability.|
+El imperio se derrumbó en apenas unos años.|The empire collapsed in just a few years.|
+Muchos testimonios orales se perdieron con la muerte de los sobrevivientes.|Many oral testimonies were lost with the death of the survivors.|
+La expropiación petrolera marcó un antes y un después.|The oil expropriation marked a turning point.|
+Reescribir la historia con fines políticos es una tentación constante.|Rewriting history for political ends is a constant temptation.|
+Las ruinas atestiguan el esplendor de una civilización desaparecida.|The ruins bear witness to the splendour of a vanished civilisation.|
+@u247|Relaciones internacionales|International relations|Diplomacy, treaties, borders and global power: <b>El embajador fue convocado para dar explicaciones.</b> (The ambassador was summoned to give an explanation.), <b>Las negociaciones se estancaron por diferencias sobre los aranceles.</b> (The negotiations stalled over differences on tariffs.) and <b>La cumbre terminó sin una declaración conjunta.</b> (The summit ended without a joint statement.).|Explain a current international conflict and what you think could resolve it.
+#u247a|International relations, part 1
+El embajador fue convocado para dar explicaciones.|The ambassador was summoned to give an explanation.|
+Las negociaciones se estancaron por diferencias sobre los aranceles.|The negotiations stalled over differences on tariffs.|
+La cumbre terminó sin una declaración conjunta.|The summit ended without a joint statement.|
+La comunidad internacional condenó el ataque.|The international community condemned the attack.|
+Impusieron sanciones económicas al régimen.|They imposed economic sanctions on the regime.|
+La soberanía nacional no está en discusión.|National sovereignty is not up for discussion.|
+Miles de refugiados cruzaron la frontera en busca de asilo.|Thousands of refugees crossed the border seeking asylum.|
+Ambas delegaciones mostraron disposición al diálogo.|Both delegations showed willingness to engage in dialogue.|
+La política exterior del país ha dado un giro radical.|The country's foreign policy has taken a radical turn.|
+El acuerdo fue ratificado por el Senado.|The agreement was ratified by the Senate.|
+Las tensiones geopolíticas encarecen las materias primas.|Geopolitical tensions make raw materials more expensive.|
+@u248|Periodismo y medios|Journalism and the media|Reporting, sources, bias and misinformation: <b>La periodista se negó a revelar sus fuentes.</b> (The journalist refused to reveal her sources.), <b>El reportaje destapó una red de corrupción.</b> (The report uncovered a network of corruption.) and <b>La noticia resultó ser un bulo que se difundió por redes.</b> (The news turned out to be a hoax spread on social media.).|Compare how two different media outlets covered the same story.
+#u248a|Journalism and the media, part 1
+La periodista se negó a revelar sus fuentes.|The journalist refused to reveal her sources.|
+El reportaje destapó una red de corrupción.|The report uncovered a network of corruption.|
+La noticia resultó ser un bulo que se difundió por redes.|The news turned out to be a hoax spread on social media.|
+Ese diario tiene una línea editorial muy marcada.|That newspaper has a very pronounced editorial line.|
+Los titulares sensacionalistas atraen más clics.|Sensationalist headlines attract more clicks.|
+Hay que contrastar la información antes de compartirla.|You have to cross-check information before sharing it.|
+La libertad de prensa está amenazada en muchos países.|Press freedom is under threat in many countries.|
+Varios reporteros han sido asesinados por investigar al crimen organizado.|Several reporters have been murdered for investigating organised crime.|
+El entrevistado eludió las preguntas más incómodas.|The interviewee dodged the most awkward questions.|
+La cobertura del caso fue parcial y tendenciosa.|Coverage of the case was one-sided and biased.|
+El medio publicó una rectificación al día siguiente.|The outlet published a correction the next day.|
+Los algoritmos refuerzan las opiniones que ya tenemos.|Algorithms reinforce the opinions we already hold.|
+@u249|Gestión empresarial|Business management|Strategy, leadership, teams and change: <b>La empresa replanteó su estrategia tras perder cuota de mercado.</b> (The company rethought its strategy after losing market share.), <b>Delegar tareas es una habilidad que muchos jefes no dominan.</b> (Delegating tasks is a skill many bosses haven't mastered.) and <b>La fusión con la competencia generó despidos masivos.</b> (The merger with the competition led to mass layoffs.).|Describe a good and a bad manager you have known and what made the difference.
+#u249a|Business management, part 1
+La empresa replanteó su estrategia tras perder cuota de mercado.|The company rethought its strategy after losing market share.|
+Delegar tareas es una habilidad que muchos jefes no dominan.|Delegating tasks is a skill many bosses haven't mastered.|
+La fusión con la competencia generó despidos masivos.|The merger with the competition led to mass layoffs.|
+Fijamos objetivos medibles para cada trimestre.|We set measurable targets for each quarter.|
+La rotación de personal es altísima en el sector.|Staff turnover is extremely high in the sector.|
+El liderazgo autoritario desmotiva a los equipos.|Authoritarian leadership demotivates teams.|
+Hubo que recortar gastos para evitar la bancarrota.|Costs had to be cut to avoid bankruptcy.|
+La nueva directora impulsó una cultura de transparencia.|The new director promoted a culture of transparency.|
+Subcontratamos el servicio de limpieza para abaratar costos.|We outsourced the cleaning service to bring costs down.|
+La rentabilidad del proyecto está por demostrarse.|The project's profitability is yet to be proven.|
+Los clientes valoran más la atención que el precio.|Customers value service more than price.|
+Implementar el cambio llevó más tiempo del previsto.|Implementing the change took longer than planned.|
+@u250|Vida académica|Academic life|Research, theses, sources and academic writing: <b>Defendió su tesis doctoral ante un tribunal de cinco expertos.</b> (She defended her doctoral thesis before a panel of five experts.), <b>El artículo fue rechazado por la revista sin ser evaluado.</b> (The article was rejected by the journal without being reviewed.) and <b>Hay que citar todas las fuentes para evitar el plagio.</b> (You have to cite all your sources to avoid plagiarism.).|Explain the topic you would choose for a thesis and how you would research it.
+#u250a|Academic life, part 1
+Defendió su tesis doctoral ante un tribunal de cinco expertos.|She defended her doctoral thesis before a panel of five experts.|
+El artículo fue rechazado por la revista sin ser evaluado.|The article was rejected by the journal without being reviewed.|
+Hay que citar todas las fuentes para evitar el plagio.|You have to cite all your sources to avoid plagiarism.|
+La hipótesis inicial no se confirmó.|The initial hypothesis was not confirmed.|
+El estudio adolece de una muestra demasiado pequeña.|The study suffers from too small a sample.|
+Obtuvo una beca para realizar un posgrado en el extranjero.|She got a grant to do a postgraduate degree abroad.|
+La bibliografía abarca más de doscientas obras.|The bibliography covers more than two hundred works.|
+Su director de tesis le sugirió acotar el tema.|His thesis supervisor suggested narrowing down the topic.|
+Los resultados preliminares son alentadores.|The preliminary results are encouraging.|
+La metodología empleada ha sido cuestionada.|The methodology used has been questioned.|
+Redactar el marco teórico me llevó meses.|Writing the theoretical framework took me months.|
