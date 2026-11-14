@@ -1184,6 +1184,30 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u320": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u321": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u322": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u323": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u324": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u325": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u33": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -5596,6 +5620,80 @@
 "u32d-1:2": "¿Quieres venir?",
 "u32d-1:3": "No quiero salir",
 "u32d-1:4": "Podemos caminar"
+},
+"u320": {
+"u320a-1:0": "El que infringiere esta ley será sancionado.",
+"u320a-1:1": "Apenas hubo terminado, se marchó.",
+"u320a-1:2": "Si así no lo hiciere, que la Nación me lo demande.",
+"u320a-1:3": "Quien no compareciere en el plazo señalado perderá su derecho.",
+"u320a-1:4": "Lo que el contrato estipulare prevalecerá sobre cualquier acuerdo verbal.",
+"u320a-2:0": "Adonde fueres, haz lo que vieres.",
+"u320b-1:0": "Una vez que hubo firmado, se levantó de la mesa.",
+"u320b-1:1": "Luego que hubieron cenado, salieron al jardín.",
+"u320b-1:2": "No bien hubo amanecido, partieron hacia la sierra.",
+"u320b-1:3": "Cuando hubo leído la carta, rompió a llorar."
+},
+"u321": {
+"u321a-1:0": "Eso sí que no lo acepto.",
+"u321a-1:1": "Lo que más me molesta es su actitud.",
+"u321a-1:2": "A ese hombre no lo vuelvo a invitar.",
+"u321a-1:3": "Fue ella quien descubrió el error.",
+"u321a-1:4": "Dinero no tenemos, pero ganas sí.",
+"u321a-2:0": "Donde mejor se come es en casa de mi abuela.",
+"u321b-1:0": "Grande fue nuestra sorpresa al ver el resultado.",
+"u321b-1:1": "Mucho me temo que no llegaremos a tiempo.",
+"u321b-1:2": "Bien sabes que no fue mi intención.",
+"u321b-1:3": "Ni una palabra dijo en toda la cena."
+},
+"u322": {
+"u322a-1:0": "¡Qué puntualidad!",
+"u322a-1:1": "Vaya, qué suerte la mía.",
+"u322a-1:2": "¡Lo que nos faltaba!",
+"u322a-1:3": "Sí, claro, y yo soy el rey de Inglaterra.",
+"u322a-1:4": "Muy bonito: ni siquiera avisaste.",
+"u322a-2:0": "Genial, otra junta que pudo haber sido un correo.",
+"u322b-1:0": "El que es perico donde quiera es verde.",
+"u322b-1:1": "Me salió el tiro por la culata.",
+"u322b-1:2": "Le dieron atole con el dedo.",
+"u322b-1:3": "Se le cayó el veinte."
+},
+"u323": {
+"u323a-1:0": "Lo que quiere decir es que no está de acuerdo.",
+"u323a-1:1": "En pocas palabras, no hay presupuesto.",
+"u323a-1:2": "Dicho de otra forma, tendremos que esperar.",
+"u323a-1:3": "Si lo entendí bien, la reunión se pospone.",
+"u323a-1:4": "O sea, que no vienen hasta mañana.",
+"u323a-2:0": "Resumiendo, ambas partes quieren lo mismo.",
+"u323b-1:0": "Según entiendo, a ustedes les preocupa el costo.",
+"u323b-1:1": "Por lo que dice, el problema no es el horario sino el trato.",
+"u323b-1:2": "Me parece que ambos tienen parte de razón.",
+"u323b-1:3": "Permítanme aclarar lo que propone la señora."
+},
+"u324": {
+"u324a-1:0": "Por medio del presente se notifica al interesado.",
+"u324a-1:1": "Se hace constar que el interesado cursó sus estudios en esta institución.",
+"u324a-1:2": "El abajo firmante declara bajo protesta de decir verdad.",
+"u324a-1:3": "Sin otro particular, reciba un cordial saludo.",
+"u324a-1:4": "Para los fines legales a que haya lugar.",
+"u324a-2:0": "Favor de presentarse con identificación oficial vigente.",
+"u324b-1:0": "En virtud de lo dispuesto en el artículo cuarto, se niega la solicitud.",
+"u324b-1:1": "El presente estudio tiene por objeto analizar la migración interna.",
+"u324b-1:2": "Los resultados obtenidos permiten afirmar que la hipótesis es correcta.",
+"u324b-1:3": "Queda prohibida la reproducción total o parcial de esta obra."
+},
+"u325": {
+"u325a-1:0": "Más vale tarde que nunca.",
+"u325a-1:1": "Camarón que se duerme se lo lleva la corriente.",
+"u325a-1:2": "Al que madruga, Dios lo ayuda.",
+"u325a-1:3": "No hay mal que por bien no venga.",
+"u325a-1:4": "Dime con quién andas y te diré quién eres.",
+"u325a-2:0": "En casa del herrero, cuchillo de palo.",
+"u325b-1:0": "Más vale pájaro en mano que ciento volando.",
+"u325b-1:1": "A caballo regalado no se le ve el colmillo.",
+"u325b-1:2": "El que mucho abarca poco aprieta.",
+"u325b-1:3": "Ojos que no ven, corazón que no siente.",
+"u325b-1:4": "Del dicho al hecho hay mucho trecho.",
+"u325b-2:0": "Cría fama y échate a dormir."
 },
 "u33": {
 "u33a-1:0": "Voy a viajar",
