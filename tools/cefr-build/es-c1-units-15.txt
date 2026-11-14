@@ -1,0 +1,91 @@
+@u311|El cuerpo por dentro|Inside the body|Organs, illnesses and symptoms in detail: <b>El hígado filtra las toxinas de la sangre.</b> (The liver filters toxins from the blood.), <b>Le diagnosticaron una úlcera en el estómago.</b> (They diagnosed him with a stomach ulcer.) and <b>Los riñones regulan la cantidad de líquido en el cuerpo.</b> (The kidneys regulate the amount of fluid in the body.).|Explain to someone how a common illness affects the body.
+#u311a|Inside the body, part 1
+El hígado filtra las toxinas de la sangre.|The liver filters toxins from the blood.|
+Le diagnosticaron una úlcera en el estómago.|They diagnosed him with a stomach ulcer.|
+Los riñones regulan la cantidad de líquido en el cuerpo.|The kidneys regulate the amount of fluid in the body.|
+Sufrió un infarto mientras corría.|He had a heart attack while running.|
+La hernia le provocaba un dolor punzante.|The hernia gave him a stabbing pain.|
+Le extirparon el apéndice de urgencia.|They removed her appendix as an emergency.|
+Los pulmones de los fumadores se deterioran con los años.|Smokers' lungs deteriorate over the years.|
+Tiene la presión alta y el colesterol descontrolado.|He has high blood pressure and uncontrolled cholesterol.|
+La inflamación de las articulaciones le impide caminar.|The inflammation in her joints stops her walking.|
+El cerebro consume una quinta parte de nuestra energía.|The brain uses a fifth of our energy.|
+Se fracturó la cadera al resbalar en la regadera.|She fractured her hip slipping in the shower.|
+Las vértebras protegen la médula espinal.|The vertebrae protect the spinal cord.|
+Una infección en la garganta le produjo fiebre alta.|A throat infection gave her a high fever.|
+Los análisis revelaron una anemia leve.|The tests revealed mild anaemia.|
+@u312|Artesanías y oficios|Crafts and trades|Traditional skills and the people who keep them alive: <b>El alfarero moldea el barro en un torno de pedal.</b> (The potter shapes the clay on a kick wheel.), <b>Las tejedoras usan telares de cintura heredados de sus abuelas.</b> (The weavers use backstrap looms inherited from their grandmothers.) and <b>El talavera poblano se pinta a mano con pigmentos naturales.</b> (Puebla talavera is hand-painted with natural pigments.).|Describe a traditional craft from your country and how it is made.
+#u312a|Crafts and trades, part 1
+El alfarero moldea el barro en un torno de pedal.|The potter shapes the clay on a kick wheel.|
+Las tejedoras usan telares de cintura heredados de sus abuelas.|The weavers use backstrap looms inherited from their grandmothers.|
+El talavera poblano se pinta a mano con pigmentos naturales.|Puebla talavera is hand-painted with natural pigments.|
+El herrero forja las rejas a golpe de martillo.|The blacksmith forges the railings with hammer blows.|
+Los alebrijes se tallan en madera de copal.|Alebrijes are carved from copal wood.|
+El oficio de carpintero se transmite de padres a hijos.|The carpenter's trade is passed down from father to son.|
+La platería de Taxco es famosa en todo el mundo.|Taxco silverwork is famous all over the world.|
+Los vitrales de la iglesia fueron restaurados por un maestro vidriero.|The church's stained-glass windows were restored by a master glassmaker.|
+Teñían la lana con grana cochinilla.|They dyed the wool with cochineal.|
+El zapatero remendón arregla suelas y tacones.|The cobbler repairs soles and heels.|
+Las piñatas se elaboran con olla de barro o cartón.|Piñatas are made with a clay pot or cardboard.|
+El regateo excesivo desvaloriza el trabajo artesanal.|Excessive haggling devalues craft work.|
+Los aprendices tardan años en dominar la técnica.|Apprentices take years to master the technique.|
+El cestero teje canastas con fibras de palma.|The basket maker weaves baskets from palm fibres.|
+@u313|Danza y teatro|Dance and theatre|Performances, rehearsals and the stage: <b>La compañía de danza folclórica recorrió todo el país.</b> (The folk dance company toured the whole country.), <b>El telón se levantó y se hizo el silencio.</b> (The curtain rose and silence fell.) and <b>La bailarina ejecutó el giro con una precisión asombrosa.</b> (The dancer performed the turn with astonishing precision.).|Describe a performance that moved you and what made it work.
+#u313a|Dance and theatre, part 1
+La compañía de danza folclórica recorrió todo el país.|The folk dance company toured the whole country.|
+El telón se levantó y se hizo el silencio.|The curtain rose and silence fell.|
+La bailarina ejecutó el giro con una precisión asombrosa.|The dancer performed the turn with astonishing precision.|
+El actor olvidó su parlamento y tuvo que improvisar.|The actor forgot his lines and had to improvise.|
+La coreografía mezcla danza contemporánea y tradicional.|The choreography mixes contemporary and traditional dance.|
+Los ensayos se hacen en un foro improvisado.|The rehearsals take place in a makeshift theatre space.|
+El vestuario fue confeccionado por artesanas locales.|The costumes were made by local craftswomen.|
+La obra se mantuvo en cartelera durante dos años.|The play stayed on the bill for two years.|
+El público aplaudió de pie durante diez minutos.|The audience gave a standing ovation for ten minutes.|
+La escenografía consistía solo en una silla y una lámpara.|The set consisted only of a chair and a lamp.|
+El monólogo mantuvo a todos en vilo.|The monologue kept everyone on tenterhooks.|
+Los zapateados resonaban en el tablado.|The foot-stamping echoed on the wooden stage.|
+La función de estreno se agotó en pocas horas.|The opening night sold out within a few hours.|
+El dramaturgo adaptó una tragedia griega al México actual.|The playwright adapted a Greek tragedy to present-day Mexico.|
+@u314|Telecomunicaciones|Telecommunications|Phones, internet, signal and providers: <b>La compañía me cobró un plan que nunca contraté.</b> (The company charged me for a plan I never signed up for.), <b>Hice la portabilidad de mi número a otro proveedor.</b> (I moved my number to another provider.) and <b>Recargué saldo en la tienda de la esquina.</b> (I topped up my credit at the corner shop.).|Explain the problems you've had with a phone or internet provider and how you solved them.
+#u314a|Telecommunications, part 1
+La compañía me cobró un plan que nunca contraté.|The company charged me for a plan I never signed up for.|
+Hice la portabilidad de mi número a otro proveedor.|I moved my number to another provider.|
+Recargué saldo en la tienda de la esquina.|I topped up my credit at the corner shop.|
+La fibra óptica llegó por fin a mi colonia.|Fibre optic finally reached my neighbourhood.|
+El técnico reinstaló el módem y aumentó la velocidad.|The technician reinstalled the modem and the speed went up.|
+Las antenas nuevas mejoraron la cobertura en el campo.|The new antennas improved coverage in the countryside.|
+La atención telefónica te deja en espera eternamente.|Phone customer service keeps you on hold forever.|
+Desactivé el roaming antes de viajar.|I switched off roaming before travelling.|
+La brecha de conectividad separa a la ciudad del campo.|The connectivity gap separates the city from the countryside.|
+@u315|Mitos y leyendas|Myths and legends|Stories, spirits and folklore: <b>Cuenta la leyenda que la Llorona busca a sus hijos junto al río.</b> (Legend has it that La Llorona searches for her children by the river.), <b>Los nahuales podían transformarse en animales.</b> (The nahuales could turn themselves into animals.) and <b>El mito explica el origen del Sol y la Luna.</b> (The myth explains the origin of the Sun and the Moon.).|Tell a legend from your country or region in your own words.
+#u315a|Myths and legends, part 1
+Cuenta la leyenda que la Llorona busca a sus hijos junto al río.|Legend has it that La Llorona searches for her children by the river.|
+Los nahuales podían transformarse en animales.|The nahuales could turn themselves into animals.|
+El mito explica el origen del Sol y la Luna.|The myth explains the origin of the Sun and the Moon.|
+Dicen que en esa casona espantan desde hace un siglo.|They say that big old house has been haunted for a century.|
+Los abuelos contaban historias de aparecidos alrededor de la fogata.|The grandparents told ghost stories around the campfire.|
+La serpiente emplumada era venerada por varios pueblos.|The feathered serpent was worshipped by several peoples.|
+Según la tradición, los duendes esconden los objetos perdidos.|According to tradition, goblins hide lost objects.|
+El héroe descendió al inframundo para rescatar a su padre.|The hero went down to the underworld to rescue his father.|
+Las leyendas se transmitieron de boca en boca.|The legends were passed on by word of mouth.|
+Ese callejón tiene fama de estar embrujado.|That alley is said to be haunted.|
+Los dioses castigaron la soberbia de los hombres.|The gods punished men's arrogance.|
+El relato mezcla elementos indígenas y europeos.|The tale mixes indigenous and European elements.|
+Muchos creen que los sueños anuncian presagios.|Many believe that dreams announce omens.|
+El volcán y la montaña representan a dos amantes.|The volcano and the mountain represent two lovers.|
+@u316|Cárceles y reinserción|Prisons and rehabilitation|Sentences, prisons and second chances: <b>Lleva diez años en prisión preventiva sin sentencia.</b> (He has spent ten years in pre-trial detention without a sentence.), <b>Los reos estudian una carrera desde el penal.</b> (Inmates study for a degree from prison.) and <b>El hacinamiento favorece la violencia entre internos.</b> (Overcrowding encourages violence among inmates.).|Debate whether prisons should focus on punishment or rehabilitation.
+#u316a|Prisons and rehabilitation, part 1
+Lleva diez años en prisión preventiva sin sentencia.|He has spent ten years in pre-trial detention without a sentence.|
+Los reos estudian una carrera desde el penal.|Inmates study for a degree from prison.|
+El hacinamiento favorece la violencia entre internos.|Overcrowding encourages violence among inmates.|
+Salió libre bajo fianza.|He was released on bail.|
+La reinserción social exige oportunidades de empleo.|Social reintegration requires job opportunities.|
+Cumplió su condena y ahora ayuda a otros jóvenes.|He served his sentence and now helps other young people.|
+Muchos presos no tienen acceso a un abogado.|Many prisoners have no access to a lawyer.|
+Los talleres penitenciarios enseñan oficios.|Prison workshops teach trades.|
+El motín dejó varios heridos.|The riot left several injured.|
+La justicia restaurativa busca reparar a la víctima.|Restorative justice seeks to make amends to the victim.|
+Fue liberado tras demostrarse su inocencia.|He was freed after his innocence was proven.|
+Las penas alternativas reducen la reincidencia.|Alternative sentences reduce reoffending.|
+Los familiares hacen fila durante horas para visitarlos.|Relatives queue for hours to visit them.|
+El sistema penitenciario necesita una reforma profunda.|The prison system needs a profound reform.|

@@ -1144,6 +1144,42 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u311": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u312": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u313": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u314": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u315": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u316": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u317": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u318": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u319": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u32": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -5405,6 +5441,139 @@
 "u310a-2:2": "Pusimos un tapete para que el piso no se viera tan frío.",
 "u310a-2:3": "Una lámpara de pie da una luz cálida al rincón.",
 "u310a-2:4": "Redecoraron toda la casa después de la mudanza."
+},
+"u311": {
+"u311a-1:0": "El hígado filtra las toxinas de la sangre.",
+"u311a-1:1": "Le diagnosticaron una úlcera en el estómago.",
+"u311a-1:2": "Los riñones regulan la cantidad de líquido en el cuerpo.",
+"u311a-1:3": "Sufrió un infarto mientras corría.",
+"u311a-1:4": "La hernia le provocaba un dolor punzante.",
+"u311a-2:0": "Le extirparon el apéndice de urgencia.",
+"u311a-2:1": "Los pulmones de los fumadores se deterioran con los años.",
+"u311a-2:2": "Tiene la presión alta y el colesterol descontrolado.",
+"u311a-2:3": "La inflamación de las articulaciones le impide caminar.",
+"u311a-2:4": "El cerebro consume una quinta parte de nuestra energía.",
+"u311a-3:0": "Se fracturó la cadera al resbalar en la regadera.",
+"u311a-3:1": "Las vértebras protegen la médula espinal.",
+"u311a-3:2": "Una infección en la garganta le produjo fiebre alta.",
+"u311a-3:3": "Los análisis revelaron una anemia leve."
+},
+"u312": {
+"u312a-1:0": "El alfarero moldea el barro en un torno de pedal.",
+"u312a-1:1": "Las tejedoras usan telares de cintura heredados de sus abuelas.",
+"u312a-1:2": "El talavera poblano se pinta a mano con pigmentos naturales.",
+"u312a-1:3": "El herrero forja las rejas a golpe de martillo.",
+"u312a-1:4": "Los alebrijes se tallan en madera de copal.",
+"u312a-2:0": "El oficio de carpintero se transmite de padres a hijos.",
+"u312a-2:1": "La platería de Taxco es famosa en todo el mundo.",
+"u312a-2:2": "Los vitrales de la iglesia fueron restaurados por un maestro vidriero.",
+"u312a-2:3": "Teñían la lana con grana cochinilla.",
+"u312a-2:4": "El zapatero remendón arregla suelas y tacones.",
+"u312a-3:0": "Las piñatas se elaboran con olla de barro o cartón.",
+"u312a-3:1": "El regateo excesivo desvaloriza el trabajo artesanal.",
+"u312a-3:2": "Los aprendices tardan años en dominar la técnica.",
+"u312a-3:3": "El cestero teje canastas con fibras de palma."
+},
+"u313": {
+"u313a-1:0": "La compañía de danza folclórica recorrió todo el país.",
+"u313a-1:1": "El telón se levantó y se hizo el silencio.",
+"u313a-1:2": "La bailarina ejecutó el giro con una precisión asombrosa.",
+"u313a-1:3": "El actor olvidó su parlamento y tuvo que improvisar.",
+"u313a-1:4": "La coreografía mezcla danza contemporánea y tradicional.",
+"u313a-2:0": "Los ensayos se hacen en un foro improvisado.",
+"u313a-2:1": "El vestuario fue confeccionado por artesanas locales.",
+"u313a-2:2": "La obra se mantuvo en cartelera durante dos años.",
+"u313a-2:3": "El público aplaudió de pie durante diez minutos.",
+"u313a-2:4": "La escenografía consistía solo en una silla y una lámpara.",
+"u313a-3:0": "El monólogo mantuvo a todos en vilo.",
+"u313a-3:1": "Los zapateados resonaban en el tablado.",
+"u313a-3:2": "La función de estreno se agotó en pocas horas.",
+"u313a-3:3": "El dramaturgo adaptó una tragedia griega al México actual."
+},
+"u314": {
+"u314a-1:0": "La compañía me cobró un plan que nunca contraté.",
+"u314a-1:1": "Hice la portabilidad de mi número a otro proveedor.",
+"u314a-1:2": "Recargué saldo en la tienda de la esquina.",
+"u314a-1:3": "La fibra óptica llegó por fin a mi colonia.",
+"u314a-1:4": "El técnico reinstaló el módem y aumentó la velocidad.",
+"u314a-2:0": "Las antenas nuevas mejoraron la cobertura en el campo.",
+"u314a-2:1": "La atención telefónica te deja en espera eternamente.",
+"u314a-2:2": "Desactivé el roaming antes de viajar.",
+"u314a-2:3": "La brecha de conectividad separa a la ciudad del campo."
+},
+"u315": {
+"u315a-1:0": "Cuenta la leyenda que la Llorona busca a sus hijos junto al río.",
+"u315a-1:1": "Los nahuales podían transformarse en animales.",
+"u315a-1:2": "El mito explica el origen del Sol y la Luna.",
+"u315a-1:3": "Dicen que en esa casona espantan desde hace un siglo.",
+"u315a-1:4": "Los abuelos contaban historias de aparecidos alrededor de la fogata.",
+"u315a-2:0": "La serpiente emplumada era venerada por varios pueblos.",
+"u315a-2:1": "Según la tradición, los duendes esconden los objetos perdidos.",
+"u315a-2:2": "El héroe descendió al inframundo para rescatar a su padre.",
+"u315a-2:3": "Las leyendas se transmitieron de boca en boca.",
+"u315a-2:4": "Ese callejón tiene fama de estar embrujado.",
+"u315a-3:0": "Los dioses castigaron la soberbia de los hombres.",
+"u315a-3:1": "El relato mezcla elementos indígenas y europeos.",
+"u315a-3:2": "Muchos creen que los sueños anuncian presagios.",
+"u315a-3:3": "El volcán y la montaña representan a dos amantes."
+},
+"u316": {
+"u316a-1:0": "Lleva diez años en prisión preventiva sin sentencia.",
+"u316a-1:1": "Los reos estudian una carrera desde el penal.",
+"u316a-1:2": "El hacinamiento favorece la violencia entre internos.",
+"u316a-1:3": "Salió libre bajo fianza.",
+"u316a-1:4": "La reinserción social exige oportunidades de empleo.",
+"u316a-2:0": "Cumplió su condena y ahora ayuda a otros jóvenes.",
+"u316a-2:1": "Muchos presos no tienen acceso a un abogado.",
+"u316a-2:2": "Los talleres penitenciarios enseñan oficios.",
+"u316a-2:3": "El motín dejó varios heridos.",
+"u316a-2:4": "La justicia restaurativa busca reparar a la víctima.",
+"u316a-3:0": "Fue liberado tras demostrarse su inocencia.",
+"u316a-3:1": "Las penas alternativas reducen la reincidencia.",
+"u316a-3:2": "Los familiares hacen fila durante horas para visitarlos.",
+"u316a-3:3": "El sistema penitenciario necesita una reforma profunda."
+},
+"u317": {
+"u317a-1:0": "Respondió tajantemente que no.",
+"u317a-1:1": "Trabaja minuciosamente, sin dejar nada al azar.",
+"u317a-1:2": "Se acercó sigilosamente para no despertar al bebé.",
+"u317a-1:3": "Lo explicó pacientemente, paso por paso.",
+"u317a-1:4": "Aceptó gustosamente la invitación.",
+"u317a-2:0": "Se negó rotundamente a firmar el documento.",
+"u317a-2:1": "Avanzaban penosamente bajo la lluvia.",
+"u317a-2:2": "Habla pausadamente, midiendo cada palabra.",
+"u317a-2:3": "Lo hizo deliberadamente, no fue un accidente.",
+"u317a-2:4": "Me miró fijamente durante varios segundos.",
+"u317a-3:0": "Cerró la puerta bruscamente y se fue.",
+"u317a-3:1": "Acudieron masivamente a la manifestación.",
+"u317a-3:2": "Lo felicitó efusivamente por el premio.",
+"u317a-3:3": "Sobrevivió milagrosamente al accidente."
+},
+"u318": {
+"u318a-1:0": "Se volvió más reservado con los años.",
+"u318a-1:1": "El pueblo se transformó en un destino turístico.",
+"u318a-1:2": "Se hizo rico vendiendo terrenos.",
+"u318a-1:3": "La amistad se enfrió tras la discusión.",
+"u318a-1:4": "Su salud empeoró de repente.",
+"u318a-2:0": "La niña creció rodeada de libros.",
+"u318a-2:1": "El barrio se ha encarecido muchísimo.",
+"u318a-2:2": "Se quedó ciego a los cuarenta años.",
+"u318a-2:3": "El conflicto se agravó en cuestión de días.",
+"u318a-2:4": "Las calles se vaciaron al empezar el partido.",
+"u318a-3:0": "Se puso pálida al escuchar la noticia."
+},
+"u319": {
+"u319a-1:0": "Estoy hasta las narices de tanto ruido.",
+"u319a-1:1": "Se le subieron los humos desde que lo ascendieron.",
+"u319a-1:2": "Le echó una mano con la mudanza.",
+"u319a-1:3": "Siempre mete las narices donde no lo llaman.",
+"u319a-1:4": "Hablar por los codos es su especialidad.",
+"u319a-2:0": "Le dio la espalda a sus antiguos amigos.",
+"u319a-2:1": "Lo pillaron con las manos en la masa.",
+"u319a-2:2": "Hizo de tripas corazón y siguió adelante.",
+"u319a-2:3": "Estamos con el agua hasta el cuello por las deudas.",
+"u319a-2:4": "Se me pusieron los pelos de punta con esa historia.",
+"u319a-3:0": "Se lavó las manos y culpó a su socio."
 },
 "u32": {
 "u32a-1:0": "puedo",
