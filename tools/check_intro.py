@@ -16,7 +16,7 @@ JS = r"""([runs,nl])=>{window.save=()=>{};window.saveSoon=()=>{};window.say=()=>
         if(e.type==='intro'){introd.add(e.item.id);const r=rec(e.item.id);r.seen=true;r.intro=1;Q.idx++;continue;}
         if(STEPS.has(e.type)){Q.idx++;continue;}
         /* (Round 11) a sentence you make: every word of it taught (or met on its New word card) before it is asked */
-        if(e.type==='make'){makes++;ltWords(e.sent.lt).forEach(w=>{if(!NAMEISH(w)&&!(WORD_ITEMS[w]||[]).some(i=>taught(i)||introd.has(i.id)))bad.push(run+' '+l.id+' make card "'+e.sent.lt+'": '+w);});Q.idx++;continue;}
+        if(e.type==='make'){makes++;ltWords(e.sent.lt).forEach(w=>{if(!FREE(w)&&!(WORD_ITEMS[w]||[]).some(i=>taught(i)||introd.has(i.id)))bad.push(run+' '+l.id+' make card "'+e.sent.lt+'": '+w);});Q.idx++;continue;}
         (e.item?[e.item]:e.items||[]).forEach(i=>{if(!taught(i)&&!introd.has(i.id))bad.push(run+' '+l.id+' card '+Q.idx+' '+e.type+': '+i.lt);
           else if(!introd.has(i.id)&&l.items.includes(i)&&!(peek(i.id).lvl>=2))bad.push(run+' '+l.id+' card '+Q.idx+' '+e.type+': '+i.lt+' (taught before this lesson?)');});
         /* answer: mostly right, sometimes wrong (a miss comes back) */

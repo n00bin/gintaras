@@ -1126,9 +1126,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.130';
-const APP_VERSION=202;
-const WHATS_NEW='Spanish (Mexico) is open: a full course from beginner to C2, with conversations, readings, listening, writing and speaking. Pick it from the course menu at the top.';
+const APP_RELEASE='3.131';
+const APP_VERSION=203;
+const WHATS_NEW='Every word in the later Lithuanian conversations now has a meaning you can tap, and place names like Anglijos no longer turn up in a sentence before the course has taught them.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1444,15 +1444,18 @@ function freshHere(i,l){if(!l||l.speak||!(l.items||[]).includes(i)||(S.lessons[l
 /* The Lithuanian words a card shows that aren't its own word: a sentence card's sentence and choices, a listening card's
    lines. Each must be taught, or be taught by a word of this session (whose New word card then comes first). */
 const NAMEISH=w=>properNoun(w)||PERS.baseNames.includes(norm(w))||GLUE[norm(w)]==='your name'||!!(S.me&&S.me.name&&strip(w).startsWith(strip(S.me.name).slice(0,Math.max(3,strip(S.me.name).length-1))));
+/* (report 20) a name needs no teaching, but a place with a capital that the course teaches does: Anglijos was "a name" in
+   Basics, so a make-a-sentence card asked for Jis yra iš Anglijos before About me taught it. The cast's names and yours stay free. */
+const FREE=w=>NAMEISH(w)&&(!((WORD_ITEMS||{})[w]||[]).length||PERS.baseNames.includes(norm(w))||GLUE[norm(w)]==='your name'||!!(S.me&&S.me.name&&strip(w).startsWith(strip(S.me.name).slice(0,Math.max(3,strip(S.me.name).length-1)))));
 function ltWords(s){return norm(String(s||'').replace('___',' ')).replace(/[–…]/g,' ').split(' ').filter(Boolean);}
 /* (Round 7) a sentence card's choices are words you have met (on their New word card, here or before): a form you haven't
    met ("Labą" in the first unit) is left out of the choices, and a card left with no choice to make isn't asked */
 const metNow=i=>taught(i)||!!Q&&Q.queue.slice(0,Q.idx).some(x=>x.type==='intro'&&x.item===i);
-function optsNow(d){if(!WORD_ITEMS)wordLvl('');return d.opts.filter(o=>ltWords(o).every(w=>NAMEISH(w)||(WORD_ITEMS[w]||[]).some(metNow)));}
+function optsNow(d){if(!WORD_ITEMS)wordLvl('');return d.opts.filter(o=>ltWords(o).every(w=>FREE(w)||(WORD_ITEMS[w]||[]).some(metNow)));}
 function cardWords(e){if(e.drill)return ltWords(e.drill.frame.replace('___',e.drill.ans));
   if(e.type==='hear')return [e.line].concat(e.others||[]).filter(Boolean).flatMap(l=>ltWords(l.lt0||l.lt));if(e.type==='make')return ltWords(e.sent.lt);return [];}
 function wordsNeed(ws,pool){if(!WORD_ITEMS)wordLvl('');const need=[];let bad='';
-  ws.forEach(w=>{if(bad||NAMEISH(w))return;const its=WORD_ITEMS[w]||[];if(its.some(taught))return;
+  ws.forEach(w=>{if(bad||FREE(w))return;const its=WORD_ITEMS[w]||[];if(its.some(taught))return;
     const here=its.filter(i=>pool.includes(i)).sort((a,b)=>a.lt.length-b.lt.length)[0];if(here){if(!need.includes(here))need.push(here);}else bad=w;});
   return {need,bad};}
 function learned(){return ITEMS.filter(i=>{const r=S.items[i.id];return r&&r.seen;});}
@@ -2323,7 +2326,7 @@ function makeOk(m){let L=replyVariants(m.lt);
   if(/\bthey\b/i.test(m.en)&&!/women|men|girls|boys/i.test(m.en))L=L.concat(L.map(v=>v.replace(/\bJie\b/g,'Jos').replace(/\bjie\b/g,'jos')));
   if(LANG.polite)L=L.concat(L.map(v=>LANG.polite(v)).filter(Boolean));
   return [...new Set(L)].filter(v=>norm(v)!==norm(m.lt));}
-function makePick(lesson,n,its){its=its||lesson.items;if(!WORD_ITEMS)wordLvl('');const here=new Set(its),ok=w=>NAMEISH(w)||(WORD_ITEMS[w]||[]).some(i=>taught(i)||here.has(i));
+function makePick(lesson,n,its){its=its||lesson.items;if(!WORD_ITEMS)wordLvl('');const here=new Set(its),ok=w=>FREE(w)||(WORD_ITEMS[w]||[]).some(i=>taught(i)||here.has(i));
   const fresh=new Set(its.flatMap(i=>ltWords(i.lt0||i.lt)).filter(w=>!(WORD_ITEMS[w]||[]).some(i=>taught(i)&&!here.has(i)))),made=S.made||{},nf=m=>m.ws.filter(w=>fresh.has(w)).length;
   /* what the other person says in a conversation is used only where a lesson has too few of its own (its English is looser) */
   const all=shuffle(makePool().filter(m=>m.ws.every(ok)&&nf(m)>0)),mine=all.filter(m=>!m.them),pick=(mine.length>=n?mine:all).sort((a,b)=>!!made[a.id]-!!made[b.id]||a.them-b.them||nf(b)-nf(a));
@@ -2366,7 +2369,7 @@ function loadLabel(items){const one=items.filter(i=>ltWords(i.lt).length<2).leng
 function drillsFor(l,n){const words=new Set(l.items.flatMap(i=>norm(i.lt).split(' ')).filter(w=>!['iš','ir','ar','į','su','yra','o'].includes(w)));
   const day=S.drillDay&&S.drillDay.d===today()?S.drillDay.f:[];
   /* every word of the finished sentence has been met already, or is taught in this lesson: a drill never teaches a word by testing it */
-  const met=d=>!wordsNeed(cardWords({drill:d}),l.items).bad&&d.opts.some(o=>ltWords(o).every(w=>NAMEISH(w)||(WORD_ITEMS[w]||[]).some(i=>taught(i)||l.items.includes(i))));
+  const met=d=>!wordsNeed(cardWords({drill:d}),l.items).bad&&d.opts.some(o=>ltWords(o).every(w=>FREE(w)||(WORD_ITEMS[w]||[]).some(i=>taught(i)||l.items.includes(i))));
   const pick=sample(DRILLS.filter(d=>!d.off&&d.u===l.unit.id&&!day.includes(d.frame)&&(d.l?(l.parts||[l.id]).some(id=>d.l.includes(id)):norm(d.frame.replace('___','')).split(' ').some(w=>words.has(w)))&&met(d)),n);
   if(pick.length){S.drillDay={d:today(),f:day.concat(pick.map(d=>d.frame))};}return pick;}
 const STEPLESS={intro:1,tip:1,metip:1,mesay:1,revtip:1,spkask:1,maketip:1};

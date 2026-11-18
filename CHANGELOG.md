@@ -1,5 +1,7 @@
 # Gintaras version history
 
+- **3.131** (2026-11-17) Fixes. A capitalised word the course teaches (Anglijos, Lietuvos, Vilnius, Vilniuje) no longer counts as a name, so make-a-sentence cards, sentence choices and frame drills don't use it before it is taught (problem report 20). The 241 words in Lithuanian conversations 35–70 that had no meaning to tap now have one.
+
 - **3.130** (2026-11-14) Spanish (Mexico) is open to everyone, from beginner to C2 (CEFR A1–C2): 400 units (4,820 cards) with grammar for every level, 55 conversations, 162 graded readings, 158 listening recordings and 54 writing and speaking tasks with model answers, all in the same all-skills windows as Lithuanian. Native-speaker review is still to come.
 
 - **3.129** A first visit no longer downloads 852 practice recordings (32 MB, both languages) in the background. The recordings of the all-skills units are saved when the unit is among the next ones on the path, like a lesson's.
