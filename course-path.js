@@ -4,7 +4,7 @@
 const studio=window.WordamiSkillsStudio,content=window.WordamiSkillsContent;
 if(!COURSE_V2||!studio||!content)return;
 const units=content.units||content.levels,rows=new Map(),originalSteps=[...STEPS];
-const anchors=LANG.code==='lt'?['u20','u16','u32','u32','u34','u17','u17','u18']:['u25','u16','u30','u30','u33','u13','u13','u36'];
+const anchors=LANG.code==='lt'?['u244','u245','u246','u247','u34','u17','u17','u18']:['u25','u16','u30','u30','u33','u13','u13','u36'];
 const wanted=Object.fromEntries(['A1','A1-shopping','A1-home','A1-travel','A2','A2-services','A2-work','A2-meals'].map((id,i)=>[id,anchors[i]]));
 wanted['A1-capstone']=anchors[3];wanted['A2-capstone']=anchors[7];
 const last=[...PATH].reverse().find(id=>typeof id==='string'&&UNIT_BY[id]&&!UNIT_BY[id].retire);
@@ -27,13 +27,18 @@ if(S.coursePathSignature!==signature){
  S.coursePathSignature=signature;S.coursePathOrder=order;save();
 }
 STEPS.splice(0,STEPS.length,...order);
+/* A learner who finished an A1 skill unit before its get-ready unit existed isn't sent back: the unit counts as done
+   and its cards simply come round in review. */
+if(LANG.code==='lt'){let credited=false;for(const [prep,unitId] of [['u244','A1'],['u245','A1-shopping'],['u246','A1-home'],['u247','A1-travel']]){
+ const u=UNIT_BY[prep];if(!u||studio.progress(unitId)?.complete!==true||u.lessons.every(l=>(S.lessons[l.id]||0)>=1))continue;creditUnit(prep,{});credited=true;}
+ if(credited)save();}
 function status(id){const row=rows.get(id);return row?studio.progress(row.unitId):null;}
 function renderUnit(id,parent){
  const row=rows.get(id),done=status(id)?.complete===true,open=studio.isOpen(row.unitId),section=document.createElement('section');
  section.id='unit-'+id.replaceAll('.','-');section.className='unit'+(open?'':' locked')+(done?' done':'');section.dataset.curriculumUnit=row.unitId;section.dataset.required='true';
- const head=document.createElement('div');head.className='unit-head';const text=document.createElement('div'),label=document.createElement('span');label.className='eyebrow';label.textContent=row.band+' · Required skill unit';
- const title=document.createElement('h2');title.textContent=row.title;const description=document.createElement('span');description.className='sub';description.textContent=done?'All required lessons and checks complete':open?'Learn, read, listen, speak, interact and write':'Complete the preceding unit first';text.append(label,title,description);head.append(text);section.append(head);
- const button=document.createElement('button');button.type='button';button.className='lesson-row'+(done?' did':'');button.textContent=done?'Review this unit':open?'Continue required unit':'Finish the preceding unit';button.disabled=!open;button.onclick=()=>studio.openUnit(row.unitId);section.append(button);parent.append(section);
+ const head=document.createElement('div');head.className='unit-head';const text=document.createElement('div'),label=document.createElement('span');label.className='eyebrow';label.textContent=row.band+' · Put it to use';
+ const title=document.createElement('h2');title.textContent=row.title;const description=document.createElement('span');description.className='sub';description.textContent=done?'Everything in this unit is done':open?'New words, then reading, listening, speaking and writing':'Finish the unit before this one to open it';text.append(label,title,description);head.append(text);section.append(head);
+ const button=document.createElement('button');button.type='button';button.className='lesson-row'+(done?' did':'');button.textContent=done?'Review this unit':open?'Open this unit':'Finish the unit before this one';button.disabled=!open;button.onclick=()=>studio.openUnit(row.unitId);section.append(button);parent.append(section);
 }
 window.WordamiCoursePath=Object.freeze({isUnit:id=>rows.has(id),done:id=>status(id)?.complete===true,started:id=>{const row=rows.get(id);return !!row&&studio.started(row.unitId);},title:id=>rows.get(id)?.title,canEnter:unitId=>stepUnlocked('course.'+unitId),renderUnit,units:()=>[...rows.values()].map(row=>({...row}))});
 window.addEventListener('wordami:curriculum-progress',()=>renderTree());

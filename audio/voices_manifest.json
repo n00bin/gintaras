@@ -163,6 +163,13 @@
 "charon_me2": {
 "me2:cv8:4~n": "Taip. Dviem naktims?"
 },
+"despina_cv0": {
+"cv0:1": "Labas vakaras!",
+"cv0:11": "Labanakt! Iki pasimatymo!",
+"cv0:3": "Gerai, ačiū.",
+"cv0:6": "Nieko tokio!",
+"cv0:9": "Prašau!"
+},
 "despina_cv1": {
 "cv1:1": "Labas rytas!",
 "cv1:11": "Aš esu iš Amerikos.",
@@ -520,7 +527,6 @@
 },
 "despina_cv35": {
 "cv35:1": "Laba diena. Man skauda galvą ir gerklę.",
-"cv35:11": "Labanakt! Iki pasimatymo!",
 "cv35:3": "Nuo vakar. Taip, turiu temperatūrą.",
 "cv35:5": "Kosiu naktį. Gėriau tik arbatą su medumi.",
 "cv35:7": "Ar galiu eiti į darbą?",
@@ -1162,6 +1168,13 @@
 "cv60:6": "Ačiū. Laidotuvės bus šeštadienį, o dar tiek visko reikia sutvarkyti.",
 "cv60:8": "Tai būtų didelė pagalba. Ačiū tau, kad esi."
 },
+"orus_cv0": {
+"cv0:1": "Labas vakaras!",
+"cv0:11": "Labanakt! Iki pasimatymo!",
+"cv0:3": "Gerai, ačiū.",
+"cv0:6": "Nieko tokio!",
+"cv0:9": "Prašau!"
+},
 "orus_cv1": {
 "cv1:1": "Labas rytas!",
 "cv1:11": "Aš esu iš Amerikos.",
@@ -1519,7 +1532,6 @@
 },
 "orus_cv35": {
 "cv35:1": "Laba diena. Man skauda galvą ir gerklę.",
-"cv35:11": "Labanakt! Iki pasimatymo!",
 "cv35:3": "Nuo vakar. Taip, turiu temperatūrą.",
 "cv35:5": "Kosiu naktį. Gėriau tik arbatą su medumi.",
 "cv35:7": "Ar galiu eiti į darbą?",
@@ -2010,6 +2022,13 @@
 "me2:cv15:2o1-0~n": "Ačiū!",
 "me2:cv18:9~n": "Labas!",
 "me2:cv28:11~n": "Labai ačiū!"
+},
+"pulcherrima_cv0": {
+"cv0:0": "Labas vakaras!",
+"cv0:10": "Labanakt!",
+"cv0:2": "Kaip sekasi?",
+"cv0:5": "Atsiprašau!",
+"cv0:8": "Ačiū!"
 },
 "pulcherrima_cv31": {
 "cv31:1": "Jūra? Toli. Važiuokite autobusu.",

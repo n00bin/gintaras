@@ -66,6 +66,9 @@ if (c.ART) { const dir = path.join(__dirname, '..', 'pics', 'art'), MAX = 13 * 1
   say('real-life skills pointing at a missing conversation', c.CANDO.filter(x => x[4] && !c.CONV_BY[x[4]]).map(x => x[0] + ': ' + x[4]));
   say('real-life skills sharing an id', ids.filter((x, i) => ids.indexOf(x) !== i)); }
 // Say it can always be finished: every reply you give (choices included) has its words, its English and a prompt to answer.
+// two conversations with one id: the later one replaces the earlier everywhere, and the earlier can never open (cv35, 3.126 to 3.131)
+{ const seen = {}; c.CONVS.forEach(v => { (seen[v.id] = seen[v.id] || []).push(v.title); });
+  say('conversations sharing an id', Object.entries(seen).filter(e => e[1].length > 1).map(e => e[0] + ' = ' + e[1].join(' / '))); }
 say('conversation replies that can’t be said', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'm' && (!l.id || !l.lt || !l.en || !l.hint)).map(l => v.id + ': ' + (l.lt || l.id))));
 say('conversation choices with fewer than two options', c.CONVS.flatMap(v => v.all.filter(l => l.kind === 'c' && !(l.opts && l.opts.length >= 2 && l.opts.every(o => o.line && o.line.lt))).map(() => v.id)));
 say('drills pointing at a missing unit', c.DRILLS.filter(d => !units.has(d.u)).map(d => d.u + ': ' + d.frame));

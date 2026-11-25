@@ -1,6 +1,16 @@
 {
  "note": "Every course name ever published. Learners' progress is saved under these. Managed by tools/check_progress_ids.js; never edit by hand.",
- "allowed": [],
+ "allowed": [
+  {
+   "date": "2026-11-25",
+   "lang": "lt",
+   "kind": "lines",
+   "name": "cv35:11",
+   "was": "cv35:11",
+   "now": null,
+   "reason": "the first mini chat (Labas vakaras!) shared the id cv35 with the doctor conversation and is now cv0; its saved progress is moved across in index.html"
+  }
+ ],
  "lt": {
   "units": [
    "u1",
@@ -245,7 +255,11 @@
    "u219",
    "u220",
    "u221",
-   "u222"
+   "u222",
+   "u244",
+   "u245",
+   "u246",
+   "u247"
   ],
   "lessons": [
    "u1a-0",
@@ -1539,7 +1553,18 @@
    "u221-speak",
    "u222.L1",
    "u222.L2",
-   "u222-speak"
+   "u222-speak",
+   "u244.L1",
+   "u244-speak",
+   "u245.L1",
+   "u245.L2",
+   "u245-speak",
+   "u246a",
+   "u246b",
+   "u246-speak",
+   "u247.L1",
+   "u247.L2",
+   "u247-speak"
   ],
   "conversations": [
    "cv35",
@@ -1611,7 +1636,8 @@
    "cv67",
    "cv68",
    "cv69",
-   "cv70"
+   "cv70",
+   "cv0"
   ],
   "lines": [
    "cv35:0",
@@ -1623,7 +1649,6 @@
    "cv35:8",
    "cv35:9",
    "cv35:10",
-   "cv35:11",
    "cv1:0",
    "cv1:1",
    "cv1:2",
@@ -2706,7 +2731,17 @@
    "cv70:3",
    "cv70:4",
    "cv70:5",
-   "cv70:6"
+   "cv70:6",
+   "cv0:0",
+   "cv0:1",
+   "cv0:2",
+   "cv0:3",
+   "cv0:5",
+   "cv0:6",
+   "cv0:8",
+   "cv0:9",
+   "cv0:10",
+   "cv0:11"
   ],
   "skills": [
    "a1.first-meeting",
@@ -9943,7 +9978,51 @@
    "u37g2:1": "šį savaitgalį",
    "u37g2:2": "praėjusį mėnesį",
    "u37g2:3": "kitą mėnesį",
-   "u37g2:4": "visą dieną"
+   "u37g2:4": "visą dieną",
+   "u244a:0": "Mano butas labai mažas",
+   "u244a:1": "Man labai patinka muzika",
+   "u244a:2": "Susitikime rytoj",
+   "u244a:3": "Susitikime septintą valandą",
+   "u244b:0": "Rytoj aštuntą valandą",
+   "u244b:1": "Susitikime parke",
+   "u244b:2": "Gal susitikime rytoj?",
+   "u244b:3": "Gerai, iki rytojaus!",
+   "u245a:0": "Parduotuvėje perku duonos",
+   "u245a:1": "Perku du obuolius",
+   "u245a:2": "Obuoliai kainuoja tris eurus",
+   "u245a:3": "Norėčiau trijų obuolių",
+   "u245b:0": "Mokėsiu kortele",
+   "u245b:1": "Mokėsiu grynaisiais",
+   "u245b:2": "Ko norėtumėte?",
+   "u245b:3": "Ar norėtumėte dar ko nors?",
+   "u245b:4": "Mokėsite kortele ar grynaisiais?",
+   "u246a:0": "Prašau užeiti",
+   "u246a:1": "Užeik",
+   "u246a:2": "Mano namai maži, bet šviesūs",
+   "u246a:3": "Virtuvė maža",
+   "u246a:4": "Vonios kambarys yra čia",
+   "u246a:5": "Šalia virtuvės",
+   "u246b:0": "Antrame aukšte",
+   "u246b:1": "Raktas yra ant stalo",
+   "u246b:2": "Ant kėdės",
+   "u246b:3": "Kur galiu padėti savo krepšį?",
+   "u246b:4": "Ar galiu gauti vandens?",
+   "u246b:5": "Atsisėsk čia",
+   "u247a:0": "Stotelė yra prie parko",
+   "u247a:1": "Prie parduotuvės",
+   "u247a:2": "Eikite tiesiai",
+   "u247a:3": "Sukite į dešinę",
+   "u247a:4": "Paskui sukite į kairę",
+   "u247b:0": "Autobusas į stotį",
+   "u247b:1": "Autobusas atvažiuoja dešimtą",
+   "u247b:2": "Atvažiuoja vienuoliktą",
+   "u247b:3": "Bilietą pirkite autobuse",
+   "u247b:4": "Vieną bilietą, prašau",
+   "u247b:5": "Galite nusipirkti autobuse",
+   "u247c:0": "Kur norėtumėte nuvažiuoti?",
+   "u247c:1": "Ar žinote, kur yra stotelė?",
+   "u247c:2": "Kiek bilietų norėtumėte?",
+   "u247c:3": "Prašau parašyti laiką"
   }
  },
  "es": {

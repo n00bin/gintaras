@@ -170,7 +170,7 @@ def main():
             page.goto(BASE+f'?preview=1&lang={lang}#skills-C2');page.wait_for_function('window.WordamiCoursePath');page.locator('#splash').wait_for(state='detached')
             page.evaluate(FOUNDATIONS_SEED)
             d=page.locator('#skills-studio')
-            assert 'Complete the preceding unit' in d.inner_text()
+            assert 'Finish the unit before this one' in d.inner_text()
             assert not page.evaluate("WordamiActivities.begin('skills.C2.reading')")
             assert not page.evaluate("WordamiSkillsStudio.catalogue().find(l=>l.id==='C2').prepared")
             page.evaluate("()=>{S.welcomed=true;S.toured=true;S.meAsked=1;S.signinAsked='test';S.seenVersion=APP_VERSION;S.sound=false;save();}")

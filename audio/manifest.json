@@ -1,5 +1,9 @@
 {
 "_voices": {
+"cv0": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "cv1": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -964,6 +968,22 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 },
+"u244": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u245": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u246": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
+"u247": {
+"leonas": "Iapetus",
+"ona": "Achernar"
+},
 "u25": {
 "leonas": "Iapetus",
 "ona": "Achernar"
@@ -1280,6 +1300,18 @@
 "leonas": "Iapetus",
 "ona": "Achernar"
 }
+},
+"cv0": {
+"cv0:0": "Labas vakaras!",
+"cv0:1": "Labas vakaras!",
+"cv0:10": "Labanakt!",
+"cv0:11": "Labanakt! Iki pasimatymo!",
+"cv0:2": "Kaip sekasi?",
+"cv0:3": "Gerai, ačiū.",
+"cv0:5": "Atsiprašau!",
+"cv0:6": "Nieko tokio!",
+"cv0:8": "Ačiū!",
+"cv0:9": "Prašau!"
 },
 "cv1": {
 "cv1:0": "Labas rytas!",
@@ -7657,6 +7689,58 @@
 "u243a-2:3": "Kraustymasis yra vienas didžiausių gyvenimo išbandymų.",
 "u243a-2:4": "Vamzdis prakiuro naktį, ir vanduo užliejo apatinių kaimynų virtuvę.",
 "u243a-3:0": "Namų ruošos darbus dalijamės per pusę."
+},
+"u244": {
+"u244a:0": "Mano butas labai mažas",
+"u244a:1": "Man labai patinka muzika",
+"u244a:2": "Susitikime rytoj",
+"u244a:3": "Susitikime septintą valandą",
+"u244b:0": "Rytoj aštuntą valandą",
+"u244b:1": "Susitikime parke",
+"u244b:2": "Gal susitikime rytoj?",
+"u244b:3": "Gerai, iki rytojaus!"
+},
+"u245": {
+"u245a:0": "Parduotuvėje perku duonos",
+"u245a:1": "Perku du obuolius",
+"u245a:2": "Obuoliai kainuoja tris eurus",
+"u245a:3": "Norėčiau trijų obuolių",
+"u245b:0": "Mokėsiu kortele",
+"u245b:1": "Mokėsiu grynaisiais",
+"u245b:2": "Ko norėtumėte?",
+"u245b:3": "Ar norėtumėte dar ko nors?",
+"u245b:4": "Mokėsite kortele ar grynaisiais?"
+},
+"u246": {
+"u246a:0": "Prašau užeiti",
+"u246a:1": "Užeik",
+"u246a:2": "Mano namai maži, bet šviesūs",
+"u246a:3": "Virtuvė maža",
+"u246a:4": "Vonios kambarys yra čia",
+"u246a:5": "Šalia virtuvės",
+"u246b:0": "Antrame aukšte",
+"u246b:1": "Raktas yra ant stalo",
+"u246b:2": "Ant kėdės",
+"u246b:3": "Kur galiu padėti savo krepšį?",
+"u246b:4": "Ar galiu gauti vandens?",
+"u246b:5": "Atsisėsk čia"
+},
+"u247": {
+"u247a:0": "Stotelė yra prie parko",
+"u247a:1": "Prie parduotuvės",
+"u247a:2": "Eikite tiesiai",
+"u247a:3": "Sukite į dešinę",
+"u247a:4": "Paskui sukite į kairę",
+"u247b:0": "Autobusas į stotį",
+"u247b:1": "Autobusas atvažiuoja dešimtą",
+"u247b:2": "Atvažiuoja vienuoliktą",
+"u247b:3": "Bilietą pirkite autobuse",
+"u247b:4": "Vieną bilietą, prašau",
+"u247b:5": "Galite nusipirkti autobuse",
+"u247c:0": "Kur norėtumėte nuvažiuoti?",
+"u247c:1": "Ar žinote, kur yra stotelė?",
+"u247c:2": "Kiek bilietų norėtumėte?",
+"u247c:3": "Prašau parašyti laiką"
 },
 "u25": {
 "u25a-1:0": "Ar turi brolių ar seserų?",

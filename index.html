@@ -1126,9 +1126,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.131';
-const APP_VERSION=203;
-const WHATS_NEW='Every word in the later Lithuanian conversations now has a meaning you can tap, and place names like Anglijos no longer turn up in a sentence before the course has taught them.';
+const APP_RELEASE='3.132';
+const APP_VERSION=204;
+const WHATS_NEW='New short lessons now teach the words of each beginner practice unit before it opens, and the practice units use plainer words throughout.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -4656,6 +4656,11 @@ function start(snap){load();setTimeout(tabGuard,0);
   {const b=document.getElementById('btn-place2');if(b)b.onclick=()=>{showView('learn');startPlace();};}if(snap&&snap.S)S=Object.assign(S,upEpoch(snap.S));window.save=save;window.renderAll=renderAll;window.showView=showView;window.levelFor=levelFor;Object.defineProperty(window,'S',{get:()=>S,set:v=>{S=v;},configurable:true});setPace(S.pace);if(S.daysLearned==null)S.daysLearned=Math.max(S.bestStreak||0,S.streak||0,S.lessonsDone?1:0);if(S.pron===undefined)S.pron=true;
   /* One-off, 27 Oct 2026: lesson time started fresh that day, so give everyone time for the XP they earned (4 XP = 1 minute). */
   if(!S.ltimeFix&&S.todayDate==='2026-10-27'&&S.todayXp>0){S.ltime=S.ltime||{};S.ltime['2026-10-27']=Math.max(S.ltime['2026-10-27']||0,S.todayXp*15);}S.ltimeFix=1;
+  /* One-off, 3.132: the first mini chat used to share the id cv35 with the doctor conversation. Progress saved under cv35 by a
+     learner who hasn't started the unit before the doctor conversation (u69, Real situations) can only be the mini chat's:
+     it moves to cv0. Runs here, after load(), like the other one-offs; nothing is saved by this step itself. */
+  if(!S.cv35Split){try{if(LANG.code==='lt'&&CONVS.some(c=>c.id==='cv0')){const c=(S.convs||{}).cv35,u=COURSE.find(x=>x.id==='u69'),reached=!!u&&u.lessons.some(l=>((S.lessons||{})[l.id]||0)>0);
+    if(c&&!reached){S.convs.cv0=Object.assign({},c,S.convs.cv0||{});delete S.convs.cv35;}}}catch(e){console.warn('Wordami: cv35 split skipped',e);}S.cv35Split=1;}
   /* One-off back-pay: amber for learning done before amber existed, at today's rates, minus what was already earned.
      (1 a lesson, 5 a conversation, 3 a flawless one, 2 a learning day, and an average 6 chest every 5th lesson.) */
   if(!S.amberBack){amberSum();const convs=Object.values(S.convs||{}).filter(c=>c.done).length;
