@@ -97,16 +97,31 @@ def served(url):
     for attempt in range(3):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, method='HEAD'), timeout=30) as r:
-                return r.status == 200
+                if r.status == 200:
+                    return True
         except Exception:
-            time.sleep(2 * (attempt + 1))
+            pass
+        time.sleep(2 * (attempt + 1))
+    # Some CDN edges reject HEAD requests even while the recording is playable.
+    # Fetch just the first bytes; this still fails for an absent recording.
+    try:
+        request = urllib.request.Request(url, headers={'Range': 'bytes=0-31'})
+        with urllib.request.urlopen(request, timeout=30) as r:
+            return r.status in (200, 206) and bool(r.read(32))
+    except Exception:
+        pass
     return False
 
 
 def check(all_files):
     urls = [f'{SITE}{name}/{rel}' for name, files in all_files.items() for rel in files]
-    with concurrent.futures.ThreadPoolExecutor(24) as pool:
+    with concurrent.futures.ThreadPoolExecutor(8) as pool:
         missing = [u for u, ok in zip(urls, pool.map(served, urls)) if not ok]
+    if missing:
+        print(f'Rechecking {len(missing)} recordings after transient host failures...', flush=True)
+        time.sleep(10)
+        with concurrent.futures.ThreadPoolExecutor(2) as pool:
+            missing = [u for u, ok in zip(missing, pool.map(served, missing)) if not ok]
     print(f'served: {len(urls) - len(missing)} of {len(urls)}')
     for u in missing[:20]:
         print('  missing', u)
