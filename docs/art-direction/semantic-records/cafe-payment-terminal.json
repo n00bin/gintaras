@@ -1,0 +1,18 @@
+{
+  "id": "cafe-payment-terminal",
+  "interactive": true,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Standalone card terminal with an obvious contactless symbol and separate bank card. Neutral waiting state, no success tick before the learner asks to pay. Only one scene, no alternative variants or before/after panels. ",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/cafe-payment-terminal.png",
+  "asset": "pics/art-v2/cafe-payment-terminal.webp",
+  "bytes": 27246,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px/light and 56px/dark. Receipt is isolated without a fresh drink or food; payment terminal and separate contactless card are clear and have no premature success tick.",
+  "reviewed_utc": "2026-11-26T20:33:19.248441+00:00",
+  "reviewed_sha256": "4e80db98a668b04785776006e47e09983eb8784fcb28a2aedc7d7155a5465ee5"
+}

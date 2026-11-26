@@ -144,8 +144,13 @@ def main():
         assert page.evaluate("()=>{try{WordamiActivities.define({id:'invalid',version:1,requiredPhrases:[],tasks:[{id:'x',skill:'reading',method:'comprehension'}]});return false;}catch(e){return true;}}")
         assert page.evaluate("WordamiActivities.begin('missing-activity')===null")
         page.goto(base+'?preview=0&lang=lt')
-        assert page.evaluate('typeof window.WordamiActivities')=='undefined'
-        assert page.locator('#a1-practice-card').count()==0
+        page.wait_for_function('window.gintarasReady')
+        if page.evaluate('COURSE_V2'):
+            assert page.evaluate('typeof window.WordamiActivities')=='object'
+            assert page.evaluate('typeof window.WordamiPracticeUI.hub')=='function'
+        else:
+            assert page.evaluate('typeof window.WordamiActivities')=='undefined'
+            assert page.locator('#a1-practice-card').count()==0
         assert not errors,errors
         (OUT/'verification.json').write_text(json.dumps({'passed':True,'courses':results,'writing':writing,'pageErrors':errors},indent=2),encoding='utf8')
         browser.close()

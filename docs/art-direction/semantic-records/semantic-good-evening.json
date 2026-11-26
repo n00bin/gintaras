@@ -1,0 +1,20 @@
+{
+  "id": "semantic-good-evening",
+  "finding": "good-evening",
+  "words": null,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Tomas: young adult learner, light warm skin, short light brown wavy hair, amber jumper, navy trousers, cream shoes, no glasses or facial hair. Danutė: older woman, light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers. Rūta: young adult woman, light warm skin, long straight dark brown hair with short blunt fringe, green blouse with a few dark leaf motifs, coral trousers, cream shoes. Subject: Keep the greeting gesture; show orange-pink sunset with the sun partly below the horizon. No moon, stars or sleeping person.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png",
+    "docs/art-direction/lt-ruta-character-sheet.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-good-evening.png",
+  "asset": "pics/art-v2/semantic-good-evening.webp",
+  "bytes": 57552,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+  "reviewed_sha256": "bf924b43ca3074ce5c02cc507885cac4b5d3418a9188a4ea8643cb62b9e6990d"
+}

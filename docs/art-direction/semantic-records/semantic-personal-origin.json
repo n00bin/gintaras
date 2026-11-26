@@ -1,0 +1,16 @@
+{
+  "id": "semantic-personal-origin",
+  "finding": "personal-origin",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for personal-origin",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-personal-origin.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-personal-origin.png",
+  "asset": "pics/art-v2/semantic-personal-origin.webp",
+  "bytes": 15218,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+  "reviewed_sha256": "3866dc754693e707968023978b8f9f501afda9d990d665fd2a752448c4ab3da6"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "semantic-sister",
+  "finding": "sister",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for sister",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-sister.svg",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-sister.png",
+  "asset": "pics/art-v2/semantic-sister.webp",
+  "bytes": 9546,
+  "status": "exported",
+  "replacement": "semantic-sister-v2"
+}

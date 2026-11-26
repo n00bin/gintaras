@@ -6597,7 +6597,7 @@ Object.assign(PICTURE_ASSETS,{
   "¿Cuánto cuesta el boleto?": "art-v2/ticket",
   "Aquí, por favor": "art-v2/stop-here-please",
   "Cuesta treinta pesos": "art-v2/money",
-  "Quiero dos manzanas": "art-v2/apple",
+  "Quiero dos manzanas": "art-v2/two-v2",
   "¿Acepta tarjeta?": "art-v2/can-i-pay-by-card",
   "Me queda pequeña": "art-v2/too-small",
   "Me llevo la chamarra": "art-v2/jacket",
@@ -7558,7 +7558,51 @@ const NO_PIC=new Set([
   "¡Nos vemos pronto!"
 ]);
 // END SPANISH PICTURES
-function picFor(lt){return PICTURE_ASSETS[lt]||EMOJI[lt]||'';}
+const PERSONAL_PICTURES={};
+// BEGIN SEMANTIC IMAGE FIXES
+Object.assign(PICTURE_ASSETS,{
+  "Buenas noches": "art-v2/semantic-good-evening",
+  "café": "art-v2/semantic-coffee",
+  "Un café, por favor": "art-v2/semantic-coffee",
+  "Me gustaría un café": "art-v2/semantic-coffee",
+  "el té": "art-v2/semantic-tea",
+  "Prefiero el té": "art-v2/semantic-tea",
+  "Por favor": "art-v2/semantic-please",
+  "¿Cómo estás?": "art-v2/semantic-how-are-you",
+  "Hay dos sillas": "art-v2/semantic-es-chair-v2",
+  "Mi gato duerme": "art-v2/semantic-cat-v2",
+  "La tienda está lejos": "art-v2/semantic-far",
+  "el pescado": "art-v2/semantic-fish",
+  "blanco": "art-v2/semantic-white-v5",
+  "Nos vemos": "art-v2/semantic-bye",
+  "Me visto": "art-v2/semantic-i-get-dressed",
+  "la cama": "art-v2/semantic-bedroom",
+  "Una mesa para dos": "art-v2/semantic-table",
+  "dos cuadras": "art-v2/semantic-es-city-block",
+  "Una habitación para dos": "art-v2/semantic-es-hotel-room",
+  "Cuesta treinta pesos": "art-v2/semantic-money",
+  "Mi cumpleaños es en mayo": "art-v2/semantic-cake",
+  "Los libros son nuevos": "art-v2/semantic-books",
+  "El pájaro canta": "art-v2/semantic-bird",
+  "Mi casa es pequeña": "art-v2/semantic-house",
+  "la hermana": "art-v2/semantic-sister-v2",
+  "Tengo una hermana": "art-v2/semantic-sister-v2",
+  "el hermano": "art-v2/semantic-brother-v2",
+  "tu hermano": "art-v2/semantic-brother-v2",
+  "¿Me puede ayudar?": "art-v2/semantic-please-help",
+  "Necesito ayuda": "art-v2/semantic-please-help",
+  "¿Necesitas ayuda?": "art-v2/semantic-offer-help",
+  "¿Incluye desayuno?": "art-v2/semantic-breakfast-v2",
+  "¿Tiene leche?": "art-v2/semantic-milk",
+  "¿Tienes hijos?": "art-v2/semantic-child",
+  "Mi hermano es alto": "art-v2/semantic-a-tall-man-v2",
+  "El perro es pequeño": "art-v2/semantic-es-dog",
+  "Me levanto temprano": "art-v2/semantic-es-wake-up",
+  "¿Te levantas temprano?": "art-v2/semantic-es-wake-up",
+  "Me llamo Tomás": "art-v2/semantic-personal-name"
+});
+// END SEMANTIC IMAGE FIXES
+function picFor(lt){if(Object.prototype.hasOwnProperty.call(PERSONAL_PICTURES,lt))return PERSONAL_PICTURES[lt];return PICTURE_ASSETS[lt]||EMOJI[lt]||'';}
 function picFile(e){if(e.startsWith('art-v2/'))return 'pics/'+e+'.webp';let cps=[...e].map(ch=>ch.codePointAt(0).toString(16));if(!cps.includes('200d'))cps=cps.filter(c=>c!=='fe0f');return 'pics/'+cps.join('-')+'.svg';}
 function picHtml(lt,cls){const v=picFor(lt);if(!v)return '';cls=cls||'';
   if(v[0]==='#')return '<span class="pic tile '+cls+'" aria-hidden="true">'+esc(v.slice(1))+'</span>';

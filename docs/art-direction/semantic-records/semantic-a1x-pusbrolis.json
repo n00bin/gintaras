@@ -1,0 +1,13 @@
+{
+  "id": "semantic-a1x-pusbrolis",
+  "finding": "a1x-pusbrolis",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-pusbrolis",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-pusbrolis.svg",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-a1x-pusbrolis.png",
+  "asset": "pics/art-v2/semantic-a1x-pusbrolis.webp",
+  "bytes": 9418,
+  "status": "exported",
+  "replacement": "semantic-a1x-pusbrolis-v2"
+}

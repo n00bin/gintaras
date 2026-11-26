@@ -1765,10 +1765,43 @@ function picFile(e){if(e.startsWith('art/')||e.startsWith('art-v2/'))return 'pic
 let PIC_COUNT=null;
 const artSlug=lt=>lt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const ART_AS={};/* a phrase changed by your name (Mano vardas Jonas) keeps the drawing of the phrase it came from */
-function picFor(lt){lt=ART_AS[lt]||lt;if(PICTURE_ASSETS[lt])return PICTURE_ASSETS[lt];if(typeof PICTURE_MIGRATION_COMPLETE!=='undefined'&&PICTURE_MIGRATION_COMPLETE){const v=EMOJI[lt];return v&&v[0]==='#'?v:'';}if(ART.has(lt))return 'art/'+artSlug(lt);const v=EMOJI[lt];if(!v||NO_PIC.has(lt))return '';if(v[0]==='#')return v;
+const PERSONAL_PICTURES={};
+// BEGIN SEMANTIC IMAGE FIXES
+Object.assign(PICTURE_ASSETS,{
+  "Labas vakaras": "art-v2/semantic-good-evening",
+  "Kavos?": "art-v2/semantic-some-coffee",
+  "Arbatos?": "art-v2/semantic-some-tea",
+  "kava": "art-v2/semantic-coffee",
+  "arbata": "art-v2/semantic-tea",
+  "Prašau": "art-v2/semantic-please",
+  "Kaip sekasi?": "art-v2/semantic-how-are-you",
+  "žuvis": "art-v2/semantic-fish",
+  "grindys": "art-v2/semantic-a1x-grindys-v2",
+  "baltas": "art-v2/semantic-white-v5",
+  "popietė": "art-v2/semantic-a1x-popiete",
+  "Sveiki": "art-v2/semantic-hello-formal",
+  "Iki": "art-v2/semantic-bye",
+  "Aš apsirengiu": "art-v2/semantic-i-get-dressed",
+  "stogas": "art-v2/semantic-a1x-stogas",
+  "šampūnas": "art-v2/semantic-shampoo",
+  "sesuo": "art-v2/semantic-sister-v2",
+  "brolis": "art-v2/semantic-brother-v2",
+  "teta": "art-v2/semantic-a1x-teta-v2",
+  "dėdė": "art-v2/semantic-a1x-dede-v2",
+  "pusbrolis": "art-v2/semantic-a1x-pusbrolis-v2",
+  "pusseserė": "art-v2/semantic-a1x-pussesere-v2",
+  "žmona": "art-v2/semantic-wife",
+  "Padėkite!": "art-v2/semantic-please-help",
+  "Mano vardas Tomas": "art-v2/semantic-personal-name",
+  "Aš esu Tomas": "art-v2/semantic-personal-name"
+});
+// END SEMANTIC IMAGE FIXES
+function picFor(lt){if(Object.prototype.hasOwnProperty.call(PERSONAL_PICTURES,lt))return PERSONAL_PICTURES[lt];lt=ART_AS[lt]||lt;if(PICTURE_ASSETS[lt])return PICTURE_ASSETS[lt];if(typeof PICTURE_MIGRATION_COMPLETE!=='undefined'&&PICTURE_MIGRATION_COMPLETE){const v=EMOJI[lt];return v&&v[0]==='#'?v:'';}if(ART.has(lt))return 'art/'+artSlug(lt);const v=EMOJI[lt];if(!v||NO_PIC.has(lt))return '';if(v[0]==='#')return v;
   if(!PIC_COUNT){PIC_COUNT={};const w=i=>(i.lt.includes(' ')?2:0)+(i.unit.retire?1:0),one=ITEMS.slice().sort((a,b)=>w(a)-w(b));
     one.forEach(i=>{const e=EMOJI[i.lt];if(e&&!NO_PIC.has(i.lt)&&!ART.has(i.lt)&&!(e in PIC_COUNT))PIC_COUNT[e]=i.lt;});}return PIC_COUNT[v]===lt?v:'';}
 function picHtml(lt,cls){const v=picFor(lt);if(!v)return '';cls=cls||'';
+  // The mixing scene is an example of doing, not a unique visual definition of the general verb.
+  if((ART_AS[lt]||lt)==='Aš darau'&&cls!=='big')return '';
   if(v[0]==='#')return '<span class="pic tile '+cls+'" aria-hidden="true">'+esc(v.slice(1))+'</span>';
   /* (Round 8) the emoji shows straight away and the drawing covers it once loaded, so a slow or missing file is never a blank;
      a word whose emoji was never shown (NO_PIC, it would mislead) shows nothing at all when its drawing can't load */

@@ -1,0 +1,18 @@
+{
+  "id": "semantic-breakfast",
+  "finding": "breakfast",
+  "words": [
+    "¿Incluye desayuno?"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: A hotel reception desk with a booking card carrying a large green checkmark next to a clearly shown breakfast plate with toast, egg and juice. This communicates breakfast included. No money or numbers. Only one coherent illustration, no alternative variants or before/after panels.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-breakfast.png",
+  "asset": "pics/art-v2/semantic-breakfast.webp",
+  "bytes": 43262,
+  "generator": "built-in image_gen",
+  "replacement": "semantic-breakfast-v2"
+}

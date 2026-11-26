@@ -1,0 +1,16 @@
+{
+  "id": "semantic-es-dog",
+  "finding": "es-dog",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for es-dog",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-es-dog.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-es-dog.png",
+  "asset": "pics/art-v2/semantic-es-dog.webp",
+  "bytes": 20388,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.052671+00:00",
+  "reviewed_sha256": "639666026e82817f0baa6701534eaf973fe9c595531dfbdd7c478fe2d9500f2c"
+}

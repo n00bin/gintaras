@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-26",
+  "status": "complete-locally",
+  "items": [],
+  "interactive": [
+    {
+      "id": "free-seat",
+      "status": "integrated-and-verified",
+      "brief": "One visibly empty wooden café chair pulled out from a small round table; a coffee cup at the neighbouring occupied place, suitable for Rūta's cv1 scene. Transparent background; complete silhouette; no text.",
+      "asset": "pics/art-v2/free-seat-v2.webp"
+    },
+    {
+      "id": "cafe-counter",
+      "status": "integrated-and-verified",
+      "brief": "Café counter with till, pastries and a queue of three people seen from behind; unmistakably busy. Transparent background; broad shapes readable at mobile size; no text.",
+      "asset": "pics/art-v2/cafe-counter.webp"
+    },
+    {
+      "id": "cafe-empty-table",
+      "status": "integrated-and-verified",
+      "brief": "Small café table with an empty place setting and no drink, food or bill; neutral pre-choice state. Transparent background.",
+      "asset": "pics/art-v2/cafe-empty-table.webp"
+    },
+    {
+      "id": "cafe-empty-cup",
+      "status": "integrated-and-verified",
+      "brief": "The selected café drink's cup after use: visibly empty, on its saucer, without steam. Use separate coffee/tea variants if their vessel silhouettes differ.",
+      "asset": "pics/art-v2/cafe-empty-cup.webp",
+      "tea_variant": "pics/art-v2/a1x-stikline.webp"
+    },
+    {
+      "id": "cafe-bill",
+      "status": "integrated-and-verified",
+      "brief": "Standalone café bill on a small tray. Blank broad receipt lines; exact totals supplied by the app if needed. No person already paying.",
+      "asset": "pics/art-v2/cafe-bill-v2.webp"
+    },
+    {
+      "id": "cafe-payment-terminal",
+      "status": "integrated-and-verified",
+      "brief": "Standalone card terminal with an obvious contactless symbol and separate bank card. Neutral waiting state, no success tick before the learner asks to pay.",
+      "asset": "pics/art-v2/cafe-payment-terminal.webp"
+    }
+  ]
+}

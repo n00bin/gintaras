@@ -1,0 +1,18 @@
+{
+  "id": "semantic-coffee",
+  "prompt": "Use case: stylized-concept. Create ONE production Wordami vocabulary illustration, not a board. Reference 1 is STYLE ONLY. Rounded geometric flat cartoon shapes, bright turquoise/amber/coral/navy/cream, minimal detail, no outlines except tiny necessary accents, no gradients, texture, lighting, cast shadows, bloom, glow or background. Subject: a SMALL LOW ESPRESSO CUP on a saucer containing nearly black coffee with a visible crema ring, and exactly three large brown coffee beans on the saucer. No tea tag, no lemon, no teapot. The cup must look very different from a tall clear tea glass. One centered complete isolated object scene on a square TRUE TRANSPARENT background, broad shapes readable at 56px, generous margins, opaque object interiors. No text, letters, labels, logos or watermark.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-coffee.png",
+  "asset": "pics/art-v2/semantic-coffee.webp",
+  "bytes": 26396,
+  "generator": "built-in image_gen",
+  "status": "exported",
+  "finding": "coffee",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.051671+00:00",
+  "reviewed_sha256": "cc099c6c71cd24cd014bce9b2eb416e9e7d405816bb32009a9df999a907d8d93"
+}

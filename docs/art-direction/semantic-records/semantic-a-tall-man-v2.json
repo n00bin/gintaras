@@ -1,0 +1,16 @@
+{
+  "id": "semantic-a-tall-man-v2",
+  "finding": "a-tall-man",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a-tall-man",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a-tall-man-v2.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-a-tall-man-v2.png",
+  "asset": "pics/art-v2/semantic-a-tall-man-v2.webp",
+  "bytes": 8972,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.048670+00:00",
+  "reviewed_sha256": "c15f79e57d38beac3c0a3da1b6ee506aea5eef9c1987a8b91747b91cdf2dec75"
+}

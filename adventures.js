@@ -13,7 +13,7 @@ const initial=()=>({step:0,drink:'',hints:0,assisted:false,completed:false});
 let state=initial(),draft='',feedback='';
 try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&Number.isInteger(s.step)&&s.step>=0&&s.step<=5&&['','coffee','tea'].includes(s.drink))state={...state,...s};}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){feedback='Progress could not be saved on this device. You can still finish this visit.';}}
-const asset=n=>'pics/art-v2/'+n+'.webp';
+const asset=n=>'pics/art-v2/'+({coffee:'semantic-coffee',tea:'semantic-tea','cafe-bill':'cafe-bill-v2'}[n]||n)+'.webp';
 const drinkText=()=>state.drink==='tea'?'arbatos':'kavos';
 const order=()=>`Aš noriu ${drinkText()}`;
 const dialog=document.createElement('dialog');dialog.id='cafe-adventure';dialog.setAttribute('aria-labelledby','cafe-title');
@@ -46,11 +46,15 @@ function draw(){
  const scene=node('div',null,'cafe-scene'),portrait=node('img');portrait.src=asset('portrait-danute');portrait.alt='Danutė, your café host';
  const lines=['Visit Danutė’s café. Choose a drink, order it, ask for your bill, then arrange to pay by card.','Look at the menu and choose what you would like.','Danutė is ready to take your order.','You have finished your drink. Ask Danutė for the bill.','Your bill has arrived. Ask whether you can pay by card.','Your café visit is complete.'];scene.append(portrait,node('p',lines[state.step]));main.append(scene);
  const objects=node('div',null,'cafe-objects');
- const menu=button('Menu',()=>{feedback='kava — coffee · arbata — tea. Choose either drink.';updateFeedback();});const mi=node('img');mi.src=asset('menu');mi.alt='';menu.prepend(mi);
- const table=button('Your table',()=>{feedback=state.drink?`Your choice: ${state.drink}. ${state.step>=3?'Your drink has arrived.':''}`:'Choose a drink from the menu first.';updateFeedback();});const ti=node('img');ti.src=asset(state.drink==='tea'?'tea':'coffee');ti.alt='';table.prepend(ti);objects.append(menu,table);if(state.step===1)main.append(objects);
+ const object=(label,picture,message)=>{const b=button(label,()=>{feedback=message;updateFeedback();});const image=node('img');image.src=asset(picture);image.alt='';b.prepend(image);return b;};
+ if(state.step===1)objects.append(object('Menu','menu','kava — coffee · arbata — tea. Choose either drink.'));
+ objects.append(object('Your table',state.step<3?'cafe-empty-table':state.drink==='tea'?'a1x-stikline':'cafe-empty-cup',state.step<3?'Your table is ready. Your drink has not been ordered yet.':'You have finished your drink.'));
+ if(state.step===2)objects.append(object('Your choice',state.drink,`You chose ${state.drink}. Tell Danutė what you would like to order.`));
+ if(state.step===4)objects.append(object('Your bill','cafe-bill','Your bill has arrived. Ask whether you can pay by card.'),object('Card terminal','cafe-payment-terminal','The card terminal is ready. Ask Danutė whether you can pay by card.'));
+ main.append(objects);
  const actions=node('div',null,'cafe-actions');
  if(state.step===0){main.append(node('p','Use the phrases you learned in Food and drink. Type your replies in Lithuanian; hints are available if you need them. This activity practises existing language.'),node('ol'));for(const text of ['Choose coffee or tea.','Order your chosen drink.','Ask for the bill.','Ask to pay by card.'])main.lastChild.append(node('li',text));actions.append(button('Start activity',advance,'cafe-primary'));}
- if(state.step===1){actions.append(button('kava · coffee',()=>{state.drink='coffee';advance();}),button('arbata · tea',()=>{state.drink='tea';advance();}));}
+ if(state.step===1){for(const [drink,label] of [['coffee','kava · coffee'],['tea','arbata · tea']]){const choice=button(label,()=>{state.drink=drink;advance();});const image=node('img');image.src=asset(drink);image.alt='';image.width=72;image.height=72;image.style.cssText='display:block;object-fit:contain;margin:0 auto 8px';choice.prepend(image);actions.append(choice);}}
  if(state.step>=2&&state.step<=4){
   main.append(node('p',state.step===2?`Tell Danutė you want ${state.drink}.`:state.step===3?'Ask for the bill, please.':'Ask: “Can I pay by card?”'));
   const form=node('form'),input=node('input');input.type='text';input.autocomplete='off';input.spellcheck=false;input.value=draft;input.setAttribute('aria-label','Your Lithuanian reply');input.oninput=()=>{draft=input.value;};form.append(input);

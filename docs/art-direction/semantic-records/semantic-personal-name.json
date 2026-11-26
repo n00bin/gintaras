@@ -1,0 +1,16 @@
+{
+  "id": "semantic-personal-name",
+  "finding": "personal-name",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for personal-name",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-personal-name.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-personal-name.png",
+  "asset": "pics/art-v2/semantic-personal-name.webp",
+  "bytes": 5600,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+  "reviewed_sha256": "00f3b7613dad51ed745e8cbdfc40d3e8e55de0ea096374f1748a982aa6d1753b"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "semantic-cat",
+  "finding": "cat",
+  "words": [
+    "Mi gato duerme"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: The same cat curled up asleep with closed eyes. Keep the awake cat for the noun.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-cat.png",
+  "asset": "pics/art-v2/semantic-cat.webp",
+  "bytes": 39372,
+  "generator": "built-in image_gen",
+  "replacement": "semantic-cat-v2",
+  "revision_reason": "Rejected after visual inspection: extra awake cat, wall dominating floor, or wrong character identity respectively; versioned replacements preserve these masters."
+}

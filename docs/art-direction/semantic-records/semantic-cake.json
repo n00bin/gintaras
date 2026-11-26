@@ -1,0 +1,16 @@
+{
+  "id": "semantic-cake",
+  "finding": "cake",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for cake",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-cake.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-cake.png",
+  "asset": "pics/art-v2/semantic-cake.webp",
+  "bytes": 15000,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.050668+00:00",
+  "reviewed_sha256": "a951cb262bb633365f558e1a6d7488216bf67fd66f5c2d42c4fefb50c37610b6"
+}

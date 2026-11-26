@@ -4,9 +4,11 @@ A bite-size language course for complete beginners, Lithuanian first and now Mex
 
 Live: https://n00bin.github.io/gintaras/
 
-Live is **3.119/build 191**, with every Lithuanian course illustration updated. The broader **3.122-preview/build 194** remains local; its 60 required workshops, forms, table reading and longer reading portfolios are described in the [current checkpoint](docs/cefr/COURSE-PREVIEW-194.md). Full CEFR breadth and independent review remain unfinished.
+Release **3.133/build 205** includes the corrected course illustrations and interactive café visuals described in the [image meaning audit](docs/art-direction/semantic-audit-2026-11-26.html). The older **3.122-preview/build 194** [checkpoint](docs/cefr/COURSE-PREVIEW-194.md) records an earlier curriculum preview. Independent language and proficiency review remains unfinished.
 
 ## What's in here
+
+**3.133/build 205** includes the completed [image meaning audit](docs/art-direction/semantic-audit-2026-11-26.html): 47 findings addressed, 51 new reviewed visual assets and 65 corrected phrase mappings. [Exact prompts, source/master paths and review hashes](docs/art-direction/semantic-fix-assets.json) preserve the artwork record. Café scenes, drink choices, personalized introductions and directions-map visuals have browser checks.
 
 | File | What it is |
 |---|---|

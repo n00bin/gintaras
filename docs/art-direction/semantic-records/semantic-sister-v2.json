@@ -1,0 +1,16 @@
+{
+  "id": "semantic-sister-v2",
+  "finding": "sister",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for sister",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-sister-v2.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-sister-v2.png",
+  "asset": "pics/art-v2/semantic-sister-v2.webp",
+  "bytes": 9806,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.056181+00:00",
+  "reviewed_sha256": "70d14f58e2b7baa292fde71307557872cfcbf3baf028592c87c5e4c3fcdbe9cf"
+}

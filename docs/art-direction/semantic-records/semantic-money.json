@@ -1,0 +1,16 @@
+{
+  "id": "semantic-money",
+  "finding": "money",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for money",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-money.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-money.png",
+  "asset": "pics/art-v2/semantic-money.webp",
+  "bytes": 6726,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+  "reviewed_sha256": "04516919a4a2dd6ff89c673725f34df646f917a477fb8b57b46dcad991f8670d"
+}

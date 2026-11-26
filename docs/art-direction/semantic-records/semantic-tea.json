@@ -1,0 +1,18 @@
+{
+  "id": "semantic-tea",
+  "prompt": "Use case: stylized-concept. ONE isolated production vocabulary illustration for Wordami. Reference 1 is STYLE ONLY, never reproduce the board or its text. Flat rounded geometric cartoon, saturated turquoise amber coral navy cream, broad clean solid colour areas, no gradients, no texture, no shadows, no glow. Subject: a TALL CLEAR GLASS filled with pale amber tea, with a large dangling tea-bag string and tag; a bright lemon slice on the saucer, and a small ROUND TEAPOT behind the glass. Tea and its tall glass must be unmistakably different from a low dark espresso cup. No coffee beans, no opaque coffee mug. One centered complete scene, square canvas, generous transparent margins, truly transparent background, opaque interiors except the clear glass. No words, letters, labels, logo or watermark. Readable at 56px.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-tea.png",
+  "asset": "pics/art-v2/semantic-tea.webp",
+  "bytes": 44018,
+  "generator": "built-in image_gen",
+  "status": "exported",
+  "finding": "tea",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.057181+00:00",
+  "reviewed_sha256": "92315167a8dc6ccb582dd3af6b6b8f88d8dc803a41c89b5c19b18be43de86e4f"
+}

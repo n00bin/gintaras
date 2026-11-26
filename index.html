@@ -451,6 +451,7 @@ div.done:not(.unit){text-align:center;display:grid;gap:14px;padding-top:24px}
 .scene strong{font-family:var(--display);font-size:19px}
 .scene small{color:var(--muted);font-size:14px}
 .scene small.tiny{font-size:12px}
+.cv-cafe summary{cursor:pointer;font-weight:700;padding:8px 0}.cv-cafe-objects{display:flex!important;flex-wrap:wrap;gap:10px}.cv-cafe-objects button{flex:1;min-width:110px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);font:inherit;cursor:pointer}.cv-cafe-objects img{width:100px;height:100px;display:block;object-fit:contain;margin:auto}.cv-cafe-objects button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .msgs{display:grid;gap:8px}
 .msg{display:flex;gap:8px;align-items:flex-end;max-width:88%}
 .msg.me{justify-self:end}
@@ -1126,8 +1127,8 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.132';
-const APP_VERSION=204;
+const APP_RELEASE='3.133';
+const APP_VERSION=205;
 const WHATS_NEW='New short lessons now teach the words of each beginner practice unit before it opens, and the practice units use plainer words throughout.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
@@ -3406,6 +3407,8 @@ function cvHistory(C,n){let h='';for(let k=0;k<n;k++){const l=C.lines[k];
     else if(l.kind==='p'){const who=C.c.cast[l.who]||C.c.cast[0];h+='<div class="msg them">'+castFace(who)+'<div class="bub" role="button" tabindex="0" data-tr>'+(C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'')+theirLine(l)+'</div></div>';C.lastWho=who.name;C.prevP=l;C.lastT=null;}
     else if(l.kind==='m')h+='<div class="msg me"><div class="bub"><span class="lt">'+esc(l.lt)+'</span><span class="tr">'+esc(l.en)+'</span></div>'+myFace(36)+'</div>';}
   $('#msgs').innerHTML=h+'<div class="divider"><span>Carrying on where you were</span></div>';chatScroll();}
+function cafeSceneHtml(c){return LANG.code==='lt'&&c.id==='cv1'?'<details class="cv-cafe"><summary>Look around the café</summary><div class="cv-cafe-objects"><button type="button" data-cafe-place="seat"><img src="pics/art-v2/free-seat-v2.webp" alt="">Free seat</button><button type="button" data-cafe-place="counter"><img src="pics/art-v2/cafe-counter.webp" alt="">Busy counter</button></div><p role="status" aria-live="polite" class="tiny"></p></details>':'';}
+function wireCafeScene(root){root.querySelectorAll('[data-cafe-place]').forEach(b=>b.onclick=()=>{const box=b.closest('.cv-cafe');box.querySelector('[role=status]').textContent=b.dataset.cafePlace==='seat'?'The empty seat is beside Rūta. She has a coffee.':'The counter is crowded. The empty seat beside Rūta is free.';});}
 function startConv(id,mode,redo,res){const c=CONV_BY[id];if(!c||!stepUnlocked(id))return;if(mode==='speak')offNote(id);Q=null;bossDraw();personalise();
   const st0=(S.convs||{})[id]||{};mode=redo?'speak':mode||(convDone(id)&&!st0.speak?'speak':'text');if(mode==='speak'&&!convDone(id))mode='text';
   /* (Round 11) Say it asks how you can speak first (once, or again after "not now"); "not now" saves it for later */
@@ -3418,7 +3421,8 @@ function startConv(id,mode,redo,res){const c=CONV_BY[id];if(!c||!stepUnlocked(id
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
   $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it'+(redo?' · the lines you skipped':''):'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined: tap one for its meaning.</small>'+
     (()=>{const nw=chatNewWords(c);return nw.length&&!(redo)?'<details class="chat-new" open><summary>'+nw.length+' word'+(nw.length===1?'':'s')+' they use that you have not met yet</summary><p>'+nw.map(([t,g])=>'<b lang="'+LANG.code+'">'+esc(t)+'</b>'+(g?' = '+esc(enFlat(g)):'')).join(' · ')+'</p></details>':'';})()+
-    (mode==='speak'&&!redo&&canListen()&&convFiles(c).every(onHand)?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+'</div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+    (mode==='speak'&&!redo&&canListen()&&convFiles(c).every(onHand)?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+cafeSceneHtml(c)+'</div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+  wireCafeScene($('#stage'));
   const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
   if(res&&!redo){const K=cvKeys(c),ls=(res.lines||[]).map(k=>K.m.get(k));
     if(ls.length&&ls.every(Boolean)&&res.i<ls.length){Object.assign(CV,{lines:ls,i:res.i,mistakes:res.mistakes||0,turns:res.turns||0,heard:res.heard||0,peeks:res.peeks||0,nearly:res.nearly||0,startedAt:res.startedAt||Date.now(),
@@ -4158,6 +4162,8 @@ function renderReady(){const html=readyLine();document.querySelectorAll('#offrea
     const b=el.querySelector('[data-ready-now]');if(b)b.onclick=()=>prefetchReady(true);});}
 /* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
 function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
+  ['semantic-personal-name','semantic-personal-origin'].forEach(n=>set.add(absUrl('pics/art-v2/'+n+'.webp')));
+  if(LANG.code==='lt')['free-seat-v2','cafe-counter','cafe-empty-table','cafe-empty-cup','cafe-bill-v2','cafe-payment-terminal','a1x-stikline'].forEach(n=>set.add(absUrl('pics/art-v2/'+n+'.webp')));
   if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE)set.add(absUrl(picFile(LEARNER_PICTURE)));
   CONVS.forEach(c=>convFiles(c).concat(castPictureFiles(c)).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
 /* a recording's size from its length (about 6 KB for each second of speech), an emoji picture's about 4 KB, a drawn one's about 7 KB */
@@ -4355,6 +4361,7 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
   /* a woman with no name given is Toma, so nobody calls her Tomai */
   const o={name:(m.name||'').trim()||(g==='f'?PERS.femDefault:''),g,from:m.from||''};
   const job=m.job&&ME_JOBS.find(j=>j[0]===m.job);const sig=JSON.stringify([o,m.job||'']);if(sig===persSig)return;persSig=sig;
+  if(typeof PERSONAL_PICTURES!=='undefined')Object.keys(PERSONAL_PICTURES).forEach(k=>delete PERSONAL_PICTURES[k]);
   if(o.name&&!GLUE[norm(o.name)])GLUE[norm(o.name)]='your name';
   persLines().forEach(([x,role])=>{if(x.lt0===undefined){x.lt0=x.lt;x.en0=x.en;x.alt0=x.alt;x.note0=x.note;x.hint0=x.hint;}
     x.lt=persText(x.lt0,role,o);x.en=persEn(x.en0,role,o);x.hint=x.hint0;x.alt=x.alt0&&x.alt0.map(t=>persText(t,role,o));x.note=x.note0&&/Tomas/.test(x.note0)?persText(x.note0,role,o):x.note0;
@@ -4366,6 +4373,14 @@ function personalise(){const m=S.me||{};const g=m.g==='f'?'f':'m';
     /* a foreign name said the Lithuanian way counts too: Mano vardas Tomas for Tom, Markas for Mark */
     {const lit=o.name&&nameForms(o.name,o.g).lt;if(lit&&lit!==o.name&&role==='me'){const lo=Object.assign({},o,{name:lit}),v=[x.lt0].concat(x.alt0||[]).map(t=>persText(t,role,lo));
       x.alt=[...new Set((x.alt||[]).concat(v))].filter(a=>norm(a)!==norm(x.lt));}}
+    if(typeof PERSONAL_PICTURES!=='undefined'){
+      const base=x.lt0.replace(/[.!?]+$/u,''),current=x.lt.replace(/[.!?]+$/u,'');
+      if(role==='me'&&PERS.fromRe.test(base))PERSONAL_PICTURES[x.lt]='art-v2/semantic-personal-origin';
+      else if(role==='me'&&/^(?:Mano vardas|Aš esu Tomas|Me llamo|Soy Tomás)\b/iu.test(base))PERSONAL_PICTURES[x.lt]='art-v2/semantic-personal-name';
+      else if(/\bmaestra\b/u.test(current)||/mokytoja(?:\s|$)/u.test(current))PERSONAL_PICTURES[x.lt]='art-v2/es-teacher-woman';
+      else if(/studentė(?:\s|$)/u.test(current))PERSONAL_PICTURES[x.lt]='art-v2/a1x-studente';
+      else if(current!==base){const exact=PICTURE_ASSETS[current],source=PICTURE_ASSETS[base];if(exact)PERSONAL_PICTURES[x.lt]=exact;else if(source&&/teacher|student|engineer|doctor|programmer|work-job/.test(source))PERSONAL_PICTURES[x.lt]='';}
+    }
     if(x.lt!==x.lt0&&typeof ART!=='undefined'&&ART.has(x.lt0)&&!PERS.fromRe.test(x.lt0))ART_AS[x.lt]=x.lt0;
     if(x.lt!==x.lt0&&!EMOJI[x.lt]&&EMOJI[x.lt0]){const flag=/^[a-z]{2}$/.test(o.from)&&o.from!=='sc'?String.fromCodePoint(...[...o.from.toUpperCase()].map(ch=>0x1F1A5+ch.charCodeAt(0))):'🌍';EMOJI[x.lt]=PERS.fromRe.test(x.lt0)&&o.from?flag:EMOJI[x.lt0];}});
   /* telling someone your name: "Mano vardas Tom" and "Aš esu Tom" (and Tomas) all count, in lessons and conversations */

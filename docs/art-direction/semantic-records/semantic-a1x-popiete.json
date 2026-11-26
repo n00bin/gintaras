@@ -1,0 +1,16 @@
+{
+  "id": "semantic-a1x-popiete",
+  "finding": "a1x-popiete",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-popiete",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-popiete.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-a1x-popiete.png",
+  "asset": "pics/art-v2/semantic-a1x-popiete.webp",
+  "bytes": 15636,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.049671+00:00",
+  "reviewed_sha256": "386ad42e5bd5feaaa64b387a84cec9e0ed6ebc117e19270f50cddc43184ace2b"
+}

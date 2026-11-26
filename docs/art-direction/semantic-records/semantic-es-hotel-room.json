@@ -1,0 +1,21 @@
+{
+  "id": "semantic-es-hotel-room",
+  "finding": "es-hotel-room",
+  "words": [
+    "Una habitación para dos"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Two single beds or one unmistakable double bed with two pillows and two guest places. Only ONE illustration, no before/after pair, no comparison panel. No people unless explicitly needed.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-es-hotel-room.png",
+  "asset": "pics/art-v2/semantic-es-hotel-room.webp",
+  "bytes": 16120,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+  "reviewed_utc": "2026-11-26T20:31:06.479050+00:00",
+  "reviewed_sha256": "3a6c84df28019b368af13910e9c08fa2b76564d71a721aa21dd5e879b87aa998"
+}

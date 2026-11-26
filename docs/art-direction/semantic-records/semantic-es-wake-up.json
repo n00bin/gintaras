@@ -1,0 +1,16 @@
+{
+  "id": "semantic-es-wake-up",
+  "finding": "es-wake-up",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for es-wake-up",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-es-wake-up.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-es-wake-up.png",
+  "asset": "pics/art-v2/semantic-es-wake-up.webp",
+  "bytes": 33984,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.052671+00:00",
+  "reviewed_sha256": "2334ef95695883b9463dec93a98f2440d6a430c095d5e1b6cd304b05b1db98d7"
+}

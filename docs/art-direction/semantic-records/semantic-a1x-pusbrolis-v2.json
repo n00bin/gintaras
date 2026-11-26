@@ -1,0 +1,16 @@
+{
+  "id": "semantic-a1x-pusbrolis-v2",
+  "finding": "a1x-pusbrolis",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-pusbrolis",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-pusbrolis-v2.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-a1x-pusbrolis-v2.png",
+  "asset": "pics/art-v2/semantic-a1x-pusbrolis-v2.webp",
+  "bytes": 9770,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.049671+00:00",
+  "reviewed_sha256": "4243d598cb05cda0bd094c77e1911b39f8894486c100bcff6458193ce6eab891"
+}

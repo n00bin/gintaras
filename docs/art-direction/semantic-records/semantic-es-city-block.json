@@ -1,0 +1,16 @@
+{
+  "id": "semantic-es-city-block",
+  "finding": "es-city-block",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for es-city-block",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-es-city-block.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-es-city-block.png",
+  "asset": "pics/art-v2/semantic-es-city-block.webp",
+  "bytes": 5116,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.051671+00:00",
+  "reviewed_sha256": "3d5c895ca5870c9db4be2287838e067d3d9be09b7a2b9c4fc1f3376e6008a0f5"
+}

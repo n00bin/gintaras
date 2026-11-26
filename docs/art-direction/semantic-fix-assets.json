@@ -1,0 +1,956 @@
+{
+  "assets": [
+    {
+      "id": "cafe-bill-v2",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: ONE standalone cafe BILL: a single cream paper receipt with a few thick navy horizontal lines, resting on a small turquoise payment tray. Only receipt and tray. NO cups, coffee, tea, drinks, steam, food, pastries, money, coins, card terminal or people. Do not copy the reference's coffee mug. Exact totals are rendered by the app, so no text or numerals.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/cafe-bill-v2.png",
+      "asset": "pics/art-v2/cafe-bill-v2.webp",
+      "bytes": 16230,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px/light and 56px/dark. Receipt is isolated without a fresh drink or food; payment terminal and separate contactless card are clear and have no premature success tick.",
+      "reviewed_utc": "2026-11-26T20:33:19.247441+00:00",
+      "reviewed_sha256": "54971b4d67e7ffc58362c57cb4dfc2afd37ae2780917b9db79429857b3f76e44"
+    },
+    {
+      "id": "cafe-counter",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Café counter with till, pastries and a queue of three people seen from behind; unmistakably busy. Transparent background; broad shapes readable at mobile size; no text. Only one scene, no alternative variants or before/after panels. ",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/cafe-counter.png",
+      "asset": "pics/art-v2/cafe-counter.webp",
+      "bytes": 54040,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.483050+00:00",
+      "reviewed_sha256": "b184239d0789a57cad55c1e7e72aa480c1b7b2d9ebd5978c1967bc1811328f59"
+    },
+    {
+      "id": "cafe-empty-cup",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: The selected café drink's cup after use: visibly empty, on its saucer, without steam. Use separate coffee/tea variants if their vessel silhouettes differ. Only one scene, no alternative variants or before/after panels. Use one low turquoise ceramic espresso cup and saucer with a visible empty cream interior. No steam, no dark liquid.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/cafe-empty-cup.png",
+      "asset": "pics/art-v2/cafe-empty-cup.webp",
+      "bytes": 15726,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.484050+00:00",
+      "reviewed_sha256": "26adfc225b4671ccb342d09486f84a18b1bb55096e7d8e44abe75f301fb7d5cc"
+    },
+    {
+      "id": "cafe-empty-table",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Small café table with an empty place setting and no drink, food or bill; neutral pre-choice state. Transparent background. Only one scene, no alternative variants or before/after panels. ",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/cafe-empty-table.png",
+      "asset": "pics/art-v2/cafe-empty-table.webp",
+      "bytes": 45050,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.484050+00:00",
+      "reviewed_sha256": "3fb7b7b3ffe9676f3a5522361016c50e6110cf109b3a84df8eec02dcfd41be63"
+    },
+    {
+      "id": "cafe-payment-terminal",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Standalone card terminal with an obvious contactless symbol and separate bank card. Neutral waiting state, no success tick before the learner asks to pay. Only one scene, no alternative variants or before/after panels. ",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/cafe-payment-terminal.png",
+      "asset": "pics/art-v2/cafe-payment-terminal.webp",
+      "bytes": 27246,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px/light and 56px/dark. Receipt is isolated without a fresh drink or food; payment terminal and separate contactless card are clear and have no premature success tick.",
+      "reviewed_utc": "2026-11-26T20:33:19.248441+00:00",
+      "reviewed_sha256": "4e80db98a668b04785776006e47e09983eb8784fcb28a2aedc7d7155a5465ee5"
+    },
+    {
+      "id": "free-seat-v2",
+      "interactive": true,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Exactly ONE EMPTY WOODEN CAFE CHAIR, visibly unoccupied and pulled out beside a small round cafe table. A small cup of coffee sits at the FAR edge of the table, at the neighbouring place. The chair is the clear focus and must have an unobstructed empty seat. NO PEOPLE, no character faces, no occupied chair, no other chair, no crowded counter. One coherent isolated scene, transparent background.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/free-seat-v2.png",
+      "asset": "pics/art-v2/free-seat-v2.webp",
+      "bytes": 37760,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.484050+00:00",
+      "reviewed_sha256": "f347c95ed9e2ec8d4f05cff1ebe96285e3a546eb47c0ddf7f31427eb27711057"
+    },
+    {
+      "id": "semantic-a-tall-man-v2",
+      "finding": "a-tall-man",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a-tall-man",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a-tall-man-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a-tall-man-v2.png",
+      "asset": "pics/art-v2/semantic-a-tall-man-v2.webp",
+      "bytes": 8972,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.048670+00:00",
+      "reviewed_sha256": "c15f79e57d38beac3c0a3da1b6ee506aea5eef9c1987a8b91747b91cdf2dec75"
+    },
+    {
+      "id": "semantic-a1x-dede-v2",
+      "finding": "a1x-dede",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a1x-dede",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-dede-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-dede-v2.png",
+      "asset": "pics/art-v2/semantic-a1x-dede-v2.webp",
+      "bytes": 9764,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.048670+00:00",
+      "reviewed_sha256": "53ca3e1b8baea4cc40ed364c6ad649762da09cd1a990648e38f40cb270eefc2c"
+    },
+    {
+      "id": "semantic-a1x-grindys-v2",
+      "finding": "a1x-grindys",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: A broad wooden FLOOR, with clearly drawn opaque warm wooden floorboards occupying the lower THREE QUARTERS of the composition, and only a narrow wall strip at the back. One thick coral downward arrow points directly at the FLOORBOARDS. No carpet, rug, fabric, rolled corner or person. Avoid a blank vertical wall dominating the composition.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-grindys-v2.png",
+      "asset": "pics/art-v2/semantic-a1x-grindys-v2.webp",
+      "bytes": 20392,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.476049+00:00",
+      "reviewed_sha256": "5ff7c9ee461e1133d6d02a7ab783acba9c40b8a3e3b279582bec4a278ac5d04c"
+    },
+    {
+      "id": "semantic-a1x-popiete",
+      "finding": "a1x-popiete",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a1x-popiete",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-popiete.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-popiete.png",
+      "asset": "pics/art-v2/semantic-a1x-popiete.webp",
+      "bytes": 15636,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.049671+00:00",
+      "reviewed_sha256": "386ad42e5bd5feaaa64b387a84cec9e0ed6ebc117e19270f50cddc43184ace2b"
+    },
+    {
+      "id": "semantic-a1x-pusbrolis-v2",
+      "finding": "a1x-pusbrolis",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a1x-pusbrolis",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-pusbrolis-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-pusbrolis-v2.png",
+      "asset": "pics/art-v2/semantic-a1x-pusbrolis-v2.webp",
+      "bytes": 9770,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.049671+00:00",
+      "reviewed_sha256": "4243d598cb05cda0bd094c77e1911b39f8894486c100bcff6458193ce6eab891"
+    },
+    {
+      "id": "semantic-a1x-pussesere-v2",
+      "finding": "a1x-pussesere",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a1x-pussesere",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-pussesere-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-pussesere-v2.png",
+      "asset": "pics/art-v2/semantic-a1x-pussesere-v2.webp",
+      "bytes": 10170,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.049671+00:00",
+      "reviewed_sha256": "afc09f5dd1b43f65a3f398987989905857c2df3b8ce6592c8d69b02e6ab9235d"
+    },
+    {
+      "id": "semantic-a1x-stogas",
+      "finding": "a1x-stogas",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Highlight or point to the roof while muting the walls, consistent with the body-part pointer convention.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-stogas.png",
+      "asset": "pics/art-v2/semantic-a1x-stogas.webp",
+      "bytes": 30158,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.476049+00:00",
+      "reviewed_sha256": "7febf4a369d6f1f4c71a69efefd52b64c536b0c876d3a631f806b033901c547c"
+    },
+    {
+      "id": "semantic-a1x-teta-v2",
+      "finding": "a1x-teta",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for a1x-teta",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-teta-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-a1x-teta-v2.png",
+      "asset": "pics/art-v2/semantic-a1x-teta-v2.webp",
+      "bytes": 9898,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.050668+00:00",
+      "reviewed_sha256": "6051c9c4e94a86fdbd8dbb7a17ee16133eda62f6cad49b6821bf19da5f26ba4c"
+    },
+    {
+      "id": "semantic-bedroom",
+      "finding": "bedroom",
+      "words": [
+        "la cama"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: One isolated complete BED with mattress, blanket and two pillows, no room, nightstand, lamp, windows or walls. This is the noun bed, not bedroom. Only ONE illustration, no before/after pair, no comparison panel. No people unless explicitly needed.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-bedroom.png",
+      "asset": "pics/art-v2/semantic-bedroom.webp",
+      "bytes": 18724,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.477053+00:00",
+      "reviewed_sha256": "c600c6b05beda2b9eaa4cee132da948aa40e697abebaa9f148af9ce1134d35c7"
+    },
+    {
+      "id": "semantic-bird",
+      "finding": "bird",
+      "words": [
+        "El pájaro canta"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Same bird with an open singing beak and a few large musical notes. Retain plain bird for the noun. Only one coherent illustration, no alternative variants, no before/after pair.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-bird.png",
+      "asset": "pics/art-v2/semantic-bird.webp",
+      "bytes": 33066,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.477053+00:00",
+      "reviewed_sha256": "3c74da605f3dcf0607962def2a7bdc07582ea030a8e07107ddbad234a778f8c7"
+    },
+    {
+      "id": "semantic-books",
+      "finding": "books",
+      "words": [
+        "Los libros son nuevos"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Use intact new books with a clear sparkle cue, distinct from worn books if this adjective is tested visually. Only one coherent illustration, no alternative variants, no before/after pair.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-books.png",
+      "asset": "pics/art-v2/semantic-books.webp",
+      "bytes": 31636,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.478050+00:00",
+      "reviewed_sha256": "e6211b5f0b50dcf16ab82f2a3113b7291d409aaba71e98fb973fc5a220e35a67"
+    },
+    {
+      "id": "semantic-breakfast-v2",
+      "finding": "breakfast",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for breakfast",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-breakfast-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-breakfast-v2.png",
+      "asset": "pics/art-v2/semantic-breakfast-v2.webp",
+      "bytes": 14468,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.478050+00:00",
+      "reviewed_sha256": "56a73d1c00265fe1a561f8fab87be653a6fff67f27512935b83e90ba3828dc9e"
+    },
+    {
+      "id": "semantic-brother-v2",
+      "finding": "brother",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for brother",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-brother-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-brother-v2.png",
+      "asset": "pics/art-v2/semantic-brother-v2.webp",
+      "bytes": 9646,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.050668+00:00",
+      "reviewed_sha256": "8847e7f2284ad6fc6b0d55b026d00d4a54cdee4229e12bec5dde61ee79a4bf71"
+    },
+    {
+      "id": "semantic-bye",
+      "finding": "bye",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Three-quarter rear view moving through an open doorway, looking back and waving, bag over shoulder. Only one woman, Rūta: long straight dark hair and fringe, green blouse, coral trousers.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-ruta-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-bye.png",
+      "asset": "pics/art-v2/semantic-bye.webp",
+      "bytes": 23928,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.478050+00:00",
+      "reviewed_sha256": "92c26110ffa96d4d6ea3d3f6b856eea234ac790d89e9e5728e7f666fb4f2f5a1"
+    },
+    {
+      "id": "semantic-cake",
+      "finding": "cake",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for cake",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-cake.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-cake.png",
+      "asset": "pics/art-v2/semantic-cake.webp",
+      "bytes": 15000,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.050668+00:00",
+      "reviewed_sha256": "a951cb262bb633365f558e1a6d7488216bf67fd66f5c2d42c4fefb50c37610b6"
+    },
+    {
+      "id": "semantic-cat-v2",
+      "finding": "cat",
+      "words": [
+        "Mi gato duerme"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: EXACTLY ONE orange cat curled into a sleeping ball, eyes completely closed, head resting on its paws, small sleep symbols. No awake cat, no second cat, no before/after pair, no comparison. No person. Complete single sleeping cat.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-cat-v2.png",
+      "asset": "pics/art-v2/semantic-cat-v2.webp",
+      "bytes": 27328,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.479050+00:00",
+      "reviewed_sha256": "4f1c93c69551830e2cdeb8c283404525335a476d0d3147f874c7a69ac7676b01"
+    },
+    {
+      "id": "semantic-child",
+      "finding": "child",
+      "words": [
+        "¿Tienes hijos?"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Two adults conversing; one has a questioning gesture and a large speech bubble containing two small children with a red question mark. Show asking whether someone has children, not a solitary child portrait. Only one coherent illustration, not a comparison or before/after pair.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-child.png",
+      "asset": "pics/art-v2/semantic-child.webp",
+      "bytes": 49768,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.479050+00:00",
+      "reviewed_sha256": "a571d1aae620a96a44a0924f5175858bba834c8bfaf2f3dae61b7af0872dc0dc"
+    },
+    {
+      "id": "semantic-coffee",
+      "prompt": "Use case: stylized-concept. Create ONE production Wordami vocabulary illustration, not a board. Reference 1 is STYLE ONLY. Rounded geometric flat cartoon shapes, bright turquoise/amber/coral/navy/cream, minimal detail, no outlines except tiny necessary accents, no gradients, texture, lighting, cast shadows, bloom, glow or background. Subject: a SMALL LOW ESPRESSO CUP on a saucer containing nearly black coffee with a visible crema ring, and exactly three large brown coffee beans on the saucer. No tea tag, no lemon, no teapot. The cup must look very different from a tall clear tea glass. One centered complete isolated object scene on a square TRUE TRANSPARENT background, broad shapes readable at 56px, generous margins, opaque object interiors. No text, letters, labels, logos or watermark.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-coffee.png",
+      "asset": "pics/art-v2/semantic-coffee.webp",
+      "bytes": 26396,
+      "generator": "built-in image_gen",
+      "status": "exported",
+      "finding": "coffee",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.051671+00:00",
+      "reviewed_sha256": "cc099c6c71cd24cd014bce9b2eb416e9e7d405816bb32009a9df999a907d8d93"
+    },
+    {
+      "id": "semantic-es-chair-v2",
+      "finding": "es-chair-v2",
+      "words": [
+        "Hay dos sillas"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: New asset with exactly two complete matching chairs. Keep the single-chair noun mapping unchanged.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-es-chair-v2.png",
+      "asset": "pics/art-v2/semantic-es-chair-v2.webp",
+      "bytes": 31114,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.051671+00:00",
+      "reviewed_sha256": "4580c014912280490f176b63f5291bee6c855e1391c0d4c036d9ce9042975d10"
+    },
+    {
+      "id": "semantic-es-city-block",
+      "finding": "es-city-block",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for es-city-block",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-es-city-block.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-es-city-block.png",
+      "asset": "pics/art-v2/semantic-es-city-block.webp",
+      "bytes": 5116,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.051671+00:00",
+      "reviewed_sha256": "3d5c895ca5870c9db4be2287838e067d3d9be09b7a2b9c4fc1f3376e6008a0f5"
+    },
+    {
+      "id": "semantic-es-dog",
+      "finding": "es-dog",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for es-dog",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-es-dog.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-es-dog.png",
+      "asset": "pics/art-v2/semantic-es-dog.webp",
+      "bytes": 20388,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.052671+00:00",
+      "reviewed_sha256": "639666026e82817f0baa6701534eaf973fe9c595531dfbdd7c478fe2d9500f2c"
+    },
+    {
+      "id": "semantic-es-hotel-room",
+      "finding": "es-hotel-room",
+      "words": [
+        "Una habitación para dos"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Two single beds or one unmistakable double bed with two pillows and two guest places. Only ONE illustration, no before/after pair, no comparison panel. No people unless explicitly needed.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-es-hotel-room.png",
+      "asset": "pics/art-v2/semantic-es-hotel-room.webp",
+      "bytes": 16120,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.479050+00:00",
+      "reviewed_sha256": "3a6c84df28019b368af13910e9c08fa2b76564d71a721aa21dd5e879b87aa998"
+    },
+    {
+      "id": "semantic-es-wake-up",
+      "finding": "es-wake-up",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for es-wake-up",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-es-wake-up.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-es-wake-up.png",
+      "asset": "pics/art-v2/semantic-es-wake-up.webp",
+      "bytes": 33984,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.052671+00:00",
+      "reviewed_sha256": "2334ef95695883b9463dec93a98f2440d6a430c095d5e1b6cd304b05b1db98d7"
+    },
+    {
+      "id": "semantic-far",
+      "finding": "far",
+      "words": [
+        "La tienda está lejos"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Long path to a small distant shop with a recognizable awning. Preserve the generic far mappings or use the new shop scene for them after review. No people unless essential to the subject.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-far.png",
+      "asset": "pics/art-v2/semantic-far.webp",
+      "bytes": 32460,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+      "reviewed_sha256": "8b1733b0dd4c5f51cada272cf79f897bbf9c5600a64e79354fa6b18dc7422c71"
+    },
+    {
+      "id": "semantic-fish",
+      "finding": "fish",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: One COOKED FISH FILLET on a plate with a lemon slice and a fork beside the plate. Opaque cooked interior, no eyes, no smiling face, no live animal. This is fish as food. No people unless essential to the subject.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-fish.png",
+      "asset": "pics/art-v2/semantic-fish.webp",
+      "bytes": 31652,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+      "reviewed_sha256": "a3686ee39c5439874781891aa8235e0452af39d2ab487ba0d3c7017fe2722436"
+    },
+    {
+      "id": "semantic-good-evening",
+      "finding": "good-evening",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Tomas: young adult learner, light warm skin, short light brown wavy hair, amber jumper, navy trousers, cream shoes, no glasses or facial hair. Danutė: older woman, light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers. Rūta: young adult woman, light warm skin, long straight dark brown hair with short blunt fringe, green blouse with a few dark leaf motifs, coral trousers, cream shoes. Subject: Keep the greeting gesture; show orange-pink sunset with the sun partly below the horizon. No moon, stars or sleeping person.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-ruta-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-good-evening.png",
+      "asset": "pics/art-v2/semantic-good-evening.webp",
+      "bytes": 57552,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+      "reviewed_sha256": "bf924b43ca3074ce5c02cc507885cac4b5d3418a9188a4ea8643cb62b9e6990d"
+    },
+    {
+      "id": "semantic-hello-formal",
+      "finding": "hello-formal",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Respectful nod or offered handshake toward an older stranger and a second adult. Keep distinct from the casual hello wave.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-danute-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-hello-formal.png",
+      "asset": "pics/art-v2/semantic-hello-formal.webp",
+      "bytes": 38812,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.480051+00:00",
+      "reviewed_sha256": "426cb1e6161cff4b59fccffddfad3a7f008ccee6345c764de28dec6bad03e00a"
+    },
+    {
+      "id": "semantic-house",
+      "finding": "house",
+      "words": [
+        "Mi casa es pequeña"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Small house beside a larger neutral house if small is the visual target. Otherwise retain as contextual support with text. Only one coherent illustration, no alternative variants or before/after panels.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-house.png",
+      "asset": "pics/art-v2/semantic-house.webp",
+      "bytes": 25642,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.480051+00:00",
+      "reviewed_sha256": "d8c6256365c1c8af0fc18211359df5e502484727a390f8610853a4a0ba9047e9"
+    },
+    {
+      "id": "semantic-how-are-you",
+      "finding": "how-are-you",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Only two people: Rūta (long dark hair and fringe, green blouse, coral trousers) and Tomas (short brown hair, amber jumper). Subject: Two people facing each other; caring questioning gesture with a speech bubble containing happy, neutral and sad faces.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-ruta-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-how-are-you.png",
+      "asset": "pics/art-v2/semantic-how-are-you.webp",
+      "bytes": 48228,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+      "reviewed_sha256": "78f7448f10daed154e94bb2a90b06a5339a37cceccc7d4df069ce7a41054fa4b"
+    },
+    {
+      "id": "semantic-i-get-dressed",
+      "finding": "i-get-dressed",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Learner visibly putting on a jacket, with one arm in and one arm entering the other sleeve. Only one man, Tomas: short brown wavy hair, amber jumper, navy trousers.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-learner-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-i-get-dressed.png",
+      "asset": "pics/art-v2/semantic-i-get-dressed.webp",
+      "bytes": 31318,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.481050+00:00",
+      "reviewed_sha256": "07a7c650b9a033e81ef4c8de58641cac625a4354f13723d5f3d2bad01967e61e"
+    },
+    {
+      "id": "semantic-milk",
+      "finding": "milk",
+      "words": [
+        "¿Tiene leche?"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: A curious person pointing to a bowl of cereal while asking a server whether it contains milk: a large thought bubble shows a milk carton with a cow symbol and a red question mark. No words. Only one coherent illustration, not a comparison or before/after pair.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-milk.png",
+      "asset": "pics/art-v2/semantic-milk.webp",
+      "bytes": 53616,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.481050+00:00",
+      "reviewed_sha256": "a8458d2a5f9c61a35b630049a20bcf552436380db4874751f227b6fb7d065c9d"
+    },
+    {
+      "id": "semantic-money",
+      "finding": "money",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for money",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-money.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-money.png",
+      "asset": "pics/art-v2/semantic-money.webp",
+      "bytes": 6726,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+      "reviewed_sha256": "04516919a4a2dd6ff89c673725f34df646f917a477fb8b57b46dcad991f8670d"
+    },
+    {
+      "id": "semantic-offer-help",
+      "finding": "please-help-offer",
+      "words": [
+        "¿Necesitas ayuda?"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: EXACTLY TWO adults. One person struggles to lift a heavy box. The OTHER person has empty hands and is OFFERING HELP, leaning toward the struggling person with a caring open hand and a large question mark directly above the HELPER, who asks if help is needed. The box remains in the struggling person's hands. No completed handover. One clear question from the helper, not the struggling person. No words.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-learner-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-offer-help.png",
+      "asset": "pics/art-v2/semantic-offer-help.webp",
+      "bytes": 48588,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.481050+00:00",
+      "reviewed_sha256": "c78e2dc40d6e2745ecf04d2ab5e30f6adb082a110f01e1dbdeaddd2880514cc7"
+    },
+    {
+      "id": "semantic-personal-name",
+      "finding": "personal-name",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for personal-name",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-personal-name.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-personal-name.png",
+      "asset": "pics/art-v2/semantic-personal-name.webp",
+      "bytes": 5600,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+      "reviewed_sha256": "00f3b7613dad51ed745e8cbdfc40d3e8e55de0ea096374f1748a982aa6d1753b"
+    },
+    {
+      "id": "semantic-personal-origin",
+      "finding": "personal-origin",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for personal-origin",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-personal-origin.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-personal-origin.png",
+      "asset": "pics/art-v2/semantic-personal-origin.webp",
+      "bytes": 15218,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.055175+00:00",
+      "reviewed_sha256": "3866dc754693e707968023978b8f9f501afda9d990d665fd2a752448c4ab3da6"
+    },
+    {
+      "id": "semantic-please",
+      "finding": "please",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. The learner is Tomas (short brown wavy hair, amber jumper, navy trousers). The host is Danutė (older white bob, round glasses, coral hoodie). Only these two people. Subject: Learner politely requests a cake still held by the host, with a hopeful expression and open requesting hand. No completed handover. Use a separate invitation gesture for Prašau in the free-seat conversation.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-danute-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-please.png",
+      "asset": "pics/art-v2/semantic-please.webp",
+      "bytes": 49432,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.056181+00:00",
+      "reviewed_sha256": "b1516fec38940ea86d3113cb8b8ebbd6f5c80b9d247455e0b0b1b8664e31de52"
+    },
+    {
+      "id": "semantic-please-help",
+      "finding": "please-help",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Tomas struggling to lift one heavy box, extending his open hand toward another adult who is reaching out to help. A question mark above Tomas. The request for help is primary; no completed handover. Only one coherent illustration, no alternative variants or before/after panels.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-learner-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-please-help.png",
+      "asset": "pics/art-v2/semantic-please-help.webp",
+      "bytes": 49472,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.482050+00:00",
+      "reviewed_sha256": "25b01275f7bd25b6b6c0f7e8da1757159c14a1a3549bbc45796c129a35526553"
+    },
+    {
+      "id": "semantic-shampoo",
+      "finding": "shampoo",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Bottle beside a small head/hair-washing cue. Do not rely on text on the bottle. Only ONE illustration, no before/after pair, no comparison panel. No people unless explicitly needed.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-shampoo.png",
+      "asset": "pics/art-v2/semantic-shampoo.webp",
+      "bytes": 34830,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.482050+00:00",
+      "reviewed_sha256": "fb20e5fd71ae03a421ba5c406e5274a83b0d1c7a854a300dfdb466ece048a81c"
+    },
+    {
+      "id": "semantic-sister-v2",
+      "finding": "sister",
+      "generator": "deterministic editable SVG diagram",
+      "prompt": "Exact diagram for sister",
+      "native_source": "docs/art-direction/semantic-diagrams/semantic-sister-v2.svg",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-sister-v2.png",
+      "asset": "pics/art-v2/semantic-sister-v2.webp",
+      "bytes": 9806,
+      "status": "exported",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.056181+00:00",
+      "reviewed_sha256": "70d14f58e2b7baa292fde71307557872cfcbf3baf028592c87c5e4c3fcdbe9cf"
+    },
+    {
+      "id": "semantic-some-coffee",
+      "finding": "some-coffee",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Tomas: young adult learner, light warm skin, short light brown wavy hair, amber jumper, navy trousers, cream shoes, no glasses or facial hair. Danutė: older woman, light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers. Rūta: young adult woman, light warm skin, long straight dark brown hair with short blunt fringe, green blouse with a few dark leaf motifs, coral trousers, cream shoes. Subject: Danutė offers a tall coffee pot toward a small cup of dark coffee; large visible coffee beans. Keep the question cue. No tea tag or lemon.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-danute-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-some-coffee.png",
+      "asset": "pics/art-v2/semantic-some-coffee.webp",
+      "bytes": 57868,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.056181+00:00",
+      "reviewed_sha256": "7a546f0b96c52707a5696e44daa60719d2b076bb4317bbc4729ba95fb2f7df3b"
+    },
+    {
+      "id": "semantic-some-tea",
+      "finding": "some-tea",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Tomas: young adult learner, light warm skin, short light brown wavy hair, amber jumper, navy trousers, cream shoes, no glasses or facial hair. Danutė: older woman, light warm skin, short white bob, small round dark glasses, coral hoodie, navy trousers. Rūta: young adult woman, light warm skin, long straight dark brown hair with short blunt fringe, green blouse with a few dark leaf motifs, coral trousers, cream shoes. Subject: Danutė offers a rounded teapot beside a clear cup of pale amber tea, prominent tea tag and lemon. Keep the question cue. No coffee beans.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png",
+        "docs/art-direction/lt-danute-character-sheet.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-some-tea.png",
+      "asset": "pics/art-v2/semantic-some-tea.webp",
+      "bytes": 65210,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.057181+00:00",
+      "reviewed_sha256": "1fc9163f8a4f06a356f93a3b6b6d51c557d3aabc442398565ad4128f70db74d2"
+    },
+    {
+      "id": "semantic-table",
+      "finding": "table",
+      "words": [
+        "Una mesa para dos"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Table set for exactly two with two visible chairs or place settings; retain table for the noun. Only ONE illustration, no before/after pair, no comparison panel. No people unless explicitly needed.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-table.png",
+      "asset": "pics/art-v2/semantic-table.webp",
+      "bytes": 39324,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.482050+00:00",
+      "reviewed_sha256": "6b8f643c772baa6d13a9dbefca5d13946f504cab53a8420bf7c801485d8909ac"
+    },
+    {
+      "id": "semantic-tea",
+      "prompt": "Use case: stylized-concept. ONE isolated production vocabulary illustration for Wordami. Reference 1 is STYLE ONLY, never reproduce the board or its text. Flat rounded geometric cartoon, saturated turquoise amber coral navy cream, broad clean solid colour areas, no gradients, no texture, no shadows, no glow. Subject: a TALL CLEAR GLASS filled with pale amber tea, with a large dangling tea-bag string and tag; a bright lemon slice on the saucer, and a small ROUND TEAPOT behind the glass. Tea and its tall glass must be unmistakably different from a low dark espresso cup. No coffee beans, no opaque coffee mug. One centered complete scene, square canvas, generous transparent margins, truly transparent background, opaque interiors except the clear glass. No words, letters, labels, logo or watermark. Readable at 56px.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-tea.png",
+      "asset": "pics/art-v2/semantic-tea.webp",
+      "bytes": 44018,
+      "generator": "built-in image_gen",
+      "status": "exported",
+      "finding": "tea",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.057181+00:00",
+      "reviewed_sha256": "92315167a8dc6ccb582dd3af6b6b8f88d8dc803a41c89b5c19b18be43de86e4f"
+    },
+    {
+      "id": "semantic-white-v5",
+      "finding": "white-v5",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: One plain neutral WHITE short-sleeved shirt, opaque pure white central fabric, a thin navy outline for contrast on white. No cream, beige or yellow fabric. No people unless essential to the subject.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-white-v5.png",
+      "asset": "pics/art-v2/semantic-white-v5.webp",
+      "bytes": 13526,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+      "reviewed_utc": "2026-11-26T20:25:12.058180+00:00",
+      "reviewed_sha256": "de3d99dfd503b4c0bfe0860756b2d2fb9634c3cbc3047f091f7e459847fe29e0"
+    },
+    {
+      "id": "semantic-wife",
+      "finding": "wife",
+      "words": null,
+      "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Point to or highlight the woman while retaining a small marriage-ring cue. Only one coherent illustration, no alternative variants or before/after panels.",
+      "references": [
+        "docs/art-direction/approved-style-reference.png"
+      ],
+      "status": "exported",
+      "review_status": "approved",
+      "master": "docs/art-direction/masters/semantic-wife.png",
+      "asset": "pics/art-v2/semantic-wife.webp",
+      "bytes": 43814,
+      "generator": "built-in image_gen",
+      "reviewer": "assistant visual review",
+      "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+      "reviewed_utc": "2026-11-26T20:31:06.483050+00:00",
+      "reviewed_sha256": "c252dfa1622c93fdd205c2b44172fffbfa13a58360a6464683d22b523d9df947"
+    }
+  ],
+  "validation": [
+    "output/semantic-fixes/verification.json",
+    "output/adventure/verification.json",
+    "output/a1-practice/verification.json"
+  ]
+}

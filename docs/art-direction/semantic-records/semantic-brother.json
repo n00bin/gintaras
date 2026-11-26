@@ -1,0 +1,13 @@
+{
+  "id": "semantic-brother",
+  "finding": "brother",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for brother",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-brother.svg",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-brother.png",
+  "asset": "pics/art-v2/semantic-brother.webp",
+  "bytes": 9384,
+  "status": "exported",
+  "replacement": "semantic-brother-v2"
+}

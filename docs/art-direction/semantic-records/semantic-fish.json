@@ -1,0 +1,19 @@
+{
+  "id": "semantic-fish",
+  "finding": "fish",
+  "words": null,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: One COOKED FISH FILLET on a plate with a lemon slice and a fork beside the plate. Opaque cooked interior, no eyes, no smiling face, no live animal. This is fish as food. No people unless essential to the subject.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-fish.png",
+  "asset": "pics/art-v2/semantic-fish.webp",
+  "bytes": 31652,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.053670+00:00",
+  "reviewed_sha256": "a3686ee39c5439874781891aa8235e0452af39d2ab487ba0d3c7017fe2722436"
+}

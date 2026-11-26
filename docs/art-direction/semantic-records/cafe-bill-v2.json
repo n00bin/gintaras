@@ -1,0 +1,18 @@
+{
+  "id": "cafe-bill-v2",
+  "interactive": true,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: ONE standalone cafe BILL: a single cream paper receipt with a few thick navy horizontal lines, resting on a small turquoise payment tray. Only receipt and tray. NO cups, coffee, tea, drinks, steam, food, pastries, money, coins, card terminal or people. Do not copy the reference's coffee mug. Exact totals are rendered by the app, so no text or numerals.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/cafe-bill-v2.png",
+  "asset": "pics/art-v2/cafe-bill-v2.webp",
+  "bytes": 16230,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px/light and 56px/dark. Receipt is isolated without a fresh drink or food; payment terminal and separate contactless card are clear and have no premature success tick.",
+  "reviewed_utc": "2026-11-26T20:33:19.247441+00:00",
+  "reviewed_sha256": "54971b4d67e7ffc58362c57cb4dfc2afd37ae2780917b9db79429857b3f76e44"
+}

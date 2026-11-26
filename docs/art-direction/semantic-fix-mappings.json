@@ -1,0 +1,509 @@
+{
+  "changes": [
+    {
+      "lang": "lt",
+      "word": "Labas vakaras",
+      "from": "art-v2/good-evening",
+      "to": "art-v2/semantic-good-evening",
+      "finding": "good-evening"
+    },
+    {
+      "lang": "es",
+      "word": "Buenas noches",
+      "from": "art-v2/good-evening",
+      "to": "art-v2/semantic-good-evening",
+      "finding": "good-evening"
+    },
+    {
+      "lang": "lt",
+      "word": "Kavos?",
+      "from": "art-v2/some-coffee",
+      "to": "art-v2/semantic-some-coffee",
+      "finding": "some-coffee"
+    },
+    {
+      "lang": "lt",
+      "word": "Arbatos?",
+      "from": "art-v2/some-tea",
+      "to": "art-v2/semantic-some-tea",
+      "finding": "some-tea"
+    },
+    {
+      "lang": "lt",
+      "word": "kava",
+      "from": "art-v2/coffee",
+      "to": "art-v2/semantic-coffee",
+      "finding": "coffee"
+    },
+    {
+      "lang": "es",
+      "word": "café",
+      "from": "art-v2/coffee",
+      "to": "art-v2/semantic-coffee",
+      "finding": "coffee"
+    },
+    {
+      "lang": "es",
+      "word": "Un café, por favor",
+      "from": "art-v2/coffee",
+      "to": "art-v2/semantic-coffee",
+      "finding": "coffee"
+    },
+    {
+      "lang": "es",
+      "word": "Me gustaría un café",
+      "from": "art-v2/coffee",
+      "to": "art-v2/semantic-coffee",
+      "finding": "coffee"
+    },
+    {
+      "lang": "lt",
+      "word": "arbata",
+      "from": "art-v2/tea",
+      "to": "art-v2/semantic-tea",
+      "finding": "tea"
+    },
+    {
+      "lang": "es",
+      "word": "el té",
+      "from": "art-v2/tea",
+      "to": "art-v2/semantic-tea",
+      "finding": "tea"
+    },
+    {
+      "lang": "es",
+      "word": "Prefiero el té",
+      "from": "art-v2/tea",
+      "to": "art-v2/semantic-tea",
+      "finding": "tea"
+    },
+    {
+      "lang": "lt",
+      "word": "Prašau",
+      "from": "art-v2/please",
+      "to": "art-v2/semantic-please",
+      "finding": "please"
+    },
+    {
+      "lang": "es",
+      "word": "Por favor",
+      "from": "art-v2/please",
+      "to": "art-v2/semantic-please",
+      "finding": "please"
+    },
+    {
+      "lang": "lt",
+      "word": "Kaip sekasi?",
+      "from": "art-v2/how-are-you",
+      "to": "art-v2/semantic-how-are-you",
+      "finding": "how-are-you"
+    },
+    {
+      "lang": "es",
+      "word": "¿Cómo estás?",
+      "from": "art-v2/how-are-you",
+      "to": "art-v2/semantic-how-are-you",
+      "finding": "how-are-you"
+    },
+    {
+      "lang": "es",
+      "word": "Hay dos sillas",
+      "from": "art-v2/es-chair-v2",
+      "to": "art-v2/semantic-es-chair-v2",
+      "finding": "es-chair-v2"
+    },
+    {
+      "lang": "es",
+      "word": "Mi gato duerme",
+      "from": "art-v2/cat",
+      "to": "art-v2/semantic-cat-v2",
+      "finding": "cat"
+    },
+    {
+      "lang": "es",
+      "word": "La tienda está lejos",
+      "from": "art-v2/far",
+      "to": "art-v2/semantic-far",
+      "finding": "far"
+    },
+    {
+      "lang": "lt",
+      "word": "žuvis",
+      "from": "art-v2/fish",
+      "to": "art-v2/semantic-fish",
+      "finding": "fish"
+    },
+    {
+      "lang": "es",
+      "word": "el pescado",
+      "from": "art-v2/fish",
+      "to": "art-v2/semantic-fish",
+      "finding": "fish"
+    },
+    {
+      "lang": "lt",
+      "word": "grindys",
+      "from": "art-v2/a1x-grindys",
+      "to": "art-v2/semantic-a1x-grindys-v2",
+      "finding": "a1x-grindys"
+    },
+    {
+      "lang": "lt",
+      "word": "baltas",
+      "from": "art-v2/white-v5",
+      "to": "art-v2/semantic-white-v5",
+      "finding": "white-v5"
+    },
+    {
+      "lang": "es",
+      "word": "blanco",
+      "from": "art-v2/white-v5",
+      "to": "art-v2/semantic-white-v5",
+      "finding": "white-v5"
+    },
+    {
+      "lang": "lt",
+      "word": "popietė",
+      "from": "art-v2/a1x-popiete",
+      "to": "art-v2/semantic-a1x-popiete",
+      "finding": "a1x-popiete"
+    },
+    {
+      "lang": "lt",
+      "word": "Sveiki",
+      "from": "art-v2/hello-formal",
+      "to": "art-v2/semantic-hello-formal",
+      "finding": "hello-formal"
+    },
+    {
+      "lang": "lt",
+      "word": "Iki",
+      "from": "art-v2/bye",
+      "to": "art-v2/semantic-bye",
+      "finding": "bye"
+    },
+    {
+      "lang": "es",
+      "word": "Nos vemos",
+      "from": "art-v2/bye",
+      "to": "art-v2/semantic-bye",
+      "finding": "bye"
+    },
+    {
+      "lang": "lt",
+      "word": "Aš apsirengiu",
+      "from": "art-v2/i-get-dressed",
+      "to": "art-v2/semantic-i-get-dressed",
+      "finding": "i-get-dressed"
+    },
+    {
+      "lang": "es",
+      "word": "Me visto",
+      "from": "art-v2/i-get-dressed",
+      "to": "art-v2/semantic-i-get-dressed",
+      "finding": "i-get-dressed"
+    },
+    {
+      "lang": "lt",
+      "word": "stogas",
+      "from": "art-v2/a1x-stogas",
+      "to": "art-v2/semantic-a1x-stogas",
+      "finding": "a1x-stogas"
+    },
+    {
+      "lang": "lt",
+      "word": "šampūnas",
+      "from": "art-v2/shampoo",
+      "to": "art-v2/semantic-shampoo",
+      "finding": "shampoo"
+    },
+    {
+      "lang": "es",
+      "word": "la cama",
+      "from": "art-v2/bedroom",
+      "to": "art-v2/semantic-bedroom",
+      "finding": "bedroom"
+    },
+    {
+      "lang": "es",
+      "word": "Una mesa para dos",
+      "from": "art-v2/table",
+      "to": "art-v2/semantic-table",
+      "finding": "table"
+    },
+    {
+      "lang": "es",
+      "word": "dos cuadras",
+      "from": "art-v2/es-city-block",
+      "to": "art-v2/semantic-es-city-block",
+      "finding": "es-city-block"
+    },
+    {
+      "lang": "es",
+      "word": "Una habitación para dos",
+      "from": "art-v2/es-hotel-room",
+      "to": "art-v2/semantic-es-hotel-room",
+      "finding": "es-hotel-room"
+    },
+    {
+      "lang": "es",
+      "word": "Cuesta treinta pesos",
+      "from": "art-v2/money",
+      "to": "art-v2/semantic-money",
+      "finding": "money"
+    },
+    {
+      "lang": "es",
+      "word": "Mi cumpleaños es en mayo",
+      "from": "art-v2/cake",
+      "to": "art-v2/semantic-cake",
+      "finding": "cake"
+    },
+    {
+      "lang": "es",
+      "word": "Los libros son nuevos",
+      "from": "art-v2/books",
+      "to": "art-v2/semantic-books",
+      "finding": "books"
+    },
+    {
+      "lang": "es",
+      "word": "El pájaro canta",
+      "from": "art-v2/bird",
+      "to": "art-v2/semantic-bird",
+      "finding": "bird"
+    },
+    {
+      "lang": "es",
+      "word": "Mi casa es pequeña",
+      "from": "art-v2/house",
+      "to": "art-v2/semantic-house",
+      "finding": "house"
+    },
+    {
+      "lang": "lt",
+      "word": "sesuo",
+      "from": "art-v2/sister",
+      "to": "art-v2/semantic-sister-v2",
+      "finding": "sister"
+    },
+    {
+      "lang": "es",
+      "word": "la hermana",
+      "from": "art-v2/sister",
+      "to": "art-v2/semantic-sister-v2",
+      "finding": "sister"
+    },
+    {
+      "lang": "es",
+      "word": "Tengo una hermana",
+      "from": "art-v2/sister",
+      "to": "art-v2/semantic-sister-v2",
+      "finding": "sister"
+    },
+    {
+      "lang": "lt",
+      "word": "brolis",
+      "from": "art-v2/brother",
+      "to": "art-v2/semantic-brother-v2",
+      "finding": "brother"
+    },
+    {
+      "lang": "es",
+      "word": "el hermano",
+      "from": "art-v2/brother",
+      "to": "art-v2/semantic-brother-v2",
+      "finding": "brother"
+    },
+    {
+      "lang": "es",
+      "word": "tu hermano",
+      "from": "art-v2/brother",
+      "to": "art-v2/semantic-brother-v2",
+      "finding": "brother"
+    },
+    {
+      "lang": "lt",
+      "word": "teta",
+      "from": "art-v2/a1x-teta",
+      "to": "art-v2/semantic-a1x-teta-v2",
+      "finding": "a1x-teta"
+    },
+    {
+      "lang": "lt",
+      "word": "dėdė",
+      "from": "art-v2/a1x-dede",
+      "to": "art-v2/semantic-a1x-dede-v2",
+      "finding": "a1x-dede"
+    },
+    {
+      "lang": "lt",
+      "word": "pusbrolis",
+      "from": "art-v2/a1x-pusbrolis",
+      "to": "art-v2/semantic-a1x-pusbrolis-v2",
+      "finding": "a1x-pusbrolis"
+    },
+    {
+      "lang": "lt",
+      "word": "pusseserė",
+      "from": "art-v2/a1x-pussesere",
+      "to": "art-v2/semantic-a1x-pussesere-v2",
+      "finding": "a1x-pussesere"
+    },
+    {
+      "lang": "lt",
+      "word": "žmona",
+      "from": "art-v2/wife",
+      "to": "art-v2/semantic-wife",
+      "finding": "wife"
+    },
+    {
+      "lang": "lt",
+      "word": "Padėkite!",
+      "from": "art-v2/please-help",
+      "to": "art-v2/semantic-please-help",
+      "finding": "please-help"
+    },
+    {
+      "lang": "es",
+      "word": "¿Me puede ayudar?",
+      "from": "art-v2/please-help",
+      "to": "art-v2/semantic-please-help",
+      "finding": "please-help"
+    },
+    {
+      "lang": "es",
+      "word": "Necesito ayuda",
+      "from": "art-v2/please-help",
+      "to": "art-v2/semantic-please-help",
+      "finding": "please-help"
+    },
+    {
+      "lang": "es",
+      "word": "¿Necesitas ayuda?",
+      "from": "art-v2/please-help",
+      "to": "art-v2/semantic-offer-help",
+      "finding": "please-help"
+    },
+    {
+      "lang": "es",
+      "word": "¿Incluye desayuno?",
+      "from": "art-v2/breakfast",
+      "to": "art-v2/semantic-breakfast-v2",
+      "finding": "breakfast"
+    },
+    {
+      "lang": "es",
+      "word": "¿Tiene leche?",
+      "from": "art-v2/milk",
+      "to": "art-v2/semantic-milk",
+      "finding": "milk"
+    },
+    {
+      "lang": "es",
+      "word": "¿Tienes hijos?",
+      "from": "art-v2/child",
+      "to": "art-v2/semantic-child",
+      "finding": "child"
+    },
+    {
+      "lang": "es",
+      "word": "Mi hermano es alto",
+      "from": "art-v2/a-tall-man",
+      "to": "art-v2/semantic-a-tall-man-v2",
+      "finding": "a-tall-man"
+    },
+    {
+      "lang": "es",
+      "word": "El perro es pequeño",
+      "from": "art-v2/es-dog",
+      "to": "art-v2/semantic-es-dog",
+      "finding": "es-dog"
+    },
+    {
+      "lang": "es",
+      "word": "Me levanto temprano",
+      "from": "art-v2/es-wake-up",
+      "to": "art-v2/semantic-es-wake-up",
+      "finding": "es-wake-up"
+    },
+    {
+      "lang": "es",
+      "word": "¿Te levantas temprano?",
+      "from": "art-v2/es-wake-up",
+      "to": "art-v2/semantic-es-wake-up",
+      "finding": "es-wake-up"
+    }
+  ],
+  "overrides": {
+    "lt": {
+      "Labas vakaras": "art-v2/semantic-good-evening",
+      "Kavos?": "art-v2/semantic-some-coffee",
+      "Arbatos?": "art-v2/semantic-some-tea",
+      "kava": "art-v2/semantic-coffee",
+      "arbata": "art-v2/semantic-tea",
+      "Prašau": "art-v2/semantic-please",
+      "Kaip sekasi?": "art-v2/semantic-how-are-you",
+      "žuvis": "art-v2/semantic-fish",
+      "grindys": "art-v2/semantic-a1x-grindys-v2",
+      "baltas": "art-v2/semantic-white-v5",
+      "popietė": "art-v2/semantic-a1x-popiete",
+      "Sveiki": "art-v2/semantic-hello-formal",
+      "Iki": "art-v2/semantic-bye",
+      "Aš apsirengiu": "art-v2/semantic-i-get-dressed",
+      "stogas": "art-v2/semantic-a1x-stogas",
+      "šampūnas": "art-v2/semantic-shampoo",
+      "sesuo": "art-v2/semantic-sister-v2",
+      "brolis": "art-v2/semantic-brother-v2",
+      "teta": "art-v2/semantic-a1x-teta-v2",
+      "dėdė": "art-v2/semantic-a1x-dede-v2",
+      "pusbrolis": "art-v2/semantic-a1x-pusbrolis-v2",
+      "pusseserė": "art-v2/semantic-a1x-pussesere-v2",
+      "žmona": "art-v2/semantic-wife",
+      "Padėkite!": "art-v2/semantic-please-help",
+      "Mano vardas Tomas": "art-v2/semantic-personal-name",
+      "Aš esu Tomas": "art-v2/semantic-personal-name"
+    },
+    "es": {
+      "Buenas noches": "art-v2/semantic-good-evening",
+      "café": "art-v2/semantic-coffee",
+      "Un café, por favor": "art-v2/semantic-coffee",
+      "Me gustaría un café": "art-v2/semantic-coffee",
+      "el té": "art-v2/semantic-tea",
+      "Prefiero el té": "art-v2/semantic-tea",
+      "Por favor": "art-v2/semantic-please",
+      "¿Cómo estás?": "art-v2/semantic-how-are-you",
+      "Hay dos sillas": "art-v2/semantic-es-chair-v2",
+      "Mi gato duerme": "art-v2/semantic-cat-v2",
+      "La tienda está lejos": "art-v2/semantic-far",
+      "el pescado": "art-v2/semantic-fish",
+      "blanco": "art-v2/semantic-white-v5",
+      "Nos vemos": "art-v2/semantic-bye",
+      "Me visto": "art-v2/semantic-i-get-dressed",
+      "la cama": "art-v2/semantic-bedroom",
+      "Una mesa para dos": "art-v2/semantic-table",
+      "dos cuadras": "art-v2/semantic-es-city-block",
+      "Una habitación para dos": "art-v2/semantic-es-hotel-room",
+      "Cuesta treinta pesos": "art-v2/semantic-money",
+      "Mi cumpleaños es en mayo": "art-v2/semantic-cake",
+      "Los libros son nuevos": "art-v2/semantic-books",
+      "El pájaro canta": "art-v2/semantic-bird",
+      "Mi casa es pequeña": "art-v2/semantic-house",
+      "la hermana": "art-v2/semantic-sister-v2",
+      "Tengo una hermana": "art-v2/semantic-sister-v2",
+      "el hermano": "art-v2/semantic-brother-v2",
+      "tu hermano": "art-v2/semantic-brother-v2",
+      "¿Me puede ayudar?": "art-v2/semantic-please-help",
+      "Necesito ayuda": "art-v2/semantic-please-help",
+      "¿Necesitas ayuda?": "art-v2/semantic-offer-help",
+      "¿Incluye desayuno?": "art-v2/semantic-breakfast-v2",
+      "¿Tiene leche?": "art-v2/semantic-milk",
+      "¿Tienes hijos?": "art-v2/semantic-child",
+      "Mi hermano es alto": "art-v2/semantic-a-tall-man-v2",
+      "El perro es pequeño": "art-v2/semantic-es-dog",
+      "Me levanto temprano": "art-v2/semantic-es-wake-up",
+      "¿Te levantas temprano?": "art-v2/semantic-es-wake-up",
+      "Me llamo Tomás": "art-v2/semantic-personal-name"
+    }
+  }
+}

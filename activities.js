@@ -16,7 +16,7 @@ let session=null,feedback='',heard=false,audio=null,cancelAudio=null,busy=false,
 try{const saved=JSON.parse(localStorage.getItem(key)),a=core.attempt(saved?.attemptId);if(a?.activityId===id&&a.version===1&&Number.isInteger(saved.step)&&saved.step>=0&&saved.step<=4&&Array.isArray(saved.targets)&&saved.targets.length===2&&saved.targets.slice().sort().join(',')==='coffee,tea')session=saved;}catch(e){}
 function save(){try{localStorage.setItem(key,JSON.stringify(session));}catch(e){feedback='This visit cannot be saved on this device.';}}
 function n(tag,text,cls){const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;}
-function btn(text,fn,cls){const b=n('button',text,cls);b.type='button';b.onclick=fn;return b;}
+function btn(text,fn,cls){const b=n('button',text,cls);b.type='button';b.onclick=fn;const word=[words.coffee,'Coffee'].includes(text)?words.coffee:[words.tea,'Tea'].includes(text)?words.tea:null;if(word){const image=n('img');image.src=picFile(picFor(word));image.alt='';image.width=64;image.height=64;image.style.cssText='display:block;object-fit:contain;margin:0 auto 8px';b.prepend(image);}return b;}
 function status(text){feedback=text;const e=dialog.querySelector('[role=status]');if(e)e.textContent=text;}
 function stop(){viewVersion++;for(const stopMedia of mediaStops){try{stopMedia();}catch(e){}}if(cancelAudio)cancelAudio();if(audio){audio.pause();audio=null;}if(recAudio)recAudio.pause();busy=false;recStop();stopAllAudio();}
 const dialog=n('dialog');dialog.id='a1-practice';dialog.setAttribute('aria-labelledby','a1-practice-title');document.body.append(dialog);

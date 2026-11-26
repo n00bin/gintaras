@@ -1,0 +1,20 @@
+{
+  "id": "semantic-hello-formal",
+  "finding": "hello-formal",
+  "words": null,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Respectful nod or offered handshake toward an older stranger and a second adult. Keep distinct from the casual hello wave.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png",
+    "docs/art-direction/lt-danute-character-sheet.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-hello-formal.png",
+  "asset": "pics/art-v2/semantic-hello-formal.webp",
+  "bytes": 38812,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+  "reviewed_utc": "2026-11-26T20:31:06.480051+00:00",
+  "reviewed_sha256": "426cb1e6161cff4b59fccffddfad3a7f008ccee6345c764de28dec6bad03e00a"
+}

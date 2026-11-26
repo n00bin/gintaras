@@ -1,0 +1,244 @@
+{
+  "release": "3.133",
+  "build": 205,
+  "local_browser_checks": {
+    "output/semantic-fixes/verification.json": {
+      "passed": true,
+      "approved_assets": 51,
+      "checks": [
+        {
+          "lang": "lt",
+          "rendered_corrected_mappings": 26,
+          "personalized": [
+            {
+              "country": "ca",
+              "name": {
+                "text": "Mano vardas Ava",
+                "pic": "art-v2/semantic-personal-name"
+              },
+              "origin": {
+                "text": "Aš esu iš Kanados",
+                "pic": "art-v2/semantic-personal-origin"
+              },
+              "teacher": {
+                "text": "Aš esu mokytoja",
+                "pic": "art-v2/es-teacher-woman"
+              }
+            },
+            {
+              "country": "jp",
+              "name": {
+                "text": "Mano vardas Ava",
+                "pic": "art-v2/semantic-personal-name"
+              },
+              "origin": {
+                "text": "Aš esu iš Japonijos",
+                "pic": "art-v2/semantic-personal-origin"
+              },
+              "teacher": {
+                "text": "Aš esu mokytoja",
+                "pic": "art-v2/es-teacher-woman"
+              }
+            }
+          ],
+          "personalized_jobs": [
+            {
+              "job": "teacher",
+              "g": "m",
+              "text": "Aš esu mokytojas.",
+              "picture": "art-v2/i-am-a-teacher-v3"
+            },
+            {
+              "job": "teacher",
+              "g": "f",
+              "text": "Aš esu mokytoja.",
+              "picture": "art-v2/es-teacher-woman"
+            },
+            {
+              "job": "engineer",
+              "g": "m",
+              "text": "Aš esu inžinierius.",
+              "picture": ""
+            },
+            {
+              "job": "engineer",
+              "g": "f",
+              "text": "Aš esu inžinierė.",
+              "picture": ""
+            }
+          ]
+        },
+        {
+          "lang": "es",
+          "rendered_corrected_mappings": 39,
+          "personalized": [
+            {
+              "country": "ca",
+              "name": {
+                "text": "Me llamo Ava",
+                "pic": "art-v2/semantic-personal-name"
+              },
+              "origin": {
+                "text": "Soy de Canadá",
+                "pic": "art-v2/semantic-personal-origin"
+              },
+              "teacher": {
+                "text": "Soy maestra",
+                "pic": "art-v2/es-teacher-woman"
+              }
+            },
+            {
+              "country": "jp",
+              "name": {
+                "text": "Me llamo Ava",
+                "pic": "art-v2/semantic-personal-name"
+              },
+              "origin": {
+                "text": "Soy de Japón",
+                "pic": "art-v2/semantic-personal-origin"
+              },
+              "teacher": {
+                "text": "Soy maestra",
+                "pic": "art-v2/es-teacher-woman"
+              }
+            }
+          ],
+          "personalized_jobs": [
+            {
+              "job": "teacher",
+              "g": "m",
+              "text": null,
+              "picture": null
+            },
+            {
+              "job": "teacher",
+              "g": "f",
+              "text": null,
+              "picture": null
+            },
+            {
+              "job": "engineer",
+              "g": "m",
+              "text": null,
+              "picture": null
+            },
+            {
+              "job": "engineer",
+              "g": "f",
+              "text": null,
+              "picture": null
+            }
+          ]
+        }
+      ],
+      "page_errors": []
+    },
+    "output/adventure/verification.json": {
+      "passed": true,
+      "checks": [
+        "fresh learner locked",
+        "seen and lesson flags do not bypass prerequisites",
+        "one missing phrase locks direct link",
+        "all taught phrases unlock",
+        "distinct coffee and tea images",
+        "empty table before order",
+        "chosen drink before ordering",
+        "finished tea glass",
+        "bill and terminal only after bill request",
+        "ordered activity tasks",
+        "typed alternatives",
+        "wrong reply feedback",
+        "resume",
+        "independent vs assisted",
+        "FSRS and course state unchanged",
+        "320px layout",
+        "offline reload and all visible art",
+        "public route follows COURSE_V2",
+        "Spanish isolation"
+      ],
+      "pageErrors": []
+    },
+    "output/a1-practice/verification.json": {
+      "passed": true,
+      "courses": [
+        {
+          "language": "lt",
+          "reading": {
+            "skill": "reading",
+            "completed": 2,
+            "unaided": 1,
+            "selfRecorded": 0,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          },
+          "listening": {
+            "skill": "listening",
+            "completed": 2,
+            "unaided": 2,
+            "selfRecorded": 0,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          },
+          "speaking": {
+            "skill": "speaking",
+            "completed": 0,
+            "unaided": 0,
+            "selfRecorded": 1,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          }
+        },
+        {
+          "language": "es",
+          "reading": {
+            "skill": "reading",
+            "completed": 2,
+            "unaided": 1,
+            "selfRecorded": 0,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          },
+          "listening": {
+            "skill": "listening",
+            "completed": 2,
+            "unaided": 2,
+            "selfRecorded": 0,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          },
+          "speaking": {
+            "skill": "speaking",
+            "completed": 0,
+            "unaided": 0,
+            "selfRecorded": 1,
+            "selfReviewed": 0,
+            "speechMatched": 0,
+            "guidedDrafted": 0,
+            "level": null
+          }
+        }
+      ],
+      "writing": {
+        "skill": "writing",
+        "completed": 3,
+        "unaided": 3,
+        "selfRecorded": 0,
+        "selfReviewed": 0,
+        "speechMatched": 0,
+        "guidedDrafted": 0,
+        "level": null
+      },
+      "pageErrors": []
+    }
+  }
+}

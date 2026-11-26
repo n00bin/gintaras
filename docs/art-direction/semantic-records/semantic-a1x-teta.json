@@ -1,0 +1,13 @@
+{
+  "id": "semantic-a1x-teta",
+  "finding": "a1x-teta",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-teta",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-teta.svg",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-a1x-teta.png",
+  "asset": "pics/art-v2/semantic-a1x-teta.webp",
+  "bytes": 9522,
+  "status": "exported",
+  "replacement": "semantic-a1x-teta-v2"
+}

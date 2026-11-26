@@ -1,0 +1,549 @@
+{
+  "date": "2026-11-26",
+  "method": "Initial assistant visual inspection of all 653 vocabulary images and 23 portraits, joined to both language packs. Replacements reviewed at 112px/light and 56px/dark; 65 corrected mappings, personalization, café flows, map geometry, media, recording, resume, offline loading and progress preservation verified locally. Historical source findings and rejected masters are preserved.",
+  "findings": [
+    {
+      "asset": "good-evening",
+      "severity": "replace",
+      "reason": "Moon and stars make this night, while the same lesson teaches good night separately.",
+      "brief": "Keep the greeting gesture; show orange-pink sunset with the sun partly below the horizon. No moon, stars or sleeping person.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-good-evening.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "some-coffee",
+      "severity": "replace",
+      "reason": "Same host, turquoise cup, steam and question mark as some-tea. The drink cannot be identified reliably.",
+      "brief": "Danutė offers a tall coffee pot toward a small cup of dark coffee; large visible coffee beans. Keep the question cue. No tea tag or lemon.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-some-coffee.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "some-tea",
+      "severity": "replace",
+      "reason": "Indistinguishable from some-coffee at vocabulary-card scale.",
+      "brief": "Danutė offers a rounded teapot beside a clear cup of pale amber tea, prominent tea tag and lemon. Keep the question cue. No coffee beans.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-some-tea.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "coffee",
+      "severity": "replace",
+      "reason": "Same turquoise mug and dark liquid as tea; only tea's tiny tag separates the pair. These are also interactive drink targets.",
+      "brief": "Small espresso cup with very dark coffee, crema and clearly visible coffee beans. Preserve a silhouette unlike the tea glass.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-coffee.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "tea",
+      "severity": "replace",
+      "reason": "Tea is shown as a dark drink in the same mug as coffee. The tiny tea tag is insufficient at small sizes.",
+      "brief": "Clear glass of pale amber tea, large tea tag, lemon slice and small round teapot. Must remain distinguishable from coffee at 56px.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-tea.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "please",
+      "severity": "replace",
+      "reason": "Cup handover can read as here you go or you're welcome. Lithuanian Prašau also has those senses, but this course card and Spanish Por favor teach please.",
+      "brief": "Learner politely requests a cake still held by the host, with a hopeful expression and open requesting hand. No completed handover. Use a separate invitation gesture for Prašau in the free-seat conversation.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-please.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "how-are-you",
+      "severity": "replace",
+      "reason": "A solitary person and question mark communicate a generic question, not asking about someone's wellbeing.",
+      "brief": "Two people facing each other; caring questioning gesture with a speech bubble containing happy, neutral and sad faces.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-how-are-you.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "apple",
+      "severity": "mismatch",
+      "words": [
+        "Quiero dos manzanas"
+      ],
+      "resolved": true,
+      "resolution": "Remapped only Quiero dos manzanas to the visually inspected existing art-v2/two-v2 in lang/es.js; the singular noun still uses apple.",
+      "reason": "The phrase specifies two apples, but the image shows exactly one.",
+      "brief": "Use existing art-v2/two-v2 for this phrase only. Retain apple for the singular noun."
+    },
+    {
+      "asset": "es-chair-v2",
+      "severity": "mismatch",
+      "words": [
+        "Hay dos sillas"
+      ],
+      "reason": "The sentence says there are two chairs; the picture shows one.",
+      "brief": "New asset with exactly two complete matching chairs. Keep the single-chair noun mapping unchanged.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-es-chair-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "cat",
+      "severity": "mismatch",
+      "words": [
+        "Mi gato duerme"
+      ],
+      "reason": "The cat is upright with open eyes; the sentence says it sleeps.",
+      "brief": "The same cat curled up asleep with closed eyes. Keep the awake cat for the noun.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-cat-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "far",
+      "severity": "mismatch",
+      "words": [
+        "La tienda está lejos"
+      ],
+      "reason": "The distant destination is a house, while the sentence identifies a shop.",
+      "brief": "Long path to a small distant shop with a recognizable awning. Preserve the generic far mappings or use the new shop scene for them after review.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-far.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "fish",
+      "severity": "split-sense",
+      "reason": "A smiling live fish is shared by Lithuanian fish in the food unit, Spanish el pescado (food) and el pez (animal). It erases the Spanish food/animal distinction.",
+      "brief": "Keep live fish for el pez. Create a plated cooked fish or fillet for el pescado and the food-unit use of žuvis.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-fish.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-grindys",
+      "severity": "replace",
+      "reason": "Rolled-back corner with a red fabric layer resembles a rug. The course separately teaches rug with a different picture.",
+      "brief": "Clearly exposed wooden floorboards meeting the base of a wall; no textile, rolled carpet or rug.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-grindys-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "white-v5",
+      "severity": "improve",
+      "reason": "The shirt is visibly cream rather than white, weakening a colour-identification card.",
+      "brief": "Opaque neutral-white shirt; use a thin dark outline so white remains visible on a white background.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-white-v5.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-popiete",
+      "severity": "improve",
+      "reason": "The sun touches the horizon, making afternoon easy to confuse with the existing morning/evening pictures.",
+      "brief": "Sun clearly above the horizon, with a simple clock showing 3:00 if needed. No sunset-orange sky.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-popiete.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "hello-formal",
+      "severity": "improve",
+      "reason": "A casual greeting between two people does not clearly establish a formal or plural greeting. An older person is already present, so the previous note that nothing suggests politeness is too strong.",
+      "brief": "Respectful nod or offered handshake toward an older stranger and a second adult. Keep distinct from the casual hello wave.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-hello-formal.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "bye",
+      "severity": "improve",
+      "reason": "The walking pose already suggests departure, but the front-facing wave is still very similar to hello. The older rejection overstates the lack of departure cues.",
+      "brief": "Three-quarter rear view moving through an open doorway, looking back and waving, bag over shoulder.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-bye.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "i-get-dressed",
+      "severity": "improve",
+      "reason": "Pulling an existing sleeve is a weak cue for getting dressed rather than stretching or adjusting clothes.",
+      "brief": "Learner visibly putting on a jacket, with one arm in and one arm entering the other sleeve.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-i-get-dressed.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-stogas",
+      "severity": "improve",
+      "reason": "The image shows an entire house without indicating which part means roof.",
+      "brief": "Highlight or point to the roof while muting the walls, consistent with the body-part pointer convention.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-stogas.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "shampoo",
+      "severity": "improve",
+      "reason": "Unlabelled flip-top bottle and bubbles can mean soap or shower gel as easily as shampoo.",
+      "brief": "Bottle beside a small head/hair-washing cue. Do not rely on text on the bottle.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-shampoo.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "bedroom",
+      "severity": "context",
+      "words": [
+        "la cama"
+      ],
+      "reason": "The bedroom scene includes a bed, nightstand and lamp; it is a room illustration rather than an isolated bed noun.",
+      "brief": "Prefer an isolated bed for la cama. Keep the room composition for bedroom.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-bedroom.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "table",
+      "severity": "context",
+      "words": [
+        "Una mesa para dos"
+      ],
+      "reason": "A bare table identifies the object but gives no cue for two diners.",
+      "brief": "Table set for exactly two with two visible chairs or place settings; retain table for the noun.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-table.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "es-city-block",
+      "severity": "context",
+      "words": [
+        "dos cuadras"
+      ],
+      "reason": "Only one city block is shown; the phrase specifies two.",
+      "brief": "Two adjacent blocks with a highlighted route along both. Keep the single-block image for la cuadra.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-es-city-block.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "es-hotel-room",
+      "severity": "context",
+      "words": [
+        "Una habitación para dos"
+      ],
+      "reason": "A single bed with one visible pillow does not establish a room for two guests.",
+      "brief": "Two single beds or one unmistakable double bed with two pillows and two guest places.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-es-hotel-room.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "money",
+      "severity": "context",
+      "words": [
+        "Cuesta treinta pesos"
+      ],
+      "reason": "Generic banknotes and coins carry neither thirty nor a peso-specific price.",
+      "brief": "A price tag with exact 30 and an app-rendered peso price. Keep generic money for dinero; exact numerals are better rendered by code.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-money.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "cake",
+      "severity": "context",
+      "words": [
+        "Mi cumpleaños es en mayo"
+      ],
+      "reason": "Cake suggests a birthday but omits the distinguishing month, May.",
+      "brief": "Birthday cake with an app-rendered May calendar. Do not make an unlabelled cake an answer image for identifying months.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-cake.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "books",
+      "severity": "context",
+      "words": [
+        "Los libros son nuevos"
+      ],
+      "reason": "Books are shown, but there is no clear new-versus-old cue.",
+      "brief": "Use intact new books with a clear sparkle cue, distinct from worn books if this adjective is tested visually.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-books.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "bird",
+      "severity": "context",
+      "words": [
+        "El pájaro canta"
+      ],
+      "reason": "The bird has no clear song or musical-note cue.",
+      "brief": "Same bird with an open singing beak and a few large musical notes. Retain plain bird for the noun.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-bird.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "house",
+      "severity": "context",
+      "words": [
+        "Mi casa es pequeña"
+      ],
+      "reason": "One isolated house supplies no size comparison; it supports house but does not establish small.",
+      "brief": "Small house beside a larger neutral house if small is the visual target. Otherwise retain as contextual support with text.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-house.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "i-am-from-america",
+      "severity": "runtime-gap",
+      "reason": "The US flag matches the default literal text. index.html excludes country sentences from ART_AS aliasing; a changed country normally loses this illustration rather than retaining the wrong US flag. The earlier rejection's always-shows-US claim is inaccurate.",
+      "brief": "A generic learner-to-globe/map-pin scene can cover personalized origin, but it must be connected to the country-personalization path explicitly, not just overwrite this file.",
+      "resolved": true,
+      "resolution": "Personalized origin sentences now resolve to a neutral learner/globe/pin diagram in both languages. Browser checks passed with Canada and Japan; the literal US mapping remains valid for the unpersonalized source phrase."
+    },
+    {
+      "asset": "my-name-is-tomas",
+      "severity": "runtime-gap",
+      "reason": "Name changes depend on language-specific personalization and alias handling. A static inventory cannot certify every personalized variant keeps its picture.",
+      "brief": "Validate both languages with changed names and learner genders. Neutral blank name badge is suitable; avoid printing Tomas in artwork.",
+      "resolved": true,
+      "resolution": "Neutral name-badge diagram mapped to the introduction phrases and retained through the actual personalization path. Browser checks passed with Ava in both languages."
+    },
+    {
+      "asset": "i-am-a-teacher-v3",
+      "severity": "context",
+      "reason": "The teacher is correctly shown teaching; personalized gender or job changes require their own runtime check. Do not treat a male teacher as the universal picture for all jobs.",
+      "brief": "Retain this for the male teacher. Verify female and other-job variants resolve to the matching existing profession picture or remain text-only.",
+      "resolved": true,
+      "resolution": "Female teacher and Lithuanian female student forms use existing matching artwork. Changed job sentences without an exact suitable illustration stay text-only instead of inheriting the student or male-teacher picture. Browser checks cover female teachers in both languages and actual Lithuanian teacher/engineer job substitutions."
+    },
+    {
+      "asset": "sister",
+      "severity": "context",
+      "reason": "A heart and two young adults can read as a couple; sibling relationship is not established visually.",
+      "brief": "Use a simple shared-parent family-tree cue with both siblings highlighted. Keep the same family cue for brother and cousins.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-sister-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "brother",
+      "severity": "context",
+      "reason": "Two friendly adults do not establish brotherhood independently of the label.",
+      "brief": "A shared-parent sibling cue; retain this illustration only as labelled contextual support until replaced.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-brother-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-teta",
+      "severity": "context",
+      "reason": "A woman with a gift could be any visitor; aunt relationship is absent.",
+      "brief": "Compact family-tree cue linking the highlighted woman as a parent's sister.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-teta-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-dede",
+      "severity": "context",
+      "reason": "Fishing equipment communicates a fisherman more directly than uncle.",
+      "brief": "Compact family-tree cue linking the highlighted man as a parent's brother; omit occupational equipment.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-dede-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-pusbrolis",
+      "severity": "context",
+      "reason": "A man's portrait does not distinguish a male cousin from another male relative or friend.",
+      "brief": "Shared-grandparent family-tree cue with the male cousin highlighted.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-pusbrolis-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a1x-pussesere",
+      "severity": "context",
+      "reason": "A woman's portrait does not distinguish a female cousin from another female relative or friend.",
+      "brief": "Shared-grandparent family-tree cue with the female cousin highlighted.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a1x-pussesere-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "wife",
+      "severity": "context",
+      "reason": "Wedding rings suggest marriage, but the image highlights a couple rather than identifying which person is the wife.",
+      "brief": "Point to or highlight the woman while retaining a small marriage-ring cue.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-wife.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "i-m-doing",
+      "severity": "context",
+      "reason": "The image depicts mixing food, a specific example of doing rather than the general verb.",
+      "brief": "Keep only as labelled support; do not ask the learner to infer the general verb from this picture among cooking alternatives.",
+      "resolved": true,
+      "resolution": "The mixing illustration remains only on the translated introduction card as an example of doing. Small answer/review thumbnails suppress it, so it is not presented as a unique visual definition of the general verb. Actual renderer checks passed for both sizes."
+    },
+    {
+      "asset": "please-help",
+      "severity": "context",
+      "reason": "Helping carry a box supports the help concept but cannot distinguish requesting help from offering it. It is reused for both in Spanish.",
+      "brief": "For visual sentence questions, separate requester pointing to their own difficulty from helper offering assistance.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-please-help.webp integrated for the specific affected mappings; unrelated noun uses retained. Separate helper-offering and learner-requesting scenes are mapped by who asks the question."
+    },
+    {
+      "asset": "breakfast",
+      "severity": "context",
+      "words": [
+        "¿Incluye desayuno?"
+      ],
+      "reason": "Breakfast is visible, but inclusion in a booking or price is absent.",
+      "brief": "Keep as supporting context; if tested with pictures, use a booking card with breakfast included and excluded alternatives.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-breakfast-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "milk",
+      "severity": "context",
+      "words": [
+        "¿Tiene leche?"
+      ],
+      "reason": "A milk carton identifies milk but cannot show whether a different dish contains it.",
+      "brief": "Use as ingredient support only. A dish-to-milk ingredient question needs a separate visual or explicit text.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-milk.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "child",
+      "severity": "context",
+      "words": [
+        "¿Tienes hijos?"
+      ],
+      "reason": "One child alone is not a question about having children or a family relationship.",
+      "brief": "Use as labelled child vocabulary support; do not treat it as a complete visual for the question.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-child.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "a-tall-man",
+      "severity": "context",
+      "words": [
+        "Mi hermano es alto"
+      ],
+      "reason": "The height comparison is clear, but brotherhood is absent; suitable support for tall, not a complete family statement.",
+      "brief": "Keep if the task tests tall. Add a sibling cue only when family identity is visually tested.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-a-tall-man-v2.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "es-dog",
+      "severity": "context",
+      "words": [
+        "El perro es pequeño"
+      ],
+      "reason": "The puppy supports dog but has no scale comparison to establish small.",
+      "brief": "Use alongside a larger dog or reference object when small is the tested visual detail.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-es-dog.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    },
+    {
+      "asset": "es-wake-up",
+      "severity": "context",
+      "words": [
+        "Me levanto temprano",
+        "¿Te levantas temprano?"
+      ],
+      "reason": "Waking/getting up is clear, but the tiny clock does not reliably communicate early at card size.",
+      "brief": "Use a prominent early clock and dawn cue only when early is the visual target.",
+      "resolved": true,
+      "resolution": "Reviewed replacement pics/art-v2/semantic-es-wake-up.webp integrated for the specific affected mappings; unrelated noun uses retained."
+    }
+  ],
+  "interactive": [
+    {
+      "id": "cafe-drink-contrast",
+      "priority": "high",
+      "files": [
+        "adventures.js",
+        "activities.js"
+      ],
+      "finding": "The writing adventure reuses the weak coffee/tea pair; reading/listening practice has text-only drink choices.",
+      "action": "Replace the drink pair first. Add both neutral drink thumbnails to choices equally, without marking which one is correct. Keep target-language text and accessible button names.",
+      "resolved": true,
+      "resolution": "Distinct reviewed espresso and tea-glass images are connected to the words and both drink choices in the reading/listening practice and writing adventure. Both choices receive equal thumbnails and retain accessible text names. Both-language real reading/listening checks passed."
+    },
+    {
+      "id": "cafe-state",
+      "priority": "high",
+      "files": [
+        "adventures.js"
+      ],
+      "finding": "The same host portrait appears at every stage. Before choosing a drink, Your table already shows coffee because the empty choice falls through to coffee. Object buttons are appended only during drink choice, so later bill/payment states have no corresponding object.",
+      "action": "Show an empty table before selection, the selected drink after ordering, an empty cup after finishing, then a bill and payment terminal at the relevant stage. Existing menu and portrait are reusable; do not show an order as already delivered before the learner orders.",
+      "resolved": true,
+      "resolution": "Empty table before ordering, selected drink as a choice rather than a delivered order, empty coffee cup or tea glass after finishing, then isolated bill and terminal at the payment stage. Resume, independent/assisted completion, 320px layout and offline image reload passed without changing course state."
+    },
+    {
+      "id": "cv1-seat",
+      "priority": "high",
+      "files": [
+        "lang/lt.js",
+        "index.html",
+        "docs/art-direction/unit1-art-new-requests.json"
+      ],
+      "finding": "The cv1 story describes a crowded café and one free seat. Current conversation renderer shows portraits and dialogue; no seat/counter hotspot implementation or asset reference was found. Both requested images are absent.",
+      "action": "Keep free-seat and cafe-counter as planned scene assets. Connect them only when the interactive scene is implemented. The free seat belongs beside Rūta, who has coffee; the waiter in cv1 is Darius, so do not automatically use Danutė as the host in this scene.",
+      "resolved": true,
+      "resolution": "Reviewed empty-seat and crowded-counter assets are connected to an optional Look around the café panel in the actual cv1 conversation. Each button gives scene feedback; no dialogue or saved conversation IDs changed. The empty-seat image contains no substitute character. Actual replay and button checks passed."
+    },
+    {
+      "id": "directions-map",
+      "priority": "medium",
+      "files": [
+        "topic-practice.js",
+        "foundation-practice.js",
+        "unit-application.js"
+      ],
+      "finding": "Directions use a labelled 3×3 grid: library west, shop east, park north, learner facing north.",
+      "action": "Retain this exact geometry. Existing library/shop/park icons can supplement labels; use a code-rendered north arrow and paths so left/right cannot be reversed by generated artwork. Never add a second map that conflicts with the accessible description.",
+      "resolved": true,
+      "resolution": "Existing park, library and shop illustrations supplement the labelled map in all three runners. North/left/right geometry is preserved in code. Actual mobile directions practice verified all three image positions and no overflow."
+    },
+    {
+      "id": "practical-source-visuals",
+      "priority": "medium",
+      "files": [
+        "topic-content.js",
+        "topic-practice.js",
+        "unit-application-content.js",
+        "unit-application.js"
+      ],
+      "finding": "Prices, times, family, rooms and shopping sources are mostly rendered as text panels rather than illustrated documents/scenes.",
+      "action": "Use code-rendered exact price tags, calendars and clock faces; use matched family diagrams and room layouts where they are the source of information. Put decorative illustrations outside the answer-bearing reading/listening area so an image does not disclose an answer being tested from text or audio.",
+      "resolved": true,
+      "resolution": "Neutral topic illustrations appear on the practice briefings for home, family, shopping, prices, schedules and messages. Exact source text and amounts remain app-rendered, and task answer panels receive no answer-revealing decoration. The directions map is the illustrated source where geography is the task."
+    }
+  ],
+  "new_interactive_asset_briefs": [
+    {
+      "id": "free-seat",
+      "status": "integrated-and-verified",
+      "brief": "One visibly empty wooden café chair pulled out from a small round table; a coffee cup at the neighbouring occupied place, suitable for Rūta's cv1 scene. Transparent background; complete silhouette; no text.",
+      "asset": "pics/art-v2/free-seat-v2.webp"
+    },
+    {
+      "id": "cafe-counter",
+      "status": "integrated-and-verified",
+      "brief": "Café counter with till, pastries and a queue of three people seen from behind; unmistakably busy. Transparent background; broad shapes readable at mobile size; no text.",
+      "asset": "pics/art-v2/cafe-counter.webp"
+    },
+    {
+      "id": "cafe-empty-table",
+      "status": "integrated-and-verified",
+      "brief": "Small café table with an empty place setting and no drink, food or bill; neutral pre-choice state. Transparent background.",
+      "asset": "pics/art-v2/cafe-empty-table.webp"
+    },
+    {
+      "id": "cafe-empty-cup",
+      "status": "integrated-and-verified",
+      "brief": "The selected café drink's cup after use: visibly empty, on its saucer, without steam. Use separate coffee/tea variants if their vessel silhouettes differ.",
+      "asset": "pics/art-v2/cafe-empty-cup.webp",
+      "tea_variant": "pics/art-v2/a1x-stikline.webp"
+    },
+    {
+      "id": "cafe-bill",
+      "status": "integrated-and-verified",
+      "brief": "Standalone café bill on a small tray. Blank broad receipt lines; exact totals supplied by the app if needed. No person already paying.",
+      "asset": "pics/art-v2/cafe-bill-v2.webp"
+    },
+    {
+      "id": "cafe-payment-terminal",
+      "status": "integrated-and-verified",
+      "brief": "Standalone card terminal with an obvious contactless symbol and separate bank card. Neutral waiting state, no success tick before the learner asks to pay.",
+      "asset": "pics/art-v2/cafe-payment-terminal.webp"
+    }
+  ],
+  "validation": [
+    "output/semantic-fixes/verification.json",
+    "output/adventure/verification.json",
+    "output/a1-practice/verification.json"
+  ]
+}

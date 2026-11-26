@@ -1,0 +1,21 @@
+{
+  "id": "semantic-books",
+  "finding": "books",
+  "words": [
+    "Los libros son nuevos"
+  ],
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Use intact new books with a clear sparkle cue, distinct from worn books if this adjective is tested visually. Only one coherent illustration, no alternative variants, no before/after pair.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-books.png",
+  "asset": "pics/art-v2/semantic-books.webp",
+  "bytes": 31636,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+  "reviewed_utc": "2026-11-26T20:31:06.478050+00:00",
+  "reviewed_sha256": "e6211b5f0b50dcf16ab82f2a3113b7291d409aaba71e98fb973fc5a220e35a67"
+}

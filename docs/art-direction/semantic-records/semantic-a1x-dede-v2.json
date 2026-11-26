@@ -1,0 +1,16 @@
+{
+  "id": "semantic-a1x-dede-v2",
+  "finding": "a1x-dede",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-dede",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-dede-v2.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-a1x-dede-v2.png",
+  "asset": "pics/art-v2/semantic-a1x-dede-v2.webp",
+  "bytes": 9764,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.048670+00:00",
+  "reviewed_sha256": "53ca3e1b8baea4cc40ed364c6ad649762da09cd1a990648e38f40cb270eefc2c"
+}

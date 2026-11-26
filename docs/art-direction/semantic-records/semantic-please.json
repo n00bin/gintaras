@@ -1,0 +1,20 @@
+{
+  "id": "semantic-please",
+  "finding": "please",
+  "words": null,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. The learner is Tomas (short brown wavy hair, amber jumper, navy trousers). The host is Danutė (older white bob, round glasses, coral hoodie). Only these two people. Subject: Learner politely requests a cake still held by the host, with a hopeful expression and open requesting hand. No completed handover. Use a separate invitation gesture for Prašau in the free-seat conversation.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png",
+    "docs/art-direction/lt-danute-character-sheet.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-please.png",
+  "asset": "pics/art-v2/semantic-please.webp",
+  "bytes": 49432,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected actual exports at 112px on light and 56px on dark backgrounds. Verified requested counts, family branches and target markers, exact clock hands and amounts, drink contrast, relevant gestures, sunset and food/animal separation. These diagrams supplement the accompanying word/phrase labels.",
+  "reviewed_utc": "2026-11-26T20:25:12.056181+00:00",
+  "reviewed_sha256": "b1516fec38940ea86d3113cb8b8ebbd6f5c80b9d247455e0b0b1b8664e31de52"
+}

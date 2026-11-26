@@ -34,7 +34,7 @@ def main():
         canvas.paste(image, ((512-image.width)//2, (512-image.height)//2))
         canvas.save(export, 'WEBP', quality=85, alpha_quality=100, method=4, exact=True)
     record.update(master=master.relative_to(ROOT).as_posix(), asset=export.relative_to(ROOT).as_posix(),
-                  bytes=export.stat().st_size, generator='built-in image_gen', status='exported')
+                  bytes=export.stat().st_size, generator=record.get('generator','built-in image_gen'), status='exported')
     # No machine-specific source path is needed after preserving the original.
     record.pop('source', None)
     args.record.write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

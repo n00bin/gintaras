@@ -1,0 +1,13 @@
+{
+  "id": "semantic-a1x-dede",
+  "finding": "a1x-dede",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for a1x-dede",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-a1x-dede.svg",
+  "review_status": "needs-revision",
+  "master": "docs/art-direction/masters/semantic-a1x-dede.png",
+  "asset": "pics/art-v2/semantic-a1x-dede.webp",
+  "bytes": 9452,
+  "status": "exported",
+  "replacement": "semantic-a1x-dede-v2"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "semantic-breakfast-v2",
+  "finding": "breakfast",
+  "generator": "deterministic editable SVG diagram",
+  "prompt": "Exact diagram for breakfast",
+  "native_source": "docs/art-direction/semantic-diagrams/semantic-breakfast-v2.svg",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-breakfast-v2.png",
+  "asset": "pics/art-v2/semantic-breakfast-v2.webp",
+  "bytes": 14468,
+  "status": "exported",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+  "reviewed_utc": "2026-11-26T20:31:06.478050+00:00",
+  "reviewed_sha256": "56a73d1c00265fe1a561f8fab87be653a6fff67f27512935b83e90ba3828dc9e"
+}

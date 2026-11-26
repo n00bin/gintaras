@@ -43,6 +43,8 @@ def main():
         page.evaluate("t=>{const i=ITEMS.find(i=>i.lt===t);S.items[i.id]={seen:true,intro:true};save()}",required[-1])
         page.reload()
         assert 'Your mission' in dialog.inner_text(), page.evaluate("ts=>ts.map(t=>{const i=ITEMS.find(i=>i.lt===t);return [t,i?.id,i&&peek(i.id),i&&taught(i)]})",required)
+        assert dialog.locator('img[src="pics/art-v2/cafe-empty-table.webp"]').count()==1
+        assert dialog.locator('img[src="pics/art-v2/semantic-coffee.webp"]').count()==0
         page.evaluate('S.sound=false;save()')
         before = page.evaluate('JSON.stringify(S)')
         assert page.evaluate("['Aš noriu kavos','Aš noriu arbatos','Sąskaitą, prašau'].every(t=>ITEMS.some(i=>i.lt===t))")
@@ -53,6 +55,8 @@ def main():
         dialog.get_by_role('button', name='Menu', exact=True).click()
         assert 'kava' in dialog.locator('[role=status]').inner_text()
         dialog.get_by_role('button', name='arbata · tea').click()
+        assert dialog.locator('img[src="pics/art-v2/semantic-tea.webp"]').count()==1
+        assert dialog.locator('img[src="pics/art-v2/cafe-empty-table.webp"]').count()==1
         dialog.get_by_role('textbox').fill('hello')
         dialog.get_by_role('button', name='Send reply').click()
         assert 'Try again' in dialog.locator('[role=status]').inner_text()
@@ -63,8 +67,12 @@ def main():
         dialog.get_by_role('textbox').fill('Arbatos, prašau')
         dialog.get_by_role('textbox').press('Enter')
         assert 'Ask for the bill' in dialog.inner_text()
+        assert dialog.locator('img[src="pics/art-v2/a1x-stikline.webp"]').count()==1
+        assert dialog.locator('img[src="pics/art-v2/cafe-bill-v2.webp"]').count()==0
         dialog.get_by_role('textbox').fill('Sąskaitą, prašau')
         dialog.get_by_role('textbox').press('Enter')
+        assert dialog.locator('img[src="pics/art-v2/cafe-bill-v2.webp"]').count()==1
+        assert dialog.locator('img[src="pics/art-v2/cafe-payment-terminal.webp"]').count()==1
         dialog.get_by_role('textbox').fill('Ar galiu mokėti kortele?')
         dialog.get_by_role('button', name='Send reply').click()
         assert 'You did it on your own!' in dialog.inner_text()
@@ -93,16 +101,18 @@ def main():
         page.reload()
         page.locator('#cafe-adventure').wait_for(state='visible')
         assert 'Café adventure complete' in page.locator('#cafe-adventure').inner_text()
-        assert page.locator('#cafe-adventure img').evaluate('(i)=>i.complete&&i.naturalWidth>0')
+        assert page.locator('#cafe-adventure img').evaluate_all('(imgs)=>imgs.length>0&&imgs.every(i=>i.complete&&i.naturalWidth>0)')
         context.set_offline(False)
         page.goto(url+'?preview=0&lang=lt')
         page.wait_for_function('window.gintarasReady')
-        assert page.locator('#cafe-adventure').count()==0
+        # The current public course enables COURSE_V2; the café follows that flag.
+        assert page.locator('#cafe-adventure').count()==(1 if page.evaluate('COURSE_V2') else 0)
+        assert page.locator('#cafe-adventure[open]').count()==0
         page.goto(url+'?preview=1&lang=es')
         page.wait_for_function('window.gintarasReady')
         assert page.locator('#cafe-adventure').count()==0
         assert not errors, errors
-        (OUT/'verification.json').write_text(json.dumps({'passed':True,'checks':['fresh learner locked','seen and lesson flags do not bypass prerequisites','one missing phrase locks direct link','all taught phrases unlock','coffee and tea','ordered activity tasks','typed alternatives','wrong reply feedback','resume','independent vs assisted','FSRS and course state unchanged','320px layout','offline reload and art','public and Spanish isolation'],'pageErrors':errors},indent=2))
+        (OUT/'verification.json').write_text(json.dumps({'passed':True,'checks':['fresh learner locked','seen and lesson flags do not bypass prerequisites','one missing phrase locks direct link','all taught phrases unlock','distinct coffee and tea images','empty table before order','chosen drink before ordering','finished tea glass','bill and terminal only after bill request','ordered activity tasks','typed alternatives','wrong reply feedback','resume','independent vs assisted','FSRS and course state unchanged','320px layout','offline reload and all visible art','public route follows COURSE_V2','Spanish isolation'],'pageErrors':errors},indent=2))
         browser.close()
     server.shutdown()
     print('Café adventure browser checks passed.')

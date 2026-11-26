@@ -1,0 +1,19 @@
+{
+  "id": "semantic-a1x-stogas",
+  "finding": "a1x-stogas",
+  "words": null,
+  "prompt": "Use case: stylized-concept. Create ONE production vocabulary illustration for Wordami. Reference 1 is the authoritative STYLE reference only, not a board to reproduce. Rounded geometric flat cartoon, large expressive oval eyes when people appear, chunky rounded hands, solid turquoise/amber/coral/navy/cream colours, very little detail, nearly no outlines. No gradients, texture, cast shadows, bloom, glow, fog or vignette. One complete centered scene on a square TRUE TRANSPARENT background with generous empty margins, opaque object interiors and broad silhouettes readable at 56 pixels. No words, letters, labels, logos or watermarks. Do not produce a grid, board or alternative variants. Subject: Highlight or point to the roof while muting the walls, consistent with the body-part pointer convention.",
+  "references": [
+    "docs/art-direction/approved-style-reference.png"
+  ],
+  "status": "exported",
+  "review_status": "approved",
+  "master": "docs/art-direction/masters/semantic-a1x-stogas.png",
+  "asset": "pics/art-v2/semantic-a1x-stogas.webp",
+  "bytes": 30158,
+  "generator": "built-in image_gen",
+  "reviewer": "assistant visual review",
+  "review_reason": "Inspected exports at 112px/light and 56px/dark. Confirmed pointer targets, single sleeping cat, bed versus room, two place settings/pillows, singing bird, new-book cue, milk question, child question, request/offer roles, clothing action, wedding ring, empty cup/table and unoccupied café seat. Rejected variants remain preserved.",
+  "reviewed_utc": "2026-11-26T20:31:06.476049+00:00",
+  "reviewed_sha256": "7febf4a369d6f1f4c71a69efefd52b64c536b0c876d3a631f806b033901c547c"
+}
