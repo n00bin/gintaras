@@ -8,7 +8,7 @@ const placements=WordamiUnitApplicationCatalogue.map(e=>{
  const lessons=unit.lessons.filter(l=>!l.speak),source=definition.requiredPhrases.map(t=>ITEMS.find(i=>i.lt===t));
  return {activityId:e.id,title:e.title,afterUnit:unit.id,afterLesson:lessons[lessons.length-1].id,sourceCardIds:source.map(i=>i.id),sourceLessonIds:[...new Set(source.map(i=>i.lesson.id))]};
 });
-const key=id=>'unit-skill:'+id,entries=uid=>placements.filter(e=>e.afterUnit===uid);
+const key=id=>'unit-skill:'+id,entries=uid=>UNIT_BY[uid]?.finale?[]:placements.filter(e=>e.afterUnit===uid);
 const pending=()=>S.unitSkillTestout;
 function canAssess(id){const p=pending();return !!p&&p.language===LANG.code&&p.units.some(uid=>entries(uid).some(e=>id===e.activityId||id===e.activityId+'-speaking'));}
 function canAssessPhrase(text){return placements.some(e=>canAssess(e.activityId)&&core.definition(e.activityId).requiredPhrases.includes(text));}
@@ -30,7 +30,7 @@ function update(){if(updating)return;updating=true;try{
  }
  if(changed)save();renderTree();
 }finally{updating=false;}}
-window.WordamiUnitPlacement=Object.freeze(placements.map(e=>Object.freeze(e)));
+window.WordamiUnitPlacement=Object.freeze(placements.filter(e=>!UNIT_BY[e.afterUnit].finale).map(e=>Object.freeze(e)));
 window.WordamiUnitSkills=Object.freeze({done,summary,canAssess,canAssessPhrase,beginTestout,continueTestout,nextPending,entries:uid=>entries(uid).map(e=>({...e}))});
 for(const unit of COURSE)core.registerStudy('unit-application-teaching.'+unit.id,()=>unit.lessons.every(l=>l.speak||crowns(l.id)>0)||entries(unit.id).some(e=>canAssess(e.activityId)));
 window.addEventListener('wordami:practice',update);update();

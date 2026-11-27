@@ -212,6 +212,35 @@ div.done:not(.unit){position:relative;z-index:2}
 .setting.spk-set{flex-wrap:wrap}
 #settings #spk-chips{flex-wrap:wrap;justify-content:flex-start}
 .lesson-row.mini-cv{flex-wrap:wrap;border-style:dashed}
+.lesson-row.mini-cv.finale{border:2px solid var(--amber,#FFB300);background:#FFF6DC}
+.unit-head .promise{display:block;font-size:15px;line-height:1.4;margin:6px 0 8px;opacity:.95;max-width:34em}
+.proof{margin:6px 0 2px;padding:12px 14px;border-radius:16px;display:flex;gap:12px;align-items:center;font-size:15px;line-height:1.35;background:var(--surface-2,#F4EFE4);border:2px dashed #D8CFBB;color:var(--muted,#6B7280)}
+.proof b{display:block;color:var(--ink,#1B2540)}
+.proof .tick{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;border:2px solid #C9BFA8;color:transparent}
+.proof.got{background:#E3F6EC;border:2px solid #2E9E6B;color:#14532D}.proof.got b{color:#14532D}.proof.got .tick{background:#2E9E6B;border-color:#2E9E6B;color:#fff}
+.proofnote{margin:8px 2px 2px;font-size:14px}
+.lv-goals{position:sticky;top:0;z-index:3;display:flex;flex-wrap:nowrap;align-items:center;gap:5px;padding:6px 0 8px;background:var(--bg);box-shadow:0 -40px 0 var(--bg);clip-path:inset(-40px 0 0 0)}
+.lv-goals span{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;white-space:nowrap;flex:0 0 auto;border-radius:999px;font-size:13px;font-weight:700;border:2px solid var(--line);background:var(--surface)}
+.lv-goals span.next{border-color:var(--amber);background:#FFF6DC;color:#1B2540}.lv-goals span.got{border-color:#2E9E6B;background:#E3F6EC;color:#14532D}
+.lv-panel{background:var(--pine-soft);border-radius:22px;padding:14px;margin:10px 0;text-align:center}
+.lv-panel .lv-pics{display:flex;gap:12px;align-items:center;justify-content:center}.lv-panel img{width:auto;max-width:46%;height:130px;object-fit:contain}
+.lv-beat .msg{max-width:100%;display:block;margin:12px auto 0;width:fit-content}.lv-beat .msg>:not(.bub){display:none}.lv-beat .msg .bub{position:relative;border-radius:18px;font-size:21px;font-weight:700;padding:10px 18px;text-align:center;border:2px solid var(--pine);background:var(--surface)}.lv-beat .msg .bub::before{content:'';position:absolute;top:-11px;left:50%;margin-left:-9px;width:18px;height:18px;background:var(--surface);border-left:2px solid var(--pine);border-top:2px solid var(--pine);transform:rotate(45deg)}.lv-beat .lv-pics img:only-child{height:170px;max-width:90%}.lv-beat p{font-size:15px;font-weight:600;opacity:.85}
+.lv-panel p{margin:6px 0 0;font-weight:700;font-size:17px;line-height:1.35}
+.lv-acts{display:flex;gap:10px;margin:10px 0 4px}.lv-act{flex:1;min-width:0;border:2px solid var(--line);background:var(--surface);border-radius:16px;padding:10px 6px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+.lv-act img{width:78px;height:78px;object-fit:contain;display:block;margin:0 auto 4px}.lv-act:disabled{opacity:.45}
+.ustr{margin:8px 0 2px;border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}
+.ustr-head{display:grid;gap:8px;width:100%;text-align:left;padding:14px 16px;background:none;border:0;color:inherit;font:inherit;cursor:pointer}
+.ustr-head b{font-family:var(--display);font-size:17px}.ustr-head small{color:var(--muted);font-size:13px;line-height:1.35}
+.ustr-list{list-style:none;margin:0;padding:0 16px 10px}.ustr-list li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+.ustr-list li span{color:var(--muted)}.ustr-list li b{color:var(--ink);margin-right:6px}.ustr-list em{flex:none;font-style:normal;font-size:13px;color:var(--muted);white-space:nowrap}
+.ustr-list em i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+body.calm #place-card,body.calm #view-learn>.goal,body.calm #btn-jump,body.calm #view-learn>.guidecard,body.calm #offready,body.calm #tree>.part:first-child{display:none!important}
+.done .finbox{background:#E3F6EC;border:2px solid #2E9E6B;border-radius:16px;padding:6px 16px 10px;margin:6px 0 4px;text-align:left;color:#14532D}
+.done .finbox>p{margin:10px 0 8px;font-size:15px}
+.done .finrow{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #BFE5CF}
+.done .finrow i{flex:none;width:28px;height:28px;border-radius:50%;background:#2E9E6B;color:#fff;display:grid;place-items:center;font-weight:800;font-style:normal}
+.done .finrow small{display:block;color:#3F6B55;font-size:13px}.done .finrow b{font-size:18px;color:#14532D}
+.done .big.finxp{display:inline;font:inherit;color:inherit;margin:0}
 .lesson-row.mini-cv.locked{opacity:.55;box-shadow:none}
 .mini-cv .mini-btns{display:flex;gap:6px;flex-basis:100%;padding-left:56px}
 .mini-cv .mini-btns .btn{width:auto;margin:0;padding:8px 12px;font-size:15px}
@@ -1127,9 +1156,9 @@ dialog#a1-practice ul > li > button{flex:0 0 auto;min-height:36px;padding:6px 12
 /* APP_RELEASE is the version people see (1.0, 1.0.1 for fixes, 1.1 for new features, 2.0 for big changes).
    APP_VERSION is the build number behind it: raise it by one with every release, together with SHELL in sw.js.
    Add each release to CHANGELOG.md. */
-const APP_RELEASE='3.133';
-const APP_VERSION=205;
-const WHATS_NEW='New short lessons now teach the words of each beginner practice unit before it opens, and the practice units use plainer words throughout.';
+const APP_RELEASE='3.134';
+const APP_VERSION=206;
+const WHATS_NEW='Unit 1 is rebuilt. Your first café conversation now plays like a picture book: every moment is drawn, with you at the table.';
 if(typeof document!=='undefined'){const v=document.getElementById('splash-v');if(v)v.textContent='Version '+APP_RELEASE;}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function norm(s){return s.toLowerCase().replace(/[.,!?;:"'¿¡]/g,'').replace(/\s+/g,' ').trim();}
@@ -1515,7 +1544,7 @@ function convSpoken(id){const c=(S.convs||{})[id];return !!(c&&c.speak);}
 const placed=id=>(S.placedTo||0)>STEPS.indexOf(id);
 /* (Round 11) speaking never locks anything: a conversation step is done once written, a unit once its lessons are (its Speak it
    lesson is extra practice, and so is Say it) */
-function stepDone(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.done(id);const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1);}
+function stepDone(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.done(id);const skills=!UNIT_BY[id]||!window.WordamiUnitSkills||WordamiUnitSkills.done(id);if(placed(id))return skills;return CONV_BY[id]?convDone(id):skills&&UNIT_BY[id].lessons.every(l=>l.speak||crowns(l.id)>=1)&&finOk(UNIT_BY[id]);}
 function stepStarted(id){if(window.WordamiCoursePath?.isUnit(id))return WordamiCoursePath.started(id);return CONV_BY[id]?!!(S.convs||{})[id]:UNIT_BY[id].lessons.some(l=>crowns(l.id)>0);}
 function stepUnlocked(id){const mc=CONV_BY[id];if(mc&&mc.after){const l=LESSON_BY[mc.after];return !l||crowns(l.id)>=1||!!(S.convs||{})[id]||placed(l.unit.id);}const k=STEPS.indexOf(id);return k<=0||stepDone(STEPS[k-1])||stepStarted(id);}
 function unitUnlocked(ui){return stepUnlocked(COURSE[ui].id);}
@@ -1674,23 +1703,39 @@ function renderTree(){const t=$('#tree');t.innerHTML='';let part=0,conv=0;
 /* Only the unit you are working on is open. Finished units fold up (tap the header to open them again);
    locked units show just their header, so the path stays short enough to scroll. */
 const OPEN_UNITS=new Set();
+/* A unit with a finale is done when its conversation is. Anyone who already has progress beyond the unit keeps it. */
+let _finG=null;
+function finOk(u){if(!u||!u.finale||convDone(u.finale.conv))return true;const n=Object.keys(S.lessons||{}).length;if(_finG&&_finG.u===u.id&&_finG.n===n)return _finG.v;
+  const mb=typeof MOVE_BITES==='undefined'?{}:MOVE_BITES,v=COURSE.slice(COURSE.indexOf(u)+1).some(x=>x.lessons.some(l=>!mb[l.id]&&!l.speak&&crowns(l.id)>0));_finG={u:u.id,n,v};return v;}
+/* The first unit is kept quiet: no sign-in, tour or extra cards until its finale is done. */
+const calmStart=()=>{const u=UNIT_BY[STEPS[0]];return !!(u&&u.finale&&!finOk(u)&&!stepDone(u.id));};window.calmStart=calmStart;
 /* (Round 8) the lesson a unit's tip and pattern come with, and whether it has been played */
 function tipLesson(u){return u.lessons.find(l=>l.id===u.tipAt)||u.lessons[0];}
 function tipSeen(u){return !!u&&crowns(tipLesson(u).id)>0;}
 function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.createElement('section');
-  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0)&&(!window.WordamiUnitSkills||WordamiUnitSkills.done(u.id));
+  const doneCount=u.lessons.filter(l=>crowns(l.id)>0).length;const done=u.lessons.every(l=>l.speak||crowns(l.id)>0)&&(!window.WordamiUnitSkills||WordamiUnitSkills.done(u.id))&&finOk(u);
   const open=unlocked&&(!done||OPEN_UNITS.has(u.id));
   el.className='unit'+(unlocked?'':' locked')+(open?'':' folded')+(done?' done':'');el.id='unit-'+u.id;
   const skillProgress=window.WordamiUnitSkills?.summary(u.id)||{required:0,complete:0};const nL=u.lessons.filter(l=>!l.speak).length+skillProgress.required,spk=u.lessons.find(l=>l.speak),spkTodo=spk&&crowns(spk.id)<1;
-  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo?' · Speak it to try':''):(u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+skillProgress.complete)+' of '+nL+' lessons done';
-  el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div><span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2><span class="sub">'+sub+'</span></div>'+
-    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
-    (canTestOut(u,ui)?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
+  const sub=!unlocked?nL+' lessons · finish '+esc(prevStepName(u.id))+' to unlock':done?'✓ All '+nL+' lessons done'+(spkTodo&&!u.finale?' · Speak it to try':''):(u.lessons.filter(l=>!l.speak&&crowns(l.id)>0).length+skillProgress.complete)+' of '+nL+' lessons done';
+  el.innerHTML='<div class="unit-head"'+(unlocked&&done?' role="button" tabindex="0" aria-expanded="'+open+'" data-fold':'')+'><div>'+(u.goal?'<span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.title)+(u.gloss?' ('+esc(u.gloss)+')':'')+'</span><h2>'+esc(u.goal)+'</h2>'+(open&&u.promise?'<span class="promise">'+esc(u.promise)+'</span>':''):'<span class="eyebrow">Unit '+(ui+1)+' · '+esc(u.en)+'</span><h2>'+esc(u.title)+'</h2>')+'<span class="sub">'+sub+'</span></div>'+
+    (unlocked?'<span class="head-btns"><button type="button" data-tip aria-expanded="false">Tip</button>'+(done?'<span class="chev" aria-hidden="true">'+(open?'▴':'▾')+'</span>':'')+'</span>':'')+'</div><div class="tip" hidden>'+(tipSeen(u)?u.tip:'<p class="note">This unit\'s tip comes with the lesson "'+esc(tipLesson(u).title)+'", once you have met the words in it.</p>')+'<button type="button" class="linkbtn" data-gram>📐 Grammar so far</button></div>'+(open?'<div class="lessons"></div>':'')+(unlocked&&done&&!u.finale&&bossItems(u).length>=5?'<button type="button" class="btn '+((S.checks||{})[u.id]?'ghost':'amber')+' boss" data-boss>⚔️ Unit check'+((S.checks||{})[u.id]?' · passed ✓ · play again':': beat the boss')+'</button>':'')+
+    (canTestOut(u,ui)&&!u.finale?'<button type="button" class="btn ghost boss" data-testout>⏩ Know this already? Test out</button>':'');
   const ls=el.querySelector('.lessons');
-  if(ls)u.lessons.forEach((l,li)=>{const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.dataset.lessonId=l.id;b.disabled=!ok;
+  if(ls)u.lessons.forEach((l,li)=>{if(l.speak&&u.finale)return;const c=crowns(l.id);const ok=lessonUnlocked(ui,li);const b=document.createElement('button');b.type='button';b.className='lesson-row'+(c>0?' did':'');b.dataset.lessonId=l.id;b.disabled=!ok;
     const seen=l.items.filter(i=>peek(i.id).seen).length;const pct=c>0?100:Math.round(seen/l.items.length*100);
-    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud · extra':loadLabel(l.items))+(c>=5?' · mastered':c>=1?' · '+crownGap(l)+' to strengthen':(S.lpart||{})[l.id]?' · part '+((S.lpart||{})[l.id]+1)+' of '+(lessonPart(l).part||{of:2}).of+' next':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
-    b.dataset.lessonId=l.id;b.onclick=()=>startLesson(l);ls.appendChild(b);const mc=MINI.find(c=>c.after===l.id);if(mc)ls.appendChild(miniRow(mc));});
+    b.innerHTML='<span class="ring" style="--p:'+pct+'"><b class="num">'+(c>0?'✓':li+1)+'</b></span><span class="t"><strong>'+esc(l.title)+'</strong><small>'+(l.speak?l.items.length+' phrases out loud · extra':loadLabel(l.items))+(c>=5?' · mastered':c>=1?(u.finale?' · done':' · '+crownGap(l)+' to strengthen'):(S.lpart||{})[l.id]?' · part '+((S.lpart||{})[l.id]+1)+' of '+(lessonPart(l).part||{of:2}).of+' next':'')+'</small></span><span class="crowns" aria-label="'+c+' of 5 crowns">'+[0,1,2,3,4].map(k=>CROWN.replace('<svg','<svg class="'+(k<c?'on':'')+'"')).join('')+'</span>';
+    b.dataset.lessonId=l.id;b.onclick=()=>startLesson(l);ls.appendChild(b);MINI.filter(c=>c.after===l.id).forEach(mc=>ls.appendChild(miniRow(mc,u.finale&&u.finale.conv===mc.id?u.finale:null)));});
+  /* The unit's own slice of Word strength (the same four levels as the Practice tab), word by word on a tap. */
+  if(ls&&u.finale){const its=u.lessons.filter(l=>!l.speak).flatMap(l=>l.items),names=['New','Learning','Known','Strong'],cols=['var(--bad)','var(--amber)','var(--pine)','var(--strong)'],
+      bk=i=>{const v=wlvl(i);return v<0?-1:v<=0?0:v<=2?1:v<=3?2:3;},n=[0,0,0,0];its.forEach(i=>{const k=bk(i);if(k>=0)n[k]++;});const met=n[0]+n[1]+n[2]+n[3],tot=Math.max(1,its.length),p=document.createElement('div');p.className='ustr';
+    p.innerHTML='<button type="button" class="ustr-head" aria-expanded="false"><b>Word strength · '+its.length+' words and phrases</b><span class="lvls">'+n.map((x,k)=>'<i style="width:'+(x/tot*100)+'%;background:'+cols[k]+'"></i>').join('')+'</span>'+
+      '<span class="legend">'+n.map((x,k)=>'<span><i style="background:'+cols[k]+'"></i>'+x+' '+names[k].toLowerCase()+'</span>').join('')+(its.length>met?'<span>'+(its.length-met)+' not met yet</span>':'')+'</span>'+
+      '<small>A word moves up when your reviews bring it back on a later day and you still know it. Tap to see each one.</small></button>'+
+      '<ul class="ustr-list" hidden>'+its.map(i=>{const k=bk(i);return '<li><span><b lang="'+LANG.code+'">'+esc(i.lt)+'</b> '+esc(i.en)+'</span><em><i style="background:'+(k<0?'var(--line)':cols[k])+'"></i>'+(k<0?'Not met':names[k])+'</em></li>';}).join('')+'</ul>';
+    p.querySelector('.ustr-head').onclick=e=>{const l=p.querySelector('.ustr-list');l.hidden=!l.hidden;e.currentTarget.setAttribute('aria-expanded',String(!l.hidden));};ls.appendChild(p);
+    const goals=CANDO.map(c=>Object.assign({c},canState(c))).filter(r=>r.its.some(i=>i.lesson.unit===u));
+    if(goals.length){const g=document.createElement('p');g.className='note proofnote';g.innerHTML='Once every word is strong: '+goals.map(r=>(r.got?'✓ ':'')+'<b>I can '+esc(r.c[2])+'</b>'+(r.got?'':' ('+r.m+' of '+r.n+(r.its.some(i=>i.lesson.unit!==u)?', some from later units':'')+')')).join(' · ')+'.';ls.appendChild(g);}}
   const bossBtn=el.querySelector('[data-boss]');if(bossBtn)bossBtn.onclick=e=>{e.stopPropagation();startBoss(u);};
   const toBtn=el.querySelector('[data-testout]');if(toBtn)toBtn.onclick=e=>{e.stopPropagation();startTestOut(u);};
   const gramBtn=el.querySelector('[data-gram]');if(gramBtn)gramBtn.onclick=e=>{e.stopPropagation();openGrammar(u);};
@@ -1701,8 +1746,8 @@ function unitBand(u,ui,t){const unlocked=unitUnlocked(ui);const el=document.crea
     fold.onclick=toggle;fold.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}};}
   t.appendChild(el);}
 /* (Round 11) a mini chat on the path: a row under its lesson, with Write it and Say it */
-function miniRow(c){const open=stepUnlocked(c.id),st=(S.convs||{})[c.id]||{},done=convDone(c.id),el=document.createElement('div');el.className='lesson-row mini-cv'+(done?' did':'')+(open?'':' locked');
-  el.innerHTML='<span class="ring" style="--p:'+(done?100:0)+'"><b class="num">'+(done?'✓':'💬')+'</b></span><span class="t"><strong>'+esc(c.title)+'</strong><small>'+(open?'A first short chat with '+esc(c.cast.map(p=>p.name).join(' and '))+', only words you know':'Opens after the lesson above')+'</small></span>'+
+function miniRow(c,fin){const open=stepUnlocked(c.id),st=(S.convs||{})[c.id]||{},done=convDone(c.id),el=document.createElement('div');el.className='lesson-row mini-cv'+(fin?' finale':'')+(done?' did':'')+(open?'':' locked');
+  el.innerHTML='<span class="ring" style="--p:'+(done?100:0)+'"><b class="num">'+(done?'✓':fin?'☕':'💬')+'</b></span><span class="t"><strong>'+esc(fin?fin.title:c.title)+'</strong><small>'+(fin?esc(fin.sub)+(done?' · done':open?', only words you know':' · opens after the lesson above'):open?'A first short chat with '+esc(c.cast.map(p=>p.name).join(' and '))+', only words you know':'Opens after the lesson above')+'</small></span>'+
     '<span class="mini-btns"><button type="button" class="btn '+(done?'ghost':'amber')+'" data-conv="text"'+(open?'':' disabled')+'>'+(done?'✓ ':'')+'✍️ Write</button><button type="button" class="btn ghost" data-conv="speak"'+(open&&done?'':' disabled')+'>'+(st.speak?'✓ ':'')+'🎙️ Say</button></span>';
   el.querySelectorAll('[data-conv]').forEach(b=>b.onclick=e=>{e.stopPropagation();startConv(c.id,b.dataset.conv);});return el;}
 function prevStepName(id){const p=STEPS[STEPS.indexOf(id)-1];return !p?'':window.WordamiCoursePath?.isUnit(p)?WordamiCoursePath.title(p):CONV_BY[p]?'the conversation "'+CONV_BY[p].title+'"':UNIT_BY[p].en;}
@@ -1936,6 +1981,9 @@ function renderBite(){rollDay();const d=dueNow().length;const l=nextLesson();con
     $('#bite-note').textContent=l.speak?l.items.length+' '+(l.items.every(i=>i.lt.includes(' '))?'phrases':'words and phrases')+' from this unit, said out loud. Nobody is listening but you.':isNew?(()=>{const nw=lessonPart(l).items.filter(i=>!taught(i)),n=nw.length;return n?loadLabel(nw).replace(/^(\d+) /,'$1 new ')+', one at a time. Meet each one, then write it and say it yourself.':'Words you have met already, written and said in new ways.';})():'You know these. A second pass makes them stick.';b.textContent='Start';b.onclick=()=>startLesson(l);
     if(d)$('#bite-note').textContent+=' '+d+(d===1?' word is':' words are')+' due as well: '+(d===1?'it waits':'they wait')+' for your next review (Practice).';}
   else{$('#bite-title').textContent='Course complete';$('#bite-note').textContent='Every lesson is mastered. Keep reviewing to hold on to it.';b.textContent='Review';b.onclick=()=>startReview(true);}
+  {const calm=calmStart();document.body.classList.toggle('calm',calm);
+    if(calm&&!sp&&l){const u0=UNIT_BY[STEPS[0]],c=l.conv&&CONV_BY[l.conv],LP=c?{}:lessonPart(l);$('#bite-eyebrow').textContent='Unit 1 · '+u0.goal;
+      if(!/^Review /.test($('#bite-title').textContent))$('#bite-title').textContent='Next: '+(c?(u0.finale.conv===c.id?u0.finale.title:c.title):l.title+(LP.part?' · part '+(LP.part.k+1)+' of '+LP.part.of:''));}}
   {const n=listenOwed().length;if(n&&canListen())$('#bite-note').textContent+=' '+Math.min(n,3)+' listening card'+(Math.min(n,3)===1?'':'s')+' you skipped '+(Math.min(n,3)===1?'is':'are')+' waiting too.';}
   {const n=laterList().length;if(n&&!speakOff())$('#bite-note').textContent+=' 🎙️ '+n+' to say later, on Practice.';}}
 /* Lessons and conversations added behind where you already are (the course keeps growing): listed so nobody misses them. */
@@ -2462,7 +2510,7 @@ function startReview(weak){if(!practised().length){toast('Finish a lesson first'
   if(pick.length<1)return nothingToReview();const now=Date.now(),dueN=pick.filter(i=>rec(i.id).due<=now).length;buildSession(pick,'review',null);if(!Q||Q.mode!=='review')return;Q.dueN=dueN;Q.waitN=Math.max(0,waitN);
   /* before a due review: how many come back, and which of them slipped before */
   if(Q&&!weak&&dueN){Q.queue.unshift({type:'revtip',n:dueN,due:dueNow().length,x:pick.length-dueN,wait:Q.waitN||0,miss:pick.filter(i=>rec(i.id).bad>0).slice(0,5).map(i=>i.lt)});renderStep();}}
-function quit(){if(!Q&&!CV)return;if(Q&&Q.mode==='check')setTimeout(()=>window.scrollTo(0,0),50);if(CV&&CV.quick){try{localStorage.removeItem(QCKEY);}catch(e){}setTimeout(gameBack,0);}else if(CV)cvDrop();try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(p){p.gone=1;localStorage.setItem(RESKEY,JSON.stringify(p));}}catch(e){}stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
+function quit(){if(!Q&&!CV)return;if(Q&&Q.mode==='check')setTimeout(()=>window.scrollTo(0,0),50);if(CV&&CV.quick){try{localStorage.removeItem(QCKEY);}catch(e){}setTimeout(gameBack,0);}else if(CV)cvDrop();try{const p=JSON.parse(localStorage.getItem(RESKEY)||'null');if(p){p.gone=1;localStorage.setItem(RESKEY,JSON.stringify(p));}}catch(e){}stopHearing();settleToday();save();if(CV)stopConv();Q=null;CV=null;$('#sheet').hidden=true;$('#sheet').classList.remove('conv');document.body.style.overflow='';renderAll();if(window.__showProof){const pid=window.__showProof;window.__showProof=null;setTimeout(()=>{const p=document.querySelector('#unit-'+pid+' .proof');if(p)p.scrollIntoView({block:'center'});},80);}if(!calmStart()&&!S.signinAsked&&(S.lessonsDone||0)>=1&&window.cloud&&cloud.enabled()&&!cloud.signedIn()&&navigator.onLine)openSignin('first');else{if(window.signInGate)window.signInGate();maybeTour();}window.dispatchEvent(new Event('gintaras:idle'));}
 
 function setFoot(state,title,ans){if(state&&Q)Q.footAt=Date.now();const f=$('#foot');f.classList.remove('good','bad','idk');if(state)f.classList.add(state);$('#fb-title').textContent=title||'';$('#fb-ans').innerHTML=ans||'';
   if(!state)stopAutoNext();
@@ -3382,7 +3430,7 @@ const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
 function clipLen(id,voice){const it=BYID[id];if(it&&it.au)id=it.au;const g=unitOf(id);const s=SMAP[voice]&&SMAP[voice][g]&&SMAP[voice][g][id];return s?s[1]:VOICE_BASE[voice]?clipLen(id,VOICE_BASE[voice]):1.2;}
 function later(fn,ms){const C=CV;if(!C)return;const t=setTimeout(()=>{if(CV===C)fn();},ms);C.timers.push(t);}
-function stopConv(){if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
+function stopConv(){lvHints(CV&&CV.c,false);if(!CV)return;CV.timers.forEach(clearTimeout);if(CV.rec){try{CV.rec.abort();}catch(e){}}if(active)active.pause();}
 /* Follows the chat to the newest message, but a tall reply card is shown from its top, so you see what to do first. */
 function chatScroll(){const box=$('#stage').parentElement,t=$('#turn');box.scrollTop=box.scrollHeight;
   const card=t&&t.firstElementChild;if(card){const r=card.getBoundingClientRect(),b=box.getBoundingClientRect();if(r.top<b.top+8)box.scrollTop-=b.top+8-r.top;}}
@@ -3419,11 +3467,12 @@ function startConv(id,mode,redo,res){const c=CONV_BY[id];if(!c||!stepUnlocked(id
   CV={c,mode,redo:!!redo,replay:mode==='speak'?!!st0.speak:!!(st0.done||st0.text),peeks:0,lines:redo?redo.flatMap(x=>x.prev?[x.prev,x.ln]:[x.ln]):c.lines.slice(),i:0,mistakes:0,turns:0,heard:0,lastWho:c.cast[0].name,played:[],reviewed:new Set(),stronger:new Set(),slipped:new Set(),startedAt:Date.now(),timers:[],rec:null};convState(id);
   const me=myVoice();preloadUnit(id,me);c.cast.forEach(p=>preloadUnit(id,castVoice(p)));
   $('#sheet').classList.add('conv');openSheet();$('#lcount').textContent='';$('#btn-idk').hidden=true;setFoot('');
-  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it'+(redo?' · the lines you skipped':''):'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong><small>'+esc(c.scene)+'</small><small class="tiny">Tap any message to see it in English. New words are underlined: tap one for its meaning.</small>'+
+  $('#stage').innerHTML='<div class="chat"><div class="scene">'+c.cast.map(p=>castFace(p,40)).join('')+'<div><span class="eyebrow">Conversation · '+(mode==='speak'?'🎙️ Say it'+(redo?' · the lines you skipped':''):'✍️ Write it')+'</span><strong>'+esc(c.title)+'</strong>'+(c.live?'':'<small>'+esc(c.scene)+'</small>')+'<small class="tiny">Tap any message to see it in English. New words are underlined: tap one for its meaning.</small>'+
     (()=>{const nw=chatNewWords(c);return nw.length&&!(redo)?'<details class="chat-new" open><summary>'+nw.length+' word'+(nw.length===1?'':'s')+' they use that you have not met yet</summary><p>'+nw.map(([t,g])=>'<b lang="'+LANG.code+'">'+esc(t)+'</b>'+(g?' = '+esc(enFlat(g)):'')).join(' · ')+'</p></details>':'';})()+
-    (mode==='speak'&&!redo&&canListen()&&convFiles(c).every(onHand)?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+cafeSceneHtml(c)+'</div></div><div class="msgs" id="msgs"></div><div id="turn"></div></div>';
+    (mode==='speak'&&!redo&&canListen()&&convFiles(c).every(onHand)?'<small class="tiny">'+(st0.speak?'This time everything they say is audio only.':'What they say in words you know well is audio only.')+' Listen and answer; the words show after.</small>':'')+'</div></div>'+(c.live?'<div class="lv-goals" id="lv-goals"></div>':'')+'<div class="msgs" id="msgs"></div><div id="turn"></div></div>';
   wireCafeScene($('#stage'));
   const btn=$('#btn-check');btn.disabled=true;btn.textContent=mode==='text'?'Waiting for a reply':'Listen first';btn.onclick=null;
+  lvHints(c,mode==='text'&&!redo);if(c.live&&!redo&&!(res&&res.i>0))$('#msgs').insertAdjacentHTML('beforeend',lvPanel(c.live.pics,c.live.open));
   if(res&&!redo){const K=cvKeys(c),ls=(res.lines||[]).map(k=>K.m.get(k));
     if(ls.length&&ls.every(Boolean)&&res.i<ls.length){Object.assign(CV,{lines:ls,i:res.i,mistakes:res.mistakes||0,turns:res.turns||0,heard:res.heard||0,peeks:res.peeks||0,nearly:res.nearly||0,startedAt:res.startedAt||Date.now(),
       played:(res.played||[]).map(([k,r,st])=>({ln:K.m.get(k),res:r,st})).filter(p=>p.ln)});cvHistory(CV,CV.i);}}
@@ -3434,20 +3483,34 @@ function readTime(t){return Math.min(4000,1100+t.length*45);}
 function cvWait(fn,ms){const C=CV;if(!C)return;let ran=false;const btn=$('#btn-check');
   const go=()=>{if(ran||CV!==C)return;ran=true;if(btn.dataset.skip){delete btn.dataset.skip;btn.onclick=null;btn.disabled=true;btn.classList.remove('ghost');btn.textContent=C.mode==='text'||C.quick?'Waiting for a reply':'Listen first';}fn();};
   later(go,ms);if(ms>2300)later(()=>{if(ran)return;btn.dataset.skip='1';btn.disabled=false;btn.textContent='Skip, I read it';btn.classList.add('ghost');btn.onclick=()=>go();},2000);}
-function convNext(){const C=CV;if(!C)return;cvKeep();C.bar=Math.max(C.bar||0,C.i/C.lines.length*100);$('#lbar').style.width=C.bar+'%';
+/* A live scene: face-to-face conversations show what is happening in picture panels, list the jobs to get done, and now and then ask you to do something. */
+const lvPic=n=>'<img src="pics/art-v2/'+n+'.webp" alt="">';
+function lvPanel(pics,text){return '<div class="lv-panel"><div class="lv-pics">'+(pics||[]).map(lvPic).join('')+'</div><p>'+esc(text)+'</p></div>';}
+function lvGoals(){const C=CV,b=$('#lv-goals');if(!C||!b||!C.c.live)return;const got=id=>{const ix=C.lines.findIndex(l=>l.id===id);return ix>=0&&ix<C.i;},gs=C.c.live.goals,nx=gs.findIndex(g=>!got(g[1]));
+  b.innerHTML=gs.map((g,k)=>'<span class="'+(got(g[1])?'got':k===nx?'next':'')+'" title="'+esc(g[0])+'">'+(got(g[1])?'✓':k===nx?'➜ '+esc(g[0]):'○')+'</span>').join('')+(nx<0?'<span class="got">All done</span>':'');}
+function lvHints(c,on){if(!c||!c.live)return;c.all.forEach(l=>{if(l.hintLv!==undefined){l.hint=l.hintLv;delete l.hintLv;}if(on&&c.live.say[l.id]){l.hintLv=l.hint;l.hint=c.live.say[l.id];}});}
+function convAct(ln){const C=CV,turn=$('#turn'),btn=$('#btn-check');
+  turn.innerHTML='<div class="turn"><div class="hint big">'+esc(ln.text)+'</div><div class="lv-acts">'+ln.opts.map((o,k)=>'<button type="button" class="lv-act" data-act="'+k+'" aria-label="'+esc(o.label||o.pic)+'">'+lvPic(o.pic)+(o.label?'<span>'+esc(o.label)+'</span>':'')+'</button>').join('')+'</div><p class="note" id="lv-msg" role="status"></p></div>';
+  btn.disabled=true;btn.textContent='Tap one';btn.classList.remove('ghost');btn.onclick=null;
+  turn.querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{const k=Number(b.dataset.act),o=ln.opts[k];if(k!==ln.ok){sfx('bad');b.disabled=true;$('#lv-msg').textContent=o.then;return;}
+    sfx('good');turn.innerHTML='';$('#msgs').insertAdjacentHTML('beforeend',lvPanel(o.pics||[o.pic],o.then));C.i++;C.prevP=null;chatScroll();later(convNext,700);});chatScroll();}
+function convNext(){const C=CV;if(!C)return;cvKeep();lvGoals();C.bar=Math.max(C.bar||0,C.i/C.lines.length*100);$('#lbar').style.width=C.bar+'%';
   if(C.i>=C.lines.length)return convFinish();
   const ln=C.lines[C.i];const msgs=$('#msgs');
   if(ln.kind==='c')return convChoice(ln);
-  if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend','<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;C.prevP=null;C.lastT=ln.text;chatScroll();return later(convNext,500);}
+  if(ln.kind==='a')return convAct(ln);
+  if(ln.kind==='t'){msgs.insertAdjacentHTML('beforeend',ln.pics?lvPanel(ln.pics,ln.text):'<div class="divider"><span>'+esc(ln.text)+'</span></div>');C.i++;C.prevP=null;C.lastT=ln.text;chatScroll();return later(convNext,ln.pics?2200:500);}
   if(ln.kind==='p'){const who=C.c.cast[ln.who];C.lastWho=who.name;C.prevP=ln;C.lastT=null;msgs.insertAdjacentHTML('beforeend','<div class="msg them typing" id="typing">'+castFace(who)+'<div class="bub"><i></i><i></i><i></i></div></div>');chatScroll();
     return later(()=>{$('#typing').remove();
       const wh=C.c.cast.length>1?'<small class="who">'+esc(who.name)+'</small>':'';
       msgs.insertAdjacentHTML('beforeend','<div class="msg them">'+castFace(who)+(earLine(ln)?
         '<div class="bub" role="button" tabindex="0" data-ear>'+wh+'<span class="speakrow">'+cvSpk(ln.id,castVoice(who))+cvSpk(ln.id,castVoice(who),true)+'</span><small class="earnote">Listen. The words show after you answer, or tap here to read them now.</small><span class="earlt" hidden>'+theirLine(ln,true)+'</span></div>':
         '<div class="bub" role="button" tabindex="0" data-tr>'+wh+theirLine(ln)+(C.mode==='text'?'':cvSpk(ln.id,castVoice(who)))+'</div>')+'</div>');chatScroll();
+      /* live scene: what they DO is shown, not hidden in the translation. A beat is a picture panel with their words in a speech bubble on it */
+      {const bt=C.c.live&&C.c.live.beats&&C.c.live.beats[ln.id];if(bt){const m=msgs.lastElementChild,p=document.createElement('div');p.className='lv-panel lv-beat';p.innerHTML='<div class="lv-pics">'+bt[0].map(lvPic).join('')+'</div><p>'+esc(bt[1])+'</p>';msgs.appendChild(p);p.appendChild(m);C.beat=1;chatScroll();}else C.beat=0;}
       {const nm=S.me&&S.me.name&&S.me.name.trim(),f=nm&&nameForms(nm,S.me.g);
         if(f&&f.voc!==f.nom&&!S.vocTip&&wordRe(f.voc).test(ln.lt)&&typeof VOC_TIP==='function'){S.vocTip=today();save();msgs.insertAdjacentHTML('beforeend','<div class="voc-tip">'+VOC_TIP(esc(f.nom),esc(f.voc))+'</div>');chatScroll();}}
-      C.i++;if(C.mode==='text'){sfx('pop');return cvWait(convNext,(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
+      C.i++;if(C.mode==='text'){sfx('pop');return cvWait(convNext,C.beat?2400:(C.lines[C.i]||{}).kind==='m'?500:readTime(ln.lt));}
       say(ln,false,castVoice(who));cvWait(convNext,canListen(ln,castVoice(who))?clipLen(ln.id,castVoice(who))*1000+300:(C.lines[C.i]||{}).kind==='m'?400:readTime(ln.lt));},C.mode==='text'?Math.min(1000,400+ln.lt.length*15):500);}
   convTurn(ln);}
 /* A choice: every option is right. The one you pick takes its place in the conversation, followed by
@@ -3721,6 +3784,8 @@ function promptHtml(ln,L){if(L==null){const k=cardLvl(ln.id);L=Math.max(replyLev
     if(CV&&allMet(ln.lt))L=Math.max(L,1);}
   if(L<=0)return '<div class="hint big">'+esc(ln.en)+'</div><div class="hint">'+esc(ln.hint)+'</div>';
   const en='<button type="button" class="linkbtn" data-prompt="en">Show the English</button><div class="hint" data-pen hidden>'+esc(ln.en)+'</div>';
+  /* live scene: the prompt is the situation, so the crutch is one "stuck" link that gives the plain instruction and the English */
+  if(CV&&CV.c&&CV.c.live&&ln.hintLv!==undefined)return '<div class="hint big">'+esc(ln.hint)+'</div><button type="button" class="linkbtn" data-prompt="en">Stuck? Show a hint</button><div class="hint" data-pen hidden>'+esc(ln.hintLv)+' ("'+esc(ln.en)+'")</div>';
   if(L<=2)return '<div class="hint big">'+esc(ln.hint)+'</div>'+en;
   /* (Round 7) a Quick chat reply you type from memory: the instruction told you what to say, so it is a tap away too */
   if(L>=4)return '<div class="hint big">What do you say?</div><button type="button" class="linkbtn" data-prompt="en">Show a hint</button><div class="hint" data-pen hidden>'+esc(ln.hint)+' ("'+esc(ln.en)+'")</div>';
@@ -3987,7 +4052,7 @@ function hear(target,mic,out,onResult,english){const targets=[].concat(target);
     onResult(0,'',ev.error==='no-speech'?null:ev.error);};
   rec.onend=()=>{mic.classList.remove('on');if(activeRec===rec)activeRec=null;if(!got&&!rec.__stopped)out.textContent='I didn\'t catch that. Tap the microphone and try again.';};
   try{rec.start();}catch(e){mic.classList.remove('on');out.textContent='I couldn\'t start the microphone. Try again.';}}
-function convFinish(){cvDrop();const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
+function convFinish(){lvHints(CV&&CV.c,false);cvDrop();const C=CV;const secs=Math.round((Date.now()-C.startedAt)/1000);const st=convState(C.c.id);
   if(C.redo)return redoFinish(C,st);
   /* (Round 11) every reply said (into the mic, recorded, or out loud and checked yourself) finishes Say it; only the microphone
      hearing you, or recordings you compared, make it "proved", the Spoken star and the bonus */
@@ -4031,10 +4096,16 @@ function convFinish(){cvDrop();const C=CV;const secs=Math.round((Date.now()-C.st
     pri=[/New in real life/,/Badge:/,/Level up/,/New star/,/Flawless/,/Said it all/,/Learning day done/,/got stronger/,/new repl/,/got easier/,/counted twice/,/./];
     const ess=lines.filter(l=>must.test(l)),others=lines.filter(l=>!must.test(l)&&!hint.test(l)),top=pri.map(r=>others.find(l=>r.test(l))).find(Boolean),hn=lines.find(l=>hint.test(l));
     lines.length=0;lines.push(...ess);if(top)lines.push(top);else if(hn)lines.push(hn);}
+  const fuF=COURSE.find(u=>u.finale&&u.finale.conv===C.c.id),finNow=!sp&&!!fuF&&newStars.includes(0);
+  if(finNow){OPEN_UNITS.add(fuF.id);window.__showProof=fuF.id;
+    const rows=(fuF.finale.show||[]).map(r=>{const p=C.played.find(p=>p.ln&&p.ln.lt&&p.ln.lt.startsWith(r[1]));return p?'<div class="finrow"><i aria-hidden="true">✓</i><span><small>'+esc(r[0])+'</small><b lang="'+LANG.code+'">'+esc(p.ln.lt)+'</b></span></div>':'';}).join('');
+    $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<span class="eyebrow">Unit '+(STEPS.filter(id=>UNIT_BY[id]).indexOf(fuF.id)+1)+' finished</span><h2>'+esc(fuF.finale.done||fuF.finale.can)+'</h2>'
+      +(rows?'<div class="finbox"><p>Lines you can now say, from your talk with '+esc(C.c.cast[0].name)+':</p>'+rows+'</div>':'')+'<p class="note">They stick when your reviews bring them back over the coming days.</p><p class="note">'+C.turns+' replies in writing · <span class="big num finxp">+'+total+' XP</span></p></div>';}
+  else
   $('#stage').innerHTML='<canvas id="confetti" aria-hidden="true"></canvas><div class="done">'+mascot('cheer','done-mascot')+'<div class="big num">+'+total+' XP</div><h2>'+(sp?(micAll?'You just spoke a whole conversation in '+LANG.en:allSaid?'You practised a whole conversation out loud':'You got through the whole conversation'):'You just had a conversation in '+LANG.en)+'</h2><div class="tiles"><div class="tile"><strong class="num">'+C.turns+'</strong><small>Replies</small></div>'+(sp?'<div class="tile"><strong class="num">'+((C.checked||0)+(C.proved||0))+'/'+C.turns+'</strong><small>Into the mic</small></div><div class="tile"><strong class="num">'+(selfR||C.peeks)+'</strong><small>'+(selfR?'Out loud, self-checked':'Peeks')+'</small></div>':'<div class="tile"><strong class="num">'+C.mistakes+'</strong><small>Mistakes'+(C.nearly?' · '+C.nearly+' nearly':'')+'</small></div><div class="tile"><strong class="num">'+C.reviewed.size+'</strong><small>Words reviewed</small></div>')+'</div>'+lines.join('')+'</div>';
   confetti(perfect||allSaid||got.length?160:90);sfx('win');countUp();$('#lbar').style.width='100%';
   const rd=$('#cv-redo');if(rd)rd.onclick=()=>{const id=C.c.id,left=C.skipped||[];CV=null;startConv(id,'speak',left);};
-  const btn=$('#btn-check');btn.textContent='Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
+  const btn=$('#btn-check');btn.textContent=finNow?(()=>{const us=STEPS.filter(id=>UNIT_BY[id]),n=UNIT_BY[us[us.indexOf(fuF.id)+1]];return n?'Open Unit '+(us.indexOf(n.id)+1)+': '+n.en:'Continue';})():'Continue';btn.disabled=false;btn.classList.remove('ghost');btn.onclick=quit;}
 /* After saying just the skipped lines: all said finishes the conversation's Say it. */
 function redoFinish(C,st){const selfR=C.selfR||0,all=C.turns>0&&C.heard>=C.turns;if(all){st.speak=st.speak||today();laterDel('c:'+C.c.id);}
   rollDay();const total=addXp(all&&(C.checked||0)+(C.proved||0)+(C.typed||0)>=C.turns?3:0);goalCheck();save();const left=C.skipped||[];
@@ -4163,7 +4234,7 @@ function renderReady(){const html=readyLine();document.querySelectorAll('#offrea
 /* the full download: your lesson voice for every unit, the conversations in the voices they use, every picture */
 function offlineFiles(){const me=S.voice||'ona';const set=new Set();Object.keys(SMAP[me]||{}).filter(g=>!/^cv\d/.test(g)).forEach(g=>set.add(absUrl(audioUrl(me,g))));
   ['semantic-personal-name','semantic-personal-origin'].forEach(n=>set.add(absUrl('pics/art-v2/'+n+'.webp')));
-  if(LANG.code==='lt')['free-seat-v2','cafe-counter','cafe-empty-table','cafe-empty-cup','cafe-bill-v2','cafe-payment-terminal','a1x-stikline'].forEach(n=>set.add(absUrl('pics/art-v2/'+n+'.webp')));
+  if(LANG.code==='lt')['free-seat-v2','cafe-counter','cafe-empty-table','cafe-empty-cup','cafe-bill-v2','cafe-payment-terminal','a1x-stikline','ruta-greets','ruta-points-seat','cafe2-introduces','cafe2-handshake','cafe2-how-are-you','cafe2-asks-where','cafe2-darius-arrives','cafe2-offers-coffee','cafe2-offers-tea','cafe2-two-cups','cafe2-phone-rings','cafe2-sorry-phone','cafe2-hurry','cafe2-bye','cup-tea','cup-coffee'].forEach(n=>set.add(absUrl('pics/art-v2/'+n+'.webp')));
   if(typeof LEARNER_PICTURE!=='undefined'&&LEARNER_PICTURE)set.add(absUrl(picFile(LEARNER_PICTURE)));
   CONVS.forEach(c=>convFiles(c).concat(castPictureFiles(c)).forEach(f=>set.add(f)));(typeof picFor==='function'?ITEMS.map(i=>picFor(i.lt)):Object.values(EMOJI)).forEach(v=>{if(v&&v[0]!=='#')set.add(absUrl(picFile(v)));});return [...set].filter(f=>!GONE.has(f));}
 /* a recording's size from its length (about 6 KB for each second of speech), an emoji picture's about 4 KB, a drawn one's about 7 KB */
@@ -4238,7 +4309,7 @@ window.popBusy=()=>!!document.querySelector('.gate,.league-pop,#tour')||!$('#pop
    never saw it) */
 /* (Round 8) the tour opens the moment you come back to the Learn screen, never a second later on a timer (it opened over
    your next tap on Start and swallowed it). A celebration still on screen puts it off to the next visit. */
-function maybeTour(){if(S.toured||(S.lessonsDone||0)<1||!$('#sheet').hidden||!$('#welcome').hidden||document.querySelector('#tour')||window.__touring||lastView!=='learn')return;
+function maybeTour(){if(calmStart())return;{const u0=UNIT_BY[STEPS[0]],st=u0&&u0.finale&&(S.convs||{})[u0.finale.conv];if(st&&(st.text||st.done)===today())return;}if(S.toured||(S.lessonsDone||0)<1||!$('#sheet').hidden||!$('#welcome').hidden||document.querySelector('#tour')||window.__touring||lastView!=='learn')return;
   if(document.querySelector('.gate,.league-pop')||!$('#pop').hidden)return;startTour();}
 document.addEventListener('pointerdown',()=>{window.__lastTap=Date.now();},true);document.addEventListener('keydown',()=>{window.__lastTap=Date.now();},true);
 $('#btn-tour').onclick=()=>startTour();
@@ -4624,7 +4695,7 @@ function openSignin(mode){if(!window.cloud||!cloud.enabled()||cloud.signedIn()||
   $('#welcome').hidden=false;document.body.style.overflow='hidden';
   document.querySelectorAll('#welcome .hello').forEach(h=>h.hidden=true);$('#welcome-signin').hidden=false;
   const h=$('#welcome-signin h2'),p=$('#welcome-signin h2+p');h.__t=h.__t||h.textContent;p.__t=p.__t||p.textContent;
-  h.textContent=mode==='first'?'First lesson done! Save it?':h.__t;
+  h.textContent=mode==='first'?((S.lessonsDone||0)>1?'Save what you have learned?':'First lesson done! Save it?'):h.__t;
   p.textContent=mode==='first'?'Sign in and what you just learned is saved to your account, along with everything after it: your lessons, streak and XP, on any phone or computer. You also join the league.':p.__t;
   cloud.widget($('#welcome-auth'),{onDone:()=>{toast('Signed in. Your progress is saved.');closeWelcome();}});
   /* (Round 8) after the first lesson, "Not now" is the big amber button, and it also sits above the sign-in buttons, so a

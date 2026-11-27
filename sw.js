@@ -8,7 +8,7 @@
    - Fonts and the sign-in library from CDNs: saved copy first.
    - Supabase (accounts, leaderboard) is never touched.
    - Notifications: a push shows on the phone, unless the app is open on screen, which then shows it itself. */
-const SHELL = 'gintaras-shell-v205';
+const SHELL = 'gintaras-shell-v206';
 const AUDIO = 'gintaras-audio-v2';
 const CDN = 'gintaras-cdn-v1';
 const PICS = 'gintaras-pics-v1';
@@ -48,6 +48,7 @@ CORE.push('listening-transfer-audio.js');
 CORE.push('interaction-practice-audio.js');
 // BEGIN SEMANTIC IMAGE CACHE
 CORE.push("pics/art-v2/cafe-bill-v2.webp","pics/art-v2/cafe-counter.webp","pics/art-v2/cafe-empty-cup.webp","pics/art-v2/cafe-empty-table.webp","pics/art-v2/cafe-payment-terminal.webp","pics/art-v2/free-seat-v2.webp","pics/art-v2/semantic-a-tall-man-v2.webp","pics/art-v2/semantic-a1x-dede-v2.webp","pics/art-v2/semantic-a1x-grindys-v2.webp","pics/art-v2/semantic-a1x-popiete.webp","pics/art-v2/semantic-a1x-pusbrolis-v2.webp","pics/art-v2/semantic-a1x-pussesere-v2.webp","pics/art-v2/semantic-a1x-stogas.webp","pics/art-v2/semantic-a1x-teta-v2.webp","pics/art-v2/semantic-bedroom.webp","pics/art-v2/semantic-bird.webp","pics/art-v2/semantic-books.webp","pics/art-v2/semantic-breakfast-v2.webp","pics/art-v2/semantic-brother-v2.webp","pics/art-v2/semantic-bye.webp","pics/art-v2/semantic-cake.webp","pics/art-v2/semantic-cat-v2.webp","pics/art-v2/semantic-child.webp","pics/art-v2/semantic-coffee.webp","pics/art-v2/semantic-es-chair-v2.webp","pics/art-v2/semantic-es-city-block.webp","pics/art-v2/semantic-es-dog.webp","pics/art-v2/semantic-es-hotel-room.webp","pics/art-v2/semantic-es-wake-up.webp","pics/art-v2/semantic-far.webp","pics/art-v2/semantic-fish.webp","pics/art-v2/semantic-good-evening.webp","pics/art-v2/semantic-hello-formal.webp","pics/art-v2/semantic-house.webp","pics/art-v2/semantic-how-are-you.webp","pics/art-v2/semantic-i-get-dressed.webp","pics/art-v2/semantic-milk.webp","pics/art-v2/semantic-money.webp","pics/art-v2/semantic-offer-help.webp","pics/art-v2/semantic-personal-name.webp","pics/art-v2/semantic-personal-origin.webp","pics/art-v2/semantic-please.webp","pics/art-v2/semantic-please-help.webp","pics/art-v2/semantic-shampoo.webp","pics/art-v2/semantic-sister-v2.webp","pics/art-v2/semantic-some-coffee.webp","pics/art-v2/semantic-some-tea.webp","pics/art-v2/semantic-table.webp","pics/art-v2/semantic-tea.webp","pics/art-v2/semantic-white-v5.webp","pics/art-v2/semantic-wife.webp");
+CORE.push("pics/art-v2/ruta-greets.webp","pics/art-v2/ruta-points-seat.webp","pics/art-v2/cafe2-introduces.webp","pics/art-v2/cafe2-handshake.webp","pics/art-v2/cafe2-how-are-you.webp","pics/art-v2/cafe2-asks-where.webp","pics/art-v2/cafe2-darius-arrives.webp","pics/art-v2/cafe2-offers-coffee.webp","pics/art-v2/cafe2-offers-tea.webp","pics/art-v2/cafe2-two-cups.webp","pics/art-v2/cafe2-phone-rings.webp","pics/art-v2/cafe2-sorry-phone.webp","pics/art-v2/cafe2-hurry.webp","pics/art-v2/cafe2-bye.webp","pics/art-v2/cup-tea.webp","pics/art-v2/cup-coffee.webp");
 // END SEMANTIC IMAGE CACHE
 self.addEventListener('install', e => {
   e.waitUntil(Promise.all([

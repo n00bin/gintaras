@@ -182,7 +182,8 @@
 "cv1:5": "Mano vardas Tomas.",
 "cv1:7": "Malonu susipažinti!",
 "cv1:9o0": "Puikiai!",
-"cv1:9o1": "Gerai, ačiū."
+"cv1:9o1": "Gerai, ačiū.",
+"cv1:ask": "Koks tavo vardas?"
 },
 "despina_cv10": {
 "cv10:1": "Labas vakaras! Čia tau dovana.",
@@ -965,15 +966,15 @@
 },
 "kore_cv1": {
 "cv1:0": "Labas rytas!",
-"cv1:10": "Iš kur tu esi?",
+"cv1:10": "Iš kur?",
 "cv1:18": "Atsiprašau!",
 "cv1:2": "Prašau.",
 "cv1:22": "Ačiū! Viso gero, Tomai!",
 "cv1:4": "Aš esu Rūta. Koks tavo vardas?",
 "cv1:6": "Malonu susipažinti, Tomai!",
 "cv1:8": "Kaip sekasi?",
-"cv1:9o0-0": "Man irgi puikiai!",
-"cv1:9o1-0": "Man irgi gerai, ačiū!"
+"cv1:9o0-0": "Gerai!",
+"cv1:9o1-0": "Puikiai!"
 },
 "kore_cv10": {
 "cv10:0": "Labas vakaras! Užeik!",
@@ -1187,7 +1188,8 @@
 "cv1:5": "Mano vardas Tomas.",
 "cv1:7": "Malonu susipažinti!",
 "cv1:9o0": "Puikiai!",
-"cv1:9o1": "Gerai, ačiū."
+"cv1:9o1": "Gerai, ačiū.",
+"cv1:ask": "Koks tavo vardas?"
 },
 "orus_cv10": {
 "cv10:1": "Labas vakaras! Čia tau dovana.",

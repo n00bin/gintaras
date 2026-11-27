@@ -155,7 +155,7 @@ let gateEl=null;
    device (nothing is lost) until the next lesson you finish. */
 function gateDue(){const S=window.S;if(!S||S.signinAsked)return false; /* asked once after the first lesson; after that, Profile */const conv=Object.values(S.convs||{}).some(c=>c&&(c.done||c.text));
   return (conv||(S.lessonsDone||0)>=10)&&(S.lessonsDone||0)>(S.gateLater==null?-1:S.gateLater);}
-function signInGate(){if(!sb||!booted||user||!gateDue()){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
+function signInGate(){if(window.calmStart&&window.calmStart())return;if(!sb||!booted||user||!gateDue()){if(gateEl&&user){gateEl.remove();gateEl=null;}return;}
   if(gateEl&&document.body.contains(gateEl))return;
   gateEl=document.createElement('div');gateEl.className='gate signin-gate';
   gateEl.innerHTML='<div class="card" role="dialog" aria-modal="true" aria-label="Save your progress"><div data-a="mascot"></div><div data-a="box"></div><div data-a="off" hidden><p class="note">You are offline. Keep going for now, and sign in when you are back online.</p></div><button type="button" class="btn ghost" data-a="later">Not now</button><p class="note">Your progress stays on this device until you sign in.</p></div>';

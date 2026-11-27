@@ -2741,7 +2741,10 @@
    "cv0:8",
    "cv0:9",
    "cv0:10",
-   "cv0:11"
+   "cv0:11",
+   "cv1:seat",
+   "cv1:ask",
+   "cv1:cup"
   ],
   "skills": [
    "a1.first-meeting",

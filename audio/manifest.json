@@ -1316,7 +1316,7 @@
 "cv1": {
 "cv1:0": "Labas rytas!",
 "cv1:1": "Labas rytas!",
-"cv1:10": "Iš kur tu esi?",
+"cv1:10": "Iš kur?",
 "cv1:11": "Aš esu iš Amerikos.",
 "cv1:13": "Laba diena! Kavos?",
 "cv1:14": "Laba diena! Ne, ačiū.",
@@ -1335,9 +1335,9 @@
 "cv1:7": "Malonu susipažinti!",
 "cv1:8": "Kaip sekasi?",
 "cv1:9o0": "Puikiai!",
-"cv1:9o0-0": "Man irgi puikiai!",
+"cv1:9o0-0": "Gerai!",
 "cv1:9o1": "Gerai, ačiū.",
-"cv1:9o1-0": "Man irgi gerai, ačiū!"
+"cv1:9o1-0": "Puikiai!"
 },
 "cv10": {
 "cv10:0": "Labas vakaras! Užeik!",
